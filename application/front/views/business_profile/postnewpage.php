@@ -108,7 +108,7 @@
         <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 profile-box profile-box-custom">
+                    <div class="col-md-4 profile-box profile-box-custom  animated fadeInLeftBig">
                         <div class="">
                             <!-- 
                                <div class="full-box-module">    
@@ -282,7 +282,7 @@
                     <!-- <div id="myBtn">Open Modal</div>
                     -->
                     <!-- The Modal -->
-                    <div class=" col-md-7 col-sm-12 col-md-push-4 custom-right-business" ">
+                    <div class=" col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp" >
                         <!-- body content start-->
                         <div class="col-md-12 col-sm-12 post-design-box">
                             <!-- pop up box start-->

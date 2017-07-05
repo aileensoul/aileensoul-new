@@ -154,14 +154,14 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4  profile-box profile-box-custom">
+                        <div class="col-md-4  animated fadeInLeftBig profile-box profile-box-custom">
                             <div class="">
 
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                                               href="<?php echo base_url('business-profile/dashboard'); ?>"
+                                               href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>"
                                                tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $businessdata[0]['company_name']; ?>">
                                                 <!-- box image start -->
                                                 <?php if ($businessdata[0]['profile_background'] != '') { ?>
@@ -177,7 +177,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business-profile/dashboard'); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
                                                     <?php
                                                     if ($businessdata[0]['business_user_image']) {
                                                         ?>
@@ -196,14 +196,14 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
+                                                    <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
                                                         <?php echo ucwords($businessdata[0]['company_name']); ?>
                                                     </a> 
                                                 </span>
 
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
+                                                    <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                                                         <?php
                                                         if ($category) {
                                                             echo $category;
@@ -215,22 +215,22 @@
                                                 </div>
                                                 <ul class=" left_box_menubar">
                                                     <li
-                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'business_profile_manage_post') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_manage_post') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business-profile/dashboard'); ?>">Dashboard
+                                                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>">Dashboard
                                                         </a>
                                                     </li>
                                                     <li 
-                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a title="Followers" href="<?php echo base_url('business-profile/followers'); ?>">Followers 
+                                                        <a title="Followers" href="<?php echo base_url('business_profile/followers'); ?>">Followers 
                                                             <br> (<?php echo (count($businessfollowerdata)); ?>)
                                                         </a>
                                                     </li>
                                                     <li  
-                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a  class="padding_less_right" title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
+                                                        <a  class="padding_less_right" title="Following" href="<?php echo base_url('business_profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
                                                             <br> (<?php echo (count($businessfollowingdata)); ?>) 
                                                         </a>
                                                     </li>
@@ -251,7 +251,7 @@
                                         <h3 class="user_list_head">User List
                                         </h3>
                                         <div class="seeall">
-                                            <a href="<?php echo base_url('business-profile/userlist/' . $businessdata[0]['business_slug']); ?>">All User
+                                            <a href="<?php echo base_url('business_profile/userlist/' . $businessdata[0]['business_slug']); ?>">All User
                                             </a>
                                         </div>
                                     </div>
@@ -275,12 +275,12 @@
                                                                     <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
                                                                         <div class="post-design-pro-img_follow">
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -290,7 +290,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -301,7 +301,7 @@
                                                                                 <!-- <?php //echo "<pre>"; print_r($category);         ?> -->
                                                                                 <li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <p>
                                                                                                 <?php
                                                                                                 if ($category) {
@@ -351,12 +351,12 @@
 
 
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -366,7 +366,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']);
                                                                                                 ?>
@@ -379,7 +379,7 @@
 
                                                                                 <li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <p>
                                                                                                 <?php
                                                                                                 if ($category) {
@@ -425,7 +425,7 @@
                                                                 <div class="profile-job-post-title-inside clearfix">
                                                                     <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
                                                                         <div class="post-design-pro-img_follow">
-                                                                            <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
+                                                                            <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
                                                                                 <?php
                                                                                 if ($userlist['business_user_image'] != '') {
                                                                                     ?>
@@ -443,7 +443,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -502,12 +502,12 @@
                                                                         <div class="post-design-pro-img_follow">
 
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -517,7 +517,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -675,7 +675,7 @@
                         }
                         ?>
 
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business ">
+                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business  animated fadeInUp">
 
                             <div class="post-editor col-md-12">
                                 <div class="main-text-area col-md-12">
@@ -754,22 +754,22 @@
                                                                     ?>
 
                                                                     <?php if ($userimageposted) { ?>
-                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
+                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
                                                                             <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
                                                                         </a>
                                                                     <?php } else { ?>
-                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
+                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
                                                                             <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                                                                         </a>
                                                                     <?php } ?>
 
                                                                 <?php } else { ?>
                                                                     <?php if ($business_userimage) { ?>
-                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
+                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
                                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                                         </a>
                                                                     <?php } else { ?>
-                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
+                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
                                                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                         </a>
                                                                         <?php
@@ -796,8 +796,8 @@
                                                                         <li>
                                                                             <div class="else_post_d">
                                                                                 <div class="post-design-product">
-                                                                                    <a class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
-                                                                                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
+                                                                                    <a class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
+                                                                                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
                                                                                     <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date"  >
                                                                                         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>  
 
@@ -824,7 +824,7 @@
                                                                     <?php } else { ?>
                                                                         <li>
                                                                             <div class="post-design-product">
-                                                                                <a class="post_dot"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
+                                                                                <a class="post_dot"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
                                                                                     <?php echo ucwords($companyname); ?>  </a>
                                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                                 <div class="datespan"> <span class="ctre_date" > 
@@ -1320,11 +1320,11 @@
                                                                                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
                                                                                     ?>
                                                                                     <?php if ($business_userimage) { ?>
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
 
                                                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt=""> </a>
                                                                                     <?php } else { ?>
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
+                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
 
                                                                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                                         </a>

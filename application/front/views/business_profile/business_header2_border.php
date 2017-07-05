@@ -237,7 +237,7 @@
 
 <header>
     <div class="bg-search">
-        <div class="header2 headerborder">
+        <div class="header2 headerborder animated fadeInDownBig">
             <div class="container">
                 <div class="row">
 
@@ -263,7 +263,7 @@
                         
                         <div class="">
                             <ul class="">
-                                <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a href="<?php echo base_url('business-profile/home'); ?>">Home</a>
+                                <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('business_profile/business_profile_post'); ?>">Home</a>
                                 </li>
                                 <!-- Friend Request Start-->
 
@@ -282,7 +282,7 @@
 
 
                                         </div>
-                                        <div id="addcontactFooter"><a href="<?php echo base_url('business-profile/contact-list'); ?>">See All</a></div>
+                                        <div id="addcontactFooter"><a href="<?php echo base_url('business_profile/contact_list'); ?>">See All</a></div>
                                     </div>
                                 </li>         
                                 <li>
@@ -291,8 +291,8 @@
                                     <div class="dropdown_hover">
                                         <span id="art_profile" >Business Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
                                         <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                            <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a> 
-                                            <a href="<?php echo base_url('business-profile/business-information-update'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
+                                            <a href="<?php echo base_url('business_profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a> 
+                                            <a href="<?php echo base_url('business_profile/business_information_update'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
 
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');

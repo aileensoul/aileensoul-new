@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 if ($_SERVER['HTTP_HOST'] == "localhost") {
-    $config['base_url'] = 'http://localhost/aileensoul/';
+    $config['base_url'] = 'http://localhost/aileensoul-new/';
 } else {
     $config['base_url'] = 'https://www.aileensoul.com/';
 }
