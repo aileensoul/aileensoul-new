@@ -1,75 +1,25 @@
-<!-- start head -->
+<!-- START HEAD -->
 <?php echo $head; ?>
-<!-- end head -->
-<!-- start header -->
+<!-- END HEAD -->
+<!-- START HEADER -->
 <?php echo $header; ?>
 <!-- <script src="<?php echo base_url('js/fb_login.js'); ?>">
 </script> -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
-<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
-
-<!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
--->
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
-<script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
-
-
-
 <!-- END HEADER -->
 <?php echo $business_header2_border; ?>
 <!DOCTYPE html>
 <html>
     <head>
-
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
+        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-<!-- <script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>     -->
-
-
-
-        <!-- further and less -->
-        <script>
-            $(function () {
-//                var showTotalChar = 150, showChar = "More", hideChar = "less";
-                var showTotalChar = 180, showChar = "Read More", hideChar = "";
-                $('.show').each(function () {
-                    // var content = $(this).text();
-                    var content = $(this).html();
-                    content = content.replace(/ /g, '');
-                    if (content.length > showTotalChar) {
-                        var con = content.substr(0, showTotalChar);
-                        var hcon = content.substr(showTotalChar, content.length - showTotalChar);
-                        var txt = con + '<span class="dots">...</span><span class="morectnt"><span>' + hcon + '</span>&nbsp;&nbsp;<a href="" class="showmoretxt">' + showChar + '</a></span>';
-                        $(this).html(txt);
-                    }
-                });
-                $(".showmoretxt").click(function () {
-                    if ($(this).hasClass("sample")) {
-                        $(this).removeClass("sample");
-                        $(this).text(showChar);
-                    } else {
-                        $(this).addClass("sample");
-                        $(this).text(hideChar);
-                    }
-                    $(this).parent().prev().toggle();
-                    $(this).prev().toggle();
-                    return false;
-                });
-            });
-        </script> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <script>
             $(document).ready(function ()
             {
@@ -161,7 +111,7 @@
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
                                             <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                                               href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>"
+                                               href="<?php echo base_url('business-profile/dashboard'); ?>"
                                                tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $businessdata[0]['company_name']; ?>">
                                                 <!-- box image start -->
                                                 <?php if ($businessdata[0]['profile_background'] != '') { ?>
@@ -177,7 +127,7 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business-profile/dashboard'); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
                                                     <?php
                                                     if ($businessdata[0]['business_user_image']) {
                                                         ?>
@@ -196,14 +146,14 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
+                                                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
                                                         <?php echo ucwords($businessdata[0]['company_name']); ?>
                                                     </a> 
                                                 </span>
 
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
+                                                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                                                         <?php
                                                         if ($category) {
                                                             echo $category;
@@ -215,22 +165,22 @@
                                                 </div>
                                                 <ul class=" left_box_menubar">
                                                     <li
-                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_manage_post') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business_profile/business_profile_manage_post'); ?>">Dashboard
+                                                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business-profile/dashboard'); ?>">Dashboard
                                                         </a>
                                                     </li>
                                                     <li 
-                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a title="Followers" href="<?php echo base_url('business_profile/followers'); ?>">Followers 
+                                                        <a title="Followers" href="<?php echo base_url('business-profile/followers'); ?>">Followers 
                                                             <br> (<?php echo (count($businessfollowerdata)); ?>)
                                                         </a>
                                                     </li>
                                                     <li  
-                                                        <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
+                                                        <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
                                                         <?php } ?>>
-                                                        <a  class="padding_less_right" title="Following" href="<?php echo base_url('business_profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
+                                                        <a  class="padding_less_right" title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
                                                             <br> (<?php echo (count($businessfollowingdata)); ?>) 
                                                         </a>
                                                     </li>
@@ -251,7 +201,7 @@
                                         <h3 class="user_list_head">User List
                                         </h3>
                                         <div class="seeall">
-                                            <a href="<?php echo base_url('business_profile/userlist/' . $businessdata[0]['business_slug']); ?>">All User
+                                            <a href="<?php echo base_url('business-profile/userlist/' . $businessdata[0]['business_slug']); ?>">All User
                                             </a>
                                         </div>
                                     </div>
@@ -275,12 +225,12 @@
                                                                     <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
                                                                         <div class="post-design-pro-img_follow">
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -290,7 +240,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -298,10 +248,10 @@
                                                                                     </div>
                                                                                 </li>
                                                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                                                                <!-- <?php //echo "<pre>"; print_r($category);         ?> -->
+                                                                                <!-- <?php //echo "<pre>"; print_r($category);            ?> -->
                                                                                 <li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <p>
                                                                                                 <?php
                                                                                                 if ($category) {
@@ -351,12 +301,12 @@
 
 
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -366,7 +316,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']);
                                                                                                 ?>
@@ -379,7 +329,7 @@
 
                                                                                 <li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                             <p>
                                                                                                 <?php
                                                                                                 if ($category) {
@@ -425,7 +375,7 @@
                                                                 <div class="profile-job-post-title-inside clearfix">
                                                                     <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
                                                                         <div class="post-design-pro-img_follow">
-                                                                            <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
+                                                                            <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
                                                                                 <?php
                                                                                 if ($userlist['business_user_image'] != '') {
                                                                                     ?>
@@ -443,7 +393,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -502,12 +452,12 @@
                                                                         <div class="post-design-pro-img_follow">
 
                                                                             <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
                                                                                 </a>
@@ -517,7 +467,7 @@
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $userlist['business_slug'] . ''); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
                                                                                             <h6>
                                                                                                 <?php echo ucwords($userlist['company_name']); ?>
                                                                                             </h6>
@@ -561,7 +511,7 @@
                                                     }
                                                     ?>
                                                     <!--div class="seeall">
-                                                        <a href="<?php echo base_url('business_profile/userlist'); ?>">All User
+                                                        <a href="<?php echo base_url('business-profile/userlist'); ?>">All User
                                                         </a>
                                                     </div-->
                                                 </div>
@@ -591,7 +541,7 @@
                                 </span>
                                 <div class="post-editor col-md-12 post-edit-popup" id="close">
                                     <?php // echo form_open_multipart(base_url('business_profile/business_profile_addpost_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix', 'onsubmit' => "return imgval(event)")); ?>
-                                    <?php echo form_open_multipart(base_url('business_profile/business_profile_addpost_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form')); ?>
+                                    <?php echo form_open_multipart(base_url('business-profile/business_profile_addpost_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form')); ?>
                                     <div class="main-text-area col-md-12" >
                                         <div class="popup-img-in"> 
                                             <?php
@@ -754,22 +704,22 @@
                                                                     ?>
 
                                                                     <?php if ($userimageposted) { ?>
-                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                                             <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
                                                                         </a>
                                                                     <?php } else { ?>
-                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                                             <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                                                                         </a>
                                                                     <?php } ?>
 
                                                                 <?php } else { ?>
                                                                     <?php if ($business_userimage) { ?>
-                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                                         </a>
                                                                     <?php } else { ?>
-                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                         </a>
                                                                         <?php
@@ -796,8 +746,8 @@
                                                                         <li>
                                                                             <div class="else_post_d">
                                                                                 <div class="post-design-product">
-                                                                                    <a class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
-                                                                                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
+                                                                                    <a class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
+                                                                                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
                                                                                     <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date"  >
                                                                                         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>  
 
@@ -824,7 +774,7 @@
                                                                     <?php } else { ?>
                                                                         <li>
                                                                             <div class="post-design-product">
-                                                                                <a class="post_dot"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
+                                                                                <a class="post_dot"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
                                                                                     <?php echo ucwords($companyname); ?>  </a>
                                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                                 <div class="datespan"> <span class="ctre_date" > 
@@ -911,7 +861,7 @@
                                                                                 </i> Delete Post
                                                                             </a>
 
-                                                                            <a href="<?php echo base_url('business_profile/business_profile_contactperson/' . $row['user_id'] . ''); ?>">
+                                                                            <a href="<?php echo base_url('business-profile/business_profile_contactperson/' . $row['user_id'] . ''); ?>">
                                                                                 <i class="fa fa-user" aria-hidden="true">
                                                                                 </i> Contact Person
                                                                             </a>
@@ -985,7 +935,7 @@
                                                                         ?>
                                                                         <!-- one image start -->
                                                                         <div class="one-image">
-                                                                            <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                            <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                                 <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) ?>"> 
                                                                             </a>
                                                                         </div>
@@ -993,7 +943,7 @@
                                                                     <?php } elseif (in_array($ext, $allowespdf)) { ?>
                                                                         <!-- one pdf start -->
                                                                         <div>
-                                                                            <a title="click to open" href="<?php echo base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) ?>"><div class="pdf_img">
+                                                                            <a title="click to open" href="<?php echo base_url('business-profile/creat_pdf/' . $businessmultiimage[0]['image_id']) ?>"><div class="pdf_img">
                                                                                     <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
                                                                                 </div>
                                                                             </a>
@@ -1034,7 +984,7 @@
                                                                         ?>
                                                                         <!-- two image start -->
                                                                         <div  class="two-images" >
-                                                                            <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                            <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                                 <img class="two-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                             </a>
                                                                         </div>
@@ -1043,18 +993,18 @@
                                                                 <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                                     <!-- three image start -->
                                                                     <div class="three-image-top" >
-                                                                        <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                        <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                             <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) ?>" style="width: 100%; height:100%; "> 
                                                                         </a>
                                                                     </div>
                                                                     <div class="three-image" >
 
-                                                                        <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                        <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                             <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) ?>" style="width: 100%; height:100%; "> 
                                                                         </a>
                                                                     </div>
                                                                     <div class="three-image" >
-                                                                        <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                        <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                             <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) ?>" style="width: 100%; height:100%; "> 
                                                                         </a>
                                                                     </div>
@@ -1065,7 +1015,7 @@
                                                                         ?>
                                                                         <!-- four image start -->
                                                                         <div class="four-image">
-                                                                            <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                            <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                                 <img class="breakpoint" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                             </a>
                                                                         </div>
@@ -1079,7 +1029,7 @@
                                                                         <!-- five image start -->
 
                                                                         <div class="four-image">
-                                                                            <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                            <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                                 <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                             </a>
                                                                         </div>
@@ -1094,10 +1044,10 @@
                                                                     <!-- this div view all image start -->
 
                                                                     <div class="four-image">
-                                                                        <a href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>">
+                                                                        <a href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>">
                                                                             <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                         </a>
-                                                                        <a class="text-center" href="<?php echo base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) ?>" >
+                                                                        <a class="text-center" href="<?php echo base_url('business-profile/postnewpage/' . $row['business_profile_post_id']) ?>" >
                                                                             <div class="more-image" >
                                                                                 <span>View All (+
                                                                                     <?php echo (count($businessmultiimage) - 4); ?>)</span>
@@ -1129,8 +1079,8 @@
                                                                             $likeuserarray = explode(',', $active[0]['business_like_user']);
                                                                             if (!in_array($userid, $likeuserarray)) {
                                                                                 ?>               
-                                                                <!--                                                                        <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true">
-                                                                                                                            </i>-->
+                                                                            <!--                                                                        <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true">
+                                                                                                                                        </i>-->
                                                                                 <i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>
                                                                             <?php } else { ?> 
                         <!--                                                                        <i class="fa fa-thumbs-up" aria-hidden="true">
@@ -1320,11 +1270,11 @@
                                                                                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
                                                                                     ?>
                                                                                     <?php if ($business_userimage) { ?>
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
 
                                                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt=""> </a>
                                                                                     <?php } else { ?>
-                                                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
+                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
 
                                                                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                                         </a>
@@ -1559,21 +1509,26 @@
         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
 
+        <!-- POST BOX JAVASCRIPT START --> 
+        <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
+        <!-- POST BOX JAVASCRIPT END --> 
+
+        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
+        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
+
 
     </body>
 </html>
 
 
 
-
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-
-
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
-<!-- <script type="text/javascript">jQuery.noConflict();</script> -->
-
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
 
 
 <script>
@@ -1680,27 +1635,7 @@
         }
     }
 </script>
-<!-- <script>
-    //select2 autocomplete start for Location
-    $('#searchplace').select2({
-        placeholder: 'Find Your Location',
-        maximumSelectionLength: 1,
-        ajax: {
-            url: "<?php echo base_url(); ?>business_profile/location",
-            dataType: 'json',
-            delay: 250,
-            processResults: function (data) {
-                return {
-                    //alert(data);
-                    results: data
-                };
-            }
-            ,
-            cache: true
-        }
-    });
-</script>
---><!-- like comment script start -->
+<!-- like comment script start -->
 <!-- post like script start -->
 <script type="text/javascript">
     function post_like(clicked_id)
@@ -1736,28 +1671,6 @@
 <!--post like script end -->
 <!-- comment insert script start -->
 <script type="text/javascript">
-//    function insert_comment(clicked_id)
-//    {
-//        var post_comment = document.getElementById("post_comment" + clicked_id);
-//        var $field = $('#post_comment' + clicked_id);
-//        var post_comment = $('#post_comment' + clicked_id).html();
-//
-//        $('#post_comment' + clicked_id).html("");
-//        $.ajax({
-//            type: 'POST',
-//            url: '<?php echo base_url() . "business_profile/insert_commentthree" ?>',
-//            data: 'post_id=' + clicked_id + '&comment=' + post_comment,
-//            dataType: "json",
-//            success: function (data) {
-//                $('div').each(function () {
-//                    $(this).val('');
-//                });
-//                $('#' + 'insertcount' + clicked_id).html(data.count);
-//                $('.' + 'insertcomment' + clicked_id).html(data.comment);
-//            }
-//        });
-//    }
-
     function insert_comment(clicked_id)
     {
         $("#post_comment" + clicked_id).click(function () {
@@ -1819,65 +1732,11 @@
 </script>
 <!-- insert comment using enter -->
 <script type="text/javascript">
-//    function entercomment(clicked_id)
-//    {
-//        $(document).ready(function () {
-//            $('#post_comment' + clicked_id).keypress(function (e) {
-//                if (event.which == 13 && event.shiftKey != 1) {
-//                    var val = $('#post_comment' + clicked_id).val();
-//                    var $field = $('#post_comment' + clicked_id);
-//                    var post_comment = $('#post_comment' + clicked_id).html();
-//                    $('#post_comment' + clicked_id).html("");
-//                    e.preventDefault();
-//
-//                    if (window.preventDuplicateKeyPresses)
-//                        return;
-//                    window.preventDuplicateKeyPresses = true;
-//                    window.setTimeout(function () {
-//                        window.preventDuplicateKeyPresses = false;
-//                    }, 500);
-//                    var x = document.getElementById('threecomment' + clicked_id);
-//                    var y = document.getElementById('fourcomment' + clicked_id);
-//                    if (x.style.display === 'block' && y.style.display === 'none') {
-//                        $.ajax({
-//                            type: 'POST',
-//                            url: '<?php echo base_url() . "business_profile/insert_commentthree" ?>',
-//                            data: 'post_id=' + clicked_id + '&comment=' + val,
-//                            dataType: "json",
-//                            success: function (data) {
-//                                $('input').each(function () {
-//                                    $(this).val('');
-//                                });
-//                                $('#' + 'insertcount' + clicked_id).html(data.count);
-//                                $('.insertcomment' + clicked_id).html(data.comment);
-//                            }
-//                        });
-//                    } else {
-//                        $.ajax({
-//                            type: 'POST',
-//                            url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
-//                            data: 'post_id=' + clicked_id + '&comment=' + val,
-//                            success: function (data) {
-//                                $('input').each(function () {
-//                                    $(this).val('');
-//                                }
-//                                );
-//                                $('#' + 'fourcomment' + clicked_id).html(data);
-//                            }
-//                        });
-//                    }
-//                }
-//            });
-//        });
-//    }
-
     function entercomment(clicked_id)
     {
-//                    $(document).ready(function () {
 
         $("#post_comment" + clicked_id).click(function () {
             $(this).prop("contentEditable", true);
-            //$(this).html("");
         });
 
         $('#post_comment' + clicked_id).keypress(function (e) {
@@ -1886,7 +1745,6 @@
                 e.preventDefault();
                 var sel = $("#post_comment" + clicked_id);
                 var txt = sel.html();
-                //txt = txt.replace(/^(&nbsp;|<br>)+/, '');
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
                 if (txt == '' || txt == '<br>') {
@@ -1907,8 +1765,6 @@
                     window.preventDuplicateKeyPresses = false;
                 }, 500);
 
-                // khyati chnages  start
-
                 var x = document.getElementById('threecomment' + clicked_id);
                 var y = document.getElementById('fourcomment' + clicked_id);
 
@@ -1922,14 +1778,10 @@
                             $('textarea').each(function () {
                                 $(this).val('');
                             });
-                            //  $('.insertcomment' + clicked_id).html(data);
-                            // $('#' + 'insertcount' + clicked_id).html(data.count);
                             $('.insertcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
-
                         }
                     });
-
                 } else {
                     $.ajax({
                         type: 'POST',
@@ -1940,23 +1792,18 @@
                             $('textarea').each(function () {
                                 $(this).val('');
                             });
-                            //$('#' + 'fourcomment' + clicked_id).html(data);
-                            //$('#' + 'insertcount' + clicked_id).html(data.count);
                             $('#' + 'fourcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
                         }
                     });
                 }
-                // khyati chnages end
-                //alert(val);
             }
         });
         $(".scroll").click(function (event) {
             event.preventDefault();
             $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
         });
-        //  });
-
+        
     }
 </script>
 <!--comment insert script end -->
@@ -1982,20 +1829,6 @@
                 }
             });
         }
-        // } else {
-        //      x.style.display = 'block';
-        //      y.style.display = 'block';
-        //      z.style.display = 'block';
-        //      $.ajax({ 
-        //             type:'POST',
-        //          url:'<?php //echo base_url() . "business_profile/fourcomment"                                                                                ?>',
-        //             data:'art_post_id='+clicked_id,
-        //             //alert(data);
-        //             success:function(data){
-        //       $('#' + 'threecomment' + clicked_id).html(data);
-        //       }
-        //         });
-        // }
     }
 </script>
 <!-- hide and show data end-->
@@ -2003,7 +1836,6 @@
 <script type="text/javascript">
     function comment_like(clicked_id)
     {
-        //alert(clicked_id);
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "business_profile/like_comment" ?>',
@@ -2182,26 +2014,6 @@
 <!--comment edit box end-->
 <!-- comment edit insert start -->
 <script type="text/javascript">
-//    function edit_comment(abc)
-//    {
-//        var post_comment_edit = document.getElementById("editcomment" + abc);
-//        var $field = $('#editcomment' + abc);
-//        var post_comment_edit = $('#editcomment' + abc).html();
-//        $.ajax({
-//            type: 'POST',
-//            url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//            data: 'post_id=' + abc + '&comment=' + post_comment_edit,
-//            success: function (data) {
-//                document.getElementById('editcomment' + abc).style.display = 'none';
-//                document.getElementById('showcomment' + abc).style.display = 'block';
-//                document.getElementById('editsubmit' + abc).style.display = 'none';
-//                document.getElementById('editcommentbox' + abc).style.display = 'block';
-//                document.getElementById('editcancle' + abc).style.display = 'none';
-//                $('#' + 'showcomment' + abc).html(data);
-//            }
-//        });
-//    }
-
     function edit_comment(abc)
     {
         //var post_comment_edit = document.getElementById("editcomment" + abc);
@@ -2252,46 +2064,10 @@
 
 </script>
 <script type="text/javascript">
-//    function commentedit(abc)
-//    {
-//        $(document).ready(function () {
-//            $('#editcomment' + abc).keypress(function (e) {
-//                if (e.keyCode == 13 && !e.shiftKey) {
-//                    var val = $('#editcomment' + abc).val();
-//                    e.preventDefault();
-//                    if (window.preventDuplicateKeyPresses)
-//                        return;
-//                    window.preventDuplicateKeyPresses = true;
-//                    window.setTimeout(function () {
-//                        window.preventDuplicateKeyPresses = false;
-//                    }, 500);
-//                    $.ajax({
-//                        type: 'POST',
-//                        url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//                        data: 'post_id=' + abc + '&comment=' + val,
-//                        success: function (data) {
-//                            document.getElementById('editcomment' + abc).style.display = 'none';
-//                            document.getElementById('showcomment' + abc).style.display = 'block';
-//                            document.getElementById('editsubmit' + abc).style.display = 'none';
-//                            document.getElementById('editcommentbox' + abc).style.display = 'block';
-//                            document.getElementById('editcancle' + abc).style.display = 'none';
-//                            $('#' + 'showcomment' + abc).html(data);
-//                        }
-//                    });
-//                }
-//            });
-//        });
-//    }
-
     function commentedit(abc)
     {
-//                    alert(1212121);
-//                    return false;
-        //$(document).ready(function () {
-
         $("#editcomment" + abc).click(function () {
             $(this).prop("contentEditable", true);
-            //$(this).html("");
         });
         $('#editcomment' + abc).keypress(function (event) {
             if (event.which == 13 && event.shiftKey != 1) {
@@ -2308,8 +2084,7 @@
                     return false;
                 }
                 txt = txt.replace(/&/g, "%26");
-                //$('#editcomment' + abc).html("");
-
+               
                 if (window.preventDuplicateKeyPresses)
                     return;
                 window.preventDuplicateKeyPresses = true;

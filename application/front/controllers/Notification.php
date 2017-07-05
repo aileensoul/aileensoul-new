@@ -2014,7 +2014,9 @@ $user_message = array_merge($return_arraysel,$userlist);
       $contition_array = array('not_product_id' => $msg['id']);
             $data = array(' notification.*');
             $not = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = "", $groupby = '');
-       
+//            echo '<pre>';
+//            print_r($not);
+//            exit;
             $notmsg .= '<a href="' . base_url('chat/abc/' . $msg['user_id']) . '" class="clearfix msg_dot">';
             $notmsg .= '<li class="';
             if($not[0]['not_active'] == 1){
@@ -2036,7 +2038,10 @@ $user_message = array_merge($return_arraysel,$userlist);
            
             $notmsg .= '' . $msg['message'] . '';
 
-            $notmsg .= '</div><div class="data_noti_msg">' . $this->common->time_elapsed_string($not[0]['not_created_date'], $full = false) . '</div>';
+            //$notmsg .= '</div><div class="data_noti_msg">' . $this->common->time_elapsed_string($not[0]['not_created_date'], $full = false) . '</div>';
+            echo $not[0]['not_created_date'];
+            
+            $notmsg .= '</div><div class="data_noti_msg">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($not[0]['not_created_date']))) . '</div>';
             $notmsg .= '</div></div></li></a>';
         }
         $notmsg .= '</ul></div>';
