@@ -1,4 +1,4 @@
-start head -->
+<!--start head -->
 <?php echo $head; ?>
 <style type="text/css">
    #popup-form img{display: none;}

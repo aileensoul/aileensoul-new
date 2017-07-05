@@ -737,13 +737,13 @@ class Business_profile extends MY_Controller {
         
         // GET BUSINESS DATA
         $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,industriyal,city,state', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,industriyal,city,state', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
         
         // GET USER LIST IN LEFT SIDE
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'business_step' => 4);
-        $userlist = $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'industriyal', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userlist = $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,business_slug,industriyal', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         
         // GET INDUSTRIAL WISE DATA
@@ -788,42 +788,27 @@ class Business_profile extends MY_Controller {
         
         $this->data['userlistview4'] = $userlastview;
 
-//userlist for followdata end
-//data fatch using follower start
+        // GET FOLLOWER DATA 
 
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
-
-        $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        //echo "<pre>" ; print_r($this->data['followerdata']); die();
+        $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         foreach ($followerdata as $fdata) {
 
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
-
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // echo "<pre>" ; print_r($this->data['business_data']); die();
-
             $business_userid = $this->data['business_data'][0]['user_id'];
-            //echo $business_userid; die();
             $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            //echo "<pre>"; print_r($this->data['business_profile_data']) ; die();
-
             $followerabc[] = $this->data['business_profile_data'];
         }
-        //echo "<pre>" ; print_r($followerabc); die();
-//data fatch using follower end
-//data fatch using industriyal start
-
         $userselectindustriyal = $this->data['businessdata'][0]['industriyal'];
 
         $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // echo "<pre>"; print_r( $businessprofiledata); die();
+//        echo "<pre>"; print_r( $businessprofiledata); die();
 
 
 
