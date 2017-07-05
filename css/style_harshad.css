@@ -1,0 +1,573 @@
+.profile-job-post-location-name-rec ul li{width: 100%;}
+.profile-job-post-location-name-rec .post_name{width: 93%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;}
+@media screen and (max-width: 1200px) {
+        #paddingtop_fixed{padding-top: 84px !important;}
+    .profile-boxProfilebuisness-avatarLink2 {
+        height: 75px !important;
+    }
+    .right_left_box_design {
+        padding: 17px 12px 12px 16px !important;
+    }
+    .rec_check {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .header ul li a {
+        padding: 17px 12px;
+    }
+    .folle_text {
+        width: 59%;
+    }
+    .chat .chat-history .other-message::after {
+        left: 96%;
+    }
+    .message-data-name {
+        margin-right: 1%;
+    }
+    .container_chat {
+        padding-right: 20px !important;
+    }
+    .people-list {
+        width: 24%;
+    }
+    .container_chat {
+        padding: 0 19px 13px;
+    }
+    .chat {
+        width: 76%;
+    }
+    .profile-boxProfilebuisness-avatarLink2 {
+        height: 70px !important;
+    }
+    .right_left_box_design {
+        padding: 14px 12px 10px 16px !important;
+    }
+}
+@media screen and (max-width: 991px) {
+      .dropdown-menu::before{right: 3.5%;}
+    .header ul li a {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    .header ul li.dropdown-user a {
+        padding-top: 13px !important;
+        padding-bottom: 10px !important;
+    }
+    .chat .chat-history .message-data.align-right .message-data-time {
+        font-size: 12px;
+    }
+    .message-data-name {
+        margin-right: 2%;
+        font-size: 14px;
+    }
+    .chat .chat-history .other-message::after {
+        left: 93%;
+    }
+    .chat {
+        width: 68%;
+    }
+    .people-list {
+        width: 32%;
+    }
+    .profile-pho {
+        margin-top: -64px !important;
+    }
+    .pad-top-res {
+        padding-top: 20px;
+    }
+    .fw .job-menu-profile {
+        width: 22.3%;
+    }
+    .profile-boxProfilebuisness-avatarLink2 {
+        height: 60px !important;
+    }
+    .right_left_box_design {
+        padding: 11px 12px 8px 16px !important;
+    }
+    .left_box_menubar li a {
+        font-size: 12px;
+    }
+    .profile-job-details .post_title {
+        width: 50% !important;
+    }
+    .profile-job-details .job_companyname {
+        width: 300px;
+    }
+}
+@media screen and (max-width: 767px) {
+  
+    .buisness-profile-pic-candidate
+    {
+        margin-left: 6px;
+    }
+    .apply-btn a
+    {
+    padding: 2px 8px 2px;
+    font-size: 12px;
+    }
+    #paddingtop_fixed
+    {
+        padding-top: 34px !important;
+    }
+    .dropdown-menu {
+        left: inherit !important;
+        right: 0px !important;
+        top: 42px;
+    }
+    .profile-box-art .right-menu-jr .pro-fw{width: 100%;}
+    .profile-box-art .right-menu-jr .pro-fw li
+    {
+        width: 33% !important;
+    }
+    .dropdown-menu::before{right: 2.5%;}
+    .header ul li a {
+        padding-top: 12px!important;
+        padding-bottom: 12px !important;
+        padding: 16px;
+    }
+    .main-menu-right {
+        padding-top: 0PX;
+    }
+    .header ul li.dropdown-user a {
+        padding-top: 9px !important;
+        padding-bottom: 7px !important;
+    }
+    .cover-pic {
+        position: absolute !important;
+        top: inherit;
+        right: -30px;
+        bottom: 20%;
+        z-index: 99;
+    }
+    .upload-img {
+        margin-top: -72px !important;
+    }
+    .alert {
+        font-size: 16px;
+        padding: 12px;
+    }
+    .user-midd-section .padd_set {
+        padding: 50px 0px 25px;
+    }
+    .main_form {
+        padding-top: 0px;
+    }
+    .custom-right {
+        margin-top: 30px;
+    }
+    .cameraButton .tooltiptext {
+        font-size: 12px;
+        width: 121px;
+        font-weight: 600;
+        margin-top: 21px;
+    }
+    .profile-box-art .right-side-menu {
+        margin-left: 0px;
+        padding-left: 0px !important;
+        padding-right: 0px!important;
+    }
+    .profile-box-art .right-side-menu ul li {
+        width: 33%;
+    }
+    .profile-box-art .right-menu-jr ul li {
+        width: auto;
+    }
+    .right-menu-jr .current-user {
+        width: 100%;
+    }
+    .profile-main-box-buis-menu .flw_msg_btn {
+        margin-bottom: 5px!important
+    }
+    .pro-fw {
+        width: 100%;
+    }
+    .pro-fw li {
+        width: 20% !important;
+    }
+    .pro-fw4 {
+        width: 100%;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .pro-fw4 li {
+        width: 25% !important;
+    }
+    .bpro-fw {
+        width: 100%;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .bpro-fw li {
+        width: 20% !important;
+    }
+    .bpro-fw6 {
+        width: 100%;
+        border-bottom: 1px solid #d9d9d9;
+    }
+    .bpro-fw6 li {
+        width: 16.66% !important;
+    }
+    .bpro-fw6 li a {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+    }
+    .bpro-fw li a {
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+    }
+    .circle {
+        top: 21%;
+    }
+    .profile-box-art .right-menu-jr ul li a {
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+        height: auto;
+    }
+    .profile-box-art .right-side-menu .flw_msg_btn ul li {
+        width: auto;
+    }
+    .right-menu-jr .flw_msg_btn ul li a {
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+    }
+    .right-menu-jr .current-user {
+        display: inline-block;
+        float: left;
+        text-align: center;
+    }
+    .folow-ms {
+        width: 100%;
+        float: left;
+    }
+    .fw .job-menu-profile {
+        width: 27.3%;
+    }
+    .right-menu-jr .flw_msg_btn {
+        width: auto;
+        padding-top: 7px;
+        margin-top: 0px;
+        padding-bottom: 5px;
+    }
+    .right-menu-jr {
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+    .right-menu-jr ul {
+        display: block;
+        float: left;
+    }
+    .add-post-button a {
+        font-size: 12px;
+    }
+    .add-post-button {
+        display: inline-block;
+        margin: 0px;
+        margin-top: 0px;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+    }
+    .right-side-menu {
+        padding-left: 20%;
+    }
+    .rec_res {
+        padding-top: 15px !important;
+        padding-bottom: 0px;
+    }
+    .padding_set_res {
+        padding-top: 0px !important;
+    }
+    .job-menu-profile {
+        margin-top: 0px;
+    }
+    .profile-head-text {
+        font-size: 18px !important;
+    }
+    .profile-text a {
+        font-size: 16px !important;
+    }
+    .profile-main-rec-box-menu {
+        margin-top: -63px;
+    }
+    .res-job-print {
+        padding-top: 0px !important;
+    }
+}
+@media screen and (max-width: 540px) {
+
+    .alert.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+    left: 0;
+    margin: 0 auto;
+        margin-top: 0px;
+    margin-top: 0px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 55%;
+    z-index: 9;
+    font-size: 12px;
+    margin-top: -19px;
+    }
+    .profile-job-post-location-name-rec .post_name{
+        font-size: 14px;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      font-size: 13px;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+         font-size: 13px;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+         font-size: 13px;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+       font-size: 13px;
+    }
+    .popup-textarea textarea
+    {
+        min-height: 35px;
+    }
+    .tabs-left > li > a {
+        font-size: 15px;
+    }
+    .profile-box-art .right-menu-jr ul li a {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        height: auto;
+    }
+    .profile-main-rec-box-menu {
+        margin-top: -63px;
+    }
+    .art-side-menu .flw_msg_btn a {
+        width: 88px;
+        padding: 7px 5px 7px 5px !important;
+    }
+    .profile-photo .profile-pho {
+        margin-top: -41px !important;
+    }
+    .profile-job-details .post_title {
+        width: 50% !important;
+        font-size: 16px;
+    }
+    .date_re {
+        font-size: 12px;
+    }
+    .profile-job-details .job_companyname {
+        width: 250px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        font-size: 12px;
+    }
+    .profile-job-post-detail .profile-job-post-title .button {
+        font-size: 13px;
+        padding: 2px 12px !important;
+    }
+}
+@media screen and (max-width: 479px) {
+    .post-design-name ul li .post_dot{
+        max-width: 66%;
+    }
+    .post-design-desc {
+            font-style: 12px;
+    }
+    .profile-job-details .job_companyname {
+        font-size: 10px;
+        line-height: 1;
+        font-weight: 500;
+    }
+    .profile-job-details .display_inline {
+        font-size: 10px;
+        line-height: 1;
+        font-weight: 500;
+    }
+    .alert {
+        font-size: 16px;
+        padding: 7px;
+    }
+    .post-editor .popup-social-icon ul li i {
+        font-size: 12px;
+    }
+    .user_lst li .follow-li-text a {
+        font-size: 16px;
+    }
+    .user_btn button {
+        font-size: 12px;
+        width: 80px;
+        padding: 6px 7px;
+        margin-top: 10px;
+    }
+    .modal.in .modal-dialog {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .folle_text {
+        width: 48%;
+    }
+    .profile-job-post-location-name {
+        padding: 6px 0px;
+    }
+    .follow-img {
+        height: 50px;
+        width: 50px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+        width: 43%;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 57%;
+    }
+    /*.padding_job_rs ul li {width: 100%;}*/
+    /*  .padding_job_rs ul li .lction{width: 100%;}*/
+    
+    .profile-pho-bui {
+        height: 50px;
+        width: 50px;
+        margin-top: 12px;
+    }
+    .profile-pho-bui .user-pic {
+        height: 44px;
+        width: 42px;
+    }
+    .bui-menu-profile {
+        width: 70%;
+        overflow: hidden;
+    }
+    .circle {
+        top: 22%;
+    }
+    .addtocont {
+        top: 84px;
+    }
+    .bui-menu-profile h4 a {
+        line-height: 22px
+    }
+    .bui-menu-profile .profile-head-text a {
+        font-size: 14px !important;
+    }
+    .bui-menu-profile .profile-head-text {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .bui-menu-profile .profile-head-text_dg a {
+        font-size: 12px;
+    }
+    .bui-menu-profile {
+        padding-left: 71px!important;
+    }
+    .pro-fw li a {} .remove_tab a::before {
+        height: 2px;
+    }
+    .right-side-menu {
+        padding-left: 25%;
+    }
+    .profile-main-rec-box-menu {
+        margin-top: 0px;
+    }
+    .profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+    }
+    fieldset .add_post_btnc {
+        min-width: 83px;
+        padding: 10px 20px 10px;
+        font-size: 12px;
+    }
+    fieldset .add_post_btns {
+        min-width: 83px;
+        padding: 5px 5px 7px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 360px) {
+    .padding_job_r ul .date_re {
+        padding-left: 15px;
+    }
+    .user_lst li .follow-li-text a {
+        font-size: 14px;
+    }
+    .profile-job-post-location-name ul li .follow-li-text {
+        padding: 0px;
+    }
+    .user_btn button {
+        font-size: 10px;
+        width: 64px;
+        padding: 2px 3px;
+        margin-bottom: 11px;
+        margin-top: 10px;
+    }
+    .folle_text {
+        width: 43%;
+        padding-left: 3px;
+    }
+    .follow-img {
+        height: 40px;
+        width: 40px;
+    }
+    .rsp {
+        padding-left: 3px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+        width: 50%;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 48%;
+    }
+    .profile-box-art .right-side-menu .pro-fw li a {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+        font-size: 11px;
+        text-align: center;
+    }
+    .tabs-left > li > a {
+        font-size: 12px;
+    }
+    .nav > li > a {
+        padding: 10px 7px;
+    }
+    .profile-main-rec-box-menu li a {
+        padding: 10px 7px;
+    }
+    .job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 1px !important;
+    }
+    .profile-job-details .post_title {
+        width: 50%;
+        font-size: 12px;
+    }
+    .date_re {
+        width: 50%;
+        font-size: 10px;
+    }
+    .profile-job-details .job_companyname {
+        width: 150px;
+    }
+    .profile-job-details ul li p {
+        font-size: 12px;
+        padding-right: 8px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {
+        font-size: 12px;
+    }
+    .job_all_post {
+        width: 100%;
+        margin-bottom: 10px!important;
+    }
+    .profile-job-post-detail .profile-job-post-title .button {
+        font-size: 12px;
+        padding: 1px 5px !important;
+    }
+}

@@ -1,0 +1,61 @@
+
+.material {
+  position: relative;
+  border: none;
+  outline:none;
+  cursor: pointer;
+  background: #0063C0;
+  color: #e8e8e8;
+  padding: 18px 60px;
+  border-radius: 10px;
+  font-size: 22px;
+  font-family: 'Roboto-Condensed', sans-serif;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+  transition: all .2s ease-in-out;
+}
+
+.material:hover {
+  box-shadow: 0px 0px 35px 5px rgba(0,0,0,0.75);
+  postion:relative;
+}
+
+.material:active {
+  background-color:#00308D;
+}
+
+.ink {
+  display: block;
+  position: absolute;
+  background:rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  -webkit-transform:scale(0);
+     -moz-transform:scale(0);
+       -o-transform:scale(0);
+          transform:scale(0);
+}
+
+.animate {
+	-webkit-animation:ripple 0.65s linear;
+   -moz-animation:ripple 0.65s linear;
+    -ms-animation:ripple 0.65s linear;
+     -o-animation:ripple 0.65s linear;
+        animation:ripple 0.65s linear;
+}
+/*Ripple Effect*/
+@-webkit-keyframes ripple {
+    100% {opacity: 0; -webkit-transform: scale(1);}
+}
+@-moz-keyframes ripple {
+    100% {opacity: 0; -moz-transform: scale(1);}
+}
+@-o-keyframes ripple {
+    100% {opacity: 0; -o-transform: scale(1);}
+}
+@keyframes ripple {
+    100% {opacity: 0; transform: scale(1);}
+}
+
+/*background animaition*/
+@-webkit-keyframes pulse {
+     0% {background-color: #E8E8E8;} 100% {background-color: #101010;}
+}
