@@ -76,7 +76,12 @@ $route['business-profile/details/(:any)'] = "business_profile/business_resume/$1
 $route['business-profile/details'] = "business_profile/business_resume";
 
 $route['business-profile/home'] = "business_profile/business_profile_post";
+$route['business-profile/bussiness-profile-post-add'] = "business_profile/business_profile_addpost_insert";
+
+
+
 $route['business-profile/dashboard'] = "business_profile/business_profile_manage_post";
+$route['business-profile/dashboard/(:any)'] = "business_profile/business_profile_manage_post/$1";
 $route['business-profile/followers'] = "business_profile/followers";
 $route['business-profile/following'] = "business_profile/following";
 $route['business-profile/following/(:any)'] = "business_profile/following/$1";

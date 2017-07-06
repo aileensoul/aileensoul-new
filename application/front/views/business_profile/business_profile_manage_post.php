@@ -1253,13 +1253,7 @@
                                                         </div>
                                                     </div>
 
-                                <!--                                                <div id="<?php echo 'editpostdetails' . $row['business_profile_post_id']; ?>" style="display:block;">
-                                                                                    <span class="show">  
-                                                    <?php $new_product_description = $this->common->make_links($row['product_description']); ?>
-                                                    <?php echo nl2br(htmlentities($new_product_description, ENT_QUOTES, 'UTF-8')); ?>
-                                                    <?php //echo  nl2br($new_product_description);  ?>
-                                                                                    </span>
-                                                                                </div>-->
+                                
                                                     <div id="<?php echo "khyati" . $row['business_profile_post_id']; ?>" style="display:block;">
                                                         <?php
                                                         $small = substr($row['product_description'], 0, 180);
@@ -1281,8 +1275,7 @@
                                                         -->
                                                         <div  contenteditable="true" id="<?php echo 'editpostdesc' . $row['business_profile_post_id']; ?>" placeholder="Product Description" class="textbuis  editable_text" placeholder="Description of Your Product"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $row['product_description']; ?></div>
 
-                                                        <!-- 
-                                                        <div contenteditable="true"  id="<?php echo 'editpostdesc' . $row['business_profile_post_id']; ?>" placeholder="Product Description" class="textbuis  editable_text"  name="editpostdesc"><?php echo $row['product_description']; ?></div>  -->
+                                                       
 
                                                     </div>
 
@@ -1712,14 +1705,32 @@
                                                                             ?>
                                                                         </b>
                                                                     </div>
-                                                                    <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['business_profile_post_comment_id']; ?>">
-                                                                        <?php
-                                                                        $new_product_comment = $this->common->make_links($rowdata['comments']);
+                    <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['business_profile_post_comment_id']; ?>">
 
-                                                                        //    echo  nl2br(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')); 
-                                                                        echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
-                                                                        ?>
-                                                                    </div>
+
+
+                    <div id="<?php echo "lessmore" . $rowdata['business_profile_post_comment_id']; ?>" style="display:block;">
+                                <?php
+                     $small = substr($rowdata['comments'], 0, 180);
+                     echo $this->common->make_links($small);
+
+                     if (strlen($rowdata['comments']) > 180) {
+                          echo '... <span id="kkkk" onClick="seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
+                        }?>
+                        </div>
+                   
+                    <div id="<?php echo "seemore" . $rowdata['business_profile_post_comment_id']; ?>" style="display:none;">
+                      <?php
+                        $new_product_comment = $this->common->make_links($rowdata['comments']);
+
+                                                                       
+                            echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                            ?>
+
+               </div>
+               
+                        
+                     </div>
 
                                                                     <div class="edit-comment-box">
                                                                         <div class="inputtype-edit-comment">
@@ -2245,6 +2256,11 @@
                     var txt = sel.html();
                     txt = txt.replace(/&nbsp;/gi, " ");
                     txt = txt.replace(/<br>$/, '');
+
+                    txt = txt.replace(/&gt;/gi,">");
+       
+                    txt = txt.replace(/div/gi, 'p');
+
                     if (txt == '' || txt == '<br>') {
                         return false;
                     }
@@ -2358,6 +2374,12 @@
                             //txt = txt.replace(/^(&nbsp;|<br>)+/, '');
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+
+                            txt = txt.replace(/&gt;/gi,">");
+       
+                           txt = txt.replace(/div/gi, 'p');
+                            
+
                             if (txt == '' || txt == '<br>') {
                                 return false;
                             }
@@ -2864,6 +2886,12 @@
                     var txt = sel.html();
                     txt = txt.replace(/&nbsp;/gi, " ");
                     txt = txt.replace(/<br>$/, '');
+
+                    txt = txt.replace(/&gt;/gi,">");
+    
+                    txt = txt.replace(/div/gi, "p");
+
+
                     if (txt == '' || txt == '<br>') {
                         return false;
                     }
@@ -2953,6 +2981,10 @@
                             var txt = sel.html();
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/&gt;/gi,">");
+       
+                            txt = txt.replace(/div/gi, "p");
+
                             if (txt == '' || txt == '<br>') {
                                 return false;
                             }
@@ -3031,6 +3063,12 @@
                     var txt = sel.html();
                     txt = txt.replace(/&nbsp;/gi, " ");
                     txt = txt.replace(/<br>$/, '');
+
+                    txt = txt.replace(/&gt;/gi,">");
+       
+                    txt = txt.replace(/div/gi, "p");
+
+
                     if (txt == '' || txt == '<br>') {
                         return false;
                     }
@@ -3125,6 +3163,12 @@
                             var txt = sel.html();
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/&gt;/gi,">");
+       
+                    
+                            txt = txt.replace(/div/gi, "p");
+
+
                             if (txt == '' || txt == '<br>') {
                                 return false;
                             }
@@ -3219,6 +3263,12 @@
 
                             if (e.keyCode == 13 && !e.shiftKey) {
                                 var val = $('#editcomment3' + clicked_id).val();
+
+                    val = val.replace(/&gt;/gi,">");
+       
+                    val = val.replace(/&nbsp;/gi, " ");
+                    val = val.replace(/div/gi, "p");
+
                                 e.preventDefault();
 
                                 if (window.preventDuplicateKeyPresses)
@@ -3302,6 +3352,13 @@
 
                             if (e.keyCode == 13 && !e.shiftKey) {
                                 var val = $('#editcomment4' + clicked_id).val();
+
+                    val = val.replace(/&gt;/gi,">");
+       
+                    val = val.replace(/&nbsp;/gi, " ");
+                    val = val.replace(/div/gi, "p");
+
+
                                 e.preventDefault();
 
                                 if (window.preventDuplicateKeyPresses)
@@ -3475,6 +3532,11 @@
                     var editpostdetails = $('#editpostdesc' + abc).html();
 
                     editpostdetails = editpostdetails.replace(/&/g, "%26");
+                    editpostdetails = editpostdetails.replace(/&gt;/gi,">");
+       
+                    editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+                    editpostdetails = editpostdetails.replace(/div/gi, "p");
+
 
 
                     // $('#editpostdesc' + abc).html("");
@@ -4531,6 +4593,22 @@
                     return false;
                 });
             </script>
+
+
+
+<!-- 180 words more than script start -->
+
+<script type="text/javascript">
+    
+     function seemorediv(abc) { //alert("hii");
+         
+                   document.getElementById('seemore' + abc).style.display = 'block';
+                   document.getElementById('lessmore' + abc).style.display = 'none';
+                
+   }
+   
+   </script>
+ <!-- 180 words more than script end-->
 
             <!--
             <style>

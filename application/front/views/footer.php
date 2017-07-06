@@ -257,6 +257,4 @@
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 </script>
 
-</body>
-</html>
 <!-- footer end -->

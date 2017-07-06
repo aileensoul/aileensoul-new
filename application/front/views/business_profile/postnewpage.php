@@ -436,13 +436,7 @@
                                                 <input type="text" id="<?php echo 'editpostname' . $busienss_data[0]['business_profile_post_id']; ?>" name="editpostname" placeholder="Product Name" value="<?php echo $busienss_data[0]['product_name']; ?>">
                                             </div>
                                         </div>
-          <!--                              <div id="<?php echo 'editpostdetails' . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block;">
-                                           <span class="show_desc">  
-                                        <?php $new_product_description = $this->common->make_links($busienss_data[0]['product_description']); ?>
-                                        <?php echo nl2br(htmlentities($new_product_description, ENT_QUOTES, 'UTF-8')); ?>
-                                        <?php //echo  nl2br($new_product_description); ?>
-                                           </span>
-                                        </div>-->
+         
                                         <div id="<?php echo "khyati" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:block;">
                                             <?php
                                             $small = substr($busienss_data[0]['product_description'], 0, 180);
@@ -800,13 +794,13 @@
                                                                                         ?>
                                                                                     </b>
                                                                                 </div>
-                                                                                <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
-                                                                                    <?php
-                                                                                    echo $this->common->make_links($rowdata['comment']);
-                                                                                    echo $new_product_comment = $this->common->make_links($rowdata['comment']);
-                                                                                    echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
-                                                                                    ?>
-                                                                                </div>
+                       <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
+                         <?php
+                           echo $this->common->make_links($rowdata['comment']);
+                        echo $new_product_comment = $this->common->make_links($rowdata['comment']);
+                          echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                               ?>
+                          </div>
                                                                                 <!-- edit box start -->
                                                                                 <!--                                                                                <div class="col-md-12">
                                                                                    <div class="col-md-10">
@@ -1247,12 +1241,28 @@
                                                                 ?>
                                                             </b>
                                                         </div>
-                                                        <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['business_profile_post_comment_id']; ?>">
-                                                            <?php
-                                                            echo $this->common->make_links($rowdata['comments']);
-                                                            //                                                            echo '</br>';
-                                                            ?>
-                                                        </div>
+                    <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['business_profile_post_comment_id']; ?>">
+                              <div id="<?php echo "lessmore" . $rowdata['business_profile_post_comment_id']; ?>" style="display:block;">
+                                <?php
+                     $small = substr($rowdata['comments'], 0, 180);
+                     echo $this->common->make_links($small);
+
+                     if (strlen($rowdata['comments']) > 180) {
+                          echo '... <span id="kkkk" onClick="seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
+                        }?>
+                        </div>
+                   
+                    <div id="<?php echo "seemore" . $rowdata['business_profile_post_comment_id']; ?>" style="display:none;">
+                      <?php
+                        $new_product_comment = $this->common->make_links($rowdata['comments']);
+
+                                                                       
+                            echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                            ?>
+
+               </div>
+               
+                      </div>
                                                         <!--                                                        <div class="col-md-12">
                                                            <div class="col-md-10">
                                                                <div contenteditable="true" class="editable_text" name="<?php echo $rowdata['business_profile_post_comment_id']; ?>" id="<?php echo "editcomment" . $rowdata['business_profile_post_comment_id']; ?>" style="display:none"  onkeyup="commentedit(<?php echo $rowdata['business_profile_post_comment_id']; ?>)"><?php echo $rowdata['comments']; ?></div>
@@ -1630,6 +1640,14 @@
         var txt = sel.html();
         txt = txt.replace(/&nbsp;/gi, " ");
         txt = txt.replace(/<br>$/, '');
+
+
+        txt = txt.replace(/&gt;/gi,">");
+       
+        txt = txt.replace(/div/gi, 'p');
+
+
+
         if (txt == '' || txt == '<br>') {
             return false;
         }
@@ -1693,6 +1711,12 @@
                 //txt = txt.replace(/^(&nbsp;|<br>)+/, '');
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
+
+                txt = txt.replace(/&gt;/gi,">");
+       
+                txt = txt.replace(/div/gi, 'p');
+
+
                 if (txt == '' || txt == '<br>') {
                     return false;
                 }
@@ -2089,6 +2113,11 @@
         var txt = sel.html();
         txt = txt.replace(/&nbsp;/gi, " ");
         txt = txt.replace(/<br>$/, '');
+        txt = txt.replace(/&gt;/gi,">");
+       
+        txt = txt.replace(/div/gi, 'p');
+
+
         if (txt == '' || txt == '<br>') {
             return false;
         }
@@ -2184,6 +2213,11 @@
                 var txt = sel.html();
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
+                txt = txt.replace(/&gt;/gi,">");
+       
+                txt = txt.replace(/div/gi, 'p');
+
+
                 if (txt == '' || txt == '<br>') {
                     return false;
                 }
@@ -2266,6 +2300,11 @@
         var txt = sel.html();
         txt = txt.replace(/&nbsp;/gi, " ");
         txt = txt.replace(/<br>$/, '');
+        txt = txt.replace(/&gt;/gi,">");
+       
+        txt = txt.replace(/div/gi, 'p');
+
+
         if (txt == '' || txt == '<br>') {
             return false;
         }
@@ -2364,6 +2403,12 @@
 
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
+
+                txt = txt.replace(/&gt;/gi,">");
+       
+                txt = txt.replace(/div/gi, 'p');
+
+
                 if (txt == '' || txt == '<br>') {
                     return false;
                 }
@@ -3264,6 +3309,14 @@
         var $field = $('#editpostname' + abc);
         var editpostdetails = $('#editpostdesc' + abc).html();
         editpostdetails = editpostdetails.replace(/&/g, "%26");
+        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
+       
+        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+        editpostdetails = editpostdetails.replace(/div/gi, "p");
+
+
+
+
         if (editpostname.value == '' && editpostdetails == '') {
             $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
             $('#bidmodal').modal('show');
@@ -3451,3 +3504,18 @@
 
 </script>
 <!-- edit post start -->
+
+
+<!-- 180 words more than script start -->
+
+<script type="text/javascript">
+    
+     function seemorediv(abc) { //alert("hii");
+         
+                   document.getElementById('seemore' + abc).style.display = 'block';
+                   document.getElementById('lessmore' + abc).style.display = 'none';
+                
+   }
+   
+   </script>
+ <!-- 180 words more than script end-->
