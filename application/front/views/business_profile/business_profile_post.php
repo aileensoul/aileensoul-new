@@ -541,8 +541,7 @@
                             <!-- body content start-->
                             <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
                             <div class="business-all-post">
-                                <div id="progress-div"><div id="progress-bar"></div></div>
-                                <div id="targetLayer"></div>
+                                
                             </div>
                             <div class="nofoundpost"> 
                             </div>
@@ -1639,31 +1638,23 @@
         <!-- POST DEVELOPING SCRIPT START -->
         <script type="text/javascript">
             function imgval(event) {
-
                 var fileInput = document.getElementById("file-1").files;
                 var product_name = document.getElementById("test-upload-product").value;
                 var product_description = document.getElementById("test-upload-des").value;
                 var product_fileInput = document.getElementById("file-1").value;
-
-
                 if (product_fileInput == '' && product_name == '' && product_description == '')
                 {
-
                     $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
                     $('#post').modal('show');
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            //$( "#bidmodal" ).hide();
                             $('#bidmodal').modal('hide');
                             $('.modal-post').show();
-
                         }
                     });
                     event.preventDefault();
                     return false;
-
                 } else {
-
                     for (var i = 0; i < fileInput.length; i++)
                     {
                         var vname = fileInput[i].name;
@@ -1708,11 +1699,9 @@
 
                                 $(document).on('keydown', function (e) {
                                     if (e.keyCode === 27) {
-                                        //$( "#bidmodal" ).hide();
                                         $('#bidmodal').modal('hide');
                                         $('.modal-post').show();
-
-                                    }
+                                }
                                 });
                                 event.preventDefault();
                                 return false;
@@ -1788,7 +1777,6 @@
                             });
                             event.preventDefault();
                             return false;
-
                         }
                     }
                 }
@@ -1802,15 +1790,12 @@
             //This script is used for "This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post." comment click close then post add popup open end  
         </script>
         <!-- POST DEVELOPING SCRIPT END -->
-
         <script type="text/javascript">
             function contentedit(clicked_id) {
                 $("#post_comment" + clicked_id).click(function () {
                     $(this).prop("contentEditable", true);
                     $(this).html("");
                 });
-
-
                 $("#post_comment" + clicked_id).keypress(function (event) {
                     if (event.which == 13 && event.shiftKey != 1) {
                         event.preventDefault();
@@ -1860,7 +1845,6 @@
                                 }
                             });
                         }
-
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1869,7 +1853,6 @@
                 });
             }
         </script>
-
         <script type="text/javascript">
             function likeuserlist(post_id) {
                 $.ajax({
@@ -1888,7 +1871,6 @@
         <script type="text/javascript">
             function remove_post(abc)
             {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/business_profile_deleteforpost" ?>',
@@ -1899,13 +1881,10 @@
                         if (data.notcount == 'count') {
                             $('.' + 'nofoundpost').html(data.notfound);
                         }
-
                     }
                 });
             }
         </script>
-
-
         <!-- remove particular user post start -->
         <script type="text/javascript">
             function del_particular_userpost(abc)
@@ -1925,7 +1904,6 @@
             }
         </script>
         <!-- remove particular user post end -->
-
         <!-- post delete login user script start -->
         <script type="text/javascript">
             function user_postdelete(clicked_id)
@@ -1944,8 +1922,6 @@
             }
         </script>
         <!-- post delete particular login user end -->
-
-
         <!-- This  script use for close dropdown in every post -->
         <script type="text/javascript">
             $('body').on("click", "*", function (e) {
@@ -1958,32 +1934,24 @@
         <!-- This  script use for close dropdown in every post -->
         <script type="text/javascript">
             $(".like_ripple").click(function (e) {
-
                 // Remove any old one
                 $(".ripple").remove();
-
                 // Setup
                 var posX = $(this).offset().left,
                         posY = $(this).offset().top,
                         buttonWidth = $(this).width(),
                         buttonHeight = $(this).height();
-
                 // Add the element
                 $(this).prepend("<span class='ripple'></span>");
-
-
                 // Make it round!
                 if (buttonWidth >= buttonHeight) {
                     buttonHeight = buttonWidth;
                 } else {
                     buttonWidth = buttonHeight;
                 }
-
                 // Get the center of the element
                 var x = e.pageX - posX - buttonWidth / 2;
                 var y = e.pageY - posY - buttonHeight / 2;
-
-
                 // Add the ripples CSS and start the animation
                 $(".ripple").css({
                     width: buttonWidth,
@@ -2006,15 +1974,11 @@
             $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     if ($('.modal-post').show()) {
-
                         $(document).on('keydown', function (e) {
                             if (e.keyCode === 27) {
-                                //$( "#bidmodal" ).hide();
                                 $('.modal-post').hide();
                             }
                         });
-
-
                     }
                     document.getElementById('myModal').style.display = "none";
                 }
@@ -2023,7 +1987,6 @@
         <script>
             // Get the modal
             var modal = document.getElementById('myModal');
-
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
@@ -2032,11 +1995,8 @@
             }
         </script>
         <script type="text/javascript">
-
             var _onPaste_StripFormatting_IEPaste = false;
-
             function OnPaste_StripFormatting(elem, e) {
-
                 if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
                     e.preventDefault();
                     var text = e.originalEvent.clipboardData.getData('text/plain');
@@ -2054,21 +2014,15 @@
                     }
                     _onPaste_StripFormatting_IEPaste = false;
                 }
-
             }
-
         </script>
         <script type="text/javascript">
             // pop up open & close aarati code start 
             jQuery(document).mouseup(function (e) {
-
                 var container1 = $("#myModal");
-
                 jQuery(document).mouseup(function (e)
                 {
                     var container = $("#close");
-
-
                     if (!container.is(e.target) // if the target of the click isn't the container...
                             && container.has(e.target).length === 0) // ... nor a descendant of the container
                     {
@@ -2076,15 +2030,9 @@
                         container1.hide();
                     }
                 });
-
             });
-
             // pop up open & close aarati code end
-
-
         </script>
-
-
         <!-- all popup close close using esc start -->
         <script type="text/javascript">
 
@@ -2100,15 +2048,9 @@
             });
 
         </script>
-
-
         <!-- all popup close close using esc end-->
-
-        <!--<khyati chnages 24-4 start-->
         <script type="text/javascript">
-
             function khdiv(abc) {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_more_insert" ?>',
@@ -2148,15 +2090,12 @@
             function edit_postinsert(abc)
             {
                 var editpostname = document.getElementById("editpostname" + abc);
-                // start khyati code
                 var $field = $('#editpostdesc' + abc);
                 var editpostdetails = $('#editpostdesc' + abc).html();
                 editpostdetails = editpostdetails.replace(/&/g, "%26");
                 editpostdetails = editpostdetails.replace(/&gt;/gi, ">");
                 editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
                 editpostdetails = editpostdetails.replace(/div/gi, "p");
-
-                // end khyati code
 
                 if (editpostname.value == '' && editpostdetails == '') {
                     $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
@@ -2166,7 +2105,6 @@
                     document.getElementById('editpostbox' + abc).style.display = 'none';
                     document.getElementById('editpostdetailbox' + abc).style.display = 'none';
                     document.getElementById('editpostsubmit' + abc).style.display = 'none';
-
                 } else {
                     $.ajax({
                         type: 'POST',
@@ -2195,27 +2133,27 @@
                     beforeSend: function () {
                         // Replace this with your loading gif image
                         /**/
-                        $('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
-                        document.getElementById("progress-div").style.display = "block";
-                        $("#progress-bar").width('0%');
+                       // $('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
+                       // document.getElementById("progress-div").style.display = "block";
+                       // $("#progress-bar").width('0%');
                         /**/
                         document.getElementById("myModal").style.display = "none";
                         $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
                     /**/
-                    uploadProgress: function (event, position, total, percentComplete) {
-                        $("#progress-bar").width(percentComplete + '%');
-                        $("#progress-bar").html('<div id="progress-status">' + percentComplete + ' %</div>')
-                    },
+                    //uploadProgress: function (event, position, total, percentComplete) {
+                    //    $("#progress-bar").width(percentComplete + '%');
+                    //    $("#progress-bar").html('<div id="progress-status">' + percentComplete + ' %</div>')
+                    //},
                     /**/
                     complete: function (response) {
                         /**/
                         // Output AJAX response to the div container
                         // console.log(response.responseText);
-                        $(".upload-image-messages").html(response.responseText);
-                        document.getElementById("myModal").style.display = "none";
-                        $(".business-all-post").prepend(response.responseText);
-                        $('#progress-bar').hide();
+//                        $(".upload-image-messages").html(response.responseText);
+//                        document.getElementById("myModal").style.display = "none";
+//                        $(".business-all-post").prepend(response.responseText);
+//                        $('#progress-bar').hide();
                         /**/
                         $('.loader').remove();
                         $('.business-all-post div:first').remove();
@@ -2229,14 +2167,12 @@
                 return false;
             });
         </script>
-
-
-        <style>
-            #progress-bar {background-color: #12CC1A !important; height:20px !important; color: #ccc!important; width:0% !important; -webkit-transition: width .3s;-moz-transition: width .3s;transition: width .3s;}
-            #progress-div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}
-            #targetLayer{width:100% !important; text-align:center !important;}
-
-        </style>
+<!--        <style>
+        #progress-bar {background-color: #12CC1A !important; height:20px !important; color: #ccc!important; width:0% !important; -webkit-transition: width .3s;-moz-transition: width .3s;transition: width .3s;}
+        #progress-div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}
+        #targetLayer{width:100% !important; text-align:center !important;}
+        
+        </style>-->
         <script>
             $(document).ready(function () {
                 business_home_post();
