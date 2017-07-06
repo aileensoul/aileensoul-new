@@ -19,6 +19,33 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <style>
+            .progress 
+            {
+                display:none; 
+                position:relative; 
+                width:100%; 
+                border: 1px solid #ddd; 
+                padding: 1px; 
+                border-radius: 3px; 
+                height: 23px;
+            }
+            .bar 
+            { 
+                background-color: #1b8ab9; 
+                width:0%; 
+                height:20px; 
+                border-radius: 3px; 
+            }
+            .percent 
+            { 
+                position:absolute; 
+                display:inline-block; 
+                top:3px; 
+                left:48%; 
+            }
+            /*#progress_div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}*/
+        </style>
     </head>
     <body class="page-container-bg-solid page-boxed">
         <section>
@@ -540,16 +567,18 @@
                             </div>
                             <!-- body content start-->
                             <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
+                            <div class='progress' id="progress_div">
+                                <div class='bar' id='bar'></div>
+                                <div class='percent' id='percent'>0%</div>
+                            </div>
                             <div class="business-all-post">
-                                
+                                <div class="nofoundpost"> 
+                                </div>
+                                <!-- no post found div end -->
                             </div>
-                            <div class="nofoundpost"> 
-                            </div>
-                            <!-- no post found div end -->
                         </div>
                     </div>
                 </div>
-            </div>
 
         </section>
         <footer>
@@ -745,9 +774,7 @@
                             $('.comment_count' + clicked_id).html(data.comment_count);
                         }
                     });
-
                 } else {
-
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
@@ -1701,7 +1728,7 @@
                                     if (e.keyCode === 27) {
                                         $('#bidmodal').modal('hide');
                                         $('.modal-post').show();
-                                }
+                                    }
                                 });
                                 event.preventDefault();
                                 return false;
@@ -2128,15 +2155,23 @@
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script>
         <script>
             jQuery(document).ready(function ($) {
-
+                var bar = $('#bar');
+                var percent = $('#percent');
                 var options = {
                     beforeSend: function () {
                         // Replace this with your loading gif image
                         /**/
-                       // $('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
-                       // document.getElementById("progress-div").style.display = "block";
-                       // $("#progress-bar").width('0%');
+                        // $('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
+                        // document.getElementById("progress-div").style.display = "block";
+                        // $("#progress-bar").width('0%');
                         /**/
+
+                        document.getElementById("progress_div").style.display = "block";
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+
+
                         document.getElementById("myModal").style.display = "none";
                         $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
@@ -2146,6 +2181,17 @@
                     //    $("#progress-bar").html('<div id="progress-status">' + percentComplete + ' %</div>')
                     //},
                     /**/
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
                     complete: function (response) {
                         /**/
                         // Output AJAX response to the div container
@@ -2155,6 +2201,9 @@
 //                        $(".business-all-post").prepend(response.responseText);
 //                        $('#progress-bar').hide();
                         /**/
+                        
+                        $('#progress_div').fadeOut('5000').remove();
+                        
                         $('.loader').remove();
                         $('.business-all-post div:first').remove();
                         $(".business-all-post").prepend(response.responseText);
@@ -2173,6 +2222,8 @@
         #targetLayer{width:100% !important; text-align:center !important;}
         
         </style>-->
+
+
         <script>
             $(document).ready(function () {
                 business_home_post();
