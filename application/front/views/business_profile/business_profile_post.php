@@ -1836,7 +1836,7 @@
                         bar.width(percentVal)
                         percent.html(percentVal);
                         document.getElementById("myModal").style.display = "none";
-                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+//                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
                     uploadProgress: function (event, position, total, percentComplete) {
                         var percentVal = percentComplete + '%';
@@ -1851,7 +1851,7 @@
                     complete: function (response) {
                         // Output AJAX response to the div container
                         $('#progress_div').fadeOut('5000').remove();
-                        $('.loader').remove();
+//                        $('.loader').remove();
                         $('.business-all-post div:first').remove();
                         $(".business-all-post").prepend(response.responseText);
                         $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
