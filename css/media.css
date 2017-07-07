@@ -13,8 +13,7 @@
 	.freelancer-banner { padding: 150px 0; }
 	.freelancer-title ul li a { font-size: 16px; }
 	.freelancer-title ul li:first-child { width: 74%; vertical-align: top; }
-
-	.freelancer-midd { padding: 106px 0; }
+        
 	
 	/* After Regi */
 	.mid-bar ul li a { padding: 10px 12px; }
@@ -62,7 +61,7 @@
 	.freelancer-title ul li:first-child { width: 100%; }
 	.freelancer-title ul li { padding: 6px 10px; }
 
-	.freelancer-midd { padding: 141px 0; }
+	.freelancer-midd { padding: 93px 0; }
 	/*.user-section-free-up{height: 0px;}*/
 
 	/* After Regi */
@@ -85,7 +84,7 @@
 	.title-section { padding: 10px 0; }
 
 	.midd-section h2 { font-size: 22px; margin: 15px 0; }
-	.midd-section { padding: 40px 0; }
+	
 
 	.copyright { text-align: center; }
 	.copyright ul { float: none; margin-top: 15px; }

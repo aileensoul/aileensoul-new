@@ -36,10 +36,10 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 ?>
 
-                                    <!-- <li><a href="<?php //echo base_url('message/message_chat/')        ?>">Message <i class="fa fa-commenting" aria-hidden="true"></i></a></li> -->
+                                        <!-- <li><a href="<?php //echo base_url('message/message_chat/')         ?>">Message <i class="fa fa-commenting" aria-hidden="true"></i></a></li> -->
                                 <li id="Inbox_link">
                                     <?php if ($message_count) { ?>
-                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;  ?></span> -->
+                                                               <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                     <?php } ?>
                                     <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><i class="fa fa-commenting" aria-hidden="true"></i>
                                         <span id="message_count"></span>
@@ -61,7 +61,7 @@
                                         </div>
                                 </li>
 
-                                   <!--  <li><a href="<?php //echo base_url('friendrequest')        ?>">Friend Request <i class="fa fa-user" aria-hidden="true"></i></a></li> -->
+                                       <!--  <li><a href="<?php //echo base_url('friendrequest')         ?>">Friend Request <i class="fa fa-user" aria-hidden="true"></i></a></li> -->
 
                                 <!-- BEGIN USER LOGIN DROPDOWN -->
                                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -89,27 +89,27 @@
 
                                         <!-- <li>
                                         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                        
-                                       <a  onclick="return leave_page(6)">
-                                                        <i class="fa fa-user" aria-hidden="true"></i> Edit Profile </a>
-                                        
+                                            
+                                           <a  onclick="return leave_page(6)">
+                                                            <i class="fa fa-user" aria-hidden="true"></i> Edit Profile </a>
+                                            
                                         <?php } else { ?>
 
-                                       <a href="<?php echo base_url() . 'profile' ?>">
-                                                        <i class="fa fa-user" aria-hidden="true"></i> Edit Profile </a>
+                                           <a href="<?php echo base_url() . 'profile' ?>">
+                                                            <i class="fa fa-user" aria-hidden="true"></i> Edit Profile </a>
                                         <?php } ?>
                                             
                                         </li>
                                         <li>
                                         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                        
-                                       <a  onclick="return leave_page(7)">
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Change password </a>
-                                        
+                                            
+                                           <a  onclick="return leave_page(7)">
+                                                            <i class="fa fa-exchange" aria-hidden="true"></i> Change password </a>
+                                            
                                         <?php } else { ?>
 
-                                      <a href="<?php echo base_url('registration/changepassword') ?>">
-                                                        <i class="fa fa-exchange" aria-hidden="true"></i> Change password </a>
+                                          <a href="<?php echo base_url('registration/changepassword') ?>">
+                                                            <i class="fa fa-exchange" aria-hidden="true"></i> Change password </a>
                                         <?php } ?>
                                             
                                         </li> -->

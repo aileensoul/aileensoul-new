@@ -1,10 +1,5 @@
-<!--footer start -->
-
-
 <!-- script for fetch all unread notification start -->
-
 <!--<script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>--> 
-
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
 
