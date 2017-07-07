@@ -1,12 +1,3 @@
-<!-- START HEAD -->
-<?php echo $head; ?>
-<!-- END HEAD -->
-<!-- START HEADER -->
-<?php echo $header; ?>
-<!-- <script src="<?php echo base_url('js/fb_login.js'); ?>">
-</script> -->
-<!-- END HEADER -->
-<?php echo $business_header2_border; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,10 +35,18 @@
                 top:3px; 
                 left:48%; 
             }
-            /*#progress_div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}*/
         </style>
     </head>
     <body class="page-container-bg-solid page-boxed">
+        <!-- START HEAD -->
+        <?php echo $head; ?>
+        <!-- END HEAD -->
+        <!-- START HEADER -->
+        <?php echo $header; ?>
+        <!-- <script src="<?php echo base_url('js/fb_login.js'); ?>">
+        </script> -->
+        <!-- END HEADER -->
+        <?php echo $business_header2_border; ?>
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
@@ -142,325 +141,18 @@
                                             </a>
                                         </div>
                                     </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
                                     <div class="profile-boxProfileCard_follow  module">
-                                        <ul>
-                                            <li class="follow_box_ul_li">
-                                                <div class="contact-frnd-post follow_left_main_box">
-                                                    <?php
-                                                    if ($userlistview1 > 0) {
-                                                        foreach ($userlistview1 as $userlist) {
-                                                            $userid = $this->session->userdata('aileenuser');
-                                                            $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                                                            $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                                                            $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                                                            $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                                                            if (!$businessfollow) {
-                                                                ?>                             
-                                                                <div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
-                                                                        <div class="post-design-pro-img_follow">
-                                                                            <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
-                                                                                </a>
-                                                                            <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                </a>
-                                                                            <?php } ?>
-                                                                        </div>
-                                                                        <div class="post-design-name_follow fl">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                            <h6>
-                                                                                                <?php echo ucwords($userlist['company_name']); ?>
-                                                                                            </h6>
-                                                                                        </a> 
-                                                                                    </div>
-                                                                                </li>
-                                                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                            <p>
-                                                                                                <?php
-                                                                                                if ($category) {
-                                                                                                    echo $category;
-                                                                                                } else {
-                                                                                                    echo $userlist['other_industrial'];
-                                                                                                }
-                                                                                                ?>
-                                                                                            </p>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul> 
-                                                                        </div>  
-                                                                        <div class="follow_left_box_main_btn">
-                                                                            <div class="<?php echo "fr" . $userlist['business_profile_id']; ?>">
-                                                                                <button id="<?php echo "followdiv" . $userlist['business_profile_id']; ?>" onClick="followuser(<?php echo $userlist['business_profile_id']; ?>)">Follow
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="Follow_close" onClick="followclose(<?php echo $userlist['business_profile_id']; ?>)">
-                                                                            <i class="fa fa-times" aria-hidden="true">
-                                                                            </i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                    }
-                                                    ?>
-                                                    <!-- second condition start -->
-                                                    <?php
-                                                    if ($userlistview2 > 0) {
-                                                        foreach ($userlistview2 as $userlist) {
-                                                            $userid = $this->session->userdata('aileenuser');
-                                                            $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                                                            $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                                                            $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                                                            $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-
-                                                            if (!$businessfollow) {
-                                                                ?>                             
-                                                                <div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
-                                                                        <div class="post-design-pro-img_follow">
-
-
-                                                                            <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
-                                                                                </a>
-                                                                            <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                </a>
-                                                                            <?php } ?>                    
-                                                                        </div>
-                                                                        <div class="post-design-name_follow fl">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                            <h6>
-                                                                                                <?php echo ucwords($userlist['company_name']);
-                                                                                                ?>
-                                                                                            </h6>
-                                                                                        </a> 
-                                                                                    </div>
-                                                                                </li>
-
-                                                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name; ?>
-
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                            <p>
-                                                                                                <?php
-                                                                                                if ($category) {
-                                                                                                    echo $category;
-                                                                                                } else {
-                                                                                                    echo $userlist['other_industrial'];
-                                                                                                }
-                                                                                                ?>
-                                                                                            </p>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul> 
-                                                                        </div>  
-                                                                        <div class="follow_left_box_main_btn">
-                                                                            <div class="<?php echo "fr" . $userlist['business_profile_id']; ?>">
-                                                                                <button id="<?php echo "followdiv" . $userlist['business_profile_id']; ?>" onClick="followuser(<?php echo $userlist['business_profile_id']; ?>)">Follow
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="Follow_close" onClick="followclose(<?php echo $userlist['business_profile_id']; ?>)">
-                                                                            <i class="fa fa-times" aria-hidden="true">
-                                                                            </i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                    }
-                                                    ?>
-                                                    <!-- third condition start -->
-                                                    <?php
-                                                    if ($userlistview3 > 0) {
-                                                        foreach ($userlistview3 as $userlist) {
-                                                            $userid = $this->session->userdata('aileenuser');
-                                                            $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                                                            $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                                                            $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                                                            $buisnessfollow = $this->data['buisnessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                                                            if (!$buisnessfollow) {
-                                                                ?>                             
-                                                                <div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
-                                                                        <div class="post-design-pro-img_follow">
-                                                                            <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
-                                                                                <?php
-                                                                                if ($userlist['business_user_image'] != '') {
-                                                                                    ?>
-                                                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
-                                                                                    <?php
-                                                                                } else {
-                                                                                    ?>
-                                                                                    <img  src="<?php echo base_url(NOIMAGE); ?>"  alt="">
-                                                                                    <?php
-                                                                                }
-                                                                                ?>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="post-design-name_follow fl">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
-                                                                                            <h6>
-                                                                                                <?php echo ucwords($userlist['company_name']); ?>
-                                                                                            </h6>
-                                                                                        </a> 
-                                                                                    </div>
-                                                                                </li>
-                                                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name; ?>
-
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a>
-                                                                                            <p>
-                                                                                                <?php
-                                                                                                if ($category) {
-                                                                                                    echo $category;
-                                                                                                } else {
-                                                                                                    echo $userlist['other_industrial'];
-                                                                                                }
-                                                                                                ?>
-                                                                                            </p>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul> 
-                                                                        </div>  
-                                                                        <div class="follow_left_box_main_btn">
-                                                                            <div class="<?php echo "fr" . $userlist['business_profile_id']; ?>">
-                                                                                <button id="<?php echo "followdiv" . $userlist['business_profile_id']; ?>" onClick="followuser(<?php echo $userlist['business_profile_id']; ?>)">Follow
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="Follow_close" onClick="followclose(<?php echo $userlist['business_profile_id']; ?>)">
-                                                                            <i class="fa fa-times" aria-hidden="true">
-                                                                            </i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                    }
-                                                    ?>
-                                                    <!-- forth condition start -->
-                                                    <?php
-                                                    if ($userlistview4 > 0) {
-                                                        foreach ($userlistview4 as $userlist) {
-                                                            $userid = $this->session->userdata('aileenuser');
-                                                            $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                                                            $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                                                            $contition_array = array('follow_to' => $userlist['business_proifle_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                                                            $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                            if (!$businessfollow) {
-                                                                ?>                             
-                                                                <div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="<?php echo "fad" . $userlist['business_profile_id']; ?>">                   
-                                                                        <div class="post-design-pro-img_follow">
-
-                                                                            <?php if ($userlist['business_user_image']) { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']); ?>"  alt="">
-                                                                                </a>
-                                                                            <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>" title="<?php echo ucwords($userlist['company_name']); ?>">
-
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($userlist['company_name']); ?>">
-                                                                                </a>
-                                                                            <?php } ?>
-                                                                        </div>
-                                                                        <div class="post-design-name_follow fl">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow">
-                                                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $userlist['business_slug'] . ''); ?>">
-                                                                                            <h6>
-                                                                                                <?php echo ucwords($userlist['company_name']); ?>
-                                                                                            </h6>
-                                                                                        </a> 
-                                                                                    </div>
-                                                                                </li>
-                                                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name; ?>
-
-                                                                                <li>
-                                                                                    <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a>
-                                                                                            <p>
-                                                                                                <?php
-                                                                                                if ($category) {
-                                                                                                    echo $category;
-                                                                                                } else {
-                                                                                                    echo $userlist['other_industrial'];
-                                                                                                }
-                                                                                                ?>
-                                                                                            </p>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul> 
-                                                                        </div>  
-                                                                        <div class="follow_left_box_main_btn">
-                                                                            <div class="<?php echo "fr" . $userlist['business_profile_id']; ?>">
-                                                                                <button id="<?php echo "followdiv" . $userlist['business_profile_id']; ?>" onClick="followuser(<?php echo $userlist['business_profile_id']; ?>)">Follow
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <span class="Follow_close" onClick="followclose(<?php echo $userlist['business_profile_id']; ?>)">
-                                                                            <i class="fa fa-times" aria-hidden="true">
-                                                                            </i>
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-                                                            }
-                                                        }
-                                                    }
-                                                    ?>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                        
                                     </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START -->
                                     <!-- follower list end  -->
-
                                 </div>
                             </div>
-
-
                             <br>
-
                             <div id="result"></div>   
-
                         </div>
                         <!-- popup start -->
-
                         <!-- Trigger/Open The Modal -->
                         <!-- <div id="myBtn">Open Modal</div>-->
                         <!-- The Modal -->
@@ -1242,7 +934,6 @@
                 });
 
             }
-
             function commentedit2(abc)
             {
                 $(document).ready(function () {
@@ -1292,7 +983,6 @@
                     }
                 });
             }
-
             function commentedit3(abc)
             {
                 $(document).ready(function () {
@@ -1302,12 +992,10 @@
                             e.preventDefault();
                             if (window.preventDuplicateKeyPresses)
                                 return;
-
                             window.preventDuplicateKeyPresses = true;
                             window.setTimeout(function () {
                                 window.preventDuplicateKeyPresses = false;
                             }, 500);
-
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
@@ -1326,7 +1014,6 @@
                     });
                 });
             }
-
             function edit_comment4(abc)
             {
                 var post_comment_edit = document.getElementById("editcomment4" + abc);
@@ -1345,7 +1032,6 @@
                     }
                 });
             }
-
             function commentedit4(abc)
             {
                 $(document).ready(function () {
@@ -1362,7 +1048,6 @@
                             window.setTimeout(function () {
                                 window.preventDuplicateKeyPresses = false;
                             }, 500);
-
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
@@ -1382,7 +1067,6 @@
                 });
             }
             /* COMMENT EDIT INSERT END */
-
             /* POST BOX 50 CHARACTER LIMITATION CHECK START */
             function check_length(my_form)
             {
@@ -1403,7 +1087,6 @@
                 }
             }
             /* POST BOX 50 CHARACTER LIMITATION CHECK END */
-
             /* SAVEPOST START */
             function save_post(abc)
             {
@@ -1417,11 +1100,9 @@
                 });
             }
             /* SAVEPOST END */
-
             /* FOLLOW USER SCRIPT START */
             function followuser(clicked_id)
             {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/follow" ?>',
@@ -1432,17 +1113,12 @@
                     }
                 });
             }
-
             function followclose(clicked_id)
             {
                 $("#fad" + clicked_id).fadeOut(4000);
             }
             /* FOLLOW USER SCRIPT END */
-
-
         </script>
-
-
         <!-- POPUP BOX FOR POST START -->
         <script>
             // Get the modal
@@ -1467,8 +1143,6 @@
             }
         </script>
         <!-- POPUP BOX FOR POST START -->
-
-
         <!-- DROP DOWN SCRIPT START -->
         <script>
             /* When the user clicks on the button, 
@@ -1504,8 +1178,6 @@
             }
         </script>
         <!-- DROP DOWN SCRIPT END -->
-
-
         <!-- MULTI IMAGE ADD POST START -->
         <script type="text/javascript">
             var $fileUpload = $("#files"),
@@ -1563,7 +1235,6 @@
                 // Remove from array
             });
         </script>
-
         <script>
             $('#file-fr').fileinput({
                 language: 'fr',
@@ -2160,30 +1831,15 @@
                 var options = {
                     beforeSend: function () {
                         // Replace this with your loading gif image
-                        /**/
-                        // $('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
-                        // document.getElementById("progress-div").style.display = "block";
-                        // $("#progress-bar").width('0%');
-                        /**/
-
                         document.getElementById("progress_div").style.display = "block";
                         var percentVal = '0%';
                         bar.width(percentVal)
                         percent.html(percentVal);
-
-
                         document.getElementById("myModal").style.display = "none";
                         $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
-                    /**/
-                    //uploadProgress: function (event, position, total, percentComplete) {
-                    //    $("#progress-bar").width(percentComplete + '%');
-                    //    $("#progress-bar").html('<div id="progress-status">' + percentComplete + ' %</div>')
-                    //},
-                    /**/
                     uploadProgress: function (event, position, total, percentComplete) {
                         var percentVal = percentComplete + '%';
-
                         bar.width(percentVal)
                         percent.html(percentVal);
                     },
@@ -2193,21 +1849,11 @@
                         percent.html(percentVal);
                     },
                     complete: function (response) {
-                        /**/
                         // Output AJAX response to the div container
-                        // console.log(response.responseText);
-//                        $(".upload-image-messages").html(response.responseText);
-//                        document.getElementById("myModal").style.display = "none";
-//                        $(".business-all-post").prepend(response.responseText);
-//                        $('#progress-bar').hide();
-                        /**/
-                        
                         $('#progress_div').fadeOut('5000').remove();
-                        
                         $('.loader').remove();
                         $('.business-all-post div:first').remove();
                         $(".business-all-post").prepend(response.responseText);
-                        //$(".bor_none").hide();
                         $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
                     }
                 };
@@ -2216,20 +1862,12 @@
                 return false;
             });
         </script>
-<!--        <style>
-        #progress-bar {background-color: #12CC1A !important; height:20px !important; color: #ccc!important; width:0% !important; -webkit-transition: width .3s;-moz-transition: width .3s;transition: width .3s;}
-        #progress-div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}
-        #targetLayer{width:100% !important; text-align:center !important;}
-        
-        </style>-->
-
-
         <script>
             $(document).ready(function () {
                 business_home_post();
+                business_home_three_user_list()
             });
         </script>
-
         <script type="text/javascript">
             function business_home_post() {
                 $.ajax({
@@ -2243,6 +1881,22 @@
                     success: function (data) {
                         $('.loader').remove();
                         $('.business-all-post').html(data);
+                    }
+                });
+            }
+            
+            function business_home_three_user_list() {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "business_profile/business_home_three_user_list/" ?>',
+                    data: '',
+                    dataType: "html",
+                    beforeSend: function () {
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('.profile-boxProfileCard_follow').html(data);
                     }
                 });
             }
