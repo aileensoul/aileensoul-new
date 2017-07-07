@@ -1,15 +1,4 @@
-<!-- style for span id=notification_count start-->
-<link rel="stylesheet" href="<?php echo base_url() ?>css/animate.css" />
-<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
-<!-- style for span id=notification_count end-->
-<body class="pushmenu-push">
-    <!-- 
-     <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-      </div> -->
-    <header>
+   <header>
         <div class="header">
             <div class="container">
                 <div class="row">
@@ -19,8 +8,6 @@
                             <a tabindex="-200" href="<?php echo base_url('dashboard') ?>"> <h2  style="color: white;">Aileensoul</h2></a>
                         </div>
                     </div>
-
-
                     <?php
                     $userid = $this->session->userdata('aileenuser');
                     if ($userid) {
@@ -28,24 +15,13 @@
                         <div class="col-md-8 col-sm-7 col-xs-7 header-left-menu">
                             <div class="main-menu-right">
                                 <ul class="">
-
-
     <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                        <li><a class=" action-button shadow animate" onclick="return leave_page(5)">All</a></li>
-
+        <li><a class=" action-button shadow animate" onclick="return leave_page(5)">All</a></li>
     <?php } else { ?>
-
-                                        <li><a class=" action-button shadow animate" href="<?php echo base_url('dashboard') ?>"><i class="fa fa-th" aria-hidden="true"></i>
-                                            </a></li>
+        <li><a class=" action-button shadow animate" href="<?php echo base_url('dashboard') ?>"><i class="fa fa-th" aria-hidden="true"></i></a></li>
     <?php } ?>
-
-
-
-      <!-- <li><a href="#" id="notificationLink" onclick = "return getNotification()">Notification <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
-          <span id="notification_count"></span>
-      </a></li> -->
-                                    <!-- general notification start -->
-                                    <li id="notification_li">
+    <!-- general notification start -->
+        <li id="notification_li">
                                         <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="fa fa-bell" aria-hidden="true"></i>
 
                                             <span id="notification_count"></span>
@@ -266,32 +242,23 @@
         {
 
             // $("#fad" + clicked_id).fadeOut(6000);
-
-
             $.ajax({
                 type: 'POST',
                 url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
                 data: '',
                 success: function (data) {
-                    //    alert(data);
                     $('#' + 'notificationsmsgBody').html(data);
-
                 }
-
-
             });
-
         }
     </script>
     <!------  commen script harshad  ---------------->
     <script>
         jQuery(document).ready(function ($) {
             if (screen.width <= 767) {
-
                 $("ul.left-form-each").on("click", ".init", function () {
                     $(this).closest("ul").children('li:not(.init)').toggle();
                 });
-
                 var allOptions = $("ul").children('li:not(.init)');
                 $("ul.left-form-each").on("click", "li:not(.init)", function () {
                     allOptions.removeClass('selected');
@@ -299,55 +266,21 @@
                     $("ul.left-form-each").children('.init').html($(this).html());
                     allOptions.toggle();
                 });
-
-
-
             }
-
-
             $(function () {
                 $('a[href="#search"]').on('click', function (event) {
                     event.preventDefault();
                     $('#search').addClass('open');
                     $('#search > form > input[type="search"]').focus();
                 });
-
                 $('#search, #search button.close').on('click keyup', function (event) {
                     if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
                         $(this).removeClass('open');
                     }
                 });
-
             });
         });
     </script>
     <!-- script for update all read notification end -->
-<!-- <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
-    -->
-
-    <!-- Extra js if not work then add Start-->
-    <!-- <script type="text/javascript" src="<?php //echo base_url('js/jquery.min-notification.js');       ?>"></script> -->
-    <!-- Extra js if not work then add End-->
 
 
