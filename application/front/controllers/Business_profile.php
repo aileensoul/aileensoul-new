@@ -128,8 +128,6 @@ class Business_profile extends MY_Controller {
     public function ajax_data() {
 
         //dependentacy industrial and sub industriyal start
-
-
         if (isset($_POST["industry_id"]) && !empty($_POST["industry_id"])) {
             //Get all state data
             $contition_array = array('industry_id' => $_POST["industry_id"], 'status' => 1);
