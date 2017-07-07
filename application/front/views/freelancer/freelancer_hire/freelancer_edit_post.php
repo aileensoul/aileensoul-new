@@ -1001,5 +1001,5 @@ var date_picker ='<?php echo date('Y-m-d',strtotime($freelancerpostdata[0]['post
 </script>
 
 <style type="text/css">
-  #example2-error{margin-top: 42px!importantt;}
+  #example2-error{margin-top: 42px!important;}
 </style>

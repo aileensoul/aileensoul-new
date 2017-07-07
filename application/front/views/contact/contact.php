@@ -83,7 +83,7 @@
         position: relative;
         transition: all 5s ease-in-out;
     }
-    */
+    
     .okk{
         text-align: center;
     }

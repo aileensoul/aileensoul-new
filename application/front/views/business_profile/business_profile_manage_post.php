@@ -537,78 +537,22 @@
 
 
                     <!-- user iamges start-->
-                    <a href="<?php echo base_url('business_profile/business_photos/' . $businessdata1[0]['business_slug']) ?>">
+                     <a href="<?php echo base_url('business_profile/business_photos/' . $businessdata1[0]['business_slug']) ?>">
                         <div class="full-box-module business_data">
-                            <div class="profile-boxProfileCard  module buisness_he_module" >
+                            
+                             <div class="profile-boxProfileCard  module buisness_he_module" >
 
                                 <div class="head_details">
                                     <!-- <a href="<?php //echo base_url('business_profile/business_photos/' . $businessdata1[0]['business_slug'])     ?>"> -->   <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5><!-- </a> -->
                                 </div>
-
-                                <?php
-                                $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-                                $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                                foreach ($businessimage as $val) {
-
-
-
-                                    $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                                    $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                    $multipleimage[] = $busmultiimage;
-                                }
-                                ?>
-                                <?php
-                                $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
-
-                                foreach ($multipleimage as $mke => $mval) {
-
-                                    foreach ($mval as $mke1 => $mval1) {
-                                        $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                        if (in_array($ext, $allowed)) {
-                                            $singlearray[] = $mval1;
-                                        }
-                                    }
-                                }
-                                ?>
-
-
-                                <?php
-                                if ($singlearray) {
-                                    ?>
-
-                                    <?php
-                                    $i = 0;
-                                    foreach ($singlearray as $mi) {
-                                        ?>
-                                        <div class="image_profile">
-
-                                            <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $mi['image_name']) ?>" alt="img1">
-
-                                        </div>
-                                        <?php
-                                        $i++;
-                                        if ($i == 6)
-                                            break;
-                                    }
-                                    ?>
-
-
-                                <?php } else { ?>
-
-                                    <div class="not_available">  <p>     Photos Not Available </p></div>
-
-                                <?php } ?>
-
-                                <div class="dataconphoto"></div>
-
-                            </div>
+                                 <div class="bus_photos">
+                                     
+                                 </div>
+                             </div>
                         </div>
                     </a>
                     <!-- user images end-->
+                    <!-- user video start-->
 
                     <a href="<?php echo base_url('business_profile/business_videos/' . $businessdata1[0]['business_slug']) ?>">
                         <div class="full-box-module business_data">
@@ -617,114 +561,17 @@
                                     <div class="head_details">
                                         <h5><i class="fa fa-video-camera" aria-hidden="true"></i>Video</h5>
                                     </div>
-
-
-                                    <?php
-                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-                                    $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                                    foreach ($busvideo as $val) {
-
-
-
-                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                                        $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                        $multiplevideo[] = $busmultivideo;
-                                    }
-                                    ?>
-                                    <?php
-                                    $allowesvideo = array('mp4', 'webm');
-
-                                    foreach ($multiplevideo as $mke => $mval) {
-
-                                        foreach ($mval as $mke1 => $mval1) {
-                                            $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                            if (in_array($ext, $allowesvideo)) {
-                                                $singlearray1[] = $mval1;
-                                            }
-                                        }
-                                    }
-                                    ?>
-
-                                    <?php if ($singlearray1) { ?>
-                                        <tr>
-
-                                            <?php if ($singlearray1[0]['image_name']) { ?>
-                                                <td class="image_profile"> 
-                                                    <video controls>
-
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[0]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-
-                                            <?php if ($singlearray1[1]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[1]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray1[2]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[2]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                        <tr>
-
-                                            <?php if ($singlearray1[3]['image_name']) { ?>
-                                                <td class="image_profile"> 
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[3]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray1[4]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[4]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray1[5]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[5]['image_name']) ?>" type="video/mp4">
-                                                        <source src="movie.ogg" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                    <?php } else { ?>
-
-
-                                        <div class="not_available">  <p>     Video Not Available </p></div>
-
-                                    <?php } ?>
-
-                                    <div class="dataconvideo"></div>
+                                    <div class="bus_videos">
+                                        
+                                    </div>
+               
                                 </table>
                             </div>
                         </div>
                     </a>
-                    <a href="<?php echo base_url('business_profile/business_audios/' . $businessdata1[0]['business_slug']) ?>">
+                     <!-- user video emd-->
+                     <!-- user audio start-->
+                     <a href="<?php echo base_url('business_profile/business_audios/' . $businessdata1[0]['business_slug']) ?>">
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module">
 
@@ -732,113 +579,17 @@
                                     <h5><i class="fa fa-music" aria-hidden="true"></i>Audio</h5>
                                 </div>
                                 <table class="business_data_table">
-                                    <?php
-                                    $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-                                    $busaudio = $this->data['busaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                                    foreach ($busaudio as $val) {
-
-
-
-                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                                        $busmultiaudio = $this->data['busmultiaudio'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                        $multipleaudio[] = $busmultiaudio;
-                                    }
-                                    ?>
-                                    <?php
-                                    $allowesaudio = array('mp3');
-
-                                    foreach ($multipleaudio as $mke => $mval) {
-
-                                        foreach ($mval as $mke1 => $mval1) {
-                                            $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                            if (in_array($ext, $allowesaudio)) {
-                                                $singlearray2[] = $mval1;
-                                            }
-                                        }
-                                    }
-                                    ?>
-
-                                    <?php if ($singlearray2) { ?>
-                                        <tr>
-
-                                            <?php if ($singlearray2[0]['image_name']) { ?>
-                                                <td class="image_profile"> 
-                                                    <video  controls>
-
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[0]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-
-                                            <?php if ($singlearray2[1]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[1]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray2[2]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[2]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                        <tr>
-
-                                            <?php if ($singlearray2[3]['image_name']) { ?>
-                                                <td class="image_profile"> 
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[3]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray2[4]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[4]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                            <?php if ($singlearray2[5]['image_name']) { ?>
-                                                <td class="image_profile">
-                                                    <video  controls>
-                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[5]['image_name']) ?>" type="audio/mp3">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                        Your browser does not support the audio tag.
-                                                    </video>
-                                                </td>
-                                            <?php } ?>
-                                        </tr>
-                                    <?php } else { ?>
-
-
-                                        <div class="not_available">  <p>   Audio Not Available </p></div>
-
-                                    <?php } ?>
-
-                                    <div class="dataconaudio"></div>
+                                 <div class="bus_audios"> 
+                                        
+                                </div>
                                 </table>
 
                             </div>
 
                         </div>
                     </a>
+                      <!-- user audio end-->
+                      <!-- user pdf  start-->
                     <a href="<?php echo base_url('business_profile/business_pdf/' . $businessdata1[0]['business_slug']) ?>">
                         <div class="full-box-module business_data">
                             <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -846,74 +597,11 @@
                                 <div class="head_details">
                                     <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
                                 </div>      
-                                <?php
-                                $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-                                $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                                foreach ($businessimage as $val) {
-
-
-
-                                    $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                                    $busmultipdf = $this->data['busmultipdf'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                    $multiplepdf[] = $busmultipdf;
-                                }
-                                ?>
-                                <?php
-                                $allowed = array('pdf');
-
-                                foreach ($multiplepdf as $mke => $mval) {
-
-                                    foreach ($mval as $mke1 => $mval1) {
-                                        $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                        if (in_array($ext, $allowed)) {
-                                            $singlearray3[] = $mval1;
-                                        }
-                                    }
-                                }
-                                ?>
-
-
-                                <?php
-                                if ($singlearray3) {
-                                    ?>
-
-                                    <?php
-                                    $i = 0;
-                                    foreach ($singlearray3 as $mi) {
-                                        ?>
-                                        <div class="image_profile">
-
-
-                                            <a href="<?php echo base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) ?>"><div class="pdf_img">
-                                                    <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
-                                                </div></a>
-
-                                        </div>
-                                        <?php
-                                        $i++;
-                                        if ($i == 6)
-                                            break;
-                                    }
-                                    ?>
-
-
-                                <?php } else { ?>
-
-                                    <div class="not_available">  <p> Pdf Not Available </p></div>
-
-                                <?php } ?>
-
-                                <div class="dataconpdf"></div>
-
-
-
+                                <div class="bus_pdf"></div>
                             </div>
                         </div>
-                    </a>              
+                    </a>
+                       <!-- user pdf  end-->
                 </div>
 
                 <!-- popup start -->
@@ -4605,9 +4293,105 @@
                    document.getElementById('seemore' + abc).style.display = 'block';
                    document.getElementById('lessmore' + abc).style.display = 'none';
                 
-   }
+   }    
    
-   </script>
+   
+   //            khytai chnages 7-7-2017 start
+             $(document).ready(function () {
+                GetBusPhotos();
+                GetBusVideos();
+                GetBusAudios();
+                GetBusPdf();
+              });
+       
+          function GetBusPhotos() {
+             var slug = '<?php echo $slugid; ?>';
+             
+           //  alert(slug);
+              $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "bus_khyati/bus_photos" ?>',
+                        data: 'bus_slug=' + slug,
+                     //   dataType: "json",
+                         beforeSend: function () {
+                        $(".bus_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                        success: function (data) {
+                             $('.loader').remove();
+                             $('.bus_photos').html(data);
+
+                        }
+                    });
+
+          }
+          
+          function GetBusVideos() {
+             var slug = '<?php echo $slugid; ?>';
+             
+           //  alert(slug);
+              $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "bus_khyati/bus_videos" ?>',
+                        data: 'bus_slug=' + slug,
+                     //   dataType: "json",
+                         beforeSend: function () {
+                        $(".bus_videos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                        success: function (data) {
+                             $('.loader').remove();
+                             $('.bus_videos').html(data);
+
+                        }
+                    });
+
+          }
+          
+          function GetBusAudios() {
+             var slug = '<?php echo $slugid; ?>';
+             
+           //  alert(slug);
+              $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "bus_khyati/bus_audio" ?>',
+                        data: 'bus_slug=' + slug,
+                     //   dataType: "json",
+                         beforeSend: function () {
+                        $(".bus_audios").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                        success: function (data) {
+                             $('.loader').remove();
+                             $('.bus_audios').html(data);
+
+                        }
+                    });
+
+          }
+          
+          function GetBusPdf() {
+             var slug = '<?php echo $slugid; ?>';
+             
+           //  alert(slug);
+              $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "bus_khyati/bus_pdf" ?>',
+                        data: 'bus_slug=' + slug,
+                     //   dataType: "json",
+                         beforeSend: function () {
+                        $(".bus_pdf").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                        success: function (data) {
+                             $('.loader').remove();
+                             $('.bus_pdf').html(data);
+
+                        }
+                    });
+
+          }
+
+//            khytai changes 7-7-2017 end
+   
+   
+         </script>
  <!-- 180 words more than script end-->
 
             <!--
@@ -4617,3 +4401,5 @@
             #targetLayer{width:100% !important; text-align:center !important;}
             
             </style>-->
+
+         
