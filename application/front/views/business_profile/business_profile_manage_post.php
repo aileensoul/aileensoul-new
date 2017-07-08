@@ -6,9 +6,17 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>"> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -262,7 +270,7 @@
                                 </div>
                             </div>
                             <!-- popup end -->
-                           <?php
+                            <?php
                             if ($this->session->flashdata('error')) {
                                 echo $this->session->flashdata('error');
                             }
@@ -558,11 +566,11 @@
                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                             ?>               
 
-                                                                                                                                                                                                                <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                            <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>
 
                                                                         <?php } else { ?> 
-                                                                                                                                                                                                                <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                            <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up main_color fa-1x" aria-hidden="true"></i>
                                                                         <?php } ?>
 
@@ -816,7 +824,7 @@
                                                                                         $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
                                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                                             ?>
-                                                                                                                                       <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
+                                                                                                                                           <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
                                                                                             <i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i> 
                                                                                         <?php } else { ?>
                                                                                             <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
@@ -835,45 +843,30 @@
                                                                                 $userid = $this->session->userdata('aileenuser');
                                                                                 if ($rowdata['user_id'] == $userid) {
                                                                                     ?>
-
                                                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                                                     <div class="comment-details-menu">
-
                                                                                         <div id="<?php echo 'editcommentbox' . $rowdata['business_profile_post_comment_id']; ?>" style="display:block;">
                                                                                             <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>"   onClick="comment_editbox(this.id)" class="editbox">Edit
                                                                                             </a>
                                                                                         </div>
-
                                                                                         <div id="<?php echo 'editcancle' . $rowdata['business_profile_post_comment_id']; ?>" style="display:none;">
                                                                                             <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>" onClick="comment_editcancle(this.id)">Cancel
                                                                                             </a>
                                                                                         </div>
-
                                                                                     </div>
-
                                                                                 <?php } ?>
-
-
-
                                                                                 <?php
                                                                                 $userid = $this->session->userdata('aileenuser');
-
                                                                                 $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
-
-
                                                                                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
                                                                                     ?>                                     
                                                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                                                     <div class="comment-details-menu">
-
-
-
                                                                                         <input type="hidden" name="post_delete"  id="post_delete<?php echo $rowdata['business_profile_post_comment_id']; ?>" value= "<?php echo $rowdata['business_profile_post_id']; ?>">
                                                                                         <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>"   onClick="comment_delete(this.id)"> Delete<span class="<?php echo 'insertcomment' . $rowdata['business_profile_post_comment_id']; ?>">
                                                                                             </span>
                                                                                         </a>
                                                                                     </div>
-
                                                                                 <?php } ?>                                   
                                                                                 <span role="presentation" aria-hidden="true"> · </span>
                                                                                 <div class="comment-details-menu">
@@ -882,26 +875,17 @@
                                                                                         echo '</br>';
                                                                                         ?></p></div>
                                                                             </div></div>
-
-
                                                                         <?php
                                                                     }
                                                                 }
                                                                 ?>
-
                                                             </div>
                                                         </div>
-
                                                         <!-- khyati changes end -->
-
                                                         <!-- all comment end -->
-
-
-
                                                     </div>
                                                     <!-- comment start -->
                                                     <div class="post-design-commnet-box col-md-12">
-
                                                         <div class="post-design-proo-img"> 
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
@@ -913,23 +897,15 @@
                                                                 <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                             <?php } ?>
                                                         </div>
-
-
-
-
                                                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
-
                                                             <div contenteditable="true" class="editable_text edt_2" name="<?php echo $row['business_profile_post_id']; ?>"  id="<?php echo "post_comment" . $row['business_profile_post_id']; ?>" placeholder="Add a Comment... " onClick="entercomment(<?php echo $row['business_profile_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
                                                         </div>
                                                         <?php echo form_error('post_comment'); ?> 
                                                         <div class="comment-edit-butn">       
                                                             <button id="<?php echo $row['business_profile_post_id']; ?>" onClick="insert_comment(this.id)">Comment</button></div>
-
-
                                                     </div>
                                                     <!-- comment end -->
                                                 </div>
-
                                             </div> </div>
 
                                         <?php
@@ -1035,12 +1011,6 @@
                     return filename.replace('(', '_').replace(']', '_');
                 }
             });
-            /*
-             $(".file").on('fileselect', function(event, n, l) {
-             alert('File Selected. Name: ' + l + ', Num: ' + n);
-             });
-             */
-
             $(".btn-warning").on('click', function () {
                 var $el = $("#file-4");
                 if ($el.attr('disabled')) {
@@ -1049,17 +1019,6 @@
                     $el.fileinput('disable');
                 }
             });
-            // $(".btn-info").on('click', function () {
-            //     $("#file-4").fileinput('refresh', {previewClass: 'bg-info'});
-            // });
-            /*
-             $('#file-4').on('fileselectnone', function() {
-             alert('Huh! You selected no files.');
-             });
-             $('#file-4').on('filebrowse', function() {
-             alert('File browse clicked for #file-4');
-             });
-             */
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
@@ -1073,27 +1032,20 @@
                     initialPreviewAsData: true,
 
                 });
-                /*
-                 $("#test-upload").on('fileloaded', function(event, file, previewId, index) {
-                 alert('i = ' + index + ', id = ' + previewId + ', file = ' + file.name);
-                 });
-                 */
             });
         </script>
 
         <!-- tabing script start -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-
-        
-
+ <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>-->
         <!-- script for skill textbox automatic start-->
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
         <!-- script for cropiee immage start-->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <!--<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>-->
         <!-- script for skill textbox automatic end-->
         <script>
             jQuery.noConflict();
@@ -2791,7 +2743,7 @@
         <!-- Unfollow user script end -->
 
         <!-- post insert developing script start -->
-
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript">
 
             function imgval(event) {
