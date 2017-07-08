@@ -29,7 +29,7 @@ function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
 }
-
+jQuery.noConflict();
 $uploadCrop = $('#upload-demo').croppie({
     enableExif: true,
     viewport: {
@@ -115,7 +115,7 @@ $('#upload').on('change', function () {
         success: function (response) {
         }
     });
-});
+})(jQuery);
 /* cover image end */
 
 /* follow user script start */

@@ -385,123 +385,352 @@
                         <!-- script for business autofill -->
                         <script>
 
-                                                                            var data = <?php echo json_encode($demo); ?>;
-                                                                            $(function () {
-                                                                                $("#tags").autocomplete({
-                                                                                    source: function (request, response) {
-                                                                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                                                        response($.grep(data, function (item) {
-                                                                                            return matcher.test(item.label);
-                                                                                        }));
-                                                                                    },
-                                                                                    minLength: 1,
-                                                                                    select: function (event, ui) {
-                                                                                        event.preventDefault();
-                                                                                        $("#tags").val(ui.item.label);
-                                                                                        $("#selected-tag").val(ui.item.label);
-                                                                                        // window.location.href = ui.item.value;
-                                                                                    }
-                                                                                    ,
-                                                                                    focus: function (event, ui) {
-                                                                                        event.preventDefault();
-                                                                                        $("#tags").val(ui.item.label);
-                                                                                    }
-                                                                                });
-                                                                            });
+                                                                var data = <?php echo json_encode($demo); ?>;
+                                                                $(function () {
+                                                                    $("#tags").autocomplete({
+                                                                        source: function (request, response) {
+                                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                                                                            response($.grep(data, function (item) {
+                                                                                return matcher.test(item.label);
+                                                                            }));
+                                                                        },
+                                                                        minLength: 1,
+                                                                        select: function (event, ui) {
+                                                                            event.preventDefault();
+                                                                            $("#tags").val(ui.item.label);
+                                                                            $("#selected-tag").val(ui.item.label);
+                                                                            // window.location.href = ui.item.value;
+                                                                        }
+                                                                        ,
+                                                                        focus: function (event, ui) {
+                                                                            event.preventDefault();
+                                                                            $("#tags").val(ui.item.label);
+                                                                        }
+                                                                    });
+                                                                });
 
-                        </script>
+                </script>
 
 
-                        <script>
+                <script>
 
-                            var data1 = <?php echo json_encode($city_data); ?>;
-                            $(function () {
-                                $("#searchplace").autocomplete({
-                                    source: function (request, response) {
-                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                        response($.grep(data1, function (item) {
-                                            return matcher.test(item.label);
-                                        }));
-                                    },
-                                    minLength: 1,
-                                    select: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#searchplace").val(ui.item.label);
-                                        $("#selected-tag").val(ui.item.label);
-                                        // window.location.href = ui.item.value;
+                    var data1 = <?php echo json_encode($city_data); ?>;
+                    $(function () {
+                        $("#searchplace").autocomplete({
+                            source: function (request, response) {
+                                var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                                response($.grep(data1, function (item) {
+                                    return matcher.test(item.label);
+                                }));
+                            },
+                            minLength: 1,
+                            select: function (event, ui) {
+                                event.preventDefault();
+                                $("#searchplace").val(ui.item.label);
+                                $("#selected-tag").val(ui.item.label);
+                                // window.location.href = ui.item.value;
+                            }
+                            ,
+                            focus: function (event, ui) {
+                                event.preventDefault();
+                                $("#searchplace").val(ui.item.label);
+                            }
+                        });
+                    });
+
+                </script>
+                <script type="text/javascript">
+                    function checkvalue() {
+                        var searchkeyword = $.trim(document.getElementById('tags').value);
+                        var searchplace = $.trim(document.getElementById('searchplace').value);
+                        if (searchkeyword == "" && searchplace == "") {
+                            return false;
+                        }
+                    }
+                </script>
+                <!-- end of business search auto fill -->
+                <script type="text/javascript">
+                    function updateprofilepopup(id) {
+                        $('#bidmodal-2').modal('show');
+                    }
+
+                    //select2 autocomplete start for Location
+                    $('#searchplace').select2({
+                        placeholder: 'Find Your Location',
+                        maximumSelectionLength: 1,
+                        ajax: {
+                            url: "<?php echo base_url(); ?>business_profile/location",
+                            dataType: 'json',
+                            delay: 250,
+                            processResults: function (data) {
+                                return {
+                                    results: data
+                                };
+                            },
+                            cache: true
+                        }
+                    });
+                    /* select2 autocomplete End for Location */
+                    /* cover image start */
+                    function myFunction() {
+                        document.getElementById("upload-demo").style.visibility = "hidden";
+                        document.getElementById("upload-demo-i").style.visibility = "hidden";
+                        document.getElementById('message1').style.display = "block";
+                    }
+                    function showDiv() {
+                        document.getElementById('row1').style.display = "block";
+                        document.getElementById('row2').style.display = "none";
+                    }
+
+                    $uploadCrop = $('#upload-demo').croppie({
+                        enableExif: true,
+                        viewport: {
+                            width: 1250,
+                            height: 350,
+                            type: 'square'
+                        },
+                        boundary: {
+                            width: 1250,
+                            height: 350
+                        }
+                    });
+                    $('.upload-result').on('click', function (ev) {
+                        $uploadCrop.croppie('result', {
+                            type: 'canvas',
+                            size: 'viewport'
+                        }).then(function (resp) {
+
+                            $.ajax({
+                                url: "<?php echo base_url() ?>business_profile/ajaxpro",
+                                type: "POST",
+                                data: {"image": resp},
+                                success: function (data) {
+                                    html = '<img src="' + resp + '" />';
+                                    if (html)
+                                    {
+                                        window.location.reload();
                                     }
-                                    ,
-                                    focus: function (event, ui) {
-                                        event.preventDefault();
-                                        $("#searchplace").val(ui.item.label);
-                                    }
-                                });
+                                }
+                            });
+                        });
+                    });
+                    $('.cancel-result').on('click', function (ev) {
+                        document.getElementById('row2').style.display = "block";
+                        document.getElementById('row1').style.display = "none";
+                        document.getElementById('message1').style.display = "none";
+                    });
+
+                    $('#upload').on('change', function () {
+
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $uploadCrop.croppie('bind', {
+                                url: e.target.result
+                            }).then(function () {
+                                console.log('jQuery bind complete');
                             });
 
-                        </script>
-                        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile.js'); ?>"></script>
-                        <script type="text/javascript">
-                            function checkvalue() {
-                                var searchkeyword = $.trim(document.getElementById('tags').value);
-                                var searchplace = $.trim(document.getElementById('searchplace').value);
-                                if (searchkeyword == "" && searchplace == "") {
-                                    return false;
-                                }
-                            }
-                        </script>
-                        <!-- end of business search auto fill -->
-                        <script type="text/javascript">
-                            function openModal() {
-                                document.getElementById('myModal1').style.display = "block";
-                            }
-                            function closeModal() {
-                                document.getElementById('myModal1').style.display = "none";
-                            }
-                            var slideIndex = 1;
-                            showSlides(slideIndex);
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    });
+                    $('#upload').on('change', function () {
 
-                            function plusSlides(n) {
-                                showSlides(slideIndex += n);
-                            }
+                        var fd = new FormData();
+                        fd.append("image", $("#upload")[0].files[0]);
 
-                            function currentSlide(n) {
-                                showSlides(slideIndex = n);
+                        files = this.files;
+                        size = files[0].size;
+                        // pallavi code start for file type support
+                        if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+                            picpopup();
+                            document.getElementById('row1').style.display = "none";
+                            document.getElementById('row2').style.display = "block";
+                            $("#upload").val('');
+                            return false;
+                        }
+                        // file type code end
+                        if (size > 4194304)
+                        {
+                            //show an alert to the user
+                            alert("Allowed file size exceeded. (Max. 4 MB)")
+                            document.getElementById('row1').style.display = "none";
+                            document.getElementById('row2').style.display = "block";
+                            //reset file upload control
+                            return false;
+                        }
+                        $.ajax({
+                            url: "<?php echo base_url(); ?>business_profile/imagedata",
+                            type: "POST",
+                            data: fd,
+                            processData: false,
+                            contentType: false,
+                            success: function (response) {
                             }
+                        });
+                    });
+                    /* cover image end */
 
-                            function showSlides(n) {
-                                var i;
-                                var slides = document.getElementsByClassName("mySlides");
-                                var dots = document.getElementsByClassName("demo");
-                                var captionText = document.getElementById("caption");
-                                if (n > slides.length) {
-                                    slideIndex = 1
-                                }
-                                if (n < 1) {
-                                    slideIndex = slides.length
-                                }
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                for (i = 0; i < dots.length; i++) {
-                                    dots[i].className = dots[i].className.replace(" active", "");
-                                }
-                                slides[slideIndex - 1].style.display = "block";
-                                dots[slideIndex - 1].className += " active";
-                                captionText.innerHTML = dots[slideIndex - 1].alt;
+                    /* follow user script start */
+                    function followuser(clicked_id)
+                    {
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo base_url() . "business_profile/follow" ?>',
+                            data: 'follow_to=' + clicked_id,
+                            success: function (data) {
+                                $('.' + 'fr' + clicked_id).html(data);
                             }
-                        </script>
-                        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-                        <script type="text/javascript">
-                            /* scroll page script start */
-                            //For Scroll page at perticular position js Start
-                                window.onload =function (){
-                                    setTimeout(function () {
-                                        $("html,body").animate({ scrollTop: 330 }, "slow");
-                                    },330);
-                                }
-                            //For Scroll page at perticular position js End
-                            /* scroll page script end */
+                        });
+                    }
+                    /* follow user script end */
+                    /* Unfollow user script start */
+                    function unfollowuser(clicked_id)
+                    {
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo base_url() . "business_profile/unfollow" ?>',
+                            data: 'follow_to=' + clicked_id,
+                            success: function (data) {
+                                $('.' + 'fr' + clicked_id).html(data);
+                            }
+                        });
+                    }
+                    /* Unfollow user script end */
+                    /* script for profile pic strat */
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementById('preview').style.display = 'block';
+                                $('#preview').attr('src', e.target.result);
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
 
-                        </script>
+                    $("#profilepic").change(function () {
+                        profile = this.files;
+                        if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+                            $('#profilepic').val('');
+                            picpopup();
+                            return false;
+                        } else {
+                            readURL(this);
+                        }
+                    });
+                    /* script for profile pic end */
+
+                    function openModal() {
+                        document.getElementById('myModal1').style.display = "block";
+                    }
+                    function closeModal() {
+                        document.getElementById('myModal1').style.display = "none";
+                    }
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                        var i;
+                        var slides = document.getElementsByClassName("mySlides");
+                        var dots = document.getElementsByClassName("demo");
+                        var captionText = document.getElementById("caption");
+                        if (n > slides.length) {
+                            slideIndex = 1
+                        }
+                        if (n < 1) {
+                            slideIndex = slides.length
+                        }
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        dots[slideIndex - 1].className += " active";
+                        captionText.innerHTML = dots[slideIndex - 1].alt;
+                    }
+                </script>
+                <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+                <script type="text/javascript">
+                    //validation for edit email formate form
+                    $(document).ready(function () {
+                        $("#userimage").validate({
+                            rules: {
+                                profilepic: {
+                                    required: true,
+                                },
+                            },
+                            messages: {
+                                profilepic: {
+                                    required: "Photo Required",
+                                },
+                            },
+                        });
+                    });
+                    function contact_person(clicked_id) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo base_url() . "business_profile/contact_person" ?>',
+                            data: 'toid=' + clicked_id,
+                            success: function (data) {
+                                $('#contact_per').html(data);
+                            }
+                        });
+                    }
+
+                    function picpopup() {
+                        $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
+                        $('#bidmodal').modal('show');
+                    }
+
+
+                    $(document).ready(function () {
+                        $("#myBtn").click(function () {
+                            $("#myModal").modal();
+                        });
+                    });
+
+                    $(document).on('keydown', function (e) {
+                        if (e.keyCode === 27) {
+                            $('#bidmodal-2').modal('hide');
+                        }
+                    });
+
+                    /* scroll page script start */
+                    //For Scroll page at perticular position js Start
+                    $(document).ready(function () {
+                        $('html,body').animate({scrollTop: 330}, 500);
+                    });
+                    //For Scroll page at perticular position js End
+                    /* scroll page script end */
+
+                    function contact_person_model(clicked_id, status) {
+                        if (status == 'pending') {
+                            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('#bidmodal').modal('show');
+                        } else if (status == 'confirm') {
+
+                            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                            $('#bidmodal').modal('show');
+                        }
+                    }
+                    /* all popup close close using esc start */
+                    $(document).on('keydown', function (e) {
+                        if (e.keyCode === 27) {
+                            closeModal();
+                        }
+                    });
+                    /* all popup close close using esc end */
+                </script>
+
                         </body>
                         </html>
