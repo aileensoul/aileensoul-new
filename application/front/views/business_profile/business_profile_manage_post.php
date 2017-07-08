@@ -3934,7 +3934,7 @@
            //  alert(slug);
               $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() . "bus_khyati/bus_photos" ?>',
+                        url: '<?php echo base_url() . "business_profile/bus_photos" ?>',
                         data: 'bus_slug=' + slug,
                      //   dataType: "json",
                          beforeSend: function () {
@@ -3955,7 +3955,7 @@
            //  alert(slug);
               $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() . "bus_khyati/bus_videos" ?>',
+                        url: '<?php echo base_url() . "business_profile/bus_videos" ?>',
                         data: 'bus_slug=' + slug,
                      //   dataType: "json",
                          beforeSend: function () {
@@ -3976,7 +3976,7 @@
            //  alert(slug);
               $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() . "bus_khyati/bus_audio" ?>',
+                        url: '<?php echo base_url() . "business_profile/bus_audio" ?>',
                         data: 'bus_slug=' + slug,
                      //   dataType: "json",
                          beforeSend: function () {
@@ -3997,7 +3997,7 @@
            //  alert(slug);
               $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() . "bus_khyati/bus_pdf" ?>',
+                        url: '<?php echo base_url() . "business_profile/bus_pdf" ?>',
                         data: 'bus_slug=' + slug,
                      //   dataType: "json",
                          beforeSend: function () {
