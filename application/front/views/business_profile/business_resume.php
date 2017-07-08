@@ -730,6 +730,5 @@
                             });
                             /* all popup close close using esc end */
                         </script>
-
                         </body>
                         </html>

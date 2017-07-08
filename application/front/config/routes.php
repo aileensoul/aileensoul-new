@@ -77,6 +77,7 @@ $route['business-profile/details'] = "business_profile/business_resume";
 
 $route['business-profile/home'] = "business_profile/business_profile_post";
 $route['business-profile/bussiness-profile-post-add'] = "business_profile/business_profile_addpost_insert";
+$route['business-profile/bussiness-profile-post-add/manage/(:any)'] = "business_profile/business_profile_addpost_insert/manage/$1";
 
 $route['business-profile/dashboard'] = "business_profile/business_profile_manage_post";
 $route['business-profile/dashboard/(:any)'] = "business_profile/business_profile_manage_post/$1";
