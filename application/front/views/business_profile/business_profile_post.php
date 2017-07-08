@@ -259,6 +259,13 @@
                             </div>
                             <!-- body content start-->
                             <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
+<!--                      video tag   khytai chndge 8-7    <div>
+                                                                            <video width="100%" height="350" controls>
+                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
+                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/ogg">
+                                                                                Your browser does not support the video tag.
+                                                                            </video>
+                                                                        </div>-->
                             <div class='progress' id="progress_div">
                                 <div class='bar' id='bar'></div>
                                 <div class='percent' id='percent'>0%</div>

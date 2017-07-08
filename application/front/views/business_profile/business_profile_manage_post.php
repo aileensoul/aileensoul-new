@@ -17,11 +17,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
 <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
 
-<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
+<!--<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
 <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
+<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>-->
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
