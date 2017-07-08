@@ -61,7 +61,7 @@ class Business_profile extends MY_Controller {
         // GET LOCATION DATA
         $contition_array = array('status' => '1');
         $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+        
         foreach ($location_list as $key1 => $value1) {
             foreach ($value1 as $ke1 => $val1) {
                 $location[] = $val1;
@@ -74,6 +74,7 @@ class Business_profile extends MY_Controller {
         }
 
         $this->data['city_data'] = array_values($loc);
+        
         $this->data['demo'] = array_values($result1);
 
         // CODE FOR SECOND HEADER SEARCH END

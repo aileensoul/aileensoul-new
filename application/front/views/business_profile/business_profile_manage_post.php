@@ -2,6 +2,7 @@
 <html>
     <head>
         <?php echo $head; ?>  
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
@@ -519,8 +520,8 @@
                                                             </div>
                                                             <div id="<?php echo 'editpostdetailbox' . $row['business_profile_post_id']; ?>" style="display:none;">
 
-                                                                                                                                                                                                                                                                                                                    <!-- <textarea id="<?php echo 'editpostdesc' . $row['business_profile_post_id']; ?>" name="editpostdesc"><?php echo $row['product_description']; ?>
-                                                                                                                                                                                                                                                                                                                    </textarea> 
+                                                                                                                                                                                                                                                                                                                            <!-- <textarea id="<?php echo 'editpostdesc' . $row['business_profile_post_id']; ?>" name="editpostdesc"><?php echo $row['product_description']; ?>
+                                                                                                                                                                                                                                                                                                                            </textarea> 
                                                                 -->
                                                                 <div  contenteditable="true" id="<?php echo 'editpostdesc' . $row['business_profile_post_id']; ?>" placeholder="Product Description" class="textbuis  editable_text" placeholder="Description of Your Product"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $row['product_description']; ?></div>
 
@@ -741,11 +742,11 @@
                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                             ?>               
 
-                                                                                                                                                                                                    <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>
 
                                                                         <?php } else { ?> 
-                                                                                                                                                                                                    <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up main_color fa-1x" aria-hidden="true"></i>
                                                                         <?php } ?>
 
@@ -999,7 +1000,7 @@
                                                                                         $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
                                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                                             ?>
-                                                                                                                                   <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
+                                                                                                                                       <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
                                                                                             <i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i> 
                                                                                         <?php } else { ?>
                                                                                             <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
@@ -1141,8 +1142,6 @@
 
         <!-- Model Popup Close -->
 
-
-
         <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -1267,8 +1266,6 @@
         </script>
 
         <!-- tabing script start -->
-      <!--   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script> -->
-        <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
 
@@ -1276,15 +1273,15 @@
 
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
         <!-- script for skill textbox automatic start-->
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-        
+
 
         <!-- script for cropiee immage start-->
 
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
 
 
         <!-- script for skill textbox automatic end-->
@@ -1416,31 +1413,22 @@
         <script>
 
             //select2 autocomplete start for Location
-            // $('#searchplace').select2({
-
-            //     placeholder: 'Find Your Location',
-            //     maximumSelectionLength: 1,
-            //     ajax: {
-
-            //         url: "<?php echo base_url(); ?>business_profile/location",
-            //         dataType: 'json',
-            //         delay: 250,
-
-            //         processResults: function (data) {
-
-            //             return {
-
-            //                 results: data
-
-
-            //             };
-
-            //         },
-            //         cache: true
-            //     }
-            // });
+            $('#searchplace').select2({
+                placeholder: 'Find Your Location',
+                maximumSelectionLength: 1,
+                ajax: {
+                    url: "<?php echo base_url(); ?>business_profile/location",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                }
+            });
             //select2 autocomplete End for Location
-
         </script>
 
         <!-- tabing script end -->
@@ -2994,7 +2982,7 @@
         <!-- Unfollow user script end -->
 
         <!-- post insert developing script start -->
-        
+
         <script type="text/javascript">
 
             function imgval(event) {
