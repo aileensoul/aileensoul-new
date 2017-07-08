@@ -86,9 +86,20 @@ $route['business-profile/following'] = "business_profile/following";
 $route['business-profile/following/(:any)'] = "business_profile/following/$1";
 $route['business-profile/userlist/(:any)'] = "business_profile/userlist/$1";
 $route['business-profile/contact-list'] = "business_profile/contact_list";
+
 $route['business-profile/contacts/(:any)'] = "business_profile/bus_contact/$1";
 
-
+$route['business-profile/user-image-change'] = "business_profile/user_image_insert";
+$route['business-profile/business-profile-save-post'] = "business_profile/business_profile_save_post";
+$route['business-profile/business-profile-addpost'] = "business_profile/business_profile_addpost";
+$route['business-profile/business-photos'] = "business_profile/business_photos";
+$route['business-profile/business-videos'] = "business_profile/business_videos";
+$route['business-profile/business-audios'] = "business_profile/business_audios";
+$route['business-profile/business-pdf'] = "business_profile/business_pdf";
+$route['business-profile/business-profile-contactperson'] = "business_profile/business_profile_contactperson";
+$route['business-profile/post-detail'] = "business_profile/postnewpage";
+$route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
+$route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
 
 /* Report Route end */
 

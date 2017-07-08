@@ -166,11 +166,9 @@
     function Notificationheader() {
         getNotification();
         notheader();
-
     }
     function getNotification() {
         // first click alert('here'); 
-
         $.ajax({
             url: "<?php echo base_url(); ?>notification/update_notification",
             type: "POST",
@@ -182,15 +180,10 @@
                 //you can access the data like 'data["driver"]'
             }
         });
-
     }
-
     function notheader()
     {
-
         // $("#fad" + clicked_id).fadeOut(6000);
-
-
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/not_header" ?>',
@@ -198,29 +191,19 @@
             success: function (data) {
                 //    alert(data);
                 $('#' + 'notificationsBody').html(data);
-
             }
-
-
         });
-
     }
-
 </script>
 <!-- script for update all read notification end -->
-
 <!-- script for update all read notification start-->
 <script type="text/javascript">
-
     function getmsgNotification() {
         msgNotification();
         msgheader();
-
     }
-
     function msgNotification() {
         // first click alert('here'); 
-
         $.ajax({
             url: "<?php echo base_url(); ?>notification/update_msg_noti",
             type: "POST",
@@ -232,7 +215,6 @@
                 //you can access the data like 'data["driver"]'
             }
         });
-
     }
 
     function msgheader()
@@ -278,5 +260,3 @@
     });
 </script>
 <!-- script for update all read notification end -->
-
-
