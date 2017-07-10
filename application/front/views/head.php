@@ -47,3 +47,4 @@
 <script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
