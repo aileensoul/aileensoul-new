@@ -110,7 +110,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-4 profile-box profile-box-left"><div class="">
+                    <div class="col-md-4 profile-box  animated fadeInLeftBig profile-box-left"><div class="">
 
                                <div class="full-box-module">   
       <div class="profile-boxProfileCard  module">
@@ -225,7 +225,7 @@ if ($freepostdata[0]['designation']) {
                     </div>
                     <!-- pop up box end-->
 
-                    <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right">
+                    <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3>Search result of 

@@ -35,12 +35,12 @@
 
 <header>
     <div class="bg-search">
-        <div class="header2 headerborder">
+        <div class="header2 headerborder animated fadeInDownBig">
             <div class="container">
                 <div class="row">
                       
                     <?php echo $freelancer_post_search; ?>
-                  <div class="col-sm-5 col-md-5 col-xs-5 fw-479">
+                  <div class="col-sm-5 col-md-5 col-xs-6 fw-479">
                       <div class="search-mob-block">
                                  <div class="">
                                      <a href="#search">

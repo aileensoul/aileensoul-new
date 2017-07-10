@@ -274,7 +274,7 @@
                          
                           <fieldset style="padding-left: 8px;" class="col-md-4" <?php if($rate) {  ?> class="error-msg" <?php } ?> >
                             <label  class="control-label">Rate:<span style="color:red">*</span></label>
-                            <input tabindex="8" name="rate" type="number" id="rate" placeholder="Enter Your rate" />
+                            <input tabindex="8" name="rate" type="number" id="rate" placeholder="Enter Your rate" min='1'/>
                                 <span id="fullname-error"></span>
                                 <?php echo form_error('rate'); ?>
                         </fieldset>
@@ -835,7 +835,6 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
 
 
 
-
 // for date validtaion start
 
 jQuery.validator.addMethod("isValid", function (value, element) {
@@ -924,7 +923,8 @@ if(mm<10) {
                         },
                         rate:{
                           required:true,
-                          noSpace: true
+                         
+                         // noSpace: true
                         },
                         country:{
                           required:true,

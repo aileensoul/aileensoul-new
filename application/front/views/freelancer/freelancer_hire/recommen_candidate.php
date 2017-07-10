@@ -96,7 +96,7 @@
             <div class="container">
                 <div class="row row4">
 
-                    <div class="col-md-4 col-sm-4 profile-box profile-box-left">
+                    <div class="col-md-4 col-sm-4 profile-box profile-box-left  animated fadeInLeftBig">
                     <div class="">
                    
              <div class="full-box-module">   
@@ -189,7 +189,7 @@
                     <!-- middle div stat -->
            
 
-                     <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right">
+                     <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3>Recommended Freelancer</h3>

@@ -6,7 +6,7 @@
 <?php echo $header; ?>
     <!-- END HEADER -->
     <!-- pallavi 14-4-2017 -->
-    <?php echo $freelancer_hire_header2; ?>
+    <?php echo $freelancer_hire_header2_border; ?>
     <!-- pallavi end 14-4-2017 -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
      <link href="<?php echo base_url('css/jquery-ui.css') ?>" rel="stylesheet" type="text/css" />
@@ -95,7 +95,7 @@
                 <div class="row">
                     <!-- <?php echo $freelancer_hire_left; ?> -->
                     <div class="col-md-3"></div>
-                    <div class="col-md-7 col-sm-8">
+                    <div class="col-md-7 col-sm-8 animated fadeInLeftBig">
 
 
                     <div>
@@ -1001,5 +1001,5 @@ var date_picker ='<?php echo date('Y-m-d',strtotime($freelancerpostdata[0]['post
 </script>
 
 <style type="text/css">
-  #example2-error{margin-top: 42px!important;}
+  #example2-error{margin-top: 42px!importantt;}
 </style>

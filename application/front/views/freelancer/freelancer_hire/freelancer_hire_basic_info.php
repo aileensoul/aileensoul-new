@@ -104,7 +104,7 @@
                             ?>
 
                             <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
-                                <label>First Name:<span class="red">*</span></label>
+                                <label>First Name<span class="red">*</span>:</label>
                                 <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter First Name" value="<?php if ($firstname1) {
                                     echo $firstname1;
                                 } else {
@@ -115,7 +115,7 @@
 
 
                             <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
-                                <label>Last Name:<spanclass="red">*</span></label>
+                                <label>Last Name<spanclass="red">*</span>:</label>
                                 <input type="text" tabindex="2" name="lname" id="lname" placeholder="Enter Last Name" value="<?php if ($lastname1) {
     echo $lastname1;
 } else {
@@ -126,7 +126,7 @@
 
 
                             <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
-                                <label>Email:<span class="red">*</span></label>
+                                <label>Email<span class="red">*</span>:</label>
                                 <input type="text" name="email" tabindex="3" id="email" placeholder="Enter Email" value="<?php if ($email1) {
     echo $email1;
 } else {

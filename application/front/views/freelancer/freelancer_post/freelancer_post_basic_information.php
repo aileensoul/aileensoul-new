@@ -136,7 +136,7 @@ $phoneno = form_error('phoneno');
                             </fieldset>
 
                             <fieldset>
-                                <label>Skype id</label>
+                                <label>Skype id:</label>
                                 <input type="text" name="skypeid" placeholder="Enter skype id" tabindex="4" value="<?php if ($skypeid1) {
     echo $skypeid1;
 } ?>">

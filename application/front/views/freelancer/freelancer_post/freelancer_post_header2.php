@@ -80,7 +80,7 @@
 
 <header>
     <div class="bg-search">
-        <div class="header2">
+        <div class="header2 animated fadeInDownBig">
             <div class="container">
                 <div class="row">
                       

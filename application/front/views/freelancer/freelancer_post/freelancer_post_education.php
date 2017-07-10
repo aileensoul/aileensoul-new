@@ -9,6 +9,8 @@
 
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+<!-- This Css is used for call popup -->
+<link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
 
 <?php if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7'){ 
      echo $freelancer_post_header2_border; } ?>
@@ -146,7 +148,7 @@
 
                             <fieldset <?php if ($univercity) { ?> class="error-msg" <?php } ?>>
                                 <label>University:<!-- <span style="color:red">*</span> --></label>
-                                <select name="university" id="university" tabindex="3" >
+                                <select name="university" id="university" tabindex="3" class="university_1">
                                     <option value="" selected option disabled>Select your University</option>
 <?php
 if (count($university_data) > 0) {
@@ -166,6 +168,7 @@ if (count($university_data) > 0) {
                                         }
                                     }
                                     ?>
+               <option value="<?php echo $university_otherdata[0]['university_id']; ?> "><?php echo $university_otherdata[0]['university_name']; ?></option>
                                 </select>
                                     <?php echo form_error('university'); ?> 
                             </fieldset>
@@ -240,7 +243,9 @@ if (count($university_data) > 0) {
    <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
     <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-   
+   <!-- This Js is used for call popup -->
+<script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+<!-- This Js is used for call popup -->
 
 
     <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
@@ -440,3 +445,49 @@ $(window).load(function(){
             }
             }
         </script> 
+        <script type="text/javascript">
+
+//Click on University other option process Start 
+   $(document).on('change', '.university_1', function (event) {
+      var item=$(this);
+      var uni=(item.val());
+      if(uni == 463)
+      {
+            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+   
+             $('.message #univer').on('click', function () {
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "freelancer/freelancer_other_university" ?>',
+                          dataType: 'json',
+                          data: 'other_university=' + textVal,
+                          success: function (response) {
+                       
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                  
+                                   $('.university_1').html(response.select);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+   
+
+   
+//Click on University other option process End 
+</script>

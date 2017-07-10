@@ -96,7 +96,7 @@
 
                                          
 
-                                          <span id ="filename" style="color: #8c8c8c; font-size: 17px; padding-left: 10px;visibility:show;"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
+                                          <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
  
                       <div class="portfolio_image" style="color:#f00; display: block;"></div>
            
@@ -123,7 +123,7 @@
                   <label>Description:</label>
    <!--  <textarea name ="portfolio" tabindex="3" id="portfolio" rows="4" cols="50" placeholder="Enter description" style="resize: none;"><?php if($portfolio1){ echo $portfolio1; } ?></textarea> -->
 
-   <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;"><?php if($portfolio1){ echo $portfolio1; } ?> </div>
+   <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;"><?php if($portfolio1){ echo $portfolio1; } ?></div>
                                 <?php echo form_error('portfolio'); ?> 
                             </fieldset>
 
@@ -283,12 +283,15 @@ var free_post_step = "<?php echo $free_reg_data[0]['free_post_step']; ?>";
     var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;
 
     var portfolio_attachment = document.getElementById("portfolio_attachment").value;
+    // var portfolio = $.trim(document.getElementById("portfolio123").value);
 
-  var $field = $('#portfolio123');
+  // var $field = $('#portfolio123');
   
-  var portfolio = $('#portfolio123').html();
- 
- 
+   var portfolio = $('#portfolio123').html();
+   portfolio = portfolio.replace(/&nbsp;/gi, " ");
+ portfolio = portfolio.trim();
+
+ //alert(portfolio);
     
     if(portfolio_attachment != ''){
       
@@ -314,7 +317,7 @@ var free_post_step = "<?php echo $free_reg_data[0]['free_post_step']; ?>";
 
       else
       { 
-
+          //alert(455);
         var fd = new FormData();
                 
         fd.append("image", $("#portfolio_attachment")[0].files[0]);
@@ -328,7 +331,7 @@ var free_post_step = "<?php echo $free_reg_data[0]['free_post_step']; ?>";
 
         $.ajax({
 
-
+       
             url: "<?php echo base_url(); ?>freelancer/freelancer_post_portfolio_insert",
             type: "POST",
            // data:'file=' + fd + 'portfolio='+portfolio,

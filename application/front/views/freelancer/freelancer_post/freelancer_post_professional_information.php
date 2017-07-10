@@ -29,7 +29,7 @@
 
 
 <?php if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7'){ 
-     echo $freelancer_post_header2; } ?>
+     echo $freelancer_post_header2_border; } ?>
  
 
 <!-- vishang 17-4-17 start -->
