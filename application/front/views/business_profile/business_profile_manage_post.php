@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
         <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
