@@ -105,6 +105,13 @@
                                 foreach($friendlist as $friend){ 
                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $friend['industriyal'], $data = '*', $join_str = array()); ?>
                    
+
+                            <?php 
+
+                           $userid = $this->session->userdata('aileenuser');
+
+
+                            if($friend['contact_to_id'] == $userid){?>
                             <li id="<?php echo  $friend['contact_from_id']; ?>">
                                 <div class="list-box">
                                     <div class="profile-img">
@@ -127,6 +134,30 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <?php }else{?>
+
+                            <li>
+                                <div class="list-box">
+                                    <div class="profile-img">
+                                         <?php if($friend['business_user_image'] != ''){ ?>
+                           <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']);?>">
+                            <?php } else { ?>
+                            <img src="<?php echo base_url(NOIMAGE); ?>" />
+                            <?php } ?>
+                                        <!--<img src="http://localhost/aileensoul/uploads/user_profile/thumbs/images_(4).jpg">-->
+                                    </div>
+                                    <div class="profile-content">
+                                      <a href="<?php echo base_url('business_profile/business_profile_manage_post/'.$friend['business_slug']); ?>">
+                                           <h5><?php echo ucwords($friend['company_name']); ?></h5> confirmed your contact request
+                                        <!-- <p><?php echo $inddata[0]['industry_name']; ?></p> -->
+                                        </a>
+                                       
+                                    </div>
+                                </div>
+                            </li>
+
+                            <?php }?>
            
                             <?php }}else{ ?>
                             

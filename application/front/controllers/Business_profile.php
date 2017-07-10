@@ -7448,18 +7448,60 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
-        $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $unique_user = array_merge($contactperson_req, $contactperson_con);
+
+
+         $new = array();
+        foreach ($unique_user as $value) {
+            $new[$value['contact_id']] = $value;
+        }
+
+        $post = array();
+
+        foreach ($new as $key => $row) {
+
+            $post[$key] = $row['contact_id'];
+        }
+        array_multisort($post, SORT_DESC, $new);
+
+        $contactperson = $new;
+
+//echo "<pre>"; print_r($contactperson); die();
+
 
         if ($contactperson) {
             foreach ($contactperson as $contact) {
 
+                
+                //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+                $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
+
+                if($contact['contact_to_id'] == $userid){
+
+
                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                 $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-                $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
+
                 $contactdata .= '<li>';
                 $contactdata .= '<div class="addcontact-left">';
-                $contactdata .= '<a href="#">';
+                $contactdata .= '<a href="'.base_url('business_profile/business_profile_manage_post/'.$busdata[0]['business_slug']).'">';
                 $contactdata .= '<div class="addcontact-pic">';
 
                 if ($busdata[0]['business_user_image']) {
@@ -7469,7 +7511,7 @@ class Business_profile extends MY_Controller {
                 }
                 $contactdata .= '</div>';
                 $contactdata .= '<div class="addcontact-text">';
-                $contactdata .= '<span><b>' . $busdata[0]['company_name'] . '</b></span>';
+                $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b></span>';
                 $contactdata .= '' . $inddata[0]['industry_name'] . '';
                 $contactdata .= '</div>';
                 $contactdata .= '</a>';
@@ -7479,6 +7521,35 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                 $contactdata .= '</div>';
                 $contactdata .= '</li>';
+
+               }else{
+
+
+                $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+
+
+                $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+                $contactdata .= '<li>';
+                $contactdata .= '<div class="addcontact-left">';
+                $contactdata .= '<a href="'.base_url('business_profile/business_profile_manage_post/'.$busdata[0]['business_slug']).'">';
+                $contactdata .= '<div class="addcontact-pic">';
+
+                if ($busdata[0]['business_user_image']) {
+                    $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                } else {
+                    $contactdata .= '<img src="' . base_url(NOIMAGE) . '">';
+                }
+                $contactdata .= '</div>';
+                $contactdata .= '<div class="addcontact-text">';
+                $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
+                //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                $contactdata .= '</div>';
+                $contactdata .= '</a>';
+                $contactdata .= '</div>';
+                $contactdata .= '</li>';
+
+               }
                 $contactdata .= '</ul>';
             }
         } else {
@@ -7582,15 +7653,26 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $bussdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
-        
+
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
         $join_str[0]['join_type'] = '';
 
         $contition_array = array('contact_to_id' => $userid, 'contact_person.status' => 'pending');
-        $friendlist = $this->data['friendlist'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
-        
+        $friendlist_req = $this->data['friendlist_req'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $join_str[0]['table'] = 'business_profile';
+        $join_str[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str[0]['from_table_id'] = 'contact_person.contact_to_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('contact_from_id' => $userid, 'contact_person.status' => 'confirm');
+        $friendlist_con = $this->data['friendlist_con'] = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
+        $this->data['friendlist']= array_merge($friendlist_con, $friendlist_req);
+       
         $this->load->view('business_profile/contact_list', $this->data);
     }
 
@@ -7932,18 +8014,29 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending', 'not_read' => '2');
-        $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $contactcount = count($contactperson);
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm', 'not_read' => '2');
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $unique_user = array_merge($contactperson_req, $contactperson_con);
+
+            $contactcount = count($unique_user);
+
         echo $contactcount;
     }
 
+
     public function update_contact_count() {
-
-
         $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('not_read' => 2, 'contact_to_id' => $userid, 'status' => 'pending');
-        $result = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $contition_array = array('not_read' => 2, 'contact_to_id' => $userid, 'status' => 'pending');
+        $result_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('not_read' => 2, 'contact_from_id' => $userid, 'status' => 'confirm');
+        $result_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $result = array_merge($result_req, $result_con);
         $data = array(
             'not_read' => 1
         );

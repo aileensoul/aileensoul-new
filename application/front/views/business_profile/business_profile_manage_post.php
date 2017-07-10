@@ -3,6 +3,8 @@
     <head>
     <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
+
+        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
@@ -116,6 +118,7 @@
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
+                                        <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
                                         </div>
                                         <div class="bus_photos">
                                         </div>
@@ -1042,11 +1045,9 @@
  <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>-->
         <!-- script for skill textbox automatic start-->
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
         <!-- script for cropiee immage start-->
-        <!--<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>-->
         <!-- script for skill textbox automatic end-->
         <script>
             jQuery.noConflict();
@@ -1054,11 +1055,8 @@
             (function ($) {
 
                 var data = <?php echo json_encode($demo); ?>;
-                // alert(data);
-
-
+                
                 $(function () {
-                    // alert('hi');
                     $("#tags").autocomplete({
                         source: function (request, response) {
                             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
@@ -1086,11 +1084,8 @@
         <script>
 
             var data1 = <?php echo json_encode($city_data); ?>;
-            //alert(data);
-
-
+            
             $(function () {
-                // alert('hi');
                 $("#searchplace").autocomplete({
                     source: function (request, response) {
                         var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
@@ -1116,13 +1111,9 @@
         </script>
         <script type="text/javascript">
             function checkvalue() {
-                //alert("hi");
                 var searchkeyword = $.trim(document.getElementById('tags').value);
                 var searchplace = $.trim(document.getElementById('searchplace').value);
-                // alert(searchkeyword);
-                // alert(searchplace);
                 if (searchkeyword == "" && searchplace == "") {
-                    //alert('Please enter Keyword');
                     return false;
                 }
             }
@@ -1153,49 +1144,6 @@
             document.getElementById("defaultOpen").click();
         </script>
 
-
-
-
-        <!-- script for skill textbox automatic end (option 2)-->
-
-
-        <!-- script for business autofill -->
-        <!-- <script>
-          $( function() {
-        
-            var complex = <?php echo json_encode($demo); ?>;
-           
-            var availableTags = complex; 
-            $( "#tags" ).autocomplete({ 
-              source: availableTags
-            });
-          } );
-          </script>  -->
-        <!-- end of business search auto fill -->
-<!--        <script>
-
-            //select2 autocomplete start for Location
-            $('#searchplace').select2({
-                placeholder: 'Find Your Location',
-                maximumSelectionLength: 1,
-                ajax: {
-                    url: "<?php echo base_url(); ?>business_profile/location",
-                    dataType: 'json',
-                    delay: 250,
-                    processResults: function (data) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                }
-            });
-            //select2 autocomplete End for Location
-        </script>-->
-
-        <!-- tabing script end -->
-        <!-- footer end -->
-
         <!-- like comment ajax data start-->
 
         <!-- post like script start -->
@@ -1203,14 +1151,12 @@
         <script type="text/javascript">
             function post_like(clicked_id)
             {
-                //alert(clicked_id);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/like_post" ?>',
                     data: 'post_id=' + clicked_id,
                     dataType: 'json',
-                    success: function (data) { //alert('.' + 'likepost' + clicked_id);
-                        // $('.' + 'likepost' + clicked_id).html(data);
+                    success: function (data) { 
                         $('.' + 'likepost' + clicked_id).html(data.like);
                         $('.likeusername' + clicked_id).html(data.likeuser);
                         $('.comment_like_count' + clicked_id).html(data.like_user_count);
@@ -1245,9 +1191,7 @@
                 var txt = sel.html();
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
-
                 txt = txt.replace(/&gt;/gi, ">");
-
                 txt = txt.replace(/div/gi, 'p');
 
                 if (txt == '' || txt == '<br>') {
@@ -1273,15 +1217,12 @@
                             $('textarea').each(function () {
                                 $(this).val('');
                             });
-//                                $('#' + 'insertcount' + clicked_id).html(data.count);
+
                             $('.insertcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
-
                         }
                     });
-
                 } else {
-
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
@@ -1291,55 +1232,12 @@
                             $('textarea').each(function () {
                                 $(this).val('');
                             });
-//                                $('#' + 'insertcount' + clicked_id).html(data.count);
                             $('#' + 'fourcomment' + clicked_id).html(data.comment);
                             $('.comment_count' + clicked_id).html(data.comment_count);
                         }
                     });
                 }
             }
-
-
-//                function insert_comment(clicked_id)
-//                {
-//                    var post_comment = document.getElementById("post_comment" + clicked_id);
-//                    var x = document.getElementById('threecomment' + clicked_id);
-//                    var y = document.getElementById('fourcomment' + clicked_id);
-//
-//                    if (x.style.display === 'block' && y.style.display === 'none') {
-//                        $.ajax({
-//                            type: 'POST',
-//                            url: '<?php echo base_url() . "business_profile/insert_commentthree" ?>',
-//                            data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
-//                            dataType: "json",
-//                            success: function (data) {
-//                                $('textarea').each(function () {
-//                                    $(this).val('');
-//                                });
-//                                $('#' + 'insertcount' + clicked_id).html(data.count);
-//                                $('.insertcomment' + clicked_id).html(data.comment);
-//
-//                            }
-//                        });
-//
-//                    } else {
-//
-//                        $.ajax({
-//                            type: 'POST',
-//                            url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
-//                            data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
-//                            dataType: "json",
-//                            success: function (data) {
-//                                $('textarea').each(function () {
-//                                    $(this).val('');
-//                                });
-//                                $('#' + 'insertcount' + clicked_id).html(data.count);
-//                                $('#' + 'fourcomment' + clicked_id).html(data.comment);
-//
-//                            }
-//                        });
-//                    }
-//                }
         </script>
 
         <!-- insert comment using enter -->
@@ -1347,11 +1245,8 @@
 
             function entercomment(clicked_id)
             {
-//                    $(document).ready(function () {
-
                 $("#post_comment" + clicked_id).click(function () {
                     $(this).prop("contentEditable", true);
-                    //$(this).html("");
                 });
 
                 $('#post_comment' + clicked_id).keypress(function (e) {
@@ -1360,14 +1255,10 @@
                         e.preventDefault();
                         var sel = $("#post_comment" + clicked_id);
                         var txt = sel.html();
-                        //txt = txt.replace(/^(&nbsp;|<br>)+/, '');
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
-
                         txt = txt.replace(/&gt;/gi, ">");
-
                         txt = txt.replace(/div/gi, 'p');
-
 
                         if (txt == '' || txt == '<br>') {
                             return false;
@@ -1387,8 +1278,6 @@
                             window.preventDuplicateKeyPresses = false;
                         }, 500);
 
-                        // khyati chnages  start
-
                         var x = document.getElementById('threecomment' + clicked_id);
                         var y = document.getElementById('fourcomment' + clicked_id);
 
@@ -1403,14 +1292,10 @@
                                         $(this).val('');
                                     });
 
-                                    //  $('.insertcomment' + clicked_id).html(data);
-//                                        $('#' + 'insertcount' + clicked_id).html(data.count);
                                     $('.insertcomment' + clicked_id).html(data.comment);
                                     $('.comment_count' + clicked_id).html(data.comment_count);
-
                                 }
                             });
-
                         } else {
                             $.ajax({
                                 type: 'POST',
@@ -1421,95 +1306,25 @@
                                     $('textarea').each(function () {
                                         $(this).val('');
                                     });
-                                    //$('#' + 'fourcomment' + clicked_id).html(data);
-//                                        $('#' + 'insertcount' + clicked_id).html(data.count);
                                     $('#' + 'fourcomment' + clicked_id).html(data.comment);
                                     $('.comment_count' + clicked_id).html(data.comment_count);
-
                                 }
                             });
                         }
-                        // khyati chnages end
-                        //alert(val);
                     }
                 });
                 $(".scroll").click(function (event) {
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
                 });
-                //  });
-
             }
 
-//                function entercomment(clicked_id)
-//                {
-//                    $(document).ready(function () {
-//                        $('#post_comment' + clicked_id).keypress(function (e) {
-//                            if (e.keyCode == 13 && !e.shiftKey) {
-//                                var $field = $('#post_comment' + clicked_id);
-//                                var post_comment_data = $('#post_comment' + clicked_id).html();
-//                                e.preventDefault();
-//
-//                                if (window.preventDuplicateKeyPresses)
-//                                    return;
-//
-//                                window.preventDuplicateKeyPresses = true;
-//                                window.setTimeout(function () {
-//                                    window.preventDuplicateKeyPresses = false;
-//                                }, 500);
-//
-//                                var x = document.getElementById('threecomment' + clicked_id);
-//                                var y = document.getElementById('fourcomment' + clicked_id);
-//
-//                                if (x.style.display === 'block' && y.style.display === 'none') {
-//                                    $.ajax({
-//                                        type: 'POST',
-//                                        url: '<?php echo base_url() . "business_profile/insert_commentthree" ?>',
-//                                        data: 'post_id=' + clicked_id + '&comment=' + post_comment_data,
-//                                        dataType: "json",
-//                                        success: function (data) {
-//                                            $('textarea').each(function () {
-//                                                $(this).val('');
-//                                            });
-//
-//                                            $('#' + 'insertcount' + clicked_id).html(data.count);
-//                                            $('.insertcomment' + clicked_id).html(data.comment);
-//
-//                                        }
-//                                    });
-//
-//                                } else {
-//                                    $.ajax({
-//                                        type: 'POST',
-//                                        url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
-//                                        data: 'post_id=' + clicked_id + '&comment=' + post_comment_data,
-//                                        dataType: "json",
-//                                        success: function (data) {
-//                                            $('textarea').each(function () {
-//                                                $(this).val('');
-//                                            });
-//                                            $('#' + 'insertcount' + clicked_id).html(data.count);
-//                                            $('#' + 'fourcomment' + clicked_id).html(data.comment);
-//
-//                                        }
-//                                    });
-//                                }
-//                            }
-//                        });
-//                    });
-//
-//                }  
-
-
         </script>
-
 
         <script type="text/javascript">
             function insert_comment1(clicked_id)
             {
                 var post_comment = document.getElementById("post_comment1" + clicked_id);
-                //alert(clicked_id);
-                //alert(post_comment.value);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/insert_comment1" ?>',
@@ -1519,10 +1334,8 @@
                         $('textarea').each(function () {
                             $(this).val('');
                         });
-//                            $('.' + 'insertcount' + clicked_id).html(data.count);
                         $('.' + 'insertcomment1' + clicked_id).html(data.comment);
                         $('.comment_count' + clicked_id).html(data.comment_count);
-
                     }
                 });
             }
@@ -1531,13 +1344,10 @@
 
         <!-- insert comment using enter -->
         <script type="text/javascript">
-
             function entercomment1(clicked_id)
             {
-
                 $(document).ready(function () {
                     $('#post_comment1' + clicked_id).keypress(function (e) {
-
                         if (e.keyCode == 13 && !e.shiftKey) {
                             var val = $('#post_comment1' + clicked_id).val();
                             e.preventDefault();
@@ -1550,7 +1360,6 @@
                                 window.preventDuplicateKeyPresses = false;
                             }, 500);
 
-
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/insert_comment1" ?>',
@@ -1560,35 +1369,25 @@
                                     $('textarea').each(function () {
                                         $(this).val('');
                                     });
-//                                        $('.' + 'insertcount' + clicked_id).html(data.count);
                                     $('.' + 'insertcomment1' + clicked_id).html(data.comment);
                                     $('.comment_count' + clicked_id).html(data.comment_count);
                                 }
                             });
-                            //alert(val);
                         }
                     });
                 });
-
             }
         </script>
-
-
         <!--comment insert script end -->
-
-
         <!-- hide and show data start-->
         <script type="text/javascript">
             function commentall(clicked_id) {
-
                 var x = document.getElementById('threecomment' + clicked_id);
                 var y = document.getElementById('fourcomment' + clicked_id);
                 var z = document.getElementById('insertcount' + clicked_id);
 
-
                 $('.post-design-commnet-box').show();
                 if (x.style.display === 'block' && y.style.display === 'none') {
-
 
                     x.style.display = 'none';
                     y.style.display = 'block';
@@ -1598,45 +1397,19 @@
                         type: 'POST',
                         url: '<?php echo base_url() . "business_profile/fourcomment" ?>',
                         data: 'bus_post_id=' + clicked_id,
-                        //alert(data);
                         success: function (data) {
                             $('#' + 'fourcomment' + clicked_id).html(data);
                         }
                     });
 
                 }
-                // } else {
-                //      x.style.display = 'block';
-                //      y.style.display = 'block';
-                //      z.style.display = 'block';
-
-                //      $.ajax({ 
-                //             type:'POST',
-                //          url:'<?php echo base_url() . "business_profile/fourcomment" ?>',
-                //             data:'art_post_id='+clicked_id,
-                //             //alert(data);
-                //             success:function(data){
-                //       $('#' + 'threecomment' + clicked_id).html(data);
-
-                //       }
-                //         });
-                // }
-
-
-
-
-
             }
         </script>
         <!-- hide and show data end-->
-
-
         <!-- comment like script start -->
-
         <script type="text/javascript">
             function comment_like(clicked_id)
             {
-                //alert(clicked_id);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/like_comment" ?>',
@@ -1648,17 +1421,14 @@
                 });
             }
         </script>
-
-
         <script type="text/javascript">
             function comment_like1(clicked_id)
             {
-                //alert(clicked_id);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/like_comment1" ?>',
                     data: 'post_id=' + clicked_id,
-                    success: function (data) { //alert('.' + 'likepost' + clicked_id);
+                    success: function (data) { 
                         $('#' + 'likecomment1' + clicked_id).html(data);
 
                     }
@@ -1674,7 +1444,6 @@
                 $('#bidmodal').modal('show');
             }
 
-
             function comment_deleted(clicked_id)
             {
                 var post_delete = document.getElementById("post_delete" + clicked_id);
@@ -1683,12 +1452,8 @@
                     url: '<?php echo base_url() . "business_profile/delete_comment" ?>',
                     data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
                     dataType: "json",
-                    success: function (data) { //alert('.' + 'insertcomment' + clicked_id);
-                        // document.getElementById('editcomment' + clicked_id).style.display='none';
-                        //document.getElementById('showcomment' + clicked_id).style.display='block';
-                        //document.getElementById('editsubmit' + clicked_id).style.display='none';
+                    success: function (data) { 
                         $('.' + 'insertcomment' + post_delete.value).html(data.comment);
-//                            $('#' + 'insertcount' + post_delete.value).html(data.count);
                         $('.comment_count' + post_delete.value).html(data.comment_count);
                         $('.post-design-commnet-box').show();
                     }
@@ -1712,9 +1477,8 @@
                     url: '<?php echo base_url() . "business_profile/delete_commenttwo" ?>',
                     data: 'post_id=' + clicked_id + '&post_delete=' + post_delete1.value,
                     dataType: "json",
-                    success: function (data) { //alert('.' + 'insertcomment' + clicked_id);
+                    success: function (data) { 
                         $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
-//                            $('#' + 'insertcount' + post_delete1.value).html(data.count);
                         $('.comment_count' + post_delete1.value).html(data.comment_count);
                         $('.post-design-commnet-box').show();
                     }
@@ -1722,11 +1486,10 @@
             }
         </script>
         <!--comment delete script end -->
-
         <!-- comment edit box start-->
         <script type="text/javascript">
 
-            function comment_editbox(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
+            function comment_editbox(clicked_id) { 
                 document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
                 document.getElementById('showcomment' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
@@ -1735,11 +1498,9 @@
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
 
                 $('.post-design-commnet-box').hide();
-
             }
 
             function comment_editcancle(clicked_id) {
-
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'block';
                 document.getElementById('editcancle' + clicked_id).style.display = 'none';
 
@@ -1751,9 +1512,6 @@
             }
 
             function comment_editboxtwo(clicked_id) {
-//                    alert(clicked_id);
-//                    return false;
-
                 $('div[id^=editcommenttwo]').css('display', 'none');
                 $('div[id^=showcommenttwo]').css('display', 'block');
                 $('button[id^=editsubmittwo]').css('display', 'none');
@@ -1766,11 +1524,6 @@
                 document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
-//                    document.getElementById('editcomment' + clicked_id).style.display = 'block';
-//                    document.getElementById('showcomment' + clicked_id).style.display = 'none';
-//                    document.getElementById('editsubmit' + clicked_id).style.display = 'block';
-//                    document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
-//                    document.getElementById('editcancle' + clicked_id).style.display = 'block';
 
             }
 
@@ -1783,7 +1536,7 @@
                 $('.post-design-commnet-box').show();
             }
 
-            function comment_editbox3(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
+            function comment_editbox3(clicked_id) { 
                 document.getElementById('editcomment3' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment3' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit3' + clicked_id).style.display = 'block';
@@ -1807,7 +1560,7 @@
 
             }
 
-            function comment_editbox4(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
+            function comment_editbox4(clicked_id) { 
                 document.getElementById('editcomment4' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment4' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit4' + clicked_id).style.display = 'block';
@@ -1839,45 +1592,18 @@
         <!-- comment edit insert start -->
 
         <script type="text/javascript">
-//                function edit_comment(abc)
-//                { 
-//                    var post_comment_edit = document.getElementById("editcomment" + abc);
-//                    $.ajax({
-//                        type: 'POST',
-//                        url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//                        data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-//                        success: function (data) { //alert('falguni');
-//
-//                            document.getElementById('editcomment' + abc).style.display = 'none';
-//                            document.getElementById('showcomment' + abc).style.display = 'block';
-//                            document.getElementById('editsubmit' + abc).style.display = 'none';
-//
-//                            document.getElementById('editcommentbox' + abc).style.display = 'block';
-//                            document.getElementById('editcancle' + abc).style.display = 'none';
-//                            $('#' + 'showcomment' + abc).html(data);
-//                            $('.post-design-commnet-box').show();
-//
-//
-//                        }
-//                    });
-//                }
-
             function edit_comment(abc)
             {
-                //var post_comment_edit = document.getElementById("editcomment" + abc);
 
                 $("#editcomment" + abc).click(function () {
                     $(this).prop("contentEditable", true);
-                    //     $(this).html("");
                 });
 
                 var sel = $("#editcomment" + abc);
                 var txt = sel.html();
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
-
                 txt = txt.replace(/&gt;/gi, ">");
-
                 txt = txt.replace(/div/gi, "p");
 
 
@@ -1889,13 +1615,11 @@
                     return false;
                 }
                 txt = txt.replace(/&/g, "%26");
-//                    alert(txt);
-//                    return false;
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + txt,
-                    success: function (data) { //alert('falguni');
+                    success: function (data) { 
 
                         document.getElementById('editcomment' + abc).style.display = 'none';
                         document.getElementById('showcomment' + abc).style.display = 'block';
@@ -1905,8 +1629,6 @@
                         document.getElementById('editcancle' + abc).style.display = 'none';
                         $('#' + 'showcomment' + abc).html(data);
                         $('.post-design-commnet-box').show();
-
-
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1916,52 +1638,12 @@
 
             }
         </script>
-
-
         <script type="text/javascript">
-
-//                function commentedit(abc)
-//                {
-//                    $(document).ready(function () {
-//                        $('#editcomment' + abc).keypress(function (e) {
-//                            if (e.keyCode == 13 && !e.shiftKey) {
-//                                var val = $('#editcomment' + abc).val();
-//                                e.preventDefault();
-//                                if (window.preventDuplicateKeyPresses)
-//                                    return;
-//                                window.preventDuplicateKeyPresses = true;
-//                                window.setTimeout(function () {
-//                                    window.preventDuplicateKeyPresses = false;
-//                                }, 500);
-//                                $.ajax({
-//                                    type: 'POST',
-//                                    url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//                                    data: 'post_id=' + abc + '&comment=' + val,
-//                                    success: function (data) { //alert('falguni');
-//                                        document.getElementById('editcomment' + abc).style.display = 'none';
-//                                        document.getElementById('showcomment' + abc).style.display = 'block';
-//                                        document.getElementById('editsubmit' + abc).style.display = 'none';
-//                                        document.getElementById('editcommentbox' + abc).style.display = 'block';
-//                                        document.getElementById('editcancle' + abc).style.display = 'none';
-//                                        $('#' + 'showcomment' + abc).html(data);
-//                                        $('.post-design-commnet-box').show();
-//                                    }
-//                                });
-//                            }
-//                        });
-//                    });
-//                }
-
-
             function commentedit(abc)
             {
-//                    alert(1212121);
-//                    return false;
-                //$(document).ready(function () {
 
                 $("#editcomment" + abc).click(function () {
                     $(this).prop("contentEditable", true);
-                    //$(this).html("");
                 });
                 $('#editcomment' + abc).keypress(function (event) {
                     if (event.which == 13 && event.shiftKey != 1) {
@@ -1982,7 +1664,6 @@
                             return false;
                         }
                         txt = txt.replace(/&/g, "%26");
-                        //$('#editcomment' + abc).html("");
 
                         if (window.preventDuplicateKeyPresses)
                             return;
@@ -1994,7 +1675,7 @@
                             type: 'POST',
                             url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                             data: 'post_id=' + abc + '&comment=' + txt,
-                            success: function (data) { //alert('falguni');
+                            success: function (data) { 
                                 document.getElementById('editcomment' + abc).style.display = 'none';
                                 document.getElementById('showcomment' + abc).style.display = 'block';
                                 document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -2010,42 +1691,16 @@
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
                 });
-                //});
             }
-
-
         </script>
 
         <script type="text/javascript">
-//                function edit_commenttwo(abc)
-//                { 
-//                    var post_comment_edit = document.getElementById("editcommenttwo" + abc);
-//                    $.ajax({
-//                        type: 'POST',
-//                        url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//                        data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-//                        success: function (data) { //alert('falguni');
-//
-//                            document.getElementById('editcommenttwo' + abc).style.display = 'none';
-//                            document.getElementById('showcommenttwo' + abc).style.display = 'block';
-//                            document.getElementById('editsubmittwo' + abc).style.display = 'none';
-//
-//                            document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
-//                            document.getElementById('editcancletwo' + abc).style.display = 'none';
-//                            $('#' + 'showcommenttwo' + abc).html(data);
-//                            $('.post-design-commnet-box').show();
-//                        }
-//                    });
-//
-//                }
 
             function edit_commenttwo(abc)
             {
-                //var post_comment_edit = document.getElementById("editcommenttwo" + abc);
 
                 $("#editcommenttwo" + abc).click(function () {
                     $(this).prop("contentEditable", true);
-                    //$(this).html("");
                 });
 
                 var sel = $("#editcommenttwo" + abc);
@@ -2054,9 +1709,7 @@
                 txt = txt.replace(/<br>$/, '');
 
                 txt = txt.replace(/&gt;/gi, ">");
-
                 txt = txt.replace(/div/gi, "p");
-
 
                 if (txt == '' || txt == '<br>') {
                     return false;
@@ -2070,8 +1723,7 @@
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + txt,
-                    success: function (data) { //alert('falguni');
-
+                    success: function (data) { 
                         document.getElementById('editcommenttwo' + abc).style.display = 'none';
                         document.getElementById('showcommenttwo' + abc).style.display = 'block';
                         document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -2093,55 +1745,10 @@
 
         <script type="text/javascript">
 
-//                function commentedittwo(abc)
-//                {
-//                    $(document).ready(function () {
-//                        $('#editcommenttwo' + abc).keypress(function (e) {
-//                            if (e.keyCode == 13 && !e.shiftKey) {
-//                                var val = $('#editcommenttwo' + abc).val();
-//                                e.preventDefault();
-//
-//                                if (window.preventDuplicateKeyPresses)
-//                                    return;
-//
-//                                window.preventDuplicateKeyPresses = true;
-//                                window.setTimeout(function () {
-//                                    window.preventDuplicateKeyPresses = false;
-//                                }, 500);
-//
-//                                $.ajax({
-//                                    type: 'POST',
-//                                    url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
-//                                    data: 'post_id=' + abc + '&comment=' + val,
-//                                    success: function (data) { //alert('falguni');
-//
-//
-//                                        document.getElementById('editcommenttwo' + abc).style.display = 'none';
-//                                        document.getElementById('showcommenttwo' + abc).style.display = 'block';
-//                                        document.getElementById('editsubmittwo' + abc).style.display = 'none';
-//
-//                                        document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
-//                                        document.getElementById('editcancletwo' + abc).style.display = 'none';
-//                                        //alert('.' + 'showcomment' + abc);
-//
-//                                        $('#' + 'showcommenttwo' + abc).html(data);
-//                                        $('.post-design-commnet-box').show();
-//
-//
-//                                    }
-//                                });
-//                            }
-//                        });
-//                    });
-//
-//                }
-
             function commentedittwo(abc)
             {
-                //$(document).ready(function () {
                 $("#editcommenttwo" + abc).click(function () {
                     $(this).prop("contentEditable", true);
-                    //$(this).html("");
                 });
 
                 $('#editcommenttwo' + abc).keypress(function (event) {
@@ -2166,7 +1773,6 @@
                             return false;
                         }
                         txt = txt.replace(/&/g, "%26");
-                        //$('#editcommenttwo' + abc).html("");
 
                         if (window.preventDuplicateKeyPresses)
                             return;
@@ -2180,26 +1786,21 @@
                             type: 'POST',
                             url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                             data: 'post_id=' + abc + '&comment=' + txt,
-                            success: function (data) { //alert('falguni');
-
-
+                            success: function (data) { 
                                 document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                 document.getElementById('showcommenttwo' + abc).style.display = 'block';
                                 document.getElementById('editsubmittwo' + abc).style.display = 'none';
 
                                 document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
                                 document.getElementById('editcancletwo' + abc).style.display = 'none';
-                                //alert('.' + 'showcomment' + abc);
 
                                 $('#' + 'showcommenttwo' + abc).html(data);
                                 $('.post-design-commnet-box').show();
-
 
                             }
                         });
                     }
                 });
-                //});
                 $(".scroll").click(function (event) {
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
@@ -2210,40 +1811,29 @@
 
         <script type="text/javascript">
             function edit_comment3(abc)
-            { //alert('editsubmit' + abc);
+            { 
 
                 var post_comment_edit = document.getElementById("editcomment3" + abc);
-                //alert(post_comment.value);
-                //alert(post_comment.value);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-                    success: function (data) { //alert('falguni');
+                    success: function (data) { 
 
-                        //  $('input').each(function(){
-                        //     $(this).val('');
-                        // }); 
                         document.getElementById('editcomment3' + abc).style.display = 'none';
                         document.getElementById('showcomment3' + abc).style.display = 'block';
                         document.getElementById('editsubmit3' + abc).style.display = 'none';
 
                         document.getElementById('editcommentbox3' + abc).style.display = 'block';
                         document.getElementById('editcancle3' + abc).style.display = 'none';
-                        //alert('.' + 'showcomment' + abc);
                         $('#' + 'showcomment3' + abc).html(data);
                         $('.post-design-commnet-box').show();
-
-
                     }
                 });
                 //window.location.reload();
             }
         </script>
-
-
         <script type="text/javascript">
-
             function commentedit3(abc)
             {
                 $(document).ready(function () {
@@ -2272,26 +1862,18 @@
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                                 data: 'post_id=' + abc + '&comment=' + val,
-                                success: function (data) { //alert('falguni');
+                                success: function (data) { 
 
-                                    //  $('input').each(function(){
-                                    //     $(this).val('');
-                                    // }); 
                                     document.getElementById('editcomment3' + abc).style.display = 'none';
                                     document.getElementById('showcomment3' + abc).style.display = 'block';
                                     document.getElementById('editsubmit3' + abc).style.display = 'none';
 
                                     document.getElementById('editcommentbox3' + abc).style.display = 'block';
                                     document.getElementById('editcancle3' + abc).style.display = 'none';
-                                    //alert('.' + 'showcomment' + abc);
                                     $('#' + 'showcomment3' + abc).html(data);
-
-
 
                                 }
                             });
-
-                            //alert(val);
                         }
                     });
                 });
@@ -2301,31 +1883,22 @@
 
         <script type="text/javascript">
             function edit_comment4(abc)
-            { //alert('editsubmit' + abc);
-
+            { 
                 var post_comment_edit = document.getElementById("editcomment4" + abc);
-                //alert(post_comment.value);
-                //alert(post_comment.value);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-                    success: function (data) { //alert('falguni');
+                    success: function (data) { 
 
-                        //  $('input').each(function(){
-                        //     $(this).val('');
-                        // }); 
                         document.getElementById('editcomment4' + abc).style.display = 'none';
                         document.getElementById('showcomment4' + abc).style.display = 'block';
                         document.getElementById('editsubmit4' + abc).style.display = 'none';
 
                         document.getElementById('editcommentbox4' + abc).style.display = 'block';
                         document.getElementById('editcancle4' + abc).style.display = 'none';
-                        //alert('.' + 'showcomment' + abc);
+                        
                         $('#' + 'showcomment4' + abc).html(data);
-
-
-
                     }
                 });
                 //window.location.reload();
@@ -2362,53 +1935,39 @@
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                                 data: 'post_id=' + abc + '&comment=' + val,
-                                success: function (data) { //alert('falguni');
+                                success: function (data) { 
 
-                                    //  $('input').each(function(){
-                                    //     $(this).val('');
-                                    // }); 
                                     document.getElementById('editcomment4' + abc).style.display = 'none';
                                     document.getElementById('showcomment4' + abc).style.display = 'block';
                                     document.getElementById('editsubmit4' + abc).style.display = 'none';
 
                                     document.getElementById('editcommentbox4' + abc).style.display = 'block';
                                     document.getElementById('editcancle4' + abc).style.display = 'none';
-                                    //alert('.' + 'showcomment' + abc);
                                     $('#' + 'showcomment4' + abc).html(data);
-
-
-
                                 }
                             });
-
-                            //alert(val);
                         }
                     });
                 });
-
             }
         </script>
 
         <!-- hide and show data start for save post-->
         <script type="text/javascript">
-            function commentall1(clicked_id) { //alert("xyz");
+            function commentall1(clicked_id) { 
 
-                //alert(clicked_id);
                 var x = document.getElementById('threecomment1' + clicked_id);
                 var y = document.getElementById('fourcomment1' + clicked_id);
                 if (x.style.display === 'block' && y.style.display === 'none') {
                     x.style.display = 'none';
                     y.style.display = 'block';
-
                 } else {
                     x.style.display = 'block';
                     y.style.display = 'none';
                 }
-
             }
         </script>
         <!-- hide and show data end-->
-
         <!-- like comment ajax data end-->
         <script>
             /* When the user clicks on the button, 
@@ -2456,8 +2015,6 @@
              toggle between hiding and showing the dropdown content */
             function myFunction(clicked_id) {
                 document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-
-
                 $(document).on('keydown', function (e) {
                     if (e.keyCode === 27) {
 
@@ -2495,7 +2052,6 @@
                 $("#myDropdown" + abc).removeClass('show');
                 document.getElementById('editpostdata' + abc).style.display = 'none';
                 document.getElementById('editpostbox' + abc).style.display = 'block';
-//                    document.getElementById('editpostdetails' + abc).style.display = 'none';
                 document.getElementById('editpostdetailbox' + abc).style.display = 'block';
                 document.getElementById('editpostsubmit' + abc).style.display = 'block';
                 document.getElementById('khyatii' + abc).style.display = 'none';
@@ -2503,32 +2059,20 @@
             }
         </script>
 
-
         <script type="text/javascript">
             function edit_postinsert(abc)
             {
 
                 var editpostname = document.getElementById("editpostname" + abc);
 
-
-                //var editpostdetails = document.getElementById("editpostdesc" + abc);
-
-
-
                 // start khyati code
                 var $field = $('#editpostname' + abc);
-                //var data = $field.val();
                 var editpostdetails = $('#editpostdesc' + abc).html();
 
                 editpostdetails = editpostdetails.replace(/&/g, "%26");
                 editpostdetails = editpostdetails.replace(/&gt;/gi, ">");
-
                 editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
                 editpostdetails = editpostdetails.replace(/div/gi, "p");
-
-
-
-                // $('#editpostdesc' + abc).html("");
 
                 if (editpostname.value == '' && editpostdetails == '') {
                     $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
@@ -2536,13 +2080,9 @@
 
                     document.getElementById('editpostdata' + abc).style.display = 'block';
                     document.getElementById('editpostbox' + abc).style.display = 'none';
-//                        document.getElementById('editpostdetails' + abc).style.display = 'block';
                     document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-
                     document.getElementById('editpostsubmit' + abc).style.display = 'none';
-
                 } else {
-
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url() . "business_profile/edit_post_insert" ?>',
@@ -2551,13 +2091,10 @@
                         success: function (data) {
                             document.getElementById('editpostdata' + abc).style.display = 'block';
                             document.getElementById('editpostbox' + abc).style.display = 'none';
-//                                document.getElementById('editpostdetails' + abc).style.display = 'block';
                             document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-
                             document.getElementById('editpostsubmit' + abc).style.display = 'none';
                             document.getElementById('khyati' + abc).style.display = 'block';
                             $('#' + 'editpostdata' + abc).html(data.title);
-//                                $('#' + 'editpostdetails' + abc).html(data.description);
                             $('#' + 'khyati' + abc).html(data.description);
                         }
                     });
@@ -2594,26 +2131,18 @@
                     dataType: 'json',
                     data: 'business_profile_post_id=' + abc,
                     success: function (data) {
-                        //$('#' + 'removeownpost' + abc).html(data);
                         $('#' + 'removeownpost' + abc).remove();
                         if (data.notcount == 0) {
                             $('.' + 'nofoundpost').html(data.notfound);
-
-
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
                             $('.' + 'dataconpdf').html(data.notpdf);
                             $('.' + 'dataconvideo').html(data.notvideo);
                             $('.' + 'dataconaudio').html(data.notaudio);
                             $('.' + 'dataconphoto').html(data.notphoto);
-
-
                         }
-
-
                     }
                 });
-
             }
         </script>
 
@@ -2674,26 +2203,18 @@
                 }
             }
         </script>
-
-
         <!-- save post start -->
-
         <script type="text/javascript">
             function save_post(abc)
             {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/business_profile_save" ?>',
                     data: 'business_profile_post_id=' + abc,
                     success: function (data) {
-
                         $('.' + 'savedpost' + abc).html(data);
-
-
                     }
                 });
-
             }
         </script>
 
@@ -2705,15 +2226,12 @@
         <script type="text/javascript">
             function followuser(clicked_id)
             {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/follow" ?>',
                     data: 'follow_to=' + clicked_id,
                     success: function (data) {
-
                         $('.' + 'fr' + clicked_id).html(data);
-
                     }
                 });
             }
@@ -2721,21 +2239,17 @@
 
         <!-- follow user script end -->
 
-
         <!-- Unfollow user script start -->
 
         <script type="text/javascript">
             function unfollowuser(clicked_id)
             {
-
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/unfollow" ?>',
                     data: 'follow_to=' + clicked_id,
                     success: function (data) {
-
                         $('.' + 'fr' + clicked_id).html(data);
-
                     }
                 });
             }
@@ -2744,20 +2258,14 @@
         <!-- Unfollow user script end -->
 
         <!-- post insert developing script start -->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript">
 
             function imgval(event) {
-
-
-                //var fileInput = document.getElementById('test-upload');
 
                 var fileInput = document.getElementById("file-1").files;
                 var product_name = document.getElementById("test-upload_product").value;
                 var product_description = document.getElementById("test-upload_des").value;
                 var product_fileInput = document.getElementById("file-1").value;
-
-
 
                 if (product_fileInput == '' && product_name == '' && product_description == '')
                 {
@@ -2769,10 +2277,8 @@
 
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            //$( "#bidmodal" ).hide();
                             $('#bidmodal').modal('hide');
                             $('.modal-post').show();
-
                         }
                     });
                     event.preventDefault();
@@ -2811,10 +2317,8 @@
                                 setInterval('window.location.reload()', 10000);
                                 $(document).on('keydown', function (e) {
                                     if (e.keyCode === 27) {
-                                        //$( "#bidmodal" ).hide();
                                         $('#bidmodal').modal('hide');
                                         $('.modal-post').show();
-
                                     }
                                 });
                                 // window.location='';
@@ -2946,10 +2450,8 @@
 
         <script>
             $(function () {
-//                    var showTotalChar = 200, showChar = "More", hideChar = "Less";
                 var showTotalChar = 250, showChar = "ReadMore", hideChar = "";
                 $('.show').each(function () {
-                    //var content = $(this).text();
                     var content = $(this).html();
                     if (content.length > showTotalChar) {
                         var con = content.substr(0, showTotalChar);
@@ -2980,8 +2482,6 @@
                     // Alert message if maximum limit is reached. 
                     // If required Alert can be removed. 
                     var msg = "You have reached your maximum limit of characters allowed";
-                    //alert(msg);
-
                     $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
                     $('#bidmodal').modal('show');
 
@@ -2994,31 +2494,19 @@
         </script>
         <script type="text/javascript">
             function contentedit(clicked_id) {
-                //alert(clicked_id);
-
-//var $field = $('#post_comment' + clicked_id);
-                //var data = $field.val();
-                // var post_comment = $('#post_comment' + clicked_id).html();
-
-                //$(document).ready(function($) {
                 $("#post_comment" + clicked_id).click(function () {
                     $(this).prop("contentEditable", true);
                     $(this).html("");
                 });
 
-
-                $("#post_comment" + clicked_id).keypress(function (event) { //alert(post_comment);
-                    if (event.which == 13 && event.shiftKey != 1) { //alert(post_comment);
+                $("#post_comment" + clicked_id).keypress(function (event) { 
+                    if (event.which == 13 && event.shiftKey != 1) { 
                         event.preventDefault();
                         var sel = $("#post_comment" + clicked_id);
                         var txt = sel.html();
                         txt = txt.replace(/&/g, "%26");
                         $('#post_comment' + clicked_id).html("");
-                        // $("#result").html(txt);
-                        // sel.html("")
-                        // sel.blur();
-
-
+                        
                         var x = document.getElementById('threecomment' + clicked_id);
                         var y = document.getElementById('fourcomment' + clicked_id);
                         if (x.style.display === 'block' && y.style.display === 'none') {
@@ -3031,7 +2519,6 @@
                                     $('input').each(function () {
                                         $(this).val('');
                                     });
-                                    //  $('.insertcomment' + clicked_id).html(data);
                                     $('#' + 'insertcount' + clicked_id).html(data.count);
                                     $('.insertcomment' + clicked_id).html(data.comment);
                                 }
@@ -3041,15 +2528,12 @@
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/insert_comment" ?>',
                                 data: 'post_id=' + clicked_id + '&comment=' + val,
-                                // dataType: "json",
                                 success: function (data) {
                                     $('input').each(function () {
                                         $(this).val('');
                                     }
                                     );
                                     $('#' + 'fourcomment' + clicked_id).html(data);
-                                    // $('#' + 'commnetpost' + clicked_id).html(data.count);
-                                    //  $('#' + 'fourcomment' + clicked_id).html(data.comment);
                                 }
                             });
                         }
@@ -3060,8 +2544,6 @@
                     event.preventDefault();
                     $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
                 });
-
-                // });
 
             }
         </script>
@@ -3079,12 +2561,8 @@
                         $('#likeusermodal').modal('show');
                     }
                 });
-
-
             }
         </script>
-
-
 
         <!-- cover image start -->
         <script>
@@ -3094,13 +2572,11 @@
                 document.getElementById('message1').style.display = "block";
             }
 
-
             function showDiv() {
                 document.getElementById('row1').style.display = "block";
                 document.getElementById('row2').style.display = "none";
             }
         </script>
-
 
         <script type="text/javascript">
             jQuery.noConflict();
@@ -3118,8 +2594,6 @@
                         height: 350
                     }
                 });
-
-
 
                 $('.upload-result').on('click', function (ev) {
                     $uploadCrop.croppie('result', {
@@ -3150,10 +2624,7 @@
                     document.getElementById('message1').style.display = "none";
                 });
 
-                //aarati code start
                 $('#upload').on('change', function () {
-
-
 
                     var reader = new FileReader();
 
@@ -3166,9 +2637,6 @@
 
                     }
                     reader.readAsDataURL(this.files[0]);
-
-
-
                 });
 
                 $('#upload').on('change', function () {
@@ -3180,9 +2648,7 @@
                     size = files[0].size;
 
 
-                    // pallavi code start for file type support
                     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                        //alert('not an image');
                         picpopup();
 
                         document.getElementById('row1').style.display = "none";
@@ -3279,18 +2745,6 @@
 
         <!-- script for profile pic end -->
 
-
-
-
-
-
-
-        <script language="javascript" type="text/javascript">
-//                $(document).ready(function () {
-//                    $('.alert-danger1').delay(3000).hide('700');
-//                });
-        </script>
-
         <script>
             $(document).ready(function () {
                 $('.video').mediaelementplayer({
@@ -3308,7 +2762,6 @@
                     document.getElementById('myModal3').style.display = "none";
                 }
             });
-
 
         </script>
 
@@ -3379,24 +2832,18 @@
 
             $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
-                    //$( "#bidmodal" ).hide();
                     $('#bidmodal').modal('hide');
                     $('#bidmodal-2').modal('hide');
                     $('#likeusermodal').modal('hide');
                 }
             });
-
-
         </script>
-
-
         <script type="text/javascript">
             $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {
                     if ($('.modal-post').show()) {
                         $(document).on('keydown', function (e) {
                             if (e.keyCode === 27) {
-                                //$( "#bidmodal" ).hide();
                                 $('.modal-post').hide();
                             }
                         });
@@ -3408,50 +2855,29 @@
         <!-- all popup close close using esc end-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script type="text/javascript">
-
             //validation for edit email formate form
-
-
             $("#userimage").validate({
-
                 rules: {
-
                     profilepic: {
-
                         required: true,
-
                     },
-
                 },
-
                 messages: {
-
                     profilepic: {
-
                         required: "Image Required",
-
                     },
-
                 },
-
             });
-
         </script>
-
-
         <!-- contact person script start -->
         <script type="text/javascript">
-
-
             function contact_person(clicked_id) {
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/contact_person" ?>',
                     data: 'toid=' + clicked_id,
                     success: function (data) {
-                        //   alert(data);
                         $('#contact_per').html(data);
-
                     }
                 });
             }
@@ -3460,12 +2886,8 @@
         <!-- contact person script end -->
 
         <script type="text/javascript">
-
-
             function contact_person_model(clicked_id, status) {
-
                 if (status == 'pending') {
-
                     $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
 
@@ -3484,11 +2906,7 @@
         <script type="text/javascript">
             //For Scroll page at perticular position js Start
             $(document).ready(function () {
-
-                //  $(document).load().scrollTop(1000);
-
                 $('html,body').animate({scrollTop: 330}, 500);
-
             });
             //For Scroll page at perticular position js End
         </script>
@@ -3521,14 +2939,11 @@
 
                         document.getElementById('editpostdata' + abc).style.display = 'block';
                         document.getElementById('editpostbox' + abc).style.display = 'none';
-                        //  document.getElementById('editpostdetails' + abc).style.display = 'block';
                         document.getElementById('editpostdetailbox' + abc).style.display = 'none';
                         document.getElementById('editpostsubmit' + abc).style.display = 'none';
                         document.getElementById('khyati' + abc).style.display = 'none';
                         document.getElementById('khyatii' + abc).style.display = 'block';
-                        //alert(data.description);
                         $('#' + 'editpostdata' + abc).html(data.title);
-                        // $('#' + 'editpostdetails' + abc).html(data.description);
                         $('#' + 'khyatii' + abc).html(data.description);
 
                     }
@@ -3539,10 +2954,7 @@
         </script>
         <!-- edit post start -->
 
-
-<!--<script type = "text/javascript" src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>-->
         <script type = "text/javascript" src = "//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js"></script>
-        <!--<script type = "text/javascript" src = "<?php echo base_url() ?>js/jquery.form.min.js"></script>-->
 
         <script>
             jQuery(document).ready(function ($) {
@@ -3550,27 +2962,14 @@
                 var options = {
                     beforeSend: function () {
                         // Replace this with your loading gif image
-                        //$('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
-                        //                document.getElementById("progress-div").style.display = "block";
-                        //                $("#progress-bar").width('0%');
                         document.getElementById("myModal3").style.display = "none";
                         $(".fw").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
-                    //            uploadProgress: function (event, position, total, percentComplete) {
-                    //                $("#progress-bar").width(percentComplete + '%');
-                    //                $("#progress-bar").html('<div id="progress-status">' + percentComplete + ' %</div>')
-                    //            },
                     complete: function (response) {
 
                         // Output AJAX response to the div container
-                        // console.log(response.responseText);
-                        //                    $(".upload-image-messages").html(response.responseText);
-                        //    document.getElementById("myModal").style.display="none";
-                        //                $(".business-all-post").prepend(response.responseText);
-                        //                $('#progress-bar').hide();
                         $('.loader').remove();
                         $(".fw").prepend(response.responseText);
-                        //$(".bor_none").hide();
                         $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
                     }
                 };
@@ -3580,21 +2979,14 @@
             });
         </script>
 
-
-
         <!-- 180 words more than script start -->
 
         <script type="text/javascript">
 
-            function seemorediv(abc) { //alert("hii");
-
+            function seemorediv(abc) { 
                 document.getElementById('seemore' + abc).style.display = 'block';
                 document.getElementById('lessmore' + abc).style.display = 'none';
-
             }
-
-
-            //            khytai chnages 7-7-2017 start
             $(document).ready(function () {
                 GetBusPhotos();
                 GetBusVideos();
@@ -3604,13 +2996,10 @@
 
             function GetBusPhotos() {
                 var slug = '<?php echo $slugid; ?>';
-
-                //  alert(slug);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/bus_photos" ?>',
                     data: 'bus_slug=' + slug,
-                    //   dataType: "json",
                     beforeSend: function () {
                         $(".bus_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
@@ -3626,19 +3015,16 @@
             function GetBusVideos() {
                 var slug = '<?php echo $slugid; ?>';
 
-                //  alert(slug);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/bus_videos" ?>',
                     data: 'bus_slug=' + slug,
-                    //   dataType: "json",
                     beforeSend: function () {
                         $(".bus_videos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
                         $('.bus_videos').html(data);
-
                     }
                 });
 
@@ -3646,13 +3032,10 @@
 
             function GetBusAudios() {
                 var slug = '<?php echo $slugid; ?>';
-
-                //  alert(slug);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/bus_audio" ?>',
                     data: 'bus_slug=' + slug,
-                    //   dataType: "json",
                     beforeSend: function () {
                         $(".bus_audios").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
@@ -3667,13 +3050,10 @@
 
             function GetBusPdf() {
                 var slug = '<?php echo $slugid; ?>';
-
-                //  alert(slug);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/bus_pdf" ?>',
                     data: 'bus_slug=' + slug,
-                    //   dataType: "json",
                     beforeSend: function () {
                         $(".bus_pdf").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
                     },
@@ -3686,16 +3066,6 @@
 
             }
 
-            //            khytai changes 7-7-2017 end
-
-
         </script>
-        <!-- 180 words more than script end-->
-        <!--
-        <style>
-        #progress-bar {background-color: #12CC1A !important; height:20px !important; color: #ccc!important; width:0% !important; -webkit-transition: width .3s;-moz-transition: width .3s;transition: width .3s;}
-        #progress-div {display:none; float: left !important;  border:#0FA015 1px solid !important; padding: 5px 0px !important; margin:30px 0px !important; border-radius:4px !important; text-align:center !important;}
-        #targetLayer{width:100% !important; text-align:center !important;}
-        </style>-->
     </body>
 </html>
