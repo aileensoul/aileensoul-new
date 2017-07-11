@@ -58,8 +58,8 @@
                                     </form>
                                 </div>
                              </div>
-                       <div class=" ">
-                            <ul class="">
+                       <div class="">
+                           <ul class="" id="dropdownclass">
                                
                                   
       <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>">Home</a>

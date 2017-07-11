@@ -622,3 +622,17 @@ $( "#searchplace" ).autocomplete({
 
  </script>
  <!-- all popup close close using esc end -->
+ <script type="text/javascript">
+   
+  $(document).ready(function(){ 
+
+  var nb = $('div.job-post-detail').length;
+
+  //alert(nb);
+   if(nb == 0){
+ $("#dropdownclass").addClass("no-post-h2");
+
+   }
+
+});
+ </script>
