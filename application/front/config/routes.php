@@ -85,9 +85,11 @@ $route['business-profile/followers'] = "business_profile/followers";
 $route['business-profile/followers/(:any)'] = "business_profile/followers/$1";
 $route['business-profile/following'] = "business_profile/following";
 $route['business-profile/following/(:any)'] = "business_profile/following/$1";
+$route['business-profile/userlist'] = "business_profile/userlist";
 $route['business-profile/userlist/(:any)'] = "business_profile/userlist/$1";
 $route['business-profile/contact-list'] = "business_profile/contact_list";
 
+$route['business-profile/contacts'] = "business_profile/bus_contact";
 $route['business-profile/contacts/(:any)'] = "business_profile/bus_contact/$1";
 
 $route['business-profile/user-image-change'] = "business_profile/user_image_insert";

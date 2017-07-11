@@ -2217,7 +2217,12 @@ class Business_profile extends MY_Controller {
 
     public function user_image_insert() {
         $userid = $this->session->userdata('aileenuser');
-
+        
+        $contition_array = array('user_id' => $userid);
+        $business_slug = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $business_user_slug = $business_slug[0]['business_slug'];
+        
         if ($this->input->post('cancel2')) {
             redirect('business-profile/home', refresh);
         } elseif ($this->input->post('cancel1')) {
@@ -2344,6 +2349,13 @@ class Business_profile extends MY_Controller {
                     redirect('business-profile/business-audios', refresh);
                 } elseif ($this->input->post('hitext') == 12) {
                     redirect('business-profile/business-pdf', refresh);
+                }elseif ($this->input->post('hitext') == 13) {
+                    if($business_user_slug){
+                        redirect('business-profile/contacts/'.$business_user_slug, refresh);
+                    }
+                    else{
+                        redirect('business-profile/contacts/', refresh);
+                    }
                 }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
