@@ -1924,8 +1924,6 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
-
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $freelancerhiredata = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1935,20 +1933,13 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
 
            foreach ($postuserarray as $key => $value) {
         $contition_array = array('status'=>'1','is_delete' =>'0','user_id !=' =>$userid,'FIND_IN_SET("'.$value.'",freelancer_post_area)!='=>'0'); 
-       $candidate = $this->data['candidatefreelancer'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           }
+       $candidate = $this->data['candidatefreelancer'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname,freelancer_post_username,freelancer_post_city,freelancer_post_area,freelancer_post_skill_description,freelancer_post_hourly,freelancer_post_ratestate,freelancer_post_fixed_rate,freelancer_post_work_hour,user_id,freelancer_post_user_image,designation,freelancer_post_otherskill,freelancer_post_exp_month,freelancer_post_exp_year', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         }
 
         }
-
-//code for search start
+ //code for search start
 $this->freelancer_hire_search();
 //code for search end
-
-
-
-
-
-//echo "<pre>"; print_r($this->data['candidatefreelancer']); die();
         $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
     }
     public function freelancer_edit_post($id) {  
