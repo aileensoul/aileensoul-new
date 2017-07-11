@@ -2956,7 +2956,7 @@ $contition_array = array('status' => '1');
 
 
    $contition_array = array('save.status'=> '0','freelancer_post_reg.is_delete' => 0, 'freelancer_post_reg.status' => 1, 'save.from_id' => $userid, 'save.save_type' => 2);
-   $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('save', $contition_array, $data='', $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+   $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('save', $contition_array, $data='freelancer_post_reg.freelancer_post_user_image,freelancer_post_reg.user_id,freelancer_post_reg.freelancer_post_fullname,freelancer_post_reg.freelancer_post_username,freelancer_post_reg.designation,freelancer_post_reg.freelancer_post_area,freelancer_post_reg.freelancer_post_otherskill,freelancer_post_reg.freelancer_post_city,freelancer_post_reg.freelancer_post_skill_description,freelancer_post_reg.freelancer_post_work_hour,freelancer_post_reg.freelancer_post_hourly,freelancer_post_reg.freelancer_post_ratestate,freelancer_post_reg.freelancer_post_fixed_rate,freelancer_post_reg.freelancer_post_exp_year,freelancer_post_reg.freelancer_post_exp_month,save.save_id', $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
