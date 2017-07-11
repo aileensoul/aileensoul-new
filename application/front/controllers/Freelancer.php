@@ -2940,24 +2940,15 @@ $contition_array = array('status' => '1');
 
 //save freelancer list controller start
     public function freelancer_save() {
-
         $userid = $this->session->userdata('aileenuser');
-        
-        // code change by pallavi 14-4-2017
-
-
-      //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-  
- $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
+        //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
+     $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         if( $freelancerhire_deactive)
         {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
-//if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
+    //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $join_str[0]['table'] = 'freelancer_post_reg';
         $join_str[0]['join_table_id'] = 'freelancer_post_reg.user_id';
         $join_str[0]['from_table_id'] = 'save.to_id';
@@ -2965,28 +2956,17 @@ $contition_array = array('status' => '1');
 
 
    $contition_array = array('save.status'=> '0','freelancer_post_reg.is_delete' => 0, 'freelancer_post_reg.status' => 1, 'save.from_id' => $userid, 'save.save_type' => 2);
-   $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('save', $contition_array, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+   $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('save', $contition_array, $data='', $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-      // code end by pallavi 14-4-2017
-
-        // echo "<pre>";print_r($postdata);die();
-        //
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         $contition_array = array('status' => '1', 'is_delete' => '0','free_post_step' => 7);
 
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($results_recruiter);die();
-
         $contition_array = array('status' => '1', 'type' => '1');
-
         $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         $unique = array_merge($field, $skill, $freelancer_postdata);
-        // echo count($unique);
-        // $this->data['demo']=$unique;
-       
        foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
@@ -2999,13 +2979,8 @@ $contition_array = array('status' => '1');
             $result1[$key]['label']=$value;
             $result1[$key]['value']=$value;
           }
-
-         
-
  $contition_array = array('status' => '1');
           $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-   
-
           foreach ($location_list as $key1 => $value1) {
               foreach ($value1 as $ke1 => $val1) {
                  $location[] = $val1;
@@ -3016,12 +2991,7 @@ $contition_array = array('status' => '1');
               $loc[$key]['label'] =$value;
               $loc[$key]['value'] =$value;
           }
-         
- //echo "<pre>"; print_r($loc);die();
-
         $this->data['city_data']= array_values($loc);
-
-
 $this->data['demo']= array_values($result1);
 $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
    
