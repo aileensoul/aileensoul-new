@@ -2,6 +2,7 @@
 <html>
     <head>
     <title><?php echo $title; ?></title>
+        <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
@@ -39,13 +40,8 @@
         </style>
     </head>
     <body class="page-container-bg-solid page-boxed">
-        <!-- START HEAD -->
-        <?php echo $head; ?>
-        <!-- END HEAD -->
         <!-- START HEADER -->
         <?php echo $header; ?>
-        <!-- <script src="<?php echo base_url('js/fb_login.js'); ?>">
-        </script> -->
         <!-- END HEADER -->
         <?php echo $business_header2_border; ?>
         <section>

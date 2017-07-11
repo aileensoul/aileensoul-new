@@ -122,7 +122,7 @@
                 <div class="row">
 
 
-                    <div class="profile-art-box profile-box-custom col-md-4">
+                    <div class="profile-art-box profile-box-custom col-md-4 animated fadeInLeftBig">
                         <?php ?>
 
                                  <div class="full-box-module">   
@@ -209,7 +209,7 @@
 
                     <!-- popup end -->
                 </div>
-                <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art">
+                <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art animated fadeInUp">
                    
 
                     <?php

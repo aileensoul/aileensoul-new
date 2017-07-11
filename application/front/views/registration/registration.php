@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>aileensoul main</title>
+  <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
+  <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="css/common-style.css">
   <link rel="stylesheet" href="css/style-main.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -14,27 +15,27 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-3">
-          <h2 class="logo"><a href="<?php echo base_url('main'); ?>">Aileensoul</a></h2>
+        <div class="col-md-4 col-sm-3 col-xs-3">
+          <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
         </div>
-        <div class="col-md-8 col-sm-9">
-            <div class="btn-right pull-right">
-              <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-              <a href="<?php echo base_url('registration'); ?>" class="btn3">creat an account</a>
+        <div class="col-md-8 col-sm-9 col-xs-9">
+            <div class="btn-right pull-right t-r-l">
+              <a href="<?php echo base_url('login'); ?>" class="btn3">Login</a>
+<!--              <a href="<?php echo base_url('registration'); ?>" class="btn3">creat an account</a>-->
             </div>
         </div>
       </div>
     </div>
   </header>
-  <section class="middle-main">
+  <section class="middle-main pd-low">
     <div class="container">
       
-        <div class="title">
-          <h1>Join Aileensoul</h1>
-        </div>
-        <div class="inner-form">
+      
+        <div class="inner-form pt-100">
           <div class="login">
-            
+              <div class="title">
+          <h1>Join Aileensoul - It's Free</h1>
+        </div>
             <form role="form" name="register_form" id="register_form" method="post">
                 <div class="row">
                   <div class="col-sm-6 col-md-6">
@@ -56,6 +57,8 @@
                   <input type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
                 </div>
               <div class="form-group dob">
+				<label class="d_o_b"> Date Of Birth :</label>
+				<!--span class="d_o_b">DOB </span-->
                 <select class="day" name="selday" id="selday">
                   <option value="" disabled selected value>Day</option>
                   <?php
@@ -97,6 +100,7 @@
                   }
                   ?>
                 </select>
+
               </div>
               
               <div class="form-group gender-custom">
@@ -107,13 +111,20 @@
                 </select>
               </div>
               
-              <p class="fs12 pt15 pb15">
+              <p class="clr-c fs12 pt15 pb15">
                 By Clicking on create an account button you agree our 
                 <a href="#">Terms and Condition</a>.
               </p>
                 <p>
                 <button class="btn1">Create an account</button>
               </p>
+              
+              <div class="sign_in pt15">
+                <p>
+                    Already have an account ? <a href="<?php echo base_url('login'); ?>" > Log In </a>
+                </p>
+                    </div>
+            
               </form>
             
           </div>
@@ -124,18 +135,19 @@
   </section>
 
   <footer>
-    <div class="container">
+    <div class="container pt-20">
       <div class="row">
-        <div class="col-md-6 col-sm-4">
-          © 2017 | by Aileensoul
-        </div>
-        <div class="col-md-6 col-sm-8">
+       
+        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
           <ul>
             <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
             <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-            <li><a href="javascript:void(0);">Blogs</a>|</li>
+            
             <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
           </ul>
+        </div>
+		 <div class="col-md-6 col-sm-4">
+          © 2017 | by Aileensoul
         </div>
       </div>
     </div>

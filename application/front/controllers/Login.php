@@ -20,8 +20,37 @@ class Login extends CI_Controller {
          
     }
 
-    public function index() {
-        $this->load->view('Login/index', $this->data);
+    public function index() { 
+
+    if($_SERVER['HTTP_REFERER'] == base_url()){
+           $this->data['error_msg'] = $error_msg = $_GET['error_msg']; 
+     }
+    else{
+      $this->data['error_msg'] = $error_msg = 0;  
+     }
+     if($this->input->get()){
+     if($_GET['lwc'] != " "){
+         $emaildata = $this->common->select_data_by_id('user', 'user_id', $_GET['lwc'], $data = 'user_email', $join_str = array());
+     
+         $this->data['email'] = $emaildata[0]['user_email'];
+         
+          $this->session->set_flashdata('error', 'Enter valid password');
+     }else{ 
+          $this->session->set_flashdata('success', 'enter valid email address');
+     }
+     
+     }
+
+   
+//       if ($error_msg == 1) { 
+//         $this->session->set_flashdata('error', 'Enter valid email address');
+//              } else if($error_msg == 2){ 
+//                 $this->session->set_flashdata('success', 'Enter valid password');
+//              }
+
+
+
+        $this->load->view('login/index', $this->data);
     }
 
     public function check_login() {

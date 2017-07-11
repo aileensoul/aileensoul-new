@@ -15,7 +15,7 @@
    <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container" >
          <div class="row">
-            <div class="col-md-4 col-sm-4 profile-box profile-box-left">
+            <div class="col-md-4 col-sm-4 profile-box profile-box-left animated fadeInLeftBig">
                <div class="">
                   <div class="full-box-module">
                      <div class="profile-boxProfileCard  module">
@@ -89,7 +89,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right">
+            <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                <div class="common-form">
                   <div class="job-saved-box">
                      <h3>Recommended Job</h3>
@@ -97,8 +97,8 @@
                         <?php
                            if ($falguni == 1) {
                        
-                               if (count($postdetail) > 0 && $postdetail[0][0] != '') {
-                          
+                              // if (count($postdetail) > 0 && $postdetail[0][0] != '') {
+                          if (count($postdetail) > 0) {
                                    foreach ($postdetail as $postdetail1) {
                                        foreach ($postdetail1 as $post) {
                                        ?> 
@@ -202,18 +202,59 @@
                                           <span title="Min - Max">
                                              <p>
                                                 <?php 
-                                                   if(($post['min_year'] !='0' || $post['min_month'] !='0' || $post['max_month'] !='0' || $post['max_year'] !='0') && ($post['fresher'] == 1))
-                                                      { 
-                                                   echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year'." , ". "Fresher can also apply.";
-                                                      } 
-                                                    
-                                                     else
-                                                     {
-                                                   echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
-                                                          
-                                                     }
-                                                   
-                                                   ?> 
+
+      if(($post['min_year'] != '' && $post['max_year'] !='') && ($post['fresher'] == 1))
+     { 
+        if ($post['min_month'] == '' && $post['max_month'] == '') {
+            echo $post['min_year'].' Year - '.$post['max_year'] . ' Year'." , ". "Fresher can also apply.";
+          
+        }  
+         elseif ($post['min_month'] != '' && $post['max_month'] != '') {
+      echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year'." , ". "Fresher can also apply.";
+            
+          
+        } 
+        elseif ($post['min_month'] != '' && $post['max_month'] == '') {
+        echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .' Year'." , ". "Fresher can also apply.";
+            
+          
+        }
+        elseif ($post['min_month'] == '' && $post['max_month'] != '') {
+        echo $post['min_year']. ' Year - '.$post['max_year'] .' Year'." , ". "Fresher can also apply.";
+            
+          
+        }    
+     } 
+     elseif($post['min_year'] != '' && $post['max_year'] !='')
+     { 
+        if ($post['min_month'] == '' && $post['max_month'] == '') {
+            echo $post['min_year'].' Year - '.$post['max_year'] . ' Year';
+          
+        }  
+         elseif ($post['min_month'] != '' && $post['max_month'] != '') {
+      echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
+            
+          
+        } 
+        elseif ($post['min_month'] != '' && $post['max_month'] == '') {
+        echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .' Year';
+            
+          
+        }
+        elseif ($post['min_month'] == '' && $post['max_month'] != '') {
+        echo $post['min_year']. ' Year - '.$post['max_year'] .' Year';
+            
+          
+        }    
+     } 
+    else
+    {
+      echo "Fresher";
+ // echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
+         
+    }
+
+ ?> 
                                              </p>
                                           </span>
                                        </li>
@@ -292,7 +333,8 @@
                         <?php
                            }
                            } else { 
-                           if (count($postdetail) > 0 && $postdetail[0][0] != '') {
+                           // if (count($postdetail) > 0 && $postdetail[0][0] != '') {
+                            if (count($postdetail) > 0) {
                                foreach ($postdetail as $post_key => $postdetail1){
                                 foreach ($postdetail1 as $post) {
                                    ?> 
@@ -645,8 +687,8 @@
 <script type="text/javascript">
    function checkvalue() {
        // alert("hi");
-       var searchkeyword = document.getElementById('tags').value;
-       var searchplace = document.getElementById('searchplace').value;
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
        // alert(searchkeyword);
        // alert(searchplace);
        if (searchkeyword == "" && searchplace == "") {

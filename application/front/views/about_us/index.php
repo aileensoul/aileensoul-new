@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>aileensoul main</title>
+  <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
+   <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="css/common-style.css">
   <link rel="stylesheet" href="css/style-main.css">
+   <link rel="stylesheet" href="css/style_new.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
 </head>
-<body>
+<body class="about-us">
 <div class="main-inner">
   <header>
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-sm-3">
-          <h2 class="logo"><a href="<?php echo base_url('main'); ?>">Aileensoul</a></h2>
+          <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
         </div>
         <div class="col-md-8 col-sm-9">
             <div class="btn-right pull-right">
               <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-              <a href="<?php echo base_url('registration'); ?>" class="btn3">creat an account</a>
+              <a href="<?php echo base_url('registration'); ?>" class="btn3">Creat an account</a>
             </div>
         </div>
       </div>
@@ -28,9 +30,9 @@
   </header>
   <section class="middle-main">
     <div class="container">
-      
-        <div class="title">
-          <h1>About us</h1>
+      <div class="pt-a">
+        <div class="titlea">
+          <h1 class="pb20">About us</h1>
         </div>
         <div class="about-content">
           Aileensoul is dedicated purely towards providing relentless and free platform to everyone. We provide a diversified platform for every kind of person. You can hire, recruit, and find a job of your preference in your required field. You can also find freelancing work from our site. Aileensoul targets every kind of population be it a person from artistic field or a person working in a contemporary setup. Beginning from hiring a housemaid to hiring an employ for your business, Aileensoul has it all. Any person looking for any kind of job or wants to showcase his/her artistic talent are free to create their profile. We want the gap that exists between the employer and employee to be fulfilled and hence creating a vast platform for employment as well as different services. 
@@ -43,23 +45,24 @@
             <li><a href="mailto:inquiry@aileensoul.com">inquiry@aileensoul.com</a></li>
           </ul>
         </div>
-      
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">
+    <div class="container pt-20">
       <div class="row">
-        <div class="col-md-6 col-sm-4">
-          © 2017 | by Aileensoul
-        </div>
-        <div class="col-md-6 col-sm-8">
+        
+        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
           <ul>
             <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
             <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-            <li><a href="javascript:void(0);">Blogs</a>|</li>
+            
             <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
           </ul>
+        </div>
+		<div class="col-md-6 col-sm-4">
+          © 2017 | by Aileensoul
         </div>
       </div>
     </div>

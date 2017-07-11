@@ -5,7 +5,7 @@
    
 <header>
     <div class="bg-search">
-        <div class="header2 headerborder">
+        <div class="header2 headerborder animated fadeInDownBig">
             <div class="container">
                 <div class="row">
                   <div class="col-sm-7 col-md-7 col-xs-6 hidden-mob">

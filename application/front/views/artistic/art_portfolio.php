@@ -113,7 +113,7 @@
 
 
                                 <fieldset class="full-width">
-                                 <label>Enter Portfolio Description</label>
+                                 <label>Enter Portfolio Description:</label>
                               <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" ><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
                                          <?php echo form_error('artportfolio'); ?><!-- 
                                   <label for="bestofmine" style="cursor: pointer;" tabindex="1" ></label>
@@ -337,6 +337,8 @@ $userid = $this->session->userdata('aileenuser');
   var $field = $('#artportfolio123');
   
   var artportfolio = $('#artportfolio123').html();
+  artportfolio = artportfolio.replace(/ /gi, " ");
+  artportfolio = artportfolio.trim();
  
      
 

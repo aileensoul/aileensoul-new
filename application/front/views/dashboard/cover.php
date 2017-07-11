@@ -1,51 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-  <title>aileensoul main</title>
+  <title>aileensoul</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  </head>
-<body>
-<?php echo $head; ?>
-
-<?php echo $header; ?>
-
-<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script> 
-<script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
- -->  
- <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
-
-
   <link rel="stylesheet" href="css/common-style.css">
- <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<!--END HEADER -->
-
   <link rel="stylesheet" href="css/style-main.css">
- 
-    <div class="middle-section">
-        <div class="container">
-            <section class="banner">
-                <div class="banner-box">
-                     <!-- coer image start-->
-        <div class="" id="">
 
-            <div class="row" id="row1" style="display:none;">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>" />
+<!--link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" /-->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body class="cover ">
+
+	<?php echo $head; ?>
+<?php echo $header; ?>
+    
+    <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+	<div class="middle-section">
+	   <!--verify link start-->
+                    <div class="profile-text1 animated fadeInDownBig" id="verifydiv" style="display: none;">
+            <?php
+            $userid = $this->session->userdata('aileenuser');
+            $this->db->select('*');
+            $this->db->where('created_date BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND NOW()');
+            $this->db->where('user_id', $userid);
+            $result = $this->db->get('user')->result_array();
+
+
+            if ($userdata[0]['user_verify'] == 0 && count($result) > 0) {
+                ?>
+
+                <div class="alert alert-warning  vs-o">
+                <div class="email-verify">
+					<span class="email-img"><img src="images/email.png"></span>
+                    <span class="main-txt">
+                    <span class="as-p">
+                       We have send you an activation email address on your email , Click the link in the mail to verify your email address.   
+                    </span>
+                    <span class="ves_c">
+                    <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify Email Address</a></span>
+					 <span class="fw-50"> <a class="chng_email" href="">Change Email Address</a> </span>
+					 </span>
+                   <span class="fr cls-ve"><i class="fa fa-times" aria-hidden="true"></i> </span>
+                   </span>
+                </div>
+                </div>
+            <?php }
+            ?>
+
+        </div> 
+                         <!--verify link end-->
+		<div class="container xs-p0">
+                 
+			<section class="banner">
+				<div class="banner-box">
+					<div class="banner-img">
+
+
+					<div class="row" id="row1" style="display:none;">
                 <div class="col-md-12 text-center">
                     <div id="upload-demo"></div>
                 </div>
-                <div class="col-md-12 cover-pic" >
+                <div class="col-md-12 cover-pic " >
                     <button class="btn btn-success  cancel-result" onclick="myFunction()">Cancel</button>
 
-                    <button class="btn btn-success upload-result fr" onclick="myFunction()">Save</button>
+                    <button class="btn btn-success  upload-result fr" onclick="myFunction()">Save</button>
 
                     <div id="message1" style="display:none;">
                         <div class="loader"><div id="floatBarsG">
@@ -67,284 +92,483 @@
             </div>
 
 
-
-
-            <div class="container">
-                <div class="row" id="row2">
+            <div class="" id="row2">
                     <?php
                     $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
                     $image = $this->common->select_data_by_condition('user', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    //echo "<pre>";print_r($image);
+                    
                     $image_ori = $image[0]['profile_background'];
                     if ($image_ori) {
                         ?>
                         <div class="bg-images">
-                            <img class="main-cover" src="<?php echo base_url($this->config->item('user_bg_main_upload_path'). $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" / ></div>
+                            <img src="<?php echo base_url($this->config->item('user_bg_main_upload_path'). $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" / ></div>
                         <?php
                     } else {
                         ?>
-                        <div class="main-cover" class="bg-images">
+                        <div class="bg-images">
                             <img src="<?php echo WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" /></div>
                     <?php }
                     ?>
 
                 </div>
-            </div>
-        </div>
-       
 
-<div class="container">   
-<div class="row"> 
-    <div class="upload-img">
+						<?php if($userdata[0]['profile_background']){?>
+						<img src="<?php echo base_url($this->config->item('user_bg_main_upload_path'). $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" class="main-cover"/ >
 
+						<?php }else{?>
+						 <img src="<?php echo WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" class="main-cover" />
 
-        <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span> <i class="fa fa-camera" aria-hidden="true"></i>
-            <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
-        </label>
-    </div>
-     </div>
-</div>
-       
-        <!-- coer image end-->
+						<?php }?>
 
-                  
-
-                    <div class="left-profile">
-						<div class="profile-table">
-
-                        <div class="profile-photo">
+					</div>
 
 
-                         <?php
+
+					<div class="upload-camera">
+
+						 <!--<a href="#"><img src="img/cam.png"></a>--> 
+						  <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span> <i class="fa fa-camera" aria-hidden="true"></i>
+						<input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
+
+
+					</div>
+
+                                         
+					<div class="left-profile">
+						<div class="profile-photo">
+
+					<?php
                 $image_ori = $userdata[0]['user_image'];
                 if ($image_ori) {
                     ?>
-                    <img class="main-pic" src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" >
+                    <img src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" class="main-pic">
 
-                <?php } else { ?>
+              <?php } else { ?>
 
-                    <img class="main-pic" src="<?php echo base_url(NOIMAGE); ?>" alt="" > 
-                   <?php } ?>
+                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="" class="main-pic"> 
+               <?php } ?>
 
-                   <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-						<span class="upload-img-new">
-							<img src="img/cam.png">
-							<span class="upload-text">update profile picture</span>
-						</span>
-                   </a>
-                        </div>
+						<a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
+								<img src="img/cam.png">Update Profile Picture</a>
+	
 
-
-                        <div class="profile-detail">
-                            <h2><?php echo ucwords($userdata[0]['first_name']); echo '&nbsp;'; echo ucwords($userdata[0]['last_name']);?></h2>
-
-                            <p>Ahmedabad, Gujarat</p>
-                        </div>
 						</div>
-                    </div>
-                </div>
-            </section>
-            <section class="all-profile">
+						<div class="profile-detail">
+							<h2> <?php echo ucwords($userdata[0]['first_name']) . ' ' . ucwords($userdata[0]['last_name']); ?></h2>
+							<!-- <p>Ahmedabad, Gujarat</p> -->
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class="sticky-container right-profile">
+			<ul class="sticky-right">
+				<li>
+					<a href="#job-scroll" class="right-menu-box job-r" onclick="return tabindexjob();"><span>Job Profile</span></a>
+				</li>
+				<li>
+					<a href="#rec-scroll" class="right-menu-box rec-r" onclick="return tabindexrec();"> <span>Recruiter Profile</span></a>
+				</li>
+				<li>
+					<a href="#free-scroll" class="right-menu-box free-r" onclick="return tabindexfree();"> <span>Freelance Profile</span></a>
+				</li>
+				<li>
+					<a href="#bus-scroll" class="right-menu-box bus-r" onclick="return tabindexbus();"> <span>Business Profile</span></a>
+				</li>
+				<li>
+					<a href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"> <span>Artistic Profile</span></a>
+				</li>
+			</ul>
+		</div>
+		<!--div class="right-profile">
+			<ul>
+				<li><a href="#job-scroll" class="right-menu-box job-r" onclick="return tabindexjob();"><span>Job Profile</span></a></li>
+				<li><a href="#rec-scroll" class="right-menu-box rec-r" onclick="return tabindexrec();"></a></li>
+				<li><a href="#free-scroll" class="right-menu-box free-r" onclick="return tabindexfree();"></a></li>
+				<li><a href="#bus-scroll" class="right-menu-box bus-r" onclick="return tabindexbus();"></a></li>
+				<li><a href="#art-scroll" class="right-menu-box art-r" onclick="return tabindexart();"></a></li>
+			</ul>
+		</div-->
+			<section class="all-profile-custom">
+				<div id="job-scroll" class="custom-box odd">
+					<div class="custom-width">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<div class="left-box">
+									<a href="<?php echo base_url('job'); ?>"><img src="img/i1.jpg"></a>
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8">
+								<div class="right-box">
+									<h1><a href="<?php echo base_url('job'); ?>">Job Profile</a></h1>
+									<p>Find best job options and connect with recruiters.</p>
+									<div class="btns">
+
+										<?php if($job[0]['job_step'] != 10){?>
+										<a class="btn-1" href="<?php echo base_url('job'); ?>">Register</a>
+										<?php }else{?> 
+
+										<a class="btn-4" href="<?php echo base_url('job'); ?>">Take me in</a> 
+
+										<?php }?>
+
+										<a data-toggle="modal" data-target="#jop-popup" class="pl20 ml20 hew" href="#">How item works?</a> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="rec-scroll" class="custom-box even">
+					<div class="custom-width">
+						<div class="row">
+							<div class="col-md-4 pull-right col-sm-4 col-xs-12">
+								<div class="left-box">
+									<a href="<?php echo base_url('recruiter'); ?>"><img src="img/i2.jpg"></a>
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8 col-xs-12">
+								<div class="right-box">
+									<h1><a href="<?php echo base_url('recruiter'); ?>">Recruiter Profile</a></h1>
+									<p>Hire quality employees here.</p>
+									<div class="btns">
+										<a data-toggle="modal" data-target="#rec-popup" class="pr20 mr20 hew" href="#">How it works?</a> 
+
+										 <?php if($recrdata[0]['re_step'] != 3){?>
+
+										<a class="btn-1" href="<?php echo base_url('recruiter'); ?>">Register</a>
+										<?php }else{?>
+
+										<a class="btn-4" href="<?php echo base_url('recruiter'); ?>">Take me in</a>
+
+										<?php }?>
+
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div id="free-scroll" class="custom-box odd">
+					<div class="custom-width">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<div class="left-box">
+									<a href="<?php echo base_url('freelancer'); ?>"><img src="img/i3.jpg"></a>
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8">
+								<div class="right-box">
+									<h1><a href="<?php echo base_url('freelancer'); ?>">Freelance Profile</a></h1>
+									<p>Hire freelancers and also find freelance work.</p>
+									<div class="btns">
+
+									<?php if($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7){ ?>
+										<a class="btn-1" href="<?php echo base_url('freelancer'); ?>">Register</a>
+										<?php }else{?>
+
+										<a class="btn-4" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
+
+										<?php }?>
 
 
-                <?php if($job[0]['job_step'] != 10){?>
-                <div class="box-profile deactive-profile">
+										<a data-toggle="modal" data-target="#fre-popup" class="pl20 ml20 hew" href="#">How it works?</a> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="bus-scroll" class="custom-box even">
+					<div class="custom-width">
+						<div class="row">
+							<div class="col-md-4 col-sm-4 pull-right col-xs-12">
+								<div class="left-box">
+									<a href="<?php echo base_url('business_profile'); ?>"><img src="img/i4.jpg"></a>
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8 col-xs-12">
+								<div class="right-box">
+									<h1><a href="<?php echo base_url('business_profile'); ?>">Business Profile</a></h1>
+									<p>Grow your business network.</p>
+									<div class="btns">
+										<a data-toggle="modal" data-target="#bus-popup" class="pr20 mr20 hew" href="#">How it works?</a>
 
-                    <div class="profile-box-1 job">
-                        <a class="active-profile" href="<?php echo base_url('job'); ?>">
-                            <div class="all-img">
-                                <img src="img/job.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Job Profile</h4>
-                                <p>Find best job options and connect with recruiters.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="profile-box-1 box-hover">
-                        <div class="hover-content">
-                            <p><a href="<?php echo base_url('job'); ?>">How it work</a></p>
-                            <p><a href="<?php echo base_url('job'); ?>">Register</a></p>
-                        </div>
-                    </div>
-                </div>
+										<?php if($busdata[0]['business_step'] != 4){ ?>
+										<a class="btn-1" href="<?php echo base_url('business_profile'); ?>">Register</a> 
+										<?php }else{?>
+										<a class="btn-4" href="<?php echo base_url('business_profile'); ?>">Take me in</a> 
 
-                <?php }else{ ?>
+										<?php }?>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div id="art-scroll" class="custom-box odd">
+					<div class="custom-width">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<div class="left-box">
+									<a href="<?php echo base_url('artistic'); ?>"><img src="img/i5.jpg"></a>
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8">
+								<div class="right-box">
+									<h1><a href="<?php echo base_url('artistic'); ?>">Artistic Profile</a></h1>
+									<p>Show your art & talent to the world.</p>
+									<div class="btns">
 
+										<?php if($artdata[0]['art_step'] != 4){?>
+										<a class="btn-1" href="<?php echo base_url('artistic'); ?>">Register</a> 
+										<?php }else{?>
+										<a class="btn-4" href="<?php echo base_url('artistic'); ?>">Take me in</a>
+										<?php }?>
 
-                <div class="box-profile">
+										<a data-toggle="modal" data-target="#art-popup" class="pl20 ml20 hew" href="#">How it works?</a> 
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		
+	</div>
 
-                    <div class="profile-box-1 job">
-                        <a class="active-profile" href="<?php echo base_url('job'); ?>">
-                            <div class="all-img">
-                                <img src="img/job.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Job Profile</h4>
-                                <p>Find best job options and connect with recruiters.</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div>
+	<!-- <footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-4">
+					© 2017 | by Aileensoul
+				</div>
+				<div class="col-md-6 col-sm-8">
+					<ul>
+						<li><a href="#">About Us</a>|</li>
+						<li><a href="#">Contact Us</a>|</li>
+						<li><a href="#">Blogs</a>|</li>
+						<li><a href="#">Send Us Feedback</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer> -->
+	
+	<!--  how it work popup  -->
+	<div class="modal fade how-it-popup" id="jop-popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+					<h1 class="modal-title">How It Works ?</h1>
+				</div>
+				<div class="modal-body">
+					<div class=""> 
+						<div class="col-md-6 col-sm-6 pro_img">
+							<h3>Job Profile</h3>
+							<img src="img/how-it.png">
+						</div>
+						<div class="col-md-6 col-sm-6 por_content">
+							<ul>
+								<li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+								<li><img src="img/p2.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get job recommendation as per your skills</span></span></li>
+								<li><img src="img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - Save - Apply for the job</span></span></li>
+								<li><img src="img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with the recruiter and view recruiter's profile.</span></span></li>
+							</ul>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
 
-                <?php }?>
+					<?php if($job[0]['job_step'] != 10){?>
+					<a class="btn-2" href="<?php echo base_url('job'); ?>">Register Now</a>
+					<?php }else{?>
+					<a class="btn-4" href="<?php echo base_url('job'); ?>">Take me in</a>
+					<?php }?>
 
-                <?php if($recrdata[0]['re_step'] != 3){?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade how-it-popup" id="rec-popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+					<h1 class="modal-title">How It Works ?</h1>
+				</div>
+				<div class="modal-body">
+					<div class=""> 
+						<div class="col-md-6 col-sm-6 pro_img">
+							<h3>Recruiter Profile</h3>
+							<img src="img/how-it.png">
+						</div>
+						<div class="col-md-6 col-sm-6 por_content">
+							<ul>
+								<li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+								<li><img src="img/p5.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post job and see recommended candidates</span></span></li>
+								<li><img src="img/p6.png"><span class="pro-text"><span class="count">3.</span><span class="text">Invite from applied candidates for an interview</span></span></li>
+								<li><img src="img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with job seekers and view their profiles.</span></span></li>
+							</ul>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
 
-                <div class="box-profile deactive-profile">
-                    <div class="profile-box-1 rec">
-                        <a class="active-profile" href="<?php echo base_url('recruiter'); ?>">
-                            <div class="all-img">
-                                <img src="img/rec.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Recruiter Profile</h4>
-                                <p>Hire quality employees here.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="profile-box-1 box-hover">
-                        <div class="hover-content">
-                            <p><a href="<?php echo base_url('recruiter'); ?>">How it work</a></p>
-                            <p><a href="<?php echo base_url('recruiter'); ?>">Register</a></p>
-                        </div>
-                    </div>
-                </div>
+					 <?php if($recrdata[0]['re_step'] != 3){?>
+					<a class="btn-2" href="<?php echo base_url('recruiter'); ?>">Register Now</a>
+					<?php }else{?>
+					<a class="btn-4" href="<?php echo base_url('recruiter'); ?>">Take me in</a>
 
-                <?php }else{?>
+					<?php }?>
 
-                <div class="box-profile">
-                    <div class="profile-box-1 rec">
-                        <a class="active-profile" href="<?php echo base_url('recruiter'); ?>">
-                            <div class="all-img">
-                                <img src="img/rec.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Recruiter Profile</h4>
-                                <p>Hire quality employees here.</p>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade how-it-popup" id="fre-popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+					<h1 class="modal-title">How It Works ?</h1>
+				</div>
+				<div class="modal-body">
+					<div class=""> 
+						<div class="col-md-6 col-sm-6 pro_img">
+							<h3>Freelance Profile</h3>
+							<img src="img/how-it.png">
+						</div>
+						<div class="col-md-6 col-sm-6 por_content">
+							<ul>
+								<li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+								<li><img src="img/p7.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get freelance work as per your skills</span></span></li>
+								<li><img src="img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - save - apply for freelance work </span></span></li>
+								<li><img src="img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with the employer.</span></span></li>
+							</ul>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
 
-                <?php }?>
+					<?php if($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7){ ?>
+					<a class="btn-2" href="<?php echo base_url('freelancer'); ?>">Register Now</a>
 
-                <div class="box-profile deactive-profile">
-                    <div class="profile-box-1 free">
-                        <a class="active-profile" href="<?php echo base_url('freelancer'); ?>">
-                            <div class="all-img">
-                                <img src="img/freelancer.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Freelancer Profile</h4>
-                                <p>Hire freelancers and also find freelance work.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="profile-box-1 box-hover">
-                        <div class="hover-content">
-                            <p><a href="<?php echo base_url('freelancer'); ?>">How it work</a></p>
-                            <p><a href="<?php echo base_url('freelancer'); ?>">Register</a></p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <?php if($busdata[0]['business_step'] != 4){ ?>
-
-                <div class="box-profile deactive-profile">
-                    <div class="profile-box-1 bus">
-                        <a class="active-profile" href="<?php echo base_url('business-profile'); ?>">
-                            <div class="all-img">
-                                <img src="<?php echo base_url(); ?>img/business.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Business Profile</h4>
-                                <p>Grow your business network.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="profile-box-1 box-hover">
-                        <div class="hover-content">
-                            <p><a href="<?php echo base_url('business-profile'); ?>">How it work</a></p>
-                            <p><a href="<?php echo base_url('business-profile'); ?>">Register</a></p>
-                        </div>
-                    </div>
-                </div>
-                <?php }else{?>
-
-
-                <div class="box-profile">
-                    <div class="profile-box-1 bus">
-                        <a class="active-profile" href="<?php echo base_url('business-profile'); ?>">
-                            <div class="all-img">
-                                <img src="<?php echo base_url(); ?>img/business.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Business Profile</h4>
-                                <p>Grow your business network.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <?php }?>
-
-                <?php if($artdata[0]['art_step'] != 4){?>
-                <div class="box-profile deactive-profile">
-                    <div class="profile-box-1 art">
-                        <a class="active-profile" href="<?php echo base_url('artistic'); ?>">
-                            <div class="all-img">
-                                <img src="img/art.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Artistic Profile</h4>
-                                <p>Show your art & talent to the world.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="profile-box-1 box-hover">
-                        <div class="hover-content">
-                            <p><a href="<?php echo base_url('artistic'); ?>">How it work</a></p>
-                            <p><a href="<?php echo base_url('artistic'); ?>">Register</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <?php }else{?>
-
-
-                 <div class="box-profile">
-                    <div class="profile-box-1 art">
-                        <a class="active-profile" href="<?php echo base_url('artistic'); ?>">
-                            <div class="all-img">
-                                <img src="img/art.png">
-                            </div>
-                            <div class="all-discription">
-                                <h4>Artistic Profile</h4>
-                                <p>Show your art & talent to the world.</p>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
+					<?php }else{?>
+					<a class="btn-4" href="<?php echo base_url('freelancer'); ?>">Take me in</a>
 
 
+					<?php }?>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                <?php }?>
-                
-            </section>
-        </div>
-    </div>
+	<div class="modal fade how-it-popup" id="bus-popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+					<h1 class="modal-title">How It Works ?</h1>
+				</div>
+				<div class="modal-body">
+					<div class=""> 
+						<div class="col-md-6 col-sm-6 pro_img">
+							<h3>Business Profile</h3>
+							<img src="img/how-it.png">
+						</div>
+						<div class="col-md-6 col-sm-6 por_content">
+							<ul>
+								<li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+								<li><img src="img/p4.png"><span class="pro-text"><span class="count">2.</span><span class="text">Build business network.</span></span>
+								</li>
+							</ul>
+							<div class="sub-text">
+								<p>Get all news feed about your business category and of business you follow</p>
+								<p>You can add to your contacts and grow your business network</p>
+								<p>You can upload your products photos and also like and comment on other photos</p>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+
+					<?php if($busdata[0]['business_step'] != 4){ ?>
+					<a class="btn-2" href="<?php echo base_url('business_profile'); ?>">Register Now</a>
+					<?php }else{?>
+                    <a class="btn-4" href="<?php echo base_url('business_profile'); ?>">Take me in</a>
+					<?php }?>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade how-it-popup" id="art-popup">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</a>
+					<h1 class="modal-title">How It Works ?</h1>
+				</div>
+				<div class="modal-body">
+					<div class=""> 
+						<div class="col-md-6 col-sm-6 pro_img">
+							<h3>Artistic Profile</h3>
+							<img src="img/how-it.png">
+						</div>
+						<div class="col-md-6 col-sm-6 por_content">
+							<ul>
+								<li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+								<li><img src="img/p9.png"><span class="pro-text"><span class="count">2.</span><span class="text">You can upload photos/videos/audios and pdf of your art/talent.</span></span>
+								</li>
+							</ul>
+							<div class="sub-text">
+								<p>Get all news feed about your artistic category and of the various arts you follow</p>
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<?php if($artdata[0]['art_step'] != 4){?>
+					<a class="btn-2" href="<?php echo base_url('artistic'); ?>">Register Now</a>
+					<?php }else{?>
+					<a class="btn-4" href="<?php echo base_url('artistic'); ?>">Take me in</a>
+
+					<?php }?>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 <!-- Bid-modal-2  -->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
             <div class="modal-body">
                 <span class="mes">
                     <div id="popup-form">
@@ -365,7 +589,7 @@
 </div>
 <!-- Bid-modal-2  -->
 
-
+<!-- model for popup start -->
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                         <div class="modal-dialog modal-lm">
                             <div class="modal-content">
@@ -377,57 +601,58 @@
                             </div>
                         </div>
                     </div>
+                    <!-- model for popup -->
 
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-4">
-                    © 2017 | by Aileensoul
-                </div>
-                <div class="col-md-6 col-sm-8">
-                    <ul>
-                        <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
-                        <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-                        <li><a href="javascript:void(0);">Blogs</a>|</li>
-                        <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 <script>
-    $( document ).ready(function() {
+	$( document ).ready(function() {
     
-        // hover
-        $(function(){
-        $(".dropdown").hover(            
-                function() {
-                    $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-                    $(this).toggleClass('open');
-                    //$('b', this).toggleClass("caret caret-up");                
-                },
-                function() {
-                    $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-                    $(this).toggleClass('open');
-                    //$('b', this).toggleClass("caret caret-up");                
-                });
-        });
+		// hover
+		$(function(){
+		$(".dropdown").hover(            
+				function() {
+					$('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+					$(this).toggleClass('open');
+					//$('b', this).toggleClass("caret caret-up");                
+				},
+				function() {
+					$('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+					$(this).toggleClass('open');
+					//$('b', this).toggleClass("caret caret-up");                
+				});
+		});
 
-            
-            
-    
-    });
-</script>
+			
+			
+	
+	});
+	
+	// scroll top
+	$(document).ready(function(){
+	  // Add smooth scrolling to all links
+	  $(".right-profile ul li a").on('click', function(event) {
 
+		// Make sure this.hash has a value before overriding default behavior
+		if (this.hash !== "") {
+		  // Prevent default anchor click behavior
+		  event.preventDefault();
 
+		  // Store hash
+		  var hash = this.hash;
 
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-<script>
-                    function updateprofilepopup(id) {
-                        $('#bidmodal-2').modal('show');
-                    }
+		  // Using jQuery's animate() method to add smooth page scroll
+		  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		  $('html, body').animate({
+			scrollTop: $(hash).offset().top
+		  }, 800, function(){
+	   
+			// Add hash (#) to URL when done scrolling (default click behavior)
+			window.location.hash = hash;
+		  });
+		} // End if
+	  });
+	});
+	
 </script>
 
 
@@ -467,8 +692,8 @@
 
 <!-- script for profile pic end -->
 
-
- <script>
+<!-- popup for file type -->
+  <script>
          function picpopup() {           
             $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
             $('#bidmodal').modal('show');
@@ -511,6 +736,15 @@
                    });
   </script>
 
+
+<script>
+                    function updateprofilepopup(id) {
+                        $('#bidmodal-2').modal('show');
+                    }
+</script>
+
+
+
   <script type="text/javascript">
 // all popup close close using esc start
     $( document ).on( 'keydown', function ( e ) {
@@ -528,7 +762,7 @@
 });  
     //all popup close close using esc end
 </script>
-    
+
 
 <!-- cover image start -->
 <script>
@@ -629,8 +863,6 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
     document.getElementById('row1').style.display = "none";
     document.getElementById('row2').style.display = "block";
-    $("#upload").val('');
-
     return false;
   }
   // file type code end
@@ -666,6 +898,136 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 </script>
 <!-- cover image end -->
 
+<script type="text/javascript">
+	
+	function tabindexjob(){
+
+
+		 $("#job-scroll").addClass("tabindex");
+
+
+		 $("#rec-scroll").removeClass("tabindex");
+		 $("#free-scroll").removeClass("tabindex");
+		 $("#bus-scroll").removeClass("tabindex");
+		 $("#art-scroll").removeClass("tabindex");
+		
+	}
+	function tabindexrec(){
+
+
+		 $("#rec-scroll").addClass("tabindex");
+
+
+		 $("#job-scroll").removeClass("tabindex");
+		 $("#free-scroll").removeClass("tabindex");
+		 $("#bus-scroll").removeClass("tabindex");
+		 $("#art-scroll").removeClass("tabindex");
+		
+	}
+	function tabindexfree(){
+
+
+		 $("#free-scroll").addClass("tabindex");
+
+
+		 $("#rec-scroll").removeClass("tabindex");
+		 $("#job-scroll").removeClass("tabindex");
+		 $("#bus-scroll").removeClass("tabindex");
+		 $("#art-scroll").removeClass("tabindex");
+		 
+	}
+	function tabindexbus(){
+
+
+		 $("#bus-scroll").addClass("tabindex");
+
+
+		 $("#rec-scroll").removeClass("tabindex");
+		 $("#free-scroll").removeClass("tabindex");
+		 $("#job-scroll").removeClass("tabindex");
+		 $("#art-scroll").removeClass("tabindex");
+		 
+	}
+	function tabindexart(){
+
+
+		 $("#art-scroll").addClass("tabindex");
+
+
+		 $("#rec-scroll").removeClass("tabindex");
+		 $("#free-scroll").removeClass("tabindex");
+		 $("#bus-scroll").removeClass("tabindex");
+		 $("#job-scroll").removeClass("tabindex");
+		 
+	}
+</script>
+<script>
+    function sendmail(abc) {
+
+//alert(abc);
+
+        $.ajax({
+
+            url: "<?php echo base_url(); ?>registration/res_mail",
+            type: "POST",
+            data: 'user_email=' + abc,
+            success: function (response) { 
+                 $('.biderror .mes').html("<div class='pop_content'>Email send Successfully.");
+                 $('#bidmodal').modal('show');
+                 window.open(response);
+            }
+        });
+    }
+</script>
+
+
+
+
+<script type="text/javascript">
+
+
+ $('.fr').on('click', function(){ //alert("hii");
+        $('#verifydiv').hide();
+    });
+
+
+</script>
+
+<script>
+  
+   $("document").ready(function (){ 
+
+     // load the overlay
+
+  if (document.cookie.indexOf('visited=true') == -1) {
+  var fifteenDays = 1000*60*60*24*1;
+  var expires = new Date((new Date()).valueOf() + fifteenDays);
+  document.cookie = "visited=true;expires=" + expires.toUTCString();
+
+   document.getElementById("verifydiv").style.display = "block";
+  }
+
+
+
+});
+  
+  </script>
+
+
+<script type="text/javascript">
+    
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#jop-popup').modal('hide');
+         $('#rec-popup').modal('hide');
+         $('#fre-popup').modal('hide');
+         $('#bus-popup').modal('hide');
+         $('#art-popup').modal('hide');
+    }
+}); 
+
+</script>
 
 </body>
 </html>

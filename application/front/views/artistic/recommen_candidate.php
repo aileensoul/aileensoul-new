@@ -29,7 +29,7 @@
                 <div class="row">
 
 
-       <div class="col-md-4 profile-box profile-box-custom"><div class="">
+       <div class="col-md-4 profile-box profile-box-custom  animated fadeInDownBig"><div class="">
   <div class="full-box-module">
             <div class="profile-boxProfileCard  module">
                <div class="profile-boxProfileCard-cover">
@@ -96,7 +96,7 @@
 <!-- left side box close -->
 
 <input type="hidden" name="search" id="search" value="<?php echo $keyword; ?>">
-  <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art" style="height: 150%;">
+  <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art animated fadeInUp" >
                         <div class="common-form">
                             <div class="job-saved-box">
 

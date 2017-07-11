@@ -2008,22 +2008,23 @@ $user_message = array_merge($return_arraysel,$userlist);
 }
         // khyati 22-5 chnages end
 
-           $notmsg = '<div id="notificationTitle">Messages</div>';
+         //  $notmsg = '<div id="notificationTitle">Messages</div>';
         foreach ($user_message as $msg) {
-        
-      $contition_array = array('not_product_id' => $msg['id']);
+     //s   echo '<pre>'; print_r($msg); die();
+      $contition_array = array('not_product_id' => $msg['id'],'not_type'=>"2");
             $data = array(' notification.*');
-            $not = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = "", $groupby = '');
-//            echo '<pre>';
-//            print_r($not);
-//            exit;
-            $notmsg .= '<a href="' . base_url('chat/abc/' . $msg['user_id']) . '" class="clearfix msg_dot">';
-            $notmsg .= '<li class="';
+            $not = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'not_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = "", $groupby = '');
+//     echo '<pre>';
+//     print_r($not);
+//     exit;
+           $notmsg .= '<li class="';
             if($not[0]['not_active'] == 1){
             $notmsg .= 'active2';
             }
-           $notmsg .= '"><div class="notification-database">';
-            $notmsg .= '<div class="notification-pic">';
+           $notmsg .= '">';
+             $notmsg .= '<a href="' . base_url('chat/abc/' . $msg['user_id']) . '" class="clearfix msg_dot" style="padding:0px!important;">';
+           
+            $notmsg .= '<div class="notification-database"><div class="notification-pic">';
 
             if($msg['user_image']){
             $notmsg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $msg['user_image']) . '">';
@@ -2039,7 +2040,7 @@ $user_message = array_merge($return_arraysel,$userlist);
             $notmsg .= '' . $msg['message'] . '';
 
             //$notmsg .= '</div><div class="data_noti_msg">' . $this->common->time_elapsed_string($not[0]['not_created_date'], $full = false) . '</div>';
-            echo $not[0]['not_created_date'];
+            //echo $not[0]['not_created_date'];
             
             $notmsg .= '</div><div class="data_noti_msg">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($not[0]['not_created_date']))) . '</div>';
             $notmsg .= '</div></div></li></a>';

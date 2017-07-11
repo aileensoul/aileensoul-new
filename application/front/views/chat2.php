@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php } ?>
             <div class="about">
                    <div class="name"> 
-                              <a href="<?php echo base_url() . 'chat/abc/' . $user['user_id']; ?>"><?php echo $user['first_name'] . ' ' . $user['last_name'] . "<br>"; ?></a> </div>
+           <a href="<?php echo base_url() . 'chat/abc/' . $user['user_id']; ?>"><?php echo $user['first_name'] . ' ' . $user['last_name'] . "<br>"; ?></a> </div>
      <div class="<?php echo 'status' . $user['user_id']; ?>" id="status_user">
                                     <?php echo $user['message']; ?>
                                             </div>
@@ -199,7 +199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     foreach ($smiley_table as $key => $value) {
         ?>
 
-                                                                <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" height="25" width="25"onClick="followclose(<?php echo $i; ?>)">
+                  <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" height="25" width="25"onClick="followclose(<?php echo $i; ?>)">
 
         <?php $i++;
     }

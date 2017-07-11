@@ -267,7 +267,7 @@
             </div>
          </div>
       </div>
-      <div class="container " >
+      <div class=" " >
          <div class="user-midd-section grybod" >
             <div  class="col-sm-12 border_tag padding_low_data padding_les" >
                <div class="padding_less main_art" >

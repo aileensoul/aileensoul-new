@@ -112,7 +112,7 @@
 
 
                                     <fieldset class="full-width" <?php if($skills) {  ?> class="error-msg" <?php } ?> >
-                                        <label>Art<span style="color:red">*</span></label>
+                                        <label>Art:<span style="color:red">*</span></label>
                                        
                                           <select tabindex="1" autofocus name="skills[]" id ="skils" class="keyskil" multiple="multiple" style="width:100%;">
                                           <option></option>

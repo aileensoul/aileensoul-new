@@ -208,7 +208,7 @@ $gender = form_error('gender');
 
 
                                 <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
-                                    <label>First Name: <span class="red">*</span></label>
+                                    <label>First Name :<span class="red">*</span></label>
                                     <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter First name" value="<?php if ($fname1) {
                                         echo $fname1;
                                     } else {
@@ -218,7 +218,7 @@ $gender = form_error('gender');
                                 </fieldset>
 
                                 <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>  
-                                    <label>Last Name <span class="red">*</span></label>
+                                    <label>Last Name :<span class="red">*</span> </label>
                                     <input type="text" name="lname" tabindex="2"  id="lname" placeholder="Enter Last name" value="<?php if ($lname1) {
     echo $lname1;
 } else {
@@ -228,7 +228,7 @@ $gender = form_error('gender');
                                 </fieldset>
 
                                 <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
-                                    <label>Email Address <span class="red">*</span></label>
+                                    <label>Email Address :<span class="red">*</span> </label>
                                     <input type="email" name="email" id="email" tabindex="3" placeholder="Enter Email Address"  value="<?php if ($email1) {
     echo $email1;
 } else {
@@ -238,7 +238,7 @@ $gender = form_error('gender');
                                 </fieldset>
 
                                 <fieldset <?php if ($phnno) { ?> class="error-msg" <?php } ?>>
-                                    <label>Phone Number</label>
+                                    <label>Phone Number :</label>
                                     <input type="text" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php if ($phnno1) {
                                             echo $phnno1;
                                         } ?>" /> <span id="phnno-error"> </span>
@@ -246,7 +246,7 @@ $gender = form_error('gender');
                                 </fieldset>
 
                                 <fieldset <?php if ($marital_status) { ?> class="error-msg" <?php } ?>>
-                                    <label>Marital Status <span class="red">*</span></label>
+                                    <label>Marital Status :<span class="red">*</span> </label>
                                     <input type="radio" name="marital_status" tabindex="5" value="married" id="marital_status"  <?php echo ($marital_status1 == 'married') ? 'checked' : '' ?>>
                     <span class="radio_check_text">Married</span>
                                     
@@ -307,7 +307,7 @@ if (count($nation) > 0) {
         
                                 </fieldset>
                                 <fieldset <?php if ($dob) { ?> class="error-msg" <?php } ?>>
-                                    <label>Date of Birth<span class="red">*</span></label>
+                                    <label>Date of Birth:<span class="red">*</span></label>
                                 
                                  <input type="hidden" id="datepicker">
                                     <!-- <input type="text" name="dob" id="datepicker" placeholder="dd-MM-yyyy" tabindex="9"  autocomplete="off" value="<?php
@@ -319,10 +319,11 @@ if (count($nation) > 0) {
 
 
 <?php echo form_error('dob'); ?>
+
                                 </fieldset>
 
                                 <fieldset <?php if ($gender) { ?> class="error-msg" <?php } ?>>
-                                    <label>Gender<span class="red">*</span></label>
+                                    <label>Gender:<span class="red">*</span></label>
                                     <input type="radio" name="gender" value="male" id="gender" tabindex="9" <?php if($gender1){if($gender1 == 'male') { echo 'checked' ; }}
                                     else { if($job[0]['user_gender'] == 'M'){ echo 'checked' ; }}
                                        
@@ -459,18 +460,16 @@ $( "#searchplace" ).autocomplete({
 </script>
 <!-- for search validation -->
 <script type="text/javascript">
-    function checkvalue() {
-        // alert("hi");
-        var searchkeyword = document.getElementById('tags').value;
-        var searchplace = document.getElementById('searchplace').value;
-        // alert(searchkeyword);
-        // alert(searchplace);
-        if (searchkeyword == "" && searchplace == "") {
-            //alert('Please enter Keyword');
-            return false;
-        }
-    }
-
+   function checkvalue() {
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }
+   }
+   
 </script>
 
 
@@ -552,7 +551,18 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
     return regexpr.test(value);
 }, "Number, space and special character are not allowed");
 
-
+$.validator.addMethod("regx2", function(value, element, regexpr) {          
+    //return value == '' || value.trim().length != 0; 
+     if(!value) 
+            {
+                return true;
+            }
+            else
+            {
+                  return regexpr.test(value);
+            }
+     // return regexpr.test(value);
+},"character & letters are not allow & space are not allow in the begining");
 // for date validtaion start
 
 jQuery.validator.addMethod("isValid", function (value, element) {
@@ -588,7 +598,7 @@ if(mm<10) {
                 fname: {
 
                     required: true,
-                    regx:/^[a-zA-Z]+$/,
+                   regx2:/^[^-\s][a-zA-Z_\s-]+$/,
                     //noSpace: true
 
                 },
@@ -596,7 +606,7 @@ if(mm<10) {
                 lname: {
 
                     required: true,
-                    regx:/^[a-zA-Z]+$/,
+                    regx2:/^[^-\s][a-zA-Z_\s-]+$/,
                     //noSpace: true
 
                 },
@@ -830,6 +840,8 @@ else if(date_picker=="1970-01-01"){
                 
             });
 </script>
+
+
 
 <style type="text/css">
     .date-dropdowns label{margin-top: 42px !important;}

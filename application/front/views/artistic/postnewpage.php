@@ -692,12 +692,15 @@
                                                                                     </b>
                                                                                 </div>
 
-                                                                                <div class="comment-details" id= "<?php echo "showcommentimg" . $rowdata['post_image_comment_id']; ?>">
-                                                                                    <?php
-                                                                                    echo $this->common->make_links($rowdata['comment']);
-                                                                                    echo '</br>';
-                                                                                    ?>
-                                                                                </div>
+                                             <div class="comment-details" id= "<?php echo "showcommentimg" . $rowdata['post_image_comment_id']; ?>">
+                                                 
+                                
+                      <?php
+                      echo $this->common->make_links($rowdata['comments']);
+                   ?>
+
+              
+                                             </div>
 
                                                                                 <div class="edit-comment-box">
                                                                                     <div class="inputtype-edit-comment">
@@ -1077,9 +1080,22 @@
                                                                    ?></b><?php echo '</br>'; ?></div>
 
                                                         <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['artistic_post_comment_id']; ?>">
-                                                            <?php
-                                                            echo $this->common->make_links($rowdata['comments']);
-                                                            ?>
+                                                           <div id="<?php echo "lessmore" . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
+                                <?php
+                     $small = substr($rowdata['comments'], 0, 180);
+                     echo $this->common->make_links($small);
+
+                     if (strlen($rowdata['comments']) > 180) {
+                          echo '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                        }?>
+                        </div>
+                   
+                    <div id="<?php echo "seemore" . $rowdata['artistic_post_comment_id']; ?>" style="display:none;">
+                      <?php
+                      echo $this->common->make_links($rowdata['comments']);
+                   ?>
+
+               </div>
                                                         </div>
                                                         <!--                                                                        <div class="col-md-12">
                                                                                                                                     <div class="col-md-10">
@@ -1602,6 +1618,9 @@
                             var txt = sel.html();
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, 'p');
+
+
                             if (txt == '' || txt == '<br>') {
                                 return false;
                             }
@@ -1730,8 +1749,11 @@
                                     e.preventDefault();
                                     var sel = $("#post_comment" + clicked_id);
                                     var txt = sel.html();
+
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
+                                    txt = txt.replace(/div/gi, 'p');
+
                                     if (txt == '' || txt == '<br>') {
                                         return false;
                                     }
@@ -2088,6 +2110,11 @@
        var $field = $('#editpostdesc' + abc);
        //var data = $field.val();
        var editpostdetails = $('#editpostdesc' + abc).html();
+
+        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+        editpostdetails = editpostdetails.replace(/<br>$/, '');
+         editpostdetails = editpostdetails.replace(/div/gi, "p");
+
        // end khyati code
    
        if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
@@ -3154,6 +3181,11 @@
 
                             var sel = $("#post_commentimg" + clicked_id);
                             var txt = sel.html();
+
+                             txt = txt.replace(/&nbsp;/gi, " ");
+                            txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, "p");
+
                             if (txt == '') {
                                 return false;
                             }
@@ -3210,6 +3242,8 @@
 
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, "p");
+
                             if (txt == '' || txt == '<br>') {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
@@ -3330,8 +3364,10 @@
                             var sel = $("#editcommentimgtwo" + abc);
                             var txt = sel.html();
 
-                            txt = txt.replace(/&nbsp;/gi, " ");
+                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, "p");
+
                             if (txt == '' || txt == '<br>') {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
@@ -3390,8 +3426,11 @@
                                     var sel = $("#editcommentimg" + abc);
                                     var txt = sel.html();
 
-                                    txt = txt.replace(/&nbsp;/gi, " ");
-                                    txt = txt.replace(/<br>$/, '');
+                                   txt = txt.replace(/&nbsp;/gi, " ");
+                            txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, "p");
+
+
                                     if (txt == '' || txt == '<br>') {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deleteimg(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
@@ -3441,8 +3480,11 @@
                                     event.preventDefault();
                                     var sel = $("#editcommentimgtwo" + abc);
                                     var txt = sel.html();
+
                                     txt = txt.replace(/&nbsp;/gi, " ");
-                                    txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/div/gi, "p");
+
                                     if (txt == '' || txt == '<br>') {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deleteimgtwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
@@ -3557,3 +3599,18 @@
 
  </script>
  <!-- all popup close close using esc end -->
+
+
+ <!-- 180 words more than script start -->
+
+<script type="text/javascript">
+    
+     function seemorediv(abc) { //alert("hii");
+         
+                   document.getElementById('seemore' + abc).style.display = 'block';
+                   document.getElementById('lessmore' + abc).style.display = 'none';
+                
+   }
+   
+   </script>
+ <!-- 180 words more than script end-->
