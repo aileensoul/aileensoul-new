@@ -3360,29 +3360,18 @@ $contition_array = array('user_id' => $userid);
 
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
-
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-
         $contition_array = array('status' => '1', 'is_delete' => '0','free_post_step' => 7);
-
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($results_recruiter);die();
 
         $contition_array = array('status' => '1', 'type' => '1');
-
         $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         $unique = array_merge($field, $skill, $freelancer_postdata);
-        // echo count($unique);
-        // $this->data['demo']=$unique;
-
-
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
-
-
                     $result[] = $val;
                 }
             }
@@ -3392,33 +3381,19 @@ $contition_array = array('user_id' => $userid);
             $result1[$key]['label']=$value;
             $result1[$key]['value']=$value;
           }
-
  $contition_array = array('status' => '1');
           $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-   
-
           foreach ($location_list as $key1 => $value) {
               foreach ($value as $ke1 => $val1) {
                  $location[] = $val1;
               }
           }
-          //echo "<pre>"; print_r($location);die();
           foreach ($location as $key => $value) {
               $loc[$key]['label'] =$value;
               $loc[$key]['value'] =$value;
           }
-         
- //echo "<pre>"; print_r($loc);die();
-
-         // echo "<pre>"; print_r($loc);
-          // echo "<pre>"; print_r($result1);die();
-
         $this->data['city_data']= array_values($loc);
-
-
          $this->data['demo']= array_values($result1);
-
-
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
 
