@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title><?php echo $title; ?></title>
+        <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <style>
             .progress 
             {
@@ -39,7 +40,7 @@
             }
         </style>
     </head>
-    <body class="page-container-bg-solid page-boxed">
+    <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->
         <?php echo $header; ?>
         <!-- END HEADER -->
@@ -140,7 +141,7 @@
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
                                     <div class="profile-boxProfileCard_follow  module">
-                                        
+
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START -->
                                     <!-- follower list end  -->
@@ -235,7 +236,6 @@
                         ?>
 
                         <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business  animated fadeInUp">
-
                             <div class="post-editor col-md-12">
                                 <div class="main-text-area col-md-12">
                                     <div class="popup-img"> 
@@ -251,18 +251,17 @@
                                             <i class="fa fa-camera"></i> 
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- body content start-->
                             <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
-<!--                      video tag   khytai chndge 8-7    <div>
-                                                                            <video width="100%" height="350" controls>
-                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
-                                                                                <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/ogg">
-                                                                                Your browser does not support the video tag.
-                                                                            </video>
-                                                                        </div>-->
+                            <!--                      video tag   khytai chndge 8-7    <div>
+                                                                                                        <video width="100%" height="350" controls>
+                                                                                                            <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
+                                                                                                            <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/ogg">
+                                                                                                            Your browser does not support the video tag.
+                                                                                                        </video>
+                                                                                                    </div>-->
                             <div class='progress' id="progress_div">
                                 <div class='bar' id='bar'></div>
                                 <div class='percent' id='percent'>0%</div>
@@ -1336,7 +1335,6 @@
             });
         </script>
         <!-- MULTI IMAGE ADD POST START -->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- POST DEVELOPING SCRIPT START -->
         <script type="text/javascript">
             function imgval(event) {
@@ -1582,6 +1580,13 @@
                         $('#' + 'removepost' + abc).remove();
                         if (data.notcount == 'count') {
                             $('.' + 'nofoundpost').html(data.notfound);
+                        }
+                        //
+                        var nb = $('.post-design-box').length;
+                        if (nb == 0) {
+                            $("#dropdownclass").addClass("no-post-h2");
+                        } else {
+                            $("#dropdownclass").removeClass("no-post-h2");
                         }
                     }
                 });
@@ -1851,14 +1856,25 @@
                         var percentVal = '100%';
                         bar.width(percentVal)
                         percent.html(percentVal);
+
                     },
                     complete: function (response) {
                         // Output AJAX response to the div container
                         $('#progress_div').fadeOut('5000').remove();
-//                        $('.loader').remove();
+                        // $('.loader').remove();
                         $('.business-all-post div:first').remove();
                         $(".business-all-post").prepend(response.responseText);
+                        
+                        // second header class add for scroll
+                        var nb = $('.post-design-box').length;
+                        if (nb == 0) {
+                            $("#dropdownclass").addClass("no-post-h2");
+                        } else {
+                            $("#dropdownclass").removeClass("no-post-h2");
+                        }
+                        
                         $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+
                     }
                 };
                 // Submit the form
@@ -1885,10 +1901,18 @@
                     success: function (data) {
                         $('.loader').remove();
                         $('.business-all-post').html(data);
+
+                        // second header class add for scroll
+                        var nb = $('.post-design-box').length;
+                        if (nb == 0) {
+                            $("#dropdownclass").addClass("no-post-h2");
+                        } else {
+                            $("#dropdownclass").removeClass("no-post-h2");
+                        }
                     }
                 });
             }
-            
+
             function business_home_three_user_list() {
                 $.ajax({
                     type: 'POST',
@@ -1913,5 +1937,14 @@
             }
         </script>
         <!-- 180 words more than script end-->
+        <script type="text/javascript">
+            $(window).load(function () {
+                var nb = $('.post-design-box').length;
+                if (nb == 0) {
+                    $("#dropdownclass").addClass("no-post-h2");
+                }
+            });
+        </script>
+
     </body>
 </html>

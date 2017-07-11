@@ -88,39 +88,39 @@
                             </div>
                         </div>
                         <div class="">
-                            <ul class="">
-                                <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('business_profile/business_profile_post'); ?>"><img src="<?php echo base_url(); ?>img/icon_home.png"></a>
-                                </li>
-                                <!-- Friend Request Start-->
-                                <li id="add_contact">
-                                    <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
-                                        <img src="<?php echo base_url(); ?>img/icon_contact_request.png">
-                                        <span id="addcontact_count"></span>
-                                    </a>
-                                    <div id="addcontactContainer">
-                                        <div id="addcontactTitle">Contact Request</div>
-                                        <div id="addcontactBody" class="notifications">
+                            <ul id="dropdownclass">
+                                    <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('business_profile/business_profile_post'); ?>"><img src="<?php echo base_url(); ?>img/icon_home.png"></a>
+                                    </li>
+                                    <!-- Friend Request Start-->
+                                    <li id="add_contact">
+                                        <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
+                                            <img src="<?php echo base_url(); ?>img/icon_contact_request.png">
+                                            <span id="addcontact_count"></span>
+                                        </a>
+                                        <div id="addcontactContainer">
+                                            <div id="addcontactTitle">Contact Request</div>
+                                            <div id="addcontactBody" class="notifications">
+                                            </div>
+                                            <div id="addcontactFooter"><a href="<?php echo base_url('business_profile/contact_list'); ?>">See All</a></div>
                                         </div>
-                                        <div id="addcontactFooter"><a href="<?php echo base_url('business_profile/contact_list'); ?>">See All</a></div>
-                                    </div>
-                                </li>          
-                                <li>
-                                    <div class="dropdown_hover">
-                                        <span id="art_profile" >Business Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
-                                        <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                            <a href="<?php echo base_url('business_profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a> 
-                                            <a href="<?php echo base_url('business_profile/business_information_update'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
-                                            <?php
-                                            $userid = $this->session->userdata('aileenuser');
-                                            ?>
-                                            <a onClick="deactivate(<?php echo $userid; ?>)"><i class="fa fa-minus-circle" aria-hidden="true"></i> Deactive Profile</a>
+                                    </li>          
+                                    <li>
+                                        <div class="dropdown_hover">
+                                            <span id="art_profile" >Business Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                            <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                                <a href="<?php echo base_url('business_profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a> 
+                                                <a href="<?php echo base_url('business_profile/business_information_update'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
+                                                <?php
+                                                $userid = $this->session->userdata('aileenuser');
+                                                ?>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)"><i class="fa fa-minus-circle" aria-hidden="true"></i> Deactive Profile</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <!-- Friend Request End-->
+                                    </li>
+                                    <!-- Friend Request End-->
 
-                                <!-- END USER LOGIN DROPDOWN -->
-                            </ul>
+                                    <!-- END USER LOGIN DROPDOWN -->
+                                </ul>
                         </div> 
                     </div>
                 </div>

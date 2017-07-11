@@ -231,7 +231,7 @@ a:focus {
     color: #fff;
     padding: 4px 16px;
     display: block;
-    padding-top: 8px;
+ 
 }
 .header2 ul li a i {
     font-size: 15px;
@@ -1010,7 +1010,7 @@ ul.dropdown-menu li a i {
 /*.dropdown:hover .dropdown-menu { display: block; }*/
 
 .header ul li.dropdown-user a {
-    padding: 13px;
+    padding: 11px;
     text-transform: capitalize;
 }
 .header ul li.dropdown-user ul li a {
@@ -1419,11 +1419,11 @@ ul.cv-btn li a i {
     line-height: 28px;
 }
 .job-saved-box h3 {
-    background: #fff;
+    background: #fff !important;
     margin: 0;
     padding: 8px 15px 8px;
     color: #1b8ab9;
-    text-align: center;
+    /*text-align: center;*/
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
@@ -8362,6 +8362,7 @@ fieldset .add_post_btns {
 }
 /*Dhaval Tooltip 24/ 5*/
 
+.header ul .no-post-h2{padding-right: 11px !important;}
 .cameraButton .tooltiptext_rec {
     visibility: hidden;
     width: 180px;
@@ -8393,6 +8394,8 @@ fieldset .add_post_btns {
 }
 /* End dhaval*/
 /*Dhaval 26/6*/
+
+.notificationsmsg #notificationTitle{display: none !important;}
 
 .user_lst li .follow-li-text a {
     color: #1b8ab9!important;
@@ -13749,7 +13752,7 @@ text-align: center;}
 }*/
 .header ul li a {
     padding-bottom: 10px !important;
-    padding-top: 6.3px!important;
+    padding-top: 10px!important;
 }
 
 .header ul li #notificationsmsgBody a {
@@ -13836,6 +13839,8 @@ header.animated {
     }
 }
 @media screen and (max-width: 1024px) {
+    .header ul li a{padding-bottom: 4px !important;
+padding-top: 4px !important;}
     .email-verify{ padding-left: 3%;}
     .profile-text1 .as-p{font-size: 12px; letter-spacing: 0px;}
     .profile-text1 .chng_email{font-size: 12px;}
@@ -13988,10 +13993,10 @@ right: 0;}
         font-size: 12px;
     }
     
-    .header ul li a {
+/*    .header ul li a {
         padding-top: 6px !important;
         padding-bottom: 6px !important;
-    }
+    }*/
     .header ul li.dropdown-user a {
         padding-top: 6px !important;
         padding-bottom: 6px !important;
@@ -14395,8 +14400,8 @@ text-align: center;}
     }
     .dropdown-menu::before{right: 2.5%;}
     .header ul li a {
-        padding-top: 12px!important;
-        padding-bottom: 12px !important;
+        padding-top: 4px!important;
+        padding-bottom: 4px !important;
         padding: 16px;
     }
     .post-design-desc{padding-left: 17px;}
@@ -14441,9 +14446,7 @@ text-align: center;}
         top: 3px !important;
         right: 5px !important;
     }
-    .header ul li a {
-        padding: 5px 10px !important;
-    }
+   
     .header-left-menu {
         position: relative;
         width: 100%;
@@ -14934,7 +14937,8 @@ top: 8px;}
     .how-it-popup .modal-body h3{display: block;}
     .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
     .banner{padding-top: 25px;}
-    .header ul li a{padding: 7px 5px !important;}
+    .header ul li a{padding-top: 3px !important;
+padding-bottom: 3px !important; padding: 0px 8px;}
     .header ul li.dropdown-user a{padding-top: 6px !important;
 padding-bottom: 6px !important;}
 .profile-detail h2{font-size: 13px;}
@@ -15305,6 +15309,8 @@ padding-bottom: 6px !important;}
     }
 }
 @media screen and (max-width: 360px) {
+    .header ul li a{padding: 0px 4px;}
+    .header ul li.dropdown-user a{padding: 0px 4px;}
     .email-verify{    float: left;
     width: 100%;
     }
@@ -15337,6 +15343,7 @@ padding-bottom: 6px !important;}
         margin-bottom: 11px;
         margin-top: 10px;
     }
+    
     .folle_text {
         width: 43%;
         padding-left: 3px;

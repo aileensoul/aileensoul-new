@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title><?php echo $title; ?></title>
+        <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
@@ -117,7 +116,7 @@
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
-                                        <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
+                                            <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5>
                                         </div>
                                         <div class="bus_photos">
                                         </div>
@@ -279,6 +278,14 @@
                             }
                             ?>
                             <div class="fw">
+                                <div class='progress' id="progress_div">
+                                    <div class='bar' id='bar'></div>
+                                    <div class='percent' id='percent'>0%</div>
+                                </div>
+                                <div class="business-all-post">
+                                    <div class="nofoundpost"> 
+                                    </div>
+                                </div>
                                 <!-- middle section start -->
                                 <?php
                                 if (count($business_profile_data) > 0) {
@@ -569,11 +576,11 @@
                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                             ?>               
 
-                                                                                                                                                                                                                            <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                                        <!--<i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>
 
                                                                         <?php } else { ?> 
-                                                                                                                                                                                                                            <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
+                                                                                                                                                                                                                                        <!--<i class="fa fa-thumbs-up" aria-hidden="true"></i>-->
                                                                             <i class="fa fa-thumbs-up main_color fa-1x" aria-hidden="true"></i>
                                                                         <?php } ?>
 
@@ -827,7 +834,7 @@
                                                                                         $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
                                                                                         if (!in_array($userid, $likeuserarray)) {
                                                                                             ?>
-                                                                                                                                           <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
+                                                                                                                                               <!-- <i class="fa fa-thumbs-o-up fa-1x" aria-hidden="true"></i>  -->
                                                                                             <i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i> 
                                                                                         <?php } else { ?>
                                                                                             <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
@@ -1041,7 +1048,7 @@
         <!-- tabing script start -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
         <!-- script for skill textbox automatic start-->
@@ -1054,7 +1061,7 @@
             (function ($) {
 
                 var data = <?php echo json_encode($demo); ?>;
-                
+
                 $(function () {
                     $("#tags").autocomplete({
                         source: function (request, response) {
@@ -1083,7 +1090,7 @@
         <script>
 
             var data1 = <?php echo json_encode($city_data); ?>;
-            
+
             $(function () {
                 $("#searchplace").autocomplete({
                     source: function (request, response) {
@@ -1155,7 +1162,7 @@
                     url: '<?php echo base_url() . "business_profile/like_post" ?>',
                     data: 'post_id=' + clicked_id,
                     dataType: 'json',
-                    success: function (data) { 
+                    success: function (data) {
                         $('.' + 'likepost' + clicked_id).html(data.like);
                         $('.likeusername' + clicked_id).html(data.likeuser);
                         $('.comment_like_count' + clicked_id).html(data.like_user_count);
@@ -1427,7 +1434,7 @@
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/like_comment1" ?>',
                     data: 'post_id=' + clicked_id,
-                    success: function (data) { 
+                    success: function (data) {
                         $('#' + 'likecomment1' + clicked_id).html(data);
 
                     }
@@ -1451,7 +1458,7 @@
                     url: '<?php echo base_url() . "business_profile/delete_comment" ?>',
                     data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
                     dataType: "json",
-                    success: function (data) { 
+                    success: function (data) {
                         $('.' + 'insertcomment' + post_delete.value).html(data.comment);
                         $('.comment_count' + post_delete.value).html(data.comment_count);
                         $('.post-design-commnet-box').show();
@@ -1476,7 +1483,7 @@
                     url: '<?php echo base_url() . "business_profile/delete_commenttwo" ?>',
                     data: 'post_id=' + clicked_id + '&post_delete=' + post_delete1.value,
                     dataType: "json",
-                    success: function (data) { 
+                    success: function (data) {
                         $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
                         $('.comment_count' + post_delete1.value).html(data.comment_count);
                         $('.post-design-commnet-box').show();
@@ -1488,7 +1495,7 @@
         <!-- comment edit box start-->
         <script type="text/javascript">
 
-            function comment_editbox(clicked_id) { 
+            function comment_editbox(clicked_id) {
                 document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
                 document.getElementById('showcomment' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
@@ -1535,7 +1542,7 @@
                 $('.post-design-commnet-box').show();
             }
 
-            function comment_editbox3(clicked_id) { 
+            function comment_editbox3(clicked_id) {
                 document.getElementById('editcomment3' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment3' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit3' + clicked_id).style.display = 'block';
@@ -1559,7 +1566,7 @@
 
             }
 
-            function comment_editbox4(clicked_id) { 
+            function comment_editbox4(clicked_id) {
                 document.getElementById('editcomment4' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment4' + clicked_id).style.display = 'none';
                 document.getElementById('editsubmit4' + clicked_id).style.display = 'block';
@@ -1618,7 +1625,7 @@
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + txt,
-                    success: function (data) { 
+                    success: function (data) {
 
                         document.getElementById('editcomment' + abc).style.display = 'none';
                         document.getElementById('showcomment' + abc).style.display = 'block';
@@ -1674,7 +1681,7 @@
                             type: 'POST',
                             url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                             data: 'post_id=' + abc + '&comment=' + txt,
-                            success: function (data) { 
+                            success: function (data) {
                                 document.getElementById('editcomment' + abc).style.display = 'none';
                                 document.getElementById('showcomment' + abc).style.display = 'block';
                                 document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -1722,7 +1729,7 @@
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + txt,
-                    success: function (data) { 
+                    success: function (data) {
                         document.getElementById('editcommenttwo' + abc).style.display = 'none';
                         document.getElementById('showcommenttwo' + abc).style.display = 'block';
                         document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -1785,7 +1792,7 @@
                             type: 'POST',
                             url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                             data: 'post_id=' + abc + '&comment=' + txt,
-                            success: function (data) { 
+                            success: function (data) {
                                 document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                 document.getElementById('showcommenttwo' + abc).style.display = 'block';
                                 document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -1810,14 +1817,14 @@
 
         <script type="text/javascript">
             function edit_comment3(abc)
-            { 
+            {
 
                 var post_comment_edit = document.getElementById("editcomment3" + abc);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-                    success: function (data) { 
+                    success: function (data) {
 
                         document.getElementById('editcomment3' + abc).style.display = 'none';
                         document.getElementById('showcomment3' + abc).style.display = 'block';
@@ -1861,7 +1868,7 @@
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                                 data: 'post_id=' + abc + '&comment=' + val,
-                                success: function (data) { 
+                                success: function (data) {
 
                                     document.getElementById('editcomment3' + abc).style.display = 'none';
                                     document.getElementById('showcomment3' + abc).style.display = 'block';
@@ -1882,13 +1889,13 @@
 
         <script type="text/javascript">
             function edit_comment4(abc)
-            { 
+            {
                 var post_comment_edit = document.getElementById("editcomment4" + abc);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                     data: 'post_id=' + abc + '&comment=' + post_comment_edit.value,
-                    success: function (data) { 
+                    success: function (data) {
 
                         document.getElementById('editcomment4' + abc).style.display = 'none';
                         document.getElementById('showcomment4' + abc).style.display = 'block';
@@ -1896,7 +1903,7 @@
 
                         document.getElementById('editcommentbox4' + abc).style.display = 'block';
                         document.getElementById('editcancle4' + abc).style.display = 'none';
-                        
+
                         $('#' + 'showcomment4' + abc).html(data);
                     }
                 });
@@ -1934,7 +1941,7 @@
                                 type: 'POST',
                                 url: '<?php echo base_url() . "business_profile/edit_comment_insert" ?>',
                                 data: 'post_id=' + abc + '&comment=' + val,
-                                success: function (data) { 
+                                success: function (data) {
 
                                     document.getElementById('editcomment4' + abc).style.display = 'none';
                                     document.getElementById('showcomment4' + abc).style.display = 'block';
@@ -1953,7 +1960,7 @@
 
         <!-- hide and show data start for save post-->
         <script type="text/javascript">
-            function commentall1(clicked_id) { 
+            function commentall1(clicked_id) {
 
                 var x = document.getElementById('threecomment1' + clicked_id);
                 var y = document.getElementById('fourcomment1' + clicked_id);
@@ -2498,14 +2505,14 @@
                     $(this).html("");
                 });
 
-                $("#post_comment" + clicked_id).keypress(function (event) { 
-                    if (event.which == 13 && event.shiftKey != 1) { 
+                $("#post_comment" + clicked_id).keypress(function (event) {
+                    if (event.which == 13 && event.shiftKey != 1) {
                         event.preventDefault();
                         var sel = $("#post_comment" + clicked_id);
                         var txt = sel.html();
                         txt = txt.replace(/&/g, "%26");
                         $('#post_comment' + clicked_id).html("");
-                        
+
                         var x = document.getElementById('threecomment' + clicked_id);
                         var y = document.getElementById('fourcomment' + clicked_id);
                         if (x.style.display === 'block' && y.style.display === 'none') {
@@ -2982,7 +2989,7 @@
 
         <script type="text/javascript">
 
-            function seemorediv(abc) { 
+            function seemorediv(abc) {
                 document.getElementById('seemore' + abc).style.display = 'block';
                 document.getElementById('lessmore' + abc).style.display = 'none';
             }
