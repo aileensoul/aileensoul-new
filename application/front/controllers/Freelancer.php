@@ -1611,7 +1611,6 @@ $data='freelancer_post.post_id,freelancer_post.post_name,freelancer_post.post_fi
 
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
-
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         $contition_array = array('status' => '1', 'is_delete' => '0','free_post_step' => 7);
@@ -3340,16 +3339,10 @@ $contition_array = array('user_id' => $userid);
     }
 
     public function freelancer_hire_profile($id="") {
-        //echo $id."userid is:";
         $userid = $this->session->userdata('aileenuser');
-        //echo $userid;die();
-
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-  
  $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         if( $freelancerhire_deactive)
         {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
@@ -3359,10 +3352,10 @@ $contition_array = array('user_id' => $userid);
         if ($id == $userid || $id == '') {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username,fullname,email,skyupid,phone,country,state,city,pincode,address,professional_info,freelancer_hire_user_image,profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1' ,'free_hire_step' => 3);
-            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username,fullname,email,skyupid,phone,country,state,city,pincode,address,professional_info,freelancer_hire_user_image,profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
 // code for search
