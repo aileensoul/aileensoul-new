@@ -503,12 +503,12 @@
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
         <script>
-                                                                        var data1 = <?php echo json_encode($demo); ?>;
+                                                                        var data = <?php echo json_encode($demo); ?>;
                                                                         $(function () {
                                                                             $("#tags").autocomplete({
                                                                                 source: function (request, response) {
                                                                                     var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                                                    response($.grep(data1, function (item) {
+                                                                                    response($.grep(data, function (item) {
                                                                                         return matcher.test(item.label);
                                                                                     }));
                                                                                 },

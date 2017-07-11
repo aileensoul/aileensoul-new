@@ -421,7 +421,7 @@
     <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
     <script>
-        var data = <?php echo json_encode($city_data); ?>;
+        var data = <?php echo json_encode($demo); ?>;
         $(function () {
             $("#tags").autocomplete({
                 source: function (request, response) {
