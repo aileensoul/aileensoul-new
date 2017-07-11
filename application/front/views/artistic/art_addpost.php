@@ -8,50 +8,7 @@
     <!-- start header -->
 <?php echo $header; ?>
     <!-- END HEADER -->
-<header>
-    <div class="bg-search">
-        <div class="header2">
-            <div class="container">
-                <div class="row">
-                  <div class="col-md-2 col-sm-5">
-                       <div class="pushmenu pushmenu-left">
-                            <ul class="">
-                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_post'); ?>">Home</a>
-                                    </li>
-                                <!-- Friend Request Start-->
-
-                                <div>
-
-                                </div>
-                                <!-- Friend Request End-->
-                                <!-- END USER LOGIN DROPDOWN -->
-                            </ul>
-                        </div> 
-                    </div>
-                  
-                     <div class="col-md-10 col-sm-10">
-                        <div class="job-search-box1 clearfix">
-                        <form>
-                            <fieldset class="col-md-5">
-                             <!--    <label>Find Your Skills</label>
-                              -->   <input type="text" name="" placeholder="Find Your Skill">
-                            </fieldset>
-                            <fieldset class="col-md-5">
-                             <!--    <label>Find Your Location</label>
-                              -->   <input type="text" name="" placeholder="Find Your Location">
-                            </fieldset>
-                            <fieldset class="col-md-2">
-                                <button> Search</button>
-                            </fieldset>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div> 
-    </header>
-
+<?php echo $art_header2; ?>
 
    <!DOCTYPE html>
 <html>
@@ -291,7 +248,7 @@ return false;
 
             <!-- text head end -->
                 </div>
-                <div class="col-md-7 col-sm-7">
+                <div class="col-md-7 col-sm-7 animated fadeInUp">
 
                     <div>
                         <?php

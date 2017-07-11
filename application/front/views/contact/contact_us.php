@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>aileensoul main</title>
+  <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
+  <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="css/common-style.css">
   <link rel="stylesheet" href="css/style-main.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
+  <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
 </head>
 <body>
 <div class="main-inner">
@@ -15,31 +18,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-sm-3">
-          <h2 class="logo"><a href="<?php echo base_url('main'); ?>">Aileensoul</a></h2>
+          <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
         </div>
         <div class="col-md-8 col-sm-9">
             <div class="btn-right pull-right">
               <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
-              <a href="<?php echo base_url('registration'); ?>" class="btn3">creat an account</a>
+              <a href="<?php echo base_url('registration'); ?>" class="btn3">Creat an account</a>
             </div>
         </div>
       </div>
     </div>
   </header>
-  <section class="middle-main">
+  <section class="middle-main mid-trns">
     <div class="container">
       
-        <div class="title">
-          <h1>Contact us</h1>
-        </div>
-
-
+      
         <div id="contactsucc"></div>
 
 
         <div class="inner-form">
           <div class="login">
-            
+              <div class="title">
+          <h1>Contact us</h1>
+        </div>
             <form role="form" name="contact_form" id="contact_form" method="post">
                 <div class="row">
                   <div class="col-sm-6 col-md-6">
@@ -82,18 +83,18 @@
   </section>
 
   <footer>
-    <div class="container">
+    <div class="container pt-20">
       <div class="row">
-        <div class="col-md-6 col-sm-4">
-          © 2017 | by Aileensoul
-        </div>
-        <div class="col-md-6 col-sm-8">
+        
+        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
           <ul>
             <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
             <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-            <li><a href="javascript:void(0);">Blogs</a>|</li>
             <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
           </ul>
+        </div>
+		<div class="col-md-6 col-sm-4">
+          © 2017 | by Aileensoul
         </div>
       </div>
     </div>
@@ -355,17 +356,21 @@
                                               $("#contact_subject").val('');
                                               $("#contact_message").val('');
                                               
-                                                 $("#contactsucc").fadeIn(1000, function () {
-                                                    $("#contactsucc").html('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Your message send successfully' + ' !</div>');
-                                                    $("#btn-register").html('Sign Up');
-                                                });
+                                          $.fancybox.open('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Your message send successfully' + ' !</div>');
+                                          
+//                                                 $("#contactsucc").fadeIn(1000, function () {
+//                                                    $("#contactsucc").html('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Your message send successfully' + ' !</div>');
+//                                                    $("#btn-register").html('Sign Up');
+                                              //  });
                                                // setTimeout(' window.location.href = "<?php //echo base_url() ?>dashboard"; ', 4000);
                                             }
                                             else {
-                                                $("#contactsucc").fadeIn(1000, function () {
-                                                    $("#contactsucc").html('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' +'your conatct not send successfully' + ' !</div>');
-                                                    $("#btn-register").html('Sign Up');
-                                                });
+                                          
+                                           $.fancybox.open('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' +'your conatct not send successfully' + ' !</div>');
+//                                                $("#contactsucc").fadeIn(1000, function () {
+//                                                    $("#contactsucc").html('<div class="alert alert-danger contactus"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' +'your conatct not send successfully' + ' !</div>');
+//                                                    $("#btn-register").html('Sign Up');
+//                                                });
                                             }
                                         }
                                     });

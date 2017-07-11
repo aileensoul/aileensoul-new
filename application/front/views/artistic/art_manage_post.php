@@ -25,7 +25,7 @@
     
    //  $(document).load().scrollTop(1000);
         
-       $('html,body').animate({scrollTop:265}, 500);
+       $('html,body').animate({scrollTop:246}, 500);
    
    });
    //For Scroll page at perticular position js End
@@ -38,7 +38,7 @@
 <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
 <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
 
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>-->
+<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 <?php echo $art_header2_border; ?>
 
 <style type="text/css">
@@ -1094,14 +1094,7 @@ $loginuser = $userdata[0]['art_id'];
                                                         <div id="<?php echo 'editpostbox' . $row['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
                                                             <input type="text" id="<?php echo 'editpostname' . $row['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $row['art_post']; ?>">
                                                         </div>
-                         <!-- <div  id="<?php echo 'editpostdetails' . $row['art_post_id']; ?>" style="display:block;">
-
-                            <?php
-                                                            //echo $row['art_description'];
-                            $text = $this->common->make_links($row['art_description']);
-                                                            ?>
-                             <span  class="show ft-13"><?php echo $text; ?></span>
-                      </div> -->
+                          
 
                       <div id="<?php echo "khyati" . $row['art_post_id']; ?>" style="display:block;">
                       <?php
@@ -1476,8 +1469,8 @@ $loginuser = $userdata[0]['art_id'];
 
                                                                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                                                 ?>
-                                                                <div class="all-comment-comment-box">
-                                                                    <div class="post-design-pro-comment-img"> 
+                             <div class="all-comment-comment-box">
+                                <div class="post-design-pro-comment-img"> 
                     <?php $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; ?>
                     <?php if ($art_userimage) { ?>
                             <a href="<?php echo base_url('artistic/art_manage_post/' . $rowdata['user_id'] . ''); ?>">
@@ -1502,11 +1495,25 @@ $loginuser = $userdata[0]['art_id'];
                                     </div>
 
                                 <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['artistic_post_comment_id']; ?>">
-                                         <?php
-                                     echo $this->common->make_links($rowdata['comments']);
-//                                                                echo '</br>';
-                                            ?>
-                                             </div>
+
+                                <div id="<?php echo "lessmore" . $rowdata['artistic_post_comment_id']; ?>" style="display:block;">
+                                <?php
+                     $small = substr($rowdata['comments'], 0, 180);
+                     echo $this->common->make_links($small);
+
+                     if (strlen($rowdata['comments']) > 180) {
+                          echo '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                        }?>
+                        </div>
+                   
+                    <div id="<?php echo "seemore" . $rowdata['artistic_post_comment_id']; ?>" style="display:none;">
+                      <?php
+                      echo $this->common->make_links($rowdata['comments']);
+                   ?>
+
+               </div>
+
+               </div>
 
                                 <div class="edit-comment-box">
                                     <div class="inputtype-edit-comment">
@@ -2624,6 +2631,11 @@ if (size > 10485760)
                 // var post_comment = post_comment.html();
                 post_comment = post_comment.replace(/&nbsp;/gi, " ");
                 post_comment = post_comment.replace(/<br>$/, '');
+                post_comment = post_comment.replace(/div>/gi, 'p>');
+
+                alert(post_comment);
+               // return false;
+
                 if (post_comment == '' || post_comment == '<br>') {
                     return false;
                 }
@@ -2759,6 +2771,8 @@ if (size > 10485760)
 
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
+                        txt = txt.replace(/div>/gi, 'p>');
+
 
                         //     txt = txt.replace(/^\s+|\s+$/g, "")
 
@@ -3028,6 +3042,9 @@ if (size > 10485760)
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
 
+                txt = txt.replace(/div>/gi, 'p>');
+
+
                 if (txt == '' || txt == '<br>') {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
@@ -3150,6 +3167,10 @@ if (size > 10485760)
 
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
+
+                        txt = txt.replace(/div>/gi, 'p>');
+
+
                         if (txt == '' || txt == '<br>') {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
@@ -3235,6 +3256,8 @@ if (size > 10485760)
 
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
+                 txt = txt.replace(/div>/gi, 'p>');
+
 
                 if (txt == '' || txt == '<br>') {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -3335,6 +3358,9 @@ if (size > 10485760)
 
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
+                         txt = txt.replace(/div>/gi, 'p>');
+
+
                         if (txt == '' || txt == '<br>') {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
@@ -3665,7 +3691,7 @@ if (size > 10485760)
 
        <script type="text/javascript">
     
-     function khdiv(abc) {
+     function khdiv(abc) { //alert("hii");
          
          $.ajax({
                type: 'POST',
@@ -3679,7 +3705,7 @@ if (size > 10485760)
                  //  document.getElementById('editpostdetails' + abc).style.display = 'block';
                    document.getElementById('editpostdetailbox' + abc).style.display = 'none';
                    document.getElementById('editpostsubmit' + abc).style.display = 'none';
-                     document.getElementById('khyati' + abc).style.display = 'none';
+                 document.getElementById('khyati' + abc).style.display = 'none';
                  document.getElementById('khyatii' + abc).style.display = 'block';
                    //alert(data.description);
                    $('#' + 'editpostdata' + abc).html(data.title);
@@ -3695,7 +3721,7 @@ if (size > 10485760)
    
    <script type="text/javascript">
    function editpost(abc)
-   {
+   { //alert("hii");
        document.getElementById('editpostdata' + abc).style.display = 'none';
        document.getElementById('editpostbox' + abc).style.display = 'block';
        //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
@@ -3716,7 +3742,16 @@ if (size > 10485760)
        var $field = $('#editpostdesc' + abc);
        //var data = $field.val();
        var editpostdetails = $('#editpostdesc' + abc).html();
-       // end khyati code
+
+       editpostdetails = editpostdetails.replace(/&gt;/gi,">");
+       
+       editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+       //editpostdetails = editpostdetails.replace(/div/gi, "p");
+       //editpostdetails = editpostdetails.replace(/"<div>"/gi, "</p>");
+
+
+//alert(editpostdetails);
+
    
        if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
@@ -4324,14 +4359,20 @@ video js preview end -->
             function OnPaste_StripFormatting(elem, e) {
 
                 if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                   // alert(1);
                     e.preventDefault();
                     var text = e.originalEvent.clipboardData.getData('text/plain');
                     window.document.execCommand('insertText', false, text);
-                } else if (e.clipboardData && e.clipboardData.getData) {
+                } else if (e.clipboardData && e.clipboardData.getData) { 
+                    //alert(2);
+                   
                     e.preventDefault();
                     var text = e.clipboardData.getData('text/plain');
                     window.document.execCommand('insertText', false, text);
                 } else if (window.clipboardData && window.clipboardData.getData) {
+
+                    //alert(3);
+
                     // Stop stack overflow
                     if (!_onPaste_StripFormatting_IEPaste) {
                         _onPaste_StripFormatting_IEPaste = true;
@@ -4446,4 +4487,21 @@ $('.modal-post').hide();
 }); 
 </script>
  <!-- all script using esc end -->
+
+
+ <!-- 180 words more than script start -->
+
+<script type="text/javascript">
+    
+     function seemorediv(abc) { //alert("hii");
+         
+                   document.getElementById('seemore' + abc).style.display = 'block';
+                   document.getElementById('lessmore' + abc).style.display = 'none';
+                
+   }
+   
+   </script>
+ <!-- 180 words more than script end-->
+
+
 

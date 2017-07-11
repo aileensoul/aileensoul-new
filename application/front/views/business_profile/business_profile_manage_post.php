@@ -3,7 +3,6 @@
     <head>
     <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">

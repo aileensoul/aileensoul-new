@@ -58,14 +58,15 @@ class Registration extends CI_Controller {
     }
 
    
-    public function reg_insert()
+   public function reg_insert()
     {  
 //        $bod = $this->input->post('datepicker');
 //                $bod = str_replace('/', '-', $bod);
 
-      $date = $this->input->post('date');
-      $month = $this->input->post('month');
-      $year = $this->input->post('year');
+      $date = $this->input->post('selday');
+      $month = $this->input->post('selmonth');
+      $year = $this->input->post('selyear');
+      $email_reg = $this->input->post('email_reg');
       
       $dob = $year . '-' . $month . '-' . $date;
      
@@ -78,15 +79,15 @@ class Registration extends CI_Controller {
         $ip = $this->input->ip_address();
         // $this->form_validation->set_rules('uname', 'Username', 'required');
       
-        $this->form_validation->set_rules('fname', 'Firstname', 'required');
-        $this->form_validation->set_rules('lname', 'Lastname', 'required');
-        $this->form_validation->set_rules('email', 'Store  email', 'required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('first_name', 'Firstname', 'required');
+        $this->form_validation->set_rules('last_name', 'Lastname', 'required');
+        $this->form_validation->set_rules('email_reg', 'Store  email', 'required|valid_email');
+        $this->form_validation->set_rules('password_reg', 'Password', 'trim|required');
         // $this->form_validation->set_rules('password2', 'Confirm Password', 'trim|required|matches[password]');
-        $this->form_validation->set_rules('date','date','required'); 
-        $this->form_validation->set_rules('month','month','required'); 
-        $this->form_validation->set_rules('year','year','required'); 
-        $this->form_validation->set_rules('gen', 'Gender', 'required');
+        $this->form_validation->set_rules('selday','date','required'); 
+        $this->form_validation->set_rules('selmonth','month','required'); 
+        $this->form_validation->set_rules('selyear','year','required'); 
+        $this->form_validation->set_rules('selgen', 'Gender', 'required');
      
          
        //  $username=$this->input->post('user');
@@ -99,6 +100,14 @@ class Registration extends CI_Controller {
        
         //echo ($this->input->valid_ip($ip)?'Valid':'Not Valid');
 
+
+         $contition_array = array('user_email' => $email_reg, 'is_delete' => '0' , 'status' => '1');
+         $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         if($userdata){
+
+         }else{
+
+
         if ($this->form_validation->run() == FALSE) 
         { 
         
@@ -107,14 +116,23 @@ class Registration extends CI_Controller {
 
          else
          { 
-            $data = array(
+           
+            
+           
+        $contition_array = array('user_email' => $email_reg);
+        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if($userdata){}else{ 
+
+
+             $data = array(
                //  'user_name' => $this->input->post('uname'),
-                 'first_name' => $this->input->post('fname'),
-                 'last_name' => $this->input->post('lname'),
-                 'user_email' => $this->input->post('email'),
-                 'user_password' => md5($this->input->post('password')),
+                 'first_name' => $this->input->post('first_name'),
+                 'last_name' => $this->input->post('last_name'),
+                 'user_email' => $this->input->post('email_reg'),
+                 'user_password' => md5($this->input->post('password_reg')),
                  'user_dob' => $dob,
-                 'user_gender' => $this->input->post('gen'),
+                 'user_gender' => $this->input->post('selgen'),
                  'user_agree' => '1',
                  'is_delete' => '0',
                  'status' => '1',
@@ -123,9 +141,9 @@ class Registration extends CI_Controller {
                  'user_last_login'=> date('Y-m-d h:i:s',time()),
                  'user_verify'=> '0'
         ); 
-            
+             
             $insert_id = $this->common->insert_data_getid($data,'user'); 
-         
+         }
         //for getting last insrert id
             $user_id = $this->db->insert_id();
            
@@ -161,9 +179,10 @@ class Registration extends CI_Controller {
 
            if($insert_id)
         {
-        $this->session->set_userdata('aileenuser', $insert_id);
+             $this->session->set_userdata('aileenuser', $insert_id);
                       // $this->session->set_userdata('aileenusername', $user_check[0]['user_name']);
-                     redirect('dashboard', 'refresh');
+                    // redirect('dashboard', 'refresh');
+             echo "ok";
 
         }
        else
@@ -174,6 +193,8 @@ class Registration extends CI_Controller {
       
 
       }
+     }
+
     }
     //Show main registratin page insert End
 
@@ -550,7 +571,7 @@ if($fbdata){
     // login check and email validation start
 public function check_login() {
         $email_login = $this->input->post('email_login');
-        $password_login = $this->input->post('password_login');
+        $password_login =  $this->input->post('password_login');
 
 
 
@@ -567,17 +588,24 @@ public function check_login() {
             } else {
                // $userinfo[0]['user_id'] = $this->input->post('user_id');
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
-                echo 'ok';
+               $data =  'ok';
                 
             }
         } else if($email_login == $result[0]['user_email']) {
-            echo 'password';
+             $data = 'password';
+             $id = $result[0]['user_id'];
         }else{
 
-            echo 'Please enter valid email address';
+             $data = 'email';
 
 
         }
+         
+        echo json_encode(
+                        array(
+                            "data" => $data,
+                            "id" => $id,
+               ));
 
     }
 //login validation end

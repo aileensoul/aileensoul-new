@@ -290,14 +290,54 @@
      <p>
      <?php 
 
-
-  if(($post['min_year'] !='0' || $post['min_month'] !='0' || $post['max_month'] !='0' || $post['max_year'] !='0') && ($post['fresher'] == 1))
+      if(($post['min_year'] != '' && $post['max_year'] !='') && ($post['fresher'] == 1))
      { 
- echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year'." , ". "Fresher can also apply.";
+        if ($post['min_month'] == '' && $post['max_month'] == '') {
+            echo $post['min_year'].' Year - '.$post['max_year'] . ' Year'." , ". "Fresher can also apply.";
+          
+        }  
+         elseif ($post['min_month'] != '' && $post['max_month'] != '') {
+      echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year'." , ". "Fresher can also apply.";
+            
+          
+        } 
+        elseif ($post['min_month'] != '' && $post['max_month'] == '') {
+        echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .' Year'." , ". "Fresher can also apply.";
+            
+          
+        }
+        elseif ($post['min_month'] == '' && $post['max_month'] != '') {
+        echo $post['min_year']. ' Year - '.$post['max_year'] .' Year'." , ". "Fresher can also apply.";
+            
+          
+        }    
+     } 
+     elseif($post['min_year'] != '' && $post['max_year'] !='')
+     { 
+        if ($post['min_month'] == '' && $post['max_month'] == '') {
+            echo $post['min_year'].' Year - '.$post['max_year'] . ' Year';
+          
+        }  
+         elseif ($post['min_month'] != '' && $post['max_month'] != '') {
+      echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
+            
+          
+        } 
+        elseif ($post['min_month'] != '' && $post['max_month'] == '') {
+        echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .' Year';
+            
+          
+        }
+        elseif ($post['min_month'] == '' && $post['max_month'] != '') {
+        echo $post['min_year']. ' Year - '.$post['max_year'] .' Year';
+            
+          
+        }    
      } 
     else
     {
-  echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
+      echo "Fresher";
+ // echo $post['min_year'].'.'.$post['min_month'] . ' Year - '.$post['max_year'] .'.'.$post['max_month'] . ' Year';
          
     }
 
@@ -773,17 +813,16 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
 <!-- for search validation -->
 <script type="text/javascript">
-    function checkvalue() {
-        // alert("hi");
-        var searchkeyword = document.getElementById('tags').value;
-        var searchplace = document.getElementById('searchplace').value;
-        // alert(searchkeyword);
-        // alert(searchplace);
-        if (searchkeyword == "" && searchplace == "") {
-            // alert('Please enter Keyword');
-            return false;
-        }
-    }
+   function checkvalue() {
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }
+   }
+   
 </script>
 <!-- end search validation -->
 <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>

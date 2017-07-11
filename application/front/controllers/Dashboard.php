@@ -25,12 +25,18 @@ class Dashboard extends MY_Controller {
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
+         $contition_array = array('user_id' => $userid, 'status' => '1');
          $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
           $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recrdata = $this->data['recrdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $hiredata = $this->data['hiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $workdata = $this->data['workdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $this->data['busdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -38,6 +44,7 @@ class Dashboard extends MY_Controller {
 //echo '<pre>'; print_r($this->data['busdata'][0]); die();
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 
         //echo '<pre>'; print_r($this->data['userdata']); die();
         $this->load->view('dashboard/cover', $this->data);
@@ -67,17 +74,13 @@ class Dashboard extends MY_Controller {
               $picture = '';
               }
              */
-            
+
             $user_image = '';
             $user['upload_path'] = $this->config->item('user_main_upload_path');
             $user['allowed_types'] = $this->config->item('user_main_allowed_types');
-            //$user['max_size'] = $this->config->item('user_main_max_size');
-            //$user['max_width'] = $this->config->item('user_main_max_width');
-            //$user['max_height'] = $this->config->item('user_main_max_height');
-            //$user['remove_spaces'] = true;
-            $user['quality'] = "50%";
-            $user['maintain_ratio'] = TRUE;
-            $user['encrypt_name'] = TRUE;
+            $user['max_size'] = $this->config->item('user_main_max_size');
+            $user['max_width'] = $this->config->item('user_main_max_width');
+            $user['max_height'] = $this->config->item('user_main_max_height');
             $this->load->library('upload');
             $this->upload->initialize($user);
             //Uploading Image
@@ -85,9 +88,6 @@ class Dashboard extends MY_Controller {
             //Getting Uploaded Image File Data
             $imgdata = $this->upload->data();
             $imgerror = $this->upload->display_errors();
-//            echo '<pre>';
-//            print_r($imgerror);
-//            exit();
             if ($imgerror == '') {
                 //Configuring Thumbnail 
                 $user_thumb['image_library'] = 'gd2';
@@ -178,7 +178,7 @@ class Dashboard extends MY_Controller {
 
             $this->session->unset_userdata('aileenuser');
 
-            redirect('main', 'refresh');
+            redirect(base_url(), 'refresh');
         }
     }
 

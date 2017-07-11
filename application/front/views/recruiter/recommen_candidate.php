@@ -1,5 +1,5 @@
 <!--start head -->
-<?php echo $head; ?>
+<?php echo $head; ?> 
 <!--post save success pop up style strat -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
@@ -23,7 +23,7 @@
         <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 profile-box profile-box-left"><div class="">
+                    <div class="col-md-4 col-sm-4 profile-box profile-box-left animated fadeInLeftBig"><div class="">
                            
                           <div class="full-box-module">   
       <div class="profile-boxProfileCard  module">
@@ -105,7 +105,7 @@
                     <!--- search end -->
                    
 
-                     <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right">
+                     <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                         <div class="common-form ">
                             <div class="job-saved-box">
                                 <h3>
@@ -170,7 +170,7 @@
                <?php
            } else {
                   ?>
-            <?php echo "Designation"; ?>
+            <?php echo "Current Work"; ?>
                 <?php
                }
                    ?> 

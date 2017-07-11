@@ -60,12 +60,7 @@ class Contact_us extends CI_Controller {
                 { 
                       echo "ok";
                 }
-               // else
-               //  {
-               //          $this->session->flashdata('error','Sorry!! Your data not inserted');
-               //         redirect('contact_us', 'refresh');
-               //     }
-     
+ 
 }
     
   }

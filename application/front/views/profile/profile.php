@@ -331,6 +331,7 @@ if(date_picker){
                     dayLabel: 'DD',
                     monthLabel: 'MM',
                     yearLabel: 'YYYY',
+                    
 
                     //startDate: today,
 

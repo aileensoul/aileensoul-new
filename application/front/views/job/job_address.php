@@ -155,7 +155,7 @@
                                 ?>
                                 
                                 <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                    <label>Country<span class="red">*</span></label>
+                                    <label>Country:<span class="red">*</span> </label>
                                     <select name="country" tabindex="1" autofocus id="country">
                                         <option value="">Select Country</option>
                                         <?php
@@ -183,7 +183,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
-                                    <label>State<span class="red">*</span></label>
+                                    <label>State:<span class="red">*</span></label>
                                     <select name="state" id="state" tabindex="2">
                                         <?php
                                         if ($state1) {
@@ -208,7 +208,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($city) { ?> class="error-msg" <?php } ?>>
-                                    <label>City</label>
+                                    <label>City :</label>
                                     <select tabindex="3" name="city" id="city">
                                         <?php
                                         if ($city1) {
@@ -249,7 +249,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($pincode) { ?> class="error-msg" <?php } ?>>
-                                    <label>Pincode:</label>
+                                    <label>Pincode :</label>
                                     <input type="text" tabindex="4" name="pincode" id="pincode" placeholder="Enter Pincode" value="<?php
                                     if ($pincode1) {
                                         echo $pincode1;
@@ -259,7 +259,7 @@
                                 </fieldset>
 
                                 <fieldset class="full-width">
-                                    <label>Postal Address:<span class="red">*</span></label>
+                                    <label>Postal Address: <span class="red">*</span> </label>
 
                                     <textarea name ="address" tabindex="5" id="address" rows="4" cols="50" placeholder="Enter Address" style="resize: none;"><?php
                                         if ($address1) {
@@ -273,12 +273,12 @@
                                 <fieldset class="hs-submit full-width">
                                 <input type="button" class="job_address_btn"  tabindex="6" value="copy" onClick="copy()"/>
                                 </fieldset>
-                                <div class="text-center">
-      <h5 class="head_title">Permenant Address</h5>
-  </div>
+                                <div class="text-center fw">
+                                      <h5 class="head_title">Permenant Address</h5>
+                                  </div>
 
                                 <fieldset <?php if ($country_permenant) { ?> class="error-msg" <?php } ?>>
-                                    <label>Country<span class="red">*</span></label>
+                                    <label>Country:<span class="red">*</span> </label>
                                     <select name="country_permenant"  id="country_permenant">
                                         <option value="">Select Country</option>
                                         <?php
@@ -306,7 +306,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($state_permenant) { ?> class="error-msg" <?php } ?>>
-                                    <label>State<span class="red">*</span></label>
+                                    <label>State:<span class="red">*</span> </label>
                                     <select name="state_permenant" id="state_permenant">
                                         <?php
                                         if ($state1_permenant) {
@@ -331,7 +331,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($city_permenant) { ?> class="error-msg" <?php } ?>>
-                                    <label>City</label>
+                                    <label>City :</label>
                                     <select name="city_permenant" id="city_permenant">
                                         <?php
                                         if ($city1_permenant) {
@@ -372,7 +372,7 @@
                                 </fieldset>
 
                                 <fieldset <?php if ($pincode_permenant) { ?> class="error-msg" <?php } ?>>
-                                    <label>Pincode:</label>
+                                    <label>Pincode :</label>
                                     <input type="text" name="pincode_permenant" id="pincode_permenant" placeholder="Enter Pincode" value="<?php
                                     if ($pincode1_permenant) {
                                         echo $pincode1_permenant;
@@ -382,7 +382,7 @@
                                 </fieldset>
 
                                 <fieldset class="full-width">
-                                    <label>Postal Address:<span class="red">*</span></label>
+                                    <label>Postal Address:<span class="red">*</span> </label>
 
                                     <textarea name ="address_permenant" id="address_permenant" rows="4" cols="50" placeholder="Enter Address" style="resize: none;"><?php
                                         if ($address1_permenant) {
@@ -489,18 +489,16 @@
 
 <!-- for search validation -->
 <script type="text/javascript">
-    function checkvalue() {
-        // alert("hi");
-        var searchkeyword = document.getElementById('tags').value;
-        var searchplace = document.getElementById('searchplace').value;
-        // alert(searchkeyword);
-        // alert(searchplace);
-        if (searchkeyword == "" && searchplace == "") {
-            //alert('Please enter Keyword');
-            return false;
-        }
-    }
-
+   function checkvalue() {
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }
+   }
+   
 </script>
 
 <!-- <script>

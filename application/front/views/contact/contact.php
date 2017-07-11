@@ -4,8 +4,7 @@
         <meta charset="utf-8" />
         <title>Find the Best Jobs, Hiring, Employment and Freelance | Aileensoul.com</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <!-- seo changes start -->
         <!--Need to add following TAG in Header.-->
 
@@ -83,7 +82,7 @@
         position: relative;
         transition: all 5s ease-in-out;
     }
-    
+    */
     .okk{
         text-align: center;
     }

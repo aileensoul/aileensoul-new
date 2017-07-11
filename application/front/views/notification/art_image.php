@@ -104,7 +104,7 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="profile-box profile-box-custom col-md-4">
+                    <div class="profile-box profile-box-custom col-md-4 animated fadeInLeftBig">
 
                                   <div class="full-box-module">   
       <div class="profile-boxProfileCard  module">
@@ -218,7 +218,7 @@
 
 
 
-                     <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art">
+                     <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art animated fadeInUp">
 
 
     <div class="col-md-12 col-sm-12 post-design-box">

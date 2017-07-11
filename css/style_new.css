@@ -216,3 +216,7 @@ label.error::before{
 .header-left-menu ul{margin-bottom: -1px ;}
 .popup-img-in img{border:1px solid #d9d9d9 !important; }
 .notification-pic img{border:1px solid #d9d9d9 !important;}
+
+.about-content{width: 80% !important;line-height: 28px !important;}
+}
+

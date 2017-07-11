@@ -80,7 +80,7 @@
 
 
 <?php echo $header; ?>
-   <?php echo $recruiter_header2; ?>
+   <?php echo $recruiter_header2_border; ?>
     <!-- END HEADER -->
     <body class="page-container-bg-solid page-boxed">
 
@@ -90,7 +90,7 @@
             <div class="container">
                 <div class="row">
                   <div class="col-md-3"> </div>
-                    <div class="col-md-7 col-sm-7">
+                    <div class="col-md-7 col-sm-7 animated fadeInLeftBig">
                      
                     <div class="common-form">
                     <h3 class="h3_edit">Edit Post</h3>
@@ -148,7 +148,7 @@
                    </fieldset>
 
                    <fieldset class="full-width">
-                        <label class="control-label">Other skills:<span style="color:red">*</span></label>
+                        <label class="control-label">Other skills:<!-- <span style="color:red">*</span> --></label>
                         <input name="other_skill" type="text" id="other_skill" tabindex="3" placeholder=" Enter Skill Name" class="skill_other" value="<?php echo $postdata[0]['other_skill']; ?>"/>
                         <span id="fullname-error"></span>
                         <?php echo form_error('other_skill'); ?>
@@ -885,7 +885,9 @@ jQuery.noConflict();
                             required: true,
                              number:true,
                              min: 1,
-                            reg_candidate:/^-?(([0-9]{0,100}))$/
+                            reg_candidate:/^-?(([0-9]{0,100}))$/,
+                            range: [1, 100]
+                            
                         },
 
                          minyear: {
@@ -934,7 +936,9 @@ jQuery.noConflict();
                             
                         },
                         minsal:{
-                            number:true
+                            number:true,
+                            maxlength:11
+
                            // le:"#maxsal"
                         },
                         maxsal:{
@@ -943,7 +947,9 @@ jQuery.noConflict();
                             // },
                              number:true,
                               min: 0,
-                             greaterThan: "#minsal"
+                             greaterThan: "#minsal",
+                            maxlength:11
+
                         },
                         position_no:{
                             required:true
@@ -1193,11 +1199,7 @@ $('#datepicker').datetimepicker({
 <!-- Calender Js End
 
 -->
-    <script type="text/javascript">
-      $(document).ready(function() {
-  $("html,body").animate({scrollTop: 200}, 100); //100ms for example
-});
-    </script>
+   
 
     <style type="text/css">
    /*   #skils{margin-top: 42px !important;}

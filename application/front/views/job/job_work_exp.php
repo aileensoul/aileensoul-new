@@ -182,7 +182,7 @@
                            <div id="input<?php echo $y; ?>" style="margin-bottom:4px;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
                             
                                <div class="job_work_experience_main_div">
-                                 <label>Experience<span class="red">*</span></label>
+                                 <label>Experience:<span class="red">*</span></label>
                                  <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change_edittime();">
                                     <option value="" selected option disabled>Year</option>
                                     <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 year</option>
@@ -226,7 +226,7 @@
                                  <?php echo form_error('experience_year'); ?>
                                  <?php echo form_error('experience_month'); ?>
                                
-                                 <label  style="    margin-top: 6px;">Job Title<span class="red">*</span></label>
+                                 <label  style="    margin-top: 6px;">Job Title:<span class="red">*</span></label>
                                  <input type="text" name="jobtitle[]" tabindex="3"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
                                     if ($jobtitle1) {
                                         echo $jobtitle1;
@@ -234,27 +234,27 @@
                                     ?>"/>&nbsp;&nbsp;&nbsp; <!-- <span id="jobtitle-error"> </span> -->
                                  <?php echo form_error('jobtitle'); ?>
                                  </span>
-                                 <label style="   margin-top: 6px; ">Organization Name<span class="red">*</span></label>
+                                 <label style="   margin-top: 6px; ">Organization Name:<span class="red">*</span></label>
                                  <input type="text" name="companyname[]" id="companyname"  class="companyname" placeholder="Enter Organization Name" value="<?php
                                     if ($companyname1) {
                                         echo $companyname1;
                                     }
                                     ?>"/>&nbsp;&nbsp;&nbsp; <!-- <span id="companyname-error"> </span> -->
                                  <?php echo form_error('companyname'); ?>
-                                 <label style="  margin-top: 6px;  ">Organization Email</label>
+                                 <label style="  margin-top: 6px;  ">Organization Email:</label>
                                  <input type="text" name="companyemail[]" tabindex="4" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                     if ($companyemail1) {
                                         echo $companyemail1;
                                     }
                                     ?>"/>&nbsp;&nbsp;&nbsp; <!-- <span id="companyemail-error"> </span> -->
-                                 <label style="  margin-top: 6px;  ">Organization Phone</label>
+                                 <label style="  margin-top: 6px;  ">Organization Phone:</label>
                                  <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" tabindex="5" value="<?php
                                     if ($companyphn1) {
                                         echo $companyphn1;
                                     }
                                     ?>"   />&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
                                  <?php echo form_error('companyphn'); ?>
-                                 <label style="    margin-top: -14px; display: block;">Experience Certificate</label>
+                                 <label style="    margin-top: -14px; display: block;">Experience Certificate:</label>
                                  <input style="width:50%; margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate" placeholder="CERTIFICATE" />
 <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                  &nbsp;&nbsp;&nbsp; 
@@ -306,7 +306,7 @@
                            <div id="input1" style="margin-bottom:4px;" class="clonedInput">
                        
 
-                              <label>Experience<span class="red">*</span></label>
+                              <label>Experience:<span class="red">*</span></label>
                               <select style="width:45%; float: left; margin-right: 43px;" name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change();">
                                  <option value="" selected option disabled>Year</option>
                                  <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 year</option>
@@ -350,7 +350,7 @@
                               <?php echo form_error('experience_year'); ?>
                               <?php echo form_error('experience_month'); ?>
                              
-                              <label style="    margin-top: 6px;">Job Title<span class="red">*</span></label>
+                              <label style="    margin-top: 6px;">Job Title:<span class="red">*</span></label>
                               <input type="text" name="jobtitle[]"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
                                  if ($jobtitle1) {
                                      echo $jobtitle1;
@@ -358,14 +358,14 @@
                                  ?>"/>&nbsp;&nbsp;&nbsp; <!-- <span id="jobtitle-error"> </span> -->
                               <?php echo form_error('jobtitle'); ?>
                              </span>
-                              <label style=" margin-top: 6px;  ">Organization Name<span class="red">*</span></label>
+                              <label style=" margin-top: 6px;  ">Organization Name:<span class="red">*</span></label>
                               <input type="text" name="companyname[]" id="companyname"  class="companyname" placeholder="Enter Organization Name" value="<?php
                                  if ($companyname1) {
                                      echo $companyname1;
                                  }
                                  ?>"/>&nbsp;&nbsp;&nbsp; 
                               <?php echo form_error('companyname'); ?>
-                              <label style="   margin-top: 6px; ">Organization Email</label>
+                              <label style="   margin-top: 6px; ">Organization Email:</label>
                               <input type="text" name="companyemail[]" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                  if ($companyemail1) {
                                      echo $companyemail1;
@@ -373,7 +373,7 @@
                                  ?>"/>&nbsp;&nbsp;&nbsp; <span id="companyemail-error"> </span>
                               <!--   </fieldset>
                                  <fieldset >  -->
-                              <label style="  margin-top: 6px; ">Organization Phone</label>
+                              <label style="  margin-top: 6px; ">Organization Phone:</label>
                               <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" value="<?php
                                  if ($companyphn1) {
                                      echo $companyphn1;
@@ -382,7 +382,7 @@
                               <?php echo form_error('companyphn'); ?>
                               <!--  </fieldset>
                                  <fieldset class="full-width"> -->
-                              <label style="      margin-top: -14px;  display: block;">Experience Certificate</label>
+                              <label style="      margin-top: -14px;  display: block;">Experience Certificate:</label>
                               <input style="width: 50%; margin-bottom: 10px; display: inline-block;" type="file" name="certificate[]" id="certificate" class="certificate" placeholder="CERTIFICATE" />&nbsp;&nbsp;&nbsp; 
                               <?php
                                  if ($work_certificate1) {
@@ -468,6 +468,18 @@
 <!-- This Js is used for call popup -->
  <!-- <script src="<?php //echo base_url('js/bootstrap.min.js'); ?>"></script>  -->
 
+<script type="text/javascript">
+   function checkvalue() {
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }
+   }
+   
+</script>
 <script type="text/javascript">
 
 // $('#input1 .experience_year').on('change', function(){
@@ -1218,12 +1230,12 @@ if(num==5)
    }
 </style>
 <script type="text/javascript">
-//This function work after solve issue of bootstrap start
+
    function home(work_id) {
    
     $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this Work Experience?</h2><a class="mesg_link btn" onclick="return delete_job_work(' + work_id + ');">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
  }
-//This function work after solve issue of bootstrap End
+
 
    function delete_job_work(work_id) {
   

@@ -476,14 +476,20 @@
                                                 <?php
                                                    }
                                                    ?>
+        <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option>  
                                              </select>
                                              <?php echo form_error('degree'); ?>
                                              <!--    </fieldset> -->
                                              <?php
-                                                $contition_array = array('status' => 1 , 'degree_id' => $degree1);
+                                             
+           $contition_array = array('is_delete' => '0', 'degree_id' => $degree1);
+          $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+           $stream_data = $this->data['$stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
                                                 
-                                                $stream_data = $this->data['stream_data'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                
+//           $contition_array = array('status' => 1 , 'degree_id' => $degree1);
+//                                                
+//                                                $stream_data = $this->data['stream_data'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//                                                
                                                 // echo "<pre>"; print_r($stream_data); die();
                                                 
                                                 ?>
@@ -612,7 +618,7 @@
                                                 ?>
                                              <div style="float: left;">
                                                 <div class="hs-submit full-width fl">
-                                                   <input  type="button" style="padding: 6px 18px 6px;min-width: 0;font-size: 14px" value="Delete" onclick="delete_job_exp(<?php echo $jobgrad[$x]['job_graduation_id']; ?>);">
+                                                   <input  type="button" style="padding: 6px 18px 6px;min-width: 0;font-size: 14px" value="Delete" onclick="home(<?php echo $jobgrad[$x]['job_graduation_id']; ?>);">
                                                 </div>
                                              </div>
                                              <?php } ?>
@@ -660,13 +666,15 @@
                                                 //}
                                                 }
                                                 ?>
+    <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option> 
+
                                           </select>
                                           <?php echo form_error('degree'); ?>
                                           <!--     </fieldset>
                                              <fieldset class=""> -->
                                           <h6>Stream :<span class="red">*</span></h6>
                                           <select name="stream[]" id="stream1" class="stream" >
-                                             <option value="" selected option disabled>Select Degree First</option>
+                                             
                                              <?php
                                                 if ($stream1) {
                                                     foreach ($stream_data as $cnt) {
@@ -921,13 +929,11 @@
 <!-- for search validation -->
 <script type="text/javascript">
    function checkvalue() {
-       // alert("hi");
-       var searchkeyword = document.getElementById('tags').value;
-       var searchplace = document.getElementById('searchplace').value;
-       // alert(searchkeyword);
-       // alert(searchplace);
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
        if (searchkeyword == "" && searchplace == "") {
-           //alert('Please enter Keyword');
            return false;
        }
    }
@@ -1627,15 +1633,16 @@
                });
            
 </script>
-<!-- stream change depend on degeree start-->
-<!-- <script type="text/javascript">   
-   $(".formSentMsg").delay(3200).fadeOut(300);
-   </script> -->
+<!-- stream change depend on degree End-->
+
 <script type="text/javascript">
    $(".alert").delay(3200).fadeOut(300);
 </script>
+
 <script type="text/javascript">
-   $(document).on('change', '.university', function (event) {
+
+//Click on University other option process Start 
+   $(document).on('change', '#input1 .university', function (event) {
       var item=$(this);
       var uni=(item.val());
       if(uni == 463)
@@ -1648,21 +1655,23 @@
       $.ajax({
                           type: 'POST',
                           url: '<?php echo base_url() . "job/job_other_university" ?>',
+                          dataType: 'json',
                           data: 'other_university=' + textVal,
                           success: function (response) {
                        
-                               if(response == 0)
+                               if(response.select == 0)
                               {
                                 $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                               }
-                              else if(response == 1)
+                              else if(response.select == 1)
                               {
                                 $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                               }  
                               else
                               {
                                    $.fancybox.close();
-                                    $('.university').html(response);
+                                   $('.university').html(response.select1);
+                                   $('#input1 .university').html(response.select);
                               }
                           }
                       });
@@ -1671,7 +1680,511 @@
       }
      
    });
-  
+   
+   $(document).on('change', '#input2 .university', function (event) {
+      var item=$(this);
+      var uni=(item.val());
+      if(uni == 463)
+      {
+            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+   
+             $('.message #univer').on('click', function () {
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_university" ?>',
+                          dataType: 'json',
+                          data: 'other_university=' + textVal,
+                          success: function (response) {
+                       
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                   $('.university').html(response.select1);
+                                   $('#input2 .university').html(response.select);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+   
+   $(document).on('change', '#input3 .university', function (event) {
+      var item=$(this);
+      var uni=(item.val());
+      if(uni == 463)
+      {
+            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+   
+             $('.message #univer').on('click', function () {
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_university" ?>',
+                          dataType: 'json',
+                          data: 'other_university=' + textVal,
+                          success: function (response) {
+                       
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                   $('.university').html(response.select1);
+                                   $('#input3 .university').html(response.select);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+   
+   $(document).on('change', '#input4 .university', function (event) {
+      var item=$(this);
+      var uni=(item.val());
+      if(uni == 463)
+      {
+            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+   
+             $('.message #univer').on('click', function () {
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_university" ?>',
+                          dataType: 'json',
+                          data: 'other_university=' + textVal,
+                          success: function (response) {
+                       
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                   $('.university').html(response.select1);
+                                   $('#input4 .university').html(response.select);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+   
+   $(document).on('change', '#input5 .university', function (event) {
+      var item=$(this);
+      var uni=(item.val());
+      if(uni == 463)
+      {
+            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
+   
+             $('.message #univer').on('click', function () {
+      var $textbox = $('.message').find('input[type="text"]'),
+      textVal  = $textbox.val();
+      $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_university" ?>',
+                          dataType: 'json',
+                          data: 'other_university=' + textVal,
+                          success: function (response) {
+                       
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                   $('.university').html(response.select1);
+                                   $('#input5 .university').html(response.select);
+                              }
+                          }
+                      });
+      
+                  });
+      }
+     
+   });
+//Click on University other option process End 
+
+//Click on Degree other option process Start 
+   $(document).on('change', '#input1 .degree', function (event) {
+      var item=$(this);
+      var degree=(item.val());
+      
+      if(degree == 54)
+      {
+            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
+             $('.message #univer').on('click', function () {
+                 var degree = document.querySelector(".message #other_degree").value;
+                 var stream = document.querySelector(".message #other_stream").value;     
+           if (stream == '' || degree == '')
+           {
+               if(degree == '' && stream != '')
+               {
+                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if(stream == '' && degree != '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if (stream == '' && degree == '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+                return false;
+           }
+           else
+            {   
+                var $textbox = $('.message').find('input[type="text"]'),
+                textVal  = $textbox.val();
+                var selectbox_stream = $('.message').find(":selected").text()
+               
+                $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
+                          dataType: 'json',
+                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
+                          success: function (response) {
+                     
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.degree').html(response.select1);
+                                    $('#input1 .degree').html(response.select);
+                                    $('#input1 .stream').html(response.select2);      
+                              }
+                          }
+                      });
+                  }
+                  });
+       }
+   });
+   
+   $(document).on('change', '#input2 .degree', function (event) {
+      var item=$(this);
+      var degree=(item.val());
+      
+      if(degree == 54)
+      {
+            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
+             $('.message #univer').on('click', function () {
+                 var degree = document.querySelector(".message #other_degree").value;
+                 var stream = document.querySelector(".message #other_stream").value;     
+           if (stream == '' || degree == '')
+           {
+               if(degree == '' && stream != '')
+               {
+                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if(stream == '' && degree != '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if (stream == '' && degree == '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+                return false;
+           }
+           else
+            {   
+                var $textbox = $('.message').find('input[type="text"]'),
+                textVal  = $textbox.val();
+                var selectbox_stream = $('.message').find(":selected").text()
+               
+                $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
+                          dataType: 'json',
+                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
+                          success: function (response) {
+                     
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.degree').html(response.select1);
+                                    $('#input2 .degree').html(response.select);
+                                    $('#input2 .stream').html(response.select2);      
+                              }
+                          }
+                      });
+                  }
+                  });
+       }
+   });
+   
+   $(document).on('change', '#input3 .degree', function (event) {
+      var item=$(this);
+      var degree=(item.val());
+      
+      if(degree == 54)
+      {
+            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
+             $('.message #univer').on('click', function () {
+                 var degree = document.querySelector(".message #other_degree").value;
+                 var stream = document.querySelector(".message #other_stream").value;     
+           if (stream == '' || degree == '')
+           {
+               if(degree == '' && stream != '')
+               {
+                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if(stream == '' && degree != '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if (stream == '' && degree == '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+                return false;
+           }
+           else
+            {   
+                var $textbox = $('.message').find('input[type="text"]'),
+                textVal  = $textbox.val();
+                var selectbox_stream = $('.message').find(":selected").text()
+               
+                $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
+                          dataType: 'json',
+                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
+                          success: function (response) {
+                     
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.degree').html(response.select1);
+                                    $('#input3 .degree').html(response.select);
+                                    $('#input3 .stream').html(response.select2);      
+                              }
+                          }
+                      });
+                  }
+                  });
+       }
+   });
+   
+   $(document).on('change', '#input4 .degree', function (event) {
+      var item=$(this);
+      var degree=(item.val());
+      
+      if(degree == 54)
+      {
+            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
+             $('.message #univer').on('click', function () {
+                 var degree = document.querySelector(".message #other_degree").value;
+                 var stream = document.querySelector(".message #other_stream").value;     
+           if (stream == '' || degree == '')
+           {
+               if(degree == '' && stream != '')
+               {
+                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if(stream == '' && degree != '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if (stream == '' && degree == '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+                return false;
+           }
+           else
+            {   
+                var $textbox = $('.message').find('input[type="text"]'),
+                textVal  = $textbox.val();
+                var selectbox_stream = $('.message').find(":selected").text()
+               
+                $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
+                          dataType: 'json',
+                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
+                          success: function (response) {
+                     
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.degree').html(response.select1);
+                                    $('#input4 .degree').html(response.select);
+                                    $('#input4 .stream').html(response.select2);      
+                              }
+                          }
+                      });
+                  }
+                  });
+       }
+   });
+   
+   $(document).on('change', '#input5 .degree', function (event) {
+      var item=$(this);
+      var degree=(item.val());
+      
+      if(degree == 54)
+      {
+            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
+             $('.message #univer').on('click', function () {
+                 var degree = document.querySelector(".message #other_degree").value;
+                 var stream = document.querySelector(".message #other_stream").value;     
+           if (stream == '' || degree == '')
+           {
+               if(degree == '' && stream != '')
+               {
+                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if(stream == '' && degree != '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+               if (stream == '' && degree == '')
+               {
+                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+               }
+                return false;
+           }
+           else
+            {   
+                var $textbox = $('.message').find('input[type="text"]'),
+                textVal  = $textbox.val();
+                var selectbox_stream = $('.message').find(":selected").text()
+               
+                $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
+                          dataType: 'json',
+                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
+                          success: function (response) {
+                     
+                               if(response.select == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response.select == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.degree').html(response.select1);
+                                    $('#input5 .degree').html(response.select);
+                                    $('#input5 .stream').html(response.select2);      
+                              }
+                          }
+                      });
+                  }
+                  });
+       }
+   });
+   
+
+ $(document).on('change', '.message #other_stream', function (event) {
+
+var item1=$(this);
+var other_stream=(item1.val());
+ 
+ if(other_stream == 61)
+{
+    $.fancybox.open('<div class="message1"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
+
+      $('.message1 #univer1').on('click', function () {
+      var $textbox1 = $('.message1').find('input[type="text"]'),
+      textVal1  = $textbox1.val();
+
+       $.ajax({
+                          type: 'POST',
+                          url: '<?php echo base_url() . "job/job_other_stream" ?>',
+                          data: 'other_stream=' + textVal1,
+                          success: function (response) {
+                       
+                               if(response == 0)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Written Stream already available in  Stream Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }
+                              else if(response == 1)
+                              {
+                                $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                              }  
+                              else
+                              {
+                                   $.fancybox.close();
+                                    $('.message #other_stream').html(response);
+                              }
+                          }
+                      });
+    
+      });
+}
+       
+       }); 
+//Click on Degree other option process End
 </script>
 <!-- script start for next button -->
 <script type="text/javascript">
@@ -1752,7 +2265,7 @@
    //for clonedInput length 1 start
    if(num==1)
    {
-      //alert("hi");
+     
         
     if(board_primary=="" && school_primary=="" && percentage_primary=="" && pass_year_primary=="" && school_secondary == '' && percentage_secondary == '' && pass_year_secondary == '' && board_secondary == '' && board_higher_secondary == '' && stream_higher_secondary == '' && school_higher_secondary == '' && percentage_higher_secondary == '' && pass_year_higher_secondary == '' && degree1=="" &&  stream1 == '' && university1 == '' && college1 == '' && percentage1 == '' && pass_year1 == '')
     {
@@ -2417,6 +2930,11 @@
    } 
    </style>-->
 <script type="text/javascript">
+     function home(grade_id) {
+   
+    $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this Graduation Detail?</h2><a class="mesg_link btn" onclick="return delete_job_exp(' + grade_id + ');">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+ }
+
    function delete_job_exp(grade_id) {
        $.ajax({
            type: 'POST',

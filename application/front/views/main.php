@@ -2,32 +2,39 @@
 <html lang="en">
 <head>
   <title>Grow Business Network|Hiring|Search Jobs|Freelance Work|It's Free|Aileensoul</title>
+   <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+ 
   <link rel="stylesheet" href="css/common-style.css">
   <link rel="stylesheet" href="css/style-main.css">
+   <link rel="stylesheet" href="css/style_new.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<style type="text/css">
+
+</style>
 <body>
 <div class="main-login">
   <header>
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-3">
-          <h2 class="logo"><a href="<?php echo base_url('main'); ?>">Aileensoul</a></h2>
+        <div class="col-md-4 col-sm-3 col-lg-5">
+          <h2 class="logo"><a href="<?php echo base_url(); ?>">Aileensoul</a></h2>
         </div>
-        <div class="col-md-8 col-sm-9">
+		<div class="col-lg-1"></div>
+        <div class="col-md-8 col-sm-9 col-lg-6">
           <form class="header-login" name="login_form" id="login_form" method="post">
             <div class="input">
-              <input type="email" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
+              <input type="email" tabindex="1" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address">
               </div>
               <div class="input">
-              <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
+              <input type="password" tabindex="2" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
             </div>
             <div class="btn-right">
-              <button class="btn1">Login</button>
-              <a tabindex="19" id="myBtn" class="f-pass" href="javascript:void(0)">Forgot Password?</a>
+              <button tabindex="2" class="btn1">Login</button>
+              <a tabindex="4" id="myBtn" class="f-pass" href="javascript:void(0)">Forgot Password?</a>
             </div>
           </form>
         </div>
@@ -41,7 +48,7 @@
 
 
 <div id="myModal" class="modal">
-  <div class="modal-content">
+  <div class="modal-content md-2">
 
 
   <?php
@@ -49,14 +56,14 @@
         echo form_open('profile/forgot_password', $form_attribute);
     ?>
 
-    <div class="modal-header" style="width: 100%; text-align: center;">
+    <div class="modal-header" style=" text-align: center;">
 
       <span class="close">&times;</span>
       <label style="color: #a0b3b0;">Forgot Password</label>
     </div>
 
 
-    <div class="modal-body" style="    width: 100%;
+    <div class="modal-body" style=" 
     text-align: center;">
         <label  style="margin-bottom: 15px; color: #a0b3b0;"> Enter your e-mail address below to get your password.</label>
         <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
@@ -67,7 +74,7 @@
       <!--  <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
        -->  
         <div class="submit_btn">              
-        <input class="btn btn-theme" type="submit" name="submit" value="Submit" /> 
+        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" /> 
        </div>
     </div>
 
@@ -77,14 +84,14 @@
 </div>
   <!-- model for forgot password end -->
 
-  <div id="error"></div>
+<!--   <div id="error"></div> -->
   <section class="middle-main">
     <div class="container">
       <div class="row">
         <div class="col-md-7 col-sm-6">
           <div class="top-middle">
-            <h3 class="text-effect">We Provide A Platform & Opportunities To</h3>
-            <h3 class="text-effect">Every Person In The World To Make Their Career.</h3>
+            <h3 class="text-effect"><p>We provide platform & opportunities to</p><p>Every person in the world to make their career.</p></h3>
+           
           </div>
           <div class="bottom-middle">
             <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -113,7 +120,7 @@
                   <div class="carousel-caption">
                     <img src="img/freelancer.png">
                     <div class="carousel-text">
-                      <h3>Freelancer Profile</h3>
+                      <h3>Freelance Profile</h3>
                       <p>Hire freelancers and also find freelance work.</p>
                     </div>
                   </div>
@@ -141,32 +148,33 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 col-sm-6">
+        <div class="col-md-5 col-sm-6 pt20">
           <div class="login">
             <h4>Join Aileensoul - It's Free</h4>
             <form role="form" name="register_form" id="register_form" method="post">
                 <div class="row">
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                      <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                      <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                      <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                      <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <input type="email" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address">
+                  <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
                 </div>
               <div class="form-group">
-                  <input type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                  <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
                 </div>
               <div class="form-group dob">
-                <select class="day" name="selday" id="selday">
-                  <option value="" disabled selected value>Date</option>
+				<label class="d_o_b"> Date Of Birth :</label>
+                <select tabindex="9" class="day" name="selday" id="selday">
+                  <option value="" disabled selected value>Day</option>
                   <?php
                   for($i = 1; $i <= 31; $i++){
                   ?>
@@ -175,7 +183,7 @@
                   }
                   ?>
                 </select>
-                <select class="month" name="selmonth" id="selmonth">
+                <select tabindex="10" class="month" name="selmonth" id="selmonth">
                   <option value="" disabled selected value>Month</option>
                   //<?php
 //                  for($i = 1; $i <= 12; $i++){
@@ -196,7 +204,7 @@
 //                  }
 //                  ?>
                 </select>
-                <select class="year" name="selyear" id="selyear">
+                <select tabindex="11" class="year" name="selyear" id="selyear">
                   <option value="" disabled selected value>Year</option>
                   <?php
                   for($i = date('Y'); $i >= 1900; $i--){
@@ -207,10 +215,12 @@
                   ?>
 
                 </select>
-              </div>
+               
+               </div>
+                 <div class="dateerror" style="color:#f00; display: block;"></div>
               
               <div class="form-group gender-custom">
-                <select class="gender" name="selgen" id="selgen">
+                <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
                   <option value="" disabled selected value>Gender</option>
                   <option value="M">Male</option>
                   <option value="F">Female</option>
@@ -218,11 +228,11 @@
               </div>
               
               <p class="form-text">
-                By Clicking on create an account button you agree our<br>
-                <a href="#">Terms and Condition</a> and <a href="#">Privacy Policy</a>.
+                By Clicking on create an account button you agree our<br class="mob-none">
+                <a tabindex="14" href="#">Terms and Condition</a>.
               </p>
                 <p>
-                <button class="btn1">Create an account</button>
+                <button tabindex="13" class="btn1">Create an account</button>
               </p>
               </form>
             
@@ -233,80 +243,65 @@
     </div>
   </section>
 
-  <footer>
-    <div class="container">
+  <footer class="footer">
+    <div class="container pt20">
       <div class="row">
-        <div class="col-md-6 col-sm-4">
-          © 2017 | by Aileensoul
-        </div>
-        <div class="col-md-6 col-sm-8">
+        
+        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
           <ul>
             <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
             <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-            <li><a href="javascript:void(0);">Blogs</a>|</li>
+           
             <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
           </ul>
+        </div>
+		<div class="col-md-6 col-sm-4">
+          © 2017 | by Aileensoul
         </div>
       </div>
     </div>
   </footer>
 </div>
+<style type="text/css">
+
+</style>
 
 </body>
 </html>
 
 <script>
-  $( document ).ready(function() {
-    
-    // text animation effect 
-    var $lines = $('.top-middle h3.text-effect');
-      $lines.hide();
-      var lineContents = new Array();
+ $(document).ready(function(){
 
-      var terminal = function() {
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-        var skip = 0;
-        typeLine = function(idx) {
-        idx == null && (idx = 0);
-        var element = $lines.eq(idx);
-        var content = lineContents[idx];
-        if(typeof content == "undefined") {
-          $('.skip').hide();
-          return;
-        }
-        var charIdx = 0;
+$(".text-effect p").each(function() {
+  var text = $(this).html();
+  var words = text.split(" ");
+  var spanSentence = "";
+  for (var i = 0; i < words.length; i++) {
+    spanSentence += "<span>" + words[i] + "</span> ";
+  }
+  $(this).html(spanSentence);
+})
 
-        var typeChar = function() {
-          var rand = Math.round(Math.random() * 150) + 25;
+$(".text-effect p span").each(function() {
+  $(this)
+    .css({
+      "transform": "translate(" + getRandomInt(-100, 100) + "px, " + getRandomInt(-100, 100) + "px)"
+    })
+});
 
-          setTimeout(function() {
-          var char = content[charIdx++];
-          element.append(char);
-          if(typeof char !== "undefined")
-            typeChar();
-          else {
-            element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
-            element.removeClass('active');
-            typeLine(++idx);
-          }
-          }, skip ? 0 : rand);
-        }
-        content = '' + content + '';
-        element.append(' ').addClass('active');
-        typeChar();
-        }
-
-        $lines.each(function(i) {
-        lineContents[i] = $(this).text();
-        $(this).text('').show();
-        });
-
-        typeLine();
-      }
-
-      terminal();
-  
+setTimeout(function() {
+  $(".text-effect p span").css({
+    "transform": "translate(0, 0)",
+    "opacity": 1
   });
+}, 50);
+
+
+});
 </script>
 
 
@@ -352,33 +347,35 @@
                                         type: 'POST',
                                         url: '<?php echo base_url() ?>registration/check_login',
                                         data: post_data,
+                                        dataType: "json",
                                         beforeSend: function ()
                                         {
                                             $("#error").fadeOut();
-                                            $("#btn-login").html('Login ...');
+                                            $("#btn-login").html('Login');
                                         },
                                         success: function (response)
                                         { 
-                                            if (response == "ok") {
+                                            if (response.data == "ok") {
                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
 
                                                window.location= "<?php echo base_url() ?>dashboard"; 
 
-                                                //setTimeout(' window.location.href = "<?php //echo base_url() ?>home"; ', 4000);
-                                               // setTimeout(' window.location.href = ""; ', 4000);
-                                            }else if(response == "password"){
+                                               
+                                             }
+                                            else if(response.data == "password"){
 
-                                             $("#error").fadeIn(1000, function () {
-                                                    $("#error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
-                                                    $("#btn-login").html('Login');
-                                                }); 
+                                               var id = response.id;
+                                               window.location= "<?php echo base_url() ?>login?error_msg=2&lwc=" + id; 
 
                                             }
                                             else { 
-                                                $("#error").fadeIn(1000, function () {
-                                                    $("#error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
-                                                    $("#btn-login").html('Login');
-                                                });
+
+                                               window.location= "<?php echo base_url() ?>login?error_msg=1"; 
+
+                                                // $("#error").fadeIn(1000, function () {
+                                                //     $("#error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                                                //     $("#btn-login").html('Login');
+                                                // });
                                             }
                                         }
                                     });
@@ -408,6 +405,7 @@
                                         },
                                         email_reg: {
                                             required: true,
+                                            email:true,
                                              remote: {
                                                url: "<?php echo site_url() . 'registration/check_email' ?>",
                                              type: "post",
@@ -496,6 +494,50 @@
                                         'selgen': selgen,
                                         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
                                     }
+                                    
+                                    
+                                      if( (0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400) )
+                                {
+
+
+                                        if(selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11){
+
+                                      if(selday == 31){
+
+                                      $(".dateerror").html("This month has only 30 days.");
+                                      return false;
+                                      }
+                                    }else if(selmonth == 2){ 
+                                      if(selday == 31 || selday == 30){
+                                        $(".dateerror").html("This month has only 29 days.");
+                                        return false;
+
+                                      }
+
+                                    }
+                                           
+                                  }else{
+
+
+                                    if(selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11){
+
+                                      if(selday == 31){
+
+                                      $(".dateerror").html("This month has only 30 days.");
+                                      return false;
+                                      }
+                                    }else if(selmonth == 2){ 
+                                      if(selday == 31 || selday == 30 || selday == 29){
+                                        $(".dateerror").html("This month has only 28 days.");
+                                        return false;
+
+                                      }
+
+                                    }
+                                          
+                                     }
+                                     
+                                     
                                     $.ajax({
                                         type: 'POST',
                                         url: '<?php echo base_url() ?>registration/reg_insert',
@@ -569,6 +611,7 @@ $(document).ready(function () { //aletr("hii");
               rules: {
                   forgot_email: {
                       required: true,
+                      email:true,
                         }
                   
                         },
@@ -617,5 +660,28 @@ return e.which !== 32;
 });
 }); 
 
+jQuery('.carousel').carousel({
+		interval: 4000
+	});
+
+
 // disable spacebar js end
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $( "#myModal" ).hide();
+            //$('#myModal').modal('hide');
+        }
+    });
+
+</script>
+<script type="text/javascript">
+    function changeMe(sel)
+    {
+      sel.style.color = "#000";              
+    }
 </script>

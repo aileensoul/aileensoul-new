@@ -153,7 +153,7 @@
 
 
                                 <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
-                                    <label class="control-label">Other Skill:<span style="color:red">*</span></label>
+                                    <label class="control-label">Other Skill:<!-- <span style="color:red">*</span> --></label>
                                     <input name="other_skill" type="text" class="skill_other" tabindex="3" id="other_skill" placeholder="Enter Your Skill" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('other_skill'); ?>
@@ -161,7 +161,7 @@
                                 <!--  </div> -->
                                       <fieldset class="full-width" <?php if ($position) { ?> class="error-msg" <?php } ?>>
                                     <label class="control-label">No of Position:<span style="color:red">*</span> </label>
-                                    <input name="position_no" type="text"  id="position" value="1" tabindex="4" placeholder="Enter No of Candidate" />
+                                    <input name="position_no" type="text"  id="position" value="1" tabindex="4" placeholder="Enter No of Candidate"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('position'); ?>        
                                 </fieldset>
@@ -572,6 +572,21 @@ else
 
 
 
+
+
+// function fnc(value, min, max) 
+// {
+//     if(parseInt(value) < 0 || isNaN(value)) 
+//         return 0; 
+//     else if(parseInt(value) > 100) 
+//         return "Number is greater than 100"; 
+//     else return value;
+// }
+
+
+
+
+
 // for date validtaion start
 
 jQuery.validator.addMethod("isValid", function (value, element) {
@@ -639,7 +654,8 @@ if(mm<10) {
                             required: true,
                              number:true,
                              min: 1,
-                            reg_candidate:/^-?(([0-9]{0,100}))$/
+                            reg_candidate:/^-?(([0-9]{0,100}))$/,
+                            range: [1, 100]
                         },
 
 
@@ -689,7 +705,10 @@ if(mm<10) {
                             
                         },
                         minsal:{
-                            number:true
+                            number:true,
+                            maxlength:11
+
+
                            // le:"#maxsal"
                         },
                         maxsal:{
@@ -698,7 +717,8 @@ if(mm<10) {
                             // },
                              number:true,
                               min: 0,
-                             greaterThan: "#minsal"
+                             greaterThan: "#minsal",
+                            maxlength:11
                         },
                         // position_no:{
                         //     required:true

@@ -1,7 +1,7 @@
 
-<header>
+<header class="">
     <div class="bg-search">
-        <div class="header2 headerborder">
+        <div class="header2 headerborder animated fadeInDownBig">
             <div class="container">
                 <div class="row">
                   <?php echo $artistic_search; ?>

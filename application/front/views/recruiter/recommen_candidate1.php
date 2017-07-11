@@ -33,7 +33,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-4 profile-box profile-box-left"><div class="">
+                    <div class="col-md-4 profile-box profile-box-left animated fadeInLeftBig"><div class="">
                                 <div class="full-box-module">   
       <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
@@ -117,7 +117,7 @@
 <!-- <?php //echo "<pre>"; print_r($postdetail);//die();?> -->
                     <!--- search end -->
 
-                 <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right">
+                 <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                         <div class="common-form">
                             <div class="job-saved-box">
 

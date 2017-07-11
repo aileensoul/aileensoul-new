@@ -19,11 +19,11 @@
 <header>
 
     <div class="bg-search">
-        <div class="header2 headerborder">
+        <div class="header2 headerborder animated fadeInDownBig">
             <div class="container">
                 <div class="row">
                  
-                    <div class="col-sm-7 col-md-7 col-xs-7 hidden-mob">
+                    <div class="col-sm-7 col-md-7 col-xs-7 hidden-mob ">
                         <div class="job-search-box1 clearfix">
                         <?php echo $job_search; ?>
                         </div>
