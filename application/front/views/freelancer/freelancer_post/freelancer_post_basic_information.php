@@ -272,7 +272,14 @@ $( "#searchplace" ).autocomplete({
     }, "No space please and don't leave it empty");
 
 $.validator.addMethod("regx", function(value, element, regexpr) {          
-    return regexpr.test(value);
+      if(!value) 
+            {
+                return true;
+            }
+            else
+            {
+                  return regexpr.test(value);
+            }  
 }, "Number, space and special character are not allowed");
 
 
@@ -285,7 +292,7 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
                 firstname: {
 
                     required: true,
-                    regx:/^[a-zA-Z]+$/,
+                    regx:/^[^-\s][a-zA-Z_\s-]+$/,
                     //noSpace: true
 
                 },
@@ -293,7 +300,7 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
                 lastname: {
 
                     required: true,
-                    regx:/^[a-zA-Z]+$/,
+                    regx:/^[^-\s][a-zA-Z_\s-]+$/,
                     //noSpace: true
 
                 },
