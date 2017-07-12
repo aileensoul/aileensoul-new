@@ -361,7 +361,6 @@
             //aarati code end
         </script>
         <!-- cover image end -->
-
         <!-- follow user script start -->
 
         <script type="text/javascript">
