@@ -1,4 +1,3 @@
-alert(data);
 $(function () {
     $("#tags").autocomplete({
         source: function (request, response) {
@@ -45,6 +44,7 @@ $(function () {
     });
 });
 
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -78,7 +78,6 @@ $uploadCrop = $('#upload-demo').croppie({
         height: 350
     }
 });
-
 $('.upload-result').on('click', function (ev) {
     $uploadCrop.croppie('result', {
         type: 'canvas',
@@ -113,6 +112,8 @@ $('#upload').on('change', function () {
         });
     }
     reader.readAsDataURL(this.files[0]);
+});
+$('#upload').on('change', function () {
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
@@ -124,7 +125,7 @@ $('#upload').on('change', function () {
         $("#upload").val('');
         return false;
     }
-// file type code end
+    // file type code end
     if (size > 4194304)
     {
         //show an alert to the user
@@ -143,7 +144,6 @@ $('#upload').on('change', function () {
         success: function (response) {
         }
     });
-    
 });
 /* COVER PIC SCRIPT END */
 
@@ -152,7 +152,7 @@ function followuser(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + 'business_profile/follow',
+        url: base_url + "business_profile/follow",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fruser' + clicked_id).html(data);
@@ -166,7 +166,7 @@ function unfollowuser(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + 'business_profile/unfollow',
+        url: base_url + "business_profile/unfollow",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fruser' + clicked_id).html(data);
@@ -198,7 +198,7 @@ $("#profilepic").change(function () {
 });
 /* SCRIPT FOR PROFILE PIC END */
 
-/* PROFILE PIC VALIDATION START */
+//validation for edit email formate form
 $(document).ready(function () {
     $("#userimage").validate({
         rules: {
@@ -213,12 +213,12 @@ $(document).ready(function () {
         },
     });
 });
-/* PROFILE PIC VALIDATION END */
 
 function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
     $('#bidmodal').modal('show');
 }
+
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#bidmodal-2').modal('hide');
