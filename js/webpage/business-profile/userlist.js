@@ -112,8 +112,6 @@ $('#upload').on('change', function () {
         });
     }
     reader.readAsDataURL(this.files[0]);
-});
-$('#upload').on('change', function () {
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
@@ -144,6 +142,7 @@ $('#upload').on('change', function () {
         success: function (response) {
         }
     });
+    
 });
 /* COVER PIC SCRIPT END */
 
