@@ -23,7 +23,6 @@
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('user_id' => $userid, 'status' => '1');
                         $freehiredata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                         if ($freehiredata[0]['free_hire_step'] == 3) {
                             ?>
                             <div class="col-md-6 col-sm-6"><h3>You are updating your Freelancer Profile.</h3></div>
@@ -42,11 +41,11 @@
                                     <ul class="left-form-each">
                                         <li <?php if ($this->uri->segment(1) == 'freelancer_hire') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
                                         <li class="custom-none <?php
-                                        if ($freehiredata[0]['free_hire_step'] < '1') {
+                                        if ($freehiredata[0]['free_hire_step'] < '1') {                                         
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_address_info'); ?>">Address Information</a></li>
                                         <li class="custom-none <?php
-                                        if ($freehiredata[0]['free_hire_step'] < '2') {
+                                        if ($freehiredata[0]['free_hire_step'] < '2') {   
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_professional_info'); ?>">Professional Information</a></li>
                                     </ul>
@@ -65,7 +64,7 @@
                                 </div>
                                 <div class="common-form common-form_border">
                                     <h3>Basic Information</h3>
-                                    <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_basic_info_insert'), array('id' => 'basic_info', 'name' => 'basic_info', 'class' => 'clearfix')); ?>
+<?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_basic_info_insert'), array('id' => 'basic_info', 'name' => 'basic_info', 'class' => 'clearfix')); ?>
                                     <div>
                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
                                     </div>
@@ -84,7 +83,7 @@
                                             echo $userdata[0]['first_name'];
                                         }
                                         ?>">
-                                               <?php echo form_error('fname'); ?>
+<?php echo form_error('fname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
                                         <label>Last Name<spanclass="red">*</span>:</label>
@@ -95,7 +94,7 @@
                                             echo $userdata[0]['last_name'];
                                         }
                                         ?>">
-                                               <?php echo form_error('lname'); ?>
+<?php echo form_error('lname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label>Email<span class="red">*</span>:</label>
@@ -106,7 +105,7 @@
                                             echo $userdata[0]['user_email'];
                                         }
                                         ?>">
-                                               <?php echo form_error('email'); ?>
+<?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
                                         <label>Skype Id:</label>
@@ -124,12 +123,12 @@
                                             echo $phoneno1;
                                         }
                                         ?>">
-                                               <?php echo form_error('phone'); ?>
+<?php echo form_error('phone'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit" tabindex="6" id="next" name="next" value="Next">
                                     </fieldset>
-                                    <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +136,7 @@
                 </div>
             </section>
             <footer>
-                <?php echo $footer; ?>
+<?php echo $footer; ?>
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>

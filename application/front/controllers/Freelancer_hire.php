@@ -68,7 +68,7 @@ class Freelancer_hire extends MY_Controller {
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
          $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' => '1');
-         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'fullname,username,email,skyupid,phone,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'fullname,username,email,skyupid,phone,user_id,free_hire_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
           if($userdata){
             $step = $userdata[0]['free_hire_step'];
             if($step == 1 || $step >1)
@@ -225,29 +225,18 @@ public function check_email() {
     public function freelancer_hire_address_info()
     {
           $userid = $this->session->userdata('aileenuser'); 
-
-          
-
       //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-  
  $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         if( $freelancerhire_deactive)
         {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
         $contition_array = array('status' => 1);
-      $this->data['countries'] =  $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = ''); 
-
-
-$contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' => '1');
-         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
- 
-
+         $this->data['countries'] =  $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = ''); 
+        $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' => '1');
+         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'country,state,city,pincode,address,user_id,free_hire_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
       //for getting state data
             $contition_array = array('status' => 1,'country_id' => $userdata[0]['country']);
             $this->data['states'] =  $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -255,9 +244,6 @@ $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' =>
              //for getting city data
             $contition_array = array('status' => 1,'state_id'=> $userdata[0]['state']);
             $this->data['cities'] =  $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-
-
          
           if($userdata){
             $step = $userdata[0]['free_hire_step'];
@@ -270,87 +256,12 @@ $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' =>
             $this->data['pincode1'] = $userdata[0]['pincode'];
             $this->data['address1'] = $userdata[0]['address'];
              }
-             
-
              } 
 
-// pallavi code 15-4
-
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($results_recruiter);die();
-
-        $contition_array = array('status' => '1', 'type' => '1');
-
-        $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $unique = array_merge($field, $skill, $freelancer_postdata);
-        // echo count($unique);
-        // $this->data['demo']=$unique;
-
-
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-       foreach($results as $key =>$value){
-            $result1[$key]['label']=$value;
-            $result1[$key]['value']=$value;
-          }
-            // echo "<pre>"; print_r($result1);die();
-         
-  // echo "<pre>"; print_r($result1);die();
-         
-        $contition_array = array('status' => '1');
-          $citiesss = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-   //echo "<pre>";print_r($cities);
-   //echo "<pre>";print_r($location_list);
-
- foreach ($citiesss as $key1) {
-              
-                 $location[] = $key1['city_name'];
-             
-          }
-
-foreach ($location as $key => $value) {
-              $loc[$key]['label'] =$value;
-              $loc[$key]['value'] =$value;
-          }
-//echo "<pre>"; print_r($location_list);die();
-          // foreach ($location_list as $key1 => $value1) {
-          //   echo "<pre>"; print_r($value1);
-          //     foreach ($value1 as $ke1 => $val1) {
-          //        $location[] = $val1;
-          //     }
-          // }
-          //echo "<pre>"; print_r($location);die();
-
-  // foreach($location_list as $key =>$value){
-  //           $loc[$key]['label']=$value;
-  //           $loc[$key]['value']=$value;
-  //         }
-         $this->data['city_data']= $loc;
-         $this->data['demo']= array_values($result1);
-
-
-// pallavi end code 15-4
-
-
-         $this->load->view('freelancer/freelancer_hire/freelancer_hire_address_info',$this->data);
-      
+// code for search start
+$this->freelancer_hire_search();
+// code for search end
+ $this->load->view('freelancer/freelancer_hire/freelancer_hire_address_info',$this->data);
     }
 
     public function ajax_data() { 
@@ -521,22 +432,16 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
   public function freelancer_hire_professional_info()
     {
          $userid = $this->session->userdata('aileenuser'); 
-
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-  
  $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
-
-        $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+       $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if( $freelancerhire_deactive)
         {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
          $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' => '1');
-         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
- 
+         $userdata= $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'free_hire_step,professional_info', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
           if($userdata){
             $step = $userdata[0]['free_hire_step'];
 
@@ -544,74 +449,7 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
             {
              $this->data['professional_info1'] = $userdata[0]['professional_info'];
              }
-             
-
-             } 
-      // pallavi code start 15-4
-
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($results_recruiter);die();
-
-        $contition_array = array('status' => '1', 'type' => '1');
-
-        $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $unique = array_merge($field, $skill, $freelancer_postdata);
-        // echo count($unique);
-        // $this->data['demo']=$unique;
-
-
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-$results = array_unique($result);
-       foreach($results as $key =>$value){
-
-            $result1[$key]['label']=$value;
-            $result1[$key]['value']=$value;
-          }
-            // echo "<pre>"; print_r($result1);die();
-         
-
-         $contition_array = array('status' => '1');
-          $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-   
-
-          foreach ($location_list as $key1 => $value1) {
-              foreach ($value1 as $ke1 => $val1) {
-                 $location[] = $val1;
-              }
-          }
-          //echo "<pre>"; print_r($location);die();
-          foreach ($location as $key => $value) {
-              $loc[$key]['label'] =$value;
-              $loc[$key]['value'] =$value;
-          }
-         
- //echo "<pre>"; print_r($loc);die();
-
-          //echo "<pre>"; print_r($loc);die();
-          // echo "<pre>"; print_r($result1);die();
-
-        $this->data['city_data']= array_values($loc);
-
-         $this->data['demo']= array_values($result1);
-
-         // pallavi code end 15-4
+             }
 
          $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info',$this->data);
       
