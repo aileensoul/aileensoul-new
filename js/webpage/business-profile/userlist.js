@@ -1,3 +1,4 @@
+alert(data);
 $(function () {
     $("#tags").autocomplete({
         source: function (request, response) {

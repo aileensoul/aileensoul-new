@@ -140,6 +140,7 @@
             var data = '<?php echo json_encode($demo); ?>';
             var data1 = '<?php echo json_encode($city_data); ?>';
             var base_url = '<?php echo base_url(); ?>';
+            alert(data);
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/userlist.js'); ?>"></script>
     </body>
