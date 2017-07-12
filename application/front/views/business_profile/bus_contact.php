@@ -3,6 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -170,34 +175,33 @@
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- script for business autofill -->
         <script>
-            
-                var data = <?php echo json_encode($demo); ?>;
 
-                    $(function () {
-                        $("#tags").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                        }
-                    });
-                });
+                                                                                            var data = <?php echo json_encode($demo); ?>;
+
+                                                                                            $(function () {
+                                                                                                $("#tags").autocomplete({
+                                                                                                    source: function (request, response) {
+                                                                                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                                                                                                        response($.grep(data, function (item) {
+                                                                                                            return matcher.test(item.label);
+                                                                                                        }));
+                                                                                                    },
+                                                                                                    minLength: 1,
+                                                                                                    select: function (event, ui) {
+                                                                                                        event.preventDefault();
+                                                                                                        $("#tags").val(ui.item.label);
+                                                                                                        $("#selected-tag").val(ui.item.label);
+                                                                                                        // window.location.href = ui.item.value;
+                                                                                                    }
+                                                                                                    ,
+                                                                                                    focus: function (event, ui) {
+                                                                                                        event.preventDefault();
+                                                                                                        $("#tags").val(ui.item.label);
+                                                                                                    }
+                                                                                                });
+                                                                                            });
         </script>
         <script>
             var data1 = <?php echo json_encode($city_data); ?>;
