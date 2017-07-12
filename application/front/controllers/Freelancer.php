@@ -77,9 +77,6 @@ class Freelancer extends MY_Controller {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
         //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
-
-
-
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1563,18 +1560,13 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_add_post() {
         $userid = $this->session->userdata('aileenuser');
-
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-
         $freelancerhire_deactive = $this->data['freelancerhire_deactive'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
         if ($freelancerhire_deactive) {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
-
         $contition_array = array('status' => 1);
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1585,11 +1577,8 @@ class Freelancer extends MY_Controller {
         $contition_array = array('status' => 1);
         $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 //code for search start
-$this->freelancer_hire_search();
+        $this->freelancer_hire_search();
 // code for search end
 
         $this->load->view('freelancer/freelancer_hire/freelancer_add_post', $this->data);
