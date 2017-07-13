@@ -290,222 +290,226 @@
                                                                                         <p>
                                                                                             <?php
                                                                                             if (($post['post_exp_year'] != '0') || ($post['post_exp_month'] != '0')) {
-                                                                                                echo $post['post_exp_year'] . '.' . $post['post_exp_month'] . ' Year ';
+                                                                                                if ($post['post_exp_year'] != '0') {
+                                                                                                    echo $post['post_exp_year'];
+                                                                                                }
+                                                                                                if ($post['post_exp_month'] != '0') {
+                                                                                                    echo ".";
+                                                                                                } else {
+                                                                                                    echo PROFILENA;
+                                                                                            }}
+                                                                                                ?> 
+                                                                                            </p>  
+                                                                                        </span>
+                                                                                    </li>
+                                                                                    <li><b>Estimated Time</b><span> <?php
+                                                                                            if ($post['post_est_time']) {
+                                                                                                echo $post['post_est_time'];
                                                                                             } else {
                                                                                                 echo PROFILENA;
                                                                                             }
-                                                                                            ?> 
-                                                                                        </p>  
-                                                                                    </span>
-                                                                                </li>
-                                                                                <li><b>Estimated Time</b><span> <?php
-                                                                                        if ($post['post_est_time']) {
-                                                                                            echo $post['post_est_time'];
-                                                                                        } else {
-                                                                                            echo PROFILENA;
-                                                                                        }
-                                                                                        ?></span>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="profile-job-profile-button clearfix">
-                                                                            <div class="profile-job-details col-md-12">
-                                                                                <ul><li class="job_all_post last_date">
-                                                                                        Last Date : <?php
-                                                                                        if ($post['post_last_date']) {
-                                                                                            echo date('d-M-Y', strtotime($post['post_last_date']));
-                                                                                        } else {
-                                                                                            echo PROFILENA;
-                                                                                        }
-                                                                                        ?>                                                          </li>
-                                                                                    <li class=fr>
-                                                                                        <?php
-                                                                                        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-                                                                                        $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
-                                                                                        $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                                        if ($freelancerapply1) {
-                                                                                            ?>
-                                                                                            <a href="javascript:void(0);" class="button applied">Applied</a>
-                                                                                            <?php
-                                                                                        } else {
-                                                                                            ?>
-                                                                                            <a href="javascript:void(0);"  class= "<?php echo 'applypost' . $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
-                                                                                        </li> 
-                                                                                        <li>
-                                                                                            <?php
-                                                                                            $userid = $this->session->userdata('aileenuser');
-                                                                                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
-                                                                                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                                            if ($data) {
-                                                                                                ?>
-                                                                                                <a class="saved  button <?php echo 'savedpost' . $post['post_id']; ?>">Saved</a>
-                                                                                            <?php } else { ?>
-
-                                                                                                <a id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" href="javascript:void(0);" class="<?php echo 'savedpost' . $post['post_id']; ?> button">Save</a>
-                                                                                            <?php } ?>
-                                                                                        <?php } ?>
-
-                                                                                    </li>                        
+                                                                                            ?></span>
+                                                                                    </li>
                                                                                 </ul>
+                                                                            </div>
+                                                                            <div class="profile-job-profile-button clearfix">
+                                                                                <div class="profile-job-details col-md-12">
+                                                                                    <ul><li class="job_all_post last_date">
+                                                                                            Last Date : <?php
+                                                                                            if ($post['post_last_date']) {
+                                                                                                echo date('d-M-Y', strtotime($post['post_last_date']));
+                                                                                            } else {
+                                                                                                echo PROFILENA;
+                                                                                            }
+                                                                                            ?>                                                          </li>
+                                                                                        <li class=fr>
+                                                                                            <?php
+                                                                                            $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                                                                                            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                                                                                            $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                            if ($freelancerapply1) {
+                                                                                                ?>
+                                                                                                <a href="javascript:void(0);" class="button applied">Applied</a>
+                                                                                                <?php
+                                                                                            } else {
+                                                                                                ?>
+                                                                                                <a href="javascript:void(0);"  class= "<?php echo 'applypost' . $post['post_id']; ?>  button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['user_id'] ?>)">Apply</a>
+                                                                                            </li> 
+                                                                                            <li>
+                                                                                                <?php
+                                                                                                $userid = $this->session->userdata('aileenuser');
+                                                                                                $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                                                                                                $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                                if ($data) {
+                                                                                                    ?>
+                                                                                                    <a class="saved  button <?php echo 'savedpost' . $post['post_id']; ?>">Saved</a>
+                                                                                                <?php } else { ?>
+
+                                                                                                    <a id="<?php echo $post['post_id']; ?>" onClick="savepopup(<?php echo $post['post_id']; ?>)" href="javascript:void(0);" class="<?php echo 'savedpost' . $post['post_id']; ?> button">Save</a>
+                                                                                                <?php } ?>
+                                                                                            <?php } ?>
+
+                                                                                        </li>                        
+                                                                                    </ul>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>                                        
+                                                                </div>                                        
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <?php
+                                                        <?php
+                                                    }
                                                 }
-                                            }
-                                        } else {
-                                            ?>
-                                            <div class="text-center rio">
-                                                <h4 class="page-heading  product-listing" >No Recommended Post Found.</h4>
-                                            </div>
-                                        <?php }
-                                        ?> 
+                                            } else {
+                                                ?>
+                                                <div class="text-center rio">
+                                                    <h4 class="page-heading  product-listing" >No Recommended Post Found.</h4>
+                                                </div>
+                                            <?php }
+                                            ?> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <footer>
-            <?php echo $footer; ?>
-        </footer>
+            </section>
+            <footer>
+                <?php echo $footer; ?>
+            </footer>
 
-        <!-- Bid-modal  -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                    <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
+            <!-- Bid-modal  -->
+            <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                        <div class="modal-body">
+                            <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                            <span class="mes"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>">
-        </script>
-        <script type="text/javascript">
-            function save_post(abc)
-            {
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/save_user" ?>',
-                    data: 'post_id=' + abc,
-                    success: function (data) {
-                        $('.' + 'savedpost' + abc).html(data).addClass('saved');
-                    }
-                });
+            <!-- Model Popup Close -->
+            <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+            <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
+            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>">
+            </script>
+            <script type="text/javascript">
+                function save_post(abc)
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "freelancer/save_user" ?>',
+                        data: 'post_id=' + abc,
+                        success: function (data) {
+                            $('.' + 'savedpost' + abc).html(data).addClass('saved');
+                        }
+                    });
 
-            }
-        </script>
-        <script>
-
-            var data1 = <?php echo json_encode($city_data); ?>;
-            $(function () {
-                $("#searchplace").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data1, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                        // window.location.href = ui.item.value;
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                    }
-                });
-            });
-
-        </script>
-        <script>
-            var data = <?php echo json_encode($demo); ?>;
-            $(function () {
-                $("#tags").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#tags").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                        // window.location.href = ui.item.value;
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#tags").val(ui.item.label);
-                    }
-                });
-            });
-
-        </script>
-        <script type="text/javascript">
-            function save_post(abc)
-            {
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/save_user" ?>',
-                    data: 'post_id=' + abc,
-                    success: function (data) {
-                        $('.' + 'savedpost' + abc).html(data).addClass('saved');
-                    }
-                });
-
-            }
-        </script>
-
-        <script type="text/javascript">
-            function checkvalue() {
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                if (searchkeyword == "" && searchplace == "") {
-                    return false;
                 }
-            }
-        </script> 
-        <script type="text/javascript">
-            function apply_post(abc, xyz) {
-                var alldata = 'all';
-                var user = xyz;
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
-                    data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
-                    success: function (data) {
-                        $('.savedpost' + abc).hide();
-                        $('.applypost' + abc).html(data);
-                        $('.applypost' + abc).attr('disabled', 'disabled');
-                        $('.applypost' + abc).attr('onclick', 'myFunction()');
-                        $('.applypost' + abc).addClass('applied');
-                    }
+            </script>
+            <script>
+
+                var data1 = <?php echo json_encode($city_data); ?>;
+                $(function () {
+                    $("#searchplace").autocomplete({
+                        source: function (request, response) {
+                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                            response($.grep(data1, function (item) {
+                                return matcher.test(item.label);
+                            }));
+                        },
+                        minLength: 1,
+                        select: function (event, ui) {
+                            event.preventDefault();
+                            $("#searchplace").val(ui.item.label);
+                            $("#selected-tag").val(ui.item.label);
+                            // window.location.href = ui.item.value;
+                        }
+                        ,
+                        focus: function (event, ui) {
+                            event.preventDefault();
+                            $("#searchplace").val(ui.item.label);
+                        }
+                    });
                 });
-            }
-        </script>
-        <!-- apply post end-->
-        <!-- save post end -->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+
+            </script>
+            <script>
+                var data = <?php echo json_encode($demo); ?>;
+                $(function () {
+                    $("#tags").autocomplete({
+                        source: function (request, response) {
+                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                            response($.grep(data, function (item) {
+                                return matcher.test(item.label);
+                            }));
+                        },
+                        minLength: 1,
+                        select: function (event, ui) {
+                            event.preventDefault();
+                            $("#tags").val(ui.item.label);
+                            $("#selected-tag").val(ui.item.label);
+                            // window.location.href = ui.item.value;
+                        }
+                        ,
+                        focus: function (event, ui) {
+                            event.preventDefault();
+                            $("#tags").val(ui.item.label);
+                        }
+                    });
+                });
+
+            </script>
+            <script type="text/javascript">
+                function save_post(abc)
+                {
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "freelancer/save_user" ?>',
+                        data: 'post_id=' + abc,
+                        success: function (data) {
+                            $('.' + 'savedpost' + abc).html(data).addClass('saved');
+                        }
+                    });
+
+                }
+            </script>
+
+            <script type="text/javascript">
+                function checkvalue() {
+                    var searchkeyword = $.trim(document.getElementById('tags').value);
+                    var searchplace = $.trim(document.getElementById('searchplace').value);
+                    if (searchkeyword == "" && searchplace == "") {
+                        return false;
+                    }
+                }
+            </script> 
+            <script type="text/javascript">
+                function apply_post(abc, xyz) {
+                    var alldata = 'all';
+                    var user = xyz;
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
+                        data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
+                        success: function (data) {
+                            $('.savedpost' + abc).hide();
+                            $('.applypost' + abc).html(data);
+                            $('.applypost' + abc).attr('disabled', 'disabled');
+                            $('.applypost' + abc).attr('onclick', 'myFunction()');
+                            $('.applypost' + abc).addClass('applied');
+                        }
+                    });
+                }
+            </script>
+            <!-- apply post end-->
+            <!-- save post end -->
+            <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script>
             function savepopup(id) {
                 save_post(id);
