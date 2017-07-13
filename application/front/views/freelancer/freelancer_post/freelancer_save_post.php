@@ -174,12 +174,11 @@
                                                                         <div class="profile-job-details col-md-12">
                                                                             <ul>
                                                                                 <li class="fr">
-                                                                                    Created Date : <?php  echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
+                                                                                    Created Date : <?php echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
                                                                                 </li>
                                                                                 <li>
                                                                                     <a href="#" title="Post Title" class="post_title">
-                                                                                        <?php echo ucwords(text2link($post['post_name'])); ?> </a> 
-                                                                                </li>
+                                                                                        <?php echo ucwords(text2link($post['post_name'])); ?> </a> </li>
                                                                                 <?php
                                                                                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                                                                                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
@@ -198,12 +197,12 @@
                                                                                                         echo $cityname . ",";
                                                                                                     }
                                                                                                     ?><?php
-                                                                                    if ($countryname) {
-                                                                                        echo $countryname;
-                                                                                    }
-                                                                                    ?></i></p>
+                                                                                                    if ($countryname) {
+                                                                                                        echo $countryname;
+                                                                                                    }
+                                                                                                    ?></i></p>
                                                                                         </div>
-            <?php } ?>
+                                                                                    <?php } ?>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -285,12 +284,12 @@
                                                                                 </span>
                                                                             </li>
                                                                             <li><b>Estimated Time</b><span> <?php
-                                                                        if ($post['post_est_time']) {
-                                                                            echo $post['post_est_time'];
-                                                                        } else {
-                                                                            echo PROFILENA;
-                                                                        }
-                                                                        ?></span>
+                                                                                    if ($post['post_est_time']) {
+                                                                                        echo $post['post_est_time'];
+                                                                                    } else {
+                                                                                        echo PROFILENA;
+                                                                                    }
+                                                                                    ?></span>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
@@ -307,19 +306,19 @@
                                                                                     ?>                                                          </li>
                                                                                 <li class=fr>
                                                                                     <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['app_id'] ?>)">Remove</a>
-            <?php
-            $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
-            $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if ($freelancerapply1) {
-                ?>
-                <?php
-            } else {
-                ?>
+                                                                                    <?php
+                                                                                    $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                                                                                    $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                                                                                    $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                    if ($freelancerapply1) {
+                                                                                        ?>
+                                                                                        <?php
+                                                                                    } else {
+                                                                                        ?>
 
                                                                                         <a href="javascript:void(0);" class="button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['app_id'] ?>)">Apply</a>
                                                                                     </li> 
-                                            <?php } ?>
+                                                                                <?php } ?>
 
                                                                             </ul>
                                                                         </div>
@@ -330,22 +329,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-        <?php
-        }
-    }
-} else {
-    ?>
+                                            <?php
+                                        }
+                                    }
+                                } else {
+                                    ?>
                                     <div class="text-center rio">
                                         <h4 class="page-heading  product-listing">No Saved Posts Found.</h4>
                                     </div>
-<?php } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
         </section>
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -368,14 +367,14 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="hidden" name="hitext" id="hitext" value="2">
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save"  >
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -566,10 +565,10 @@
 
             function remove_post(abc)
             {
-                var   savepara   =   'save';
+                var    savepara    =    'save';
                 $.ajax({
-                    type:   'POST',
-                    url:   '<?php echo base_url() . "freelancer/freelancer_delete_apply" ?>',
+                    type:    'POST',
+                    url:    '<?php echo base_url() . "freelancer/freelancer_delete_apply" ?>',
                     data: 'app_id=' + abc + '&para=' + savepara,
                     success: function (data) {
                         $('#' + 'postdata' + abc).html(data);
