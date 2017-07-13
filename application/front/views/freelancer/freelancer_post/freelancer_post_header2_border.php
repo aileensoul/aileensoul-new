@@ -9,11 +9,12 @@
         position: absolute;
         color: #3b5283;
         background-color: #fff;
-        min-width: 139px;
+        min-width: 200px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         margin-top: 3px;
         z-index: 1;
-        left: 25px;
+        right: 10px !important;
+        
         border-radius: 4px;
     } .dropdown-content_hover::before {
         /* top: -1px; */

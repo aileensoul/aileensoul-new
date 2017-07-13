@@ -320,14 +320,14 @@
                                                                     </li>
 
 
-                                                                    <li><b>Post Description</b><span><p>
+                                                                    <li><b>Post Description</b><span><pre>
                                                                                 <?php
                                                                                 if ($post['post_description']) {
                                                                                     echo $this->common->make_links($post['post_description']);
                                                                                 } else {
                                                                                     echo PROFILENA;
                                                                                 }
-                                                                                ?> </p></span>
+                                                                                ?> </pre></span>
                                                                     </li>
                                                                     <li><b>Rate</b><span>
                                                                             <?php

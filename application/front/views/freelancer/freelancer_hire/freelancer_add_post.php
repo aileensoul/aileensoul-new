@@ -121,7 +121,7 @@
                                     </fieldset>
                                     <fieldset class="full-width">
                                         <label>Post Description :<span style="color:red">*</span></label>
-                                        <textarea style="resize: none;height: 22%;overflow: auto;" name="post_desc" id="post_desc" placeholder="Enter Description" tabindex="2"></textarea>
+                                        <textarea style="resize: none;height: 22%;overflow: auto;" name="post_desc" id="post_desc" placeholder="Enter Description" tabindex="2" onpaste="OnPaste_StripFormatting(this, event);"></textarea>
                                         <?php echo form_error('post_desc'); ?>
                                     </fieldset>
                                     <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
@@ -782,6 +782,29 @@
                 });
 
             });
+        </script>
+        <script type="text/javascript">
+            var _onPaste_StripFormatting_IEPaste = false;
+            function OnPaste_StripFormatting(elem, e) {
+                alert(456);
+                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (e.clipboardData && e.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (window.clipboardData && window.clipboardData.getData) {
+                    // Stop stack overflow
+                    if (!_onPaste_StripFormatting_IEPaste) {
+                        _onPaste_StripFormatting_IEPaste = true;
+                        e.preventDefault();
+                        window.document.execCommand('ms-pasteTextOnly', false);
+                    }
+                    _onPaste_StripFormatting_IEPaste = false;
+                }
+            }
         </script>
 
     </body>
