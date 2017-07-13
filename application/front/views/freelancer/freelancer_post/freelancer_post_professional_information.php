@@ -186,7 +186,7 @@
                             <fieldset  class="full-width">
                                 <label>Describe your skill in brief :<span class="red">*</span></label>
 
-                                <textarea name ="skill_description" tabindex="4" id="skill_description" rows="4" cols="50" placeholder="Enter skill description" style="resize: none;"><?php
+                                <textarea name ="skill_description" tabindex="4" id="skill_description" rows="4" cols="50" placeholder="Enter skill description" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                     if ($skill_description1) {
                                         echo $skill_description1;
                                     }
@@ -566,3 +566,26 @@ $(window).load(function(){
             }
             }
         </script> 
+        <script type="text/javascript">
+            var _onPaste_StripFormatting_IEPaste = false;
+            function OnPaste_StripFormatting(elem, e) {
+               // alert(456);
+                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (e.clipboardData && e.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (window.clipboardData && window.clipboardData.getData) {
+                    // Stop stack overflow
+                    if (!_onPaste_StripFormatting_IEPaste) {
+                        _onPaste_StripFormatting_IEPaste = true;
+                        e.preventDefault();
+                        window.document.execCommand('ms-pasteTextOnly', false);
+                    }
+                    _onPaste_StripFormatting_IEPaste = false;
+                }
+            }
+        </script>

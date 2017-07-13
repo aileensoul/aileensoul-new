@@ -123,7 +123,7 @@
                   <label>Description:</label>
    <!--  <textarea name ="portfolio" tabindex="3" id="portfolio" rows="4" cols="50" placeholder="Enter description" style="resize: none;"><?php if($portfolio1){ echo $portfolio1; } ?></textarea> -->
 
-   <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;"><?php if($portfolio1){ echo $portfolio1; } ?></div>
+   <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php if($portfolio1){ echo $portfolio1; } ?></div>
                                 <?php echo form_error('portfolio'); ?> 
                             </fieldset>
 
@@ -381,4 +381,28 @@ var free_post_step = "<?php echo $free_reg_data[0]['free_post_step']; ?>";
             }); 
   }
   </script>
+  <script type="text/javascript">
+            var _onPaste_StripFormatting_IEPaste = false;
+            function OnPaste_StripFormatting(elem, e) {
+                //alert(456);
+                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (e.clipboardData && e.clipboardData.getData) {
+                    e.preventDefault();
+                    var text = e.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (window.clipboardData && window.clipboardData.getData) {
+                    // Stop stack overflow
+                    if (!_onPaste_StripFormatting_IEPaste) {
+                        _onPaste_StripFormatting_IEPaste = true;
+                        e.preventDefault();
+                        window.document.execCommand('ms-pasteTextOnly', false);
+                    }
+                    _onPaste_StripFormatting_IEPaste = false;
+                }
+            }
+        </script>
+
  
