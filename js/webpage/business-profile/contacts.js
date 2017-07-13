@@ -64,104 +64,98 @@ function showDiv() {
     document.getElementById('row2').style.display = "none";
 }
 
-jQuery.noConflict();
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
 
-(function ($) {
-    $uploadCrop = $('#upload-demo').croppie({
-        enableExif: true,
-        viewport: {
-            width: 1250,
-            height: 350,
-            type: 'square'
-        },
-        boundary: {
-            width: 1250,
-            height: 350
-        }
-    });
-
-    $('.upload-result').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-
-            $.ajax({
-                url: base_url + "business_profile/ajaxpro",
-                type: "POST",
-                data: {"image": resp},
-                success: function (data) {
-                    html = '<img src="' + resp + '" />';
-                    if (html)
-                    {
-                        window.location.reload();
-                    }
-
-                }
-            });
-
-        });
-    });
-
-    $('.cancel-result').on('click', function (ev) {
-        document.getElementById('row2').style.display = "block";
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('message1').style.display = "none";
-    });
-
-    $('#upload').on('change', function () {
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $uploadCrop.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-            });
-
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-
-    $('#upload').on('change', function () {
-
-        var fd = new FormData();
-        fd.append("image", $("#upload")[0].files[0]);
-        files = this.files;
-        size = files[0].size;
-        if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            picpopup();
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('row2').style.display = "block";
-            $("#upload").val('');
-            return false;
-        }
-
-        if (size > 4194304)
-        {
-            //show an alert to the user
-            alert("Allowed file size exceeded. (Max. 4 MB)")
-
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('row2').style.display = "block";
-            //reset file upload control
-            return false;
-        }
+$('.upload-result').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
 
         $.ajax({
-
-            url: base_url + "business_profile/imagedata",
+            url: base_url + "business_profile/ajaxpro",
             type: "POST",
-            data: fd,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-
+            data: {"image": resp},
+            success: function (data) {
+                html = '<img src="' + resp + '" />';
+                if (html)
+                {
+                    window.location.reload();
+                }
 
             }
         });
+
     });
-})(jQuery);
+});
+
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+
+$('#upload').on('change', function () {
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+$('#upload').on('change', function () {
+
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+    files = this.files;
+    size = files[0].size;
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        picpopup();
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        $("#upload").val('');
+        return false;
+    }
+
+    if (size > 4194304)
+    {
+        //show an alert to the user
+        alert("Allowed file size exceeded. (Max. 4 MB)")
+
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        //reset file upload control
+        return false;
+    }
+
+    $.ajax({
+
+        url: base_url + "business_profile/imagedata",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+        }
+    });
+});
+
 
 // UPLOAD COVER PIC START 
 // follow user script start 
@@ -195,7 +189,6 @@ function unfollowuser(clicked_id)
 // follow like script end 
 
 // script for profile pic strat 
-
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -206,7 +199,6 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
 $("#profilepic").change(function () {
     profile = this.files;
     if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
@@ -219,6 +211,22 @@ $("#profilepic").change(function () {
     }
 });
 // script for profile pic end 
+
+//validation for edit email formate form
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+    });
+});
 
 function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
