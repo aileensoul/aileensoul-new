@@ -22,7 +22,6 @@
         ?>
         <section class="custom-row">
             <div class="container" id="paddingtop_fixed">
-
                 <div class="row" id="row1" style="display:none;">
                     <div class="col-md-12 text-center">
                         <div id="upload-demo" ></div>
@@ -30,7 +29,6 @@
                     <div class="col-md-12 cover-pic" >
                         <button class="btn btn-success  cancel-result" onclick="" >Cancel</button>
                         <button class="btn btn-success set-btn upload-result" onclick="myFunction()">Save</button>
-
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
                                 <div id="floatBarsG_1" class="floatBarsG"></div>
@@ -42,14 +40,12 @@
                                 <div id="floatBarsG_7" class="floatBarsG"></div>
                                 <div id="floatBarsG_8" class="floatBarsG"></div>
                             </div>
-
                         </div>
                     </div>
                     <div class="col-md-12"  style="visibility: hidden; ">
                         <div id="upload-demo-i"></div>
                     </div>
                 </div>
-
                 <div class="">
                     <div class="" id="row2">
                         <?php
@@ -72,20 +68,15 @@
                             <?php
                         } else {
                             ?>
-
                                  <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
-
                              <?php }
                              ?>
-
                     </div>
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
                 <?php if ($returnpage == '') { ?>
                     <div class="upload-img">
-
-
                         <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
@@ -96,27 +87,22 @@
 
                 <div class="profile-photo">
                     <div class="profile-pho">
-
                         <div class="user-pic padd_img">
                             <?php if ($freelancerpostdata[0]['freelancer_post_user_image'] != '') { ?>
                                 <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']); ?>" alt="" >
                             <?php } else { ?>
                                 <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                             <?php } ?>
-        <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a> -->
                             <?php if ($returnpage == '') { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                             <?php } ?>
-
                         </div>
-
                     </div>
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
                             if ($returnpage == '') {
-
                                 if ($freelancerpostdata[0]['designation'] == "") {
                                     ?> 
                                     <a id="designation" class="designation" title="Designation">Designation</a>
@@ -127,7 +113,6 @@
                                     <?php
                                 }
                             } else {
-
                                 if ($freelancerpostdata[0]['designation'] == '') {
                                     ?>
                                     Designation
@@ -139,7 +124,6 @@
                             ?>
                         </div>
                     </div>
-
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
                         <div class=" right-side-menu art-side-menu padding_less_right  right-menu-jr"> 
                             <?php
@@ -239,11 +223,8 @@
                                     ?>
 
                                     <ul>
-                                  <!--   <li>  <a href="<?php echo base_url('freelancer/freelancer_post_basic_information'); ?>">Edit </a> </li> -->
-                                        <!--  <li><a href="<?php echo base_url('freelancer/deactivate/' . $this->session->userdata('aileenuser')); ?>" onclick="return confirm('Are you sure you want to Deactivate?')">Deactivate </a>
-                                       </li> -->
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div> 
                             <div class="contact-frnd-post">
                                 <div class="job-contact-frnd ">
@@ -264,8 +245,6 @@
 
                                                     <li> <b>Email</b><span> <?php echo $freelancerpostdata[0]['freelancer_post_email']; ?> </span>
                                                     </li>
-
-
                                                     <?php
                                                     if ($returnpage == 'freelancer_hire') {
                                                         if ($freelancerpostdata[0]['freelancer_post_phoneno']) {
@@ -283,15 +262,12 @@
                                                         } else {
                                                             ?>
                                                             <li><b>PhoneNo</b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                            <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
                                                     }
                                                     ?>
-
-
-
                                                     <?php
                                                     if ($returnpage == 'freelancer_hire') {
                                                         if ($freelancerpostdata[0]['freelancer_post_skypeid']) {
@@ -311,14 +287,12 @@
                                                         } else {
                                                             ?>
                                                             <li><b>Skype Id</b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                            <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
                                                     }
                                                     ?>
-
-
                                                 </ul>
                                             </div>
                                             <div class="profile-job-post-title clearfix">
@@ -340,9 +314,6 @@
                                                                 $this->db->get_where('states', array('state_id' => $freelancerpostdata[0]['freelancer_post_state']))->row()->state_name;
                                                                 ?> </span>
                                                         </li>
-
-
-
                                                         <?php
                                                         if ($returnpage == 'freelancer_hire') {
                                                             if ($freelancerpostdata[0]['freelancer_post_city']) {
@@ -366,13 +337,12 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b>City</b> <span>
-                                                                        <?php echo PROFILENA; ?></span>
+                                                                <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
                                                         }
                                                         ?>
-
                                                         <?php
                                                         if ($returnpage == 'freelancer_hire') {
                                                             if ($freelancerpostdata[0]['freelancer_post_pincode']) {
@@ -392,16 +362,14 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b>Pincode</b> <span>
-                                                                        <?php echo PROFILENA; ?></span>
+                                                                <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
                                                         }
                                                         ?>
-
                                                         <li> <b>Postal Address</b><span><p><?php echo $freelancerpostdata[0]['freelancer_post_address']; ?></p>     </span>
                                                         </li>
-
                                                     </ul>
                                                 </div>
                                             </div>
@@ -409,19 +377,15 @@
                                                 <div class="profile-job-profile-button clearfix">
                                                     <div class="profile-job-details">
                                                         <ul>
-
                                                             <li><p class="details_all_tital ">Professional Information</p></li>
-
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-
-                                                        <?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
+<?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
                                                         <li> <b>Field</b> <span> <?php echo $categoryname; ?> </span>
                                                         </li>
-
                                                         <?php
                                                         if ($freelancerpostdata[0]['freelancer_post_area']) {
                                                             ?>
@@ -448,7 +412,7 @@
                                                                     ?>     
                                                                 </span>
                                                             </li>
-                                                        <?php } ?>
+<?php } ?>
 
                                                         <li><b>Describe Your Skill In Brief</b> <span> <p><?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_skill_description']); ?> </p> </span> </li>
 
@@ -461,27 +425,18 @@
                                                                     $year = $month[0];
                                                                     $years = $year + 1;
                                                                     echo $years . " Years";
-
-                                                                    //echo $month[0] + 1. "year";
                                                                 } else {
                                                                     echo $freelancerpostdata[0]['freelancer_post_exp_year'] . ' ' . $freelancerpostdata[0]['freelancer_post_exp_month'];
                                                                 }
                                                                 ?>
-
-                                                                <!-- <?php echo $freelancerpostdata[0]['freelancer_post_exp_year'] . ' ' . $freelancerpostdata[0]['freelancer_post_exp_month']; ?>
-                                                                -->                                                
                                                             </span> </li>  
-
-
                                                     </ul>
                                                 </div>
                                             </div>
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
-
                                                 if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" || $freelancerpostdata[0]['freelancer_post_ratestate'] != "") {
                                                     ?>
-
                                                     <div class="profile-job-post-title clearfix">
                                                         <div class="profile-job-profile-button clearfix">
                                                             <div class="profile-job-details">
@@ -489,7 +444,6 @@
                                                                     <li>
                                                                         <p class="details_all_tital "> Rate</p>
                                                                     </li>
-
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -497,8 +451,6 @@
                                                             <ul class="clearfix">
                                                                 <?php
                                                                 if ($freelancerpostdata[0]['freelancer_post_hourly']) {
-
-                                                                    $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
                                                                     ?>
                                                                     <li> <b>Hourly</b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_hourly'] . '  ' . $currancy; ?> </span>
                                                                     </li>
@@ -507,7 +459,6 @@
                                                                     echo "";
                                                                 }
                                                                 ?>
-
                                                                 <?php
                                                                 if ($freelancerpostdata[0]['freelancer_post_fixed_rate'] == 1) {
                                                                     ?>
@@ -559,17 +510,13 @@
                                                                 echo "";
                                                             }
                                                             ?>
-
-
                                                         </ul>
                                                     </div>
                                                 </div>
                                             <?php }
                                             ?>
-
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
-
                                                 if ($freelancerpostdata[0]['freelancer_post_job_type'] != "" || $freelancerpostdata[0]['freelancer_post_work_hour'] != "") {
                                                     ?>
                                                     <div class="profile-job-post-title clearfix">
@@ -579,7 +526,6 @@
                                                                     <li>
                                                                         <p class="details_all_tital ">Avability</p>
                                                                     </li>
-
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -618,7 +564,6 @@
                                                                 <li>
                                                                     <p class="details_all_tital ">Avability</p>
                                                                 </li>
-
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -633,13 +578,11 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Timing</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
                                                             }
-
-
                                                             if ($freelancerpostdata[0]['freelancer_post_work_hour']) {
                                                                 ?>
                                                                 <li> <b> Working Hours Per Week</b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_work_hour']; ?></span>
@@ -648,22 +591,18 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Working Hours Per Week</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-                                                            <?php } ?>
-
+    <?php } ?>
                                                         </ul>
                                                     </div>
                                                 </div>
                                                 <?php
                                             }
                                             ?>
-
-
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
-
                                                 if ($freelancerpostdata[0]['freelancer_post_degree'] != "" || $freelancerpostdata[0]['freelancer_post_stream'] != "" || $freelancerpostdata[0]['freelancer_post_univercity'] != "" || $freelancerpostdata[0]['freelancer_post_percentage'] != "" || $freelancerpostdata[0]['freelancer_post_passingyear'] != "") {
                                                     ?> 
                                                     <div class="profile-job-post-title clearfix">
@@ -673,13 +612,11 @@
                                                                     <li>
                                                                         <p class="details_all_tital ">Education</p>
                                                                     </li>
-
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
-
                                                                 <?php
                                                                 if ($freelancerpostdata[0]['freelancer_post_degree']) {
                                                                     ?>
@@ -690,7 +627,6 @@
                                                                     echo "";
                                                                 }
                                                                 ?>
-
                                                                 <?php
                                                                 if ($freelancerpostdata[0]['freelancer_post_stream']) {
                                                                     ?>
@@ -719,7 +655,6 @@
                                                                     echo "";
                                                                 }
                                                                 ?>
-
                                                                 <?php
                                                                 if ($freelancerpostdata[0]['freelancer_post_percentage']) {
                                                                     ?>
@@ -740,8 +675,6 @@
                                                                     echo "";
                                                                 }
                                                                 ?>
-
-
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -771,7 +704,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Degree</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -785,7 +718,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Stream</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -799,14 +732,12 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> University</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
                                                             }
                                                             ?>
-
-
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_collage']) {
                                                                 ?>
@@ -815,7 +746,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> College</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -831,7 +762,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Percentage</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -846,7 +777,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Year Of Passing</b> <span>
-                                                                        <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -901,7 +832,7 @@
                                                             if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                                 ?>
                                                                 <li> <b>Description</b> <span><p>
-                                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
+                                                                <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
@@ -943,7 +874,7 @@
                                                         } else {
                                                             ?>
                                                             <li> <b>Attachment</b><span> 
-                                                                    <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                 </span>
 
                                                             </li>
@@ -953,21 +884,20 @@
                                                         if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                             ?>
                                                             <li> <b>Description</b> <span><p>
-                                                                        <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
+                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
                                                             </li>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <li> <b>Description</b><span> 
-                                                                    <?php echo PROFILENA; ?>
+        <?php echo PROFILENA; ?>
                                                                 </span>
-
                                                             </li>
                                                         <?php }
                                                         ?>
                                                     </ul>
                                                 </div>
-                                            <?php } ?>
+<?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -978,7 +908,7 @@
             </div>
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -1001,14 +931,14 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+<?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="hidden" name="hitext" id="hitext" value="3">
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -1154,10 +1084,7 @@
                     document.getElementById('row2').style.display = "block";
                     return false;
                 }
-
-
                 $.ajax({
-
                     url: "<?php echo base_url(); ?>freelancer/image_work",
                     type: "POST",
                     data: fd,
@@ -1197,8 +1124,6 @@
                 $('#bidmodal-2').modal('show');
             }
         </script>
-
-
         <script type="text/javascript">
             function checkvalue() {
                 var searchkeyword = $.trim(document.getElementById('tags').value);
@@ -1331,6 +1256,5 @@
             });
         </script>
         <!--For Scroll page at perticular position js End-->
-
     </body>
 </html>
