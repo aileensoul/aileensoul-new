@@ -1,3 +1,4 @@
+// BUSUINESS SEARCH SCRIPT START
 $(function () {
     $("#tags").autocomplete({
         source: function (request, response) {
@@ -35,7 +36,8 @@ $(function () {
             $("#searchplace").val(ui.item.label);
             $("#selected-tag").val(ui.item.label);
             // window.location.href = ui.item.value;
-        },
+        }
+        ,
         focus: function (event, ui) {
             event.preventDefault();
             $("#searchplace").val(ui.item.label);
@@ -50,20 +52,21 @@ function checkvalue() {
         return false;
     }
 }
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
+// BUSUINESS SEARCH SCRIPT END
 
-/* COVER PIC SCRIPT START */
+// COVER PAGE START
+
 function myFunction() {
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
     document.getElementById('message1').style.display = "block";
 }
+
 function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
 }
+
 $uploadCrop = $('#upload-demo').croppie({
     enableExif: true,
     viewport: {
@@ -76,11 +79,15 @@ $uploadCrop = $('#upload-demo').croppie({
         height: 350
     }
 });
+
+
+
 $('.upload-result').on('click', function (ev) {
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
     }).then(function (resp) {
+
         $.ajax({
             url: base_url + "business_profile/ajaxpro",
             type: "POST",
@@ -93,13 +100,17 @@ $('.upload-result').on('click', function (ev) {
                 }
             }
         });
+
     });
 });
+
 $('.cancel-result').on('click', function (ev) {
     document.getElementById('row2').style.display = "block";
     document.getElementById('row1').style.display = "none";
     document.getElementById('message1').style.display = "none";
 });
+
+//aarati code start
 $('#upload').on('change', function () {
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -108,12 +119,14 @@ $('#upload').on('change', function () {
         }).then(function () {
             console.log('jQuery bind complete');
         });
+
     }
     reader.readAsDataURL(this.files[0]);
 });
 $('#upload').on('change', function () {
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
+
     files = this.files;
     size = files[0].size;
     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
@@ -133,6 +146,7 @@ $('#upload').on('change', function () {
         //reset file upload control
         return false;
     }
+
     $.ajax({
         url: base_url + "business_profile/imagedata",
         type: "POST",
@@ -143,9 +157,9 @@ $('#upload').on('change', function () {
         }
     });
 });
-/* COVER PIC SCRIPT END */
 
-/* FOLLOW USER START */
+// COVER PAGE END
+// follow user script start 
 function followuser(clicked_id)
 {
     $.ajax({
@@ -153,13 +167,12 @@ function followuser(clicked_id)
         url: base_url + "business_profile/follow",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            $('.' + 'fruser' + clicked_id).html(data);
+            $('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
-/* FOLLOW USER END */
-
-/* UNFOLLOW USER START */
+//follow user script end 
+// Unfollow user script start 
 function unfollowuser(clicked_id)
 {
     $.ajax({
@@ -167,13 +180,65 @@ function unfollowuser(clicked_id)
         url: base_url + "business_profile/unfollow",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            $('.' + 'fruser' + clicked_id).html(data);
+            $('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
-/* UNFOLLOW USER END */
-
-/* SCRIPT FOR PROFILE PIC START */
+// Unfollow user script end 
+// follow user script start 
+function followuser_two(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/follow_two",
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+            $('.' + 'follow_btn_' + clicked_id).html(data);
+            $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn');
+            $('.' + 'follow_btn_' + clicked_id).addClass('user_btn_h');
+            $('#' + 'unfollow' + clicked_id).html('');
+        }
+    });
+}
+// follow like script end 
+// Unfollow user script start 
+function unfollowuser_two(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/unfollow_two",
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+            $('.' + 'follow_btn_' + clicked_id).html(data);
+            $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn_h');
+            $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn_f');
+            $('.' + 'follow_btn_' + clicked_id).addClass('user_btn_i');
+        }
+    });
+}
+// follow like script end 
+// Unfollow own userlist user script start 
+function unfollowuser_list(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/unfollow_following",
+        dataType: 'json',
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+            $('.' + 'frusercount').html(data.unfollow);
+            if (data.notcount == 0) {
+                $('.' + 'contact-frnd-post').html(data.notfound);
+            } else {
+                $('#' + 'removefollow' + clicked_id).fadeOut(4000);
+            }
+        }
+    });
+}
+// follow like script end 
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
+}
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -184,6 +249,7 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 $("#profilepic").change(function () {
     profile = this.files;
     if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
@@ -194,9 +260,8 @@ $("#profilepic").change(function () {
         readURL(this);
     }
 });
-/* SCRIPT FOR PROFILE PIC END */
 
-//validation for edit email formate form
+// PROFILE PIC VALIDATION START
 $(document).ready(function () {
     $("#userimage").validate({
         rules: {
@@ -211,12 +276,12 @@ $(document).ready(function () {
         },
     });
 });
+// PROFILE PIC VALIDATION END
 
 function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
     $('#bidmodal').modal('show');
 }
-
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#bidmodal-2').modal('hide');
@@ -225,3 +290,25 @@ $(document).on('keydown', function (e) {
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 330}, 500);
 });
+//contact person script start 
+function contact_person(clicked_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/contact_person",
+        data: 'toid=' + clicked_id,
+        success: function (data) {
+            $('#contact_per').html(data);
+        }
+    });
+}
+//contact person script end
+
+function contact_person_model(clicked_id, status) {
+    if (status == 'pending') {
+        $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
+    } else if (status == 'confirm') {
+        $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
+    }
+}

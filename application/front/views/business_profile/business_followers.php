@@ -164,6 +164,6 @@
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/userlist.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js'); ?>"></script>
     </body>
 </html>
