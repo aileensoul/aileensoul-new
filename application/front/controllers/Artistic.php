@@ -10,6 +10,8 @@ class Artistic extends MY_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->data['title'] = "Aileensoul";
+        
         if (!$this->session->userdata('aileenuser')) {
             redirect('login', 'refresh');
         }
@@ -105,11 +107,11 @@ class Artistic extends MY_Controller {
             if ($step == 1 || $step > 1) {
                 $this->data['firstname1'] = $userdata[0]['art_name'];
                 $this->data['lastname1'] = $userdata[0]['art_lastname'];
-                $this->data['email1'] = $userdata[0]['art_email'];
+                $this->data['email1'] = strtolower($userdata[0]['art_email']);
                 $this->data['phoneno1'] = $userdata[0]['art_phnno'];
             }
         }
-
+       // echo "<pre>"; print_r($this->data['email1']); die();
         // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
         $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -1240,7 +1242,9 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         // print_r($qbc);
         // exit;
         $this->data['finalsorting'] = $qbc;
-        //echo "<pre>"; print_r($this->data['finalsorting'] ); die();
+        //echo "<pre>"; print_r($this->data['finalsorting'] );
+       // echo count($this->data['finalsorting']); die();
+        // die();
         // sorting end
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
@@ -2634,6 +2638,8 @@ $datacount = count($otherdata);
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
+       $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($update) {
 
@@ -2643,7 +2649,15 @@ $datacount = count($otherdata);
                                Following 
                       </button>';
                 $follow .= '</div>';
-                echo $follow;
+                
+               $datacount = '('.count($followcount).')';
+
+
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
             }
         } else {
             $data = array(
@@ -2670,6 +2684,10 @@ $datacount = count($otherdata);
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
+
+        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             if ($insert) {
 
                 $follow = '<div id= "unfollowdiv" class="user_btn">';
@@ -2677,7 +2695,17 @@ $datacount = count($otherdata);
                                Following 
                       </button>';
                 $follow .= '</div>';
-                echo $follow;
+
+                $datacount = '('.count($followcount).')';
+
+
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
+
+
             }
         }
     }
@@ -2713,6 +2741,15 @@ $datacount = count($otherdata);
                 'follow_status' => 0,
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+
+
+            $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+
+            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            
+
             if ($update) {
 
 
@@ -2720,7 +2757,17 @@ $datacount = count($otherdata);
                                Follow 
                       </button></div>';
 
-                echo $unfollow;
+                $datacount = '('.count($followcount).')';
+                //$datacount = 1;
+
+
+                 echo json_encode(
+                        array(
+                            "follow" => $unfollow,
+                            "count" => $datacount,
+                ));
+
+
             }
         }
     }
@@ -3703,7 +3750,7 @@ $datacount = count($otherdata);
 
                 //$cmtlike1 = '<div>';
                 $cmtlike1 = '<a id="' . $artdata1[0]['artistic_post_comment_id'] . '" onClick="comment_like(this.id)">';
-                $cmtlike1 .= ' <i class="fa fa-thumbs-up" aria-hidden="true">';
+                $cmtlike1 .= ' <i class="fa fa-thumbs-up main_color" aria-hidden="true">';
                 $cmtlike1 .= '</i>';
                 $cmtlike1 .= '<span> ';
 
@@ -3843,7 +3890,7 @@ $datacount = count($otherdata);
 
                 //$cmtlike1 = '<div>';
                 $cmtlike1 = '<a id="' . $artdata1[0]['artistic_post_comment_id'] . '" onClick="comment_like1(this.id)">';
-                $cmtlike1 .= ' <i class="fa fa-thumbs-up" aria-hidden="true">';
+                $cmtlike1 .= ' <i class="fa fa-thumbs-up main_color" aria-hidden="true">';
                 $cmtlike1 .= '</i>';
                 $cmtlike1 .= '<span> ';
 
@@ -3938,7 +3985,14 @@ $datacount = count($otherdata);
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+                if($art_userimage){
                 $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+                  }else{
+                    $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+
+                  }
+
                 $cmtinsert .= '<div class="comment-name"><b>' . ucwords($artname) . '&nbsp;' . ucwords($artlastname) . '</b>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
@@ -3971,7 +4025,7 @@ $datacount = count($otherdata);
 
                     $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
-                    $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+                    $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
                 }
                 $cmtinsert .= '<span> ';
 
@@ -4076,7 +4130,14 @@ $datacount = count($otherdata);
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+                if($art_userimage){
                 $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+                }else{
+             $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+
+                }
+
                 $cmtinsert .= '<div class="comment-name"><b>' . ucwords($artname) . '&nbsp;' . ucwords($artlastname) . '</b>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
@@ -4107,7 +4168,7 @@ $datacount = count($otherdata);
 
                     $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
-                    $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+                    $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
                 }
                 $cmtinsert .= '<span> ';
 
@@ -4570,7 +4631,13 @@ $datacount = count($otherdata);
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+            }else{
+            $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
+            }
+
             $cmtinsert .= '<div class="comment-name"><b>' . ucwords($artname) . '&nbsp;' . ucwords($artlastname) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
@@ -4755,7 +4822,14 @@ $datacount = count($otherdata);
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+            }else{
+
+               $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
+            }
+
             $cmtinsert .= '<div class="comment-name"><b>' . ucwords($artname) . '&nbsp;' . ucwords($artlastname) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
@@ -6273,7 +6347,14 @@ $datacount = count($otherdata);
             $cmtinsert = '<div class="all-comment-comment-box">';
             $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+             }else{
+
+               $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
+             }
+
             $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
@@ -7038,7 +7119,14 @@ $datacount = count($otherdata);
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+
+           }else{
+
+            $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+           }
             $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
@@ -7199,7 +7287,15 @@ $datacount = count($otherdata);
                 $cmtinsert .= '<div class="all-comment-comment-box">';
                 $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+                if($art_userimage){
+
                 $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+               }else{
+
+                $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+               }
+
                 $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
@@ -7409,7 +7505,7 @@ $datacount = count($otherdata);
                 if (!in_array($userid, $likeuserarray)) {
                     $fourdata .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
-                    $fourdata .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+                    $fourdata .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
                 }
 
                 $fourdata .= '<span> ';
@@ -7496,7 +7592,13 @@ $datacount = count($otherdata);
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
+            if($art_userimage){
             $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt=""></div>';
+            }else{
+
+                $fourdata .= '<img  src="' . base_url(NOIMAGE) . '"  alt=""></div>'; 
+            }
+
             $fourdata .= '<div class="comment-name">';
             $fourdata .= '<b>' . ucwords($artname) . '&nbsp' . ucwords($artlastname) . '</b></br> </div>';
             $fourdata .= '</a>';  
@@ -7626,6 +7728,9 @@ $datacount = count($otherdata);
           foreach ($commnetcount as $comment) {
              
      $art_name1 = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_name;
+
+     $art_lastname = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_lastname;
+
      $designation = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->designation;
      $art_image = $this->db->get_where('art_reg', array('user_id' => $comment['user_id'], 'status' => 1))->row()->art_user_image;
    
@@ -7643,7 +7748,7 @@ $datacount = count($otherdata);
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
        $modal .=  '<div class="like_user_list_main_name">';
-       $modal .=  '' . ucwords($art_name1) . '';
+       $modal .=  '' . ucwords($art_name1) .' '.ucwords($art_lastname). '';
        $modal .=  '</div></a>';
        $modal .=  '<div class="like_user_list_current_work">';
 
@@ -7706,6 +7811,7 @@ $datacount = count($otherdata);
           foreach ($likelistarray as $key => $value) {
              
      $art_name1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+     $art_lastname = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
      $designation = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->designation;
      $art_image = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_user_image;
    
@@ -7723,7 +7829,7 @@ $datacount = count($otherdata);
        $modal .=  '</div>';
        $modal .=  '<div class="like_user_list_main_desc">';
        $modal .=  '<div class="like_user_list_main_name">';
-       $modal .=  '' . ucwords($art_name1) . '';
+       $modal .=  '' . ucwords($art_name1) .' '.ucwords($art_lastname) .'';
        $modal .=  '</div></a>';
        $modal .=  '<div class="like_user_list_current_work">';
 
@@ -7837,7 +7943,14 @@ $datacount = count($otherdata);
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
+            }else{
+            $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+
+            }
+
             $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';

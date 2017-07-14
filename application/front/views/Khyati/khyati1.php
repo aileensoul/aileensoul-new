@@ -29,15 +29,11 @@
     <hr> -->
     <form enctype="multipart/form-data">
         
-       
-       
         <div class="form-group">
             <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
         </div>
         <hr>
         
-       
-       
         
     </form>
 

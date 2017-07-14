@@ -177,7 +177,7 @@
                                             ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content col-md-10 popup-text" >
-                                            <textarea id="test-upload-product" placeholder="<?php echo $this->lang->line("post_your_product"); ?>"  onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onblur=check_length(this.form);  name=my_text rows=4 cols=30 class="post_product_name" style=" position: relative;" tabindex="1"></textarea>
+                                            <textarea id="test-upload-product" placeholder="<?php echo $this->lang->line("post_your_product"); ?>"  onKeyPress=check_length(this.form); onKeyUp=check_length(this.form); onKeyDown=check_length(this.form); onblur=check_length(this.form);  name=my_text rows=4 cols=30 class="post_product_name" style=" position: relative;" tabindex="1"></textarea>
                                             <div class="fifty_val">                       
                                                 <input size=1 value=50 name=text_num class="text_num"  readonly> 
                                             </div>
@@ -1581,7 +1581,6 @@
                         if (data.notcount == 'count') {
                             $('.' + 'nofoundpost').html(data.notfound);
                         }
-                        //
                         var nb = $('.post-design-box').length;
                         if (nb == 0) {
                             $("#dropdownclass").addClass("no-post-h2");

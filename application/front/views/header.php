@@ -18,12 +18,101 @@
                                     <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
                                         <li><a class=" action-button shadow animate" onclick="return leave_page(5)">All</a></li>
                                     <?php } else { ?>
-                                        <li><a class=" action-button shadow animate" href="<?php echo base_url('dashboard') ?>"><img class="h-img" src="<?php echo base_url() ?>img/header_icon_menu.png">
-                                            </a></li>
+                                       
+
+                                        <li id="a_li">
+                                        <a class=" action-button shadow animate" href="javascript:void(0)"> <span class="img-all"></span>
+                                            </a>
+
+                                    <div id="acon">
+                                    <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
+                                    <div id="abody" class="as">
+                                    <ul>
+                                        <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('job'); ?>">
+                                        
+                                             <div class="all-img">
+                                                 <img src="<?php echo base_url('img/i1.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Job Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        
+                                             <div class="all-img">
+                                                   <img src="<?php echo base_url('img/i2.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Recruiter Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i3.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Freelancer Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('business_profile'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i4.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Business Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('artistic'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i5.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Artistic Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                       
+                                    </ul>
+                                    </div>
+
+                                    </div>
+
+
+                                            </li>
+
+
+
                                     <?php } ?>
                                     <!-- general notification start -->
                                     <li id="notification_li">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <img class="h-img" src="<?php echo base_url() ?>img/header_icon_notification.png">
+                                        <a id="alink" class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em>  <i class="img-noti"></i>
                                             <span id="notification_count"></span>
                                         </a><div id="notificationContainer">
                                             <div id="notificationTitle">Notifications</div>
@@ -38,7 +127,7 @@
                                         <?php if ($message_count) { ?>
 
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><img class="h-img"src="<?php echo base_url() ?>img/header_icon_message.png">
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="img-msg"></span>
                                             <span id="message_count"></span>
                                         </a>
                                         <div id="InboxContainer">
@@ -119,12 +208,97 @@
                                     <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
                                         <li><a class=" action-button shadow animate" onclick="return leave_page(5)">All</a></li>
                                     <?php } else { ?>
-                                        <li><a class=" action-button shadow animate" href="<?php echo base_url('dashboard') ?>"><img class="h-img" src="<?php echo base_url() ?>img/header_icon_menu.png">
-                                            </a></li>
+                                        <li><a id="alink" class=" action-button shadow animate" href="javascript:void(0)"><span class="img-all"></span>
+                                            </a>
+
+
+                                    <div id="acon">
+                                    <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
+                                    <div id="abody" class="as">
+                                    <ul>
+                                        <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('job'); ?>">
+                                        
+                                             <div class="all-img">
+                                                 <img src="<?php echo base_url('img/i1.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Job Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('recruiter'); ?>">
+                                        
+                                             <div class="all-img">
+                                                   <img src="<?php echo base_url('img/i2.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Recruiter Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('freelancer'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i3.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Freelancer Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('business_profile'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i4.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Business Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                          <li>
+                                             <div class="all-down">
+                                        <a href="<?php echo base_url('artistic'); ?>">
+                                        
+                                             <div class="all-img">
+                                                  <img src="<?php echo base_url('img/i5.jpg')?>">
+                                             </div>
+                                             <div class="text-all">
+                                                    Artistic Profile
+                                             </div>
+                                              </a>
+                                         </div>
+                                        
+                                          </li>
+                                       
+                                    </ul>
+                                    </div>
+
+                                    </div>
+
+
+
+                                            </li>
                                     <?php } ?>
                                     <!-- general notification start -->
                                     <li id="notification_li">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <img class="h-img" src="<?php echo base_url() ?>img/header_icon_notification.png">
+                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="img-noti"></i>
                                             <span id="notification_count"></span>
                                         </a><div id="notificationContainer">
                                             <div id="notificationTitle">Notifications</div>
@@ -138,7 +312,7 @@
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><img class="h-img" src="<?php echo base_url() ?>img/header_icon_message.png">
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
                                             <span id="message_count"></span>
                                         </a>
                                         <div id="InboxContainer">
@@ -146,10 +320,7 @@
                                                 <div id="notificationTitle">Messages</div>
                                                 <div id="notificationsmsgBody" class="notificationsmsg">
                                                 </div>
-                                                <?php if ($message_seeall) { ?> 
-                                                    <div id="InboxFooter"><a href="<?php echo base_url('chat') ?>">See All</a></div>
-                                                <?php } ?>
-
+                                          
                                             </div>
                                     </li>
                                     <!-- BEGIN USER LOGIN DROPDOWN -->
@@ -200,102 +371,3 @@
     </header>
 <?php } ?>
 <!-- header end -->
-
-<!-- script for update all read notification start-->
-<script type="text/javascript">
-    function Notificationheader() {
-        getNotification();
-        notheader();
-    }
-    function getNotification() {
-        // first click alert('here'); 
-        $.ajax({
-            url: "<?php echo base_url(); ?>notification/update_notification",
-            type: "POST",
-            //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
-            success: function (data) {
-                data = JSON.parse(data);
-                //alert(data);
-                //update some fields with the updated data
-                //you can access the data like 'data["driver"]'
-            }
-        });
-    }
-    function notheader()
-    {
-        // $("#fad" + clicked_id).fadeOut(6000);
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "notification/not_header" ?>',
-            data: '',
-            success: function (data) {
-                //    alert(data);
-                $('#' + 'notificationsBody').html(data);
-            }
-        });
-    }
-</script>
-<!-- script for update all read notification end -->
-<!-- script for update all read notification start-->
-<script type="text/javascript">
-    function getmsgNotification() {
-        msgNotification();
-        msgheader();
-    }
-    function msgNotification() {
-        // first click alert('here'); 
-        $.ajax({
-            url: "<?php echo base_url(); ?>notification/update_msg_noti",
-            type: "POST",
-            //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
-            success: function (data) {
-                data = JSON.parse(data);
-                //alert(data);
-                //update some fields with the updated data
-                //you can access the data like 'data["driver"]'
-            }
-        });
-    }
-    function msgheader()
-    {
-        // $("#fad" + clicked_id).fadeOut(6000);
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
-            data: '',
-            success: function (data) {
-                $('#' + 'notificationsmsgBody').html(data);
-            }
-        });
-    }
-</script>
-<!------  commen script harshad  ---------------->
-<script>
-    jQuery(document).ready(function ($) {
-        if (screen.width <= 767) {
-            $("ul.left-form-each").on("click", ".init", function () {
-                $(this).closest("ul").children('li:not(.init)').toggle();
-            });
-            var allOptions = $("ul").children('li:not(.init)');
-            $("ul.left-form-each").on("click", "li:not(.init)", function () {
-                allOptions.removeClass('selected');
-                $(this).addClass('selected');
-                $("ul.left-form-each").children('.init').html($(this).html());
-                allOptions.toggle();
-            });
-        }
-        $(function () {
-            $('a[href="#search"]').on('click', function (event) {
-                event.preventDefault();
-                $('#search').addClass('open');
-                $('#search > form > input[type="search"]').focus();
-            });
-            $('#search, #search button.close').on('click keyup', function (event) {
-                if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-                    $(this).removeClass('open');
-                }
-            });
-        });
-    });
-</script>
-<!-- script for update all read notification end -->

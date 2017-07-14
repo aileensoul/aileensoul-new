@@ -341,7 +341,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 $selectuser = array_merge($seltousr,$selfromusr);
 $selectuser =  $this->aasort($selectuser,"id");
-
+//echo '<pre>';print_r($selectuser); die();
 
 // replace name of message_to in user_id in select user
 
@@ -351,29 +351,37 @@ $i=0;
         $return = array();
        $return = $sel_list;
 
-if($sel_list['message_to']){ 
-     
+if($sel_list['message_to']){
+     if($sel_list['message_to'] == $id){ 
        $return['user_id'] = $sel_list['message_to'];
        $return['first_name'] = $sel_list['first_name'];
        $return['user_image'] = $sel_list['user_image'];
        $return['message'] = $sel_list['message'];
       
        unset($return['message_to']);
-      
+       
+        $i++;
+if($i==1) break;
+     }
+     
+    
 }else{ 
-
+if($sel_list['message_from'] == $id){ 
        $return['user_id'] = $sel_list['message_from'];
        $return['first_name'] = $sel_list['first_name'];
        $return['user_image'] = $sel_list['user_image'];
        $return['message'] = $sel_list['message'];
-
+       
+        $i++;
+if($i==1) break;
+}
       
        unset($return['message_from']);
+        
       }
-array_push($return_arraysel, $return);
-$i++;
-if($i==1) break;
-    } 
+
+
+    } array_push($return_arraysel, $return); 
 
      // message to user
      $contition_array = array('is_delete' => '0' , 'status' => '1','message_to !=' => $userid);

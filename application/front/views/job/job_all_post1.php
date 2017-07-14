@@ -802,17 +802,16 @@ $( "#searchplace" ).autocomplete({
 
                 <!-- for search validation -->
                 <script type="text/javascript">
-                    function checkvalue() {
-                        // alert("hi");
-                        var searchkeyword = document.getElementById('tags').value;
-                        var searchplace = document.getElementById('searchplace').value;
-                        // alert(searchkeyword);
-                        // alert(searchplace);
-                        if (searchkeyword == "" && searchplace == "") {
-                            // alert('Please enter Keyword');
-                            return false;
-                        }
-                    }
+    function checkvalue() {
+       // alert("hi");
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+       // alert(searchplace);
+       if (searchkeyword == "" && searchplace == "") {
+           // alert('Please enter Keyword');
+           return false;
+       }
+   }
 
                 </script>
                 <!-- save post start -->

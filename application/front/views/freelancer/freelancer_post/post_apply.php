@@ -290,6 +290,7 @@
                                                                                         <p>
                                                                                             <?php
                                                                                             if (($post['post_exp_year'] != '0') || ($post['post_exp_month'] != '0')) {
+<<<<<<< HEAD
                                                                                                 if ($post['post_exp_year'] != '0') {
                                                                                                     echo $post['post_exp_year'];
                                                                                                 }
@@ -298,6 +299,9 @@
                                                                                                     echo $post['post_exp_month'];
                                                                                                 }
                                                                                                 echo ' Year ';
+=======
+                                                                                                echo $post['post_exp_year'] . '.' . $post['post_exp_month'] . ' Year ';
+>>>>>>> e99e71b58577771dd7484af7e755279e45ec0744
                                                                                             } else {
 
                                                                                                 echo PROFILENA;

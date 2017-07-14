@@ -424,9 +424,11 @@
 
                             <tr>
                                 <td class="business_data_td1 detaile_map"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
-                                <td class="business_data_td2"><span><?php echo $artisticdata[0]['art_email']; ?></span></td>
+                                <td class="business_data_td2">
+									<a href="mailto:<?php echo $artisticdata[0]['art_email']; ?>"><?php echo $artisticdata[0]['art_email']; ?></a>
+								</td>
                             </tr>
-                            <t                                                                                                      r>
+                            <tr>
                                 <td class="business_data_td1  detaile_map" ><i class="fa fa-map-marker"></i></td>
                                 <td class="business_data_td2"><span>
                                         <?php
@@ -886,7 +888,7 @@ $loginuser = $userdata[0]['art_id'];
                             </div>
                             <div id="myBtn3"    class="editor-content col-md-10 popup-text" >
                                    <!-- <textarea name="product_title" placeholder="Post Your Product...."></textarea>  -->
-                                <textarea id= "test-upload-product" placeholder="Post Your Art...."  onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onblur=check_length(this.form); name=my_text rows=4 cols=30 class="post_product_name"></textarea>
+                                <textarea id= "test-upload-product" placeholder="Post Your Art...."  onKeyPress=check_length(this.form); onKeyDown=check_length(this.form);  onkeyup=check_length(this.form); onblur=check_length(this.form); name=my_text rows=4 cols=30 class="post_product_name"></textarea>
                                <div class="fifty_val">  
                                     <input size=1 class="text_num" value=50 name=text_num readonly> 
                                 </div>
@@ -1136,7 +1138,7 @@ $loginuser = $userdata[0]['art_id'];
                                                     <?php if (count($artmultiimage) == 1) { ?>
 
                                                         <?php
-                                                        $allowed = array('gif', 'png', 'jpg','PNG');
+                                                        $allowed = array('gif', 'png', 'PNG', 'jpg','PNG');
                                                         $allowespdf = array('pdf');
                                                         $allowesvideo = array('mp4', 'webm');
                                                         $allowesaudio = array('mp3');
@@ -1408,7 +1410,7 @@ $loginuser = $userdata[0]['art_id'];
                                                         $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
                                                     }
                                                     ?>
-                                                    <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
+                                                   
                                                         <?php
                                                         $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                                                         $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1420,6 +1422,7 @@ $loginuser = $userdata[0]['art_id'];
                                                         $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                                         ?>
                                                         <div class="like_one_other">
+                                                         <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
                                                             <?php
                                                             if ($userid == $likelistarray[0]) {
                                                                 echo "You";
@@ -1440,8 +1443,9 @@ $loginuser = $userdata[0]['art_id'];
                                                                 echo "others";
                                                                 ?> 
                 <?php } ?>
+                </a>
                                                         </div>
-                                                    </a>
+                                                  
                                                 </div>
                                                 <?php
                                          //   }
@@ -1712,6 +1716,20 @@ $loginuser = $userdata[0]['art_id'];
         </div>
         <!-- Model Popup Close -->
 
+
+        <!-- Bid-modal  -->
+                    <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
+                        <div class="modal-dialog modal-lm deactive">
+                            <div class="modal-content">
+                                <button type="button" class="modal-close" data-dismiss="modal" id="common-limit">&times;</button>       
+                                <div class="modal-body">
+                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                                    <span class="mes"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Model Popup Close -->
 
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="profileimage" role="dialog">
@@ -2633,7 +2651,7 @@ if (size > 10485760)
                 post_comment = post_comment.replace(/<br>$/, '');
                 post_comment = post_comment.replace(/div>/gi, 'p>');
 
-                alert(post_comment);
+               // alert(post_comment);
                // return false;
 
                 if (post_comment == '' || post_comment == '<br>') {
@@ -3637,10 +3655,10 @@ if (size > 10485760)
                     dataType: 'json',
                     data: 'art_post_id=' + abc,
                     //alert(data);
-                    success: function (data) {
+                    success: function (data) { //alert('#' + 'removepost' + abc);
 
                         $('#' + 'removepost' + abc).remove();
-                        if(data.notcount == 0){
+                        if(data.notcount == 0){ 
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
@@ -3730,6 +3748,9 @@ if (size > 10485760)
        document.getElementById('khyati' + abc).style.display = 'none';
        document.getElementById('khyatii' + abc).style.display = 'none';
 
+       $("#myDropdown" + abc).removeClass("show");
+
+
    }
 </script>
 <script type="text/javascript">
@@ -3746,7 +3767,7 @@ if (size > 10485760)
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
-       //editpostdetails = editpostdetails.replace(/div/gi, "p");
+       editpostdetails = editpostdetails.replace(/div/gi, "p");
        //editpostdetails = editpostdetails.replace(/"<div>"/gi, "</p>");
 
 
@@ -4126,7 +4147,7 @@ function imgval(event) {
                else if (foundPresentvideo == false) {
    
                    $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
-                   $('#bidmodal').modal('show');
+                   $('#post').modal('show');
                    setInterval('window.location.reload()', 10000);
    
                     $( document ).on( 'keydown', function ( e ) {
@@ -4252,6 +4273,8 @@ $(document).ready(function(){
             function check_length(my_form)
             {
                 maxLen = 50;
+             
+
                 // max number of characters allowed
                 if (my_form.my_text.value.length > maxLen) {
                     // Alert message if maximum limit is reached. 
@@ -4260,7 +4283,7 @@ $(document).ready(function(){
                     //    alert(msg);
                    // my_form.text_num.value = maxLen - my_form.my_text.value.length;
                     $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
-                    $('#bidmodal').modal('show');
+                    $('#bidmodal-limit').modal('show');
                     // Reached the Maximum length so trim the textarea
                     my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
                 } else {
@@ -4446,19 +4469,31 @@ jQuery(document).mouseup(function (e) {
         $('#myModal3').modal('show');
     });
 
+  $('#common-limit').on('click', function(){
+        $('#myModal3').modal('show');
+    });
+
+
 
 </script>
 
 
 <script type="text/javascript">
     
+ 
+
+
 $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
+
+if(document.getElementById('bidmodal-limit').style.display === "block"){ //alert("hii");
+        $('#bidmodal-limit').modal('hide');
+        $('#myModal3').model('show');
+ }
+
     }
 });  
-
 
 
 $( document ).on( 'keydown', function ( e ) {

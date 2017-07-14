@@ -276,6 +276,7 @@
                                                                                 <span>
                                                                                     <?php
                                                                                     if ($post['post_exp_month'] || $post['post_exp_year']) {
+<<<<<<< HEAD
                                                                                         if ($post['post_exp_year'] != '0') {
                                                                                             echo $post['post_exp_year'];
                                                                                         }
@@ -311,6 +312,35 @@
                                                                                     } else {
                                                                                         echo PROFILENA;
                                                                                     }
+=======
+                                                                                        echo $post['post_exp_year'] . '.' . $post['post_exp_month'] . '  Year';
+                                                                                    } else {
+                                                                                        echo PROFILENA;
+                                                                                    }
+                                                                                    ?>
+                                                                                </span>
+                                                                            </li>
+                                                                            <li><b>Estimated Time</b><span> <?php
+                                                                                    if ($post['post_est_time']) {
+                                                                                        echo $post['post_est_time'];
+                                                                                    } else {
+                                                                                        echo PROFILENA;
+                                                                                    }
+                                                                                    ?></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="profile-job-profile-button clearfix">
+                                                                        <div class="profile-job-details col-md-12">
+                                                                            <ul>
+                                                                                <li class="job_all_post last_date">
+                                                                                    Last Date : <?php
+                                                                                    if ($post['post_last_date']) {
+                                                                                        echo date('d-M-Y', strtotime($post['post_last_date']));
+                                                                                    } else {
+                                                                                        echo PROFILENA;
+                                                                                    }
+>>>>>>> e99e71b58577771dd7484af7e755279e45ec0744
                                                                                     ?>                                                          </li>
                                                                                 <li class=fr>
                                                                                     <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['app_id'] ?>)">Remove</a>
@@ -573,10 +603,17 @@
 
             function remove_post(abc)
             {
+<<<<<<< HEAD
                 var      savepara      =      'save';
                 $.ajax({
                     type:      'POST',
                     url:      '<?php echo base_url() . "freelancer/freelancer_delete_apply" ?>',
+=======
+                var    savepara    =    'save';
+                $.ajax({
+                    type:    'POST',
+                    url:    '<?php echo base_url() . "freelancer/freelancer_delete_apply" ?>',
+>>>>>>> e99e71b58577771dd7484af7e755279e45ec0744
                     data: 'app_id=' + abc + '&para=' + savepara,
                     success: function (data) {
                         $('#' + 'postdata' + abc).html(data);

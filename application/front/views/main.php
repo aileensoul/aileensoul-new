@@ -355,6 +355,11 @@ setTimeout(function() {
                                         },
                                         success: function (response)
                                         { 
+//                                            var essssmail = $('#email_login').val();
+//                                            alert(essssmail);
+//                                            <?php// $this->session->set_userdata('email',essssmail); ?>
+//                                            var sessionValue = "<?php// echo $this->session->userdata('email');?>";
+//                                           
                                             if (response.data == "ok") {
                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
 

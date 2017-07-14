@@ -146,6 +146,9 @@ class Registration extends CI_Controller {
          }
         //for getting last insrert id
             $user_id = $this->db->insert_id();
+
+       // setcookie('cookie_userid',$user_id, time() + (10 * 365 * 24 * 60 * 60) , '/' );
+
            
            if($user_id){ 
 
@@ -432,18 +435,38 @@ public function check_email() { //echo "hello"; die();
          $firstname= $userdata[0]['first_name'];
          $lastname= $userdata[0]['last_name'];
             
-            $toemail= $email; 
+            $to_email= $email; 
+            //echo $toemail; die();
+
+
+               $msg = '<tr>
+              <td style="text-align:center; padding-top:15px;">';
+              if($userdata[0]['user_image']){
+              $msg .='<img src="'.base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']).'">';
+              }else{
+
+                $msg .='<img src="'.base_url(NOIMAGE).'">';
+              }
+              $msg.= '</td>
+            </tr>
+            <tr>
+              <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
+                $msg .= '<p style="margin:0;">Hi,' . ucwords($firstname) .  ucwords($lastname) .'</p>
+                <p style="padding:25px 0 ; margin:0;">Aileensoul has send you verification mail for verify your account successfully.</p>
+                <p><a class="btn" href="'.base_url().'"/registration/verify/" '. $userid .'">verify account</a></p>
+              </td>
+            </tr>';
             
-           $msg = "Hey !" . $username ."<br/>"; 
-            $msg .=  " " . $firstname . " " . $lastname . ",";
-            $msg .= "Click hear to verify your account";
-            $msg .= "<br>"; 
-           $msg .= "<a href='".base_url()."/registration/verify/" . $userid . "'>click here</a>"; 
+            // $msg = "Hey !" . $username ."<br/>"; 
+            // $msg .=  " " . $firstname . " " . $lastname . ",";
+            // $msg .= "Click hear to verify your account";
+            // $msg .= "<br>"; 
+            // $msg .= "<a href='".base_url()."/registration/verify/" . $userid . "'>click here</a>"; 
            
           // echo $msg; die();
             $subject = "Aileensoul account verification link";
           
-            $mail = $this->email_model->do_email($msg, $subject,$toemail,$from);
+            $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $to_email , $subject, $msg);
 
            $allowedgmail = 'gmail.com';
            $allowedyahoo = 'yahoo.com';
@@ -460,7 +483,7 @@ public function check_email() { //echo "hello"; die();
 
          //  $comapremaill[] = $email; 
         // foreach($comapremaill as $key => $value) { 
-             if (strpos($toemail, $allowedgmail) !== false) {   
+             if (strpos($to_email, $allowedgmail) !== false) {   
         
                 $usermail = 'https://accounts.google.com/';    
                }elseif(strpos($toemail, $allowedyahoo) !== false){

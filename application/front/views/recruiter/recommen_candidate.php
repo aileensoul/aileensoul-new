@@ -955,3 +955,19 @@ $data = $this->common->select_data_by_condition('save', $contition_array, $data 
 
  </script>
  <!-- all popup close close using esc end -->
+
+
+ <script type="text/javascript">
+   
+  $(document).ready(function(){ 
+
+  var nb = $('div.profile-job-post-detail').length;
+
+  //alert(nb);
+   if(nb == 0){
+ $("#dropdownclass").addClass("no-post-h2");
+
+   }
+
+});
+ </script>

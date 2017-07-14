@@ -32,7 +32,13 @@
                                 </div>
                              </div>
                        <div class="">
-                            <ul class="">
+
+                      
+
+                            <ul class="" id="dropdownclass">
+                          
+ 
+
                                 <li<?php if($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'rec_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('recruiter/recommen_candidate'); ?>">Home</a>
                                    
                                 <!-- Friend Request Start-->
@@ -43,13 +49,17 @@
 <div class="dropdown_hover">
   <span id="art_profile">Recruiter Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
   <div class="dropdown-content_hover" id="dropdown-content_hover">
-      <a href="<?php echo base_url('recruiter/rec_profile'); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a>
-     <a href="<?php echo base_url('recruiter/rec_basic_information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
+            <span class="my_account">
+                                        <div class="my_S">Account</div>
+                                            
+      </span>
+      <a href="<?php echo base_url('recruiter/rec_profile'); ?>"><span class="h2-img h2-srrt"></span>View Profile</a>
+     <a href="<?php echo base_url('recruiter/rec_basic_information'); ?>"><span class="h3-img h2-srrt"> </span>Edit Profile</a>
 
      <?php
       $userid = $this->session->userdata('aileenuser');
       ?>
-    <a onClick="deactivate(<?php echo $userid; ?>)"><i class="fa fa-minus-circle" aria-hidden="true"></i> Deactive Profile</a>
+    <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"> </span>Deactive Profile</a>
   </div>
 </div>
 </li>

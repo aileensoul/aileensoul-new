@@ -1,5 +1,93 @@
 <!-- script for fetch all unread notification start -->
 <!--<script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>--> 
+
+<!-- script for update all read notification start-->
+<script type="text/javascript">
+    function Notificationheader() {
+        getNotification();
+        notheader();
+    }
+    function getNotification() {
+        // first click alert('here'); 
+        $.ajax({
+            url: "<?php echo base_url(); ?>notification/update_notification",
+            type: "POST",
+            success: function (data) {
+                data = JSON.parse(data);
+            }
+        });
+    }
+    function notheader()
+    {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "notification/not_header" ?>',
+            data: '',
+            success: function (data) {
+                $('#' + 'notificationsBody').html(data);
+            }
+        });
+    }
+</script>
+<!-- script for update all read notification end -->
+<!-- script for update all read notification start-->
+<script type="text/javascript">
+    function getmsgNotification() {
+        msgNotification();
+        msgheader();
+    }
+    function msgNotification() {
+        // first click alert('here'); 
+        $.ajax({
+            url: "<?php echo base_url(); ?>notification/update_msg_noti",
+            type: "POST",
+            success: function (data) {
+                data = JSON.parse(data);
+            }
+        });
+    }
+    function msgheader()
+    {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
+            data: '',
+            success: function (data) {
+                $('#' + 'notificationsmsgBody').html(data);
+            }
+        });
+    }
+</script>
+<!------  commen script harshad  ---------------->
+<script>
+    jQuery(document).ready(function ($) {
+        if (screen.width <= 767) {
+            $("ul.left-form-each").on("click", ".init", function () {
+                $(this).closest("ul").children('li:not(.init)').toggle();
+            });
+            var allOptions = $("ul").children('li:not(.init)');
+            $("ul.left-form-each").on("click", "li:not(.init)", function () {
+                allOptions.removeClass('selected');
+                $(this).addClass('selected');
+                $("ul.left-form-each").children('.init').html($(this).html());
+                allOptions.toggle();
+            });
+        }
+        $(function () {
+            $('a[href="#search"]').on('click', function (event) {
+                event.preventDefault();
+                $('#search').addClass('open');
+                $('#search > form > input[type="search"]').focus();
+            });
+            $('#search, #search button.close').on('click keyup', function (event) {
+                if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+                    $(this).removeClass('open');
+                }
+            });
+        });
+    });
+</script>
+<!-- script for update all read notification end -->
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function () {
         // MAIN NOTIFICATION
@@ -36,6 +124,7 @@
             $("#notificationContainer").hide(600);
             $("#InboxContainer").hide(600);
             $(".dropdown-menu").hide(600);
+            $("#acon").hide(600);
         });
         // EDIT PROFILE DROPDOWN 
         $('.dropdown-user').click(function (event) {
@@ -45,6 +134,7 @@
         $(".dropdown-menu").on("dropdown-user", function (event) {
             // event.stopPropagation();
         });
+
         //ON CLICK GENERAL NOTIFICATION ICON EVENT IN HEADER
         $("#notificationLink").click(function ()
         {
@@ -204,9 +294,17 @@
             $("#notificationContainer").hide();
         }
     });
+
+
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
             $("#InboxContainer").hide();
+            $("#acon").hide();
+        }
+    });
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $("#acon").hide();
         }
     });
     $(document).on("click", function (event) {
@@ -217,5 +315,35 @@
     });
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 </script>
+
+<script type="text/javascript" >
+
+    $(document).ready(function ()
+    {
+        $("#alink").click(function ()
+        {
+            $("#acon").fadeToggle(300);
+            $("#acont").fadeOut("slow");
+
+            $("#InboxContainer").hide();
+            $("#Inbox_count").hide();
+            $(".dropdown-menu").hide();
+            $("#dropdown-content_hover").hide();
+            $("#addcontactContainer").hide();
+            $("#notificationContainer").hide();
+            $("#notification_count").hide();
+
+
+            $("#Frnd_reqContainer").hide();
+            $("#Frnd_req_count").hide();
+
+
+            return false;
+        });
+
+    });
+
+</script>
+
 
 <!-- footer end -->
