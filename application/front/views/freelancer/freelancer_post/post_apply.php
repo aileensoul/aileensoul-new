@@ -290,7 +290,7 @@
                                                                                         <p>
                                                                                             <?php
                                                                                             if (($post['post_exp_year'] != '0') || ($post['post_exp_month'] != '0')) {
-                                                                                               if ($post['post_exp_year'] != '0') {
+                                                                                                if ($post['post_exp_year'] != '0') {
                                                                                                     echo $post['post_exp_year'];
                                                                                                 }
                                                                                                 if ($post['post_exp_month'] != '0') {
