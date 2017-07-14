@@ -345,5 +345,23 @@ class Dashboard extends MY_Controller {
                 
         //$this->load->view('dashboard/template');
     }
+
+
+    public function closever(){
+
+        $userid = $this->session->userdata('aileenuser');
+ 
+
+        $data = array(
+        
+                 'user_last_login'=> date('Y-m-d h:i:s',time()),
+                 'user_verify'=> '2'
+        );
+
+
+        $updatedata =   $this->common->update_data($data,'user','user_id',$userid); 
+             
+            //$insert_id = $this->common->insert_data_getid($data,'user'); 
+    }
 }
  
