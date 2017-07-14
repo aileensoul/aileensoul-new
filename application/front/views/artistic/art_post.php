@@ -18,6 +18,7 @@
 <!-- END HEADER -->
 <!--<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
    <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>-->
+   
 <?php echo $art_header2_border; ?>
 <!DOCTYPE html>
 <html>
@@ -987,7 +988,7 @@
                             ?>
                      <?php } ?>
                      <!-- pop up box end-->
-                     <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
+                    
                         <?php
                            $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                            $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1001,6 +1002,7 @@
                            $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                            ?>
                         <div class="like_one_other">
+                         <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
                            <?php
                               $userid = $this->session->userdata('aileenuser');
                               
@@ -1022,8 +1024,9 @@
                                   echo "others";
                               }
                               ?>
+                               </a>
                         </div>
-                     </a>
+                    
                   </div>
                   <?php
                      }
@@ -1043,7 +1046,7 @@
                             ?>
                      <?php } ?>
                      <!-- pop up box end-->
-                     <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
+                     
                         <?php
                            $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                            $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1057,6 +1060,7 @@
                            $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                            ?>
                         <div class="like_one_other">
+                        <a href="javascript:void(0);"  onclick="likeuserlist(<?php echo $row['art_post_id']; ?>);">
                            <?php
                               echo ucwords($art_fname);
                               echo "&nbsp;";
@@ -1071,8 +1075,9 @@
                                   echo "others";
                               }
                               ?>
+                               </a>
                         </div>
-                     </a>
+                    
                   </div>
                   <!-- like user list end -->
                   <!-- comment start -->
@@ -1369,7 +1374,7 @@
                      </div>
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >
                         <!-- <textarea name="product_title" placeholder="Post Your Product...."></textarea>  -->
- <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
+ <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
                         <div class="fifty_val">                       
                            <input size=1 class="text_num" value=50 name=text_num readonly> 
                         </div>
@@ -2931,7 +2936,7 @@
                var vfirstname = fileInput[0].name;
                var ext = vfirstname.split('.').pop();
                var ext1 = vname.split('.').pop();
-               var allowedExtensions = ['jpg', 'jpeg', 'PNG', 'gif'];
+               var allowedExtensions = ['jpg', 'jpeg', 'PNG', 'gif', 'png'];
                var allowesvideo = ['mp4', 'webm'];
                var allowesaudio = ['mp3'];
                var allowespdf = ['pdf'];
@@ -3552,4 +3557,18 @@
    
    </script>
  <!-- 180 words more than script end-->
+
+
+ <script type="text/javascript">
+   
+  $(document).ready(function(){ 
+
+  var nb = $('div.post-design-box').length;
+   if(nb == 0){
+ $("#dropdownclass").addClass("no-post-h2");
+
+   }
+
+});
+ </script>
 

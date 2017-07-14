@@ -219,7 +219,7 @@
                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/followers'); ?>"  title="followers">Followers <br>  (<?php echo (count($followerdata)); ?>)</a>
                     </li>
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following'); ?>">Following  <br>(<?php echo (count($followingdata)); ?>)</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following'); ?>">Following  <br><div id="countfollow">(<?php echo (count($followingdata)); ?>)</div></a>
                     </li>
 
 
@@ -860,10 +860,13 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "artistic/follow" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
-            success: function (data) {
+            success: function (data) { //alert(data.count);
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+                $('#countfollow').html(data.count);
+
 
             }
         });
@@ -881,10 +884,13 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "artistic/unfollow" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+                $('#countfollow').html(data.count);
+
 
             }
         });

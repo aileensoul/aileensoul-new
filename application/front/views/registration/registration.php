@@ -40,24 +40,24 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                      <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                      <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name*">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                      <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                      <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name*">
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <input type="email" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address">
+                  <input type="email" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address*">
                 </div>
               <div class="form-group">
-                  <input type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                  <input type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password*">
                 </div>
               <div class="form-group dob">
-				<label class="d_o_b"> Date Of Birth :</label>
+				<label class="d_o_b"> Date Of Birth *:</label>
 				<!--span class="d_o_b">DOB </span-->
                 <select class="day" name="selday" id="selday">
                   <option value="" disabled selected value>Day</option>
@@ -105,7 +105,7 @@
               
               <div class="form-group gender-custom">
                 <select class="gender" name="selgen" id="selgen">
-                  <option value="" disabled selected value>Gender</option>
+                  <option value="" disabled selected value>Gender*</option>
                   <option value="M">Male</option>
                   <option value="F">female</option>
                 </select>

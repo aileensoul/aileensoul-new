@@ -22,7 +22,7 @@
         <div class="col-md-8 col-sm-9">
             <div class="btn-right pull-right">
               
-              <a href="<?php echo base_url('registration'); ?>" class="btn3">Creat an account</a>
+              <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
             </div>
         </div>
       </div>
@@ -33,27 +33,27 @@
       <div class="mid-trns">
 
 
-<div id="error1" style="display:block;">
+<!--<div id="error1" style="display:block;">
 
                         <?php  
-                                        if ($this->session->flashdata('error')) {
-                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-                                        }
-                                        if ($this->session->flashdata('success')) {
-                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('success') . '</div>';
-                                        }
-                                        
+//                                        if ($this->session->flashdata('error')) {
+//                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+//                                        }
+//                                        if ($this->session->flashdata('success')) {
+//                                            echo '<div class="alert alert-danger">' . $this->session->flashdata('success') . '</div>';
+//                                        }
+//                                        
                                 ?>
 
-                      </div>
+                      </div>-->
 
                  
 
 
 
-         <div id="error"></div>
+<!--         <div id="error"></div>-->
 
-        <div class="inner-form">
+        <div class="inner-form login-frm">
           <div class="login">
               <div class="title">
           <h1 class="ttc">Welcome To Aileensoul</h1>
@@ -63,13 +63,33 @@
                 
                 <div class="form-group">
                   <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                 <div id="error2" style="display:block;">
+                  <?php  
+                                        if ($this->session->flashdata('erroremail')) {
+                                            echo $this->session->flashdata('erroremail');
+                                        }
+                                        
+                                        
+                                ?>
+              </div>
+                  <div id="errorlogin"></div> 
                 </div>
               <div class="form-group">
                   <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                </div>
+              <div id="error1" style="display:block;">
+                  <?php  
+                                        if ($this->session->flashdata('errorpass')) {
+                                            echo $this->session->flashdata('errorpass');
+                                        }
+                                        
+                                        
+                                ?>
+              </div>
+                  <div id="errorpass"></div> 
+              </div>
               
                 <p class="pt-20 ">
-                <button class="btn1 ">Login</button>
+                <button class="btn1" onclick="login()">Login</button>
                 </p>
               
                   <p class=" text-center">
@@ -111,7 +131,7 @@
     <div class="modal-body" style="    width: 100%;
     text-align: center;">
         <label  style="margin-bottom: 15px; color: #5b5b5b;"> Enter your e-mail address below to get your password.</label>
-        <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email Address" autocomplete="off" class="form-control placeholder-no-fix">
+        <input style="" type="text" name="forgot_email" id="forgot_email" placeholder="Email Address*" autocomplete="off" class="form-control placeholder-no-fix">
 
     </div>
 
@@ -207,7 +227,12 @@
 <!-- script for login  user valoidtaion start -->
 
 <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
-<script type="text/javascript">
+<script type="text/javascript"> 
+    
+    function login()
+{
+document.getElementById('error1').style.display = 'none';
+}
                             //validation for edit email formate form
                             $(document).ready(function () {
                                 /* validation */
@@ -234,7 +259,8 @@
                                 /* validation */
                                 /* login submit */
                                 function submitForm()
-                                {
+                                {  
+                                 
                                     var email_login = $("#email_login").val();
                                     var password_login = $("#password_login").val();
                                     var post_data = {
@@ -253,7 +279,7 @@
                                             $("#btn-login").html('Login ...');
                                         },
                                         success: function (response)
-                                        { 
+                                        {   
                                             if (response.data == "ok") {
                                                 $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
 
@@ -263,19 +289,24 @@
                                                // setTimeout(' window.location.href = ""; ', 4000);
                                             }else if(response.data == "password"){
 
-                                             $("#error").fadeIn(1000, function () {
-                                                 document.getElementById('error1').style.display = 'none';
-                                                    $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
+                                             //$("#error").fadeIn(1000, function () {
+                                                
+                                                 //document.getElementById('error1').style.display = 'none';
+                                           //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
+                                                    $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                                    document.getElementById("password_login").classList.add('error');
+                                                    document.getElementById("password_login").classList.add('error');
                                                     $("#btn-login").html('Login');
-                                                }); 
+                                           //    }); 
 
                                             }
                                             else { 
-                                                $("#error").fadeIn(1000, function () {
-                                                     document.getElementById('error1').style.display = 'none';
-                                                    $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                                                 //   document.getElementById('error1').style.display = 'none';
+                                           //         $("#error").html('<div class="alert alert-danger"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + 'Please enter valid password' + ' !</div>');
+                                                    $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                                    document.getElementById("email_login").classList.add('error');
+                                                    document.getElementById("email_login").classList.add('error');
                                                     $("#btn-login").html('Login');
-                                                });
                                             }
                                         }
                                     });

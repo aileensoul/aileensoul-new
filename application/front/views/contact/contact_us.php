@@ -29,57 +29,49 @@
       </div>
     </div>
   </header>
-  <section class="middle-main mid-trns">
-    <div class="container">
-      
-      
-        <div id="contactsucc"></div>
-
-
-        <div class="inner-form">
-          <div class="login">
-              <div class="title">
-          <h1>Contact us</h1>
-        </div>
-            <form role="form" name="contact_form" id="contact_form" method="post">
-                <div class="row">
-                  <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <input type="text" name="contact_name" id="contact_name" class="form-control input-sm required" placeholder="First Name*">
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <input type="text" name="contactlast_name" id="contactlast_name" class="form-control input-sm" placeholder="Last Name*">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <input type="email" name="contact_email" id="contact_email" class="form-control input-sm" placeholder="Email Address*">
-                </div>
-              <div class="form-group">
-                  <input type="text" name="contact_subject" id="contact_subject" class="form-control input-sm" placeholder="Subject*">
-                </div>
-              <div class="form-group">
-                <textarea type="text" id="contact_message" name="contact_message" class="form-control" placeholder="Message*"></textarea>
-                  
-                </div>
-              
-              
-              <p class="pb15">
-                <span class="red">*</span>All fields are mendatory
-              </p>
-                <p>
-                <button class="btn1">Submit</button>
-              </p>
-              </form>
-            
-          </div>
-        </div>
-        
-      
-    </div>
+  <section class="middle-main pd-low">
+		<div class="container">
+			<div id="contactsucc"></div>
+			<div class="">
+				<div class="inner-form">
+					<div class="login">
+						<div class="title">
+						  <h1>Contact us</h1>
+						</div>
+						<form role="form" name="contact_form" id="contact_form" method="post">
+							<div class="row">
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+									  <input type="text" name="contact_name" id="contact_name" class="form-control input-sm required" placeholder="First Name*">
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-6">
+									<div class="form-group">
+									  <input type="text" name="contactlast_name" id="contactlast_name" class="form-control input-sm" placeholder="Last Name*">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+							  <input type="email" name="contact_email" id="contact_email" class="form-control input-sm" placeholder="Email Address*">
+							</div>
+							<div class="form-group">
+								<input type="text" name="contact_subject" id="contact_subject" class="form-control input-sm" placeholder="Subject*">
+							</div>
+							<div class="form-group">
+								<textarea type="text" id="contact_message" name="contact_message" class="form-control" placeholder="Message*"></textarea>
+								  
+							</div>
+							<p class="pb15">
+								<span class="red">*</span>All fields are mendatory
+							</p>
+							<p>
+								<button class="btn1">Submit</button>
+							  </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
   </section>
 
   <footer>
@@ -102,58 +94,7 @@
 </div>
 <script>
   $( document ).ready(function() {
-    
-    // text animation effect 
-    var $lines = $('.top-middle h3.text-effect');
-      $lines.hide();
-      var lineContents = new Array();
-
-      var terminal = function() {
-
-        var skip = 0;
-        typeLine = function(idx) {
-        idx == null && (idx = 0);
-        var element = $lines.eq(idx);
-        var content = lineContents[idx];
-        if(typeof content == "undefined") {
-          $('.skip').hide();
-          return;
-        }
-        var charIdx = 0;
-
-        var typeChar = function() {
-          var rand = Math.round(Math.random() * 150) + 25;
-
-          setTimeout(function() {
-          var char = content[charIdx++];
-          element.append(char);
-          if(typeof char !== "undefined")
-            typeChar();
-          else {
-            element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
-            element.removeClass('active');
-            typeLine(++idx);
-          }
-          }, skip ? 0 : rand);
-        }
-        content = '' + content + '';
-        element.append(' ').addClass('active');
-        typeChar();
-        }
-
-        $lines.each(function(i) {
-        lineContents[i] = $(this).text();
-        $(this).text('').show();
-        });
-
-        typeLine();
-      }
-
-      terminal();
-      
-      
-      
-      //  login form css
+	  //  login form css
       // button ripple effect from @ShawnSauce 's pen http://codepen.io/ShawnSauce/full/huLEH
       
       $(function(){

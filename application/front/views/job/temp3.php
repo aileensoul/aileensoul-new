@@ -46,7 +46,7 @@ $(window).load(function(){
     <meta content="" name="author" />
     <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
     <!-- CSS START -->
-
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('z2/css/style.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_new.css'); ?>">
@@ -112,6 +112,99 @@ $(window).load(function(){
 <script type="text/javascript" src="<?php // echo base_url('js/script.js'); ?>"></script>
 <!-- <script type="text/javascript" src="<?php //echo base_url('js/select2_new.js'); ?>"></script> -->
 <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.6/jquery.mousewheel.min.js'></script>
+</body>
+</html>
+<script type="text/javascript">
+var dragging = false;
+var clientY = 0;
+
+$(document).ready(function(event) {
+  $(".noti").each(function() { 
+    var viewportHeight = $(".noti").outerHeight();
+    var totalHeight = $(".noti").prop("scrollHeight");
+  
+    var scrollUnitHeight = (viewportHeight / totalHeight) * viewportHeight;
+  
+    $(".noti .scroll span").height(scrollUnitHeight);
+  });
+  
+  $(document).on('mousewheel', '.noti', function(event) {
+    var scrollLocation = $(this).find(".scroll span").position().top;
+    moveScrollTo($(this), scrollLocation - (event.deltaY * 10));
+    
+    event.preventDefault();
+    return false;
+  });
+  
+  $(window).on("mouseup", function(event) {
+    if (dragging) {
+      dragging = false;
+      $(".scrolling").removeClass("scrolling");
+      
+      event.preventDefault();
+      return false;
+    }
+  });
+  
+  $(".noti .scroll span").on("mousedown", function(event) {
+    clientY = event.clientY - $(this).position().top;
+    dragging = true;
+    $(this).parents(".noti").addClass("scrolling");
+    
+    event.preventDefault();
+    return false;
+  });
+  
+  $(document).on("click", ".scroll", function(event) {
+    if ($(event.target).is("span")) {
+      return;
+    }
+    
+    var scrollPosition = event.clientY - 15;
+    moveScrollTo($(this).parents(".noti"), scrollPosition);
+  });
+  
+  $(window).on("mousemove", function(event) {
+    if (dragging) {
+      var scrollPosition = event.clientY - clientY;
+      moveScrollTo($(".scrolling"), scrollPosition);
+      
+      event.preventDefault();
+    }
+  });
+});
+
+function moveScrollTo(parent, scrollPosition) {    
+  if (parent.length > 0) {
+    var viewportHeight = parent.outerHeight();
+    var limitedViewportHeight = viewportHeight - parent.find(".scroll span").height();
+    
+    var totalHeight = parent.prop("scrollHeight");
+
+    if (scrollPosition < 0) {
+      scrollPosition = 0;
+    }
+    
+    var scrollSpanPosition = scrollPosition;
+    
+    if (scrollSpanPosition > viewportHeight - parent.find(".scroll span").height()) {
+      scrollSpanPosition = viewportHeight - parent.find(".scroll span").height();
+    }
+    
+    if (scrollPosition > viewportHeight) {
+      scrollPosition = viewportHeight;
+    }
+    
+    parent.find(".scroll span").css("top", scrollSpanPosition);
+
+    parent.find(".scroll").css("top", (scrollSpanPosition / viewportHeight) * totalHeight);
+
+    parent.scrollTop((scrollSpanPosition / viewportHeight) * totalHeight);
+  }
+}
+</script>
 <script type="text/javascript" charset="utf-8">
 
     function addmsg(type, msg)
@@ -533,7 +626,7 @@ if($userid){?>
                                     </a><div id="notificationContainer">
                                         <div id="notificationTitle">Notifications</div>
 
-                                        <div id="notificationsBody" class="notifications">
+                                        <div id="notificationsBody" class="notifications ">
 
 
                                         </div>
@@ -712,9 +805,11 @@ if($userid){?>
                                     </a><div id="notificationContainer">
                                         <div id="notificationTitle">Notifications</div>
 
-                                        <div id="notificationsBody" class="notifications">
+                                        <div id="notificationsBody" class="notifications noti">
 
-
+                                            <div class="scroll">
+    <span></span>
+  </div>
                                         </div>
                                 </li>
                                 <!-- general notification end -->
@@ -849,6 +944,16 @@ if($userid){?>
       <?php  }?>
 
     
+  <div id="aDiv" class="" style="margin-top: 150px;">
+  The oldest classical Greek and Latin writing had little or no spaces between words or other ones, and could be written in boustrophedon (alternating directions). Over time, text direction (left to right) became standardized, and word dividers and terminal punctuation became common. The first way to divide sentences into groups was the original paragraphos, similar to an underscore at the beginning of the new group.[3] The Greek paragraphos evolved into the pilcrow (¶), which in English manuscripts in the Middle Ages can be seen inserted inline between sentences. The hedera leaf (e.g. ☙) has also been used in the same way.
+
+In ancient manuscripts, another means to divide sentences in into paragraphs was a line break (newline) followed by an initial at the beginning of the next paragraph. An initial is an oversize capital letter, sometimes outdented beyond the margin of text. This style can be seen, for example, in the original Old English manuscript of Beowulf. Outdenting is still used in English typography, though not commonly.[4] Modern English typography usually indicates a new paragraph by indenting the first line. This style can be seen in the (handwritten) United States Constitution from 1787. For additional ornamentation, a hedera leaf or other symbol can be added to the inter-paragraph whitespace, or put in the indentation space.
+
+A second common modern English style is to use no indenting, but add vertical whitespace to create "block paragraphs". On a typewriter, a double carriage return produces a blank line for this purpose; professional typesetters may put in an arbitrary vertical space by adjusting leading. This style is very common in electronic formats, such as on the World Wide Web and email.
+  <div class="scroll">
+    <span></span>
+  </div>
+</div>
 
     <!-- header end -->
 
@@ -1015,60 +1120,3 @@ window.onclick = function(event) {
     <!-- <script type="text/javascript" src="<?php //echo base_url('js/jquery.min-notification.js');      ?>"></script> -->
     <!-- Extra js if not work then add End-->
 
- <script type="text/javascript" src="<?php echo base_url('zalak/js/jquery.js'); ?>"></script>
-    <script>
-        // (function($){
-        //     $(window).on("load",function(){
-                
-        //         $.mCustomScrollbar.defaults.scrollButtons.enable=true; //enable scrolling buttons by default
-        //         $.mCustomScrollbar.defaults.axis="yx"; //enable 2 axis scrollbars by default
-                
-                
-                
-        //         $("#notificationContainer").mCustomScrollbar({theme:"minimal"}); 
-
-        //         $(".all-themes-switch a").click(function(e){
-        //             e.preventDefault();
-        //             var $this=$(this),
-        //                 rel=$this.attr("rel"),
-        //                 el=$("#notificationContainer");
-        //             switch(rel){
-        //                 case "toggle-content":
-        //                     el.toggleClass("expanded-content");
-        //                     break;
-        //             }
-        //         });
-                
-        //     });
-        // })(jQuery);
-$("#notificationsBody").mouseover(function(){$(this).css("overflow","scroll");});
-$("#notificationsBody").mouseout(function(){$(this).css("overflow","hidden");});
-    </script>
-<style type="text/css">
-::-moz-scrollbar-track
-{
-    -moz-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
-}
-
-::-moz-scrollbar
-{
-    width: 7px;
-    background-color: #F5F5F5;
-
-}
-
-::-moz-scrollbar-thumb
-{
-    background-color: #2CC185;  
-    background-image: -moz-linear-gradient(45deg,
-                                              rgba(255, 255, 255, .2) 25%,
-                                              transparent 25%,
-                                              transparent 50%,
-                                              rgba(255, 255, 255, .2) 50%,
-                                              rgba(255, 255, 255, .2) 75%,
-                                              transparent 75%,
-                                              transparent)
-}
-
-</style>
