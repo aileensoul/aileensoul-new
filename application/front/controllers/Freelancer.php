@@ -1872,6 +1872,7 @@ $this->freelancer_apply_search();
             }
         }
         $this->data['postdetail'] = $freedata;
+   
 //code for search start
         $this->freelancer_apply_search();
 // code for search end
