@@ -35,7 +35,7 @@
                                 <!-- Friend Request End-->
 
                                 <div class="dropdown_hover">
-                                    <span id="art_profile">Employer Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                    <span id="art_profile">Employer Profile <i class="fa fa-caret-downfa fa-caret-down" aria-hidden="true"></i></span>
                                     <div class="dropdown-content_hover" id="dropdown-content_hover">
                                         <span class="my_account">
                                             <div class="my_S">Account</div>
