@@ -171,7 +171,7 @@
                 </div>
                 <div  class="add-post-button mob-block">
                     <?php if ($returnpage == '') { ?>
-                        <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer/freelancer_add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Post</a>
+                        <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer/freelancer_add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> Post Project</a>
                     <?php } ?>
                 </div> 
                 <div class="middle-part container">
@@ -202,7 +202,7 @@
 
                         <div  class="add-post-button">
                             <?php if ($returnpage == '') { ?>
-                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer/freelancer_add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Add Post</a>
+                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer/freelancer_add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> Post Project</a>
                             <?php } ?>
                         </div> 
                     </div>
@@ -239,7 +239,7 @@
                                                                             ?>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="#" title="Post Title" class="post_title ">
+                                                                            <a href="#" title="<?php echo ucwords(text2link($post['post_name'])); ?>" class="post_title ">
                                                                                 <?php echo ucwords(text2link($post['post_name'])); ?> </a>   </li>
                                                                         <?php
                                                                         $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;

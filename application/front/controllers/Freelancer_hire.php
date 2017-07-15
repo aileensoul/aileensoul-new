@@ -503,7 +503,13 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
          $this->session->set_flashdata('success', 'professional information updated successfully');
 
          if($userdata[0]['free_hire_step'] == 3){
-           redirect('freelancer/freelancer_hire_profile', refresh);
+            $contition_array = array('user_id' => $userid,'status' => '1');
+         $postdata= $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          if(count($postdata) <= 0){
+             redirect('freelancer/freelancer_add_post', refresh);
+           }else{
+             redirect('freelancer/freelancer_hire_profile', refresh);
+           }
        }else{
         redirect('freelancer/recommen_candidate', refresh);
        }

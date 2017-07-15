@@ -126,7 +126,7 @@
 
                             <fieldset class="full-width">
                                 <label>Post Title:<span style="color:red">*</span></label>
-                                <input name="post_name" type="text" id="post_name" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name']?> "/>
+                                <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name']?> "/>
                                 <span id="fullname-error"></span>                        
                                 <?php echo form_error('post_name'); ?>
                             </fieldset>
@@ -1001,5 +1001,5 @@ var date_picker ='<?php echo date('Y-m-d',strtotime($freelancerpostdata[0]['post
 </script>
 
 <style type="text/css">
-  #example2-error{margin-top: 42px!importantt;}
+  #example2-error{margin-top: 42px!important;}
 </style>
