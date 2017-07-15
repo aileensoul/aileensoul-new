@@ -170,7 +170,7 @@
                                                                             ?>
                                                                         </li>
                                                                         <li>
-                                                                            <a href="#" title="Post Title" class="post_title">
+                                                                            <a href="#" title="<?php echo ucwords($this->common->make_links($post['post_name'])); ?>" class="post_title">
                                                                                 <?php echo ucwords($this->common->make_links($post['post_name'])); ?> </a>   
                                                                         </li>
                                                                         <?php

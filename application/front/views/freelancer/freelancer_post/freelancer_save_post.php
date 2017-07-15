@@ -177,7 +177,7 @@
                                                                                     Created Date : <?php echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
                                                                                 </li>
                                                                                 <li>
-                                                                                    <a href="#" title="Post Title" class="post_title">
+                                                                                    <a href="#" title="<?php echo ucwords(text2link($post['post_name'])); ?>" class="post_title">
                                                                                         <?php echo ucwords(text2link($post['post_name'])); ?> </a> </li>
                                                                                 <?php
                                                                                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
