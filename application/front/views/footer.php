@@ -200,10 +200,12 @@
         if (msg == 0)
         {
             $("#notification_count").html('');
+            $('#notificationLink').removeClass('notification_available');
         } else
         {
             $('#notification_count').html(msg);
             $('#notification_count').css({"background-color": "#FF4500", "padding": "3px"});
+            $('#notificationLink').addClass('notification_available');
         }
     }
     function waitForMsg()
@@ -228,10 +230,12 @@
         if (msg == 0)
         {
             $("#message_count").html('');
+            $('#InboxLink').removeClass('msg_notification_available');
         } else
         {
             $('#message_count').html(msg);
             $('#message_count').css({"background-color": "#FF4500", "padding": "3px"});
+            $('#InboxLink').addClass('msg_notification_available');
         }
     }
     function waitForMsg1()

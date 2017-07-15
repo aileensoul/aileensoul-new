@@ -123,7 +123,7 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     ?>
-                                    <li id="Inbox_link">
+<!--                                    <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
 
                                         <?php } ?>
@@ -136,7 +136,7 @@
                                                 <div id="notificationsmsgBody" class="notificationsmsg">
                                                 </div>
                                             </div>
-                                    </li>
+                                    </li>-->
                                     <!-- BEGIN USER LOGIN DROPDOWN -->
                                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                                     <li class="dropdown dropdown-user">
@@ -309,7 +309,7 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     ?>
-                                    <li id="Inbox_link">
+<!--                                    <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
@@ -322,7 +322,7 @@
                                                 </div>
                                           
                                             </div>
-                                    </li>
+                                    </li>-->
                                     <!-- BEGIN USER LOGIN DROPDOWN -->
                                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                                     <li class="dropdown dropdown-user">

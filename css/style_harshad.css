@@ -2,9 +2,9 @@
 .header2 ul li a.bus-h{padding: 5px 9px;}
 .header2 ul li{float: left;}
 .header2 ul li a .bu_home{  background-image: url(../img/icon_home_h.png); float: left; background-size: 100%;
-height: 25px;
-width: 25px; }
-.header2 ul li a:hover .bu_home{  background-image: url(../img/icon_home.png);}
+height: 24px;
+width: 24px; }
+.header2 ul li a:hover .bu_home{  background-image: url(../img/icon_home.png); background-size: 100%;}
 .header2 ul li a .bu_req{  background-image: url(../img/icon_contact_request_h.png); float: left; background-size: 100%;
 height: 25px;
 width: 25px; }
@@ -82,10 +82,75 @@ border: 1px solid #d9d9d9;
  margin: 4px 0px;
 }
 
+
+
 .header ul li #abody ul li:hover{background-color: #1b8ab9;}
 .header ul li #abody ul li:hover .text-all{color: #fff;}
 .header ul li #abody ul li a .all-img img{width: 100%; height: 100%;}
 .header ul li #abody ul li a .text-all{width: 170px; float: left; padding: 16px 10px;}
+
+/***  style  ***/
+/*body::-webkit-scrollbar {
+    width: 0.8em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+body{
+  scrollbar-base-color: #ff0000;
+  scrollbar-base-color: #ff0000;
+  scrollbar-3dlight-color: #ff0000;
+  scrollbar-highlight-color: #ff0000;
+  scrollbar-track-color: #EBEBEB;
+  scrollbar-arrow-color: black;
+  scrollbar-shadow-color: #ff0000;
+  scrollbar-dark-shadow-color: #ff0000;
+}
+/*mozilla scrolbalken*/
+@-moz-document url-prefix(http://),url-prefix(https://) {
+scrollbar {
+   -moz-appearance: none !important;
+   background: rgb(0,255,0) !important;
+}
+thumb,scrollbarbutton {
+   -moz-appearance: none !important;
+   background-color: rgb(0,0,255) !important;
+}
+
+thumb:hover,scrollbarbutton:hover {
+   -moz-appearance: none !important;
+   background-color: rgb(0,0,0) !important;
+}
+
+scrollbarbutton {
+   display: none !important;
+}
+
+scrollbar[orient="vertical"] {
+  min-width: 15px !important;
+}
+}
+::-webkit-scrollbar {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: solid whiteSmoke 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+
 @media screen and (max-width: 1200px) {}
 @media screen and (max-width: 1024px) {}
 @media screen and (max-width: 991px) {}

@@ -306,10 +306,14 @@ img {
 a {
     text-decoration: none;
     color: #1b8ab9;
-    -moz-transition: all 0.4s ease-in;
+
+  /*  -moz-transition: all 0.4s ease-in;
+
+    /*-moz-transition: all 0.4s ease-in;
+
     -webkit-transition: all 0.4s ease-in;
     -o-transition: all 0.4s ease-in;
-    transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;*/
 }
 a:hover {
     text-decoration: none;
@@ -322,7 +326,6 @@ a:focus {
 [contenteditable]:active,
 [contenteditable]:focus {
     /* border:none;*/
-    
     outline: none;
 }
 .border_none {
@@ -457,9 +460,14 @@ a:focus {
 .header2 ul li a {
     font-size: 15px;
     color: #fff;
-    padding: 7px 10px;
+    padding: 6px 10px;
     display: block;
  
+}
+.header2 ul li a#InboxLink{padding:5px 10px 4px;}
+.header2 ul li{border-right: 0.2px solid #1985b3;}
+.header2 ul li:last-child {
+    border-right: none;
 }
 .header2 ul li a i {
     font-size: 15px;
@@ -478,7 +486,6 @@ a:focus {
 }
 .header2 ul li.active a {
     /* background:#0a2c5d;*/
-    
     color: #ffffff;
 }
 /* header2*/
@@ -514,7 +521,7 @@ a:focus {
 input,
 textarea,
 select {
-    text-transform: capitalize;
+
     resize: none;
     background: white;
     border: 1px solid #cacaca;
@@ -913,10 +920,11 @@ height: 32px;
 width: 32px;}
 .header ul li a:hover .img-noti{  background-image: url(../img/header_icon_notification.png);}
 
-.header ul li a .img-msg{  background-image: url(../img/header_icon_message_h.png); display:block;
-height: 32px;
-width: 32px;}
-.header ul li a:hover .img-msg{  background-image: url(../img/header_icon_message.png);}
+.header2 ul li a .img-msg{  background-image: url(../img/header_icon_message_h.png); display:block;
+height: 26px;
+width: 26px;
+background-size: 100%;}
+.header2 ul li a:hover .img-msg{  background-image: url(../img/header_icon_message.png); background-size: 100%;}
 
 
 /*
@@ -928,10 +936,12 @@ width: 32px;}
     
     line-height: 18px!important;
 }
-/*.header ul li a:hover {
-    background-color: #fff;
-    color: #1b8ab9;
-}*/
+.header ul li a:hover i{color:white;}
+.header ul li a:hover .dropdown .img-circle{    border: 2px solid #d7ecf5;}
+.header ul li a:hover {
+   
+    color: #fff;
+}
 ul.sub-menu {
     display: none;
     position: absolute;
@@ -972,8 +982,6 @@ ul.sub-menu li a i {
 .h2-srrt{  margin-right: 12px;height: 22px;
     width: 22px;
     float: left;
-        margin-right: 18px;
-    margin-left: 27px;
    }
 .h2-img{
     background: url(../img/icon_view_profile.png) no-repeat;
@@ -2009,6 +2017,7 @@ label.error {
 
 .cover-pic .btn {
     display: block;
+	margin-top:30px;
 }
 .croppie-container .cr-viewport {
     border-color: #f4f4f4;
@@ -2261,6 +2270,7 @@ ul.business_pf_ct_person_detail li b {
     position: relative;
     z-index: 1;
 }
+.notification-data-inside h6 b i{color: #000;}
 #notificationLink span {
     padding: 3px;
     background: #1b8ab9;
@@ -2894,7 +2904,7 @@ ul.business_pf_ct_person_detail li b {
 }
 .bui-menu-profile {
     float: left;
-    padding-left: 33px;
+    padding-left: 0px;
     padding-right: 10px;
 }
 .job-menu-profile h5 {
@@ -3805,7 +3815,113 @@ a:focus {
 }
 
 /*contact req*/
+ #noti_pc{ margin-bottom: 5px;
+    border-radius: 50%;
+    margin-left: 10px;
+    display: inline-block;
+    
+    margin-top: 5px;   }
+    .job-saved-box .notification-box ul li{display: flex!important;}
+    #notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px;
+    margin-left: 11px;
+    display: inline-block;}
+    #noti_pc img{border-radius: none;}
+    #notification_inside h6{font-size: 17px;}
+    .contact-list .list-title{
+        background: #fff; 
+        color: #000; 
+        border:1px solid #ddd;
+        border-radius: 4px;
+    }
+    .all-list{
+        width:100%;
+        text-align: center;
+        padding-top: 40px;
+    }
+     .all-list ul{
+        display: inline-block;
+     }
+     .all-list ul li{
+        padding:10px;
+        display: inline-block;
+        list-style-type: none;
+        margin: 0;
+     }
+     .all-list ul li .list-box{
+        width: 235px;
+        height: 255px;
+        background: #fff;
+        border:1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+     }
+     .all-list ul li .list-box:hover{
+        background: rgba(221, 221, 221, 0.3);
+     }
+    .profile-img{
+        width:110px; 
+        height: 110px;
+        border-radius: 100%;
+        margin: 0px auto;
+		padding-top:4px;
 
+    }
+    .profile-img img{
+        width:110px; 
+        height: 110px;
+        border-radius: 100%;
+    }
+    .connect-link{
+        padding: 13px 0;
+    }
+
+    .profile-content a{
+    font-family: robotoregular;
+    
+    padding-top: 15px;
+    color: #000;
+    display: inline-block;
+    }
+    .profile-content a h5{    color: #404040;
+    line-height: 20px;}
+	.profile-content a p{color: #8c8c8c;
+    font-family: robotoregular;}
+    .connect-link a{
+            font-weight: 500;
+    font-size: 16px;
+    font-family: robotoregular;
+    color: #1b8ab9;
+    padding: 6px 14px;
+    }
+	 .connect-link a.cr-accept{
+    border: 1px solid #1b8ab9;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+    color: white;
+    border-radius: 2px;}
+	
+	 .connect-link a.cr-accept:hover{   
+
+ background: -moz-linear-gradient(96deg, # 0%, #1b8ab9 44%, #1b8ab9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
+    background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%);
+    background: -o-linear-gradient(96deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%);
+    background: -ms-linear-gradient(96deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%);
+	 background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%);
+	   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+	 }
+	.connect-link a.cr-decline{    border: 1px solid #1b8ab9;
+    border-radius: 2px;
+    margin-left: 33px;}
+    .connect-link a:hover{
+  
+    color: #fff;
+    }
     #addcontactContainer{
          background-color: #fff;
    /* border: 1px solid rgba(100, 100, 100, .4);*/
@@ -3850,12 +3966,16 @@ a:focus {
     color: black;
 }
 #addcontactTitle a{color: black; padding: 1px 10px;}
+
+.business_data_table{table-layout: fixed;
+    width: 100%;}
+.business_data_table td:first-child{width:50px;}
 .business_data_table td a{color:#000;}
 #addcontactTitle a:hover{color: #1b8ab9; text-decoration: underline;}
     #addcontactBody {
         padding: 0px 0px 0px 0px !important;
         overflow-y: scroll;
-        height: 350px;
+        height: 284px;
     }
     #addcontactBody ul, #addcontactBody li {
         padding-right: 0px;
@@ -3863,13 +3983,31 @@ a:focus {
     }
     #addcontactBody li{
         border-bottom: 1px solid #ddd;
-        padding: 10px 0;
+        padding: 10px;
     }
     #addcontactBody li a{
         padding-left: 0;
         color: #000;
         padding-top: 0;
     }
+	#addcontactBody  li .addcontact-right a.add-right-true{background-color:#fff; border:1px solid #1b8ab9;}
+		#addcontactBody  li .addcontact-right a.add-left-true i{color:#fff;}
+	#addcontactBody  li .addcontact-right a.add-left-true{
+									border:1px solid transparent;
+								background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+								background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+								background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+								background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+								background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+								background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+								filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 ); }
+				#addcontactBody  li .addcontact-right a.add-left-true:hover{background:white; border:1px solid #1b8ab9;}
+				#addcontactBody  li .addcontact-right a.add-left-true:hover i{	color:#1b8ab9;
+	background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
+	#addcontactBody  li .addcontact-right a.add-right-true i {color:#1b8ab9;}
+		#addcontactBody  li .addcontact-right a.add-left-true i {color:#fff;}
     .addcontact-pic {
         height: 50px;
         width: 50px;
@@ -3877,11 +4015,19 @@ a:focus {
         float: left;
 
     }
+    .addcontact-pic img{height: 100%; width: 100%;}
     .addcontact-text{
         float: left;
         width: 80%;
-        padding-left: 5px;
+		color:#8c8c8c;
+        padding-left: 8px;
+		text-align:left;
+		font-size:13px;
+		font-family:arial;
     }
+	.addcontact-text span{color:#404040; font-size:15px;}
+	#addcontactBody li:hover{background-color:e9f4f8; }
+		#addcontactBody li:hover .addcontact-text{}
     .addcontact-text span{
         display: block;
         line-height: 1;
@@ -3916,17 +4062,17 @@ a:focus {
         border: 1px solid #000;
         padding: 8px !important;
         border-radius: 100%;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         text-align: center;
         margin: 5px 2px;
     }
     .addcontact-right a:hover, .addcontact-right a:focus {
-        background: none !important;
+        /*background: none !important;*/
     }
     .addcontact-right a i{
         color: #000;
-        font-size: 20px !important;
+        font-size: 17px !important;
     }
     #addcontactFooter {
         background-color: #e9eaed;
@@ -3990,7 +4136,7 @@ a:focus {
 }
 #notificationsBody {
     padding: 0px 0px 0px 0px !important;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     height: 276px;
     overflow-x: hidden;
 }
@@ -4106,32 +4252,32 @@ li.active2 {
     border-bottom: 1px solid #dddddd;
 }
 #InboxContainer {
-    border-radius: 5px;
-    background-color: #fff;
-    /*border: 1px solid rgba(100, 100, 100, .4);*/
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
-    overflow: visible;
-    position: absolute;
-    top: 25px;
-    margin-top: 28px;
-    z-index: 2;
-    display: none;
-    float: left;
-    width: 358px;
-    right: 0;
+   border-radius: 5px;
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 25px;
+margin-top: 10px;
+z-index: 2;
+display: none;
+float: left;
+width: 358px;
+right: -6px;
 }
 #InboxContainer:before {
     content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    color: transparent;
-    border: 10px solid black;
-    border-color: transparent transparent #fff;
-    margin-top: -20px;
-    margin-left: 18px;
-    right: 17px;
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 9px solid black;
+border-color: transparent transparent #fff;
+margin-top: -18px;
+margin-left: 18px;
+right: 17px;
 }
 #InboxBody {
     padding: 0px 0px 0px 0px !important;
@@ -7046,9 +7192,12 @@ follow box*/
     padding: 1px;
 }
 .profile-head-text_dg {
+    max-width: 96%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
     font-size: 28px;
-    text-shadow: 0px 10px 26px rgba(230, 230, 230, 0.4), 0px 8px 7px rgba(0, 0, 0, 0.1), 0px 11px 14px rgba(230, 230, 230, 0.9);
-}
+ }
 #two_save_images_bui {
     float: left;
     height: 250px;
@@ -8735,7 +8884,7 @@ fieldset .add_post_btns {
     position: relative;
     display: inline-block;
     color: white;
-    padding: 6px 16px;
+    padding: 7px 16px;
     cursor: pointer;
 }
 .dropdown-content_hover {
@@ -8744,7 +8893,7 @@ fieldset .add_post_btns {
     position: absolute;
     color: #3b5283;
     background-color: #fff;
-    min-width: 220px;
+    min-width:180px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     margin-top: 7px !important;
     z-index: 1;
@@ -8922,8 +9071,9 @@ fieldset .add_post_btns {
     color: #91949d!important;
 }
 .profile-job-post-detail .buisness-profile-pic {
-    padding: 14px 4px;
+    padding: 3px 4px;
 }
+.pdf{padding: 0px !important;}
 #jobseeker_regform_higher_secondary .job_education_submitbox {
     margin-top: 20px;
 }
@@ -8992,6 +9142,7 @@ label.cameraButton:hover {
     margin-bottom: 10px;
     margin-top: -26px;
 }
+.common-form fieldset #email{text-transform: lowercase;}
 .delete_btn {
     padding: 6px 12px 6px!important;
     font-size: 13px!important;
@@ -9319,10 +9470,17 @@ label.cameraButton input[accept*="camera"] {
 }
 /*.add_audio{padding: 10px;}*/
 /*Zalak 25-5*/
+.day-text{padding-top:6px;
+float: left;
+padding-left: 3px;}
+.day-text2{float: left; padding-left: 3px;}
+.clockimg{height: 13px; width: 13px; float: left; background-size: 100% !important; background: url("../img/clock.png") no-repeat;}
+
 #kkkk{color: #838384;
 font-size: 12px;
 cursor: pointer;
 font-weight: 600;}
+#kkkk:hover{color:#1b8ab9;}
 .margin_less {
     margin: 0px!important;
 }
@@ -10366,7 +10524,6 @@ chat end*/
 }
 .chat .chat-history {
     /* border-right: 1px solid #e4e5e7; */
-    
     background: white;
     padding: 25px 30px 20px;
     /* border-bottom: 1px solid white; */
@@ -10376,7 +10533,6 @@ chat end*/
    /* flex-direction: column-reverse;
 	display: -moz-flex; 
 	display: -webkit-flex; 
-     
     display: flex !important;
 	-webkit-flex-direction: column-reverse;
 	-moz-flex-direction: column-reverse;*/
@@ -13279,7 +13435,7 @@ end zalak 9-6 css*/
     min-height: 37px !important
 }
 .notifications li .notification-data-inside div {
-    padding-top: 3px!important
+    padding-top: 4px!important
 }
 .profile-box-job-menu ul li a {
     margin-right: 15px !important;
@@ -14157,15 +14313,22 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .contct-no li .addcontact-left a .addcontact-text {
     width: 100%;
-    font-size: 16px;
+    font-size: 15px;
 }
 .contct-no li .addcontact-left {
     width: 100%;
 }
-.addcontact-left{width: 100%!important;
+
+/*.addcontact-left{width: 100%!important;
 margin: 0 auto;
 text-align: center;}
-.addcontact-left a{padding-left: 30px !important;}
+.addcontact-left a{padding-left: 30px !important;}*/
+
+.addcontact-left{width: 71%!important;
+margin: 0 auto;
+text-align: center;}
+.addcontact-left a{padding-left: 0px !important;}
+
 .mesg_link {
     background-color: #1b8ab9;
     color: #fff;
@@ -14228,7 +14391,7 @@ display: inline-block;
     padding-top: 0px!important;
 }
 .my_S {
-    padding: 8px 19px;
+    padding: 8px 15px;
     font-size: 15px;
     color: #000;
     background-color: #fff;
@@ -14249,7 +14412,7 @@ header.animated {
 .no-post-title h4{text-align:left;}
 .add-post-custom{float:left; padding-top:15px; padding-left:20px;}
 
-.noti-msg-y{font-size: 12px; color: #646464; line-height: 16px;}
+.noti-msg-y{font-size: 13px; color: #646464; line-height: 16px;}
 
 /***  media query  ***/
 
@@ -14946,16 +15109,18 @@ text-align: center;}
     #notificationContainer {
         width: 100%;
         margin-top: 20px;
+        top:27px;
     }
     #InboxContainer {
         width: 100%;
         margin-top: 20px;
+        top: 26px;
     }
     #notificationContainer::before {
-        display: none;
+       right: 162px;
     }
     #InboxContainer::before {
-        display: none;
+        right: 101px;
     }
     .notifications li {
         width: 100%;
@@ -15180,7 +15345,7 @@ text-align: center;}
         top: 35px;
     }
     #add_contact #addcontactContainer::before {
-        display: none;
+        right: 155px;
     }
     #paddingtop_fixed_art {
         padding-top: 22px !important;
@@ -15237,6 +15402,9 @@ text-align: center;}
         font-size: 16px;
         padding: 7px;
     }
+	.profile-text1 .alert.alert-warning{width:100%; float:left;}
+	.email-img{float: left; width: 35px;}
+    .main-txt{float: left; width: 87%; text-align: justify;}
 }
 @media screen and (max-width: 640px) {
 .profile-text1{width: 100%; top:40px;}
@@ -15419,6 +15587,10 @@ top: 8px;}
     .camer_h i{font-size: 19px;}
 }
 @media screen and (max-width: 479px) {
+     #InboxContainer::before {
+        right:92px;
+    }
+    #notificationContainer::before{right: 139px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
     .how-it-popup .modal-body h3{display: block;}
     .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
     .banner{padding-top: 21px;}
@@ -15792,8 +15964,12 @@ padding-bottom: 6px !important;*/}
     .editable_text {
         padding-right: 45px;
     }
+	.cover-pic{bottom:60%;}
+	.cover-pic .btn{font-size:13px; padding:3px 10px;}
 }
 @media screen and (max-width: 360px) {
+    #InboxContainer::before{right: 80px;}
+    #notificationContainer::before{right: 125px;}
     .header ul li a{}
     .header ul li.dropdown-user a{padding: 0px 4px;}
     .email-verify{float: left; width: 100%; }
@@ -15801,8 +15977,6 @@ padding-bottom: 6px !important;*/}
 	.logo h2{padding:0; line-height:27px;}
 	
     .alert{float: left;}
-    .email-img{float: left; width: 35px;}
-    .main-txt{float: left; width: 87%; text-align: justify;}
     .h-img{height: 25px; width: 25px;}
     .padd_img { padding-left: 3px !important; padding-top: 4px !important;}
     .padding_job_r ul .date_re {
