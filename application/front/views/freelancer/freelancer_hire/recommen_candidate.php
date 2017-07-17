@@ -166,20 +166,15 @@
                         }
                         ?>
                         <!-- middle div stat -->
-
-
                         <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>Recommended Freelancer</h3>
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd ">
-                                            <!-- body tag inner data start-->
                                             <?php
                                             if ($candidatefreelancer) {
                                                 foreach ($candidatefreelancer as $row) {
-                                                    // foreach ($cand_value as $row) {
-                                                    // echo "<pre>"; print_r($row);die();
                                                     ?> 
                                                     <div class="profile-job-post-detail clearfix">
                                                         <!-- pop up box start-->
@@ -191,13 +186,10 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                         <!-- pop up box end-->
                                                         <div class="profile-job-post-title-inside clearfix">
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="profile-job-post-location-name-rec">
-
-
                                                                     <div class="fl" style="display: inline-block;">
                                                                         <div  class="buisness-profile-pic-candidate">
                                                                             <?php
@@ -404,7 +396,6 @@
                             <div class="modal-content">
                                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                                 <div class="modal-body">
-                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                     <span class="mes"></span>
                                 </div>
                             </div>
