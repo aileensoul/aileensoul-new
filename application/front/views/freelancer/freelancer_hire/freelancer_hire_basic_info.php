@@ -6,9 +6,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
     </head>
-    <div class="js">
+<!--    <div class="js">-->
         <body class="pushmenu-push">
-            <div id="preloader"></div>
+<!--            <div id="preloader"></div>-->
             <?php echo $header; ?>
             <?php
             if ($freehiredata[0]['free_hire_step'] == '3') {
@@ -142,138 +142,17 @@
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-            <script>
-                var data = <?php echo json_encode($demo); ?>;
-                $(function () {
-                    $("#tags").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                        }
-                    });
-                });
-
-            </script>
-            <script>
-                var data1 = <?php echo json_encode($city_data); ?>;
-                $(function () {
-                    $("#searchplace").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data1, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                        }
-                    });
-                });
-
-            </script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-            <script type="text/javascript">
-                function checkvalue() {
-                    var searchkeyword = $.trim(document.getElementById('tags').value);
-                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                    if (searchkeyword == "" && searchplace == "") {
-                        return false;
-                    }
-                }
-            </script>
-            <script type="text/javascript">
-//validation for edit email formate form
-                jQuery.validator.addMethod("noSpace", function (value, element) {
-                    return value == '' || value.trim().length != 0;
-                }, "No space please and don't leave it empty");
 
-                $.validator.addMethod("regx", function (value, element, regexpr) {
-                    if (!value)
-                    {
-                        return true;
-                    } else
-                    {
-                        return regexpr.test(value);
-                    }
-                }, "Number, space and special character are not allowed");
-                $(document).ready(function () {
-                    $("#basic_info").validate({
-                        rules: {
-                            fname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
-                            lname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
-                            email: {
-                                required: true,
-                                email: true,
-                                remote: {
-                                    url: "<?php echo site_url() . 'freelancer_hire/check_email' ?>",
-                                    type: "post",
-                                    data: {
-                                        email: function () {
-                                            return $("#email").val();
-                                        },
-                                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                                    },
-                                },
-                            },
-                            phone: {
-                                number: true,
-                                minlength: 8,
-                                maxlength: 15
-                            },
-                        },
-                        messages: {
-                            fname: {
-                                required: "First name Is Required.",
-                            },
-                            lname: {
-                                required: "Last name Is Required.",
-                            },
-                            email: {
-                                required: "Email id is required",
-                                email: "Please enter valid email id",
-                                remote: "Email already exists"
-                            },
-                            phone: {
-                                minlength: "Minimum length 8 digit",
-                                maxlength: "Maximum length 15 digit"
-                            }
-                        },
-
-                    });
-                });
+            <script>
+                var base_url = '<?php echo base_url(); ?>';
+                var data = <?php echo json_encode($demo); ?>;
+                var data1 = <?php echo json_encode($city_data); ?>;
+             
             </script>
-            <script type="text/javascript">
+                      
+<!--            <script type="text/javascript">
                 jQuery(document).ready(function ($) {
                     // site preloader -- also uncomment the div in the header and the css style for #preloader
                     $(window).load(function () {
@@ -282,7 +161,7 @@
                         });
                     });
                 });
-            </script>
+            </script>-->
         </body>
-    </div>
+<!--    </div>-->
 </html>
