@@ -74,6 +74,7 @@ function savepopup(id) {
     $('#bidmodal').modal('show');
 }
 //CODE FOR SAVE USER END
+
 //ALL POPUP CLOSE USING ESC START
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
@@ -82,6 +83,7 @@ $(document).on('keydown', function (e) {
     }
 });
 //ALL POPUP CLOSE USING ESC END
+
 //SCRIPT FOR NO POST ADD CLASS DESIGNER RELATED HEADER2 START
 $(document).ready(function () {
     var nb = $('div.profile-job-post-detail').length;
