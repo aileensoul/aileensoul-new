@@ -161,7 +161,7 @@
                                             $userid = $this->session->userdata('aileenuser');
                                             if ($userid != $freelancerpostdata[0]['user_id']) {
                                                 ?>
-                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3)); ?>">Message</a> </li>
+                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3).'/3/4'); ?>">Message</a> </li>
                                             <?php } ?>
                                         </ul>
                                     </div>

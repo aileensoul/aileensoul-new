@@ -425,7 +425,7 @@
             <?php   
             
             if($userid != $row['user_id']){ ?>
-          <a href="<?php echo base_url('chat/abc/' . $row['user_id']); ?>">Message</a>
+          <a href="<?php echo base_url('chat/abc/' . $row['user_id'].'/3/4'); ?>">Message</a>
 
           <?php
             if (!$data) {

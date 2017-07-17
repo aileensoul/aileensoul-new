@@ -333,7 +333,7 @@
                                                             $userid = $this->session->userdata('aileenuser');
                                                             if ($userid != $rec['user_id']) {
                                                                 ?>
-                                                                <a href="<?php echo base_url('chat/abc/' . $rec['user_id']); ?>">Message</a>
+                                                                <a href="<?php echo base_url('chat/abc/' . $rec['user_id'].'/3/4'); ?>">Message</a>
                                                                 <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $rec['save_id'] ?>)">Remove</a>
                                                             <?php } ?>
                                                         </div>
@@ -389,7 +389,6 @@
                             <input type="hidden" name="hitext" id="hitext" value="3">
                             <div class="popup_previred">
                                 <img id="preview" src="#" alt="your image" />
-
                             </div>
                             <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                             <?php echo form_close(); ?>
@@ -407,7 +406,6 @@
             <div class="modal-content">
                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                 <div class="modal-body">
-                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                     <span class="mes"></span>
                 </div>
             </div>
