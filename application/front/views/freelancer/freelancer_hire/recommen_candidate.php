@@ -400,141 +400,28 @@
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                    <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
+                        <div class="modal-dialog modal-lm">
+                            <div class="modal-content">
+                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                                <div class="modal-body">
+                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                                    <span class="mes"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script>
-                                                                                var data = <?php echo json_encode($demo); ?>;
-                                                                                //alert(data);
-
-                                                                                $(function () {
-                                                                                    // alert('hi');
-                                                                                    $("#tags").autocomplete({
-                                                                                        source: function (request, response) {
-                                                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                                                            response($.grep(data, function (item) {
-                                                                                                return matcher.test(item.label);
-                                                                                            }));
-                                                                                        },
-                                                                                        minLength: 1,
-                                                                                        select: function (event, ui) {
-                                                                                            event.preventDefault();
-                                                                                            $("#tags").val(ui.item.label);
-                                                                                            $("#selected-tag").val(ui.item.label);
-                                                                                            // window.location.href = ui.item.value;
-                                                                                        }
-                                                                                        ,
-                                                                                        focus: function (event, ui) {
-                                                                                            event.preventDefault();
-                                                                                            $("#tags").val(ui.item.label);
-                                                                                        }
-                                                                                    });
-                                                                                });
-
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>">
         </script>
         <script>
+            var base_url = '<?php echo base_url(); ?>';
+            var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
-            //alert(data);
-
-            $(function () {
-                // alert('hi');
-                $("#searchplace").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data1, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                        // window.location.href = ui.item.value;
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                    }
-                });
-            });
-
         </script>
-        <script type="text/javascript">
-            function checkvalue() {
-                //alert("hi");
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                // alert(searchkeyword);
-                // alert(searchplace);
-                if (searchkeyword == "" && searchplace == "") {
-                    //alert('Please enter Keyword');
-                    return false;
-                }
-            }
-        </script>
-        <!-- save post start -->
-        <script type="text/javascript">
-            function save_user(abc)
-            {
-                var saveid = document.getElementById("hideenuser" + abc);
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/save_user1" ?>',
-                    data: 'user_id=' + abc + '&save_id=' + saveid.value,
-                    success: function (data) {
-                        $('.' + 'saveduser' + abc).html(data).addClass('saved');
-                    }
-                });
-            }
-        </script>
-        <script>
-            function savepopup(id) {
-                save_user(id);
-
-                $('.biderror .mes').html("<div class='pop_content'>Freelancer successfully saved.");
-                $('#bidmodal').modal('show');
-            }
-        </script>
-        <!-- save post end-->
-        <!-- all popup close close using esc start -->
-        <script type="text/javascript">
-
-            $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    //$( "#bidmodal" ).hide();
-                    $('#bidmodal').modal('hide');
-                }
-            });
-
-        </script>
-        <!-- all popup close close using esc end -->
-        <script type="text/javascript">
-
-            $(document).ready(function () {
-
-                var nb = $('div.profile-job-post-detail').length;
-
-                //alert(nb);
-                if (nb == 0) {
-                    $("#dropdownclass").addClass("no-post-h2");
-
-                }
-
-            });
-        </script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js'); ?>"></script>
     </body>
 </html>

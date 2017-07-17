@@ -351,9 +351,14 @@
                                                                         <span>
                                                                             <?php
                                                                             if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                                echo $post['post_exp_year'] . ".";
-                                                                                ?><?php
-                                                                                echo $post['post_exp_month'] . " Year";
+                                                                                if ($post['post_exp_year']) {
+                                                                                    echo $post['post_exp_year'];
+                                                                                }
+                                                                                if ($post['post_exp_month']) {
+                                                                                    echo ".";
+                                                                                    echo $post['post_exp_month'];
+                                                                                }
+                                                                                echo " Year";
                                                                             } else {
                                                                                 echo PROFILENA;
                                                                             }
@@ -502,13 +507,13 @@
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
-         </script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
+        </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
-         </script>
+        </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_post.js'); ?>"></script>
     </body>
 </html>
