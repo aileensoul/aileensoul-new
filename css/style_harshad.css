@@ -1,10 +1,10 @@
-.header2 ul li a#addcontactLink{padding: 5px 9px;}
-.header2 ul li a.bus-h{padding: 5px 9px;}
+.header2 ul li a#addcontactLink{padding: 6px 5px;}
+.header2 ul li a.bus-h{padding: 6px 5px;}
 .header2 ul li{float: left;}
 .header2 ul li a .bu_home{  background-image: url(../img/icon_home_h.png); float: left; background-size: 100%;
 height: 24px;
 width: 24px; }
-.header2 ul li a:hover .bu_home{  background-image: url(../img/icon_home.png); background-size: 100%;}
+.header2 ul li a:hover .bu_home{  background-image: url(../img/icon_home.png);}
 .header2 ul li a .bu_req{  background-image: url(../img/icon_contact_request_h.png); float: left; background-size: 100%;
 height: 25px;
 width: 25px; }
@@ -112,7 +112,7 @@ body{
   scrollbar-shadow-color: #ff0000;
   scrollbar-dark-shadow-color: #ff0000;
 }
-/*mozilla scrolbalken*/
+/*mozilla scrolbalken
 @-moz-document url-prefix(http://),url-prefix(https://) {
 scrollbar {
    -moz-appearance: none !important;
@@ -145,9 +145,31 @@ scrollbar[orient="vertical"] {
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 0.3);
+}*/
+
+#hidden-content-b {
+  /* Custom styling */
+  max-width: 550px;
+  border-radius: 4px;
+
+  /* Custom transition - slide from top*/
+  transform: translateY(-50px);
+  transition: all .33s;
 }
 
-
+.fancybox-slide--current #hidden-content-b {
+  transform: translateY(0);
+}	
+.fancybox-container .fancybox-outer, .fancybox-container .fancybox-inner, .fancybox-container .fancybox-bg, .fancybox-container .fancybox-stage {
+	position:absolute;
+}
+.inner_search{}
+.search_head{border:1px solid #d9d9d9; padding:5px 10px;}
+.cover .fancybox-slide > *{padding:0; background:none;}
+.fancybox-close-small::after{background:none; font-size:30px; color:#777;}
+.fancybox-close-small:hover{background:none;}
+.fancybox-close-small:hover::after{background:none;}
+.cover .fancybox-slide .modal-content{padding:0;}
 
 
 

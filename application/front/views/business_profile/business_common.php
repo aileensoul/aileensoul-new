@@ -27,16 +27,16 @@
         <div class="row" id="row2">
             <?php
             $userid = $this->session->userdata('aileenuser');
-            if ($this->uri->segment(3) == $userid) {
+            $loginid = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_slug;
+            if ($this->uri->segment(3) == $loginid) {
                 $user_id = $userid;
             } elseif ($this->uri->segment(3) == "") {
                 $user_id = $userid;
             } else {
-                $user_id = $this->db->get_where('business_profile', array('business_slug' => $this->uri->segment(3)))->row()->user_id;
+                $user_id = $this->db->get_where('business_profile', array('business_slug' => $this->uri->segment(3)))->row()->business_slug;
             }
-            $contition_array = array('user_id' => $user_id, 'is_deleted' => '0', 'status' => '1');
+            $contition_array = array('business_slug' => $user_id, 'is_deleted' => '0', 'status' => '1');
             $image = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
@@ -44,15 +44,14 @@
                 <?php
             } else {
                 ?>
-                     <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
-                 <?php }
-                 ?>
+                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+            <?php }
+            ?>
         </div>
     </div>
 </div>
 <div class="container tablate-container">
     <?php
-    $userid = $this->session->userdata('aileenuser');
     if ($businessdata1[0]['user_id'] == $userid) {
         ?>
         <div class="upload-img">
@@ -81,17 +80,22 @@
             </div>
             <div class="business-profile-right">
                 <div class="bui-menu-profile">
-                    <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug'] . ''); ?>"> <?php echo ucwords($businessdata1[0]['company_name']); ?></a></h4>
-                    <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug'] . ''); ?>"> 
-                            <?php
-                            if ($businessdata1[0]['industriyal']) {
-                                echo $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
-                            }
-                            if ($businessdata1[0]['other_industrial']) {
-                                echo ucwords($businessdata1[0]['other_industrial']);
-                            }
-                            ?>
-                        </a></h4>
+                    <div class="profile-left">
+                        <h4 class="profile-head-text"><a href="<?php echo base_url('business_profile/business_resume/' . $businessdata1[0]['business_slug'] . ''); ?>"> <?php echo ucwords($businessdata1[0]['company_name']); ?></a></h4>
+                        <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business_profile/business_resume/' . $businessdata1[0]['business_slug'] . ''); ?>"> 
+                                <?php
+                                if ($businessdata1[0]['industriyal']) {
+                                    echo
+                                    $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
+                                }
+                                if ($businessdata1[0]['other_industrial']) {
+                                    echo ucwords($businessdata1[0]['other_industrial']);
+                                }
+                                ?>
+
+
+                            </a></h4>
+                    </div>
                     <?php
                     $userid = $this->session->userdata('aileenuser');
                     if ($businessdata1[0]['user_id'] != $userid) {
@@ -116,8 +120,11 @@
                                     <a onclick="return contact_person_model(<?php echo $businessdata1[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" style="cursor: pointer;">
                                     <?php } ?>
                                     <div class="">
-                                        <div id="ripple" class="centered" >
-                                            <div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>
+                                        <div class="add-contact">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>
                                         </div>
                                         <div class="addtocont">
                                             <span class="ft-13"><i class="icon-user"></i>
