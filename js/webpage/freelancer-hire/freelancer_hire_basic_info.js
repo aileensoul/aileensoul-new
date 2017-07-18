@@ -45,7 +45,7 @@ $( "#searchplace" ).autocomplete({
 });
 });
 //CODE FOR AUTOFILL OF SEARCH LOCATION END
-// FORM FILL UP VALIDATION START
+
 // CHECK SEARCH KEYWORD AND LOCATION BLANK START
                        function checkvalue() {
                             var searchkeyword = $.trim(document.getElementById('tags').value);
@@ -55,6 +55,7 @@ $( "#searchplace" ).autocomplete({
                             }
                         }
  // CHECK SEARCH KEYWORD AND LOCATION BLANK END
+ // FORM FILL UP VALIDATION START
 jQuery.validator.addMethod("noSpace", function(value, element) { 
       return value == '' || value.trim().length != 0;  
     }, "No space please and don't leave it empty");
@@ -122,7 +123,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
         });
     });
  //FORM FILL UP VALIDATION END
- 
+ //CODE FOR PRELOADER START
  jQuery(document).ready(function ($) {
                     // site preloader -- also uncomment the div in the header and the css style for #preloader
                     $(window).load(function () {
@@ -131,3 +132,4 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                         });
                     });
                 });
+//CODE FOR PRELOADER END
