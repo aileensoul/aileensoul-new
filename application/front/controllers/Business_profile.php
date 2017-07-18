@@ -2153,8 +2153,8 @@ class Business_profile extends MY_Controller {
             'contact_to_id' => $id,
             'contact_type' => 2,
             'created_date' => date('Y-m-d H:i:s', time()),
-            'status' => 1,
-            'is_delete' => $userid,
+            'status' => 'query',
+            //'is_delete' => $userid,
             'contact_desc' => $this->input->post('msg')
         );
 
@@ -6212,6 +6212,10 @@ class Business_profile extends MY_Controller {
                 $fourdata .= '</p></div></div></div>';
             }
         }
+
+         else {
+            $fourdata = 'No comments Available!!!';
+        }
         $fourdata .= '</div>';
 
         echo $fourdata;
@@ -7333,11 +7337,28 @@ class Business_profile extends MY_Controller {
     }
 
     public function contact_person() {
-        $to_id = $_POST['toid'];
+         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('contact_to_id' => $to_id, 'contact_from_id' => $userid);
-        $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
+
+         $contition_array = array('contact_type' => 2);
+        $search_condition = "((contact_to_id = '$to_id' AND contact_from_id = ' $userid') OR (contact_from_id = '$to_id' AND contact_to_id = '$userid'))";
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+
+
+
+        // $contition_array = array('contact_to_id' => $to_id, 'contact_from_id' => $userid);
+        // $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($contactperson) {
 
             $status = $contactperson[0]['status'];
@@ -7349,12 +7370,14 @@ class Business_profile extends MY_Controller {
                     'status' => 'cancel'
                 );
 
+                //echo "<pre>"; print_r($data); die();
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
                 $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="">';
-                $contactdata .= '<div id="ripple" class="centered">';
-                $contactdata .= '<div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>';
+                $contactdata .= '<div class="add-contact">';
+                $contactdata .= ' <div></div><div></div><div></div>';
+                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
                 $contactdata .= '</div>';
@@ -7365,17 +7388,23 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
                 $data = array(
+
+                    'contact_from_id' => $userid,
+                    'contact_to_id' => $to_id,
+                    'contact_type' => 2,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
                     'not_read' => 2
+                   
                 );
 
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="">';
-                $contactdata .= '<div id="ripple" class="centered">';
-                $contactdata .= '<div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>';
+                $contactdata .= '<div class="add-contact">';
+                $contactdata .= ' <div></div><div></div><div></div>';
+                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
                 $contactdata .= '</div>';
@@ -7394,8 +7423,10 @@ class Business_profile extends MY_Controller {
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="">';
-                $contactdata .= '<div id="ripple" class="centered">';
-                $contactdata .= '<div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>';
+                $contactdata .= '<div class="add-contact">';
+                $contactdata .= ' <div></div><div></div><div></div>';
+
+                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
                 $contactdata .= '</div>';
@@ -7405,18 +7436,24 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '</div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'reject') {
-                $data = array(
+                 $data = array(
+
+                    'contact_from_id' => $userid,
+                    'contact_to_id' => $to_id,
+                    'contact_type' => 2,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
                     'not_read' => 2
+                   
                 );
-
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="">';
-                $contactdata .= '<div id="ripple" class="centered">';
-                $contactdata .= '<div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>';
+                $contactdata .= '<div class="add-contact">';
+                $contactdata .= ' <div></div><div></div><div></div>';
+                
+                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
                 $contactdata .= '</div>';
@@ -7443,8 +7480,10 @@ class Business_profile extends MY_Controller {
 
             $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
             $contactdata .= '<div class="">';
-            $contactdata .= '<div id="ripple" class="centered">';
-            $contactdata .= '<div class="circle"><span href="" class="add_r_c"><i class="fa fa-user-plus"  aria-hidden="true"></i></span></div>';
+            $contactdata .= '<div class="add-contact">';
+            $contactdata .= ' <div></div><div></div><div></div>';
+
+            $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
             $contactdata .= '</div>';
@@ -7588,13 +7627,24 @@ class Business_profile extends MY_Controller {
         $status = $_POST['status'];
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $contition_array = array('contact_from_id' => $toid, 'contact_to_id' => $userid, 'status' => 'pending');
         $person = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contactid = $person[0]['contact_id'];
         if ($status == 1) {
             $data = array(
                 'modify_date' => date('Y-m-d', time()),
-                'status' => 'confirm'
+                'status' => 'confirm',
+                'not_read' => 2
             );
 
             $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contactid);
@@ -7609,15 +7659,44 @@ class Business_profile extends MY_Controller {
         }
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
-        $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $unique_user = array_merge($contactperson_req, $contactperson_con);
+
+         $new = array();
+        foreach ($unique_user as $value) {
+            $new[$value['contact_id']] = $value;
+        }
+
+        $post = array();
+
+        foreach ($new as $key => $row) {
+
+            $post[$key] = $row['contact_id'];
+        }
+        array_multisort($post, SORT_DESC, $new);
+
+        $contactperson = $new;
+
 
         if ($contactperson) {
             foreach ($contactperson as $contact) {
 
-                $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
-                $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+               
                 //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
+
+                if ($contact['contact_to_id'] == $userid) {
+
+
+                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+
                 $contactdata .= '<li>';
                 $contactdata .= '<div class="addcontact-left">';
                 $contactdata .= '<a href="#">';
@@ -7636,10 +7715,38 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '</a>';
                 $contactdata .= '</div>';
                 $contactdata .= '<div class="addcontact-right">';
-                $contactdata .= '<a href="#" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                $contactdata .= '<a href="#" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                $contactdata .= '<a href="#"  class="add-right-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                 $contactdata .= '</div>';
                 $contactdata .= '</li>';
+
+               }else{
+                
+                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+
+
+                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+                    $contactdata .= '<li>';
+                    $contactdata .= '<div class="addcontact-left">';
+                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                    $contactdata .= '<div class="addcontact-pic">';
+
+                    if ($busdata[0]['business_user_image']) {
+                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                    } else {
+                        $contactdata .= '<img src="' . base_url(NOIMAGE) . '">';
+                    }
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-text">';
+                    $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
+                    //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</li>';
+                
+               }
                 $contactdata .= '</ul>';
             }
         } else {
@@ -8379,8 +8486,22 @@ class Business_profile extends MY_Controller {
                                             <a>' . $this->common->make_links($row['product_name']) . '</a>
                                         </div>
                                         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
-                                            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '">
-                                        </div>
+                                            
+                                            
+                                            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit('.$row['business_profile_post_id'].'); onKeyup=check_lengthedit('.$row['business_profile_post_id'].'); onblur=check_lengthedit('.$row['business_profile_post_id'].');>';
+
+                                             if ($row['product_name']) {
+                                                                            $counter = $row['product_name'];
+                                                                            $a = strlen($counter);
+
+                                      $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num readonly>';
+
+                                      } else {
+                                       $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+
+                                         } 
+                                       $return_html .= '</div>
+
                                     </div>                    
                                     <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
 

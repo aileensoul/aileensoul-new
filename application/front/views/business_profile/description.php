@@ -59,7 +59,7 @@
 
                                 <li class="custom-none <?php if ($businessdata[0]['business_step'] < '3') {
     echo "khyati";
-} ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Images</a></li>
+} ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
 
 
                             </ul>

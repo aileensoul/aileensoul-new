@@ -154,7 +154,41 @@
                                 <?php } ?>  
                                 <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('business-profile/dashboard/' . $businessdata1[0]['business_slug']); ?>">Dashboard</a></li>
                                 <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug']); ?>"> Details</a></li>
-                                <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'contacts') { ?> class="active" <?php } ?>><a title="Contacts" href="<?php echo base_url('business-profile/contacts/' . $businessdata1[0]['business_slug']); ?>"> Contacts</a></li>
+
+
+                                 <?php
+                                        $userid = $this->session->userdata('aileenuser');
+                                        if ($businessdata1[0]['user_id'] == $userid) {
+
+
+                                            $userid = $businessdata1[0]['user_id'];
+                                    $contition_array = array('contact_type' => 2, 'status' => 'confirm');
+                                    $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+                                    $businesscontacts = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+
+                                            ?> 
+
+                                        <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts)); ?>)</a>
+                                        </li>
+
+
+                                        <?php }else{
+
+                                            $userid = $businessdata1[0]['user_id'];
+                                    $contition_array = array('contact_type' => 2, 'status' => 'confirm');
+                                    $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+                                    $businesscontacts1 = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+
+
+                                            ?>
+
+                                        <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts1)); ?>)</a>
+                                        </li>
+
+
+                                        <?php }?>
+
+
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($businessdata1[0]['user_id'] == $userid) {

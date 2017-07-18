@@ -336,14 +336,14 @@
                                                                                 <a style="max-width: 40%;" class="post_dot" title="<?php echo ucwords($companynameposted); ?>" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
                                                                                 <p class="posted_with" > Posted With</p>
                                                                                 <a class="other_name post_dot" href="<?php echo base_url('business-profile/details/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
-                                                                                <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date"><?php echo date('d-M-Y', strtotime($row['created_date'])); ?> </span> 
+                                                                                <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date"><?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?> </span> 
                                                                             </div></div>
                                                                     </li>
                                                                 <?php } else { ?>
                                                                     <li><div class="post-design-product"><a class="post_dot" title="<?php echo ucwords($companyname); ?> " href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucwords($companyname); ?> </a>
                                                                             <span role="presentation" aria-hidden="true"> · </span>
                                                                             <div class="datespan"> 
-                                                                                <span class="ctre_date"><?php echo date('d-M-Y', strtotime($row['created_date'])); ?> </span> 
+                                                                                <span class="ctre_date"><?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?></span> 
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -411,7 +411,21 @@
                                                                     <a  ><?php echo $this->common->make_links($row['product_name']); ?></a>
                                                                 </div>
                                                                 <div id="<?php echo 'editpostbox' . $row['business_profile_post_id']; ?>" style="display:none;">
-                                                                    <input type="text" id="<?php echo 'editpostname' . $row['business_profile_post_id']; ?>" name="editpostname" placeholder="Product Name" value="<?php echo $row['product_name']; ?>">
+                                                                    <input type="text" id="<?php echo 'editpostname' . $row['business_profile_post_id']; ?>" name="editpostname" placeholder="Product Name" value="<?php echo $row['product_name']; ?>" onKeyDown=check_lengthedit(<?php echo $row['business_profile_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $row['business_profile_post_id']; ?>); onblur=check_lengthedit(<?php echo $row['business_profile_post_id']; ?>);>
+
+                                                                    <?php
+                                                            if ($row['product_name']) {
+                                                                $counter = $row['product_name'];
+                                                                $a = strlen($counter);
+                                                                ?>
+
+                                                                <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a); ?>" name=text_num readonly>
+
+                                                            <?php } else { ?>
+                                                                <input size=1 id="text_num" class="text_num" value=50 name=text_num readonly> 
+
+        <?php } ?>
+        
                                                                 </div>
                                                             </div>
                                                             <div id="<?php echo "khyati" . $row['business_profile_post_id']; ?>" style="display:block;">
@@ -994,6 +1008,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade message-box" id="postedit" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
             <?php echo $footer; ?>
@@ -1002,19 +1028,19 @@
             $('#file-fr').fileinput({
                 language: 'fr',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp']
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf']
             });
             $('#file-es').fileinput({
                 language: 'es',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp']
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf']
             });
 
             $("#file-1").fileinput({
                 uploadUrl: '#', // you must set a valid URL here else you will get an error
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp'],
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf'],
                 overwriteInitial: false,
-                maxFileSize: 1000,
+                maxFileSize: 1000000,
                 maxFilesNum: 10,
                 //allowedFileTypes: ['image', 'video', 'flash'],
                 slugCallback: function (filename) {
@@ -1032,7 +1058,7 @@
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
-                    'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp'],
+                    'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf'],
                     'elErrorContainer': '#errorBlock'
                 });
                 $("#kv-explorer").fileinput({
@@ -2270,10 +2296,13 @@
 
                 var fileInput = document.getElementById("file-1").files;
                 var product_name = document.getElementById("test-upload_product").value;
+                  var product_trim = product_name.trim();
                 var product_description = document.getElementById("test-upload_des").value;
+                var des_trim = product_description.trim();
+
                 var product_fileInput = document.getElementById("file-1").value;
 
-                if (product_fileInput == '' && product_name == '' && product_description == '')
+                if (product_fileInput == '' && product_trim == '' && des_trim == '')
                 {
 
                     $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
@@ -2497,6 +2526,24 @@
                     my_form.text_num.value = maxLen - my_form.my_text.value.length;
                 }
             }
+
+
+            function check_lengthedit(abc)
+    {
+    maxLen = 50;
+    var product_name = document.getElementById("editpostname" + abc).value;
+    if (product_name.length > maxLen) {
+    text_num = maxLen - product_name.length;
+    var msg = "You have reached your maximum limit of characters allowed";
+    $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+    $('#postedit').modal('show');
+    var substrval = product_name.substring(0, maxLen);
+    $('#editpostname' + abc).val(substrval);
+    } else {
+    text_num = maxLen - product_name.length;
+    document.getElementById("text_num").value = text_num;
+    }
+    }
         </script>
         <script type="text/javascript">
             function contentedit(clicked_id) {
@@ -2973,6 +3020,13 @@
                     },
                     complete: function (response) {
 
+
+            document.getElementById('test-upload-product').value = null;
+            document.getElementById('test-upload-des').value = null;
+
+            $(".file-preview-frame").hide();
+             
+
                         // Output AJAX response to the div container
                         $('.loader').remove();
                         $(".fw").prepend(response.responseText);
@@ -3072,5 +3126,27 @@
 
             }
         </script>
+
+
+         <script type="text/javascript">
+
+
+
+    $('#postedit').on('click', function(){
+    // $('.my_text').attr('readonly', false);
+    });
+    $(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+    //$( "#bidmodal" ).hide();
+    $('#postedit').modal('hide');
+    // $('.my_text').attr('readonly', false);
+
+    //$('.modal-post').show();
+
+    }
+    });
+
+
+</script>
     </body>
 </html>

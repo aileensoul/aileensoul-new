@@ -309,20 +309,6 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     ?>
-<!--                                    <li id="Inbox_link">
-                                        <?php if ($message_count) { ?>
-                                        <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
-                                            <span id="message_count"></span>
-                                        </a>
-                                        <div id="InboxContainer">
-                                            <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages</div>
-                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                                </div>
-                                          
-                                            </div>
-                                    </li>-->
                                     <!-- BEGIN USER LOGIN DROPDOWN -->
                                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                                     <li class="dropdown dropdown-user">

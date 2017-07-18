@@ -320,7 +320,17 @@
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
-
+ <div class="modal fade message-box" id="postedit" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- POST BOX JAVASCRIPT START --> 
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
@@ -1089,6 +1099,24 @@
                     my_form.text_num.value = maxLen - my_form.my_text.value.length;
                 }
             }
+
+
+     function check_lengthedit(abc)
+    {
+    maxLen = 50;
+    var product_name = document.getElementById("editpostname" + abc).value;
+    if (product_name.length > maxLen) {
+    text_num = maxLen - product_name.length;
+    var msg = "You have reached your maximum limit of characters allowed";
+    $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+    $('#postedit').modal('show');
+    var substrval = product_name.substring(0, maxLen);
+    $('#editpostname' + abc).val(substrval);
+    } else {
+    text_num = maxLen - product_name.length;
+    document.getElementById("text_num").value = text_num;
+    }
+    }
             /* POST BOX 50 CHARACTER LIMITATION CHECK END */
             /* SAVEPOST START */
             function save_post(abc)
@@ -1242,21 +1270,21 @@
             $('#file-fr').fileinput({
                 language: 'fr',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp']
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf']
             });
             $('#file-es').fileinput({
                 language: 'es',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp']
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf']
             });
             $("#file-0").fileinput({
-                'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp']
+                'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf']
             });
             $("#file-1").fileinput({
                 uploadUrl: '#', // you must set a valid URL here else you will get an error
-                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp'],
+                allowedFileExtensions: ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf'],
                 overwriteInitial: false,
-                maxFileSize: 1000,
+                maxFileSize: 1000000,
                 maxFilesNum: 10,
                 //allowedFileTypes: ['image','video', 'flash'],
                 slugCallback: function (filename) {
@@ -1307,7 +1335,7 @@
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
-                    'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp'],
+                    'allowedFileExtensions': ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp','mp4','mp3','pdf'],
                     'elErrorContainer': '#errorBlock'
                 });
                 $("#kv-explorer").fileinput({
@@ -1340,9 +1368,11 @@
             function imgval(event) {
                 var fileInput = document.getElementById("file-1").files;
                 var product_name = document.getElementById("test-upload-product").value;
+                var product_trim = product_name.trim();
                 var product_description = document.getElementById("test-upload-des").value;
+                var des_trim = product_description.trim();
                 var product_fileInput = document.getElementById("file-1").value;
-                if (product_fileInput == '' && product_name == '' && product_description == '')
+                if (product_fileInput == '' && product_trim == '' && des_trim == '')
                 {
                     $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
                     $('#post').modal('show');
@@ -1859,6 +1889,14 @@
                     },
                     complete: function (response) {
                         // Output AJAX response to the div container
+
+
+            document.getElementById('test-upload-product').value = null;
+            document.getElementById('test-upload-des').value = null;
+
+            $(".file-preview-frame").hide();
+
+
                         $('#progress_div').fadeOut('5000').remove();
                         // $('.loader').remove();
                         $('.business-all-post div:first').remove();
@@ -1944,6 +1982,29 @@
                 }
             });
         </script>
+
+
+        <script type="text/javascript">
+
+
+
+    $('#postedit').on('click', function(){
+    // $('.my_text').attr('readonly', false);
+    });
+    $(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+    //$( "#bidmodal" ).hide();
+    $('#postedit').modal('hide');
+    // $('.my_text').attr('readonly', false);
+
+    //$('.modal-post').show();
+
+    }
+    });
+
+
+</script>
+
 
     </body>
 </html>

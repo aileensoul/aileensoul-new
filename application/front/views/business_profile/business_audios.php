@@ -308,8 +308,30 @@
                                 <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_resume') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/business_resume/' . $businessdata1[0]['business_slug']); ?>"> Details</a>
                                 </li>
 
-                                <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts</a>
-                                </li>
+                                <?php
+                                        $userid = $this->session->userdata('aileenuser');
+                                        if ($businessdata1[0]['user_id'] == $userid) {
+                                            ?> 
+
+                                        <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts)); ?>)</a>
+                                        </li>
+
+
+                                        <?php }else{
+
+                                            $userid = $businessdata1[0]['user_id'];
+                                    $contition_array = array('contact_type' => 2, 'status' => 'confirm');
+                                    $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+                                    $businesscontacts1 = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+
+
+                                            ?>
+
+                                        <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts1)); ?>)</a>
+                                        </li>
+
+
+                                        <?php }?>
 
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');

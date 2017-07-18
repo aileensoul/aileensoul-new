@@ -26,6 +26,7 @@ $lang["description"] = "Description";
 
 /* IMAGES START */
 
+$lang["business_images"] = "Business Images";
 $lang["images"] = "Images";
 
 /* IMAGES END */

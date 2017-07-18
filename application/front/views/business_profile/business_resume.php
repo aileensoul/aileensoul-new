@@ -204,7 +204,7 @@
                                                         <div class="profile-job-profile-button clearfix">
                                                             <div class="profile-job-details">
                                                                 <ul>
-                                                                    <li><p class="details_all_tital"> Images</p> </li>
+                                                                    <li><p class="details_all_tital">Business Images</p> </li>
 
                                                                 </ul>
                                                             </div>
@@ -267,7 +267,19 @@
                                                                     }
                                                                 } else {
                                                                     ?>
-                                                                    <span style="padding: 8px;"><h7>No Image Available</h7> <a href="<?php echo base_url('business_profile/image') ?>">Add Images</a> </span>
+                                                                    <span style="padding: 8px;"><h7>No Image Available</h7> 
+
+                                                                  <?php
+                                                            $userid = $this->session->userdata('aileenuser');
+
+                                                            if ($businessdata1[0]['user_id'] == $userid) {
+                                                                ?>
+                                                                <a href="<?php echo base_url('business_profile/image') ?>">Add Images</a>
+
+                                                            <?php } ?>
+
+
+                                                                    </span>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -277,7 +289,7 @@
                                                                         <div class="modal-content">
                                                                             <div class="modal-header">
                                                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                                <h4 class="modal-title">Images</h4>
+                                                                                <h4 class="modal-title">Business Images</h4>
                                                                             </div>
                                                                             <div class="modal-body popup-img-popup">
                                                                                 <div>
@@ -730,6 +742,17 @@
                                 }
                             });
                             /* all popup close close using esc end */
+</script>
+                            <!-- all popup close close using esc start -->
+                <script type="text/javascript">
+                    $(document).on('keydown', function (e) {
+                        if (e.keyCode === 27) {
+                            $('#myModal').modal('hide');
+                        }
+                    });
+
+                </script>
+                <!-- all popup close close using esc end-->
                         </script>
                         </body>
                         </html>
