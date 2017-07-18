@@ -187,17 +187,12 @@
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
 
-
-            
             <script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_address_info.js'); ?>"></script>
-           
-           
-           
         </body>
     </div>
 </html>

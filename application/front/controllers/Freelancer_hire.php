@@ -471,7 +471,7 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
-         // code for display page start
+  // code for display page start
 $this->freelancer_hire_check();
  // code for display page end
          $contition_array = array( 'user_id' => $userid, 'is_delete' => '0' , 'status' => '1');
@@ -484,7 +484,9 @@ $this->freelancer_hire_check();
              $this->data['professional_info1'] = $userdata[0]['professional_info'];
              }
              }
-
+// code for search start
+$this->freelancer_hire_search();
+// code for search end
          $this->load->view('freelancer/freelancer_hire/freelancer_hire_professional_info',$this->data);
       
     }
