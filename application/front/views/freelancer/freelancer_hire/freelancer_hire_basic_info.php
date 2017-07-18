@@ -6,9 +6,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
     </head>
-<!--    <div class="js">-->
+    <div class="js">
         <body class="pushmenu-push">
-<!--            <div id="preloader"></div>-->
+            <div id="preloader"></div>
             <?php echo $header; ?>
             <?php
             if ($freehiredata[0]['free_hire_step'] == '3') {
@@ -41,11 +41,13 @@
                                     <ul class="left-form-each">
                                         <li <?php if ($this->uri->segment(1) == 'freelancer_hire') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
                                         <li class="custom-none <?php
-                                        if ($freehiredata[0]['free_hire_step'] < '1') {                                         
+                                        if ($freehiredata[0]['free_hire_step'] < '1') {
+                                            
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_address_info'); ?>">Address Information</a></li>
                                         <li class="custom-none <?php
-                                        if ($freehiredata[0]['free_hire_step'] < '2') {   
+                                        if ($freehiredata[0]['free_hire_step'] < '2') {
+                                            
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_professional_info'); ?>">Professional Information</a></li>
                                     </ul>
@@ -142,26 +144,16 @@
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
 
             <script>
-                var base_url = '<?php echo base_url(); ?>';
+                var site_url = '<?php echo site_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
-             
             </script>
-                      
-<!--            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    // site preloader -- also uncomment the div in the header and the css style for #preloader
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
-            </script>-->
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js'); ?>"></script>
         </body>
-<!--    </div>-->
+    </div>
 </html>
