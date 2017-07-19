@@ -24,7 +24,8 @@
 </script>
 <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 <!-- END HEADER -->
-<?php echo $art_header2; ?>
+<?php echo $art_header2_border; ?>
+
 <body   class="page-container-bg-solid page-boxed">
    <section class="custom-row">
       <div class="container" id="paddingtop_fixed">
@@ -230,7 +231,7 @@
                         <?php } ?>
                      </li>
                      <li>
-                        <a href="<?php echo base_url('chat/abc/'.$artisticdata[0]['user_id']); ?>">Message</a>
+                        <a href="<?php echo base_url('chat/abc/'.$artisticdata[0]['user_id'].'/6/6'); ?>">Message</a>
                      </li>
                   </ul>
                </div>
@@ -252,7 +253,12 @@
          <!-- text head start -->
          <div class="profile-text" >
             <?php
-                if ($artisticdata[0]['designation'] == '') {
+        $userid = $this->session->userdata('aileenuser');
+
+            if($artisticdata[0]['user_id'] == $userid){
+
+
+              if ($artisticdata[0]['designation'] == '') {
                     ?>
                         <a id="designation" class="designation" title="Designation">Current Work</a>
 
@@ -265,7 +271,27 @@
 
                         </a>
 
-                    <?php } ?>
+                    <?php } 
+
+            }else{ ?>
+
+           <?php  if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a>Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php }  ?>
+                
+
+                <?php }?>
 
 
          </div>
@@ -876,7 +902,7 @@
      
       $.ajax({
                    type:'POST',
-                   url:'<?php echo base_url() . "artistic/follow" ?>',
+                   url:'<?php echo base_url() . "artistic/follow_two" ?>',
                     data:'follow_to='+clicked_id,
                    success:function(data){ 
    
@@ -894,7 +920,7 @@
      
       $.ajax({
                    type:'POST',
-                   url:'<?php echo base_url() . "artistic/unfollow" ?>',
+                   url:'<?php echo base_url() . "artistic/unfollow_two" ?>',
                     data:'follow_to='+clicked_id,
                    success:function(data){ 
    
@@ -922,16 +948,9 @@
      
       $.ajax({
                    type:'POST',
-                   url:'<?php echo base_url() . "artistic/follow_two" ?>',
+                   url:'<?php echo base_url() . "artistic/followtwo" ?>',
                     data:'follow_to='+clicked_id,
                    success:function(data){ 
-                     //alert(data);
-                     // return false;
-                  //$('.' + 'fruser_list' + clicked_id).html(data);
-                  //$('.' + 'follow_btn_' + clicked_id).html(data);
-                  //$('.' + 'follow_btn_' + clicked_id).removeClass('user_btn');
-                  //$('.' + 'follow_btn_' + clicked_id).addClass('user_btn_h');
-                  //$('#unfollow' + clicked_id).html('');
                      
                       $('#' + 'frfollow' + clicked_id).html(data);  
                    }
@@ -947,16 +966,12 @@
    
        $.ajax({
            type: 'POST',
-           url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
+           url: '<?php echo base_url() . "artistic/unfollowtwo" ?>',
            data: 'follow_to=' + clicked_id,
            success: function (data) { 
    
-               $('.' + 'follow_btn_' + clicked_id).html(data);
-   
-               $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn_h');
-               $('.' + 'follow_btn_' + clicked_id).removeClass('user_btn_f');
-              $('.' + 'follow_btn_' + clicked_id).addClass('user_btn');
-              //$('#unfollow' + clicked_id).html('');
+               $('#' + 'frfollow' + clicked_id).html(data);
+  
            }
        });
    }

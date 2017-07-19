@@ -19,7 +19,7 @@
 <?php echo $header; ?>
 <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 <!-- END HEADER -->
-<?php echo $art_header2; ?>
+<?php echo $art_header2_border; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -220,22 +220,31 @@
 
                      <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art">
 
-
+ <?php if($art_data[0]){ ?>
     <div class="col-md-12 col-sm-12 post-design-box">
-
+           
                             <div class=" ">
                                 <div class="post-design-top col-md-12" >  
                                     <div class="post-design-pro-img"> 
                                         <?php
+
+                                         $userid = $this->session->userdata('aileenuser');
+
                                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $row['posted_user_id']); ?>">
+                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" /> </a>
 
-                                        <?php } else { ?>
+                                        <?php } else if($art_data[0]['user_id'] == $userid){ ?>
+
+                                         <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" /> </a>
+
+                                            <?php }
+                                            else { ?>
                                             <a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $row['user_id']); ?>">
                                                 <img src="<?php echo base_url(NOIMAGE); ?>" name="image_src" id="image_src" /> </a>
 
@@ -356,9 +365,26 @@
                                                             <a class="ft-15 t_artd"><?php echo $this->common->make_links($art_data[0]['art_post']); ?></a>
                                                         </div>
 
-                                                        <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
-                                                            <input type="text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $art_data[0]['art_post']; ?>">
-                                                        </div>
+ <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
+        <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $art_data[0]['art_post']; ?>" onKeyDown=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $art_data[0]['art_post_id']; ?>);>
+
+
+         <?php 
+                              if($art_data[0]['art_post']){ 
+                                $counter = $art_data[0]['art_post'];
+                                $a = strlen($counter);
+
+                                ?>
+
+                            <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a);?>" name=text_num readonly>
+
+                           <?php }else{?>
+                           <input size=1 id="text_num" class="text_num" value=50 name=text_num readonly> 
+
+                            <?php }?>
+
+
+        </div>
                                             
                                             <!-- <div class="margin_btm" id="<?php echo 'editpostdetails' . $art_data[0]['art_post_id']; ?>" style="display:block;"><span class="show">
                                                     <?php print $this->common->make_links($art_data[0]['art_description']); ?></span>
@@ -1248,8 +1274,14 @@
                                     </div>
                                 </div>
                             </div>
+            
                         </div>
-
+<?php }else{?>
+        <div>
+            Sorry, this content isn't available at the moment
+        </div>
+        
+            <?php }?>
                     </div>
                     </section>
                     <footer>
@@ -1283,6 +1315,18 @@
                             </div>
                         </div>
                     </div>
+
+                     <div class="modal fade message-box" id="postedit" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                        <div class="modal-body">
+                            <span class="mes">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
                     <!-- Model Popup Close -->
                     </html>
                     <!-- script for skill textbox automatic start (option 2)-->
@@ -3627,3 +3671,52 @@
    
    </script>
  <!-- 180 words more than script end-->
+
+
+ <script type="text/javascript">
+
+
+
+    $('#postedit').on('click', function(){
+       // $('.my_text').attr('readonly', false);
+    });
+
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         // $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
+  
+
+</script>
+
+<script type="text/javascript">
+ function check_lengthedit(abc)
+   { //alert("hii");
+       maxLen = 50;
+
+       var product_name = document.getElementById("editpostname" +abc).value;
+     
+       if (product_name.length > maxLen) { 
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+           
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+        
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+         
+       } else { 
+           text_num = maxLen - product_name.length;
+
+           document.getElementById("text_num").value = text_num;
+       }
+   }
+</script>

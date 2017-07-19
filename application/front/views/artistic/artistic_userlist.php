@@ -29,7 +29,7 @@
    });
    //For Scroll page at perticular position js End
 </script>
-<?php echo $art_header2; ?>
+<?php echo $art_header2_border; ?>
 
 
 <body   class="page-container-bg-solid page-boxed">

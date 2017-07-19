@@ -72,7 +72,7 @@
                             <div id="floatBarsG_4" class="floatBarsG"></div>
                             <div id="floatBarsG_5" class="floatBarsG"></div>
                             <div id="floatBarsG_6" class="floatBarsG"></div>
-                            <div id="floatBarsG_7" class="floatBarsG"></div>
+                            <div id="floatBarsnoG_7" class="floatBarsG"></div>
                             <div id="floatBarsG_8" class="floatBarsG"></div>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($userid != $artisticdata[0]['user_id']) {
                                     ?>
-                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3)); ?>">Message</a> </li>
+                                <li> <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id'].'/6/6'); ?>">Message</a> </li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -317,30 +317,46 @@
             <!-- text head start -->
             <div class="profile-text" >
 
-                <?php
-                if ($artisticdata[0]['designation'] == '') {
+                            <?php
+        $userid = $this->session->userdata('aileenuser');
+
+            if($artisticdata[0]['user_id'] == $userid){
+
+
+              if ($artisticdata[0]['designation'] == '') {
                     ?>
+                        <a id="designation" class="designation" title="Designation">Current Work</a>
 
-                    <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-                        <a id="designation" class="designation" title="Designation">Current Work    </a>
-
-                    <?php } ?>
+                    
 
                 <?php } else { ?> 
-
-                    <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
 
                         <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
                             <?php echo ucwords($artisticdata[0]['designation']); ?>
 
                         </a>
 
-                                        <!-- <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a> -->
-                    <?php } else { ?>
-                        <a><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-                    <?php } ?>
+                    <?php } 
 
-                <?php } ?>
+            }else{ ?>
+
+           <?php  if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a>Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php }  ?>
+                
+
+                <?php }?>
 
 
             </div>
@@ -517,7 +533,7 @@
 
 
                         <?php } else { ?>
-                            <div class="not_available">  <p>    Photos Not Available</p></div>
+                            <div class="not_available">  <p>Photos Not Available</p></div>
 
                         <?php } ?>
                         <div class="dataconphoto"></div>
@@ -675,32 +691,32 @@
 
                                     <?php if ($singlearray2[0]['image_name']) { ?>
                                         <td class="image_profile"> 
-                                            <video  controls>
+                                            <audio  controls>
 
 
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['image_name']) ?>" type="audio/mp3"">
                                                 <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
 
                                     <?php if ($singlearray2[1]['image_name']) { ?>
                                         <td class="image_profile">
-                                            <video  controls>
+                                            <audio  controls>
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['image_name']) ?>" type="audio/mp3"">
                                                 <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
                                     <?php if ($singlearray2[2]['image_name']) { ?>
                                         <td class="image_profile">
-                                            <video  controls>
+                                            <audio  controls>
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['image_name']) ?> type="audio/mp3"">
                                                         <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
                                 </tr>
@@ -708,29 +724,29 @@
 
                                     <?php if ($singlearray2[3]['image_name']) { ?>
                                         <td class="image_profile"> 
-                                            <video  controls>
+                                            <audio  controls>
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['image_name']) ?>" type="video/mp4">
                                                 <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
                                     <?php if ($singlearray2[4]['image_name']) { ?>
                                         <td class="image_profile">
-                                            <video  controls>
+                                            <audio  controls>
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['image_name']) ?>" type="audio/mp3"">
                                                 <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
                                     <?php if ($singlearray2[5]['image_name']) { ?>
                                         <td class="image_profile">
-                                            <video  controls>
+                                            <audio  controls>
                                                 <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['image_name']) ?>" type="audio/mp3"">
                                                 <source src="movie.ogg" type="audio/mp3">
                                                 Your browser does not support the audio tag.
-                                            </video>
+                                            </audio>
                                         </td>
                                     <?php } ?>
                                 </tr>
@@ -1093,9 +1109,23 @@ $loginuser = $userdata[0]['art_id'];
                                                             <span class="ft-15 t_artd"><?php echo $this->common->make_links($row['art_post']); ?></span>
                                                         </div>
 
-                                                        <div id="<?php echo 'editpostbox' . $row['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
-                                                            <input type="text" id="<?php echo 'editpostname' . $row['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $row['art_post']; ?>">
-                                                        </div>
+            <div id="<?php echo 'editpostbox' . $row['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
+                    <input type="text" class="my_text" id="<?php echo 'editpostname' . $row['art_post_id']; ?>" name="editpostname" placeholder="Title" value="<?php echo $row['art_post']; ?>"  onKeyDown=check_lengthedit(<?php echo $row['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $row['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $row['art_post_id']; ?>);>
+
+                    <?php 
+                              if($row['art_post']){ 
+                                $counter = $row['art_post'];
+                                $a = strlen($counter);
+
+                                ?>
+
+                            <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a);?>" name=text_num readonly>
+
+                           <?php }else{?>
+                           <input size=1 id="text_num" class="text_num" value=50 name=text_num readonly> 
+
+                            <?php }?>
+            </div>
                           
 
                       <div id="<?php echo "khyati" . $row['art_post_id']; ?>" style="display:block;">
@@ -1662,11 +1692,19 @@ $loginuser = $userdata[0]['art_id'];
 
                             else {
                             ?>
-                            <div class="contact-frnd-post bor_none">
-                            <div class="text-center rio">
-                                <h4 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">No Post Found.</h4>
-                            </div>
-                            </div>
+                        <div class="art_no_post_avl">
+         <h3>Artistic Post</h3>
+          <div class="art-img-nn">
+         <div class="art_no_post_img">
+
+           <img src="<?php echo base_url('img/art-no.png')?>">
+        
+         </div>
+         <div class="art_no_post_text">
+           No Post Available.
+         </div>
+          </div>
+       </div>
 
 <?php } ?>
 
@@ -1743,6 +1781,19 @@ $loginuser = $userdata[0]['art_id'];
                 </div>
             </div>
         </div>
+
+
+         <div class="modal fade message-box" id="postedit" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                        <div class="modal-body">
+                            <span class="mes">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- Model Popup Close -->
         <!-- Bid-modal-2  -->
         <div class="modal fade message-box" id="likeusermodal" role="dialog">
@@ -1875,21 +1926,21 @@ $loginuser = $userdata[0]['art_id'];
             $('#file-fr').fileinput({
                 language: 'fr',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
             });
             $('#file-es').fileinput({
                 language: 'es',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
             });
             $("#file-0").fileinput({
-                'allowedFileExtensions': ['jpg', 'png', 'gif']
+                'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf']
             });
             $("#file-1").fileinput({
                 uploadUrl: '#', // you must set a valid URL here else you will get an error
-                allowedFileExtensions: ['jpg', 'png', 'gif'],
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf'],
                 overwriteInitial: false,
-                maxFileSize: 1000,
+                maxFileSize: 1000000,
                 maxFilesNum: 10,
                 //allowedFileTypes: ['image', 'video', 'flash'],
                 slugCallback: function (filename) {
@@ -1934,7 +1985,7 @@ $loginuser = $userdata[0]['art_id'];
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
-                    'allowedFileExtensions': ['jpg', 'png', 'gif'],
+                    'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf'],
                     'elErrorContainer': '#errorBlock'
                 });
                 $("#kv-explorer").fileinput({
@@ -3928,7 +3979,7 @@ if (size > 10485760)
 
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo base_url() . "artistic/follow" ?>',
+                    url: '<?php echo base_url() . "artistic/follow_two" ?>',
                     data: 'follow_to=' + clicked_id,
                     success: function (data) {
 
@@ -3949,7 +4000,7 @@ if (size > 10485760)
 
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo base_url() . "artistic/unfollow" ?>',
+                    url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
                     data: 'follow_to=' + clicked_id,
                     success: function (data) {
 
@@ -3984,10 +4035,17 @@ function imgval(event) {
       
       var fileInput = document.getElementById("file-1").files;
       var product_name = document.getElementById("test-upload-product").value;
+
+       var product_trim = product_name.trim();
+
+
+
       var product_description = document.getElementById("test-upload-des").value;
+      var des_trim = product_description.trim();
+
       var product_fileInput = document.getElementById("file-1").value;
    
-        if (product_fileInput == '' && product_name == '' && product_description == '')
+        if (product_fileInput == '' && product_trim == '' && des_trim == '')
          {
    
            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
@@ -4035,7 +4093,7 @@ function imgval(event) {
    
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
                        // window.location='';
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -4061,7 +4119,7 @@ function imgval(event) {
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -4086,7 +4144,7 @@ function imgval(event) {
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -4112,7 +4170,7 @@ function imgval(event) {
                        if (product_name == '') {
                            $('#post .mes').html("<div class='pop_content'>You have to add pdf title.");
                            $('#post').modal('show');
-                           setInterval('window.location.reload()', 10000);
+                           //setInterval('window.location.reload()', 10000);
                             $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
                    //$( "#bidmodal" ).hide();
@@ -4128,7 +4186,7 @@ function imgval(event) {
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -4144,11 +4202,12 @@ function imgval(event) {
                    }
                } 
 
-               else if (foundPresentvideo == false) {
+
+               else if (foundPresentvideo == false && foundPresentpdf == false && foundPresentaudio == false && foundPresent == false) {
    
-                   $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
+                   $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload images , video , pdf or audio..");
                    $('#post').modal('show');
-                   setInterval('window.location.reload()', 10000);
+                  // setInterval('window.location.reload()', 10000);
    
                     $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -4163,6 +4222,30 @@ function imgval(event) {
                    return false;
    
                }
+
+
+
+               else if (foundPresentvideo == false) {
+   
+                   $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
+                   $('#post').modal('show');
+                  // setInterval('window.location.reload()', 10000);
+   
+                    $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   //$( "#bidmodal" ).hide();
+                   $('#post').modal('hide');
+                   $('.modal-post').show();
+   
+                  }
+               });  
+   
+                   event.preventDefault();
+                   return false;
+   
+               }
+
+               
            }
 
        } 
@@ -4292,7 +4375,31 @@ $(document).ready(function(){
                 }
             }
             //-->
-        </script>
+
+
+ function check_lengthedit(abc)
+   { 
+       maxLen = 50;
+
+       var product_name = document.getElementById("editpostname" +abc).value;
+     
+       if (product_name.length > maxLen) { 
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+           
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+        
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+         
+       } else { 
+           text_num = maxLen - product_name.length;
+
+           document.getElementById("text_num").value = text_num;
+       }
+   }
+</script>
         <!-- script end -->
      
         <!-- This  script use for close dropdown in every post -->
@@ -4490,19 +4597,22 @@ $( document ).on( 'keydown', function ( e ) {
 if(document.getElementById('bidmodal-limit').style.display === "block"){ //alert("hii");
         $('#bidmodal-limit').modal('hide');
         $('#myModal3').model('show');
+ }else if(document.getElementById('myModal3').style.display === "block"){ 
+        $('#myModal3').hide();
+
  }
 
     }
 });  
 
 
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#myModal3').hide();
+// $( document ).on( 'keydown', function ( e ) {
+//     if ( e.keyCode === 27 ) {
+//         //$( "#bidmodal" ).hide();
+//         $('#myModal3').hide();
          
-    }
-}); 
+//     }
+// }); 
 
  $( document ).on( 'keydown', function (e) {
     if ( e.keyCode === 27 ) {
@@ -4537,6 +4647,30 @@ $('.modal-post').hide();
    
    </script>
  <!-- 180 words more than script end-->
+
+
+ <script type="text/javascript">
+
+
+
+    $('#postedit').on('click', function(){
+       // $('.my_text').attr('readonly', false);
+    });
+
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         // $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
+  
+
+</script>
 
 
 
