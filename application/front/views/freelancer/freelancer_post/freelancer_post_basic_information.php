@@ -68,41 +68,41 @@
                                         ?>"><a href="<?php echo base_url('freelancer/freelancer_post_avability'); ?>">Add Your Avability</a></li>
 
                                         <li class="custom-none  <?php
-                                            if ($freepostdata[0]['free_post_step'] < '5') {
-                                                echo "khyati";
-                                            }
+                                        if ($freepostdata[0]['free_post_step'] < '5') {
+                                            echo "khyati";
+                                        }
                                         ?>"><a href="<?php echo base_url('freelancer/freelancer_post_education'); ?>"> Education</a></li>		    
                                         <li class="custom-none  <?php
-                                    if ($freepostdata[0]['free_post_step'] < '6') {
-                                        echo "khyati";
-                                    }
-                                    ?>"><a href="<?php echo base_url('freelancer/freelancer_post_portfolio'); ?>">Portfolio</a></li>
+                                        if ($freepostdata[0]['free_post_step'] < '6') {
+                                            echo "khyati";
+                                        }
+                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_portfolio'); ?>">Portfolio</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-8">
                                 <div>
-<?php
-if ($this->session->flashdata('error')) {
-    echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-}
-if ($this->session->flashdata('success')) {
-    echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-}
-?>
+                                    <?php
+                                    if ($this->session->flashdata('error')) {
+                                        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+                                    }
+                                    if ($this->session->flashdata('success')) {
+                                        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+                                    }
+                                    ?>
                                 </div>
                                 <div class="common-form common-form_border">
                                     <h3>Basic Information</h3>
-                                        <?php echo form_open(base_url('freelancer/freelancer_post_basic_information_insert'), array('id' => 'freelancer_post_basicinfo', 'name' => 'freelancer_post_basicinfo', 'class' => 'clearfix')); ?>
+                                    <?php echo form_open(base_url('freelancer/freelancer_post_basic_information_insert'), array('id' => 'freelancer_post_basicinfo', 'name' => 'freelancer_post_basicinfo', 'class' => 'clearfix')); ?>
                                     <div>
                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
                                     </div>
-                                        <?php
-                                        $fullname = form_error('fullname');
-                                        $lastname = form_error('lastname');
-                                        $email = form_error('email');
-                                        $phoneno = form_error('phoneno');
-                                        ?>
+                                    <?php
+                                    $fullname = form_error('fullname');
+                                    $lastname = form_error('lastname');
+                                    $email = form_error('email');
+                                    $phoneno = form_error('phoneno');
+                                    ?>
                                     <fieldset <?php if ($firstname) { ?> class="error-msg" <?php } ?>>
                                         <label>Full name:<span class="red">*</span></label>
                                         <input tabindex="1" autofocus type="text" name="firstname" placeholder="Enter full name" value="<?php
@@ -112,7 +112,7 @@ if ($this->session->flashdata('success')) {
                                             echo $userdata[0]['first_name'];
                                         }
                                         ?>">
-<?php echo form_error('firstname'); ?>
+                                               <?php echo form_error('firstname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($lastname) { ?> class="error-msg" <?php } ?>>
                                         <label>Last name:<span class="red">*</span></label>
@@ -123,7 +123,7 @@ if ($this->session->flashdata('success')) {
                                             echo $userdata[0]['last_name'];
                                         }
                                         ?>">
-<?php echo form_error('lastname'); ?>
+                                               <?php echo form_error('lastname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                                         <label>Email:<span class="red">*</span></label>
@@ -134,27 +134,30 @@ if ($this->session->flashdata('success')) {
                                             echo $userdata[0]['user_email'];
                                         }
                                         ?>">
-<?php echo form_error('email'); ?>
+                                               <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
                                         <label>Skype id:</label>
                                         <input type="text" name="skypeid" placeholder="Enter skype id" tabindex="4" value="<?php
-                                               if ($skypeid1) {
-                                                   echo $skypeid1;
-                                               }
-                                               ?>">
-<?php ?>
+                                        if ($skypeid1) {
+                                            echo $skypeid1;
+                                        }
+                                        ?>">
+                                               <?php ?>
                                     </fieldset>
                                     <fieldset <?php if ($phoneno) { ?> class="error-msg " <?php } ?> class="full-width">
                                         <label>Phone number:</label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="5" placeholder="Enter phone number" value="<?php
-if ($phoneno1) {
-    echo $phoneno1;
-}
-?>">
-<?php echo form_error('phoneno'); ?>
+                                        if ($phoneno1) {
+                                            echo $phoneno1;
+                                        }
+                                        ?>">
+                                               <?php echo form_error('phoneno'); ?>
                                     </fieldset>
-<?php echo form_close(); ?>
+                                    <fieldset class="hs-submit full-width">
+                                        <input type="submit"  id="next" name="next" value="Next" tabindex="6">
+                                    </fieldset>
+                                    <?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +165,7 @@ if ($phoneno1) {
                 </div>
             </section>
             <footer>
-<?php echo $footer; ?>
+                <?php echo $footer; ?>
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
@@ -171,159 +174,13 @@ if ($phoneno1) {
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
             <script>
+                var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
-                $(function () {
-                    $("#tags").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                        }
-                    });
-                });
-
-            </script>
-            <script>
                 var data1 = <?php echo json_encode($city_data); ?>;
-                $(function () {
-                    $("#searchplace").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data1, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                        }
-                    });
-                });
-
             </script>
-            <script type="text/javascript">
-                //validation for edit email formate form
-                jQuery.validator.addMethod("noSpace", function (value, element) {
-                    return value == '' || value.trim().length != 0;
-                }, "No space please and don't leave it empty");
-
-                $.validator.addMethod("regx", function (value, element, regexpr) {
-                    if (!value)
-                    {
-                        return true;
-                    } else
-                    {
-                        return regexpr.test(value);
-                    }
-                }, "Number, space and special character are not allowed");
-
-
-                $(document).ready(function () {
-                    $("#freelancer_post_basicinfo").validate({
-                        rules: {
-                            firstname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
-
-                            lastname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
-
-                            email: {
-                                required: true,
-                                email: true,
-                                remote: {
-                                    url: "<?php echo site_url() . 'freelancer/check_email' ?>",
-                                    type: "post",
-                                    data: {
-                                        email: function () {
-                                            return $("#email").val();
-                                        },
-                                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                                    },
-                                },
-                            },
-
-                            phoneno: {
-                                number: true,
-                                minlength: 8,
-                                maxlength: 15
-                            },
-
-                        },
-
-                        messages: {
-                            firstname: {
-                                required: "First name is required.",
-                            },
-
-                            lastname: {
-                                required: "Last name is required.",
-                            },
-
-                            email: {
-                                required: "Email id is required.",
-                                email: "Please enter valid email id.",
-                                remote: "Email already exists."
-                            },
-
-                            phoneno: {
-                                minlength: "Minimum length 8 digit",
-                                maxlength: "Maximum length 15 digit"
-
-                            }
-
-                        },
-
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-                $(".alert").delay(3200).fadeOut(300);
-            </script>
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    // site preloader -- also uncomment the div in the header and the css style for #preloader
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-                function checkvalue() {
-                    var searchkeyword = $.trim(document.getElementById('tags').value);
-                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                    if (searchkeyword == "" && searchplace == "") {
-                        return  false;
-                    }
-                }
-            </script> 
-
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_basic_information.js'); ?>"></script>    
+           
+           
         </body>
     </div>
 </html>
