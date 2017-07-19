@@ -47,8 +47,7 @@ $(document).ready(function(){
   <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
     <!-- END HEADER -->
    
-<?php echo $art_header2 ?>
-   
+<?php echo $art_header2_border; ?>
 
   <body   class="page-container-bg-solid page-boxed">
 
@@ -201,7 +200,9 @@ $(document).ready(function(){
                    <?php }else{?>
                  <ul class="pro-fw4">
                    <?php } ?>   
- <li  class="active"  <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_manage_post/'.$artisticdata[0]['user_id']); ?>"> Dashboard</a>
+
+
+                          <li  class="active"  <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_manage_post/'.$artisticdata[0]['user_id']); ?>"> Dashboard</a>
                                     
                                     </li>
 
@@ -209,38 +210,32 @@ $(document).ready(function(){
                                     </li>
                                 
 
-              <?php
-              $userid = $this->session->userdata('aileenuser');
-              if($artisticdata[0]['user_id'] == $userid)
-               { 
-                ?> 
+             <?php
+                    $userid = $this->session->userdata('aileenuser');
+                    if ($artisticdata[0]['user_id'] == $userid) {
+                        ?> 
 
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a title="Userlist" href="<?php echo base_url('artistic/userlist'); ?>">Userlist</a>
+                        </li>
+                    <?php } ?>
 
-                                
-
-                                     <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/userlist'); ?>">Userlist</a>
-                                    </li>
-                     <?php }?>
-
-
-                                    <?php
-                      $userid = $this->session->userdata('aileenuser'); 
-                       if($artisticdata[0]['user_id'] == $userid)
-                       { 
+                                  <?php
+                    $userid = $this->session->userdata('aileenuser');
+                    if ($artisticdata[0]['user_id'] == $userid) {
                         ?>
-                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers'){?> class="active" <?php } ?>><a   href="<?php echo base_url('artistic/followers'); ?>">Followers  <br> (<?php echo (count($followerdata)); ?>)</a>
-                                    </li>
-                          <?php }else{
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artistic/followers'); ?>">Followers <br> (<?php echo (count($followerdata)); ?>)</a>
+                        </li>
+                        <?php
+                    } else {
 
-        $artregid = $artisticdata[0]['art_id'];
-        $contition_array = array('follow_to' => $artregid, 'follow_status' =>'1',  'follow_type' =>'1');
-        $followerotherdata = $this->data['followerotherdata'] =  $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $artregid = $artisticdata[0]['art_id'];
+                        $contition_array = array('follow_to' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
+                        $followerotherdata = $this->data['followerotherdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        ?> 
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artistic/followers/' . $artisticdata[0]['user_id']); ?>">Followers <br> (<?php echo (count($followerotherdata)); ?>)</a>
+                        </li>
 
-                              ?> 
-                              <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers'){?> class="active" <?php } ?>><a  style=" ">href="<?php echo base_url('artistic/followers/'.$artisticdata[0]['user_id']); ?>">Followers  <br> (<?php echo (count($followerotherdata)); ?>)</a>
-                                    </li>
-
-                            <?php }?> 
+                    <?php } ?> 
                                     <?php
                             if($artisticdata[0]['user_id'] == $userid){ 
                             ?>        
@@ -263,7 +258,7 @@ $followingotherdata = $this->data['followingotherdata'] =  $this->common->select
                     if($artisticdata[0]['user_id'] != $userid){
                       ?>
            
-                <div class="flw_msg_btn">
+                <div class="flw_msg_btn fr">
                     <ul>
 
                         <li class="<?php echo "fruser" . $artisticdata[0]['art_id']; ?>">
@@ -294,7 +289,7 @@ if ($status == 0 || $status == " ") {
                         </li>
 
                         <li>
-                            <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id']); ?>">Message</a></li>
+                            <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id'].'/6/6'); ?>">Message</a></li>
 
                     </ul>
                 </div>
@@ -316,23 +311,46 @@ if ($status == 0 || $status == " ") {
         <div class="job-menu-profile mob-none"><a href="<?php echo base_url('artistic/art_manage_post/'.$artisticdata[0]['user_id'].''); ?>"><h5> <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></h5></a>
     <div class="profile-text" >
 
-                    <?php
-                    if ($artisticdata[0]['designation'] == '') {
-                        ?>
+                   <?php
+        $userid = $this->session->userdata('aileenuser');
 
-                        <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-                            <a id="myBtn">Current work</a>
-                        <?php } ?>
+            if($artisticdata[0]['user_id'] == $userid){
 
-                    <?php } else { ?> 
 
-                        <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-                            <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-                        <?php } else { ?>
-                            <a><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-                        <?php } ?>
+              if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a id="designation" class="designation" title="Designation">Current Work</a>
 
-                    <?php } ?>
+                    
+
+                <?php } else { ?> 
+
+                        <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php } 
+
+            }else{ ?>
+
+           <?php  if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a>Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php }  ?>
+                
+
+                <?php }?>
 
   </div>
               </div>
@@ -432,17 +450,14 @@ if ($status == 0 || $status == " ") {
              </li>
 
       <?php }   }  else{?>
-<li>
-     <div class="main_pdf_box"  >
-
-                <div class="not_avali" >
-                                <img src="<?php echo base_url('images/010.png'); ?>"  >
-                               <div>
-                                <div class="not_text" >Video Not Avalible</div>
-                               </div>
-                               </div>
-                               </div>
-  </li>
+ <div class="art_no_pva_avl">
+         <div class="art_no_post_img">
+          <img src="<?php echo base_url('images/010.png'); ?>"  >
+         </div>
+         <div class="art_no_post_text1">
+           No video Available.
+         </div>
+       </div>
         <?php }?>
                                             </ul>
                                         </div>
@@ -529,6 +544,52 @@ if ($status == 0 || $status == " ") {
 <script src="<?php echo base_url('js/jquery.jMosaic.js'); ?>"></script>
  
 
+
+<!-- designation script start -->
+<script type="text/javascript">
+   function divClicked() {
+       var divHtml = $(this).html();
+       var editableText = $("<textarea />");
+       editableText.val(divHtml);
+       $(this).replaceWith(editableText);
+       editableText.focus();
+       // setup the blur event for this new textarea
+       editableText.blur(editableTextBlurred);
+   }
+   
+   function editableTextBlurred() {
+      
+      var html = $(this).val();
+       var viewableText = $("<a>");
+      
+       if (html.match(/^\s*$/) || html == '') { 
+       html = "Current Work";
+       } 
+       
+       viewableText.html(html);
+       $(this).replaceWith(viewableText);
+       // setup the click event for this new div
+       viewableText.click(divClicked);
+   
+       $.ajax({
+           url: "<?php echo base_url(); ?>artistic/art_designation",
+           type: "POST",
+           data: {"designation": html},
+           success: function (response) {
+   
+           }
+       });
+   }
+   
+   $(document).ready(function () {
+   // alert("hi");
+       $("a.designation").click(divClicked);
+   });
+</script>
+<!-- designation script end -->
+
+ 
+ 
 <script>
 
 var data= <?php echo json_encode($demo); ?>;
@@ -815,7 +876,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "artistic/follow" ?>',
+            url: '<?php echo base_url() . "artistic/follow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
@@ -836,7 +897,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "artistic/unfollow" ?>',
+            url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
@@ -953,4 +1014,4 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
  </script>
  <!-- all popup close close using esc end -->
 
- 
+

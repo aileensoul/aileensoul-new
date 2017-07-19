@@ -145,18 +145,16 @@ if ($artisticdata[0]['user_id'] == $userid) {
 
         <!-- text head start -->
         <div>
+            </div>
             <div class="profile-text" >
 
 <?php
 if ($artisticdata[0]['designation'] == '') {
     ?>
 
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    if ($artisticdata[0]['user_id'] == $userid) {
-                        ?> 
+                   
                         <a id="designation" class="designation" title="Designation">Current Work</a>
-                        <?php } ?>
+                      
 
                 <?php } else { ?> 
                     <?php
@@ -311,7 +309,7 @@ if ($status == 0 || $status == " ") {
                         </li>
 
                         <li>
-                            <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id']); ?>">Message</a></li>
+                            <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id'].'/6/6'); ?>">Message</a></li>
 
                     </ul>
                 </div>
@@ -333,27 +331,46 @@ if ($status == 0 || $status == " ") {
         <div>
             <div class="profile-text" >
 
-<?php
-if ($artisticdata[0]['designation'] == '') {
-    ?>
+            <?php
+        $userid = $this->session->userdata('aileenuser');
 
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    if ($artisticdata[0]['user_id'] == $userid) {
-                        ?> 
+            if($artisticdata[0]['user_id'] == $userid){
+
+
+              if ($artisticdata[0]['designation'] == '') {
+                    ?>
                         <a id="designation" class="designation" title="Designation">Current Work</a>
-                        <?php } ?>
+
+                    
 
                 <?php } else { ?> 
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    if ($artisticdata[0]['user_id'] == $userid) {
-                        ?> 
-                        <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-                    <?php } else { ?>
-                        <a><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-                    <?php } ?>
-                <?php } ?>
+
+                        <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php } 
+
+            }else{ ?>
+
+           <?php  if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a>Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php }  ?>
+                
+
+                <?php }?>
 
 
                 <!-- The Modal -->
@@ -606,7 +623,7 @@ echo $listFinal . ',' . $artisticdata[0]['other_skill'];
                                          <?php
 if ($artisticdata[0]['art_bestofmine']) {
     ?>
-                                                <div class="buisness-profile-pic">
+                                                <div class="buisness-profile-pic pdf">
 
 
 
@@ -660,7 +677,7 @@ if ($artisticdata[0]['art_bestofmine']) {
 
                                 <?php }else{
 
-                                if($artisticdata[0]['art_bestofmine'] == '' && $artisticdata[0]['art_portfolio'] == '') {}else{?>
+                                if(trim($artisticdata[0]['art_bestofmine']) == '' && trim($artisticdata[0]['art_portfolio']) == '') {}else{ ?>
 
                                 <div class="profile-job-post-title clearfix">
                                 <div class="profile-job-profile-button clearfix">
@@ -1201,7 +1218,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "artistic/follow" ?>',
+            url: '<?php echo base_url() . "artistic/follow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
@@ -1222,7 +1239,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "artistic/unfollow" ?>',
+            url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 

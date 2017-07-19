@@ -706,12 +706,12 @@
                            
                                if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
                                    ?>
-                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
-                        <a id="<?php echo $row['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><span class="h4-img h2-srrt"></span>Delete Post</a>
+                        <a id="<?php echo $row['art_post_id']; ?>" onClick="editpost(this.id)"><span class="h3-img h2-srrt"></span>Edit</a>
                         <?php } else {
                            ?>
-                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
-                        <a href="<?php echo base_url('artistic/artistic_contactperson/' . $row['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><span class="h4-img h2-srrt"></span>Delete Post</a>
+                        <a href="<?php echo base_url('artistic/artistic_contactperson/' . $row['user_id'] . ''); ?>"><span class="h2-img h2-srrt"></span> Contact Person</a>
                         <?php
                            }
                            } else {
@@ -720,11 +720,11 @@
                            $userid = $this->session->userdata('aileenuser');
                            if ($row['user_id'] == $userid) {
                                ?>
-                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
+                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><span class="h4-img h2-srrt"></span>Delete Post</a>
                         <a id="<?php echo $row['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
                         <?php } else { ?>
-                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
-                        <a href="<?php echo base_url('artistic/artistic_contactperson/' . $row['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                        <a id="<?php echo $row['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><span class="h4-img h2-srrt"></span>Delete Post</a>
+                        <a href="<?php echo base_url('artistic/artistic_contactperson/' . $row['user_id'] . ''); ?>"><span class="h2-img h2-srrt"></span> Contact Person</a>
                         <?php
                            }
                            }
@@ -738,7 +738,22 @@
                               <a class="ft-15 t_artd"><?php echo $this->common->make_links($row['art_post']); ?></a>
                            </div>
                 <div id="<?php echo 'editpostbox' . $row['art_post_id']; ?>" style="display:none;">
-                              <input type="text" placeholder="Title" id="<?php echo 'editpostname' . $row['art_post_id']; ?>" name="editpostname"  value="<?php echo $row['art_post']; ?>" style=" margin-bottom: 10px;">
+                              <input type="text" placeholder="Title" id="<?php echo 'editpostname' . $row['art_post_id']; ?>" class="my_text" name="editpostname"  value="<?php echo $row['art_post']; ?>" style=" margin-bottom: 10px;" onKeyDown=check_lengthedit(<?php echo $row['art_post_id']; ?>); onKeyup=check_lengthedit(<?php echo $row['art_post_id']; ?>); onblur=check_lengthedit(<?php echo $row['art_post_id']; ?>);>
+
+                              <?php 
+                              if($row['art_post']){ 
+                                $counter = $row['art_post'];
+                                $a = strlen($counter);
+
+                                ?>
+
+                            <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a);?>" name=text_num readonly>
+
+                           <?php }else{?>
+                           <input size=1 id="text_num" class="text_num" value=50 name=text_num readonly> 
+
+                           <?php }?>
+
                            </div>
                         </div>
                          
@@ -1285,20 +1300,34 @@
 
      if(count($finalsorting) > 0){ 
           if(count($count) == count($finalsorting)){  ?>
-         <div class="contact-frnd-post bor_none">
-         <div class="text-center rio">
-            <h4 class="page-heading  product-listing" >No Post Found.</h4>
+     <div class="art_no_post_avl">
+         <h3>Artistic Post</h3>
+          <div class="art-img-nn">
+         <div class="art_no_post_img">
+
+           <img src="<?php echo base_url('img/art-no.png')?>">
+        
          </div>
+         <div class="art_no_post_text">
+           No Post Available.
          </div>
+          </div>
+       </div>
          <?php } } else{ ?>
+         
+         <div class="art_no_post_avl">
+         <h3>Artistic Post</h3>
+          <div class="art-img-nn">
+         <div class="art_no_post_img">
 
-
-          
-         <div class="contact-frnd-post bor_none">
-         <div class="text-center rio">
-            <h4 class="page-heading  product-listing" >No Post Found.</h4>
+           <img src="<?php echo base_url('img/art-no.png')?>">
+        
          </div>
+         <div class="art_no_post_text">
+           No Post Available.
          </div>
+          </div>
+       </div>
          <?php }  ?>
 
          <div class="nofoundpost">
@@ -1348,6 +1377,19 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="modal fade message-box" id="postedit" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" id="postedit"data-dismiss="modal">&times;</button>       
+                        <div class="modal-body">
+                            <span class="mes">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Bid-modal for this modal appear or not  Popup Close -->
 		<!-- The Modal -->
          <div id="myModal" class="modal-post">
@@ -1376,7 +1418,7 @@
                         <!-- <textarea name="product_title" placeholder="Post Your Product...."></textarea>  -->
  <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
                         <div class="fifty_val">                       
-                           <input size=1 class="text_num" value=50 name=text_num readonly> 
+                           <input size=1 class="text_num" tabindex="-80" value=50 name=text_num readonly> 
                         </div>
                    
                       <div class="padding-left padding_les_left camer_h">
@@ -1458,19 +1500,19 @@
    $('#file-fr').fileinput({
        language: 'fr',
        uploadUrl: '#',
-       allowedFileExtensions: ['jpg', 'png', 'gif']
+       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4','mp3','pdf']
    });
    $('#file-es').fileinput({
        language: 'es',
        uploadUrl: '#',
-       allowedFileExtensions: ['jpg', 'png', 'gif']
+       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4', 'mp3', 'pdf']
    });
    
    $("#file-1").fileinput({
        uploadUrl: '#', // you must set a valid URL here else you will get an error
-       allowedFileExtensions: ['jpg', 'png', 'gif'],
+       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4' , 'mp3' ,'pdf'],
        overwriteInitial: false,
-       maxFileSize: 1000,
+       maxFileSize: 1000000,
        maxFilesNum: 10,
        //allowedFileTypes: ['image', 'video', 'flash'],
        slugCallback: function (filename) {
@@ -1505,7 +1547,7 @@
    $(document).ready(function () {
        $("#test-upload").fileinput({
            'showPreview': false,
-           'allowedFileExtensions': ['jpg', 'png', 'gif'],
+           'allowedFileExtensions': ['jpg', 'png', 'gif', 'mp4','mp3','pdf'],
            'elErrorContainer': '#errorBlock'
        });
        $("#kv-explorer").fileinput({
@@ -2875,7 +2917,7 @@
    
        $.ajax({
            type: 'POST',
-           url: '<?php echo base_url() . "artistic/follow" ?>',
+           url: '<?php echo base_url() . "artistic/follow_two" ?>',
            data: 'follow_to=' + clicked_id,
            success: function (data) {
    
@@ -2903,11 +2945,18 @@
        //var fileInput = document.getElementById('test-upload');
        var fileInput = document.getElementById("file-1").files;
        var product_name = document.getElementById("test-upload_product").value;
+
+       var product_trim = product_name.trim();
+
+
        var product_description = document.getElementById("test-upload_des").value;
+
+        var des_trim = product_description.trim();
+
        var product_fileInput = document.getElementById("file-1").value;
    
    
-       if (product_fileInput == '' && product_name == '' && product_description == '')
+       if (product_fileInput == '' && product_trim == '' && des_trim == '')
        {
    
            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
@@ -2955,7 +3004,7 @@
    
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
                        // window.location='';
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -2979,7 +3028,7 @@
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -3002,7 +3051,7 @@
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                      // setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -3027,7 +3076,7 @@
                        if (product_name == '') {
                            $('#post .mes').html("<div class='pop_content'>You have to add pdf title.");
                            $('#post').modal('show');
-                           setInterval('window.location.reload()', 10000);
+                           //setInterval('window.location.reload()', 10000);
                             $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
                    //$( "#bidmodal" ).hide();
@@ -3043,7 +3092,7 @@
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
-                       setInterval('window.location.reload()', 10000);
+                       //setInterval('window.location.reload()', 10000);
    
                         $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -3057,11 +3106,34 @@
                        event.preventDefault();
                        return false;
                    }
-               } else if (foundPresentvideo == false) {
+               } 
+
+               else if (foundPresentvideo == false && foundPresentpdf == false && foundPresentaudio == false && foundPresent == false) {
+   
+                   $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload images , video , pdf or audio..");
+                   $('#post').modal('show');
+                  // setInterval('window.location.reload()', 10000);
+   
+                    $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   //$( "#bidmodal" ).hide();
+                   $('#post').modal('hide');
+                   $('.modal-post').show();
+   
+                  }
+               });  
+   
+                   event.preventDefault();
+                   return false;
+   
+               }
+
+
+               else if (foundPresentvideo == false) {
    
                    $('#post .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
                    $('#post').modal('show');
-                   setInterval('window.location.reload()', 10000);
+                   //setInterval('window.location.reload()', 10000);
    
                     $( document ).on( 'keydown', function ( e ) {
                      if ( e.keyCode === 27 ) {
@@ -3223,11 +3295,11 @@
 <!-- multi image add post khyati end -->
 <script language=JavaScript>
    function check_length(my_form)
-   {
+   { //alert("hii");
        maxLen = 50;
-   
+   //alert(my_form.my_text.value.length);
        // max number of characters allowed
-       if (my_form.my_text.value.length >= maxLen) {
+       if (my_form.my_text.value.length > maxLen) {
            // Alert message if maximum limit is reached. 
            // If required Alert can be removed. 
            var msg = "You have reached your maximum limit of characters allowed";
@@ -3240,6 +3312,44 @@
        } else { //alert("1");
            // Maximum length not reached so update the value of my_text counter
            my_form.text_num.value = maxLen - my_form.my_text.value.length;
+       }
+   }
+
+
+    function check_lengthedit(abc)
+   { //alert("hii");
+       maxLen = 50;
+   //alert(my_form.my_text.value.length);
+       // max number of characters allowed
+
+       var product_name = document.getElementById("editpostname" +abc).value;
+       //var edit_name = document.getElementById("editpostname" +abc);
+
+      
+       //alert(product_name.length);
+       if (product_name.length > maxLen) { //alert("hii");
+
+           // Alert message if maximum limit is reached. 
+           // If required Alert can be removed. 
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+              //alert(msg);
+          // text_num = maxLen - product_name.length;
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+           // Reached the Maximum length so trim the textarea
+           // return false;
+           //$('#editpostname' + abc).attr('readonly', true);
+           // alert(product_name.substring(0, maxLen));
+           // return false;
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+         // product_name.length = product_name.length.substring(0, maxLen);
+       } else { //alert("1");
+           // Maximum length not reached so update the value of my_text counter
+           text_num = maxLen - product_name.length;
+
+           document.getElementById("text_num").value = text_num;
        }
    }
    //-->
@@ -3465,6 +3575,10 @@
         $('#myModal').modal('show');
     });
 
+    $('#postedit').on('click', function(){
+       // $('.my_text').attr('readonly', false);
+    });
+
 
     $( document ).on( 'keydown', function ( e ) {
        if ( e.keyCode === 27 ) {
@@ -3504,6 +3618,16 @@
        }
    });  
 
+ $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         // $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
   
     
 </script>

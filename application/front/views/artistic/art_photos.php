@@ -1,4 +1,4 @@
-<!-- start head -->
+start head -->
 <?php echo $head; ?>
 <style type="text/css">
    #popup-form img{display: none;}
@@ -26,7 +26,7 @@
 </script>
 <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 <!-- END HEADER -->
-<?php echo $art_header2 ?>
+<?php echo $art_header2_border; ?>
 <body   class="page-container-bg-solid page-boxed">
    <section class="custom-row">
       <div class="container" id="paddingtop_fixed">
@@ -229,10 +229,10 @@
                            <?php } ?>
                         </li>
                         <li>
-                           <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id']); ?>">Message</a>
+                           <a href="<?php echo base_url('chat/abc/' . $artisticdata[0]['user_id'].'/6/6'); ?>">Message</a>
                         </li>
                      </ul>
-                  </  div>
+                  </div>
               
                <?php
                   }
@@ -251,18 +251,46 @@
            <div class="profile-text" >
 
             <?php
-               if ($artisticdata[0]['designation'] == '') {
-                   ?>
-            <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-            <a id="myBtn">Current work</a>
-            <?php } ?>
-            <?php } else { ?> 
-            <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-            <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } else { ?>
-            <a><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } ?>
-            <?php } ?>
+        $userid = $this->session->userdata('aileenuser');
+
+            if($artisticdata[0]['user_id'] == $userid){
+
+
+              if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a id="designation" class="designation" title="Designation">Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php } 
+
+            }else{ ?>
+
+           <?php  if ($artisticdata[0]['designation'] == '') {
+                    ?>
+                        <a>Current Work</a>
+
+                    
+
+                <?php } else { ?> 
+
+                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
+                            <?php echo ucwords($artisticdata[0]['designation']); ?>
+
+                        </a>
+
+                    <?php }  ?>
+                
+
+                <?php }?>
+
 
             </div>
          </div>
@@ -336,16 +364,14 @@
                                           ?>x
                                     </div>
                                     <?php } else { ?>
-                                    <div class="main_pdf_box"  >
-                                       <div class="not_avali" >
-                                          <li>
-                                             <img src="<?php echo base_url('images/020-c.png'); ?>"  >
-                                          </li>
-                                          <div>
-                                             <div class="not_text" >Photo not avalible</div>
-                                          </div>
-                                       </div>
-                                    </div>
+                                  <div class="art_no_pva_avl">
+         <div class="art_no_post_img">
+          <img src="<?php echo base_url('images/020-c.png'); ?>"  >
+         </div>
+         <div class="art_no_post_text1">
+           No Photos Available.
+         </div>
+       </div>
                                     <?php }
                                        ?>
                                  </ul>
@@ -814,6 +840,50 @@
 
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+
+
+<!-- designation script start -->
+<script type="text/javascript">
+   function divClicked() {
+       var divHtml = $(this).html();
+       var editableText = $("<textarea />");
+       editableText.val(divHtml);
+       $(this).replaceWith(editableText);
+       editableText.focus();
+       // setup the blur event for this new textarea
+       editableText.blur(editableTextBlurred);
+   }
+   
+   function editableTextBlurred() {
+      
+      var html = $(this).val();
+       var viewableText = $("<a>");
+      
+       if (html.match(/^\s*$/) || html == '') { 
+       html = "Current Work";
+       } 
+       
+       viewableText.html(html);
+       $(this).replaceWith(viewableText);
+       // setup the click event for this new div
+       viewableText.click(divClicked);
+   
+       $.ajax({
+           url: "<?php echo base_url(); ?>artistic/art_designation",
+           type: "POST",
+           data: {"designation": html},
+           success: function (response) {
+   
+           }
+       });
+   }
+   
+   $(document).ready(function () {
+   //alert("hi");
+       $("a.designation").click(divClicked);
+   });
+</script>
+<!-- designation script end -->
 <script type="text/javascript">
    //validation for edit email formate form
    
@@ -2204,7 +2274,7 @@
    
        $.ajax({
            type: 'POST',
-           url: '<?php echo base_url() . "artistic/follow" ?>',
+           url: '<?php echo base_url() . "artistic/follow_two" ?>',
            data: 'follow_to=' + clicked_id,
            success: function (data) {
    
@@ -2222,7 +2292,7 @@
    
        $.ajax({
            type: 'POST',
-           url: '<?php echo base_url() . "artistic/unfollow" ?>',
+           url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
            data: 'follow_to=' + clicked_id,
            success: function (data) {
    
@@ -2317,3 +2387,4 @@
    
 </script>
 <!-- all popup close close using esc end -->
+
