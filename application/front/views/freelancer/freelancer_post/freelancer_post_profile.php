@@ -164,7 +164,7 @@
                                                     </li> <?php }
                                                 ?>
                                                 <li>
-                                                    <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3).'/4/3'); ?>">Message</a>
+                                                    <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/4/3'); ?>">Message</a>
                                                 </li>
                                                 <?php
                                             }
@@ -210,6 +210,7 @@
                             <h3>Freelancer Details  </h3>
                             <div class=" fr rec-edit-pro">
                                 <?php
+
                                 function text2link($text) {
                                     $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
                                     $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
@@ -224,7 +225,7 @@
 
                                     <ul>
                                     </ul>
-<?php } ?>
+                                <?php } ?>
                             </div> 
                             <div class="contact-frnd-post">
                                 <div class="job-contact-frnd ">
@@ -262,7 +263,7 @@
                                                         } else {
                                                             ?>
                                                             <li><b>PhoneNo</b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
@@ -287,7 +288,7 @@
                                                         } else {
                                                             ?>
                                                             <li><b>Skype Id</b> <span>
-                                                            <?php echo PROFILENA; ?></span>
+                                                                    <?php echo PROFILENA; ?></span>
                                                             </li>
                                                             <?php
                                                         }
@@ -337,7 +338,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b>City</b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -362,7 +363,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b>Pincode</b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -383,7 +384,7 @@
                                                 </div>
                                                 <div class="profile-job-profile-menu">
                                                     <ul class="clearfix">
-<?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
+                                                        <?php $categoryname = $this->db->get_where('category', array('category_id' => $freelancerpostdata[0]['freelancer_post_field']))->row()->category_name; ?>
                                                         <li> <b>Field</b> <span> <?php echo $categoryname; ?> </span>
                                                         </li>
                                                         <?php
@@ -412,7 +413,7 @@
                                                                     ?>     
                                                                 </span>
                                                             </li>
-<?php } ?>
+                                                        <?php } ?>
 
                                                         <li><b>Describe Your Skill In Brief</b> <span> <pre><?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_skill_description']); ?> </pre> </span> </li>
 
@@ -578,7 +579,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Timing</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -591,10 +592,10 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b>Working Hours Per Week</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
-    <?php } ?>
+                                                            <?php } ?>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -704,7 +705,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Degree</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -718,7 +719,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Stream</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -732,7 +733,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> University</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -746,7 +747,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> College</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -762,7 +763,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Percentage</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -777,7 +778,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li> <b> Year Of Passing</b> <span>
-        <?php echo PROFILENA; ?>
+                                                                        <?php echo PROFILENA; ?>
                                                                     </span>
                                                                 </li>
                                                                 <?php
@@ -832,7 +833,7 @@
                                                             if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                                 ?>
                                                                 <li> <b>Description</b> <span><pre>
-                                                                <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
+                                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </pre></span>
                                                                 </li>
                                                                 <?php
                                                             } else {
@@ -874,7 +875,7 @@
                                                         } else {
                                                             ?>
                                                             <li> <b>Attachment</b><span> 
-        <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
 
                                                             </li>
@@ -884,20 +885,20 @@
                                                         if ($freelancerpostdata[0]['freelancer_post_portfolio']) {
                                                             ?>
                                                             <li> <b>Description</b> <span><p>
-                                                            <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
+                                                                        <?php echo $this->common->make_links($freelancerpostdata[0]['freelancer_post_portfolio']); ?> </p></span>
                                                             </li>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <li> <b>Description</b><span> 
-        <?php echo PROFILENA; ?>
+                                                                    <?php echo PROFILENA; ?>
                                                                 </span>
                                                             </li>
                                                         <?php }
                                                         ?>
                                                     </ul>
                                                 </div>
-<?php } ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -908,7 +909,7 @@
             </div>
         </section>
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -931,14 +932,14 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="hidden" name="hitext" id="hitext" value="3">
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -950,311 +951,16 @@
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-        <script>
-                                                var data = <?php echo json_encode($demo); ?>;
-                                                $(function () {
-                                                    $("#tags").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        }
-                                                        ,
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
-
-        </script>
-        <script>
-            var data1 = <?php echo json_encode($city_data); ?>;
-            $(function () {
-                $("#searchplace").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data1, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                    }
-                });
-            });
-
-        </script>
-        <script>
-            function myFunction() {
-                document.getElementById("upload-demo").style.visibility = "hidden";
-                document.getElementById("upload-demo-i").style.visibility = "hidden";
-                document.getElementById('message1').style.display = "block";
-            }
-            function showDiv() {
-                document.getElementById('row1').style.display = "block";
-                document.getElementById('row2').style.display = "none";
-            }
-        </script>
-        <script type="text/javascript">
-            $uploadCrop = $('#upload-demo').croppie({
-                enableExif: true,
-                viewport: {
-                    width: 1250,
-                    height: 350,
-                    type: 'square'
-                },
-                boundary: {
-                    width: 1250,
-                    height: 350
-                }
-            });
-            $('.upload-result').on('click', function (ev) {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function (resp) {
-
-                    $.ajax({
-                        url: "<?php echo base_url() ?>freelancer/ajaxpro_work",
-                        type: "POST",
-                        data: {"image": resp},
-                        success: function (data) {
-                            html = '<img src="' + resp + '" />';
-                            if (html) {
-                                window.location.reload();
-                            }
-                        }
-                    });
-
-                });
-            });
-
-            $('.cancel-result').on('click', function (ev) {
-                document.getElementById('row2').style.display = "block";
-                document.getElementById('row1').style.display = "none";
-                document.getElementById('message1').style.display = "none";
-            });
-            $('#upload').on('change', function () {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function () {
-                        console.log('jQuery bind complete');
-                    });
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-            $('#upload').on('change', function () {
-                var fd = new FormData();
-                fd.append("image", $("#upload")[0].files[0]);
-                files = this.files;
-                size = files[0].size;
-
-                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                    picpopup();
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    $("#upload").val('');
-                    return false;
-                }
-                if (size > 26214400)
-                {
-                    alert("Allowed file size exceeded. (Max. 25 MB)")
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    return false;
-                }
-                $.ajax({
-                    url: "<?php echo base_url(); ?>freelancer/image_work",
-                    type: "POST",
-                    data: fd,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                    }
-                });
-            });
-        </script>
-        <!-- cover image end -->
-        <script>
-            // Get the modal
-            var modal = document.getElementById('myModal');
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            // When the user clicks the button, open the modal 
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script>
-            function updateprofilepopup(id) {
-                $('#bidmodal-2').modal('show');
-            }
-        </script>
-        <script type="text/javascript">
-            function checkvalue() {
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                if (searchkeyword == "" && searchplace == "") {
-                    return false;
-                }
-            }
-        </script> 
-        <script>
-            function divClicked() {
-                var divHtml = $(this).html();
-                var editableText = $("<textarea/>");
-                editableText.val(divHtml);
-                $(this).replaceWith(editableText);
-                editableText.focus();
-                // setup the blur event for this new textarea
-                editableText.blur(editableTextBlurred);
-            }
-
-            function editableTextBlurred() {
-                var html = $(this).val();
-                var viewableText = $("<a>");
-                if (html.match(/^\s*$/) || html == '') {
-                    html = "Current Work";
-                }
-                viewableText.html(html);
-                $(this).replaceWith(viewableText);
-                // setup the click event for this new div
-                viewableText.click(divClicked);
-                $.ajax({
-                    url: "<?php echo base_url(); ?>freelancer/designation",
-                    type: "POST",
-                    data: {"designation": html},
-                    success: function (response) {
-
-                    }
-                });
-            }
-
-            $(document).ready(function () {
-                $("a.designation").click(divClicked);
-            });
-        </script>
-        <script type="text/javascript">
-            function save_user(abc)
-            {
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() . "freelancer/save_user1" ?>',
-                    data: 'user_id=' + abc,
-                    success: function (data) {
-                        $('.' + 'saveduser' + abc).html(data).addClass('butt_rec');
-                    }
-                });
-
-            }
-        </script>
-        <script>
-            function savepopup(id) {
-                save_user(id);
-                $('.biderror .mes').html("<div class='pop_content'>Freelancer is successfully saved.");
-                $('#bidmodal').modal('show');
-            }
-        </script>
-        <!-- script for profile pic strat -->
-        <script type="text/javascript">
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        document.getElementById('preview').style.display = 'block';
-                        $('#preview').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-            $("#profilepic").change(function () {
-                profile = this.files;
-                if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                    $('#profilepic').val('');
-                    picpopup();
-                    return false;
-                } else {
-                    readURL(this);
-                }
-            });
-        </script>
-
-        <!-- script for profile pic end -->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        <script type="text/javascript">
-            //validation for edit email formate form
-            $(document).ready(function () {
-                $("#userimage").validate({
-                    rules: {
-                        profilepic: {
-                            required: true,
-                        },
-                    },
-
-                    messages: {
-                        profilepic: {
-                            required: "Photo Required",
-                        },
-                    },
-
-                });
-            });
+        <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
         </script>
         <script>
-            function picpopup() {
-                $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
-                $('#bidmodal').modal('show');
-            }
+            var base_url = '<?php echo base_url(); ?>';
+            var data = <?php echo json_encode($demo); ?>;
+            var data1 = <?php echo json_encode($city_data); ?>;
         </script>
-        <!-- all popup close close using esc start -->
-        <script type="text/javascript">
-            $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    $('#bidmodal-2').modal('hide');
-                }
-            });
-        </script>
-        <!-- all popup close close using esc end -->
-        <!--For Scroll page at perticular position js Start-->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('html,body').animate({scrollTop: 265}, 100);
-            });
-        </script>
-        <!--For Scroll page at perticular position js End-->
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_profile.js'); ?>"></script>
+
     </body>
 </html>
