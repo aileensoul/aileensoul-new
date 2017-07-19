@@ -337,7 +337,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                             <?php
                                         }
                                     }
@@ -349,6 +349,7 @@
                                 <?php } ?>
                             </div>
                         </div>
+                            </div>
                     </div>
                 </div>
         </section>

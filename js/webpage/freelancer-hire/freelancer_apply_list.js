@@ -75,6 +75,7 @@ function save_user(abc) {
     });
 }
 //SAVE USER END
+
 //INVITE USER START
  // function inviteuserpopup(abc){
 //    $('.biderror .mes').html("<div class='pop_content'>Do you want to select this freelancer for your project?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
