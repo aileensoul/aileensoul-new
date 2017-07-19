@@ -6,10 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link href="<?php echo base_url('css/jquery-ui.css') ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <!-- Calender Css Start-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
-        <!-- Calender Css End-->
-        <!-- css for date picker start-->
+               <!-- css for date picker start-->
         <style type="text/css">
             .date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
             .date-dropdowns .year{margin-right: 0;}
@@ -335,6 +332,9 @@
                 </div>
             </div>
         </section>
+         <footer>
+            <?php echo $footer; ?>
+        </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -357,12 +357,12 @@
         <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script> 
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/3.3.0/select2.js'); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
        
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
-            
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js'); ?>"></script>
        
@@ -456,7 +456,7 @@
             var complex = <?php echo json_encode($selectdata); ?>;
             $("#skill1").select2().select2('val', complex)
         </script>
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
+        
         <script>
             $(function () {
                 var today = new Date();
