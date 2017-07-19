@@ -276,19 +276,18 @@
                                                                                 <span>
                                                                                     <?php
                                                                                     if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                                       if ($post['post_exp_year'] != '0') {
-                                                                                                    echo $post['post_exp_year'];
-                                                                                                }
-                                                                                                if ($post['post_exp_month'] != '0') {
-                                                                                                    echo ".";
-                                                                                                    echo $post['post_exp_month'];
-                                                                                                }
-                                                                                                echo ' Year ';
-                                                                                            } else {
+                                                                                        if ($post['post_exp_year'] != '0') {
+                                                                                            echo $post['post_exp_year'];
+                                                                                        }
+                                                                                        if ($post['post_exp_month'] != '0') {
+                                                                                            echo ".";
+                                                                                            echo $post['post_exp_month'];
+                                                                                        }
+                                                                                        echo ' Year ';
+                                                                                    } else {
 
-                                                                                                echo PROFILENA;
-                                                                                            }
-                                        
+                                                                                        echo PROFILENA;
+                                                                                    }
                                                                                     ?>
                                                                                 </span>
                                                                             </li>
@@ -337,19 +336,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            
-                                            <?php
+
+                                                <?php
+                                            }
                                         }
-                                    }
-                                } else {
-                                    ?>
-                                    <div class="text-center rio">
-                                        <h4 class="page-heading  product-listing">No Saved Posts Found.</h4>
-                                    </div>
-                                <?php } ?>
+                                    } else {
+                                        ?>
+                                        <div class="text-center rio">
+                                            <h4 class="page-heading  product-listing">No Saved Posts Found.</h4>
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
-                            </div>
                     </div>
                 </div>
         </section>
@@ -396,351 +395,45 @@
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-        <script>
-
-                                                                            var data = <?php echo json_encode($demo); ?>;
-                                                                            $(function () {
-                                                                                $("#tags").autocomplete({
-                                                                                    source: function (request, response) {
-                                                                                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                                                        response($.grep(data, function (item) {
-                                                                                            return matcher.test(item.label);
-                                                                                        }));
-                                                                                    },
-                                                                                    minLength: 1,
-                                                                                    select: function (event, ui) {
-                                                                                        event.preventDefault();
-                                                                                        $("#tags").val(ui.item.label);
-                                                                                        $("#selected-tag").val(ui.item.label);
-                                                                                    }
-                                                                                    ,
-                                                                                    focus: function (event, ui) {
-                                                                                        event.preventDefault();
-                                                                                        $("#tags").val(ui.item.label);
-                                                                                    }
-                                                                                });
-                                                                            });
-
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
         </script>
         <script>
-
+            var base_url = '<?php echo base_url(); ?>';
+            var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
-            $(function () {
-                $("#searchplace").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data1, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#searchplace").val(ui.item.label);
-                    }
-                });
-            });
 
         </script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_save_post.js'); ?>"></script>
         <script>
-            function myFunction() {
-                document.getElementById("upload-demo").style.visibility = "hidden";
-                document.getElementById("upload-demo-i").style.visibility = "hidden";
-                document.getElementById('message1').style.display = "block";
-            }
-            function showDiv() {
-                document.getElementById('row1').style.display = "block";
-                document.getElementById('row2').style.display = "none";
-            }
-        </script>
-        <script type="text/javascript">
-            $uploadCrop = $('#upload-demo').croppie({
-                enableExif: true,
-                viewport: {
-                    width: 1250,
-                    height: 350,
-                    type: 'square'
-                },
-                boundary: {
-                    width: 1250,
-                    height: 350
-                }
-            });
-            $('.upload-result').on('click', function (ev) {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function (resp) {
-
-                    $.ajax({
-
-                        url: "<?php echo base_url() ?>freelancer/ajaxpro_work",
-                        type: "POST",
-                        data: {"image": resp},
-                        success: function (data) {
-                            html = '<img src="' + resp + '" />';
-                            if (html) {
-                                window.location.reload();
-                            }
-                        }
-                    });
-                });
-            });
-            $('.cancel-result').on('click', function (ev) {
-                document.getElementById('row2').style.display = "block";
-                document.getElementById('row1').style.display = "none";
-                document.getElementById('message1').style.display = "none";
-            });
-            $('#upload').on('change', function () {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function () {
-                        console.log('jQuery bind complete');
-                    });
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-
-            $('#upload').on('change', function () {
-                var fd = new FormData();
-                fd.append("image", $("#upload")[0].files[0]);
-                files = this.files;
-                size = files[0].size;
-                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                    picpopup();
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    $("#upload").val('');
-                    return false;
-                }
-
-                if (size > 26214400)
-                {
-                    alert("Allowed file size exceeded. (Max. 25 MB)")
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    return false;
-                }
-                $.ajax({
-
-                    url: "<?php echo base_url(); ?>freelancer/image_work",
-                    type: "POST",
-                    data: fd,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-
-
-                    }
-                });
-            });
-            //aarati code end
-        </script>
-        <!-- cover image end -->
-        <script>
-            // Get the modal
-            var modal = document.getElementById('myModal');
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            // When the user clicks the button, open the modal 
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
-        <script type="text/javascript">
-
-            // <!-- remove save post start -->
-
-            function remove_post(abc)
-            {
-                var    savepara    =    'save';
-                $.ajax({
-                    type:    'POST',
-                    url:    '<?php echo base_url() . "freelancer/freelancer_delete_apply" ?>',
-                    data: 'app_id=' + abc + '&para=' + savepara,
-                    success: function (data) {
-                        $('#' + 'postdata' + abc).html(data);
-                        $('#' + 'postdata' + abc).parent().removeClass();
-                        var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                        if (numItems == '0') {
-                            var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Posts Found.</h4></div>";
-                            $('.contact-frnd-post').html(nodataHtml);
-                        }
-                    }
-                });
-            }
-
+            //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)
             {
-            var alldata = 'all';
-                    var user = <?php echo $aileenuser_id; ?>;
-                    var appid = xyz;
-                    $.ajax({
+                var alldata = 'all';
+                var user = <?php echo $aileenuser_id; ?>;
+                var appid = xyz;
+                $.ajax({
                     type: 'POST',
-                            url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
-                            data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
-                            success: function (data) {
-                            $('#' + 'postdata' + appid).html(data);
-                                    $('#' + 'postdata' + appid).parent().removeClass();
-                                    var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                                    if (numItems == '0') {
+                    url: '<?php echo base_url() . "freelancer/apply_insert" ?>',
+                    data: 'post_id=' + abc + '&allpost=' + alldata.value + '&userid=' + user.value,
+                    success: function (data) {
+                        $('#' + 'postdata' + appid).html(data);
+                        $('#' + 'postdata' + appid).parent().removeClass();
+                        var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+                        if (numItems == '0') {
                             var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Job Found.</h4></div>";
-                                    $('.contact-frnd-post').html(nodataHtml);
-                            }
+                            $('.contact-frnd-post').html(nodataHtml);
+                        }
 
-  }
-               });
-               }
+                    }
+                });
+            }
+            function applypopup(postid, appid) {
+                $('.biderror .mes').html("<div class='pop_content'>Do you want to apply for this work?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + appid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                $('#bidmodal').modal('show');
+            }
+//APPLY FOR PROJECT CODE END
         </script>
-        <script>
-                            function updateprofilepopup(id) {
-                            $('#bidmodal-2').modal('show');
-                            }
-        </script>
-
-        <script type="text/javascript">
-                            function checkvalue() {
-                            var searchkeyword = $.trim(document.getElementById('tags').value);
-                                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                                    if (searchkeyword == "" && searchplace == "") {
-                            return  false;
-                            }
-                            }
-        </script> 
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script>
-                                    function removepopup(id) {
-                                    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                            $('#bidmodal').modal('show');
-                                    }
-                            function applypopup(postid, appid) {
-                            $('.biderror .mes').html("<div class='pop_content'>Do you want to apply for this work?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + appid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                                    $('#bidmodal').modal('show');
-                            }
-        </script>
-        <script>
-                            function divClicked() {
-                            var divHtml = $(this).html();
-                                    var editableText = $("<textarea/>");
-                                    editableText.val(divHtml);
-                                    $(this).replaceWith(editableText);
-                                    editableText.focus();
-                                    editableText.blur(editableTextBlurred);
-                            }
-                            function editableTextBlurred() {
-                            var html = $(this).val();
-                                    var viewableText = $("<a>");
-                                    if (html.match(/^\s*$/) || html == '') {
-                            html = "Current Work";
-                            }
-                            viewableText.html(html);
-                                    $(this).replaceWith(viewableText);
-                                    // setup the click event for this new div
-                                    viewableText.click(divClicked);
-                                    $.ajax({
-                                    url: "<?php echo base_url(); ?>freelancer/designation",
-                                            type: "POST",
-                                            data: {"designation": html},
-                                            success: function (response) {
-                                            }
-                                    });
-                            }
-                            $(document).ready(function () {
-                            $("a.designation").click(divClicked);
-                            });
-        </script>
-        <!-- script for profile pic strat -->
-        <script type="text/javascript">
-                                    function readURL(input) {
-                                    if (input.files && input.files[0]) {
-                                    var reader = new FileReader();
-                                            reader.onload = function (e) {
-                                            document.getElementById('preview').style.display = 'block';
-                                                    $('#preview').attr('src', e.target.result);
-                                            }
-                                    reader.readAsDataURL(input.files[0]);
-                                    }
-                                    }
-
-                            $("#profilepic").change(function () {
-                            profile = this.files;
-                                    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                            $('#profilepic').val('');
-                                    picpopup();
-                                    return false;
-                            } else {
-                            readURL(this);
-                            }
-                            });
-        </script>
-
-        <!-- script for profile pic end -->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        <script type="text/javascript">
-                                    //validation for edit email formate form
-                                    $(document).ready(function () {
-                            $("#userimage").validate({
-                            rules: {
-                            profilepic: {
-                            required: true,
-                            },
-                            },
-                                    messages: {
-                                    profilepic: {
-                                    required: "Photo Required",
-                                    },
-                                    },
-                            });
-                            });
-        </script>
-        <script>
-                                    function picpopup() {
-                                    $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
-                                            $('#bidmodal').modal('show');
-                                    }
-        </script>
-        <!-- all popup close close using esc start -->
-        <script type="text/javascript">
-                            $(document).on('keydown', function (e) {
-                            if (e.keyCode === 27) {
-                            $('#bidmodal').modal('hide');
-                            }
-                            });
-                                    $(document).on('keydown', function (e) {
-                            if (e.keyCode === 27) {
-                            $('#bidmodal-2').modal('hide');
-                            }
-                            });
-        </script>
-        <!-- all popup close close using esc end -->
-        <!--//For Scroll page at perticular position js Start-->
-        <script type="text/javascript">
-                                    $(document).ready(function () {
-                            $('html,body').animate({scrollTop: 265}, 100);
-                            });
-        </script>
-        <!--//For Scroll page at perticular position js End-->
     </body>
 </html>
