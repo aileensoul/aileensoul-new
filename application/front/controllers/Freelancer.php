@@ -272,7 +272,7 @@ class Freelancer extends MY_Controller {
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = '*', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //USER DATA FETCH
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_country,freelancer_post_state,freelancer_post_city,freelancer_post_pincode,freelancer_post_address', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_country,freelancer_post_state,freelancer_post_city,freelancer_post_pincode,freelancer_post_address,free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //FOR GETTING STATE DATA
         $contition_array = array('status' => 1, 'country_id' => $userdata[0]['freelancer_post_country']);
         $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -290,6 +290,7 @@ class Freelancer extends MY_Controller {
                 $this->data['address1'] = $userdata[0]['freelancer_post_address'];
             }
         }
+        
 //        code for search start
         $this->freelancer_apply_search();
 //        code for search end

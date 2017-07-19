@@ -214,150 +214,15 @@
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
             <script type="text/javascript">
-                $(document).ready(function () {
-                    $('#country').on('change', function () {
-                        var countryID = $(this).val();
-                        if (countryID) {
-                            $.ajax({
-                                type: 'POST',
-                                url: '<?php echo base_url() . "freelancer/ajax_data"; ?>',
-                                data: 'country_id=' + countryID,
-                                success: function (html) {
-                                    $('#state').html(html);
-                                    $('#city').html('<option value="">Select state first</option>');
-                                }
-                            });
-                        } else {
-                            $('#state').html('<option value="">Select country first</option>');
-                            $('#city').html('<option value="">Select state first</option>');
-                        }
-                    });
-
-                    $('#state').on('change', function () {
-                        var stateID = $(this).val();
-                        if (stateID) {
-                            $.ajax({
-                                type: 'POST',
-                                url: '<?php echo base_url() . "freelancer/ajax_data"; ?>',
-                                data: 'state_id=' + stateID,
-                                success: function (html) {
-                                    $('#city').html(html);
-                                }
-                            });
-                        } else {
-                            $('#city').html('<option value="">Select state first</option>');
-                        }
-                    });
-                });
-            </script><script>
-                var data = <?php echo json_encode($demo); ?>;
-                $(function () {
-                    $("#tags").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#tags").val(ui.item.label);
-                        }
-                    });
-                });
-
             </script>
             <script>
+                var base_url = '<?php echo base_url(); ?>';
+                var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
-                $(function () {
-                    $("#searchplace").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data1, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                        }
-                    });
-                });
+            </script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_address_information.js'); ?>"></script>
 
-            </script>
-            <script type="text/javascript">
-                //validation for edit email formate form
-                jQuery.validator.addMethod("noSpace", function (value, element) {
-                    return value == '' || value.trim().length != 0;
-                }, "No space please and don't leave it empty");
-                $.validator.addMethod("regx", function (value, element, regexpr) {
-                    return regexpr.test(value);
-                }, "Only space, only number and only specila characters are not allow");
-                $(document).ready(function () {
-                    $("#freelancer_post_addressinfo").validate({
-                        rules: {
-                            country: {
-                                required: true,
-                            },
-                            state: {
-                                required: true,
-                            },
-                            postaladdress: {
-                                required: true,
-                                regx: /^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9]*[-@./#&+,\w\s]*$/,
-                            },
-                        },
 
-                        messages: {
-                            country: {
-                                required: "Country is required.",
-                            },
-                            state: {
-                                required: "State is required.",
-                            },
-                            postaladdress: {
-                                required: "Postal address is required.",
-                            },
-                        },
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-                $(".alert").delay(3200).fadeOut(300);
-            </script>
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    // site preloader -- also uncomment the div in the header and the css style for #preloader
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-                function checkvalue() {
-                    var searchkeyword = $.trim(document.getElementById('tags').value);
-                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                    if (searchkeyword == "" && searchplace == "") {
-                        return  false;
-                    }
-                }
-            </script> 
         </body>
     </div>
 </html>
