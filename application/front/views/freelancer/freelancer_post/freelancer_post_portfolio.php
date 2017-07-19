@@ -116,81 +116,15 @@
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-            <script>
-                                                var data = <?php echo json_encode($demo); ?>;
-                                                $(function () {
-                                                    $("#tags").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        }
-                                                        ,
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
-
+            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>">
             </script>
             <script>
-                var data = <?php echo json_encode($city_data); ?>;
-                $(function () {
-                    $("#searchplace").autocomplete({
-                        source: function (request, response) {
-                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                            response($.grep(data, function (item) {
-                                return matcher.test(item.label);
-                            }));
-                        },
-                        minLength: 1,
-                        select: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                            $("#selected-tag").val(ui.item.label);
-                            // window.location.href = ui.item.value;
-                        }
-                        ,
-                        focus: function (event, ui) {
-                            event.preventDefault();
-                            $("#searchplace").val(ui.item.label);
-                        }
-                    });
-                });
+                var base_url = '<?php echo base_url(); ?>';
+                var data = <?php echo json_encode($demo); ?>;
+                var data1 = <?php echo json_encode($city_data); ?>;
 
             </script>
-            <script type="text/javascript">
-                $(".alert").delay(3200).fadeOut(300);
-            </script>
-            <script type="text/javascript">
-                jQuery(document).ready(function ($) {
-                    // site preloader -- also uncomment the div in the header and the css style for #preloader
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
-            </script>
-            <script type="text/javascript">
-                function checkvalue() {
-                    var searchkeyword = $.trim(document.getElementById('tags').value);
-                    var searchplace = $.trim(document.getElementById('searchplace').value);
-                    if (searchkeyword == "" && searchplace == "") {
-                        return  false;
-                    }
-                }
-            </script> 
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js'); ?>"></script>
             <?php
             $userid = $this->session->userdata('aileenuser');
             $contition_array = array('user_id' => $userid);
@@ -249,43 +183,8 @@
                 }
             </script>
             <!-- only pdf script end -->
-            <script type="text/javascript">
-                function delpdf() {
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url() . "freelancer/deletepdf" ?>',
-                        success: function (data) {
-                            $("#filename").text('');
-                            $("#pdffile").hide();
-                            document.getElementById('image_hidden_portfolio').value = '';
 
-                        }
-                    });
-                }
-            </script>
-            <script type="text/javascript">
-                var _onPaste_StripFormatting_IEPaste = false;
-                function OnPaste_StripFormatting(elem, e) {
-                    //alert(456);
-                    if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
-                        e.preventDefault();
-                        var text = e.originalEvent.clipboardData.getData('text/plain');
-                        window.document.execCommand('insertText', false, text);
-                    } else if (e.clipboardData && e.clipboardData.getData) {
-                        e.preventDefault();
-                        var text = e.clipboardData.getData('text/plain');
-                        window.document.execCommand('insertText', false, text);
-                    } else if (window.clipboardData && window.clipboardData.getData) {
-                        // Stop stack overflow
-                        if (!_onPaste_StripFormatting_IEPaste) {
-                            _onPaste_StripFormatting_IEPaste = true;
-                            e.preventDefault();
-                            window.document.execCommand('ms-pasteTextOnly', false);
-                        }
-                        _onPaste_StripFormatting_IEPaste = false;
-                    }
-                }
-            </script>
+
         </body>
     </div>
 </html>
