@@ -1950,6 +1950,26 @@
                    var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
    
                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                     if (product_name == '') {
+                           $('#post .mes').html("<div class='pop_content'>You have to add audio title.");
+                           $('#post').modal('show');
+                           //setInterval('window.location.reload()', 10000);
+                            $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   //$( "#bidmodal" ).hide();
+                   $('#post').modal('hide');
+                   $('.modal-post').show();
+   
+                  }
+               });  
+   
+                           event.preventDefault();
+                           return false;
+                       }
+
+
+
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
@@ -2459,6 +2479,7 @@
                    $('#' + 'editpostdata' + abc).html(data.title);
                   // $('#' + 'editpostdetails' + abc).html(data.description);
                    $('#' + 'khyati' + abc).html(data.description);
+                   $('#' + 'postname' + abc).html(data.postname);
                  
                }
            });
