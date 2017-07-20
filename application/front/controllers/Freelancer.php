@@ -208,8 +208,7 @@ class Freelancer extends MY_Controller {
 
                 $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
                 if ($insert_id) {
-                    alert($insert_id);
-
+                  
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelancer/freelancer_post_address_information', refresh);
                 } else {

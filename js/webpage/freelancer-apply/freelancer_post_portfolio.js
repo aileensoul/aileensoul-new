@@ -106,13 +106,9 @@ jQuery(document).ready(function ($) {
                 }
 //DELETE PDF CODE END
  function portfolio_form_submit(event) {
-                    
                     var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;
-
                     var portfolio_attachment = document.getElementById("portfolio_attachment").value;
-                   
                     var free_post_step = document.getElementById("free_step").value;
-                    alert(free_post_step);
                     var portfolio = $('#portfolio123').html();
                     portfolio = portfolio.replace(/&nbsp;/gi, " ");
                     portfolio = portfolio.trim();
