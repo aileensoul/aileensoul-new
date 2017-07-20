@@ -31,6 +31,16 @@
  -->
 
 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+     document.getElementById('tags').value = null;
+     document.getElementById('searchplace').value = null;
+
+    });
+</script>
+
 
                     
 
