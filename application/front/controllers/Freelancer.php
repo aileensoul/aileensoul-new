@@ -2680,23 +2680,12 @@ class Freelancer extends MY_Controller {
 // deactivate user end
 //deactivate user start for hire
     public function deactivate_hire() {
-
         $id = $_POST['id'];
-
         $data = array(
             'status' => 0
         );
-
         $update = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $id);
         $update = $this->common->update_data($data, 'freelancer_post', 'user_id', $id);
-
-        // if ($update) {
-        //     $this->session->set_flashdata('success', 'You are deactivate successfully.');
-        //     redirect('dashboard', 'refresh');
-        // } else {
-        //     $this->session->flashdata('error', 'Sorry!! Your are not deactivate!!');
-        //     redirect('freelancer/freelancer_hire_profile', 'refresh');
-        // }
     }
 
 // deactivate user end
@@ -2706,11 +2695,7 @@ class Freelancer extends MY_Controller {
         include 'db.php';
 
         session_start();
-
-
         $session_uid = $this->session->userdata('aileenuser');
-
-
         include_once 'getExtension.php';
 
         $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
@@ -2725,9 +2710,6 @@ class Freelancer extends MY_Controller {
                         $actual_image_name = time() . $session_uid . "." . $ext;
                         $tmp = $_FILES['photoimg']['tmp_name'];
                         $bgSave = '<div id="uX' . $session_uid . '" class="bgSave wallbutton blackButton">Save Cover</div>';
-
-
-// khyati start
 
 
                         $config['upload_path'] = $this->config->item('free_hire_bg_main_upload_path');
@@ -2746,7 +2728,6 @@ class Freelancer extends MY_Controller {
                         } else {
                             $picture = '';
                         }
-
 
                         $data = array(
                             'profile_background' => $picture

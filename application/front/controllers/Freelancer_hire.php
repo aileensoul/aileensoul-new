@@ -594,9 +594,14 @@ $this->freelancer_hire_search();
                     'status' => 1,
                     'modified_date' => date('y-m-d h:i:s')
                   ); 
+      $data1=array(
+          'status' => 1,
+          'modify_date' => date('y-m-d h:i:s')
+      );
                
     $updatdata =   $this->common->update_data($data,'freelancer_hire_reg','user_id',$userid);
-      if($updatdata){
+    $update = $this->common->update_data($data1, 'freelancer_post', 'user_id', $userid);
+      if($update && $updatdata){
 
         redirect('freelancer/recommen_candidate', refresh);
 
