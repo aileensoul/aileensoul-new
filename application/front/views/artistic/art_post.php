@@ -299,7 +299,9 @@
             <div class="modal-content-post">
                <span class="close1">&times;</span>
                   <div class="post-editor col-md-12 post-edit-popup" id="close">
-                  <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix', 'onsubmit' => "imgval(event)")); ?>
+
+                  <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+
                   <div class="main-text-area " >
                      <div class="popup-img-in "> 
 
@@ -1950,6 +1952,26 @@
                    var foundPresent1 = $.inArray(ext1, allowesaudio) > -1;
    
                    if (foundPresent1 == true && fileInput.length == 1) {
+
+                     if (product_name == '') {
+                           $('#post .mes').html("<div class='pop_content'>You have to add audio title.");
+                           $('#post').modal('show');
+                           //setInterval('window.location.reload()', 10000);
+                            $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   //$( "#bidmodal" ).hide();
+                   $('#post').modal('hide');
+                   $('.modal-post').show();
+   
+                  }
+               });  
+   
+                           event.preventDefault();
+                           return false;
+                       }
+
+
+
                    } else {
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
@@ -2459,6 +2481,7 @@
                    $('#' + 'editpostdata' + abc).html(data.title);
                   // $('#' + 'editpostdetails' + abc).html(data.description);
                    $('#' + 'khyati' + abc).html(data.description);
+                   $('#' + 'postname' + abc).html(data.postname);
                  
                }
            });
@@ -2653,4 +2676,68 @@
 
 
  <!-- script for page uisng ajax end -->
+
+ <!-- post upload using javascript start -->
+
+
+  <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+                var bar = $('#bar');
+                var percent = $('#percent');
+                var options = {
+                    beforeSend: function () {
+                        // Replace this with your loading gif image
+                        document.getElementById("progress_div").style.display = "block";
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                        document.getElementById("myModal").style.display = "none";
+//                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+
+                    },
+                    complete: function (response) { //alert(response.responseText);
+                        // Output AJAX response to the div container
+
+
+            document.getElementById('test-upload_product').value = null;
+            document.getElementById('test-upload_des').value = null;
+
+            $(".file-preview-frame").hide();
+
+
+                        $('#progress_div').fadeOut('5000').remove();
+                        // $('.loader').remove();
+                        $('.art-all-post div:first').remove();
+                        $(".art-all-post").prepend(response.responseText);
+                        
+                        // second header class add for scroll
+                        var nb = $('.post-design-box').length;
+                        if (nb == 0) {
+                            $("#dropdownclass").addClass("no-post-h2");
+                        } else {
+                            $("#dropdownclass").removeClass("no-post-h2");
+                        }
+                        
+                        $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+
+                    }
+                };
+                // Submit the form
+                $(".upload-image-form").ajaxForm(options);
+                return false;
+            });
+        </script>
+
+ <!-- post upload using javascript end -->
 
