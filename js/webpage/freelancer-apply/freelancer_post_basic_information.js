@@ -92,7 +92,7 @@ $(".alert").delay(3200).fadeOut(300);
                                 required: true,
                                 email: true,
                                 remote: {
-                                    url: "<?php echo site_url() . 'freelancer/check_email' ?>",
+                                    url:  site + "freelancer/check_email",
                                     type: "post",
                                     data: {
                                         email: function () {

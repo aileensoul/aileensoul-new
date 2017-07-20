@@ -130,7 +130,7 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_post_basic_information_insert() {
         $userid = $this->session->userdata('aileenuser');
-
+      
 
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
@@ -208,7 +208,7 @@ class Freelancer extends MY_Controller {
 
                 $insert_id = $this->common->insert_data_getid($data, 'freelancer_post_reg');
                 if ($insert_id) {
-
+                    alert($insert_id);
 
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelancer/freelancer_post_address_information', refresh);
@@ -939,7 +939,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
 
         $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_portfolio,freelancer_post_portfolio_attachment,free_post_step,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $this->data['free_post_step'] = $userdata[0]['free_post_step'];
         if ($userdata) {
             $step = $userdata[0]['free_post_step'];
 
@@ -947,6 +947,7 @@ class Freelancer extends MY_Controller {
 
                 $this->data['portfolio1'] = $userdata[0]['freelancer_post_portfolio'];
                 $this->data['portfolio_attachment1'] = $userdata[0]['freelancer_post_portfolio_attachment'];
+                
             }
         }
 //code for search start

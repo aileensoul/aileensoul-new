@@ -105,4 +105,57 @@ jQuery(document).ready(function ($) {
                     });
                 }
 //DELETE PDF CODE END
+ function portfolio_form_submit(event) {
+                    
+                    var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;
+
+                    var portfolio_attachment = document.getElementById("portfolio_attachment").value;
+                   
+                    var free_post_step = document.getElementById("free_step").value;
+                    alert(free_post_step);
+                    var portfolio = $('#portfolio123').html();
+                    portfolio = portfolio.replace(/&nbsp;/gi, " ");
+                    portfolio = portfolio.trim();
+                    if (portfolio_attachment != '') {
+                        var portfolio_attachment_ext = portfolio_attachment.split('.').pop();
+                        var allowespdf = ['pdf'];
+                        var foundPresentpdf = $.inArray(portfolio_attachment_ext, allowespdf) > -1
+                    }
+
+                    var image_hidden_portfolio_ext = image_hidden_portfolio.split('.').pop();
+                    var allowespdf = ['pdf'];
+                    var foundPresentportfolio = $.inArray(image_hidden_portfolio_ext, allowespdf) > -1;
+
+
+                    if (foundPresentpdf == false) {
+                        $(".portfolio_image").html("Please select only pdf file.");
+                        event.preventDefault();
+                        return false;
+                    } else
+                    {
+                        var fd = new FormData();
+                        fd.append("image", $("#portfolio_attachment")[0].files[0]);
+                        files = this.files;
+                        fd.append('portfolio', portfolio);
+                        fd.append('image_hidden_portfolio', image_hidden_portfolio);
+                        $.ajax({
+                            url:  base_url + "freelancer/freelancer_post_portfolio_insert",
+                            type: "POST",
+                            data: fd,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                if (free_post_step == 7) {
+                                    window.location =  base_url + "freelancer/freelancer_post_profile";
+                                } else {
+                                    window.location =  base_url + "freelancer/freelancer_apply_post";
+                                }
+                            }
+                        });
+
+                    }
+
+                    event.preventDefault();
+                    return false;
+                }
 

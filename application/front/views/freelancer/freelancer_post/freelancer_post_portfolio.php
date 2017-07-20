@@ -100,6 +100,7 @@
                                             </div>
                                             <?php echo form_error('portfolio'); ?> 
                                         </fieldset>
+                                        <input type="hidden" tabindex="2" name="free_step" id="free_step" value="<?php echo $free_post_step; ?>">
                                         <fieldset class="hs-submit full-width">
                                             <input type="submit"  id="submit" tabindex="4" name="submit" value="Submit" onclick="return portfolio_form_submit(event);" >
                                         </fieldset>
@@ -113,6 +114,7 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
+
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
@@ -120,69 +122,11 @@
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
+                alert(base_url);
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
-
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js'); ?>"></script>
-            <?php
-            $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('user_id' => $userid);
-            $free_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            ?>
-            <script type="text/javascript">
-                function portfolio_form_submit(event) {
-                    var free_post_step = "<?php echo $free_reg_data[0]['free_post_step']; ?>";
-                    var image_hidden_portfolio = document.getElementById("image_hidden_portfolio").value;
-
-                    var portfolio_attachment = document.getElementById("portfolio_attachment").value;
-                    var portfolio = $('#portfolio123').html();
-                    portfolio = portfolio.replace(/&nbsp;/gi, " ");
-                    portfolio = portfolio.trim();
-                    if (portfolio_attachment != '') {
-                        var portfolio_attachment_ext = portfolio_attachment.split('.').pop();
-                        var allowespdf = ['pdf'];
-                        var foundPresentpdf = $.inArray(portfolio_attachment_ext, allowespdf) > -1
-                    }
-
-                    var image_hidden_portfolio_ext = image_hidden_portfolio.split('.').pop();
-                    var allowespdf = ['pdf'];
-                    var foundPresentportfolio = $.inArray(image_hidden_portfolio_ext, allowespdf) > -1;
-
-
-                    if (foundPresentpdf == false) {
-                        $(".portfolio_image").html("Please select only pdf file.");
-                        event.preventDefault();
-                        return false;
-                    } else
-                    {
-                        var fd = new FormData();
-                        fd.append("image", $("#portfolio_attachment")[0].files[0]);
-                        files = this.files;
-                        fd.append('portfolio', portfolio);
-                        fd.append('image_hidden_portfolio', image_hidden_portfolio);
-                        $.ajax({
-                            url: "<?php echo base_url(); ?>freelancer/freelancer_post_portfolio_insert",
-                            type: "POST",
-                            data: fd,
-                            processData: false,
-                            contentType: false,
-                            success: function (data) {
-                                if (free_post_step == 7) {
-                                    window.location = "<?php echo base_url() ?>freelancer/freelancer_post_profile";
-                                } else {
-                                    window.location = "<?php echo base_url() ?>freelancer/freelancer_apply_post";
-                                }
-                            }
-                        });
-
-                    }
-
-                    event.preventDefault();
-                    return false;
-                }
-            </script>
-            <!-- only pdf script end -->
 
 
         </body>
