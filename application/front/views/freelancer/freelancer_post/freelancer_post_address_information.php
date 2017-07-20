@@ -186,18 +186,15 @@
                                     </fieldset>
                                     <fieldset class="full-width">
                                         <label>Postal address:<span class="red">*</span></label>
-                                        <textarea name ="postaladdress" id="postaladdress" tabindex="5" rows="4" cols="50" placeholder="Enter postal address" style="resize: none;"><?php
-                                            if ($address1) {
-                                                echo $address1;
-                                            }
-                                            ?>
-                                        </textarea>
-                                        <?php echo form_error('postaladdress'); ?>
+                                        <textarea name ="postaladdress" id="postaladdress" tabindex="5" rows="4" cols="50" placeholder="Enter postal address" style="resize: none;"><?php if ($address1) {
+                                                   echo $address1;
+                                               } ?></textarea>
+<?php echo form_error('postaladdress'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit"  id="next" name="next" value="Next" tabindex="6">
                                     </fieldset>
-                                    <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +202,7 @@
                 </div>
             </section>
             <footer>
-                <?php echo $footer; ?>
+<?php echo $footer; ?>
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
