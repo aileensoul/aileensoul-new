@@ -35,8 +35,10 @@
             } else {
                 $user_id = $this->db->get_where('business_profile', array('business_slug' => $this->uri->segment(3)))->row()->business_slug;
             }
-            $contition_array = array('business_slug' => $user_id, 'is_deleted' => '0', 'status' => '1');
+           
+            $contition_array = array('user_id' => $user_id, 'is_deleted' => '0', 'status' => '1');
             $image = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
@@ -168,7 +170,7 @@
 
                                             ?> 
 
-                                        <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'bus_contact') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business_profile/bus_contact/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts)); ?>)</a>
+                                        <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'contacts') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('business-profile/contacts/' . $businessdata1[0]['business_slug']); ?>"> Contacts <br>  (<?php echo (count($businesscontacts)); ?>)</a>
                                         </li>
 
 

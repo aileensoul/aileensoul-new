@@ -95,23 +95,35 @@ $route['business-profile/contacts/(:any)'] = "business_profile/bus_contact/$1";
 $route['business-profile/user-image-change'] = "business_profile/user_image_insert";
 $route['business-profile/business-profile-save-post'] = "business_profile/business_profile_save_post";
 $route['business-profile/business-profile-addpost'] = "business_profile/business_profile_addpost";
-$route['business-profile/business-photos'] = "business_profile/business_photos";
-$route['business-profile/business-photos/(:any)'] = "business_profile/business_photos/$1";
+$route['business-profile/photos'] = "business_profile/business_photos";
+$route['business-profile/photos/(:any)'] = "business_profile/business_photos/$1";
 
-$route['business-profile/business-videos'] = "business_profile/business_videos";
-$route['business-profile/business-videos/(:any)'] = "business_profile/business_videos/$1";
+$route['business-profile/videos'] = "business_profile/business_videos";
+$route['business-profile/videos/(:any)'] = "business_profile/business_videos/$1";
 
-$route['business-profile/business-audios'] = "business_profile/business_audios";
-$route['business-profile/business-audios/(:any)'] = "business_profile/business_audios/$1";
+$route['business-profile/audios'] = "business_profile/business_audios";
+$route['business-profile/audios/(:any)'] = "business_profile/business_audios/$1";
 
 
-$route['business-profile/business-pdf'] = "business_profile/business_pdf";
-$route['business-profile/business-pdf/(:any)'] = "business_profile/business_pdf/$1";
+$route['business-profile/pdf'] = "business_profile/business_pdf";
+$route['business-profile/pdf/(:any)'] = "business_profile/business_pdf/$1";
 
 $route['business-profile/business-profile-contactperson'] = "business_profile/business_profile_contactperson";
 $route['business-profile/post-detail'] = "business_profile/postnewpage";
 $route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
 $route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
+
+
+//FREELANCER HIRE ROUTES SETTINGS
+$route['freelancer-hire/home'] = "freelancer/recommen_candidate";
+$route['freelancer-hire/employer-details'] = "freelancer/freelancer_hire_profile";
+$route['freelancer-hire/employer-details/(:any)'] = "freelancer/freelancer_hire_profile/$1";
+$route['freelancer-hire/projects'] = "freelancer/freelancer_hire_post";
+$route['freelancer-hire/projects/(:any)'] = "freelancer/freelancer_hire_post/$1";
+$route['freelancer-hire/freelancer-save'] = "freelancer/freelancer_save";
+$route['freelancer-hire/add-projects'] = "freelancer/freelancer_add_post";
+$route['freelancer-hire/basic-information'] = "freelancer_hire/freelancer_hire_basic_info";
+$route['freelancer-hire/address-information'] = "freelancer_hire/freelancer_hire_address_info";
 
 /* Report Route end */
 

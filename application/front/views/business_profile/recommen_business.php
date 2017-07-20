@@ -948,9 +948,17 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <div class="view_more_details">
+                                                        
+                                                        <div class="text-center rio">
+                                                <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                                                <p style="text-transform:none !important;border:0px;">We couldn't find what you were looking for.</p>
+                                                <ul class="padding_less_left">
+                                                    <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
+                                                </ul>
+                                            </div>
+<!--                                                    <div class="view_more_details">
                                                         <a href="javascript:void(0);">Oops! Search data not found.</a>
-                                                    </div>
+                                                    </div>-->
     <?php
 }
 ?>

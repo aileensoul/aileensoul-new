@@ -26,16 +26,16 @@
             <?php echo $business_common; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="<?php echo base_url('business-profile/business-photos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
                         Photo
                     </a>
-                    <a href="<?php echo base_url('business-profile/business-videos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
                         Video
                     </a>
-                    <a href="<?php echo base_url('business-profile/business-audios/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
                         Audio
                     </a>
-                    <a href="<?php echo base_url('business-profile/business-pdf/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
                         PDf
                     </a>
                 </div>
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <!-- user iamges start-->
-                            <a href="<?php echo base_url('business-profile/business-photos/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -125,7 +125,7 @@
                             </a>
                             <!-- user images end-->
                             <!-- user video start-->
-                            <a href="<?php echo base_url('business-profile/business-videos/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <table class="business_data_table">
@@ -140,7 +140,7 @@
                             </a>
                             <!-- user video emd-->
                             <!-- user audio start-->
-                            <a href="<?php echo base_url('business-profile/business-audios/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <div class="head_details1">
@@ -155,7 +155,7 @@
                             </a>
                             <!-- user audio end-->
                             <!-- user pdf  start-->
-                            <a href="<?php echo base_url('business-profile/business-pdf/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
