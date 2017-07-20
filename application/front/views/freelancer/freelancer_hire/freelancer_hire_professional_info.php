@@ -41,8 +41,8 @@
                                     <ul class="left-form-each">
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/basic-information'); ?>">Basic Information</a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_address_info'); ?>">Address Information</a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer_hire') { ?> class="active init" <?php } ?>><a href="#">Professional Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>">Address Information</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#">Professional Information</a></li>
                                     </ul>
                                 </div>
                             </div>

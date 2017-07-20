@@ -18,11 +18,11 @@
 							<ul>
 							<li><a href="<?php echo base_url('freelancer-hire/basic-information'); ?>">Basic Information</a></li>
 
-                                <li><a href="<?php echo base_url('freelancer_hire/freelancer_hire_address_info'); ?>">Address Information</a></li>
+                                <li><a href="<?php echo base_url('freelancer-hire/address-information'); ?>">Address Information</a></li>
 
 								<li><a href="<?php echo base_url('freelancer_hire/freelancer_hire_professional_info'); ?>">Professional Information</a></li>
 
-                                <li <?php if($this->uri->segment(1) == 'freelancer_hire'){?> class="active" <?php } ?>><a href="#">Payment For Freelancer</a></li>
+                                <li <?php if($this->uri->segment(1) == 'freelancer-hire'){?> class="active" <?php } ?>><a href="#">Payment For Freelancer</a></li>
 
 							    <li class="<?php if($freehiredata[0]['free_hire_step'] < '4'){echo "khyati";}?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_requirement_detail'); ?>">Requirmeant-details</a></li>
 								

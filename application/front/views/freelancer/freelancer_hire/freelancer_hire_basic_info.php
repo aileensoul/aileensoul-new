@@ -39,12 +39,12 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer_hire') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '1') {
                                             
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_address_info'); ?>">Address Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>">Address Information</a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             
