@@ -16,7 +16,7 @@ class Freelancer_hire extends MY_Controller {
 
     public function freelancer_hire()
     {  
-         
+       
       $userid  = $this->session->userdata('aileenuser'); 
 
   
@@ -44,7 +44,7 @@ class Freelancer_hire extends MY_Controller {
              redirect('freelancer_hire/freelancer_hire_professional_info', refresh);
             }
             else if($jobdata[0]['free_hire_step'] == 3){
-                redirect('freelancer/recommen_candidate', refresh);
+                redirect('freelancer-hire/home', refresh);
             }
             
             
@@ -135,7 +135,7 @@ class Freelancer_hire extends MY_Controller {
                 redirect('freelancer_hire/freelancer_hire_address_info', refresh);
                 }else{
                  $this->session->flashdata('error','Your data not inserted');
-                       redirect('freelancer_hire/freelancer_hire_basic_info', refresh);
+                       redirect('freelancer-hire/basic-information', refresh);
                 }
 
           }
@@ -169,7 +169,7 @@ class Freelancer_hire extends MY_Controller {
          else
              {
                 $this->session->flashdata('error','Sorry!! Your data not inserted');
-                 redirect('freelancer_hire/freelancer_hire_basic_info', refresh);
+                 redirect('freelancer-hire/basic-information', refresh);
              
              }
             }
@@ -541,13 +541,14 @@ $this->freelancer_hire_search();
          if($userdata[0]['free_hire_step'] == 3){
             $contition_array = array('user_id' => $userid,'status' => '1');
          $postdata= $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          if(count($postdata) <= 0){
-             redirect('freelancer/freelancer_add_post', refresh);
+         echo "<pre>"; print_r($postdata); die();
+         if(count($postdata) <= 0){
+             redirect('freelancer-hire/add-projects', refresh);
            }else{
-             redirect('freelancer/freelancer_hire_profile', refresh);
+             redirect('freelancer-hire/employer-details', refresh);
            }
        }else{
-        redirect('freelancer/recommen_candidate', refresh);
+        redirect('freelancer-hire/add-projects', refresh);
        }
       }
       else
@@ -603,7 +604,7 @@ $this->freelancer_hire_search();
     $update = $this->common->update_data($data1, 'freelancer_post', 'user_id', $userid);
       if($update && $updatdata){
 
-        redirect('freelancer/recommen_candidate', refresh);
+        redirect('freelancer-hire/home', refresh);
 
       }else{
 

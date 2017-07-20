@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
                             <div class="add-post-button">
-                                <a href="<?php echo base_url("freelancer/freelancer_hire_post"); ?>"><div class="back">
+                                <a href="<?php echo base_url("freelancer-hire/projects"); ?>"><div class="back">
                                         <div class="but1">
                                             Back To Post
                                         </div>

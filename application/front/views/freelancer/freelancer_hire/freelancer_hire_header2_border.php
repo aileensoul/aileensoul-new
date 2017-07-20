@@ -27,7 +27,7 @@
                     <div class="">
                         <ul class="" id="dropdownclass">
 
-                            <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_hire_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/recommen_candidate'); ?>">Home</a>
+                            <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_hire_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>">Home</a>
                             </li>
 
                             <!-- Friend Request Start-->
@@ -40,8 +40,8 @@
                                         <span class="my_account">
                                             <div class="my_S">Account</div>
                                         </span>
-                                        <a href="<?php echo base_url('freelancer/freelancer_hire_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                        <a href="<?php echo base_url('freelancer_hire/freelancer_hire_basic_info'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
                                         <?php
                                         $userid = $this->session->userdata('aileenuser');
                                         ?>

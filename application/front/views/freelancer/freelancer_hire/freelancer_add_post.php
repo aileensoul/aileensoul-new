@@ -287,7 +287,7 @@
                                     </fieldset>
                                     <div class="fr">           
                                         <fieldset class="hs-submit full-width">
-                                            <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancerlancer_edit_post')) { ?>
+                                            <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancerlancer_edit_post')) { ?>
                                                 <a class="add_post_btnc"  onclick="return leave_page(9)">Cancel</a>
                                             <?php } else { ?>
                                                 <a class="add_post_btnc"   href="javascript:history.back()">Cancel</a>
@@ -364,15 +364,15 @@
                 {
                     if (clicked_id == 1)
                     {
-                        location.href = '<?php echo base_url('freelancer/recommen_candidate'); ?>';
+                        location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
                     }
                     if (clicked_id == 2)
                     {
-                        location.href = '<?php echo base_url('freelancer/freelancer_hire_profile'); ?>';
+                        location.href = '<?php echo base_url('freelancer-hire/employer-details'); ?>';
                     }
                     if (clicked_id == 3)
                     {
-                        location.href = '<?php echo base_url('freelancer_hire/freelancer_hire_basic_info'); ?>';
+                        location.href = '<?php echo base_url('freelancer-hire/basic-information'); ?>';
                     }
                     if (clicked_id == 4)
                     {
@@ -440,13 +440,13 @@
                     success: function (data) {
                         if (clicked_id == 1)
                         {
-                            window.location = "<?php echo base_url('freelancer/recommen_candidate'); ?>";
+                            window.location = "<?php echo base_url('freelancer-hire/home'); ?>";
                         } else if (clicked_id == 2)
                         {
-                            window.location = "<?php echo base_url('freelancer/freelancer_hire_profile'); ?>";
+                            window.location = "<?php echo base_url('freelancer-hire/employer-details'); ?>";
                         } else if (clicked_id == 3)
                         {
-                            window.location = "<?php echo base_url('freelancer_hire/freelancer_hire_basic_info'); ?>";
+                            window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
                         } else if (clicked_id == 4)
                         {
                             if (searchkeyword == "")

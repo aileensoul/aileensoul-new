@@ -113,15 +113,15 @@ class Freelancer extends MY_Controller {
         if ($updatdata) {
 
             if ($this->input->post('hitext') == 1) {
-                redirect('freelancer/freelancer_hire_profile', refresh);
+                redirect('freelancer-hire/employer-details', refresh);
             } elseif ($this->input->post('hitext') == 2) {
-                redirect('freelancer/freelancer_hire_post', refresh);
+                redirect('freelancer-hire/projects', refresh);
             } elseif ($this->input->post('hitext') == 3) {
                 redirect('freelancer/freelancer_save', refresh);
             }
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('freelancer/recommen_candidate', refresh);
+            redirect('freelancer-hire/home', refresh);
         }
     }
 
@@ -1293,7 +1293,7 @@ class Freelancer extends MY_Controller {
 
 
 
-                redirect('freelancer/freelancer_hire_post', refresh);
+                redirect('freelancer-hire/projects', refresh);
             } else {
                 $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                 redirect('freelancer/freelancer_post', refresh);
@@ -1551,7 +1551,7 @@ class Freelancer extends MY_Controller {
 
 
 
-            redirect('freelancer/freelancer_hire_post', refresh);
+            redirect('freelancer-hire/projects', refresh);
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('freelancer/freelancer_edit_post', refresh);
@@ -2156,11 +2156,11 @@ class Freelancer extends MY_Controller {
         if ($this->input->post('cancel1')) {  //echo "hii"; die();
             redirect('freelancer/freelancer_add_post', refresh);
         } elseif ($this->input->post('cancel2')) {
-            redirect('freelancer/freelancer_hire_post', refresh);
+            redirect('freelancer-hire/projects', refresh);
         } elseif ($this->input->post('cancel3')) {
             redirect('freelancer/freelancer_save', refresh);
         } elseif ($this->input->post('cancel4')) {
-            redirect('freelancer/freelancer_hire_profile', refresh);
+            redirect('freelancer-hire/employer-details', refresh);
         }
 
         if (empty($_FILES['profilepic']['name'])) {
@@ -2233,13 +2233,13 @@ class Freelancer extends MY_Controller {
             if ($error) {
                 $this->session->set_flashdata('error', $error[0]);
                 if ($this->input->post('hitext') == 1) {
-                    redirect('freelancer/freelancer_add_post', refresh);
+                    redirect('freelancer-hire/add-projects', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer/freelancer_hire_post', refresh);
+                    redirect('freelancer-hire/projects', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
-                    redirect('freelancer/freelancer_save', refresh);
+                    redirect('freelancer-hire/freelancer-save', refresh);
                 } elseif ($this->input->post('hitext') == 4) {
-                    redirect('freelancer/freelancer_hire_profile', refresh);
+                    redirect('freelancer-hire/employer-details', refresh);
                 }
                 // $redirect_url = site_url('dashboard');
                 // redirect($redirect_url, 'refresh');
@@ -2288,15 +2288,15 @@ class Freelancer extends MY_Controller {
                 if ($this->input->post('hitext') == 1) {
                     redirect('freelancer/freelancer_add_post', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer/freelancer_hire_post', refresh);
+                    redirect('freelancer-hire/projects', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
                     redirect('freelancer/freelancer_save', refresh);
                 } elseif ($this->input->post('hitext') == 4) {
-                    redirect('freelancer/freelancer_hire_profile', refresh);
+                    redirect('freelancer-hire/employer-details', refresh);
                 }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer/freelancer_hire_post', refresh);
+                redirect('freelancer-hire/projects', refresh);
             }
         }
     }
