@@ -391,10 +391,10 @@
                                                                             ?>                                                          </li>
                                                                         <?php if ($returnpage == '') { ?><a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)">Remove</a>
                                                                             <li>
-                                                                                <a class="button" href="<?php echo base_url('freelancer/freelancer_edit_post/' . $post['post_id']); ?>" >Edit </a>
+                                                                                <a class="button" href="<?php echo base_url('freelancer-hire/edit-projects/' . $post['post_id']); ?>" >Edit </a>
                                                                             </li> 
                                                                             <li class=fr>
-                                                                                <a class="button" href="<?php echo base_url('freelancer/freelancer_apply_list/' . $post['post_id']); ?>" >Applied person :<?php echo count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array())); ?></a>
+                                                                                <a class="button" href="<?php echo base_url('freelancer-hire/freelancer-applied/' . $post['post_id']); ?>" >Applied person :<?php echo count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array())); ?></a>
                                                                             <?php } else { ?>
                                                                                 <?php
                                                                                 $this->data['userid'] = $userid = $this->session->userdata('aileenuser');

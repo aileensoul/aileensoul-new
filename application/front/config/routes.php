@@ -124,6 +124,17 @@ $route['freelancer-hire/freelancer-save'] = "freelancer/freelancer_save";
 $route['freelancer-hire/add-projects'] = "freelancer/freelancer_add_post";
 $route['freelancer-hire/basic-information'] = "freelancer_hire/freelancer_hire_basic_info";
 $route['freelancer-hire/address-information'] = "freelancer_hire/freelancer_hire_address_info";
+$route['freelancer-hire/professional-information'] = "freelancer_hire/freelancer_hire_professional_info";
+$route['freelancer-hire/search'] = "search/freelancer_hire_search";
+$route['freelancer-hire/search/0/(:any)'] = "search/freelancer_hire_search/0/$1";
+$route['freelancer-hire/search/(:any)/0'] = "search/freelancer_hire_search/$1/0";
+$route['freelancer-hire/search/(:any)/(:any)'] = "search/freelancer_hire_search/$1/$2";
+$route['freelancer-hire/edit-projects/(:any)'] = "freelancer/freelancer_edit_post/$1";
+$route['freelancer-hire/reactivate'] = "freelancer_hire/reactivate";
+$route['freelancer-hire/deactivate'] = "freelancer/deactivate_hire";
+$route['freelancer-hire/freelancer-applied/(:any)'] = "freelancer/freelancer_apply_list/$1";
 
+//FREELANCER APPLY ROUTES SETTINGS
+$route['freelancer-work/freelancer-details/(:any)'] = "freelancer/freelancer_post_profile/$1";
 /* Report Route end */
 

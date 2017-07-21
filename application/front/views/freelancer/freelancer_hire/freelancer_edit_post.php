@@ -317,7 +317,7 @@
                                     <?php echo form_error('city'); ?>
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
-                                    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
+                                    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                         <a class="add_post_btnc" onclick="return leave_page(9)">Cancel</a>
                                     <?php } else { ?>
 
@@ -395,7 +395,7 @@
                 var url, data;
 
                 if (clicked_id == 4) {
-                    url = '<?php echo base_url() . "search/freelancer_hire_search" ?>';
+                    url = '<?php echo base_url() . "freelancer-hire/search" ?>';
                     data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
                 }
 
@@ -417,14 +417,14 @@
                         {
                             if (searchkeyword == "")
                             {
-                                window.location = "<?php echo base_url() ?>search/freelancer_hire_search/" + 0 + "/" + searchplace;
+                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
 
                             } else if (searchplace == "")
                             {
-                                window.location = "<?php echo base_url() ?>search/freelancer_hire_search/" + searchkeyword + "/" + 0;
+                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
                             } else
                             {
-                                window.location = "<?php echo base_url() ?>search/freelancer_hire_search/" + searchkeyword + "/" + searchplace;
+                                window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + searchplace;
                             }
 
                         } else if (clicked_id == 5)

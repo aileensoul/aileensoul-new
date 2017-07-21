@@ -27,7 +27,7 @@
                     <div class="">
                         <ul class="" id="dropdownclass">
 
-                            <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_hire_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>">Home</a>
+                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>">Home</a>
                             </li>
 
                             <!-- Friend Request Start-->
@@ -118,7 +118,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "freelancer/deactivate_hire" ?>',
+            url: '<?php echo base_url() . "freelancer-hire/deactivate" ?>',
             data: 'id=' + clicked_id,
             success: function (data) {
                 window.location = "<?php echo base_url() ?>dashboard";

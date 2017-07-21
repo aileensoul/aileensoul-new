@@ -1,7 +1,4 @@
 <!--post save success pop up style strat -->
-
-
-
 <style type="text/css">
   .dropdown-content_hover::before {
     /* top: -1px; */
@@ -30,7 +27,7 @@
                                
                                   <li <?php if(($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')){?> class="active" <?php } ?>>
 
-                                   <?php if(($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer_edit_post')){?>
+                                   <?php if(($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')){?>
                                 
                                
                                  <a href="javascript:void(0);" class="button" onclick="return leave_page(1)">Home</a>
@@ -50,7 +47,7 @@
 <div class="dropdown_hover">
   <span id="art_profile">Employer Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
   <div class="dropdown-content_hover" id="dropdown-content_hover">
-    <?php if(($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancer_edit_post')){?>
+    <?php if(($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')){?>
                                 
                                
 
@@ -144,7 +141,7 @@ $(document).ready(function() {
 
                   $.ajax({
                       type: 'POST',
-                      url: '<?php echo base_url() . "freelancer/deactivate_hire" ?>',
+                      url: '<?php echo base_url() . "freelancer-hire/deactivate" ?>',
                       data: 'id=' + clicked_id,
                         success: function (data) {
                           window.location= "<?php echo base_url() ?>dashboard";

@@ -179,7 +179,7 @@
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo base_url('freelancer/freelancer_post_profile/' . $rec['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>">
+                                                                        <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $rec['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>">
                                                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>"> </a>
                                                                         <?php
                                                                     }
@@ -191,7 +191,7 @@
                                                                 <ul>
 
                                                                     <li>
-                                                                        <a  class="post_name" href="<?php echo base_url('freelancer/freelancer_post_profile/' . $rec['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>">
+                                                                        <a  class="post_name" href="<?php echo base_url('freelancer-work/freelancer-details/' . $rec['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>">
                                                                             <?php echo ucwords($rec['freelancer_post_fullname']) . ' ' . ucwords($rec['freelancer_post_username']); ?>
                                                                         </a></li>
 

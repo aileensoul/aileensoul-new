@@ -49,7 +49,7 @@
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer_hire/freelancer_hire_professional_info'); ?>">Professional Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>">Professional Information</a></li>
                                     </ul>
                                 </div>
                             </div>

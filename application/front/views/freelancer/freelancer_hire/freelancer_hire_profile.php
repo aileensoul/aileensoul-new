@@ -142,7 +142,7 @@
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'freelancer_post') { ?><a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>">Employer Details</a> <?php } else { ?> <a title="Employer Details" href="<?php echo base_url('freelancer-hire/employer-details'); ?>">Employer Details</a> <?php } ?>
                                     </li>
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer_save')) { ?> class="active" <?php } ?>> 
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>> 
                                         <?php if ($returnpage == 'freelancer_post') { ?><a title="Post"  href="<?php echo base_url('freelancer-hire/projects/' . $this->uri->segment(3) . '?page=freelancer_post'); ?>">Projects</a><?php } else { ?><a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>">Post</a><?php } ?>
                                     </li>
                                     <?php
