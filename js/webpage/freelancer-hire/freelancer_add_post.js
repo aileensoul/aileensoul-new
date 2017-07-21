@@ -66,6 +66,7 @@ function checkvalue_search() {
 // CHECK SEARCH KEYWORD AND LOCATION BLANK END
 //CODE FOR VALIDATION OF SKILL AND OTHER SKILL START
 function imgval() {
+    $("#postinfo .select2-selection").addClass("keyskill_border_active");
     var skill_main = document.getElementById("skills").value;
     var skill_other = document.getElementById("other_skill").value;
     if (skill_main == '' && skill_other == '') {

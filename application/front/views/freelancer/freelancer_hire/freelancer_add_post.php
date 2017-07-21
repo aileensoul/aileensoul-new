@@ -277,7 +277,7 @@
                                             }
                                             else {
                                                 ?>
-                                                <option value="">Select Country first</option>
+                                                <option value="">Select State first</option>
 
                                                 <?php
                                             }

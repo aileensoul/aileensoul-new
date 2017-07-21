@@ -161,7 +161,7 @@
                                             $userid = $this->session->userdata('aileenuser');
                                             if ($userid != $freelancerpostdata[0]['user_id']) {
                                                 ?>
-                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3).'/3/4'); ?>">Message</a> </li>
+                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/3/4'); ?>">Message</a> </li>
                                             <?php } ?>
                                         </ul>
                                     </div>
@@ -355,6 +355,9 @@
                                                                                     echo $post['post_exp_year'];
                                                                                 }
                                                                                 if ($post['post_exp_month']) {
+                                                                                    if ($post['post_exp_year'] == '') {
+                                                                                        echo 0;
+                                                                                    }
                                                                                     echo ".";
                                                                                     echo $post['post_exp_month'];
                                                                                 }

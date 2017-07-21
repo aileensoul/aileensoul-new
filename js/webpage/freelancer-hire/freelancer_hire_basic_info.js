@@ -71,6 +71,18 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
             }         
    // return regexpr.test(value);
 }, "Number, space and special character are not allowed");
+
+$.validator.addMethod("regx1", function(value, element, regexpr) {          
+    if(!value) 
+            {
+                return true;
+            }
+            else
+            {
+                  return regexpr.test(value);
+            }  
+}, "Enter a number between 8 to 15 digit");
+
     $(document).ready(function () {
         $("#basic_info").validate({
             rules: {
@@ -97,9 +109,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                     },
                 },
                 phone: {
-                    number: true,
-                     minlength: 8,
-                      maxlength:15
+                   regx1:/^[0-9\-\+]{9,15}$/,
                      },
             },
 
