@@ -1329,6 +1329,9 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
     public function art_manage_post($id = "") {
 
+
+        $this->data['artid'] = $id;
+
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start
@@ -11558,5 +11561,375 @@ public function art_home_post() {
         // return html        
     }
 
-// all post fatch using aajx end
+//all post fatch using aajx end
+
+//photos video audio pdf fatch using ajax art_manage_post start
+
+
+ public function artistic_photos() {
+
+        $id = $_POST['art_id'];
+        // manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+
+       if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+
+
+        $contition_array = array('user_id' => $artisticdata[0]['user_id']);
+        $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+
+        foreach ($artimage as $val) {
+
+
+
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+            $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $multipleimage[] = $artmultiimage;
+        }
+        $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+
+        foreach ($multipleimage as $mke => $mval) {
+
+                            foreach ($mval as $mke1 => $mval1) {
+                                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+
+                                if (in_array($ext, $allowed)) {
+                                    $singlearray[] = $mval1;
+                                }
+                            }
+                        }
+
+        if ($singlearray) {
+            $i = 0;
+            foreach ($singlearray as $mi) {
+                $fetch_result .= '<div class="image_profile">';
+                $fetch_result .= '<img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $mi['image_name']) . '" alt="img1">';
+                $fetch_result .= '</div>';
+
+                $i++;
+                if ($i == 6)
+                    break;
+            }
+        } else {
+
+            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
+        }
+
+        $fetch_result .= '<div class="dataconphoto"></div>';
+
+        echo $fetch_result;
+    }
+
+    public function artistic_videos() {
+
+        $id = $_POST['art_id'];
+        // manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+    
+
+         if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+       $contition_array = array('user_id' => $artisticdata[0]['user_id']);
+       $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        foreach ($artimage as $val) {
+
+
+
+           $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+           $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $multiplevideo[] = $artmultivideo;
+        }
+
+        $allowesvideo = array('mp4', '3gp', 'avi', 'ogg', '3gp', 'webm');
+
+        
+        foreach ($multiplevideo as $mke => $mval) {
+
+                                foreach ($mval as $mke1 => $mval1) {
+                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+
+                                    if (in_array($ext, $allowesvideo)) {
+                                        $singlearray1[] = $mval1;
+                                    }
+                                }
+        }
+
+        if ($singlearray1) {
+            $fetch_video .= '<tr>';
+
+            if ($singlearray1[0]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video controls>';
+
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[0]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+
+            if ($singlearray1[1]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video  controls>';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[1]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+            if ($singlearray1[2]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video  controls>';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[2]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+            $fetch_video .= '</tr>';
+            $fetch_video .= '<tr>';
+
+            if ($singlearray1[3]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video  controls>';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[3]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+            if ($singlearray1[4]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video  controls>';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[4]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+            if ($singlearray1[5]['image_name']) {
+                $fetch_video .= '<td class="image_profile">';
+                $fetch_video .= '<video  controls>';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[5]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
+                $fetch_video .= 'Your browser does not support the video tag.';
+                $fetch_video .= '</video>';
+                $fetch_video .= '</td>';
+            }
+            $fetch_video .= '</tr>';
+        } else {
+
+
+            $fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
+        }
+
+        $fetch_video .= '<div class="dataconvideo"></div>';
+
+
+        echo $fetch_video;
+    }
+
+    public function artistic_audio() {
+
+        $id = $_POST['art_id'];
+        // manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+       
+       if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+         $contition_array = array('user_id' => $artisticdata[0]['user_id']);
+         $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        foreach ($artimage as $val) {
+
+
+
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+            $artmultiaudio = $this->data['artmultiaudio'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $multipleaudio[] = $artmultiaudio;
+        }
+
+        $allowesaudio = array('mp3');
+
+        foreach ($multipleaudio as $mke => $mval) {
+
+                                foreach ($mval as $mke1 => $mval1) {
+                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+
+                                    if (in_array($ext, $allowesaudio)) {
+                                        $singlearray2[] = $mval1;
+                                    }
+                                }
+            }
+
+        if ($singlearray2) {
+            $fetchaudio .= '<tr>';
+
+            if ($singlearray2[0]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+
+            if ($singlearray2[1]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+            if ($singlearray2[2]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+            $fetchaudio .= '</tr>';
+            $fetchaudio .= '<tr>';
+
+            if ($singlearray2[3]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+            if ($singlearray2[4]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+            if ($singlearray2[5]['image_name']) {
+                $fetchaudio .= '<td class="image_profile">';
+                $fetchaudio .= '<audio  controls>';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
+                $fetchaudio .= 'Your browser does not support the audio tag.';
+                $fetchaudio .= '</audio>';
+                $fetchaudio .= '</td>';
+            }
+            $fetchaudio .= '</tr>';
+        } else {
+            $fetchaudio .= '<div class="not_available">  <p>   Audio Not Available </p></div>';
+        }
+        $fetchaudio .= '<div class="dataconaudio"></div>';
+        echo $fetchaudio;
+    }
+
+   public function artistic_pdf() {
+        $id = $_POST['art_id'];
+        
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+        
+
+        if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+        $contition_array = array('user_id' => $artisticdata[0]['user_id']);
+        $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        foreach ($artimage as $val) {
+
+                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                $artmultipdf = $this->data['artmultipdf'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                $multiplepdf[] = $artmultipdf;
+                            }
+
+        $allowespdf = array('pdf');
+         foreach ($multiplepdf as $mke => $mval) {
+
+                                foreach ($mval as $mke1 => $mval1) {
+                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+
+                                    if (in_array($ext, $allowespdf)) {
+                                        $singlearray3[] = $mval1;
+                                    }
+                                }
+                            }
+
+        if ($singlearray3) {
+
+            $i = 0;
+            foreach ($singlearray3 as $mi) {
+
+                $fetch_pdf .= '<div class="image_profile">';
+                $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
+                $fetch_pdf .= '</div></a>';
+                $fetch_pdf .= '</div>';
+
+                $i++;
+                if ($i == 6)
+                    break;
+            }
+        } else {
+            $fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
+        }
+        $fetch_pdf .= '<div class="dataconpdf"></div>';
+        echo $fetch_pdf;
+    }
+    
+
+
+//art_mange_postajax end 
 }

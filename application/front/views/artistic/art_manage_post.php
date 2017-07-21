@@ -476,67 +476,12 @@
                     <div class="profile-boxProfileCard  module buisness_he_module" style="">
 
                         <div class="head_details">
-                            <!-- <a href="<?php //echo base_url('artistic/art_photos/' . $artisticdata[0]['user_id']) ?>"> --><h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5><!-- </a> -->
+                            <!-- <a href="<?php //echo base_url('artistic/art_photos/' . $artisticdata[0]['user_id']) ?>"> -->
+                            <h5><i class="fa fa-camera" aria-hidden="true"></i>   Photos</h5><!-- </a> -->
                         </div>  
 
 
-                        <?php
-                        $contition_array = array('user_id' => $artisticdata[0]['user_id']);
-                        $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                        foreach ($artimage as $val) {
-
-
-
-                            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-                            $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                            $multipleimage[] = $artmultiimage;
-                        }
-                        ?>
-                        <?php
-                        $allowed = array('gif', 'png', 'jpg');
-
-                        foreach ($multipleimage as $mke => $mval) {
-
-                            foreach ($mval as $mke1 => $mval1) {
-                                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                if (in_array($ext, $allowed)) {
-                                    $singlearray[] = $mval1;
-                                }
-                            }
-                        }
-                        ?>
-
-
-                        <?php
-                        if ($singlearray) {
-                            ?>
-
-                            <?php
-                            $i = 0;
-                            foreach ($singlearray as $mi) {
-                                ?>
-                                <div class="image_profile">
-
-                                    <img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $mi['image_name']) ?>" alt="img1">
-
-                                </div>
-                                <?php
-                                $i++;
-                                if ($i == 6)
-                                    break;
-                            }
-                            ?>
-
-
-                        <?php } else { ?>
-                            <div class="not_available">  <p>Photos Not Available</p></div>
-
-                        <?php } ?>
-                        <div class="dataconphoto"></div>
+                        <div class="art_photos"></div>
 
                     </div>
                 </div>
@@ -548,102 +493,7 @@
                             <div class="head_details">
                                  <h5><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</h5>
                             </div>
-                            <?php
-                            $contition_array = array('user_id' => $artisticdata[0]['user_id']);
-                            $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                            foreach ($artimage as $val) {
-
-
-
-                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-                                $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                $multiplevideo[] = $artmultivideo;
-                            }
-                            ?>
-                            <?php
-                            $allowesvideo = array('mp4', '3gp', 'avi', 'ogg', '3gp', 'webm');
-
-                            foreach ($multiplevideo as $mke => $mval) {
-
-                                foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                    if (in_array($ext, $allowesvideo)) {
-                                        $singlearray1[] = $mval1;
-                                    }
-                                }
-                            }
-                            ?>
-
-                            <?php if ($singlearray1) { ?>
-                                <tr>
-
-                                    <?php if ($singlearray1[0]['image_name']) { ?>
-                                        <td class="image_profile"> 
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[0]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-
-                                    <?php if ($singlearray1[1]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[1]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray1[2]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[2]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-                                </tr>
-                                <tr>
-
-                                    <?php if ($singlearray1[3]['image_name']) { ?>
-                                        <td class="image_profile"> 
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[3]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray1[4]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[4]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray1[5]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <video  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray1[5]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </td>
-                                    <?php } ?>
-                                </tr>
-                            <?php } else { ?>
-                                <div class="not_available">  <p> Video Not Available</p></div>
-                            <?php } ?>
-                            <div class="dataconvideo"></div>
+                            <div class="art_videos"></div>
                         </table>
 
                     </div>
@@ -656,104 +506,8 @@
                             <div class="head_details">
                                  <h5><i class="fa fa-music" aria-hidden="true"></i>  Audio</h5>
                             </div>
-                            <?php
-                            $contition_array = array('user_id' => $artisticdata[0]['user_id']);
-                            $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                            foreach ($artimage as $val) {
-
-
-
-                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-                                $artmultiaudio = $this->data['artmultiaudio'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                $multipleaudio[] = $artmultiaudio;
-                            }
-                            ?>
-                            <?php
-                            $allowesaudio = array('mp3');
-
-                            foreach ($multipleaudio as $mke => $mval) {
-
-                                foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                    if (in_array($ext, $allowesaudio)) {
-                                        $singlearray2[] = $mval1;
-                                    }
-                                }
-                            }
-                            ?>
-
-                            <?php if ($singlearray2) { ?>
-                                <tr>
-
-                                    <?php if ($singlearray2[0]['image_name']) { ?>
-                                        <td class="image_profile"> 
-                                            <audio  controls>
-
-
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['image_name']) ?>" type="audio/mp3"">
-                                                <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-
-                                    <?php if ($singlearray2[1]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <audio  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['image_name']) ?>" type="audio/mp3"">
-                                                <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray2[2]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <audio  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['image_name']) ?> type="audio/mp3"">
-                                                        <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-                                </tr>
-                                <tr>
-
-                                    <?php if ($singlearray2[3]['image_name']) { ?>
-                                        <td class="image_profile"> 
-                                            <audio  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['image_name']) ?>" type="video/mp4">
-                                                <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray2[4]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <audio  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['image_name']) ?>" type="audio/mp3"">
-                                                <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-                                    <?php if ($singlearray2[5]['image_name']) { ?>
-                                        <td class="image_profile">
-                                            <audio  controls>
-                                                <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['image_name']) ?>" type="audio/mp3"">
-                                                <source src="movie.ogg" type="audio/mp3">
-                                                Your browser does not support the audio tag.
-                                            </audio>
-                                        </td>
-                                    <?php } ?>
-                                </tr>
-                            <?php } else { ?>
-                                <div class="not_available">  <p>  Audio Not Available</p> </div>
-                            <?php } ?>
-                            <div class="dataconaudio"></div>
+    
+                            <div class="art_audios"></div>
                         </table>
 
                     </div>
@@ -762,73 +516,12 @@
                 <a href="<?php echo base_url('artistic/art_pdf/' . $artisticdata[0]['user_id']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
-                        <table class="business_data_table">
+                        
                             <div class="head_details">
                                  <h5><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  PDF</h5>
                             </div>
-                            <?php
-                            $contition_array = array('user_id' => $artisticdata[0]['user_id']);
-                            $artimage = $this->data['artimage'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                            foreach ($artimage as $val) {
-
-
-
-                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-                                $artmultipdf = $this->data['artmultipdf'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                                $multiplepdf[] = $artmultipdf;
-                            }
-                            ?>
-                            <?php
-                            $allowespdf = array('pdf');
-
-                            foreach ($multiplepdf as $mke => $mval) {
-
-                                foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                                    if (in_array($ext, $allowespdf)) {
-                                        $singlearray3[] = $mval1;
-                                    }
-                                }
-                            }
-                            ?>
-
-                            <?php if ($singlearray3) { ?>
-
-
-                                <?php
-                                $i = 0;
-                                foreach ($singlearray3 as $mi) {
-                                    ?>
-
-
-                                    <div class="image_profile">
-
-
-                                        <a href="<?php echo base_url('artistic/creat_pdf/' . $singlearray3[0]['image_id']) ?>"><div class="pdf_img">
-                                                <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
-                                            </div></a>
-                                    </div>
-
-                                    <?php
-                                    $i++;
-                                    if ($i == 6)
-                                        break;
-                                }
-                                ?>
-
-                            <?php }else { ?>
-                                <div class="not_available">  <p>    Pdf Not Available</p>
-                                </div>
-                            <?php } ?>
-
-                            <div class="dataconpdf"></div>
-
-                        </table>
-
+                            
+                            <div class="art_pdf"></div>
                     </div>
                 </div>
                 </a>
@@ -897,7 +590,7 @@ $loginuser = $userdata[0]['art_id'];
                     <span class="close3">&times;</span>
 
                     <div class="post-editor col-md-12 post-edit-popup" id="close">
-                        <?php echo form_open_multipart(base_url('artistic/art_post_insert/' . 'manage/' . $artisticdata[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix', 'onsubmit' => "return imgval(event);")); ?>
+                        <?php echo form_open_multipart(base_url('artistic/art_post_insert/' . 'manage/' . $artisticdata[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event);")); ?>
 
                         <div class="main-text-area col-md-12" >
                             <div class="popup-img-in "> <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
@@ -954,8 +647,16 @@ $loginuser = $userdata[0]['art_id'];
             <!-- popup end -->
             
           
-                <div class="job-contact-frnd ">
+                <div class="job-contact-frnd">
 
+                    <div class='progress' id="progress_div" style="display: none">
+                                    <div class='bar' id='bar'></div>
+                                    <div class='percent' id='percent'>0%</div>
+                                </div>
+                                <div class="artistic-all-post">
+                                    <div class="nofoundpost"> 
+                                    </div>
+                                </div>
 
                     <?php
 //echo "<pre>"; print_r($artsdata); die();
@@ -963,7 +664,7 @@ $loginuser = $userdata[0]['art_id'];
                         foreach ($artsdata as $row) {
 
                             ?>
-
+                            <div class="fw">
             <div id="<?php echo "removepost" . $row['art_post_id']; ?>">
                  <div class="profile-job-post-detail clearfix">
                      <div class=" post-design-box">
@@ -1692,6 +1393,7 @@ $loginuser = $userdata[0]['art_id'];
 
                             else {
                             ?>
+
                         <div class="art_no_post_avl">
          <h3>Artistic Post</h3>
           <div class="art-img-nn">
@@ -1707,7 +1409,7 @@ $loginuser = $userdata[0]['art_id'];
        </div>
 
 <?php } ?>
-
+</div>
 <!-- for no post found msg show using ajax start -->
     <div class="nofoundpost">
     </div>
@@ -1840,6 +1542,93 @@ $loginuser = $userdata[0]['art_id'];
         </body>
         </html>
 
+
+
+<script type="text/javascript">
+    
+
+     $(document).ready(function () { //alert("hii");
+                GetArtPhotos();
+                GetArtVideos();
+                GetArtAudios();
+                GetArtPdf();
+            });
+
+
+
+    function GetArtPhotos() {
+                var slug = '<?php echo $artid; ?>';
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "artistic/artistic_photos" ?>',
+                    data: 'art_id=' + slug,
+                    beforeSend: function () {
+                        $(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('.art_photos').html(data);
+
+                    }
+                });
+
+            }
+
+            function GetArtVideos() {
+                var slug = '<?php echo $artid; ?>';
+
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "artistic/artistic_videos" ?>',
+                    data: 'art_id=' + slug,
+                    beforeSend: function () {
+                        $(".art_videos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('.art_videos').html(data);
+                    }
+                });
+
+            }
+
+            function GetArtAudios() {
+                var slug = '<?php echo $artid; ?>';
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "artistic/artistic_audio" ?>',
+                    data: 'art_id=' + slug,
+                    beforeSend: function () {
+                        $(".art_audios").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('.art_audios').html(data);
+
+                    }
+                });
+
+            }
+
+            function GetArtPdf() {
+                var slug = '<?php echo $artid; ?>';
+                //alert("hii");
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo base_url() . "artistic/artistic_pdf" ?>',
+                    data: 'art_id=' + slug,
+                    beforeSend: function () {
+                        $(".art_pdf").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('.art_pdf').html(data);
+
+                    }
+                });
+
+            }
+</script>
 
 
  <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
@@ -4693,6 +4482,60 @@ $('.modal-post').hide();
   
 
 </script>
+
+
+<script type = "text/javascript" src = "//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js"></script>
+
+        <script>
+            jQuery(document).ready(function ($) {
+
+                var bar = $('#bar');
+                var percent = $('#percent');
+
+                var options = {
+                    beforeSend: function () {
+                        // Replace this with your loading gif image
+                        document.getElementById("myModal3").style.display = "none";
+                        document.getElementById("progress_div").style.display = "block";
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+
+                    },
+                    complete: function (response) {
+
+
+            document.getElementById('test-upload-product').value = null;
+            document.getElementById('test-upload-des').value = null;
+
+            $(".file-preview-frame").hide();
+             
+
+                        // Output AJAX response to the div container
+                        $('#progress_div').fadeOut('5000').remove();
+                        
+                        $(".job-contact-frnd").prepend(response.responseText);
+                        $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+                    }
+                };
+                // Submit the form
+                $(".upload-image-form").ajaxForm(options);
+                return false;
+            });
+        </script>
+
+
+
 
 
 
