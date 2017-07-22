@@ -654,7 +654,7 @@
 
             function comment_deletedtwo(clicked_id)
             {
-                var post_delete1 = document.getElementById("post_deletetwo");
+                var post_delete1 = document.getElementById("post_deletetwo" + clicked_id);
                 $.ajax({
                     type: 'POST',
                     url: '<?php echo base_url() . "business_profile/delete_commenttwo" ?>',
