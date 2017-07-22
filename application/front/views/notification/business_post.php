@@ -360,7 +360,7 @@
                                 $contition_array = array('business_profile_post_id' => $busienss_data[0]['business_profile_post_id'], 'status' => '1');
                                 $businessdelete = $this->data['businessdelete'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 $likeuserarray = explode(',', $businessdelete[0]['delete_post']);
-                                if (!in_array($userid, $likeuserarray)) {
+                                if (!in_array($userid, $likeuserarray) && $businessdelete[0]['is_delete'] == '0') {
                                     ?>
                                     <div id="<?php echo "removepost" . $busienss_data[0]['business_profile_post_id']; ?>">
                                         <div class="col-md-12 col-sm-12 post-design-box">
@@ -1094,7 +1094,14 @@
                                         </div></div>
                                     <?php
                                 }
-                            } else {
+
+                                else if($businessdelete[0]['is_delete'] == '1'){?>
+
+                           <div class="text-center rio">
+                                <h4 class="page-heading  product-listing" >Sorry, this content isn't available at the moment.</h4>
+                            </div>
+
+                           <?php }  } else {
                                 ?>
 
                                 <div class="text-center rio">

@@ -278,7 +278,7 @@
                             }
                             ?>
                             <div class="fw">
-                                <div class='progress' id="progress_div">
+                                 <div class='progress' id="progress_div" style="display: none">
                                     <div class='bar' id='bar'></div>
                                     <div class='percent' id='percent'>0%</div>
                                 </div>
@@ -431,7 +431,7 @@
                                                             <div id="<?php echo "khyati" . $row['business_profile_post_id']; ?>" style="display:block;">
                                                                 <?php
                                                                 $small = substr($row['product_description'], 0, 180);
-                                                                echo $small;
+                                                                echo $this->common->make_links($small);
                                                                 if (strlen($row['product_description']) > 180) {
                                                                     echo '... <span id="kkkk" onClick="khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
                                                                 }
@@ -3029,25 +3029,48 @@
         <script type = "text/javascript" src = "//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.js"></script>
 
         <script>
-            jQuery(document).ready(function ($) {
+                jQuery(document).ready(function ($) {
+
+
+                var bar = $('#bar');
+                var percent = $('#percent');
 
                 var options = {
-                    beforeSend: function () {
-                        // Replace this with your loading gif image
-                        document.getElementById("myModal3").style.display = "none";
-                        $(".fw").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                beforeSend: function () {
+                // Replace this with your loading gif image
+                //$('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
+                //                document.getElementById("progress-div").style.display = "block";
+                //                $("#progress-bar").width('0%');
+                document.getElementById("myModal3").style.display = "none";
+                 document.getElementById("progress_div").style.display = "block";
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                },
+                uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
                     },
-                    complete: function (response) {
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+
+                    },
+                        
+                        complete: function (response) { //alert(response.responseText);
 
 
-            document.getElementById('test-upload-product').value = null;
-            document.getElementById('test-upload-des').value = null;
+            document.getElementById('test-upload_product').value = null;
+            document.getElementById('test-upload_des').value = null;
 
             $(".file-preview-frame").hide();
              
 
                         // Output AJAX response to the div container
-                        $('.loader').remove();
+                        $('#progress_div').fadeOut('5000').remove();
+                        
                         $(".fw").prepend(response.responseText);
                         $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
                     }
@@ -3055,8 +3078,8 @@
                 // Submit the form
                 $(".upload-image-form").ajaxForm(options);
                 return false;
-            });
-        </script>
+                });
+            </script>
 
         <!-- 180 words more than script start -->
 
@@ -3167,5 +3190,89 @@
 
 
 </script>
+
+
+<script>
+   jQuery.noConflict();
+   
+   (function ($) {
+   
+       var data = <?php echo json_encode($demo); ?>;
+       //alert(data);
+   
+   
+       $(function () {
+           // alert('hi');
+           $("#tags1").autocomplete({
+               source: function (request, response) {
+                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                   response($.grep(data, function (item) {
+                       return matcher.test(item.label);
+                   }));
+               },
+               minLength: 1,
+               select: function (event, ui) {
+                   event.preventDefault();
+                   $("#tag1").val(ui.item.label);
+                   $("#selected-tag").val(ui.item.label);
+                   // window.location.href = ui.item.value;
+               }
+               ,
+               focus: function (event, ui) {
+                   event.preventDefault();
+                   $("#tags1").val(ui.item.label);
+               }
+           });
+       });
+   
+   })(jQuery);
+   
+</script>
+<script>
+   jQuery.noConflict();
+   
+   (function ($) {
+   
+       var data1 = <?php echo json_encode($de); ?>;
+       //alert(data);
+   
+   
+       $(function () {
+           // alert('hi');
+           $("#searchplace1").autocomplete({
+               source: function (request, response) {
+                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                   response($.grep(data1, function (item) {
+                       return matcher.test(item.label);
+                   }));
+               },
+               minLength: 1,
+               select: function (event, ui) {
+                   event.preventDefault();
+                   $("#searchplace1").val(ui.item.label);
+                   $("#selected-tag").val(ui.item.label);
+                   // window.location.href = ui.item.value;
+               }
+               ,
+               focus: function (event, ui) {
+                   event.preventDefault();
+                   $("#searchplace1").val(ui.item.label);
+               }
+           });
+       });
+   
+   })(jQuery);
+   
+</script>
+
+          <script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script>
     </body>
 </html>

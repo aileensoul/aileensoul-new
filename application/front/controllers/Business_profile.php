@@ -1588,7 +1588,7 @@ class Business_profile extends MY_Controller {
                                     <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
 
             $small = substr($row['product_description'], 0, 180);
-            $return_html .= $small;
+            $return_html .= $this->common->make_links($small);
             if (strlen($row['product_description']) > 180) {
                 $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
             }
@@ -4203,7 +4203,7 @@ class Business_profile extends MY_Controller {
             }
             if ($this->data['businessdata'][0]['product_description']) {
                 $small = substr($businessdata[0]['product_description'], 0, 180);
-                $editpostdes .= $small;
+                $editpostdes .= $this->common->make_links($small);
                 if (strlen($businessdata[0]['product_description']) > 180) {
                     $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["business_profile_post_id"] . ')">View More</div>';
                 }

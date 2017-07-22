@@ -504,3 +504,87 @@
         });
     });
 </script>
+
+
+<script>
+   jQuery.noConflict();
+   
+   (function ($) {
+   
+       var data = <?php echo json_encode($demo); ?>;
+       //alert(data);
+   
+   
+       $(function () {
+           // alert('hi');
+           $("#tags1").autocomplete({
+               source: function (request, response) {
+                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                   response($.grep(data, function (item) {
+                       return matcher.test(item.label);
+                   }));
+               },
+               minLength: 1,
+               select: function (event, ui) {
+                   event.preventDefault();
+                   $("#tag1").val(ui.item.label);
+                   $("#selected-tag").val(ui.item.label);
+                   // window.location.href = ui.item.value;
+               }
+               ,
+               focus: function (event, ui) {
+                   event.preventDefault();
+                   $("#tags1").val(ui.item.label);
+               }
+           });
+       });
+   
+   })(jQuery);
+   
+</script>
+<script>
+   jQuery.noConflict();
+   
+   (function ($) {
+   
+       var data1 = <?php echo json_encode($de); ?>;
+       //alert(data);
+   
+   
+       $(function () {
+           // alert('hi');
+           $("#searchplace1").autocomplete({
+               source: function (request, response) {
+                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                   response($.grep(data1, function (item) {
+                       return matcher.test(item.label);
+                   }));
+               },
+               minLength: 1,
+               select: function (event, ui) {
+                   event.preventDefault();
+                   $("#searchplace1").val(ui.item.label);
+                   $("#selected-tag").val(ui.item.label);
+                   // window.location.href = ui.item.value;
+               }
+               ,
+               focus: function (event, ui) {
+                   event.preventDefault();
+                   $("#searchplace1").val(ui.item.label);
+               }
+           });
+       });
+   
+   })(jQuery);
+   
+</script>
+
+          <script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script>
