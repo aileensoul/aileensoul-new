@@ -181,7 +181,6 @@
           .header2 input::-moz-placeholder { font-size: 13px; line-height: 13px; } /* Firefox 19+ */
           .header2 input:-moz-placeholder { font-size: 14px; line-height: 3;}  /* Firefox 18- */
           .header2 .profiletitle { font-size: 11px; }
-          .header2 ul li a { font-size: 11px; padding: 5px 9px; }
           .stkiy { width: 90%; }
           /*.dropdown_hover { padding: 8px 40px 3px 8px; }*/
           .dropdown-content_hover { left: -5px; }

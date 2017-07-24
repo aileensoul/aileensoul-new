@@ -4412,7 +4412,7 @@ class Business_profile extends MY_Controller {
             $data = 'business_profile_post_id, image_id, image_name';
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-
+        $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_photos', $this->data);
     }
 
@@ -4443,7 +4443,7 @@ class Business_profile extends MY_Controller {
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
+        $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_videos', $this->data);
     }
 
@@ -4476,7 +4476,7 @@ class Business_profile extends MY_Controller {
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
+        $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_audios', $this->data);
     }
 
@@ -4508,7 +4508,7 @@ class Business_profile extends MY_Controller {
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
+        $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_pdf', $this->data);
     }
 
