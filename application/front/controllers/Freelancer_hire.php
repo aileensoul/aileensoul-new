@@ -539,16 +539,9 @@ $this->freelancer_hire_search();
          $this->session->set_flashdata('success', 'professional information updated successfully');
 
          if($userdata[0]['free_hire_step'] == 3){
-            $contition_array = array('user_id' => $userid,'status' => '1');
-         $postdata= $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         echo "<pre>"; print_r($postdata); die();
-         if(count($postdata) <= 0){
-             redirect('freelancer-hire/add-projects', refresh);
-           }else{
              redirect('freelancer-hire/employer-details', refresh);
-           }
        }else{
-        redirect('freelancer-hire/add-projects', refresh);
+        redirect('freelancer-hire/add-projects?page=professional', refresh);
        }
       }
       else

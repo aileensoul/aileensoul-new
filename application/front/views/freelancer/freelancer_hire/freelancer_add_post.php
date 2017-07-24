@@ -1,3 +1,4 @@
+<?php $pages = $_GET['page']; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -287,10 +288,11 @@
                                     </fieldset>
                                     <div class="fr">           
                                         <fieldset class="hs-submit full-width">
+                                            <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancerlancer_edit_post')) { ?>
                                                 <a class="add_post_btnc"  onclick="return leave_page(9)">Cancel</a>
                                             <?php } else { ?>
-                                                <a class="add_post_btnc"   href="javascript:history.back()">Cancel</a>
+                                                <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer/recommen_candidate'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                             <?php } ?>
                                             <input type="submit" tabindex="15" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                         </fieldset>
@@ -360,6 +362,7 @@
                 var city = document.getElementById('city').value;
                 var searchkeyword = $.trim(document.getElementById('tags').value);
                 var searchplace = $.trim(document.getElementById('searchplace').value);
+                var page = document.getElementById('page').value;
                 if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && other_skill == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
                 {
                     if (clicked_id == 1)
@@ -413,7 +416,11 @@
                     }
                     if (clicked_id == 9)
                     {
-                        location.href = 'javascript:history.back()';
+                        if (page == 'professional') {
+                            location.href = '<?php echo base_url('freelancer/recommen_candidate'); ?>';
+                        } else {
+                            location.href = 'javascript:history.back()';
+                        }
 
                     }
 

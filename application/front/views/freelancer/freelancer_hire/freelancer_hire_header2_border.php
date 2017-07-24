@@ -15,11 +15,11 @@
                         </div>
                         <div id="search">
                             <button type="button" class="close">×</button>
-                            <form>
+                            <form action=<?php echo base_url('freelancer-hire/search')?> method="get">
                                 <div class="new-search-input">
-                                    <input type="search" value="" placeholder="Find Your Job" />
-                                    <input type="search" value="" placeholder="Find Your Location" />
-                                    <button type="submit" class="btn btn-primary">Search</button>
+                                    <input type="text" id="tags" name="skills" placeholder="Find Your freelancer"/>
+                                    <input type="text" id="searchplace" name="searchplace" placeholder="Find Your Location"/>
+                                    <button type="submit" name="search_submit" value="Search" class="btn btn-primary" onclick="return checkvalue()">Search</button>
                                 </div>
                             </form>
                         </div>

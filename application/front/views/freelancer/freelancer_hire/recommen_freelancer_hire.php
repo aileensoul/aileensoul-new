@@ -225,7 +225,7 @@
                                   }
                                   else
                                   {
-                                     echo '"' .  $keyword . '"'; echo  " and "; echo '"' .  $keyword1 . '"';
+                                     echo '"' .  $keyword . '"'; echo  " In "; echo '"' .  $keyword1 . '"';
                                   }
               ?></h3>
                                 <div class="contact-frnd-post">

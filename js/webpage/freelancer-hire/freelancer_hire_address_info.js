@@ -140,7 +140,7 @@ $(document).ready(function () {
                 regx: /^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9]*[-@./#&+,\w\s]*$/,
             },
             pincode: {
-                regx1: /(?=.*[0-9])(?=.*[a-z])^[a-z0-9]{0,12}$/
+                regx1: /^.{0,12}$/
             },
         },
 
