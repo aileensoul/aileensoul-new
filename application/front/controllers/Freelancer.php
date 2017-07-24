@@ -1578,7 +1578,7 @@ class Freelancer extends MY_Controller {
             $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
             $post_reg_skill = explode(',', $freelancer_post_area);
             foreach ($post_reg_skill as $key => $value) {
-                $contition_array = array('status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+                $contition_array = array('is_delete' => 0,'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
                 $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'post_id,post_name,post_field_req,post_est_time,post_skill,post_exp_month,post_exp_year,post_other_skill,post_description,post_rate,post_last_date,user_id,created_date,post_currency,post_rating_type,country,city', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($freelancer_post_data) {
                     $freedata[] = $freelancer_post_data;
@@ -1590,7 +1590,7 @@ class Freelancer extends MY_Controller {
             $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
             $post_reg_skill = explode(',', $freelancer_post_area);
             foreach ($post_reg_skill as $key => $value) {
-                $contition_array = array('status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+                $contition_array = array('is_delete' => 0,'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
                 $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'post_id,post_name,post_field_req,post_est_time,post_skill,post_exp_month,post_exp_year,post_other_skill,post_description,post_rate,post_last_date,user_id,created_date,post_currency,post_rating_type,country,city', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($freelancer_post_data) {
                     $freedata[] = $freelancer_post_data;
