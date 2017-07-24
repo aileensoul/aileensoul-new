@@ -21,6 +21,29 @@ $(function () {
         }
     });
 });
+$(function () {
+    // alert(data);
+    $("#tags1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+            // window.location.href = ui.item.value;
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+        }
+    });
+});
 //CODE FOR AUTOFILL OF SEARCH KEYWORD END
 //CODE FOR AUTOFILL OF SEARCH PLACE START
 $(function () {
@@ -45,12 +68,41 @@ $(function () {
         }
     });
 });
+$(function () {
+    $("#searchplace1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data1, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+            // window.location.href = ui.item.value;
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+        }
+    });
+});
 //CODE FOR AUTOFILL OF SEARCH PLACE END
 //FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK START
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
     if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
         return false;
     }
 }

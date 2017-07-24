@@ -1,326 +1,375 @@
 //        CODE FOR AUTOFILL OF SEARCH KEYWORD START
-        $(function () {
-            $("#tags").autocomplete({
-                source: function (request, response) {
-                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                    response($.grep(data, function (item) {
-                        return matcher.test(item.label);
-                    }));
-                },
-                minLength: 1,
-                select: function (event, ui) {
-                    event.preventDefault();
-                    $("#tags").val(ui.item.label);
-                    $("#selected-tag").val(ui.item.label);
-                }
-                ,
-                focus: function (event, ui) {
-                    event.preventDefault();
-                    $("#tags").val(ui.item.label);
-                }
-            });
-        });
+$(function () {
+    $("#tags").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#tags").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#tags").val(ui.item.label);
+        }
+    });
+});
+$(function () {
+    $("#tags1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+        }
+    });
+});
 
 //CODE FOR AUTOFILL OF SEARCH KEYWORD END
 //  CODE FOR AUTOFILL OF SEARCH LOCATION START
-        $(function () {
-            $("#searchplace").autocomplete({
-                source: function (request, response) {
-                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                    response($.grep(data1, function (item) {
-                        return matcher.test(item.label);
-                    }));
-                },
-                minLength: 1,
-                select: function (event, ui) {
-                    event.preventDefault();
-                    $("#searchplace").val(ui.item.label);
-                    $("#selected-tag").val(ui.item.label);
-                }
-                ,
-                focus: function (event, ui) {
-                    event.preventDefault();
-                    $("#searchplace").val(ui.item.label);
-                }
-            });
-        });
+$(function () {
+    $("#searchplace").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data1, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace").val(ui.item.label);
+        }
+    });
+});
+$(function () {
+    $("#searchplace1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data1, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+        }
+    });
+});
 // CODE FOR AUTOFILL OF SEARCH LOCATION END
 
 //CODE FOR DESIGNATION START
-        function divClicked() {
-            var divHtml = $(this).html();
-            var editableText = $("<textarea />");
-            editableText.val(divHtml);
-            $(this).replaceWith(editableText);
-            editableText.focus();
-            // setup the blur event for this new textarea
-            editableText.blur(editableTextBlurred);
+function divClicked() {
+    var divHtml = $(this).html();
+    var editableText = $("<textarea />");
+    editableText.val(divHtml);
+    $(this).replaceWith(editableText);
+    editableText.focus();
+    // setup the blur event for this new textarea
+    editableText.blur(editableTextBlurred);
+}
+
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<a>");
+    if (html.match(/^\s*$/) || html == '') {
+        html = "Current Work";
+    }
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+    viewableText.click(divClicked);
+
+    $.ajax({
+        url: base_url + "freelancer/hire_designation",
+        type: "POST",
+        data: {"designation": html},
+        success: function (response) {
+
         }
+    });
+}
 
-        function editableTextBlurred() {
-            var html = $(this).val();
-            var viewableText = $("<a>");
-            if (html.match(/^\s*$/) || html == '') {
-                html = "Current Work";
-            }
-            viewableText.html(html);
-            $(this).replaceWith(viewableText);
-            // setup the click event for this new div
-            viewableText.click(divClicked);
-
-            $.ajax({
-                url:  base_url + "freelancer/hire_designation",
-                type: "POST",
-                data: {"designation": html},
-                success: function (response) {
-
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            $("a.designation").click(divClicked);
-        });
+$(document).ready(function () {
+    $("a.designation").click(divClicked);
+});
 
 //CODE FOR DESIGNATION END
 
 //CODE FOR PROFILE PIC START
-        function updateprofilepopup(id) {
-            $('#bidmodal-2').modal('show');
-        }
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
+}
 
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('preview').style.display = 'block';
-                    $('#preview').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('preview').style.display = 'block';
+            $('#preview').attr('src', e.target.result);
         }
-        $("#profilepic").change(function () {
-            profile = this.files;
-            if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                $('#profilepic').val('');
-                picpopup();
-                return false;
-            } else {
-                readURL(this);
-            }
-        });
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#profilepic").change(function () {
+    profile = this.files;
+    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        $('#profilepic').val('');
+        picpopup();
+        return false;
+    } else {
+        readURL(this);
+    }
+});
 
 //CODE FOR PROFILE PIC END
 
 //CHECK FOR SEAH KEYWORD AND LOCATION BLANK START
-        function checkvalue() {
-            var searchkeyword = $.trim(document.getElementById('tags').value);
-            var searchplace = $.trim(document.getElementById('searchplace').value);
-            if (searchkeyword == "" && searchplace == "") {
-                return false;
-            }
-        }
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
 //CHECK FOR SEAH KEYWORD AND LOCATION BLANK END
 //CODE FOR COVER PIC START
-        function myFunction() {
-            document.getElementById("upload-demo").style.visibility = "hidden";
-            document.getElementById("upload-demo-i").style.visibility = "hidden";
-            document.getElementById('message1').style.display = "block";
-        }
-        function showDiv() {
-            document.getElementById('row1').style.display = "block";
-            document.getElementById('row2').style.display = "none";
-        }
+function myFunction() {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+}
+function showDiv() {
+    document.getElementById('row1').style.display = "block";
+    document.getElementById('row2').style.display = "none";
+}
 
-        $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 1250,
-                height: 350,
-                type: 'square'
-            },
-            boundary: {
-                width: 1250,
-                height: 350
-            }
-        });
-        $('.upload-result').on('click', function (ev) {
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport'
-            }).then(function (resp) {
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
+$('.upload-result').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
 
-                $.ajax({
-                    url:  base_url + "freelancer/ajaxpro_hire",
-                    type: "POST",
-                    data: {"image": resp},
-                    success: function (data) {
-                        html = '<img src="' + resp + '" />';
-                        if (html) {
-                            window.location.reload();
-                        }
-                    }
-                });
-
-            });
-        });
-        $('.cancel-result').on('click', function (ev) {
-            document.getElementById('row2').style.display = "block";
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('message1').style.display = "none";
-        });
-        $('#upload').on('change', function () {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function () {
-                    console.log('jQuery bind complete');
-                });
-
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-
-        $('#upload').on('change', function () {
-            var fd = new FormData();
-            fd.append("image", $("#upload")[0].files[0]);
-            files = this.files;
-            size = files[0].size;
-            // code start for file type support
-            if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                picpopup();
-                document.getElementById('row1').style.display = "none";
-                document.getElementById('row2').style.display = "block";
-                $("#upload").val('');
-                return false;
-            }
-            // file type code end
-            if (size > 26214400)
-            {
-                alert("Allowed file size exceeded. (Max. 25 MB)")
-                document.getElementById('row1').style.display = "none";
-                document.getElementById('row2').style.display = "block";
-                return false;
-            }
-            $.ajax({
-
-                url:  base_url + "freelancer/image_hire",
-                type: "POST",
-                data: fd,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-
+        $.ajax({
+            url: base_url + "freelancer/ajaxpro_hire",
+            type: "POST",
+            data: {"image": resp},
+            success: function (data) {
+                html = '<img src="' + resp + '" />';
+                if (html) {
+                    window.location.reload();
                 }
-            });
+            }
         });
 
-        // Get the modal
-        var modal = document.getElementById('myModal');
+    });
+});
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+$('#upload').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+    }
+    reader.readAsDataURL(this.files[0]);
+});
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+$('#upload').on('change', function () {
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+    files = this.files;
+    size = files[0].size;
+    // code start for file type support
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        picpopup();
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        $("#upload").val('');
+        return false;
+    }
+    // file type code end
+    if (size > 26214400)
+    {
+        alert("Allowed file size exceeded. (Max. 25 MB)")
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        return false;
+    }
+    $.ajax({
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
+        url: base_url + "freelancer/image_hire",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+
         }
+    });
+});
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
+// Get the modal
+var modal = document.getElementById('myModal');
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 //CODE FOR COVER PIC END
 //REMOVE USER START
-        function remove_user(abc)
-        {
-            $.ajax({
-                type: 'POST',
-                url:  base_url + "freelancer/remove_save",
-                data: 'save_id=' + abc,
-                success: function (data) {
-                    $('#' + 'removeapply' + abc).html(data);
-                    $('#' + 'removeapply' + abc).parent().removeClass();
-                    var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                    if (numItems == '0') {
-                        var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Freelancer Found.</h4></div>";
-                        $('.contact-frnd-post').html(nodataHtml);
-                    }
-                }
-            });
+function remove_user(abc)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "freelancer/remove_save",
+        data: 'save_id=' + abc,
+        success: function (data) {
+            $('#' + 'removeapply' + abc).html(data);
+            $('#' + 'removeapply' + abc).parent().removeClass();
+            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+            if (numItems == '0') {
+                var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Freelancer Found.</h4></div>";
+                $('.contact-frnd-post').html(nodataHtml);
+            }
         }
+    });
+}
 
-        function removepopup(id) {
-            $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this freelancer?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_user(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-            $('#bidmodal').modal('show');
-        }
+function removepopup(id) {
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this freelancer?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_user(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
 //REMOVE USER END
 //CODE FOR PROFILE PIC AND COVERPIC IMG TYPE POPUP START
-        function picpopup() {
-            $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
-            $('#bidmodal').modal('show');
-        }
+function picpopup() {
+    $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
+    $('#bidmodal').modal('show');
+}
 //CODE FOR PROFILE PIC AND COVERPIC IMG TYPE POPUP END
 
 //VALIDATION FOR PROFILE PIC START
-        $(document).ready(function () {
+$(document).ready(function () {
 
-            $("#userimage").validate({
+    $("#userimage").validate({
 
-                rules: {
+        rules: {
 
-                    profilepic: {
+            profilepic: {
 
-                        required: true,
+                required: true,
 
-                    },
+            },
 
-                },
+        },
 
-                messages: {
+        messages: {
 
-                    profilepic: {
+            profilepic: {
 
-                        required: "Photo Required",
+                required: "Photo Required",
 
-                    },
+            },
 
-                },
+        },
 
-            });
-        });
+    });
+});
 //VALIDATION FOR PROFILE PIC END
 
 //ALL POPUP CLOSE BY ESC START
-        $(document).on('keydown', function (e) {
-            if (e.keyCode === 27) {
-                $('#bidmodal').modal('hide');
-            }
-        });
-        $(document).on('keydown', function (e) {
-            if (e.keyCode === 27) {
-                $('#bidmodal-2').modal('hide');
-            }
-        });
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal').modal('hide');
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal-2').modal('hide');
+    }
+});
 
 //ALL POPUP CLOSE BY ESC END
 
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS START
-        $(document).ready(function () {
-            $('html,body').animate({scrollTop: 265}, 100);
-        });
+$(document).ready(function () {
+    $('html,body').animate({scrollTop: 265}, 100);
+});
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
 
 
