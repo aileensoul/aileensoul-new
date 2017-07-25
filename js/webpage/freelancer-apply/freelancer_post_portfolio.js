@@ -193,9 +193,9 @@ jQuery(document).ready(function ($) {
                             contentType: false,
                             success: function (data) {
                                 if (free_post_step == 7) {
-                                    window.location =  base_url + "freelancer/freelancer_post_profile";
+                                    window.location =  base_url + "freelancer-work/freelancer-details";
                                 } else {
-                                    window.location =  base_url + "freelancer/freelancer_apply_post";
+                                    window.location =  base_url + "freelancer-work/home";
                                 }
                             }
                         });
