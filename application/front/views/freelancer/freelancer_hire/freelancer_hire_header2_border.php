@@ -31,9 +31,25 @@
                     <div class="">
                         <ul class="" id="dropdownclass">
 
-                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>">Home</a>
+                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>"><span class="bu_home"></span></a>
                             </li>
+                            <li id="Inbox_link">
+                                        <?php if ($message_count) { ?>
+                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;  ?></span> -->
+                                        <?php } ?>
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
 
+                                            <span id="message_count"></span>
+                                        </a>
+
+                                        <div id="InboxContainer">
+                                            <div id="InboxBody" class="Inbox">
+                                                <div id="notificationTitle">Messages</div>
+
+                                                <div id="notificationsmsgBody" class="notificationsmsg">
+                                                </div>
+                                            </div>
+                                    </li> 
                             <!-- Friend Request Start-->
                             <li>
                                 <!-- Friend Request End-->

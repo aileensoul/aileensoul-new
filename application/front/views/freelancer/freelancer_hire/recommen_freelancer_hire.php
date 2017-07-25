@@ -303,7 +303,8 @@
                                                                         </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>  <div class="profile-job-post-title clearfix">
+                                                        </div>  
+                                                        <div class="profile-job-post-title clearfix">
 
                                                             <div class="profile-job-profile-menu">
 
