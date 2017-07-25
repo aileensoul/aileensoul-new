@@ -51,9 +51,6 @@ function checkvalue() {
 }
 
 // for mobile view ssearch script start
-
-
-
 $(function () {
     $("#tags1").autocomplete({
         source: function (request, response) {

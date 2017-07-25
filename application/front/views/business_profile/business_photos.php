@@ -3,7 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
@@ -250,6 +249,7 @@
                 </div>
             </div>
         </div>
+        <?php echo $footer; ?>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
@@ -257,9 +257,9 @@
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+                                                            var base_url = '<?php echo base_url(); ?>';
+                                                            var data = <?php echo json_encode($demo); ?>;
+                                                            var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/photos.js'); ?>"></script>
     </body>

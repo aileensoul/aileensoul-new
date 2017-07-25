@@ -2341,13 +2341,13 @@ class Business_profile extends MY_Controller {
                 } elseif ($this->input->post('hitext') == 8) {
                     redirect('business-profile/following', refresh);
                 } elseif ($this->input->post('hitext') == 9) {
-                    redirect('business-profile/business-photos', refresh);
+                    redirect('business-profile/photos', refresh);
                 } elseif ($this->input->post('hitext') == 10) {
-                    redirect('business-profile/business-videos', refresh);
+                    redirect('business-profile/videos', refresh);
                 } elseif ($this->input->post('hitext') == 11) {
-                    redirect('business-profile/business-audios', refresh);
+                    redirect('business-profile/audios', refresh);
                 } elseif ($this->input->post('hitext') == 12) {
-                    redirect('business-profile/business-pdf', refresh);
+                    redirect('business-profile/pdf', refresh);
                 }elseif ($this->input->post('hitext') == 13) {
                     if($business_user_slug){
                         redirect('business-profile/contacts/'.$business_user_slug, refresh);
