@@ -1624,7 +1624,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="one-image">';
                     $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
+                                                    <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                 } elseif (in_array($ext, $allowespdf)) {
@@ -8546,7 +8546,7 @@ class Business_profile extends MY_Controller {
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
+                                                    <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
