@@ -50,7 +50,7 @@
                                 </div>
                                 <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form action=<?php echo base_url('search/freelancer_post_search')?> method="get">
+                                    <form action=<?php echo base_url('freelancer-work/search')?> method="get">
                                         <div class="new-search-input">
                                             <input type="text" id="tags1" name="skills" placeholder="Find Your freelancer" />
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location" />
@@ -63,7 +63,7 @@
                                 <ul class="" id="dropdownclass">
 
 
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>">Home</a>
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>">Home</a>
                                     </li>
 
                                     <!-- Friend Request Start-->
@@ -78,8 +78,8 @@
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                                <a href="<?php echo base_url('freelancer/freelancer_post_basic_information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                                <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');

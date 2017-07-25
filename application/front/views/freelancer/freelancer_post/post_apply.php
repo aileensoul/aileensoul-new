@@ -143,7 +143,7 @@
                                                 </span>
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a  href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"><?php
+                                                    <a  href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><?php
                                                         if ($freepostdata[0]['designation']) {
                                                             echo ucwords($freepostdata[0]['designation']);
                                                         } else {
@@ -152,11 +152,11 @@
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile')) { ?> class="active" <?php } ?>><a  class="padding_less_left"  title="freelancer Details" href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>">Details</a>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>><a  class="padding_less_left"  title="freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">Details</a>
                                                     </li>
-                                                    <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_save_post')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer/freelancer_save_post'); ?>">Saved </a>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>">Saved </a>
                                                     </li>
-                                                    <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_applied_post')) { ?> class="active" <?php } ?>><a title="Applied Post"  class="padding_less_right"  href="<?php echo base_url('freelancer/freelancer_applied_post'); ?>">Applied</a>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied Post"  class="padding_less_right"  href="<?php echo base_url('freelancer-work/applied-projects'); ?>">Applied</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -189,7 +189,7 @@
                                                                                         Created Date : <?php echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
                                                                                     </li>
                                                                                     <li>
-                                                                                        <a href="<?php echo base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post'); ?>" title="<?php echo ucwords($post['post_name']); ?>" class="display_inline post_title">
+                                                                                        <a href="<?php echo base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post'); ?>" title="<?php echo ucwords($post['post_name']); ?>" class="display_inline post_title">
                                                                                             <?php echo ucwords($post['post_name']); ?> </a>   </li>
                                                                                     <?php $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name; ?>
                                                                                     <?php $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name; ?>

@@ -41,42 +41,42 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul  class="left-form-each">
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '1') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_address_information'); ?>">Address Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '2') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_professional_information'); ?>">Professional Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '3') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_rate'); ?>">Rate</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/rate'); ?>">Rate</a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '4') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_avability'); ?>">Add Your Avability</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>">Add Your Avability</a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '5') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_education'); ?>"> Education</a></li>		    
+                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"> Education</a></li>		    
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer/freelancer_post_portfolio'); ?>">Portfolio</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>">Portfolio</a></li>
                                     </ul>
                                 </div>
                             </div>

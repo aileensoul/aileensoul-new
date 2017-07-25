@@ -5,7 +5,7 @@
                         
                        <!-- <?php
                          //echo form_open('search/freelancer_post_search'); ?> -->
-                         <form action=<?php echo base_url('search/freelancer_post_search')?> method="get">
+                         <form action=<?php echo base_url('freelancer-work/search')?> method="get">
                             <fieldset class="col-md-3 col-sm-5 col-xs-5">
                              <!--    <label>Find Your Skills</label>
                               -->  

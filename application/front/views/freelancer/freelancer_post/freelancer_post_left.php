@@ -5,28 +5,28 @@
 
 
                                      <?php 
-                                if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile' || $this->uri->segment(2) == 'freelancer_apply_post' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'freelancer_applied_post') && ($this->uri->segment(3) == $this->session->userdata('aileenuser')|| $this->uri->segment(3) == '')) { ?>
+                                if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser')|| $this->uri->segment(3) == '')) { ?>
 
 
-                                   <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>">Home</a>
+                                   <li <?php if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>">Home</a>
                                     </li>
 
                                 <?php }?>
                                 
-                                    <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>">Freelancer Work Profile</a>
+                                    <li <?php if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">Freelancer Work Profile</a>
                                     </li>
 
 
                                     <?php 
-                                if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile' || $this->uri->segment(2) == 'freelancer_apply_post' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'freelancer_applied_post') && ($this->uri->segment(3) == $this->session->userdata('aileenuser')|| $this->uri->segment(3) == '')) { ?>
+                                if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser')|| $this->uri->segment(3) == '')) { ?>
 
                                     
                                 
 
-                                    <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_save_post')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_save_post'); ?>">Saved Freelancer</a>
+                                    <li <?php if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/saved-projects'); ?>">Saved Freelancer</a>
                                     </li>
 
-                                    <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_applied_post')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_applied_post'); ?>">Applied Freelancer</a>
+                                    <li <?php if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/applied-projects'); ?>">Applied Freelancer</a>
                                     </li>
 
 

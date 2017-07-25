@@ -90,7 +90,7 @@
                             <ul class="">
                                
                                   
-      <li <?php if(($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>">Home</a>
+      <li <?php if(($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')){?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>">Home</a>
                                     </li>
 
                                 <!-- Friend Request Start-->
@@ -102,8 +102,8 @@
 <div class="dropdown_hover">
   <span id="art_profile">Freelancer Profile <i class="fa fa-angle-down" aria-hidden="true"></i></span>
   <div class="dropdown-content_hover" id="dropdown-content_hover">
-    <a href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a>
-    <a href="<?php echo base_url('freelancer/freelancer_post_basic_information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
+    <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><i class="fa fa-user" aria-hidden="true"></i> View Profile</a>
+    <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
 
     <?php
       $userid = $this->session->userdata('aileenuser');

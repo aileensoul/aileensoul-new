@@ -135,6 +135,20 @@ $route['freelancer-hire/deactivate'] = "freelancer/deactivate_hire";
 $route['freelancer-hire/freelancer-applied/(:any)'] = "freelancer/freelancer_apply_list/$1";
 
 //FREELANCER APPLY ROUTES SETTINGS
+$route['freelancer-work/home'] = "freelancer/freelancer_apply_post";
 $route['freelancer-work/freelancer-details/(:any)'] = "freelancer/freelancer_post_profile/$1";
+$route['freelancer-work/freelancer-details'] = "freelancer/freelancer_post_profile";
+$route['freelancer-work/saved-projects'] = "freelancer/freelancer_save_post";
+$route['freelancer-work/applied-projects'] = "freelancer/freelancer_applied_post";
+$route['freelancer-work/basic-information'] = "freelancer/freelancer_post_basic_information";
+$route['freelancer-work/address-information'] = "freelancer/freelancer_post_address_information";
+$route['freelancer-work/professional-information'] = "freelancer/freelancer_post_professional_information";
+$route['freelancer-work/rate'] = "freelancer/freelancer_post_rate";
+$route['freelancer-work/avability'] = "freelancer/freelancer_post_avability";
+$route['freelancer-work/education'] = "freelancer/freelancer_post_education";
+$route['freelancer-work/portfolio'] = "freelancer/freelancer_post_portfolio";
+$route['freelancer-work/search'] = "search/freelancer_post_search";
+
+
 /* Report Route end */
 

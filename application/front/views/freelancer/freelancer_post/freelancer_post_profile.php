@@ -134,13 +134,13 @@
                                 <?php } else { ?>
                                     <ul class="pro-fw4">
                                     <?php } ?>  
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile')) { ?> class="active" <?php } ?>>
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'freelancer_hire') { ?>
-                                            <a title="Freelancer Details" href="<?php echo base_url('freelancer/freelancer_post_profile/') . $this->uri->segment(3) . '?page=freelancer_hire'; ?>">Details</a><?php } else { ?><a title="Freelancer Details" href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>">Details</a><?php } ?>
+                                            <a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details/') . $this->uri->segment(3) . '?page=freelancer_hire'; ?>">Details</a><?php } else { ?><a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">Details</a><?php } ?>
                                     </li>
-                                    <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_post_profile' || $this->uri->segment(2) == 'freelancer_apply_post' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'freelancer_applied_post') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_save_post')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer/freelancer_save_post'); ?>">Saved Post</a> </li>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_applied_post')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelancer/freelancer_applied_post'); ?>">Applied Post</a> </li>
+                                    <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'freelancer_save_post' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>">Saved Post</a> </li>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>">Applied Post</a> </li>
                                     <?php } ?>
                                 </ul>
                                 <div class="flw_msg_btn fr">
