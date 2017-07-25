@@ -12,6 +12,8 @@ class Freelancer extends MY_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->lang->load('message', 'english');
+        
 
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');

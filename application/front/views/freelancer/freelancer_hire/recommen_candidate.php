@@ -141,9 +141,9 @@
                                                         ?></a>
                                                 </div>
                                                 <ul class=" left_box_menubar">
-                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelancer-hire/employer-details'); ?>" > Details</a></li>
-                                                    <li><a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>">Projects</a></li>
-                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>">Saved</a></li>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelancer-hire/employer-details'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
+                                                    <li><a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
+                                                    <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
 
                                                 </ul>
                                             </div>
@@ -151,7 +151,7 @@
                                     </div>                             
                                 </div>
                                 <div  class="add-post-button">
-                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> Post Project</a>
+                                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                                 </div>
                             </div>
 
@@ -169,7 +169,7 @@
                         <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                             <div class="common-form">
                                 <div class="job-saved-box">
-                                    <h3>Recommended Freelancer</h3>
+                                    <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd ">
                                             <?php
@@ -220,7 +220,7 @@
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];
                                                                                     } else {
-                                                                                        echo 'Designation';
+                                                                                        echo $this->lang->line("designation");
                                                                                     }
                                                                                     ?> </a></li>
                                                                         </ul>
@@ -231,7 +231,7 @@
                                                         </div>  <div class="profile-job-post-title clearfix">
                                                             <div class="profile-job-profile-menu">
                                                                 <ul class="clearfix">
-                                                                    <li><b>Skills</b><span>
+                                                                    <li><b><?php echo $this->lang->line("skill"); ?></b><span>
                                                                             <?php
                                                                             $aud = $row['freelancer_post_area'];
                                                                             $aud_res = explode(',', $aud);
@@ -266,14 +266,14 @@
                                                                     </li>
 
                                                                     <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
-                                                                    <li><b>Location</b><span> <?php
+                                                                    <li><b><?php echo $this->lang->line("location"); ?></b><span> <?php
                                                                             if ($cityname) {
                                                                                 echo $cityname;
                                                                             } else {
                                                                                 echo PROFILENA;
                                                                             }
                                                                             ?></span></li>
-                                                                    <li><b>Skill Description</b> <span> <p>
+                                                                    <li><b><?php echo $this->lang->line("skill_description"); ?></b> <span> <p>
                                                                                 <?php
                                                                                 if ($row['freelancer_post_skill_description']) {
                                                                                     echo $row['freelancer_post_skill_description'];
@@ -284,16 +284,16 @@
                                                                     </li>
 
 
-                                                                    <li><b>Avaiability</b><span>
+                                                                    <li><b> <?php echo $this->lang->line("avaiability"); ?></b><span>
                                                                             <?php
                                                                             if ($row['freelancer_post_work_hour']) {
-                                                                                echo $row['freelancer_post_work_hour'] . "  " . "Hours per week ";
+                                                                                echo $row['freelancer_post_work_hour'] . "  " . $this->lang->line("hours_per_week");;
                                                                             } else {
                                                                                 echo PROFILENA;
                                                                             }
                                                                             ?></span>
                                                                     </li>
-                                                                    <li><b>Rate Hourly</b> <span>
+                                                                    <li><b><?php echo $this->lang->line("rate_hourly"); ?></b> <span>
                                                                             <?php
                                                                             if ($row['freelancer_post_hourly']) {
                                                                                 $currency = $this->db->get_where('currency', array('currency_id' => $row['freelancer_post_ratestate']))->row()->currency_name;
@@ -307,7 +307,7 @@
                                                                             }
                                                                             ?></span>
                                                                     </li>
-                                                                    <li><b>Total Experience</b>
+                                                                    <li><b><?php echo $this->lang->line("total_experiance"); ?></b>
                                                                         <span> <?php
                                                                             if ($row['freelancer_post_exp_year'] || $row['freelancer_post_exp_month']) {
                                                                                 if ($row['freelancer_post_exp_month'] == '12 month' && $row['freelancer_post_exp_year'] == '') {
@@ -318,7 +318,7 @@
                                                                                     $year = explode(' ', $row['freelancer_post_exp_year']);
                                                                                     // echo $year;
                                                                                     $totalyear = $year[0] + 1;
-                                                                                    echo $totalyear . " year";
+                                                                                    echo $totalyear .  $this->lang->line("year");
                                                                                 } elseif ($row['freelancer_post_exp_year'] != '' && $row['freelancer_post_exp_month'] == '') {
                                                                                     echo $row['freelancer_post_exp_year'];
                                                                                 } elseif ($row['freelancer_post_exp_year'] != '' && $row['freelancer_post_exp_month'] == '0 month') {
@@ -344,18 +344,18 @@
                                                                     $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                        <a href="<?php echo base_url('chat/abc/' . $row['user_id'].'/3/4'); ?>">Message</a>
+                                                                        <a href="<?php echo base_url('chat/abc/' . $row['user_id'].'/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
 
                                                                         <?php
                                                                         if (!$data) {
                                                                             ?> 
                                                                             <input type="hidden" id="<?php echo 'hideenuser' . $row['user_id']; ?>" value= "<?php echo $data[0]['save_id']; ?>">
 
-                                                                            <a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>">Save</a>  
+                                                                            <a id="<?php echo $row['user_id']; ?>" onClick="savepopup(<?php echo $row['user_id']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['user_id']; ?>"><?php echo $this->lang->line("save"); ?></a>  
                                                                             <?php
                                                                         } else {
                                                                             ?>
-                                                                            <a class="saved">Saved </a> 
+                                                                            <a class="saved"><?php echo $this->lang->line("saved"); ?></a> 
                                                                             <?php
                                                                         }
                                                                     }
@@ -369,7 +369,7 @@
                                             } else {
                                                 ?>
                                                 <div class="text-center rio">
-                                                    <h4 class="page-heading  product-listing" >No Recommended Freelancer Found.</h4>
+                                                    <h4 class="page-heading  product-listing" ><?php echo $this->lang->line("no_freelancer_found"); ?></h4>
                                                 </div>
                                                 <?php
                                             }

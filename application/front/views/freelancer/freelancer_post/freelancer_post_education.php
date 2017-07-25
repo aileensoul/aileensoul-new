@@ -29,9 +29,9 @@
 
                         if ($freepostdata[0]['free_post_step'] == 7) {
                             ?> 
-                            <div class="col-md-6 col-sm-8"><h3>You are updating your Freelancer Profile.</h3></div>
+                            <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title_update"); ?></h3></div>
                         <?php } else { ?>
-                            <div class="col-md-6 col-sm-8"><h3>You are making your Freelancer Profile.</h3></div>
+                            <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title"); ?></h3></div>
                         <?php } ?>
                     </div>
                     <br>

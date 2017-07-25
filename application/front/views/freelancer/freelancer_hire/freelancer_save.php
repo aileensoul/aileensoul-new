@@ -23,9 +23,9 @@
                         <div id="upload-demo"></div>
                     </div>
                     <div class="col-md-12 cover-pic" >
-                        <button class="btn btn-success cancel-result" onclick="" >Cancel</button>
+                        <button class="btn btn-success cancel-result" onclick="" ><?php echo $this->lang->line("cancel"); ?></button>
 
-                        <button class="btn btn-success set-btn upload-result " onclick="myFunction()">Save</button>
+                        <button class="btn btn-success set-btn upload-result " onclick="myFunction()"><?php echo $this->lang->line("save"); ?></button>
 
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
@@ -75,7 +75,7 @@
 
                 <?php if ($returnpage == '') { ?>
                     <div class="upload-img">
-                        <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
+                        <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
                     </div>
@@ -90,7 +90,7 @@
                             <?php } else { ?>
                                 <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                             <?php } ?>
-                            <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                            <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
 
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                             <?php
                             if ($freehiredata[0]['designation'] == '') {
                                 ?>
-                                <a id="designation" class="designation" title="Designation">Designation</a>
+                                <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                             <?php } else { ?> 
                                 <a id="designation" class="designation" title="<?php echo ucwords($freehiredata[0]['designation']); ?>"><?php echo ucwords($freehiredata[0]['designation']); ?></a>                <?php } ?>
@@ -143,7 +143,7 @@
                     <?php
                     if ($freehiredata[0]['designation'] == '') {
                         ?>
-                        <a id="designation" class="designation" title="Designation">Designation</a>
+                        <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                     <?php } else { ?> 
                         <a id="designation" class="designation" title="<?php echo ucwords($freehiredata[0]['designation']); ?>"><?php echo ucwords($freehiredata[0]['designation']); ?></a>  <?php } ?>
