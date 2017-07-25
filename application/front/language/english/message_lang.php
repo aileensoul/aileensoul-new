@@ -126,6 +126,7 @@ $lang["applied"]="Applied";
 $lang["apply"]="Apply";
 $lang["no_post"]="No Post Found.";
 //common variables of detail page end
+//
 //common variable end
 
 
