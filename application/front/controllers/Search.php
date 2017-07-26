@@ -1647,6 +1647,7 @@ if ($searchkeyword == "" && $searchplace == "") {
         }
         
         $this->data['de'] = array_values($res);
+       // echo "<pre>";print_r($this->data['de']);die();
 
 //echo "<pre>";print_r($this->data['freelancerpostdata']);die();
         $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
