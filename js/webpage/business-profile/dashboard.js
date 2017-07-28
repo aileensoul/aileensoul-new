@@ -1250,11 +1250,11 @@ function save_post(abc)
 // follow user script start 
 
 
-function followuser(clicked_id)
+function followuser_two(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/follow",
+        url: base_url + "business_profile/follow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
@@ -1268,11 +1268,11 @@ function followuser(clicked_id)
 // Unfollow user script start 
 
 
-function unfollowuser(clicked_id)
+function unfollowuser_two(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/unfollow",
+        url: base_url + "business_profile/unfollow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
