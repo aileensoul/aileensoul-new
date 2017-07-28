@@ -9,17 +9,17 @@ class Business_profile extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        
+
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
         include ('include.php');
 
-        // DEACTIVATE PROFILE START
+// DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
 
-        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '	business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -27,18 +27,18 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business-profile/');
         }
-        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
-        // DEACTIVATE PROFILE END
-        // CODE FOR SECOND HEADER SEARCH START
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+// CODE FOR SECOND HEADER SEARCH START
 
         $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        // GET BUSINESS TYPE
+// GET BUSINESS TYPE
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        // GET INDUSTRIAL TYPE
+// GET INDUSTRIAL TYPE
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $industrytype = $this->data['results'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
@@ -57,7 +57,7 @@ class Business_profile extends MY_Controller {
             $result1[$key]['value'] = $value;
         }
 
-        // GET LOCATION DATA
+// GET LOCATION DATA
         $contition_array = array('status' => '1');
         $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
@@ -76,7 +76,7 @@ class Business_profile extends MY_Controller {
 
         $this->data['demo'] = array_values($result1);
 
-        // CODE FOR SECOND HEADER SEARCH END
+// CODE FOR SECOND HEADER SEARCH END
     }
 
     public function index() {
@@ -89,19 +89,19 @@ class Business_profile extends MY_Controller {
             $this->load->view('business_profile/reactivate', $this->data);
         } else {
             $userid = $this->session->userdata('aileenuser');
-            // GET BUSINESS PROFILE DATA
+// GET BUSINESS PROFILE DATA
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // GET COUNTRY DATA
+// GET COUNTRY DATA
             $contition_array = array('status' => 1);
             $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // GET STATE DATA
+// GET STATE DATA
             $contition_array = array('status' => 1);
             $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id,state_name,country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // GET CITY DATA
+// GET CITY DATA
             $contition_array = array('status' => 1);
             $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name,state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -114,7 +114,7 @@ class Business_profile extends MY_Controller {
                 } else if ($userdata[0]['business_step'] == 3) {
                     redirect('business-profile/image', refresh);
                 } else if ($userdata[0]['business_step'] == 4) {
-                    //redirect('business_profile/addmore', refresh);
+//redirect('business_profile/addmore', refresh);
                     redirect('business-profile/home', refresh);
                 } else if ($userdata[0]['business_step'] == 5) {
                     redirect('business-profile/home', refresh);
@@ -127,15 +127,15 @@ class Business_profile extends MY_Controller {
 
     public function ajax_data() {
 
-        //dependentacy industrial and sub industriyal start
+//dependentacy industrial and sub industriyal start
         if (isset($_POST["industry_id"]) && !empty($_POST["industry_id"])) {
-            //Get all state data
+//Get all state data
             $contition_array = array('industry_id' => $_POST["industry_id"], 'status' => 1);
             $subindustriyaldata = $this->data['subindustriyaldata'] = $this->common->select_data_by_condition('sub_industry_type', $contition_array, $data = '*', $sortby = 'sub_industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-            //Count total number of rows
-            //Display sub industiyal list
+//Count total number of rows
+//Display sub industiyal list
             if (count($subindustriyaldata) > 0) {
                 echo '<option value="">Select Sub Industrial</option>';
                 foreach ($subindustriyaldata as $st) {
@@ -146,16 +146,16 @@ class Business_profile extends MY_Controller {
             }
         }
 
-        // dependentacy industrial and sub industriyal end  
+// dependentacy industrial and sub industriyal end  
 
 
         if (isset($_POST["country_id"]) && !empty($_POST["country_id"])) {
-            //Get all state data
+//Get all state data
             $contition_array = array('country_id' => $_POST["country_id"], 'status' => 1);
             $state = $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            //Count total number of rows
-            //Display states list
+//Count total number of rows
+//Display states list
             if (count($state) > 0) {
                 echo '<option value="">Select state</option>';
                 foreach ($state as $st) {
@@ -167,12 +167,12 @@ class Business_profile extends MY_Controller {
         }
 
         if (isset($_POST["state_id"]) && !empty($_POST["state_id"])) {
-            //Get all city data
+//Get all city data
             $contition_array = array('state_id' => $_POST["state_id"], 'status' => 1);
             $city = $this->data['city'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-            //Display cities list
+//Display cities list
             if (count($city) > 0) {
                 echo '<option value="">Select city</option>';
                 foreach ($city as $cit) {
@@ -187,19 +187,19 @@ class Business_profile extends MY_Controller {
     public function business_information_update() {
         $userid = $this->session->userdata('aileenuser');
 
-        // GET BUSINESS PROFILE DATA
+// GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'country,state,city,company_name,pincode,address,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET COUNTRY DATA
+// GET COUNTRY DATA
         $contition_array = array('status' => 1);
         $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET STATE DATA
+// GET STATE DATA
         $contition_array = array('status' => '1', 'country_id' => $userdata[0]['country']);
         $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id, state_name, country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET CITY DATA
+// GET CITY DATA
         $contition_array = array('status' => '1', 'state_id' => $userdata[0]['state']);
         $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id, city_name, state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -236,7 +236,7 @@ class Business_profile extends MY_Controller {
     }
 
 //business automatic retrieve controller End
-    // BUSINESS PROFILE SLUG START
+// BUSINESS PROFILE SLUG START
 
     public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
         $slugname = $oldslugname = $this->create_slug($slugname);
@@ -263,7 +263,7 @@ class Business_profile extends MY_Controller {
         return $slug;
     }
 
-    // BUSINESS PROFILE SLUG END
+// BUSINESS PROFILE SLUG END
 
     public function business_information_insert() {
 
@@ -280,7 +280,7 @@ class Business_profile extends MY_Controller {
                 $this->load->view('business_profile/business_info');
             }
 
-            // GET DATA BY ID ONLY
+// GET DATA BY ID ONLY
 
             $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -348,7 +348,7 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        // GET BUSINESS PROFILE DATA
+// GET BUSINESS PROFILE DATA
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,contact_person,contact_mobile,contact_email,contact_website', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -445,15 +445,15 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        // GET BUSINESS PROFILE DATA
+// GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET INDUSTRIAL TYPE DATA
+// GET INDUSTRIAL TYPE DATA
         $contition_array = array('status' => 1);
         $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GEY BUSINESS TYPE DATA
+// GEY BUSINESS TYPE DATA
         $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($userdata) {
@@ -548,7 +548,7 @@ class Business_profile extends MY_Controller {
         $userdata = $this->session->userdata();
         $userid = $this->session->userdata('aileenuser');
 
-        // GET USER BUSINESS STEP AND SLUG
+// GET USER BUSINESS STEP AND SLUG
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
         $busin_step_slug = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step,business_slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
@@ -626,10 +626,10 @@ class Business_profile extends MY_Controller {
                     $business_profile_post_thumb[$i]['x_axis'] = '0';
                     $business_profile_post_thumb[$i]['y_axis'] = '0';
                     $instanse = "image_$i";
-                    //Loading Image Library
+//Loading Image Library
                     $this->load->library('image_lib', $business_profile_post_thumb[$i], $instanse);
                     $dataimage = $response['result'][$i]['file_name'];
-                    //Creating Thumbnail
+//Creating Thumbnail
                     $this->$instanse->resize();
                     $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
@@ -725,17 +725,17 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        // GET BUSINESS DATA
+// GET BUSINESS DATA
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,profile_background,industriyal,city,state', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
 
-        // GET USER LIST IN LEFT SIDE
+// GET USER LIST IN LEFT SIDE
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'business_step' => 4);
         $userlist = $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,industriyal,city,state', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET INDUSTRIAL WISE DATA
+// GET INDUSTRIAL WISE DATA
         $industriyal = $this->data['businessdata'][0]['industriyal'];
         foreach ($userlist as $rowcategory) {
 
@@ -744,8 +744,8 @@ class Business_profile extends MY_Controller {
             }
         }
         $this->data['userlistview1'] = $userlistcategory;
-        // GET INDUSTRIAL WISE DATA
-        // GET CITY WISE DATA
+// GET INDUSTRIAL WISE DATA
+// GET CITY WISE DATA
         $businessregcity = $this->data['businessdata'][0]['city'];
 
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'business_step' => 4);
@@ -756,8 +756,8 @@ class Business_profile extends MY_Controller {
             }
         }
         $this->data['userlistview2'] = $userlistcity;
-        // GET CITY WISE DATA
-        // GET STATE WISE DATA
+// GET CITY WISE DATA
+// GET STATE WISE DATA
         $businessregstate = $this->data['businessdata'][0]['state'];
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'city !=' => $businessregcity, 'business_step' => 4);
         $userlist3 = $this->data['userlist3'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,industriyal,city,state', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -767,14 +767,14 @@ class Business_profile extends MY_Controller {
             }
         }
         $this->data['userlistview3'] = $userliststate;
-        // GET STATE WISE DATA
-        // GET 3 USER
+// GET STATE WISE DATA
+// GET 3 USER
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'city !=' => $businessregcity, 'state !=' => $businessregstate, 'business_step' => 4);
         $userlastview = $this->data['userlastview'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['userlistview4'] = $userlastview;
 
-        // GET FOLLOWER DATA 
+// GET FOLLOWER DATA 
 
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -792,7 +792,7 @@ class Business_profile extends MY_Controller {
         }
         $userselectindustriyal = $this->data['businessdata'][0]['industriyal'];
 
-        // GET INDUSTRIAL DATA START
+// GET INDUSTRIAL DATA START
         $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -801,16 +801,16 @@ class Business_profile extends MY_Controller {
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $industriyalabc[] = $this->data['business_data'];
         }
-        // GET INDUSTRIAL DATA END
-        // GET LOGIN USER LAST POST START
+// GET INDUSTRIAL DATA END
+// GET LOGIN USER LAST POST START
 
         $condition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
         $business_datauser = $this->data['business_datauser'] = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $userabc[][] = $this->data['business_datauser'][0];
 
-        // GET LOGIN USER LAST POST END
-        // ARRAY MERGE AND GET UNIQUE VALUE 
+// GET LOGIN USER LAST POST END
+// ARRAY MERGE AND GET UNIQUE VALUE 
 
         if (count($industriyalabc) == 0 && count($business_datauser) != 0) {
 
@@ -857,7 +857,7 @@ class Business_profile extends MY_Controller {
 
         $this->data['slugid'] = $id;
 
-        // manage post start
+// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -883,15 +883,15 @@ class Business_profile extends MY_Controller {
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        //manage post end
+//manage post end
         $this->load->view('business_profile/business_profile_manage_post', $this->data);
-        // save post end       
+// save post end       
     }
 
     public function business_profile_deletepost() {
 
         $id = $_POST["business_profile_post_id"];
-        //echo $id; die();
+//echo $id; die();
         $data = array(
             'is_delete' => 1,
             'modify_date' => date('Y-m-d', time())
@@ -905,7 +905,7 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-        //echo "<pre>"; print_r($dataimage); die();
+//echo "<pre>"; print_r($dataimage); die();
         $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -948,7 +948,7 @@ class Business_profile extends MY_Controller {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $id = $_POST["business_profile_post_id"];
-        //echo $id; die();
+//echo $id; die();
         $data = array(
             'is_delete' => 1,
             'modify_date' => date('Y-m-d', time())
@@ -962,7 +962,7 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-        //echo "<pre>"; print_r($dataimage); die();
+//echo "<pre>"; print_r($dataimage); die();
         $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
 
 // for post count start
@@ -972,7 +972,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($this->data['businessdata']); die(); 
+//echo "<pre>"; print_r($this->data['businessdata']); die(); 
 
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
 
@@ -983,7 +983,7 @@ class Business_profile extends MY_Controller {
 
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>" ; print_r($this->data['followerdata']); die();
+//echo "<pre>" ; print_r($this->data['followerdata']); die();
 
         foreach ($followerdata as $fdata) {
 
@@ -991,19 +991,19 @@ class Business_profile extends MY_Controller {
 
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // echo "<pre>" ; print_r($this->data['business_data']); die();
+// echo "<pre>" ; print_r($this->data['business_data']); die();
 
             $business_userid = $this->data['business_data'][0]['user_id'];
-            //echo $business_userid; die();
+//echo $business_userid; die();
             $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            //echo "<pre>"; print_r($this->data['business_profile_data']) ; die();
+//echo "<pre>"; print_r($this->data['business_profile_data']) ; die();
 
             $followerabc[] = $this->data['business_profile_data'];
         }
-        //echo "<pre>" ; print_r($followerabc); die();
+//echo "<pre>" ; print_r($followerabc); die();
 //data fatch using follower end
 //data fatch using industriyal start
 
@@ -1011,7 +1011,7 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // echo "<pre>"; print_r( $businessprofiledata); die();
+// echo "<pre>"; print_r( $businessprofiledata); die();
 
 
 
@@ -1046,7 +1046,7 @@ class Business_profile extends MY_Controller {
             $unique = array_merge($industriyalabc, $userabc);
         }
 
-        //echo "<pre>"; print_r($unique); die();
+//echo "<pre>"; print_r($unique); die();
 
         if (count($followerabc) == 0 && count($unique) != 0) {
             $unique_user = $unique;
@@ -1171,10 +1171,10 @@ class Business_profile extends MY_Controller {
                 'posted_user_id' => $userid
             );
         }
-        //CHECK IF IMAGE POST THEN NAME AND DESCRIPTION IS BLANK THAT TIME POST NOT INSERT AT A TIME.
+//CHECK IF IMAGE POST THEN NAME AND DESCRIPTION IS BLANK THAT TIME POST NOT INSERT AT A TIME.
         if ($_FILES['postattach']['name'][0] != '') {
-            // CHECK FILE IS PROPER 
-            // if ($data['product_name'] != '' && $data['product_description'] != '') {
+// CHECK FILE IS PROPER 
+// if ($data['product_name'] != '' && $data['product_description'] != '') {
             if ($_FILES['postattach']['error'][0] != '1') {
                 $insert_id = $this->common->insert_data_getid($data, 'business_profile_post');
             }
@@ -1231,17 +1231,17 @@ class Business_profile extends MY_Controller {
                         $business_profile_post_thumb[$i]['maintain_ratio'] = TRUE;
                         $business_profile_post_thumb[$i]['thumb_marker'] = '';
                         $business_profile_post_thumb[$i]['width'] = $this->config->item('bus_post_thumb_width');
-                        //$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
+//$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
                         $business_profile_post_thumb[$i]['height'] = 2;
                         $business_profile_post_thumb[$i]['master_dim'] = 'width';
                         $business_profile_post_thumb[$i]['quality'] = "100%";
                         $business_profile_post_thumb[$i]['x_axis'] = '0';
                         $business_profile_post_thumb[$i]['y_axis'] = '0';
                         $instanse = "image_$i";
-                        //Loading Image Library
+//Loading Image Library
                         $this->load->library('image_lib', $business_profile_post_thumb[$i], $instanse);
                         $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
+//Creating Thumbnail
                         $this->$instanse->resize();
                         $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
@@ -1256,7 +1256,7 @@ class Business_profile extends MY_Controller {
                             'is_deleted' => 1
                         );
 
-                        //echo "<pre>"; print_r($data1);
+//echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_image');
                     } else {
                         echo $this->upload->display_errors();
@@ -1267,12 +1267,12 @@ class Business_profile extends MY_Controller {
                     if ($id == manage) {
 
                         if ($para == $userid || $para == '') {
-                            // redirect('business_profile/business_profile_manage_post', refresh);
+// redirect('business_profile/business_profile_manage_post', refresh);
                         } else {
-                            // redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
+// redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
                         }
                     } else {
-                        //   redirect('business_profile/business_profile_post', refresh);
+//   redirect('business_profile/business_profile_post', refresh);
                     }
                 }
             } //die();
@@ -1281,15 +1281,15 @@ class Business_profile extends MY_Controller {
         if ($id == manage) {
 
             if ($para == $userid || $para == '') {
-                // redirect('business_profile/business_profile_manage_post', refresh);
+// redirect('business_profile/business_profile_manage_post', refresh);
             } else {
-                // redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
+// redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
             }
         } else {
-            // redirect('business_profile/business_profile_post', refresh);
+// redirect('business_profile/business_profile_post', refresh);
         }
-        // new code end
-        // return html
+// new code end
+// return html
 
 
         $userid = $this->session->userdata('aileenuser');
@@ -1411,7 +1411,7 @@ class Business_profile extends MY_Controller {
 
         $row = $businessprofiledatapost[0];
 
-        //foreach ($businessprofiledatapost as $row) {
+//foreach ($businessprofiledatapost as $row) {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
         $businessdelete = $this->data['businessdelete'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1654,8 +1654,8 @@ class Business_profile extends MY_Controller {
                                                         Your browser does not support the audio tag.
                                                     </audio>
                                                 </div>
-                                                <div class="audio_mp3" id="'. "postname" . $row['business_profile_post_id'].'">
-                                                    <p title="'.$row['product_name'].'">'.$row['product_name'].'</p>
+                                                <div class="audio_mp3" id="' . "postname" . $row['business_profile_post_id'] . '">
+                                                    <p title="' . $row['product_name'] . '">' . $row['product_name'] . '</p>
                                                 </div>
                                             </div>';
                 }
@@ -2020,8 +2020,8 @@ class Business_profile extends MY_Controller {
 
             echo $return_html;
         }
-        //    }
-        // return html         
+//    }
+// return html         
     }
 
     public function business_profile_editpost($id) {
@@ -2049,14 +2049,14 @@ class Business_profile extends MY_Controller {
             $config['file_name'] = $_FILES['image']['name'];
             $config['upload_max_filesize'] = '40M';
 
-            //Load upload library and initialize configuration
+//Load upload library and initialize configuration
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('image')) {
                 $uploadData = $this->upload->data();
 
-                //Configuring Thumbnail 
+//Configuring Thumbnail 
                 $business_post_thumb['image_library'] = 'gd2';
                 $business_post_thumb['source_image'] = $config['upload_path'] . $uploadData['file_name'];
                 $business_post_thumb['new_image'] = $this->config->item('user_thumb_upload_path') . $imgdata['file_name'];
@@ -2064,16 +2064,16 @@ class Business_profile extends MY_Controller {
                 $business_post_thumb['maintain_ratio'] = TRUE;
                 $business_post_thumb['thumb_marker'] = '';
                 $business_post_thumb['width'] = $this->config->item('user_thumb_width');
-                //$user_thumb['height'] = $this->config->item('user_thumb_height');
+//$user_thumb['height'] = $this->config->item('user_thumb_height');
                 $business_post_thumb['height'] = 2;
                 $business_post_thumb['master_dim'] = 'width';
                 $business_post_thumb['quality'] = "100%";
                 $business_post_thumb['x_axis'] = '0';
                 $business_post_thumb['y_axis'] = '0';
-                //Loading Image Library
+//Loading Image Library
                 $this->load->library('image_lib', $user_thumb);
                 $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
+//Creating Thumbnail
                 $this->image_lib->resize();
                 $thumberror = $this->image_lib->display_errors();
 
@@ -2147,7 +2147,7 @@ class Business_profile extends MY_Controller {
 
         $mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
 
-        //insert contact start
+//insert contact start
         $data = array(
             'contact_from_id' => $userid,
             'contact_to_id' => $id,
@@ -2216,12 +2216,12 @@ class Business_profile extends MY_Controller {
 
     public function user_image_insert() {
         $userid = $this->session->userdata('aileenuser');
-        
+
         $contition_array = array('user_id' => $userid);
         $business_slug = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $business_user_slug = $business_slug[0]['business_slug'];
-        
+
         if ($this->input->post('cancel2')) {
             redirect('business-profile/home', refresh);
         } elseif ($this->input->post('cancel1')) {
@@ -2251,13 +2251,13 @@ class Business_profile extends MY_Controller {
             $user['max_height'] = $this->config->item('bus_profile_main_max_height');
             $this->load->library('upload');
             $this->upload->initialize($user);
-            //Uploading Image
+//Uploading Image
             $this->upload->do_upload('profilepic');
-            //Getting Uploaded Image File Data
+//Getting Uploaded Image File Data
             $imgdata = $this->upload->data();
             $imgerror = $this->upload->display_errors();
             if ($imgerror == '') {
-                //Configuring Thumbnail 
+//Configuring Thumbnail 
                 $user_thumb['image_library'] = 'gd2';
                 $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
                 $user_thumb['new_image'] = $this->config->item('bus_profile_thumb_upload_path') . $imgdata['file_name'];
@@ -2265,16 +2265,16 @@ class Business_profile extends MY_Controller {
                 $user_thumb['maintain_ratio'] = TRUE;
                 $user_thumb['thumb_marker'] = '';
                 $user_thumb['width'] = $this->config->item('bus_profile_thumb_width');
-                //$user_thumb['height'] = $this->config->item('user_thumb_height');
+//$user_thumb['height'] = $this->config->item('user_thumb_height');
                 $user_thumb['height'] = 2;
                 $user_thumb['master_dim'] = 'width';
                 $user_thumb['quality'] = "100%";
                 $user_thumb['x_axis'] = '0';
                 $user_thumb['y_axis'] = '0';
-                //Loading Image Library
+//Loading Image Library
                 $this->load->library('image_lib', $user_thumb);
                 $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
+//Creating Thumbnail
                 $this->image_lib->resize();
                 $thumberror = $this->image_lib->display_errors();
             } else {
@@ -2348,11 +2348,10 @@ class Business_profile extends MY_Controller {
                     redirect('business-profile/audios', refresh);
                 } elseif ($this->input->post('hitext') == 12) {
                     redirect('business-profile/pdf', refresh);
-                }elseif ($this->input->post('hitext') == 13) {
-                    if($business_user_slug){
-                        redirect('business-profile/contacts/'.$business_user_slug, refresh);
-                    }
-                    else{
+                } elseif ($this->input->post('hitext') == 13) {
+                    if ($business_user_slug) {
+                        redirect('business-profile/contacts/' . $business_user_slug, refresh);
+                    } else {
                         redirect('business-profile/contacts/', refresh);
                     }
                 }
@@ -2365,7 +2364,7 @@ class Business_profile extends MY_Controller {
 
     public function business_resume($id = "") {
         $userid = $this->session->userdata('aileenuser');
-        // $this->data['slug_data'] this data come from include
+// $this->data['slug_data'] this data come from include
         if ($id == $this->data['slug_data'][0]['business_slug'] || $id == '') {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2394,7 +2393,7 @@ class Business_profile extends MY_Controller {
         $this->load->view('business_profile/business_profile_manage_post', $this->data);
     }
 
-    //Business Profile Save Post Start
+//Business Profile Save Post Start
     public function business_profile_save() {
 
         $id = $_POST['business_profile_post_id'];
@@ -2436,8 +2435,8 @@ class Business_profile extends MY_Controller {
         }
     }
 
-    //Business Profile Save Post End
-    //Business Profile Remove Save Post Start
+//Business Profile Save Post End
+//Business Profile Remove Save Post Start
     public function business_profile_delete($id) {
 
         $id = $_POST['save_id'];
@@ -2451,7 +2450,7 @@ class Business_profile extends MY_Controller {
         $updatedata = $this->common->update_data($data, 'business_profile_save', 'save_id', $id);
     }
 
-    //Business Profile Remove Save Post Start
+//Business Profile Remove Save Post Start
 //location automatic retrieve controller start
     public function location() {
         $json = [];
@@ -2467,12 +2466,12 @@ class Business_profile extends MY_Controller {
 
 //echo '<pre>'; print_r($tolist); die();
         }
-        //  echo json_encode($tolist);
+//  echo json_encode($tolist);
         echo json_encode($tolist);
     }
 
 //location automatic retrieve controller End
-    // user list of artistic users
+// user list of artistic users
 
     public function userlist() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
@@ -2486,7 +2485,7 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // followers count
+// followers count
         $join_str[0]['table'] = 'follow';
         $join_str[0]['join_table_id'] = 'follow.follow_to';
         $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
@@ -2494,8 +2493,8 @@ class Business_profile extends MY_Controller {
         $contition_array = array('follow_to' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 1);
         $this->data['followers'] = count($this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
 
-        // follow count end
-        // fllowing count
+// follow count end
+// fllowing count
         $join_str[0]['table'] = 'follow';
         $join_str[0]['join_table_id'] = 'follow.follow_from';
         $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
@@ -2504,7 +2503,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 1, 'business_profile.business_step' => 4);
         $this->data['following'] = count($this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
 
-        //following end
+//following end
 
         $this->load->view('business_profile/business_userlist', $this->data);
     }
@@ -2531,7 +2530,7 @@ class Business_profile extends MY_Controller {
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-            // insert notification
+// insert notification
 
             $data = array(
                 'not_type' => 8,
@@ -2545,7 +2544,7 @@ class Business_profile extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
+// end notoification
 
             if ($update) {
 
@@ -2565,7 +2564,7 @@ class Business_profile extends MY_Controller {
             );
             $insert = $this->common->insert_data($data, 'follow');
 
-            // insert notification
+// insert notification
 
             $data = array(
                 'not_type' => 8,
@@ -2579,7 +2578,7 @@ class Business_profile extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
+// end notoification
             if ($insert) {
                 $follow = '<div id="unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
@@ -2644,7 +2643,7 @@ class Business_profile extends MY_Controller {
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-            // insert notification
+// insert notification
 
             $data = array(
                 'not_type' => 8,
@@ -2658,7 +2657,7 @@ class Business_profile extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
+// end notoification
 
             if ($update) {
 
@@ -2678,7 +2677,7 @@ class Business_profile extends MY_Controller {
             );
             $insert = $this->common->insert_data($data, 'follow');
 
-            // insert notification
+// insert notification
 
             $data = array(
                 'not_type' => 8,
@@ -2692,7 +2691,7 @@ class Business_profile extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
+// end notoification
             if ($insert) {
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
@@ -2851,7 +2850,7 @@ class Business_profile extends MY_Controller {
     }
 
 // end of user list
-    //deactivate user start
+//deactivate user start
     public function deactivate() {
 
         $id = $_POST['id'];
@@ -2888,7 +2887,7 @@ class Business_profile extends MY_Controller {
 
                         $config['file_name'] = $_FILES['photoimg']['name'];
 
-                        //Load upload library and initialize configuration
+//Load upload library and initialize configuration
                         $this->load->library('upload', $config);
                         $this->upload->initialize($config);
 
@@ -2969,17 +2968,17 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('image_id' => $id, 'is_deleted' => '1');
         $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($this->data['artdata']); die();
+//echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
     }
 
 //create pdf end
-    // cover pic controller
+// cover pic controller
 
     public function ajaxpro() {
         $userid = $this->session->userdata('aileenuser');
 
-        // REMOVE OLD IMAGE FROM FOLDER
+// REMOVE OLD IMAGE FROM FOLDER
         $contition_array = array('user_id' => $userid);
         $user_reg_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3007,7 +3006,7 @@ class Business_profile extends MY_Controller {
             }
         }
 
-        // REMOVE OLD IMAGE FROM FOLDER
+// REMOVE OLD IMAGE FROM FOLDER
         $data = $_POST['image'];
         $user_bg_path = $this->config->item('bus_bg_main_upload_path');
         $imageName = time() . '.png';
@@ -3039,7 +3038,7 @@ class Business_profile extends MY_Controller {
 
         $config['file_name'] = $_FILES['image']['name'];
 
-        //Load upload library and initialize configuration
+//Load upload library and initialize configuration
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
 
@@ -3066,7 +3065,7 @@ class Business_profile extends MY_Controller {
         }
     }
 
-    // cover pic end
+// cover pic end
 // busienss_profile like comment ajax start
 
     public function like_comment() {
@@ -3097,7 +3096,7 @@ class Business_profile extends MY_Controller {
 
             $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
 
-            // insert notification
+// insert notification
             if ($businessprofiledata[0]['user_id'] == $userid) {
                 
             } else {
@@ -3133,7 +3132,7 @@ class Business_profile extends MY_Controller {
                     $insert_id = $this->common->insert_data_getid($datacmlike, 'notification');
                 }
             }
-            // end notoification
+// end notoification
 
 
             $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
@@ -3219,7 +3218,7 @@ class Business_profile extends MY_Controller {
             );
 
             $updatdata = $this->common->update_data($data, 'business_profile_post_comment', 'business_profile_post_comment_id', $post_id);
-            // insert notification
+// insert notification
             if ($businessprofiledata[0]['user_id'] == $userid) {
                 
             } else {
@@ -3254,7 +3253,7 @@ class Business_profile extends MY_Controller {
                     $insert_id = $this->common->insert_data_getid($data, 'notification');
                 }
             }
-            // end notoification
+// end notoification
             $contition_array = array('business_profile_post_comment_id' => $_POST["post_id"], 'status' => '1');
             $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3297,8 +3296,8 @@ class Business_profile extends MY_Controller {
                 $cmtlike1 .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true">';
                 $cmtlike1 .= '</i>';
 
-                // $cmtlike1 .= '<i class="fa fa-thumbs-up fa-1x main_color" aria-hidden="true">';
-                // $cmtlike1 .= '</i>';
+// $cmtlike1 .= '<i class="fa fa-thumbs-up fa-1x main_color" aria-hidden="true">';
+// $cmtlike1 .= '</i>';
                 $cmtlike1 .= '<span> ';
                 if ($businessprofiledata2[0]['business_comment_likes_count'] > 0) {
                     $cmtlike1 .= $businessprofiledata2[0]['business_comment_likes_count'] . '';
@@ -3334,7 +3333,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('business_profile_post_id' => $post_delete, 'status' => '1');
         $buscmtcnt = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo '<pre>'; print_r($businessprofiledata); die();
+//echo '<pre>'; print_r($businessprofiledata); die();
 // khyati changes start
         if (count($businessprofiledata) > 0) {
             foreach ($businessprofiledata as $business_profile) {
@@ -3357,7 +3356,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-                //$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
+//$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
@@ -3439,14 +3438,14 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-                // comment aount variable start
+// comment aount variable start
                 $idpost = $business_profile['business_profile_post_id'];
                 $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
                 $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
                 $cmtcount .= ' ' . count($buscmtcnt) . '';
                 $cmtcount .= '</i></a>';
 
-                // comment count variable end 
+// comment count variable end 
             }
             if (count($buscmtcnt) > 0) {
                 $cntinsert .= '' . count($buscmtcnt) . '';
@@ -3564,14 +3563,14 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
-                // comment aount variable start
+// comment aount variable start
                 $idpost = $business_profile['business_profile_post_id'];
                 $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
                 $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
                 $cmtcount .= ' ' . count($businessprofiledata) . '';
                 $cmtcount .= '</i></a>';
 
-                // comment count variable end 
+// comment count variable end 
             }
 
             if (count($businessprofiledata) > 0) {
@@ -3622,7 +3621,7 @@ class Business_profile extends MY_Controller {
                 'modify_date' => date('y-m-d h:i:s')
             );
             $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
-            // insert notification
+// insert notification
             if ($businessprofiledata[0]['user_id'] == $userid) {
                 
             } else {
@@ -3656,7 +3655,7 @@ class Business_profile extends MY_Controller {
                     $insert_id = $this->common->insert_data_getid($datalike, 'notification');
                 }
             }
-            // end notoification
+// end notoification
 
             $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
             $businessprofiledata1 = $this->data['businessprofiledata1'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3839,7 +3838,7 @@ class Business_profile extends MY_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
 
-        // insert notification
+// insert notification
 
         if ($busdatacomment[0]['user_id'] == $userid) {
             
@@ -3857,7 +3856,7 @@ class Business_profile extends MY_Controller {
             );
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
         }
-        // end notoification
+// end notoification
 
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -3946,7 +3945,7 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-            // comment aount variable start
+// comment aount variable start
             $idpost = $business_profile['business_profile_post_id'];
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
@@ -3959,7 +3958,7 @@ class Business_profile extends MY_Controller {
                 $cntinsert .= '<span> Comment</span>';
             }
 
-            // comment count variable end 
+// comment count variable end 
         }
         echo json_encode(
                 array("comment" => $cmtinsert,
@@ -3987,7 +3986,7 @@ class Business_profile extends MY_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
 
-        // insert notification
+// insert notification
         if ($busdatacomment[0]['user_id'] == $userid) {
             
         } else {
@@ -4004,13 +4003,13 @@ class Business_profile extends MY_Controller {
             );
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
         }
-        // end notoification
+// end notoification
 
 
 
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // khyati changes start
+// khyati changes start
         $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
@@ -4106,7 +4105,7 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-            // comment aount variable start
+// comment aount variable start
             $idpost = $business_profile['business_profile_post_id'];
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
@@ -4115,7 +4114,7 @@ class Business_profile extends MY_Controller {
 
 
 
-            // comment count variable end 
+// comment count variable end 
         }
         if (count($businessprofiledata) > 0) {
             $cntinsert .= '' . count($businessprofiledata) . '';
@@ -4128,7 +4127,7 @@ class Business_profile extends MY_Controller {
                     "count" => $cmtcount,
                     "comment_count" => $cntinsert));
 
-        // khyati chande 
+// khyati chande 
     }
 
 //business_profile comment insert end  
@@ -4210,9 +4209,9 @@ class Business_profile extends MY_Controller {
             }
 
 
-             $postname = '<p title="'.$businessdata[0]['product_name'].'">'.$businessdata[0]['product_name'].'</p>';
-            //echo $editpost;   echo $editpostdes;
-             echo json_encode(
+            $postname = '<p title="' . $businessdata[0]['product_name'] . '">' . $businessdata[0]['product_name'] . '</p>';
+//echo $editpost;   echo $editpostdes;
+            echo json_encode(
                     array("title" => $editpost,
                         "description" => $editpostdes,
                         "postname" => $postname));
@@ -4265,7 +4264,7 @@ class Business_profile extends MY_Controller {
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
 
-        // for post count start
+// for post count start
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4417,7 +4416,7 @@ class Business_profile extends MY_Controller {
     }
 
 //multiple iamge for manage user end   
-    //multiple video for manage user start
+//multiple video for manage user start
 
 
     public function business_videos($id) {
@@ -4535,7 +4534,7 @@ class Business_profile extends MY_Controller {
                 'is_unlike' => 0
             );
             $insertdata = $this->common->insert_data_getid($data, 'bus_post_image_like');
-            // insert notification
+// insert notification
             if ($likepostid[0]['user_id'] == $userid) {
                 
             } else {
@@ -4554,7 +4553,7 @@ class Business_profile extends MY_Controller {
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
             }
-            // end notoification
+// end notoification
 
 
             $contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
@@ -4674,7 +4673,7 @@ class Business_profile extends MY_Controller {
 
                     $imglikeuser1 .= '</a>';
                     $imglikeuser1 .= '</div>';
-                    // $like_user_count1 = count($commneteduser);
+// $like_user_count1 = count($commneteduser);
 
                     $like_user_count1 = '<span class="comment_like_count">';
                     if (count($commneteduser) > 0) {
@@ -4699,7 +4698,7 @@ class Business_profile extends MY_Controller {
                 $this->db->where('post_image_id', $post_image);
                 $this->db->where('user_id', $userid);
                 $updatdata = $this->db->update('bus_post_image_like', $data);
-                // insert notification
+// insert notification
                 if ($likepostid[0]['user_id'] == $userid) {
                     
                 } else {
@@ -4734,7 +4733,7 @@ class Business_profile extends MY_Controller {
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
                     }
                 }
-                // end notoification
+// end notoification
 
                 $contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
                 $bdata2 = $this->data['bdata2'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4822,7 +4821,7 @@ class Business_profile extends MY_Controller {
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
-        // insert notification
+// insert notification
 
         if ($buspostid[0]['user_id'] == $userid) {
             
@@ -4840,7 +4839,7 @@ class Business_profile extends MY_Controller {
             );
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
         }
-        // end notoification
+// end notoification
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -4928,14 +4927,14 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
 
-            // comment aount variable start
-            // $idpost = $business_profile['business_profile_post_id'];
+// comment aount variable start
+// $idpost = $business_profile['business_profile_post_id'];
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $post_image_id . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
             $cmtcount .= ' ' . count($buscmtcnt) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
+// comment count variable end 
         }
         echo json_encode(
                 array("comment" => $cmtinsert,
@@ -4966,7 +4965,7 @@ class Business_profile extends MY_Controller {
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
-        // insert notification
+// insert notification
 
         if ($buspostid[0]['user_id'] == $userid) {
             
@@ -4985,7 +4984,7 @@ class Business_profile extends MY_Controller {
 
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
         }
-        // end notoification
+// end notoification
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5073,13 +5072,13 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
 
-            // comment aount variable start
+// comment aount variable start
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $post_image_id . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
             $cmtcount .= ' ' . count($buscmtcnt) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
+// comment count variable end 
         }
         echo json_encode(
                 array("comment" => $cmtinsert,
@@ -5110,7 +5109,7 @@ class Business_profile extends MY_Controller {
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
-        // insert notification
+// insert notification
 
         if ($buspostid[0]['user_id'] == $userid) {
             
@@ -5129,7 +5128,7 @@ class Business_profile extends MY_Controller {
 
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
         }
-        // end notoification
+// end notoification
 
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
@@ -5231,7 +5230,7 @@ class Business_profile extends MY_Controller {
             $cmtcount .= ' ' . count($buscmtcnt) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
+// comment count variable end 
 
             $cntinsert = '<span class="comment_count" >';
             if (count($buscmtcnt) > 0) {
@@ -5271,7 +5270,7 @@ class Business_profile extends MY_Controller {
         );
         $insert_id = $this->common->insert_data_getid($data, 'bus_post_image_comment');
 
-        // insert notification
+// insert notification
 
         if ($buspostid[0]['user_id'] == $userid) {
             
@@ -5287,10 +5286,10 @@ class Business_profile extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
-            //echo "<pre>"; print_r($datanotification); die();
+//echo "<pre>"; print_r($datanotification); die();
             $insert_id_notification = $this->common->insert_data_getid($datanotification, 'notification');
         }
-        // end notoification
+// end notoification
 
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -5345,7 +5344,7 @@ class Business_profile extends MY_Controller {
 
 
             if (count($mulcountlike) > 0) {
-                //echo count($mulcountlike); 
+//echo count($mulcountlike); 
             }
             $cmtinsert .= '</span>';
             $cmtinsert .= '</a></div>';
@@ -5401,7 +5400,7 @@ class Business_profile extends MY_Controller {
             $cmtcount .= ' ' . count($buscmtcnt) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
+// comment count variable end 
 
             $cntinsert = '<span class="comment_count" >';
             if (count($buscmtcnt) > 0) {
@@ -5447,7 +5446,7 @@ class Business_profile extends MY_Controller {
 
             $insertdata = $this->common->insert_data_getid($data, 'bus_comment_image_like');
 
-            // insert notification
+// insert notification
 
             if ($busimglike[0]['user_id'] == $userid) {
                 
@@ -5465,7 +5464,7 @@ class Business_profile extends MY_Controller {
                 );
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
             }
-            // end notoification
+// end notoification
 
             $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
             $bdatacm = $this->data['bdatacm'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5526,7 +5525,7 @@ class Business_profile extends MY_Controller {
                 $this->db->where($where);
                 $updatdata = $this->db->update('bus_comment_image_like ', $data);
 
-                // insert notification
+// insert notification
 
                 if ($busimglike[0]['user_id'] == $userid) {
                     
@@ -5561,7 +5560,7 @@ class Business_profile extends MY_Controller {
                         $insert_id = $this->common->insert_data_getid($data, 'notification');
                     }
                 }
-                // end notoification 
+// end notoification 
 
 
                 $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
@@ -5597,7 +5596,7 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($busimglike); die();
+//echo "<pre>"; print_r($busimglike); die();
 
 
         $contition_array = array('image_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
@@ -5619,7 +5618,7 @@ class Business_profile extends MY_Controller {
             $insertdata = $this->common->insert_data_getid($data, 'bus_comment_image_like');
 
 
-            // insert notification
+// insert notification
 
             if ($busimglike[0]['user_id'] == $userid) {
                 
@@ -5635,10 +5634,10 @@ class Business_profile extends MY_Controller {
                     'not_created_date' => date('Y-m-d H:i:s'),
                     'not_active' => 1
                 );
-                //echo "<pre>"; print_r($datanotification); die();
+//echo "<pre>"; print_r($datanotification); die();
                 $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
             }
-            // end notoification
+// end notoification
 
             $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
             $bdatacm = $this->data['bdatacm'] = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5705,7 +5704,7 @@ class Business_profile extends MY_Controller {
 
 
 
-                // insert notification
+// insert notification
 
                 if ($busimglike[0]['user_id'] == $userid) {
                     
@@ -5740,7 +5739,7 @@ class Business_profile extends MY_Controller {
                         $insert_id = $this->common->insert_data_getid($datanotification, 'notification');
                     }
                 }
-                // end notoification
+// end notoification
 
 
                 $contition_array = array('post_image_comment_id' => $_POST["post_image_comment_id"], 'is_unlike' => '0');
@@ -5813,11 +5812,11 @@ class Business_profile extends MY_Controller {
         $contition_array = array('post_image_id' => $post_delete, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
 
-        // count for comment
+// count for comment
         $contition_array = array('post_image_id' => $post_delete, 'is_delete' => '0');
         $buscmtcnt = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($buscmtcnt); die();
+//echo "<pre>"; print_r($buscmtcnt); die();
         if (count($businesscomment) > 0) {
             foreach ($businesscomment as $bus_comment) {
 
@@ -5907,7 +5906,7 @@ class Business_profile extends MY_Controller {
 
 
                     $cmtinsert .= '<input type="hidden" name="imgpost_delete"';
-                    // $cmtinsert .= 'id="imgpost_delete' . $bus_comment['post_image_comment_id'] . '"';
+// $cmtinsert .= 'id="imgpost_delete' . $bus_comment['post_image_comment_id'] . '"';
                     $cmtinsert .= 'id="imgpost_delete_' . $bus_comment['post_image_comment_id'] . '"';
                     $cmtinsert .= ' value= "' . $bus_comment['post_image_id'] . '">';
                     $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
@@ -5925,7 +5924,7 @@ class Business_profile extends MY_Controller {
                 $cmtcount .= ' ' . count($buscmtcnt) . '';
                 $cmtcount .= '</i></a>';
 
-                // comment count variable end 
+// comment count variable end 
                 $cntinsert = '<span class="comment_count" >';
                 if (count($buscmtcnt) > 0) {
                     $cntinsert .= '' . count($buscmtcnt) . '';
@@ -5963,7 +5962,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('post_image_id' => $post_delete, 'is_delete' => '0');
         $businesscomment = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //echo "<pre>"; print_r($businesscomment); die();
+//echo "<pre>"; print_r($businesscomment); die();
         if (count($businesscomment) > 0) {
             foreach ($businesscomment as $bus_comment) {
                 $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
@@ -5984,7 +5983,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-                //$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
+//$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $bus_comment['post_image_comment_id'] . '"  id="imgeditcommenttwo' . $bus_comment['post_image_comment_id'] . '" placeholder="Type Message ..."  onkeyup="imgcommentedittwo(' . $bus_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $bus_comment['comment'] . '</div>';
                 $cmtinsert .= '<span class="comment-edit-button"><button id="imgeditsubmittwo' . $bus_comment['post_image_comment_id'] . '" style="display:none" onClick="imgedit_commenttwo(' . $bus_comment['post_image_comment_id'] . ')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
@@ -6054,8 +6053,8 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
-                    //$cmtinsert .= '<input type="hidden" name="post_deletetwo"';
-                    //$cmtinsert .= ' id="post_deletetwo' . $bus_comment['post_image_comment_id'] . '"';
+//$cmtinsert .= '<input type="hidden" name="post_deletetwo"';
+//$cmtinsert .= ' id="post_deletetwo' . $bus_comment['post_image_comment_id'] . '"';
                     $cmtinsert .= '<input type="hidden" name="imgpost_delete1"';
                     $cmtinsert .= ' id="imgpost_deletetwo_' . $bus_comment['post_image_comment_id'] . '"';
                     $cmtinsert .= ' value= "' . $bus_comment['post_image_id'] . '">';
@@ -6069,7 +6068,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div></div>';
 
-                // comment aount variable start
+// comment aount variable start
                 $idpost = $bus_comment['post_image_id'];
                 $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
                 $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
@@ -6090,14 +6089,14 @@ class Business_profile extends MY_Controller {
             $cmtcount .= '</i></a>';
         }
 
-        //header('Content-type: application/json');
+//header('Content-type: application/json');
         echo json_encode(
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
                     "comment_count" => $cntinsert));
     }
 
-    //mulitple images commnet delete end  
+//mulitple images commnet delete end  
 
     public function fourcomment($postid = '') {
 
@@ -6105,7 +6104,7 @@ class Business_profile extends MY_Controller {
 
         $post_id = $_POST['bus_post_id'];
 
-        // html start
+// html start
 
         $fourdata = '<div class="insertcommenttwo' . $post_id . '">';
 
@@ -6137,7 +6136,7 @@ class Business_profile extends MY_Controller {
 
                 $fourdata .= '' . $this->common->make_links($small) . '';
 
-                // echo $this->common->make_links($small);
+// echo $this->common->make_links($small);
 
                 if (strlen($rowdata['comments']) > 180) {
                     $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
@@ -6150,7 +6149,7 @@ class Business_profile extends MY_Controller {
 
                 $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div></div>';
                 $fourdata .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-                //$fourdata .= '<textarea type="text" class="textarea" name="' . $rowdata['business_profile_post_comment_id'] . '" id="editcommenttwo' . $rowdata['business_profile_post_comment_id'] . '" style="display:none; resize:none;" onClick="commentedittwo(this.name)">' . $rowdata['comments'] . '</textarea>';
+//$fourdata .= '<textarea type="text" class="textarea" name="' . $rowdata['business_profile_post_comment_id'] . '" id="editcommenttwo' . $rowdata['business_profile_post_comment_id'] . '" style="display:none; resize:none;" onClick="commentedittwo(this.name)">' . $rowdata['comments'] . '</textarea>';
                 $fourdata .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $rowdata['business_profile_post_comment_id'] . '"  id="editcommenttwo' . $rowdata['business_profile_post_comment_id'] . '" placeholder="Type Message ..."  onkeyup="commentedittwo(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>';
                 $fourdata .= '<span class="comment-edit-button"><button id="editsubmittwo' . $rowdata['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $rowdata['business_profile_post_comment_id'] . ')">Save</button></span>';
 
@@ -6209,15 +6208,13 @@ class Business_profile extends MY_Controller {
                 }
                 $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $fourdata .= '<div class="comment-details-menu">';
-                //$fourdata .= '<p>' .  $bus_comment['created_date'] . '</br>';
-                //$fourdata .= '<p>' . date('Y-m-d H:i:s', strtotime($bus_comment['created_date'])) . '</br>';
+//$fourdata .= '<p>' .  $bus_comment['created_date'] . '</br>';
+//$fourdata .= '<p>' . date('Y-m-d H:i:s', strtotime($bus_comment['created_date'])) . '</br>';
                 $fourdata .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date']))) . '</br>';
 
                 $fourdata .= '</p></div></div></div>';
             }
-        }
-
-         else {
+        } else {
             $fourdata = 'No comments Available!!!';
         }
         $fourdata .= '</div>';
@@ -6338,7 +6335,7 @@ class Business_profile extends MY_Controller {
         echo $fourdata;
     }
 
-    //postnews page controller start
+//postnews page controller start
 
     public function pnfourcomment($postid) {
 
@@ -6455,7 +6452,7 @@ class Business_profile extends MY_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
 
-        // insert notification
+// insert notification
 
         if ($busdatacomment[0]['user_id'] == $userid) {
             
@@ -6471,10 +6468,10 @@ class Business_profile extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
-            //echo "<pre>"; print_r($notificationdata); 
+//echo "<pre>"; print_r($notificationdata); 
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
         }
-        // end notoification
+// end notoification
 
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -6490,7 +6487,7 @@ class Business_profile extends MY_Controller {
 
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
-            // $cmtinsert = '<div class="all-comment-comment-box">';
+// $cmtinsert = '<div class="all-comment-comment-box">';
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -6506,12 +6503,12 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-            //$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
+//$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedit(this.name)">' . $business_profile['comments'] . '</textarea>';
             $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcomment' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedit(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
             $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Save</button></span>';
             $cmtinsert .= '</div></div>';
-            //$cmtinsert .= '<input type="text" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '"style="display:none;" value="' . $business_profile['comments'] . ' " onClick="commentedit(this.name)">';
-            //$cmtinsert .= '<button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $business_profile['business_profile_post_comment_id'] . '">';
+//$cmtinsert .= '<input type="text" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcomment' . $business_profile['business_profile_post_comment_id'] . '"style="display:none;" value="' . $business_profile['comments'] . ' " onClick="commentedit(this.name)">';
+//$cmtinsert .= '<button id="editsubmit' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;" onClick="edit_comment(' . $business_profile['business_profile_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $business_profile['business_profile_post_comment_id'] . '">';
 
             $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= '<a id="' . $business_profile['business_profile_post_comment_id'] . '"';
@@ -6588,14 +6585,14 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-            // comment aount variable start
+// comment aount variable start
             $idpost = $business_profile['business_profile_post_id'];
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
             $cmtcount .= ' ' . count($buscmtcnt) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
+// comment count variable end 
             if (count($buscmtcnt) > 0) {
                 $cntinsert .= '' . count($buscmtcnt) . '';
                 $cntinsert .= '<span> Comment</span>';
@@ -6606,7 +6603,7 @@ class Business_profile extends MY_Controller {
                     "count" => $cmtcount,
                     "comment_count" => $cntinsert
         ));
-        // khyati chande 
+// khyati chande 
     }
 
     public function pninsert_comment() {
@@ -6635,7 +6632,7 @@ class Business_profile extends MY_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
 
 
-        // insert notification
+// insert notification
 
         if ($busdatacomment[0]['user_id'] == $userid) {
             
@@ -6651,17 +6648,17 @@ class Business_profile extends MY_Controller {
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
-            //echo "<pre>"; print_r($notificationdata); 
+//echo "<pre>"; print_r($notificationdata); 
             $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
         }
-        // end notoification
+// end notoification
 
 
 
         $contition_array = array('business_profile_post_id' => $_POST["post_id"], 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "<pre>"; print_r($businessprofiledata); die();
-        // khyati changes start
+//echo "<pre>"; print_r($businessprofiledata); die();
+// khyati changes start
         $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
@@ -6759,15 +6756,15 @@ class Business_profile extends MY_Controller {
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-            // comment aount variable start
+// comment aount variable start
             $idpost = $business_profile['business_profile_post_id'];
             $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
             $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
             $cmtcount .= ' ' . count($businessprofiledata) . '';
             $cmtcount .= '</i></a>';
 
-            // comment count variable end 
-            // comment count variable end 
+// comment count variable end 
+// comment count variable end 
         }
         if (count($businessprofiledata) > 0) {
             $cntinsert .= '' . count($businessprofiledata) . '';
@@ -6781,10 +6778,10 @@ class Business_profile extends MY_Controller {
                     "comment_count" => $cntinsert
         ));
 
-        // khyati chande 
+// khyati chande 
     }
 
-    //Business_profile comment delete start
+//Business_profile comment delete start
     public function pndelete_comment() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -6902,14 +6899,14 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
 
-                // comment aount variable start
+// comment aount variable start
                 $idpost = $business_profile['business_profile_post_id'];
                 $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
                 $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
                 $cmtcount .= ' ' . count($buscmtcnt) . '';
                 $cmtcount .= '</i></a>';
 
-                // comment count variable end 
+// comment count variable end 
             }
         } else {
             $idpost = $business_profile['business_profile_post_id'];
@@ -6939,7 +6936,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('business_profile_post_id' => $post_delete, 'status' => '1');
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // echo '<pre>'; print_r($businessprofiledata); die();
+// echo '<pre>'; print_r($businessprofiledata); die();
 // khyati changes start
         if (count($businessprofiledata) > 0) {
             foreach ($businessprofiledata as $business_profile) {
@@ -6961,7 +6958,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
-                //$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedittwo(this.name)">' . $business_profile['comments'] . '</textarea>';
+//$cmtinsert .= '<textarea type="text" class="textarea" name="' . $business_profile['business_profile_post_comment_id'] . '" id="editcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" style="display:none;resize: none;" onClick="commentedittwo(this.name)">' . $business_profile['comments'] . '</textarea>';
                 $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $business_profile['business_profile_post_comment_id'] . '"  id="editcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" placeholder="Type Message ..." onkeyup="commentedittwo(' . $business_profile['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $business_profile['comments'] . '</div>';
                 $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $business_profile['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $business_profile['business_profile_post_comment_id'] . ')">Save</button></span>';
                 $cmtinsert .= '</div></div>';
@@ -7044,14 +7041,14 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
-                // comment aount variable start
+// comment aount variable start
                 $idpost = $business_profile['business_profile_post_id'];
                 $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
                 $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
                 $cmtcount .= ' ' . count($businessprofiledata) . '';
                 $cmtcount .= '</i></a>';
 
-                // comment count variable end 
+// comment count variable end 
             }
         } else {
             $idpost = $business_profile['business_profile_post_id'];
@@ -7119,8 +7116,8 @@ class Business_profile extends MY_Controller {
                 $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'user_id' => $userid, 'is_unlike' => 0);
 
                 $businesscommentlike2 = $this->common->select_data_by_condition('bus_comment_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                //echo "<pre>"; print_r($businesscommentlike); 
-                //echo count($businesscommentlike); 
+//echo "<pre>"; print_r($businesscommentlike); 
+//echo count($businesscommentlike); 
                 if (count($businesscommentlike2) == 0) {
                     $mulimgfour .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
                 } else {
@@ -7176,7 +7173,7 @@ class Business_profile extends MY_Controller {
         echo $mulimgfour;
     }
 
-    //postnews page controller end
+//postnews page controller end
 
     public function likeuserlist() {
         $post_id = $_POST['post_id'];
@@ -7191,7 +7188,7 @@ class Business_profile extends MY_Controller {
 
 
         $modal = '<div class="modal-header">';
-        //     $modal .=   '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+//     $modal .=   '<button type="button" class="close" data-dismiss="modal">&times;</button>';
         $modal .= '<h4 class="modal-title">';
 
         $modal .= '' . count($likelistarray) . ' Like';
@@ -7238,9 +7235,9 @@ class Business_profile extends MY_Controller {
         $modal .= '</div>';
         $modal .= '<div class="clearfix"></div>';
         $modal .= '</div>';
-        //  $modal .=  '<div class="modal-footer">';
-        // $modal .=  '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        //  $modal .=  '</div>';
+//  $modal .=  '<div class="modal-footer">';
+// $modal .=  '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+//  $modal .=  '</div>';
 //        echo '<div class="likeduser">';
 //        echo '<div class="likeduser-title">User List</div>';
 //        foreach ($likelistarray as $key => $value) {
@@ -7341,10 +7338,10 @@ class Business_profile extends MY_Controller {
     }
 
     public function contact_person() {
-         $to_id = $_POST['toid'];
+        $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -7352,17 +7349,17 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
 
-         $contition_array = array('contact_type' => 2);
+        $contition_array = array('contact_type' => 2);
         $search_condition = "((contact_to_id = '$to_id' AND contact_from_id = ' $userid') OR (contact_from_id = '$to_id' AND contact_to_id = '$userid'))";
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
 
 
-        // $contition_array = array('contact_to_id' => $to_id, 'contact_from_id' => $userid);
-        // $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+// $contition_array = array('contact_to_id' => $to_id, 'contact_from_id' => $userid);
+// $contactperson = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($contactperson) {
 
             $status = $contactperson[0]['status'];
@@ -7374,7 +7371,7 @@ class Business_profile extends MY_Controller {
                     'status' => 'cancel'
                 );
 
-                //echo "<pre>"; print_r($data); die();
+//echo "<pre>"; print_r($data); die();
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
                 $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
@@ -7392,14 +7389,12 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
                 $data = array(
-
                     'contact_from_id' => $userid,
                     'contact_to_id' => $to_id,
                     'contact_type' => 2,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
                     'not_read' => 2
-                   
                 );
 
 
@@ -7440,15 +7435,13 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '</div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'reject') {
-                 $data = array(
-
+                $data = array(
                     'contact_from_id' => $userid,
                     'contact_to_id' => $to_id,
                     'contact_type' => 2,
                     'created_date' => date('Y-m-d H:i:s'),
                     'status' => 'pending',
                     'not_read' => 2
-                   
                 );
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
@@ -7456,7 +7449,7 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '<div class="">';
                 $contactdata .= '<div class="add-contact">';
                 $contactdata .= ' <div></div><div></div><div></div>';
-                
+
                 $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
 
 
@@ -7478,7 +7471,7 @@ class Business_profile extends MY_Controller {
                 'not_read' => 2
             );
 
-            // echo "<pre>"; print_r($data); die();
+// echo "<pre>"; print_r($data); die();
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
@@ -7505,7 +7498,7 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -7513,7 +7506,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
         $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7547,7 +7540,7 @@ class Business_profile extends MY_Controller {
             foreach ($contactperson as $contact) {
 
 
-                //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+//echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
 
                 if ($contact['contact_to_id'] == $userid) {
@@ -7599,7 +7592,7 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
                     $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
-                    //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+//$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
@@ -7631,7 +7624,7 @@ class Business_profile extends MY_Controller {
         $status = $_POST['status'];
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -7639,7 +7632,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('contact_from_id' => $toid, 'contact_to_id' => $userid, 'status' => 'pending');
         $person = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7666,12 +7659,12 @@ class Business_profile extends MY_Controller {
         $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
+        $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
         $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $unique_user = array_merge($contactperson_req, $contactperson_con);
 
-         $new = array();
+        $new = array();
         foreach ($unique_user as $value) {
             $new[$value['contact_id']] = $value;
         }
@@ -7690,43 +7683,42 @@ class Business_profile extends MY_Controller {
         if ($contactperson) {
             foreach ($contactperson as $contact) {
 
-               
-                //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+
+//echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
                 $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
 
                 if ($contact['contact_to_id'] == $userid) {
 
 
-                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
-                $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
 
-                $contactdata .= '<li>';
-                $contactdata .= '<div class="addcontact-left">';
-                $contactdata .= '<a href="#">';
-                $contactdata .= '<div class="addcontact-pic">';
+                    $contactdata .= '<li>';
+                    $contactdata .= '<div class="addcontact-left">';
+                    $contactdata .= '<a href="#">';
+                    $contactdata .= '<div class="addcontact-pic">';
 
-                if ($busdata[0]['business_user_image']) {
-                    $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                    if ($busdata[0]['business_user_image']) {
+                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                    } else {
+                        $contactdata .= '<img src="' . base_url(WHITEIMAGE) . '">';
+                    }
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-text">';
+                    $contactdata .= '<span><b>' . $busdata[0]['company_name'] . '</b></span>';
+                    $contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-right">';
+                    $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="#"  class="add-right-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</li>';
                 } else {
-                    $contactdata .= '<img src="' . base_url(WHITEIMAGE) . '">';
-                }
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addcontact-text">';
-                $contactdata .= '<span><b>' . $busdata[0]['company_name'] . '</b></span>';
-                $contactdata .= '' . $inddata[0]['industry_name'] . '';
-                $contactdata .= '</div>';
-                $contactdata .= '</a>';
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addcontact-right">';
-                $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                $contactdata .= '<a href="#"  class="add-right-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                $contactdata .= '</div>';
-                $contactdata .= '</li>';
 
-               }else{
-                
-                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
 
 
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
@@ -7744,13 +7736,12 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
                     $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
-                    //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+//$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
-                
-               }
+                }
                 $contactdata .= '</ul>';
             }
         } else {
@@ -7833,7 +7824,7 @@ class Business_profile extends MY_Controller {
 
                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                 $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-                //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+//echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
                 $contactdata .= '<li id="' . $friend['contact_from_id'] . '">';
                 $contactdata .= '<div class="list-box">';
                 $contactdata .= '<div class="profile-img">';
@@ -7904,27 +7895,27 @@ class Business_profile extends MY_Controller {
 
             $this->data['unique_user'] = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
-            //   echo '<pre>'; print_r($unique_user); die();
+//   echo '<pre>'; print_r($unique_user); die();
         }
 
         $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
 
 
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>";print_r($businessdata);die();
+// echo "<pre>";print_r($businessdata);die();
 
 
         $contition_array = array('status' => '1', 'is_delete' => '0');
 
 
         $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>";print_r($businesstype);
+// echo "<pre>";print_r($businesstype);
 
         $contition_array = array('status' => '1', 'is_delete' => '0');
 
 
         $industrytype = $this->data['results'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>";print_r($industrytype);die();
+// echo "<pre>";print_r($industrytype);die();
         $unique = array_merge($businessdata, $businesstype, $industrytype);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
@@ -7950,22 +7941,22 @@ class Business_profile extends MY_Controller {
 
             $location[] = $key1['city_name'];
         }
-        // echo "<pre>"; print_r($location);die();
+// echo "<pre>"; print_r($location);die();
         foreach ($location as $key => $value) {
             $loc[$key]['label'] = $value;
             $loc[$key]['value'] = $value;
         }
 
-        //echo "<pre>"; print_r($loc);die();
-        // echo "<pre>"; print_r($loc);
-        // echo "<pre>"; print_r($result1);die();
+//echo "<pre>"; print_r($loc);die();
+// echo "<pre>"; print_r($loc);
+// echo "<pre>"; print_r($result1);die();
 
         $this->data['city_data'] = $loc;
         $this->data['demo'] = array_values($result1);
 
 
 
-        //echo "<pre>"; print_r($unique_user); die();
+//echo "<pre>"; print_r($unique_user); die();
         $this->load->view('business_profile/bus_contact', $this->data);
     }
 
@@ -7991,18 +7982,18 @@ class Business_profile extends MY_Controller {
         $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        //echo $businessdata1[0]['business_slug']; die();
+//echo $businessdata1[0]['business_slug']; die();
 
         $data = array(
             'modify_date' => date('Y-m-d H:i:s'),
             'status' => 'cancel'
         );
 
-        //echo "<pre>"; print_r($data); die();
+//echo "<pre>"; print_r($data); die();
         $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-        //$contactdata =  '<button>';
-        // for count list user start
+//$contactdata =  '<button>';
+// for count list user start
 
         $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
 
@@ -8011,7 +8002,7 @@ class Business_profile extends MY_Controller {
         $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
         $datacount = count($unique_user);
-        //for count list user end
+//for count list user end
 
         $contactdata = '<button onClick="contact_person_menu(' . $to_id . ')">';
 
@@ -8117,7 +8108,7 @@ class Business_profile extends MY_Controller {
                 'not_read' => 2
             );
 
-            // echo "<pre>"; print_r($data); die();
+// echo "<pre>"; print_r($data); die();
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
@@ -8193,7 +8184,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_home_post() {
-        // return html
+// return html
 
         $page_id = $_POST['page'];
 
@@ -8315,7 +8306,7 @@ class Business_profile extends MY_Controller {
         $businessprofiledatapost = $new;
         $return_html = '';
         if (count($businessprofiledatapost) > 0) {
-            //$row = $businessprofiledatapost[0];
+//$row = $businessprofiledatapost[0];
 
             foreach ($businessprofiledatapost as $row) {
                 $userid = $this->session->userdata('aileenuser');
@@ -8492,19 +8483,17 @@ class Business_profile extends MY_Controller {
                                         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
                                             
                                             
-                                            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit('.$row['business_profile_post_id'].'); onKeyup=check_lengthedit('.$row['business_profile_post_id'].'); onblur=check_lengthedit('.$row['business_profile_post_id'].');>';
+                                            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
 
-                                             if ($row['product_name']) {
-                                                                            $counter = $row['product_name'];
-                                                                            $a = strlen($counter);
+                    if ($row['product_name']) {
+                        $counter = $row['product_name'];
+                        $a = strlen($counter);
 
-                                      $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num readonly>';
-
-                                      } else {
-                                       $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
-
-                                         } 
-                                       $return_html .= '</div>
+                        $return_html .= '<input size=1 id="text_num" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
+                    } else {
+                        $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+                    }
+                    $return_html .= '</div>
 
                                     </div>                    
                                     <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
@@ -8576,8 +8565,8 @@ class Business_profile extends MY_Controller {
                                                         Your browser does not support the audio tag.
                                                     </audio>
                                                 </div>
-                                                <div class="audio_mp3" id="'. "postname" . $row['business_profile_post_id'].'">
-                                                    <p title="'.$row['product_name'].'">'.$row['product_name'].'</p>
+                                                <div class="audio_mp3" id="' . "postname" . $row['business_profile_post_id'] . '">
+                                                    <p title="' . $row['product_name'] . '">' . $row['product_name'] . '</p>
                                                 </div>
                                             </div>';
                         }
@@ -8970,7 +8959,7 @@ class Business_profile extends MY_Controller {
                                 </div>';
         }
         echo $return_html;
-        // return html        
+// return html        
     }
 
     public function business_home_three_user_list() {
@@ -8978,17 +8967,17 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        // GET BUSINESS DATA
+// GET BUSINESS DATA
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,profile_background,industriyal,city,state', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_profile_id = $businessdata[0]['business_profile_id'];
 
-        // GET USER LIST IN LEFT SIDE
+// GET USER LIST IN LEFT SIDE
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'business_step' => 4);
         $userlist = $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,industriyal,city,state', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // GET INDUSTRIAL WISE DATA
+// GET INDUSTRIAL WISE DATA
         $industriyal = $businessdata[0]['industriyal'];
         foreach ($userlist as $rowcategory) {
 
@@ -8997,8 +8986,8 @@ class Business_profile extends MY_Controller {
             }
         }
         $userlistview1 = $userlistcategory;
-        // GET INDUSTRIAL WISE DATA
-        // GET CITY WISE DATA
+// GET INDUSTRIAL WISE DATA
+// GET CITY WISE DATA
         $businessregcity = $businessdata[0]['city'];
 
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'business_step' => 4);
@@ -9009,8 +8998,8 @@ class Business_profile extends MY_Controller {
             }
         }
         $userlistview2 = $userlistcity;
-        // GET CITY WISE DATA
-        // GET STATE WISE DATA
+// GET CITY WISE DATA
+// GET STATE WISE DATA
         $businessregstate = $businessdata[0]['state'];
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'city !=' => $businessregcity, 'business_step' => 4);
         $userlist3 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,industriyal,city,state', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9020,8 +9009,8 @@ class Business_profile extends MY_Controller {
             }
         }
         $userlistview3 = $userliststate;
-        // GET STATE WISE DATA
-        // GET 3 USER
+// GET STATE WISE DATA
+// GET 3 USER
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid, 'industriyal !=' => $industriyal, 'city !=' => $businessregcity, 'state !=' => $businessregstate, 'business_step' => 4);
         $userlastview = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -9287,17 +9276,17 @@ class Business_profile extends MY_Controller {
         echo $return_html;
     }
 
-    // ajax function start 8-7 khyati change start
+// ajax function start 8-7 khyati change start
 
 
     public function bus_photos() {
 
         $id = $_POST['bus_slug'];
-        // manage post start
+// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -9305,7 +9294,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['slug_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9373,11 +9362,11 @@ class Business_profile extends MY_Controller {
     public function bus_videos() {
 
         $id = $_POST['bus_slug'];
-        // manage post start
+// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -9385,7 +9374,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['slug_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9507,11 +9496,11 @@ class Business_profile extends MY_Controller {
     public function bus_audio() {
 
         $id = $_POST['bus_slug'];
-        // manage post start
+// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -9519,7 +9508,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['slug_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9635,7 +9624,7 @@ class Business_profile extends MY_Controller {
 
     public function bus_pdf() {
         $id = $_POST['bus_slug'];
-        // manage post start
+// manage post start
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -9690,6 +9679,533 @@ class Business_profile extends MY_Controller {
         $fetch_pdf .= '<div class="dataconpdf"></div>';
         echo $fetch_pdf;
     }
-    
 
+    public function business_dashboard_post() {
+// manage post start
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $slug_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $slug_id = $slug_data[0]['business_slug'];
+        if ($id == $slug_id || $id == '') {
+            $contition_array = array('business_slug' => $slug_id, 'status' => '1');
+            $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+            $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+        $return_html = '';
+
+        if (count($business_profile_data) > 0) {
+            foreach ($business_profile_data as $row) {
+                $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
+                $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $return_html .= '<div id="removeownpost' . $row['business_profile_post_id'] . '">
+                    <div class="">
+                        <div class="post-design-box">
+                            <div class="post-design-top col-md-12" >  
+                                <div class="post-design-pro-img">';
+                $userid = $this->session->userdata('aileenuser');
+                $userimage = $this->db->get_where('business_profile', array('user_id' => $row['user_id']))->row()->business_user_image;
+                $userimageposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->business_user_image;
+                if ($row['posted_user_id']) {
+                    if ($userimageposted) {
+                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                    } else {
+                        $return_html .= '<img alt="" src="' . base_url(NOIMAGE) . '" alt="" />';
+                    }
+                } else {
+                    if ($userimage) {
+                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name="image_src" id="image_src" />';
+                    } else {
+                        $return_html .= '<img alt="" src="' . base_url(NOIMAGE) . '" alt="" />';
+                    }
+                }
+                $return_html .= '</div>
+                                <div class="post-design-name fl col-xs-8 col-md-10">
+                                    <ul>';
+                $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id']))->row()->company_name;
+                $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
+                $categoryid = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->industriyal;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
+                $companynameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->company_name;
+                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id'], 'status' => 1))->row()->business_slug;
+                if ($row['posted_user_id']) {
+                    $return_html .= '<li>
+                                                <div class="else_post_d">
+                                                    <div class="post-design-product">
+                                                        <a style="max-width: 40%;" class="post_dot" title="' . ucwords($companynameposted) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucwords($companynameposted) . '</a>
+                                                        <p class="posted_with" > Posted With</p>
+                                                        <a class="other_name post_dot" href="' . base_url('business-profile/details/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                                                        <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
+                                                    </div></div>
+                                            </li>';
+                } else {
+                    $return_html .= '<li><div class="post-design-product"><a class="post_dot" title="' . ucwords($companyname) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                                                    <span role="presentation" aria-hidden="true"> · </span>
+                                                    <div class="datespan"> 
+                                                        <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
+                                                    </div>
+                                                </div>
+                                            </li>';
+                }
+                $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
+                $return_html .= '<li><div class="post-design-product">   <a class="buuis_desc_a"  title="Category">';
+
+                if ($category) {
+                    $return_html .= ucwords($category);
+                } else {
+                    $return_html .= ucwords($businessdata[0]['other_industrial']);
+                }
+
+                $return_html .= '</a> </div>
+</li>
+<li>
+</li>
+</ul>
+</div>
+<div class = "dropdown2">
+<a onClick = "myFunction1(' . $row['business_profile_post_id'] . ')" class = "dropbtn2 dropbtn2 fa fa-ellipsis-v"></a>
+<div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content2">';
+                if ($row['posted_user_id'] != 0) {
+                    if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
+                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+    <i class="fa fa-trash-o" aria-hidden="true">
+    </i> Delete Post
+</a>
+<a id="' . $row['business_profile_post_id'] . '" onClick="editpost(this.id)">
+    <i class="fa fa-pencil-square-o" aria-hidden="true">
+    </i>Edit
+</a>';
+                    } else {
+                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+    <i class="fa fa-trash-o" aria-hidden="true">
+    </i> Delete Post
+</a>
+<a href="' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
+    <i class="fa fa-user" aria-hidden="true">
+    </i> Contact Person
+</a>';
+                    }
+                } else {
+                    if ($this->session->userdata('aileenuser') == $row['user_id']) {
+                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
+<a id="' . $row['business_profile_post_id'] . '" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>';
+                    } else {
+                        $return_html .= '<a href="' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>';
+                    }
+                }
+                $return_html .= '</div>
+</div>';
+                if ($row['product_name'] || $row['product_description']) {
+                    $return_html .= '<div class="post-design-desc ">';
+                }
+                $return_html .= '<div class="ft-15 t_artd">
+        <div id="editpostdata' . $row['business_profile_post_id'] . '" style="display:block;">
+            <a>' . $this->common->make_links($row['product_name']) . '</a>
+        </div>
+        <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
+            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ')>';
+                if ($row['product_name']) {
+                    $counter = $row['product_name'];
+                    $a = strlen($counter);
+                    $return_html .= '<input size=1 id="text_num" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
+                } else {
+                    $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+                }
+                $return_html .= '</div>
+    </div>
+    <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
+                $small = substr($row['product_description'], 0, 180);
+                $return_html .= $this->common->make_links($small);
+                if (strlen($row['product_description']) > 180) {
+                    $return_html .='... <span id="kkkk" onClick="khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
+                }
+                $return_html .= '</div>
+    <div id="khyatii' . $row['business_profile_post_id'] . '" style="display:none;">';
+                $return_html .= $row['product_description'];
+                $return_html .= '</div>
+    <div id="editpostdetailbox' . $row['business_profile_post_id'] . '" style="display:none;">
+        <div contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '" placeholder="Product Description" class="textbuis editable_text" placeholder="Description of Your Product"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
+    </div>
+    <button class="fr" id="editpostsubmit"' . $row['business_profile_post_id'] . '" style="display:none;margin: 5px 0;" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save</button>
+</div> ';
+                if ($row['product_name'] || $row['product_description']) {
+                    $return_html .= '</div>';
+                }
+                $return_html .= '<div class="post-design-mid col-md-12" >  
+    <div class="mange_post_image">';
+
+                $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if (count($businessmultiimage) == 1) {
+
+                    $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+                    $allowespdf = array('pdf');
+                    $allowesvideo = array('mp4', 'webm');
+                    $allowesaudio = array('mp3');
+                    $filename = $businessmultiimage[0]['image_name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (in_array($ext, $allowed)) {
+                        $return_html .= '<div class="one-image">
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
+        </div>';
+                    } elseif (in_array($ext, $allowespdf)) {
+
+                        $return_html .= '<div>
+            <a href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+                </div></a>
+        </div>';
+                    } elseif (in_array($ext, $allowesvideo)) {
+                        $return_html .= '<div>
+            <video class="video" width="100%" height="350" controls>
+                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>';
+                    } elseif (in_array($ext, $allowesaudio)) {
+                        $return_html .= '<div class="audio_main_div">
+            <div class="audio_img">
+                <img src="' . base_url('images/music-icon.png') . '">  
+            </div>
+            <div class="audio_source">
+                <audio  controls>
+                    <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="audio/mp3">
+                    <source src="movie.ogg" type="audio/ogg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+            <div class="audio_mp3" id="postname' . $row['business_profile_post_id'] . '">
+                <p title="' . $row['product_name'] . '">' . $row['product_name'] . '</p>
+            </div>
+        </div>';
+                    }
+                } elseif (count($businessmultiimage) == 2) {
+                    foreach ($businessmultiimage as $multiimage) {
+                        $return_html .= '<div  class="two-images" >
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+        </div>';
+                    }
+                } elseif (count($businessmultiimage) == 3) {
+                    $return_html .= '<div class="three-imag-top" >
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+        </div>
+        <div class="three-image" >
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+        </div>
+        <div class="three-image" >
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+        </div>';
+                } elseif (count($businessmultiimage) == 4) {
+
+                    foreach ($businessmultiimage as $multiimage) {
+                        $return_html .= '<div class="four-image">
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+        </div>';
+                    }
+                } elseif (count($businessmultiimage) > 4) {
+
+                    $i = 0;
+                    foreach ($businessmultiimage as $multiimage) {
+                        $return_html .= '<div class="four-image">
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+        </div>';
+                        $i++;
+                        if ($i == 3)
+                            break;
+                    }
+                    $return_html .= '<div class="four-image">
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%; height: 100%;"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                <div class="more-image" >
+                    <span> View All (+' . (count($businessmultiimage) - 4) . ')
+                    </span></div>
+            </a>
+        </div>';
+                }
+                $return_html .= '<div>
+        </div>
+    </div>
+</div>
+<div class="post-design-like-box col-md-12">
+    <div class="post-design-menu">
+        <ul class="col-md-6">
+            <li class="likepost' . $row['business_profile_post_id'] . '">
+                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="post_like(this.id)">';
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
+                $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $likeuser = $this->data['active'][0]['business_like_user'];
+                $likeuserarray = explode(',', $active[0]['business_like_user']);
+
+                if (!in_array($userid, $likeuserarray)) {
+                    $return_html .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>';
+                } else {
+                    $return_html .= '<i class="fa fa-thumbs-up main_color fa-1x" aria-hidden="true"></i>';
+                }
+
+                $return_html .= '<span class="like_As_count">';
+                if ($row['business_likes_count'] > 0) {
+                    $return_html .= $row['business_likes_count'];
+                }
+                $return_html .= '</span>
+                </a>
+            </li>
+
+            <li id="insertcount' . $row['business_profile_post_id'] . '" style="visibility:show">';
+                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '</i> 
+                </a>
+            </li> 
+        </ul>
+        <ul class="col-md-6 like_cmnt_count">
+            <li>
+                <div class="like_count_ext">
+                    <span class="comment_count' . $row['business_profile_post_id'] . '">';
+                if (count($commnetcount) > 0) {
+                    $return_html .= count($commnetcount);
+                    $return_html .= '<span> Comment</span>';
+                }
+                $return_html .= '</span> 
+
+                </div>
+            </li>
+
+            <li>
+                <div class="comnt_count_ext">
+                    <span class="comment_like_count' . $row['business_profile_post_id'] . '"> ';
+                if ($row['business_likes_count'] > 0) {
+                    $return_html .= $row['business_likes_count'];
+                    $return_html .= '<span> Like</span>';
+                }
+                $return_html .= '</span> 
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>';
+                if ($row['business_likes_count'] > 0) {
+                    $return_html .= '<div class="likeduserlist1 likeduserlist' . $row['business_profile_post_id'] . '">';
+                    $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                    $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $likeuser = $commnetcount[0]['business_like_user'];
+                    $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                    $likelistarray = explode(',', $likeuser);
+                    foreach ($likelistarray as $key => $value) {
+                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    }
+                    $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
+                    $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                    $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    $likeuser = $commnetcount[0]['business_like_user'];
+                    $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                    $likelistarray = explode(',', $likeuser);
+
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                    $return_html .= '<div class="like_one_other">';
+                    if ($userid == $value) {
+                        $return_html .= "You";
+                        $return_html .= "&nbsp;";
+                    } else {
+                        $return_html .= ucwords($business_fname1);
+                        $return_html .= "&nbsp;";
+                    }
+                    if (count($likelistarray) > 1) {
+                        $return_html .= "and";
+                        $return_html .= $countlike;
+                        $return_html .= "&nbsp;";
+                        $return_html .= "others";
+                    }
+                    $return_html .= '</div>
+    </a>
+</div>';
+                }
+
+                $return_html .= '<div  class="likeduserlist1  likeusername' . $row['business_profile_post_id'] . '" id="likeusername' . $row['business_profile_post_id'] . '" style="display:none">';
+                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuser = $commnetcount[0]['business_like_user'];
+                $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                $likelistarray = explode(',', $likeuser);
+                foreach ($likelistarray as $key => $value) {
+                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                }
+                $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
+                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $likeuser = $commnetcount[0]['business_like_user'];
+                $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                $likelistarray = explode(',', $likeuser);
+
+                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                $return_html .= '<div class="like_one_other">';
+                $return_html .= ucwords($business_fname1);
+                $return_html .= "&nbsp;";
+                if (count($likelistarray) > 1) {
+                    $return_html .= "and";
+                    $return_html .= $countlike;
+                    $return_html .= "&nbsp;";
+                    $return_html .= "others";
+                }
+                $return_html .= '</div>
+    </a>
+</div>
+
+<div class="art-all-comment col-md-12">
+    <div id="fourcomment' . $row['business_profile_post_id'] . '" style="display:none;">
+    </div>
+    <div  id="threecomment' . $row['business_profile_post_id'] . '" style="display:block">
+        <div class="insertcomment' . $row['business_profile_post_id'] . '">';
+                $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
+                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($businessprofiledata) {
+                    foreach ($businessprofiledata as $rowdata) {
+                        $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
+                        $return_html .= '<div class="all-comment-comment-box">
+                <div class="post-design-pro-comment-img">';
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                        if ($business_userimage) {
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
+                        }
+                        $return_html .= '</div>
+                <div class="comment-name">
+                    <b>';
+                        $return_html .= ucwords($companyname);
+                        $return_html .= '</br>';
+
+                        $return_html .= '</b>
+                </div>
+                <div class="comment-details" id= "showcomment' . $rowdata['business_profile_post_comment_id'] . '">
+                    <div id="lessmore' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">';
+                        $small = substr($rowdata['comments'], 0, 180);
+                        $return_html .= $this->common->make_links($small);
+
+                        if (strlen($rowdata['comments']) > 180) {
+                            $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
+                        }
+                        $return_html .= '</div>
+
+                    <div id="seemore' . $rowdata['business_profile_post_comment_id'] . '" style="display:none;">';
+                        $new_product_comment = $this->common->make_links($rowdata['comments']);
+                        $return_html .= nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                        $return_html .= '</div>
+                </div>
+                <div class="edit-comment-box">
+                    <div class="inputtype-edit-comment">
+                        <div contenteditable="true"  class="editable_text editav_2" name="' . $rowdata['business_profile_post_comment_id'] . '"  id="editcomment"' . $rowdata['business_profile_post_comment_id'] . '" placeholder="Add a Commnet Comment" value= ""  onkeyup="commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                        <span class="comment-edit-button"><button id="editsubmit' . $rowdata['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['business_profile_post_comment_id'] . ')">Save</button></span>
+                    </div>
+                </div>
+                <div class="art-comment-menu-design"> 
+                    <div class="comment-details-menu" id="likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                        $userid = $this->session->userdata('aileenuser');
+                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
+                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
+                        if (!in_array($userid, $likeuserarray)) {
+                            $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i> ';
+                        } else {
+                            $return_html .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                        }
+                        $return_html .= '<span>';
+                        if ($rowdata['business_comment_likes_count']) {
+                            $return_html .= $rowdata['business_comment_likes_count'];
+                        }
+                        $return_html .= '</span>
+                        </a>
+                    </div>';
+
+                        $userid = $this->session->userdata('aileenuser');
+                        if ($rowdata['user_id'] == $userid) {
+                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <div id="editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">
+                            <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_editbox(this.id)" class="editbox">Edit
+                            </a>
+                        </div>
+                        <div id="editcancle' . $rowdata['business_profile_post_comment_id'] . '" style="display:none;">
+                            <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_editcancle(this.id)">Cancel
+                            </a>
+                        </div>
+                    </div>';
+                        }
+                        $userid = $this->session->userdata('aileenuser');
+                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                        if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
+                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['business_profile_post_comment_id'] . '" value= "' . $rowdata['business_profile_post_id'] . '">
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete<span class="insertcomment' . $rowdata['business_profile_post_comment_id'] . '">
+                            </span>
+                        </a>
+                    </div>';
+                        }
+                        $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <p>';
+
+                        $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
+                        $return_html .= '</br>';
+                        $return_html .= '</p></div>
+                </div></div>';
+                    }
+                }
+                $return_html .= '</div>
+    </div>
+</div>
+<div class="post-design-commnet-box col-md-12">
+    <div class="post-design-proo-img"> ';
+
+                $userid = $this->session->userdata('aileenuser');
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+
+                if ($business_userimage) {
+                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                } else {
+                    $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="NO IMAGE">';
+                }
+                $return_html .= '</div>
+    <div id="content" class="col-md-12  inputtype-comment cmy_2" >
+        <div contenteditable="true" class="editable_text edt_2" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment... " onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
+    </div>';
+                $return_html .= form_error('post_comment');
+                $return_html .= '<div class="comment-edit-butn">       
+        <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment</button></div>
+</div>
+</div>
+</div> </div>';
+            }
+        } else {
+            $return_html .= '<div class="contact-frnd-post bor_none">
+    <div class="text-center rio">
+        <h4 class="page-heading  product-listing">No Post Found.</h4>
+    </div>
+</div>';
+        }
+        $return_html .= '<div class="nofoundpost">
+</div>';
+        echo $return_html;
+    }
+    
 }

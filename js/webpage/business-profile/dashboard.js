@@ -1,9 +1,35 @@
 $(document).ready(function () {
+    business_dashboard_post();
     GetBusPhotos();
     GetBusVideos();
     GetBusAudios();
     GetBusPdf();
 });
+
+function business_dashboard_post() {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/business_dashboard_post/",
+        data: '',
+        dataType: "html",
+        beforeSend: function () {
+            $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.business-all-post').html(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+        }
+    });
+}
+
 function GetBusPhotos() {
 
     $.ajax({
@@ -107,6 +133,7 @@ $(document).ready(function () {
         initialPreviewAsData: true,
     });
 });
+
 $(function () {
     $("#tags").autocomplete({
         source: function (request, response) {

@@ -1648,21 +1648,17 @@ jQuery(document).ready(function ($) {
         },
         complete: function (response) {
             // Output AJAX response to the div container
-
-
             document.getElementById('test-upload-product').value = '';
             document.getElementById('test-upload-des').value = '';
             document.getElementById('file-1').value = '';
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
 
-
 //            $('#progress_div').fadeOut('5000').remove();
             document.getElementById("progress_div").style.display = "none";
             // $('.loader').remove();
             $('.business-all-post div:first').remove();
             $(".business-all-post").prepend(response.responseText);
-
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -1670,9 +1666,7 @@ jQuery(document).ready(function ($) {
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
-
         }
     };
     // Submit the form

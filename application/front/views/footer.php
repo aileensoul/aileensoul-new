@@ -1,6 +1,3 @@
-<!-- script for fetch all unread notification start -->
-<!--<script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>--> 
-
 <!-- script for update all read notification start-->
 <script type="text/javascript">
     function Notificationheader() {
@@ -28,10 +25,7 @@
             }
         });
     }
-</script>
-<!-- script for update all read notification end -->
-<!-- script for update all read notification start-->
-<script type="text/javascript">
+
     function getmsgNotification() {
         msgNotification();
         msgheader();
@@ -57,9 +51,7 @@
             }
         });
     }
-</script>
-<!------  commen script harshad  ---------------->
-<script>
+
     jQuery(document).ready(function ($) {
         if (screen.width <= 767) {
             $("ul.left-form-each").on("click", ".init", function () {
@@ -86,9 +78,7 @@
             });
         });
     });
-</script>
-<!-- script for update all read notification end -->
-<script type="text/javascript" charset="utf-8">
+
     $(document).ready(function () {
         // MAIN NOTIFICATION
         waitForMsg();
@@ -192,9 +182,7 @@
             $(this).find(".dropdown-menu").slideToggle("slow");
         });
     });
-</script>
 
-<script type="text/javascript" charset="utf-8">
     function addmsg(type, msg)
     {
         if (msg == 0)
@@ -285,9 +273,7 @@
             }
         });
     }
-</script>
 
-<script type="text/javascript">
     // USER PROFILE DROPDOWN IN HEADER
     $(document).on("dropdown-user", function () {
         $(".dropdown-menu").hide();
@@ -318,9 +304,6 @@
         }
     });
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
-</script>
-
-<script type="text/javascript" >
 
     $(document).ready(function ()
     {
