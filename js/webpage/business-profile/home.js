@@ -210,7 +210,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_commentthree",
-            data: 'post_id=' + clicked_id + '&comment=' + txt,
+            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -224,7 +224,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_comment",
-            data: 'post_id=' + clicked_id + '&comment=' + txt,
+            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -280,7 +280,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_commentthree",
-                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -294,7 +294,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_comment",
-                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -519,7 +519,7 @@ function edit_comment(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' + txt,
+        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
         success: function (data) { //alert('falguni');
 
             document.getElementById('editcomment' + abc).style.display = 'none';
@@ -570,7 +570,7 @@ function commentedit(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' + txt,
+                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
                 success: function (data) { //alert('falguni');
                     document.getElementById('editcomment' + abc).style.display = 'none';
                     document.getElementById('showcomment' + abc).style.display = 'block';
@@ -612,7 +612,7 @@ function edit_commenttwo(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' + txt,
+        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
         success: function (data) {
 
             document.getElementById('editcommenttwo' + abc).style.display = 'none';
@@ -668,7 +668,7 @@ function commentedittwo(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' + txt,
+                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
                 success: function (data) {
                     document.getElementById('editcommenttwo' + abc).style.display = 'none';
                     document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -873,11 +873,11 @@ function save_post(abc)
 }
 /* SAVEPOST END */
 /* FOLLOW USER SCRIPT START */
-function followuser(clicked_id)
+function followuser_two(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/follow",
+        url: base_url + "business_profile/follow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
@@ -1307,7 +1307,7 @@ function contentedit(clicked_id) {
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_commentthree",
-                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('input').each(function () {
@@ -1322,7 +1322,7 @@ function contentedit(clicked_id) {
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_comment",
-                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
                     success: function (data) {
                         $('input').each(function () {
                             $(this).val('');

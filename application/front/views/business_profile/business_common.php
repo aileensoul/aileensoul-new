@@ -198,9 +198,13 @@
 
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
+
+                                $contition_array = array('business_step' => 4, 'is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid);
+        $userlistcountbus = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                                 if ($businessdata1[0]['user_id'] == $userid) {
                                     ?> 
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a title="Userlist" href="<?php echo base_url('business-profile/userlist/' . $businessdata1[0]['business_slug']); ?>">Userlist</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a title="Userlist" href="<?php echo base_url('business-profile/userlist/' . $businessdata1[0]['business_slug']); ?>">Userlist<br> (<?php echo (count($userlistcountbus)); ?>)</a></li>
                                 <?php } ?>
                                 <?php
                                 $userid = $this->session->userdata('aileenuser');
@@ -219,7 +223,7 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($businessdata1[0]['user_id'] == $userid) {
                                     ?>          
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata1[0]['business_slug']); ?>">Following <br> (<?php echo (count($businessfollowingdata)); ?>)</a>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata1[0]['business_slug']); ?>">Following <br> <div id="countfollow">(<?php echo (count($businessfollowingdata)); ?>)</div></a>
                                     </li>
                                     <?php
                                 } else {

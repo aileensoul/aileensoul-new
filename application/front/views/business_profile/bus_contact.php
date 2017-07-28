@@ -123,9 +123,17 @@
                                                 <?php } ?>
                                             </div>
                                         <?php } else { ?>
-                                            <div class="text-center rio">
-                                                <h4 class="page-heading  product-listing">No Contacts Found.</h4>
-                                            </div>
+                                            <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="<?php echo base_url('img/bui-no.png') ?>">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Contacts Available.
+                                    </div>
+                                </div>
+                            
                                         <?php } ?>
                                         <div class="col-md-1"></div>
                                     </div>

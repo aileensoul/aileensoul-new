@@ -1111,19 +1111,31 @@ class Business_profile extends MY_Controller {
                 $datacount = "count";
 
 
-                $notfound = '<div class="contact-frnd-post bor_none">';
-                $notfound .= '<div class="text-center rio">';
-                $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
-                $notfound .= '</div></div>';
+                $notfound = ' <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="'.base_url('img/bui-no.png') .'">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Following Available.
+                                    </div>
+                                </div>';
             }
         } else {
 
             $datacount = "count";
 
-            $notfound = '<div class="contact-frnd-post bor_none">';
-            $notfound .= '<div class="text-center rio">';
-            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
-            $notfound .= '</div></div>';
+            $notfound = ' <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="'.base_url('img/bui-no.png').'">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Following Available.
+                                    </div>
+                                </div>';
         }
 
         echo json_encode(
@@ -2511,18 +2523,34 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
         $this->load->view('business_profile/business_userlist', $this->data);
     }
 
-    public function follow() {
+public function follow() {
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $business_id = $_POST["follow_to"];
+
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
         $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 
         if ($follow) {
             $data = array(
@@ -2533,21 +2561,68 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-// insert notification
+            // insert notification
+
+
+
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($busnotification); die();
+                if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
+                    
+                } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
+
+                    $datafollow = array(
+                        'not_read' => 2
+                    );
+
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                    $this->db->where($where);
+                    $updatdata = $this->db->update('notification', $datafollow);
+                } else{
+                    $data = array(
+                'follow_type' => 2,
+                'follow_from' => $artdata[0]['business_profile_id'],
+                'follow_to' => $business_id,
+                'follow_status' => 1,
+            );
+            $insertdata = $this->common->insert_data($data, 'follow');
+
+           $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+           $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // insert notification
 
             $data = array(
                 'not_type' => 8,
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
                 'not_read' => 2,
-                'not_product_id' => $follow[0]['follow_id'],
+                'not_product_id' => $follow_id[0]['follow_id'],
                 'not_from' => 6,
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
-
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-// end notoification
+
+                }
+
+
+            // $data = array(
+            //     'not_type' => 8,
+            //     'not_from_id' => $userid,
+            //     'not_to_id' => $busdatatoid[0]['user_id'],
+            //     'not_read' => 2,
+            //     'not_product_id' => $follow[0]['follow_id'],
+            //     'not_from' => 6,
+            //     'not_created_date' => date('Y-m-d H:i:s'),
+            //     'not_active' => 1
+            // );
+
+            // $insert_id = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+
+             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($update) {
 
@@ -2556,39 +2631,61 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
                               Following
                       </button>';
                 $follow .= '</div>';
-                echo $follow;
+
+               $datacount = '('.count($followcount).')';
+
+                echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
             }
-        } else {
+        } else {   //echo "hii"; die();
+           
+
             $data = array(
                 'follow_type' => 2,
                 'follow_from' => $artdata[0]['business_profile_id'],
                 'follow_to' => $business_id,
                 'follow_status' => 1,
             );
-            $insert = $this->common->insert_data($data, 'follow');
+            $insertdata = $this->common->insert_data($data, 'follow');
 
-// insert notification
+
+           $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+           $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // insert notification
 
             $data = array(
                 'not_type' => 8,
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
                 'not_read' => 2,
-                'not_product_id' => $insert,
+                'not_product_id' => $follow_id[0]['follow_id'],
                 'not_from' => 6,
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-// end notoification
-            if ($insert) {
+             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            // end notoification
+            if ($insertdata) {
                 $follow = '<div id="unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
                                Following
                       </button>';
                 $follow .= '</div>';
-                echo $follow;
+
+               $datacount = '('.count($followcount).')';
+
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
             }
         }
     }
@@ -2596,12 +2693,26 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
     public function unfollow() {
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $business_id = $_POST["follow_to"];
+
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 
         if ($follow) {
             $data = array(
@@ -2611,26 +2722,53 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
                 'follow_status' => 0,
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+
+              $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
+
+            $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             if ($update) {
 
                 $unfollow = '<div id="followdiv " class="user_btn">';
+                //    $unfollow .= '<button style="margin-top: 7px;" id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
                 $unfollow .= '<button id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
                                Follow 
                       </button>';
                 $unfollow .= '</div>';
-                echo $unfollow;
+
+                $datacount = '('.count($followcount).')';
+                
+                echo json_encode(
+                        array(
+                            "follow" => $unfollow,
+                            "count" => $datacount,
+                ));
             }
         }
     }
 
-    public function follow_two() {
+ public function follow_two() {
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $business_id = $_POST["follow_to"];
+
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+
         $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
@@ -2646,7 +2784,25 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-// insert notification
+            // insert notification
+
+
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($busnotification); die();
+                if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
+                    
+                } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
+
+                    $datafollow = array(
+                        'not_read' => 2
+                    );
+
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                    $this->db->where($where);
+                    $updatdata = $this->db->update('notification', $datafollow);
+                } else{
+                   
 
             $data = array(
                 'not_type' => 8,
@@ -2660,7 +2816,8 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'notification');
-// end notoification
+          } 
+            // end notoification
 
             if ($update) {
 
@@ -2680,23 +2837,29 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             );
             $insert = $this->common->insert_data($data, 'follow');
 
-// insert notification
+            // insert notification
+            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+           $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $data = array(
+
+            $datanoti = array(
                 'not_type' => 8,
                 'not_from_id' => $userid,
                 'not_to_id' => $busdatatoid[0]['user_id'],
                 'not_read' => 2,
-                'not_product_id' => $insert,
+                'not_product_id' => $follow_id[0]['follow_id'],
                 'not_from' => 6,
                 'not_created_date' => date('Y-m-d H:i:s'),
                 'not_active' => 1
             );
 
-            $insert_id = $this->common->insert_data_getid($data, 'notification');
-// end notoification
+            $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
+            // end notoification
             if ($insert) {
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+                //                Following
+                //       </button>';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 echo $follow;
@@ -2706,14 +2869,26 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
 
     public function unfollow_two() {
         $userid = $this->session->userdata('aileenuser');
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
+
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
 
         $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
         $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
 
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 
         if ($follow) {
             $data = array(
@@ -2726,13 +2901,15 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             if ($update) {
 
                 $unfollow = '<div class="user_btn follow_btn_' . $business_id . '" id="followdiv">';
+                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+                //                Following
+                //       </button>';
                 $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')">Follow</button>';
                 $unfollow .= '</div>';
                 echo $unfollow;
             }
         }
     }
-
     public function unfollow_following() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -2763,10 +2940,16 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
                 $unfollow .= ')</div>';
 
                 if (count($followingotherdata) == 0) {
-                    $notfound = '<div>';
-                    $notfound .= '<div class="text-center rio">';
-                    $notfound .= '<h4 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">No Following Found.</h4>';
-                    $notfound .= '</div></div>';
+                    $notfound = ' <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="'.base_url('img/bui-no.png').'">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Following Available.
+                                    </div>
+                                </div>';
                 }
                 echo json_encode(
                         array("unfollow" => $unfollow,
@@ -3639,7 +3822,7 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
             );
             $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
 // insert notification
-            if ($businessprofiledata[0]['user_id'] == $userid) {
+            if ($businessprofiledata[0]['user_id'] == $userid || $businessprofiledata[0]['is_delete'] == '1') {
                 
             } else {
 
@@ -3857,7 +4040,7 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
 
 // insert notification
 
-        if ($busdatacomment[0]['user_id'] == $userid) {
+        if ($busdatacomment[0]['user_id'] == $userid || $busdatacomment[0]['is_delete'] == '1') {
             
         } else {
             $notificationdata = array(
@@ -4010,7 +4193,7 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
         $insert_id = $this->common->insert_data_getid($data, 'business_profile_post_comment');
 
 // insert notification
-        if ($busdatacomment[0]['user_id'] == $userid) {
+        if ($busdatacomment[0]['user_id'] == $userid ||  $busdatacomment[0]['is_delete'] == '1') {
             
         } else {
             $notificationdata = array(
@@ -8147,10 +8330,17 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
 
 
         if (count($unique_user) == 0) {
-            $nomsg = '<div>';
-            $nomsg .= '<div class="text-center rio">';
-            $nomsg .= '<h4 class="page-heading  product-listing">No Contacts Found.</h4>';
-            $nomsg .= '</div></div>';
+            $nomsg = ' <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="'.base_url('img/bui-no.png').'">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Contacts Available.
+                                    </div>
+                                </div>
+                            ';
         }
 
 
@@ -9243,7 +9433,7 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">';
                     $return_html .= '<div class="fr' . $userlist['business_profile_id'] . '">
-                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser(' . $userlist['business_profile_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser_two(' . $userlist['business_profile_id'] . ')">Follow
                                                                                 </button>
                                                                             </div>
                                                                         </div>

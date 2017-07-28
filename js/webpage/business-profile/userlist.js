@@ -199,33 +199,6 @@ $('#upload').on('change', function () {
 });
 /* COVER PIC SCRIPT END */
 
-/* FOLLOW USER START */
-function followuser(clicked_id)
-{
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/follow",
-        data: 'follow_to=' + clicked_id,
-        success: function (data) {
-            $('.' + 'fruser' + clicked_id).html(data);
-        }
-    });
-}
-/* FOLLOW USER END */
-
-/* UNFOLLOW USER START */
-function unfollowuser(clicked_id)
-{
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/unfollow",
-        data: 'follow_to=' + clicked_id,
-        success: function (data) {
-            $('.' + 'fruser' + clicked_id).html(data);
-        }
-    });
-}
-/* UNFOLLOW USER END */
 
 /* SCRIPT FOR PROFILE PIC START */
 function readURL(input) {
@@ -279,3 +252,43 @@ $(document).on('keydown', function (e) {
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 330}, 500);
 });
+
+
+function followuser(clicked_id)
+{
+
+                    $.ajax({
+                        type: 'POST',
+                       // url: '<?php echo base_url() . "business_profile/follow" ?>',
+                        url: base_url + "business_profile/follow",
+                        dataType: 'json',
+
+                        data: 'follow_to=' + clicked_id,
+                        success: function (data) {
+
+                            $('.' + 'fruser' + clicked_id).html(data.follow);
+                            $('#countfollow').html(data.count);
+
+                        }
+                    });
+                }
+
+function unfollowuser(clicked_id)
+                {
+
+                    $.ajax({
+                        type: 'POST',
+                        //url: '<?php echo base_url() . "business_profile/unfollow" ?>',
+                        url: base_url + "business_profile/unfollow",
+                        
+                        dataType: 'json',
+
+                        data: 'follow_to=' + clicked_id,
+                        success: function (data) {
+
+                            $('.' + 'fruser' + clicked_id).html(data.follow);
+                            $('#countfollow').html(data.count);
+
+                        }
+                    });
+                }
