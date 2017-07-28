@@ -50,7 +50,12 @@
                                                                                     </a>
                                                                                 <?php } else { ?>
                                                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>">
-                                                                                        <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                                                                         <?php 
+                                          $a = $cdata[0]['company_name'];
+                                          $acr = substr($a, 0, 1);?>
+                                            <div class="post-img-userlist">
+                                            <?php echo  ucwords($acr)?>
+                                            </div>
                                                                                     </a>
                                                                                 <?php } ?> 
                                                                             </div>

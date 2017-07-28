@@ -1416,6 +1416,10 @@ class Business_profile extends MY_Controller {
                                         </div>
                                     </div>';
 
+            $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->company_name;
+
+            $companynameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->company_name;
+
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_user_image;
             $userimageposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->business_user_image;
 
@@ -1428,26 +1432,33 @@ class Business_profile extends MY_Controller {
                                                 <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />
                                             </a>';
                 } else {
-                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">
-                                                <!-- <img alt="" src="' . base_url(NOIMAGE) . '" alt="" />-->';
-                    $a = $userlist['company_name'];
-                    $acr = substr($a, 0, 1);
-                   
-$return_html .= '<div class="post-img-div">';
-    $return_html .= ucwords($acr);
-    $return_html .= '</div>
-</a>';
-}
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
+                        $a = $companynameposted;
+                        $acr = substr($a, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucwords($acr);
+                        $return_html .= '</div>';
+
+                        $return_html .= '</a>';
+                }
 } else {
 if ($business_userimage) {
 $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">
     <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">
 </a>';
 } else {
-$return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">
-    <img src="' . base_url(NOIMAGE) . '" alt="">
-</a>';
-}
+$return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">';
+    
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucwords($acr);
+                        $return_html .= '</div>';
+
+                        $return_html .= '</a>';
+       }
 }
 $return_html .= '</div>
 <div class="post-design-name fl col-md-10">
@@ -1882,9 +1893,14 @@ $return_html .= '<div class="likeusername' . $row['business_profile_post_id'] . 
 
                         <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
                     } else {
-                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">
-                        <img src="' . base_url(NOIMAGE) . '" alt="">
-                    </a>';
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">';
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucwords($acr);
+                        $return_html .= '</div>';
+                        $return_html .= '</a>';
                     }
                     $return_html .= '</div>
                 <div class="comment-name">
@@ -1984,7 +2000,12 @@ $return_html .= '<div class="likeusername' . $row['business_profile_post_id'] . 
         if ($business_userimage) {
         $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
         } else {
-        $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucwords($acr);
+                        $return_html .= '</div>';
         }
         $return_html .= '</div>
 
@@ -3330,7 +3351,14 @@ $tolist = $this->common->select_data_by_search('cities', $search_condition, $con
                 if ($business_userimage != '') {
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">  </div>';
                 } else {
-                    $cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucwords($acr);
+                        $cmtinsert .= '</div>'; 
+
+                    $cmtinsert .= '</div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
                 $cmtinsert .= '</div>';

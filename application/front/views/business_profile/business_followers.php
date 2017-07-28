@@ -48,7 +48,13 @@
                                                                                     </a>
                                                                                 <?php } else { ?>
                                                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>">
-                                                                                        <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" /></a>
+                                                                                         <?php 
+                                          $a =  $followername;
+                                          $acr = substr($a, 0, 1);?>
+                                            <div class="post-img-userlist">
+                                            <?php echo  ucwords($acr)?>
+                                            </div>
+                                            </a>
                                                                                 <?php } ?> 
                                                                             </div>
                                                                         </li>

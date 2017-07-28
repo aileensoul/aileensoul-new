@@ -32,14 +32,24 @@
                                                                     <ul>
                                                                         <li class="fl">
                                                                             <div class="follow-img">
+
+                                                                            <?php 
+                                                                    $companyname= $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name; ?>
                                                                                 <?php $slug = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_slug; ?>
                                                                                 <?php if ($this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image != '') { ?>
+
+
                                                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slug); ?>">
                                                                                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image); ?>" height="50px" width="50px" alt="" >
                                                                                     </a>
                                                                                 <?php } else { ?>
                                                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slug); ?>">
-                                                                                        <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                                                                        <?php 
+                                          $a = $companyname;
+                                          $acr = substr($a, 0, 1);?>
+                                            <div class="post-img-userlist">
+                                            <?php echo  ucwords($acr)?>
+                                            </div>
                                                                                     <?php } ?> 
                                                                             </div>
                                                                         </li>

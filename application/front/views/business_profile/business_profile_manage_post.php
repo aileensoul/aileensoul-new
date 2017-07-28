@@ -187,7 +187,12 @@
                                         <div class="popup-img"> 
                                             <?php if ($businessdata[0]['business_user_image']) { ?><img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
                                             <?php } else { ?>
-                                                <img alt=""  src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                                 <?php 
+                                          $a =$businessdata[0]['company_name'];
+                                          $acr = substr($a, 0, 1);?>
+                                            <div class="post-img-div">
+                                            <?php echo  ucwords($acr)?>
+                                            </div>
                                             <?php } ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content popup-text">
@@ -216,7 +221,12 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <img  src="<?php echo base_url(NOIMAGE); ?>"  alt="">
+                                                    <?php 
+                                          $a =$businessdata[0]['company_name'];
+                                          $acr = substr($a, 0, 1);?>
+                                            <div class="post-img-div">
+                                            <?php echo  ucwords($acr)?>
+                                            </div>
                                                     <?php
                                                 }
                                                 ?>
