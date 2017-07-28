@@ -848,7 +848,7 @@ class Business_profile extends MY_Controller {
         array_multisort($post, SORT_DESC, $new);
 
         $this->data['businessprofiledatapost'] = $new;
-
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
         $this->load->view('business_profile/business_profile_post', $this->data);
     }
 
@@ -4381,7 +4381,8 @@ public function follow() {
 
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
         $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
         $this->load->view('business_profile/postnewpage', $this->data);
     }
 
