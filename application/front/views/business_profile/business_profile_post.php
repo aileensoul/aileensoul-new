@@ -53,18 +53,26 @@
                                                         </div>
                                                     <?php } else { ?>
                                                         <div class="left_iner_img_profile">  
-                                                            <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $businessdata[0]['company_name']; ?>">
+                                                            <!--<img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $businessdata[0]['company_name']; ?>">-->
+                                                            <?php
+                                                            $a = $businessdata[0]['company_name'];
+                                                            $acr = substr($a, 0, 1);
+                                                            ?>
+                                                            <div class="post-img-div">
+    <?php echo ucwords($acr) ?>
+                                                            </div>
+
                                                         </div>  <?php } ?>                           
                                                 </a>
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
                                                     <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
-                                                        <?php echo ucwords($businessdata[0]['company_name']); ?>
+<?php echo ucwords($businessdata[0]['company_name']); ?>
                                                     </a> 
                                                 </span>
 
-                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+<?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                                                         <?php
@@ -79,20 +87,20 @@
                                                 <ul class=" left_box_menubar">
                                                     <li
                                                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" 
-                                                        <?php } ?>>
+<?php } ?>>
                                                         <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business-profile/dashboard'); ?>">Dashboard
                                                         </a>
                                                     </li>
                                                     <li 
                                                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
-                                                        <?php } ?>>
+<?php } ?>>
                                                         <a title="Followers" href="<?php echo base_url('business-profile/followers'); ?>">Followers 
                                                             <br> (<?php echo (count($businessfollowerdata)); ?>)
                                                         </a>
                                                     </li>
                                                     <li  
                                                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
-                                                        <?php } ?>>
+<?php } ?>>
                                                         <a  class="padding_less_right" title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
                                                             <br> (<?php echo (count($businessfollowingdata)); ?>) 
                                                         </a>
@@ -134,7 +142,7 @@
                                 </span>
                                 <div class="post-editor col-md-12 post-edit-popup" id="close">
                                     <?php // echo form_open_multipart(base_url('business_profile/business_profile_addpost_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix', 'onsubmit' => "return imgval(event)")); ?>
-                                    <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
+<?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
                                     <div class="main-text-area col-md-12" >
                                         <div class="popup-img-in"> 
                                             <?php
@@ -197,7 +205,7 @@
                                         <button type="submit"  value="Submit">Post
                                         </button>    
                                     </div>
-                                    <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +224,7 @@
                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
                                         <?php } else { ?>
                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
-                                        <?php } ?>
+<?php } ?>
                                     </div>
                                     <div id="myBtn"  class="editor-content popup-text">
                                         <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
@@ -250,7 +258,7 @@
 
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -319,9 +327,9 @@
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var data = <?php echo json_encode($demo); ?>;
+                                                var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js'); ?>"></script>
     </body>
