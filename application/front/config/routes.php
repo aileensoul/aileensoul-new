@@ -110,6 +110,7 @@ $route['business-profile/pdf/(:any)'] = "business_profile/business_pdf/$1";
 
 $route['business-profile/business-profile-contactperson'] = "business_profile/business_profile_contactperson";
 $route['business-profile/post-detail'] = "business_profile/postnewpage";
+$route['business-profile/post-detail/(:any)'] = "business_profile/postnewpage/$1";
 $route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
 $route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
 
