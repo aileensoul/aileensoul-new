@@ -51,7 +51,7 @@ border: 1px solid #d9d9d9;}
 .blog_latest_post h3 {padding:0px 6px; font-family: robotoregular;}
 .blog_post_main{background-color: white; float: left; border:1px solid #d9d9d9; width: 100%;}
 .blog_main_post_second_part{padding: 20px;}
-.blog_main_post_img{height: 350px; width: 100%; border-bottom: 1px solid #d9d9d9; text-align: center; padding: 10px 0px;}
+.blog_main_post_img{/*height: 350px;*/ width: 100%; border-bottom: 1px solid #d9d9d9; text-align: center; padding: 10px 0px;}
 .blog_main_post_img img{ height: 100%;}
 .social_icon_bloag li{float: left; list-style: none; display: inline-block; margin: 0; padding: 0;}
 .social_icon_bloag li a{float: left; padding: 6px; font-size: 17px;}
@@ -161,18 +161,35 @@ font-family: robotoregular;}
 .blog_header{padding-top: 50px;}
 .post_latest_right{width: 70%; float: left; padding-left: 10px;}
 
+/***  comment design  ***/
+.all-comments{width:100%; float:left; border-top:1px solid #d9d9d9;}
+.all-comments ul{padding-left:0;}
+.all-comments ul li{border-bottom:1px solid #d9d9d9; list-style-type:none; padding:15px 0; width:100%; float:left;}
+.all-comments ul li:last-child{border-bottom:none;}
+.all-comments ul li .c-user-img{width:75px; height:75px; float:left; margin-right:15px;}
+.all-comments ul li .c-user-img img{width:75px; height:75px;}
+.all-comments ul li .c-user-comments{width:90%;float:left;}
+.all-comments ul li .c-user-comments h5{font-size:18px; color:#000; line-height:1; padding-bottom:5px;}
+.all-comments ul li .c-user-comments p{font-size:15px; color:#a0a0a0; line-height:1.3;}
+.all-comments ul li .c-user-comments p .comment-time{font-size:12px; font-family:"robotoregular";}
 
+
+@media screen and (max-width: 1280px) {
+	.all-comments ul li .c-user-comments{width:89%;}
+}
 @media screen and (max-width: 1200px) {
-.blog_latest_post h3{font-size: 20px;}
-.date_blog_left{width: 14%;
+	.blog_latest_post h3{font-size: 20px;}
+	.date_blog_left{width: 14%;}
+	.date_blog_right{width: 86%; cursor: pointer;}
+	.post_latest_right{width: 66%; line-height: 17px;}
+	.post_latest_left{width: 34%;}
+	.rifght_fname{font-size: 12px;}
+	.rifght_desc{font-size: 10px;}
+	.all-comments ul li .c-user-comments{width:85%;}
 }
-.date_blog_right{width: 86%; cursor: pointer;}
-.post_latest_right{width: 66%; line-height: 17px;}
-.post_latest_left{width: 34%;}
-.rifght_fname{font-size: 12px;}
-.rifght_desc{font-size: 10px;}
+@media screen and (max-width: 1024px) {
+	
 }
-@media screen and (max-width: 1024px) {}
 @media screen and (max-width: 991px) {
 	.date_blog_right{width: 85%;}
 	.date_blog_left{width: 15%; padding-right: 8px;}
@@ -181,28 +198,32 @@ font-family: robotoregular;}
 	.blog-comment-count{font-size: 18px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
 	.blog_moyear{font-size: 16px;}
+	.all-comments ul li .c-user-img{width:60px; height:60px;}
+	.all-comments ul li .c-user-img img{width:60px; height:60px;}
+	.all-comments ul li .c-user-comments{width:82%;}
 }
 @media screen and (max-width: 767px) {
 	.term_desc{padding: 20px 0px 80px !important;}
 	.main-inner .middle-main{padding: 10px 0}
-	.date_blog_left{position: absolute;
-width: 80px; top: 10px;
-left: 25px;}
-.social_icon_bloag li a{padding:4px; }
-.date_blog_right{width: 100%;}
+	.date_blog_left{position: absolute; width: 80px; top: 10px; left: 25px;}
+	.social_icon_bloag li a{padding:4px; }
+	.date_blog_right{width: 100%;}
 	.common-form1 h3{margin:20px 0;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.blog_post_outer{padding-right: 15px; }
 	.blog_header  {padding-top: 35px;}
 	.logo a h3{font-size: 22px;}
-	.user-midd-section{margin-top: 6px;
-	}
+	.user-midd-section{margin-top: 6px;}
 	.comment_foem button{padding: 7px 15px;}
+	.blog_post_outer.pr0{padding-right:15px;} 
+	.all-comments ul li .c-user-comments{width:80%;}
 }
 @media screen and (max-width: 540px) {}
-@media screen and (max-width: 479px) {.blog_header ul li{padding: 1px 6px;
-font-size: 11px;}
-.blog_header{padding-top: 32px;}}
+@media screen and (max-width: 479px) {
+	.blog_header ul li{padding: 1px 6px; font-size: 11px;}
+	.blog_header{padding-top: 32px;}
+	.all-comments ul li .c-user-comments{width:100%; padding-top:10px;	}
+}
 
 
 

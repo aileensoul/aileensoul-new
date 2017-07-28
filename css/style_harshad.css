@@ -11,14 +11,14 @@ width: 25px; }
 .header2 ul li a:hover .bu_req{  background-image: url(../img/icon_contact_request.png);}
 .header2 ul li a.contact_notification_available .bu_req{  background-image: url(../img/icon_contact_request.png);}
 .dropdown_hover #art_profile:hover{color:white;}
-.dropdown_hover #art_profile{font-family: robotoregular; color: #d7ecf5; font-size: 14px;}
+.dropdown_hover #art_profile{font-family: robotoregular; color: #d7ecf5; font-size: 15px; letter-spacing:0.5;}
 .u2{font-family: robotoregular; color: #d7ecf5;}
 .u2:hover{color: #fff;}
 .dropdown .img-circle{border: 2px solid #d7ecf5; background:#d7ecf5;}
 .header ul li a i{color: #d7ecf5;}
 .dropdown_hover span i {
     margin-right: -8px;
-    padding-left: 7px;
+    padding-left: 6px;
     font-size: 17px;
 }
 #a_li{position:relative}
@@ -233,24 +233,16 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 #search .new-search-input .btn.btn-primary{width:auto;}
 .ui-autocomplete{z-index:9999 !important;}
 .bg-images.no-cover-upload{
-	background-image: -ms-linear-gradient(right, #6297BE 0%, #B85790 70%);
-
-	/* Mozilla Firefox */ 
+	background:#fff;
+	border-bottom:1px solid #d9d9d9;
+	/*background-image: -ms-linear-gradient(right, #6297BE 0%, #B85790 70%);
 	background-image: -moz-linear-gradient(right, #6297BE 0%, #B85790 70%);
-
-	/* Opera */ 
 	background-image: -o-linear-gradient(right, #6297BE 0%, #B85790 70%);
-
-	/* Webkit (Safari/Chrome 10) */ 
 	background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #6297BE), color-stop(70, #B85790));
-
-	/* Webkit (Chrome 11+) */ 
 	background-image: -webkit-linear-gradient(right, #6297BE 0%, #B85790 70%);
-
-	/* W3C Markup */ 
-	background-image: linear-gradient(to left, #6297BE 0%, #B85790 70%);
-
+	background-image: linear-gradient(to left, #6297BE 0%, #B85790 70%);*/
 }
+.banner-box{border-bottom:1px solid #d9d9d9;}
 #notification_inside h6{height:25px;}
 .notification-data-inside .clockimg{display:none;}
 .notifications li .notification-data-inside div{padding-left:0;}
@@ -260,8 +252,15 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 /***  font css  ***/
 .left-side-bar ul li a{font-family: 'robotoregular';}
 .common-form1 h3{font-family: 'robotoregular';}
-.common-form h3{font-family: 'robotoregular';}
+.common-form h3{font-family: 'arial';}
 .profile-company-name a{}
+.profile-job-details .post_title{/*font-family: 'robotoregular';*/}
+.profile-job-details .job_companyname{font-family: 'arial'; font-weight:normal;}
+.profile-job-profile-button ul li a{font-family: 'arial'; font-weight:normal;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;}
+.profile-job-post-detail .profile-job-post-title .button{}
+.profile-head-text{font-family: 'robotoregular';}
+
 
 /*** 24-7-17  ***/
 .data_img_2 div{
@@ -310,19 +309,105 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
     padding: 64px 0;
     text-align: center;
 }
+.post-img-userlist{
+	color:#fff;
+	width:58px;
+	height:58px;
+	background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+	background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+	font-size: 20px;
+    padding: 20px 0;
+    text-align: center;
+}
 .post-editor .popup-img .post-img-div{margin-top:5px;}
 .post-design-proo-img .post-img-div{height:37px; width:38px; font-size:15px; padding:12px 0;}
 .post-design-pro-comment-img .post-img-div{height:37px; width:38px; font-size:15px; padding:12px 0;}
  
+.designation_rec_1{width:90%;}
+.required_field{display:none;}
+
+.chat-history ul{padding:0;}
+.chat-history ul li{padding-left:0;}
+.file-preview-thumbnails .file-preview-frame .file-preview-video{width:110px !important; height:100px !important;}
+#paddingtop_fixed{/*overflow:hidden;*/}
+
+/***  new ripple add contact  ***/
+.business-profile-right .bui-menu-profile{width:100%;}
+.profile-left{float:left; width:80%;}
+#contact_per{float:left; width:17%; position:relative; margin-top:30px;}
+.add-contact{}
+.add-contact div {
+  background-color: #1b8ab9;
+  border-radius: 50%;
+  position: absolute;
+  margin: auto auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+
+}
+
+.add-contact div:nth-child(1){
+  animation: pulse1 2s infinite;
+}
+.add-contact div:nth-child(2){
+  animation: pulse1 2s infinite .3s;
+}
+.add-contact div:nth-child(3){
+  animation: pulse1 2s infinite .6s;
+}
+
+.add-contact div:nth-child(4){
+  text-align: center;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #22475E;
+  font-size: 14px;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  
+}
+.add-contact div i{color:#fff; padding:7px 6px;}
+#contact_per .addtocont{
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    text-align:center;
+}
+@keyframes pulse1 {
+  0%{transform:scale(.1);opacity: 0;}
+  50%{ opacity: .4;}
+  100%{transform: scale(1.6); opacity: 0;}
+}
+@-webkit-keyframes pulse1 {
+    0% {
+        -webkit-transform: scale(.1);
+    }
+    100% {
+        -webkit-transform: scale(1.6);
+    }
+}
 
 
 @media screen and (max-width: 1200px) {
 	.experience_year{margin-right:34px;}
+	
 }
 @media screen and (max-width: 1024px) {
 	#notificationLink span{top:5px;}
 }
 @media screen and (max-width: 991px) {
+	.tab-none{display:none;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
 	.job-menu-profile{margin-top:20px; padding-bottom:10px;}
 }
@@ -330,10 +415,18 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 	.common-form1 h3{margin:20px 0;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
+	header .header{padding-top:5px;}
+	.header ul li a{padding-top:11px !important;}
+	#notificationLink span{top:7px !important;}
+	
 }
 @media screen and (max-width: 540px) {}
 @media screen and (max-width: 479px) {
 	.experience_year{width:100%; margin-right:0; margin-bottom:15px;}
 	.experience_month{width:100%;}
+	#notificationLink span{margin-left:6px;}
 }
-@media screen and (max-width: 360px) {}
+@media screen and (max-width: 360px) {
+  .designation_rec_1{width: 75%;}
+	.bg-search .header2{margin-top:-2px;}
+}
