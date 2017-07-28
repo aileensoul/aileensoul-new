@@ -1498,13 +1498,6 @@ function seemorediv(abc) { //alert("hii");
     document.getElementById('lessmore' + abc).style.display = 'none';
 }
 
-
-
-
-
-
-
-
 $('#postedit').on('click', function () {
 // $('.my_text').attr('readonly', false);
 });
