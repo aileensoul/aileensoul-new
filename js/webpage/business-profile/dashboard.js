@@ -1,3 +1,60 @@
+// Upload Post start
+jQuery(document).ready(function ($) {
+    var bar = $('#bar');
+    var percent = $('#percent');
+    var options = {
+        beforeSend: function () {
+            document.getElementById("myModal3").style.display = "none";
+            document.getElementById("progress_div").style.display = "block";
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        success: function () {
+            var percentVal = '100%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function (response) { //alert(response.responseText);
+
+            document.getElementById('test-upload_product').value = '';
+            document.getElementById('test-upload_des').value = '';
+            document.getElementById('file-1').value = '';
+            $("input[name='text_num']").val(50);
+            $(".file-preview-frame").hide();
+            // Output AJAX response to the div container
+
+//                    $('#progress_div').fadeOut('5000').remove();
+            document.getElementById("progress_div").style.display = "none";
+            $(".business-all-post").prepend(response.responseText);
+
+            GetBusPhotos();
+            GetBusVideos();
+            GetBusAudios();
+            GetBusPdf();
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+
+        }
+    };
+    // Submit the form
+    $(".dashboard-upload-image-form").ajaxForm(options);
+
+    return false;
+});
+// Upload Post end
 $(document).ready(function () {
     business_dashboard_post();
     GetBusPhotos();
@@ -1095,14 +1152,17 @@ function remove_post(abc)
 
 function remove_ownpost(abc)
 {
-
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/business_profile_deletepost",
         dataType: 'json',
         data: 'business_profile_post_id=' + abc,
         success: function (data) {
-            $('#' + 'removeownpost' + abc).remove();
+            $('#' + 'removepost' + abc).remove();
+            GetBusPhotos();
+            GetBusVideos();
+            GetBusAudios();
+            GetBusPdf();
             if (data.notcount == 0) {
                 $('.' + 'nofoundpost').html(data.notfound);
                 $('.' + 'not_available').remove();
@@ -1875,57 +1935,9 @@ function khdiv(abc) {
         }
     });
 }
+// edit post end 
 
 
-// edit post start 
-
-
-jQuery(document).ready(function ($) {
-
-
-    var bar = $('#bar');
-    var percent = $('#percent');
-    var options = {
-        beforeSend: function () {
-            // Replace this with your loading gif image
-            //$('.business-all-post').prepend("<progress id='bar' value='0' max='100'></progress>").show();
-            //                document.getElementById("progress-div").style.display = "block";
-            //                $("#progress-bar").width('0%');
-            document.getElementById("myModal3").style.display = "none";
-            document.getElementById("progress_div").style.display = "block";
-            var percentVal = '0%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        uploadProgress: function (event, position, total, percentComplete) {
-            var percentVal = percentComplete + '%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        success: function () {
-            var percentVal = '100%';
-            bar.width(percentVal)
-            percent.html(percentVal);
-        },
-        complete: function (response) { //alert(response.responseText);
-
-            document.getElementById('test-upload-product').value = '';
-            document.getElementById('test-upload-des').value = '';
-            document.getElementById('file-1').value = '';
-            $("input[name='text_num']").val(50);
-            $(".file-preview-frame").hide();
-            // Output AJAX response to the div container
-
-//                    $('#progress_div').fadeOut('5000').remove();
-            document.getElementById("progress_div").style.display = "none";
-            $(".fw").prepend(response.responseText);
-            $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
-        }
-    };
-    // Submit the form
-    $(".upload-image-form").ajaxForm(options);
-    return false;
-});
 // 180 words more than script start 
 
 function seemorediv(abc) {
@@ -1940,4 +1952,40 @@ $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#postedit').modal('hide');
     }
-});          
+});
+
+// DROP DOWN SCRIPT START 
+
+/* When the user clicks on the button, 
+ toggle between hiding and showing the dropdown content */
+function myFunction(clicked_id) {
+    var dropDownClass = document.getElementById('myDropdown' + clicked_id).className;
+    dropDownClass = dropDownClass.split(" ").pop(-1);
+    if (dropDownClass != 'show') {
+        $('.dropdown-content1').removeClass('show');
+        $('#myDropdown' + clicked_id).addClass('show');
+    } else {
+        $('.dropdown-content1').removeClass('show');
+    }
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+            $(".dropdown-content1").removeClass('show');
+        }
+    });
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn1')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content1");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+// DROP DOWN SCRIPT END 

@@ -206,7 +206,7 @@
                                 <div class="modal-content-post">
                                     <span class="close3">&times;</span>
                                     <div class="post-editor post-edit-popup" id="close">
-                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
@@ -352,7 +352,7 @@
         </footer>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
+        
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
@@ -360,20 +360,13 @@
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-
+        <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
-        
-        
-<!--        <script>window.jQuery || document.write('<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>">\x3C/script>'</script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>">\x3C/script>'</script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>">\x3C/script>'</script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>">\x3C/script>'</script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>">\x3C/script>'</script>-->
-        
+       
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';

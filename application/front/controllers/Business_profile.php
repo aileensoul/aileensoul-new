@@ -1716,7 +1716,7 @@ class Business_profile extends MY_Controller {
                                             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style="width: 100%; height: 100%;"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($businessmultiimage) - 4) . ')</span>
@@ -2017,7 +2017,6 @@ class Business_profile extends MY_Controller {
                     </div>
                     </div>
                     </div></div>';
-
             echo $return_html;
         }
 //    }
@@ -8534,7 +8533,7 @@ class Business_profile extends MY_Controller {
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
-                            $return_html .= '<a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                            $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -8575,25 +8574,25 @@ class Business_profile extends MY_Controller {
                         foreach ($businessmultiimage as $multiimage) {
 
                             $return_html .= '<div  class="two-images">
-                                                <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                                <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                     <img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($businessmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
-                                            <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
-                                            <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> 
                                             </a>
                                         </div>';
@@ -8602,7 +8601,7 @@ class Business_profile extends MY_Controller {
                         foreach ($businessmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                                <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                     <img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
                                                 </a>
                                             </div>';
@@ -8613,7 +8612,7 @@ class Business_profile extends MY_Controller {
                         foreach ($businessmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                                <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
                                                 </a>
                                             </div>';
@@ -8624,10 +8623,10 @@ class Business_profile extends MY_Controller {
                         }
 
                         $return_html .= '<div class="four-image">
-                                            <a href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '">
+                                            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style="width: 100%; height: 100%;"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('business_profile/postnewpage/' . $row['business_profile_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($businessmultiimage) - 4) . ')</span>
@@ -9709,7 +9708,7 @@ class Business_profile extends MY_Controller {
                 $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
                 $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<div id="removeownpost' . $row['business_profile_post_id'] . '">
+                $return_html .= '<div id="removepost' . $row['business_profile_post_id'] . '">
                     <div class="">
                         <div class="post-design-box">
                             <div class="post-design-top col-md-12" >  
@@ -9773,8 +9772,8 @@ class Business_profile extends MY_Controller {
 </li>
 </ul>
 </div>
-<div class = "dropdown2">
-<a onClick = "myFunction1(' . $row['business_profile_post_id'] . ')" class = "dropbtn2 dropbtn2 fa fa-ellipsis-v"></a>
+<div class = "dropdown1">
+<a onClick = "myFunction1(' . $row['business_profile_post_id'] . ')" class = "dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
 <div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content2">';
                 if ($row['posted_user_id'] != 0) {
                     if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
