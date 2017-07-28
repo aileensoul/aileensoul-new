@@ -1255,8 +1255,6 @@ class Business_profile extends MY_Controller {
                             'post_id' => $insert_id,
                             'is_deleted' => 1
                         );
-
-//echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_image');
                     } else {
                         echo $this->upload->display_errors();
@@ -1264,29 +1262,9 @@ class Business_profile extends MY_Controller {
                     }
                 } else {
                     $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
-                    if ($id == manage) {
-
-                        if ($para == $userid || $para == '') {
-// redirect('business_profile/business_profile_manage_post', refresh);
-                        } else {
-// redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
-                        }
-                    } else {
-//   redirect('business_profile/business_profile_post', refresh);
-                    }
+                    exit;
                 }
             } //die();
-        }
-
-        if ($id == manage) {
-
-            if ($para == $userid || $para == '') {
-// redirect('business_profile/business_profile_manage_post', refresh);
-            } else {
-// redirect('business_profile/business_profile_manage_post/' . $this->data['businessdataposted'][0]['business_slug'], refresh);
-            }
-        } else {
-// redirect('business_profile/business_profile_post', refresh);
         }
 // new code end
 // return html
