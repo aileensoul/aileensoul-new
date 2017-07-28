@@ -21,8 +21,8 @@
                         <div id="upload-demo" ></div>
                     </div>
                     <div class="col-md-12 cover-pic" >
-                        <button class="btn btn-success cancel-result" onclick="" >Cancel</button>
-                        <button class="btn btn-success set-btn upload-result" onclick="myFunction()">Save</button>
+                        <button class="btn btn-success cancel-result" onclick="" ><?php echo $this->lang->line("cancel"); ?></button>
+                        <button class="btn btn-success set-btn upload-result" onclick="myFunction()"><?php echo $this->lang->line("save"); ?></button>
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
                                 <div id="floatBarsG_1" class="floatBarsG"></div>
@@ -69,7 +69,7 @@
             </div>
             <div class="container tablate-container art-profile">
                 <div class="upload-img">
-                    <label class="cameraButton"><span class="tooltiptext">Upload Cover Photo</span><i class="fa fa-camera" aria-hidden="true"></i>
+                    <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                         <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                     </label>
                 </div>
@@ -81,7 +81,7 @@
                             <?php } else { ?>
                                 <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                             <?php } ?>
-                            <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                            <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
 
                     </div>
@@ -93,7 +93,7 @@
                             <?php
                             if ($freepostdata[0]['designation'] == "") {
                                 ?>
-                                <a id="designation" class="designation" title="Designation">Designation</a>
+                                <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                                 <?php
                             } else {
                                 ?> 
@@ -112,12 +112,12 @@
                                     <ul class="pro-fw4">
                                     <?php } ?>  
                                     <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details')) { ?> class="active" <?php } ?>><a title="Freelancer Details" href="<?php echo base_url('freelancer-work/freelancer-details'); ?>">
-                                            Details</a>
+                                            <?php echo $this->lang->line("freelancer_details"); ?></a>
                                     </li>
                                     <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'freelancer-details' || $this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'saved-projects' || $this->uri->segment(2) == 'applied-projects') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>">Saved Post</a>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'saved-projects')) { ?> class="active" <?php } ?>><a title="Saved Post" href="<?php echo base_url('freelancer-work/saved-projects'); ?>"><?php echo $this->lang->line("saved_projects"); ?></a>
                                         </li>
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>">Applied Post</a>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a>
                                         </li>
                                     <?php } ?>
                                 </ul>
@@ -134,7 +134,7 @@
                         <?php
                         if ($freepostdata[0]['designation'] == "") {
                             ?>
-                            <a id="designation" class="designation" title="Designation">Designation</a>
+                            <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
                             <?php
                         } else {
                             ?> 
@@ -145,7 +145,7 @@
                 <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
                     <div class="common-form">
                         <div class="job-saved-box">
-                            <h3>Applied Posts</h3>
+                            <h3><?php echo $this->lang->line("applied_projects"); ?></h3>
                             <div class="contact-frnd-post">
                                 <?php
                                 if ($postdata) {
@@ -161,7 +161,7 @@
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul>
                                                                         <li class="fr">
-                                                                            Applied Date : <?php
+                                                                            <?php echo $this->lang->line("applied_date"); ?> : <?php
                                                                             if ($post['modify_date'] != 0000 - 00 - 00) {
                                                                                 echo date('d-M-Y', strtotime($post['modify_date']));
                                                                             } else {
@@ -201,10 +201,10 @@
                                                             </div>
                                                             <div class="profile-job-profile-menu">
                                                                 <ul class="clearfix">
-                                                                    <li> <b> Field</b> <span><?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
+                                                                    <li> <b><?php echo $this->lang->line("field"); ?></b> <span><?php echo $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; ?>
                                                                         </span>
                                                                     </li>
-                                                                    <li> <b> Skills</b> <span> 
+                                                                    <li> <b><?php echo $this->lang->line("skill"); ?></b> <span> 
                                                                             <?php
                                                                             $comma = ", ";
                                                                             $k = 0;
@@ -238,7 +238,7 @@
                                                                         </span>
                                                                     </li>
                                                                     <li>
-                                                                        <b>Post Description</b>
+                                                                        <b><?php echo $this->lang->line("project_description"); ?></b>
                                                                         <span>
                                                                             <p>
                                                                                 <?php
@@ -251,7 +251,7 @@
                                                                             </p>
                                                                         </span>
                                                                     </li>
-                                                                    <li><b>Rate</b><span>
+                                                                    <li><b><?php echo $this->lang->line("rate"); ?></b><span>
                                                                             <?php
                                                                             if ($post['post_rate']) {
                                                                                 echo $post['post_rate'];
@@ -269,7 +269,7 @@
                                                                             ?></span>
                                                                     </li>
                                                                     <li>
-                                                                        <b>Required Experience</b>
+                                                                        <b><?php echo $this->lang->line("required_experiance"); ?></b>
                                                                         <span>
                                                                             <?php
                                                                             if ($post['post_exp_month'] || $post['post_exp_year']) {
@@ -288,7 +288,7 @@
                                                                             ?>
                                                                         </span>
                                                                     </li>
-                                                                    <li><b>Estimated Time</b><span> <?php
+                                                                    <li><b><?php echo $this->lang->line("estimated_time"); ?></b><span> <?php
                                                                             if ($post['post_est_time']) {
                                                                                 echo $post['post_est_time'];
                                                                             } else {
@@ -302,7 +302,7 @@
                                                                 <div class="profile-job-details col-md-12">
                                                                     <ul>
                                                                         <li class="job_all_post last_date">
-                                                                            Last Date : <?php
+                                                                            <?php echo $this->lang->line("last_date"); ?> : <?php
                                                                             if ($post['post_last_date']) {
                                                                                 echo date('d-M-Y', strtotime($post['post_last_date']));
                                                                             } else {
@@ -311,7 +311,7 @@
                                                                             ?>                                                          
                                                                         </li>
                                                                         <li class=fr>
-                                                                            <a href="javascript:void(0);" class="button fr" onclick="removepopup(<?php echo $post['app_id']; ?>)">Remove</a>
+                                                                            <a href="javascript:void(0);" class="button fr" onclick="removepopup(<?php echo $post['app_id']; ?>)">Remove<?php echo $this->lang->line("remove"); ?></a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -326,7 +326,7 @@
                                 } else {
                                     ?>
                                     <div class="text-center rio">
-                                        <h4 class="page-heading  product-listing" >No Applied Posts Found.</h4>
+                                        <h4 class="page-heading  product-listing" ><?php echo $this->lang->line("no_applied_projects"); ?></h4>
                                     </div>
                                 <?php }
                                 ?>   
@@ -399,6 +399,6 @@
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_applied_post.js'); ?>"></script>
-       
+
     </body>
 </html>

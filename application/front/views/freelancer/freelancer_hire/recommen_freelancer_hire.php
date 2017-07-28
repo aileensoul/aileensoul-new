@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css'); ?>">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-     
     </head>  
     <body>
         <?php echo $header; ?>
@@ -145,7 +144,6 @@
                                                                                         <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
-
                                                                             <li style="display: block;" ><a href="#"> <?php
                                                                                     if ($row['designation']) {
                                                                                         echo $row['designation'];

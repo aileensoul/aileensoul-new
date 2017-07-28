@@ -39,10 +39,10 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/basic-information'); ?>">Basic Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>">Address Information</a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#">Professional Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,16 +58,16 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border ">
-                                    <h3>Proessional Information</h3>
+                                    <h3><?php echo $this->lang->line("professional_info"); ?></h3>
                                     <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_professional_info_insert'), array('id' => 'professional_info1', 'name' => 'professional_info', 'class' => 'clearfix')); ?>
                                     <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
+                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
                                     </div>
                                     <?php
                                     $professional_info = form_error('professional_info');
                                     ?> 
                                     <fieldset class="full-width">
-                                        <label>Professional Info:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("profess_info"); ?>:<span class="red">*</span></label>
                                         <textarea tabindex="1" autofocus name ="professional_info" id="professional_info" rows="6" cols="50" placeholder="Enter Professional Information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                             if ($professional_info1) {
                                                 echo $professional_info1;

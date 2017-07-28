@@ -22,10 +22,8 @@
                         <div class="col-md-3 col-sm-4"></div>
                         <?php
                         $userid = $this->session->userdata('aileenuser');
-
                         $contition_array = array('user_id' => $userid, 'status' => '1');
                         $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                         if ($freepostdata[0]['free_post_step'] == 7) {
                             ?>
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title_update"); ?></h3></div>
@@ -42,26 +40,26 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>">Basic Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>">Rate</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
 
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#">Add Your Avability</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("add_avability"); ?></a></li>
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '5') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"> Education</a></li>		    
+                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>		    
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>">Portfolio</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
 
                                 </div>
@@ -78,28 +76,28 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Add Your Avability</h3>
+                                    <h3><?php echo $this->lang->line("add_avability"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_avability_insert'), array('id' => 'freelancer_post_avability', 'name' => 'freelancer_post_avability', 'class' => 'clearfix')); ?>
                                     <?php
                                     $job_type = form_error('job_type');
                                     $work_hour = form_error('work_hour');
                                     ?>
                                     <fieldset class="col-md-4" <?php if ($inweek) { ?> class="error-msg" <?php } ?>>
-                                        <label> Working As</label>
+                                        <label><?php echo $this->lang->line("work_as"); ?></label>
                                         <input type="radio" tabindex="1" autofocus name="job_type" id="job_type" value="Full Time" <?php
                                         if ($job_type1 == 'Full Time') {
                                             echo 'checked';
                                         }
-                                        ?>>Full Time
+                                        ?>><?php echo $this->lang->line("full_time"); ?>
                                         <input type="radio" tabindex="1" name="job_type" id="job_type" value="Part Time" <?php
                                         if ($job_type1 == 'Part Time') {
                                             echo 'checked';
                                         }
-                                        ?>>Part Time
+                                        ?>><?php echo $this->lang->line("part_time"); ?>
                                                <?php echo form_error('job_type'); ?>
                                     </fieldset>
                                     <fieldset class=""<?php if ($work_hour) { ?> class="error-msg" <?php } ?>>
-                                        <label>Working hours per week:</label>
+                                        <label><?php echo $this->lang->line("working_hours_week"); ?>:</label>
                                         <input type="text" name="work_hour" tabindex="2" placeholder="Enter working hour" value="<?php
                                         if ($work_hour1) {
                                             echo $work_hour1;

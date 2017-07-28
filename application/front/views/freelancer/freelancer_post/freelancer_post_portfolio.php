@@ -28,15 +28,12 @@
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('user_id' => $userid, 'status' => '1');
                         $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
                         if ($freepostdata[0]['free_post_step'] == 7) {
                             ?>
-
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title_update"); ?></h3></div>
                         <?php } else {
                             ?>
                             <div class="col-md-6 col-sm-8"><h3><?php echo $this->lang->line("apply-regi-title"); ?></h3></div>
-
                         <?php } ?>
                     </div>
                     <br>
@@ -47,13 +44,13 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>">Basic Information</a></li>
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>">Rate</a></li>
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>">Add Your Avability</a></li>
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/education'); ?>"> Education</a></li>           
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#">Portfolio</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>           
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -69,11 +66,11 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Portfolio</h3>
+                                    <h3><?php echo $this->lang->line("portfolio"); ?></h3>
                                     <form name="freelancer_post_portfolio" method="post" id="freelancer_post_portfolio" 
                                           class="clearfix"  enctype="multipart/form-data" >
                                         <fieldset> 
-                                            <label>Attachment</label>
+                                            <label><?php echo $this->lang->line("attach"); ?>:</label>
                                             <input type="file" name="portfolio_attachment" id="portfolio_attachment" class="portfolio_attachment" tabindex="1" autofocus placeholder="PORTFOLIO ATTACHMENT" multiple="" />&nbsp;&nbsp;&nbsp; 
                                             <span id ="filename" class="file_name_pdf"><?php echo $portfolio_attachment1; ?></span><span class="file_name"></span>
                                             <div class="portfolio_image" style="color:#f00; display: block;"></div>
@@ -91,7 +88,7 @@
                                             ?>">
                                         </fieldset>   
                                         <fieldset class="full-width">
-                                            <label>Description:</label>
+                                            <label><?php echo $this->lang->line("descri"); ?>:</label>
                                             <div tabindex="2" style="width: 93%"  class="editable_text"  contenteditable="true" name ="portfolio" id="portfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                                 if ($portfolio1) {
                                                     echo $portfolio1;
@@ -114,7 +111,6 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
             <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
@@ -126,8 +122,6 @@
                 var data1 = <?php echo json_encode($city_data); ?>;
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js'); ?>"></script>
-
-
         </body>
     </div>
 </html>

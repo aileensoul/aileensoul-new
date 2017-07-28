@@ -26,12 +26,10 @@
                         if ($freehiredata[0]['free_hire_step'] == 3) {
                             ?>
                             <div class="col-md-6 col-sm-6"><h3><?php echo $this->lang->line("hire-regi-title_update"); ?></h3></div>
-
                         <?php } else {
                             ?>
                             <div class="col-md-6 col-sm-6"><h3><?php echo $this->lang->line("hire-regi-title"); ?></h3></div>
                         <?php } ?>
-
                     </div>
                     <br>
                     <br>
@@ -41,13 +39,13 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none "> <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>">Basic Information</a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#">Address Information</a></li>
+                                        <li class="custom-none "> <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none  <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>">Professional Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -63,10 +61,10 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Address Information</h3>
+                                    <h3><?php echo $this->lang->line("address_info"); ?></h3>
                                     <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_address_info_insert'), array('id' => 'address_info', 'name' => 'address_info', 'class' => 'clearfix')); ?>
                                     <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
+                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
                                     </div>
                                     <?php
                                     $country = form_error('country');
@@ -74,9 +72,9 @@
                                     $address = form_error('address');
                                     ?>
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                        <label>Country:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("country"); ?>:<span class="red">*</span></label>
                                         <select tabindex="1"  name="country" id="country" autofocus>
-                                            <option value="">Select Country</option>
+                                            <option value=""><?php echo $this->lang->line("select_country"); ?></option>
                                             <?php
                                             if (count($countries) > 0) {
                                                 foreach ($countries as $cnt) {
@@ -99,7 +97,7 @@
                                         <?php echo form_error('country'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
-                                        <label>State:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("state"); ?>:<span class="red">*</span></label>
                                         <select tabindex="2" name="state" id="state">
                                             <?php
                                             if ($state1) {
@@ -111,7 +109,7 @@
                                             }
                                             else {
                                                 ?>
-                                                <option value="">Select country first</option>
+                                                <option value=""><?php echo $this->lang->line("country_first"); ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -119,7 +117,7 @@
                                         <?php echo form_error('state'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label>City:</label>
+                                        <label><?php echo $this->lang->line("city"); ?>:</label>
                                         <select name="city" tabindex="3" id="city">
                                             <?php
                                             if ($city1) {
@@ -131,7 +129,7 @@
                                             }
                                             else if ($state1) {
                                                 ?>
-                                                <option value="">Select City</option>
+                                                <option value=""><?php echo $this->lang->line("select_city"); ?></option>
                                                 <?php
                                                 foreach ($cities as $cnt) {
                                                     ?>
@@ -140,8 +138,7 @@
                                                 }
                                             } else {
                                                 ?>
-                                                <option value="">Select state first</option>
-
+                                                <option value=""><?php echo $this->lang->line("state_first"); ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -149,7 +146,7 @@
                                     </fieldset>
                                     <?php ?>
                                     <fieldset>
-                                        <label>Pincode:</label>
+                                        <label><?php echo $this->lang->line("pincode1"); ?></label>
                                         <input type="text" name="pincode" tabindex="4" id="pincode" placeholder="Enter Pincode"  value="<?php
                                         if ($pincode1) {
                                             echo $pincode1;
@@ -158,7 +155,7 @@
                                     </fieldset>
                                     <?php ?>
                                     <fieldset class="full-width">
-                                        <label>Postal Address:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("postal_address"); ?>:<span class="red">*</span></label>
                                         <textarea name="address" id="address" tabindex="5" placeholder="Enter Address" rows="5" cols="40" style="resize:none"/><?php
                                         if ($address1) {
                                             echo $address1;
@@ -188,9 +185,9 @@
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
 
             <script type="text/javascript">
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+                var base_url = '<?php echo base_url(); ?>';
+                var data = <?php echo json_encode($demo); ?>;
+                var data1 = <?php echo json_encode($city_data); ?>;
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_address_info.js'); ?>"></script>
         </body>

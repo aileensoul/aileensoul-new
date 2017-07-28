@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-
     </head>
     <div class="js">
         <body>
@@ -41,42 +40,42 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul  class="left-form-each">
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '1') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '2') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '3') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/rate'); ?>">Rate</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '4') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>">Add Your Avability</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
 
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '5') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"> Education</a></li>		    
+                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>		    
                                         <li class="custom-none  <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>">Portfolio</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -92,7 +91,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Basic Information</h3>
+                                    <h3><?php echo $this->lang->line("basic_info"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_basic_information_insert'), array('id' => 'freelancer_post_basicinfo', 'name' => 'freelancer_post_basicinfo', 'class' => 'clearfix')); ?>
                                     <div>
                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
@@ -104,7 +103,7 @@
                                     $phoneno = form_error('phoneno');
                                     ?>
                                     <fieldset <?php if ($firstname) { ?> class="error-msg" <?php } ?>>
-                                        <label>Full name:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("first_name"); ?>:<span class="red">*</span></label>
                                         <input tabindex="1" autofocus type="text" name="firstname" placeholder="Enter full name" value="<?php
                                         if ($firstname1) {
                                             echo $firstname1;
@@ -115,7 +114,7 @@
                                                <?php echo form_error('firstname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($lastname) { ?> class="error-msg" <?php } ?>>
-                                        <label>Last name:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("last_name"); ?>:<span class="red">*</span></label>
                                         <input type="text" name="lastname" tabindex="2" id="lastname" placeholder="Enter last name" value="<?php
                                         if ($lastname1) {
                                             echo $lastname1;
@@ -126,7 +125,7 @@
                                                <?php echo form_error('lastname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
-                                        <label>Email:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("email"); ?>:<span class="red">*</span></label>
                                         <input type="text" name="email" id="email" tabindex="3" placeholder="Enter email address" value="<?php
                                         if ($email1) {
                                             echo $email1;
@@ -137,7 +136,7 @@
                                                <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label>Skype id:</label>
+                                        <label><?php echo $this->lang->line("skype_id"); ?>:</label>
                                         <input type="text" name="skypeid" placeholder="Enter skype id" tabindex="4" value="<?php
                                         if ($skypeid1) {
                                             echo $skypeid1;
@@ -146,7 +145,7 @@
                                                <?php ?>
                                     </fieldset>
                                     <fieldset <?php if ($phoneno) { ?> class="error-msg " <?php } ?> class="full-width">
-                                        <label>Phone number:</label>
+                                        <label><?php echo $this->lang->line("phone_number"); ?>:</label>
                                         <input type="text" name="phoneno" id="phoneno" tabindex="5" placeholder="Enter phone number" value="<?php
                                         if ($phoneno1) {
                                             echo $phoneno1;

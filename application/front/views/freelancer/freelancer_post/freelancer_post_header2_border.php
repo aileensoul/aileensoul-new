@@ -1,7 +1,4 @@
 
-
-
-
 <!--post save success pop up style strat -->
 <style type="text/css">
     .dropdown-content_hover {
@@ -14,7 +11,7 @@
         margin-top: 3px;
         z-index: 1;
         right: 10px !important;
-        
+
         border-radius: 4px;
     } .dropdown-content_hover::before {
         /* top: -1px; */
@@ -30,16 +27,12 @@
         /* margin-left: 104px; */
         right: 9px;
     </style>
-
     <!--post save success pop up style end -->
-
-
     <header>
         <div class="bg-search">
             <div class="header2 headerborder animated fadeInDownBig">
                 <div class="container">
                     <div class="row">
-
                         <?php echo $freelancer_post_search; ?>
                         <div class="col-sm-5 col-md-5 col-xs-6 fw-479">
                             <div class="search-mob-block">
@@ -50,7 +43,7 @@
                                 </div>
                                 <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form action=<?php echo base_url('freelancer-work/search')?> method="get">
+                                    <form action=<?php echo base_url('freelancer-work/search') ?> method="get">
                                         <div class="new-search-input">
                                             <input type="text" id="tags1" name="skills" placeholder="Find Your freelancer" />
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location" />
@@ -61,41 +54,29 @@
                             </div>
                             <div class="">
                                 <ul class="" id="dropdownclass">
-
-
-                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>">Home</a>
+                                    <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>"><?php echo $this->lang->line("home"); ?></a>
                                     </li>
-
-                                    <!-- Friend Request Start-->
-
                                     <li>
-
-
-
                                         <div class="dropdown_hover">
-                                            <span id="art_profile">Freelancer Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                            <span id="art_profile"><?php echo $this->lang->line("freelancer_profile"); ?><i class="fa fa-caret-down" aria-hidden="true"></i></span>
                                             <div class="dropdown-content_hover" id="dropdown-content_hover">
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                                <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
-
+                                                <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span><?php echo $this->lang->line("view_profile"); ?></a>
+                                                <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span><?php echo $this->lang->line("edit_profile"); ?></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
-                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> <?php echo $this->lang->line("deactivate_profile"); ?></a>
                                             </div>
                                         </div>
                                     </li>
                                     <!-- Friend Request End-->
-
                                     <!-- END USER LOGIN DROPDOWN -->
                                 </ul>
                             </div> 
                         </div>
-
-
                     </div>
                 </div>
             </div>

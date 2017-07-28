@@ -320,7 +320,7 @@
                                                                     </li>
 
 
-                                                                    <li><b><?php echo $this->lang->line("post_description"); ?></b><span><pre>
+                                                                    <li><b><?php echo $this->lang->line("project_description"); ?></b><span><pre>
                                                                                 <?php
                                                                                 if ($post['post_description']) {
                                                                                     echo $this->common->make_links($post['post_description']);
@@ -497,7 +497,6 @@
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
                     <div class="modal-body">
-                        <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                         <span class="mes"></span>
                     </div>
                 </div>

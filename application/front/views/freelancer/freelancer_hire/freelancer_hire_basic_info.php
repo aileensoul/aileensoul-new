@@ -39,17 +39,16 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#">Basic Information</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("basic_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '1') {
-                                            
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>">Address Information</a></li>
+                                    ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>">Professional Information</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("filed_required"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -65,10 +64,10 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Basic Information</h3>
+                                    <h3><?php echo $this->lang->line("basic_info"); ?></h3>
 <?php echo form_open_multipart(base_url('freelancer_hire/freelancer_hire_basic_info_insert'), array('id' => 'basic_info', 'name' => 'basic_info', 'class' => 'clearfix')); ?>
                                     <div>
-                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
+                                        <span style="color:#7f7f7e;padding-left: 8px;">( </span><span class="red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e"><?php echo $this->lang->line("professional_info"); ?></span>
                                     </div>
                                     <?php
                                     $fname = form_error('fname');
@@ -77,7 +76,7 @@
                                     $phone = form_error('phone');
                                     ?>
                                     <fieldset <?php if ($fname) { ?> class="error-msg" <?php } ?>>
-                                        <label>First Name<span class="red">*</span>:</label>
+                                        <label><?php echo $this->lang->line("first_name"); ?><span class="red">*</span>:</label>
                                         <input type="text" tabindex="1" autofocus name="fname" id="fname" placeholder="Enter First Name" value="<?php
                                         if ($firstname1) {
                                             echo $firstname1;
@@ -88,7 +87,7 @@
 <?php echo form_error('fname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>
-                                        <label>Last Name<spanclass="red">*</span>:</label>
+                                        <label><?php echo $this->lang->line("last_name"); ?><span class="red">*</span>:</label>
                                         <input type="text" tabindex="2" name="lname" id="lname" placeholder="Enter Last Name" value="<?php
                                         if ($lastname1) {
                                             echo $lastname1;
@@ -99,7 +98,7 @@
 <?php echo form_error('lname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
-                                        <label>Email<span class="red">*</span>:</label>
+                                        <label><?php echo $this->lang->line("email"); ?><span class="red">*</span>:</label>
                                         <input type="text" name="email" tabindex="3" id="email" placeholder="Enter Email" value="<?php
                                         if ($email1) {
                                             echo $email1;
@@ -110,7 +109,7 @@
 <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label>Skype Id:</label>
+                                        <label><?php echo $this->lang->line("skype_id"); ?></label>
                                         <input type="text" name="skyupid" id="skyupid"  tabindex="4" placeholder="Enter SkypeId" value="<?php
                                         if ($skypeid1) {
                                             echo $skypeid1;
@@ -119,7 +118,7 @@
 
                                     </fieldset>
                                     <fieldset <?php if ($phone) { ?> class="error-msg" <?php } ?> class="full-width">
-                                        <label>Phone Number:</label>
+                                        <label><?php echo $this->lang->line("phone_no"); ?></label>
                                         <input type="text" tabindex="5" name="phone" id="phone" placeholder="Enter Phone Number" value="<?php
                                         if ($phoneno1) {
                                             echo $phoneno1;

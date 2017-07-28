@@ -42,22 +42,22 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>">Basic Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>">Rate</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>">ADD Your Avability</a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#"> Education</a></li>	
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("education"); ?></a></li>	
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>">Portfolio</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Education Info</h3>
+                                    <h3><?php echo $this->lang->line("education_info"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_education_insert'), array('id' => 'freelancer_post_education', 'name' => 'freelancer_post_education', 'class' => 'clearfix')); ?>
                                     <?php
                                     $degree = form_error('degree');
@@ -85,7 +85,7 @@
                                     $address = form_error('address');
                                     ?>
                                     <fieldset <?php if ($degree) { ?> class="error-msg" <?php } ?>>
-                                        <label>Higher Degree:</label>
+                                        <label><?php echo $this->lang->line("higher_degree"); ?>:</label>
                                         <select name="degree" tabindex="1" autofocus id="degree">
                                             <option value="">Select your degree</option>
                                             <?php
@@ -109,7 +109,7 @@
                                         <?php echo form_error('degree'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($stream) { ?> class="error-msg" <?php } ?>>
-                                        <label>Stream:</label>
+                                        <label><?php echo $this->lang->line("stream"); ?>:</label>
                                         <select name="stream" id="stream" tabindex="2">
                                             <?php
                                             foreach ($stream_data as $cnt) {
@@ -120,7 +120,7 @@
                                                 }
                                                 else {
                                                     ?>
-                                                    <option value="">Select Degree first</option>
+                                                    <option value=""><?php echo $this->lang->line("select_degree"); ?></option>
                                                     <?php
                                                 }
                                             }
@@ -129,7 +129,7 @@
                                         <?php echo form_error('stream'); ?>  
                                     </fieldset>
                                     <fieldset <?php if ($univercity) { ?> class="error-msg" <?php } ?>>
-                                        <label>University:</label>
+                                        <label><?php echo $this->lang->line("university"); ?>:</label>
                                         <select name="university" id="university" tabindex="3" class="university_1">
                                             <option value="" selected option disabled>Select your University</option>
                                             <?php
@@ -154,7 +154,7 @@
                                         <?php echo form_error('university'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($college) { ?> class="error-msg" <?php } ?>>
-                                        <label>College:</label>
+                                        <label><?php echo $this->lang->line("college"); ?>:</label>
                                         <input type="text" name="college" id="college" tabindex="4" placeholder="Enter college"  value="<?php
                                         if ($college1) {
                                             echo $college1;
@@ -163,7 +163,7 @@
                                                <?php echo form_error('college'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($percentage) { ?> class="error-msg" <?php } ?>>
-                                        <label>Percentage:</label>
+                                        <label><?php echo $this->lang->line("percentage"); ?>:</label>
                                         <input type="text" name="percentage" placeholder="Enter percentage" tabindex="5" value="<?php
                                         if ($percentage1) {
                                             echo $percentage1;
@@ -172,9 +172,9 @@
                                                <?php echo form_error('percentage'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($passingyear) { ?> class="error-msg" <?php } ?>>
-                                        <label>Year of passing:</label>
+                                        <label><?php echo $this->lang->line("year_passing"); ?>:</label>
                                         <select name="passingyear" tabindex="6">
-                                            <option value="" selected option disabled>Select your Passing year</option>
+                                            <option value="" selected option disabled><?php echo $this->lang->line("year_passing"); ?></option>
                                             <?php
                                             $curYear = date('Y');
                                             for ($i = $curYear; $i >= 1900; $i--) {

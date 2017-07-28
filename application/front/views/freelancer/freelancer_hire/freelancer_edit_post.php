@@ -6,67 +6,10 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link href="<?php echo base_url('css/jquery-ui.css') ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-               <!-- css for date picker start-->
-        <style type="text/css">
-            .date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
-            .date-dropdowns .year{margin-right: 0;}
-            .example {
-                width: 33%;
-                min-width: 400px;
-                padding: 15px;
-                display: inline-block;
-                box-sizing: border-box;
-                text-align: center;
-            }
-            .example:first-of-type {
-                position: relative;
-                bottom: 35px;
-            }
-            /* Example Heading */
-            .example h2 {
-                font-family: "Roboto Condensed", helvetica, arial, sans-serif;
-                font-size: 1.3em;
-                margin: 15px 0;
-                color: #4F5462;
-            }
-            .example input {
-                display: block;
-                margin: 0 auto 20px auto;
-                width: 150px;
-                padding: 8px 10px;
-                border: 1px solid #CCCCCC;
-                border-radius: 3px;
-                background: #F2F2F2;
-                text-align: center;
-                font-size: 1em;
-                letter-spacing: 0.02em;
-                font-family: "Roboto Condensed", helvetica, arial, sans-serif;
-            }
+        <!-- Calender Css Start-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+        <!-- Calender Css End-->
 
-            .example select {
-                padding: 10px;
-                background: #ffffff;
-                border: 1px solid #CCCCCC;
-                border-radius: 3px;
-                margin: 0 3px;
-            }
-
-            .example select.invalid {
-                color: #E9403C;
-            }
-
-            .example input[type="submit"] {
-                margin-top: 10px;
-            }
-
-            .example input[type="submit"]:hover {
-                cursor: pointer;
-                background-color: #e5e5e5;
-            }
-
-
-        </style>
-        <!-- css for date picker end-->
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
@@ -88,30 +31,30 @@
                                 ?>
                             </div>
                             <div class="common-form">
-                                <h3 class="h3_edit">Edit Post</h3>
+                                <h3 class="h3_edit"><?php echo $this->lang->line("edit_project"); ?></h3>
                                 <?php echo form_open(base_url('freelancer/freelancer_edit_post_insert/' . $freelancerpostdata[0]['post_id']), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit')); ?>
                                 <div>
-                                    <h4 class="freelancer_editpost_title"> Project Description</h4>
+                                    <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4>
                                 </div>
                                 <div>
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                    <span style="color:#7f7f7e">Indicates required field</span>
+                                    <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
                                 </div> 
                                 <fieldset class="full-width">
-                                    <label>Post Title:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>
                                     <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> "/>
                                     <span id="fullname-error"></span>                        
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
                                 <fieldset class="full-width">
-                                    <label>Post description:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("project_description"); ?>:<span style="color:red">*</span></label>
                                     <textarea style="resize: none;height: 22%;overflow: auto;" tabindex="2" name="post_desc" id="post_desc" placeholder="Enter Description"><?php echo $freelancerpostdata[0]['post_description']; ?></textarea>
                                     <?php echo form_error('post_desc'); ?>
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
-                                    <label>Fields Of Requirement:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
                                     <select tabindex="3" name="fields_req" id="fields_req">
-                                        <option value="" selected option disabled>Select Fields of Requirement</option>
+                                        <option value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
                                         <?php
                                         if (count($category) > 0) {
                                             foreach ($category as $cnt) {
@@ -132,7 +75,7 @@
                                     <?php echo form_error('fields_req'); ?>
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
-                                    <label>Skills of Requirements:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
                                     <select tabindex="4" name="skills[]" id ="skill1" multiple="multiple" style="width:100% " class="keyskil">
                                         <?php foreach ($skill1 as $skill) { ?>
                                             <option value="<?php echo $skill['skill_id']; ?>"><?php echo $skill['skill']; ?></option>
@@ -141,7 +84,7 @@
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
-                                    <label class="control-label">Other Skill:</label>
+                                    <label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
                                     <input name="other_skill" tabindex="5" type="text" id="other_skill" class="keyskil" placeholder="Enter Your Other Skill" value="<?php echo $freelancerpostdata[0]['post_other_skill']; ?>" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('other_skill'); ?>
@@ -150,7 +93,7 @@
                                     <label>Experience:</label>
 
                                     <select name="year" id="year" tabindex="6">
-                                        <option value="" selected option disabled>Year</option>
+                                        <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                         <option value="0" <?php if ($freelancerpostdata[0]['post_exp_year'] == "0") echo 'selected="selected"'; ?>>0 Year</option>
                                         <option value="1" <?php if ($freelancerpostdata[0]['post_exp_year'] == "1") echo 'selected="selected"'; ?>>1 Year</option>
                                         <option value="2" <?php if ($freelancerpostdata[0]['post_exp_year'] == "2") echo 'selected="selected"'; ?>>2 Year</option>
@@ -177,7 +120,7 @@
                                     <?php echo form_error('year'); ?>
 
                                     <select name="month" style="margin-left: 8px;" tabindex="7" id="month">
-                                        <option value="" selected option disabled>Month</option>
+                                        <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                         <option value="0" <?php if ($freelancerpostdata[0]['post_exp_month'] == "0") echo 'selected="selected"'; ?>>0 Month</option>
                                         <option value="1" <?php if ($freelancerpostdata[0]['post_exp_month'] == "1") echo 'selected="selected"'; ?>>1 Month</option>
                                         <option value="2" <?php if ($freelancerpostdata[0]['post_exp_month'] == "2") echo 'selected="selected"'; ?>>2 Month</option>
@@ -190,18 +133,18 @@
 
                                 </fieldset>
                                 <fieldset class="col-md-12">  
-                                    <b><h2 class="freelancer_editpost_title">Payment For Freelancer : </h2></b>
+                                    <b><h2 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?>: </h2></b>
                                 </fieldset>
                                 <fieldset style="padding-left: 8px;" class="col-md-4" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                    <label class="control-label">Rate:<span style="color:red">*</span></label>
+                                    <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                     <input name="rate" type="number" id="rate" tabindex="8" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('rate'); ?>
                                 </fieldset>
                                 <fieldset class=" col-md-4"> 
-                                    <label>Currency:<span class="red">*</span></label>
+                                    <label><?php echo $this->lang->line("currency"); ?>:<span class="red">*</span></label>
                                     <select name="currency" id="currency" tabindex="9">
-                                        <option value="" selected option disabled>Select Currency</option>
+                                        <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                         <?php
                                         if (count($currency) > 0) {
                                             foreach ($currency as $cur) {
@@ -220,26 +163,26 @@
                                     <?php echo form_error('currency'); ?>
                                 </fieldset>
                                 <fieldset class="col-md-4">
-                                    <label>Work Type</label>
+                                    <label><?php echo $this->lang->line("work_type"); ?></label>
                                     <input type="radio" name="rating" tabindex="10" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
                                     <input type="radio" name="rating"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
                                     <?php echo form_error('rating'); ?>
                                 </fieldset>
                                 <fieldset>
-                                    <label>Estimated time of project:</label>
+                                    <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
                                     <input name="est_time" type="text" tabindex="11" id="est_time" placeholder="Enter Estimated time in month/year" value="<?php echo $freelancerpostdata[0]['post_est_time'] ?> "/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($last_date) { ?> class="error-msg" <?php } ?>>
-                                    <label>Last date for apply:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("last_date_apply"); ?>:<span style="color:red">*</span></label>
                                     <input type="hidden" id="example2">
                                     <?php echo form_error('last_date'); ?> 
                                 </fieldset>
                                 <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
-                                    <label>Country:<span style="color:red">*</span></label>
+                                    <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
                                     <select name="country" id="country" tabindex="13">
-                                        <option value="" selected option disabled>Select Country</option>
+                                        <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
                                         <?php
                                         if (count($countries) > 0) {
                                             foreach ($countries as $cnt) {
@@ -261,7 +204,7 @@
                                     <?php echo form_error('country'); ?>
                                 </fieldset>
                                 <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
-                                    <label>State:<span class="red">*</span></label>
+                                    <label><?php echo $this->lang->line("state"); ?>:<span class="red">*</span></label>
                                     <select tabindex="2" name="state" id="state">
                                         <?php
                                         if ($state1) {
@@ -275,7 +218,7 @@
                                         }
                                         else {
                                             ?>
-                                            <option value="">Select country first</option>
+                                            <option value=""><?php echo $this->lang->line("country_first"); ?></option>
                                             <?php
                                         }
                                         ?>
@@ -283,7 +226,7 @@
                                     <?php echo form_error('state'); ?>
                                 </fieldset>
                                 <fieldset>
-                                    <label> City:</label>
+                                    <label><?php echo $this->lang->line("city"); ?>:</label>
                                     <select name="city" id="city" tabindex="14">
                                         <?php
                                         if ($city1) {
@@ -297,7 +240,7 @@
                                         }
                                         else if ($state1) {
                                             ?>
-                                            <option value="">Select City</option>
+                                            <option value=""><?php echo $this->lang->line("select_city"); ?></option>
                                             <?php
                                             foreach ($cities as $cnt) {
                                                 ?>
@@ -308,7 +251,7 @@
                                             }
                                         } else {
                                             ?>
-                                            <option value="">Select state first</option>
+                                            <option value=""><?php echo $this->lang->line("state_first"); ?></option>
 
                                             <?php
                                         }
@@ -318,10 +261,10 @@
                                 </fieldset>
                                 <fieldset class="hs-submit full-width">
                                     <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                        <a class="add_post_btnc" onclick="return leave_page(9)">Cancel</a>
+                                        <a class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                     <?php } else { ?>
 
-                                        <a class="add_post_btnc"  href="javascript:history.back()">Cancel</a>
+                                        <a class="add_post_btnc"  href="javascript:history.back()"><?php echo $this->lang->line("cancel"); ?></a>
                                     <?php } ?>
                                     <input type="submit" tabindex="15" id="submit" class="add_post_btns" name="submit" value="Save">
                                 </fieldset>
@@ -332,7 +275,7 @@
                 </div>
             </div>
         </section>
-         <footer>
+        <footer>
             <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
@@ -357,15 +300,16 @@
         <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script> 
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/3.3.0/select2.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
-       
+        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>">
+        </script>
+
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js'); ?>"></script>
-       
+
         <script type="text/javascript">
             //Leave Page on add and edit post page start
             function leave_page(clicked_id)
@@ -456,7 +400,7 @@
             var complex = <?php echo json_encode($selectdata); ?>;
             $("#skill1").select2().select2('val', complex)
         </script>
-        
+
         <script>
             $(function () {
                 var today = new Date();

@@ -5,75 +5,6 @@
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <script>
-            $(document).ready(function ()
-            {
-                /* Uploading Profile BackGround Image */
-                $('body').on('change', '#bgphotoimg', function ()
-                {
-                    $("#bgimageform").ajaxForm({target: '#timelineBackground',
-                        beforeSubmit: function () {},
-                        success: function () {
-                            $("#timelineShade").hide();
-                            $("#bgimageform").hide();
-                        },
-                        error: function () {
-                        }}).submit();
-                });
-                /* Banner position drag */
-                $("body").on('mouseover', '.headerimage', function ()
-                {
-                    var y1 = $('#timelineBackground').height();
-                    var y2 = $('.headerimage').height();
-                    $(this).draggable({
-                        scroll: false,
-                        axis: "y",
-                        drag: function (event, ui) {
-                            if (ui.position.top >= 0)
-                            {
-                                ui.position.top = 0;
-                            } else if (ui.position.top <= y1 - y2)
-                            {
-                                ui.position.top = y1 - y2;
-                            }
-                        },
-                        stop: function (event, ui)
-                        {
-                        }
-                    });
-                });
-                /* Bannert Position Save*/
-                $("body").on('click', '.bgSave', function ()
-                {
-                    var id = $(this).attr("id");
-                    var p = $("#timelineBGload").attr("style");
-                    var Y = p.split("top:");
-                    var Z = Y[1].split(";");
-                    var dataString = 'position=' + Z[0];
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('freelancer/image_saveBG_ajax'); ?>",
-                        data: dataString,
-                        cache: false,
-                        beforeSend: function () { },
-                        success: function (html)
-                        {
-                            if (html)
-                            {
-                                window.location.reload();
-                                $(".bgImage").fadeOut('slow');
-                                $(".bgSave").fadeOut('slow');
-                                $("#timelineShade").fadeIn("slow");
-                                $("#timelineBGload").removeClass("headerimage");
-                                $("#timelineBGload").css({'margin-top': html});
-                                return false;
-                            }
-                        }
-                    });
-                    return false;
-                });
-            });
-        </script>
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -82,10 +13,8 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row row4">
-
                         <div class="col-md-4 col-sm-4 profile-box profile-box-left  animated fadeInLeftBig">
                             <div class="">
-
                                 <div class="full-box-module">   
                                     <div class="profile-boxProfileCard  module">
                                         <div class="profile-boxProfileCard-cover"> 
@@ -94,11 +23,9 @@
                                                title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
 
                                                 <?php if ($freehiredata[0]['profile_background'] != '') { ?>
-                                                    <!-- box image start -->
                                                     <div class="data_img">
                                                         <img src="<?php echo base_url($this->config->item('free_hire_bg_thumb_upload_path') . $freehiredata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
                                                     </div>
-                                                    <!-- box image end -->
                                                 <?php } else { ?>
                                                     <div class="data_img">
                                                         <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"  >
@@ -128,8 +55,6 @@
                                                 <span class="profile-company-name ">
                                                     <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freehiredata[0]['username']); ?></a>  
                                                 </span>
-
-
                                                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
                                                     <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" title="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"><?php
@@ -144,7 +69,6 @@
                                                     <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'employer-details')) { ?> class="active" <?php } ?>><a title="Employer Details"  class="padding_less_left" href="<?php echo base_url('freelancer-hire/employer-details'); ?>" ><?php echo $this->lang->line("details"); ?></a></li>
                                                     <li><a title="Post" href="<?php echo base_url('freelancer-hire/projects'); ?>"><?php echo $this->lang->line("Projects"); ?></a></li>
                                                     <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'freelancer-save')) { ?> class="active" <?php } ?>><a title="Saved Freelancer"  class="padding_less_right" href="<?php echo base_url('freelancer-hire/freelancer-save'); ?>"><?php echo $this->lang->line("saved"); ?></a></li>
-
                                                 </ul>
                                             </div>
                                         </div>
@@ -177,16 +101,6 @@
                                                 foreach ($candidatefreelancer as $row) {
                                                     ?> 
                                                     <div class="profile-job-post-detail clearfix">
-                                                        <!-- pop up box start-->
-                                                        <div id="popup1" class="overlay">
-                                                            <div class="popup">
-                                                                <div class="pop_content">
-                                                                    Your User is Successfully Saved.
-                                                                    <p class="okk"><a class="okbtn" href="">Ok</a></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- pop up box end-->
                                                         <div class="profile-job-post-title-inside clearfix">
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="profile-job-post-location-name-rec">
@@ -208,12 +122,11 @@
                                                                             ?>
                                                                         </div>
                                                                     </div>
-
                                                                     <div class="designation_rec fl">
                                                                         <ul>
                                                                             <li>
                                                                                 <a  href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
-                                                                                        <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
+        <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
                                                                             <li style="display: block;" ><a href="JavaScript:Void(0);" title="<?php echo ucwords($row['designation']); ?>"> <?php
@@ -265,7 +178,7 @@
                                                                             ?>   </span>    
                                                                     </li>
 
-                                                                    <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
+                                                                            <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
                                                                     <li><b><?php echo $this->lang->line("location"); ?></b><span> <?php
                                                                             if ($cityname) {
                                                                                 echo $cityname;
@@ -287,7 +200,8 @@
                                                                     <li><b> <?php echo $this->lang->line("avaiability"); ?></b><span>
                                                                             <?php
                                                                             if ($row['freelancer_post_work_hour']) {
-                                                                                echo $row['freelancer_post_work_hour'] . "  " . $this->lang->line("hours_per_week");;
+                                                                                echo $row['freelancer_post_work_hour'] . "  " . $this->lang->line("hours_per_week");
+                                                                                ;
                                                                             } else {
                                                                                 echo PROFILENA;
                                                                             }
@@ -318,7 +232,7 @@
                                                                                     $year = explode(' ', $row['freelancer_post_exp_year']);
                                                                                     // echo $year;
                                                                                     $totalyear = $year[0] + 1;
-                                                                                    echo $totalyear .  $this->lang->line("year");
+                                                                                    echo $totalyear . $this->lang->line("year");
                                                                                 } elseif ($row['freelancer_post_exp_year'] != '' && $row['freelancer_post_exp_month'] == '') {
                                                                                     echo $row['freelancer_post_exp_year'];
                                                                                 } elseif ($row['freelancer_post_exp_year'] != '' && $row['freelancer_post_exp_month'] == '0 month') {
@@ -343,8 +257,8 @@
                                                                     $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
                                                                     $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
-                                                                    <?php if ($userid != $row['user_id']) { ?>
-                                                                        <a href="<?php echo base_url('chat/abc/' . $row['user_id'].'/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
+        <?php if ($userid != $row['user_id']) { ?>
+                                                                        <a href="<?php echo base_url('chat/abc/' . $row['user_id'] . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
 
                                                                         <?php
                                                                         if (!$data) {
@@ -388,19 +302,19 @@
             </div>
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
-                                <div class="modal-body">
-                                    <span class="mes"></span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <div class="modal-body">
+                        <span class="mes"></span>
                     </div>
+                </div>
+            </div>
+        </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>

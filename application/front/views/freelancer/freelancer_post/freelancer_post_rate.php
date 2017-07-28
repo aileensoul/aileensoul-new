@@ -22,7 +22,6 @@
                         <div class="col-md-3 col-sm-4"></div>
                         <?php
                         $userid = $this->session->userdata('aileenuser');
-
                         $contition_array = array('user_id' => $userid, 'status' => '1');
                         $freepostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         if ($freepostdata[0]['free_post_step'] == 7) {
@@ -42,32 +41,31 @@
                             <div class="col-md-3 col-sm-3">
                                 <div class="left-side-bar">
                                     <ul class="left-form-each">
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>">Basic Information</a></li> 
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li> 
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>">Address Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
 
-                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>">Professional Information</a></li>
+                                        <li class="custom-none"><a href="<?php echo base_url('freelancer-work/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
 
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#">Rate</a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("rate"); ?></a></li>
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '4') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>">Add Your Avability</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
 
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '5') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"> Education</a></li>		    
+                                        ?>"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>		    
                                         <li class="custom-none <?php
                                         if ($freepostdata[0]['free_post_step'] < '6') {
                                             echo "khyati";
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>">Portfolio</a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-work/portfolio'); ?>"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
-
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-8">
@@ -82,13 +80,13 @@
                                     ?>
                                 </div>
                                 <div class="common-form common-form_border">
-                                    <h3>Rate</h3>
+                                    <h3><?php echo $this->lang->line("rate"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_post_rate_insert'), array('id' => 'freelancer_post_rate', 'name' => 'freelancer_post_rate', 'class' => 'clearfix')); ?>
                                     <?php
                                     $hourly = form_error('hourly');
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
-                                        <label>Hourly:</label>
+                                        <label><?php echo $this->lang->line("hourly"); ?>:</label>
                                         <input type="text" name="hourly" min="1" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;
@@ -97,9 +95,9 @@
                                                <?php echo form_error('hourly'); ?>
                                     </fieldset>
                                     <fieldset>
-                                        <label>Currency:</label>
+                                        <label><?php echo $this->lang->line("currency"); ?>:</label>
                                         <select name="state" tabindex="2">
-                                            <option value="" selected option disabled>Select your currency</option>
+                                            <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
 
                                             <?php
                                             if (count($currency) > 0) {
@@ -107,7 +105,6 @@
                                                     if ($currency1) {
                                                         ?>
                                                         <option value="<?php echo $cnt['currency_id']; ?>" <?php if ($cnt['currency_id'] == $currency1) echo 'selected'; ?>><?php echo $cnt['currency_name']; ?></option>
-
                                                         <?php
                                                     }
                                                     else {
@@ -125,11 +122,11 @@
                                         <?php
                                         if ($fixed_rate1 == 1) {
                                             ?>
-                                            <input type="checkbox" tabindex="3" name="fixed_rate" value="1" checked> Work On Fixed Rate<br>
+                                            <input type="checkbox" tabindex="3" name="fixed_rate" value="1" checked><?php echo $this->lang->line("fixed_rate"); ?><br>
                                             <?php
                                         } else {
                                             ?>
-                                            <input type="checkbox" tabindex="3" name="fixed_rate" value="1"> Also Work On Fixed Rate<br>
+                                            <input type="checkbox" tabindex="3" name="fixed_rate" value="1"><?php echo $this->lang->line("also_work_fixed"); ?><br>
                                             <?php
                                         }
                                         ?>
