@@ -2697,15 +2697,11 @@ border-top: none;
     font-size: 0;
 }
 .profile-job-post-location-name-rec ul li {
-    width: 100%;
-    /* max-width: 88%;*/
-    
+   width: 100%;
+    max-width: 88%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /*
-    padding: 6px 3px 0 8px;*/
-    
     padding: 0px 3px 0 8px;
     margin: 0;
     list-style: none;
@@ -2714,6 +2710,8 @@ border-top: none;
 .profile-job-post-location-name-rec ul li i {
     padding-right: 5px;
 }
+.profile-job-profile-button ul li a h6{line-height: 14px;
+padding-top: 4px;   }
 .profile-job-post-location-name-rec ul li a {
     color: #5b5b5b;
     display: inline-block;
