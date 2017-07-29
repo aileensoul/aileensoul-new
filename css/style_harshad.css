@@ -179,7 +179,6 @@ scrollbar[orient="vertical"] {
 /*.profile-text textarea{height:100px;}*/
 .modal.message-box span.mes{padding:10px 25px 0;}
 .cover .modal-close{line-height:32px !important;}
-input[type="submit"], input[type="button"], button {padding:10px 30px;}
 #popup-form input[type="submit"]{margin:15px 1px 10px 0;}
 .custom-c .middle-section{background:#f3f3f3;}
 .common-form1 h3{border: 1px solid rgba(0, 0, 0, 0.1);}
@@ -235,15 +234,26 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .bg-images.no-cover-upload{
 	background:#fff;
 	border-bottom:1px solid #d9d9d9;
-	/*background-image: -ms-linear-gradient(right, #6297BE 0%, #B85790 70%);
-	background-image: -moz-linear-gradient(right, #6297BE 0%, #B85790 70%);
-	background-image: -o-linear-gradient(right, #6297BE 0%, #B85790 70%);
-	background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #6297BE), color-stop(70, #B85790));
-	background-image: -webkit-linear-gradient(right, #6297BE 0%, #B85790 70%);
-	background-image: linear-gradient(to left, #6297BE 0%, #B85790 70%);*/
+/* IE10+ */ 
+background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+
+/* Opera */ 
+background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+
+/* W3C Markup */ 
+background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
 }
 .banner-box{border-bottom:1px solid #d9d9d9;}
-#notification_inside h6{height:25px;}
+#notification_inside h6{height:auto;}
 .notification-data-inside .clockimg{display:none;}
 .notifications li .notification-data-inside div{padding-left:0;}
 .custom-row .user-pic:hover a{width:100%;}
@@ -324,6 +334,7 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
     padding: 20px 0;
     text-align: center;
 }
+#userlist{cursor: pointer;}
 .post-editor .popup-img .post-img-div{margin-top:5px;}
 .post-design-proo-img .post-img-div{height:37px; width:38px; font-size:15px; padding:12px 0;}
 .post-design-pro-comment-img .post-img-div{height:37px; width:38px; font-size:15px; padding:12px 0;}
@@ -371,8 +382,8 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
   color: #22475E;
   font-size: 14px;
   line-height: 30px;
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   
 }
 .add-contact div i{color:#fff; padding:7px 6px;}
@@ -389,14 +400,14 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
   50%{ opacity: .4;}
   100%{transform: scale(1.6); opacity: 0;}
 }
-@-webkit-keyframes pulse1 {
+/*@-webkit-keyframes pulse1 {
     0% {
         -webkit-transform: scale(.1);
     }
     100% {
         -webkit-transform: scale(1.6);
     }
-}
+}*/
 
 
 @media screen and (max-width: 1200px) {

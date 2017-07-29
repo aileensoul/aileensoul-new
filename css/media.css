@@ -314,7 +314,7 @@
         /* menu  off */
 
         /* cover pic on */
-     #row2 { margin: auto 0px auto 0px;  width: 100% }
+
      #row2 img {  /*height: 35%;*/ width: 100%; }
      label.cameraButton i { font-size: 20px; }
      .cameraButton .tooltiptext  { padding: 5px 0px 5px; margin-top: 22px; width: 130px; }

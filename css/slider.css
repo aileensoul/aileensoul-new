@@ -4,6 +4,7 @@ width: 810px;
 background-size: 100%;
 margin: 0px auto;
 position:relative;
+overflow:hidden;
 }
 .img_as
 {
@@ -19,8 +20,7 @@ background-size: 100%;
 .text_sl_doen h1{color: white; font-family: robotoregular;}
 .ld_sl{height: 5px; width: 7%; float: left; background-color: #1b8ab9;}
 
-.lfar_sl{float: right; height: 36px;
-padding: 6px 20px;}
+.lfar_sl{float: left; width:100%; height: 36px; padding: 2px 20px;}
 .lfar_sl img{ height: 100%; }
 .img_2_sl{width: 83%; margin: 0 auto;}
 .main_4_sl{padding: 0px 73px; text-align: left;}
@@ -63,6 +63,20 @@ padding: 6px 20px;}
 #onload-Modal .imagesl .close:hover{background:none;}
 #onload-Modal .bottom_section{background:#fff;}
 #onload-Modal.modal{padding-top:0;}
+.sld-width-1{width:7%;}
+.sld-width-2{width:14%;}
+.sld-width-3{width:21%;}
+.sld-width-4{width:28%;}
+.sld-width-5{width:35%;}
+.sld-width-6{width:42%;}
+.sld-width-7{width:49%;}
+.sld-width-8{width:56%;}
+.sld-width-9{width:63%;}
+.sld-width-10{width:70%;}
+.sld-width-11{width:77%;}
+.sld-width-12{width:84%;}
+.sld-width-13{width:91%;}
+.sld-width-14{width:100%;}
 
 
 /***  bootstrap slider  ***/
@@ -98,7 +112,9 @@ padding: 6px 20px;}
 /********************
 *****Slide effect
 **********************/
-
+#bootstrap-touch-slider.fade {
+    opacity: 1;
+}
 #onload-Modal .fade {
     opacity: 1;
 }
@@ -348,7 +364,7 @@ padding: 6px 20px;}
 
 
 
-
+#img.abc{height:0;}
 
 /*------------------------------------------------------*/
 /* RESPONSIVE
@@ -429,3 +445,51 @@ padding: 6px 20px;}
     }
 
 }
+
+
+
+
+
+
+/**** new slider  ****/
+
+
+#first-slider .carousel .item {
+  min-height: 550px; 
+  height: 100%;
+  width:100%;
+  overflow:hidden;
+}
+#onload-Modal .carousel-control{display:none;}
+.lfar_sl a{font-size:30px;}
+.lfar_sl a:hover{opacity:0.8;}
+.slider-13 .imh_logo{position:relative;}
+.slider-13 .imh_logo .img1{position:absolute; left:0;}
+.slider-13 .imh_logo .img2{position:absolute; right:0; top:50px;}
+.slider-13 .imh_logo .img3{position:absolute; left:0; top:50px;}
+
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+/*#first-slider .slide1 {
+    background-image: url(http://s20.postimg.org/h50tgcuz1/image.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide2 {
+  background-image: url(http://s20.postimg.org/uxf8bzlql/image.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide3 {
+  background-image: url(http://s20.postimg.org/el56m97f1/image.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide4 {
+  background-image: url(http://s20.postimg.org/66pjy66dp/image.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}*/
+
