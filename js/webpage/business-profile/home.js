@@ -1656,7 +1656,7 @@ jQuery(document).ready(function ($) {
             $(".file-preview-frame").hide();
 
 //            $('#progress_div').fadeOut('5000').remove();
-//            document.getElementById("progress_div").style.display = "none";
+            document.getElementById("progress_div").style.display = "none";
             $('.business-all-post div:first').remove();
             $(".business-all-post").prepend(response.responseText);
             // second header class add for scroll

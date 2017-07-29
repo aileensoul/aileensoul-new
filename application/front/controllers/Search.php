@@ -417,7 +417,7 @@ class Search extends CI_Controller {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
-            redirect('business_profile/business_profile_post', refresh);
+            redirect('business-profile/home', refresh);
         }
 
         //print_r($this->data['userid']); die();
