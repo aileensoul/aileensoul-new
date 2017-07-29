@@ -126,23 +126,102 @@
                                 <?php } elseif ($contactperson[0]['status'] == 'pending' || $contactperson[0]['status'] == 'confirm') { ?>   
                                     <a onclick="return contact_person_model(<?php echo $businessdata1[0]['user_id']; ?>,<?php echo "'" . $contactperson[0]['status'] . "'"; ?>)" style="cursor: pointer;">
                                     <?php } ?>
-                                    <div class="">
-                                        <div class="add-contact">
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>
-                                        </div>
-                                        <div class="addtocont">
-                                            <span class="ft-13"><i class="icon-user"></i>
-                                                <?php if ($contactperson[0]['status'] == 'cancel') { ?> Add to contact <?php } elseif ($contactperson[0]['status'] == 'pending') {
-                                                    ?> Cancel request <?php } elseif ($contactperson[0]['status'] == 'confirm') {
-                                                    ?> In your contact <?php } elseif ($contactperson[0]['status'] == 'reject') {
-                                                    ?> Add to contact <?php } else {
-                                                    ?> Add to contact <?php } ?>                            
-                                            </span>
-                                        </div>
-                                    </div>
+                                   
+                                                <?php if ($contactperson[0]['status'] == 'cancel') { ?> 
+                                                  <div>   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png');?>"></span></div>
+
+                                                            </div>
+                                                            
+
+                                                            <div class="addtocont">
+                                                    <span class="ft-13"><i class="icon-user"></i>
+                                                       Add to contact </span>
+                                                    </div> 
+
+                                                </div>
+                                                 <?php } elseif ($contactperson[0]['status'] == 'pending') {
+                                                    ?>
+                                                    <div class="cance_req_main_box">   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div>
+                                                         <span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_cancel.png');?>"></span>
+                                                            </div>
+
+                                                            </div>
+                                                            
+
+                                                            <div class="addtocont">
+                                                    <span class="ft-13 cl_haed_s">
+                                                      Cancel request </span>
+                                                    </div> 
+
+                                                </div>
+                                                     <?php } elseif ($contactperson[0]['status'] == 'confirm') {
+                                                    ?> 
+                                                     <div class="fw in_mian_chng">   
+                                                            <div class="in_your_contact">
+                                                             
+                                                            <div class="in_your_contact_change">
+                                                            <span class="in_your_contct_img">
+                                                                <img src="<?php echo base_url('img/icon_contact_accept.png');?>">
+                                                            </span>
+                                                            </div>
+
+                                                            </div>
+                                                            
+
+                                                            <div class="addtocont">
+                                                    <span class="ft-13 ai_text">
+                                                       In your contact </span>
+                                                    </div> 
+
+                                                </div>
+                                                     <?php } elseif ($contactperson[0]['status'] == 'reject') {
+                                                    ?>
+                                                      <div>   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png');?>"></span></div>
+
+                                                            </div>
+                                                            
+
+                                                            <div class="addtocont">
+                                                    <span class="ft-13"><i class="icon-user"></i>
+                                                       Add to contact </span>
+                                                    </div> 
+
+                                                </div>
+                                                     <?php } else {
+                                                    ?> 
+                                                    <div>   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div><span class="cancel_req_busi">   <img src="<?php echo base_url('img/icon_contact_add.png');?>"></span></div>
+
+                                                            </div>
+                                                            
+
+                                                            <div class="addtocont">
+                                                    <span class="ft-13"><i class="icon-user"></i>
+                                                       Add to contact </span>
+                                                    </div> 
+
+                                                </div>
+                                                    <?php } ?>                            
+                                          
                                 </a>
                         </div>
                     <?php } ?>
