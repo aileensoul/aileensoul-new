@@ -8,14 +8,17 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
         // echo $this->session->userdata('aileenuser');  echo "hello"; die();
-        if (!$this->session->userdata('aileenuser')) {
-            redirect('login', 'refresh');
-        } else {
-            $this->data['userid'] = $this->session->userdata('aileenuser');
+
+        if ($this->uri->segment(2) != 'dashboard' && $this->uri->segment(1) != 'business-profile') {
+            if (!$this->session->userdata('aileenuser')) {
+                redirect('login', 'refresh');
+            } else {
+                $this->data['userid'] = $this->session->userdata('aileenuser');
+            }
         }
 
         ini_set('gd.jpeg_ignore_warning', 1);
-        
+
         $user_id = $this->data['userid'];
         $condition_array = array('status' => '1');
         $this->data['loged_in_user'] = $this->common->select_data_by_id('user', 'user_id', $user_id, 'user_name,user_image', $condition_array);
@@ -132,12 +135,12 @@ class MY_Controller extends CI_Controller {
     }
 
     public function thumb_img_uplode($upload_image = '', $file_name = '', $thumb_folder = '', $thumb_width = '', $thumb_height = '') {
-        
+
         $thumbnail = $thumb_folder . $file_name;
         list($width, $height) = getimagesize($upload_image);
         $thumb_create = imagecreatetruecolor($thumb_width, $thumb_height);
         $file_ext = 'png';
-        
+
         switch ($file_ext) {
             case 'jpg':
                 $source = imagecreatefromjpeg($upload_image);
@@ -154,8 +157,8 @@ class MY_Controller extends CI_Controller {
             default:
                 $source = imagecreatefromjpeg($upload_image);
         }
-        
-        
+
+
         imagecopyresized($thumb_create, $source, 0, 0, 0, 0, $thumb_width, $thumb_height, $width, $height);
         switch ($file_ext) {
             case 'jpg' || 'jpeg':

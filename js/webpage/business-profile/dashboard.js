@@ -160,17 +160,17 @@ jQuery(document).ready(function ($) {
 });
 // Upload Post end
 $(document).ready(function () {
-    business_dashboard_post();
+    business_dashboard_post(slug);
     GetBusPhotos();
     GetBusVideos();
     GetBusAudios();
     GetBusPdf();
 });
 
-function business_dashboard_post() {
+function business_dashboard_post(slug) {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_dashboard_post/",
+        url: base_url + "business_profile/business_dashboard_post/" + slug,
         data: '',
         dataType: "html",
         beforeSend: function () {
