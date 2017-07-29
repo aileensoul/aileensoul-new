@@ -44,11 +44,15 @@
 
                                                         <?php
                                                     } else {
+                                                        $fname = $freehiredata[0]['fullname'];
+                                                        $lname = $freehiredata[0]['username'];
+                                                        $sub_fname = substr($fname, 0, 1);
+                                                        $sub_lname = substr($lname, 0, 1);
                                                         ?>
-                                                        <?php  $a = $companyname;
-                                                                $acr = substr($a, 0, 1); ?>
-                                                        <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
-                                                        <?php
+                                                        <div>
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                                        </div>
+                                                       <?php
                                                     }
                                                     ?>
                                                 </a>
@@ -118,7 +122,17 @@
                                                                             } else {
                                                                                 ?>
                                                                                 <a href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>">
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"> </a>
+                                                                                    <?php
+                                                                                    $post_fname = $row['freelancer_post_fullname'];
+                                                                                    $post_lname = $row['freelancer_post_username'];
+                                                                                    $sub_post_fname = substr($post_fname, 0, 1);
+                                                                                    $sub_post_lname = substr($post_lname, 0, 1);
+                                                                                    ?>
+                                                                                    <div class="post-img-div">
+                                                                                        <?php echo ucfirst(strtolower($sub_post_fname)). " ". ucfirst(strtolower($sub_post_lname));?>
+                                                                                    </div>
+                                                                                    <!--<img src="<?php //echo base_url(NOIMAGE); ?>" alt="<?php //echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>">--> 
+                                                                                </a>
                                                                                 <?php
                                                                             }
                                                                             ?>
@@ -128,7 +142,7 @@
                                                                         <ul>
                                                                             <li>
                                                                                 <a  href="<?php echo base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire'); ?>" title="<?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?>"><h6>
-        <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
+                                                                                        <?php echo ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']); ?></h6>
                                                                                 </a>
                                                                             </li>
                                                                             <li style="display: block;" ><a href="JavaScript:Void(0);" title="<?php echo ucwords($row['designation']); ?>"> <?php
@@ -180,7 +194,7 @@
                                                                             ?>   </span>    
                                                                     </li>
 
-                                                                            <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
+                                                                    <?php $cityname = $this->db->get_where('cities', array('city_id' => $row['freelancer_post_city']))->row()->city_name; ?>
                                                                     <li><b><?php echo $this->lang->line("location"); ?></b><span> <?php
                                                                             if ($cityname) {
                                                                                 echo $cityname;
@@ -259,7 +273,7 @@
                                                                     $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
                                                                     $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
-        <?php if ($userid != $row['user_id']) { ?>
+                                                                    <?php if ($userid != $row['user_id']) { ?>
                                                                         <a href="<?php echo base_url('chat/abc/' . $row['user_id'] . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
 
                                                                         <?php
@@ -304,7 +318,7 @@
             </div>
         </section>
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
