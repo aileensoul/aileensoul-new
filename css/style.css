@@ -2717,6 +2717,7 @@ padding-top: 4px;   }
     display: inline-block;
     font-size: 13px;
 }
+.add-post-button .btn-3b .fa-plus{padding-right: 5px;}
 .websir-se:hover{color: #1b8ab9 !important; text-decoration-line: underline;}
 .bui_close {
     margin-left: -12px;
