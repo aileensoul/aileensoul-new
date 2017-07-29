@@ -57,7 +57,7 @@
                                 </span>
                                 <div class="post-editor col-md-12 post-edit-popup" id="close">
                                     <?php // echo form_open_multipart(base_url('business_profile/business_profile_addpost_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix', 'onsubmit' => "return imgval(event)")); ?>
-<?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
+                                    <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
                                     <div class="main-text-area col-md-12" >
                                         <div class="popup-img-in"> 
                                             <?php
@@ -67,12 +67,13 @@
                                                 <?php
                                             } else {
                                                 ?>
-                                                <?php 
-                                          $a = $businessdata[0]['company_name'];
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-div">
-                                            <?php echo  ucwords($acr)?>
-                                            </div>
+                                                <?php
+                                                $a = $businessdata[0]['company_name'];
+                                                $acr = substr($a, 0, 1);
+                                                ?>
+                                                <div class="post-img-div">
+                                                <?php echo ucwords($acr) ?>
+                                                </div>
                                                 <?php
                                             }
                                             ?>
@@ -143,11 +144,12 @@
                                         <?php if ($businessdata[0]['business_user_image']) { ?>
                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
                                         <?php } else { ?>
-                                            <?php 
-                                          $a = $businessdata[0]['company_name'];
-                                          $acr = substr($a, 0, 1);?>
+                                            <?php
+                                            $a = $businessdata[0]['company_name'];
+                                            $acr = substr($a, 0, 1);
+                                            ?>
                                             <div class="post-img-div">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo ucwords($acr) ?>
                                             </div>
 <?php } ?>
                                     </div>
@@ -168,10 +170,17 @@
                              Your browser does not support the video tag.
                                  </video>
                         </div>-->
-                            <div class='progress' id="progress_div">
+                            <div class="bs-example">
+                                <div class="progress progress-striped" id="progress_div">
+                                    <div class="progress-bar" style="width: 0%;">
+                                        <span class="sr-only">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+<!--                            <div class='progress' id="progress_div">
                                 <div class='bar' id='bar'></div>
                                 <div class='percent' id='percent'>0%</div>
-                            </div>
+                            </div>-->
                             <div class="business-all-post">
                                 <div class="nofoundpost"> 
                                 </div>

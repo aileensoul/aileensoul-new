@@ -217,6 +217,11 @@
     top:3px; 
     left:48%; 
 }
+.bs-example .sr-only{
+    position: inherit;
+    width:45px;
+    height: 20px;
+}
 
 /* BUSINESS POST */
 

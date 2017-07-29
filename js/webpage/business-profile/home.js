@@ -1623,8 +1623,10 @@ function edit_postinsert(abc)
 // edit post end 
 
 jQuery(document).ready(function ($) {
-    var bar = $('#bar');
-    var percent = $('#percent');
+//    var bar = $('#bar');
+//    var percent = $('#percent');
+    var bar = $('.progress-bar');
+    var percent = $('.sr-only');
     var options = {
         beforeSend: function () {
             // Replace this with your loading gif image
@@ -1654,8 +1656,7 @@ jQuery(document).ready(function ($) {
             $(".file-preview-frame").hide();
 
 //            $('#progress_div').fadeOut('5000').remove();
-            document.getElementById("progress_div").style.display = "none";
-            // $('.loader').remove();
+//            document.getElementById("progress_div").style.display = "none";
             $('.business-all-post div:first').remove();
             $(".business-all-post").prepend(response.responseText);
             // second header class add for scroll
