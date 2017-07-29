@@ -10,7 +10,7 @@ class Search extends CI_Controller {
 
         $this->load->library('form_validation');
         $this->load->helper('form');
-
+        $this->lang->load('message', 'english');
         $this->load->model('common');
 //        if (!$this->session->userdata('user_id')) {
 //            redirect('login', 'refresh');
@@ -26,12 +26,12 @@ class Search extends CI_Controller {
     }
 
     public function execute_search() {
-                //echo "test sucessfull";
+        //echo "test sucessfull";
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-        redirect('artistic/art_post',refresh);
-            
+            redirect('artistic/art_post', refresh);
+
             // $abc[] = $results;
             // $this->data['falguni'] = 1;        
         }
@@ -71,13 +71,11 @@ class Search extends CI_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 //insert search keyword into data base code end
 
-         if ($searchskill == "") {
-            $contition_array = array('art_city' => $cache_time, 'status' => '1','art_step' => 4);
+        if ($searchskill == "") {
+            $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            
         } elseif ($search_place == "") {
-             //echo "skill"; 
+            //echo "skill"; 
 
             $contition_array = array('is_delete' => '0', 'status' => '1', 'type' => '2');
 
@@ -85,7 +83,7 @@ class Search extends CI_Controller {
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($skilldata); 
-            $contion_array = array('art_reg.status' => '1', 'art_reg.user_id !=' => $userid ,'art_step' => 4);
+            $contion_array = array('art_reg.status' => '1', 'art_reg.user_id !=' => $userid, 'art_step' => 4);
             $artregdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // echo "<pre>";print_r($artregdata);
@@ -104,13 +102,13 @@ class Search extends CI_Controller {
                     }
                 }
             }
-             //echo "<pre>"; print_r($artskillpost); die();
-            $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1','art_reg.user_id !=' => $userid,'art_step' => 4);
+            //echo "<pre>"; print_r($artskillpost); die();
+            $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_reg.user_id !=' => $userid, 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or art_yourart LIKE '%$searchskill%')";
             // echo $search_condition;
             $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>"; print_r($other['data']); die();
+            // echo "<pre>"; print_r($other['data']); die();
 
 
             $join_str[0]['table'] = 'art_reg';
@@ -118,32 +116,32 @@ class Search extends CI_Controller {
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-             $contition_array = array('art_post.user_id !=' => $userid ,'art_reg.art_step' => 4);
+            $contition_array = array('art_post.user_id !=' => $userid, 'art_reg.art_step' => 4);
 
             $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
 
 
             $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-           // echo "<pre>"; print_r($artpost); die();
+            // echo "<pre>"; print_r($artpost); die();
             $fullname = explode(" ", $searchskill);
 
             // echo "<pre>"; print_r($fullname) ;
             if ($fullname[1] == "") {
-                 //echo "pallavi";
-                 //echo count($artskillpost); 
+                //echo "pallavi";
+                //echo count($artskillpost); 
 
                 if (count($artskillpost) == 0) {
-                   // echo "tt";
+                    // echo "tt";
                     $unique = $otherdata;
-                   // echo "<pre>";print_r($unique);die();
+                    // echo "<pre>";print_r($unique);die();
                 } else {
                     //echo "pqr";
-                    $unique = array_merge($artskillpost,$otherdata);
+                    $unique = array_merge($artskillpost, $otherdata);
                 }
 
-                 
-               // echo "<pre>";print_r($unique);die();
+
+                // echo "<pre>";print_r($unique);die();
                 // echo count($unique);
 
                 foreach ($unique as $ke => $arr) {
@@ -160,11 +158,11 @@ class Search extends CI_Controller {
 
 
 
-                 //echo "<pre>";print_r($new);die();
+                //echo "<pre>";print_r($new);die();
             } else {
-               //  echo "panalia"; die();
+                //  echo "panalia"; die();
                 $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
-             $contition_array = array('art_reg.user_id !=' => $userid ,'art_reg.art_step' => 4);
+                $contition_array = array('art_reg.user_id !=' => $userid, 'art_reg.art_step' => 4);
 
                 // echo $search_condition;
                 $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -175,7 +173,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
 
 
@@ -206,7 +204,7 @@ class Search extends CI_Controller {
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($skilldata); 
-            $contion_array = array('status' => '1', 'art_city' => $cache_time , 'art_step' => 4);
+            $contion_array = array('status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
             $artregdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -227,7 +225,7 @@ class Search extends CI_Controller {
             }
             // echo "<pre>"; print_r($artskillpost);
 
-            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time , 'art_step' => 4);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%')";
 
@@ -239,10 +237,10 @@ class Search extends CI_Controller {
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-          $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
 
 
-            $contition_array = array('art_reg.art_city' => $cache_time , 'art_reg.art_step' => 4);
+            $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4);
             $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($artpost);
 
@@ -257,7 +255,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
                 // echo count($unique);
 
@@ -282,7 +280,7 @@ class Search extends CI_Controller {
                 $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
 
                 // echo $search_condition;
-                $contition_array = array('art_reg.art_city' => $cache_time ,'art_step' => 4);
+                $contition_array = array('art_reg.art_city' => $cache_time, 'art_step' => 4);
                 $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -293,7 +291,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
                 // echo count($unique);
 
@@ -315,21 +313,19 @@ class Search extends CI_Controller {
         }
 
 
-       //echo "<pre>";print_r($new); die();
+        //echo "<pre>";print_r($new); die();
 
 
         $this->data['artuserdata'] = $new;
 
-           $this->data['artuserdata1'] = $artpost;
+        $this->data['artuserdata1'] = $artpost;
 
-       //echo "<pre>";print_r($artpost['art_description']); die();
-         //   echo "*********";
-         // echo "<pre>"; print_r($this->data['artuserdata']);
-
-         // echo "---------------";
-         // echo "<pre>"; print_r($this->data['artuserdata1']);
-         // die();
-
+        //echo "<pre>";print_r($artpost['art_description']); die();
+        //   echo "*********";
+        // echo "<pre>"; print_r($this->data['artuserdata']);
+        // echo "---------------";
+        // echo "<pre>"; print_r($this->data['artuserdata1']);
+        // die();
         // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
 
@@ -386,13 +382,13 @@ class Search extends CI_Controller {
 
         $this->data['demo'] = array_values($result1);
 
-         $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -406,7 +402,7 @@ class Search extends CI_Controller {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
         $this->load->view('artistic/recommen_candidate', $this->data);
@@ -417,14 +413,11 @@ class Search extends CI_Controller {
         $this->load->view('search/search_business', $this->data);
     }
 
-public function business_search() {
+    public function business_search() {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
-            redirect('business_profile/business_profile_post',refresh);
-            
-
-
+            redirect('business_profile/business_profile_post', refresh);
         }
 
         //print_r($this->data['userid']); die();
@@ -455,18 +448,16 @@ public function business_search() {
 
         if ($search_business == "") {
 
-            $contition_array = array('city' => $cache_time, 'status' => '1','business_step' => 4);
+            $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        }
-         elseif ($search_place == "") {
-           // echo "hi";
+        } elseif ($search_place == "") {
+            // echo "hi";
 
 
 
-          $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1','business_profile.user_id !=' => $userid ,'business_step' => 4);
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_profile.user_id !=' => $userid, 'business_step' => 4);
 
-             
+
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -478,9 +469,9 @@ public function business_search() {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
 
-         //   echo $search_condition; 
+            //   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         // echo "<pre>"; print_r($business_profile);
+            // echo "<pre>"; print_r($business_profile);
 
 
             $join_str[0]['table'] = 'business_profile';
@@ -488,31 +479,26 @@ public function business_search() {
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $condition_array = array('business_profile_post.user_id !=' => $userid,'business_step' => 4);
+            $condition_array = array('business_profile_post.user_id !=' => $userid, 'business_step' => 4);
 
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
             // echo $search_condition; 
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '',  $join_str, $groupby = '');
-        //echo "<pre>"; print_r($business_post); die();
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            //echo "<pre>"; print_r($business_post); die();
+            //  foreach ($business_post as $ke => $arr) {
+            //           $postdata[] = $arr;
+            //       }
+            // //  $new = array_unique($postdata);
+            //       $new = array();
+            //       foreach ($postdata as $value) {
+            //            $new[$value['business_profile_post_id']] = $value;
+            //       }
+            // echo "<pre>"; print_r($new); die();           
+        } else {
 
-      //  foreach ($business_post as $ke => $arr) {
-      //           $postdata[] = $arr;
-      //       }
-      // //  $new = array_unique($postdata);
+            $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_profile.user_id !=' => $userid, 'business_step' => 4);
 
-            
-      //       $new = array();
-      //       foreach ($postdata as $value) {
-      //            $new[$value['business_profile_post_id']] = $value;
-      //       }
-        // echo "<pre>"; print_r($new); die();           
-        } 
-
-        else {
-
-            $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time ,'business_profile.user_id !=' => $userid,'business_step' => 4);
-             
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -531,39 +517,31 @@ public function business_search() {
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $condition_array = array('business_profile_post.user_id !=' => $userid ,'business_step' => 4);
+            $condition_array = array('business_profile_post.user_id !=' => $userid, 'business_step' => 4);
 
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-      //         foreach ($business_post as $ke => $arr) {
-      //           $postdata[] = $arr;
-      //       }
-      // //  $new = array_unique($postdata);
-
-            
-      //       $new = array();
-      //       foreach ($postdata as $value) {
-      //            $new[$value['business_profile_post_id']] = $value;
-      //       }  
-
-        
-
-
-
-
+            //         foreach ($business_post as $ke => $arr) {
+            //           $postdata[] = $arr;
+            //       }
+            // //  $new = array_unique($postdata);
+            //       $new = array();
+            //       foreach ($postdata as $value) {
+            //            $new[$value['business_profile_post_id']] = $value;
+            //       }  
         }
 
 
         $this->data['description'] = $business_post;
 
 //echo "string";
-   //echo "<pre>"; print_r($this->data['description'][0]['product_description']); die();
+        //echo "<pre>"; print_r($this->data['description'][0]['product_description']); die();
 
         $this->data['profile'] = $business_profile;
 
 
-        $contition_array = array('status' => '1', 'is_deleted' => '0' ,'business_step' => 4);
+        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
 
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         $contition_array = array('status' => '1', 'is_delete' => '0');
@@ -585,15 +563,15 @@ public function business_search() {
         }
 
         $this->data['demo'] = array_values($result1);
-       // echo "<pre>"; print_r($new); die();
+        // echo "<pre>"; print_r($new); die();
 
-            $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -607,7 +585,7 @@ public function business_search() {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
         $this->load->view('business_profile/recommen_business', $this->data);
     }
@@ -623,47 +601,29 @@ public function business_search() {
         $this->load->view('recruiter/rec_search', $this->data);
     }
 
-    
-    public function recruiter_search($searchkeyword = " ",$searchplace = " ") {
-        
-        if($this->input->get('search_submit'))
-        {
-          
-           $searchkeyword=$this->input->get('skills');
-           $searchplace=$this->input->get('searchplace');
-         
-        }
-        else
-        {
-               
+    public function recruiter_search($searchkeyword = " ", $searchplace = " ") {
 
-                if($this->uri->segment(3) =="0")
+        if ($this->input->get('search_submit')) {
 
-                {
-                      
-                        $searchplace= urldecode($searchplace);
-                         $searchkeyword= "";
-                     
-                      
-                }
-                 else if($this->uri->segment(4) =="0")
+            $searchkeyword = $this->input->get('skills');
+            $searchplace = $this->input->get('searchplace');
+        } else {
 
-                {
-                        
-                        $searchkeyword= urldecode($searchkeyword);
-                         $searchplace= "";
-                    
-                }
-                else
-                {
-                     
 
-                      $searchkeyword= urldecode($searchkeyword);
-                    $searchplace=urldecode($searchplace); 
-                
-                }
-              
-            
+            if ($this->uri->segment(3) == "0") {
+
+                $searchplace = urldecode($searchplace);
+                $searchkeyword = "";
+            } else if ($this->uri->segment(4) == "0") {
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = "";
+            } else {
+
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = urldecode($searchplace);
+            }
         }
 
         // echo "<pre>"; print_r($_POST);die();
@@ -671,19 +631,18 @@ public function business_search() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 
-if ($searchkeyword == "" && $searchplace == "") {
-            redirect('recruiter/recommen_candidate',refresh);
-            
+        if ($searchkeyword == "" && $searchplace == "") {
+            redirect('recruiter/recommen_candidate', refresh);
         }
 
         $rec_search = trim($searchkeyword);
-      
+
 
         $this->data['keyword'] = $rec_search;
 
         $search_place = $searchplace;
         $this->data['key_place'] = $searchplace;
-      
+
 
         //insert search keyword into database start
 
@@ -715,28 +674,26 @@ if ($searchkeyword == "" && $searchplace == "") {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         //insert search keyword into database end
 
-        if ($searchkeyword == "" || $this->uri->segment(3) =="0") {
-         //echo "skill search";die();
+        if ($searchkeyword == "" || $this->uri->segment(3) == "0") {
+            //echo "skill search";die();
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.status' => '1', 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $unique = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-           // echo "<pre>"; print_r($unique);die();
-
-        }
-         elseif ($searchplace == "" || $this->uri->segment(4) =="0") {
-           // echo "Place Search";die();
-          // echo "<pre>"; print_r($rec_search);die();
+            // echo "<pre>"; print_r($unique);die();
+        } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
+            // echo "Place Search";die();
+            // echo "<pre>"; print_r($rec_search);die();
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
@@ -745,20 +702,20 @@ if ($searchkeyword == "" && $searchplace == "") {
             // echo $search_condition;die();
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           //  echo "<pre>"; print_r($skilldata); 
+            //  echo "<pre>"; print_r($skilldata); 
 
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($jobdata); die();
 
@@ -778,23 +735,23 @@ if ($searchkeyword == "" && $searchplace == "") {
                 }
             }
 
-           // echo "<pre>"; print_r($jobskillpost); die();
+            // echo "<pre>"; print_r($jobskillpost); die();
             $this->data['rec_skill'] = $jobskillpost;
             // echo "<pre>"; print_r( $this->data['rec_skill']); die();
 
             $join_str = array(array(
-                  'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array1 = array('job_add_edu.pass_year' => $rec_search ,'job_reg.job_step' => 10);
+            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.job_step' => 10);
 
             $yeardata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -802,17 +759,17 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             $join_str = array(array(
                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $genderdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array2, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -828,16 +785,16 @@ if ($searchkeyword == "" && $searchplace == "") {
                     'table' => 'job_add_workexp',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
             $search_condition = "(job_add_workexp.jobtitle LIKE '%$rec_search%' or job_add_workexp.experience_year LIKE '%$rec_search%' or job_add_workexp.experience_month LIKE '%$rec_search%')";
-            $contition_array = array('job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
-            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($results1); die();
 
 
@@ -848,13 +805,13 @@ if ($searchkeyword == "" && $searchplace == "") {
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_edu.user_id'),
                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -864,14 +821,14 @@ if ($searchkeyword == "" && $searchplace == "") {
                     'table' => 'job_add_edu',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_edu.user_id'),
-               array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array = array('job_reg.other_skill' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.other_skill' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($designationdata); die();
@@ -887,14 +844,14 @@ if ($searchkeyword == "" && $searchplace == "") {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
-                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
                 $yeardata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -908,23 +865,23 @@ if ($searchkeyword == "" && $searchplace == "") {
             if ($recsearch != "") {
 
                 $join_str = array(array(
-                       'join_type' => 'left',
+                        'join_type' => 'left',
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
 
 
 
- $contition_array = array('status' => '1', 'is_deleted' => '0');
+                $contition_array = array('status' => '1', 'is_deleted' => '0');
 
-                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
 
@@ -958,9 +915,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             }
 
             // echo "<pre>"; print_r($unique); die();
-        }
-
-         else {
+        } else {
 
 
 
@@ -970,11 +925,11 @@ if ($searchkeyword == "" && $searchplace == "") {
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
 
-         $results=array_unique($result);  
-            foreach($results as $key =>$value){
-            $result1[$key]['label']=$value;
-            $result1[$key]['value']=$value;
-          }
+            $results = array_unique($result);
+            foreach ($results as $key => $value) {
+                $result1[$key]['label'] = $value;
+                $result1[$key]['value'] = $value;
+            }
 
             $search_condition = "(skill LIKE '%$rec_search%')";
 
@@ -983,29 +938,29 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.status' => '1', 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.status' => '1', 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-           //  echo "<pre>"; print_r($jobdata); die();
+            //  echo "<pre>"; print_r($jobdata); die();
 
 
-          
-          $this->data['demo']=array_values($result1); 
+
+            $this->data['demo'] = array_values($result1);
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
                 // echo $id; echo "<br>";
                 foreach ($jobdata as $postskill) {
                     $skill = explode(',', $postskill['keyskill']);
-                    
+
 
 
                     if (in_array($id, $skill)) {
@@ -1017,70 +972,70 @@ if ($searchkeyword == "" && $searchplace == "") {
             }
 
 
- 
 
-        //echo "<pre>"; print_r($jobskillpost); die();
+
+            //echo "<pre>"; print_r($jobskillpost); die();
             $this->data['rec_skill'] = $jobskillpost;
-             //echo "<pre>"; print_r($jobskillpost);  die();
+            //echo "<pre>"; print_r($jobskillpost);  die();
 
 
 
 
-
-            $join_str = array(array(
-                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-
-            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
-
-            $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-         //echo "<pre>"; print_r($yeardata); die();
-
-             $join_str = array(array(
-                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
-
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        
-
-       //echo "<pre>"; print_r($jobdata); die();
-
-           
 
             $join_str = array(array(
                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+
+            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
+
+            $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+            //echo "<pre>"; print_r($yeardata); die();
+
+            $join_str = array(array(
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
+            );
+            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
+
+            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
+            //echo "<pre>"; print_r($jobdata); die();
+
+
+
+            $join_str = array(array(
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
+            );
+            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $genderdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array2, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-           //  echo "<pre>"; print_r($genderdata); die();
+            //  echo "<pre>"; print_r($genderdata); die();
 
 
 
@@ -1094,17 +1049,17 @@ if ($searchkeyword == "" && $searchplace == "") {
                     'table' => 'job_add_workexp',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_workexp.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
             $search_condition = "(job_add_workexp.jobtitle LIKE '%$rec_search%' or job_add_workexp.experience_year LIKE '%$rec_search%' or job_add_workexp.experience_month LIKE '%$rec_search%')";
-            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
-            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data="job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*", $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data = "job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*", $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             //echo "<pre>"; print_r($results1); die();
 
 
@@ -1118,21 +1073,21 @@ if ($searchkeyword == "" && $searchplace == "") {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
-                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
                 $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
 
-             //echo "<pre>"; print_r($adddata); die();
+            //echo "<pre>"; print_r($adddata); die();
 
             $recsearch = $this->db->get_where('degree', array('degree_name' => $rec_search))->row()->degree_id;
 
@@ -1143,19 +1098,18 @@ if ($searchkeyword == "" && $searchplace == "") {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-                   
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
-                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
                 $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             }
-           // echo "<pre>"; print_r($adddata); die();
+            // echo "<pre>"; print_r($adddata); die();
 
 
             foreach ($jobskillpost as $ke => $arr) {
@@ -1184,9 +1138,9 @@ if ($searchkeyword == "" && $searchplace == "") {
         }
 
         $this->data['postdetail'] = $unique;
-       // echo "<pre>"; print_r($unique); die();
+        // echo "<pre>"; print_r($unique); die();
 
-        $contition_array = array('status' => '1', 'is_delete' => '0' ,'job_step' => 10);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10);
 
 
         $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'other_skill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -1235,13 +1189,13 @@ if ($searchkeyword == "" && $searchplace == "") {
 
         $this->data['demo'] = array_values($result1);
 
-            $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -1255,12 +1209,11 @@ if ($searchkeyword == "" && $searchplace == "") {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
-       // echo "<pre>"; print_r($this->data['de']);die();
-
-       // echo "<pre>"; print_r($this->data['postdetail']); die();
+        // echo "<pre>"; print_r($this->data['de']);die();
+        // echo "<pre>"; print_r($this->data['postdetail']); die();
 
         $this->load->view('recruiter/recommen_candidate1', $this->data);
     }
@@ -1272,46 +1225,31 @@ if ($searchkeyword == "" && $searchplace == "") {
         $this->load->view('freelancer_hire/freelancer_hire_search', $this->data);
     }
 
-    public function freelancer_hire_search($searchkeyword,$searchplace) {
+    public function freelancer_hire_search($searchkeyword, $searchplace) {
         $userid = $this->session->userdata('aileenuser');
 
-         if($this->input->get('search_submit'))
-        {
-           $searchkeyword=trim($this->input->get('skills'));
-           $searchplace=trim($this->input->get('searchplace'));
-        }
-        else
-        {
-              if($this->uri->segment(3) =="0")
+        if ($this->input->get('search_submit')) {
+            $searchkeyword = trim($this->input->get('skills'));
+            $searchplace = trim($this->input->get('searchplace'));
+        } else {
+            if ($this->uri->segment(3) == "0") {
 
-                {
-                      
-                        $searchplace= urldecode($searchplace);
-                         $searchkeyword= "";
-                     
-                      
-                }
-                 else if($this->uri->segment(4) =="0")
+                $searchplace = urldecode($searchplace);
+                $searchkeyword = "";
+            } else if ($this->uri->segment(4) == "0") {
 
-                {
-                        
-                        $searchkeyword= urldecode($searchkeyword);
-                         $searchplace= "";
-                    
-                }
-                else
-                {
-                     
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = "";
+            } else {
 
-                      $searchkeyword= urldecode($searchkeyword);
-                    $searchplace=urldecode($searchplace); 
-                
-                }
-            
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = urldecode($searchplace);
+            }
         }
 
-        if ($searchplace == "" && $searchkeyword == "") { 
-        redirect('freelancer/recommen_candidate',refresh);
+        if ($searchplace == "" && $searchkeyword == "") {
+            redirect('freelancer/recommen_candidate', refresh);
         }
 
         // Retrieve the posted search term.
@@ -1350,13 +1288,11 @@ if ($searchkeyword == "" && $searchplace == "") {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 
 
-        if ($searchkeyword == "" || $this->uri->segment(3) =="0") { 
+        if ($searchkeyword == "" || $this->uri->segment(3) == "0") {
 
-        $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid , 'free_post_step' => 7);
+            $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $unique = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        }
-        elseif ($searchplace == "" || $this->uri->segment(4) =="0") {
+        } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
 
 
             $contition_array = array('type' => '1', 'status' => '1');
@@ -1367,7 +1303,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             // echo "<pre>"; print_r($skilldata);
 
-            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1','freelancer_post_reg.user_id !=' => $userid ,'free_post_step' => 7);
+            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // echo '<pre>'; print_r($results); die();
@@ -1399,7 +1335,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             // echo "<pre>"; print_r($fielddata);
             // echo $fielddata[0]['category_id'];
 
-            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'],'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7,'freelancer_post_reg.status' => '1');
+            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7, 'freelancer_post_reg.status' => '1');
 
             $join_str[0]['table'] = 'category';
             $join_str[0]['join_table_id'] = 'category.category_id';
@@ -1409,7 +1345,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
             // echo "<pre>"; print_r($fieldfound); die();
 
-            $contition_array = array('status' => '1', 'is_delete' => '0','freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7);
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             // echo "$search_condition";
@@ -1481,7 +1417,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             // echo "<pre>"; print_r($skilldata);
 
-            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'free_post_step' => 7);
+            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             // print_r($contion_array);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($results);
@@ -1512,7 +1448,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             // echo "<pre>"; print_r($fielddata);
             // echo $fielddata[0]['category_id'];
 
-            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7,'freelancer_post_reg.status' => '1');
+            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7, 'freelancer_post_reg.status' => '1');
 
             $join_str[0]['table'] = 'category';
             $join_str[0]['join_table_id'] = 'category.category_id';
@@ -1522,7 +1458,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
             // echo "<pre>"; print_r($fieldfound);
 
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7);
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             // echo "$search_condition";
@@ -1591,7 +1527,7 @@ if ($searchkeyword == "" && $searchplace == "") {
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
 
-        $contition_array = array('status' => '1', 'is_delete' => '0','free_post_step' => 7);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7);
 
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         // echo "<pre>"; print_r($results_recruiter);die();
@@ -1625,13 +1561,13 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
 
-    $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -1645,10 +1581,9 @@ if ($searchkeyword == "" && $searchplace == "") {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
-        $this->data['de'] = array_values($res);
-       // echo "<pre>";print_r($this->data['de']);die();
 
+        $this->data['de'] = array_values($res);
+        // echo "<pre>";print_r($this->data['de']);die();
 //echo "<pre>";print_r($this->data['freelancerpostdata']);die();
         $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
     }
@@ -1664,13 +1599,12 @@ if ($searchkeyword == "" && $searchplace == "") {
         //echo "123";die();
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") { 
-            
-            redirect('freelancer/freelancer_apply_post',refresh);
-            
+        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
+
+            redirect('freelancer/freelancer_apply_post', refresh);
         }
 
-        
+
         $search_skill = trim($this->input->get('skills'));
         //print_r($search_skill);  
         // $searchskill = implode(',',$search_skill);
@@ -1704,28 +1638,23 @@ if ($searchkeyword == "" && $searchplace == "") {
 // code for insert search keyword into database end
 
         if ($search_skill == "") {
-          //  echo $search_place[0];
-
-
+            //  echo $search_place[0];
 //$contition_array = array('freelancer_post.city' => $search_place[0], 'freelancer_hire_reg.status' => '1');
 
-             $join_str[0]['table'] = 'freelancer_post';
+            $join_str[0]['table'] = 'freelancer_post';
             $join_str[0]['join_table_id'] = 'freelancer_post.user_id';
             $join_str[0]['from_table_id'] = 'freelancer_hire_reg.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('freelancer_post.city' => $cache_time,'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' =>$userid ,'freelancer_hire_reg.free_hire_step' => 3);
+            $contition_array = array('freelancer_post.city' => $cache_time, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => 3);
 
-    
-        $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            
+            $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
 
             //echo "<pre>"; print_r($unique);die();
-
-            
-        } 
-        elseif ($search_place == "") {
+        } elseif ($search_place == "") {
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
@@ -1733,10 +1662,10 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($artdata['data']); 
-            $contition_array = array('status' => '1','freelancer_post.user_id !=' =>$userid);
+            $contition_array = array('status' => '1', 'freelancer_post.user_id !=' => $userid);
             $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($recdata); 
-            
+
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
@@ -1760,7 +1689,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-             $contion_array = array('freelancer_post.user_id !=' =>$userid);
+            $contion_array = array('freelancer_post.user_id !=' => $userid);
             //  echo  $search_condition; die();
 
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1806,14 +1735,14 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 // echo "<pre>";print_r($unique);die();
         } else {
-        //echo "both"; die();
+            //echo "both"; die();
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
             $search_condition = "(skill LIKE '%$search_skill%')";
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($artdata['data']); 
-            $contition_array = array('status' => '1', 'city' => $cache_time,'freelancer_post.user_id !=' =>$userid);
+            $contition_array = array('status' => '1', 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($recdata); 
 
@@ -1839,7 +1768,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('post_name=' => $search_job, 'city' => $cache_time,'freelancer_post.user_id !=' =>$userid);
+            $contion_array = array('post_name=' => $search_job, 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
 
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1892,7 +1821,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
 
-        $contition_array = array('status' => '1', 'is_delete' => '0','freelancer_post_reg.user_id !=' =>$userid ,'free_post_step' => 7);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
 
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'designation,freelancer_post_otherskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         // echo "<pre>"; print_r($freelancer_postdata);die();
@@ -1925,14 +1854,14 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
         $this->data['demo'] = array_values($result1);
-    
-    $contition_array = array('status' => '1');
 
-       
+        $contition_array = array('status' => '1');
+
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -1946,7 +1875,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
         $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
@@ -1967,18 +1896,17 @@ if ($searchkeyword == "" && $searchplace == "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('job/job_all_post',refresh);
-         
+            redirect('job/job_all_post', refresh);
         }
-       ;
+        ;
 
- // search keyword insert into database start
+        // search keyword insert into database start
 
         $search_job = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_job;
-       
+
         $search_place = trim($this->input->get('searchplace'));
-       // echo $search_place;
+        // echo $search_place;
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
@@ -2011,7 +1939,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
         if ($search_job == "") {
 
-            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -2022,8 +1950,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
 
 //echo "<pre>"; print_r($unique); die();
-        } 
-        elseif ($search_place == "") {
+        } elseif ($search_place == "") {
             // echo "hello";
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
@@ -2038,7 +1965,7 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
-              //   echo $id; echo "<br>";
+                //   echo $id; echo "<br>";
                 foreach ($recdata as $postskill) {
                     $skill = explode(',', $postskill['post_skill']);
                     ;
@@ -2064,7 +1991,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date';
 
@@ -2076,7 +2003,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             // $contion_array = array('post_name=' => $search_job );
             //    $resultsrecruiter = $this->common->select_data_by_search('recruiter', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str=array(), $groupby = '');
             //      // echo "<pre>"; print_r($resultsrecruiter); 
-           //  $results = array_filter(array_map('trim', $results));
+            //  $results = array_filter(array_map('trim', $results));
 
 
 
@@ -2109,11 +2036,9 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             // echo "<pre>"; print_r($unique); die();
         } else {
-                // both
+            // both
             // $search_job = $this->input->get('skills');
             //echo $search_job;
-
-
             // $search_place = $this->input->get('searchplace');
             // print_r($search_place); die();
 
@@ -2157,7 +2082,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.max_month,rec_post.max_year,rec_post.created_date';
 
@@ -2185,7 +2110,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             }
 
 
-        // echo '<pre>'; print_r($results); die();
+            // echo '<pre>'; print_r($results); die();
 
 
             if (count($new) == 0) {
@@ -2194,7 +2119,7 @@ if ($searchkeyword == "" && $searchplace == "") {
             } else {
                 $unique = array_merge($new, $results);
             }
-           // echo "<pre>"; print_r($unique); die();
+            // echo "<pre>"; print_r($unique); die();
         }
 
 
@@ -2202,9 +2127,9 @@ if ($searchkeyword == "" && $searchplace == "") {
 
         $this->data['postdetail'] = $unique;
 
-   // echo "<pre>"; print_r($this->data['postdetail']); die();
+        // echo "<pre>"; print_r($this->data['postdetail']); die();
 // code for search
-        $contition_array = array('re_status' => '1' ,'re_step' => 3);
+        $contition_array = array('re_status' => '1', 're_step' => 3);
 
 
         $results_recruiter = $this->data['results'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2219,14 +2144,14 @@ if ($searchkeyword == "" && $searchplace == "") {
         $contition_array = array('status' => '1', 'type' => '1');
 
         $skill = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        
-         $contition_array = array('status' => '1');
 
-       
+        $contition_array = array('status' => '1');
+
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -2240,10 +2165,10 @@ if ($searchkeyword == "" && $searchplace == "") {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
- //echo "<pre>"; print_r($this->data['de']);die();
+        //echo "<pre>"; print_r($this->data['de']);die();
 
         $uni = array_merge($results_recruiter, $results_post, $skill);
         //   echo count($unique);
@@ -2265,11 +2190,11 @@ if ($searchkeyword == "" && $searchplace == "") {
         }
 
 
-      
-      
+
+
 
         $this->data['demo'] = array_values($result1);
- //echo "<pre>"; print_r($this->data['demo']);die();
+        //echo "<pre>"; print_r($this->data['demo']);die();
 
 
 

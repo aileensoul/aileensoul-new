@@ -122,6 +122,7 @@ $lang["working_hours_week"] = "Working hours per week";
 $lang["education"] = "Education";
 $lang["apply"]="Apply";
 $lang["applied"]="Applied";
+$lang["created_date"] ="Created Date";
 // common variable of freelancer_hire and freelancer_apply
 // FREELANCER-HIRE PROFILE VARIABLE START
 
@@ -146,7 +147,7 @@ $lang["post_project"] = "Post Project";
 
 $lang["address"] = "Address";
 $lang["professional_information"] = "Professional Information";
-$lang["created_date"] ="Created Date";
+
 $lang["edit"]="Edit";
 $lang["applied_person"]="Applied person";
 
@@ -267,5 +268,11 @@ $lang["no_saved_project"]="No Saved Projects Found.";
 $lang["recommended_project"]="Recommended Projects";
 $lang["no_recommen_project"]="No Recommended Projects Found.";
 //post apply page end
+
+//search page start
+$lang["oops_no_data"]="Oops No Data Found.";
+$lang["couldn_find"]="We couldn't find what you were looking for.";
+$lang["right_keyword"]="Make sure you used the right keywords.";
+//search page end
 
 // FREELANCER-APPLY PROFILE VARIABLE END

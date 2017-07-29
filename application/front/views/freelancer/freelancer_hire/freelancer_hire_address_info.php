@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
     </head>
-    <div class="js">
+    <!--<div class="js">-->
         <body>
             <div id="preloader"></div>
             <?php echo $header; ?>
@@ -191,5 +191,5 @@
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_address_info.js'); ?>"></script>
         </body>
-    </div>
+    <!--</div>-->
 </html>

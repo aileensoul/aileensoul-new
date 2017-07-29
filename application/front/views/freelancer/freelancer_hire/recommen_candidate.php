@@ -45,6 +45,8 @@
                                                         <?php
                                                     } else {
                                                         ?>
+                                                        <?php  $a = $companyname;
+                                                                $acr = substr($a, 0, 1); ?>
                                                         <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
                                                         <?php
                                                     }

@@ -355,10 +355,11 @@
                                                                                     echo $post['post_exp_year'];
                                                                                 }
                                                                                 if ($post['post_exp_month']) {
-                                                                                    if ($post['post_exp_year'] == '') {
+                                                                                     
+                                                                                    if ($post['post_exp_year'] == '0') {
                                                                                         echo 0;
                                                                                     }
-                                                                                    echo ".";
+                                                                                   echo ".";
                                                                                     echo $post['post_exp_month'];
                                                                                 }
                                                                                 echo " Year";

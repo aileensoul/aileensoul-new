@@ -61,9 +61,9 @@
                             <?php
                         } else {
                             ?>
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
-                             <?php }
-                             ?>
+                            <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                        <?php }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -141,6 +141,7 @@
                                 <h3><?php echo $this->lang->line("saved_projects"); ?></h3>
                                 <div class="contact-frnd-post">
                                     <?php
+
                                     function text2link($text) {
                                         $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
                                         $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
@@ -168,11 +169,11 @@
                                                                         <div class="profile-job-details col-md-12">
                                                                             <ul>
                                                                                 <li class="fr">
-                                                                                    <?php echo $this->lang->line("created_date"); ?> : <?php echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
+            <?php echo $this->lang->line("created_date"); ?> : <?php echo trim(date('d-M-Y', strtotime($post['created_date']))); ?>
                                                                                 </li>
                                                                                 <li>
                                                                                     <a href="#" title="<?php echo ucwords(text2link($post['post_name'])); ?>" class="post_title">
-                                                                                        <?php echo ucwords(text2link($post['post_name'])); ?> </a> </li>
+                                                                                <?php echo ucwords(text2link($post['post_name'])); ?> </a> </li>
                                                                                 <?php
                                                                                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                                                                                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
@@ -181,7 +182,7 @@
                                                                                     </a>
                                                                                     <?php $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name; ?>
                                                                                     <?php $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name; ?>
-                                                                                    <?php if ($cityname || $countryname) { ?>
+            <?php if ($cityname || $countryname) { ?>
                                                                                         <div class="fr lction">
                                                                                             <p title="Location">
                                                                                                 <i class="fa fa-map-marker" aria-hidden="true">  <?php
@@ -194,7 +195,7 @@
                                                                                                     }
                                                                                                     ?></i></p>
                                                                                         </div>
-                                                                                    <?php } ?>
+            <?php } ?>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -268,19 +269,25 @@
                                                                                 <span>
                                                                                     <?php
                                                                                     if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                                        if ($post['post_exp_year'] != '0') {
+                                                                                        if ($post['post_exp_year']) {
                                                                                             echo $post['post_exp_year'];
                                                                                         }
-                                                                                        if ($post['post_exp_month'] != '0') {
+                                                                                        if ($post['post_exp_month']) {
+
+                                                                                            if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                                                                                echo 0;
+                                                                                            }
                                                                                             echo ".";
                                                                                             echo $post['post_exp_month'];
+                                                                                        }else{
+                                                                                            echo "." . "0";
                                                                                         }
-                                                                                        echo ' Year ';
+                                                                                       
+                                                                                        echo " Year";
                                                                                     } else {
-
                                                                                         echo PROFILENA;
                                                                                     }
-                                                                                    ?>
+                                                                                    ?> 
                                                                                 </span>
                                                                             </li>
                                                                             <li><b><?php echo $this->lang->line("estimated_time"); ?></b><span> <?php
@@ -318,7 +325,7 @@
 
                                                                                         <a href="javascript:void(0);" class="button" onclick="applypopup(<?php echo $post['post_id'] ?>,<?php echo $post['app_id'] ?>)"><?php echo $this->lang->line("apply"); ?></a>
                                                                                     </li> 
-                                                                                <?php } ?>
+            <?php } ?>
 
                                                                             </ul>
                                                                         </div>
@@ -336,7 +343,7 @@
                                         <div class="text-center rio">
                                             <h4 class="page-heading  product-listing"><?php echo $this->lang->line("no_saved_project"); ?></h4>
                                         </div>
-                                    <?php } ?>
+<?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -344,7 +351,7 @@
                 </div>
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -367,14 +374,14 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+<?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
                                 <input type="hidden" name="hitext" id="hitext" value="2">
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save"  >
-                                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -387,7 +394,7 @@
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
         </script>
         <script>

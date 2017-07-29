@@ -73,7 +73,7 @@
                                                         if ($freepostdata[0]['designation']) {
                                                             echo ucwords($freepostdata[0]['designation']);
                                                         } else {
-                                                            echo "Current Work";
+                                                            echo $this->lang->line("designation");
                                                         }
                                                         ?></a>
                                                 </div>
@@ -214,21 +214,27 @@
                                                                                     <b><?php echo $this->lang->line("required_experiance"); ?></b>
                                                                                     <span>
                                                                                         <p>
-                                                                                            <?php
-                                                                                            if (($post['post_exp_year'] != '0') || ($post['post_exp_month'] != '0')) {
-                                                                                                if ($post['post_exp_year'] != '0') {
-                                                                                                    echo $post['post_exp_year'];
-                                                                                                }
-                                                                                                if ($post['post_exp_month'] != '0') {
-                                                                                                    echo ".";
-                                                                                                    echo $post['post_exp_month'];
-                                                                                                }
-                                                                                                echo ' Year ';
-                                                                                            } else {
+                                                                                                        <?php
+                                                                                                        if ($post['post_exp_month'] || $post['post_exp_year']) {
+                                                                                                            if ($post['post_exp_year']) {
+                                                                                                                echo $post['post_exp_year'];
+                                                                                                            }
+                                                                                                            if ($post['post_exp_month']) {
 
-                                                                                                echo PROFILENA;
-                                                                                            }
-                                                                                            ?> 
+                                                                                                                if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                                                                                                    echo 0;
+                                                                                                                }
+                                                                                                                echo ".";
+                                                                                                                
+                                                                                                                echo $post['post_exp_month'];
+                                                                                                            }else{
+                                                                                                                echo "." . "0";
+                                                                                                            }
+                                                                                                            echo " Year";
+                                                                                                        } else {
+                                                                                                            echo PROFILENA;
+                                                                                                        }
+                                                                                                        ?> 
                                                                                         </p>  
                                                                                     </span>
                                                                                 </li>

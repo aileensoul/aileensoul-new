@@ -273,19 +273,24 @@
                                                                         <span>
                                                                             <?php
                                                                             if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                                if ($post['post_exp_year'] != '0') {
+                                                                                if ($post['post_exp_year']) {
                                                                                     echo $post['post_exp_year'];
                                                                                 }
-                                                                                if ($post['post_exp_month'] != '0') {
+                                                                                if ($post['post_exp_month']) {
+
+                                                                                    if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                                                                        echo 0;
+                                                                                    }
                                                                                     echo ".";
                                                                                     echo $post['post_exp_month'];
+                                                                                }else{
+                                                                                    echo "."."0";
                                                                                 }
-                                                                                echo ' Year ';
+                                                                                echo " Year";
                                                                             } else {
-
                                                                                 echo PROFILENA;
                                                                             }
-                                                                            ?>
+                                                                            ?> 
                                                                         </span>
                                                                     </li>
                                                                     <li><b><?php echo $this->lang->line("estimated_time"); ?></b><span> <?php
