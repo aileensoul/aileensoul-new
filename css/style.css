@@ -2706,7 +2706,7 @@ border-top: none;
     /*
     padding: 6px 3px 0 8px;*/
     
-    padding: 2px 3px 0 8px;
+    padding: 0px 3px 0 8px;
     margin: 0;
     list-style: none;
     display: inline-block;
@@ -7302,7 +7302,7 @@ text-overflow: ellipsis;
     display: inline-block;
 }
 .profile-job-post-location-name-rec ul li {
-    line-height: 20px;
+    line-height: 15px;
 }
 .designation_rec_1 ul {
     padding-left: 0px;
