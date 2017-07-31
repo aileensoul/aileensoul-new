@@ -146,7 +146,7 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
             $userdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            $first_lastname= trim($this->input->post('firstname'))." ".trim($this->input->post('lastname'));
 
 
             if ($userdata) {
@@ -176,6 +176,7 @@ class Freelancer extends MY_Controller {
                     'freelancer_post_skypeid' => trim($this->input->post('skypeid')),
                     'freelancer_post_email' => trim($this->input->post('email')),
                     'freelancer_post_phoneno' => trim($this->input->post('phoneno')),
+                    'freelancer_apply_slug'=>$this->setcategory_slug($first_lastname, 'freelancer_apply_slug', 'freelancer_post_reg'),
                     'user_id' => $userid,
                     'modify_date' => date('Y-m-d', time())
                 );
@@ -199,6 +200,7 @@ class Freelancer extends MY_Controller {
                     'freelancer_post_skypeid' => trim($this->input->post('skypeid')),
                     'freelancer_post_email' => trim($this->input->post('email')),
                     'freelancer_post_phoneno' => trim($this->input->post('phoneno')),
+                    'freelancer_apply_slug'=>$this->setcategory_slug($first_lastname, 'freelancer_apply_slug', 'freelancer_post_reg'),
                     'user_id' => $userid,
                     'created_date' => date('Y-m-d', time()),
                     'status' => 1,
@@ -222,6 +224,47 @@ class Freelancer extends MY_Controller {
     }
 
     //freelancer workexp first  info page controller End
+  // freelancer_hire profile slug start
+
+    public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $slugname = $oldslugname = $this->create_slug($slugname);
+        $i = 1;
+        while ($this->comparecategory_slug($slugname, $filedname, $tablename, $notin_id) > 0) {
+            $slugname = $oldslugname . '-' . $i;
+            $i++;
+        }return $slugname;
+    }
+
+    public function comparecategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $this->db->where($filedname, $slugname);
+        if (isset($notin_id) && $notin_id != "" && count($notin_id) > 0 && !empty($notin_id)) {
+            $this->db->where($notin_id);
+        }
+        $num_rows = $this->db->count_all_results($tablename);
+        return $num_rows;
+    }
+
+    public function create_slug($string) {
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower(stripslashes($string)));
+        $slug = preg_replace('/[-]+/', '-', $slug);
+        $slug = trim($slug, '-');
+        return $slug;
+    }
+
+    // freelancer_hire profile slug end
+    
+    function slug_script() {
+
+        $this->db->select('freelancer_post_reg_id,freelancer_post_fullname,freelancer_post_username');
+        $res = $this->db->get('freelancer_post_reg')->result();
+        foreach ($res as $k => $v) {
+            $data = array('freelancer_apply_slug' => $this->setcategory_slug($v->freelancer_post_fullname." ".$v->freelancer_post_username, 'freelancer_apply_slug', 'freelancer_post_reg'));
+            $this->db->where('freelancer_post_reg_id', $v->freelancer_post_reg_id);
+            $this->db->update('freelancer_post_reg', $data);
+        }
+        echo "yes";
+    }
+
 //check email avilibity start
     public function check_email() {
 
