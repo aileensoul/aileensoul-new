@@ -1,3 +1,12 @@
+<!-- IMAGE PRELOADER SCRIPT -->
+<script type="text/javascript">
+ function preload(arrayOfImages) {
+    $(arrayOfImages).each(function () {
+        $('<img />').attr('src',this).appendTo('body').css('display','none');
+    });
+}
+</script>
+<!-- IMAGE PRELOADER SCRIPT -->
 <!-- script for update all read notification start-->
 <script type="text/javascript">
     function Notificationheader() {

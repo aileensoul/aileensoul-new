@@ -876,10 +876,8 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+            
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-
-
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -9690,9 +9688,60 @@ class Business_profile extends MY_Controller {
 
 
         foreach ($businessimage as $val) {
+            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $multipleimage[] = $busmultiimage;
+        }
+        $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
 
+        foreach ($multipleimage as $mke => $mval) {
 
+            foreach ($mval as $mke1 => $mval1) {
+                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+
+                if (in_array($ext, $allowed)) {
+                    $singlearray[] = $mval1;
+                }
+            }
+        }
+        if ($singlearray) {
+            $i = 0;
+            foreach ($singlearray as $mi) {
+                $fetch_result .= '<div class="image_profile">';
+                $fetch_result .= '<img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $mi['image_name']) . '" alt="img1">';
+                $fetch_result .= '</div>';
+
+                $i++;
+                if ($i == 6)
+                    break;
+            }
+        } else {
+
+            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
+        }
+
+        $fetch_result .= '<div class="dataconphoto"></div>';
+
+        echo $fetch_result;
+    }
+
+    public function bus_user_photos() {
+
+        echo $id = $_POST['bus_slug'];
+        exit;
+
+        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
+        $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('user_id' => $businessdata1[0]['user_id']);
+        $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post1', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        echo '<pre>';
+        print_r($businessimage);
+        exit;
+
+        foreach ($businessimage as $val) {
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
             $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

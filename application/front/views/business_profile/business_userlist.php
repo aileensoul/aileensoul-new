@@ -32,28 +32,29 @@
                                                                     <li class="fl">
                                                                         <div class="follow-img">
                                                                             <?php if ($user['business_user_image'] != '') { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $user['business_slug']); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>">
                                                                                     <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image']); ?>" height="50px" width="50px" alt="" >
                                                                                 </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $user['business_slug']); ?>">
-                                                                                    <?php 
-                                          $a = $user['company_name'];
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-userlist">
-                                            <?php echo  ucwords($acr)?>
-                                            </div>
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>">
+                                                                                    <?php
+                                                                                    $a = $user['company_name'];
+                                                                                    $acr = substr($a, 0, 1);
+                                                                                    ?>
+                                                                                    <div class="post-img-userlist">
+        <?php echo ucwords($acr) ?>
+                                                                                    </div>
                                                                                 </a>
-                                                                            <?php } ?> 
+    <?php } ?> 
                                                                         </div>
                                                                     </li>
                                                                     <li class="folle_text">
                                                                         <div class="">
                                                                             <div class="follow-li-text " style="padding: 0;">
-                                                                                <a title="<?php echo $user['company_name']; ?>" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $user['business_slug']); ?>"><?php echo $user['company_name']; ?></a>
+                                                                                <a title="<?php echo $user['company_name']; ?>" href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>"><?php echo $user['company_name']; ?></a>
                                                                             </div>
                                                                             <div>
-                                                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $user['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                                                                                    <?php $category = $this->db->get_where('industry_type', array('industry_id' => $user['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                                                 <a><?php
                                                                                     if ($category) {
                                                                                         echo $category;
@@ -72,19 +73,19 @@
                                                                                 <button id="<?php echo "follow" . $user['business_profile_id']; ?>" onClick="followuser(<?php echo $user['business_profile_id']; ?>)">
                                                                                     Follow 
                                                                                 </button></div>
-                                                                        <?php } elseif ($status == 1) { ?>
+    <?php } elseif ($status == 1) { ?>
                                                                             <div id= "unfollowdiv"  class="user_btn" > 
                                                                                 <button class="bg_following" id="<?php echo "unfollow" . $user['business_profile_id']; ?>" onClick="unfollowuser(<?php echo $user['business_profile_id']; ?>)">
                                                                                     Following 
                                                                                 </button></div>
-                                                                        <?php } ?>
+    <?php } ?>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php } ?>
+<?php } ?>
 
                                         </div>
                                     </div>
@@ -98,7 +99,7 @@
             </div>
         </section>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -120,13 +121,13 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+<?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="6">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" /></div>
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -143,9 +144,8 @@
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <!-- script for business autofill -->
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+                                                                                    var base_url = '<?php echo base_url(); ?>';
+                                                                                    var data = <?php echo json_encode($demo); ?>;
+                                                                                    var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/userlist.js'); ?>"></script>
-        
