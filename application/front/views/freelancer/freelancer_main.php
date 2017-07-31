@@ -4,7 +4,7 @@
 	<title><?php echo $title; ?></title>
         <?php echo $head; ?>  
 </head>
-<body class="pushmenu-push">
+<body class="pushmenu-push freelancer_home">
 <?php echo $header; ?>
 <section>
 	<div class="col-md-12  user-section-free-up">

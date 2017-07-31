@@ -140,7 +140,7 @@
                                     <fieldset class="col-md-12">  
                                         <b><h2 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?>:</h2></b>
                                     </fieldset>
-                                    <fieldset style="padding-left: 8px;" class="col-md-4" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
+                                    <fieldset  class="col-md-4 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                         <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
                                         <input tabindex="8" name="rate" type="number" id="rate" placeholder="Enter Your rate" min='1'/>
                                         <span id="fullname-error"></span>
@@ -161,7 +161,7 @@
                                         <input type="radio"  name="rating" value="1"> Fixed
                                         <?php echo form_error('rating'); ?>
                                     </fieldset>
-                                    <fieldset class="col-md-6" <?php if ($est_time) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset class="col-md-6 pl10" <?php if ($est_time) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
                                         <input tabindex="11" name="est_time" type="text" id="est_time" placeholder="Enter Estimated time in month/year" /><span id="fullname-error"></span>
                                         <?php echo form_error('est_time'); ?>
