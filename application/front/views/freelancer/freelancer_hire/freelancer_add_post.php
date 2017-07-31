@@ -17,7 +17,7 @@
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
-        <?php echo $freelancer_hire_header2; ?>
+        <?php echo $freelancer_hire_header2_border; ?>
         <section>
             <div>
                 <div class="user-midd-section" id="paddingtop_fixed">
