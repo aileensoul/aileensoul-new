@@ -13949,6 +13949,7 @@ body {
 }
 .business-profile-right .profile-main-box-buis-menu ul {
     padding-left: 0;
+    float: left;
 }
 .business-profile-right .profile-main-box-buis-menu ul li {
     padding-left: 0;
