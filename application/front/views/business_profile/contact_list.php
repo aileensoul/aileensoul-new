@@ -87,7 +87,7 @@
               <sapn class="rifght_fname">  
                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
               <span class="main_name">
-              <?php echo ucwords($friend['company_name']); ?> 
+              <?php echo ucfirst(strtolower($friend['company_name'])); ?> 
               </span>
               </a>
               <span style="color: #8c8c8c;">confirmed your contact request .</span>
@@ -249,7 +249,7 @@
               <sapn class="rifght_fname">  
                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
               <span class="main_name">
-              <?php echo ucwords($friend['company_name']); ?> 
+              <?php echo ucfirst(strtolower($friend['company_name'])); ?> 
               </span>
               </a>
               <span style="color: #8c8c8c;">confirmed your contact request .</span>

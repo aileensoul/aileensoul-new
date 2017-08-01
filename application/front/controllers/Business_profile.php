@@ -1454,7 +1454,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucwords($acr);
+                    $return_html .= ucfirst(strtolower($acr));
                     $return_html .= '</div>';
 
                     $return_html .= '</a>';
@@ -1471,7 +1471,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucwords($acr);
+                    $return_html .= ucfirst(strtolower($acr));
                     $return_html .= '</div>';
 
                     $return_html .= '</a>';
@@ -1494,8 +1494,8 @@ class Business_profile extends MY_Controller {
                 $return_html .= '<li>
             <div class="else_post_d">
                 <div class="post-design-product">
-                    <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucwords($companynameposted) . '</a>
-                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                    <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
+                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                     <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                     </span> </div></div>
@@ -1504,8 +1504,8 @@ class Business_profile extends MY_Controller {
             } else {
                 $return_html .= '<li>
             <div class="post-design-product">
-                <a class="post_dot"  href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="' . ucwords($companyname) . '">
-                    ' . ucwords($companyname) . '</a>
+                <a class="post_dot"  href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="' . ucfirst(strtolower($companyname)) . '">
+                    ' . ucfirst(strtolower($companyname)) . '</a>
                 <span role="presentation" aria-hidden="true"> · </span>
                 <div class="datespan"> <span class="ctre_date" > 
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
@@ -1522,9 +1522,9 @@ class Business_profile extends MY_Controller {
             <div class="post-design-product">
                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
             if ($category) {
-                $return_html .= ucwords($category);
+                $return_html .= ucfirst(strtolower($category));
             } else {
-                $return_html .= ucwords($businessdata[0]['other_industrial']);
+                $return_html .= ucfirst(strtolower($businessdata[0]['other_industrial']));
             }
 
             $return_html .= '</a>
@@ -1593,8 +1593,22 @@ class Business_profile extends MY_Controller {
             <a>' . $this->common->make_links($row['product_name']) . '</a>
         </div>
         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
-            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '">
-        </div>
+            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit('.$row['business_profile_post_id'].'); onKeyup=check_lengthedit('.$row['business_profile_post_id'].'); onblur=check_lengthedit('.$row['business_profile_post_id'].');>';
+        
+
+        if ($row['product_name']) {
+                                             $counter = $row['product_name'];
+                                             $a = strlen($counter);
+
+                              $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num readonly>';
+
+
+                                    } else {
+
+                            $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+                                     }
+
+            $return_html .= '</div>
     </div>                    
     <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
 
@@ -1835,7 +1849,7 @@ class Business_profile extends MY_Controller {
                     $return_html .= "You";
                     $return_html .= "&nbsp;";
                 } else {
-                    $return_html .= ucwords($business_fname1);
+                    $return_html .= ucfirst(strtolower($business_fname1));
                     $return_html .= "&nbsp;";
                 }
 
@@ -1872,7 +1886,7 @@ class Business_profile extends MY_Controller {
 
             $return_html .= '<div class="like_one_other">';
 
-            $return_html .= ucwords($business_fname1);
+            $return_html .= ucfirst(strtolower($business_fname1));
             $return_html .= "&nbsp;";
 
             if (count($likelistarray) > 1) {
@@ -1915,7 +1929,7 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div>';
                         $return_html .= '</a>';
                     }
@@ -2021,7 +2035,7 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $return_html .= '<div class="post-img-div">';
-                $return_html .= ucwords($acr);
+                $return_html .= ucfirst(strtolower($acr));
                 $return_html .= '</div>';
             }
             $return_html .= '</div>
@@ -3536,7 +3550,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div>';
 
                     $cmtinsert .= '</div>';
@@ -3688,7 +3702,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div>';
 
                     $cmtinsert .= '</div>';
@@ -3900,7 +3914,7 @@ class Business_profile extends MY_Controller {
                 if ($userid == $likelistarray[0]) {
                     $cmtlikeuser .= 'You ';
                 } else {
-                    $cmtlikeuser .= '' . ucwords($business_fname1) . '&nbsp;';
+                    $cmtlikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
                 }
 
 
@@ -3981,7 +3995,7 @@ class Business_profile extends MY_Controller {
 
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
 
-                $cmtlikeuser .= '' . ucwords($business_fname1) . '&nbsp;';
+                $cmtlikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
 
 
                 if (count($likelistarray) > 1) {
@@ -4074,11 +4088,11 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucwords($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -4228,11 +4242,11 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucwords($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -4802,7 +4816,7 @@ class Business_profile extends MY_Controller {
                     $imglikeuser .= 'You ';
                 } else {
 
-                    $imglikeuser .= '' . ucwords($business_fname1) . '&nbsp;';
+                    $imglikeuser .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
                 }
 
                 if (count($commneteduser) > 1) {
@@ -4872,7 +4886,7 @@ class Business_profile extends MY_Controller {
 
                         $imglikeuser1 .= 'You ';
                     } else {
-                        $imglikeuser1 .= '' . ucwords($business_fname1) . '&nbsp;';
+                        $imglikeuser1 .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
                     }
 
                     if (count($commneteduser) > 1) {
@@ -4980,7 +4994,7 @@ class Business_profile extends MY_Controller {
                     if ($userid == $commneteduser[0]['user_id']) {
                         $imglikeuser1 .= 'You ';
                     } else {
-                        $imglikeuser1 .= '' . ucwords($business_fname1) . '&nbsp;';
+                        $imglikeuser1 .= '' . ucfirst(strtolower($business_fname1)) . '&nbsp;';
                     }
 
                     if (count($commneteduser) > 1) {
@@ -5070,7 +5084,7 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</div>';
             }
@@ -5220,7 +5234,7 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div></div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -5373,7 +5387,7 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</div>';
             }
@@ -5539,7 +5553,7 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</div>';
             }
@@ -6066,7 +6080,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div>';
                     $cmtinsert .= '</div>';
                 }
@@ -6217,7 +6231,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div>';
                     $cmtinsert .= '</div>';
                 }
@@ -6374,11 +6388,11 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucwords($acr);
+                    $fourdata .= ucfirst(strtolower($acr));
                     $fourdata .= '</div>';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucwords($companyname) . '</br></b></div>';
+                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['business_profile_post_comment_id'] . '"  style="display:block;">';
@@ -6504,12 +6518,12 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucwords($acr);
+                    $fourdata .= ucfirst(strtolower($acr));
                     $fourdata .= '</div>';
                     $fourdata .= '</div>';
                 }
                 $fourdata .= '<div class="comment-name"><b>';
-                $fourdata .= '' . ucwords($companyname) . '</br>';
+                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br>';
                 $fourdata .= '</b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comment']) . '</br> </div>';
@@ -6621,11 +6635,11 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucwords($acr);
+                    $fourdata .= ucfirst(strtolower($acr));
                     $fourdata .= '</div>';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucwords($companyname) . '</br></b></div>';
+                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div>';
                 $fourdata .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
@@ -6760,10 +6774,10 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucwords($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -6940,10 +6954,10 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucwords($acr);
+                $cmtinsert .= ucfirst(strtolower($acr));
                 $cmtinsert .= '</div></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucwords($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7089,7 +7103,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
@@ -7231,7 +7245,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucwords($acr);
+                    $cmtinsert .= ucfirst(strtolower($acr));
                     $cmtinsert .= '</div></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
@@ -7372,12 +7386,12 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $mulimgfour .= '<div class="post-img-div">';
-                    $mulimgfour .= ucwords($acr);
+                    $mulimgfour .= ucfirst(strtolower($acr));
                     $mulimgfour .= '</div>';
                     $mulimgfour .= '</div>';
                 }
                 $mulimgfour .= '<div class="comment-name"><b>';
-                $mulimgfour .= '' . ucwords($companyname) . '</br></b></div>';
+                $mulimgfour .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
                 $mulimgfour .= '<div class="comment-details" id="imgshowcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
 
 
@@ -7509,13 +7523,13 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $modal .= '<div class="post-img-div">';
-                $modal .= ucwords($acr);
+                $modal .= ucfirst(strtolower($acr));
                 $modal .= '</div>';
             }
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
             $modal .= '<div class="like_user_list_main_name">';
-            $modal .= '' . ucwords($business_fname) . '';
+            $modal .= '' . ucfirst(strtolower($business_fname)) . '';
             $modal .= '</div></a>';
             $modal .= '<div class="like_user_list_current_work">';
             $modal .= '<span class="head_main_work">' . $category . '</span>';
@@ -7587,13 +7601,13 @@ class Business_profile extends MY_Controller {
                 $acr = substr($a, 0, 1);
 
                 $modal .= '<div class="post-img-div">';
-                $modal .= ucwords($acr);
+                $modal .= ucfirst(strtolower($acr));
                 $modal .= '</div>';
             }
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
             $modal .= '<div class="like_user_list_main_name">';
-            $modal .= '' . ucwords($business_fname) . '';
+            $modal .= '' . ucfirst(strtolower($business_fname)) . '';
             $modal .= '</div></a>';
             $modal .= '<div class="like_user_list_current_work">';
             $modal .= '<span class="head_main_work">' . $category . '</span>';
@@ -7673,17 +7687,22 @@ class Business_profile extends MY_Controller {
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
                 $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="">';
-                $contactdata .= '<div class="add-contact">';
-                $contactdata .= ' <div></div><div></div><div></div>';
-                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
+                $contactdata .= '<div>   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div><span class="cancel_req_busi">   <img src="'.base_url('img/icon_contact_add.png').'"></span></div>
 
+                                                            </div>
+                                                            
 
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addtocont">';
-                $contactdata .= '<span class="ft-13"><i class="icon-user"></i>Add to contact</span>';
-                $contactdata .= '</div>';
-                $contactdata .= '</div>';
+                                                            <div class="addtocont">
+                                                    <span class="ft-13"><i class="icon-user"></i>
+                                                       Add to contact </span>
+                                                    </div> 
+
+                                                </div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'cancel') {
                 $data = array(
@@ -7698,17 +7717,25 @@ class Business_profile extends MY_Controller {
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="">';
-                $contactdata .= '<div class="add-contact">';
-                $contactdata .= ' <div></div><div></div><div></div>';
-                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
+                $contactdata .= '<div class="cance_req_main_box">   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div>
+                                                         <span class="cancel_req_busi"><img src="'.base_url('img/icon_contact_cancel.png').'"></span>
+                                                            </div>
 
+                                                            </div>
+                                                            
 
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addtocont">';
-                $contactdata .= '<span class="ft-13"><i class="icon-user"></i>Cancel request</span>';
-                $contactdata .= '</div>';
-                $contactdata .= '</div>';
+                                                            <div class="addtocont">
+                                                    <span class="ft-13 cl_haed_s">
+                                                      Cancel request </span>
+                                                    </div> 
+
+                                                </div>
+';
                 $contactdata .= '</a>';
             } elseif ($status == 'confirm') {
                 $data = array(
@@ -7719,18 +7746,22 @@ class Business_profile extends MY_Controller {
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="">';
-                $contactdata .= '<div class="add-contact">';
-                $contactdata .= ' <div></div><div></div><div></div>';
+                $contactdata .= '<div>   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div><span class="cancel_req_busi"><img src="'.base_url('img/icon_contact_add.png').'"></span></div>
 
-                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
+                                                            </div>
+                                                            
 
+                                                            <div class="addtocont">
+                                                    <span class="ft-13"><i class="icon-user"></i>
+                                                       Add to contact </span>
+                                                    </div> 
 
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addtocont">';
-                $contactdata .= '<span class="ft-13"><i class="icon-user"></i>Add to contact</span>';
-                $contactdata .= '</div>';
-                $contactdata .= '</div>';
+                                                </div>';
                 $contactdata .= '</a>';
             } elseif ($status == 'reject') {
                 $data = array(
@@ -7744,18 +7775,24 @@ class Business_profile extends MY_Controller {
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
                 $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-                $contactdata .= '<div class="">';
-                $contactdata .= '<div class="add-contact">';
-                $contactdata .= ' <div></div><div></div><div></div>';
+                $contactdata .= '<div class="cance_req_main_box">   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div>
+                                                         <span class="cancel_req_busi">   <img src="'.base_url('img/icon_contact_cancel.png').'"></span>
+                                                            </div>
 
-                $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
+                                                            </div>
+                                                            
 
+                                                            <div class="addtocont">
+                                                    <span class="ft-13 cl_haed_s">
+                                                      Cancel request </span>
+                                                    </div> 
 
-                $contactdata .= '</div>';
-                $contactdata .= '<div class="addtocont">';
-                $contactdata .= '<span class="ft-13"><i class="icon-user"></i>Cancel contact</span>';
-                $contactdata .= '</div>';
-                $contactdata .= '</div>';
+                                                </div>';
                 $contactdata .= '</a>';
             }
         } else {
@@ -7774,18 +7811,24 @@ class Business_profile extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
             $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
-            $contactdata .= '<div class="">';
-            $contactdata .= '<div class="add-contact">';
-            $contactdata .= ' <div></div><div></div><div></div>';
+            $contactdata .= '<div class="cance_req_main_box">   
+                                                            <div class="add-contact">
+                                                             <div></div>
+                                                            <div></div>
+                                                            <div></div>
+                                                            <div>
+                                                         <span class="cancel_req_busi"><img src="'. base_url('img/icon_contact_cancel.png').'"></span>
+                                                            </div>
 
-            $contactdata .= '<div><i class="fa fa-user-plus"  aria-hidden="true"></i></div>';
+                                                            </div>
+                                                            
 
+                                                            <div class="addtocont">
+                                                    <span class="ft-13 cl_haed_s">
+                                                      Cancel request </span>
+                                                    </div> 
 
-            $contactdata .= '</div>';
-            $contactdata .= '<div class="addtocont">';
-            $contactdata .= '<span class="ft-13"><i class="icon-user"></i>Cancel request</span>';
-            $contactdata .= '</div>';
-            $contactdata .= '</div>';
+                                                </div>';
             $contactdata .= '</a>';
         }
 
@@ -7859,12 +7902,12 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucwords($acr);
+                        $contactdata .= ucfirst(strtolower($acr));
                         $contactdata .= '</div>';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b></span>';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
                     $contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
@@ -7894,12 +7937,12 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucwords($acr);
+                        $contactdata .= ucfirst(strtolower($acr));
                         $contactdata .= '</div>';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
@@ -8043,12 +8086,12 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucwords($acr);
+                        $contactdata .= ucfirst(strtolower($acr));
                         $contactdata .= '</div>';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucwords($busdata[0]['company_name']) . '</b> confirmed your contact request</span>';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
@@ -8148,7 +8191,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $contactdata .= '<div class="post-img-div">';
-                    $contactdata .= ucwords($acr);
+                    $contactdata .= ucfirst(strtolower($acr));
                     $contactdata .= '</div>';
                 }
 
@@ -8687,7 +8730,7 @@ class Business_profile extends MY_Controller {
                             $acr = substr($a, 0, 1);
 
                             $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucwords($acr);
+                            $return_html .= ucfirst(strtolower($acr));
                             $return_html .= '</div>';
 
                             $return_html .= '</a>';
@@ -8704,7 +8747,7 @@ class Business_profile extends MY_Controller {
                             $acr = substr($a, 0, 1);
 
                             $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucwords($acr);
+                            $return_html .= ucfirst(strtolower($acr));
                             $return_html .= '</div>';
 
                             $return_html .= '</a>';
@@ -8727,8 +8770,8 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot_2" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucwords($companynameposted) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                                                        <a class="post_dot_2" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -8737,8 +8780,8 @@ class Business_profile extends MY_Controller {
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '" title="' . ucwords($companyname) . '">
-                    ' . ucwords($companyname) . '</a>
+                                                    <a class="post_dot"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '" title="' .ucfirst(strtolower($companyname)) . '">
+                    ' . ucfirst(strtolower($companyname)) . '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
                     ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
@@ -8755,9 +8798,9 @@ class Business_profile extends MY_Controller {
                                             <div class="post-design-product">
                                                 <a class="buuis_desc_a" href="javascript:void(0);"  title="Category">';
                     if ($category) {
-                        $return_html .= ucwords($category);
+                        $return_html .= ucfirst(strtolower($category));
                     } else {
-                        $return_html .= ucwords($businessdata[0]['other_industrial']);
+                        $return_html .= ucfirst(strtolower($businessdata[0]['other_industrial']));
                     }
 
                     $return_html .= '</a>
@@ -9080,7 +9123,7 @@ class Business_profile extends MY_Controller {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
-                            $return_html .= ucwords($business_fname1);
+                            $return_html .= ucfirst(strtolower($business_fname1));
                             $return_html .= "&nbsp;";
                         }
 
@@ -9117,7 +9160,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="like_one_other">';
 
-                    $return_html .= ucwords($business_fname1);
+                    $return_html .= ucfirst(strtolower($business_fname1));
                     $return_html .= "&nbsp;";
 
                     if (count($likelistarray) > 1) {
@@ -9160,7 +9203,7 @@ class Business_profile extends MY_Controller {
                                 $acr = substr($a, 0, 1);
 
                                 $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucwords($acr);
+                                $return_html .= ucfirst(strtolower($acr));
                                 $return_html .= '</div></a>';
                             }
                             $return_html .= '</div>
@@ -9275,7 +9318,7 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div>';
                     }
                     $return_html .= '</div>
@@ -9388,16 +9431,16 @@ class Business_profile extends MY_Controller {
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
 
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
                                                                                     <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">
                                                                                 </a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">';
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div></a>';
                     }
                     $return_html .= '</div>
@@ -9405,15 +9448,15 @@ class Business_profile extends MY_Controller {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">';
-                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
-                                                                                            <h6>' . ucwords($userlist['company_name']) . '</h6>
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
+                                                                                            <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
                     $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
+                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
                                                                                             <p>';
                     if ($category) {
                         $return_html .= $category;
@@ -9454,16 +9497,16 @@ class Business_profile extends MY_Controller {
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['business_profile_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
                                                                     <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">
                                                                                 </a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">';
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div></a>';
                     }
                     $return_html .= '</div>';
@@ -9471,15 +9514,15 @@ class Business_profile extends MY_Controller {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
-                                                                                            <h6>' . ucwords($userlist['company_name']) . '</h6>
+                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
+                                                                                            <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
                     $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
+                                                                                        <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
                                                                                             <p>';
                     if ($category) {
                         $return_html .= $category;
@@ -9528,7 +9571,7 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div>';
                     }
                     $return_html .= '</a>
@@ -9538,7 +9581,7 @@ class Business_profile extends MY_Controller {
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
                                                                                         <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-                                                                                            <h6>' . ucwords($userlist['company_name']) . '</h6>
+                                                                                            <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -9585,16 +9628,16 @@ class Business_profile extends MY_Controller {
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['business_profile_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">
                                                                                     <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">
                                                                                 </a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucwords($userlist['company_name']) . '">';
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div></a>';
                     }
                     $return_html .= '</div>
@@ -9603,7 +9646,7 @@ class Business_profile extends MY_Controller {
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
                                                                                         <a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-                                                                                            <h6>' . ucwords($userlist['company_name']) . '</h6>
+                                                                                            <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -10153,7 +10196,7 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div>';
                     }
                 } else {
@@ -10164,7 +10207,7 @@ class Business_profile extends MY_Controller {
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucwords($acr);
+                        $return_html .= ucfirst(strtolower($acr));
                         $return_html .= '</div>';
                     }
                 }
@@ -10181,14 +10224,14 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a style="max-width: 40%;" class="post_dot" title="' . ucwords($companynameposted) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucwords($companynameposted) . '</a>
+                                                        <a style="max-width: 40%;" class="post_dot" title="' . ucfirst(strtolower($companynameposted)) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
                                                         <p class="posted_with" > Posted With</p>
-                                                        <a class="other_name post_dot" href="' . base_url('business-profile/details/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                                                        <a class="other_name post_dot" href="' . base_url('business-profile/details/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
                                                     </div></div>
                                             </li>';
                 } else {
-                    $return_html .= '<li><div class="post-design-product"><a class="post_dot" title="' . ucwords($companyname) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                    $return_html .= '<li><div class="post-design-product"><a class="post_dot" title="' . ucfirst(strtolower($companyname)) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> 
                                                         <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
@@ -10200,9 +10243,9 @@ class Business_profile extends MY_Controller {
                 $return_html .= '<li><div class="post-design-product">   <a class="buuis_desc_a"  title="Category">';
 
                 if ($category) {
-                    $return_html .= ucwords($category);
+                    $return_html .= ucfirst(strtolower($category));
                 } else {
-                    $return_html .= ucwords($businessdata[0]['other_industrial']);
+                    $return_html .= ucfirst(strtolower($businessdata[0]['other_industrial']));
                 }
 
                 $return_html .= '</a> </div>
@@ -10461,7 +10504,7 @@ class Business_profile extends MY_Controller {
                         $return_html .= "You";
                         $return_html .= "&nbsp;";
                     } else {
-                        $return_html .= ucwords($business_fname1);
+                        $return_html .= ucfirst(strtolower($business_fname1));
                         $return_html .= "&nbsp;";
                     }
                     if (count($likelistarray) > 1) {
@@ -10494,7 +10537,7 @@ class Business_profile extends MY_Controller {
 
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                 $return_html .= '<div class="like_one_other">';
-                $return_html .= ucwords($business_fname1);
+                $return_html .= ucfirst(strtolower($business_fname1));
                 $return_html .= "&nbsp;";
                 if (count($likelistarray) > 1) {
                     $return_html .= "and";
@@ -10527,13 +10570,13 @@ class Business_profile extends MY_Controller {
                             $acr = substr($a, 0, 1);
 
                             $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucwords($acr);
+                            $return_html .= ucfirst(strtolower($acr));
                             $return_html .= '</div>';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
                     <b>';
-                        $return_html .= ucwords($companyname);
+                        $return_html .= ucfirst(strtolower($companyname));
                         $return_html .= '</br>';
 
                         $return_html .= '</b>
@@ -10632,7 +10675,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucwords($acr);
+                    $return_html .= ucfirst(strtolower($acr));
                     $return_html .= '</div>';
                 }
                 $return_html .= '</div>

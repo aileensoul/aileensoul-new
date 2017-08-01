@@ -52,7 +52,7 @@
                                     <table class="business_data_table">
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-user"></i></td>
-                                            <td class="business_data_td2"><?php echo ucwords($businessdata1[0]['contact_person']); ?></td>
+                                            <td class="business_data_td2"><?php echo ucfirst(strtolower($businessdata1[0]['contact_person'])); ?></td>
                                         </tr>
                                         <tr>
                                             <td class="business_data_td1"><i class="fa fa-mobile"></i></td>
@@ -191,7 +191,7 @@
                                           $a =$businessdata[0]['company_name'];
                                           $acr = substr($a, 0, 1);?>
                                             <div class="post-img-div">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo  ucfirst(strtolower($acr))?>
                                             </div>
                                             <?php } ?>
                                         </div>
@@ -225,7 +225,7 @@
                                           $a =$businessdata[0]['company_name'];
                                           $acr = substr($a, 0, 1);?>
                                             <div class="post-img-div">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo  ucfirst(strtolower($acr))?>
                                             </div>
                                                     <?php
                                                 }

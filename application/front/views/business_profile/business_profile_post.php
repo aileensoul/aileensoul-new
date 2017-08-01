@@ -72,7 +72,7 @@
                                                 $acr = substr($a, 0, 1);
                                                 ?>
                                                 <div class="post-img-div">
-                                                <?php echo ucwords($acr) ?>
+                                                <?php echo ucfirst(strtolower($acr)) ?>
                                                 </div>
                                                 <?php
                                             }
@@ -149,7 +149,7 @@
                                             $acr = substr($a, 0, 1);
                                             ?>
                                             <div class="post-img-div">
-                                            <?php echo ucwords($acr) ?>
+                                            <?php echo ucfirst(strtolower($acr)) ?>
                                             </div>
 <?php } ?>
                                     </div>

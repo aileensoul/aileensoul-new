@@ -70,7 +70,7 @@
                                                                     $contition_array = array('business_profile_post_id' => $pdfv['post_id']);
                                                                     $businesstitle = $this->data['businesstitle'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     ?>
-                                                                    <div class="pdf_name"><a title="Zalak infotech .in pdf" href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['image_id']) ?>"><?php echo ucwords($businesstitle[0]['product_name']); ?></a> </div>
+                                                                    <div class="pdf_name"><a title="Zalak infotech .in pdf" href="<?php echo base_url('business_profile/creat_pdf/' . $pdfv['image_id']) ?>"><?php echo ucfirst(strtolower($businesstitle[0]['product_name'])); ?></a> </div>
                                                                 </div>
                                                             </li>
                                                             <?php

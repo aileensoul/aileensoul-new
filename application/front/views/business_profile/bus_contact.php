@@ -54,7 +54,7 @@
                                           $a = $cdata[0]['company_name'];
                                           $acr = substr($a, 0, 1);?>
                                             <div class="post-img-userlist">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo  ucfirst(strtolower($acr))?>
                                             </div>
                                                                                     </a>
                                                                                 <?php } ?> 
@@ -63,7 +63,7 @@
                                                                         <li style="width: 67%">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>"><?php echo ucwords($cdata[0]['company_name']); ?></a>
+                                            <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>"><?php echo ucfirst(strtolower($cdata[0]['company_name'])); ?></a>
                                                                                 </div>
                                                                                 <div>
                                                                                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $cdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>

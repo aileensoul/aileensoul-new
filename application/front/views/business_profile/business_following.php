@@ -48,7 +48,7 @@
                                           $a = $companyname;
                                           $acr = substr($a, 0, 1);?>
                                             <div class="post-img-userlist">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo  ucfirst(strtolower($acr))?>
                                             </div>
                                                                                     <?php } ?> 
                                                                             </div>

@@ -12,7 +12,10 @@
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
         <section>
-            <?php echo $business_common; ?>
+<div class="container" id="paddingtop_fixed">
+            
+            
+        </div>
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
@@ -42,7 +45,7 @@
                                                                                     $acr = substr($a, 0, 1);
                                                                                     ?>
                                                                                     <div class="post-img-userlist">
-        <?php echo ucwords($acr) ?>
+        <?php echo ucfirst(strtolower($acr)) ?>
                                                                                     </div>
                                                                                 </a>
     <?php } ?> 

@@ -118,7 +118,7 @@
                                                                                         echo "You";
                                                                                         echo "&nbsp;";
                                                                                     } else {
-                                                                                        echo ucwords($business_fname1);
+                                                                                        echo ucfirst(strtolower($business_fname1));
                                                                                         echo "&nbsp;";
                                                                                     }
                                                                                     ?>
@@ -157,7 +157,7 @@
                                                                             ?>
                                                                             <div class="like_one_other_img">
                                                                                 <?php
-                                                                                echo ucwords($business_fname1);
+                                                                                echo ucfirst(strtolower($business_fname1));
                                                                                 echo "&nbsp;";
                                                                                 ?>
                                                                                 <?php

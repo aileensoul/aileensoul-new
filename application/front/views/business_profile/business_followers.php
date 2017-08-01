@@ -52,7 +52,7 @@
                                           $a =  $followername;
                                           $acr = substr($a, 0, 1);?>
                                             <div class="post-img-userlist">
-                                            <?php echo  ucwords($acr)?>
+                                            <?php echo  ucfirst(strtolower($acr))?>
                                             </div>
                                             </a>
                                                                                 <?php } ?> 
@@ -61,7 +61,7 @@
                                                                         <li class="folle_text">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>"><?php echo ucwords($followername); ?></a></div>
+                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>"><?php echo ucfirst(strtolower($followername)); ?></a></div>
                                                                                 <div>
                                                                                     <?php
                                                                                     $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => 1))->row()->industriyal;
