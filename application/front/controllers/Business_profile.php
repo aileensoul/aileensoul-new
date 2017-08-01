@@ -885,6 +885,7 @@ class Business_profile extends MY_Controller {
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_profile_manage_post', $this->data);
         } else {
+            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data,true);
             $this->load->view('business_profile/business_dashboard', $this->data);
         }
 
