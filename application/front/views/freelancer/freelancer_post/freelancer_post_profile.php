@@ -68,9 +68,9 @@
                             <?php
                         } else {
                             ?>
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
-                             <?php }
-                             ?>
+                            <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                        <?php }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -87,8 +87,16 @@
                         <div class="user-pic padd_img">
                             <?php if ($freelancerpostdata[0]['freelancer_post_user_image'] != '') { ?>
                                 <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']); ?>" alt="" >
-                            <?php } else { ?>
-                                <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                <?php
+                            } else {
+                                $fname = $freelancerpostdata[0]['freelancer_post_fullname'];
+                                $lname = $freelancerpostdata[0]['freelancer_post_username'];
+                                $sub_fname = substr($fname, 0, 1);
+                                $sub_lname = substr($lname, 0, 1);
+                                ?>
+                                <div class="post-img-user">
+                                    <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
@@ -159,7 +167,7 @@
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $this->uri->segment(3); ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php }
-                                                ?>
+                                                        ?>
                                                 <li>
                                                     <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/4/3'); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                 </li>
@@ -207,6 +215,7 @@
                             <h3><?php echo $this->lang->line("freelancer_details"); ?> </h3>
                             <div class=" fr rec-edit-pro">
                                 <?php
+
                                 function text2link($text) {
                                     $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
                                     $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
@@ -315,20 +324,20 @@
                                                                         echo
                                                                         $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
                                                                         ?></span> </li>
-                                                                <?php
+                                                                    <?php
+                                                                } else {
+                                                                    echo "";
+                                                                }
                                                             } else {
-                                                                echo "";
-                                                            }
-                                                        } else {
-                                                            if ($freelancerpostdata[0]['freelancer_post_city']) {
-                                                                ?>
+                                                                if ($freelancerpostdata[0]['freelancer_post_city']) {
+                                                                    ?>
                                                                 <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
                                                                         echo
                                                                         $this->db->get_where('cities', array('city_id' => $freelancerpostdata[0]['freelancer_post_city']))->row()->city_name;
                                                                         ?></span> </li>
-                                                                <?php
-                                                            } else {
-                                                                ?>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
                                                                 <li><b><?php echo $this->lang->line("city"); ?></b> <span>
                                                                         <?php echo PROFILENA; ?></span>
                                                                 </li>

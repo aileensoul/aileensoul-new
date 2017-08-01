@@ -51,8 +51,14 @@
 
                                                         <?php
                                                     } else {
+                                                        $fname = $freehiredata[0]['fullname'];
+                                                        $lname = $freehiredata[0]['username'];
+                                                        $sub_fname = substr($fname, 0, 1);
+                                                        $sub_lname = substr($lname, 0, 1);
                                                         ?>
-                                                        <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>">
+                                                        <div class="post-img-profile">
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                                        </div>
                                                         <?php
                                                     }
                                                     ?>
@@ -88,6 +94,7 @@
                             </div>
                         </div>
                         <?php
+
                         function text2link($text) {
                             $text = preg_replace('/(((f|ht){1}t(p|ps){1}:\/\/)[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '<a href="\\1" target="_blank" rel="nofollow">\\1</a>', $text);
                             $text = preg_replace('/([[:space:]()[{}])(www.[-a-zA-Z0-9@:%_\+.~#?&\/\/=]+)/i', '\\1<a href="http://\\2" target="_blank" rel="nofollow">\\2</a>', $text);
@@ -337,7 +344,7 @@
         <script src="<?php echo base_url('js/jquery.highlite.js'); ?>"></script> 
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>">
         </script>
-       
+
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;

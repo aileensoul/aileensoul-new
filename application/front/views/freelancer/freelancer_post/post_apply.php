@@ -26,9 +26,9 @@
                                                tabindex="-1"
                                                aria-hidden="true"
                                                rel="noopener">
-                                                <?php
-                                                if ($freepostdata[0]['profile_background'] != '') {
-                                                    ?>
+                                                   <?php
+                                                   if ($freepostdata[0]['profile_background'] != '') {
+                                                       ?>
                                                     <div class="data_img">
                                                         <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
                                                     </div>
@@ -55,10 +55,15 @@
                                                         </div>
                                                         <?php
                                                     } else {
+                                                        $fname = $freelancerdata[0]['freelancer_post_fullname'];
+                                                        $lname = $freelancerdata[0]['freelancer_post_username'];
+                                                        $sub_fname = substr($fname, 0, 1);
+                                                        $sub_lname = substr($lname, 0, 1);
                                                         ?>
-                                                        <div class=""> 
-                                                            <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
-                                                        </div> <?php
+                                                        <div class="post-img-profile">
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                                        </div>
+                                                        <?php
                                                     }
                                                     ?>
                                                 </a>
@@ -214,27 +219,27 @@
                                                                                     <b><?php echo $this->lang->line("required_experiance"); ?></b>
                                                                                     <span>
                                                                                         <p>
-                                                                                                        <?php
-                                                                                                        if ($post['post_exp_month'] || $post['post_exp_year']) {
-                                                                                                            if ($post['post_exp_year']) {
-                                                                                                                echo $post['post_exp_year'];
-                                                                                                            }
-                                                                                                            if ($post['post_exp_month']) {
+                                                                                            <?php
+                                                                                            if ($post['post_exp_month'] || $post['post_exp_year']) {
+                                                                                                if ($post['post_exp_year']) {
+                                                                                                    echo $post['post_exp_year'];
+                                                                                                }
+                                                                                                if ($post['post_exp_month']) {
 
-                                                                                                                if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
-                                                                                                                    echo 0;
-                                                                                                                }
-                                                                                                                echo ".";
-                                                                                                                
-                                                                                                                echo $post['post_exp_month'];
-                                                                                                            }else{
-                                                                                                                echo "." . "0";
-                                                                                                            }
-                                                                                                            echo " Year";
-                                                                                                        } else {
-                                                                                                            echo PROFILENA;
-                                                                                                        }
-                                                                                                        ?> 
+                                                                                                    if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                                                                                        echo 0;
+                                                                                                    }
+                                                                                                    echo ".";
+
+                                                                                                    echo $post['post_exp_month'];
+                                                                                                } else {
+                                                                                                    echo "." . "0";
+                                                                                                }
+                                                                                                echo " Year";
+                                                                                            } else {
+                                                                                                echo PROFILENA;
+                                                                                            }
+                                                                                            ?> 
                                                                                         </p>  
                                                                                     </span>
                                                                                 </li>

@@ -78,8 +78,16 @@
                         <div class="user-pic padd_img">
                             <?php if ($jobdata[0]['freelancer_post_user_image'] != '') { ?>
                                 <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $jobdata[0]['freelancer_post_user_image']); ?>" alt="" >
-                            <?php } else { ?>
-                                <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                <?php
+                            } else {
+                                $fname = $freepostdata[0]['freelancer_post_fullname'];
+                                $lname = $freepostdata[0]['freelancer_post_username'];
+                                $sub_fname = substr($fname, 0, 1);
+                                $sub_lname = substr($lname, 0, 1);
+                                ?>
+                                <div class="post-img-user">
+                                    <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                </div>
                             <?php } ?>
                             <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                         </div>
@@ -283,8 +291,8 @@
                                                                                     }
                                                                                     echo ".";
                                                                                     echo $post['post_exp_month'];
-                                                                                }else{
-                                                                                    echo "."."0";
+                                                                                } else {
+                                                                                    echo "." . "0";
                                                                                 }
                                                                                 echo " Year";
                                                                             } else {
