@@ -210,7 +210,7 @@
             }
             /***  login form css  ***/
             .login{
-                background:#fff;
+                /*background:#fff;*/
                 width:100%;
                 margin:0 auto;
                 border:1px solid #c7c7c7;
@@ -375,16 +375,16 @@
             <?php echo $business_common_profile; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="#" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();">
                         Photo
                     </a>
-                    <a href="#" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();">
                         Video
                     </a>
-                    <a href="#" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();">
                         Audio
                     </a>
-                    <a href="#" onclick="login_profile();">
+                    <a href="javascript:void(0);" onclick="login_profile();">
                         PDf
                     </a>
                 </div>
@@ -402,7 +402,7 @@
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
-                                        <span><a href="<?php echo base_url('login') ?>?redirect=<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug']); ?>"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                        <span><a href="javascript:void(0);" onclick="login_profile();"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                         </span>      
                                     </div>
                                     <table class="business_data_table">
@@ -452,7 +452,7 @@
                                             ?>
                                             <tr>
                                                 <td class="business_data_td1"><i class="fa fa-globe"></i></td>
-                                                <td class="business_data_td2 website"><span><a target="_blank" href="<?php echo $businessdata1[0]['contact_website']; ?>"> <?php echo $businessdata1[0]['contact_website']; ?></a></span></td>
+                                                <td class="business_data_td2 website"><span><a href="javascript:void(0);" onclick="login_profile();"> <?php echo $businessdata1[0]['contact_website']; ?></a></span></td>
                                             </tr>
                                         <?php } ?>
                                         <tr>
@@ -464,7 +464,7 @@
                             </div>
                             <!-- user iamges start-->
                             <!--<a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">-->
-                            <a href="#" onclick="login_profile();">
+                            <a href="javascript:void(0);" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -477,7 +477,7 @@
                             </a>
                             <!-- user images end-->
                             <!-- user video start-->
-                            <a href="#" onclick="login_profile();">
+                            <a href="javascript:void(0);" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <table class="business_data_table">
@@ -492,7 +492,7 @@
                             </a>
                             <!-- user video emd-->
                             <!-- user audio start-->
-                            <a href="#" onclick="login_profile();">
+                            <a href="javascript:void(0);" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <div class="head_details1">
@@ -507,7 +507,7 @@
                             </a>
                             <!-- user audio end-->
                             <!-- user pdf  start-->
-                            <a href="#" onclick="login_profile();">
+                            <a href="javascript:void(0);" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -718,7 +718,7 @@
         </div>
 
         <!-- Login  -->
-        <div class="modal fade" id="login" role="dialog">
+        <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
@@ -726,7 +726,6 @@
                         <div class="col-sm-12 right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
-                                    <div class="login">
                                         <div class="title">
                                             <h1 class="ttc">Welcome To Aileensoul</h1>
                                         </div>
@@ -761,15 +760,15 @@
                                             </p>
 
                                             <p class=" text-center">
-                                                <a href="javascript:void(0)" id="myBtn">Forgot Password ?</a>
+                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
                                             </p>
 
                                             <p class="pt15 text-center">
-                                                Don't have an account? <a href="<?php echo base_url('registration'); ?>">Create an account</a>
+                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
                                             </p>
                                         </form>
 
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -780,54 +779,63 @@
         </div>
         <!-- Login -->
 
-        <!-- forgot password -->
-        <div class="modal fade login-model forgotPassword" id="forgotPassword" role="dialog">
+        <!-- model for forgot password start -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
-                        <div class="clearfix">
-                            <div class="col-sm-4 left-main">
-                                <div class="left-main-inner">
-                                    <span class="left-title">Forgot Password</span>
-                                    <p class="left-content">We do not share your personal details with anyone.</p>
-                                    <span class="left-img"><img src="<?php echo base_url() ?>images/login-popup.png" class="img-fluid"></span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-8 right-main">
-                                <div class="right-main-inner">
-                                    <div class="login-frm">
-                                        <form name="forgot_form" id="forgot_form" method="post">					
-                                            <div id="error"></div>
-                                            <input type="email" class="text email" name="user_email" id="user_email" placeholder="Useremail" />								
-                                            <div class="lgn-btn">
-                                                <button type="submit" class="theme-btn" id="btn-login">Send Password</button>
+                        <div class="col-sm-12 right-main">
+                            <div class="right-main-inner">
+                                <div class="login-frm">
+                                        <div class="title">
+                                            <h1 class="ttc">Forgot Password</h1>
+                                        </div>
+                                        <?php
+                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                        echo form_open('profile/forgot_password', $form_attribute);
+                                        ?>
+                                        <div class="form-group">
+                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                            <div id="error2" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
                                             </div>
+                                            <div id="errorlogin"></div> 
+                                        </div>
+                                        
+                                        <p class="pt-20 ">
+                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                                        </p>
+
+
                                         </form>
 
-                                    </div>
-
+                                    
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!-- forgot password -->
+
+
+        <!-- model for forgot password end -->
+
         <!-- register -->
 
-        <div class="modal fade register-model register" id="register" role="dialog">
+        <div class="modal fade register-model login" id="register" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                <div class="login">
                                     <h4>Join Aileensoul - It's Free</h4>
                                     <form role="form" name="register_form" id="register_form" method="post">
                                         <div class="row">
@@ -916,7 +924,6 @@
                                         </p>
                                     </form>
 
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -1230,8 +1237,6 @@
                         forgot_email: {
                             required: "Email Address Is Required.",
                         }
-
-
                     },
                 });
                 /* validation */
@@ -1244,13 +1249,26 @@
                 $('#login').modal('show');
             }
             function register_profile() {
+                $('#login').modal('hide');
                 $('#register').modal('show');
             }
             function forgot_profile() {
-                $('#login').modal('show');
+                $('#forgotPassword').modal('show');
             }
         </script>
-
+        <script>
+            $(document).on('click', '[data-toggle*=modal]', function () {
+                $('[role*=dialog]').each(function () {
+                    switch ($(this).css('display')) {
+                        case('block'):
+                        {
+                            $('#' + $(this).attr('id')).modal('hide');
+                            break;
+                        }
+                    }
+                });
+            });
+        </script>
 
     </body>
 </html>
