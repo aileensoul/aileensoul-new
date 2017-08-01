@@ -160,10 +160,7 @@ $(".alert").delay(3200).fadeOut(300);
                             state: {
                                 required: true,
                             },
-                            postaladdress: {
-                                required: true,
-                                regx: /^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9]*[-@./#&+,\w\s]*$/,
-                            },
+                          
                         },
 
                         messages: {
@@ -173,9 +170,7 @@ $(".alert").delay(3200).fadeOut(300);
                             state: {
                                 required: "State is required.",
                             },
-                            postaladdress: {
-                                required: "Postal address is required.",
-                            },
+                           
                         },
                     });
                 });

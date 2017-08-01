@@ -146,7 +146,7 @@
                                     </fieldset>
                                     <?php ?>
                                     <fieldset>
-                                        <label><?php echo $this->lang->line("pincode1"); ?></label>
+                                        <label><?php echo $this->lang->line("pincode"); ?>:</label>
                                         <input type="text" name="pincode" tabindex="4" id="pincode" placeholder="Enter Pincode"  value="<?php
                                         if ($pincode1) {
                                             echo $pincode1;
@@ -154,15 +154,7 @@
                                         ?>">
                                     </fieldset>
                                     <?php ?>
-                                    <fieldset class="full-width">
-                                        <label><?php echo $this->lang->line("postal_address"); ?>:<span class="red">*</span></label>
-                                        <textarea name="address" id="address" tabindex="5" placeholder="Enter Address" rows="5" cols="40" style="resize:none"/><?php
-                                        if ($address1) {
-                                            echo $address1;
-                                        }
-                                        ?></textarea>
-                                        <?php echo form_error('address'); ?>
-                                    </fieldset>
+                                    
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit"  id="next" tabindex="6" name="next" value="Next">
                                     </fieldset>

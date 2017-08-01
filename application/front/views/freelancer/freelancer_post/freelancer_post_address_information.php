@@ -94,7 +94,6 @@
                                     $country = form_error('country');
                                     $state = form_error('state');
                                     $city = form_error('city');
-                                    $postaladdress = form_error('postaladdress');
                                     $pincode = form_error('pincode');
                                     ?> 
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
@@ -177,15 +176,7 @@
                                         }
                                         ?>">
                                     </fieldset>
-                                    <fieldset class="full-width">
-                                        <label><?php echo $this->lang->line("postal_address"); ?>:<span class="red">*</span></label>
-                                        <textarea name ="postaladdress" id="postaladdress" tabindex="5" rows="4" cols="50" placeholder="Enter postal address" style="resize: none;"><?php
-                                            if ($address1) {
-                                                echo $address1;
-                                            }
-                                            ?></textarea>
-                                        <?php echo form_error('postaladdress'); ?>
-                                    </fieldset>
+                                   
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit"  id="next" name="next" value="Next" tabindex="6">
                                     </fieldset>
