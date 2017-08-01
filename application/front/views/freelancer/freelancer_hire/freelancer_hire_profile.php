@@ -89,8 +89,16 @@
                         <div class="user-pic padd_img">
                             <?php if ($freelancerhiredata[0]['freelancer_hire_user_image'] != '') { ?>
                                 <img src="<?php echo base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerhiredata[0]['freelancer_hire_user_image']); ?>" alt="" >
-                            <?php } else { ?>
-                                <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                <?php
+                            } else {
+                                $fname = $freelancerhiredata[0]['fullname'];
+                                $lname = $freelancerhiredata[0]['username'];
+                                $sub_fname = substr($fname, 0, 1);
+                                $sub_lname = substr($lname, 0, 1);
+                                ?>
+                                <div class="post-img-user">
+                                    <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
@@ -159,7 +167,7 @@
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
-                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3).'/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
                                             </ul>
                                         </div>
                                         <?php
@@ -269,7 +277,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("skype_id"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -293,7 +301,7 @@
                                                             } else {
                                                                 ?>
                                                                 <li><b><?php echo $this->lang->line("phone_number"); ?></b> <span>
-                                                                <?php echo PROFILENA; ?></span>
+                                                                        <?php echo PROFILENA; ?></span>
                                                                 </li>
                                                                 <?php
                                                             }
@@ -331,22 +339,22 @@
                                                                             echo
                                                                             $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
                                                                             ?></span> </li>
-                                                                    <?php
+                                                                        <?php
+                                                                    } else {
+                                                                        echo "";
+                                                                    }
                                                                 } else {
-                                                                    echo "";
-                                                                }
-                                                            } else {
-                                                                if ($freelancerhiredata[0]['city']) {
-                                                                    ?>
+                                                                    if ($freelancerhiredata[0]['city']) {
+                                                                        ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span><?php
                                                                             echo
                                                                             $this->db->get_where('cities', array('city_id' => $freelancerhiredata[0]['city']))->row()->city_name;
                                                                             ?></span> </li>
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
                                                                     <li><b><?php echo $this->lang->line("city"); ?></b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                                            <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -372,7 +380,7 @@
                                                                 } else {
                                                                     ?>
                                                                     <li><b><?php echo $this->lang->line("pincode"); ?></b> <span>
-                                                                    <?php echo PROFILENA; ?></span>
+                                                                            <?php echo PROFILENA; ?></span>
                                                                     </li>
                                                                     <?php
                                                                 }
@@ -414,7 +422,7 @@
                 </div>
         </section>
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- model for popup start -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -437,7 +445,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="4">
                                 <div class="popup_previred">
@@ -445,7 +453,7 @@
 
                                 </div>
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>

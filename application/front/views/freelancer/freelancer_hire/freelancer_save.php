@@ -85,8 +85,16 @@
                         <div class="user-pic padd_img">
                             <?php if ($freehiredata[0]['freelancer_hire_user_image'] != '') { ?>
                                 <img src="<?php echo base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freehiredata[0]['freelancer_hire_user_image']); ?>" alt="" >
-                            <?php } else { ?>
-                                <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+                                <?php
+                            } else {
+                                $fname = $freehiredata[0]['fullname'];
+                                $lname = $freehiredata[0]['username'];
+                                $sub_fname = substr($fname, 0, 1);
+                                $sub_lname = substr($lname, 0, 1);
+                                ?>
+                                <div class="post-img-user">
+                                    <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                </div>
                             <?php } ?>
                             <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
 
@@ -330,7 +338,7 @@
                                                             $userid = $this->session->userdata('aileenuser');
                                                             if ($userid != $rec['user_id']) {
                                                                 ?>
-                                                                <a href="<?php echo base_url('chat/abc/' . $rec['user_id'].'/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                <a href="<?php echo base_url('chat/abc/' . $rec['user_id'] . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                 <a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $rec['save_id'] ?>)"><?php echo $this->lang->line("remove"); ?></a>
                                                             <?php } ?>
                                                         </div>
