@@ -74,7 +74,7 @@
             </div>
             <div class="container tablate-container  art-profile">    
 
-                <?php if ($returnpage == '') { ?>
+                <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                     <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
@@ -100,7 +100,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                            <?php if ($returnpage == '') { ?>
+                            <?php if ($returnpage == ''&& $freelancerhiredata[0]['user_id'] == $userid) { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="profile-text">
 
                             <?php
-                            if ($returnpage == '') {
+                            if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
@@ -180,7 +180,7 @@
                 </div>
 
 
-                <?php if ($returnpage == '') { ?>
+                <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                     <div  class="add-post-button mob-block">
                         <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
 
@@ -194,7 +194,7 @@
                         <div class="profile-text">
 
                             <?php
-                            if ($returnpage == '') {
+                            if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) {
                                 if ($freelancerhiredata[0]['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
@@ -218,7 +218,7 @@
                         </div>
 
                         <div  class="add-post-button">
-                            <?php if ($returnpage == '') { ?>
+                            <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                                 <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> <?php echo $this->lang->line("post_project"); ?></a>
                             <?php } ?>
                         </div>

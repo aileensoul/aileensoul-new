@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="container tablate-container art-profile">    
-                <?php if ($returnpage == '') { ?>
+                <?php if ($returnpage == ''&& $freelancerpostdata[0]['user_id'] == $userid) { ?>
                     <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
@@ -98,7 +98,7 @@
                                     <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                            <?php if ($returnpage == '') { ?>
+                            <?php if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
@@ -107,7 +107,7 @@
                         <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
-                            if ($returnpage == '') {
+                            if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) {
                                 if ($freelancerpostdata[0]['designation'] == "") {
                                     ?> 
                                     <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
@@ -186,7 +186,7 @@
                     <a href="javascript:void(0);">   <h5> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h5></a>
                     <div class="profile-text">
                         <?php
-                        if ($returnpage == '') {
+                        if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) {
                             if ($freelancerpostdata[0]['designation'] == "") {
                                 ?> 
                                 <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>

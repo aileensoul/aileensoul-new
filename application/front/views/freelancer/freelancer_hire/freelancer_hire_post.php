@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="container tablate-container art-profile">    
-                    <?php if ($returnpage == '') { ?>
+                    <?php if ($returnpage == ''&& $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <div class="upload-img">
 
                             <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
                                         <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
                                     </div>
                                 <?php } ?>
-                                <?php if ($returnpage == '') { ?>
+                                <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                                 <?php } ?>
                             </div>
@@ -117,7 +117,7 @@
                             <a href="javascript:void(0);">  <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
                             <div class="profile-text">
                                 <?php
-                                if ($returnpage == '') {
+                                if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
                                     if ($freelancr_user_data[0]['designation'] == '') {
                                         ?>
                                         <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div  class="add-post-button mob-block">
-                    <?php if ($returnpage == '') { ?>
+                    <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                     <?php } ?>
                 </div> 
@@ -188,7 +188,7 @@
                         <a href="javascript:void(0);">  <h5> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h5></a>
                         <div class="profile-text">
                             <?php
-                            if ($returnpage == '') {
+                            if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
                                 if ($freelancr_user_data[0]['designation'] == '') {
                                     ?>
                                     <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
@@ -210,8 +210,8 @@
                         </div>
 
                         <div  class="add-post-button">
-                            <?php if ($returnpage == '') { ?>
-                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i> Post Project</a>
+                            <?php if ($returnpage == ''&& $freelancr_user_data[0]['user_id'] == $userid) { ?>
+                                <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                             <?php } ?>
                         </div> 
                     </div>
@@ -402,7 +402,7 @@
                                                                                 echo PROFILENA;
                                                                             }
                                                                             ?>                                                          </li>
-                                                                        <?php if ($returnpage == '') { ?><a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)"><?php echo $this->lang->line("remove"); ?></a>
+                                                                        <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?><a href="javascript:void(0);" class="button" onclick="removepopup(<?php echo $post['post_id'] ?>)"><?php echo $this->lang->line("remove"); ?></a>
                                                                                                     <li>
                                                                                                         <a class="button" href="<?php echo base_url('freelancer-hire/edit-projects/' . $post['post_id']); ?>" ><?php echo $this->lang->line("edit"); ?></a>
                                                                                                     </li> 
