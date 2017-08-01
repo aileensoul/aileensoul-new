@@ -480,7 +480,7 @@ class Business_userprofile extends CI_Controller {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                $fetch_pdf .= '<a href="' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class="pdf_img">';
+                $fetch_pdf .= '<a href="javascript:void(0);" onclick="login_profile();"><div class="pdf_img">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -575,14 +575,14 @@ class Business_userprofile extends CI_Controller {
                     $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a style="max-width: 40%;" class="post_dot" title="' . ucwords($companynameposted) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucwords($companynameposted) . '</a>
+                                                        <a onclick="login_profile();" style="max-width: 40%;" class="post_dot" title="' . ucwords($companynameposted) . '" href="javascript:void(0);">' . ucwords($companynameposted) . '</a>
                                                         <p class="posted_with" > Posted With</p>
-                                                        <a class="other_name post_dot" href="' . base_url('business-profile/details/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                                                        <a onclick="login_profile();" class="other_name post_dot" href="javascript:void(0);">' . ucwords($companyname) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
                                                     </div></div>
                                             </li>';
                 } else {
-                    $return_html .= '<li><div class="post-design-product"><a class="post_dot" title="' . ucwords($companyname) . '" href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucwords($companyname) . '</a>
+                    $return_html .= '<li><div class="post-design-product"><a onclick="login_profile();" class="post_dot" title="' . ucwords($companyname) . '" href="javascript:void(0);">' . ucwords($companyname) . '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> 
                                                         <span class="ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span> 
@@ -591,7 +591,7 @@ class Business_userprofile extends CI_Controller {
                                             </li>';
                 }
                 $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
-                $return_html .= '<li><div class="post-design-product">   <a class="buuis_desc_a"  title="Category">';
+                $return_html .= '<li><div class="post-design-product">   <a onclick="login_profile();" class="buuis_desc_a"  title="Category">';
 
                 if ($category) {
                     $return_html .= ucwords($category);
@@ -610,30 +610,30 @@ class Business_userprofile extends CI_Controller {
 <div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content2">';
                 if ($row['posted_user_id'] != 0) {
                     if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
-                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+                        $return_html .= '<a onclick="login_profile();">
     <i class="fa fa-trash-o" aria-hidden="true">
     </i> Delete Post
 </a>
-<a id="' . $row['business_profile_post_id'] . '" onClick="editpost(this.id)">
+<a id="' . $row['business_profile_post_id'] . '" onclick="login_profile();">
     <i class="fa fa-pencil-square-o" aria-hidden="true">
     </i>Edit
 </a>';
                     } else {
-                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+                        $return_html .= '<a onclick="login_profile();">
     <i class="fa fa-trash-o" aria-hidden="true">
     </i> Delete Post
 </a>
-<a href="' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
+<a onclick="login_profile();" href="javascript:void(0);">
     <i class="fa fa-user" aria-hidden="true">
     </i> Contact Person
 </a>';
                     }
                 } else {
                     if ($this->session->userdata('aileenuser') == $row['user_id']) {
-                        $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
-<a id="' . $row['business_profile_post_id'] . '" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>';
+                        $return_html .= '<a onclick="login_profile();"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
+<a id="' . $row['business_profile_post_id'] . '" onclick="login_profile();"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>';
+                        $return_html .= '<a onclick="login_profile();" href="javascript:void(0);"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>';
                     }
                 }
                 $return_html .= '</div>
@@ -643,7 +643,7 @@ class Business_userprofile extends CI_Controller {
                 }
                 $return_html .= '<div class="ft-15 t_artd">
         <div id="editpostdata' . $row['business_profile_post_id'] . '" style="display:block;">
-            <a>' . $this->common->make_links($row['product_name']) . '</a>
+            <a onclick="login_profile();">' . $this->common->make_links($row['product_name']) . '</a>
         </div>
         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
             <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ')>';
@@ -689,12 +689,12 @@ class Business_userprofile extends CI_Controller {
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
                         $return_html .= '<div class="one-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
+            <a onclick="login_profile();" href="javascript:void(0);"><img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
-            <a href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
+            <a onclick="login_profile();" href="javascript:void(0);"><div class="pdf_img">
                     <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
                 </div></a>
         </div>';
@@ -726,24 +726,24 @@ class Business_userprofile extends CI_Controller {
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -751,15 +751,15 @@ class Business_userprofile extends CI_Controller {
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%; height: 100%;"> </a>
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')
                     </span></div>
@@ -774,7 +774,7 @@ class Business_userprofile extends CI_Controller {
     <div class="post-design-menu">
         <ul class="col-md-6">
             <li class="likepost' . $row['business_profile_post_id'] . '">
-                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onClick="post_like(this.id)">';
+                <a class="ripple like_h_w" id="' . $row['business_profile_post_id'] . '"   onclick="login_profile();">';
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
                 $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -800,7 +800,7 @@ class Business_userprofile extends CI_Controller {
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '<a class="ripple like_h_w" onclick="login_profile();" id="' . $row['business_profile_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
                 $return_html .= '</i> 
                 </a>
             </li> 
@@ -841,7 +841,7 @@ class Business_userprofile extends CI_Controller {
                     foreach ($likelistarray as $key => $value) {
                         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                     }
-                    $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
+                    $return_html .= '<a href="javascript:void(0);"  onclick="login_profile();">';
                     $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -878,7 +878,7 @@ class Business_userprofile extends CI_Controller {
                 foreach ($likelistarray as $key => $value) {
                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                 }
-                $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
+                $return_html .= '<a href="javascript:void(0);"  onclick="login_profile();">';
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -955,7 +955,7 @@ class Business_userprofile extends CI_Controller {
                 </div>
                 <div class="art-comment-menu-design"> 
                     <div class="comment-details-menu" id="likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
-                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '" onclick="login_profile();">';
                         $userid = $this->session->userdata('aileenuser');
                         $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
                         $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -978,11 +978,11 @@ class Business_userprofile extends CI_Controller {
                             $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                     <div class="comment-details-menu">
                         <div id="editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">
-                            <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_editbox(this.id)" class="editbox">Edit
+                            <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onclick="login_profile();" class="editbox">Edit
                             </a>
                         </div>
                         <div id="editcancle' . $rowdata['business_profile_post_comment_id'] . '" style="display:none;">
-                            <a id="' . $rowdata['business_profile_post_comment_id'] . '" onClick="comment_editcancle(this.id)">Cancel
+                            <a id="' . $rowdata['business_profile_post_comment_id'] . '" onclick="login_profile();">Cancel
                             </a>
                         </div>
                     </div>';
@@ -993,7 +993,7 @@ class Business_userprofile extends CI_Controller {
                             $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                     <div class="comment-details-menu">
                         <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['business_profile_post_comment_id'] . '" value= "' . $rowdata['business_profile_post_id'] . '">
-                        <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete<span class="insertcomment' . $rowdata['business_profile_post_comment_id'] . '">
+                        <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onclick="login_profile();"> Delete<span class="insertcomment' . $rowdata['business_profile_post_comment_id'] . '">
                             </span>
                         </a>
                     </div>';
