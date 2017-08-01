@@ -33,16 +33,16 @@
             <?php echo $business_common; ?>
             <div class="text-center tab-block">
                 <div class="container mob-inner-page">
-                    <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="#" onclick="login_profile();">
                         Photo
                     </a>
-                    <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="#" onclick="login_profile();">
                         Video
                     </a>
-                    <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="#" onclick="login_profile();">
                         Audio
                     </a>
-                    <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
+                    <a href="#" onclick="login_profile();">
                         PDf
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                             <div class="full-box-module business_data">
                                 <div class="profile-boxProfileCard  module">
                                     <div class="head_details1">
-                                        <span><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug']); ?>"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
+                                        <span><a href="<?php echo base_url('login') ?>?redirect=<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug']); ?>"><h5><i class="fa fa-info-circle" aria-hidden="true"></i>Information</h5></a>
                                         </span>      
                                     </div>
                                     <table class="business_data_table">
@@ -121,7 +121,8 @@
                                 </div>
                             </div>
                             <!-- user iamges start-->
-                            <a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">
+                            <!--<a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">-->
+                            <a href="#" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -134,7 +135,7 @@
                             </a>
                             <!-- user images end-->
                             <!-- user video start-->
-                            <a href="<?php echo base_url('business-profile/videos/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="#" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <table class="business_data_table">
@@ -149,7 +150,7 @@
                             </a>
                             <!-- user video emd-->
                             <!-- user audio start-->
-                            <a href="<?php echo base_url('business-profile/audios/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="#" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module">
                                         <div class="head_details1">
@@ -164,7 +165,7 @@
                             </a>
                             <!-- user audio end-->
                             <!-- user pdf  start-->
-                            <a href="<?php echo base_url('business-profile/pdf/' . $businessdata1[0]['business_slug']) ?>">
+                            <a href="#" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
                                         <div class="head_details">
@@ -206,9 +207,9 @@
                                                 $acr = substr($a, 0, 1);
                                                 ?>
                                                 <div class="post-img-div">
-                                                <?php echo ucwords($acr) ?>
+                                                    <?php echo ucwords($acr) ?>
                                                 </div>
-    <?php } ?>
+                                            <?php } ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content popup-text">
                                             <span>Post Your Product....</span>
@@ -219,14 +220,14 @@
                                         </div>
                                     </div>
                                 </div>
-<?php } ?>
+                            <?php } ?>
                             <!-- The Modal -->
                             <div id="myModal3" class="modal-post">
                                 <!-- Modal content -->
                                 <div class="modal-content-post">
                                     <span class="close3">&times;</span>
                                     <div class="post-editor post-edit-popup" id="close">
-<?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
@@ -241,7 +242,7 @@
                                                     $acr = substr($a, 0, 1);
                                                     ?>
                                                     <div class="post-img-div">
-                                                    <?php echo ucwords($acr) ?>
+                                                        <?php echo ucwords($acr) ?>
                                                     </div>
                                                     <?php
                                                 }
@@ -288,7 +289,7 @@
                                         <div class="fr margin_btm">
                                             <button type="submit"  value="Submit">Post</button>    
                                         </div>
-<?php echo form_close(); ?>
+                                        <?php echo form_close(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -324,7 +325,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="5">
                                 <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
@@ -332,7 +333,7 @@
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -373,6 +374,163 @@
                 </div>
             </div>
         </div>
+
+        <!-- Login  -->
+        <div class="modal fade login" id="login" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
+                    <div class="modal-body">
+                            <div class="col-sm-8 right-main">
+                                <div class="right-main-inner">
+                                    <div class="login-frm">
+                                        <div class="login">
+                                            <div class="title">
+                                                <h1 class="ttc">Welcome To Aileensoul</h1>
+                                            </div>
+
+                                            <form role="form" name="login_form" id="login_form" method="post">
+
+                                                <div class="form-group">
+                                                    <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                                    <div id="error2" style="display:block;">
+                                                        <?php
+                                                        if ($this->session->flashdata('erroremail')) {
+                                                            echo $this->session->flashdata('erroremail');
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div id="errorlogin"></div> 
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                                    <div id="error1" style="display:block;">
+<?php
+if ($this->session->flashdata('errorpass')) {
+    echo $this->session->flashdata('errorpass');
+}
+?>
+                                                    </div>
+                                                    <div id="errorpass"></div> 
+                                                </div>
+
+                                                <p class="pt-20 ">
+                                                    <button class="btn1" onclick="login()">Login</button>
+                                                </p>
+
+                                                <p class=" text-center">
+                                                    <a href="javascript:void(0)" id="myBtn">Forgot Password ?</a>
+                                                </p>
+
+                                                <p class="pt15 text-center">
+                                                    Don't have an account? <a href="<?php echo base_url('registration'); ?>">Create an account</a>
+                                                </p>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login -->
+
+        <!-- forgot password -->
+        <div class="modal fade login-model forgotPassword" id="forgotPassword" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
+                    <div class="modal-body">
+                        <div class="clearfix">
+                            <div class="col-sm-4 left-main">
+                                <div class="left-main-inner">
+                                    <span class="left-title">Forgot Password</span>
+                                    <p class="left-content">We do not share your personal details with anyone.</p>
+                                    <span class="left-img"><img src="<?php echo base_url() ?>images/login-popup.png" class="img-fluid"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-8 right-main">
+                                <div class="right-main-inner">
+                                    <div class="login-frm">
+                                        <form name="forgot_form" id="forgot_form" method="post">					
+                                            <div id="error"></div>
+                                            <input type="email" class="text email" name="user_email" id="user_email" placeholder="Useremail" />								
+                                            <div class="lgn-btn">
+                                                <button type="submit" class="theme-btn" id="btn-login">Send Password</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- forgot password -->
+        <!-- register -->
+
+        <div class="modal fade register-model register" id="register" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
+                    <div class="modal-body">
+                        <div class="clearfix">
+                            <div class="col-sm-4 left-main">
+                                <div class="left-main-inner">
+                                    <span class="left-title">Sign Up</span>
+                                    <p class="left-content">We do not share your personal details with anyone.</p>
+                                    <span class="left-img"><img src="<?php echo base_url() ?>images/login-popup.png" class="img-fluid"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-8 right-main">
+                                <div class="right-main-inner">
+                                    <div class="login-frm">
+                                        <form name="register_form" id="register_form" method="post" action="">
+                                            <div id="register_error"></div>
+                                            <input type="text" class="text username" name="full_name" id="full_name" placeholder="Full Name" />
+                                            <input type="text" class="text username" name="user_name" id="user_name1" placeholder="Username" />								
+                                            <input type="email" class="text email" name="email_addres" id="email_addres" placeholder="Email" />
+                                            <input type="password" class="text password" name="pass_word" id="pass_word1" placeholder="Password" />								
+                                            <input type="password" class="text password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" />								
+                                            <input type="number" class="text phone-number" name="mobile" id="mobile" placeholder="Phone Number" />								
+                                            <input type="date" class="text date-of-birth" name="age" id="age" placeholder="Date Of Birth" />
+                                            <input type="text" class="text address" name="address" id="address" placeholder="Address" />
+                                            <input type="text" class="text city" name="city" id="city" placeholder="City" />
+                                            <input type="text" class="text state" name="state" id="state" placeholder="State" />
+                                            <input type="text" class="text zipcode" name="zipcode" id="zipcode" placeholder="Zip Code" />
+
+                                            <div class="checkbox check-frm">
+                                                <label><input type="checkbox" name="terms" id="terms" value="" class="check-text"><a class="remember-text">Terms and Condition</a></label>										
+                                            </div>
+                                            <div class="lgn-btn">
+                                                <button type="submit" id="btn-register" class="theme-btn btn-yellow">SIGN UP</button>
+                                                <span class="text-mes">
+                                                    By clicking on "Sign Up" above, you confirm that 
+                                                    you accept the <a href="<?php echo base_url() ?>terms-and-conditions" class="link">Terms and Condition</a>
+                                                </span>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- register -->
         <footer>
 <?php echo $footer; ?>
         </footer>
@@ -395,11 +553,16 @@
 
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-                                                    var base_url = '<?php echo base_url(); ?>';
-                                                    var data = <?php echo json_encode($demo); ?>;
-                                                    var data1 = <?php echo json_encode($city_data); ?>;
-                                                    var slug = '<?php echo $slugid; ?>';
+                    var base_url = '<?php echo base_url(); ?>';
+                    var data = <?php echo json_encode($demo); ?>;
+                    var data1 = <?php echo json_encode($city_data); ?>;
+                    var slug = '<?php echo $slugid; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js'); ?>"></script>
+        <script>
+                    function login_profile() {
+                        $('#login').modal('show');
+                    }
+        </script>
     </body>
 </html>

@@ -6331,7 +6331,7 @@ word-break:break-word;
     width: 50px;
     margin-top: 5px;
     height: 50px;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-bottom: 6px;
     display: inline-block;
 }
@@ -13949,6 +13949,7 @@ body {
 }
 .business-profile-right .profile-main-box-buis-menu ul {
     padding-left: 0;
+    float: left;
 }
 .business-profile-right .profile-main-box-buis-menu ul li {
     padding-left: 0;
