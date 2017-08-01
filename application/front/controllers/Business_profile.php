@@ -10185,6 +10185,8 @@ class Business_profile extends MY_Controller {
 
                 $userimageposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->business_user_image;
 
+                $usernameposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->company_name;
+
                 $username = $this->db->get_where('business_profile', array('user_id' => $row['user_id']))->row()->company_name;
 
                 $userimageposted = $this->db->get_where('business_profile', array('user_id' => $row['posted_user_id']))->row()->business_user_image;
@@ -10192,7 +10194,7 @@ class Business_profile extends MY_Controller {
                     if ($userimageposted) {
                         $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
                     } else {
-                        $a = $userimageposted;
+                        $a = $usernameposted;
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
@@ -10203,7 +10205,7 @@ class Business_profile extends MY_Controller {
                     if ($userimage) {
                         $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name="image_src" id="image_src" />';
                     } else {
-                        $a = $userimage;
+                        $a = $username;
                         $acr = substr($a, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
