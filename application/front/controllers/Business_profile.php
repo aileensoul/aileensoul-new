@@ -2407,7 +2407,14 @@ class Business_profile extends MY_Controller {
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        $this->load->view('business_profile/business_resume', $this->data);
+        
+        //manage post end
+        if ($this->session->userdata('aileenuser')) {
+            $this->load->view('business_profile/business_resume', $this->data);
+        } else {
+            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data,true);
+            $this->load->view('business_profile/business_details', $this->data);
+        }
     }
 
     public function business_user_post($id) {
