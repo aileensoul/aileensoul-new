@@ -104,8 +104,10 @@ function check() {
 
 // Upload Post start
 jQuery(document).ready(function ($) {
-    var bar = $('#bar');
-    var percent = $('#percent');
+    //    var bar = $('#bar');
+//    var percent = $('#percent');
+    var bar = $('.progress-bar');
+    var percent = $('.sr-only');
     var options = {
         beforeSend: function () {
             document.getElementById("myModal3").style.display = "none";

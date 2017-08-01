@@ -187,13 +187,14 @@
                                         <div class="popup-img"> 
                                             <?php if ($businessdata[0]['business_user_image']) { ?><img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
                                             <?php } else { ?>
-                                                 <?php 
-                                          $a =$businessdata[0]['company_name'];
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-div">
-                                            <?php echo  ucfirst(strtolower($acr))?>
-                                            </div>
-                                            <?php } ?>
+                                                <?php
+                                                $a = $businessdata[0]['company_name'];
+                                                $acr = substr($a, 0, 1);
+                                                ?>
+                                                <div class="post-img-div">
+                                                <?php echo ucfirst(strtolower($acr)) ?>
+                                                </div>
+    <?php } ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content popup-text">
                                             <span>Post Your Product....</span>
@@ -204,14 +205,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php } ?>
+<?php } ?>
                             <!-- The Modal -->
                             <div id="myModal3" class="modal-post">
                                 <!-- Modal content -->
                                 <div class="modal-content-post">
                                     <span class="close3">&times;</span>
                                     <div class="post-editor post-edit-popup" id="close">
-                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+<?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
@@ -221,12 +222,13 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <?php 
-                                          $a =$businessdata[0]['company_name'];
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-div">
-                                            <?php echo  ucfirst(strtolower($acr))?>
-                                            </div>
+                                                    <?php
+                                                    $a = $businessdata[0]['company_name'];
+                                                    $acr = substr($a, 0, 1);
+                                                    ?>
+                                                    <div class="post-img-div">
+                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                    </div>
                                                     <?php
                                                 }
                                                 ?>
@@ -272,7 +274,7 @@
                                         <div class="fr margin_btm">
                                             <button type="submit"  value="Submit">Post</button>    
                                         </div>
-                                        <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -283,9 +285,17 @@
                             }
                             ?>
                             <div class="fw">
-                                <div class='progress' id="progress_div" style="display: none">
-                                    <div class='bar' id='bar'></div>
-                                    <div class='percent' id='percent'>0%</div>
+                                <!--                                <div class='progress' id="progress_div" style="display: none">
+                                                                    <div class='bar' id='bar'></div>
+                                                                    <div class='percent' id='percent'>0%</div>
+                                                                </div>-->
+
+                                <div class="bs-example">
+                                    <div class="progress progress-striped" id="progress_div">
+                                        <div class="progress-bar" style="width: 0%;">
+                                            <span class="sr-only">0%</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="business-all-post">
                                     <div class="nofoundpost"> 
@@ -308,7 +318,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+<?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="5">
                                 <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
@@ -316,7 +326,7 @@
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
-                                <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -358,11 +368,11 @@
             </div>
         </div>
         <footer>
-            <?php echo $footer; ?>
+<?php echo $footer; ?>
         </footer>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        
+
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
@@ -376,13 +386,13 @@
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
-       
+
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
-            var slug = '<?php echo $slugid; ?>';
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var data = <?php echo json_encode($demo); ?>;
+                                                    var data1 = <?php echo json_encode($city_data); ?>;
+                                                    var slug = '<?php echo $slugid; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js'); ?>"></script>
     </body>
