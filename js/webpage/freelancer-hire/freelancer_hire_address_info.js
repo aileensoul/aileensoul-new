@@ -186,10 +186,7 @@ $(document).ready(function () {
             state: {
                 required: true,
             },
-            address: {
-                required: true,
-                regx: /^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9]*[-@./#&+,\w\s]*$/,
-            },
+           
             pincode: {
                 regx1: /^.{0,12}$/
             },
@@ -203,9 +200,7 @@ $(document).ready(function () {
             state: {
                 required: "State Is Required.",
             },
-            address: {
-                required: "Address Is Required.",
-            },
+           
         },
 
     });

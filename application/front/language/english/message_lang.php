@@ -161,7 +161,7 @@ $lang["no_saved_freelancer"]="No Saved Freelancer Found.";
 
 
 //common variable of address info start
-$lang["profess_info"]="Professional Info:";
+$lang["profess_info"]="Professional Info";
 //common variable of address info end
 
 //variable of add post & edit post start
