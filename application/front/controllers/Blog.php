@@ -1,125 +1,183 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Blog extends CI_Controller
-{
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-    public function __construct()
-    {
+class Blog extends CI_Controller {
+
+    public function __construct() {
         parent::__construct();
-        $this->load->model(array('category_model', 'Blog_model' => 'blog_model'));
+
+        include ('include.php');
     }
 
-    // Meta Array Define
-    public function index()
-    {   
-     //   $meta_title = $this->sitefunction->getSettings('meta_title');
-     ///   $meta_keywords = $this->sitefunction->getSettings('meta_keywords');
-     //   $meta_description = $this->sitefunction->getSettings('meta_description');
-       //   echo "hello"; die();
-        $data['meta_title'] = '';
-        $data['meta_keywords'] ='';
-        $data['meta_description'] = '';
-      
-        $data['blogdata'] = $this->blog_model->AllBlog();
-        $data['blogolddata'] = $this->blog_model->Oldblog();
+    //MAIN INDEX PAGE START   
+    public function index($slug = '') {
 
+        if ($slug != '') {
 
-    
-       $this->load->view('blog/index', $data);
-    }
+            //FOR GETTING ALL DATA
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_all'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
 
+            //FOR GETTING BLOG
+            $condition_array = array('status' => 'publish', 'blog_slug' => $slug);
+            $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
 
-    // Meta Array Define
-    public function blogdetail($id="")
-    {   
-        // $meta_title = $this->sitefunction->getSettings('meta_title');
-        // $meta_keywords = $this->sitefunction->getSettings('meta_keywords');
-        // $meta_description = $this->sitefunction->getSettings('meta_description');
-        
-       $data['meta_title'] = '';
-       $data['meta_keywords'] ='';
-       $data['meta_description'] = '';
-        
-        $data['blogdata'] = $this->blog_model->Blogdetail($id);
-        $data['blogolddata'] = $this->blog_model->Oldblogdetail($id);
- 
+            //FOR GETTING 5 LAST DATA
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
 
-        $data['blogid'] = $data['blogdata'][0]->blog_id; 
-        $data['title'] = $data['blogdata'][0]->title;
-        $data['date'] = $data['blogdata'][0]->date;
-        $data['author'] = $data['blogdata'][0]->author;
-        $data['image'] = $data['blogdata'][0]->blog_image;
-        $data['description'] = $data['blogdata'][0]->description;
-        $data['image_title'] = $data['blogdata'][0]->image_title;
-        $data['image_description'] = $data['blogdata'][0]->image_description;
-    
-       $this->load->view('blog/blogdetail', $data);
-    }
-
-    public function blog_captcha() {
-    
-                $this->load->view('blog/captcha',$data);           
-    }
-    
-        
-     public function add_blog(){ 
-    $this->load->helper('url');
-     
-    
-    //Send Inquiry to Database
-     if ($this->input->post('contactemail') && $this->input->post('g-recaptcha-response') != '') {
-   
-    //read parameters from $_POST using input class
-    $name = $this->input->post('contactname');  
-    $email = $this->input->post('contactemail'); 
-    $message = $this->input->post('contactmessage');  
-    $blogid = $this->input->post('blogid');  
-
-    $this->form_validation->set_rules('contactname', 'Contact Name', 'required');
-    $this->form_validation->set_rules('contactemail', 'Contact Email', 'required');
-    $this->form_validation->set_rules('contactmessage', 'Contact Message', 'required');
-  
-            $insert_array = array(
-                'review_comment' => $message,
-                'user_name' => $name,
-                'user_email' => $email,
-                'blog_id' => $blogid,
-                'is_delete' => '0',
-                'created_date' => date('y-m-d h:i:s'),
-                'approve_status' => '0'
-                
-            );
-    
-            
-       $insertdata =  $this->db->insert('blog_review', $insert_array);
-
-        
-   
-    if ($insertdata) {
-            $this->session->set_flashdata('success', 'Inquiry Successfully Submitted !!!');
-             redirect(base_url() . 'blog', 'refresh');
+            $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
+            $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+            $this->load->view('blog/blogdetail', $this->data);
         } else {
-            //show_error($this->email->print_debugger());  
-            $this->session->set_flashdata('error', 'Emmrror Occurred. Try Again!');
-             redirect(base_url() . 'blog', 'refresh');
+            //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE START
+            if ($this->input->get('q')) {
+
+                $this->data['search_keyword'] = $search_keyword = trim($this->input->get('q'));
+
+
+                $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%')";
+                $contition_array = array('status' => 'publish');
+                $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+            }
+            //THIS IF IS USED FOR WHILE SEARCH FOR RETRIEVE SAME PAGE END
+            //FOR GETTING ALL DATA START
+            else {
+                $condition_array = array('status' => 'publish');
+                $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+                // echo "<pre>";print_r( $this->data['blog_detail']);die();
+            }
+            //FOR GETTING ALL DATA START
+            //FOR GETTING 5 LAST DATA
+            $condition_array = array('status' => 'publish');
+            $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+
+            // echo $this->uri->segment(1);die();
+            $this->data['login_header'] = $this->load->view('login_header', $this->data, TRUE);
+            $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+            $this->load->view('blog/index', $this->data);
         }
-    } else {
-        
-        if ($this->input->post('g-recaptcha-response') == '') {
-        $this->session->set_flashdata('captcha_error', 'Invalid Captcha!');
-        $this->data['captcha_error'] = $this->session->flashdata('captcha_error');
-
-         redirect(base_url() . 'blog', 'refresh');
-    } else {
-        $this->session->set_flashdata('error', 'Error Occurred. Try Again!');
-         redirect(base_url() . 'blog', 'refresh');
     }
-         
-    }
-    
-  }
 
-   
-    
+    //MAIN INDEX PAGE END   
+    //READ MORE CLICK START
+    public function popular() {
+
+        $join_str[0]['table'] = 'blog';
+        $join_str[0]['join_table_id'] = 'blog.id';
+        $join_str[0]['from_table_id'] = 'blog_visit.blog_id';
+        $join_str[0]['join_type'] = '';
+
+        $condition_array = array('blog.status' => 'publish');
+        $data = "blog.* ,count(blog_id) as count";
+        $this->data['blog_detail'] = $this->common->select_data_by_condition('blog_visit', $condition_array, $data, $short_by = 'count', $order_by = 'desc', $limit, $offset, $join_str, $groupby = 'blog_visit.blog_id');
+
+        //FOR GETTING 5 LAST DATA
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+
+        // echo $this->uri->segment(1);die();
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        $this->load->view('blog/index', $this->data);
+    }
+
+    //READ MORE CLICK START
+    public function read_more() {
+
+        $id = $_POST['blog_id'];
+
+        //FOR INSERT READ MORE BLOG START
+        $data = array(
+            'blog_id' => $id,
+            'visiter_date' => date('Y-m-d H:i:s')
+        );
+        $insert_id = $this->common->insert_data_getid($data, 'blog_visit');
+
+        //FOR INSERT READ MORE BLOG END
+
+        if ($insert_id) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+
+    //READ MORE CLICK END
+    //BLOGDETAIL FOR PERICULAR ONE POST START
+    public function blogdetail($slug = '') {
+        //FOR GETTING ALL DATA
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_all'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+
+        //FOR GETTING BLOG
+        $condition_array = array('status' => 'publish', 'blog_slug' => $slug);
+        $this->data['blog_detail'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+
+        //FOR GETTING 5 LAST DATA
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        $this->load->view('blog/blogdetail', $this->data);
+    }
+
+    //BLOGDETAIL FOR PERICULAR ONE POST END
+    //COMMENT INSERT BY USER START
+    public function comment_insert() {
+        $id = $_POST['blog_id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        //FOR INSERT READ MORE BLOG START
+        $data = array(
+            'blog_id' => $id,
+            'name' => $name,
+            'email' => $email,
+            'message' => $message,
+            'comment_date' => date('Y-m-d H:i:s'),
+            'status' => 'pending'
+        );
+
+        $insert_id = $this->common->insert_data_getid($data, 'blog_comment');
+
+        //FOR INSERT READ MORE BLOG END
+
+        if ($insert_id) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+
+    //COMMENT INSERT BY USER END
+//SEARCH BY TAG START
+    public function tagsearch($tag = '') {
+        //FOR SEARCH DATA WITH TAG,DETAIL AND DESCRIPTION IN BLOG TABLE
+        $tag = str_replace("-", " ", $tag);
+        //$tag= urldecode($tag);
+        $this->data['search_keyword'] = $search_keyword = trim($tag);
+        $search_condition = "(title LIKE '%$search_keyword%' OR   description LIKE '%$search_keyword%' OR  tag LIKE '%$search_keyword%')";
+        $contition_array = array('status' => 'publish');
+        $this->data['blog_detail'] = $this->common->select_data_by_search('blog', $search_condition, $contition_array, $data = '*', $sortby = 'id', $orderby = 'desc', $limit, $offset);
+
+        //FOR GETTING ALL DATA
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_all'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit, $offset, $join_str = array());
+        // echo "<pre>";print_r($this->data['blog_all']);die();
+        //FOR GETTING 5 LAST DATA
+        $condition_array = array('status' => 'publish');
+        $this->data['blog_last'] = $this->common->select_data_by_condition('blog', $condition_array, $data = '*', $short_by = 'id', $order_by = 'desc', $limit = 5, $offset, $join_str = array());
+
+        // echo $this->uri->segment(1);die();
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data,TRUE);
+        $this->load->view('blog/index', $this->data);
+    }
+
+//SEARCH BY TAG END
 }

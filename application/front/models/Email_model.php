@@ -144,9 +144,11 @@ class Email_model extends CI_Model {
         //$to = "falguni.aileensoul@gmail.com";
         //$sub = "khytiii";
 
-        $this->email->from('aileensoul@gmail.com', 'Aileensoul');
+        //$this->email->from('aileensoul@gmail.com', 'Aileensoul');
+        $this->email->from('noreply@aileensoul.com', 'Aileensoul');
+
         $this->email->to($to_email);
-        $this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
+        //$this->email->reply_to('no-replay@aileensoul.com', 'Explendid Videos');
         $this->email->subject($subject);
         $this->email->message($mail_html);
         $this->email->set_mailtype("html");

@@ -59,6 +59,11 @@ $route['404_override'] = 'My404Page';
 //$route['translate_uri_dashes'] = FALSE;
 
 
+$route['about-us'] = "about_us";
+
+$route['contact-us'] = "contact_us";
+
+
 $route['business-profile'] = "business_profile/index";
 $route['business-profile/business-information-insert'] = "business_profile/business_information_insert";
 $route['business-profile/business-information-update'] = "business_profile/business_information_update";
