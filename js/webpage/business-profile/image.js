@@ -114,30 +114,19 @@ function validate(event) {
             if (foundPresent == true)
             {
             } else {
-
                 $(".bus_image").html("Please select only Image File.");
                 event.preventDefault();
                 //return false; 
             }
-
-
         }
-
     }
-
 }
-
 function removemsg() {
-
     $(".bus_image").html(" ");
     document.getElementById("image1").value = null;
 }
 
-
-
 // only iamge upload validation end
-
-
 $(function () {
 
     $("#tags1").autocomplete({

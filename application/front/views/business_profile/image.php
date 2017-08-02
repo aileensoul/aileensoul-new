@@ -179,5 +179,5 @@
                           var data1 = <?php echo json_encode($city_data); ?>;
                           var slug = '<?php echo $slugid; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/description.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/image.js'); ?>"></script>
 
