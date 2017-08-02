@@ -251,23 +251,7 @@
                     </div>
                 </div>
             </section>
-            <footer class="footer">
-                <div class="container pt20">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-8 pull-right col-xs-12">
-                            <ul>
-                                <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
-                                <li><a href="<?php echo base_url('contact-us'); ?>">Contact Us</a>|</li>
-                                <li><a href="<?php echo base_url('blog'); ?>">Blog</a>|</li>
-                                <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-sm-4 col-xs-12">
-                            © 2017 | by Aileensoul
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <?php echo $login_footer ?>
         </div>
         <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
         <script type="text/javascript">
@@ -288,8 +272,10 @@
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
+            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+            var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/main.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/main.js'); ?>"></script>
     </body>
 </html>
 

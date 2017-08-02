@@ -58,8 +58,9 @@ $(document).ready(function () {
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
-            '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+            get_csrf_token_name: get_csrf_hash,
         }
+
         $.ajax({
             type: 'POST',
             url: base_url + 'registration/check_login',
@@ -73,20 +74,13 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response.data == "ok") {
-                    $("#btn-login").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-
-                    window.location = "<?php echo base_url() ?>dashboard";
-
-
+                    $("#btn-login").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                    window.location = base_url + "dashboard";
                 } else if (response.data == "password") {
-
                     var id = response.id;
-                    window.location = "<?php echo base_url() ?>login?error_msg=2&lwc=" + id;
-
+                    window.location = base_url + "login?error_msg=2&lwc=" + id;
                 } else {
-
-                    window.location = "<?php echo base_url() ?>login?error_msg=1";
-
+                    window.location = base_url + "login?error_msg=1";
                 }
             }
         });
@@ -123,7 +117,7 @@ $(document).ready(function () {
                         email_reg: function () {
                             return $("#email_reg").val();
                         },
-                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                        get_csrf_token_name: get_csrf_hash,
                     },
                 },
             },
@@ -200,7 +194,7 @@ $(document).ready(function () {
             'selmonth': selmonth,
             'selyear': selyear,
             'selgen': selgen,
-            '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+            get_csrf_token_name: get_csrf_hash,
         }
 
 
@@ -266,9 +260,8 @@ $(document).ready(function () {
             success: function (response)
             {
                 if (response == "ok") {
-                    $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-
-                    window.location = "<?php echo base_url() ?>dashboard";
+                    $("#btn-register").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                    window.location = base_url + "dashboard";
                 } else {
                     $("#register_error").fadeIn(1000, function () {
                         $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -281,13 +274,7 @@ $(document).ready(function () {
     }
 });
 
-
-
-
-
-
 // forgot password script start 
-
 
 
 // Get the modal
@@ -315,11 +302,8 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
-
-
 // forgot password script end 
-
-$(document).ready(function () { //aletr("hii");
+$(document).ready(function () {
     /* validation */
     $("#forgot_password").validate({
         rules: {
@@ -327,40 +311,22 @@ $(document).ready(function () { //aletr("hii");
                 required: true,
                 email: true,
             }
-
         },
         messages: {
             forgot_email: {
                 required: "Email Address Is Required.",
             }
-
-
         },
     });
     /* validation */
-
 });
-
-
-
 
 //For Scroll page at perticular position js Start
 $(document).ready(function () {
-
-    //  $(document).load().scrollTop(1000);
-
-
-
     $("#email_reg").val('');
     $("#password_reg").val('');
-
 });
 //For Scroll page at perticular position js End
-
-
-
-
-
 // disable spacebar js start
 $(document).ready(function () {
     $("#email_reg").on("keydown", function (e) {
@@ -379,19 +345,13 @@ jQuery('.carousel').carousel({
 });
 // disable spacebar js end
 
-
-
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $("#myModal").hide();
-        //$('#myModal').modal('hide');
     }
 });
-
-
 
 function changeMe(sel)
 {
     sel.style.color = "#000";
 }
-
