@@ -35,32 +35,6 @@
         });
     }
 
-    function getmsgNotification() {
-        msgNotification();
-        msgheader();
-    }
-    function msgNotification() {
-        // first click alert('here'); 
-        $.ajax({
-            url: "<?php echo base_url(); ?>notification/update_msg_noti",
-            type: "POST",
-            success: function (data) {
-                data = JSON.parse(data);
-            }
-        });
-    }
-    function msgheader()
-    {
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
-            data: '',
-            success: function (data) {
-                $('#' + 'notificationsmsgBody').html(data);
-            }
-        });
-    }
-
     jQuery(document).ready(function ($) {
         if (screen.width <= 767) {
             $("ul.left-form-each").on("click", ".init", function () {
@@ -97,17 +71,6 @@
             $(this).toggleClass('active');
             $('.pushmenu-push').toggleClass('pushmenu-push-toright');
             $menuLeft.toggleClass('pushmenu-open');
-        });
-        // MESSAGE NOTIFICATION
-        waitForMsg1();
-        $(document).ready(function () {
-            $menuLeft = $('.pushmenu-left');
-            $nav_list = $('#nav_list');
-            $nav_list.click(function () {
-                $(this).toggleClass('active');
-                $('.pushmenu-push').toggleClass('pushmenu-push-toright');
-                $menuLeft.toggleClass('pushmenu-open');
-            });
         });
         // CONTACT PERSON COUNT
         waitForMsg_contact();
@@ -222,36 +185,8 @@
             },
         });
     }
-    function addmsg1(type, msg)
-    {
-        if (msg == 0)
-        {
-            $("#message_count").html('');
-            $('#InboxLink').removeClass('msg_notification_available');
-        } else
-        {
-            $('#message_count').html(msg);
-            $('#message_count').css({"background-color": "#FF4500", "padding": "3px"});
-            $('#InboxLink').addClass('msg_notification_available');
-        }
-    }
-    function waitForMsg1()
-    {
-        $.ajax({
-            type: "GET",
-            url: "<?php echo base_url(); ?>notification/select_msg_noti",
-            async: true,
-            cache: false,
-            timeout: 50000,
-            success: function (data) {
-                addmsg1("new", data);
-                setTimeout(
-                        waitForMsg1,
-                        10000
-                        );
-            },
-        });
-    }
+    
+    
     function addmsg_contact(type, msg)
     {
         if (msg == 0)

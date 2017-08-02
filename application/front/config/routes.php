@@ -150,6 +150,8 @@ $route['freelancer-work/education'] = "freelancer/freelancer_post_education";
 $route['freelancer-work/portfolio'] = "freelancer/freelancer_post_portfolio";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
 
+$route['business-profile/business-information-edit'] = "business_profile/business_information_update";
+$route['freelancer-work/search'] = "search/freelancer_post_search";
 
 /* Report Route end */
 
