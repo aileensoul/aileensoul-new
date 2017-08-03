@@ -1,230 +1,168 @@
-$(function () {
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        },
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
+$(window).load(function () {
+    $('#onload-Modal').modal('show').fadeIn("slow");
+});
+$(document).ready(function () {
+    $("body").click(function (event) {
     });
 });
-
-$(function () {
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        },
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-        }
-    });
-});
-
-function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    if (searchkeyword == "" && searchplace == "") {
-        return false;
-    }
-}
-
-// for mobile view ssearch script start
-$(function () {
-    $("#tags1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tag1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        },
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-        }
-    });
-});
-
-$(function () {
-    $("#searchplace1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        },
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-        }
-    });
-});
-
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-// for mobile view ssearch script end
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
-
-// UPLOAD COVER PIC START 
-function myFunction() {
-    document.getElementById("upload-demo").style.visibility = "hidden";
-    document.getElementById("upload-demo-i").style.visibility = "hidden";
-    document.getElementById('message1').style.display = "block";
-}
-function showDiv() {
-    document.getElementById('row1').style.display = "block";
-    document.getElementById('row2').style.display = "none";
-}
-$uploadCrop = $('#upload-demo').croppie({
-    enableExif: true,
-    viewport: {
-        width: 1250,
-        height: 350,
-        type: 'square'
-    },
-    boundary: {
-        width: 1250,
-        height: 350
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $("#jop-popup").fadeOut(200);
+        $("#jop-popup").removeClass("in");
+        $("#jop-popup").attr("aria-hidden", "true");
     }
 });
-$('.upload-result').on('click', function (ev) {
-    $uploadCrop.croppie('result', {
-        type: 'canvas',
-        size: 'viewport'
-    }).then(function (resp) {
-        $.ajax({
-            url: base_url + "business_profile/ajaxpro",
-            type: "POST",
-            data: {"image": resp},
-            success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html)
-                {
-                    window.location.reload();
-                }
-            }
-        });
-    });
-});
-$('.cancel-result').on('click', function (ev) {
-    document.getElementById('row2').style.display = "block";
-    document.getElementById('row1').style.display = "none";
-    document.getElementById('message1').style.display = "none";
-});
-$('#upload').on('change', function () {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $uploadCrop.croppie('bind', {
-            url: e.target.result
-        }).then(function () {
-            console.log('jQuery bind complete');
-        });
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $("#rec-popup").fadeOut(200);
+        $("#rec-popup").removeClass("in");
+        $("#rec-popup").attr("aria-hidden", "true");
     }
-    reader.readAsDataURL(this.files[0]);
 });
-$('#upload').on('change', function () {
-    var fd = new FormData();
-    fd.append("image", $("#upload")[0].files[0]);
-    files = this.files;
-    size = files[0].size;
-    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        picpopup();
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('row2').style.display = "block";
-        $("#upload").val('');
-        return false;
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $("#fre-popup").fadeOut(200);
+        $("#fre-popup").removeClass("in");
+        $("#fre-popup").attr("aria-hidden", "true");
     }
-    // file type code end
-    if (size > 4194304)
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bus-popup').fadeOut(200);
+        $("#bus-popup").removeClass("in");
+        $("#bus-popup").attr("aria-hidden", "true");
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#art-popup').fadeOut(200);
+        $("#art-popup").removeClass("in");
+        $("#art-popup").attr("aria-hidden", "true");
+    }
+});
+//THIS SCRIPT IS USED FOR CHANGE SLIDE WHILE CLICK ON IMAGE BUTTON START
+$(document).ready(function () {
+    var slides = document.querySelectorAll('.main_box #inner .item');
+    var slides1 = document.querySelectorAll('.main_box #temp_btn #temp_btn1 .ld_sl');
+
+    var currentSlide = 0;
+    var currentSlide_width = 0;
+
+    $('#left_img').click(function (event)
     {
-        //show an alert to the user
-        alert("Allowed file size exceeded. (Max. 4 MB)")
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('row2').style.display = "block";
-        //reset file upload control
-        return false;
-    }
-    $.ajax({
-        url: base_url + "business_profile/imagedata",
-        type: "POST",
-        data: fd,
-        processData: false,
-        contentType: false,
-        success: function (response) {
+        event.preventDefault();
+        //set time out is used for disable and enable arrow for some time
+        setTimeout(function () {
+            $('#left_img').addClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 30);
+        setTimeout(function () {
+            $('#left_img').removeClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 2000);
+        setTimeout(function () {
+            $('#right_img').addClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 30);
+
+        setTimeout(function () {
+            $('#right_img').removeClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 2000);
+
+
+        $('#right_img').removeClass('abc_left');
+        $('#right_img').addClass('abc_show');
+
+        /*slides[currentSlide].className = 'item';*/
+        currentSlide = (currentSlide + 1) % slides.length;
+        /*slides[currentSlide].className = 'item active';*/
+        slides1[currentSlide_width].className = 'ld_sl';
+        currentSlide_width = (currentSlide_width + 1) % slides1.length;
+        slides1[currentSlide_width].className = 'ld_sl sld-width-' + (currentSlide + 1);
+
+        if ((currentSlide + 1) == slides.length)
+        {
+            $('#left_img').addClass('abc');
         }
+
+    });
+
+    $('#right_img').click(function (event)
+    {
+        event.preventDefault();
+
+        setTimeout(function () {
+            $('#left_img').addClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 30);
+
+        setTimeout(function () {
+            $('#left_img').removeClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 2000);
+
+        setTimeout(function () {
+            $('#right_img').addClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 30);
+
+        setTimeout(function () {
+            $('#right_img').removeClass('custom-disabled');
+            //....and whatever else you need to do
+        }, 2000);
+
+        /*slides[currentSlide].className = 'item';*/
+        currentSlide = (currentSlide - 1) % slides.length;
+        /*slides[currentSlide].className = 'item active';*/
+        if (currentSlide == 0)
+        {
+            $('#right_img').removeClass('abc_show');
+            $('#right_img').addClass('abc_left');
+        }
+
+        if (currentSlide == 12)
+        {
+            $('#left_img').removeClass('abc');
+        }
+
+        slides1[currentSlide_width].className = 'ld_sl';
+        currentSlide_width = (currentSlide_width - 1) % slides1.length;
+        slides1[currentSlide_width].className = 'ld_sl sld-width-' + (currentSlide + 1);
+
+
+    });
+
+});
+//THIS SCRIPT IS USED FOR CHANGE SLIDE WHILE CLICK ON IMAGE BUTTON END
+
+// scroll top
+$(document).ready(function () {
+    // Add smooth scrolling to all links
+    $(".right-profile ul li a").on('click', function (event) {
+
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function () {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+        } // End if
     });
 });
-// UPLOAD COVER PIC end
+// script for profile pic strat 
 
-/* FOLLOW USER START */
-function followuser_two(clicked_id)
-{
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/follow_two",
-        data: 'follow_to=' + clicked_id,
-        success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
-        }
-    });
-}
-/* FOLLOW USER END */
-
-/* UNFOLLOW USER START */
-function unfollowuser_two(clicked_id)
-{
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/unfollow_two",
-        data: 'follow_to=' + clicked_id,
-        success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
-        }
-    });
-}
-/* UNFOLLOW USER END */
-
-/* SCRIPT FOR PROFILE PIC START */
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -235,21 +173,33 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
 $("#profilepic").change(function () {
+    // pallavi code for not supported file type 15/06/2017
     profile = this.files;
+    //alert(profile);
     if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        //alert('not an image');
         $('#profilepic').val('');
         picpopup();
         return false;
     } else {
         readURL(this);
     }
-});
-/* SCRIPT FOR PROFILE PIC END */
 
+    // end supported code 
+});
+
+function picpopup() {
+    $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
+    $('#bidmodal').modal('show');
+}
 //validation for edit email formate form
+
 $(document).ready(function () {
+
     $("#userimage").validate({
+
         rules: {
             profilepic: {
                 required: true,
@@ -263,57 +213,266 @@ $(document).ready(function () {
     });
 });
 
-function picpopup() {
-    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
-    $('#bidmodal').modal('show');
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
 }
 
+// all popup close close using esc start
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
         $('#bidmodal-2').modal('hide');
     }
 });
-// contact person script start 
-function contact_person(clicked_id) {
+
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal').modal('hide');
+    }
+});
+//all popup close close using esc end
+// cover image start 
+
+function myFunction() {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+    // setTimeout(function () { location.reload(1); }, 9000);
+}
+
+function showDiv() {
+    document.getElementById('row1').style.display = "block";
+    document.getElementById('row2').style.display = "none";
+}
+
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
+
+
+
+$('.upload-result').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $.ajax({
+            url: base_url + "dashboard/ajaxpro",
+            type: "POST",
+            data: {"image": resp},
+            success: function (data) {
+                html = '<img src="' + resp + '" />';
+                if (html) {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+});
+
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+$('#upload').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+$('#upload').on('change', function () {
+
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+
+    files = this.files;
+    size = files[0].size;
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        //alert('not an image');
+        picpopup();
+
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        return false;
+    }
+    // file type code end
+
+    if (size > 10485760)
+    {
+        //show an alert to the user
+        alert("Allowed file size exceeded. (Max. 10 MB)")
+
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        //reset file upload control
+        return false;
+    }
+
     $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/contact_person",
-        data: 'toid=' + clicked_id,
-        success: function (data) {
-            $('#contact_per').html(data);
+
+        url: base_url + "dashboard/image",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+        }
+    });
+});
+
+//aarati code end
+
+// cover image end 
+
+
+
+function tabindexjob() {
+
+
+    $("#job-scroll").addClass("tabindex");
+
+
+    $("#rec-scroll").removeClass("tabindex");
+    $("#free-scroll").removeClass("tabindex");
+    $("#bus-scroll").removeClass("tabindex");
+    $("#art-scroll").removeClass("tabindex");
+
+}
+function tabindexrec() {
+
+
+    $("#rec-scroll").addClass("tabindex");
+
+
+    $("#job-scroll").removeClass("tabindex");
+    $("#free-scroll").removeClass("tabindex");
+    $("#bus-scroll").removeClass("tabindex");
+    $("#art-scroll").removeClass("tabindex");
+
+}
+function tabindexfree() {
+
+
+    $("#free-scroll").addClass("tabindex");
+
+
+    $("#rec-scroll").removeClass("tabindex");
+    $("#job-scroll").removeClass("tabindex");
+    $("#bus-scroll").removeClass("tabindex");
+    $("#art-scroll").removeClass("tabindex");
+
+}
+function tabindexbus() {
+
+
+    $("#bus-scroll").addClass("tabindex");
+
+
+    $("#rec-scroll").removeClass("tabindex");
+    $("#free-scroll").removeClass("tabindex");
+    $("#job-scroll").removeClass("tabindex");
+    $("#art-scroll").removeClass("tabindex");
+
+}
+function tabindexart() {
+    $("#art-scroll").addClass("tabindex");
+
+    $("#rec-scroll").removeClass("tabindex");
+    $("#free-scroll").removeClass("tabindex");
+    $("#bus-scroll").removeClass("tabindex");
+    $("#job-scroll").removeClass("tabindex");
+
+}
+function sendmail(abc) {
+
+    //alert(abc);
+
+    $.ajax({
+
+        url: base_url + "registration/res_mail",
+        type: "POST",
+        data: 'user_email=' + abc,
+        success: function (response) {
+            $('.biderror .mes').html("<div class='pop_content'>Email sent Successfully.");
+            $('#bidmodal').modal('show');
+            window.open(response);
         }
     });
 }
-function contact_person_model(clicked_id, status) {
-    if (status == 'pending') {
-        $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    } else if (status == 'confirm') {
-        $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    }
+
+function closever() {
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + 'dashboard/closever',
+        success: function (response) {
+
+            $('#verifydiv').hide();
+        }
+    })
 }
 
-//For blocks or images of size, you can use $(document).ready
-$(document).ready(function () {
-    $('.blocks').jMosaic({items_type: "li", margin: 0});
-    $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+//on hover click class add and class remove start
+$(".odd").hover(function () {
+    $('.even').addClass("even-custom");
+}, function () {
+    $('.even').removeClass("even-custom");
+});
+//on hover click class add and class remove End
+
+
+//Function to animate slider captions 
+function doAnimations(elems) {
+    //Cache the animationend event in a variable
+    var animEndEv = 'webkitAnimationEnd animationend';
+
+    elems.each(function () {
+        var $this = $(this),
+                $animationType = $this.data('animation');
+        $this.addClass($animationType).one(animEndEv, function () {
+            $this.removeClass($animationType);
+        });
+    });
+}
+
+//Variables on page load 
+var $myCarousel = $('#carousel-example-generic'),
+        $firstAnimatingElems = $myCarousel.find('.item:first').find("[data-animation ^= 'animated']");
+
+//Initialize carousel 
+$myCarousel.carousel();
+
+//Animate captions in first slide on page load 
+doAnimations($firstAnimatingElems);
+
+//Pause carousel  
+$myCarousel.carousel('pause');
+
+//Other slides to be animated on carousel slide event 
+$myCarousel.on('slide.bs.carousel', function (e) {
+    var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
+    doAnimations($animatingElems);
+});
+$('#carousel-example-generic').carousel({
+    interval: 3000,
+    pause: "false"
 });
 
-//If this image without attribute WIDTH or HEIGH, you can use $(window).load
-$(window).load(function () {
-    //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-});
-
-//You can update on $(window).resize
-$(window).resize(function () {
-    //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-    //$('.blocks').jMosaic({items_type: "li", margin: 0});
-});
-
-//For Scroll page at perticular position js Start
-$(document).ready(function () {
-    //  $(document).load().scrollTop(1000);
-    $('html,body').animate({
-        scrollTop: 330}, 500);
-});
