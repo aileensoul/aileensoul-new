@@ -63,7 +63,23 @@
                                             <?php
                                             if ($businessdata[0]['business_user_image'] != '') {
                                                 ?>
+
+                                                 <?php 
+
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                                $a = $businessdata[0]['company_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-div">
+                                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+
                                                 <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+
+                                                <?php }?>
+
                                                 <?php
                                             } else {
                                                 ?>
@@ -142,7 +158,23 @@
                                 <div class="main-text-area col-md-12">
                                     <div class="popup-img"> 
                                         <?php if ($businessdata[0]['business_user_image']) { ?>
+
+                                         <?php 
+
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                                $a = $businessdata[0]['company_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-div">
+                                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+                                                            
                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+
+                                            <?php }?>
+
                                         <?php } else { ?>
                                             <?php
                                             $a = $businessdata[0]['company_name'];

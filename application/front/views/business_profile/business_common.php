@@ -67,7 +67,22 @@
             <div class="profile-pho-bui">
                 <div class="user-pic">
                     <?php if ($businessdata1[0]['business_user_image'] != '') { ?>
+
+                     <?php 
+
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image'])) {
+                                                                $a = $businessdata1[0]['company_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-user">
+                                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image']); ?>" alt="" >
+
+                        <?php }?>
+
                     <?php } else { ?>
                         <?php
                         $a = $businessdata1[0]['company_name'];

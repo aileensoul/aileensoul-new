@@ -23,11 +23,24 @@
                     if ($businessdata[0]['business_user_image']) {
                         ?>
                         <div class="left_iner_img_profile"> 
+                             <?php 
+
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                                $a = $businessdata[0]['company_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-div">
+                                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+
                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="<?php echo $businessdata[0]['company_name']; ?>" >
+                            <?php }?>
                         </div>
                     <?php } else { ?>
                         <div class="left_iner_img_profile">  
-                            <!--<img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $businessdata[0]['company_name']; ?>">-->
+                            
                             <?php
                             $a = $businessdata[0]['company_name'];
                             $acr = substr($a, 0, 1);

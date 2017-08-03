@@ -39,8 +39,25 @@
                                                                                 <?php if ($this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image != '') { ?>
 
 
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slug); ?>">
-                                                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image); ?>" height="50px" width="50px" alt="" >
+                            <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slug); ?>">
+                                
+                                 <?php 
+
+                                 $uimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image;
+
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
+                                                                $a = $companyname;
+                                                                $acr = substr($a, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-userlist">
+                                                                    <?php echo ucfirst(strtolower($acr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+
+                                <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image); ?>" height="50px" width="50px" alt="" >
+
+                                <?php }?>
                                                                                     </a>
                                                                                 <?php } else { ?>
                                                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slug); ?>">
