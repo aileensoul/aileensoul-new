@@ -24,7 +24,7 @@ class Profile extends CI_Controller {
         $this->load->view('profile/profile', $this->data);
     }
 
-    public function edit_profile() { //echo"tank"; die();
+    public function edit_profile() { 
         //echo '<pre>'; echo $id; print_r($_POST); 
 
        // echo $_FILES['profileimg']['name']; die();
