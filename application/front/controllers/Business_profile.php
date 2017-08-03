@@ -7894,6 +7894,12 @@ class Business_profile extends MY_Controller {
                 if ($contact['contact_to_id'] == $userid) {
 
 
+                $contition_array = array('user_id' =>$contact['contact_from_id'] , 'status' => '1');
+                $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if($contactperson_from){
+
+
                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
@@ -7924,8 +7930,14 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
+
+                     }
                 } else {
 
+                  $contition_array = array('user_id' =>$contact['contact_to_id'] , 'status' => '1');
+                  $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if($contactperson_to){
 
                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
 
@@ -7955,6 +7967,8 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
+
+                      }
                 }
                 $contactdata .= '</ul>';
             }
