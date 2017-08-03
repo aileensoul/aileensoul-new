@@ -1,9 +1,12 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Main extends CI_Controller {
+
     public $data;
+
     public function __construct() {
         parent::__construct();
 
@@ -19,15 +22,23 @@ class Main extends CI_Controller {
     }
 
     //job seeker basic info controller start
-
     public function index() {
-        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, true);
-        $this->load->view('main', $this->data);
+        $this->load->view('main');
     }
 
-//job user end
+    //job user end
     public function abc() {
         $this->load->view('show');
+    }
+
+    //job user end
+    public function terms_condition() {
+        $this->load->view('termcondition');
+    }
+
+    //job user end
+    public function privacy_policy() {
+        $this->load->view('privacypolicy');
     }
 
 }

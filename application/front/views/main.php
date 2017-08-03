@@ -98,7 +98,7 @@
                                         <div class="carousel-inner" role="listbox">
                                             <div class="item active">  
                                                 <div class="carousel-caption">
-                                                    <img src="img/job1.png">
+                                                    <img src="<?php echo base_url(); ?>img/job1.png" alt="Job Profile">
                                                     <div class="carousel-text">
                                                         <h3>Job Profile</h3>
                                                         <p>Find best job options and connect with recruiters.</p>
@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="img/rec.png">
+                                                    <img src="<?php echo base_url(); ?>img/rec.png" alt="Recruiter">
                                                     <div class="carousel-text">
                                                         <h3>Recruiter Profile</h3>
                                                         <p>Hire quality employees here.</p>
@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="img/freelancer.png">
+                                                    <img src="<?php echo base_url(); ?>img/freelancer.png" alt="Freelancer">
                                                     <div class="carousel-text">
                                                         <h3>Freelance Profile</h3>
                                                         <p>Hire freelancers and also find freelance work.</p>
@@ -125,7 +125,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="img/business.png">
+                                                    <img src="<?php echo base_url(); ?>img/business.png" alt="Business">
                                                     <div class="carousel-text">
                                                         <h3>Business Profile</h3>
                                                         <p>Grow your business network.</p>
@@ -134,7 +134,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="img/art.png">
+                                                    <img src="<?php echo base_url(); ?>img/art.png" alt="Artistic">
                                                     <div class="carousel-text">
                                                         <h3>Artistic Profile</h3>
                                                         <p> Show your art & talent to the world.</p>
@@ -217,7 +217,7 @@
                                         </div>
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>

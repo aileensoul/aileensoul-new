@@ -60,8 +60,9 @@ $route['404_override'] = 'My404Page';
 
 
 $route['about-us'] = "about_us";
-
 $route['contact-us'] = "contact_us";
+$route['terms-and-condition'] = "main/terms_condition";
+$route['privacy-policy'] = "main/privacy_policy";
 
 
 $route['business-profile'] = "business_profile/index";
