@@ -71,11 +71,33 @@
 
               <?php if ($friend['business_user_image'] != '') { ?>
                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
+
+               <?php 
+               if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image'])) {
+                                        $a = $companyname;
+                                       $acr = substr($a, 0, 1);
+                                       ?>
+
+                                        <div class="post-img-div">
+                    <?php echo ucfirst(strtolower($acr)); ?>
+                    </div>
+                    <?php }else{?>
+
                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']); ?>">
+                        <?php } ?>
+ 
                         </a>
              <?php } else { ?>
               <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                    <img src="<?php echo base_url(NOIMAGE); ?>" />
+                   <?php 
+
+                   $a = $companyname;
+                    $acr = substr($a, 0, 1); ?>
+
+                    <div class="post-img-div">
+                    <?php echo ucfirst(strtolower($acr)); ?>
+                    </div>
+
                     </a>
                 <?php } ?>
                                                             
@@ -154,10 +176,19 @@
                                                         </a>
                                                     <?php } else { ?>
                                                     <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                        <img src="<?php echo base_url(NOIMAGE); ?>" />
+                                                       <?php 
+
+                                                       $a = $friend['company_name'];
+                                                      $acr = substr($a, 0, 1);
+
+                                                       ?>
+
+                                                       <div class="post-img-div">
+                                                       <?php echo ucfirst(strtolower($acr)); ?>
+                                                       </div>
                                                         </a>
                                                     <?php } ?>
-                                                            <!--<img src="http://localhost/aileensoul/uploads/user_profile/thumbs/images_(4).jpg">-->
+                                                            
                                                 </div>
                                                 <div class="profile-content">
                                                     <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
@@ -237,7 +268,16 @@
                         </a>
              <?php } else { ?>
               <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                    <img src="<?php echo base_url(NOIMAGE); ?>" />
+                    <?php 
+
+                                                       $a = $friend['company_name'];
+                                                      $acr = substr($a, 0, 1);
+
+                                                       ?>
+
+                                                       <div class="post-img-contactuser">
+                                                       <?php echo ucfirst(strtolower($acr)); ?>
+                                                       </div>
                     </a>
                 <?php } ?>
                                                             
