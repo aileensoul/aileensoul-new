@@ -129,7 +129,7 @@
                                                 <?php
                                                 for ($i = 1; $i <= 31; $i++) {
                                                     ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <option value="<?php echo $i; ?>" <?php if($i == $usrd){ echo "selected"; } ?>><?php echo $i; ?></option>
                                                     <?php
                                                 }
                                                 ?>
@@ -140,18 +140,18 @@
 //                  for($i = 1; $i <= 12; $i++){
 //                  
                                                 ?>
-                                                <option value="1">Jan</option>
-                                                <option value="2">Feb</option>
-                                                <option value="3">Mar</option>
-                                                <option value="4">Apr</option>
-                                                <option value="5">May</option>
-                                                <option value="6">Jun</option>
-                                                <option value="7">Jul</option>
-                                                <option value="8">Aug</option>
-                                                <option value="9">Sep</option>
-                                                <option value="10">Oct</option>
-                                                <option value="11">Nov</option>
-                                                <option value="12">Dec</option>
+                                                <option value="1" <?php if($usrm == 1){ echo "selected";} ?>>Jan</option>
+                                                <option value="2" <?php if($usrm == 2){ echo "selected";} ?>>Feb</option>
+                                                <option value="3" <?php if($usrm == 3){ echo "selected";} ?>>Mar</option>
+                                                <option value="4" <?php if($usrm == 4){ echo "selected";} ?>>Apr</option>
+                                                <option value="5" <?php if($usrm == 5){ echo "selected";} ?>>May</option>
+                                                <option value="6" <?php if($usrm == 6){ echo "selected";} ?>>Jun</option>
+                                                <option value="7" <?php if($usrm == 7){ echo "selected";} ?>>Jul</option>
+                                                <option value="8" <?php if($usrm == 8){ echo "selected";} ?>>Aug</option>
+                                                <option value="9" <?php if($usrm == 9){ echo "selected";} ?>>Sep</option>
+                                                <option value="10" <?php if($usrm == 10){ echo "selected";} ?>>Oct</option>
+                                                <option value="11" <?php if($usrm == 11){ echo "selected";} ?>>Nov</option>
+                                                <option value="12" <?php if($usrm == 12){ echo "selected";} ?>>Dec</option>
                                                 //<?php
 //                  }
 //                  
@@ -162,7 +162,7 @@
                                                 <?php
                                                 for ($i = date('Y'); $i >= 1900; $i--) {
                                                     ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <option value="<?php echo $i; ?>" <?php if($usry == $i){ echo "selected";} ?>><?php echo $i; ?></option>
                                                     <?php
                                                 }
                                                 ?>

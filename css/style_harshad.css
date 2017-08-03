@@ -1,3 +1,21 @@
+.header2 #InboxFooter a {
+    color: #000;
+    font-weight: 500;
+    font-size: 13px;
+}
+.profile-job-details ul li p {
+    margin-bottom: 0;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500 !important;
+    font-family: arial;
+
+}
+.cont_req button{font-size: 12px; width: 96px;}
+.action-button #message_count{line-height: 10px;}
+.cancel_req_busi{margin:5px 4px;}
+.user_btn button{margin-top: 10px;}
+.select2-container--open .select2-dropdown--below{z-index: 900;}
 .header2 ul li a#addcontactLink{padding: 6px 11px;}
 .header2 ul li a.bus-h{padding: 8px 12px;}
 .header2 ul li{float: left;}
@@ -226,7 +244,7 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 /*.job-saved-box{width:100%; float:left; border:1px solid #d9d9d9; margin-bottom:50px; border-radius:4px;}*/
 .contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px; /*border-top:none;*/}
 #row2{border:1px solid #d9d9d9; border-top:0;}
-.chat_nobcx{margin-top:15px;}
+.chat_nobcx{margin-top:15px; margin-bottom:15px;}
 
 #search .new-search-input{height:215px;}
 #search .new-search-input .btn.btn-primary{width:auto;}
@@ -270,6 +288,8 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;}
 .profile-job-post-detail .profile-job-post-title .button{}
 .profile-head-text{font-family: 'robotoregular';}
+.post-design-desc{font-size:13px;}
+.post-design-desc a{font-size:15px;}
 
 
 /*** 24-7-17  ***/
@@ -386,7 +406,7 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
   height: 38px;
   
 }
-.add-contact div i{color:#fff; padding:7px 6px;}
+.add-contact div i{color:#fff; padding:7px 6px; }
 #contact_per .addtocont{
     display: block;
     left: 0;
@@ -395,6 +415,44 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
     top: 45px;
     text-align:center;
 }
+.custom-user{width:25px; height:25px;  
+	border: 2px solid #fff;
+	border-radius: 100%;
+	float: left;
+	font-size: 12px;
+	margin-right: 5px;
+	text-align: center;
+	background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+	background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+}
+
+.msg_left_data{/*width:100%;*/ float:left;}
+.recive-data .my-message{float:left;}
+.recive-data .message-data{width:100%; float:left;}
+#received li{width:100%; float:left;}
+.recive-data .msg_left_data::after{}
+.recive-data .messagedelete{padding-left:10px; position:absolute; right:-25px; bottom:0;}
+.recive-data .messagedelete a{font-size:18px;}
+.msg_right .messagedelete{position:absolute; left:-25px; bottom:0;}
+.chat .chat-history .other-message{max-width:100%;}
+
+/***  header 2 new changes  ***/
+.header2{width:1250px; margin:0 auto;}
+.header2 .container{width:100%; padding-right:4px;}
+.header2 ul{padding-right:0;}
+.header2 .job-search-box1 fieldset{padding-top:3px; padding-bottom:3px;}
+.chat .chat-header .chat_drop img{height:auto;}
+.backdiv-mob{padding:15px 0 0; width:100%; float:left; display:none;}
+.backdiv-mob .pull-right{float:right; display:none;}
+.backdiv-mob .pull-left{float:left;}
+.backdiv-mob a{opacity:0.8;}
+.backdiv-mob a:hover{opacity:1;}
+
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}
   50%{ opacity: .4;}
@@ -426,9 +484,10 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 	.common-form1 h3{margin:20px 0;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
-	header .header{padding-top:5px;}
+	header .header{/*padding-top:5px;*/}
 	.header ul li a{padding-top:11px !important;}
 	#notificationLink span{top:7px !important;}
+	.backdiv-mob{display:block;}
 	
 }
 @media screen and (max-width: 540px) {}
@@ -438,6 +497,6 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 	#notificationLink span{margin-left:6px;}
 }
 @media screen and (max-width: 360px) {
-  .designation_rec_1{width: 75%;}
+	.designation_rec_1{width: 75%;}
 	.bg-search .header2{margin-top:-2px;}
 }

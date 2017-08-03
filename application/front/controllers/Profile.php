@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH'))    exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
 
@@ -6,108 +9,67 @@ class Profile extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-         $this->load->library('form_validation');
-//        if (!$this->session->userdata('user_id')) {
-//            redirect('login', 'refresh');
-//        }
-         $this->load->model('email_model');
-        
+        $this->load->library('form_validation');
+        $this->load->model('email_model');
+
         include ('include.php');
     }
 
-    public function index() { 
+    public function index() {
 
-      $userid =  $this->session->userdata('aileenuser');
-      $this->data['userdata'] =  $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
+        $userid = $this->session->userdata('aileenuser');
+        $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-      
+        $this->data['usry'] = date('Y', strtotime($this->data['userdata'][0][user_dob]));
+        $this->data['usrm'] = date('m', strtotime($this->data['userdata'][0][user_dob]));
+        $this->data['usrd'] = date('d', strtotime($this->data['userdata'][0][user_dob]));
+
         $this->load->view('profile/profile', $this->data);
     }
 
-    public function edit_profile() { 
-        //echo '<pre>'; echo $id; print_r($_POST); 
+    public function edit_profile() {
+        $id = $this->session->userdata('aileenuser');
 
-       // echo $_FILES['profileimg']['name']; die();
-    $id = $this->session->userdata('aileenuser');
-      
-         
-         $contition_array = array( 'user_id' => $id);
-      $this->data['userdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    
-      
+        $contition_array = array('user_id' => $id);
+        $this->data['userdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-      $this->form_validation->set_rules('first_name', 'first Name', 'required');
+        $this->form_validation->set_rules('first_name', 'first Name', 'required');
         $this->form_validation->set_rules('last_name', 'last Name', 'required');
         $this->form_validation->set_rules('email', ' EmailId', 'required|valid_email');
-         $this->form_validation->set_rules('datepicker', ' datepicker', 'required');
-     
-      $this->form_validation->set_rules('gender', ' gender', 'required');
-     
 
+        $this->form_validation->set_rules('gender', ' gender', 'required');
 
-       // if (empty($_FILES['profileimg']['name']))
-       //       { //echo"hello"; die();
-       //           //echo "falgunifgf"; die();
-       //           $this->form_validation->set_rules('profileimg', 'Upload profilepic', 'required');
-       //      //$picture = '';
-       //      }
-            // else
-            // { //echo "hii";die();
-            //     $config['upload_path'] = 'uploads/user_image/';
-            //     $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
-            //    // $config['file_name'] = $_FILES['picture']['name'];
-            //     $config['file_name'] = $_FILES['profilepic']['name'];
-            //     //$config['max_size'] = '1000000000000000';
-            //     //Load upload library and initialize configuration
-            //     $this->load->library('upload',$config);
-            //     $this->upload->initialize($config);
-                
-            //     if($this->upload->do_upload('profileimg'))
-            //     {
-            //         $uploadData = $this->upload->data();
-            //         //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
-            //         $picture = $uploadData['file_name'];
-            //     }
-            //     else
-            //     {
-            //         $picture = '';
-            //     }
+        $post_data = $this->input->post();
+        $date = $this->input->post('selday');
+        $month = $this->input->post('selmonth');
+        $year = $this->input->post('selyear');
 
-            $post_data = $this->input->post();
-           // echo "<pre>"; print_r($post_data);
-            $dob = str_replace('/', '-', $post_data['datepicker']);
-           // echo $dob;die();
-            
-            $data = array(
-                'first_name' => $this->input->post('first_name'),
-                'last_name' => $this->input->post('last_name'),
-                'user_dob' => date('Y-m-d',strtotime($dob)),
-                'user_email' => $this->input->post('email'),
-                'user_gender' => $this->input->post('gender')
-                //'user_image' => $picture
-             );
+        $dob = $year . '-' . $month . '-' . $date;
 
-            
-    $updatdata =   $this->common->update_data($data,'user','user_id',$id);
+        $data = array(
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'user_dob' => date('Y-m-d', strtotime($dob)),
+            'user_email' => $this->input->post('email'),
+            'user_gender' => $this->input->post('gender')
+        );
 
-   if($updatdata ){ //echo"falguni"; die();
-           
-              $this->session->set_flashdata('success', 'Profile information updated successfully');
-             redirect('dashboard', 'refresh');
-       }else{
-                
-                $this->session->flashdata('error','Sorry!! Your data not updated');
-               redirect('profile', 'refresh');
-       }
-       
-     }
+        $updatdata = $this->common->update_data($data, 'user', 'user_id', $id);
+
+        if ($updatdata) { //echo"falguni"; die();
+            $this->session->set_flashdata('success', 'Profile information updated successfully');
+            redirect('dashboard', 'refresh');
+        } else {
+            $this->session->flashdata('error', 'Sorry!! Your data not updated');
+            redirect('profile', 'refresh');
+        }
+    }
 
 //User email already exist checking controller start
 
     public function check_email() {
 
         $email = $this->input->post('email');
-
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
@@ -137,52 +99,47 @@ class Profile extends CI_Controller {
     }
 
 //User email already exist checking controller End
-    
 
-     public function forgot_password() { 
-      $forgot_email = $this->input->post('forgot_email'); 
 
+    public function forgot_password() {
+        $forgot_email = $this->input->post('forgot_email');
 
         if ($forgot_email != '') {
 
             $forgot_email_check = $this->common->select_data_by_id('user', 'user_email', $forgot_email, '*', '');
-
-          //echo '<pre>'; print_r($forgot_email_check); die();
             if (count($forgot_email_check) > 0) {
-                
-           $rand_password = rand(100000, 999999);
-           
-         $email= $forgot_email_check[0]['user_email'];
-         $username= $forgot_email_check[0]['user_name'];
-         $firstname= $forgot_email_check[0]['first_name'];
-         $lastname= $forgot_email_check[0]['last_name'];
-            
-            $toemail= $forgot_email; 
-            
-           $msg = "Hey !" . $username ."<br/>"; 
-           $msg .=  " " . $firstname . " " . $lastname . ",";
-           $msg .= "this is your new password..";
-           $msg .= "<br>"; 
-           $msg .= " " . $rand_password . " "; 
-           
-          // echo $msg; die();
-            $subject = "Forgot password";
+                $rand_password = rand(100000, 999999);
+                $email = $forgot_email_check[0]['user_email'];
+                $username = $forgot_email_check[0]['user_name'];
+                $firstname = $forgot_email_check[0]['first_name'];
+                $lastname = $forgot_email_check[0]['last_name'];
+
+                $toemail = $forgot_email;
+
+                $msg = "Hey !" . $username . "<br/>";
+                $msg .= " " . $firstname . " " . $lastname . ",";
+                $msg .= "this is your new password..";
+                $msg .= "<br>";
+                $msg .= " " . $rand_password . " ";
+
+                // echo $msg; die();
+                $subject = "Forgot password";
 
 
-   $mail = $this->email_model->do_email($msg, $subject,$toemail,'');
+                $mail = $this->email_model->do_email($msg, $subject, $toemail, '');
 //die();
-   $data = array(
-                'user_password' => md5($rand_password)
-                 );
+                $data = array(
+                    'user_password' => md5($rand_password)
+                );
 
-     
-    $updatdata =   $this->common->update_data($data,'user','user_id',$forgot_email_check[0]['user_id']);
-             
-   
+
+                $updatdata = $this->common->update_data($data, 'user', 'user_id', $forgot_email_check[0]['user_id']);
+
+
                 $this->session->set_flashdata('success', '<div class="alert alert-success">Password successfully send in your email id.</div>');
                 redirect('login', 'refresh');
             } else {
-             //  echo "2222"; die();
+                //  echo "2222"; die();
                 $this->session->set_flashdata('error', '<div class="alert alert-danger">Please enter register email id.</div>');
                 redirect('login', 'refresh');
             }
@@ -192,12 +149,7 @@ class Profile extends CI_Controller {
         }
     }
 
-
-
-     public function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '') {
-//echo $to_email; die(); 
-     //echo "hii"; die();
-        //Loading E-mail Class
+    public function sendEmail($app_name = '', $app_email = '', $to_email = '', $subject = '', $mail_body = '') {
         $this->load->library('email');
 
         $emailsetting = $this->common->select_data_by_condition('email_settings', array(), '*');
@@ -245,22 +197,14 @@ class Profile extends CI_Controller {
         $this->email->message(html_entity_decode($mail_body));
 
         if ($this->email->send()) {
-            return true; 
+            return true;
         } else {
-            return FALSE; 
+            return FALSE;
         }
     }
 
-
-     public function login() {
-      
-
+    public function login() {
         $this->load->view('profile/rec_forgott_password', $this->data);
     }
-
-
-
-
-
 
 }

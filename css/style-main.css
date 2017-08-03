@@ -1531,7 +1531,7 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
 	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
 	body{/*padding-bottom:90px;*/}
 	.login form{padding:16px 15px 15px;}
-	footer .col-md-6{width:100%; float:left;}
+	footer .col-md-6{width:100%; float:left; font-size: 12px;}
 	.mid-trns{display:inherit; height:auto;}
 	.titlea h1{margin-bottom:0;}
 	.cover .middle-section .container{width:100%;}
