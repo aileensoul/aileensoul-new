@@ -14,12 +14,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" media="all">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
     </head>
     <body class="cover ">
         <?php echo $head; ?>
         <?php echo $header; ?>
-
         <div class="middle-section">
             <!--verify link start-->
             <?php
@@ -34,7 +32,7 @@
                 <div class="profile-text1 animated fadeInDownBig" id="verifydiv">
                     <div class="alert alert-warning  vs-o">
                         <div class="email-verify">
-                            <span class="email-img"><img src="images/email.png"></span>
+                            <span class="email-img"><img src="<?php echo base_url(); ?>images/email.png"></span>
                             <span class="main-txt">
                                 <span class="as-p">
                                     We have send you an activation email address on your email , Click the link in the mail to verify your email address.   
@@ -62,7 +60,7 @@
 
                         <div class="alert alert-warning  vs-o">
                             <div class="email-verify">
-                                <span class="email-img"><img src="images/email.png"></span>
+                                <span class="email-img"><img src="<?php echo base_url(); ?>images/email.png"></span>
                                 <span class="main-txt">
                                     <span class="as-p">
                                         We have send you an activation email address on your email , Click the link in the mail to verify your email address.   
@@ -149,13 +147,13 @@
                                         <div class="profile-photo">
                                             <img src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" class="main-pic">
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="img/cam.png">Update Profile Picture</a>
+                                                <img src="<?php echo base_url(); ?>img/cam.png">Update Profile Picture</a>
                                         </div>
                                     <?php } else { ?>
                                         <div class="profile-photo no-image-upload">
                                             <img src="<?php echo base_url(NOIMAGE); ?>" alt="" class="main-pic"> 
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
-                                                <img src="img/u1.png">Update Profile Picture</a>
+                                                <img src="<?php echo base_url(); ?>img/u1.png">Update Profile Picture</a>
                                         </div>
                                     <?php } ?>
                                     <div class="profile-detail">
@@ -190,7 +188,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('job'); ?>"><img src="img/i1.png"></a>
+                                                <a href="<?php echo base_url('job'); ?>"><img src="<?php echo base_url(); ?>img/i1.png"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -223,7 +221,7 @@
                                     <div class="row">
                                         <div class="col-md-4 pull-right col-sm-4 col-xs-12">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('recruiter'); ?>"><img src="img/i2.jpg"></a>
+                                                <a href="<?php echo base_url('recruiter'); ?>"><img src="<?php echo base_url(); ?>img/i2.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -260,7 +258,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="img/i3.jpg"></a>
+                                                <a href="<?php echo base_url('freelancer'); ?>"><img src="<?php echo base_url(); ?>img/i3.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -294,7 +292,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 pull-right col-xs-12">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('business_profile'); ?>"><img src="img/i4.jpg"></a>
+                                                <a href="<?php echo base_url('business_profile'); ?>"><img src="<?php echo base_url(); ?>img/i4.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
@@ -328,7 +326,7 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('artistic'); ?>"><img src="img/i5.jpg"></a>
+                                                <a href="<?php echo base_url('artistic'); ?>"><img src="<?php echo base_url(); ?>img/i5.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -375,7 +373,7 @@
                                                                 <p> welcome to</p>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_logo.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_logo.png">
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -383,7 +381,7 @@
                                                     <div class="item slide2">
                                                         <div class="center_sl main_cl_sl slider-2 slide-text">
                                                             <div data-animation="animated fadeInDownBig" class="imh_logo2">
-                                                                <img src="slicing/img_logo.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_logo.png">
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
                                                                 <img src="slicing/img_screen_2.png">
@@ -398,7 +396,7 @@
                                                                 <p>You can easily access any profile from main page.</p>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_3.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_3.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -409,7 +407,7 @@
                                                                 <span class="mian_4_hed"> You can easily navigate to one profile to another profile</span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_4.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_4.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -421,7 +419,7 @@
                                                                 <span class="mian_4_hed"> You can easily search location vise jobs, employees, freelance projects, business, artists etc.</span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_5.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_5.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -433,7 +431,7 @@
                                                                 <span class="mian_4_hed"> Recruiters can post job as per their requirement and find desired employees </span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_6.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_6.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -445,7 +443,7 @@
                                                                 <span class="mian_4_hed"> Hire Freelancers and Also Find Freelance Work</span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_7.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_7.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -457,7 +455,7 @@
                                                                 <span class="mian_4_hed"> Post your product in business profile with photo/audio/video/pdf</span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_8.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_8.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -474,7 +472,7 @@
                                                                 </div>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_9.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_9.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -486,7 +484,7 @@
                                                                 <span class="mian_4_hed"> Post your artistic talent and crearivity with photo/audio/video/pdf </span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_10.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_10.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -499,7 +497,7 @@
                                                                 </span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_11.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_11.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -513,7 +511,7 @@
                                                                     network can also message each other. </span>
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="imh_logo">
-                                                                <img src="slicing/img_screen_12.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/img_screen_12.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -526,9 +524,9 @@
                                                                 </span>
                                                             </div>
                                                             <div class="imh_logo">
-                                                                <img class="img1" data-animation="animated fadeInUpBig" src="slicing/sld13-1.png">
-                                                                <img class="img2" data-animation="animated fadeInRightBig" src="slicing/sld13-2.png">
-                                                                <img class="img3" data-animation="animated fadeInLeftBig" src="slicing/sld13-3.png">
+                                                                <img class="img1" data-animation="animated fadeInUpBig" src="<?php echo base_url(); ?>slicing/sld13-1.png">
+                                                                <img class="img2" data-animation="animated fadeInRightBig" src="<?php echo base_url(); ?>slicing/sld13-2.png">
+                                                                <img class="img3" data-animation="animated fadeInLeftBig" src="<?php echo base_url(); ?>slicing/sld13-3.png">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -537,7 +535,7 @@
                                                     <div class="item slide14">
                                                         <div class="center_sl main_cl_sl slider-14 slide-text">
                                                             <div data-animation="animated fadeInDownBig" class="imh_logo">
-                                                                <img src="slicing/latsgo.png">
+                                                                <img src="<?php echo base_url(); ?>slicing/latsgo.png">
                                                             </div>
                                                             <div data-animation="animated fadeInUpBig" class="text_sl_head main_6_sl"> 
                                                                 <span class="mian_4_hed"> demo@gmail.com</span>
@@ -566,8 +564,8 @@
                                             <div class="ld_sl"></div>
                                         </div>
                                         <div class="lfar_sl">
-                                            <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="slicing/right-arrow.png" ></a>
-                                            <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="slicing/img_arrow.png" > </a>
+                                            <a href="#carousel-example-generic" role="button" data-slide="prev"  class="next-btn pull-left abc_left" id="right_img"><img src="<?php echo base_url(); ?>slicing/right-arrow.png" ></a>
+                                            <a href="#carousel-example-generic" role="button" data-slide="next"  class="next-btn pull-right" id="left_img"><img src="<?php echo base_url(); ?>slicing/img_arrow.png" > </a>
                                         </div>
                                     </div>
                                 </div>	
@@ -586,14 +584,14 @@
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Job Profile</h3>
-                                            <img src="img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="img/p2.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get job recommendation as per your skills</span></span></li>
-                                                <li><img src="img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - Save - Apply for the job</span></span></li>
-                                                <li><img src="img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with the recruiter and view recruiter's profile.</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p2.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get job recommendation as per your skills</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - Save - Apply for the job</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with the recruiter and view recruiter's profile.</span></span></li>
                                             </ul>
 
                                         </div>
@@ -620,14 +618,14 @@
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Recruiter Profile</h3>
-                                            <img src="img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="img/p5.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post job and see recommended candidates</span></span></li>
-                                                <li><img src="img/p6.png"><span class="pro-text"><span class="count">3.</span><span class="text">Invite from applied candidates for an interview</span></span></li>
-                                                <li><img src="img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with job seekers and view their profiles.</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p5.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post job and see recommended candidates</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p6.png"><span class="pro-text"><span class="count">3.</span><span class="text">Invite from applied candidates for an interview</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">4.</span><span class="text">Connect with job seekers and view their profiles.</span></span></li>
                                             </ul>
 
                                         </div>
@@ -658,7 +656,7 @@
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Freelance Profile</h3>
-                                            <img src="img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <div class="card">
@@ -672,18 +670,18 @@
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane active" id="home">
                                                         <ul>
-                                                            <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                            <li><img src="img/p7.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get freelance work as per your skills</span></span></li>
-                                                            <li><img src="img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - save - apply for freelance work </span></span></li>
-                                                            <li><img src="img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with the employer.</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p7.png"><span class="pro-text"><span class="count">2.</span><span class="text">Get freelance work as per your skills</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Shortlist - save - apply for freelance work </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with the employer.</span></span></li>
                                                         </ul>
                                                     </div>
                                                     <div role="tabpanel" class="tab-pane" id="profile">
                                                         <ul>
-                                                            <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                            <li><img src="img/p10.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post a project and see recommended freelancers. </span></span></li>
-                                                            <li><img src="img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Select from applied freelancers for your project </span></span></li>
-                                                            <li><img src="img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with freelancer.</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p10.png"><span class="pro-text"><span class="count">2.</span><span class="text">Post a project and see recommended freelancers. </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p3.png"><span class="pro-text"><span class="count">3.</span><span class="text">Select from applied freelancers for your project </span></span></li>
+                                                            <li><img src="<?php echo base_url(); ?>img/p8.png"><span class="pro-text"><span class="count">4.</span><span class="text">Chat with freelancer.</span></span></li>
                                                         </ul>
                                                     </div>
 
@@ -720,12 +718,12 @@
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Business Profile</h3>
-                                            <img src="img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="img/p4.png"><span class="pro-text"><span class="count">2.</span><span class="text">Build business network.</span></span>
+                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p4.png"><span class="pro-text"><span class="count">2.</span><span class="text">Build business network.</span></span>
                                                 </li>
                                             </ul>
                                             <div class="sub-text">
@@ -761,12 +759,12 @@
                                     <div class=""> 
                                         <div class="col-md-6 col-sm-6 pro_img">
                                             <h3>Artistic Profile</h3>
-                                            <img src="img/how-it.png">
+                                            <img src="<?php echo base_url(); ?>img/how-it.png">
                                         </div>
                                         <div class="col-md-6 col-sm-6 por_content">
                                             <ul>
-                                                <li><img src="img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
-                                                <li><img src="img/p9.png"><span class="pro-text"><span class="count">2.</span><span class="text">You can upload photos/videos/audios and pdf of your art/talent.</span></span>
+                                                <li><img src="<?php echo base_url(); ?>img/p1.png"><span class="pro-text"><span class="count">1.</span><span class="text">Register</span></span></li>
+                                                <li><img src="<?php echo base_url(); ?>img/p9.png"><span class="pro-text"><span class="count">2.</span><span class="text">You can upload photos/videos/audios and pdf of your art/talent.</span></span>
                                                 </li>
                                             </ul>
                                             <div class="sub-text">
