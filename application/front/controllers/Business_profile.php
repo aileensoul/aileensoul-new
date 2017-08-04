@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -3061,9 +3062,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function following($id = "") {
-
         $this->data['slug_id'] = $id;
-
         $this->load->view('business_profile/business_following', $this->data);
     }
 
@@ -3086,7 +3085,6 @@ class Business_profile extends MY_Controller {
             $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-
             $contition_array = array('business_slug' => $id, 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3102,7 +3100,7 @@ class Business_profile extends MY_Controller {
 
         if (count($userlist) > 0) {
             foreach ($userlist as $user) {
-                $return_html = '<div class = "job-contact-frnd" id = "removefollow"' . $user['follow_to'] . '">
+                $return_html = '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
 <div class = "profile-job-post-detail clearfix">
 <div class = "profile-job-post-title-inside clearfix">
 <div class = "profile-job-post-location-name">
@@ -3119,224 +3117,219 @@ class Business_profile extends MY_Controller {
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
                         $a = $companyname;
                         $acr = substr($a, 0, 1);
-                    $return_html .= '<div class="post-img-userlist">';
-                      $return_html .=  ucfirst(strtolower($acr)) ;
-                      $return_html .='</div>';
-                     } else { 
-                        $return_html .='<img src="'. base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image) .'" height="50px" width="50px" alt="" >';
-                    } 
+                        $return_html .= '<div class="post-img-userlist">';
+                        $return_html .= ucfirst(strtolower($acr));
+                        $return_html .= '</div>';
+                    } else {
+                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image) . '" height="50px" width="50px" alt="" >';
+                    }
                     $return_html .= '</a>';
-                    } else { 
-                    $return_html .= '<a href="'.base_url('business-profile/dashboard/' . $slug).'">';
+                } else {
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '">';
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
                     $return_html .= '<div class="post-img-userlist">';
                     $return_html .= ucfirst(strtolower($acr));
                     $return_html .= '</div>';
-                    }  
+                }
                 $return_html .= '</div>
                 </li>
                 <li class="folle_text">
                     <div class="">
-                        <div class="follow-li-text " style="padding: 0;">
-                            <a title="" href="'. base_url('business-profile/dashboard/' . $slug) .'">'$this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name; '</a></div>
+                        <div class="follow-li-text" style="padding: 0;">
+                            <a title="" href="' . base_url('business-profile/dashboard/' . $slug) . '">' . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name . '</a></div>
                         <div>';
+
                 $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->industriyal;
                 $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
                 $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->other_industrial;
-                ?>
-                            <a><?php
+
+                $return_html .= '<a>';
                 if ($category) {
-                    echo $category;
+                    $return_html .= $category;
                 } else {
-                    echo $othercategory;
+                    $return_html .= $othercategory;
                 }
-                ?></a>
+
+                $return_html .= '</a>
                         </div>
-                </li>
-                <?php
+                </li>';
                 $userid = $this->session->userdata('aileenuser');
                 if ($businessdata1[0]['user_id'] == $userid) {
-                    ?>
-                    <li class="fr <?php echo "fruser" . $user['follow_to']; ?>">
-                                <?php
-                                $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_to']);
-                                $status = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                                if ($status[0]['follow_status'] == 1) {
-                                    ?>
-                            <div class="user_btn" id= "unfollowdiv">
-                                <button class="bg_following" id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_list(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
-                            </div>
-                                    <?php } ?>
-                    </li>
-                <?php } else { ?>
-                    <li class="fr">
-                    <?php
+                    $return_html .= '<li class="fr fruser' . $user['follow_to'] . '">';
+
+                    $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_to']);
+                    $status = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if ($status[0]['follow_status'] == 1) {
+                        $return_html .= '<div class="user_btn" id= "unfollowdiv">
+                                <button class="bg_following" id="unfollow"' . $user['follow_to'] . '" onClick="unfollowuser_list(' . $user['follow_to'] . ')"><span>Following</span></button>
+                            </div>';
+                    }
+                    $return_html .= '</li>';
+                } else {
+                    $return_html .= '<li class="fr">';
+
                     $contition_array = array('user_id' => $userid, 'status' => '1');
                     $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_to']);
-                    $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $busdatauser[0]['business_profile_id']) {
-                        ?>
-                            <div class="user_btn follow_btn_<?php echo $user['follow_to']; ?>" id= "followdiv">
-                                <button id="<?php echo "follow" . $user['follow_to']; ?>" onClick="followuser_two(<?php echo $user['follow_to']; ?>)">Follow</button>
-                            </div> 
-                    <?php } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) { ?>
-                    <?php } else { ?>
-                            <div class="user_btn_f follow_btn_<?php echo $user['follow_to']; ?>" id= "unfollowdiv">
-                                <button id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_two(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
-                            </div>   
-                    <?php } ?>
-                    </li>
-                    <?php } ?> 
-                </ul>
+                        $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
+                                <button id="<?php echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')">Follow</button>
+                            </div>';
+                    } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
+                        
+                    } else {
+                        $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
+                                <button id="unfollow"' . $user['follow_to'] . '" onClick="unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
+                            </div>';
+                    }
+                    $return_html .= '</li>';
+                }
+                $return_html .= '</ul>
                 </div>
                 </div>
                 </div>
                 </div>
-                </div>
-                <?php
+                </div>';
             }
         } else {
-            ?>
-            <div class="art-img-nn">
+
+            $return_html .= '<div class="art-img-nn">
                 <div class="art_no_post_img">
-
-                    <img src="<?php echo base_url('img/bui-no.png') ?>">
-
+                    <img src="' . base_url('img/bui-no.png') . '">
                 </div>
                 <div class="art_no_post_text">
                     No Following Available.
                 </div>
-            </div>
-        <?php } ?>
-<div class="col-md-1">
-</div>
+            </div>';
+        }
+        $return_html .= '<div class="col-md-1">
+</div>';
 
-
-
-
-}
+        echo $return_html;
+    }
 
 // end of user list
 //deactivate user start
-public function deactivate() {
+    public function deactivate() {
 
-$id = $_POST['id'];
+        $id = $_POST['id'];
 
-$data = array(
-'status' => 0
-);
+        $data = array(
+            'status' => 0
+        );
 
-$update = $this->common->update_data($data, 'business_profile', 'user_id', $id);
-}
+        $update = $this->common->update_data($data, 'business_profile', 'user_id', $id);
+    }
 
 // deactivate user end
 
-public function image_upload_ajax() {
+    public function image_upload_ajax() {
 
-session_start();
-$session_uid = $this->session->userdata('aileenuser');
-include_once 'getExtension.php';
+        session_start();
+        $session_uid = $this->session->userdata('aileenuser');
+        include_once 'getExtension.php';
 
-$valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
-if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST" && isset($session_uid)) {
-$name = $_FILES['photoimg']['name'];
-$size = $_FILES['photoimg']['size'];
+        $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
+        if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST" && isset($session_uid)) {
+            $name = $_FILES['photoimg']['name'];
+            $size = $_FILES['photoimg']['size'];
 
-if ($name) {
-$ext = $this->common->getExtension($name);
-if (in_array($ext, $valid_formats)) {
-if ($size < (1024 * 1024)) {
-$actual_image_name = time() . $session_uid . "." . $ext;
-$tmp = $_FILES['photoimg']['tmp_name'];
-$bgSave = '<div id="uX' . $session_uid . '" class="bgSave wallbutton blackButton">Save Cover</div>';
-$config['upload_path'] = 'uploads/user_image/';
-$config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
+            if ($name) {
+                $ext = $this->common->getExtension($name);
+                if (in_array($ext, $valid_formats)) {
+                    if ($size < (1024 * 1024)) {
+                        $actual_image_name = time() . $session_uid . "." . $ext;
+                        $tmp = $_FILES['photoimg']['tmp_name'];
+                        $bgSave = '<div id="uX' . $session_uid . '" class="bgSave wallbutton blackButton">Save Cover</div>';
+                        $config['upload_path'] = 'uploads/user_image/';
+                        $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
 
-$config['file_name'] = $_FILES['photoimg']['name'];
+                        $config['file_name'] = $_FILES['photoimg']['name'];
 
 //Load upload library and initialize configuration
-$this->load->library('upload', $config);
-$this->upload->initialize($config);
+                        $this->load->library('upload', $config);
+                        $this->upload->initialize($config);
 
-if ($this->upload->do_upload('photoimg')) {
-$uploadData = $this->upload->data();
+                        if ($this->upload->do_upload('photoimg')) {
+                            $uploadData = $this->upload->data();
 
-$picture = $uploadData['file_name'];
-} else {
-$picture = '';
-}
+                            $picture = $uploadData['file_name'];
+                        } else {
+                            $picture = '';
+                        }
 
 
-$data = array(
-'profile_background' => $picture
-);
+                        $data = array(
+                            'profile_background' => $picture
+                        );
 
-$update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
-if ($update) {
-$path = base_url('uploads/user_image/');
-echo $bgSave . '<img src="' . $path . $picture . '"  id="timelineBGload" class="headerimage ui-corner-all" style="top:0px"/>';
-} else {
-echo "Fail upload folder with read access.";
-}
-} else
-echo "Image file size max 1 MB";
-} else
-echo "Invalid file format.";
-} else
-echo "Please select image..!";
+                        $update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
+                        if ($update) {
+                            $path = base_url('uploads/user_image/');
+                            echo $bgSave . '<img src="' . $path . $picture . '"  id="timelineBGload" class="headerimage ui-corner-all" style="top:0px"/>';
+                        } else {
+                            echo "Fail upload folder with read access.";
+                        }
+                    } else
+                        echo "Image file size max 1 MB";
+                } else
+                    echo "Invalid file format.";
+            } else
+                echo "Please select image..!";
 
-exit;
-}
-}
+            exit;
+        }
+    }
 
-public function image_saveBG_ajax() {
+    public function image_saveBG_ajax() {
 
-session_start();
-$session_uid = $this->session->userdata('aileenuser');
+        session_start();
+        $session_uid = $this->session->userdata('aileenuser');
 
-if (isset($_POST['position']) && isset($session_uid)) {
+        if (isset($_POST['position']) && isset($session_uid)) {
 
-$position = $_POST['position'];
+            $position = $_POST['position'];
 
-$data = array(
-'profile_background_position' => $position
-);
+            $data = array(
+                'profile_background_position' => $position
+            );
 
-$update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
-if ($update) {
+            $update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
+            if ($update) {
 
-echo $position;
-}
-}
-}
+                echo $position;
+            }
+        }
+    }
 
-function slug_script() {
+    function slug_script() {
 
-$this->db->select('business_profile_id,company_name');
-$res = $this->db->get('business_profile')->result();
-foreach ($res as $k => $v) {
-$data = array('business_slug' => $this->setcategory_slug($v->company_name, 'business_slug', 'business_profile'));
-$this->db->where('business_profile_id', $v->business_profile_id);
-$this->db->update('business_profile', $data);
-}
-echo "yes";
-}
+        $this->db->select('business_profile_id,company_name');
+        $res = $this->db->get('business_profile')->result();
+        foreach ($res as $k => $v) {
+            $data = array('business_slug' => $this->setcategory_slug($v->company_name, 'business_slug', 'business_profile'));
+            $this->db->where('business_profile_id', $v->business_profile_id);
+            $this->db->update('business_profile', $data);
+        }
+        echo "yes";
+    }
 
 // create pdf start
 
-public function creat_pdf1($id) {
+    public function creat_pdf1($id) {
 
-$contition_array = array('business_profile_post_id' => $id, 'status' => '1');
-$this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-$this->load->view('business_profile/business_pdfdispaly', $this->data);
-}
+        $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
+        $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->load->view('business_profile/business_pdfdispaly', $this->data);
+    }
 
-public function creat_pdf($id) {
+    public function creat_pdf($id) {
 
-$contition_array = array('image_id' => $id, 'is_deleted' => '1');
-$this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('image_id' => $id, 'is_deleted' => '1');
+        $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
     }
@@ -3717,20 +3710,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
 
-                          }
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
 
-                      $cmtinsert .= '</div>';
+                    $cmtinsert .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -3884,19 +3875,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                    $a = $companyname;
-                                    $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                        }
-                                                         
-                      $cmtinsert .= '</div>';
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
+
+                    $cmtinsert .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -4284,19 +4273,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
-                    }
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
 
                 $cmtinsert .= '</div>';
-
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -4452,20 +4439,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
                 } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
 
-                  $cmtinsert .= '</div>';
-
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -5309,22 +5294,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
-
-                    }
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
 
                 $cmtinsert .= '</div>';
-
-
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -5476,19 +5457,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">'; 
-
-                    }
-                 $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -5643,19 +5622,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">'; 
-                   }
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
 
-                 $cmtinsert .= '</div>';
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -5824,18 +5802,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
 
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
 
-                      }
-                   $cmtinsert .= '</div>';
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -6364,18 +6340,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
+                        $a = $company_name;
+                        $acr = substr($a, 0, 1);
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';  
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
 
-                         }
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
                     $cmtinsert .= '</div>';
                 } else {
                     $a = $company_name;
@@ -6529,18 +6503,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">'; 
+                        $a = $company_name;
+                        $acr = substr($a, 0, 1);
 
-                         }
-                    $cmtinsert .=  '</div>';
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
+                    $cmtinsert .= '</div>';
                 } else {
                     $a = $company_name;
                     $acr = substr($a, 0, 1);
@@ -6699,16 +6671,15 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($busienss_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr));
-                    $fourdata .=  '</div>'; 
-                                                                
-                        } else {
-                    $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
-                      }
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $fourdata .= '<div class="post-img-div">';
+                        $fourdata .= ucfirst(strtolower($acr));
+                        $fourdata .= '</div>';
+                    } else {
+                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
+                    }
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -6840,17 +6811,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr));
-                    $fourdata .=  '</div>'; 
-                                                                
-                        } else {
-                    $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                        }
-                     $fourdata .= '</div>';
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $fourdata .= '<div class="post-img-div">';
+                        $fourdata .= ucfirst(strtolower($acr));
+                        $fourdata .= '</div>';
+                    } else {
+                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                    }
+                    $fourdata .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -6969,16 +6939,15 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($busienss_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acr));
-                    $fourdata .=  '</div>'; 
-                                                                
-                        } else {
-                    $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
-                     }
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+
+                        $fourdata .= '<div class="post-img-div">';
+                        $fourdata .= ucfirst(strtolower($acr));
+                        $fourdata .= '</div>';
+                    } else {
+                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
+                    }
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -7119,17 +7088,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $company_name;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $company_name;
+                    $acr = substr($a, 0, 1);
+
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
-                    } 
-                 $cmtinsert .= '</div>';
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -7311,18 +7279,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companynameposted;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $a = $companynameposted;
+                    $acr = substr($a, 0, 1);
 
-                    }
-                  $cmtinsert .= '</div>';
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= '</div>';
+                } else {
+                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                }
+                $cmtinsert .= '</div>';
             } else {
                 $a = $company_name;
                 $acr = substr($a, 0, 1);
@@ -7473,18 +7439,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">'; 
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                        }
-                     $cmtinsert .= '</div>';
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
+                    $cmtinsert .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -7628,18 +7592,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acr));
-                    $cmtinsert .=  '</div>'; 
-                                                                
-                        } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">'; 
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                        }
-                     $cmtinsert .= '</div>';
+                        $cmtinsert .= '<div class="post-img-div">';
+                        $cmtinsert .= ucfirst(strtolower($acr));
+                        $cmtinsert .= '</div>';
+                    } else {
+                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    }
+                    $cmtinsert .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -7782,20 +7744,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $mulimgfour .= '<div class="post-img-div">';
-                    $mulimgfour .=  ucfirst(strtolower($acr));
-                    $mulimgfour .=  '</div>'; 
-                                                                
-                        } else {
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                    $mulimgfour .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        $mulimgfour .= '<div class="post-img-div">';
+                        $mulimgfour .= ucfirst(strtolower($acr));
+                        $mulimgfour .= '</div>';
+                    } else {
 
-                        }
+                        $mulimgfour .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                    }
 
-                     $mulimgfour .=  '</div>';
+                    $mulimgfour .= '</div>';
                 } else {
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
@@ -7934,17 +7894,15 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($bus_image) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-                                        $a = $business_fname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acr));
-                    $modal .=  '</div>'; 
-                                                                
-                        } else {
-                $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
-                   }
+                    $a = $business_fname;
+                    $acr = substr($a, 0, 1);
 
+                    $modal .= '<div class="post-img-div">';
+                    $modal .= ucfirst(strtolower($acr));
+                    $modal .= '</div>';
+                } else {
+                    $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
+                }
             } else {
                 $a = $business_fname;
                 $acr = substr($a, 0, 1);
@@ -8024,18 +7982,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
             if ($bus_image) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-                                        $a = $business_fname;
-                                       $acr = substr($a, 0, 1);
-                                                                
+                    $a = $business_fname;
+                    $acr = substr($a, 0, 1);
+
                     $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acr));
-                    $modal .=  '</div>'; 
-                                                                
-                        } else {
+                    $modal .= ucfirst(strtolower($acr));
+                    $modal .= '</div>';
+                } else {
 
-                $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
-                    }
-
+                    $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
+                }
             } else {
                 $a = $business_fname;
                 $acr = substr($a, 0, 1);
@@ -8132,7 +8088,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi">   <img src="'.base_url('img/icon_contact_add.png').'"></span></div>
+                                                            <div><span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -8163,7 +8119,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="'.base_url('img/icon_contact_cancel.png').'"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8191,7 +8147,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                                              <div></div>
                                                             <div></div>
                                                             <div></div>
-                                                            <div><span class="cancel_req_busi"><img src="'.base_url('img/icon_contact_add.png').'"></span></div>
+                                                            <div><span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_add.png') . '"></span></div>
 
                                                             </div>
                                                             
@@ -8221,7 +8177,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi">   <img src="'.base_url('img/icon_contact_cancel.png').'"></span>
+                                                         <span class="cancel_req_busi">   <img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8257,7 +8213,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                                             <div></div>
                                                             <div></div>
                                                             <div>
-                                                         <span class="cancel_req_busi"><img src="'. base_url('img/icon_contact_cancel.png').'"></span>
+                                                         <span class="cancel_req_busi"><img src="' . base_url('img/icon_contact_cancel.png') . '"></span>
                                                             </div>
 
                                                             </div>
@@ -8327,107 +8283,101 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($contact['contact_to_id'] == $userid) {
 
 
-                $contition_array = array('user_id' =>$contact['contact_from_id'] , 'status' => '1');
-                $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('user_id' => $contact['contact_from_id'], 'status' => '1');
+                    $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    if($contactperson_from){
+                    if ($contactperson_from) {
 
 
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
-                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
-                    $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
-                    $contactdata .= '<div class="addcontact-pic">';
+                        $contactdata .= '<li>';
+                        $contactdata .= '<div class="addcontact-left">';
+                        $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                        $contactdata .= '<div class="addcontact-pic">';
 
-                    if ($busdata[0]['business_user_image']) {
+                        if ($busdata[0]['business_user_image']) {
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                        $a = $busdata[0]['company_name'];
-                                        $acr = substr($a, 0, 1);
-                                                                
-                    $contactdata .= '<div class="post-img-div">';
-                    $contactdata .=  ucfirst(strtolower($acr));
-                    $contactdata .=  '</div>'; 
-                                                                
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $a = $busdata[0]['company_name'];
+                                $acr = substr($a, 0, 1);
+
+                                $contactdata .= '<div class="post-img-div">';
+                                $contactdata .= ucfirst(strtolower($acr));
+                                $contactdata .= '</div>';
+                            } else {
+
+                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            }
                         } else {
+                            $a = $busdata[0]['company_name'];
+                            $acr = substr($a, 0, 1);
 
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-                         }
-
-                    } else {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
-
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '<div class="post-img-div">';
+                            $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '</div>';
+                        }
                         $contactdata .= '</div>';
+                        $contactdata .= '<div class="addcontact-text">';
+                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
+                        $contactdata .= '' . $inddata[0]['industry_name'] . '';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '<div class="addcontact-right">';
+                        $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                        $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</li>';
                     }
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
-                    $contactdata .= '' . $inddata[0]['industry_name'] . '';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-right">';
-                    $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                    $contactdata .= '<a href="#"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</li>';
-
-                     }
                 } else {
 
-                  $contition_array = array('user_id' =>$contact['contact_to_id'] , 'status' => '1');
-                  $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('user_id' => $contact['contact_to_id'], 'status' => '1');
+                    $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    if($contactperson_to){
+                    if ($contactperson_to) {
 
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
 
 
-                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
-                    $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
-                    $contactdata .= '<div class="addcontact-pic">';
+                        $contactdata .= '<li>';
+                        $contactdata .= '<div class="addcontact-left">';
+                        $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                        $contactdata .= '<div class="addcontact-pic">';
 
-                    if ($busdata[0]['business_user_image']) {
+                        if ($busdata[0]['business_user_image']) {
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                        $a = $busdata[0]['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $contactdata .= '<div class="post-img-div">';
-                    $contactdata .=  ucfirst(strtolower($acr));
-                    $contactdata .=  '</div>'; 
-                                                                
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $a = $busdata[0]['company_name'];
+                                $acr = substr($a, 0, 1);
+
+                                $contactdata .= '<div class="post-img-div">';
+                                $contactdata .= ucfirst(strtolower($acr));
+                                $contactdata .= '</div>';
+                            } else {
+
+                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            }
                         } else {
+                            $a = $busdata[0]['company_name'];
+                            $acr = substr($a, 0, 1);
 
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-
-                         }
-                    } else {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
-
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '<div class="post-img-div">';
+                            $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '</div>';
+                        }
                         $contactdata .= '</div>';
-                    }
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
+                        $contactdata .= '<div class="addcontact-text">';
+                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</li>';
-
-                      }
+                        $contactdata .= '</div>';
+                        $contactdata .= '</a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</li>';
+                    }
                 }
                 $contactdata .= '</ul>';
             }
@@ -8562,18 +8512,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     if ($busdata[0]['business_user_image']) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                        $a = $busdata[0]['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $contactdata .= '<div class="post-img-div">';
-                    $contactdata .=  ucfirst(strtolower($acr));
-                    $contactdata .=  '</div>'; 
-                                                                
+                            $a = $busdata[0]['company_name'];
+                            $acr = substr($a, 0, 1);
+
+                            $contactdata .= '<div class="post-img-div">';
+                            $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '</div>';
                         } else {
 
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-
-                          }
+                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                        }
                     } else {
                         $a = $busdata[0]['company_name'];
                         $acr = substr($a, 0, 1);
@@ -8680,18 +8628,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($busdata[0]['business_user_image'] != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                        $a = $busdata[0]['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $contactdata .= '<div class="post-img-div">';
-                    $contactdata .=  ucfirst(strtolower($acr));
-                    $contactdata .=  '</div>'; 
-                                                                
-                        } else {
+                        $a = $busdata[0]['company_name'];
+                        $acr = substr($a, 0, 1);
 
-                    $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                        $contactdata .= '<div class="post-img-div">';
+                        $contactdata .= ucfirst(strtolower($acr));
+                        $contactdata .= '</div>';
+                    } else {
 
-                       }
+                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                    }
                 } else {
                     $a = $busdata[0]['company_name'];
                     $acr = substr($a, 0, 1);
@@ -9228,21 +9174,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                                        $a = $companynameposted;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                            $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                                $a = $companynameposted;
+                                $acr = substr($a, 0, 1);
 
-                                }
+                                $return_html .= '<div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr));
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                            }
 
                             $return_html .= '</a>';
-
-
                         } else {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
 
@@ -9261,19 +9203,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                                }
+                                $a = $companyname;
+                                $acr = substr($a, 0, 1);
+
+                                $return_html .= '<div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr));
+                                $return_html .= '</div>';
+                            } else {
+                                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                            }
                             $return_html .= '</a>';
-
-
                         } else {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
 
@@ -9314,7 +9253,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '" title="' .ucfirst(strtolower($companyname)) . '">
+                                                    <a class="post_dot"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '" title="' . ucfirst(strtolower($companyname)) . '">
                     ' . ucfirst(strtolower($companyname)) . '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -9731,17 +9670,15 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                                 $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
 
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                    $a = $companyname;
+                                    $acr = substr($a, 0, 1);
 
-                                    }
+                                    $return_html .= '<div class="post-img-div">';
+                                    $return_html .= ucfirst(strtolower($acr));
+                                    $return_html .= '</div>';
+                                } else {
+                                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                }
                                 $return_html .= '</a>';
                             } else {
                                 $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
@@ -9860,16 +9797,15 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     if ($business_userimage) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $companyname;
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
-                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                          }
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        }
                     } else {
                         $a = $companyname;
                         $acr = substr($a, 0, 1);
@@ -9991,19 +9927,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                                        $a = $userlist['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $userlist['company_name'];
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                        }
 
-                                }
-
-                             $return_html .= '</a>';
+                        $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
@@ -10070,20 +10004,18 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                                        $a = $userlist['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $userlist['company_name'];
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
 
-                    $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                            $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                        }
 
-                         }
-
-                    $return_html .= '</a>';
+                        $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
@@ -10151,17 +10083,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     if ($userlist['business_user_image'] != '') {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                                        $a = $userlist['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $userlist['company_name'];
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
-                       }
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                        }
                     } else {
                         $a = $userlist['company_name'];
                         $acr = substr($a, 0, 1);
@@ -10227,19 +10158,17 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                                        $a = $userlist['company_name'];
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $userlist['company_name'];
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
-                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
+                        }
 
-                            }
-
-                        $return_html .=  '</a>';
+                        $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
                         $a = $userlist['company_name'];
@@ -10302,7 +10231,7 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
 // ajax function start 8-7 khyati change start
 
 
-    public function bus_photos() { 
+    public function bus_photos() {
 
         $id = $_POST['bus_slug'];
 // manage post start
@@ -10803,18 +10732,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     if ($userimageposted) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                                        $a = $usernameposted;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $usernameposted;
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
 
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
-
-                              }
+                            $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                        }
                     } else {
                         $a = $usernameposted;
                         $acr = substr($a, 0, 1);
@@ -10827,18 +10754,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                     if ($userimage) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimage)) {
-                                        $a = $username;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $username;
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
 
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name="image_src" id="image_src" />';
-
-                              }
+                            $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name="image_src" id="image_src" />';
+                        }
                     } else {
                         $a = $username;
                         $acr = substr($a, 0, 1);
@@ -11203,17 +11128,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                         if ($business_userimage) {
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
+                                $a = $companyname;
+                                $acr = substr($a, 0, 1);
 
-                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                                 }
+                                $return_html .= '<div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr));
+                                $return_html .= '</div>';
+                            } else {
+
+                                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                            }
                         } else {
                             $a = $companyname;
                             $acr = substr($a, 0, 1);
@@ -11320,18 +11244,16 @@ $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $
                 if ($business_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $business_username;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                            
-                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        $a = $business_username;
+                        $acr = substr($a, 0, 1);
 
-                          }
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucfirst(strtolower($acr));
+                        $return_html .= '</div>';
+                    } else {
+
+                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                    }
                 } else {
                     $a = $business_username;
                     $acr = substr($a, 0, 1);

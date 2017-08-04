@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    business_following();
+    business_following(slug_id);
 });
-function business_following()
+function business_following(slug_id)
 {
     $.ajax({
         type: 'POST',
