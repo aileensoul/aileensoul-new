@@ -1,3 +1,32 @@
+$(document).ready(function () {
+    business_following();
+});
+function business_following()
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/ajax_following/" + slug_id,
+        data: '',
+        dataType: "html",
+        beforeSend: function () {
+            $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.contact-frnd-post').html(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+        }
+    });
+}
+
+
 // BUSUINESS SEARCH SCRIPT START
 $(function () {
     $("#tags").autocomplete({

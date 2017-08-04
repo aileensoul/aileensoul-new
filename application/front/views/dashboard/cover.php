@@ -292,26 +292,26 @@
                                     <div class="row">
                                         <div class="col-md-4 col-sm-4 pull-right col-xs-12">
                                             <div class="left-box">
-                                                <a href="<?php echo base_url('business_profile'); ?>"><img src="<?php echo base_url(); ?>img/i4.jpg"></a>
+                                                <a href="<?php echo base_url('business-profile'); ?>"><img src="<?php echo base_url(); ?>img/i4.jpg"></a>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="right-box">
-                                                <h1><a href="<?php echo base_url('business_profile'); ?>">Business Profile</a></h1>
+                                                <h1><a href="<?php echo base_url('business-profile'); ?>">Business Profile</a></h1>
                                                 <p>Grow your business network.</p>
                                                 <div class="btns">
                                                     <a data-fancybox data-src="#bus-popup" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
 
 
                                                     <?php if ($busdata[0]['business_step'] != 4) { ?>
-                                                        <a class="btn-1" href="<?php echo base_url('business_profile'); ?>">Register</a> 
+                                                        <a class="btn-1" href="<?php echo base_url('business-profile'); ?>">Register</a> 
                                                     <?php } elseif ($busdata[0]['status'] == '0' && $busdata[0]['business_step'] == 4) {
                                                         ?>
 
-                                                        <a class="btn-1" href="<?php echo base_url('business_profile'); ?>">Active</a>
+                                                        <a class="btn-1" href="<?php echo base_url('business-profile'); ?>">Active</a>
                                                     <?php } else {
                                                         ?>
-                                                        <a class="btn-4" href="<?php echo base_url('business_profile'); ?>">Take me in</a> 
+                                                        <a class="btn-4" href="<?php echo base_url('business-profile'); ?>">Take me in</a> 
 
                                                     <?php } ?>
                                                 </div>
@@ -738,9 +738,9 @@
                                 <div class="modal-footer">
 
                                     <?php if ($busdata[0]['business_step'] != 4) { ?>
-                                        <a class="btn-4" href="<?php echo base_url('business_profile'); ?>">Register Now</a>
+                                        <a class="btn-4" href="<?php echo base_url('business-profile'); ?>">Register Now</a>
                                     <?php } else { ?>
-                                        <a class="btn-4" href="<?php echo base_url('business_profile'); ?>">Take me in</a>
+                                        <a class="btn-4" href="<?php echo base_url('business-profile'); ?>">Take me in</a>
                                     <?php } ?>
 
                                 </div>

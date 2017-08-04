@@ -64,21 +64,20 @@
                                             if ($businessdata[0]['business_user_image'] != '') {
                                                 ?>
 
-                                                 <?php 
+                                                <?php
+                                                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                    $a = $businessdata[0]['company_name'];
+                                                    $acr = substr($a, 0, 1);
+                                                    ?>
+                                                    <div class="post-img-div">
+                                                        <?php echo ucfirst(strtolower($acr)) ?>
+                                                    </div> 
+                                                    <?php } else {
+                                                    ?>
 
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                                $a = $businessdata[0]['company_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-div">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
-                                                                <?php
-                                                            } else { ?>
+                                                    <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
 
-                                                <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
-
-                                                <?php }?>
+                                                <?php } ?>
 
                                                 <?php
                                             } else {
@@ -88,7 +87,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                                 $acr = substr($a, 0, 1);
                                                 ?>
                                                 <div class="post-img-div">
-                                                <?php echo ucfirst(strtolower($acr)) ?>
+                                                    <?php echo ucfirst(strtolower($acr)) ?>
                                                 </div>
                                                 <?php
                                             }
@@ -142,7 +141,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                         <button type="submit"  value="Submit">Post
                                         </button>    
                                     </div>
-<?php echo form_close(); ?>
+                                    <?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -159,21 +158,20 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                     <div class="popup-img"> 
                                         <?php if ($businessdata[0]['business_user_image']) { ?>
 
-                                         <?php 
+                                            <?php
+                                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                $a = $businessdata[0]['company_name'];
+                                                $acr = substr($a, 0, 1);
+                                                ?>
+                                                <div class="post-img-div">
+                                                <?php echo ucfirst(strtolower($acr)) ?>
+                                                </div> 
+                                                    <?php } else {
+                                                    ?>
 
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                                $a = $businessdata[0]['company_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-div">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
-                                                                <?php
-                                                            } else { ?>
-                                                            
-                                            <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+                                                <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
 
-                                            <?php }?>
+    <?php } ?>
 
                                         <?php } else { ?>
                                             <?php
@@ -183,7 +181,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                             <div class="post-img-div">
                                             <?php echo ucfirst(strtolower($acr)) ?>
                                             </div>
-<?php } ?>
+                                            <?php } ?>
                                     </div>
                                     <div id="myBtn"  class="editor-content popup-text">
                                         <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
@@ -209,10 +207,10 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                     </div>
                                 </div>
                             </div>
-<!--                            <div class='progress' id="progress_div">
-                                <div class='bar' id='bar'></div>
-                                <div class='percent' id='percent'>0%</div>
-                            </div>-->
+                            <!--                            <div class='progress' id="progress_div">
+                                                            <div class='bar' id='bar'></div>
+                                                            <div class='percent' id='percent'>0%</div>
+                                                        </div>-->
                             <div class="business-all-post">
                                 <div class="nofoundpost"> 
                                 </div>
@@ -223,9 +221,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                 </div>
 
         </section>
-        <footer>
-<?php echo $footer; ?>
-        </footer>
+
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -278,6 +274,9 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                 </div>
             </div>
         </div>
+        <footer>
+<?php echo $footer; ?>
+        </footer>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 

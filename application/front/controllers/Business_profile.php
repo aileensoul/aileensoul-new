@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -876,7 +875,7 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
+
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
@@ -885,7 +884,7 @@ class Business_profile extends MY_Controller {
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_profile_manage_post', $this->data);
         } else {
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data,true);
+            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
             $this->load->view('business_profile/business_dashboard', $this->data);
         }
 
@@ -1448,22 +1447,18 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                                        $a = $companynameposted;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
+                        $a = $companynameposted;
+                        $acr = substr($a, 0, 1);
 
-                    $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucfirst(strtolower($acr));
+                        $return_html .= '</div>';
+                    } else {
 
-                         }
+                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                    }
 
                     $return_html .= '</a>';
-
-
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
                     $a = $companynameposted;
@@ -1481,18 +1476,17 @@ class Business_profile extends MY_Controller {
 
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                     }
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
 
-                  $return_html .= '</a>';
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucfirst(strtolower($acr));
+                        $return_html .= '</div>';
+                    } else {
+                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                    }
+
+                    $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">';
 
@@ -1622,20 +1616,18 @@ class Business_profile extends MY_Controller {
             <a>' . $this->common->make_links($row['product_name']) . '</a>
         </div>
         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
-            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit('.$row['business_profile_post_id'].'); onKeyup=check_lengthedit('.$row['business_profile_post_id'].'); onblur=check_lengthedit('.$row['business_profile_post_id'].');>';
-        
-
-        if ($row['product_name']) {
-                                             $counter = $row['product_name'];
-                                             $a = strlen($counter);
-
-                              $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num readonly>';
+            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
 
 
-                                    } else {
+            if ($row['product_name']) {
+                $counter = $row['product_name'];
+                $a = strlen($counter);
 
-                            $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
-                                     }
+                $return_html .= '<input size=1 id="text_num" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
+            } else {
+
+                $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+            }
 
             $return_html .= '</div>
     </div>                    
@@ -1952,18 +1944,16 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
+                            $a = $companyname;
+                            $acr = substr($a, 0, 1);
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr));
+                            $return_html .= '</div>';
                         } else {
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-
-                         }
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        }
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">';
@@ -2073,17 +2063,15 @@ class Business_profile extends MY_Controller {
             if ($business_userimage) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                        $a = $companyname;
-                                       $acr = substr($a, 0, 1);
-                                                                
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .=  ucfirst(strtolower($acr));
-                    $return_html .=  '</div>'; 
-                                                                
-                        } else {
-                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
-                 }
+                    $a = $companyname;
+                    $acr = substr($a, 0, 1);
 
+                    $return_html .= '<div class="post-img-div">';
+                    $return_html .= ucfirst(strtolower($acr));
+                    $return_html .= '</div>';
+                } else {
+                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                }
             } else {
                 $a = $companyname;
                 $acr = substr($a, 0, 1);
@@ -2461,12 +2449,12 @@ class Business_profile extends MY_Controller {
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        
-        //manage post end
+
+//manage post end
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_resume', $this->data);
         } else {
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data,true);
+            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
             $this->load->view('business_profile/business_details', $this->data);
         }
     }
@@ -2606,7 +2594,7 @@ class Business_profile extends MY_Controller {
     public function follow() {
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2614,7 +2602,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
 
@@ -2641,13 +2629,13 @@ class Business_profile extends MY_Controller {
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-            // insert notification
+// insert notification
 
 
 
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($busnotification); die();
+//echo "<pre>"; print_r($busnotification); die();
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
@@ -2668,7 +2656,7 @@ class Business_profile extends MY_Controller {
 
                 $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
                 $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                // insert notification
+// insert notification
 
                 $data = array(
                     'not_type' => 8,
@@ -2684,18 +2672,18 @@ class Business_profile extends MY_Controller {
             }
 
 
-            // $data = array(
-            //     'not_type' => 8,
-            //     'not_from_id' => $userid,
-            //     'not_to_id' => $busdatatoid[0]['user_id'],
-            //     'not_read' => 2,
-            //     'not_product_id' => $follow[0]['follow_id'],
-            //     'not_from' => 6,
-            //     'not_created_date' => date('Y-m-d H:i:s'),
-            //     'not_active' => 1
-            // );
-            // $insert_id = $this->common->insert_data_getid($data, 'notification');
-            // end notoification
+// $data = array(
+//     'not_type' => 8,
+//     'not_from_id' => $userid,
+//     'not_to_id' => $busdatatoid[0]['user_id'],
+//     'not_read' => 2,
+//     'not_product_id' => $follow[0]['follow_id'],
+//     'not_from' => 6,
+//     'not_created_date' => date('Y-m-d H:i:s'),
+//     'not_active' => 1
+// );
+// $insert_id = $this->common->insert_data_getid($data, 'notification');
+// end notoification
 
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2728,7 +2716,7 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
             $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // insert notification
+// insert notification
 
             $data = array(
                 'not_type' => 8,
@@ -2745,7 +2733,7 @@ class Business_profile extends MY_Controller {
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1);
             $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            // end notoification
+// end notoification
             if ($insertdata) {
                 $follow = '<div id="unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
@@ -2767,7 +2755,7 @@ class Business_profile extends MY_Controller {
     public function unfollow() {
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2775,7 +2763,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
 
@@ -2805,7 +2793,7 @@ class Business_profile extends MY_Controller {
             if ($update) {
 
                 $unfollow = '<div id="followdiv " class="user_btn">';
-                //    $unfollow .= '<button style="margin-top: 7px;" id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
+//    $unfollow .= '<button style="margin-top: 7px;" id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
                 $unfollow .= '<button id="follow' . $business_id . '" onClick="followuser(' . $business_id . ')">
                                Follow 
                       </button>';
@@ -2825,7 +2813,7 @@ class Business_profile extends MY_Controller {
     public function follow_two() {
         $userid = $this->session->userdata('aileenuser');
 
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2833,7 +2821,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
 
@@ -2858,12 +2846,12 @@ class Business_profile extends MY_Controller {
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
-            // insert notification
+// insert notification
 
 
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($busnotification); die();
+//echo "<pre>"; print_r($busnotification); die();
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
@@ -2889,7 +2877,7 @@ class Business_profile extends MY_Controller {
 
                 $insert_id = $this->common->insert_data_getid($data, 'notification');
             }
-            // end notoification
+// end notoification
 
             if ($update) {
 
@@ -2909,7 +2897,7 @@ class Business_profile extends MY_Controller {
             );
             $insert = $this->common->insert_data($data, 'follow');
 
-            // insert notification
+// insert notification
             $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
             $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2926,12 +2914,12 @@ class Business_profile extends MY_Controller {
             );
 
             $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
-            // end notoification
+// end notoification
             if ($insert) {
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
-                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
-                //                Following
-                //       </button>';
+// $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+//                Following
+//       </button>';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 echo $follow;
@@ -2941,7 +2929,7 @@ class Business_profile extends MY_Controller {
 
     public function unfollow_two() {
         $userid = $this->session->userdata('aileenuser');
-        //if user deactive profile then redirect to business_profile/index untill active profile start
+//if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2949,7 +2937,7 @@ class Business_profile extends MY_Controller {
         if ($business_deactive) {
             redirect('business_profile/');
         }
-        //if user deactive profile then redirect to business_profile/index untill active profile End
+//if user deactive profile then redirect to business_profile/index untill active profile End
 
         $business_id = $_POST["follow_to"];
 
@@ -2973,9 +2961,9 @@ class Business_profile extends MY_Controller {
             if ($update) {
 
                 $unfollow = '<div class="user_btn follow_btn_' . $business_id . '" id="followdiv">';
-                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
-                //                Following
-                //       </button>';
+// $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+//                Following
+//       </button>';
                 $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')">Follow</button>';
                 $unfollow .= '</div>';
                 echo $unfollow;
@@ -3073,7 +3061,14 @@ class Business_profile extends MY_Controller {
     }
 
     public function following($id = "") {
-        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+        $this->data['slug_id'] = $id;
+
+        $this->load->view('business_profile/business_following', $this->data);
+    }
+
+    public function ajax_following($id = "") {
+        $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3089,8 +3084,7 @@ class Business_profile extends MY_Controller {
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
-
-            $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
 
             $contition_array = array('business_slug' => $id, 'business_step' => 4);
@@ -3102,131 +3096,247 @@ class Business_profile extends MY_Controller {
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
-
-            $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        $this->load->view('business_profile/business_following', $this->data);
-    }
+
+
+        if (count($userlist) > 0) {
+            foreach ($userlist as $user) {
+                $return_html = '<div class = "job-contact-frnd" id = "removefollow"' . $user['follow_to'] . '">
+<div class = "profile-job-post-detail clearfix">
+<div class = "profile-job-post-title-inside clearfix">
+<div class = "profile-job-post-location-name">
+<div class = "user_lst">
+<ul>
+<li class = "fl">
+<div class = "follow-img">';
+
+                $companyname = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name;
+                $slug = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_slug;
+                if ($this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image != '') {
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '">';
+                    $uimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image;
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
+                        $a = $companyname;
+                        $acr = substr($a, 0, 1);
+                    $return_html .= '<div class="post-img-userlist">';
+                      $return_html .=  ucfirst(strtolower($acr)) ;
+                      $return_html .='</div>';
+                     } else { 
+                        $return_html .='<img src="'. base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image) .'" height="50px" width="50px" alt="" >';
+                    } 
+                    $return_html .= '</a>';
+                    } else { 
+                    $return_html .= '<a href="'.base_url('business-profile/dashboard/' . $slug).'">';
+                    $a = $companyname;
+                    $acr = substr($a, 0, 1);
+                    $return_html .= '<div class="post-img-userlist">';
+                    $return_html .= ucfirst(strtolower($acr));
+                    $return_html .= '</div>';
+                    }  
+                $return_html .= '</div>
+                </li>
+                <li class="folle_text">
+                    <div class="">
+                        <div class="follow-li-text " style="padding: 0;">
+                            <a title="" href="'. base_url('business-profile/dashboard/' . $slug) .'">'$this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name; '</a></div>
+                        <div>';
+                $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->industriyal;
+                $category = $this->db->get_where('industry_type', array('industry_id' => $categoryid, 'status' => 1))->row()->industry_name;
+                $othercategory = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->other_industrial;
+                ?>
+                            <a><?php
+                if ($category) {
+                    echo $category;
+                } else {
+                    echo $othercategory;
+                }
+                ?></a>
+                        </div>
+                </li>
+                <?php
+                $userid = $this->session->userdata('aileenuser');
+                if ($businessdata1[0]['user_id'] == $userid) {
+                    ?>
+                    <li class="fr <?php echo "fruser" . $user['follow_to']; ?>">
+                                <?php
+                                $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_to']);
+                                $status = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                                if ($status[0]['follow_status'] == 1) {
+                                    ?>
+                            <div class="user_btn" id= "unfollowdiv">
+                                <button class="bg_following" id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_list(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
+                            </div>
+                                    <?php } ?>
+                    </li>
+                <?php } else { ?>
+                    <li class="fr">
+                    <?php
+                    $contition_array = array('user_id' => $userid, 'status' => '1');
+                    $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_to']);
+                    $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $busdatauser[0]['business_profile_id']) {
+                        ?>
+                            <div class="user_btn follow_btn_<?php echo $user['follow_to']; ?>" id= "followdiv">
+                                <button id="<?php echo "follow" . $user['follow_to']; ?>" onClick="followuser_two(<?php echo $user['follow_to']; ?>)">Follow</button>
+                            </div> 
+                    <?php } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) { ?>
+                    <?php } else { ?>
+                            <div class="user_btn_f follow_btn_<?php echo $user['follow_to']; ?>" id= "unfollowdiv">
+                                <button id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_two(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
+                            </div>   
+                    <?php } ?>
+                    </li>
+                    <?php } ?> 
+                </ul>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <?php
+            }
+        } else {
+            ?>
+            <div class="art-img-nn">
+                <div class="art_no_post_img">
+
+                    <img src="<?php echo base_url('img/bui-no.png') ?>">
+
+                </div>
+                <div class="art_no_post_text">
+                    No Following Available.
+                </div>
+            </div>
+        <?php } ?>
+<div class="col-md-1">
+</div>
+
+
+
+
+}
 
 // end of user list
 //deactivate user start
-    public function deactivate() {
+public function deactivate() {
 
-        $id = $_POST['id'];
+$id = $_POST['id'];
 
-        $data = array(
-            'status' => 0
-        );
+$data = array(
+'status' => 0
+);
 
-        $update = $this->common->update_data($data, 'business_profile', 'user_id', $id);
-    }
+$update = $this->common->update_data($data, 'business_profile', 'user_id', $id);
+}
 
 // deactivate user end
 
-    public function image_upload_ajax() {
+public function image_upload_ajax() {
 
-        session_start();
-        $session_uid = $this->session->userdata('aileenuser');
-        include_once 'getExtension.php';
+session_start();
+$session_uid = $this->session->userdata('aileenuser');
+include_once 'getExtension.php';
 
-        $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
-        if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST" && isset($session_uid)) {
-            $name = $_FILES['photoimg']['name'];
-            $size = $_FILES['photoimg']['size'];
+$valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
+if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST" && isset($session_uid)) {
+$name = $_FILES['photoimg']['name'];
+$size = $_FILES['photoimg']['size'];
 
-            if ($name) {
-                $ext = $this->common->getExtension($name);
-                if (in_array($ext, $valid_formats)) {
-                    if ($size < (1024 * 1024)) {
-                        $actual_image_name = time() . $session_uid . "." . $ext;
-                        $tmp = $_FILES['photoimg']['tmp_name'];
-                        $bgSave = '<div id="uX' . $session_uid . '" class="bgSave wallbutton blackButton">Save Cover</div>';
-                        $config['upload_path'] = 'uploads/user_image/';
-                        $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
+if ($name) {
+$ext = $this->common->getExtension($name);
+if (in_array($ext, $valid_formats)) {
+if ($size < (1024 * 1024)) {
+$actual_image_name = time() . $session_uid . "." . $ext;
+$tmp = $_FILES['photoimg']['tmp_name'];
+$bgSave = '<div id="uX' . $session_uid . '" class="bgSave wallbutton blackButton">Save Cover</div>';
+$config['upload_path'] = 'uploads/user_image/';
+$config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
 
-                        $config['file_name'] = $_FILES['photoimg']['name'];
+$config['file_name'] = $_FILES['photoimg']['name'];
 
 //Load upload library and initialize configuration
-                        $this->load->library('upload', $config);
-                        $this->upload->initialize($config);
+$this->load->library('upload', $config);
+$this->upload->initialize($config);
 
-                        if ($this->upload->do_upload('photoimg')) {
-                            $uploadData = $this->upload->data();
+if ($this->upload->do_upload('photoimg')) {
+$uploadData = $this->upload->data();
 
-                            $picture = $uploadData['file_name'];
-                        } else {
-                            $picture = '';
-                        }
+$picture = $uploadData['file_name'];
+} else {
+$picture = '';
+}
 
 
-                        $data = array(
-                            'profile_background' => $picture
-                        );
+$data = array(
+'profile_background' => $picture
+);
 
-                        $update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
-                        if ($update) {
-                            $path = base_url('uploads/user_image/');
-                            echo $bgSave . '<img src="' . $path . $picture . '"  id="timelineBGload" class="headerimage ui-corner-all" style="top:0px"/>';
-                        } else {
-                            echo "Fail upload folder with read access.";
-                        }
-                    } else
-                        echo "Image file size max 1 MB";
-                } else
-                    echo "Invalid file format.";
-            } else
-                echo "Please select image..!";
+$update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
+if ($update) {
+$path = base_url('uploads/user_image/');
+echo $bgSave . '<img src="' . $path . $picture . '"  id="timelineBGload" class="headerimage ui-corner-all" style="top:0px"/>';
+} else {
+echo "Fail upload folder with read access.";
+}
+} else
+echo "Image file size max 1 MB";
+} else
+echo "Invalid file format.";
+} else
+echo "Please select image..!";
 
-            exit;
-        }
-    }
+exit;
+}
+}
 
-    public function image_saveBG_ajax() {
+public function image_saveBG_ajax() {
 
-        session_start();
-        $session_uid = $this->session->userdata('aileenuser');
+session_start();
+$session_uid = $this->session->userdata('aileenuser');
 
-        if (isset($_POST['position']) && isset($session_uid)) {
+if (isset($_POST['position']) && isset($session_uid)) {
 
-            $position = $_POST['position'];
+$position = $_POST['position'];
 
-            $data = array(
-                'profile_background_position' => $position
-            );
+$data = array(
+'profile_background_position' => $position
+);
 
-            $update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
-            if ($update) {
+$update = $this->common->update_data($data, 'business_profile', 'user_id', $session_uid);
+if ($update) {
 
-                echo $position;
-            }
-        }
-    }
+echo $position;
+}
+}
+}
 
-    function slug_script() {
+function slug_script() {
 
-        $this->db->select('business_profile_id,company_name');
-        $res = $this->db->get('business_profile')->result();
-        foreach ($res as $k => $v) {
-            $data = array('business_slug' => $this->setcategory_slug($v->company_name, 'business_slug', 'business_profile'));
-            $this->db->where('business_profile_id', $v->business_profile_id);
-            $this->db->update('business_profile', $data);
-        }
-        echo "yes";
-    }
+$this->db->select('business_profile_id,company_name');
+$res = $this->db->get('business_profile')->result();
+foreach ($res as $k => $v) {
+$data = array('business_slug' => $this->setcategory_slug($v->company_name, 'business_slug', 'business_profile'));
+$this->db->where('business_profile_id', $v->business_profile_id);
+$this->db->update('business_profile', $data);
+}
+echo "yes";
+}
 
 // create pdf start
 
-    public function creat_pdf1($id) {
+public function creat_pdf1($id) {
 
-        $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
-        $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $this->load->view('business_profile/business_pdfdispaly', $this->data);
-    }
+$contition_array = array('business_profile_post_id' => $id, 'status' => '1');
+$this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->load->view('business_profile/business_pdfdispaly', $this->data);
+}
 
-    public function creat_pdf($id) {
+public function creat_pdf($id) {
 
-        $contition_array = array('image_id' => $id, 'is_deleted' => '1');
-        $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$contition_array = array('image_id' => $id, 'is_deleted' => '1');
+$this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
     }
@@ -10012,7 +10122,7 @@ class Business_profile extends MY_Controller {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['business_profile_id'] . '">
-                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser(' . $userlist['business_profile_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser_two(' . $userlist['business_profile_id'] . ')">Follow
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -10088,7 +10198,7 @@ class Business_profile extends MY_Controller {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['business_profile_id'] . '">
-                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser(' . $userlist['business_profile_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser_two(' . $userlist['business_profile_id'] . ')">Follow
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -10167,7 +10277,7 @@ class Business_profile extends MY_Controller {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['business_profile_id'] . '">
-                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser(' . $userlist['business_profile_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['business_profile_id'] . '" onClick="followuser_two(' . $userlist['business_profile_id'] . ')">Follow
                                                                                 </button>
                                                                             </div>
                                                                         </div>

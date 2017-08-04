@@ -45,7 +45,7 @@
                                                                         <li class="fl">
                                                                             <div class="follow-img">
                                                                                 <?php if ($cdata[0]['business_user_image'] != '') { ?>
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>">
+                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>">
 
                                                                      <?php 
 
@@ -64,7 +64,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0
                                                     <?php }?>
                                                                                     </a>
                                                                                 <?php } else { ?>
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>">
+                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>">
                                                                                          <?php 
                                           $a = $cdata[0]['company_name'];
                                           $acr = substr($a, 0, 1);?>
@@ -78,7 +78,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0
                                                                         <li style="width: 67%">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
-                                            <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $cdata[0]['business_slug']); ?>"><?php echo ucfirst(strtolower($cdata[0]['company_name'])); ?></a>
+                                            <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>"><?php echo ucfirst(strtolower($cdata[0]['company_name'])); ?></a>
                                                                                 </div>
                                                                                 <div>
                                                                                     <?php $category = $this->db->get_where('industry_type', array('industry_id' => $cdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>

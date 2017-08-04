@@ -37,48 +37,46 @@
                                                                             <div class="follow-img">
                                                                                 <?php
                                                                                 $followerimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from']))->row()->business_user_image;
-
                                                                                 $followername = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from']))->row()->company_name;
-
                                                                                 $followerslug = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from']))->row()->business_slug;
                                                                                 ?>
                                                                                 <?php if ($followerimage != '') { ?>
 
 
-                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>">
+                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $followerslug); ?>">
 
-                                             <?php 
+                                                                                        <?php
+                                                                                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
+                                                                                            $a = $followername;
+                                                                                            $acr = substr($a, 0, 1);
+                                                                                            ?>
+                                                                                            <div class="post-img-userlist">
+                                                                                                <?php echo ucfirst(strtolower($acr)) ?>
+                                                                                            </div> 
+                                                                                            <?php } else {
+                                                                                            ?>
 
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
-                                                                $a = $followername;
-                                                                $acr = substr($a, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-userlist">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
-                                                                <?php
-                                                            } else { ?>
+                                                                                            <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $followerimage); ?>" height="50px" width="50px" alt="" >
 
-                                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $followerimage); ?>" height="50px" width="50px" alt="" >
-
-                                         <?php }?>
+                                                                                        <?php } ?>
                                                                                     </a>
                                                                                 <?php } else { ?>
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>">
-                                                                                         <?php 
-                                          $a =  $followername;
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-userlist">
-                                            <?php echo  ucfirst(strtolower($acr))?>
-                                            </div>
-                                            </a>
+                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $followerslug); ?>">
+                                                                                        <?php
+                                                                                        $a = $followername;
+                                                                                        $acr = substr($a, 0, 1);
+                                                                                        ?>
+                                                                                        <div class="post-img-userlist">
+                                                                                            <?php echo ucfirst(strtolower($acr)) ?>
+                                                                                        </div>
+                                                                                    </a>
                                                                                 <?php } ?> 
                                                                             </div>
                                                                         </li>
                                                                         <li class="folle_text">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
-                                                                                    <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $followerslug); ?>"><?php echo ucfirst(strtolower($followername)); ?></a></div>
+                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $followerslug); ?>"><?php echo ucfirst(strtolower($followername)); ?></a></div>
                                                                                 <div>
                                                                                     <?php
                                                                                     $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_from'], 'status' => 1))->row()->industriyal;
@@ -123,15 +121,15 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followe
                                             <?php } ?>
                                         <?php } else { ?>
                                             <div class="art-img-nn">
-                                    <div class="art_no_post_img">
+                                                <div class="art_no_post_img">
 
-                                        <img src="<?php echo base_url('img/bui-no.png') ?>">
+                                                    <img src="<?php echo base_url('img/bui-no.png') ?>">
 
-                                    </div>
-                                    <div class="art_no_post_text">
-                                        No Followers Available.
-                                    </div>
-                                </div>
+                                                </div>
+                                                <div class="art_no_post_text">
+                                                    No Followers Available.
+                                                </div>
+                                            </div>
                                         <?php } ?>
                                         <div class="col-md-1">
                                         </div>
@@ -190,9 +188,9 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followe
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <!-- script for business autofill -->
         <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+                                                                                        var base_url = '<?php echo base_url(); ?>';
+                                                                                        var data = <?php echo json_encode($demo); ?>;
+                                                                                        var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js'); ?>"></script>
     </body>

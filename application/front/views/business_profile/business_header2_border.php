@@ -62,7 +62,7 @@
     });
 //Document Click
 </script>
-<?php if (($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post')) { ?>
+<?php if (($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home')) { ?>
     <header>
         <div class="bg-search">
             <div class="header2 headerborder animated fadeInDownBig">
@@ -89,7 +89,7 @@
                             </div>
                             <div class="">
                                 <ul class="" id="dropdownclass">
-                                    <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business_profile/business_profile_post'); ?>"><span class="bu_home"></span></a>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="bu_home"></span></a>
                                     </li>
                                     <!-- Friend Request Start-->
                                     <li id="add_contact">
@@ -98,7 +98,7 @@
                                             <span id="addcontact_count"></span>
                                         </a>
                                         <div id="addcontactContainer">
-                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business_profile/contact_list'); ?>">See All</a></div>
+                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business-profile/contact-list'); ?>">See All</a></div>
                                             <div id="addcontactBody" class="notifications">
                                             </div>
                                         </div>
@@ -127,8 +127,8 @@
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('business_profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><span class="h2-img h2-srrt"></span>View Profile</a> 
-                                                <a href="<?php echo base_url('business_profile/business_information_update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                <a href="<?php echo base_url('business-profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><span class="h2-img h2-srrt"></span>View Profile</a> 
+                                                <a href="<?php echo base_url('business-profile/business_information_update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
@@ -176,7 +176,7 @@
                             </div>
                             <div class="">
                                 <ul class="" id="dropdownclass">
-                                    <li <?php if ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business_profile/business_profile_post'); ?>"><span class="bu_home"></span></a>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="bu_home"></span></a>
                                     </li>
                                     <!-- Friend Request Start-->
                                     <li id="add_contact">
@@ -186,7 +186,7 @@
                                             <span id="addcontact_count"></span>
                                         </a>
                                         <div id="addcontactContainer">
-                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business_profile/contact_list'); ?>">See All</a></div>
+                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business-profile/contact-list'); ?>">See All</a></div>
                                             <div id="addcontactBody" class="notifications">
                                             </div>
                                         </div>
@@ -278,7 +278,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "business_profile/deactivate" ?>',
+            url: '<?php echo base_url() . "business-profile/deactivate" ?>',
             data: 'id=' + clicked_id,
             success: function (data) {
                 window.location = "<?php echo base_url() ?>dashboard";
@@ -295,7 +295,7 @@
     }
     function contactperson() {
         $.ajax({
-            url: "<?php echo base_url(); ?>business_profile/contact_notification",
+            url: "<?php echo base_url(); ?>business-profile/contact_notification",
             type: "POST",
             success: function (data) {
                 $('#addcontactBody').html(data);
@@ -304,7 +304,7 @@
     }
     function update_contact_count() {
         $.ajax({
-            url: "<?php echo base_url(); ?>business_profile/update_contact_count",
+            url: "<?php echo base_url(); ?>business-profile/update_contact_count",
             type: "POST",
             success: function (data) {
                 //$('#addcontactBody').html(data);
@@ -313,7 +313,7 @@
     }
     function contactapprove(toid, status) {
         $.ajax({
-            url: "<?php echo base_url(); ?>business_profile/contact_approve",
+            url: "<?php echo base_url(); ?>business-profile/contact_approve",
             type: "POST",
             data: 'toid=' + toid + '&status=' + status,
             success: function (data) {
