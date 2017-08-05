@@ -29,7 +29,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                                                 $a = $businessdata[0]['company_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 ?>
-                                                                <div class="post-img-div">
+                                                                <div class="post-img-profile">
                                                                     <?php echo ucfirst(strtolower($acr)) ?>
                                                                 </div> 
                                                                 <?php
@@ -45,7 +45,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                             $a = $businessdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
                             ?>
-                            <div class="post-img-div">
+                            <div class="post-img-profile">
                                 <?php echo ucwords($acr) ?>
                             </div>
 
