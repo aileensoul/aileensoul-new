@@ -349,8 +349,9 @@
         } else
         {
             $('#message_count').html(msg);
-            $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+       //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
+                $('#message_count').addClass('count_add');
             //alert("welcome");
         }
     }
