@@ -164,7 +164,7 @@
         } else
         {
             $('#notification_count').html(msg);
-            $('#notification_count').css({"background-color": "#FF4500", "padding": "3px"});
+            $('#notification_count').css({"background-color": "#FF4500", "padding": "5px 6px"});
             $('#notificationLink').addClass('notification_available');
         }
     }

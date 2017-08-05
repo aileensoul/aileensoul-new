@@ -195,7 +195,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
 
                                             <div class="addtocont">
                                                 <span class="ft-13 ai_text">
-                                                    In your contact </span>
+                                                    In contact </span>
                                             </div> 
 
                                         </div>
