@@ -112,7 +112,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0
                                                                                 <?php } else if ($clistuser[0]['status'] == 'confirm') { ?> 
                                                                                     <div class="user_btn cont_req" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
                                                                                         <button onclick="contact_person_cancle(<?php echo $cdata[0]['user_id']; ?>, 'confirm')">
-                                                                                            In contact
+                                                                                            In contacts
                                                                                         </button> 
                                                                                     </div>        
                                                                                 <?php } else if ($clistuser[0]['status'] == 'reject') { ?>
