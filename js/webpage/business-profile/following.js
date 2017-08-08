@@ -1,11 +1,12 @@
 $(document).ready(function () {
     business_following(slug_id);
 
-    $(window).scroll(function () {
+    $(window).scroll(function (e) {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             if ($(".page_number:last").val() <= $(".total_record").val()) {
                 var pagenum = parseInt($(".page_number:last").val()) + 1;
                 business_following(slug_id, pagenum);
+                e.preventDefault();
             }
         }
     });
@@ -16,7 +17,7 @@ function business_following(slug_id, pagenum)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/ajax_following/" + slug_id + '?page=' + pagenum,
-        data: '',
+        data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {

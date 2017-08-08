@@ -216,6 +216,7 @@
                                 </div>
                                 <!-- no post found div end -->
                             </div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                         </div>
                     </div>
                 </div>
