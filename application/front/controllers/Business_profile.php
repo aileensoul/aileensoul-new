@@ -3068,7 +3068,16 @@ class Business_profile extends MY_Controller {
 
     public function ajax_following($id = "") {
         $userid = $this->session->userdata('aileenuser');
-
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+      
+        $start = ($page - 1) * $perpage;
+        if ($start < 0) $start = 0;
+        
+                
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
@@ -3081,9 +3090,13 @@ class Business_profile extends MY_Controller {
             $join_str[0]['join_table_id'] = 'follow.follow_from';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
+            
+            $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
+            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit='', $offset='', $join_str, $groupby = '');
         } else {
             $contition_array = array('business_slug' => $id, 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3092,15 +3105,23 @@ class Business_profile extends MY_Controller {
             $join_str[0]['join_table_id'] = 'follow.follow_from';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
-
+            
+            $limit = $perpage;
+            $offset = $start;
+            
             $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
-            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
+            $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit='', $offset='', $join_str, $groupby = '');
         }
-
-
-        if (count($userlist) > 0) {
+        if(empty($_GET["total_record"])) {
+	$_GET["total_record"] = count($userlist); 
+}       
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
-                $return_html = '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
+                $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
 <div class = "profile-job-post-detail clearfix">
 <div class = "profile-job-post-title-inside clearfix">
 <div class = "profile-job-post-location-name">
@@ -3112,7 +3133,7 @@ class Business_profile extends MY_Controller {
                 $companyname = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name;
                 $slug = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_slug;
                 if ($this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image != '') {
-                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '">';
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '" title="' . $companyname . '">';
                     $uimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image;
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
                         $a = $companyname;
@@ -3125,7 +3146,7 @@ class Business_profile extends MY_Controller {
                     }
                     $return_html .= '</a>';
                 } else {
-                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '">';
+                    $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '" title="' . $companyname . '">';
                     $a = $companyname;
                     $acr = substr($a, 0, 1);
                     $return_html .= '<div class="post-img-userlist">';
@@ -3137,7 +3158,7 @@ class Business_profile extends MY_Controller {
                 <li class="folle_text">
                     <div class="">
                         <div class="follow-li-text" style="padding: 0;">
-                            <a title="" href="' . base_url('business-profile/dashboard/' . $slug) . '">' . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name . '</a></div>
+                            <a title="' . $companyname . '" href="' . base_url('business-profile/dashboard/' . $slug) . '">' . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->company_name . '</a></div>
                         <div>';
 
                 $categoryid = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to'], 'status' => 1))->row()->industriyal;

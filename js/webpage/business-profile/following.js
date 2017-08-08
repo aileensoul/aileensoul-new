@@ -1,19 +1,36 @@
 $(document).ready(function () {
     business_following(slug_id);
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            if ($(".page_number:last").val() <= $(".total_record").val()) {
+                var pagenum = parseInt($(".page_number:last").val()) + 1;
+                business_following(slug_id, pagenum);
+            }
+        }
+    });
 });
-function business_following(slug_id)
+
+function business_following(slug_id, pagenum)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/ajax_following/" + slug_id,
+        url: base_url + "business_profile/ajax_following/" + slug_id + '?page=' + pagenum,
         data: '',
         dataType: "html",
         beforeSend: function () {
-            $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            if (pagenum == 'undefined') {
+                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
+                $('#loader').show();
+            }
+        },
+        complete: function () {
+            $('#loader').hide();
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').html(data);
+            $('.contact-frnd-post').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
