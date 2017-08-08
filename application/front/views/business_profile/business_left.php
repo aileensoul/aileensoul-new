@@ -26,12 +26,9 @@
                              <?php 
 
 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                                $a = $businessdata[0]['company_name'];
-                                                                $acr = substr($a, 0, 1);
+                                                               
                                                                 ?>
-                                                                <div class="post-img-profile">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
+                                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 
@@ -41,14 +38,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                     <?php } else { ?>
                         <div class="left_iner_img_profile">  
                             
-                            <?php
-                            $a = $businessdata[0]['company_name'];
-                            $acr = substr($a, 0, 1);
-                            ?>
-                            <div class="post-img-profile">
-                                <?php echo ucwords($acr) ?>
-                            </div>
-
+                            <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                         </div>  <?php } ?>                           
                 </a>
             </div>
