@@ -34,7 +34,7 @@
 /* NOTIFICATION COUNT END*/
 
 /* CONTACT CONTAINER START */
-
+.h_w{height: 100%;}
 #addcontactContainer{
     display: none;
     background-color: #fff;

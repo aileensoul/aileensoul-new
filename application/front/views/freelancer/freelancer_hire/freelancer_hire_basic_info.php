@@ -48,7 +48,7 @@
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             
                                         }
-                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("filed_required"); ?></a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
