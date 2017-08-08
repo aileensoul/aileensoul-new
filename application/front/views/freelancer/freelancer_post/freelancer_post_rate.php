@@ -87,7 +87,7 @@
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("hourly"); ?>:</label>
-                                        <input type="text" name="hourly" min="1" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
+                                        <input type="text" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;
                                         }
@@ -153,6 +153,14 @@
             <script>
                 var data = <?php echo json_encode($demo); ?>;
                var data1 = <?php echo json_encode($city_data); ?>;
+            </script>
+            <script>
+                $(document).ready(function () {
+                    var input = $("#hourly");
+                    var len = input.val().length;
+                    input[0].focus();
+                    input[0].setSelectionRange(len, len);
+                });
             </script>
            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_rate.js'); ?>"></script>
         </body>

@@ -99,6 +99,14 @@
                  var data = <?php echo json_encode($demo); ?>;
                  var data1 = <?php echo json_encode($city_data); ?>;                
             </script>
+            <script>
+                $(document).ready(function () {
+                    var input = $("#professional_info");
+                    var len = input.val().length;
+                    input[0].focus();
+                    input[0].setSelectionRange(len, len);
+                });
+            </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_professional_info.js'); ?>"></script>
           
         </body>

@@ -104,7 +104,7 @@
                                     ?>
                                     <fieldset <?php if ($firstname) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("first_name"); ?>:<span class="red">*</span></label>
-                                        <input tabindex="1" autofocus type="text" name="firstname" placeholder="Enter full name" value="<?php
+                                        <input tabindex="1" autofocus type="text" name="firstname" id="firstname" placeholder="Enter full name" value="<?php
                                         if ($firstname1) {
                                             echo $firstname1;
                                         } else {
@@ -176,6 +176,14 @@
                 var site = '<?php echo site_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
+            </script>
+            <script>
+                $(document).ready(function () {
+                    var input = $("#firstname");
+                    var len = input.val().length;
+                    input[0].focus();
+                    input[0].setSelectionRange(len, len);
+                });
             </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_basic_information.js'); ?>"></script>    
          </body>

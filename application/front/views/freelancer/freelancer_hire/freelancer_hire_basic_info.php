@@ -42,8 +42,9 @@
                                         <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("basic_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '1') {
+                                            
                                         }
-                                    ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
+                                        ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
                                             
@@ -151,6 +152,14 @@
                 var site_url = '<?php echo site_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
+            </script>
+            <script>
+                $(document).ready(function () {
+                    var input = $("#fname");
+                    var len = input.val().length;
+                    input[0].focus();
+                    input[0].setSelectionRange(len, len);
+                });
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js'); ?>"></script>
         </body>
