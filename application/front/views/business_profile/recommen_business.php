@@ -417,7 +417,7 @@
                                                                                             ?>
                                                                                             <div class="one-image" >
                                                                                                 <a href="<?php echo base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) ?>">
-                                                                                                    <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) ?>" > 
+                                                                                                    <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) ?>" > 
                                                                                                 </a>
                                                                                             </div>
                                                                                         <?php } elseif (in_array($ext, $allowespdf)) { ?>

@@ -1,22 +1,32 @@
 $(document).ready(function () {
     business_following(slug_id);
 
-    $(window).scroll(function () {
+    $(window).scroll(function (e) {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             if ($(".page_number:last").val() <= $(".total_record").val()) {
                 var pagenum = parseInt($(".page_number:last").val()) + 1;
                 business_following(slug_id, pagenum);
+                e.preventDefault();
             }
         }
     });
 });
-
+var isProcessing = false;
 function business_following(slug_id, pagenum)
 {
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/ajax_following/" + slug_id + '?page=' + pagenum,
-        data: '',
+        data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -39,6 +49,7 @@ function business_following(slug_id, pagenum)
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
+            isProcessing = false;
         }
     });
 }
