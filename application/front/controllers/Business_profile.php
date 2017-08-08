@@ -1448,12 +1448,10 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                        $a = $companynameposted;
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
+                       
                     } else {
 
                         $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
@@ -1462,12 +1460,9 @@ class Business_profile extends MY_Controller {
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
-                    $a = $companynameposted;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucfirst(strtolower($acr));
-                    $return_html .= '</div>';
+                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                     $return_html .= '</a>';
                 }
@@ -1477,12 +1472,9 @@ class Business_profile extends MY_Controller {
 
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                     }
@@ -1491,12 +1483,8 @@ class Business_profile extends MY_Controller {
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">';
 
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucfirst(strtolower($acr));
-                    $return_html .= '</div>';
+                    
+                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                     $return_html .= '</a>';
                 }
@@ -1945,12 +1933,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
+                           
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
@@ -1958,12 +1943,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname1) . '">';
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         $return_html .= '</a>';
                     }
                     $return_html .= '</div>
@@ -2064,22 +2046,16 @@ class Business_profile extends MY_Controller {
             if ($business_userimage) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucfirst(strtolower($acr));
-                    $return_html .= '</div>';
+                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                 }
             } else {
-                $a = $companyname;
-                $acr = substr($a, 0, 1);
+                
 
-                $return_html .= '<div class="post-img-div">';
-                $return_html .= ucfirst(strtolower($acr));
-                $return_html .= '</div>';
+                $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
             }
             $return_html .= '</div>
 
@@ -3137,22 +3113,16 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '" title="' . $companyname . '">';
                     $uimage = $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image;
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $uimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-                        $return_html .= '<div class="post-img-userlist">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image) . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slug) . '" title="' . $companyname . '">';
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-                    $return_html .= '<div class="post-img-userlist">';
-                    $return_html .= ucfirst(strtolower($acr));
-                    $return_html .= '</div>';
+                   
+                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 }
                 $return_html .= '</div>
                 </li>
@@ -3732,12 +3702,9 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
 
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
@@ -3745,12 +3712,9 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                     $cmtinsert .= '</div>';
                 }
@@ -3897,24 +3861,18 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                     }
 
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                     $cmtinsert .= '</div>';
                 }
@@ -4295,24 +4253,18 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+               
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 $cmtinsert .= '</div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
@@ -4461,12 +4413,9 @@ class Business_profile extends MY_Controller {
             if ($business_userimage) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
 
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
@@ -4474,12 +4423,9 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+               
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 $cmtinsert .= '</div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
@@ -5316,12 +5262,9 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
 
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
@@ -5329,12 +5272,9 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+                
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 $cmtinsert .= '</div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -5479,24 +5419,18 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
 
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+               
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div></div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
             $cmtinsert .= '</div>';
@@ -5644,12 +5578,9 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
 
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
@@ -5657,12 +5588,8 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
-
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div>';
+                
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 $cmtinsert .= '</div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -5824,23 +5751,17 @@ class Business_profile extends MY_Controller {
 
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+                
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 $cmtinsert .= '</div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -6362,24 +6283,17 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $company_name;
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
 
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
-
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                   
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     $cmtinsert .= '</div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -6525,23 +6439,17 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $company_name;
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     $cmtinsert .= '</div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
@@ -6693,22 +6601,16 @@ class Business_profile extends MY_Controller {
                 if ($busienss_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $fourdata .= '<div class="post-img-div">';
-                        $fourdata .= ucfirst(strtolower($acr));
-                        $fourdata .= '</div>';
+                        $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
                     }
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucfirst(strtolower($acr));
-                    $fourdata .= '</div>';
+                    $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
                 $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
@@ -6833,23 +6735,16 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-                        $fourdata .= '<div class="post-img-div">';
-                        $fourdata .= ucfirst(strtolower($acr));
-                        $fourdata .= '</div>';
+                       
+                        $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                     }
                     $fourdata .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucfirst(strtolower($acr));
-                    $fourdata .= '</div>';
+                    $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     $fourdata .= '</div>';
                 }
                 $fourdata .= '<div class="comment-name"><b>';
@@ -6961,22 +6856,16 @@ class Business_profile extends MY_Controller {
                 if ($busienss_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $fourdata .= '<div class="post-img-div">';
-                        $fourdata .= ucfirst(strtolower($acr));
-                        $fourdata .= '</div>';
+                        $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
                     }
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $fourdata .= '<div class="post-img-div">';
-                    $fourdata .= ucfirst(strtolower($acr));
-                    $fourdata .= '</div>';
+                    $fourdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
                 $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
@@ -7110,23 +6999,17 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $company_name;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+               
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div></div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
@@ -7301,23 +7184,17 @@ class Business_profile extends MY_Controller {
             if ($business_userimage != '') {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                    $a = $companynameposted;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
-                $a = $company_name;
-                $acr = substr($a, 0, 1);
+                
 
-                $cmtinsert .= '<div class="post-img-div">';
-                $cmtinsert .= ucfirst(strtolower($acr));
-                $cmtinsert .= '</div></div>';
+                $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></div>';
             }
             $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
             $cmtinsert .= '</div>';
@@ -7461,23 +7338,16 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                       
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div></div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
                 $cmtinsert .= '</div>';
@@ -7614,23 +7484,17 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $cmtinsert .= '<div class="post-img-div">';
-                        $cmtinsert .= ucfirst(strtolower($acr));
-                        $cmtinsert .= '</div>';
+                        $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
                         $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
-                    $cmtinsert .= '</div></div>';
+                    $cmtinsert .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
                 $cmtinsert .= '</div>';
@@ -7766,12 +7630,8 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
-
-                        $mulimgfour .= '<div class="post-img-div">';
-                        $mulimgfour .= ucfirst(strtolower($acr));
-                        $mulimgfour .= '</div>';
+                        
+                        $mulimgfour .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
 
                         $mulimgfour .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
@@ -7779,12 +7639,8 @@ class Business_profile extends MY_Controller {
 
                     $mulimgfour .= '</div>';
                 } else {
-                    $a = $companyname;
-                    $acr = substr($a, 0, 1);
-
-                    $mulimgfour .= '<div class="post-img-div">';
-                    $mulimgfour .= ucfirst(strtolower($acr));
-                    $mulimgfour .= '</div>';
+                    
+                    $mulimgfour .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     $mulimgfour .= '</div>';
                 }
                 $mulimgfour .= '<div class="comment-name"><b>';
@@ -7916,22 +7772,16 @@ class Business_profile extends MY_Controller {
             if ($bus_image) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-                    $a = $business_fname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $modal .= '<div class="post-img-div">';
-                    $modal .= ucfirst(strtolower($acr));
-                    $modal .= '</div>';
+                    $modal .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
                     $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
                 }
             } else {
-                $a = $business_fname;
-                $acr = substr($a, 0, 1);
+                
 
-                $modal .= '<div class="post-img-div">';
-                $modal .= ucfirst(strtolower($acr));
-                $modal .= '</div>';
+                $modal .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
             }
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
@@ -8004,23 +7854,17 @@ class Business_profile extends MY_Controller {
             if ($bus_image) {
 
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-                    $a = $business_fname;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $modal .= '<div class="post-img-div">';
-                    $modal .= ucfirst(strtolower($acr));
-                    $modal .= '</div>';
+                    $modal .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 } else {
 
                     $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
                 }
             } else {
-                $a = $business_fname;
-                $acr = substr($a, 0, 1);
+                
 
-                $modal .= '<div class="post-img-div">';
-                $modal .= ucfirst(strtolower($acr));
-                $modal .= '</div>';
+                $modal .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
             }
             $modal .= '</div>';
             $modal .= '<div class="like_user_list_main_desc">';
@@ -8322,23 +8166,17 @@ class Business_profile extends MY_Controller {
                         if ($busdata[0]['business_user_image']) {
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                $a = $busdata[0]['company_name'];
-                                $acr = substr($a, 0, 1);
+                                
 
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr));
-                                $contactdata .= '</div>';
+                                $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                             } else {
 
                                 $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                             }
                         } else {
-                            $a = $busdata[0]['company_name'];
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $contactdata .= '<div class="post-img-div">';
-                            $contactdata .= ucfirst(strtolower($acr));
-                            $contactdata .= '</div>';
+                            $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         }
                         $contactdata .= '</div>';
                         $contactdata .= '<div class="addcontact-text">';
@@ -8373,23 +8211,17 @@ class Business_profile extends MY_Controller {
                         if ($busdata[0]['business_user_image']) {
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                $a = $busdata[0]['company_name'];
-                                $acr = substr($a, 0, 1);
+                               
 
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr));
-                                $contactdata .= '</div>';
+                                $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                             } else {
 
                                 $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                             }
                         } else {
-                            $a = $busdata[0]['company_name'];
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $contactdata .= '<div class="post-img-div">';
-                            $contactdata .= ucfirst(strtolower($acr));
-                            $contactdata .= '</div>';
+                            $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         }
                         $contactdata .= '</div>';
                         $contactdata .= '<div class="addcontact-text">';
@@ -8534,23 +8366,17 @@ class Business_profile extends MY_Controller {
                     if ($busdata[0]['business_user_image']) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                            $a = $busdata[0]['company_name'];
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $contactdata .= '<div class="post-img-div">';
-                            $contactdata .= ucfirst(strtolower($acr));
-                            $contactdata .= '</div>';
+                            $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                         }
                     } else {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
-                        $contactdata .= '</div>';
+                        $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
@@ -8650,23 +8476,17 @@ class Business_profile extends MY_Controller {
                 if ($busdata[0]['business_user_image'] != '') {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
-                        $contactdata .= '</div>';
+                        $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
 
                         $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                     }
                 } else {
-                    $a = $busdata[0]['company_name'];
-                    $acr = substr($a, 0, 1);
+                   
 
-                    $contactdata .= '<div class="post-img-div">';
-                    $contactdata .= ucfirst(strtolower($acr));
-                    $contactdata .= '</div>';
+                    $contactdata .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 }
 
                 $contactdata .= '</div>';
@@ -9214,12 +9034,9 @@ class Business_profile extends MY_Controller {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                                $a = $companynameposted;
-                                $acr = substr($a, 0, 1);
+                                
 
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr));
-                                $return_html .= '</div>';
+                                $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                             } else {
                                 $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
                             }
@@ -9229,12 +9046,9 @@ class Business_profile extends MY_Controller {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
 
 
-                            $a = $companynameposted;
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                             $return_html .= '</a>';
                         }
@@ -9243,12 +9057,9 @@ class Business_profile extends MY_Controller {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                $a = $companyname;
-                                $acr = substr($a, 0, 1);
+                               
 
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr));
-                                $return_html .= '</div>';
+                                $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                             } else {
                                 $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                             }
@@ -9256,12 +9067,8 @@ class Business_profile extends MY_Controller {
                         } else {
                             $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
 
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
 
                             $return_html .= '</a>';
                         }
@@ -9710,24 +9517,16 @@ class Business_profile extends MY_Controller {
                                 $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
 
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                    $a = $companyname;
-                                    $acr = substr($a, 0, 1);
-
-                                    $return_html .= '<div class="post-img-div">';
-                                    $return_html .= ucfirst(strtolower($acr));
-                                    $return_html .= '</div>';
+                                   
+                                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                                 } else {
                                     $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                                 }
                                 $return_html .= '</a>';
                             } else {
                                 $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
-                                $a = $companyname;
-                                $acr = substr($a, 0, 1);
-
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr));
-                                $return_html .= '</div></a>';
+                                
+                                $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></a>';
                             }
                             $return_html .= '</div>
                                             <div class="comment-name">
@@ -9837,22 +9636,16 @@ class Business_profile extends MY_Controller {
                     if ($business_userimage) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
+                           
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                         }
                     } else {
-                        $a = $companyname;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     }
                     $return_html .= '</div>
 
@@ -9967,12 +9760,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $a = $userlist['company_name'];
-                            $acr = substr($a, 0, 1);
+                           
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
                         }
@@ -9980,12 +9770,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        $a = $userlist['company_name'];
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div></a>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></a>';
                     }
                     $return_html .= '</div>
                                                                         <div class="post-design-name_follow fl">
@@ -10044,12 +9831,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $a = $userlist['company_name'];
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
@@ -10058,12 +9842,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        $a = $userlist['company_name'];
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div></a>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></a>';
                     }
                     $return_html .= '</div>';
                     $return_html .= '<div class="post-design-name_follow fl">
@@ -10123,23 +9904,16 @@ class Business_profile extends MY_Controller {
                     if ($userlist['business_user_image'] != '') {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $a = $userlist['company_name'];
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
                         }
                     } else {
-                        $a = $userlist['company_name'];
-                        $acr = substr($a, 0, 1);
-
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                       
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     }
                     $return_html .= '</a>
                                                                         </div>
@@ -10198,12 +9972,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $a = $userlist['company_name'];
-                            $acr = substr($a, 0, 1);
+                           
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '"  alt="">';
                         }
@@ -10211,12 +9982,9 @@ class Business_profile extends MY_Controller {
                         $return_html .= '</a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title="' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        $a = $userlist['company_name'];
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div></a>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt=""></a>';
                     }
                     $return_html .= '</div>
                                                                         <div class="post-design-name_follow fl">
@@ -10772,45 +10540,32 @@ class Business_profile extends MY_Controller {
                     if ($userimageposted) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-                            $a = $usernameposted;
-                            $acr = substr($a, 0, 1);
-
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
                         }
                     } else {
-                        $a = $usernameposted;
-                        $acr = substr($a, 0, 1);
+                      
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     }
                 } else {
                     if ($userimage) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimage)) {
-                            $a = $username;
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         } else {
 
                             $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name="image_src" id="image_src" />';
                         }
                     } else {
-                        $a = $username;
-                        $acr = substr($a, 0, 1);
+                        
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     }
                 }
                 $return_html .= '</div>
@@ -11168,23 +10923,17 @@ class Business_profile extends MY_Controller {
                         if ($business_userimage) {
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                                $a = $companyname;
-                                $acr = substr($a, 0, 1);
+                                
 
-                                $return_html .= '<div class="post-img-div">';
-                                $return_html .= ucfirst(strtolower($acr));
-                                $return_html .= '</div>';
+                                $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                             } else {
 
                                 $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                             }
                         } else {
-                            $a = $companyname;
-                            $acr = substr($a, 0, 1);
+                            
 
-                            $return_html .= '<div class="post-img-div">';
-                            $return_html .= ucfirst(strtolower($acr));
-                            $return_html .= '</div>';
+                            $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
@@ -11284,23 +11033,17 @@ class Business_profile extends MY_Controller {
                 if ($business_userimage) {
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                        $a = $business_username;
-                        $acr = substr($a, 0, 1);
+                       
 
-                        $return_html .= '<div class="post-img-div">';
-                        $return_html .= ucfirst(strtolower($acr));
-                        $return_html .= '</div>';
+                        $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                     } else {
 
                         $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                     }
                 } else {
-                    $a = $business_username;
-                    $acr = substr($a, 0, 1);
+                    
 
-                    $return_html .= '<div class="post-img-div">';
-                    $return_html .= ucfirst(strtolower($acr));
-                    $return_html .= '</div>';
+                    $return_html .= '<img  src="'.base_url(NOBUSIMAGE).'"  alt="">';
                 }
                 $return_html .= '</div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
