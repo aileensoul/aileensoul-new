@@ -103,6 +103,61 @@ function check() {
     }
 }
 
+$(document).ready(function () {
+    business_contacts(slug);
+    
+    $(window).scroll(function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            if ($(".page_number:last").val() <= $(".total_record").val()) {
+                var pagenum = parseInt($(".page_number:last").val()) + 1;
+                business_contacts(slug,pagenum);
+            }
+        }
+    });
+});
+var isProcessing = false;
+function business_contacts(slug,pagenum) {
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/ajax_bus_contact/" + slug + "?page=" + pagenum,
+        data: {total_record: $("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            if (pagenum == 'undefined') {
+                $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
+                $('#loader').show();
+            }
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.business-all-post').html(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            isProcessing = false;
+        }
+    });
+}
+
+
 function updateprofilepopup(id) {
     $('#bidmodal-2').modal('show');
 }

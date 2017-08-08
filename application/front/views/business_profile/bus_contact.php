@@ -17,131 +17,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-
                         </div>
                         <div class="col-md-8 col-sm-8">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>Contacts</h3>
                                     <div class="contact-frnd-post">
-                                        <?php
-                                        if (count($unique_user) > 0) {
-                                            foreach ($unique_user as $user) {
-                                                if ($busuid == $user['contact_from_id']) {
-                                                    $cdata = $this->common->select_data_by_id('business_profile', 'user_id', $user['contact_to_id'], $data = '*', $join_str = array());
-                                                    $contition_array = array('contact_from_id' => $login, 'contact_to_id' => $user['contact_to_id'], 'contact_type' => 2);
-                                                    $clistuser = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'status,contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                } else {
-                                                    $cdata = $this->common->select_data_by_id('business_profile', 'user_id', $user['contact_from_id'], $data = '*', $join_str = array());
-                                                    $contition_array = array('contact_to_id' => $login, 'contact_from_id' => $user['contact_from_id'], 'contact_type' => 2);
-                                                    $clistuser = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'status,contact_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                }
-                                                ?>
-                                                <div class="job-contact-frnd">
-                                                    <div class="profile-job-post-detail clearfix" id="<?php echo "removecontact" . $cdata[0]['user_id']; ?>">
-                                                        <div class="profile-job-post-title-inside clearfix">
-                                                            <div class="profile-job-post-location-name">
-                                                                <div class="user_lst"><ul>
-                                                                        <li class="fl">
-                                                                            <div class="follow-img">
-                                                                                <?php if ($cdata[0]['business_user_image'] != '') { ?>
-                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>">
-
-                                                                     <?php 
-
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image'])) {
-
-                                                               
-                                                                ?>
-                                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                <?php
-                                                            } else { ?>
-
-                                                    <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image']); ?>" height="50px" width="50px" alt="" >
-                                                    <?php }?>
-                                                                                    </a>
-                                                                                <?php } else { ?>
-                                                                                    <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>">
-                                                                                          <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                                    </a>
-                                                                                <?php } ?> 
-                                                                            </div>
-                                                                        </li>
-                                                                        <li style="width: 67%">
-                                                                            <div class="">
-                                                                                <div class="follow-li-text " style="padding: 0;">
-                                            <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>"><?php echo ucfirst(strtolower($cdata[0]['company_name'])); ?></a>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <?php $category = $this->db->get_where('industry_type', array('industry_id' => $cdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                                                                    <a><?php
-                                                                                        if ($category) {
-                                                                                            echo $category;
-                                                                                        } else {
-                                                                                            echo $cdata[0]['other_industrial'];
-                                                                                        }
-                                                                                        ?></a>
-                                                                                </div>
-                                                                        </li>
-                                                                        <li class="fr">
-                                                                            <?php
-                                                                            if ($login == $cdata[0]['user_id']) {
-                                                                                
-                                                                            } else {
-                                                                                ?>
-                                                                                <?php if ($clistuser[0]['status'] == 'cancel') { ?>
-                                                                                    <div class="user_btn" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
-                                                                                        <button onclick="contact_person_menu(<?php echo $cdata[0]['user_id']; ?>)">
-                                                                                            Add to contact
-                                                                                        </button>
-                                                                                    </div>  
-                                                                                <?php } elseif ($clistuser[0]['status'] == 'pending') { ?>
-                                                                                    <div class="user_btn" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
-                                                                                        <button onclick="contact_person_cancle(<?php echo $cdata[0]['user_id']; ?>, 'pending')">
-                                                                                            Cancel request
-                                                                                        </button>
-                                                                                    </div>     
-                                                                                <?php } else if ($clistuser[0]['status'] == 'confirm') { ?> 
-                                                                                    <div class="user_btn cont_req" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
-                                                                                        <button onclick="contact_person_cancle(<?php echo $cdata[0]['user_id']; ?>, 'confirm')">
-                                                                                            In contacts
-                                                                                        </button> 
-                                                                                    </div>        
-                                                                                <?php } else if ($clistuser[0]['status'] == 'reject') { ?>
-                                                                                    <div class="user_btn" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
-                                                                                        <button onclick="contact_person_menu(<?php echo $cdata[0]['user_id']; ?>)">
-                                                                                            Add to contact
-                                                                                        </button>
-                                                                                    </div>
-                                                                                <?php } else { ?>
-                                                                                    <div class="user_btn" id="<?php echo "statuschange" . $cdata[0]['user_id']; ?>">
-                                                                                        <button onclick="contact_person_menu(<?php echo $cdata[0]['user_id']; ?>)">
-                                                                                            Add to contact
-                                                                                        </button>
-                                                                                    </div>
-                                                                                <?php } ?>
-                                                                            <?php } ?>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="art-img-nn">
-                                    <div class="art_no_post_img">
-
-                                        <img src="<?php echo base_url('img/bui-no.png') ?>">
-
-                                    </div>
-                                    <div class="art_no_post_text">
-                                        No Contacts Available.
-                                    </div>
-                                </div>
-                            
-                                        <?php } ?>
+                                       
                                         <div class="col-md-1"></div>
                                     </div>
                                 </div>

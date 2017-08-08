@@ -134,7 +134,7 @@ function business_home_post(pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+               // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }

@@ -167,16 +167,41 @@ $(document).ready(function () {
     GetBusVideos();
     GetBusAudios();
     GetBusPdf();
+    
+    $(window).scroll(function (e) {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+            if ($(".page_number:last").val() <= $(".total_record").val()) {
+                var pagenum = parseInt($(".page_number:last").val()) + 1;
+                business_dashboard_post(slug,pagenum);
+            }
+        }
+    });
 });
-
-function business_dashboard_post(slug) {
+var isProcessing = false;
+function business_dashboard_post(slug,pagenum) {
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_dashboard_post/" + slug,
-        data: '',
+        url: base_url + "business_profile/business_dashboard_post/" + slug + "?page=" + pagenum,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
-            $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            if (pagenum == 'undefined') {
+              //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
+                $('#loader').show();
+            }
+        },
+        complete: function () {
+            $('#loader').hide();
         },
         success: function (data) {
             $('.loader').remove();
@@ -189,6 +214,7 @@ function business_dashboard_post(slug) {
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
+            isProcessing = false;
         }
     });
 }
