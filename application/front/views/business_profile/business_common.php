@@ -70,13 +70,9 @@
 
                      <?php 
 
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image'])) {
-                                                                $a = $businessdata1[0]['company_name'];
-                                                                $acr = substr($a, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-user">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
+if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image'])) {  ?>
+                        <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
+                                                               
                                                                 <?php
                                                             } else { ?>
                         <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image']); ?>" alt="" >
@@ -84,13 +80,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                         <?php }?>
 
                     <?php } else { ?>
-                        <?php
-                        $a = $businessdata1[0]['company_name'];
-                        $acr = substr($a, 0, 1);
-                        ?>
-                        <div class="post-img-user">
-                        <?php echo ucfirst(strtolower($acr)) ?>
-                        </div>
+                        <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
                     <?php } ?>
                     <?php
                     $userid = $this->session->userdata('aileenuser');

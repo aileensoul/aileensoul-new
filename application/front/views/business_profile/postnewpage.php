@@ -126,13 +126,7 @@
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
-                                                        <?php
-                                                        $a = $companynameposted;
-                                                        $acr = substr($a, 0, 1);
-                                                        ?>
-                                                        <div class="post-img-div">
-                                                            <?php echo ucfirst(strtolower($acr)) ?>
-                                                        </div>
+                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     </a>
                                                 <?php } ?>
                                             <?php } else { ?>
@@ -142,13 +136,7 @@
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
-                                                        <?php
-                                                        $a = $companyname;
-                                                        $acr = substr($a, 0, 1);
-                                                        ?>
-                                                        <div class="post-img-div">
-                                                            <?php echo ucfirst(strtolower($acr)) ?>
-                                                        </div>
+                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     </a>
                                                     <?php
                                                 }
@@ -555,13 +543,7 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <?php
-                                                                    $a = $companyname;
-                                                                    $acr = substr($a, 0, 1);
-                                                                    ?>
-                                                                    <div class="post-img-div">
-                                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                                    </div>
+                                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -680,13 +662,7 @@
                                                 <?php
                                             } else {
                                                 ?>
-                                                <?php
-                                                $a = $business_user;
-                                                $acr = substr($a, 0, 1);
-                                                ?>
-                                                <div class="post-img-div">
-                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                </div>
+                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php
                                             }
                                             ?>
@@ -903,13 +879,7 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <?php
-                                                                    $a = $companyname;
-                                                                    $acr = substr($a, 0, 1);
-                                                                    ?>
-                                                                    <div class="post-img-div">
-                                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                                    </div>
+                                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1027,13 +997,7 @@
                                                 <?php
                                             } else {
                                                 ?>
-                                                <?php
-                                                $a = $business_user;
-                                                $acr = substr($a, 0, 1);
-                                                ?>
-                                                <div class="post-img-div">
-                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                </div>
+                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php
                                             }
                                             ?>

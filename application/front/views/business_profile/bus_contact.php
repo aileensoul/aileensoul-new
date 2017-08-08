@@ -51,12 +51,9 @@
 
 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image'])) {
 
-                                                                $a = $cdata[0]['company_name'];
-                                                                $acr = substr($a, 0, 1);
+                                                               
                                                                 ?>
-                                                                <div class="post-img-userlist">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
+                                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 
@@ -65,12 +62,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $cdata[0
                                                                                     </a>
                                                                                 <?php } else { ?>
                                                                                     <a href="<?php echo base_url('business-profile/dashboard/' . $cdata[0]['business_slug']); ?>">
-                                                                                         <?php 
-                                          $a = $cdata[0]['company_name'];
-                                          $acr = substr($a, 0, 1);?>
-                                            <div class="post-img-userlist">
-                                            <?php echo  ucfirst(strtolower($acr))?>
-                                            </div>
+                                                                                          <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                     </a>
                                                                                 <?php } ?> 
                                                                             </div>

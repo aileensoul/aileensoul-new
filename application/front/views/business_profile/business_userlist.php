@@ -41,12 +41,9 @@
                                                              <?php 
 
 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'])) {
-                                                                $a = $user['company_name'];
-                                                                $acr = substr($a, 0, 1);
+                                                                
                                                                 ?>
-                                                                <div class="post-img-userlist">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                </div> 
+                                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                 <?php
                                                             } else { ?>
 
@@ -58,13 +55,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['b
                                                                                 </a>
                                                                             <?php } else { ?>
                                                                                 <a href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>">
-                                                                                    <?php
-                                                                                    $a = $user['company_name'];
-                                                                                    $acr = substr($a, 0, 1);
-                                                                                    ?>
-                                                                                    <div class="post-img-userlist">
-        <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                    </div>
+                                                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                 </a>
     <?php } ?> 
                                                                         </div>

@@ -175,13 +175,7 @@
                                                                                     <?php
                                                                                 } else {
                                                                                     ?>
-                                                                                    <?php
-                                                                                    $a = $p['company_name'];
-                                                                                    $acr = substr($a, 0, 1);
-                                                                                    ?>
-                                                                                    <div class="post-img-div">
-                                                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                    </div>
+                                                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                     </a>
                                                                                     <?php
                                                                                 }
@@ -339,13 +333,7 @@
                                                                                             </a>
                                                                                         <?php } else { ?>
                                                                                             <a class="post_dot" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>" title="">
-                                                                                                <?php
-                                                                                                $a = $p['company_name'];
-                                                                                                $acr = substr($a, 0, 1);
-                                                                                                ?>
-                                                                                                <div class="post-img-div">
-                                                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                                </div>
+                                                                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                             <?php } ?> </a>
                                                                                     <?php } else { ?>
                                                                                         <?php if ($business_userimage) { ?>
@@ -353,13 +341,7 @@
                                                                                                 <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt=""> </a>
                                                                                         <?php } else { ?>
                                                                                             <a class="post_dot" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>" title="">
-                                                                                                <?php
-                                                                                                $a = $p['company_name'];
-                                                                                                $acr = substr($a, 0, 1);
-                                                                                                ?>
-                                                                                                <div class="post-img-div">
-                                                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                                </div>
+                                                                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                             </a>
                                                                                             <?php
                                                                                         }
@@ -718,14 +700,8 @@
                                                                                                         ?>
                                                                                                         <?php if ($business_userimage) { ?>
                                                                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
-                                                                                                        <?php } else { ?>
-                                                                                                            <?php
-                                                                                                            $a = $companyname;
-                                                                                                            $acr = substr($a, 0, 1);
-                                                                                                            ?>
-                                                                      <div class="post-img-div">
-                                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                                    </div>
+                                                                 <?php } else { ?>
+                                                                      <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                                         <?php } ?>
                                                                                                     </div>
                                                                                                     <div class="comment-name">
@@ -834,13 +810,7 @@
                                                                                     <?php if ($business_userimage) { ?>
                                                                                         <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                                                     <?php } else { ?>
-                                                                                        <?php
-                                                                                        $a = $business_user;
-                                                                                        $acr = substr($a, 0, 1);
-                                                                                        ?>
-                                                                                        <div class="post-img-div">
-                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                                                        </div>
+                                                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                                     <?php } ?>
                                                                                 </div>
 
