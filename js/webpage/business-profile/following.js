@@ -11,9 +11,18 @@ $(document).ready(function () {
         }
     });
 });
-
+var isProcessing = false;
 function business_following(slug_id, pagenum)
 {
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/ajax_following/" + slug_id + '?page=' + pagenum,
@@ -40,6 +49,7 @@ function business_following(slug_id, pagenum)
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
+            isProcessing = false;
         }
     });
 }

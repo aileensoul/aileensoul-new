@@ -153,6 +153,7 @@ function business_home_post(pagenum) {
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
+            isProcessing = false;
         }
     });
 }

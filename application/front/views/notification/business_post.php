@@ -386,7 +386,7 @@
                                                                 <!-- one image start -->
                                                                 <div class="one-image">
                                                                     <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) ?>"> 
+                                                                        <img src="<?php echo base_url($this->config->item('bus_post_image_upload_path') . $businessmultiimage[0]['image_name']) ?>"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- one image end -->
