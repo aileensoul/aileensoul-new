@@ -42,12 +42,12 @@
                                         <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("basic_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '1') {
-                                            
+                                            echo "khyati";
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
                                         <li class="custom-none <?php
                                         if ($freehiredata[0]['free_hire_step'] < '2') {
-                                            
+                                            echo "khyati";
                                         }
                                         ?>"><a href="<?php echo base_url('freelancer-hire/professional-information'); ?>"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>

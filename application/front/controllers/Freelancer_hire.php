@@ -472,7 +472,7 @@ class Freelancer_hire extends MY_Controller {
 
                 if ($updatdata) {
 
-                    $this->session->set_flashdata('success', 'professional information updated successfully');
+//                    $this->session->set_flashdata('success', 'professional information updated successfully');
 
                     if ($userdata[0]['free_hire_step'] == 3) {
                         redirect('freelancer-hire/employer-details', refresh);
@@ -482,7 +482,7 @@ class Freelancer_hire extends MY_Controller {
                 } else {
 
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('freelancer_hire/freelancer_hire_professional_info', refresh);
+                    redirect('freelancer-hire/professional-information', refresh);
                 }
             }
         }
