@@ -66,12 +66,9 @@
 
                                                 <?php
                                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                    $a = $businessdata[0]['company_name'];
-                                                    $acr = substr($a, 0, 1);
+                                                    
                                                     ?>
-                                                    <div class="post-img-div">
-                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                    </div> 
+                                                   <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     <?php } else {
                                                     ?>
 
@@ -82,13 +79,7 @@
                                                 <?php
                                             } else {
                                                 ?>
-                                                <?php
-                                                $a = $businessdata[0]['company_name'];
-                                                $acr = substr($a, 0, 1);
-                                                ?>
-                                                <div class="post-img-div">
-                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                </div>
+                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php
                                             }
                                             ?>
@@ -160,12 +151,9 @@
 
                                             <?php
                                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                $a = $businessdata[0]['company_name'];
-                                                $acr = substr($a, 0, 1);
+                                                
                                                 ?>
-                                                <div class="post-img-div">
-                                                <?php echo ucfirst(strtolower($acr)) ?>
-                                                </div> 
+                                               <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     <?php } else {
                                                     ?>
 
@@ -174,13 +162,7 @@
     <?php } ?>
 
                                         <?php } else { ?>
-                                            <?php
-                                            $a = $businessdata[0]['company_name'];
-                                            $acr = substr($a, 0, 1);
-                                            ?>
-                                            <div class="post-img-div">
-                                            <?php echo ucfirst(strtolower($acr)) ?>
-                                            </div>
+                                           <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                             <?php } ?>
                                     </div>
                                     <div id="myBtn"  class="editor-content popup-text">
