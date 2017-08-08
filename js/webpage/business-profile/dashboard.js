@@ -168,7 +168,7 @@ $(document).ready(function () {
     GetBusAudios();
     GetBusPdf();
     
-    $(window).scroll(function (e) {
+    $(window).scroll(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             if ($(".page_number:last").val() <= $(".total_record").val()) {
                 var pagenum = parseInt($(".page_number:last").val()) + 1;
@@ -205,7 +205,7 @@ function business_dashboard_post(slug,pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.business-all-post').html(data);
+            $('.business-all-post').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;

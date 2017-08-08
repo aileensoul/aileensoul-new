@@ -587,6 +587,8 @@ class Search extends CI_Controller {
         }
 
         $this->data['de'] = array_values($res);
+        
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data,TRUE);
         $this->load->view('business_profile/recommen_business', $this->data);
     }
 

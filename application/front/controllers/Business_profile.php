@@ -8509,12 +8509,24 @@ class Business_profile extends MY_Controller {
     }
 
     public function bus_contact($id = "") {
-        $this->data['slug'] = $id;
+        $this->data['slug_id'] = $id;
         $this->load->view('business_profile/bus_contact', $this->data);
     }
 
     public function ajax_bus_contact($id = "") {
+        
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
 
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+        
+        
+        
         $this->data['login'] = $login = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $login, 'is_deleted' => 0, 'status' => 1);
 
@@ -8529,20 +8541,37 @@ class Business_profile extends MY_Controller {
             $contition_array = array('user_id' => $busuid, 'is_deleted' => 0, 'status' => 1);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $slugid = $businessdata1[0]['business_slug'];
+            
+            $limit = $perpage;
+            $offset = $start;
+            
             $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
-            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
+            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str = '', $groupby = '');
+            $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit='', $offset='', $join_str = '', $groupby = '');
+            
         } else {
             $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $busuid = $this->data['busuid'] = $businessdata1[0]['user_id'];
+            
+            $limit = $perpage;
+            $offset = $start;
+            
             $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
-            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
+            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str = '', $groupby = '');
+            $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit='', $offset='', $join_str = '', $groupby = '');
+        
+        }
+        $return_html = '';
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($unique_user);
         }
 
-
-        if (count($unique_user) > 0) {
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        if (count($unique_user1) > 0) {
             foreach ($unique_user as $user) {
                 if ($busuid == $user['contact_from_id']) {
                     $cdata = $this->common->select_data_by_id('business_profile', 'user_id', $user['contact_to_id'], $data = '*', $join_str = array());
@@ -10535,6 +10564,17 @@ Your browser does not support the audio tag.
 
     public function business_dashboard_post($id = '') {
 // manage post start
+        
+        $perpage = 10;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+        
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -10546,19 +10586,34 @@ Your browser does not support the audio tag.
             $contition_array = array('business_slug' => $slug_id, 'status' => '1');
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $limit = $perpage;
+            $offset = $start;
+            
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $limit = $perpage;
+            $offset = $start;
+            
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
         $return_html = '';
+        
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($business_profile_data);
+        }
 
-        if (count($business_profile_data) > 0) {
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        if (count($business_profile_data1) > 0) {
+            
             foreach ($business_profile_data as $row) {
                 $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
                 $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

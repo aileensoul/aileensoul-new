@@ -23,9 +23,10 @@
                                 <div class="job-saved-box">
                                     <h3>Contacts</h3>
                                     <div class="contact-frnd-post">
-                                       
+                                       <!-- AJAX DATA..... --> 
                                         <div class="col-md-1"></div>
                                     </div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                                 </div>
                             </div>
                         </div>
@@ -83,6 +84,7 @@
                                                                             var base_url = '<?php echo base_url(); ?>';
                                                                             var data = <?php echo json_encode($demo); ?>;
                                                                             var data1 = <?php echo json_encode($city_data); ?>;
+                                                                            var slug = '<?php echo $slug_id; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/contacts.js'); ?>"></script>
     </body>

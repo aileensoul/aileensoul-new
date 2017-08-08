@@ -106,7 +106,7 @@ function check() {
 $(document).ready(function () {
     business_contacts(slug);
     
-    $(window).scroll(function (e) {
+    $(window).scroll(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
             if ($(".page_number:last").val() <= $(".total_record").val()) {
                 var pagenum = parseInt($(".page_number:last").val()) + 1;
@@ -133,7 +133,7 @@ function business_contacts(slug,pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            //    $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -143,7 +143,7 @@ function business_contacts(slug,pagenum) {
         },
         success: function (data) {
             $('.loader').remove();
-            $('.business-all-post').html(data);
+            $('.contact-frnd-post').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
