@@ -2998,6 +2998,11 @@ class Business_profile extends MY_Controller {
     }
 
     public function followers($id = "") {
+        $this->data['slug_id'] = $id;
+        $this->load->view('business_profile/business_followers', $this->data);
+    }
+    
+    public function ajax_followers($id = "") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
@@ -3033,7 +3038,7 @@ class Business_profile extends MY_Controller {
             $this->data['userlist'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
 
-        $this->load->view('business_profile/business_followers', $this->data);
+        
     }
 
     public function following($id = "") {
@@ -3090,11 +3095,12 @@ class Business_profile extends MY_Controller {
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($userlist);
+            $_GET["total_record"] = count($userlist1);
         }
         $return_html = '';
         $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
         $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
                 $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
