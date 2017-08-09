@@ -161,3 +161,14 @@ $route['freelancer-work/search'] = "search/freelancer_post_search";
 
 /* Report Route end */
 
+
+
+//ARTISTIC ROUTES SETTINGS
+
+
+$route['artistic'] = "artistic/index";
+$route['artistic/artistic-information-insert'] = "artistic/art_basic_information_insert";
+$route['artistic/artistic-information-update'] = "artistic/art_basic_information_update";
+
+
+
