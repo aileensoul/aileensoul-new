@@ -27,6 +27,7 @@
                                         <div class="col-md-1">
                                         </div>
                                     </div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +38,6 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-
-
         <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
