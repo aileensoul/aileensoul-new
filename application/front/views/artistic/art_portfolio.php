@@ -114,7 +114,7 @@
 
                                 <fieldset class="full-width">
                                  <label>Enter Portfolio Description:</label>
-                              <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" ><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
+                              <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" onpaste="OnPaste_StripFormatting(this, event);"><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
                                          <?php echo form_error('artportfolio'); ?><!-- 
                                   <label for="bestofmine" style="cursor: pointer;" tabindex="1" ></label>
                        -->          </fieldset>
@@ -140,10 +140,7 @@
    <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
     <!-- footer start -->
-    <footer>
-        
-        <?php echo $footer;  ?>
-    </footer>
+   
     
 
     <!-- Bid-modal  -->
@@ -160,9 +157,14 @@
                 </div>
                 <!-- Model Popup Close -->
 
-</body>
+
 </div>
-</html>
+
+ <footer>
+        
+        <?php echo $footer;  ?>
+    </footer>
+
 
 
 
@@ -235,7 +237,68 @@ $( "#searchplace" ).autocomplete({
 });
   
 </script>
+<script>
 
+var data= <?php echo json_encode($demo); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#tags1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
+<script>
+
+var data1 = <?php echo json_encode($city_data); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#searchplace1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data1, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
 
 <script type="text/javascript">
                         function checkvalue() {
@@ -252,7 +315,15 @@ $( "#searchplace" ).autocomplete({
                     </script>
 
 
-    
+   <script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script> 
    <!--  <script>
 //select2 autocomplete start for skill
                                                 $('#searchskills').select2({
@@ -493,3 +564,44 @@ $(window).load(function(){
 });
 });
 </script>
+
+
+<script type="text/javascript">
+
+            var _onPaste_StripFormatting_IEPaste = false;
+
+            function OnPaste_StripFormatting(elem, e) { 
+
+                if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+                   // alert(1);
+                    e.preventDefault();
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (e.clipboardData && e.clipboardData.getData) { 
+                    //alert(2);
+                   
+                    e.preventDefault();
+                    var text = e.clipboardData.getData('text/plain');
+                    window.document.execCommand('insertText', false, text);
+                } else if (window.clipboardData && window.clipboardData.getData) {
+
+                    //alert(3);
+
+                    // Stop stack overflow
+                    if (!_onPaste_StripFormatting_IEPaste) {
+                        _onPaste_StripFormatting_IEPaste = true;
+                        e.preventDefault();
+                        window.document.execCommand('ms-pasteTextOnly', false);
+                    }
+                    _onPaste_StripFormatting_IEPaste = false;
+                }
+
+            }
+
+        </script>
+
+
+       
+
+</body>
+</html>

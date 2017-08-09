@@ -1,4 +1,4 @@
-start head -->
+<!--start head -->
 <?php echo $head; ?>
 <style type="text/css">
    #popup-form img{display: none;}
@@ -29,7 +29,7 @@ start head -->
 <?php echo $art_header2_border; ?>
 <body   class="page-container-bg-solid page-boxed">
    <section class="custom-row">
-      <div class="container" id="paddingtop_fixed">
+      <div class="container" id="paddingtop_fixed_art">
          <div class="row" id="row1" style="display:none;">
             <div class="col-md-12 text-center">
                <div id="upload-demo"></div>
@@ -100,13 +100,54 @@ start head -->
             </label>
          </div>
          <?php } ?>
-         <div class="profile-photo">
-            <div class="profile-pho">
-               <div class="user-pic padd_img">
+            
+            <div class="profile-photo">
+   <div class="buisness-menu">
+
+                    <div class="profile-pho-bui">
+
+                        <div class="user-pic">
                   <?php if ($artisticdata[0]['art_user_image'] != '') { ?>
+
+                   <?php 
+
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
+                                                                $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-user">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
                   <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" alt="" >
+
+                  <?php }?>
+
                   <?php } else { ?>
-                  <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
+
+                  <?php 
+                          $a = $artisticdata[0]['art_name'];
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $artisticdata[0]['art_lastname'];
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-user">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
+                  <!-- <img alt="" class="img-circle" src="<?php echo base_url(NOIMAGE); ?>" alt="" /> -->
+
+
                   <?php } ?>
                   <?php
                      $userid = $this->session->userdata('aileenuser');
@@ -117,35 +158,53 @@ start head -->
                </div>
             </div>
 
-                   <div class="job-menu-profile mob-block">
+                          
+    <div class="business-profile-right">
+                        <div class="bui-menu-profile">
+
+
+                            <div class="profile-left">
+                            <h4 class="profile-head-text">
           <a href="<?php echo base_url('artistic/art_manage_post/' . $artisticdata[0]['user_id'] . ''); ?>"> 
-          <h5><?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></h5> </a>
+          <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?> </a>
+</h4>
 
-
-           <div class="profile-text" >
-
+       <h4 class="profile-head-text_dg">
             <?php
-               if ($artisticdata[0]['designation'] == '') {
-                   ?>
-            <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-            <a id="myBtn">Current work</a>
-            <?php } ?>
-            <?php } else { ?> 
-            <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
-            <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } else { ?>
-            <a><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } ?>
-            <?php } ?>
+                if ($artisticdata[0]['designation'] == '') {
+                    ?>
 
+                    <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
+                        <a id="designation" class="designation" title="Designation">Current Work    </a>
+
+                    <?php } else{?>
+                    <a>Current Work </a>
+                    <?php }?>
+
+                <?php } else { ?> 
+
+                    <?php if ($artisticdata[0]['user_id'] == $userid) { ?>
+
+                        <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>">
+                            <?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?>
+
+                        </a>
+
+                                        <!-- <a id="myBtn"><?php echo ucwords($artisticdata[0]['designation']); ?></a> -->
+                    <?php } else { ?>
+                        <a><?php echo ucfirst(strtolower($artisticdata[0]['designation'])); ?></a>
+                    <?php } ?>
+
+                <?php } ?>
+
+            </h4>
             </div>
          </div>
             <!-- PICKUP -->
             <!-- menubar -->
-        <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
+      <div class="business-data-menu padding_less_right ">
 
-           
-            <div class="right-side-menu art-side-menu ml0">
+                            <div class="profile-main-box-buis-menu ml0"> 
              <?php 
                $userid = $this->session->userdata('aileenuser');
                if($artisticdata[0]['user_id'] == $userid){
@@ -164,14 +223,14 @@ start head -->
                         $userid = $this->session->userdata('aileenuser');
                         if ($artisticdata[0]['user_id'] == $userid) {
                             ?> 
-                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/userlist'); ?>">Userlist</a>
-                     </li>
+                    <!--  <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/userlist'); ?>">Userlist<br> (<?php echo (count($userlistcount)); ?>)</a>
+                     </li> -->
                      <?php } ?>
                      <?php
                         $userid = $this->session->userdata('aileenuser');
                         if ($artisticdata[0]['user_id'] == $userid) {
                             ?>
-                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/followers'); ?>">Followers  <br> (<?php echo (count($followerdata)); ?>)</a>
+                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/followers'); ?>">Followers  <br> (<?php echo ($flucount); ?>)</a>
                      </li>
                      <?php
                         } else {
@@ -179,14 +238,27 @@ start head -->
                             $artregid = $artisticdata[0]['art_id'];
                             $contition_array = array('follow_to' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
                             $followerotherdata = $this->data['followerotherdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+                            foreach ($followerotherdata as $followkey) {
+
+                      $contition_array = array('art_id' => $followkey['follow_from'], 'status' => '1');
+                      $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                      if($artaval){
+
+                      $countdata[] =  $artaval;
+                         }
+                     }
+                       $count = count($countdata);
+
                             ?> 
-                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  href="<?php echo base_url('artistic/followers/' . $artisticdata[0]['user_id']); ?>">Followers  <br> (<?php echo (count($followerotherdata)); ?>)</a>
+                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  href="<?php echo base_url('artistic/followers/' . $artisticdata[0]['user_id']); ?>">Followers  <br> (<?php echo ($count); ?>)</a>
                      </li>
                      <?php } ?> 
                      <?php
                         if ($artisticdata[0]['user_id'] == $userid) {
                             ?>        
-                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/following'); ?>">Following  <br> (<?php echo (count($followingdata)); ?>)</a>
+                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/following'); ?>">Following  <br> (<?php echo ($countfr); ?>)</a>
                      </li>
                      <?php
                         } else {
@@ -194,8 +266,22 @@ start head -->
                             $artregid = $artisticdata[0]['art_id'];
                             $contition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'follow_type' => '1');
                             $followingotherdata = $this->data['followingotherdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+                     foreach ($followingotherdata as $followkey) {
+
+                      $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
+                      $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                      if($artaval){
+
+                      $countfo[] =  $artaval;
+                         }
+                     }
+                       $countfo = count($countfo);
+
+                       
                             ?>
-                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a  href="<?php echo base_url('artistic/following/' . $artisticdata[0]['user_id']); ?>">Following <br>  (<?php echo (count($followingotherdata)); ?>)</a>
+                     <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a  href="<?php echo base_url('artistic/following/' . $artisticdata[0]['user_id']); ?>">Following <br>  (<?php echo ($countfo); ?>)</a>
                      </li>
                      <?php } ?>  
                   </ul>
@@ -241,59 +327,13 @@ start head -->
              
             </div>
             <!-- pickup -->
-         </div>
+         </div>  
+</div>
+
+
+          
          <div class="container art-custom">
-        <div class="job-menu-profile mob-none">
-          <a href="<?php echo base_url('artistic/art_manage_post/' . $artisticdata[0]['user_id'] . ''); ?>"> 
-          <h5><?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></h5> </a>
-
-
-           <div class="profile-text" >
-
-            <?php
-        $userid = $this->session->userdata('aileenuser');
-
-            if($artisticdata[0]['user_id'] == $userid){
-
-
-              if ($artisticdata[0]['designation'] == '') {
-                    ?>
-                        <a id="designation" class="designation" title="Designation">Current Work</a>
-
-                    
-
-                <?php } else { ?> 
-
-                        <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
-                            <?php echo ucwords($artisticdata[0]['designation']); ?>
-
-                        </a>
-
-                    <?php } 
-
-            }else{ ?>
-
-           <?php  if ($artisticdata[0]['designation'] == '') {
-                    ?>
-                        <a>Current Work</a>
-
-                    
-
-                <?php } else { ?> 
-
-                        <a title="<?php echo ucwords($artisticdata[0]['designation']); ?>">
-                            <?php echo ucwords($artisticdata[0]['designation']); ?>
-
-                        </a>
-
-                    <?php }  ?>
-                
-
-                <?php }?>
-
-
-            </div>
-         </div>
+     
       </div>
       <div class=" " >
          <div class="user-midd-section grybod" >
@@ -379,7 +419,26 @@ start head -->
                               <div class="module_art_phtos">
                                  <!-- khyati changes start -->
                                  <!-- khyati changes end -->
-                                 <div id="myModal1" class="modal2">
+                                 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="clearfix"></div>
+      </div>
+      </div><script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      </div>
+      </div>
+      </div>
+      </div>
+
+
+
+     <div id="myModal1" class="modal2">
                                     <div class="modal-content2">
                                        <span class="close2 cursor" onclick="closeModal()">&times;</span>
                                        <!-- khyati chnages start-->
@@ -566,9 +625,9 @@ start head -->
                                                    ?>
                                                 <div class="like_one_other">
                                                    <?php
-                                                      echo ucwords($art_fname);
+                                                      echo ucfirst(strtolower($art_fname));
                                                       echo "&nbsp;";
-                                                      echo ucwords($art_lname);
+                                                      echo ucfirst(strtolower($art_lname));
                                                       echo "&nbsp;";
                                                       ?>
                                                    <?php
@@ -762,24 +821,11 @@ start head -->
                                     <div>
                                     </div>
                                  </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="clearfix"></div>
-      </div>
-      </div>
-      <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-      </div>
-      </div>
-      </div>
-      </div>
+      
+
+
    </section>
-</body>
+
 <!-- Bid-modal-2  -->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
    <div class="modal-dialog modal-lm">
@@ -830,7 +876,11 @@ start head -->
    </div>
 </div>
 <!-- Model Popup Close -->
-</html>
+<footer>
+<?php echo $footer; ?>
+        </footer>
+
+        
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
@@ -846,6 +896,7 @@ start head -->
 <script type="text/javascript">
    function divClicked() {
        var divHtml = $(this).html();
+        divHtml = divHtml.trim();
        var editableText = $("<textarea />");
        editableText.val(divHtml);
        $(this).replaceWith(editableText);
@@ -857,6 +908,7 @@ start head -->
    function editableTextBlurred() {
       
       var html = $(this).val();
+      html = html.trim();
        var viewableText = $("<a>");
       
        if (html.match(/^\s*$/) || html == '') { 
@@ -984,6 +1036,69 @@ start head -->
    });
    
 </script>
+
+<script>
+
+var data= <?php echo json_encode($demo); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#tags1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
+<script>
+
+var data1 = <?php echo json_encode($city_data); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#searchplace1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data1, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
 <script type="text/javascript">
    function checkvalue() {
        //alert("hi");
@@ -997,6 +1112,16 @@ start head -->
        }
    }
 </script>
+
+<script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script>
 <!-- <script>
    //select2 autocomplete start for skill
    
@@ -2387,4 +2512,8 @@ start head -->
    
 </script>
 <!-- all popup close close using esc end -->
+
+</body>
+
+</html>
 

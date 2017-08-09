@@ -36,266 +36,14 @@
 
     <section class="custom-row">
         <div class="container" id="paddingtop_fixed">
-
-            <div class="row" id="row1" style="display:none;">
-                <div class="col-md-12 text-center">
-                    <div id="upload-demo" ></div>
-                </div>
-                <div class="col-md-12 cover-pic" >
-
-                    <button class="btn btn-success cancel-result">Cancel</button>
-                    <button class="btn btn-success set-btn upload-result" onclick="myFunction()">Save</button>
-
-                    <div id="message1" style="display:none;">
-                        <div id="floatBarsG">
-                            <div id="floatBarsG_1" class="floatBarsG"></div>
-                            <div id="floatBarsG_2" class="floatBarsG"></div>
-                            <div id="floatBarsG_3" class="floatBarsG"></div>
-                            <div id="floatBarsG_4" class="floatBarsG"></div>
-                            <div id="floatBarsG_5" class="floatBarsG"></div>
-                            <div id="floatBarsG_6" class="floatBarsG"></div>
-                            <div id="floatBarsG_7" class="floatBarsG"></div>
-                            <div id="floatBarsG_8" class="floatBarsG"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12"  style="visibility: hidden; ">
-                    <div id="upload-demo-i" ></div>
-                </div>
-            </div>
-
-            <div class="">
-                <div class="" id="row2">
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    if ($this->uri->segment(3) == $userid) {
-                        $user_id = $userid;
-                    } elseif ($this->uri->segment(3) == "") {
-                        $user_id = $userid;
-                    } else {
-                        $user_id = $this->uri->segment(3);
-                    }
-                    $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
-                    $image = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $image_ori = $image[0]['profile_background'];
-                    if ($image_ori) {
-                        ?>
-                        
-                            <img src="<?php echo base_url($this->config->item('art_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />
-                        <?php
-                    } else {
-                        ?>
-                    
-                            <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
-                    <?php }
-                    ?>
-
-                </div>
-            </div>
+ 
         </div>
 
 
-<div class="container tablate-container art-profile">    
-    <?php
-    $userid = $this->session->userdata('aileenuser');
-    if($artisticdata[0]['user_id'] == $userid) {
-    ?>     
-      <div class="upload-img">
-      
-        <label class="cameraButton"> <span class="tooltiptext">Upload Cover Photo</span> <i class="fa fa-camera" aria-hidden="true"></i>
-            <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
-        </label>
-             </div>
-           <?php }?>
-
-
-    <div class="profile-photo">
-        <div class="profile-pho">
-
-            <div class="user-pic padd_img">
-                <?php if ($artisticdata[0]['art_user_image'] != '') { ?>
-                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" alt="" >
-                <?php } else { ?>
-                    <img alt=""  src="<?php echo base_url(NOIMAGE); ?>" alt="" />
-                <?php } ?>
-            <!--<a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>-->
-                <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
-            </div>
-            <!--                        <div id="popup-form">
-            <?php // echo form_open_multipart(base_url('artistic/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                    <input type="hidden" name="hitext" id="hitext" value="6">
-                                    <input type="submit" name="cancel6" id="cancel6" value="Cancel">
-                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                                </form>
-                            </div>-->
-
-        </div>
-        <div class="job-menu-profile mob-block">
-        <a href="<?php echo site_url('artistic/art_manage_post/' . $artisticdata[0]['user_id']); ?>"> <h5 > <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>
-            </h5></a>
-        <!-- text head start -->
-        <div class="profile-text" >
-
-            <?php
-            if ($artisticdata[0]['designation'] == '') {
-                ?>
-                <a id="designation" class="designation" title="Designation">Current Work</a>
-            <?php } else { ?> 
-                <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } ?>
-
-
-            <!-- The Modal -->
-            <!-- <div id="myModal" class="modal"> -->
-                <!-- Modal content -->
-                <!-- <div class="col-md-2"></div> -->
-                <!-- <div class="modal-content col-md-8">
-                    <span class="close">&times;</span>
-                    <fieldset></fieldset>
-                    <?php echo form_open(base_url('artistic/art_designation/'), array('id' => 'artdesignation', 'name' => 'artdesignation', 'class' => 'clearfix')); ?>
-
-                    <fieldset class="col-md-8"> <input type="text" name="designation" id="designation" placeholder="Enter Your Designation" value="<?php echo $artisticdata[0]['designation']; ?>">
-                        <?php echo form_error('designation'); ?>
-                    </fieldset>
-                    <input type="hidden" name="hitext" id="hitext" value="8">
-                    <fieldset class="col-md-2"><input type="submit"  id="submitdes" name="submitdes" value="Submit"></fieldset>
-                    <?php echo form_close(); ?>
-
-
-
-                </div> -->
-                <!-- <div class="col-md-2"></div> -->
-            <!-- </div> -->
-
-        </div>
-        <!-- <div  class="add-post-button">
-
-            <a class="btn btn-3 btn-3b" href="<?php echo site_url('artistic/art_addpost'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Post</a>
-        </div> -->
-
-        <!-- text head end -->
-    </div>
-        <div class="profile-main-rec-box-menu  profile-box-art col-md-12 padding_les ">
-
-          
-            <div class="right-side-menu art-side-menu ml0">
-
-            <?php 
-               $userid = $this->session->userdata('aileenuser');
-               if($artisticdata[0]['user_id'] == $userid){
-               
-               ?> 
-               <ul class="current-user pro-fw">
-                   
-                   <?php }else{?>
-                 <ul class="pro-fw4">
-                   <?php } ?>  
-
-                    <?php if (($this->uri->segment(1) == 'artistic') && ($this->uri->segment(2) == 'artistic_profile') && ($this->uri->segment(3) == $this->session->userdata('aileenuser'))) { ?>
-
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_post'); ?>">Home</a>
-                        </li>
-                    <?php } ?>
-
-
-
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/art_manage_post'); ?>"> Dashboard</a>
-                    </li>
-
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'artistic_profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/artistic_profile'); ?>"> Details</a>
-                    </li>
-
-
-
-                                    <!-- <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_savepost'); ?>">Saved Post </a>
-                                    </li> -->
-
-
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'userlist') { ?> class="active" <?php } ?>><a title="Userlist" href="<?php echo base_url('artistic/userlist'); ?>">Userlist</a>
-                    </li>
-
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/followers'); ?>"  title="followers">Followers <br>  (<?php echo (count($followerdata)); ?>)</a>
-                    </li>
-
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following'); ?>">Following  <br><div id="countfollow">(<?php echo (count($followingdata)); ?>)</div></a>
-                    </li>
-
-
-
-                </ul>
-            </div>
-            <?php
-            $userid = $this->session->userdata('aileenuser');
-            if ($artisticdata[0]['user_id'] != $userid) {
-                ?>
-                <div class="col-md-2 padding_les">
-                    <div class="flw_msg_btn">
-                        <ul>
-                            <li><button>Follow</button></li>
-                            <li>
-                                <a>Message</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-                <?php
-            }
-            ?>
-        </div>  
-        <!-- menubar -->                
-    </div>                                       
-    
-    
 
         <div class="user-midd-section art-inner">
             <div class="container">
-    <div class="job-menu-profile mob-none">
-        <a href="<?php echo site_url('artistic/art_manage_post/' . $artisticdata[0]['user_id']); ?>"> <h5 > <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>
-            </h5></a>
-        <!-- text head start -->
-        <div class="profile-text" >
-
-            <?php
-            if ($artisticdata[0]['designation'] == '') {
-                ?>
-                <a id="designation" class="designation" title="Designation">Current Work</a>
-            <?php } else { ?> 
-                <a id="designation" class="designation" title="<?php echo ucwords($artisticdata[0]['designation']); ?>"><?php echo ucwords($artisticdata[0]['designation']); ?></a>
-            <?php } ?>
-
-
-            <!-- The Modal -->
-            <!-- <div id="myModal" class="modal"> -->
-                <!-- Modal content -->
-                <!-- <div class="col-md-2"></div> -->
-                <!-- <div class="modal-content col-md-8">
-                    <span class="close">&times;</span>
-                    <fieldset></fieldset>
-                    <?php echo form_open(base_url('artistic/art_designation/'), array('id' => 'artdesignation', 'name' => 'artdesignation', 'class' => 'clearfix')); ?>
-
-                    <fieldset class="col-md-8"> <input type="text" name="designation" id="designation" placeholder="Enter Your Designation" value="<?php echo $artisticdata[0]['designation']; ?>">
-                        <?php echo form_error('designation'); ?>
-                    </fieldset>
-                    <input type="hidden" name="hitext" id="hitext" value="8">
-                    <fieldset class="col-md-2"><input type="submit"  id="submitdes" name="submitdes" value="Submit"></fieldset>
-                    <?php echo form_close(); ?>
-
-
-
-                </div> -->
-                <!-- <div class="col-md-2"></div> -->
-            <!-- </div> -->
-
-        </div>
-        <!-- <div  class="add-post-button">
-
-            <a class="btn btn-3 btn-3b" href="<?php echo site_url('artistic/art_addpost'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>Add Post</a>
-        </div> -->
-
-        <!-- text head end -->
-    </div>
+<div class="col-md-3"></div>
     <div class="col-md-7 col-sm-12 col-xs-12 mob-plr0">
 
         <div>
@@ -327,24 +75,59 @@
                                                     <div class="follow-img">
                                                         <?php if ($user['art_user_image'] != '') { ?>
                                                         <a href="<?php echo base_url('artistic/art_manage_post/' . $user['user_id']); ?>">
-                                                            <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image']); ?>" height="50px" width="50px" alt="" > </a>
+
+
+                                                             <?php 
+
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
+                                                                $a = $user['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $user['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-userlist">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+                                                            <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image']); ?>" height="50px" width="50px" alt="" >
+                                                            <?php  } ?>
+
+                                                            </a>
                                                         <?php } else { ?>
-                                                        <a href="<?php echo base_url('artistic/art_manage_post/' . $user['user_id']); ?>">
-                                                            <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" /> </a>
+                                <a href="<?php echo base_url('artistic/art_manage_post/' . $user['user_id']); ?>">
+
+                           
+                            <?php 
+
+                            $a = $user['art_name'];
+                            $acronym = substr($a, 0, 1)
+                          ?>
+                          <?php 
+                          $b = $user['art_lastname'];
+                          $acronym1 = substr($b, 0, 1)
+                           ?>
+
+                            <div class="post-img-userlist">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
+
+                             </a>
                                                         <?php } ?> 
                                                     </div>
                                                 </li>
                                                 <li class="folle_text">
                                                     <div class="">
                                                         <div class="follow-li-text ">
-                                                            <a href="<?php echo base_url('artistic/art_manage_post/' . $user['user_id']); ?>"><?php echo ucwords($user['art_name']);
+                                                            <a href="<?php echo base_url('artistic/art_manage_post/' . $user['user_id']); ?>"><?php echo ucfirst(strtolower($user['art_name']));
                                                     echo "&nbsp;";
-                                                    echo ucwords($user['art_lastname']); ?></a></div>
+                                                    echo ucfirst(strtolower($user['art_lastname'])); ?></a></div>
 
 
                                                       <?php  if ($user['designation']) { ?>
                                                            <div>
-                                                            <a><?php echo ucwords($user['designation']); ?></a>
+                                                            <a><?php echo ucfirst(strtolower($user['designation'])); ?></a>
                                                         </div>
                                                        <?php  
                                                         }
@@ -449,10 +232,10 @@
 </div>
 <!-- Model Popup Close -->
 
+<footer>
+<?php echo $footer; ?>
+        </footer>
 
-</body>
-
-</html>
 
 
 <!-- script for skill textbox automatic start (option 2)-->
@@ -573,6 +356,68 @@
 
 </script>
 
+<script>
+
+var data= <?php echo json_encode($demo); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#tags1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
+<script>
+
+var data1 = <?php echo json_encode($city_data); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#searchplace1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data1, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
 
 <script type="text/javascript">
     function checkvalue() {
@@ -587,6 +432,16 @@
         }
     }
 </script>
+
+<script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script>
 
 <!-- <script>
 //select2 autocomplete start for skill
@@ -999,3 +854,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
  </script>
  <!-- all popup close close using esc end -->
+
+ </body>
+
+</html>

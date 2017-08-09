@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-2 col-sm-2"></div>
                       <div class="job-menu-profile">
-                          <h4 align="center" > <?php echo ucwords($userdata[0]['first_name']) .' '.  ucwords($userdata[0]['last_name']); ?></h4>
+                          <h4 align="center" > <?php echo ucfirst(strtolower($userdata[0]['first_name'])) .' '.  ucfirst(strtolower($userdata[0]['last_name'])); ?></h4>
                             <div class="profile-text" >
                         <p align="center">Jr. Owner</p>
                       </div>

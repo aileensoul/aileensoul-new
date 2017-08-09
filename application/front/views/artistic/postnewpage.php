@@ -109,13 +109,13 @@
                                   <div class="full-box-module">   
       <div class="profile-boxProfileCard  module">
                                     <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/art_manage_post'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
+                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/art_manage_post'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
                                         <?php if ($artisticdata[0]['profile_background']) { ?>
-                                            <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" class="bgImage"  >
+                                            <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" class="bgImage"  >
                                             </div>
                                         <?php } else { ?>
                                             <div class="data_img">
-                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>"  >
+                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>"  >
 
                                             </div>                                             <?php } ?>
                                     </a>
@@ -123,15 +123,32 @@
                                     <div class="profile-boxProfileCard-content clearfix">
                                     <div class="left_side_box_img buisness-profile-txext">
                                         
-                                             <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/art_manage_post'); ?>" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                             <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/art_manage_post'); ?>" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                             <!-- box image start -->
                                             <?php if ($artisticdata[0]['art_user_image']) { ?>
                                                 <div class="data_img_2">   
-                                                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" class="bgImage"  alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" >
+                                                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" class="bgImage"  alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" >
                                                 </div>
                                             <?php } else { ?> 
                                                 <div class="data_img_2">
-                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
+
+                                                   <?php 
+                          $a = $artisticdata[0]['art_name'];
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $artisticdata[0]['art_lastname'];
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div>
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
                                                 </div>
                                             <?php } ?>
                                             <!-- box image end -->
@@ -139,7 +156,7 @@
                                     </div>
                                     <div class="right_left_box_design ">
                                     <span class="profile-company-name ">
-                                            <a   href="<?php echo site_url('artistic/art_manage_post'); ?>"> <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></a>
+                                            <a   href="<?php echo site_url('artistic/art_manage_post'); ?>"> <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
                                         </span>
 
 
@@ -149,7 +166,7 @@
                                             <a  href="<?php echo site_url('artistic/art_manage_post'); ?>">
                                                 <?php
                                                 if ($artisticdata[0]['designation']) {
-                                                    echo ucwords($artisticdata[0]['designation']);
+                                                    echo ucfirst(strtolower($artisticdata[0]['designation']));
                                                 } else {
                                                     echo "Designation";
                                                 }
@@ -230,34 +247,108 @@
 
                                          $userid = $this->session->userdata('aileenuser');
 
+                                         $firstname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_name;
+                                            $lastname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
+
+                                            $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_name;
+                                            $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
+
+
                                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
                                         $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
                                         ?>
                                         <?php if ($art_data[0]['posted_user_id']) { ?>
-                                            <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" /> </a>
+                                            <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
 
-                                        <?php } else if($art_data[0]['user_id'] == $userid){ ?>
+                                                <?php if($userimageposted){?>
+                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
 
-                                         <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" /> </a>
+                                                <?php }else{?>
+
+                                                    <?php 
+                          $a = $firstnameposted;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $lastnameposted;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
+
+                                                <?php }?>
+                                                 </a>
+
+                                        <?php } else if($art_data[0]['user_id']){ ?>
+
+                                         <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+
+                                            <?php if($art_userimage){?>
+                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
+
+                                                <?php }else{?>
+
+
+                                                 <?php 
+                          $a = $firstname;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $lastname;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+
+                                                <?php }?>
+
+                                                 </a>
 
                                             <?php }
                                             else { ?>
                                             <a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $row['user_id']); ?>">
-                                                <img src="<?php echo base_url(NOIMAGE); ?>" name="image_src" id="image_src" /> </a>
+
+
+                                                <?php 
+                          $a = $row['art_name'];
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $row['art_lastname'];
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
+
+                                                </a>
 
                                         <?php } ?>
                                     </div>
                                     <div class="post-design-name fl col-xs-8 col-md-10">
                                         <ul>
                                             <?php
-                                            $firstname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_name;
-                                            $lastname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
-
-                                            $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_name;
-                                            $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_lastname;
+                                            
 
                                             $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
                                             
@@ -275,8 +366,8 @@
                                             <li><?php if ($art_data[0]['posted_user_id']) { ?>
 
                                                     <div class="else_post_d">
-                                                        <a  class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?> </a>
-                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?></a>
+                                                        <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>"><?php echo ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)); ?> </a>
+                                                        <p class="posted_with" > Posted With </p><a class="post_dot"  href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>"><?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?></a>
                                                         <span role="presentation" aria-hidden="true" style="color: #91949d; font-size: 14px;"> · </span>
                                                         <span class="ctre_date"> 
          <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>
@@ -287,8 +378,8 @@
                                                     <!-- other user post time name end-->
                                                 <?php } else { ?>
 
-                                                    <a  class="post_dot" title="<?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>"   href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
-                                                        <?php echo ucwords($firstname) . ' ' . ucwords($lastname); ?>
+                                                    <a  class="post_dot" title="<?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>"   href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                                        <?php echo ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)); ?>
 
                                                     </a>
                                                      <span role="presentation" aria-hidden="true"> · </span>
@@ -305,7 +396,7 @@
                                                                     {echo $designation;
                                                                     
                                                                     }else{
-                                                                        echo "Current Work.";
+                                                                        echo "Current Work";
                                                                        }?> </a>
                                                                 
                                                             </div></li>
@@ -332,7 +423,7 @@
 
                                                     <!--<a id="<?php //echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
 
-                                                    <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                                                   <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
 
                                                     <?php
                                                 }
@@ -351,7 +442,7 @@
                                                 <?php } else { ?>
                                                     <!--<a href="<?php echo "#popup5" . $row['art_post_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>-->
 
-                                                    <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                                                   <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
                                                     <?php
                                                 }
                                             }
@@ -394,7 +485,7 @@
                                             <div id="<?php echo "khyati" . $art_data[0]['art_post_id']; ?>" style="display:block;">
                       <?php
                      $small = substr($art_data[0]['art_description'], 0, 180);
-                     echo $small;
+                     echo $this->common->make_links($small);
 
                      if (strlen($art_data[0]['art_description']) > 180) {
                           echo '... <span id="kkkk" onClick="khdiv(' . $art_data[0]['art_post_id'] . ')">View More</span>';
@@ -621,9 +712,9 @@
                                                                         if ($userid == $commnetcount[0]['user_id']) {
                                                                             echo "You";
                                                                         } else {
-                                                                            echo ucwords($art_fname);
+                                                                            echo ucfirst(strtolower($art_fname));
                                                                             echo "&nbsp;";
-                                                                            echo ucwords($art_lname);
+                                                                            echo ucfirst(strtolower($art_lname));
                                                                             echo "&nbsp;";
                                                                         }
                                                                         ?>
@@ -668,9 +759,9 @@
                                                                     if ($userid == $commnetcount[0]['user_id']) {
                                                                         echo "You";
                                                                     } else {
-                                                                        echo ucwords($art_fname);
+                                                                        echo ucfirst(strtolower($art_fname));
                                                                         echo "&nbsp;";
-                                                                        echo ucwords($art_lname);
+                                                                        echo ucfirst(strtolower($art_lname));
                                                                         echo "&nbsp;";
                                                                     }
                                                                     ?>
@@ -705,6 +796,8 @@
                                                                     if ($artmulimage) {
                                                                         foreach ($artmulimage as $rowdata) {
                                                                             $companyname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+
+                                                                            $lastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                                                             ?>
                                                                             <div class="all-comment-comment-box">
                                                                                 <div class="post-design-pro-comment-img"> 
@@ -714,14 +807,32 @@
                                                                     <?php if($art_userimage){?>
                                                                                     <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
 
-                                                                     <?php }else{?>  
-                                                                      <img  src="<?php echo base_url(NOIMAGE); ?>"  alt="">
+                                                                     <?php }else{?> 
+
+
+                                                                      <?php 
+                          $a = $companyname;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $lastname;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
 
                                                                      <?php }?>            
                                                                                 </div>
                                                                                 <div class="comment-name">
                                                                                     <b>  <?php
-                                                                                        echo ucwords($companyname);
+                                                                                        echo ucfirst(strtolower($companyname));
                                                                                         echo '</br>';
                                                                                         ?>
                                                                                     </b>
@@ -731,7 +842,7 @@
                                                  
                                 
                       <?php
-                      echo $this->common->make_links($rowdata['comments']);
+                      echo $this->common->make_links($rowdata['comment']);
                    ?>
 
               
@@ -807,8 +918,8 @@
                                                                                         ?> 
                                                                                         <span role="presentation" aria-hidden="true"> · </span>
                                                                                         <div class="comment-details-menu">
-                                                                                            <input type="hidden" name="post_deleteimg"  id="post_deleteimg<?php echo $rowdata['post_image_comment_id']; ?>" value= "<?php echo $rowdata['post_image_id']; ?>">
-                                                                                            <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="comment_deleteimg(this.id)"> Delete<span class="<?php echo 'insertcommentimg' . $rowdata['post_image_comment_id']; ?>">
+                                            <input type="hidden" name="post_deleteimg"  id="post_deleteimg<?php echo $rowdata['post_image_comment_id']; ?>" value= "<?php echo $rowdata['post_image_id']; ?>">
+                                            <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="comment_deleteimg(this.id)"> Delete<span class="<?php echo 'insertcommentimg' . $rowdata['post_image_comment_id']; ?>">
                                                                                                 </span>
                                                                                             </a>
                                                                                         </div>
@@ -847,6 +958,9 @@
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
                                                             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                                                            $art_firstuser = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                                                            $art_lastuser = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+
                                                             ?>
                                                             <div class="post-design-proo-img">
                                                                 <?php if ($art_userimage) { ?>
@@ -854,7 +968,23 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="No Image">
+                                                                    <?php 
+                          $a = $art_firstuser;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $art_lastuser;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1005,9 +1135,9 @@
                                                 if ($userid == $likelistarray[0]) {
                                                     echo "You";
                                                 } else {
-                                                    echo ucwords($art_fname);
+                                                    echo ucfirst(strtolower($art_fname));
                                                     echo "&nbsp;";
-                                                    echo ucwords($art_lname);
+                                                    echo ucfirst(strtolower($art_lname));
                                                     echo "&nbsp;";
                                                 }
                                                 ?>
@@ -1054,9 +1184,9 @@
                                         <div class="like_one_other">
                                          <a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlist(<?php echo $art_data[0]['art_post_id']; ?>);">
                                             <?php
-                                            echo ucwords($art_fname);
+                                            echo ucfirst(strtolower($art_fname));
                                             echo "&nbsp;";
-                                            echo ucwords($art_lname);
+                                            echo ucfirst(strtolower($art_lname));
                                             echo "&nbsp;";
                                             ?>
                                             <?php
@@ -1095,27 +1225,45 @@
                                                         <div class="post-design-pro-comment-img"> 
                                                             <?php
                                                             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                                                            $art_first = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_name;
+                                                            $art_last = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_lastname;
                                                             ?>
                                                             <?php if ($art_userimage) { ?>
                                                                 <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
                                                                 <?php
                                                             } else {
                                                                 ?>
-                                                                <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
+                                                                <?php 
+                          $a = $art_first;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $art_last;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
                                                                 <?php
                                                             }
                                                             ?>
                                                         </div>
                                                         <div class="comment-name">
                                                             <b title=" <?php
-                                                            echo ucwords($artname);
+                                                            echo ucfirst(strtolower($artname));
                                                             echo "&nbsp;";
-                                                            echo ucwords($artlastname);
+                                                            echo ucfirst(strtolower($artlastname));
                                                             ?>">
                                                                    <?php
-                                                                   echo ucwords($artname);
+                                                                   echo ucfirst(strtolower($artname));
                                                                    echo "&nbsp;";
-                                                                   echo ucwords($artlastname);
+                                                                   echo ucfirst(strtolower($artlastname));
                                                                    ?></b><?php echo '</br>'; ?></div>
 
                                                         <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['artistic_post_comment_id']; ?>">
@@ -1251,14 +1399,33 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                                    $art_first = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                                    $art_last = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+
                                     ?>
-                                    <div class="post-design-proo-img">
+                                    <div class="post-design-proo-img  hidden-mob">
                                         <?php if ($art_userimage) { ?>
                                             <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
                                             <?php
                                         } else {
                                             ?>
-                                            <img src="<?php echo base_url(NOIMAGE); ?>" alt="No Image">
+                                            <?php 
+                          $a = $art_first;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }?>
+                          <?php 
+                          $b = $art_last;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }?>
+
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            </div>
+                       
                                             <?php
                                         }
                                         ?>
@@ -1266,9 +1433,17 @@
                                     <div class="">
                                         <div id="content" class="col-md-12 inputtype-comment cmy_2" >
                                             <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $art_data[0]['art_post_id']; ?>"  id="<?php echo "post_comment" . $art_data[0]['art_post_id']; ?>" placeholder="Add a Comment ..." onClick="entercomment(<?php echo $art_data[0]['art_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
+                                      
+   <div class="mob-comment">
+                            <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)"><img src="<?php echo base_url('img/send.png') ?>"></button> 
+                            
+                           </div>
+
                                         </div>
                                         <?php echo form_error('post_comment'); ?>
-                                        <div class=" comment-edit-butn">   
+                                      
+
+                                        <div class=" comment-edit-butn hidden-mob">   
                                             <button id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="insert_comment(this.id)">Comment</button> 
                                         </div>
                                     </div>
@@ -1277,14 +1452,24 @@
             
                         </div>
 <?php }else{?>
-        <div>
-            Sorry, this content isn't available at the moment
-        </div>
         
+         <div class="art_no_post_avl">
+         <h3>Artistic Post</h3>
+          <div class="art-img-nn">
+         <div class="art_no_post_img">
+
+           <img src="<?php echo base_url('img/art-no.png')?>">
+        
+         </div>
+         <div class="art_no_post_text">
+          Sorry, this content isn't available at the moment
+         </div>
+          </div>
+       </div>
             <?php }?>
                     </div>
                     </section>
-                    <footer>
+                    
                         <!-- Bid-modal  -->
                         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                             <div class="modal-dialog modal-lm">
@@ -1300,8 +1485,7 @@
                             </div>
                         </div>
                         <!-- Model Popup Close -->
-                    </footer>
-                    </body>
+                    
                     <!-- Model Popup Close -->
                     <!-- Bid-modal-2  -->
                     <div class="modal fade message-box" id="likeusermodal" role="dialog">
@@ -1328,7 +1512,9 @@
                 </div>
             </div>
                     <!-- Model Popup Close -->
-                    </html>
+<footer>
+<?php echo $footer; ?>
+</footer>
                     <!-- script for skill textbox automatic start (option 2)-->
                     <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
                     <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
@@ -1401,6 +1587,68 @@
                     </script>
 
 
+                    <script>
+
+var data= <?php echo json_encode($demo); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#tags1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#tags1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
+<script>
+
+var data1 = <?php echo json_encode($city_data); ?>;
+// alert(data);
+
+        
+$(function() {
+    // alert('hi');
+$( "#searchplace1" ).autocomplete({
+     source: function( request, response ) {
+         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+         response( $.grep( data1, function( item ){
+             return matcher.test( item.label );
+         }) );
+   },
+    minLength: 1,
+    select: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+        $("#selected-tag").val(ui.item.label);
+        // window.location.href = ui.item.value;
+    }
+    ,
+    focus: function(event, ui) {
+        event.preventDefault();
+        $("#searchplace1").val(ui.item.label);
+    }
+});
+});
+  
+</script>
                     <script type="text/javascript">
                         $(document).ready(function () {
                             $('.blocks').jMosaic({items_type: "li", margin: 0});
@@ -1695,7 +1943,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: '<?php echo base_url() . "artistic/insert_commentthree" ?>',
-                                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                     dataType: "json",
                                     success: function (data) {
                                         $('textarea').each(function () {
@@ -1713,7 +1961,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: '<?php echo base_url() . "artistic/insert_comment" ?>',
-                                    data: 'post_id=' + clicked_id + '&comment=' + txt,
+                                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                     dataType: "json",
                                     success: function (data) {
                                         $('textarea').each(function () {
@@ -1837,7 +2085,7 @@
                                         $.ajax({
                                             type: 'POST',
                                             url: '<?php echo base_url() . "artistic/insert_commentthree" ?>',
-                                            data: 'post_id=' + clicked_id + '&comment=' + txt,
+                                            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                             dataType: "json",
                                             success: function (data) {
                                                 $('textarea').each(function () {
@@ -1852,7 +2100,7 @@
                                         $.ajax({
                                             type: 'POST',
                                             url: '<?php echo base_url() . "artistic/insert_comment" ?>',
-                                            data: 'post_id=' + clicked_id + '&comment=' + txt,
+                                            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                             dataType: "json",
                                             success: function (data) {
                                                 $('textarea').each(function () {
@@ -2180,7 +2428,7 @@
    
            document.getElementById('editpostdata' + abc).style.display = 'block';
            document.getElementById('editpostbox' + abc).style.display = 'none';
-         //  document.getElementById('editpostdetails' + abc).style.display = 'block';
+           document.getElementById('khyati' + abc).style.display = 'block';
            document.getElementById('editpostdetailbox' + abc).style.display = 'none';
    
            document.getElementById('editpostsubmit' + abc).style.display = 'none';
@@ -2449,6 +2697,16 @@
        }
    }
 </script>
+
+<script type="text/javascript">
+                        function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+                    </script>
                     <!-- comment edit insert start -->
                     <script type="text/javascript">
                         function edit_comment(abc)
@@ -2473,7 +2731,7 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
-                                data: 'post_id=' + abc + '&comment=' + txt,
+                                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                 success: function (data) {
                                     document.getElementById('editcomment' + abc).style.display = 'none';
                                     document.getElementById('showcomment' + abc).style.display = 'block';
@@ -2521,7 +2779,7 @@
                                     $.ajax({
                                         type: 'POST',
                                         url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
-                                        data: 'post_id=' + abc + '&comment=' + txt,
+                                        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                         success: function (data) {
                                             document.getElementById('editcomment' + abc).style.display = 'none';
                                             document.getElementById('showcomment' + abc).style.display = 'block';
@@ -2564,7 +2822,7 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
-                                data: 'post_id=' + abc + '&comment=' + txt,
+                                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                 success: function (data) {
                                     document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                     document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -2617,7 +2875,7 @@
                                     $.ajax({
                                         type: 'POST',
                                         url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
-                                        data: 'post_id=' + abc + '&comment=' + txt,
+                                        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                         success: function (data) {
                                             document.getElementById('editcommenttwo' + abc).style.display = 'none';
                                             document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -2812,7 +3070,7 @@
                                         $.ajax({
                                             type: 'POST',
                                             url: '<?php echo base_url() . "artistic/insert_commentthreeimg" ?>',
-                                            data: 'post_image_id=' + clicked_id + '&comment=' + txt,
+                                            data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                             dataType: "json",
                                             success: function (data) {
                                                 $('textarea').each(function () {
@@ -2830,7 +3088,7 @@
                                         $.ajax({
                                             type: 'POST',
                                             url: '<?php echo base_url() . "artistic/insert_commentimg" ?>',
-                                            data: 'post_image_id=' + clicked_id + '&comment=' + txt,
+                                            data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                             dataType: "json",
                                             success: function (data) {
                                                 $('textarea').each(function () {
@@ -3211,7 +3469,7 @@
                         }
 
                         function comment_deletedimg(clicked_id)
-                        {
+                        { //alert(clicked_id);
                             var post_delete = document.getElementById("post_deleteimg" + clicked_id);
                             //  alert(post_delete.value);
                             $.ajax({
@@ -3256,7 +3514,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: '<?php echo base_url() . "artistic/insert_commentthreeimg" ?>',
-                                    data: 'post_image_id=' + clicked_id + '&comment=' + txt,
+                                    data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                     dataType: "json",
                                     success: function (data) {
                                         $('textarea').each(function () {
@@ -3274,7 +3532,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: '<?php echo base_url() . "artistic/insert_commentimg" ?>',
-                                    data: 'post_image_id=' + clicked_id + '&comment=' + txt,
+                                    data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                                     dataType: "json",
                                     success: function (data) {
                                         $('textarea').each(function () {
@@ -3312,7 +3570,7 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "artistic/edit_comment_insertimg" ?>',
-                                data: 'post_image_comment_id=' + abc + '&comment=' + txt,
+                                data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                 success: function (data) {
                                     document.getElementById('editcommentimg' + abc).style.display = 'none';
                                     document.getElementById('showcommentimg' + abc).style.display = 'block';
@@ -3437,7 +3695,7 @@
                             $.ajax({
                                 type: 'POST',
                                 url: '<?php echo base_url() . "artistic/edit_comment_insertimg" ?>',
-                                data: 'post_image_comment_id=' + abc + '&comment=' + txt,
+                                data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                 success: function (data) {
                                     document.getElementById('editcommentimgtwo' + abc).style.display = 'none';
                                     document.getElementById('showcommentimgtwo' + abc).style.display = 'block';
@@ -3507,7 +3765,7 @@
                                     $.ajax({
                                         type: 'POST',
                                         url: '<?php echo base_url() . "artistic/edit_comment_insertimg" ?>',
-                                        data: 'post_image_comment_id=' + abc + '&comment=' + txt,
+                                        data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                         success: function (data) {
                                             document.getElementById('editcommentimg' + abc).style.display = 'none';
                                             document.getElementById('showcommentimg' + abc).style.display = 'block';
@@ -3563,7 +3821,7 @@
                                     $.ajax({
                                         type: 'POST',
                                         url: '<?php echo base_url() . "artistic/edit_comment_insertimg" ?>',
-                                        data: 'post_image_comment_id=' + abc + '&comment=' + txt,
+                                        data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
                                         success: function (data) {
                                             document.getElementById('editcommentimgtwo' + abc).style.display = 'none';
                                             document.getElementById('showcommentimgtwo' + abc).style.display = 'block';
@@ -3720,3 +3978,6 @@
        }
    }
 </script>
+
+</body>
+</html>
