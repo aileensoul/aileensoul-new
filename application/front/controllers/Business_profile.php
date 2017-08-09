@@ -8587,11 +8587,12 @@ class Business_profile extends MY_Controller {
         }
         $return_html = '';
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($unique_user);
+            $_GET["total_record"] = count($unique_user1);
         }
 
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($unique_user1) > 0) {
             foreach ($unique_user as $user) {
                 if ($busuid == $user['contact_from_id']) {

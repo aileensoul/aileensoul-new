@@ -167,31 +167,32 @@ $(document).ready(function () {
     GetBusVideos();
     GetBusAudios();
     GetBusPdf();
-    
+
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            
+
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
-            
-            var available_page = total_record / perpage_record;
-            available_page = parseInt(available_page,10);
-            var mod_page = total_record % perpage_record;
-            if(mod_page > 0){
-                available_page = available_page + 1;
-            }
-            //if ($(".page_number:last").val() <= $(".total_record").val()) {
-            if (page <= available_page) {
-                var pagenum = parseInt($(".page_number:last").val()) + 1;
-                business_dashboard_post(slug,pagenum);
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    business_dashboard_post(slug, pagenum);
+                }
             }
         }
     });
 });
 var isProcessing = false;
-function business_dashboard_post(slug,pagenum) {
+function business_dashboard_post(slug, pagenum) {
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -208,7 +209,7 @@ function business_dashboard_post(slug,pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-              //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -410,7 +411,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_commentthree",
-            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -424,7 +425,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_comment",
-            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -473,7 +474,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_commentthree",
-                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -487,7 +488,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_comment",
-                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -755,7 +756,7 @@ function edit_comment(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
         success: function (data) {
 
             document.getElementById('editcomment' + abc).style.display = 'none';
@@ -803,7 +804,7 @@ function commentedit(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                 success: function (data) {
                     document.getElementById('editcomment' + abc).style.display = 'none';
                     document.getElementById('showcomment' + abc).style.display = 'block';
@@ -844,7 +845,7 @@ function edit_commenttwo(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
         success: function (data) {
             document.getElementById('editcommenttwo' + abc).style.display = 'none';
             document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -892,7 +893,7 @@ function commentedittwo(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                 success: function (data) {
                     document.getElementById('editcommenttwo' + abc).style.display = 'none';
                     document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -1130,7 +1131,7 @@ function editpost(abc)
     document.getElementById('editpostdetailbox' + abc).style.display = 'block';
     document.getElementById('editpostsubmit' + abc).style.display = 'block';
     document.getElementById('khyatii' + abc).style.display = 'none';
-    
+
 }
 
 
@@ -1151,7 +1152,7 @@ function edit_postinsert(abc)
         $('#bidmodal').modal('show');
         document.getElementById('editpostdata' + abc).style.display = 'block';
         document.getElementById('editpostbox' + abc).style.display = 'none';
-         document.getElementById('khyati' + abc).style.display = 'block';
+        document.getElementById('khyati' + abc).style.display = 'block';
         document.getElementById('editpostdetailbox' + abc).style.display = 'none';
         document.getElementById('editpostsubmit' + abc).style.display = 'none';
     } else {
@@ -2034,13 +2035,13 @@ window.onclick = function (event) {
 
 
 
- $('#file-1').on('click', function(e){ 
+$('#file-1').on('click', function (e) {
 
     var a = document.getElementById('test-upload_product').value;
-     var b = document.getElementById('test-upload_des').value;
+    var b = document.getElementById('test-upload_des').value;
     document.getElementById("artpostform").reset();
     document.getElementById('test-upload_product').value = a;
     document.getElementById('test-upload_des').value = b;
-    });
+});
 
 // DROP DOWN SCRIPT END 

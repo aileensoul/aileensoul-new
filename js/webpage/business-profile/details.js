@@ -1,3 +1,19 @@
+//validation for edit email formate form
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+    });
+});
+
 $(function () {
     $("#tags").autocomplete({
         source: function (request, response) {
@@ -336,21 +352,6 @@ $(document).on('keydown', function (e) {
 });
 // all popup close close using esc end
 
-//validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo Required",
-            },
-        },
-    });
-});
 
  $(document).on('keydown', function (e) {
                 if (e.keyCode === 27) {

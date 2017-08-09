@@ -105,18 +105,32 @@ function check() {
 
 $(document).ready(function () {
     business_contacts(slug);
-    
+
     $(window).scroll(function () {
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            if ($(".page_number:last").val() <= $(".total_record").val()) {
-                var pagenum = parseInt($(".page_number:last").val()) + 1;
-                business_contacts(slug,pagenum);
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    business_contacts(slug, pagenum);
+                }
             }
         }
     });
 });
 var isProcessing = false;
-function business_contacts(slug,pagenum) {
+function business_contacts(slug, pagenum) {
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -133,7 +147,7 @@ function business_contacts(slug,pagenum) {
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-            //    $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                //    $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
             }
@@ -402,83 +416,83 @@ function contact_person_cancle(clicked_id, status) {
 }
 
 $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                //$( "#bidmodal" ).hide();
-                $('#query').modal('hide');
-                //$('.modal-post').show();
-                }
-                });
-
-
-
-                    
-  function contact_person_query(clicked_id, status) { 
-
-   
-                        $.ajax({
-                            type: 'POST',
-                            //url: '<?php echo base_url() . "business_profile/contact_person_query" ?>',
-                            url: base_url + "business_profile/contact_person_query",
-
-                            data: 'toid=' + clicked_id + '&status=' + status,
-                            success: function (data) { //alert(data);
-                              // return data;
-                               contact_person_model(clicked_id, status, data);
-                            }
-                        });
-                    }
-
-                    
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#query').modal('hide');
+        //$('.modal-post').show();
+    }
+});
 
 
 
 
+function contact_person_query(clicked_id, status) {
 
-                    function contact_person_model(clicked_id, status, data) {
 
-                        if(data == 1){
+    $.ajax({
+        type: 'POST',
+        //url: '<?php echo base_url() . "business_profile/contact_person_query" ?>',
+        url: base_url + "business_profile/contact_person_query",
 
-                            if (status == 'pending') {
-
-                            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
-
-                        } else if (status == 'confirm') {
-
-                            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
-
-                        }else{ 
-                           contact_person(clicked_id); 
-                        }
-
-                }else{
-
-                      $('#query .mes').html("<div class='pop_content'>Sorry, we can't process this request at this time.");
-                      $('#query').modal('show');
-                            
-                }
-                        
-                       
-
-                    }
-  
+        data: 'toid=' + clicked_id + '&status=' + status,
+        success: function (data) { //alert(data);
+            // return data;
+            contact_person_model(clicked_id, status, data);
+        }
+    });
+}
 
 
 
-                    function contact_person(clicked_id) {
-                        
-                        $.ajax({
-                            type: 'POST',
-                            //url: '<?php echo base_url() . "business_profile/contact_person" ?>',
-                            url: base_url + "business_profile/contact_person",
 
-                            data: 'toid=' + clicked_id,
-                            success: function (data) {
-                                //   alert(data);
-                                $('#contact_per').html(data);
 
-                            }
-                        });
-                    }
+
+
+function contact_person_model(clicked_id, status, data) {
+
+    if (data == 1) {
+
+        if (status == 'pending') {
+
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
+
+        } else if (status == 'confirm') {
+
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
+
+        } else {
+            contact_person(clicked_id);
+        }
+
+    } else {
+
+        $('#query .mes').html("<div class='pop_content'>Sorry, we can't process this request at this time.");
+        $('#query').modal('show');
+
+    }
+
+
+
+}
+
+
+
+
+function contact_person(clicked_id) {
+
+    $.ajax({
+        type: 'POST',
+        //url: '<?php echo base_url() . "business_profile/contact_person" ?>',
+        url: base_url + "business_profile/contact_person",
+
+        data: 'toid=' + clicked_id,
+        success: function (data) {
+            //   alert(data);
+            $('#contact_per').html(data);
+
+        }
+    });
+}
 
