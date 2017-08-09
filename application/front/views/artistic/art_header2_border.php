@@ -16,11 +16,11 @@
                                  </div>
                                  <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form>
+                                  <form action=<?php echo base_url('search/execute_search')?> method="get">
                                         <div class="new-search-input">
-                                            <input type="search" value="" placeholder="Find Your Job" />
-                                            <input type="search" value="" placeholder="Find Your Location" />
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                             <input type="text" id="tags1" name="skills" placeholder="Find Your Art">
+                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location">
+                                            <button type="submit" class="btn btn-primary" onclick="return check()">Search</button>
                                         </div>
                                     </form>
                                 </div>
@@ -44,10 +44,14 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages</div>
+                                                <div id="notificationTitle">Messages<span class="see_link"><a href="http://localhost/aileensoul/notification">See All</a></span></div>
+<div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
-                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                                </div>
+<div>
+    <ul class="khyati2">
+        
+    </ul></div>
+
                                             </div>
                                     </li> 
                  <!-- Friend Request End-->
@@ -98,11 +102,11 @@
                                  </div>
                                  <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form>
+                                   <form action=<?php echo base_url('search/execute_search')?> method="get">
                                         <div class="new-search-input">
-                                            <input type="search" value="" placeholder="Find Your Job" />
-                                            <input type="search" value="" placeholder="Find Your Location" />
-                                            <button type="submit" class="btn btn-primary">Search</button>
+                                              <input type="text" id="tags1" name="skills" placeholder="Find Your Art">
+                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location">
+                                             <button type="submit" class="btn btn-primary" onclick="return check()">Search</button>
                                         </div>
                                     </form>
                                 </div>
@@ -126,12 +130,16 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages</div>
+                                                <div id="notificationTitle">Messages<span class="see_link"><a href="http://localhost/aileensoul/notification">See All</a></span></div>
+<div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
-                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                                </div>
+<div>
+    <ul class="khyati2">
+        
+    </ul></div>
+
                                             </div>
-                                    </li> 
+                                    </li>  
                  <!-- Friend Request End-->
 <li>
   <div class="dropdown_hover">
@@ -188,6 +196,33 @@
 
 
 <script type="text/javascript">
+  
+
+$(document).ready(function(){
+    $('.dropdown_hover').click(function(event){
+        event.stopPropagation();
+         $(".dropdown-content_hover").fadeToggle("fast");
+    });
+    $(".dropdown-content_hover").on("dropdown_hover", function (event) {
+        event.stopPropagation();
+    });
+});
+
+$(document).on("dropdown_hover", function () {
+    $(".dropdown-content_hover").hide();
+});
+
+$(document).ready(function() {
+     $("body").click(function(event) {
+        $(".dropdown-content_hover").hide();
+        //event.stopPropagation();
+    });
+ 
+});
+</script>
+
+
+<script type="text/javascript">
 
   function deactivate(clicked_id) { 
       $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your artistic profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -241,11 +276,13 @@
         if (msg == 0)
         {
             $("#message_count").html('');
+            $("span#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
         } else
         {
             $('#message_count').html(msg);
-            $('#message_count').css({"background-color": "#FF4500", "padding": "3px"});
+       //     $('#message_count').css({"background-color": "#FF4500", "padding": "3px 6px"});
+             $('#message_count').addClass('count_add');
             $('#InboxLink').addClass('msg_notification_available');
             //alert("welcome");
         }
@@ -294,7 +331,7 @@
 
     function getmsgNotification() {
         msgNotification();
-        msgheader();
+      //  msgheader();
     }
 
     function msgNotification() {
@@ -319,10 +356,22 @@
             url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
             data: 'message_from_profile=6&message_to_profile=6',
             success: function (data) {
-                $('#' + 'notificationsmsgBody').html(data);
+
+             //   $('.' + 'khyati2').html(data);
+
             }
         });
 
     }
 </script>
-<!------  commen script harshad  ---------------->
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+     document.getElementById('tags1').value = null;
+     document.getElementById('searchplace1').value = null;
+
+    });
+</script>
+<!--  commen script harshad  -->
