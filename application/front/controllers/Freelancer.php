@@ -43,19 +43,19 @@ class Freelancer extends MY_Controller {
 
 
             if ($jobdata[0]['free_post_step'] == 1) {
-                redirect('freelancer/freelancer_post_address_information', refresh);
+                redirect('freelancer-work/address-information', refresh);
             } else if ($jobdata[0]['free_post_step'] == 2) {
-                redirect('freelancer/freelancer_post_professional_information', refresh);
+                redirect('freelancer-work/professional-information', refresh);
             } else if ($jobdata[0]['free_post_step'] == 3) {
-                redirect('freelancer/freelancer_post_rate', refresh);
+                redirect('freelancer-work/rate', refresh);
             } else if ($jobdata[0]['free_post_step'] == 4) {
-                redirect('freelancer/freelancer_post_avability', refresh);
+                redirect('freelancer-work/avability', refresh);
             } else if ($jobdata[0]['free_post_step'] == 5) {
-                redirect('freelancer/freelancer_post_education', refresh);
+                redirect('freelancer-work/education', refresh);
             } else if ($jobdata[0]['free_post_step'] == 6) {
-                redirect('freelancer/freelancer_post_portfolio', refresh);
+                redirect('freelancer-work/portfolio', refresh);
             } else if ($jobdata[0]['free_post_step'] == 7) {
-                redirect('freelancer/freelancer_apply_post', refresh);
+                redirect('freelancer-work/home', refresh);
             } else {
                 redirect('freelancer/freelancer_post_basic_information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
@@ -1191,11 +1191,10 @@ class Freelancer extends MY_Controller {
         reset($array);
 
         foreach ($array as $ii => $va) {
-
             $sorter[$ii] = $va[$key];
         }
 
-        asort($sorter);
+        arsort($sorter);
 
         foreach ($sorter as $ii => $va) {
 
@@ -1649,7 +1648,9 @@ class Freelancer extends MY_Controller {
                 }
             }
             
-            $unique[]=array_unique($free_post,SORT_ASC);
+            $unique=array_unique($free_post,SORT_ASC);
+            $unique =  $this->aasort($unique,"post_id");
+          //  echo "<pre>"; print_r($unique);die();
           
         } else {
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
@@ -1670,11 +1671,9 @@ class Freelancer extends MY_Controller {
                     
                 }
             }
-            $unique[]=array_unique($free_post,SORT_ASC);
-           
+            $unique=array_unique($free_post,SORT_ASC);
+            $unique[] =  $this->aasort($unique,"post_id");
         }
-        
-  
         $this->data['postdetail'] = $unique;
 
 //code for search start
@@ -1682,6 +1681,7 @@ class Freelancer extends MY_Controller {
 // code for search end
         $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
     }
+    
 
     public function freelancer_apply_check() {
         $userid = $this->session->userdata('aileenuser');
@@ -3145,5 +3145,7 @@ class Freelancer extends MY_Controller {
         $this->data['city_data'] = array_values($loc);
         $this->data['demo'] = array_values($result1);
     }
+    
+    
 
 }

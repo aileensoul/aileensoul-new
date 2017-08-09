@@ -104,8 +104,8 @@
                                     <div class="contact-frnd-post">
                                         <?php
                                         if ($postdetail) {
-                                            foreach ($postdetail as $post_key => $post_value) {
-                                                foreach ($post_value as $post) {
+                                            foreach ($postdetail as $post) {
+                                               
                                                     ?>
                                                     <div class="job-post-detail clearfix">
                                                         <div class="job-contact-frnd ">
@@ -301,7 +301,7 @@
                                                     </div>
                                                     <?php
                                                 }
-                                            }
+                                            
                                         } else {
                                             ?>
                                             <div class="text-center rio">
