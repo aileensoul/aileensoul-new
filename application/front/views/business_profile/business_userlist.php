@@ -20,7 +20,7 @@
                         <div class="col-md-4">
                             <?php echo $business_left ?>
                         </div>
-                        <div class="col-md-7 col-sm-8">
+                        <div class="col-md-7 col-sm-7">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>User list</h3>
