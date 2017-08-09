@@ -345,7 +345,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                                 </div>         
                                             </li>
                                             <li>
-                                                <a  href="<?php echo base_url('chat/abc/' . $businessdata1[0]['user_id']); ?>">Message</a></li>
+                                                <a  href="<?php echo base_url('chat/abc/5/5/' . $businessdata1[0]['user_id']); ?>">Message</a></li>
                                         <?php } ?>
                                     </ul>   
                                 </div>
