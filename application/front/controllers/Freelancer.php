@@ -28,7 +28,6 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_post() {
 
-
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => '0');
@@ -1633,7 +1632,7 @@ class Freelancer extends MY_Controller {
         // code for display page end
         if ($id == $userid || $id == "") {
             $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = 'created_date', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
             $post_reg_skill = explode(',', $freelancer_post_area);
             foreach ($post_reg_skill as $key => $value) {
@@ -1643,9 +1642,18 @@ class Freelancer extends MY_Controller {
                     $freedata[] = $freelancer_post_data;
                 }
             }
+            foreach ($freedata as $key1 => $value) {
+                foreach ($value as $ke => $val){
+                    $free_post[]=$val;
+                    
+                }
+            }
+            
+            $unique[]=array_unique($free_post,SORT_ASC);
+          
         } else {
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
-            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = 'created_date', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
             $post_reg_skill = explode(',', $freelancer_post_area);
             foreach ($post_reg_skill as $key => $value) {
@@ -1655,8 +1663,19 @@ class Freelancer extends MY_Controller {
                     $freedata[] = $freelancer_post_data;
                 }
             }
+            
+            foreach ($freedata as $key1 => $value) {
+                foreach ($value as $ke => $val){
+                    $free_post[]=$val;
+                    
+                }
+            }
+            $unique[]=array_unique($free_post,SORT_ASC);
+           
         }
-        $this->data['postdetail'] = $freedata;
+        
+  
+        $this->data['postdetail'] = $unique;
 
 //code for search start
         $this->freelancer_apply_search();
