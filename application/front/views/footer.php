@@ -1,3 +1,27 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.dropdown_hover').click(function (event) {
+            event.stopPropagation();
+            $(".dropdown-content_hover").fadeToggle("fast");
+        });
+        $(".dropdown-content_hover").on("dropdown_hover", function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    $(document).on("dropdown_hover", function () {
+        $(".dropdown-content_hover").hide();
+    });
+
+    $(document).ready(function () {
+        $("body").click(function (event) {
+            $(".dropdown-content_hover").hide();
+            event.stopPropagation();
+        });
+
+    });
+</script>
+
 <!-- IMAGE PRELOADER SCRIPT -->
 <script type="text/javascript">
  function preload(arrayOfImages) {
@@ -91,7 +115,7 @@
         // EDIT PROFILE DROPDOWN 
         $('.dropdown-user').click(function (event) {
             event.stopPropagation();
-            $(".dropdown-menu").slideToggle("fast");
+            $(".dropdown-menu").fadeToggle("fast");
         });
         $(".dropdown-menu").on("dropdown-user", function (event) {
             // event.stopPropagation();
@@ -151,7 +175,7 @@
         });
         // SHOW HIDE POPOVER
         $("myDropdown").click(function () {
-            $(this).find(".dropdown-menu").slideToggle("slow");
+            $(this).find(".dropdown-menu").fadeToggle("slow");
         });
     });
 
