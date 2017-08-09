@@ -2535,6 +2535,7 @@ class Business_profile extends MY_Controller {
     public function userlist() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
         $this->load->view('business_profile/business_userlist', $this->data);
     }
 

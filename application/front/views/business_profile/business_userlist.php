@@ -17,9 +17,10 @@
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
+                            <?php echo $business_left ?>
                         </div>
-                        <div class="col-md-8 col-sm-8">
+                        <div class="col-md-7 col-sm-8">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>User list</h3>
