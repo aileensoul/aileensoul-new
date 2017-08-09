@@ -170,5 +170,12 @@ $route['artistic'] = "artistic/index";
 $route['artistic/artistic-information-insert'] = "artistic/art_basic_information_insert";
 $route['artistic/artistic-information-update'] = "artistic/art_basic_information_update";
 
+$route['artistic/artistic-address'] = "artistic/art_address";
+$route['artistic/artistic-address-insert'] = "artistic/art_address_insert";
 
+$route['artistic/artistic-information'] = "artistic/art_information";
+$route['artistic/artistic-information-insert'] = "artistic/art_information_insert";
+
+$route['artistic/artistic-portfolio'] = "artistic/art_portfolio";
+$route['artistic/artistic-portfolio-insert'] = "artistic/art_portfolio_insert";
 

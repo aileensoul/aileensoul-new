@@ -1,17 +1,21 @@
-<!--start head -->
-<?php  echo $head; ?>
-    <!-- END HEAD -->
-    <!-- start header -->
-<?php echo $header; ?>
-    <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-   <?php if($artdata[0]['art_step'] == 4){?>
-    <?php echo $art_header2_border; }?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $title; ?></title>
+        <?php echo $head; ?>  
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+    </head>
     
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-    <!-- END HEADER -->
-    <div class="js">
     <body class="page-container-bg-solid page-boxed">
+
+        <?php echo $header; ?>
+        <?php if ($artdata[0]['art_step'] == 4) { ?>
+            <?php echo $art_header2_border; ?>
+        <?php } ?>
+
+    <div class="js">
     <div id="preloader"></div>
 
 
@@ -46,13 +50,13 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                             <ul class="left-form-each">
-                                <li class="custom-none"><a href="<?php echo base_url('artistic/art_basic_information_update'); ?>">Basic Information</a></li>
+                                <li class="custom-none"><a href="<?php echo base_url('artistic/artistic-information-update'); ?>">Basic Information</a></li>
 
                                 <li <?php if($this->uri->segment(1) == 'artistic'){?> class="active init" <?php } ?>><a href="#">Address</a></li>
 
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '2'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/art_information'); ?>">Art Information</a></li>
+                                <li class="custom-none <?php if($artdata[0]['art_step'] < '2'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/artistic-information'); ?>">Art Information</a></li>
 
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/art_portfolio'); ?>">Portfolio</a></li>
+                                <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/artistic-portfolio'); ?>">Portfolio</a></li>
 
                             </ul>
                         </div>
@@ -199,24 +203,8 @@
                                     <?php echo form_error('pincode'); ?>
 									</fieldset>
 								
-
-									<!-- <fieldset class="full-width">
-									<label>Postal Address:<span style="color:red">*</span></label>
-								
-
-                                <textarea id="textarea" name="address" tabindex="5" style="resize: none;min-height: 18%;"><?php //if($address1){ echo $address1; } ?></textarea>
-                                    <?php //echo form_error('address'); ?>
-                                    <label id="address-error"></label>
-
-                                
-								</fieldset>  -->
-
                                  <fieldset class="hs-submit full-width">
-                                    
-
-                                   
-                                  <!--   <a href="<?php //echo base_url('artistic/art_basic_information_update'); ?>">Previous</a> -->
-                                    
+                                        
                                     <input type="submit"  id="next" name="next" tabindex="6" value="Next">
                                    
                                 </fieldset>
@@ -224,440 +212,30 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- middle section end -->
-
                 </div>
             </div>
         </div>
     </section>
-   <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-    <!-- footer start -->
-    
+<footer>
+        
+<?php echo $footer;  ?>
+</footer>
 
 </div>
 
-<footer>
-        
-        <?php echo $footer;  ?>
-    </footer>
-
- <!-- <script type="text/javascript">
-     var textarea = document.getElementById("textarea");
-
-textarea.onkeyup = function(evt) {
-    this.scrollTop = this.scrollHeight;
-}
- </script> -->
-
-  <script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script>
+<script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script>
   
-  <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-  <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-
-<!-- script for skill textbox automatic end (option 2)-->
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data1 = <?php echo json_encode($city_data); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#searchplace" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data1 = <?php echo json_encode($city_data); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data1 = <?php echo json_encode($city_data); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script type="text/javascript">
-                        function checkvalue() {
-                            //alert("hi");
-                            var searchkeyword =$.trim(document.getElementById('tags').value);
-                            var searchplace = $.trim(document.getElementById('searchplace').value);
-                            // alert(searchkeyword);
-                            // alert(searchplace);
-                            if (searchkeyword == "" && searchplace == "") {
-                                //alert('Please enter Keyword');
-                                return false;
-                            }
-                        }
-                    </script>
-
-<script type="text/javascript">
-                        function check() {
-                            var keyword = $.trim(document.getElementById('tags1').value);
-                            var place = $.trim(document.getElementById('searchplace1').value);
-                            if (keyword == "" && place == "") {
-                                return false;
-                            }
-                        }
-                    </script>
- <!-- <script>
-//select2 autocomplete start for skill
-                                                $('#searchskills').select2({
-
-                                                    placeholder: 'Find Your Skills',
-
-                                                    ajax: {
-
-                                                        url: "<?php echo base_url(); ?>artistic/keyskill",
-                                                        dataType: 'json',
-                                                        delay: 250,
-
-                                                        processResults: function (data) {
-
-                                                            return {
-
-                                                                results: data
-
-
-                                                            };
-
-                                                        },
-                                                        cache: true
-                                                    }
-                                                });
-//select2 autocomplete End for skill
-
-//select2 autocomplete start for Location
-                                                $('#searchplace').select2({
-
-                                                    placeholder: 'Find Your Location',
-                                                    maximumSelectionLength: 1,
-                                                    ajax: {
-
-                                                        url: "<?php echo base_url(); ?>artistic/location",
-                                                        dataType: 'json',
-                                                        delay: 250,
-
-                                                        processResults: function (data) {
-
-                                                            return {
-
-                                                                results: data
-
-
-                                                            };
-
-                                                        },
-                                                        cache: true
-                                                    }
-                                                });
-//select2 autocomplete End for Location
-
-
-</script> -->
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
 
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-    $('#country').on('change',function(){ 
-        var countryID = $(this).val();
-        if(countryID){
-            $.ajax({
-                type:'POST',
-                url:'<?php echo base_url() . "artistic/ajax_data"; ?>',
-                data:'country_id='+countryID,
-                success:function(html){
-                    $('#state').html(html);
-                    $('#city').html('<option value="">Select state first</option>'); 
-                }
-            }); 
-        }else{
-            $('#state').html('<option value="">Select country first</option>');
-            $('#city').html('<option value="">Select state first</option>'); 
-        }
-    });
-    
-    $('#state').on('change',function(){
-        var stateID = $(this).val();
-        if(stateID){
-            $.ajax({
-                type:'POST',
-                url:'<?php echo base_url() . "artistic/ajax_data"; ?>',
-                data:'state_id='+stateID,
-                success:function(html){
-                    $('#city').html(html);
-                }
-            }); 
-        }else{
-            $('#city').html('<option value="">Select state first</option>'); 
-        }
-    });
-});
+<script>
+var data= <?php echo json_encode($demo); ?>;
+var base_url = '<?php echo base_url(); ?>';
+var data1 = <?php echo json_encode($city_data); ?>;
 </script>
 
-<script type="text/javascript">
-
-            //validation for edit email formate form
-
-
-// jQuery.validator.addMethod("noSpace", function(value, element) { 
-//       return value == '' || value.trim().length != 0;  
-//     }, "No space please and don't leave it empty");
-
-// $.validator.addMethod("regx", function(value, element, regexpr) {          
-//     //return value == '' || value.trim().length != 0; 
-//      if(!value) 
-//             {
-//                 return true;
-//             }
-//             else
-//             {
-//                   return regexpr.test(value);
-//             }
-//      // return regexpr.test(value);
-// }, "Only space, only number and only special characters are not allow");
-
-
-            $(document).ready(function () { 
-
-                $("#address").validate({
-
-                    rules: {
-
-                        country: {
-
-                            required: true,
-                         
-                        },
-
-                         state: {
-
-                            required: true,
-                            
-                          
-                        },
-                      
-                        // address: {
-
-                        //     required: true,
-                        //        regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                        //     //noSpace: true
-                            
-                        // },
-                        
-                      
-
-                    },
-
-                    messages: {
-
-                        country: {
-
-                            required: "Country Is Required.",
-                            
-                        },
-
-                        state: {
-
-                            required: "State Is Required.",
-                            
-                        },
-                       
-                        // address: {
-
-                        //     required: "Address Is Required.",
-                            
-                        // },
-
-                       
-                },
-
-                });
-                   });
-  </script>
-
-   <script type="text/javascript"> 
- $(".alert").delay(3200).fadeOut(300);
-</script>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {  
-
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-$(window).load(function(){
-  $('#preloader').fadeOut('slow',function(){$(this).remove();});
-});
-});
-</script>
-
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/address.js'); ?>"></script>
 </body>
 </html>
 

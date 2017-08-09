@@ -1,41 +1,11 @@
 
-<?php  echo $head; ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $title; ?></title>
+        <?php echo $head; ?> 
 
-<!-- select 2 validation border start -->
-
-
-<!-- This style is used for autocomplete start -->
-
-<style type="text/css">
-  
-  /*.keyskill_border_deactivte {
-  border: 0px solid red;
-
-}*/
-
-.keyskill_border_active {
-  border: 1px solid red;
-
-}
-</style>
-
-<!-- select 2 validation border end -->
-
-<!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/3.3.0/select2.css'); ?>"> -->
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-    <!-- END HEAD -->
-    <!-- start header -->
-<?php echo $header; ?>
-    
-
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-<?php if($artdata[0]['art_step'] == 4){?>
-    <?php echo $art_header2_border; }?>
-
-
-     <style type="text/css">
+        <style type="text/css">
 
 /* Layout helpers
 ----------------------------------*/
@@ -177,11 +147,19 @@
 
   </style>
 
-    <!-- END HEADER -->
-    <div class="js">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+    </head>
     <body class="page-container-bg-solid page-boxed">
-    <div id="preloader"></div>
 
+    <?php echo $header; ?>
+        <?php if ($artdata[0]['art_step'] == 4) { ?>
+            <?php echo $art_header2_border; ?>
+        <?php } ?>
+
+<div class="js">
+<div id="preloader"></div>
 
       <section>
         
@@ -214,13 +192,13 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                             <ul class="left-form-each">
-                                <li class="custom-none"><a href="<?php echo base_url('artistic/art_basic_information_update'); ?>">Basic Information</a></li>
+                                <li class="custom-none"><a href="<?php echo base_url('artistic/artistic-information-update'); ?>">Basic Information</a></li>
 
-                                <li class="custom-none"><a href="<?php echo base_url('artistic/art_address'); ?>">Address</a></li>
+                                <li class="custom-none"><a href="<?php echo base_url('artistic/artistic-address'); ?>">Address</a></li>
 
                                 <li <?php if($this->uri->segment(1) == 'artistic'){?> class="active init" <?php } ?>><a href="#">Art Information</a></li>
 
-                                <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/art_portfolio'); ?>">Portfolio</a></li>
+                                <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/artistic-portfolio'); ?>">Portfolio</a></li>
 
                             </ul>
                         </div>
@@ -246,10 +224,7 @@
                         </h3>
                         
                             <?php echo form_open(base_url('artistic/art_information_insert'), array('id' => 'artinfo','name' => 'artinfo','class' => 'clearfix', 'onsubmit' => "imgval()")); ?>
-                            <!-- <div>
-                                   <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div> -->
-
+                          
                                 <?php
                                  $artname =  form_error('artname');
                                  $skills =  form_error('skills');
@@ -260,26 +235,11 @@
 
                                     <fieldset class="full-width" <?php if($skills) {  ?> class="error-msg" <?php } ?> >
                                         <label>Art:<span style="color:red">*</span></label>
-                                       
-                                          <!-- <select tabindex="1" autofocus name="skills[]" id ="skils" class="keyskil" multiple="multiple" style="width:100%;">
-                                          <option></option>
-                                       <?php foreach ($skill as $ski) { ?>
-                                      <option value="<?php echo $ski['skill_id']; ?>"><?php echo $ski['skill']; ?></option>
-                                    <?php } ?>
-                                      </select> -->
-
-
+                                    
                                       <input id="skills2" value="<?php echo $work_skill; ?>" name="skills"  size="90">
 
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
-
-
-                        <!-- <fieldset class="full-width">
-                                <label>Other Art:</label>
-                                <input type="text" class="keyskil" tabindex="2" name="other_skill" id="other_skill" placeholder="Enter Other Skill" value="<?php if($otherskill1){ echo $otherskill1; }?>"> 
-                                <?php echo form_error('other_skill'); ?>
-                                </fieldset> -->
 
 
                                 <fieldset class="full-width" <?php if($artname) {  ?> class="error-msg" <?php } ?>>
@@ -287,10 +247,8 @@
                                     <input name="artname" type="text" id="artname" tabindex="3" placeholder="Enter Speciality" value="<?php if($artname1){ echo $artname1; } ?>"/><span id="artname-error"></span>
                                      <?php echo form_error('artname'); ?>
                                 </fieldset>
-                               
-
-                               
-
+              
+                              
                                 <fieldset  <?php if($desc_art) {  ?> class="error-msg" <?php } ?> class="full-width">
                                     <label>Description of your art:<span style="color:red">*</span></label>
 
@@ -309,9 +267,6 @@
 
                                  <fieldset class="hs-submit full-width">
                                    
-                                   
-                                 
-                                    
                                     <input type="submit"  id="next" name="next" value="Next" tabindex="6">
                                    
                                 </fieldset>
@@ -324,458 +279,34 @@
             </div>
         </div>
     </section>
-   <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-    <!-- footer start -->
-   
-    
+  
+ <footer>  
+  <?php echo $footer;  ?>
+</footer>
 
 </div>
- <footer>
-        
-        <?php echo $footer;  ?>
-    </footer>
-
 
   <script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
   <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-
-<script type="text/javascript">
-     var textarea = document.getElementById("textarea");
-
-textarea.onkeyup = function(evt) {
-    this.scrollTop = this.scrollHeight;
-}
- </script>
-<!-- script for skill textbox automatic end (option 2)-->
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-
-<script>
-
-var data1 = <?php echo json_encode($de); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#searchplace" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script>
-
-var data1 = <?php echo json_encode($city_data); ?>;
-// alert(data);
-
-        
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
-  
-</script>
-<script type="text/javascript">
-                        function checkvalue() {
-                            //alert("hi");
-                            var searchkeyword =$.trim(document.getElementById('tags').value);
-                            var searchplace =$.trim(document.getElementById('searchplace').value);
-                            // alert(searchkeyword);
-                            // alert(searchplace);
-                            if (searchkeyword == "" && searchplace == "") {
-                                //alert('Please enter Keyword');
-                                return false;
-                            }
-                        }
-                    </script>
-
-
-  <script type="text/javascript">
-                        function check() {
-                            var keyword = $.trim(document.getElementById('tags1').value);
-                            var place = $.trim(document.getElementById('searchplace1').value);
-                            if (keyword == "" && place == "") {
-                                return false;
-                            }
-                        }
-                    </script>
-<!-- <script>
-//select2 autocomplete start for skill
-                                                $('#searchskills').select2({
-
-                                                    placeholder: 'Find Your Skills',
-
-                                                    ajax: {
-
-                                                        url: "<?php echo base_url(); ?>artistic/keyskill",
-                                                        dataType: 'json',
-                                                        delay: 250,
-
-                                                        processResults: function (data) {
-
-                                                            return {
-
-                                                                results: data
-
-
-                                                            };
-
-                                                        },
-                                                        cache: true
-                                                    }
-                                                });
-//select2 autocomplete End for skill
-
-//select2 autocomplete start for Location
-                                                $('#searchplace').select2({
-
-                                                    placeholder: 'Find Your Location',
-                                                    maximumSelectionLength: 1,
-                                                    ajax: {
-
-                                                        url: "<?php echo base_url(); ?>artistic/location",
-                                                        dataType: 'json',
-                                                        delay: 250,
-
-                                                        processResults: function (data) {
-
-                                                            return {
-
-                                                                results: data
-
-
-                                                            };
-
-                                                        },
-                                                        cache: true
-                                                    }
-                                                });
-//select2 autocomplete End for Location
-
-
-</script> -->
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
 
-<!-- script for select2 box Script start-->
-<!-- <script type="text/javascript" src="<?php //echo base_url('js/3.3.0/select2.js'); ?>"></script> -->
-
-
-
-  
-<!-- script for select2 box Script End-->
 
 <script type="text/javascript">
+ var base_url = '<?php echo base_url(); ?>';   
+var data= <?php echo json_encode($demo); ?>;
 
-            //validation for edit email formate form
+var data1 = <?php echo json_encode($de); ?>;
 
-
-            jQuery.validator.addMethod("noSpace", function(value, element) { 
-      return value == '' || value.trim().length != 0;  
-    }, "No space please and don't leave it empty");
-
-
-            $.validator.addMethod("regx1", function(value, element, regexpr) {          
-    return regexpr.test(value);
-}, "Only space not allow");
-
-
-$.validator.addMethod("regx", function(value, element, regexpr) {          
-    //return value == '' || value.trim().length != 0; 
-     if(!value) 
-            {
-                return true;
-            }
-            else
-            {
-                  return regexpr.test(value);
-            }
-     // return regexpr.test(value);
-}, "Only space, only number and only special characters are not allow");
-
-
-            $(document).ready(function () { 
-
-                $("#artinfo").validate({ 
-  
-                  ignore: '*:not([name])',
-                    rules: {
-
-                        artname: {
-
-                            required: true,
-                            regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                            //noSpace: true,
-
-                         
-                        },
-
-                        skills: {
-
-                    required: true,
-
-                },
-                        // other_skill: {
-                            
-                        //    require_from_group: [1, ".keyskil"],
-                        //    regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                        //    //noSpace: true
-                            
-                        // },
-                       desc_art: {
-
-                            required: true,
-                             regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
-                           // noSpace: true
-                            
-                        },
-                        
-                    },
-
-                    messages: {
-
-                        artname: {
-
-                            required: "Speciality Is Required.",
-                            
-                        },
-
-                         skills: {
-
-                    required: "Skill Is Required.",
-                   
-                },
-
-                        // other_skill: {
-
-                        //     require_from_group: "You must either fill out 'Keyskills' or 'Other Skills'",
-                        // },
-                        desc_art: {
-
-                            required: "Description of your Art Is Required.",
-                            
-                        },
-                       
-                },
-
-                });
-                   });
-
-    
-  </script>
-
-
-<script type="text/javascript">
-  
-function imgval(){ 
-
- var skill_main = document.getElementById("skils").value;
- var skill_other = document.getElementById("other_skill").value;
-
-     if(skill_main =='' && skill_other == ''){
-  //$($("#skils").select2("container")).removeClass("keyskill_border_deactivte");
-
-  $($("#skils").select2("container")).addClass("keyskill_border_active");
-  }
-   
-  }
-
-</script>
-<script>
+var data1 = <?php echo json_encode($city_data); ?>;
 
 var complex = <?php echo json_encode($selectdata); ?>;
 
-
-if(complex != '')
-    { 
-        //alert(789);
-         $("#skils").select2({
-         placeholder: "Select your art",
-         }).select2('val', complex);
-    }
-   if(complex == '')
-    {
-        //alert(123);
-         $("#skils").select2({
-         placeholder: "Select your art",
- 
-        });
-    }
-
-//$("#skils").select2().select2('val',complex)
+var textarea = document.getElementById("textarea");
 
 </script>
-<!-- edit time skill fetch end-->
-
-    <!-- footer end-->
- <script type="text/javascript"> 
- $(".alert").delay(3200).fadeOut(300);
-</script>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {  
-
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-$(window).load(function(){
-  $('#preloader').fadeOut('slow',function(){$(this).remove();});
-});
-});
-</script>
-
-
-<!--new script for skill start-->
- <script>
-    $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) { 
-            return split( term ).pop();
-        }
-        
-        $( "#skills2" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url();?>general/get_artskill", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-            select: function( event, ui ) {
-               
-                var terms = split( this.value );
-                if(terms.length <= 10) {
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( ", " );
-                    return false;
-                }else{
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                    $(this).effect("highlight", {}, 1000);
-                    $(this).attr("style","border: solid 1px red;");
-                    return false;
-                }
-            }
-
-  
- 
-        });
-    });
-</script>
-<!--new script for skill end-->
-
-
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/art_information.js'); ?>"></script>
 </body>
 </html>
    
