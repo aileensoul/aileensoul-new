@@ -169,8 +169,21 @@ $(document).ready(function () {
     GetBusPdf();
     
     $(window).scroll(function () {
-        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            if ($(".page_number:last").val() <= $(".total_record").val()) {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            
+            var available_page = total_record / perpage_record;
+            available_page = parseInt(available_page,10);
+            var mod_page = total_record % perpage_record;
+            if(mod_page > 0){
+                available_page = available_page + 1;
+            }
+            //if ($(".page_number:last").val() <= $(".total_record").val()) {
+            if (page <= available_page) {
                 var pagenum = parseInt($(".page_number:last").val()) + 1;
                 business_dashboard_post(slug,pagenum);
             }

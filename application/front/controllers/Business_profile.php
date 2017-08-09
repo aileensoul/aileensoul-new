@@ -9068,11 +9068,12 @@ No Contacts Available.
         $businessprofiledatapost1 = array_slice($businessprofiledatapost, $start, $perpage);
 
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($businessprofiledatapost1);
+            $_GET["total_record"] = count($businessprofiledatapost);
         }
 
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
         if (count($businessprofiledatapost) > 0) {
 //$row = $businessprofiledatapost[0];
@@ -10586,7 +10587,7 @@ Your browser does not support the audio tag.
     public function business_dashboard_post($id = '') {
 // manage post start
         
-        $perpage = 10;
+        $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
@@ -10628,11 +10629,12 @@ Your browser does not support the audio tag.
         $return_html = '';
         
         if (empty($_GET["total_record"])) {
-            $_GET["total_record"] = count($business_profile_data);
+            $_GET["total_record"] = count($business_profile_data1);
         }
 
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($business_profile_data1) > 0) {
             
             foreach ($business_profile_data as $row) {
