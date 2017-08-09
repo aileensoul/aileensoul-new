@@ -7910,6 +7910,27 @@ class Business_profile extends MY_Controller {
         }
     }
 
+
+     public function contact_person_query(){
+
+        $userid = $this->session->userdata('aileenuser');
+        $to_id = $_POST['toid'];
+        $status = $_POST['status'];
+
+
+        $contition_array = array('contact_type' => 2);
+        $search_condition = "((contact_to_id = '$to_id' AND contact_from_id = ' $userid') OR (contact_from_id = '$to_id' AND contact_to_id = '$userid'))";
+        $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
+        if($contactperson[0]['status'] == $status){
+            echo 1 ;
+        }else{
+            echo 2 ;
+        }
+
+
+    }
+    
+
     public function contact_person() {
         $to_id = $_POST['toid'];
         $userid = $this->session->userdata('aileenuser');
@@ -7947,7 +7968,7 @@ class Business_profile extends MY_Controller {
 //echo "<pre>"; print_r($data); die();
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
+                $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div>   
                                                             <div class="add-contact">
                                                              <div></div>
@@ -7977,7 +7998,7 @@ class Business_profile extends MY_Controller {
 
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
-                $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
+                $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="cance_req_main_box">   
                                                             <div class="add-contact">
                                                              <div></div>
@@ -8006,7 +8027,7 @@ class Business_profile extends MY_Controller {
 
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
-                $contactdata = '<a href="#" onclick="return contact_person(' . $to_id . ');" style="cursor: pointer;">';
+                $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'cancel' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div>   
                                                             <div class="add-contact">
                                                              <div></div>
@@ -8035,7 +8056,7 @@ class Business_profile extends MY_Controller {
                 );
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
-                $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
+                $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
                 $contactdata .= '<div class="cance_req_main_box">   
                                                             <div class="add-contact">
                                                              <div></div>
@@ -8071,7 +8092,7 @@ class Business_profile extends MY_Controller {
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
-            $contactdata = '<a href="#" onclick="return contact_person_model(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
+            $contactdata = '<a href="#" onclick="return contact_person_query(' . $to_id . "," . "'" . 'pending' . "'" . ');" style="cursor: pointer;">';
             $contactdata .= '<div class="cance_req_main_box">   
                                                             <div class="add-contact">
                                                              <div></div>
