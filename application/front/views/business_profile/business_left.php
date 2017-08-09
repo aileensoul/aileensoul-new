@@ -71,7 +71,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                     <li 
                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
                         <?php } ?>>
-                        <a title="Followers" href="<?php echo base_url('business-profile/followers'); ?>">Followers 
+                        <a title="Followers" href="<?php echo base_url('business-profile/followers/' . $businessdata[0]['business_slug']); ?>">Followers 
                             <br> (<?php echo (count($businessfollowerdata)); ?>)
                         </a>
                     </li>

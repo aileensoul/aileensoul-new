@@ -41,7 +41,8 @@
                     return false;
                 });
             });
-        </script>   <script>
+        </script>   
+        <script>
             $(document).ready(function ()
             {
                 /* Uploading Profile BackGround Image */
@@ -182,7 +183,7 @@
                                                                                 ?>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="designation_rec" style="    float: left;
+                                                                        <div class="designation_rec" style="float: left;
                                                                              width: 60%;
                                                                              padding-top: 10px; padding-bottom: 10px;">
                                                                             <ul>

@@ -12,10 +12,8 @@
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
         <section>
-<div class="container" id="paddingtop_fixed">
-            
-            
-        </div>
+            <div class="container" id="paddingtop_fixed">
+            </div>
             <div class="user-midd-section">
                 <div class="container">
                     <div class="row">
@@ -26,81 +24,9 @@
                                 <div class="job-saved-box">
                                     <h3>User list</h3>
                                     <div class="contact-frnd-post">
-                                        <?php foreach ($userlist as $user) { ?>
-                                            <div class="job-contact-frnd ">
-                                                <div class="profile-job-post-detail clearfix">
-                                                    <div class="profile-job-post-title-inside clearfix">
-                                                        <div class="profile-job-post-location-name">
-                                                            <div class="user_lst"><ul>
-                                                                    <li class="fl">
-                                                                        <div class="follow-img">
-                                                                            <?php if ($user['business_user_image'] != '') { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>">
-
-
-                                                             <?php 
-
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image'])) {
-                                                                
-                                                                ?>
-                                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                <?php
-                                                            } else { ?>
-
-                                                            
-                                                                <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image']); ?>" height="50px" width="50px" alt="" >
-
-
-                                                                <?php }?>
-                                                                                </a>
-                                                                            <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>">
-                                                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                                </a>
-    <?php } ?> 
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="folle_text">
-                                                                        <div class="">
-                                                                            <div class="follow-li-text " style="padding: 0;">
-                                                                                <a title="<?php echo $user['company_name']; ?>" href="<?php echo base_url('business-profile/dashboard/' . $user['business_slug']); ?>"><?php echo $user['company_name']; ?></a>
-                                                                            </div>
-                                                                            <div>
-                                                                                    <?php $category = $this->db->get_where('industry_type', array('industry_id' => $user['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                                                                <a><?php
-                                                                                    if ($category) {
-                                                                                        echo $category;
-                                                                                    } else {
-                                                                                        echo $user['other_industrial'];
-                                                                                    }
-                                                                                    ?></a>
-                                                                            </div>
-                                                                    </li>
-                                                                    <li class="<?php echo "fruser" . $user['business_profile_id']; ?> fr">
-                                                                        <?php
-                                                                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $user['business_profile_id']))->row()->follow_status;
-                                                                        if ($status == 0 || $status == " ") {
-                                                                            ?>
-                                                                            <div id= "followdiv " class="user_btn">
-                                                                                <button id="<?php echo "follow" . $user['business_profile_id']; ?>" onClick="followuser(<?php echo $user['business_profile_id']; ?>)">
-                                                                                    Follow 
-                                                                                </button></div>
-    <?php } elseif ($status == 1) { ?>
-                                                                            <div id= "unfollowdiv"  class="user_btn" > 
-                                                                                <button class="bg_following" id="<?php echo "unfollow" . $user['business_profile_id']; ?>" onClick="unfollowuser(<?php echo $user['business_profile_id']; ?>)">
-                                                                                    Following 
-                                                                                </button></div>
-    <?php } ?>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-<?php } ?>
-
-                                        </div>
+                                        <!-- AJAX DATA... -->
                                     </div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                                     <div class="col-md-1">
                                     </div>
                                 </div>
@@ -111,7 +37,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['b
             </div>
         </section>
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -133,13 +59,13 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['b
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                 <input type="hidden" name="hitext" id="hitext" value="6">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" /></div>
                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -156,8 +82,8 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $user['b
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <!-- script for business autofill -->
         <script>
-                                                                                    var base_url = '<?php echo base_url(); ?>';
-                                                                                    var data = <?php echo json_encode($demo); ?>;
-                                                                                    var data1 = <?php echo json_encode($city_data); ?>;
+                                                                            var base_url = '<?php echo base_url(); ?>';
+                                                                            var data = <?php echo json_encode($demo); ?>;
+                                                                            var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/userlist.js'); ?>"></script>
