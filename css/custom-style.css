@@ -120,6 +120,7 @@
 .addcontact-left{
     width:75%;
     float: left;
+    padding-left: 10px;
 }
 .addcontact-left a{
     color: #000;
@@ -135,7 +136,7 @@
     background: none !important;
 }
 .addcontact-right{
-    width: 25%;
+    width: 27%;
     float: left;
 }
 .addcontact-right a{

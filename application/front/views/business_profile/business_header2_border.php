@@ -21,21 +21,7 @@
             $("#InboxContainer").hide();
         }
     });
-    $(document).ready(function ()
-    {
-        $("#addcontactLink").click(function ()
-        {
-            $("#Frnd_reqContainer").hide();
-            $("#Frnd_req_count").hide();
-            $(".dropdown-menu").hide();
-            $("#notificationContainer").hide();
-            $("#notification_count").hide();
-            $("#dropdown-content_hover").hide();
-            $("#InboxContainer").fadeToggle(300);
-            $("#Inbox_count").fadeOut("slow");
-            return false;
-        });
-    });
+
 
     $(document).ready(function ()
     {
@@ -105,7 +91,7 @@
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                       <!--  <span class="badge bg-theme"><?php //echo $message_count;     ?></span> -->
+                                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;      ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
 
@@ -327,9 +313,9 @@
         } else
         {
             $('#message_count').html(msg);
-       //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
-                $('#message_count').addClass('count_add');
+            $('#message_count').addClass('count_add');
             //alert("welcome");
         }
     }

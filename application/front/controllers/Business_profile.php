@@ -1506,7 +1506,7 @@ class Business_profile extends MY_Controller {
             <div class="else_post_d">
                 <div class="post-design-product">
                     <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
-                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
+                    <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                     <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                     </span> </div></div>
@@ -2540,7 +2540,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function ajax_userlist() {
-        
+
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -2550,7 +2550,7 @@ class Business_profile extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        
+
         $userid = $this->session->userdata('aileenuser');
 
         $artdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*');
@@ -2559,10 +2559,10 @@ class Business_profile extends MY_Controller {
 
         $limit = $perpage;
         $offset = $start;
-        
+
         $contition_array = array('business_step' => 4, 'is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid);
         $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str = array(), $groupby = '');
-        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit ='', $offset = '', $join_str = array(), $groupby = '');
+        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2586,7 +2586,7 @@ class Business_profile extends MY_Controller {
         $following = count($this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
 
 //following end
-        
+
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($userlist1);
         }
@@ -2594,8 +2594,8 @@ class Business_profile extends MY_Controller {
         $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
         $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
-        
-        
+
+
         foreach ($userlist as $user) {
             $return_html .= '<div class="job-contact-frnd ">
                                                 <div class="profile-job-post-detail clearfix">
@@ -8358,131 +8358,117 @@ class Business_profile extends MY_Controller {
         array_multisort($post, SORT_DESC, $new);
 
         $contactperson = $new;
-$contactdata .= '<ul id="' . $contact['contact_id'] . '">';
+        $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
         if ($contactperson) {
             foreach ($contactperson as $contact) {
-                
+
                 if ($contact['contact_to_id'] == $userid) {
-                $contition_array = array('user_id' =>$contact['contact_from_id'] , 'status' => '1');
-                $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if($contactperson_from){
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
-                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-                    $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
-                    $contactdata .= '<div class="addcontact-pic">';
+                    $contition_array = array('user_id' => $contact['contact_from_id'], 'status' => '1');
+                    $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($contactperson_from) {
+                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+                        $contactdata .= '<li>';
+                        $contactdata .= '<div class="addcontact-left">';
+                        $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
+                        $contactdata .= '<div class="addcontact-pic">';
 
-                    if ($busdata[0]['business_user_image']) {
+                        if ($busdata[0]['business_user_image']) {
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $a = $busdata[0]['company_name'];
+                                $acr = substr($a, 0, 1);
+
+                                $contactdata .= '<div class="post-img-div">';
+                                $contactdata .= ucfirst(strtolower($acr));
+                                $contactdata .= '</div>';
+                            } else {
+
+                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            }
+                        } else {
                             $a = $busdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
 
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr)); 
-                                $contactdata .=  '</div>';
-
-
-                        } else {
-
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            $contactdata .= '<div class="post-img-div">';
+                            $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '</div>';
                         }
-
-                    } else {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
-
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
                         $contactdata .= '</div>';
+                        $contactdata .= '<div class="addcontact-text">';
+                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
+                        $contactdata .= '' . $inddata[0]['industry_name'] . '';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '<div class="addcontact-right">';
+                        $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                        $contactdata .= '<a href="#" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</li>';
                     }
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
-                    $contactdata .= '' . $inddata[0]['industry_name'] . '';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-right">';
-                    $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                    $contactdata .= '<a href="#" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</li>';
-
-                   }
                 } else {
 
 
 
-                    $contition_array = array('user_id' =>$contact['contact_to_id'] , 'status' => '1');
-                $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('user_id' => $contact['contact_to_id'], 'status' => '1');
+                    $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    if($contactperson_to){
-
-
-                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+                    if ($contactperson_to) {
 
 
-                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
 
-                    $contactdata .= '<li>';
-                    $contactdata .= '<div class="addcontact-left custome-approved-contact">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
-                    $contactdata .= '<div class="addcontact-pic">';
 
-                    if ($busdata[0]['business_user_image']) {
+                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                        $contactdata .= '<li>';
+                        $contactdata .= '<div class="addcontact-left custome-approved-contact">';
+                        $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
+                        $contactdata .= '<div class="addcontact-pic">';
+
+                        if ($busdata[0]['business_user_image']) {
+
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
+                                $a = $busdata[0]['company_name'];
+                                $acr = substr($a, 0, 1);
+
+                                $contactdata .= '<div class="post-img-div">';
+                                $contactdata .= ucfirst(strtolower($acr));
+                                $contactdata .= '</div>';
+                            } else {
+
+                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            }
+                        } else {
                             $a = $busdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
 
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr)); 
-                                $contactdata .=  '</div>';
-
-
-                        } else {
-
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-
-                             }
-                    } else {
-                        $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
-
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '<div class="post-img-div">';
+                            $contactdata .= ucfirst(strtolower($acr));
+                            $contactdata .= '</div>';
+                        }
                         $contactdata .= '</div>';
-                    }
-                    $contactdata .= '</div>';
-                    $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
-                    //$contactdata .= '' . $inddata[0]['industry_name'] . '';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</a>';
-                    $contactdata .= '</div>';
-                    $contactdata .= '</li>';
-
+                        $contactdata .= '<div class="addcontact-text">';
+                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
+                        //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</a>';
+                        $contactdata .= '</div>';
+                        $contactdata .= '</li>';
                     }
                 }
-                
             }
             $contactdata .= '</ul>';
         } else {
-
-            $contactdata = '<ul>';
-            $contactdata .= '<li>';
-            $contactdata .= '<div class="addcontact-left">';
-            $contactdata .= '<a href="#">';
-            $contactdata .= '<div class="addcontact-text">';
-            $contactdata .= 'No Contact Request available...';
-            $contactdata .= '</div>';
-            $contactdata .= '</a>';
-            $contactdata .= '</div>';
-            $contactdata .= '</div>';
-            $contactdata .= '</li>';
-            $contactdata .= '</ul>';
+            $contactdata .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+                                                    <img src="' . base_url() . 'img/No_Contact_Request.png">
+                                                </div>
+                                                <div class="art_no_post_text_c">
+                                                    No Contact Request Available.
+                                                </div>
+                             </div>';
         }
         echo $contactdata;
     }
@@ -8594,7 +8580,7 @@ $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
 
                     $contactdata .= '<li>';
                     $contactdata .= '<div class="addcontact-left">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                    $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
@@ -8669,6 +8655,109 @@ $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
         $this->load->view('business_profile/contact_list', $this->data);
     }
 
+    public function ajax_contact_list() {
+        
+        $perpage = 9;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+        
+        $userid = $this->session->userdata('aileenuser');
+
+        $bussdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
+
+        $join_str[0]['table'] = 'business_profile';
+        $join_str[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
+        $join_str[0]['join_type'] = '';
+        
+        $limit = $perpage;
+        $offset = $start;
+
+        $contition_array = array('contact_to_id' => $userid, 'contact_person.status' => 'pending');
+        $friendlist_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str, $groupby = '');
+        $friendlist_req1 = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        $join_str[0]['table'] = 'business_profile';
+        $join_str[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str[0]['from_table_id'] = 'contact_person.contact_to_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('contact_from_id' => $userid, 'contact_person.status' => 'confirm');
+        $friendlist_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
+        $friendlist = array_merge($friendlist_con, $friendlist_req);
+        
+        $return_html = '';
+
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($friendlist_req1);
+        }
+
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+
+        if ($friendlist_req) {
+            foreach ($friendlist_req as $friend) {
+                $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $friend['industriyal'], $data = '*', $join_str = array());
+
+
+                $userid = $this->session->userdata('aileenuser');
+                if ($friend['contact_to_id'] == $userid) {
+                    $return_html .= '<li id="' . $friend['contact_from_id'] . '">
+                                                    <div class="list-box">
+                                                        <div class="profile-img">';
+                    if ($friend['business_user_image'] != '') {
+                        $return_html .= '<a  href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                                                                    <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']) . '">
+                                                                </a>';
+                    } else {
+                        $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                                                                    <img src="' . base_url(NOIMAGE) . '" />
+                                                                </a>';
+                    }
+                    $return_html .= '</div>
+                                                        <div class="profile-content">
+                                                            <a  href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                                                                <div class="main_data_cq">   <span title="' . $friend['company_name'] . '" class="main_compny_name">' . $friend['company_name'] . '</span></div>
+                                                                <div class="main_data_cq">';
+                    if ($inddata[0]['industry_name']) {
+                        $return_html .= '<span class="dc_cl_m"   title="' . $inddata[0]['industry_name'] . '">' . $inddata[0]['industry_name'] . '</span>';
+                    } else {
+                        $return_html .= '<span class="dc_cl_m"   title="' . $friend['other_industrial'] . '">' . $friend['other_industrial'] . '</span>';
+                    }
+                    $return_html .= '</div>
+                                                            </a>
+                                                            </span>
+
+                                                        </div>
+                                                        <div class="fw">
+                                                            <p class="connect-link">
+                                                                <a href="#" class="cr-accept acbutton  ani" onclick = "return contactapprove(' . $friend['contact_from_id'] . ', 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
+                                                                    </span></a>
+                                                                <a href="#" class="cr-decline" onclick = "return contactapprove(' . $friend['contact_from_id'] . ', 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
+                                                                    </span></a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>';
+                }
+            }
+        } else {
+            $return_html .= '<li>
+                                            No contacts available...
+                                        </li>';
+        }
+        echo $return_html;
+    }
+
     public function contact_list_approve() {
 
         $toid = $_POST['toid'];
@@ -8725,7 +8814,7 @@ $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
 
                 $contactdata .= '</div>';
                 $contactdata .= '<div class="profile-content">';
-                $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
                 $contactdata .= '<h5>' . $busdata[0]['company_name'] . '</h5>';
                 $contactdata .= '<p>' . $inddata[0]['industry_name'] . '</p>';
                 $contactdata .= '</a>';
@@ -9334,7 +9423,7 @@ Your Post is Successfully Saved.
                     if ($row['posted_user_id']) {
 
                         if ($userimageposted) {
-                            $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
+                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
 
@@ -9346,7 +9435,7 @@ Your Post is Successfully Saved.
 
                             $return_html .= '</a>';
                         } else {
-                            $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">';
+                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
 
 
 
@@ -9357,7 +9446,7 @@ Your Post is Successfully Saved.
                         }
                     } else {
                         if ($business_userimage) {
-                            $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
+                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname) . '">';
 
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
 
@@ -9368,7 +9457,7 @@ Your Post is Successfully Saved.
                             }
                             $return_html .= '</a>';
                         } else {
-                            $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">';
+                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname) . '">';
 
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
@@ -9393,8 +9482,8 @@ Your Post is Successfully Saved.
                         $return_html .= '<li>
 <div class = "else_post_d">
 <div class = "post-design-product">
-<a class = "post_dot_2" href = "' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
-<p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot_2" href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
+<a class = "post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
+<p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
 <span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 </span> </div></div>
@@ -9403,7 +9492,7 @@ Your Post is Successfully Saved.
                     } else {
                         $return_html .= '<li>
 <div class = "post-design-product">
-<a class = "post_dot" href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '" title = "' . ucfirst(strtolower($companyname)) . '">
+<a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $slugname) . '" title = "' . ucfirst(strtolower($companyname)) . '">
 ' . ucfirst(strtolower($companyname)) . '</a>
 <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan"> <span class = "ctre_date" >
@@ -9820,7 +9909,7 @@ Your browser does not support the audio tag.
                             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
 
                             if ($business_userimage) {
-                                $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
+                                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
                                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
 
@@ -9830,7 +9919,7 @@ Your browser does not support the audio tag.
                                 }
                                 $return_html .= '</a>';
                             } else {
-                                $return_html .= '<a href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname1) . '">';
+                                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
                             }
@@ -10914,14 +11003,14 @@ Your browser does not support the audio tag.
                     $return_html .= '<li>
 <div class = "else_post_d">
 <div class = "post-design-product">
-<a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($companynameposted)) . '" href = "' . base_url('business_profile/business_profile_manage_post/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
+<a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($companynameposted)) . '" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
 <p class = "posted_with" > Posted With</p>
 <a class = "other_name post_dot" href = "' . base_url('business-profile/details/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
 <span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
 </div></div>
 </li>';
                 } else {
-                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($companyname)) . '" href = "' . base_url('business_profile/business_profile_manage_post/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
+                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($companyname)) . '" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
 <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan">
 <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>

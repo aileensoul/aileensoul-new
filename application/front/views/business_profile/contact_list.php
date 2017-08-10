@@ -60,7 +60,7 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                            <?php
+                                                <?php
                                             }
                                         }
                                     } else {
@@ -70,7 +70,7 @@
                                                 No Notifications  available...
                                             </div>
                                         </li>
-<?php } ?>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -88,66 +88,9 @@
                             </div>  
                             <div class="all-list">
                                 <ul  id="contactlist">
-                                    <?php
-                                    if ($friendlist_req) {
-                                        foreach ($friendlist_req as $friend) {
-                                            $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $friend['industriyal'], $data = '*', $join_str = array());
-                                            ?>
-                                            <?php
-                                            $userid = $this->session->userdata('aileenuser');
-                                            if ($friend['contact_to_id'] == $userid) {
-                                                ?>
-                                                <li id="<?php echo $friend['contact_from_id']; ?>">
-                                                    <div class="list-box">
-                                                        <div class="profile-img">
-            <?php if ($friend['business_user_image'] != '') { ?>
-                                                                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                    <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']); ?>">
-                                                                </a>
-            <?php } else { ?>
-                                                                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" />
-                                                                </a>
-            <?php } ?>
-                                                        </div>
-                                                        <div class="profile-content">
-                                                            <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                <div class="main_data_cq">   <span title="<?php echo $friend['company_name']; ?>" class="main_compny_name"><?php echo $friend['company_name']; ?></span></div>
-                                                                <div class="main_data_cq">
-
-                                                                    <?php if ($inddata[0]['industry_name']) { ?>
-                                                                        <span class="dc_cl_m"   title="<?php echo $inddata[0]['industry_name']; ?>"> <?php echo $inddata[0]['industry_name']; ?></span>
-                                                                    <?php } else { ?>
-
-                                                                        <span class="dc_cl_m"   title="<?php echo $friend['other_industrial']; ?>"> <?php echo $friend['other_industrial']; ?></span>
-            <?php } ?>
-                                                                </div>
-                                                            </a>
-                                                            </span>
-
-                                                        </div>
-                                                        <div class="fw">
-                                                            <p class="connect-link">
-                                                                <a href="#" class="cr-accept acbutton  ani" onclick = "return contactapprove(<?php echo $friend['contact_from_id']; ?>, 1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i>
-                                                                    </span></a>
-                                                                <a href="#" class="cr-decline" onclick = "return contactapprove(<?php echo $friend['contact_from_id']; ?>, 0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i>
-                                                                    </span></a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                            <?php } ?>
-
-                                            <?php
-                                        }
-                                    } else { 
-                                        ?>
-                                        <li>
-                                            No contacts available...
-                                        </li>
-<?php } ?>
+                                    <!-- AJAX DATA ... -->
                                 </ul>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                             </div>        
                         </div>
                         <!-- END PAGE TITLE -->
@@ -161,7 +104,7 @@
                                         <div class="cq_post">
                                             <ul>
                                                 <?php
-                                                if ($friendlist_con) { 
+                                                if ($friendlist_con) {
                                                     foreach ($friendlist_con as $friend) {
                                                         ?>
                                                         <?php
@@ -173,15 +116,15 @@
                                                                     <div class="cq_latest_left">
                                                                         <div class="cq_post_img">
 
-            <?php if ($friend['business_user_image'] != '') { ?>
+                                                                            <?php if ($friend['business_user_image'] != '') { ?>
                                                                                 <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
                                                                                     <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']); ?>">
                                                                                 </a>
-            <?php } else { ?>
+                                                                            <?php } else { ?>
                                                                                 <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" />
                                                                                 </a>
-            <?php } ?>
+                                                                            <?php } ?>
 
 
                                                                         </div>
@@ -191,7 +134,7 @@
                                                                             <sapn class="rifght_fname">  
                                                                                 <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
                                                                                     <span class="main_name">
-            <?php echo ucfirst(strtolower($friend['company_name'])); ?> 
+                                                                                        <?php echo ucfirst(strtolower($friend['company_name'])); ?> 
                                                                                     </span>
                                                                                 </a>
                                                                                 <span style="color: #8c8c8c;">confirmed your contact request .</span>
@@ -204,7 +147,7 @@
                                                                     </div>
                                                                 </div>
                                                             </li>
-                                                        <?php
+                                                            <?php
                                                         }
                                                     }
                                                 } else {
@@ -214,7 +157,7 @@
                                                             No Notifiaction  available...
                                                         </div>
                                                     </li>
-<?php } ?>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -251,7 +194,7 @@
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <!-- BEGIN INNER FOOTER -->
-    <?php echo $footer; ?>
+        <?php echo $footer; ?>
         <!-- script for update all read notification start-->
         <script type="text/javascript">
             function contactperson() {
@@ -273,6 +216,68 @@
                     }
                 });
             }
+
+            $(document).ready(function () {
+                business_contact_list();
+                
+                $(window).scroll(function () {
+                    //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+                        var page = $(".page_number:last").val();
+                        var total_record = $(".total_record").val();
+                        var perpage_record = $(".perpage_record").val();
+                        if (parseInt(perpage_record) <= parseInt(total_record)) {
+                            var available_page = total_record / perpage_record;
+                            available_page = parseInt(available_page, 10);
+                            var mod_page = total_record % perpage_record;
+                            if (mod_page > 0) {
+                                available_page = available_page + 1;
+                            }
+                            //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                            if (parseInt(page) <= parseInt(available_page)) {
+                                var pagenum = parseInt($(".page_number:last").val()) + 1;
+                                business_contact_list(pagenum);
+                            }
+                        }
+                    }
+                });
+            });
+            var isProcessing = false;
+            function business_contact_list(pagenum) {
+                if (isProcessing) {
+                    /*
+                     *This won't go past this condition while
+                     *isProcessing is true.
+                     *You could even display a message.
+                     **/
+                    return;
+                }
+                isProcessing = true;
+                $.ajax({
+                    type: 'POST',
+                    url: "<?php echo base_url(); ?>business_profile/ajax_contact_list?page=" + pagenum,
+                    data: {total_record: $("#total_record").val()},
+                    dataType: "html",
+                    beforeSend: function () {
+                        if (pagenum == 'undefined') {
+                            // $(".contactlist").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                        } else {
+                            $('#loader').show();
+                        }
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    },
+                    success: function (data) {
+                        $('.loader').remove();
+                        $('#contactlist').append(data);
+
+                        isProcessing = false;
+                    }
+                });
+            }
+
         </script>
         <!-- script for update all read notification end -->
     </body>
