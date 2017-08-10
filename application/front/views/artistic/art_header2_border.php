@@ -1,5 +1,5 @@
 
-<?php if(($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post')){?>
+<?php if(($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home')){?>
 
 <header class="">
     <div class="bg-search">
@@ -30,7 +30,7 @@
                        
                        <ul class="" id="dropdownclass">
                         
-                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_post'); ?>"><span class="bu_home"></span></a>
+                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/home'); ?>"><span class="bu_home"></span></a>
                                     </li>
                                 <!-- Friend Request Start-->
                                 <li id="Inbox_link">
@@ -116,7 +116,7 @@
                        
                        <ul class="" id="dropdownclass">
                         
-                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/art_post'); ?>"><span class="bu_home"></a>
+                                    <li <?php if($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'home'){?> class="active" <?php } ?>><a href="<?php echo base_url('artistic/home'); ?>"><span class="bu_home"></a>
                                     </li>
                                 <!-- Friend Request Start-->
                                   <li id="Inbox_link">

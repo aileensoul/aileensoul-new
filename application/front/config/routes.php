@@ -179,3 +179,4 @@ $route['artistic/artistic-information-insert'] = "artistic/art_information_inser
 $route['artistic/artistic-portfolio'] = "artistic/art_portfolio";
 $route['artistic/artistic-portfolio-insert'] = "artistic/art_portfolio_insert";
 
+$route['artistic/home'] = "artistic/art_post";
