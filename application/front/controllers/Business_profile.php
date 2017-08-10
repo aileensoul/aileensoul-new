@@ -8656,7 +8656,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function ajax_contact_list() {
-        
+
         $perpage = 9;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -8666,7 +8666,7 @@ class Business_profile extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        
+
         $userid = $this->session->userdata('aileenuser');
 
         $bussdata = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
@@ -8675,7 +8675,7 @@ class Business_profile extends MY_Controller {
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
         $join_str[0]['join_type'] = '';
-        
+
         $limit = $perpage;
         $offset = $start;
 
@@ -8693,7 +8693,7 @@ class Business_profile extends MY_Controller {
 
 
         $friendlist = array_merge($friendlist_con, $friendlist_req);
-        
+
         $return_html = '';
 
         if (empty($_GET["total_record"])) {
