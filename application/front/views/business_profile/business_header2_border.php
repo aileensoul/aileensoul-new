@@ -256,7 +256,7 @@
 
         $.ajax({
             type: 'POST',
-            url: '<?php echo base_url() . "business-profile/deactivate" ?>',
+            url: '<?php echo base_url() . "business_profile/deactivate" ?>',
             data: 'id=' + clicked_id,
             success: function (data) {
                 window.location = "<?php echo base_url() ?>dashboard";
@@ -273,7 +273,7 @@
     }
     function contactperson() {
         $.ajax({
-            url: "<?php echo base_url(); ?>business-profile/contact_notification",
+            url: "<?php echo base_url(); ?>business_profile/contact_notification",
             type: "POST",
             success: function (data) {
                 $('#addcontactBody').html(data);
@@ -282,7 +282,7 @@
     }
     function update_contact_count() {
         $.ajax({
-            url: "<?php echo base_url(); ?>business-profile/update_contact_count",
+            url: "<?php echo base_url(); ?>business_profile/update_contact_count",
             type: "POST",
             success: function (data) {
                 //$('#addcontactBody').html(data);
@@ -291,7 +291,7 @@
     }
     function contactapprove(toid, status) {
         $.ajax({
-            url: "<?php echo base_url(); ?>business-profile/contact_approve",
+            url: "<?php echo base_url(); ?>business_profile/contact_approve",
             type: "POST",
             data: 'toid=' + toid + '&status=' + status,
             success: function (data) {

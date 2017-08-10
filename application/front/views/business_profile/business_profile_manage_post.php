@@ -382,6 +382,21 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                 </div>
             </div>
         </div>
+        
+        
+        <!-- Bid-modal for this modal appear or not start -->
+        <div class="modal fade message-box" id="query" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" id="query" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                        <span class="mes">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
 <?php echo $footer; ?>
         </footer>

@@ -26,6 +26,12 @@ AddType audio/ogg ogg oga
 AddType video/webm webm
 </IfModule>
 
+<IfModule mod_php5.c>
+    #Session timeout
+    php_value session.cookie_lifetime 144000
+    php_value session.gc_maxlifetime 144000
+</IfModule>
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

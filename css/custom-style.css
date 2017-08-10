@@ -35,7 +35,7 @@
 
 /* CONTACT CONTAINER START */
 .h_w{height: 100%;}
-#addcontactContainer{
+/*#addcontactContainer{
     display: none;
     background-color: #fff;
     border: 1px solid rgba(100, 100, 100, .4);
@@ -62,7 +62,7 @@
     margin-top: -20px;
     margin-left: 18px;
     right: 9px;
-}
+}*/
 .business-profile-right .profile-main-box-buis-menu ul{float: left;}
 #addcontactTitle {
     z-index: 1000;

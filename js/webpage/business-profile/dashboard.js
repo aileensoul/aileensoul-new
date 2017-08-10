@@ -1909,6 +1909,43 @@ $("#userimage").validate({
 });
 // contact person script start 
 
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#query').modal('hide');
+        //$('.modal-post').show();
+    }
+});
+
+function contact_person_query(clicked_id, status) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/contact_person_query",
+        data: 'toid=' + clicked_id + '&status=' + status,
+        success: function (data) { //alert(data);
+            // return data;
+            contact_person_model(clicked_id, status, data);
+        }
+    });
+}
+
+function contact_person_model(clicked_id, status, data) {
+    if (data == 1) {
+        if (status == 'pending') {
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
+        } else if (status == 'confirm') {
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
+        } else {
+            contact_person(clicked_id);
+        }
+    } else {
+        $('#query .mes').html("<div class='pop_content'>Sorry, we can't process this request at this time.");
+        $('#query').modal('show');
+    }
+}
+
 function contact_person(clicked_id) {
     $.ajax({
         type: 'POST',
@@ -1919,23 +1956,6 @@ function contact_person(clicked_id) {
         }
     });
 }
-
-
-// contact person script end 
-
-
-function contact_person_model(clicked_id, status) {
-    if (status == 'pending') {
-        $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    } else if (status == 'confirm') {
-
-        $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    }
-
-}
-
 
 
 // scroll page script start 

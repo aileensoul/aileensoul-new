@@ -453,7 +453,7 @@ a:focus {
 .dropdown_hover .dropdown-content_hover a:hover{color: white; background-color: #1b8ab9;}
 .select2-drop{z-index: 0!important;}
 .header2 #InboxFooter a.no_msg_h:hover{color: none; text-decoration: none;}
-.header2 ul li a#InboxLink{padding:12px 12px 4px;}
+.header2 ul li a#InboxLink{padding:12px 20px 4px;}
 .header2 ul li{border-right: 0.2px solid #1985b3;}
 .header2 ul li:last-child {
     border-right: none;
@@ -535,6 +535,7 @@ select {
     padding: 5px 15px;
     font-size: 16px;
     height:35px;
+    cursor: pointer;
 }
 input[type=submit],
 input[type=button],
@@ -1868,7 +1869,7 @@ fieldset.full-width {
 }
 /*.mid-bar ul li a { font-size: 22px; border: 1px solid #000033; background-color: #000033; color: white; display:  block; padding: 12px 20px; border-radius: 4px; line-height: normal; font-weight: normal; }
 */
-
+.bestofmine_image_secondary{position: relative;}
 .mid-bar ul li a:hover {
     background: #1b8ab9;
     color: #fff;
@@ -3002,10 +3003,24 @@ border-top: none;
     text-decoration: none;
     
 }
+.dele_highrt{margin-top: 15px;  }
+.dele_highrt img{float: left;}
+.tsecondary_certi{float: left;
+    margin-left: -12px;
+    background: #1b8ab9;
+    color: white;
+    padding: 3px 5px 1px;
+    border-radius: 100%;
+    margin-top: -10px;
+    cursor: pointer;}
+    .tsecondary_certi i{color: white; cursor: pointer; font-size: 12px;}
+.job_work_experience_main_div h6{padding: 10px 0px 2px; font-size: 17px;}
 .profile-job-details ul li p {
     margin-bottom: 0;
     display: inline-block;
+    font-size: 15px; font-weight: 600;
 }
+.profile-job-details ul li .lction p{font-weight: normal; font-size: 13px;}
 .profile-job-details {
     font-size: 18px;
 }
@@ -8192,10 +8207,10 @@ input:-moz-placeholder {
     font-size: 17px !important;
     padding: 10px 25px !important;
 }
-.details_all_tital {
+/*.details_all_tital {
     font-weight: 700;
     font-size: 20px;
-}
+}*/
 .margin_btm {
     margin-bottom: 0px!important;
 }
@@ -9268,18 +9283,20 @@ label.cameraButton:hover {
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }*/
 .img_work_exp {
-    height: 100px;
+ /*   height: 100px;
     width: 100px;
     display: inline-block;
     margin-bottom: 10px;
-    margin-top: -26px;
+    margin-top: -26px;*/
 }
 .common-form fieldset #email{/*text-transform: lowercase;*/}
 .delete_btn {
     padding: 6px 12px 6px!important;
     font-size: 13px!important;
 }
+#jobseeker_regform input#btnAdd:focus{color: white!important}
 #btnAdd {
+    color: white !important;
     padding: 6px 12px 6px!important;
     min-width: 49px!important;
 }
@@ -9669,7 +9686,21 @@ display: inline-block;}
 
 
 
+.job_work_experience_main_div input.datad_delete{
+    background: url('../img/error.png') no-repeat;      
+            background-size: auto auto;     
+        background-size: 100%;      
+        height: 20px;
+width: 20px;
+min-width: 20px;
 
+padding: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+margin-left: -10px;
+margin-top: -6px;
+
+}
 #mychat_dropdown a:hover .h4-img {      
         background: url('../img/icon_delete_white.png') no-repeat;      
             background-size: auto auto;     
@@ -9696,8 +9727,8 @@ display: inline-block;}
     padding-top: 12px;      
     padding: 10px 10px;     
     opacity: 0.8px;
-	right:-25px;
-	}        
+    right:-25px;
+    }        
     a.chatdropbtn:hover{background-color: #f1f1f1;}     
             
     .chatdropdown-content {     
@@ -10160,7 +10191,7 @@ fieldset .add_post_btns:hover {
     text-overflow: ellipsis;
     font-size: 14px;
     color: #777;
-	max-height:24px;
+    max-height:24px;
 }
 .data_noti_msg {
     font-size: 12px;
@@ -10726,7 +10757,7 @@ display: initial;}
     height: 50px;
     width: 50px;
     display: inline-block;
-	border:1px solid #d9d9d9;
+    border:1px solid #d9d9d9;
 }
 .msg_left_data{max-width: 80%; position: relative;}
 .chat_heae_img img {
@@ -10780,7 +10811,7 @@ display: initial;}
     text-align: center;
     /* margin: 0 auto; */
     width:100%;
-	float:left;
+    float:left;
     color: #a8aab1;
 }
 .chat .chat-history .message {
@@ -10830,8 +10861,8 @@ display: initial;}
     padding-top: 6px;
     background: #d8eff6;
     color: #000033;
-	max-width:96%;
-	float:left;
+    max-width:96%;
+    float:left;
 }
 /*.chat .chat-history .other-message:after {
     border-bottom-color: #d8eff6;
@@ -10967,7 +10998,7 @@ text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-	line-height:23px;
+    line-height:23px;
     font-size: 12px;
 }
 .main_btn {
@@ -13751,7 +13782,7 @@ end zalak 9-6 css*/
 .three_img_right {
     padding-right: 2px !important;
 }
-bui_images_view_more a:hover {
+.bui_images_view_more a:hover {
     text-decoration: underline;
 }
 .manage_images_view_more a:hover {
@@ -13767,6 +13798,7 @@ bui_images_view_more a:hover {
     font-size: 15px!important;
     width: 82%;
 }
+
 .post-design-box .post-design-desc .textbuis {
     font-size: 13px;
 }
@@ -14826,7 +14858,7 @@ header.animated {
     text-align:center;
 }
 .edit-post-custom{position:relative;}
-#text_num{position: absolute; right: 20%; top: 7px; background-color:transparent;  width: 20px;}
+#text_num{position: absolute; right: 20%; top: 7px; background-color:transparent;  width: 24px;}
 /***  add contact ripple effect  ***/
 
 
@@ -14964,8 +14996,8 @@ float: right; position:relative;}
 margin: 0 auto;}*/
 .edit_profile_progress{
  
-    width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin: 30px 0px; padding: 10px 0px 0px;}
-.progre_bar_text p{color: #1b8ab9;
+    width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin: 15px 0px; padding: 10px 0px 0px;}
+.progre_bar_text p{color: #000;
 font-size: 13px;
 font-weight: 600;
 text-align: center;}
@@ -14984,10 +15016,11 @@ text-align: center;}
   position: relative;
   text-align: center;
   line-height: 1.2;
+  height:214px;
 }
 .edit_profile_job{
     position: absolute;
-bottom: 52px;
+bottom: 90px;
 left: 51px;
 
 }
@@ -15001,6 +15034,10 @@ padding-top: 14px;
 
 .circle-1 canvas {
   vertical-align: middle;
+  width:175px;
+  height:175px;
+  border:1px solid transparent;
+  display:black;
 }
 
 .circle-1 strong {
@@ -15012,8 +15049,7 @@ left: 5px;
   line-height: 40px;
   font-size: 30px;
 }
-
-    
+   
 /*end progres*/
 .messagedelete .fa{color:#777;}
 .messagedelete:hover .fa{color:#1b8ab9;}
@@ -15095,8 +15131,8 @@ left: 5px;
         font-size: 14px;
     }
     .profile-main-box-buis-menu li a{font-size:13px; padding:17px 10px 12px;}
-	#people-list{width:30%;}
-	#chat{width:70%;}
+    #people-list{width:30%;}
+    #chat{width:70%;}
 }
 @media screen and (max-width: 1024px) {
     .dot_free{
@@ -15227,9 +15263,9 @@ padding-top: 7px !important;}
     }
 }
 @media screen and (max-width: 991px) {
-	.all-list ul li .list-box{width: 172px;}
+    .all-list ul li .list-box{width: 172px;}
     .pt120 {padding-top: 100px;}
-	.cover-pic {position: absolute !important; top: inherit; right: -4%; bottom: 48%; z-index: 99;}
+    .cover-pic {position: absolute !important; top: inherit; right: -4%; bottom: 48%; z-index: 99;}
     .contact-list .list-title{font-size: 18px;}
     .cls-ve{position: absolute; top: 23px; z-index: 10;right:15px;}
     .email-verify{padding-left: 0px;}
@@ -15475,10 +15511,10 @@ padding-top: 7px !important;}
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
     .right_left_box_design{width:100% !important; text-align:center; padding-top:5px !important;}
     .profile-boxProfileCard-content::before{top:75px !important;}
-	#people-list{width:35%;}
-	#chat{width:65%;}
-	.chat .chat-history{padding:25px 15px 20px;}
-	.chat .chat-header{padding-left:15px;}
+    #people-list{width:35%;}
+    #chat{width:65%;}
+    .chat .chat-history{padding:25px 15px 20px;}
+    .chat .chat-header{padding-left:15px;}
 }
 @media screen and (max-width: 900px) {
     .custom-right {
@@ -15525,7 +15561,7 @@ padding-top: 7px !important;}
     .all-list ul li .list-box{width: 157px;}
     .pt_mn{padding-top: 40px;}
     .pt1201{padding-top: 120px;}
-	.pt120{padding-top:20px;}
+    .pt120{padding-top:20px;}
     .logo{padding:0;}
     .h2-smladd {/*margin-top: -45px;*/}
     .logo h2{padding:2px 0;}
@@ -16079,8 +16115,8 @@ padding-top: 7px !important;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
     #people-list{width:100%;}
     #chat{width:100%;}
-	.people-list .search input{width:96%;}
-	.people-list ul{height:auto;}
+    .people-list .search input{width:96%;}
+    .people-list ul{height:auto;}
 }
 @media screen and (max-width: 640px) {
     .job_reg_page_fprm{width: 90%;}
@@ -16090,12 +16126,12 @@ padding-top: 7px !important;}
     .post-design-box .post-design-desc .fr{right: 0; padding: 6px 16px;}
 } 
 @media screen and (max-width: 639px) {
-	.dot_free{
-		width: 55%;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-	}
+    .dot_free{
+        width: 55%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
     .cover-pic{bottom: 62%; right: -10%;}
     .cls-ve{/*top: 18px;*/}
     .right-side-menu {
@@ -16637,7 +16673,7 @@ padding-top: 7px !important;}
     .text-center.tab-block a{margin:0 10px;}
     .details_all_tital{font-size:18px;}
     .cls-ve{top:35px;}
-	.people-list .search input{width:93%;}
+    .people-list .search input{width:93%;}
 }
 @media screen and (max-width: 360px) {
     .hout_noti{font-size: 11px;}
@@ -16738,6 +16774,7 @@ font-size: 12px;
     }
     .profile-job-details ul li p {
         font-size: 13px;
+        font-weight: 600;
         padding-right: 8px;
         line-height: 10px;padding-left: 4px;
     }
@@ -16805,17 +16842,17 @@ font-size: 12px;
         font-weight: 500;
     }
     .cls-ve{top:23px;}
-	.people-list .search input{width:92%;}
+    .people-list .search input{width:92%;}
 
 }
 /*** test for form ***/
 
 @media screen and (max-width: 320px) {
     .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
-	.how-it-popup{width: 97%;}
+    .how-it-popup{width: 97%;}
     .header2 ul li.active a{padding: 9px 0px 9px;}
     .created_date {font-size: 8px; letter-spacing: 0.5px;}
-	.profile-job-details .post_title{font-size: 9px;}
+    .profile-job-details .post_title{font-size: 9px;}
 }
 /***  all keyframe css  ***/
 
