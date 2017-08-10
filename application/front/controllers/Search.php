@@ -26,12 +26,12 @@ class Search extends CI_Controller {
     }
 
     public function execute_search() {
-                //echo "test sucessfull";
+        //echo "test sucessfull";
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-        redirect('artistic/art_post',refresh);
-            
+            redirect('artistic/art_post', refresh);
+
             // $abc[] = $results;
             // $this->data['falguni'] = 1;        
         }
@@ -71,13 +71,11 @@ class Search extends CI_Controller {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 //insert search keyword into data base code end
 
-         if ($searchskill == "") {
+        if ($searchskill == "") {
             $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            
         } elseif ($search_place == "") {
-             //echo "skill"; 
+            //echo "skill"; 
 
             $contition_array = array('is_delete' => '0', 'status' => '1', 'type' => '2');
 
@@ -104,13 +102,13 @@ class Search extends CI_Controller {
                     }
                 }
             }
-             //echo "<pre>"; print_r($artskillpost); die();
-            $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1','art_step' => 4);
+            //echo "<pre>"; print_r($artskillpost); die();
+            $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or art_yourart LIKE '%$searchskill%')";
             // echo $search_condition;
             $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>"; print_r($other['data']); die();
+            // echo "<pre>"; print_r($other['data']); die();
 
 
             $join_str[0]['table'] = 'art_reg';
@@ -118,32 +116,32 @@ class Search extends CI_Controller {
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-             $contition_array = array('art_post.user_id !=' => $userid ,'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
+            $contition_array = array('art_post.user_id !=' => $userid, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
 
             $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
 
 
             $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-           // echo "<pre>"; print_r($artpost); die();
+            // echo "<pre>"; print_r($artpost); die();
             $fullname = explode(" ", $searchskill);
 
             // echo "<pre>"; print_r($fullname) ;
             if ($fullname[1] == "") {
-                 //echo "pallavi";
-                 //echo count($artskillpost); 
+                //echo "pallavi";
+                //echo count($artskillpost); 
 
                 if (count($artskillpost) == 0) {
-                   // echo "tt";
+                    // echo "tt";
                     $unique = $otherdata;
-                   // echo "<pre>";print_r($unique);die();
+                    // echo "<pre>";print_r($unique);die();
                 } else {
                     //echo "pqr";
-                    $unique = array_merge($artskillpost,$otherdata);
+                    $unique = array_merge($artskillpost, $otherdata);
                 }
 
-                 
-               // echo "<pre>";print_r($unique);die();
+
+                // echo "<pre>";print_r($unique);die();
                 // echo count($unique);
 
                 foreach ($unique as $ke => $arr) {
@@ -160,11 +158,11 @@ class Search extends CI_Controller {
 
 
 
-                 //echo "<pre>";print_r($new);die();
+                //echo "<pre>";print_r($new);die();
             } else {
-               //  echo "panalia"; die();
+                //  echo "panalia"; die();
                 $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
-             $contition_array = array('art_reg.art_step' => 4);
+                $contition_array = array('art_reg.art_step' => 4);
 
                 // echo $search_condition;
                 $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -175,7 +173,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
 
 
@@ -206,7 +204,7 @@ class Search extends CI_Controller {
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($skilldata); 
-            $contion_array = array('status' => '1', 'art_city' => $cache_time , 'art_step' => 4);
+            $contion_array = array('status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
             $artregdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -227,7 +225,7 @@ class Search extends CI_Controller {
             }
             // echo "<pre>"; print_r($artskillpost);
 
-            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time , 'art_step' => 4);
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%')";
 
@@ -239,10 +237,10 @@ class Search extends CI_Controller {
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-          $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
 
 
-            $contition_array = array('art_reg.art_city' => $cache_time , 'art_reg.art_step' => 4, 'art_post.is_delete' =>'0');
+            $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
             $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($artpost);
 
@@ -257,7 +255,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
                 // echo count($unique);
 
@@ -282,7 +280,7 @@ class Search extends CI_Controller {
                 $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
 
                 // echo $search_condition;
-                $contition_array = array('art_reg.art_city' => $cache_time ,'art_step' => 4);
+                $contition_array = array('art_reg.art_city' => $cache_time, 'art_step' => 4);
                 $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -293,7 +291,7 @@ class Search extends CI_Controller {
                 if (count($artskillpost) == 0) {
                     $unique = array_merge($otherdata, $artfullname);
                 } else {
-                    $unique = array_merge($artskillpost,$otherdata, $artfullname);
+                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
                 }
                 // echo count($unique);
 
@@ -315,21 +313,19 @@ class Search extends CI_Controller {
         }
 
 
-       //echo "<pre>";print_r($new); die();
+        //echo "<pre>";print_r($new); die();
 
 
         $this->data['artuserdata'] = $new;
 
-           $this->data['artuserdata1'] = $artpost;
+        $this->data['artuserdata1'] = $artpost;
 
-       //echo "<pre>";print_r($artpost['art_description']); die();
-         //   echo "*********";
-         // echo "<pre>"; print_r($this->data['artuserdata']);
-
-         // echo "---------------";
-         // echo "<pre>"; print_r($this->data['artuserdata1']);
-         // die();
-
+        //echo "<pre>";print_r($artpost['art_description']); die();
+        //   echo "*********";
+        // echo "<pre>"; print_r($this->data['artuserdata']);
+        // echo "---------------";
+        // echo "<pre>"; print_r($this->data['artuserdata1']);
+        // die();
         // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
 
@@ -386,13 +382,13 @@ class Search extends CI_Controller {
 
         $this->data['demo'] = array_values($result1);
 
-         $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -406,7 +402,7 @@ class Search extends CI_Controller {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
         $this->load->view('artistic/recommen_candidate', $this->data);
@@ -417,18 +413,13 @@ class Search extends CI_Controller {
         $this->load->view('search/search_business', $this->data);
     }
 
-public function business_search() {
+    public function business_search() {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
-            redirect('business_profile/business_profile_post',refresh);
-            
-
-
+            redirect('business-profile/home', refresh);
         }
-
-        //print_r($this->data['userid']); die();
-// code for insert search keyword in database start
+        // code for insert search keyword in database start
         $search_business = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_business;
 
@@ -449,39 +440,26 @@ public function business_search() {
         );
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
-
-// code for insert search keyword in database end
-
+        // code for insert search keyword in database end
 
         if ($search_business == "") {
-
-            $contition_array = array('city' => $cache_time, 'status' => '1','business_step' => 4);
-             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        }
-         elseif ($search_place == "") {
-           // echo "hi";
-
-
-
-          $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1','business_step' => 4);
-
-             
+            $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
+            $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } elseif ($search_place == "") {
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
-            if ($searchbusiness1) { 
+            if ($searchbusiness1) {
                 $search_condition = "(industriyal LIKE '%$searchbusiness1%')";
-            } elseif ($searchbusiness) {  
+            } elseif ($searchbusiness) {
                 $search_condition = "(business_type LIKE '%$searchbusiness%')";
-            } else {  
+            } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
 
-         //   echo $search_condition; 
+            //   echo $search_condition; 
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         // echo "<pre>"; print_r($business_profile); die();
-
 
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
@@ -489,31 +467,11 @@ public function business_search() {
             $join_str[0]['join_type'] = '';
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
-
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
-            // echo $search_condition; 
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '',  $join_str, $groupby = '');
-        //echo "<pre>"; print_r($business_post); die();
-
-      //  foreach ($business_post as $ke => $arr) {
-      //           $postdata[] = $arr;
-      //       }
-      // //  $new = array_unique($postdata);
-
-            
-      //       $new = array();
-      //       foreach ($postdata as $value) {
-      //            $new[$value['business_profile_post_id']] = $value;
-      //       }
-        // echo "<pre>"; print_r($new); die();           
-        } 
-
-        else {
-
-            $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time , 'business_step' => 4);
-             
-
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        } else {
+            $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_step' => 4);
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
             if ($searchbusiness1) {
@@ -532,39 +490,15 @@ public function business_search() {
             $join_str[0]['join_type'] = '';
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
-
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-      //         foreach ($business_post as $ke => $arr) {
-      //           $postdata[] = $arr;
-      //       }
-      // //  $new = array_unique($postdata);
-
-            
-      //       $new = array();
-      //       foreach ($postdata as $value) {
-      //            $new[$value['business_profile_post_id']] = $value;
-      //       }  
-
-        
-
-
-
-
         }
-
 
         $this->data['description'] = $business_post;
 
-//echo "string";
-   //echo "<pre>"; print_r($this->data['description'][0]['product_description']); die();
-
         $this->data['profile'] = $business_profile;
 
-
-        $contition_array = array('status' => '1', 'is_deleted' => '0' ,'business_step' => 4);
-
+        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
         $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -585,19 +519,12 @@ public function business_search() {
         }
 
         $this->data['demo'] = array_values($result1);
-       // echo "<pre>"; print_r($new); die();
 
-            $contition_array = array('status' => '1');
-
-       
+        $contition_array = array('status' => '1');
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
-
-
                     $resu[] = $val;
                 }
             }
@@ -607,15 +534,756 @@ public function business_search() {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
+        $this->data['business_left'] =$this->load->view('business_profile/business_left', $this->data,TRUE);
         $this->load->view('business_profile/recommen_business', $this->data);
     }
 
+    public function ajax_business_search() {
+        $userid = $this->session->userdata('aileenuser');
+        if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
+            redirect('business-profile/home/', refresh);
+        }
+        // code for insert search keyword in database start
+        $search_business = trim($this->input->get('skills'));
+        $keyword = $search_business;
+
+        $search_place = trim($this->input->get('searchplace'));
+        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+
+        $keyword1 = $search_place;
+        $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
+        $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $data = array(
+            'search_keyword' => $search_business,
+            'search_location' => $search_place,
+            'user_location' => $city[0]['city'],
+            'user_id' => $userid,
+            'created_date' => date('Y-m-d h:i:s', time()),
+            'status' => 1
+        );
+
+        $insert_id = $this->common->insert_data_getid($data, 'search_info');
+        // code for insert search keyword in database end
+        
+        if ($search_business == "") {
+            $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
+            $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } elseif ($search_place == "") {
+            $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
+
+            $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
+            $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
+            if ($searchbusiness1) {
+                $search_condition = "(industriyal LIKE '%$searchbusiness1%')";
+            } elseif ($searchbusiness) {
+                $search_condition = "(business_type LIKE '%$searchbusiness%')";
+            } else {
+                $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
+            }
+
+            //   echo $search_condition; 
+            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $join_str[0]['table'] = 'business_profile';
+            $join_str[0]['join_table_id'] = 'business_profile.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
+            $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
+
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        } else {
+            $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_step' => 4);
+            $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
+            $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
+            if ($searchbusiness1) {
+                $search_condition = "(industriyal LIKE '%$searchbusiness1%')";
+            } elseif ($searchbusiness) {
+                $search_condition = "(business_type LIKE '%$searchbusiness%')";
+            } else {
+                $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
+            }
+            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $join_str[0]['table'] = 'business_profile';
+            $join_str[0]['join_table_id'] = 'business_profile.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
+            $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        }
+
+        $description = $business_post;
+
+        $profile = $business_profile;
+
+        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
+        $businessdata = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $businesstype = $results = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $industrytype = $results = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $unique = array_merge($businessdata, $businesstype, $industrytype);
+        foreach ($unique as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $result[] = $val;
+                }
+            }
+        }
+        $results = array_unique($result);
+        foreach ($results as $key => $value) {
+            $result1[$key]['label'] = $value;
+            $result1[$key]['value'] = $value;
+        }
+
+        $demo = array_values($result1);
+
+        $contition_array = array('status' => '1');
+        $cty = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        foreach ($cty as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $resu[] = $val;
+                }
+            }
+        }
+        $resul = array_unique($resu);
+        foreach ($resul as $key => $value) {
+            $res[$key]['label'] = $value;
+            $res[$key]['value'] = $value;
+        }
+
+        $de = array_values($res);
+        //$this->load->view('business_profile/recommen_business', $this->data);
+        //AJAX DATA
+        $return_html = '';
+        if (count($profile) > 0 || count($description) > 0) {
+            if ($profile) {
+
+                $return_html .= '<div class="profile-job-post-title-inside clearfix" style="">
+                                                    <div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;">
+                                                        <h4 class="search_head">Profiles</h4>
+                                                        <div class="inner_search">';
+                foreach ($profile as $p) {
+                    $return_html .= '<div class="profile-job-profile-button clearfix box_search_module" style="margin-bottom: 20px!important;">
+                                                                    <div class="profile-job-post-location-name-rec">
+                                                                        <div class="module_Ssearch" style="display: inline-block; float: left;">
+                                                                            <div class="search_img" style="height: 110px; width: 108px;" >
+                                                                                <a style=" " href="'. base_url('business-profile/dashboard/' . $p['business_slug']) .'" title="">';
+                    if ($p['business_user_image'] != '') {
+                        $return_html .= '<img src="'. base_url($this->config->item('bus_profile_thumb_upload_path') . $p['business_user_image']) .'" alt="" > </a>';
+                    } else {
+                        $return_html .= '<img  src="'. base_url(NOBUSIMAGE) .'"  alt="">
+                                                                                    </a>';
+                    }
+                    $return_html .= '</div>
+                                                                        </div>
+                                                                        <div class="designation_rec" style="float: left;
+                                                                             width: 60%;
+                                                                             padding-top: 10px; padding-bottom: 10px;">
+                                                                            <ul>
+                                                                                <li style="padding-top: 0px;">
+                                                                                    <a  class="main_search_head" href="'. base_url('business-profile/dashboard/' . $p['business_slug']) .'" title="'. ucfirst(strtolower($p['company_name'])) .'">'.ucfirst(strtolower($p['company_name'])) .'</a>
+                                                                                </li>
+                                                                                <li style="display: block;">
+                                                                                    <a  class="color-search" s title="">';
+
+                    $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
+                    $return_html .= $cache_time;
+
+                    $return_html .= '</a>
+                                                                                </li>
+                                                                                <li style="display: block;">
+                                                                                    <a title="" class="color-search">';
+
+                    $cache_time = $this->db->get_where('business_type', array('type_id' => $p['business_type']))->row()->business_name;
+                    $return_html .= $cache_time;
+
+                    $return_html .= '</a>
+                                                                                </li>
+                                                                                <li style="display: block;">
+                                                                                    <a title="" class="color-search">';
+
+                    $cityname = $this->db->get_where('cities', array('city_id' => $p['city']))->row()->city_name;
+                    $countryname = $this->db->get_where('countries', array('country_id' => $p['country']))->row()->country_name;
+                    if ($cityname || $countryname) {
+                        if ($cityname) {
+                            $return_html .= $cityname;
+                            $return_html .= ', ';
+                        }
+                        $return_html .= $countryname;
+                    }
+
+                    $return_html .= '</a>
+                                                                                </li>
+                                                                                <li style="display: block;">
+                                                                                    <a title="" class="color-search websir-se" href="' . $p['contact_website'] . '" target="_blank">' . $p['contact_website'] . '</a>
+                                                                                </li>
+                                                                                <input type="hidden" name="search" id="search" value="' . $keyword . '">
+                                                                            </ul>
+                                                                        </div>';
+                    $userid = $this->session->userdata('aileenuser');
+                    if ($p['user_id'] != $userid) {
+                        $return_html .= '<div class="fl search_button">
+                                                                                <div class="fruser' . $p['business_profile_id'] . '">';
+                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $businessdata[0]['business_profile_id'], 'follow_to' => $p['business_profile_id']))->row()->follow_status;
+                        if ($status == 0 || $status == " ") {
+                            $return_html .= '<div id= "followdiv " class="user_btn">
+                                                                                            <button id="follow' . $p['business_profile_id'] . '" onClick="followuser_two(' . $p['business_profile_id'] . ')">
+                                                                                                Follow 
+                                                                                            </button>
+                                                                                        </div>';
+                        } elseif ($status == 1) {
+                            $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
+                                                                                            <button class="bg_following" id="unfollow' . $p['business_profile_id'] . '" onClick="unfollowuser_two(' . $p['business_profile_id'] . ')">
+                                                                                                Following 
+                                                                                            </button>
+                                                                                        </div>';
+                        }
+                        $return_html .= '</div>
+                                                                                <button onclick="window.location.href = ' . base_url('chat/abc/5/5/' . $p['user_id']) . '"> Message</button>
+                                                                            </div>';
+                    }
+                    $return_html .= '</div>
+                                                                </div>';
+                }
+            }
+            $return_html .= '</div>
+                                                </div>';
+            if ($description) {
+                $return_html .= '<div class="col-md-12 profile_search " style="float: left; background-color: white; margin-top: 10px; margin-bottom: 10px; padding:0px!important;">
+                                                        <h4 class="search_head">Posts</h4>
+                                                        <div class="inner_search search inner_search_2" style="float: left;">';
+                foreach ($description as $p) {
+                    if (($p['product_description']) || ($p['product_name'])) {
+                        $return_html .= '<div class="col-md-12 col-sm-12 post-design-box" id="removepost5" style="box-shadow: none; ">
+                                                                        <div class="post_radius_box">
+                                                                            <div class="post-design-search-top col-md-12" style="background-color: none!important;">
+                                                                                <div class="post-design-pro-img ">
+                                                                                    <div id="popup1" class="overlay">
+                                                                                        <div class="popup">
+                                                                                            <div class="pop_content">
+                                                                                                Your Post is Successfully Saved.
+                                                                                                <p class="okk">
+                                                                                                    <a class="okbtn" href="#">Ok
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="popup25" class="overlay">
+                                                                                        <div class="popup">
+                                                                                            <div class="pop_content">
+                                                                                                Are You Sure want to delete this post?.
+                                                                                                <p class="okk">
+                                                                                                    <a class="okbtn" id="5" onclick="remove_post(this.id)" href="#">Yes
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                                <p class="okk">
+                                                                                                    <a class="cnclbtn" href="#">No
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="popup55" class="overlay">
+                                                                                        <div class="popup">
+                                                                                            <div class="pop_content">
+                                                                                                Are You Sure want to delete this post from your profile?.
+                                                                                                <p class="okk">
+                                                                                                    <a class="okbtn" id="5" onclick="del_particular_userpost(this.id)" href="#">OK
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                                <p class="okk">
+                                                                                                    <a class="cnclbtn" href="#">Cancel
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>';
+
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $p['user_id'], 'status' => 1))->row()->business_user_image;
+                        $userimageposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id']))->row()->business_user_image;
+                        $slugname = $this->db->get_where('business_profile', array('user_id' => $p['user_id'], 'status' => 1))->row()->business_slug;
+                        $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $p['posted_user_id'], 'status' => 1))->row()->business_slug;
+                        if ($p['posted_user_id']) {
+
+                            if ($userimageposted) {
+                                $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '" title="">
+                                                                                                <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />
+                                                                                            </a>';
+                            } else {
+                                $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '" title="">
+                                    <img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                            }
+                            $return_html .= '</a>';
+                        } else {
+                            if ($business_userimage) {
+                                $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
+                                    <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
+                            } else {
+                                $return_html .= '<a class="post_dot" href="'. base_url('business-profile/dashboard/' . $slugname) .'" title="">
+                                    <img  src="'. base_url(NOBUSIMAGE) .'"  alt="">
+                                </a>';
+                            }
+                        }
+
+                        $return_html .= '</div>
+                        <div class="post-design-name col-xs-8 fl col-md-10">
+                            <ul>
+                                <li>
+                                </li>
+                                <li>
+                                    <div class="post-design-product">
+                                        <a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">' . ucfirst(strtolower($p['company_name'])) . '
+                                        </a>
+                                        <span role="presentation" aria-hidden="true"> · </span>
+                                        <div class="datespan"> 
+                                            <span style="font-weight: 400; font-size: 14px; color: #91949d; cursor: default;"> 
+                        ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($p['created_date']))) . '      
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="post-design-product">
+                                        <a href="javascript:void(0);" style=" color: #000033; font-weight: 400; cursor: default;" title="">';
+
+                        $cache_time = $this->db->get_where('industry_type', array('industry_id' => $p['industriyal']))->row()->industry_name;
+                        $return_html .= $cache_time;
+
+                        $return_html .= '</a>
+                                    </div>
+                                </li>
+                                <li>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="post-design-desc">
+                            <div>
+                                <div id="editpostdata5" style="display:block;">
+                                    <a style="margin-bottom: 0px; font-size: 16px">
+                        '. ucfirst(strtolower($p['product_name'])) .'
+                                    </a>
+                                </div>
+                                <div id="editpostbox5" style="display:none;">
+                                    <input type="text" id="editpostname5" name="editpostname" placeholder="Product Name" value="">
+                                </div>
+                            </div>
+                            <div id="editpostdetails5" style="display:block;">
+                                <span class="showmore"> ' . ucfirst(strtolower($p['product_description'])) . '
+                                </span>
+                            </div>
+                            <div id="editpostdetailbox5" style="display:none;">
+                                <div contenteditable="true" id="editpostdesc5" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc"></div>
+                            </div>
+                            <button class="fr" id="editpostsubmit5" style="display:none;margin: 5px 0; border-radius: 3px;" onclick="edit_postinsert(5)">Save
+                            </button>
+                        </div>
+                        </div>
+                        <div class="post-design-mid col-md-12" style="border: none;">
+                            <div>';
+
+                        $contition_array = array('post_id' => $p['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                        $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        if (count($businessmultiimage) == 1) {
+
+                            $allowed = array('gif', 'png', 'jpg');
+                            $allowespdf = array('pdf');
+                            $allowesvideo = array('mp4', 'webm');
+                            $allowesaudio = array('mp3');
+                            $filename = $businessmultiimage[0]['image_name'];
+                            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                            if (in_array($ext, $allowed)) {
+                                $return_html .= '<div class="one-image" >
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                                <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" > 
+                                            </a>
+                                        </div>';
+                            } elseif (in_array($ext, $allowespdf)) {
+                                $return_html .= '<div>
+                                            <a title="click to open" href="' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '">
+                                                <div class="pdf_img">
+                                                    <img src="' . base_url('images/PDF.jpg') . '"">
+                                                </div>
+                                            </a>
+                                        </div>';
+                            } elseif (in_array($ext, $allowesvideo)) {
+                                $return_html .= '<div>
+                                            <video width="320" height="240" controls>
+                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="video/mp4">
+                                                <source src="movie.ogg" type="video/ogg">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>';
+                            } elseif (in_array($ext, $allowesaudio)) {
+                                $return_html .= '<div>
+                                            <audio width="120" height="100" controls>
+                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="audio/mp3">
+                                                <source src="movie.ogg" type="audio/ogg">
+                                                Your browser does not support the audio tag.
+                                            </audio>
+                                        </div>';
+                            }
+                        } elseif (count($businessmultiimage) == 2) {
+                            foreach ($businessmultiimage as $multiimage) {
+                                $return_html .= '<div class="two-images" >
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                                <img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                            </a>
+                                        </div>';
+                            }
+                        } elseif (count($businessmultiimage) == 3) {
+                            $return_html .= '<div class="three-image-top">
+                                        <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
+                                        </a>
+                                    </div>
+                                    <div class="three-image" >
+                                        <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" > 
+                                        </a>
+                                    </div>
+                                    <div class="three-image" >
+                                        <a href="' . base_url('business_profile/postnewpage/' . $p['business_post_id']) . '">
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" > 
+                                        </a>
+                                    </div>';
+                        } elseif (count($businessmultiimage) == 4) {
+                            foreach ($businessmultiimage as $multiimage) {
+                                $return_html .= '<div class="four-image" >
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                            </a>
+                                        </div>';
+                            }
+                        } elseif (count($businessmultiimage) > 4) {
+                            $i = 0;
+                            foreach ($businessmultiimage as $multiimage) {
+                                $return_html .= '<div>
+                                            <div class="four-image" >
+                                                <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                                    <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                                </a>
+                                            </div>
+                                        </div>';
+
+                                $i++;
+                                if ($i == 3)
+                                    break;
+                            }
+
+                            $return_html .= '<div>
+                                        <div class="four-image" >
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
+                                                <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
+                                            </a>
+                                        </div>
+                                        <div class="four-image" >
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '" ></a>
+                                            <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '" >
+                                                <span class="more-image"> View All  (+
+                            ' . (count($businessmultiimage) - 4) . ')
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>';
+                        }
+                        $return_html .= '<div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-design-like-box col-md-12">
+                            <div class="post-design-menu">
+                                <ul class="col-md-6">
+                                    <li class="likepost' . $p['business_profile_post_id'] . '">
+                                        <a class="ripple like_h_w" id="' . $p['business_profile_post_id'] . '"   onClick="post_like(this.id)">';
+
+                        $userid = $this->session->userdata('aileenuser');
+                        $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1');
+                        $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $likeuser = $this->data['active'][0]['business_like_user'];
+                        $likeuserarray = explode(',', $active[0]['business_like_user']);
+                        if (!in_array($userid, $likeuserarray)) {
+                            $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true">
+                                                </i>';
+                        } else {
+                            $return_html .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true">
+                                                </i>';
+                        }
+                        $return_html .= '<span style="display: none;">';
+                        if ($p['business_likes_count'] > 0) {
+                            $return_html .= $p['business_likes_count'];
+                        }
+
+                        $return_html .= '</span>
+                        </a>
+                        </li>
+                        <li id="insertcount' . $p['business_profile_post_id'] . '" style="visibility:show">';
+                        $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="' . $p['business_profile_post_id'] . '">
+                                <i class="fa fa-comment-o" aria-hidden="true"> 
+                                    <span style="display: none;">';
+                        if (count($commnetcount) > 0) {
+                            $return_html .= count($commnetcount);
+                        }
+                        $return_html .= '</span>
+                                </i> 
+                            </a>
+                        </li>
+                        </ul>';
+                        $return_html .= '<ul class="col-md-6 like_cmnt_count">
+                            <li>
+                                <div class="like_count_ext">
+                                    <span class="comment_count' . $p['business_profile_post_id'] . '" >';
+
+                        if (count($commnetcount) > 0) {
+                            $return_html .= count($commnetcount);
+
+                            $return_html .= '<span> Comment</span>';
+                        }
+
+                        $return_html .= '</span> 
+                                </div>
+                            </li>
+                            <li>
+                                <div class="comnt_count_ext">
+                                    <span class="comment_like_count' . $p['business_profile_post_id'] . '">';
+                        if ($p['business_likes_count'] > 0) {
+                            $return_html .= $p['business_likes_count'];
+                            $return_html .= '<span> Like</span>';
+                        }
+
+                        $return_html .= '</span> 
+                                </div>
+                            </li>
+                        </ul>
+                        </div>
+                        </div>';
+
+                        if ($p['business_likes_count'] > 0) {
+
+                            $return_html .= '<div class="likeduserlist1 likeduserlist' . $p['business_profile_post_id'] . '">';
+                            $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                            $likeuser = $commnetcount[0]['business_like_user'];
+                            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                            $likelistarray = explode(',', $likeuser);
+                            foreach ($likelistarray as $key => $value) {
+                                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                            }
+                            $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $p['business_profile_post_id'] . ');">';
+                            $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                            $likeuser = $commnetcount[0]['business_like_user'];
+                            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                            $likelistarray = explode(',', $likeuser);
+
+                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                            $return_html .= '<div class="like_one_other">';
+                            $return_html .= ucfirst(strtolower($business_fname1));
+                            $return_html .= "&nbsp;";
+                            if (count($likelistarray) > 1) {
+                                $return_html .= "and";
+                                $return_html .= $countlike;
+                                $return_html .= "&nbsp;";
+                                $return_html .= "others";
+                            }
+                            $return_html .= '</div>';
+                            $return_html .= '</a>
+                            </div>';
+                        }
+
+                        $return_html .= '<div class="likeusername' . $p['business_profile_post_id'] . '" id="likeusername' . $p['business_profile_post_id'] . '" style="display:none">';
+                        $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                        $likeuser = $commnetcount[0]['business_like_user'];
+                        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                        $likelistarray = explode(',', $likeuser);
+                        foreach ($likelistarray as $key => $value) {
+                            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                        }
+
+                        $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $p['business_profile_post_id'] . ');">';
+                        $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+                        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                        $likeuser = $commnetcount[0]['business_like_user'];
+                        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+                        $likelistarray = explode(',', $likeuser);
+
+                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+                        $return_html .= '<div class="like_one_other">';
+
+                        $return_html .= ucfirst(strtolower($business_fname1));
+                        $return_html .= "&nbsp;";
+
+                        if (count($likelistarray) > 1) {
+                            $return_html .= "and";
+                            $return_html .= $countlike;
+                            $return_html .= "&nbsp;";
+                            $return_html .= "others";
+                        }
+                        $return_html .= '</div>
+                        </a>
+                        </div>
+                        <div class="art-all-comment col-md-12">
+                            <div  id="fourcomment' . $p['business_profile_post_id'] . '" style="display:none;">
+                            </div>
+                            <div  id="threecomment' . $p['business_profile_post_id'] . '" style="display:block">
+                                <div class="insertcomment' . $p['business_profile_post_id'] . '">';
+
+                        $contition_array = array('business_profile_post_id' => $p['business_profile_post_id'], 'status' => '1');
+                        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                        if ($businessprofiledata) {
+                            foreach ($businessprofiledata as $pdata) {
+                                $companyname = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id']))->row()->company_name;
+
+                                $return_html .= '<div class="all-comment-comment-box">
+                                                <div class="post-design-pro-comment-img">';
+                                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id'], 'status' => 1))->row()->business_user_image;
+                                if ($business_userimage) {
+                                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                } else {
+                                    $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                                }
+                                $return_html .= '</div>
+                                                <div class="comment-name">
+                                                    <b title="' . $companyname . '">';
+                                $return_html .= $companyname;
+                                $return_html .= '</br>';
+
+                                $return_html .= '</b>
+                                                </div>
+                                                <div class="comment-details" id= "showcomment' . $pdata['business_profile_post_comment_id'] . '">';
+                                $return_html .= $this->common->make_links($pdata['comments']);
+                                $return_html .= '</div>
+                                                <div class="edit-comment-box">
+                                                    <div class="inputtype-edit-comment">
+                                                        <div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $pdata['business_profile_post_comment_id'] . '"  id="editcomment' . $pdata['business_profile_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $pdata['business_profile_post_comment_id'] . ')">' . $pdata['comments'] . '</div>
+                                                        <span class="comment-edit-button"><button id="editsubmit' . $pdata['business_profile_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $pdata['business_profile_post_comment_id'] . ')">Save</button></span>
+                                                    </div>
+                                                </div>
+                                                <div class="art-comment-menu-design">
+                                                    <div class="comment-details-menu" id="likecomment1' . $pdata['business_profile_post_comment_id'] . '">
+                                                        <a id="' . $pdata['business_profile_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                                $userid = $this->session->userdata('aileenuser');
+                                $contition_array = array('business_profile_post_comment_id' => $pdata['business_profile_post_comment_id'], 'status' => '1');
+                                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                $likeuserarray = explode(',', $businesscommentlike[0]['business_comment_like_user']);
+                                if (!in_array($userid, $likeuserarray)) {
+                                    $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true">
+                                                                </i>';
+                                } else {
+                                    $return_html .= '<i clss="fa fa-thumbs-up" aria-hidden="true">
+                                                                </i>';
+                                }
+                                $return_html .= '<span>';
+                                if ($pdata['business_comment_likes_count']) {
+                                    $return_html .= $pdata['business_comment_likes_count'];
+                                }
+
+                                $return_html .= '</span>';
+                                $return_html .= '</a>
+                                                    </div>';
+
+                                $userid = $this->session->userdata('aileenuser');
+                                if ($pdata['user_id'] == $userid) {
+
+                                    $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                                                        </span>
+                                                        <div class="comment-details-menu">
+                                                            <div id="editcommentbox' . $pdata['business_profile_post_comment_id'] . '" style="display:block;">
+                                                                <a id="' . $pdata['business_profile_post_comment_id'] . '"   onClick="comment_editbox(this.id)" class="editbox">Edit
+                                                                </a>
+                                                            </div>
+                                                            <div id="editcancle' . $pdata['business_profile_post_comment_id'] . '" style="display:none;">
+                                                                <a id="' . $pdata['business_profile_post_comment_id'] . '" onClick="comment_editcancle(this.id)">Cancel
+                                                                </a>
+                                                            </div>
+                                                        </div>';
+                                }
+
+                                $userid = $this->session->userdata('aileenuser');
+                                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $pdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                                if ($pdata['user_id'] == $userid || $business_userid == $userid) {
+
+                                    $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                                                        </span>
+                                                        <div class="comment-details-menu">
+                                                            <input type="hidden" name="post_delete"  id="post_delete' . $pdata['business_profile_post_comment_id'] . '" value= "' . $pdata['business_profile_post_id'] . '">
+                                                            <a id="' . $pdata['business_profile_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete
+                                                                <span class="insertcomment' . $pdata['business_profile_post_comment_id'] . '">
+                                                                </span>
+                                                            </a>
+                                                        </div>';
+                                }
+                                $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                                                    </span>
+                                                    <div class="comment-details-menu">
+                                                        <p>';
+                                $return_html .= date('d-M-Y', strtotime($pdata['created_date']));
+                                $return_html .= '</br>';
+
+                                $return_html .= '</p>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                            }
+                        }
+
+                        $return_html .= '</div>
+                            </div>
+                        </div>
+                        <div class="post-design-commnet-box col-md-12">
+                            <div class="post-design-proo-img">';
+                        $userid = $this->session->userdata('aileenuser');
+                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+                        $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
+                        if ($business_userimage) {
+                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        } else {
+                            $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        }
+                        $return_html .= '</div>
+                            <div id="content" class="col-md-12 inputtype-comment cmy_2">
+                                <div contenteditable="true" class="editable_text" name="' . $p['business_profile_post_id'] . '"  id="post_comment' . $p['business_profile_post_id'] . '" placeholder="Add a comment ..." onClick="entercomment(' . $p['business_profile_post_id'] . ')"></div>
+                            </div>';
+                        $return_html .= form_error('post_comment');
+                        $return_html .= '<div class="comment-edit-butn">       
+                                <button id="' . $p['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+                        </div>';
+                    }
+                }
+            }
+        } else {
+            $return_html .= '<div class="text-center rio">
+                <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                <p style="text-transform:none !important;border:0px;">We couldn\'t find what you were looking for.</p>
+                <ul class="padding_less_left">
+                    <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.</li>
+                </ul>
+            </div>';
+        }
+        echo $return_html;
+    }
+
 //recrutier search start
-
-
-
 
     public function recruiter_index() {
 
@@ -623,73 +1291,54 @@ public function business_search() {
         $this->load->view('recruiter/rec_search', $this->data);
     }
 
-    
-    public function recruiter_search($searchkeyword = " ",$searchplace = " ") {
-        
-        if($this->input->get('search_submit'))
-        {
-         // echo "hhh";die();
-           $searchkeyword=$this->input->get('skills');
-           $searchplace=$this->input->get('searchplace');
-        }
-        else
-        {
-           // echo "kkk";die();
-                if($this->uri->segment(3) =="0")
-                {
-                     
-                        $searchplace= urldecode($searchplace);
-                         $searchkeyword= "";
-                     
-                      
-                }
-                 else if($this->uri->segment(4) =="0")
+    public function recruiter_search($searchkeyword = " ", $searchplace = " ") {
 
-                {
-                        
-                        $searchkeyword= urldecode($searchkeyword);
-                         $searchplace= "";
-                    
-                }
-                else
-                {
-                     
+        if ($this->input->get('search_submit')) {
+// echo "hhh";die();
+            $searchkeyword = $this->input->get('skills');
+            $searchplace = $this->input->get('searchplace');
+        } else {
+// echo "kkk";die();
+            if ($this->uri->segment(3) == "0") {
 
-                      $searchkeyword= urldecode($searchkeyword);
-                    $searchplace=urldecode($searchplace); 
-                
-                }
-              
-            
+                $searchplace = urldecode($searchplace);
+                $searchkeyword = "";
+            } else if ($this->uri->segment(4) == "0") {
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = "";
+            } else {
+
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = urldecode($searchplace);
+            }
         }
 
-        // echo "<pre>"; print_r($_POST);die();
+// echo "<pre>"; print_r($_POST);die();
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 
-if ($searchkeyword == "" && $searchplace == "") {
-            redirect('recruiter/recommen_candidate',refresh);
-            
+        if ($searchkeyword == "" && $searchplace == "") {
+            redirect('recruiter/recommen_candidate', refresh);
         }
 
 
-    //echo "string";    echo $searchkeyword; die();
+        //echo "string";    echo $searchkeyword; die();
 
-       $rec_search = trim($searchkeyword,' ');
-
-
-         //trim($searchkeyword);
+        $rec_search = trim($searchkeyword, ' ');
 
 
-    //echo $rec_search; die();
-      
+        //trim($searchkeyword);
+        //echo $rec_search; die();
+
 
         $this->data['keyword'] = $rec_search;
 
         $search_place = $searchplace;
         $this->data['key_place'] = $searchplace;
-      
+
 
         //insert search keyword into database start
 
@@ -721,28 +1370,26 @@ if ($searchkeyword == "" && $searchplace == "") {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         //insert search keyword into database end
 
-        if ($searchkeyword == "" || $this->uri->segment(3) =="0") {
-         //echo "skill search";die();
+        if ($searchkeyword == "" || $this->uri->segment(3) == "0") {
+            //echo "skill search";die();
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.status' => '1', 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.city_id' => $cache_time, 'job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $unique = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-           // echo "<pre>"; print_r($unique);die();
-
-        }
-         elseif ($searchplace == "" || $this->uri->segment(4) =="0") {
-           // echo "Place Search";die();
-          // echo "<pre>"; print_r($rec_search);die();
+            // echo "<pre>"; print_r($unique);die();
+        } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
+            // echo "Place Search";die();
+            // echo "<pre>"; print_r($rec_search);die();
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
@@ -751,30 +1398,30 @@ if ($searchkeyword == "" && $searchplace == "") {
             // echo $search_condition;die();
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>"; print_r($skilldata);  die();
+            // echo "<pre>"; print_r($skilldata);  die();
 
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-          //  echo "<pre>"; print_r($jobdata); die();
+            //  echo "<pre>"; print_r($jobdata); die();
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
-           // echo $id; echo "<br>";
+                // echo $id; echo "<br>";
                 foreach ($jobdata as $postskill) {
                     $skill = explode(',', $postskill['keyskill']);
-                    
-                  //  echo "<pre>"; print_r($skill);
+
+                    //  echo "<pre>"; print_r($skill);
 
                     if (in_array($id, $skill)) {
                         // echo "Match found"; echo "</br>";
@@ -784,25 +1431,24 @@ if ($searchkeyword == "" && $searchplace == "") {
                 }
             }
 
-           // die();
-
-           //echo "<pre>"; print_r($jobskillpost); die();
+            // die();
+            //echo "<pre>"; print_r($jobskillpost); die();
             $this->data['rec_skill'] = $jobskillpost;
-        // echo "<pre>"; print_r( $this->data['rec_skill']); die();
+            // echo "<pre>"; print_r( $this->data['rec_skill']); die();
 
             $join_str = array(array(
-                  'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array1 = array('job_add_edu.pass_year' => $rec_search ,'job_reg.job_step' => 10);
+            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.job_step' => 10);
 
             $yeardata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -810,155 +1456,141 @@ if ($searchkeyword == "" && $searchplace == "") {
 
             $join_str = array(array(
                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $genderdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array2, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
             // echo "<pre>"; print_r($genderdata);
 
-              $contition_array = array('status' => '1','user_id !=' => $userid);
+            $contition_array = array('status' => '1', 'user_id !=' => $userid);
 
 
-              $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'sum(experience_year),user_id,sum(experience_month)', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby ='user_id');
+            $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'sum(experience_year),user_id,sum(experience_month)', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby = 'user_id');
 
 
-             // echo "<pre>"; print_r($recdata); die();
-        
-
-foreach ($recdata as $rec) {
-
-        $rec_search = str_replace(' ', '', $rec_search);
-
-      //  echo "<pre>"; print_r($rec_search);
+            // echo "<pre>"; print_r($recdata); die();
 
 
-    
-                                                $y=0;
-                                                for($i=0;$i<=$y;$i++)
-                                                {
-                                                   if($rec['sum(experience_month)'] >= 12)
-                                                   {
-                                                      $rec['sum(experience_year)'] = $rec['sum(experience_year)'] + 1;
-                                                      $rec['sum(experience_month)'] = $rec['sum(experience_month)'] - 12;
-                                                      $y++;
-                                               
-                                                   }
-                                                   else
-                                                   {
-                                                      $y=0;
-                                                   }
-                                                      $rec['sum(experience_year)'] = $rec['sum(experience_year)'].'year';
-                                                      $rec['sum(experience_month)'] = $rec['sum(experience_month)'].'month';
+            foreach ($recdata as $rec) {
+
+                $rec_search = str_replace(' ', '', $rec_search);
+
+                //  echo "<pre>"; print_r($rec_search);
 
 
-                                                      // echo "<pre>"; print_r($rec['sum(experience_year)']);
-                                                      // echo "<pre>"; print_r($rec['sum(experience_month)']);
 
-                            
-                                                
-    if(($rec['sum(experience_year)'] == '0year') && (strcmp($rec['sum(experience_month)'],$rec_search) == 0))
-    {
+                $y = 0;
+                for ($i = 0; $i <= $y; $i++) {
+                    if ($rec['sum(experience_month)'] >= 12) {
+                        $rec['sum(experience_year)'] = $rec['sum(experience_year)'] + 1;
+                        $rec['sum(experience_month)'] = $rec['sum(experience_month)'] - 12;
+                        $y++;
+                    } else {
+                        $y = 0;
+                    }
+                    $rec['sum(experience_year)'] = $rec['sum(experience_year)'] . 'year';
+                    $rec['sum(experience_month)'] = $rec['sum(experience_month)'] . 'month';
+
+
+                    // echo "<pre>"; print_r($rec['sum(experience_year)']);
+                    // echo "<pre>"; print_r($rec['sum(experience_month)']);
+
+
+
+                    if (($rec['sum(experience_year)'] == '0year') && (strcmp($rec['sum(experience_month)'], $rec_search) == 0)) {
 
 
 //echo "string";
-            $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => '',
-                    'table' => 'job_add_workexp',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-           
-            $contition_array = array('job_reg.user_id' => $rec['user_id'] ,'job_reg.job_step' => 10);
+                        $join_str = array(array(
+                                'join_type' => '',
+                                'table' => 'job_add_edu',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_edu.user_id'),
+                            array(
+                                'join_type' => '',
+                                'table' => 'job_add_workexp',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_workexp.user_id'),
+                            array(
+                                'join_type' => 'left',
+                                'table' => 'job_graduation',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_graduation.user_id')
+                        );
 
-            $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg',$contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-}
+                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
 
- elseif(strcmp($rec['sum(experience_year)'],$rec_search) == 0)
-    {
+                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    } elseif (strcmp($rec['sum(experience_year)'], $rec_search) == 0) {
 
 
 
-            $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => '',
-                    'table' => 'job_add_workexp',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-           
-            $contition_array = array('job_reg.user_id' => $rec['user_id'] ,'job_reg.job_step' => 10);
+                        $join_str = array(array(
+                                'join_type' => '',
+                                'table' => 'job_add_edu',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_edu.user_id'),
+                            array(
+                                'join_type' => '',
+                                'table' => 'job_add_workexp',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_workexp.user_id'),
+                            array(
+                                'join_type' => 'left',
+                                'table' => 'job_graduation',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_graduation.user_id')
+                        );
 
-            $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg',$contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-}
-else
-{
-                $resul[] = array();
-}
+                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
 
-}
-}
+                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    } else {
+                        $resul[] = array();
+                    }
+                }
+            }
 
 
-foreach ($resul as $key => $value) {
+            foreach ($resul as $key => $value) {
 
 
-    foreach ($value as $va) {
+                foreach ($value as $va) {
 
 
-        $result4[] = $va;
-
-  
-}
-}
-     $new3 = array();
+                    $result4[] = $va;
+                }
+            }
+            $new3 = array();
 
 
- foreach ($result4 as $ke => $arr) {
+            foreach ($result4 as $ke => $arr) {
 
-           /// foreach ($arr as $valu) {
-   
-        
-    
+                /// foreach ($arr as $valu) {
+
+
+
 
                 $new3[$arr['user_id']] = $arr;
-               
-          //  }
-        }
+
+                //  }
+            }
 
 
-    // echo "<pre>"; print_r($new3);  die();
+            // echo "<pre>"; print_r($new3);  die();
 
-  $join_str = array(array(
+            $join_str = array(array(
                     'join_type' => '',
                     'table' => 'job_add_edu',
                     'join_table_id' => 'job_reg.user_id',
@@ -968,22 +1600,19 @@ foreach ($resul as $key => $value) {
                     'table' => 'job_add_workexp',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
             $search_condition = "(job_add_workexp.jobtitle LIKE '%$rec_search%')";
-            $contition_array = array('job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
-            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
 //echo "<pre>"; print_r($results1); die();
-
-
-
 //echo "<pre>"; print_r($results1); die();
 
             $join_str = array(array(
@@ -992,13 +1621,13 @@ foreach ($resul as $key => $value) {
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_edu.user_id'),
                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -1008,14 +1637,14 @@ foreach ($resul as $key => $value) {
                     'table' => 'job_add_edu',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_edu.user_id'),
-               array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
 
-            $contition_array = array('job_reg.other_skill' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.other_skill' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($designationdata); die();
@@ -1031,14 +1660,14 @@ foreach ($resul as $key => $value) {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
-                $contition_array = array('job_graduation.stream' => $recsearch1, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10,'job_reg.status' => '1');
+                $contition_array = array('job_graduation.stream' => $recsearch1, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10, 'job_reg.status' => '1');
 
 
                 $yeardata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -1054,27 +1683,25 @@ foreach ($resul as $key => $value) {
             if ($recsearch != "") {
 
                 $join_str = array(array(
-                       'join_type' => 'left',
+                        'join_type' => 'left',
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
 
-                $contition_array = array('job_graduation.degree' => $recsearch, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10,'job_reg.status' => '1');
+                $contition_array = array('job_graduation.degree' => $recsearch, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10, 'job_reg.status' => '1');
 
                 $yeardata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
-           // echo "<pre>"; print_r($yeardata); 
-
-
-           // die();
+            // echo "<pre>"; print_r($yeardata); 
+            // die();
             //echo "<pre>"; print_r($degreedata); 
 
 
@@ -1082,7 +1709,7 @@ foreach ($resul as $key => $value) {
 
                 $postdata1[] = $arr;
             }
-          // echo "string";  echo '<pre>'; print_r($postdata1); die();
+            // echo "string";  echo '<pre>'; print_r($postdata1); die();
 
             $new1 = array();
             foreach ($postdata1 as $value) {
@@ -1090,47 +1717,40 @@ foreach ($resul as $key => $value) {
                 $new1[$value['job_id']] = $value;
             }
 
-           // echo '<pre>'; print_r($new1); die();
-
-           // echo count($new1); die();
+            // echo '<pre>'; print_r($new1); die();
+            // echo count($new1); die();
 
             if (count($new1) == 0) {
 
 
-               // echo "pallavidsd";
+                // echo "pallavidsd";
                 // echo "<pre>"; print_r($results1); die();
 
-                $unique = array_merge($yeardata, $genderdata, $results1,$new3, $jobdata);
+                $unique = array_merge($yeardata, $genderdata, $results1, $new3, $jobdata);
                 // echo count($unique) . "<br>"; die();
-                 //echo "<pre>"; print_r($unique); die();
+                //echo "<pre>"; print_r($unique); die();
             } else {
 
-         
 
 
-             ///echo "vaghela";
+
+                ///echo "vaghela";
                 $unique = array_merge($new1, $yeardata, $genderdata, $results1, $new3, $jobdata);
 
-          //  echo "<pre>"; print_r($unique); die();
-
+                //  echo "<pre>"; print_r($unique); die();
             }
-
-        }
-
-                 
-
-         else {
+        } else {
 
             //echo "Skill & Place  Search";die();
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
 
-         $results=array_unique($result);  
-            foreach($results as $key =>$value){
-            $result1[$key]['label']=$value;
-            $result1[$key]['value']=$value;
-          }
+            $results = array_unique($result);
+            foreach ($results as $key => $value) {
+                $result1[$key]['label'] = $value;
+                $result1[$key]['value'] = $value;
+            }
 
             $search_condition = "(skill LIKE '%$rec_search%')";
 
@@ -1139,29 +1759,29 @@ foreach ($resul as $key => $value) {
 
 
             $join_str = array(array(
-                   'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array = array('job_reg.status' => '1', 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.status' => '1', 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
             $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-           //  echo "<pre>"; print_r($jobdata); die();
+            //  echo "<pre>"; print_r($jobdata); die();
 
 
-          
-          $this->data['demo']=array_values($result1); 
+
+            $this->data['demo'] = array_values($result1);
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
                 // echo $id; echo "<br>";
                 foreach ($jobdata as $postskill) {
                     $skill = explode(',', $postskill['keyskill']);
-                    
+
 
 
                     if (in_array($id, $skill)) {
@@ -1173,132 +1793,174 @@ foreach ($resul as $key => $value) {
             }
 
 
- 
+
 
             //echo "<pre>"; print_r($jobskillpost); die();
             $this->data['rec_skill'] = $jobskillpost;
-             //echo "<pre>"; print_r($jobskillpost);  die();
+            //echo "<pre>"; print_r($jobskillpost);  die();
 
 
 
 
-
-            $join_str = array(array(
-                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-
-            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
-
-            $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-         // echo "<pre>"; print_r($yeardata); die();
-
-             $join_str = array(array(
-                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
-
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        
-
-       
 
             $join_str = array(array(
                     'join_type' => 'left',
-                        'table' => 'job_add_edu',
-                        'join_table_id' => 'job_reg.user_id',
-                        'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
             );
-            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+
+            $contition_array1 = array('job_add_edu.pass_year' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
+
+            $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array1, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+            // echo "<pre>"; print_r($yeardata); die();
+
+            $join_str = array(array(
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
+            );
+            $contition_array = array('job_reg.designation' => $rec_search, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
+
+            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
+
+
+            $join_str = array(array(
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
+            );
+            $contition_array2 = array('job_reg.gender' => $rec_search, 'job_reg.city_id' => $cache_time, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
             $genderdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array2, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-           //  echo "<pre>"; print_r($genderdata); die();
+            //  echo "<pre>"; print_r($genderdata); die();
 
 
-  $contition_array = array('status' => '1','user_id !=' => $userid);
+            $contition_array = array('status' => '1', 'user_id !=' => $userid);
 
 
-              $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'sum(experience_year),user_id,sum(experience_month)', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby ='user_id');
-        
-
-foreach ($recdata as $rec) {
-
-        $rec_search = str_replace(' ', '', $rec_search);
+            $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'sum(experience_year),user_id,sum(experience_month)', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby = 'user_id');
 
 
-    
-                                                $y=0;
-                                                for($i=0;$i<=$y;$i++)
-                                                {
-                                                   if($rec['sum(experience_month)'] >= 12)
-                                                   {
-                                                      $rec['sum(experience_year)'] = $rec['sum(experience_year)'] + 1;
-                                                      $rec['sum(experience_month)'] = $rec['sum(experience_month)'] - 12;
-                                                      $y++;
-                                               
-                                                   }
-                                                   else
-                                                   {
-                                                      $y=0;
-                                                   }
-                                                      $rec['sum(experience_year)'] = $rec['sum(experience_year)'].'year';
-                                                      $rec['sum(experience_month)'] = $rec['sum(experience_month)'].'month';
-                            
-                                                
-    if(($rec['sum(experience_year)'] == '0year') && (strcmp($rec['sum(experience_month)'],$rec_search) == 0))
-    {
+            foreach ($recdata as $rec) {
+
+                $rec_search = str_replace(' ', '', $rec_search);
+
+
+
+                $y = 0;
+                for ($i = 0; $i <= $y; $i++) {
+                    if ($rec['sum(experience_month)'] >= 12) {
+                        $rec['sum(experience_year)'] = $rec['sum(experience_year)'] + 1;
+                        $rec['sum(experience_month)'] = $rec['sum(experience_month)'] - 12;
+                        $y++;
+                    } else {
+                        $y = 0;
+                    }
+                    $rec['sum(experience_year)'] = $rec['sum(experience_year)'] . 'year';
+                    $rec['sum(experience_month)'] = $rec['sum(experience_month)'] . 'month';
+
+
+                    if (($rec['sum(experience_year)'] == '0year') && (strcmp($rec['sum(experience_month)'], $rec_search) == 0)) {
 
 
 //echo "string";
-            $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => '',
-                    'table' => 'job_add_workexp',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-           
-            $contition_array = array('job_reg.user_id' => $rec['user_id'] ,'job_reg.job_step' => 10);
+                        $join_str = array(array(
+                                'join_type' => '',
+                                'table' => 'job_add_edu',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_edu.user_id'),
+                            array(
+                                'join_type' => '',
+                                'table' => 'job_add_workexp',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_workexp.user_id'),
+                            array(
+                                'join_type' => 'left',
+                                'table' => 'job_graduation',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_graduation.user_id')
+                        );
 
-            $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg',$contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-}
+                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
 
- elseif(strcmp($rec['sum(experience_year)'],$rec_search) == 0)
-    {
+                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    } elseif (strcmp($rec['sum(experience_year)'], $rec_search) == 0) {
 
 
 //echo "string11";
+                        $join_str = array(array(
+                                'join_type' => '',
+                                'table' => 'job_add_edu',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_edu.user_id'),
+                            array(
+                                'join_type' => '',
+                                'table' => 'job_add_workexp',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_add_workexp.user_id'),
+                            array(
+                                'join_type' => 'left',
+                                'table' => 'job_graduation',
+                                'join_table_id' => 'job_reg.user_id',
+                                'from_table_id' => 'job_graduation.user_id')
+                        );
+
+                        $contition_array = array('job_reg.user_id' => $rec['user_id'], 'job_reg.job_step' => 10);
+
+                        $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+                    } else {
+                        $resul[] = array();
+                    }
+                }
+            }
+
+            foreach ($resul as $key => $value) {
+
+
+                foreach ($value as $va) {
+
+
+                    $result4[] = $va;
+                }
+            }
+            $new3 = array();
+
+
+            foreach ($result4 as $ke => $arr) {
+
+                /// foreach ($arr as $valu) {
+
+
+
+
+                $new3[$arr['user_id']] = $arr;
+
+                //  }
+            }
+
+
             $join_str = array(array(
                     'join_type' => '',
                     'table' => 'job_add_edu',
@@ -1309,72 +1971,16 @@ foreach ($recdata as $rec) {
                     'table' => 'job_add_workexp',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-            );
-           
-            $contition_array = array('job_reg.user_id' => $rec['user_id'] ,'job_reg.job_step' => 10);
-
-            $resul[] = $jobprofiledata['data'] = $this->common->select_data_by_condition('job_reg',$contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-}
-else
-{
-                $resul[] = array();
-}
-
-}
-}
-
-foreach ($resul as $key => $value) {
-
-
-    foreach ($value as $va) {
-
-
-        $result4[] = $va;
-
-  
-}
-}
-     $new3 = array();
-
-
- foreach ($result4 as $ke => $arr) {
-
-           /// foreach ($arr as $valu) {
-   
-        
-    
-
-                $new3[$arr['user_id']] = $arr;
-               
-          //  }
-        }
-
-
-  $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
                 array(
-                    'join_type' => '',
-                    'table' => 'job_add_workexp',
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
                     'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_workexp.user_id'),
-                  array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    'from_table_id' => 'job_graduation.user_id')
             );
             $search_condition = "(job_add_workexp.jobtitle LIKE '%$rec_search%')";
-            $contition_array = array('job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+            $contition_array = array('job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
-            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data='job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $results1 = $jobprofiledata['data'] = $this->common->select_data_by_search('job_reg', $search_condition, $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*,job_add_workexp.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
 //echo "<pre>"; print_r($results1); die();
@@ -1391,21 +1997,21 @@ foreach ($resul as $key => $value) {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
 
-                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.stream' => $recsearch1, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
                 $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
 
-             //echo "<pre>"; print_r($adddata); die();
+            //echo "<pre>"; print_r($adddata); die();
 
             $recsearch = $this->db->get_where('degree', array('degree_name' => $rec_search))->row()->degree_id;
 
@@ -1416,19 +2022,18 @@ foreach ($resul as $key => $value) {
                         'table' => 'job_add_edu',
                         'join_table_id' => 'job_reg.user_id',
                         'from_table_id' => 'job_add_edu.user_id'),
-                 array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-                   
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
                 );
-                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid ,'job_reg.job_step' => 10);
+                $contition_array = array('job_add_edu.degree' => $recsearch, 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
 
 
                 $adddata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             }
-           // echo "<pre>"; print_r($adddata); die();
+            // echo "<pre>"; print_r($adddata); die();
 
 
             foreach ($jobskillpost as $ke => $arr) {
@@ -1445,35 +2050,34 @@ foreach ($resul as $key => $value) {
             // echo '<pre>'; print_r($new1); die();
 
             if (count($new1) == 0) {
-                $unique = array_merge($adddata, $genderdata, $results1,$new3, $jobdata);
+                $unique = array_merge($adddata, $genderdata, $results1, $new3, $jobdata);
                 // echo count($unique) . "<br>"; die();
                 // echo "<pre>"; print_r($unique); die();
             } else {
 
                 //echo "hi"; die();
-                $unique = array_merge($new1, $adddata, $genderdata, $results1,$new3, $jobdata);
+                $unique = array_merge($new1, $adddata, $genderdata, $results1, $new3, $jobdata);
             }
             // echo "<pre>"; print_r($unique); die();
         }
 
- 
-       // echo "<pre>"; print_r($unique); die();
 
-           foreach ($unique as $ke => $arr) {
-              
-                    $skildataa[] = $arr;
-                
-            }
+        // echo "<pre>"; print_r($unique); die();
+
+        foreach ($unique as $ke => $arr) {
+
+            $skildataa[] = $arr;
+        }
 //echo "<pre>";print_r($postdata);
-                $new11 = array();
-                foreach ($skildataa as $value) {
-                    $new11[$value['user_id']] = $value;
-                }
+        $new11 = array();
+        foreach ($skildataa as $value) {
+            $new11[$value['user_id']] = $value;
+        }
 
         $this->data['postdetail'] = $new11;
-  //  echo "<pre>"; print_r($new11); die();
+        //  echo "<pre>"; print_r($new11); die();
 
-        $contition_array = array('status' => '1', 'is_delete' => '0' ,'job_step' => 10);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10);
 
 
         $recdata = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'other_skill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -1522,13 +2126,13 @@ foreach ($resul as $key => $value) {
 
         $this->data['demo'] = array_values($result1);
 
-            $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -1542,12 +2146,11 @@ foreach ($resul as $key => $value) {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
-       // echo "<pre>"; print_r($this->data['de']);die();
-
-       // echo "<pre>"; print_r($this->data['postdetail']); die();
+        // echo "<pre>"; print_r($this->data['de']);die();
+        // echo "<pre>"; print_r($this->data['postdetail']); die();
 
         $this->load->view('recruiter/recommen_candidate1', $this->data);
     }
@@ -1559,50 +2162,35 @@ foreach ($resul as $key => $value) {
         $this->load->view('freelancer_hire/freelancer_hire_search', $this->data);
     }
 
-    public function freelancer_hire_search($searchkeyword,$searchplace) {
-       // echo "<pre>";print_r($_GET);die();
-      
+    public function freelancer_hire_search($searchkeyword, $searchplace) {
+        // echo "<pre>";print_r($_GET);die();
+
         $userid = $this->session->userdata('aileenuser');
-       
-         if($this->input->get('search_submit'))
-        {
-             //echo "123";exit;
-           $searchkeyword=trim($this->input->get('skills'));
-           $searchplace=trim($this->input->get('searchplace'));
-        }
-        else
-        {
+
+        if ($this->input->get('search_submit')) {
+            //echo "123";exit;
+            $searchkeyword = trim($this->input->get('skills'));
+            $searchplace = trim($this->input->get('searchplace'));
+        } else {
             //echo "098";exit;
-              if($this->uri->segment(3) =="0")
+            if ($this->uri->segment(3) == "0") {
 
-                {
-                      
-                        $searchplace= urldecode($searchplace);
-                         $searchkeyword= "";
-                     
-                      
-                }
-                 else if($this->uri->segment(4) =="0")
+                $searchplace = urldecode($searchplace);
+                $searchkeyword = "";
+            } else if ($this->uri->segment(4) == "0") {
 
-                {
-                        
-                        $searchkeyword= urldecode($searchkeyword);
-                         $searchplace= "";
-                    
-                }
-                else
-                {
-                     
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = "";
+            } else {
 
-                      $searchkeyword= urldecode($searchkeyword);
-                    $searchplace=urldecode($searchplace); 
-                
-                }
-            
+
+                $searchkeyword = urldecode($searchkeyword);
+                $searchplace = urldecode($searchplace);
+            }
         }
 
-        if ($searchplace == "" && $searchkeyword == "") { 
-        redirect('freelancer/recommen_candidate',refresh);
+        if ($searchplace == "" && $searchkeyword == "") {
+            redirect('freelancer/recommen_candidate', refresh);
         }
 
         // Retrieve the posted search term.
@@ -1641,13 +2229,11 @@ foreach ($resul as $key => $value) {
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 
 
-        if ($searchkeyword == "" || $this->uri->segment(3) =="0") { 
+        if ($searchkeyword == "" || $this->uri->segment(3) == "0") {
 
-        $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid , 'free_post_step' => 7);
+            $contition_array = array('freelancer_post_city' => $cache_time, 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $unique = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        }
-        elseif ($searchplace == "" || $this->uri->segment(4) =="0") {
+        } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
 
 
             $contition_array = array('type' => '1', 'status' => '1');
@@ -1658,7 +2244,7 @@ foreach ($resul as $key => $value) {
 
             // echo "<pre>"; print_r($skilldata);
 
-            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1','freelancer_post_reg.user_id !=' => $userid ,'free_post_step' => 7);
+            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // echo '<pre>'; print_r($results); die();
@@ -1690,7 +2276,7 @@ foreach ($resul as $key => $value) {
             // echo "<pre>"; print_r($fielddata);
             // echo $fielddata[0]['category_id'];
 
-            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'],'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7,'freelancer_post_reg.status' => '1');
+            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7, 'freelancer_post_reg.status' => '1');
 
             $join_str[0]['table'] = 'category';
             $join_str[0]['join_table_id'] = 'category.category_id';
@@ -1700,7 +2286,7 @@ foreach ($resul as $key => $value) {
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
             // echo "<pre>"; print_r($fieldfound); die();
 
-            $contition_array = array('status' => '1', 'is_delete' => '0','freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7);
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             // echo "$search_condition";
@@ -1772,7 +2358,7 @@ foreach ($resul as $key => $value) {
 
             // echo "<pre>"; print_r($skilldata);
 
-            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'free_post_step' => 7);
+            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             // print_r($contion_array);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($results);
@@ -1803,7 +2389,7 @@ foreach ($resul as $key => $value) {
             // echo "<pre>"; print_r($fielddata);
             // echo $fielddata[0]['category_id'];
 
-            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7,'freelancer_post_reg.status' => '1');
+            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7, 'freelancer_post_reg.status' => '1');
 
             $join_str[0]['table'] = 'category';
             $join_str[0]['join_table_id'] = 'category.category_id';
@@ -1813,7 +2399,7 @@ foreach ($resul as $key => $value) {
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
             // echo "<pre>"; print_r($fieldfound);
 
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time,'freelancer_post_reg.user_id !=' => $userid ,'freelancer_post_reg.free_post_step' => 7);
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             // echo "$search_condition";
@@ -1882,7 +2468,7 @@ foreach ($resul as $key => $value) {
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
 
-        $contition_array = array('status' => '1', 'is_delete' => '0','free_post_step' => 7);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7);
 
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         // echo "<pre>"; print_r($results_recruiter);die();
@@ -1916,13 +2502,13 @@ foreach ($resul as $key => $value) {
 
 
 
-    $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1');
 
-       
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -1936,7 +2522,7 @@ foreach ($resul as $key => $value) {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
 //echo "<pre>";print_r($this->data['freelancerpostdata']);die();
@@ -1954,13 +2540,12 @@ foreach ($resul as $key => $value) {
         //echo "123";die();
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") { 
-            
-            redirect('freelancer/freelancer_apply_post',refresh);
-            
+        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
+
+            redirect('freelancer/freelancer_apply_post', refresh);
         }
 
-        
+
         $search_skill = trim($this->input->get('skills'));
         //print_r($search_skill);  
         // $searchskill = implode(',',$search_skill);
@@ -1994,28 +2579,23 @@ foreach ($resul as $key => $value) {
 // code for insert search keyword into database end
 
         if ($search_skill == "") {
-          //  echo $search_place[0];
-
-
+            //  echo $search_place[0];
 //$contition_array = array('freelancer_post.city' => $search_place[0], 'freelancer_hire_reg.status' => '1');
 
-             $join_str[0]['table'] = 'freelancer_post';
+            $join_str[0]['table'] = 'freelancer_post';
             $join_str[0]['join_table_id'] = 'freelancer_post.user_id';
             $join_str[0]['from_table_id'] = 'freelancer_hire_reg.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('freelancer_post.city' => $cache_time,'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' =>$userid ,'freelancer_hire_reg.free_hire_step' => 3);
+            $contition_array = array('freelancer_post.city' => $cache_time, 'freelancer_hire_reg.status' => '1', 'freelancer_hire_reg.user_id !=' => $userid, 'freelancer_hire_reg.free_hire_step' => 3);
 
-    
-        $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            
+            $new = $this->data['results'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+
+
 
             //echo "<pre>"; print_r($unique);die();
-
-            
-        } 
-        elseif ($search_place == "") {
+        } elseif ($search_place == "") {
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
@@ -2023,10 +2603,10 @@ foreach ($resul as $key => $value) {
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($artdata['data']); 
-            $contition_array = array('status' => '1','freelancer_post.user_id !=' =>$userid);
+            $contition_array = array('status' => '1', 'freelancer_post.user_id !=' => $userid);
             $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($recdata); 
-            
+
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
@@ -2050,7 +2630,7 @@ foreach ($resul as $key => $value) {
 
 
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-             $contion_array = array('freelancer_post.user_id !=' =>$userid);
+            $contion_array = array('freelancer_post.user_id !=' => $userid);
             //  echo  $search_condition; die();
 
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2096,14 +2676,14 @@ foreach ($resul as $key => $value) {
 
 // echo "<pre>";print_r($unique);die();
         } else {
-        //echo "both"; die();
+            //echo "both"; die();
             $contition_array = array('is_delete' => '0', 'status' => '1');
 
             $search_condition = "(skill LIKE '%$search_skill%')";
 
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($artdata['data']); 
-            $contition_array = array('status' => '1', 'city' => $cache_time,'freelancer_post.user_id !=' =>$userid);
+            $contition_array = array('status' => '1', 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($recdata); 
 
@@ -2129,7 +2709,7 @@ foreach ($resul as $key => $value) {
 
 
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('post_name=' => $search_job, 'city' => $cache_time,'freelancer_post.user_id !=' =>$userid);
+            $contion_array = array('post_name=' => $search_job, 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
 
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2182,7 +2762,7 @@ foreach ($resul as $key => $value) {
 
 
 
-        $contition_array = array('status' => '1', 'is_delete' => '0','freelancer_post_reg.user_id !=' =>$userid ,'free_post_step' => 7);
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
 
         $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'designation,freelancer_post_otherskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         // echo "<pre>"; print_r($freelancer_postdata);die();
@@ -2215,14 +2795,14 @@ foreach ($resul as $key => $value) {
 
 
         $this->data['demo'] = array_values($result1);
-    
-    $contition_array = array('status' => '1');
 
-       
+        $contition_array = array('status' => '1');
+
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -2236,7 +2816,7 @@ foreach ($resul as $key => $value) {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['de'] = array_values($res);
 
         $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
@@ -2251,25 +2831,24 @@ foreach ($resul as $key => $value) {
 //     }
 
     public function job_search() {
-     //   echo "123";die();
+        //   echo "123";die();
         // echo "hii";        // Retrieve the posted search term.
         //echo "<pre>";print_r($_POST);die();
         $userid = $this->session->userdata('aileenuser');
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('job/job_all_post',refresh);
-         
+            redirect('job/job_all_post', refresh);
         }
-       ;
+        ;
 
- // search keyword insert into database start
+        // search keyword insert into database start
 
         $search_job = trim($this->input->get('skills'));
         $this->data['keyword'] = $search_job;
-       
+
         $search_place = trim($this->input->get('searchplace'));
-       // echo $search_place;
+        // echo $search_place;
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
@@ -2302,7 +2881,7 @@ foreach ($resul as $key => $value) {
 
         if ($search_job == "") {
 
-            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -2313,8 +2892,7 @@ foreach ($resul as $key => $value) {
 
 
 //echo "<pre>"; print_r($unique); die();
-        } 
-        elseif ($search_place == "") {
+        } elseif ($search_place == "") {
             // echo "hello";
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
@@ -2329,7 +2907,7 @@ foreach ($resul as $key => $value) {
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
-              //   echo $id; echo "<br>";
+                //   echo $id; echo "<br>";
                 foreach ($recdata as $postskill) {
                     $skill = explode(',', $postskill['post_skill']);
                     ;
@@ -2355,7 +2933,7 @@ foreach ($resul as $key => $value) {
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date';
 
@@ -2367,7 +2945,7 @@ foreach ($resul as $key => $value) {
             // $contion_array = array('post_name=' => $search_job );
             //    $resultsrecruiter = $this->common->select_data_by_search('recruiter', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str=array(), $groupby = '');
             //      // echo "<pre>"; print_r($resultsrecruiter); 
-           //  $results = array_filter(array_map('trim', $results));
+            //  $results = array_filter(array_map('trim', $results));
 
 
 
@@ -2396,20 +2974,17 @@ foreach ($resul as $key => $value) {
                 $unique1 = array_merge($new, $results);
                 // echo "<pre>"; print_r($unique); die(); 
             }
-            $unique=array();
-            foreach ($unique1 as $value){
-                
-                $unique[$value['user_id']]=$value;
+            $unique = array();
+            foreach ($unique1 as $value) {
+
+                $unique[$value['user_id']] = $value;
             }
 
             // echo "<pre>"; print_r($new1); die();
-             
         } else {
-                // both
+            // both
             // $search_job = $this->input->get('skills');
             //echo $search_job;
-
-
             // $search_place = $this->input->get('searchplace');
             // print_r($search_place); die();
 
@@ -2453,7 +3028,7 @@ foreach ($resul as $key => $value) {
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3);
+            $contition_array = array('recruiter.user_id !=' => $userid, 'recruiter.re_step' => 3);
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.max_month,rec_post.max_year,rec_post.created_date';
 
@@ -2481,7 +3056,7 @@ foreach ($resul as $key => $value) {
             }
 
 
-        // echo '<pre>'; print_r($results); die();
+            // echo '<pre>'; print_r($results); die();
 
 
             if (count($new) == 0) {
@@ -2490,11 +3065,11 @@ foreach ($resul as $key => $value) {
             } else {
                 $unique1 = array_merge($new, $results);
             }
-           // echo "<pre>"; print_r($unique); die();
-            $unique=array();
-            foreach ($unique1 as $value){
-                
-                $unique[$value['user_id']]=$value;
+            // echo "<pre>"; print_r($unique); die();
+            $unique = array();
+            foreach ($unique1 as $value) {
+
+                $unique[$value['user_id']] = $value;
             }
         }
 
@@ -2503,9 +3078,9 @@ foreach ($resul as $key => $value) {
 
         $this->data['postdetail'] = $unique;
 
-   // echo "<pre>"; print_r($this->data['postdetail']); die();
+        // echo "<pre>"; print_r($this->data['postdetail']); die();
 // code for search
-        $contition_array = array('re_status' => '1' ,'re_step' => 3);
+        $contition_array = array('re_status' => '1', 're_step' => 3);
 
 
         $results_recruiter = $this->data['results'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_comp_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2520,14 +3095,14 @@ foreach ($resul as $key => $value) {
         $contition_array = array('status' => '1', 'type' => '1');
 
         $skill = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        
-         $contition_array = array('status' => '1');
 
-       
+        $contition_array = array('status' => '1');
+
+
         $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
 
-            foreach ($cty as $key => $value) {
+
+        foreach ($cty as $key => $value) {
             foreach ($value as $ke => $val) {
                 if ($val != "") {
 
@@ -2541,10 +3116,10 @@ foreach ($resul as $key => $value) {
             $res[$key]['label'] = $value;
             $res[$key]['value'] = $value;
         }
-        
+
         $this->data['city_data'] = array_values($res);
 
- //echo "<pre>"; print_r($this->data['de']);die();
+        //echo "<pre>"; print_r($this->data['de']);die();
 
         $uni = array_merge($results_recruiter, $results_post, $skill);
         //   echo count($unique);
@@ -2566,11 +3141,11 @@ foreach ($resul as $key => $value) {
         }
 
 
-      
-      
+
+
 
         $this->data['demo'] = array_values($result1);
- //echo "<pre>"; print_r($this->data['demo']);die();
+        //echo "<pre>"; print_r($this->data['demo']);die();
 
 
 
