@@ -66,7 +66,7 @@
                             <?php
                         } else {
                             ?>
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                              <?php }
                              ?>
                     </div>
