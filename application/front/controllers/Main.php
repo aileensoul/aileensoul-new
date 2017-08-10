@@ -23,7 +23,8 @@ class Main extends CI_Controller {
 
     //job seeker basic info controller start
     public function index() {
-        $this->load->view('main');
+        $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
+        $this->load->view('main',$this->data);
     }
 
     //job user end
