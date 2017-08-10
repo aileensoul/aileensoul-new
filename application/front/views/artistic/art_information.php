@@ -161,8 +161,7 @@
 <div class="js">
 <div id="preloader"></div>
 
-      <section>
-        
+      <section>    
         <div class="user-midd-section" id="paddingtop_fixed">
           <div class="common-form1">
              <div class="row">
@@ -231,7 +230,6 @@
                                  $desc_art =  form_error('desc_art');
                                   
                                  ?>
-
 
                                     <fieldset class="full-width" <?php if($skills) {  ?> class="error-msg" <?php } ?> >
                                         <label>Art:<span style="color:red">*</span></label>

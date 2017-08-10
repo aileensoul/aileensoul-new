@@ -82,20 +82,15 @@
 
                         <div class="common-form common-form_border">
                         <h3>Portfolio</h3>
-                        
-                          
-                       <!--  <?php// echo form_open_multipart(base_url('business_profile/image_insert'), array('id' => 'businessimage','name' => 'businessimage','class' => 'clearfix')); ?> -->        
+                           
                   <form name="artportfolio" method="post" id="artportfolio" 
                     class="clearfix"  enctype="multipart/form-data" >
 
                                 <?php
                                  $artportfolio =  form_error('artportfolio');
                                 ?>
-
-                                
+    
                        <input  type="file" name="bestofmine" id="bestofmine" style="display:block;display:none;"/>
-
-                      
 
  <label for="bestofmine"  tabindex="1" ><i class="fa fa-plus action-buttons btn-group"  aria-hidden="true" style=" margin: 8px; cursor:pointer ; color: #fff; float: initial;"> </i> Attachment</label> 
  
@@ -119,12 +114,8 @@
                                 <fieldset class="full-width">
                                  <label>Enter Portfolio Description:</label>
                               <div tabindex="2" style="min-height: 100px;"  class="editable_text"  contenteditable="true" name ="artportfolio" id="artportfolio123" rows="4" cols="50" placeholder="Enter Portfolio Detail" onpaste="OnPaste_StripFormatting(this, event);"><?php if($art_portfolio1){ echo $art_portfolio1; } ?></div>
-                                         <?php echo form_error('artportfolio'); ?><!-- 
-                                  <label for="bestofmine" style="cursor: pointer;" tabindex="1" ></label>
-                       -->          </fieldset>
+                                         <?php echo form_error('artportfolio'); ?></fieldset>
                                 
-                                
-
                                  <fieldset class="hs-submit full-width">
                                    
                                     
@@ -147,7 +138,6 @@
                         <div class="modal-content">
                             <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
                             <div class="modal-body">
-                                <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                 <span class="mes"></span>
                             </div>
                         </div>

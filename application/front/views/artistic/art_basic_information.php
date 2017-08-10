@@ -20,7 +20,6 @@
            <div class="row">
              <div class="col-md-3 col-sm-4"></div>
 
-
              <?php 
 
              $userid = $this->session->userdata('aileenuser');
