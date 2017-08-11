@@ -8797,18 +8797,12 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '<div class="list-box">';
                 $contactdata .= '<div class="profile-img">';
                 if ($busdata[0]['business_user_image'] != '') {
-
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-
-
                         $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-
                         $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                     }
                 } else {
-
-
                     $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
 
