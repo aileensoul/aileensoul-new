@@ -896,7 +896,8 @@ function check_lengthedit(abc)
         $('#editpostname' + abc).val(substrval);
     } else {
         text_num = maxLen - product_name.length;
-        document.getElementById("text_num").value = text_num;
+        $('#text_num_'+ abc).val(parseInt(text_num));
+//        document.getElementById("text_num").value = text_num;
     }
 }
 /* POST BOX 50 CHARACTER LIMITATION CHECK END */
@@ -1579,7 +1580,8 @@ $(document).on('keydown', function (e) {
 });
 
 $('.modal-close').on('click', function () {
-    $('#myModal').modal('show');
+//    $('#myModal').modal('show');
+    document.getElementById('myModal').style.display = 'block';
 });
 
 

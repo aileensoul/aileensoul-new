@@ -437,7 +437,7 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 }
 
 .profile-box-left .edi_origde .edit_profile_progress{width:100%; float:left;}
-.profile-box-left .edi_origde .progre_bar_text{width:50%; float:left; padding:39px 22px 0;}
+.profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:39px 22px 0;}
 .profile-box-left .edi_origde .count_main_progress{width:185px; float:left;}
 .profile-box-left .edi_origde .count_main_progress .circles{padding:0;}
 .profile-box-left .edi_origde .progre_bar_text p{text-align:left; color:#4c4c4c;}
@@ -448,27 +448,77 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 
 .business_data_table .business_data_td1{width:50px;}
 .buisness-menu::before{bottom:58px;}
-#text_num{right:21%;}
+.text_num{right:21%;}
 .edit_profile_progress{/*display:none;*/}
 .edit_profile_job{display:none;}
 .tr_text{display:none;}
 .true_progtree img{display:none;}
+.edit_profile_progress{float:right;}
+.edit_profile_job{bottom:50px;}
+.mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff;}
+.mob-progressbar .progress { height: 30px; margin-top:5px; background:#e5e5e5; margin-bottom:6px;}
+.mob-progressbar p{font-size:12px;}
+.mob-progressbar .progress .skill { line-height: 30px; padding: 0; margin: 0 0 0 20px; text-transform: uppercase;}
+.mob-progressbar .progress .skill .val {font-style: normal; margin: 0 20px 0 0;}
+.mob-progressbar .progress-bar { text-align: center; transition-duration: 3s;}
+.mob-progressbar .progress-bar-custom{
+	background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+	background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+	background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+}
+.mob-progressbar .mob-edit-pro{text-align:center;}
+.mob-progressbar .mob-edit-pro .fa{padding-right:5px;}
+.temp .mob-edit-pro a{pointer-events: none; cursor: default;}
+.temp .mob-edit-pro .fa{display:none;}
+.circle-1{height:175px;}
+.complete_profile .circle-1{height:214px;}
+
+/*zalak 11-8*/
+
+#notificationContainer{overflow: hidden; border-radius: 3px;}
 
 
+@media screen and (min-width: 768px) {
+	.mob-progressbar.temp{display:none !important;}
+}
+.mob-progressbar.temp{display:none;}
+
+@media screen and (max-width: 1280px) {
+	.header2{width: 1140px;}
+	
+}
 @media screen and (max-width: 1200px) {
 	.experience_year{margin-right:34px;}
-	.circle-1 canvas{height:130px;}
+	.circle-1 canvas{width:175px;}
+	.circle-1{height:175px;}
+	.right_left_box_design{padding:17px 12px 12px 25px !important;}
+}
+
+@media screen and (max-width: 1199px) {
+	.header2{width: 940px;}
+	.profile-box{max-width:338px;}
+	.circle-1 canvas{height:130px; width:130px;}
 	.circle-1{width:164px; height:140px;}
 	.edit_profile_job{left:45px; bottom:45px;}
+	.profile-box-left .edi_origde .progre_bar_text{width:100%; padding:0px 15px 15px;}
+	.profile-box-left .edi_origde .count_main_progress{float:none; margin:0 auto;}
 }
 @media screen and (max-width: 1024px) {
 	#notificationLink span{top:5px;}
 	.post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
+	header .header2{margin:auto;}
 }
 @media screen and (max-width: 991px) {
 	.tab-none{display:none;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
 	.job-menu-profile{margin-top:20px; padding-bottom:10px;}
+	.right_left_box_design{padding:9px 12px 12px 12px !important;}
+	.mob-progressbar{display:block;}
+	.edit_profile_progress{display:none;}
 }
 @media screen and (max-width: 767px) {
 	.common-form1 h3{margin:20px 0;}
@@ -479,8 +529,11 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 	#notificationLink span{top:7px !important;}
 	.backdiv-mob{display:block;}
 	#onload-Modal{/*display:none !important;*/}
+	.job-menu-profile{margin-top:0;}
 }
-@media screen and (max-width: 540px) {}
+@media screen and (max-width: 640px) {
+	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+}
 @media screen and (max-width: 479px) {
 	.experience_year{width:100%; margin-right:0; margin-bottom:15px;}
 	.experience_month{width:100%;}

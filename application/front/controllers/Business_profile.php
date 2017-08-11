@@ -1611,10 +1611,10 @@ class Business_profile extends MY_Controller {
                 $counter = $row['product_name'];
                 $a = strlen($counter);
 
-                $return_html .= '<input size=1 id="text_num" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
+                $return_html .= '<input size=1 id="text_num_'.$row['business_profile_post_id'].'" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
             } else {
 
-                $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+                $return_html .= '<input size=1 id="text_num_'.$row['business_profile_post_id'].'" class="text_num" value=50 name=text_num readonly>';
             }
 
             $return_html .= '</div>
@@ -9586,9 +9586,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                         $counter = $row['product_name'];
                         $a = strlen($counter);
 
-                        $return_html .= '<input size = 1 id = "text_num" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_'.$row['business_profile_post_id'].'" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
                     } else {
-                        $return_html .= '<input size = 1 id = "text_num" class = "text_num" value = 50 name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_'.$row['business_profile_post_id'].'" class = "text_num" value = 50 name = text_num readonly>';
                     }
                     $return_html .= '</div>
 
@@ -10497,7 +10497,7 @@ Your browser does not support the audio tag.
             }
         } else {
 
-            $fetch_result .= '<div class = "not_available"> <p> Photos Not Available </p></div>';
+            //$fetch_result .= '<div class = "not_available"> <p> Photos Not Available </p></div>';
         }
 
         $fetch_result .= '<div class = "dataconphoto"></div>';
@@ -10684,7 +10684,7 @@ Your browser does not support the audio tag.
         } else {
 
 
-            $fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
+            //$fetch_video .= '<div class = "not_available"> <p> Video Not Available </p></div>';
         }
 
         $fetch_video .= '<div class = "dataconvideo"></div>';
@@ -10816,7 +10816,7 @@ Your browser does not support the audio tag.
             }
             $fetchaudio .= '</tr>';
         } else {
-            $fetchaudio .= '<div class = "not_available"> <p> Audio Not Available </p></div>';
+            //$fetchaudio .= '<div class = "not_available"> <p> Audio Not Available </p></div>';
         }
         $fetchaudio .= '<div class = "dataconaudio"></div>';
         echo $fetchaudio;
@@ -10874,7 +10874,7 @@ Your browser does not support the audio tag.
                     break;
             }
         } else {
-            $fetch_pdf .= '<div class = "not_available"> <p> Pdf Not Available </p></div>';
+            //$fetch_pdf .= '<div class = "not_available"> <p> Pdf Not Available </p></div>';
         }
         $fetch_pdf .= '<div class = "dataconpdf"></div>';
         echo $fetch_pdf;
@@ -11073,9 +11073,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($row['product_name']) {
                     $counter = $row['product_name'];
                     $a = strlen($counter);
-                    $return_html .= '<input size = 1 id = "text_num" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_'. $row['business_profile_post_id'] .'" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
                 } else {
-                    $return_html .= '<input size = 1 id = "text_num" class = "text_num" value = 50 name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num'. $row['business_profile_post_id'] .'" class = "text_num" value = 50 name = text_num readonly>';
                 }
                 $return_html .= '</div>
 </div>
@@ -11091,10 +11091,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $return_html .= '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis editable_text" placeholder = "Description of Your Product" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
-</div>
-<button class = "fr" id = "editpostsubmit"' . $row['business_profile_post_id'] . '" style="display:none;
-                                            margin: 5px 0;
-" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save</button>
+</div><button class = "fr" id = "editpostsubmit' . $row['business_profile_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save</button>
 </div> ';
                 if ($row['product_name'] || $row['product_description']) {
                     $return_html .= '</div>';
