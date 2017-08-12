@@ -1611,10 +1611,10 @@ class Business_profile extends MY_Controller {
                 $counter = $row['product_name'];
                 $a = strlen($counter);
 
-                $return_html .= '<input size=1 id="text_num_'.$row['business_profile_post_id'].'" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
+                $return_html .= '<input size=1 id="text_num_' . $row['business_profile_post_id'] . '" class="text_num" value="' . (50 - $a) . '" name=text_num readonly>';
             } else {
 
-                $return_html .= '<input size=1 id="text_num_'.$row['business_profile_post_id'].'" class="text_num" value=50 name=text_num readonly>';
+                $return_html .= '<input size=1 id="text_num_' . $row['business_profile_post_id'] . '" class="text_num" value=50 name=text_num readonly>';
             }
 
             $return_html .= '</div>
@@ -8402,8 +8402,8 @@ class Business_profile extends MY_Controller {
                         $contactdata .= '</a>';
                         $contactdata .= '</div>';
                         $contactdata .= '<div class="addcontact-right">';
-                        $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                        $contactdata .= '<a href="#" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                        $contactdata .= '<a href="javascript:void(0);" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                        $contactdata .= '<a href="javascript:void(0);" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                         $contactdata .= '</div>';
                         $contactdata .= '</li>';
                     }
@@ -8551,7 +8551,7 @@ class Business_profile extends MY_Controller {
 
                     $contactdata .= '<li>';
                     $contactdata .= '<div class="addcontact-left">';
-                    $contactdata .= '<a href="#">';
+                    $contactdata .= '<a href="javascript:void(0);">';
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
@@ -8567,8 +8567,8 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-right">';
-                    $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                    $contactdata .= '<a href="#"  class="add-right-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="javascript:void(0);" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="javascript:void(0);"  class="add-right-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
                 } else {
@@ -8611,20 +8611,41 @@ class Business_profile extends MY_Controller {
             }
         } else {
 
-            $contactdata = '<ul>';
-            $contactdata .= '<li>';
-            $contactdata .= '<div class="addcontact-left">';
-            $contactdata .= '<a href="#">';
-            $contactdata .= '<div class="addcontact-text">';
-            $contactdata .= 'Not data available...';
-            $contactdata .= '</div>';
-            $contactdata .= '</a>';
-            $contactdata .= '</div>';
-            $contactdata .= '</div>';
-            $contactdata .= '</li>';
-            $contactdata .= '</ul>';
+//            $contactdata = '<ul>';
+//            $contactdata .= '<li>';
+//            $contactdata .= '<div class="addcontact-left">';
+//            $contactdata .= '<a href="#">';
+//            $contactdata .= '<div class="addcontact-text">';
+//            $contactdata .= 'Not data available...';
+//            $contactdata .= '</div>';
+//            $contactdata .= '</a>';
+//            $contactdata .= '</div>';
+//            $contactdata .= '</div>';
+//            $contactdata .= '</li>';
+//            $contactdata .= '</ul>';
+
+            $contactdata = '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+                                                    <img src="'.base_url().'img/No_Contact_Request.png">
+                                                </div>
+                                                <div class="art_no_post_text_c">
+                                                    No Contact request Available.
+                                                </div>
+                             </div>';
         }
-        echo $contactdata;
+//        echo $contactdata;
+
+        $contition_array = array('contact_type' => 2, 'status' => 'confirm');
+        $search_condition = "(contact_from_id = '$userid' OR contact_to_id = '$userid')";
+        $contactpersonc = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
+        $countdata = count($contactpersonc);
+        $contactpersonc = $countdata;
+
+        echo json_encode(
+                array(
+                    "contactdata" => $contactdata,
+                    "contactcount" => $contactpersonc,
+        ));
     }
 
     public function contact_list() {
@@ -9586,9 +9607,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                         $counter = $row['product_name'];
                         $a = strlen($counter);
 
-                        $return_html .= '<input size = 1 id = "text_num_'.$row['business_profile_post_id'].'" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
                     } else {
-                        $return_html .= '<input size = 1 id = "text_num_'.$row['business_profile_post_id'].'" class = "text_num" value = 50 name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
                     }
                     $return_html .= '</div>
 
@@ -11073,9 +11094,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($row['product_name']) {
                     $counter = $row['product_name'];
                     $a = strlen($counter);
-                    $return_html .= '<input size = 1 id = "text_num_'. $row['business_profile_post_id'] .'" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
                 } else {
-                    $return_html .= '<input size = 1 id = "text_num'. $row['business_profile_post_id'] .'" class = "text_num" value = 50 name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
                 }
                 $return_html .= '</div>
 </div>

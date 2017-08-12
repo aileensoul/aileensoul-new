@@ -280,8 +280,16 @@
             url: "<?php echo base_url(); ?>business_profile/contact_approve",
             type: "POST",
             data: 'toid=' + toid + '&status=' + status,
+            dataType: "json",
             success: function (data) {
-                $('#addcontactBody').html(data);
+                $('#addcontactBody').html(data.contactdata);
+                $('.contactcount').html(data.contactcount);
+                var segment = '<?php echo $this->uri->segment(2); ?>';
+                if(segment == 'contacts'){
+                    var slug = '<?php echo $slug_id; ?>';
+                    $('.art-img-nn').hide();
+                    business_contacts_header(slug);
+                }
             }
         });
     }
