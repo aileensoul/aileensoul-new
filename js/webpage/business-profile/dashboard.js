@@ -127,7 +127,7 @@ jQuery(document).ready(function ($) {
             percent.html(percentVal);
         },
         complete: function (response) { //alert(response.responseText);
-
+            $('.art_no_post_avl').hide();
             document.getElementById('test-upload_product').value = '';
             document.getElementById('test-upload_des').value = '';
             document.getElementById('file-1').value = '';
@@ -1186,6 +1186,10 @@ function remove_post(abc)
         data: 'save_id=' + abc,
         success: function (data) {
             $('#' + 'removepostdata' + abc).html(data);
+            var total_post = $('.post-design-box').length;
+            if (total_post == 0) {
+                $('.art_no_post_avl').show();
+            }
         }
     });
 }
@@ -1569,7 +1573,7 @@ function check_lengthedit(abc)
         $('#editpostname' + abc).val(substrval);
     } else {
         text_num = maxLen - product_name.length;
-        $('#text_num_'+ abc).val(parseInt(text_num));
+        $('#text_num_' + abc).val(parseInt(text_num));
 //        document.getElementById("text_num_" + abc).value = text_num;
     }
 }

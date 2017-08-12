@@ -2709,7 +2709,8 @@ class Business_profile extends MY_Controller {
             if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
             } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
                 $datafollow = array(
-                    'not_read' => 2
+                    'not_read' => 2,
+                    'not_created_date' => date('Y-m-d H:i:s')
                 );
 
                 $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
