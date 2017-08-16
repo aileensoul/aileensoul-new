@@ -896,7 +896,7 @@ function check_lengthedit(abc)
         $('#editpostname' + abc).val(substrval);
     } else {
         text_num = maxLen - product_name.length;
-        $('#text_num_'+ abc).val(parseInt(text_num));
+        $('#text_num_' + abc).val(parseInt(text_num));
 //        document.getElementById("text_num").value = text_num;
     }
 }
@@ -1161,7 +1161,7 @@ function imgval(event) {
         $('#post').modal('show');
         $(document).on('keydown', function (e) {
             if (e.keyCode === 27) {
-                $('#bidmodal').modal('hide');
+                $('#posterrormodal').modal('hide');
                 $('.modal-post').show();
             }
         });
@@ -1175,7 +1175,7 @@ function imgval(event) {
             var ext = vfirstname.split('.').pop();
             var ext1 = vname.split('.').pop();
             var allowedExtensions = ['jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp'];
-            var allowesvideo = ['mp4', 'webm'];
+            var allowesvideo = ['mp4', 'webm', 'MP4'];
             var allowesaudio = ['mp3'];
             var allowespdf = ['pdf'];
 
@@ -1190,11 +1190,11 @@ function imgval(event) {
                 if (foundPresent1 == true && fileInput.length <= 10) {
                 } else {
                     $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-                    $('#bidmodal').modal('show');
+                    $('#posterrormodal').modal('show');
                     setInterval('window.location.reload()', 10000);
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            $('#bidmodal').modal('hide');
+                            $('#posterrormodal').modal('hide');
                             $('.modal-post').show();
                         }
                     });
@@ -1207,12 +1207,12 @@ function imgval(event) {
                 if (foundPresent1 == true && fileInput.length == 1) {
                 } else {
                     $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-                    $('#bidmodal').modal('show');
+                    $('#posterrormodal').modal('show');
                     setInterval('window.location.reload()', 10000);
 
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            $('#bidmodal').modal('hide');
+                            $('#posterrormodal').modal('hide');
                             $('.modal-post').show();
                         }
                     });
@@ -1226,13 +1226,13 @@ function imgval(event) {
 
                     if (product_name == '') {
                         $('.biderror .mes').html("<div class='pop_content'>You have to add audio title.");
-                        $('#bidmodal').modal('show');
+                        $('#posterrormodal').modal('show');
                         //setInterval('window.location.reload()', 10000);
 
                         $(document).on('keydown', function (e) {
                             if (e.keyCode === 27) {
                                 //$( "#bidmodal" ).hide();
-                                $('#bidmodal').modal('hide');
+                                $('#posterrormodal').modal('hide');
                                 $('.modal-post').show();
                             }
                         });
@@ -1242,12 +1242,12 @@ function imgval(event) {
 
                 } else {
                     $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
-                    $('#bidmodal').modal('show');
+                    $('#posterrormodal').modal('show');
                     setInterval('window.location.reload()', 10000);
 
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            $('#bidmodal').modal('hide');
+                            $('#posterrormodal').modal('hide');
                             $('.modal-post').show();
                         }
                     });
@@ -1261,12 +1261,12 @@ function imgval(event) {
 
                     if (product_name == '') {
                         $('.biderror .mes').html("<div class='pop_content'>You have to add pdf title.");
-                        $('#bidmodal').modal('show');
+                        $('#posterrormodal').modal('show');
                         setInterval('window.location.reload()', 10000);
 
                         $(document).on('keydown', function (e) {
                             if (e.keyCode === 27) {
-                                $('#bidmodal').modal('hide');
+                                $('#posterrormodal').modal('hide');
                                 $('.modal-post').show();
                             }
                         });
@@ -1279,12 +1279,12 @@ function imgval(event) {
                     } else {
                         $('.biderror .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                     }
-                    $('#bidmodal').modal('show');
+                    $('#posterrormodal').modal('show');
                     setInterval('window.location.reload()', 10000);
 
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
-                            $('#bidmodal').modal('hide');
+                            $('#posterrormodal').modal('hide');
                             $('.modal-post').show();
 
                         }
@@ -1295,12 +1295,12 @@ function imgval(event) {
             } else if (foundPresentvideo == false) {
 
                 $('.biderror .mes').html("<div class='pop_content'>This File Format is not supported Please Try to Upload MP4 or WebM files..");
-                $('#bidmodal').modal('show');
+                $('#posterrormodal').modal('show');
                 setInterval('window.location.reload()', 10000);
 
                 $(document).on('keydown', function (e) {
                     if (e.keyCode === 27) {
-                        $('#bidmodal').modal('hide');
+                        $('#posterrormodal').modal('hide');
                         $('.modal-post').show();
 
                     }
@@ -1579,7 +1579,7 @@ $(document).on('keydown', function (e) {
     }
 });
 
-$('.modal-close').on('click', function () {
+$('.posterror-modal-close').on('click', function () {
 //    $('#myModal').modal('show');
     document.getElementById('myModal').style.display = 'block';
 });
@@ -1614,13 +1614,31 @@ function khdiv(abc) {
 
 function editpost(abc)
 {
+//    $("#myDropdown" + abc).removeClass('show');
+//    document.getElementById('editpostdata' + abc).style.display = 'none';
+//    document.getElementById('editpostbox' + abc).style.display = 'block';
+//    document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+//    document.getElementById('editpostsubmit' + abc).style.display = 'block';
+//    document.getElementById('khyatii' + abc).style.display = 'none';
+//    document.getElementById('khyati' + abc).style.display = 'none';
+
+    var editposttitle = $('#editpostdata' + abc + ' a').html();
+    var editpostdesc = $('#khyatii' + abc).html();
+
     $("#myDropdown" + abc).removeClass('show');
     document.getElementById('editpostdata' + abc).style.display = 'none';
     document.getElementById('editpostbox' + abc).style.display = 'block';
+    //    document.getElementById('editpostdetails' + abc).style.display = 'none';
     document.getElementById('editpostdetailbox' + abc).style.display = 'block';
     document.getElementById('editpostsubmit' + abc).style.display = 'block';
     document.getElementById('khyatii' + abc).style.display = 'none';
     document.getElementById('khyati' + abc).style.display = 'none';
+
+    editposttitle = editposttitle.trim()
+    editpostdesc = editpostdesc.trim()
+
+    $('#editpostname' + abc).val(editposttitle);
+    $('#editpostdesc' + abc).html(editpostdesc);
 }
 
 
@@ -1692,6 +1710,7 @@ jQuery(document).ready(function ($) {
 
         },
         complete: function (response) {
+            $('.art_no_post_avl').hide();
             // Output AJAX response to the div container
             document.getElementById('test-upload-product').value = '';
             document.getElementById('test-upload-des').value = '';
@@ -1708,6 +1727,7 @@ jQuery(document).ready(function ($) {
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
             } else {
+                document.getElementById("art_no_post_avl").style.display = "none";
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
@@ -1743,15 +1763,6 @@ $(document).on('keydown', function (e) {
 });
 
 $('#file-1').on('click', function (e) {
-    $(".file-preview-thumbnails").html("");
-    clearFileInput(document.getElementById("file-1"));
-
-});
-
-
-
-$('#file-1').on('click', function (e) {
-
     var a = document.getElementById('test-upload-product').value;
     var b = document.getElementById('test-upload-des').value;
     document.getElementById("artpostform").reset();
