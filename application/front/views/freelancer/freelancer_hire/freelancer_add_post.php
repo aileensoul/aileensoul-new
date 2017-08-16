@@ -87,7 +87,7 @@
                                     <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
 <!--                                        <select tabindex="4" class="keyskil" name="skills[]" id="skills" multiple="multiple" style="cursor: default;"></select>-->
-                                         <input id="skills2" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
+                                        <input id="skills2" name="skills" tabindex="7" class="keyskil" size="90" placeholder="Enter SKills">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
