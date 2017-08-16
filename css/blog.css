@@ -1,5 +1,5 @@
 body.blog{position: initial;}
-
+.ft ul li{font-size: 14px;}
 .blog_cl{background-color:#f3f9fb;}
 .blog_header{background-color: white;}
 .blog_header ul{}
@@ -12,10 +12,10 @@ margin: 10px 0px;}
 .blog_header ul li a{}
 .blog-date-change{background-color: #1b8ab9; padding: 7px 0px; color:white; text-align: center;}
 .blog-picker{color:#fff;}
-.blog-left-comment{background-color: #dcecf2; text-align: center;}
+.blog-left-comment{background-color: #dcecf2; text-align: center; cursor: pointer;}
 .blog-comment-count{font-size: 22px;
-padding: 9px 0px 0px; color: #2e2e2e;}
-.blog-comment{font-size: 12px;
+padding: 9px 0px 0px; color: #2e2e2e; }
+.blog-comment{font-size: 12px; cursor: pointer;
 color: #2e2e2e;}
 .blog_search{background: white;
 	float: left;
@@ -31,6 +31,7 @@ border: 1px solid #d9d9d9; }
 .latest_post_posts ul{ margin: 0px;
 padding: 0px;
  }
+ footer ul li{padding: 0px;}
 .latest_post_posts ul li{ list-style: none; margin: 0; padding: 0;}
 .latest_post_posts ul li a{}
 .post_latest_left{width: 25%; float: left;}
@@ -130,11 +131,11 @@ border-bottom: 1px solid #d9d9d9;}
 .rifght_desc{font-size: 13px; color: #707070;}
 .rifght_fname{font-size:15px;  font-weight: bold;}
 
-.blog-comment-count a{color: #2e2e2e; cursor: pointer; cursor:text;}
-
+.blog-comment-count a{color: #2e2e2e; cursor: pointer; }
+.blog-comment-count{cursor: pointer;}
 .blog-comment-count a:hover{color: #2e2e2e;}
 .blog-left-comment:hover{background-color: #d2edf9}
-.blog-comment a{color: #2e2e2e; cursor: text;}
+.blog-comment a{color: #2e2e2e; cursor: pointer;}
 .blog_monthd{
 font-size: 17px;
 padding: 11px 5px ;
@@ -207,7 +208,7 @@ font-family: robotoregular;}
 .blog-tag .tag-line span{font-weight:bold;   color:#1b8ab9;}
 
 input:focus, textarea:focus, select:focus{border: 1px solid #1b8ab9;}
-input::-webkit-input-placeholder {
+input:focus:-webkit-input-placeholder {
     color: #1b8ab9;
 }
 input:focus::-webkit-input-placeholder {
@@ -215,10 +216,10 @@ input:focus::-webkit-input-placeholder {
 }
 
 /* Firefox < 19 */
-input:-moz-placeholder {
+input:focus:-moz-placeholder {
     color: #1b8ab9;
 }
-input:focus:-moz-placeholder {
+input:focus:focus:-moz-placeholder {
     color: #1b8ab9;
 }
 
@@ -229,7 +230,7 @@ input:focus::-moz-placeholder {
 }
 
 /* Internet Explorer 10 */
-input:-ms-input-placeholder {
+input:focus:-ms-input-placeholder {
     color: #1b8ab9;
 }
 input:focus:-ms-input-placeholder {
@@ -353,13 +354,16 @@ float: left;}
 
 }
 @media screen and (max-width: 767px) {
+			.blog_header {
+    padding-top: 102px;
+}
 	.fifth_part_py h4{font-size: 13px;}
 	.test_py ol {
     list-style-type: disc;
     padding: 0px 15px;
 }
 		.main-comtai h1{padding: 25px 0px 0px !important; font-size: 20px;	}
-	}
+
 
 	.blog header h2.logo{
 		display: block;
@@ -371,14 +375,12 @@ float: left;}
 .second_paret_ts ol li h4{ font-size: 15px;	  }
 	.term_desc{width: 80% !important;}
 .comment_box{margin-bottom: 80px;}
-.blog header h2.logo a{font-size: 24px;}
-	.blog_header {
-    padding-top: 102px;
-}
-.btn-right{padding-top: 4px !important; padding-right: 0px!important}
+.blog header h2.logo a{font-size: 32px;}
+
+.btn-right{padding-top: 0px !important; padding-right: 0px!important}
 	.term_desc{padding: 20px 0px 80px !important;}
 	.main-inner .middle-main{padding: 10px 0}
-	.date_blog_left{position: absolute; width: 80px; top: 10px; left: 25px;}
+	.date_blog_left{position: absolute; width: 90px; top: 10px; left: 25px;}
 	.social_icon_bloag li a{padding:4px; }
 	.date_blog_right{width: 100%;}
 	.common-form1 h3{margin:20px 0;}
@@ -393,6 +395,7 @@ float: left;}
 */	.blog .main-inner header{padding: 5px 0px;}
  }
 @media screen and (max-width: 540px) {
+
 	.main-comtai h1 {
     padding: 47px 0px 0px !important;
     font-size: 20px;
@@ -418,8 +421,15 @@ ol li h4{font-size: 16px;}
 			text-align: center;}*/
 }
 
-@media screen and (max-width: 479px) {
-
+@media screen and (max-width: 320px) {
+.blog_mdate{font-size: 18px;}
+.date_blog_left{width: 62px;}
+.blog-date-change{padding: 0px; line-height: 13px;}
+.blog-comment-count{padding: 0px;}
+.blog-left-comment{line-height: 20px;}
+.blog_monthd{font-size: 15px;}
+.blog_moyear{font-size: 14px;}
+.blog-comment{font-size: 9px;}
 ol li h4 {
     font-size: 15px;
     line-height: 1.5;

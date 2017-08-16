@@ -22,15 +22,31 @@ width: 25px; }
 .header2 ul li a.contact_notification_available .bu_req{  background-image: url(../img/icon_contact_request.png);}
 .dropdown_hover #art_profile:hover{color:white;}
 .dropdown_hover #art_profile{font-family: robotoregular; color: #d7ecf5; font-size: 15px; letter-spacing:0.5;}
-.u2{font-family: robotoregular; color: #d7ecf5;}
-.u2:hover{color: #fff;}
-.dropdown .img-circle{border: 2px solid #d7ecf5; background:#d7ecf5;}
+.u2{font-family: robotoregular; /*color: #d7ecf5;*/}
+/*.u2:hover{color: #fff;}
+*/.dropdown .img-circle{border: 2px solid #d7ecf5; background:#d7ecf5;}
 .header ul li a i{color: #d7ecf5;}
 .dropdown_hover span i {
-    margin-right: -8px;
+    margin-right: -9px;
     padding-left: 6px;
-    font-size: 17px;
+    font-size: 18px;
 }
+.left_iner_img_profile{
+  float: left;
+
+position: relative;
+overflow: hidden;
+
+}
+.left_iner_img_profile img{position: absolute !important;
+left: 50%;
+top: 50%;
+height: 100%;
+width: auto!important;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%,-50%);
+transform: translate(-50%,-50%);
+max-width: inherit;}
 #a_li{position:relative}
 #acon {
  background-color: #fff;
@@ -121,7 +137,7 @@ width: 25px; }
 }
 .inner_search{}
 .search_head{border:1px solid #d9d9d9; padding:5px 10px;}
-.cover .fancybox-slide > *{padding:0; /*background:none;*/ border-radius: 5px;}
+.cover .fancybox-slide > *{padding:0 !important; /*background:none;*/ border-radius: 5px;}
 .fancybox-close-small::after{background:none; font-size:30px; color:#777;}
 .fancybox-close-small:hover{background:none;}
 .fancybox-close-small:hover::after{background:none;}
@@ -180,7 +196,7 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 /*.job-saved-box{width:100%; float:left; border:1px solid #d9d9d9; margin-bottom:50px; border-radius:4px;}*/
 .contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px; /*border-top:none;*/}
 #row2{border:1px solid #d9d9d9; border-top:0;}
-.chat_nobcx{margin-top:15px; margin-bottom:15px;}
+.chat_nobcx{margin-top:10px; margin-bottom:5px;}
 
 #search .new-search-input{height:215px;}
 #search .new-search-input .btn.btn-primary{width:auto;}
@@ -188,23 +204,18 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .bg-images.no-cover-upload{
 	background:#fff;
 	border-bottom:1px solid #d9d9d9;
-/* IE10+ */ 
-background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-
-/* Opera */ 
-background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-
-/* W3C Markup */ 
-background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
+	/* IE10+ */ 
+	background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+	/* Opera */ 
+	background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
+	/* W3C Markup */ 
+	background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
 }
 .banner-box{border-bottom:1px solid #d9d9d9;}
 #notification_inside h6{height:auto;}
@@ -478,8 +489,31 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 .complete_profile .circle-1{height:214px;}
 
 /*zalak 11-8*/
+.post-design-commnet-box .editable_text {
+    min-height: 39px !important;
+}
 
-#notificationContainer{overflow: hidden; border-radius: 3px;}
+
+ 
+.all, .all-h, .header-icon-notification, .header-icon-notification-h
+{display: inline-block; background: url(../img/index.png) no-repeat; overflow: hidden; text-indent: -9999px; text-align: left;}
+
+ 
+.header ul li a .all:hover{ background-position: -0px -0px; width: 32px; height: 32px; }
+.all { background-position: -32px -0px; width: 32px; height: 32px; }
+.header ul li a .header-icon-notification:hover{ background-position: -0px -32px; width: 32px; height: 32px; }
+.header-icon-notification{ background-position: -32px -32px; width: 32px; height: 32px; }
+
+.edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
+
+.clonedInput h6{padding: 5px 0px;}
+.comment-edit-butn button{padding: 8px 10px;}
+#notificationContainer .content.mCustomScrollbar{overflow: hidden; border-radius: 3px;}
+.post-design-pro-img_follow{padding: 11px 5px 0px 5px;}
+.progress-bar{background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;}
+/*.header2 ul li a{padding:8px 12px;}
+.header2 ul li a#InboxLink{padding:12px 12px 4px;}*/
+.chat_nobcx .post-img-div{width:50px; height:50px; padding:16px 0;}
 
 
 @media screen and (min-width: 768px) {
@@ -521,12 +555,13 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 	.edit_profile_progress{display:none;}
 }
 @media screen and (max-width: 767px) {
+  .designation_rec{width: 50%!important;}
 	.common-form1 h3{margin:20px 0;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
 	header .header{/*padding-top:5px;*/}
 	.header ul li a{padding-top:11px !important;}
-	#notificationLink span{top:7px !important;}
+	#notificationLink span{top:10px !important;}
 	.backdiv-mob{display:block;}
 	#onload-Modal{/*display:none !important;*/}
 	.job-menu-profile{margin-top:0;}
@@ -535,11 +570,31 @@ background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%
 	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
 }
 @media screen and (max-width: 479px) {
+  .designation_rec {
+  width: 39% !important;
+}
+.search_button button{width: 78px;
+padding: 5px 8px; font-size: 12px;}
+  .floatBarsG{width: 20px; height: 20px;}
+  #floatBarsG {
+    position: absolute;
+    width: 19%;
+    height: 28px;
+    margin-left: -117px;
+    left: 68%;
+    margin-top: -7%;
+    transform: scale(0.3);
+}
 	.experience_year{width:100%; margin-right:0; margin-bottom:15px;}
 	.experience_month{width:100%;}
 	#notificationLink span{margin-left:6px;}
 }
 @media screen and (max-width: 360px) {
+	#industry option{width:100%;}
 	.designation_rec_1{width: 75%;}
 	.bg-search .header2{margin-top:-7px;}
+}
+
+@media screen and (max-width: 320px){
+  .main-txt{width: 82%;}
 }

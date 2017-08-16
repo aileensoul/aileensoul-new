@@ -446,14 +446,14 @@ a:focus {
 .header2 ul li a {
     font-size: 15px;
     color: #fff;
-    padding: 8px 18px;
+    padding: 8px 12px;
     display: inline-block;
  
 }
 .dropdown_hover .dropdown-content_hover a:hover{color: white; background-color: #1b8ab9;}
 .select2-drop{z-index: 0!important;}
 .header2 #InboxFooter a.no_msg_h:hover{color: none; text-decoration: none;}
-.header2 ul li a#InboxLink{padding:12px 20px 4px;}
+.header2 ul li a#InboxLink{padding:12px 11px 4px;}
 .header2 ul li{border-right: 0.2px solid #1985b3;}
 .header2 ul li:last-child {
     border-right: none;
@@ -756,10 +756,18 @@ img.aligncenter {
     width: 67px;
     z-index: 3;
     position: relative;
+    overflow: hidden;
 }
 .left_iner_img_profile img {
-    height: 100%;
-    width: 100%;
+height: 100%;
+position: absolute;
+left: 50%;
+top: 50%;
+height: 100%;
+width: auto;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%,-50%);
+transform: translate
 }
 .right_left_box_design {
     width: 76%;
@@ -869,7 +877,7 @@ line-height: 1;}
 }
 .action-button #message_count {
     position: absolute;
-    right: 12px;
+    right:6px;
     top: 3px;
     text-align: center;
     border-radius: 50%;
@@ -1697,8 +1705,11 @@ margin-bottom: 15px;
     color: #fff;
     padding: 8px 20px;
 }
+input:focus, textarea:focus, select:focus{  border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;}
 #jobseeker_regform input:focus{   border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;}
+    #jobseeker_regform input#submit:focus{border: none!important;}
     #industry:focus{   border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;}
 
@@ -2335,7 +2346,7 @@ ul.business_pf_ct_person_detail li b {
     margin-top: -3px;
     font-size: 10px;
     top:10px;
-    line-height: 8px;
+    line-height: 9px;
     left: 15px;
 }
 #message_count {} #notificationLink:hover span {
@@ -3917,17 +3928,18 @@ a:focus {
     }
      .all-list ul{
         display: inline-block;
+		padding:15px 0 10px;
      }
      .all-list ul li{
         padding:10px;
         display: inline-block;
         list-style-type: none;
         margin: 0;
-        float: left;
+        /*float: left;*/
      }
      .all-list ul li .list-box{
         width: 235px;
-        height: 255px;
+        height: 265px;
         background: #fff;
         border:1px solid #ddd;
         border-radius: 4px;
@@ -4128,8 +4140,8 @@ display: inline-block;
         font-family:arial;
     }
     .addcontact-text span{color:#404040; font-size:13px;}
-/*    #addcontactBody li:hover{background-color:e9f4f8; }
-        #addcontactBody li:hover .addcontact-text{}*/
+    #addcontactBody li:hover{background-color:e9f4f8; }
+        #addcontactBody li:hover .addcontact-text{}
     .addcontact-text span{
         display: block;
         line-height: 1;
@@ -4200,7 +4212,8 @@ display: inline-block;
 #notificationContainer {
     background-color: #fff;
    /* border: 1px solid rgba(100, 100, 100, .4);*/
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
     overflow: visible;
     position: absolute;
     top: 25px;
@@ -4302,7 +4315,7 @@ display: inline-block;
 .notification-data-inside {
     margin-left: 65px;
     margin-top: -55px;
-    padding-right: 12px;
+    padding-right: 10px;
 }
 .notification-data-inside h6 {
 /*    font-weight: 600;*/
@@ -4363,7 +4376,8 @@ li.active2 .notification-database:hover {
 #InboxContainer {
    border-radius: 5px;
 background-color: #fff;
--webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
 overflow: visible;
 position: absolute;
 top: 25px;
@@ -5699,7 +5713,7 @@ form {
     font-size: 16px;
     resize: none;
 }
-#msg_block .input-group .comment{line-height: 1;}
+#msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
 .close-popup {
     color: #000000;
     background-color: #ffffff;
@@ -7853,7 +7867,7 @@ body.modal-open {
     width: 100%;
     height: 100%;*/
 }
-.modal-close,
+.modal-close, .posterror-modal-close
 .modal-close1 {
     height: 30px !important;
     width: 30px !important;
@@ -8969,7 +8983,7 @@ fieldset .add_post_btns {
 .profile-job-details .post_title {
     font-size: 17px;
     font-weight: 600;
-    width: 72%;
+    width: 60%;
     word-break: break-word;
     word-wrap: break-word !important;
     word-break: break-word !important;
@@ -10107,6 +10121,8 @@ fieldset .add_post_btns:hover {
 .profile-job-profile-button ul li a.main_search_head{font-weight: 600; font-size: 16px; font-family: robotoregular;}
 .apply-btn a {
     border: 1px solid #1b8ab9;
+	min-width:72px;
+	text-align:center;
 }
 .dropdown-content2 a i {
     padding-right: 13px;
@@ -10500,9 +10516,9 @@ left: 48px;
 #notification_main_in .khyati li a{padding: 0px!important;}
 #notificationTitle .see_link a:hover{text-decoration-line: underline; color: #1b8ab9;}
 #notificationTitle .see_link a{color: black;
-font-size: 15px;
+font-size: 14px;
 float: right;
-padding: 4px !important;}
+padding: 0px 4px !important;}
 .butt_rec {
     background: #1b8ab9 !important;
     color: #fff !important;
@@ -10678,12 +10694,15 @@ display: initial;}
     background-color: #fff;
     /* border-left: 1px solid #e4e5e7;*/
 }
+a.mesg_link:hover, a.mesg_link:focus{color: white;}
 .people-list .search {
     padding-top: 16px!important;
     padding-right: 0px!important;
     padding-left: 22px!important;
     padding: 13px;
 }
+   .common-form fieldset input:focus{   border: 1px solid #1b8ab9 !important;       
+        color: #1b8ab9!important;}
   .people-list .search input:focus .fa-search{color: #1b8ab9;}       
      .people-list .search input:focus{   border-bottom: 1px solid #1b8ab9 !important;       
         color: #1b8ab9!important;}
@@ -10880,6 +10899,7 @@ display: initial;}
     color: #000033;
     max-width:96%;
     float:left;
+	word-wrap:break-word;
 }
 /*.chat .chat-history .other-message:after {
     border-bottom-color: #d8eff6;
@@ -14531,7 +14551,7 @@ text-overflow: ellipsis;}
     width: auto;
     color: #1b8ab9;
 }
-#bidmodal {
+#bidmodal{
     z-index: 10003;
 }
 .alert.alert-danger {
@@ -14551,6 +14571,11 @@ text-overflow: ellipsis;}
 }
 /*
 zalak change*/
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a.butt_rec  {letter-spacing: 1px;
+width: 90px;
+padding: 9px 15px;
+background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
+border: none;}
 .file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}
 .popup-text textarea {
     overflow-y: hidden;
@@ -14788,7 +14813,10 @@ text-align: center;}
 }
 .header ul li.dropdown-user a {
     padding-top: 13px !important;
-   
+   color:#d7ecf5;
+}
+.header ul li.dropdown-user a:hover{
+	color:#fff;
 }
 
 .header ul li a {
@@ -14887,7 +14915,7 @@ header.animated {
     margin:0;
     float:left;
 }
-.cover .modal-close{line-height:30px;}
+.cover .modal-close, .posterror-modal-close{line-height:30px;}
 
 /*** 26-7-17 message  ***/
 /*ripple*/
@@ -14936,10 +14964,10 @@ div .comment {
     padding-right: 150px!important;
     word-break: break-all;
     background-color: #fff;
-    padding: 20px 20px 16px;
+    padding: 10px 20px 10px;
     cursor: inherit;
     font-size: 13px;
-    min-height: 60px;
+    min-height: 41px;
     position: relative;
     max-height: 120px;
     overflow-y: scroll;
@@ -14967,9 +14995,7 @@ div .comment {
 .chat_nobcx .post-img-div{float:left;}
 .people-list .about{width:76%;}
 
-.ui-autocomplete {
-    max-width: 300px!important;
-}
+.ui-autocomplete { max-width: 300px!important;}
 
 .msg_right{max-width: 80%;
 float: right; position:relative;}
@@ -15071,11 +15097,7 @@ left: 5px;
 .messagedelete .fa{color:#777;}
 .messagedelete:hover .fa{color:#1b8ab9;}
 .chat-header a:hover{color:#156f95;}
-
-
 .job_edit_pr{padding-left: 245px;}
-
-
 
 .post-design-desc  #editpostdata a{font-weight: 600}
 .chat_heae_img{border:1px solid #d9d9d9;}
@@ -15083,18 +15105,31 @@ left: 5px;
 .banner-img .cover-pic .cancel-result:hover{background-color: #fff!important;color: #1b8ab9;border:1px solid #1b8ab9;}
 .custom-row  div#row2 {background-color: #fff;}
 .dropdown-content2 a{color: #787878!important;}
-
 .dropdown-content2 a:hover{color: white!important;}
-
 .dropdown-content2 a:hover .h4-img{background: url(../img/icon_delete_white.png) no-repeat;background-size:100%;}
-
 .dropdown-content2 a:hover .h3-img{background:url(../img/icon_edit_profile_white.png) no-repeat;background-size:100%;}
-
 .dropdown-content2 a:hover .h2-img{background: :url(../img/icon_view_profile_white.png) no-repeat,background-size:100%;}
-
 .profile-job-profile-button div.buisness-profile-pic-candidate{margin-left: 17px!important;}
 
 
+.all-box li img{border:none!important;}
+.header-left-menu ul{margin-bottom: -1px ;}
+.popup-img-in img{border:1px solid #d9d9d9 !important; }
+.notification-pic img{border:1px solid #d9d9d9 !important;}
+.about-content{width: 80% !important;line-height: 28px !important;}
+
+
+/***  harshad  ***/
+.chat_nobcx .post-img-div{width:42px; height:42px; padding:11px 0;}
+
+
+.header .mCSB_container ul{width:100%; float:left;}
+.header .mCSB_container ul li{width:100%; border-right:none;}
+.header .mCSB_container ul li a{padding-left:0; padding:0 10px 0 0 !important; width: 100%; letter-spacing:0;}
+.header .mCSB_container .day-text{padding-top:1px;}
+.header2 .mCSB_container li{border-right:0px !important;}
+.header2 ul.notification_data_in_h2 li .data_noti_msg{margin-top:2px; width:100%; float:left;}
+header .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical, header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {margin:0;}
 
 
 /***  media query  ***/
@@ -15301,6 +15336,8 @@ padding-top: 7px !important;}
     }
 }
 @media screen and (max-width: 991px) {
+
+    input, textarea, select{font-size: 12px!important;}
     .all-list ul li .list-box{width: 172px;}
     .pt120 {padding-top: 100px;}
     .cover-pic {position: absolute !important; top: inherit; right: -4%; bottom: 48%; z-index: 99;}
@@ -15572,6 +15609,9 @@ padding-top: 7px !important;}
     }
 }
 @media screen and (max-width: 767px) {
+    #add_contact #addcontactContainer::before {
+    right: 219px;
+}
   .mob-comment {
         display: block;
         position: absolute;
@@ -15584,7 +15624,7 @@ padding-top: 7px !important;}
         padding: 0px 0 7px;
         font-size: 22px;
     }
-    .action-button #message_count{right:175px;}
+    .action-button #message_count{right:168px;}
     .hidden-mob {
         display: none;
     }
@@ -15829,7 +15869,6 @@ padding-top: 7px !important;}
     }
     #notificationLink span {
         top: 3px !important;
-        right: 5px !important;
     }
    
     .header-left-menu {
@@ -16082,9 +16121,7 @@ padding-top: 7px !important;}
         width: 100%;
         top: 35px;
     }
-    #add_contact #addcontactContainer::before {
-        right: 155px;
-    }
+    
     #paddingtop_fixed_art {
         padding-top: 22px !important;
     }
@@ -16232,7 +16269,8 @@ padding-top: 7px !important;}
     }
 }
 @media screen and (max-width: 540px) {
-
+    .common-form1 h3{font-size: 15px;}
+    select{padding: 5px}
     .h2-smladd{margin-top: 0px;}
     .like_user_list_main_desc{width: 78%;}
     .cls-ve{top: 23px; /*right: 3px;*/}
@@ -16328,7 +16366,7 @@ padding-top: 7px !important;}
         padding-left: 12px;
     }
     .profile-job-details .job_companyname {
-        width: 250px;
+        width: 50%;
     }
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
         font-size: 12px;
@@ -16346,6 +16384,9 @@ padding-top: 7px !important;}
     .people-list .search input{width:95%;}
 }
 @media screen and (max-width: 479px) {
+    #add_contact #addcontactContainer::before {
+    right: 218px;
+}
     .mob-comment{right: 0;}
     .padd_set .change-password{padding: 0;}
   .post-design-box .post-design-desc .editable_text{width: 80%;}
@@ -16589,17 +16630,17 @@ padding-top: 7px !important;}
         font-size: 16px;
     }
     .profile-job-details .job_companyname {
-        font-size: 10px;
-        line-height: 1;
-        font-weight: 500;
-    }
+      /*  font-size: 10px;
+      */  line-height: 1;
+      /*  font-weight: 500;
+   */ }
     .profile-job-details .display_inline {
         font-size: 12px;
         line-height: 1;
-        font-weight: 600;
+        /*font-weight: 600;*/
     }
     .alert {
-        font-size: 16px;
+      font-size: 16px;
       font-size: 16px;
    
     padding-left: 5px !important;
@@ -16715,6 +16756,9 @@ padding-top: 7px !important;}
 }
 @media screen and (max-width: 360px) {
     .hout_noti{font-size: 11px;}
+    .action-button #message_count {
+    right: 163px;
+}
     .job-saved-box .notification-box ul li{padding: 0;}
     #notification_inside h6{font-size: 12px !important;}
     #notification_inside{   padding: 5px 5px 9px 1px !important;
@@ -16723,6 +16767,8 @@ margin-left: 7px !important;}
     right: 131px;
 }
     .profile-job-details .display_inline{font-size: 10px;}
+    .profile-job-details .job_companyname {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 10px;}
     .created_date{font-size: 10px;}
     #acon::before{right: 125px!important;}
     .header2 ul li a#addcontactLink{padding: 6px 2px !important;}

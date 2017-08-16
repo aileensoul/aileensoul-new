@@ -341,6 +341,15 @@ a:hover{
   -webkit-text-fill-color: transparent;
   
 }
+
+.carousel-fade .carousel-caption h1{/*	font-size: 34px;*/
+	font-family: 'Lato', sans-serif;
+	font-weight: 600;
+	margin-bottom:0;
+	color:#1b8ab9;
+	background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 .carousel-fade .carousel-caption p{
 	font-size:20px;
 	color:#2b2c2c;
@@ -449,7 +458,7 @@ a:hover{
 	display:inline-block;
 	width:100%;
 }
-
+.fancybox-slide > *{font-size: 24px; padding: 45px!important;}
 
 
 /***  footer  ***/
@@ -1058,7 +1067,8 @@ h3.text-effect span {
 }
 
 /***  validation  ***/
-.error{font-size: 12px; color: #ff0000 !important; font-weight:normal;}
+.error{color: #ff0000 !important; font-weight:normal;}
+label.error{font-size: 12px; color: #ff0000 !important; font-weight:normal;}
 #forgot_password .modal-body label.error{color: #ff0000 !important;}
 .login .form-group select{top: 0;}
 .dob{position: relative;}
@@ -1253,11 +1263,11 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .por_content ul li{padding:14px 10px; list-style-type:none; display: -webkit-flex; /* Safari */
     -webkit-align-items: center; /* Safari 7.0+ */
     display: flex;
-    align-items: center; border-bottom:1px solid #f3f3f3; margin:0;}
+    align-items: center; border-bottom:1px solid #f3f3f3; margin:0; width:100%; float:left;}
 .por_content ul li .sub-li li{display:inherit;}
 .por_content ul li:last-child{border-bottom:0;}
 .por_content ul li img{margin-right:5px; float:left; width:55px; height:55px;}
-.por_content ul li .pro-text{font-size:15px; font-weight:bold; width:220px;}
+.por_content ul li .pro-text{font-size:15px; font-weight:bold; width:220px; float:left;}
 .por_content ul li .pro-text .count{width:20px; float:left;}
 .por_content ul li .pro-text .text{float:left; width:90%;}
 .sub-text{padding:0 15px; font-size:12px; color:#000; width:100%; float:left;}
@@ -1277,7 +1287,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 		padding: 0px;
 		margin: 0px;
 		position: fixed;
-		right: -145px;
+		right: -148px;
 		top:50%;
 		width: 200px;
 		z-index:9;
