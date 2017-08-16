@@ -4,7 +4,6 @@
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -61,7 +60,7 @@
                                                         $sub_lname = substr($lname, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
-                                                            <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                         </div>
                                                         <?php
                                                     }
