@@ -287,22 +287,22 @@ function imgval() {
             });
 // CODE FOR COUNTRY,STATE, CITY CODE END
 
-//SELECT2 AUTOCOMPLETE START FOR SKILL
- $('#skills').select2({
-                placeholder: 'Find Your Skills',
-                ajax: {
-                    url:  base_url + "freelancer/keyskill",
-                    dataType: 'json',
-                    delay: 250,
-                    processResults: function (data) {
-                        return {
-                            results: data
-                        };
-                    },
-                    cache: true
-                }
-            });
-//SELECT2 AUTOCOMPLETE FOR SKILL END
+////SELECT2 AUTOCOMPLETE START FOR SKILL
+// $('#skills').select2({
+//                placeholder: 'Find Your Skills',
+//                ajax: {
+//                    url:  base_url + "freelancer/keyskill",
+//                    dataType: 'json',
+//                    delay: 250,
+//                    processResults: function (data) {
+//                        return {
+//                            results: data
+//                        };
+//                    },
+//                    cache: true
+//                }
+//            });
+////SELECT2 AUTOCOMPLETE FOR SKILL END
 //SCRIPT FOR COPY-PASTE START
  var _onPaste_StripFormatting_IEPaste = false;
             function OnPaste_StripFormatting(elem, e) {
@@ -349,4 +349,52 @@ function imgval() {
 
             });
 //SCRIPT FOR DATEPICKER END 
+ <!--NEW SCRIPT FOR SKILL START-->
 
+    $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) { 
+            return split( term ).pop();
+        }
+        $( "#skills2" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url + "general/get_skill", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function( event, ui ) {
+               
+                var terms = split( this.value );
+                if(terms.length <= 20) {
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push( ui.item.value );
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( ", " );
+                    return false;
+                }else{
+                    var last = terms.pop();
+                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                    $(this).effect("highlight", {}, 1000);
+                    $(this).attr("style","border: solid 1px red;");
+                    return false;
+                }
+            }
+        });
+    });
+
+<!--NEW SCRIPT FOR SKILL END-->

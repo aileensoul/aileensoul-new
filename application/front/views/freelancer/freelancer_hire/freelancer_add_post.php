@@ -7,7 +7,7 @@
         </title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+       
         <!-- This Css is used for call popup start -->
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" /> 
         <!--call popup end-->
@@ -86,7 +86,8 @@
                                     </fieldset>
                                     <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                        <select tabindex="4" class="keyskil" name="skills[]" id="skills" multiple="multiple" style="cursor: default;"></select>
+<!--                                        <select tabindex="4" class="keyskil" name="skills[]" id="skills" multiple="multiple" style="cursor: default;"></select>-->
+                                         <input id="skills2" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
@@ -263,7 +264,7 @@
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+       
 
         <!-- This Js is used for call popup -->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
@@ -434,5 +435,6 @@
             #skills-error{margin-top: 42px;}
             #example2-error{margin-top: 41px;}
         </style>
+       
     </body>
 </html>

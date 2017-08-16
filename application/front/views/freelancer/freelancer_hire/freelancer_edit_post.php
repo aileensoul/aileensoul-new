@@ -76,11 +76,12 @@
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                    <select tabindex="4" name="skills[]" id ="skill1" multiple="multiple" style="width:100% " class="keyskil">
+                                    <input id="skills2" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
+<!--                                    <select tabindex="4" name="skills[]" id ="skill1" multiple="multiple" style="width:100% " class="keyskil">
                                         <?php foreach ($skill1 as $skill) { ?>
                                             <option value="<?php echo $skill['skill_id']; ?>"><?php echo $skill['skill']; ?></option>
                                         <?php } ?>
-                                    </select>
+                                    </select>-->
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
@@ -396,10 +397,10 @@
             }
             //Leave Page on add and edit post page End
         </script>
-        <script>
-            var complex = <?php echo json_encode($selectdata); ?>;
+<!--        <script>
+            var complex = <?php //echo json_encode($selectdata); ?>;
             $("#skill1").select2().select2('val', complex)
-        </script>
+        </script>-->
 
         <script>
             $(function () {
