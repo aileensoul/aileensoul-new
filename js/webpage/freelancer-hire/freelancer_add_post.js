@@ -175,13 +175,8 @@ function imgval() {
                             required: true,
                             regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
                         },
-
-                        'skills[]': {
-                            require_from_group: [1, ".keyskil"]
-                        },
-                        other_skill: {
-                            require_from_group: [1, ".keyskil"],
-                            regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                        skills: {
+                            required: true,
                         },
                         fields_req: {
                             required: true,
@@ -214,13 +209,10 @@ function imgval() {
                             required: "Post name Is Required.",
                         },
 
-                        'skills[]': {
-                            require_from_group: "You must either fill out 'Keyskills' or 'Other Skills'"
+                        skills: {
+                            required: "Skill is Required"
                         },
 
-                        other_skill: {
-                            require_from_group: "You must either fill out 'Keyskills' or 'Other Skills'"
-                        },
                         fields_req: {
                             required: "Please Select Field of Requirement",
                         },

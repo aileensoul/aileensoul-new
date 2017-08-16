@@ -86,17 +86,16 @@
                                     </fieldset>
                                     <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-<!--                                        <select tabindex="4" class="keyskil" name="skills[]" id="skills" multiple="multiple" style="cursor: default;"></select>-->
-                                        <input id="skills2" name="skills" tabindex="7" class="keyskil" size="90" placeholder="Enter SKills">
+                                        <input id="skills2" name="skills" tabindex="7" size="90" placeholder="Enter SKills">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
-                                    <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
+<!--                                    <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
                                 <label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
                                         <input name="other_skill" class="keyskil"  type="text" id="other_skill" tabindex="5" placeholder="Enter Your Other Skill" />
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('other_skill'); ?>
-                                    </fieldset>
+                                    </fieldset>-->
                                     <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                         <label><?php echo $this->lang->line("experiance"); ?>:</label>
                                         <select tabindex="6" name="year" id="year">

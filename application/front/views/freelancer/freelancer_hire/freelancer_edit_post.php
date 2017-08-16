@@ -76,20 +76,15 @@
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                    <input id="skills2" name="skills" tabindex="7"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2.',';} ?>">
-<!--                                    <select tabindex="4" name="skills[]" id ="skill1" multiple="multiple" style="width:100% " class="keyskil">
-                                        <?php foreach ($skill1 as $skill) { ?>
-                                            <option value="<?php echo $skill['skill_id']; ?>"><?php echo $skill['skill']; ?></option>
-                                        <?php } ?>
-                                    </select>-->
+                                    <input id="skills2" name="skills"  tabindex="7"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2;} ?>">
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
-                                <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
+<!--                                <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
                                     <label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
                                     <input name="other_skill" tabindex="5" type="text" id="other_skill" class="keyskil" placeholder="Enter Your Other Skill" value="<?php echo $freelancerpostdata[0]['post_other_skill']; ?>" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('other_skill'); ?>
-                                </fieldset>
+                                </fieldset>-->
                                 <fieldset class="full-width two-select-box fullwidth_experience"> 
                                     <label>Experience:</label>
 

@@ -166,12 +166,8 @@ $(document).ready(function () {
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
 
             },
-            'skills[]': {
-                require_from_group: [1, ".keyskil"]
-            },
-            other_skill: {
-                require_from_group: [1, ".keyskil"],
-                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            skills: {
+                required: true,
             },
             fields_req: {
                 required: true,
@@ -205,12 +201,8 @@ $(document).ready(function () {
             post_name: {
                 required: "Post name Is Required.",
             },
-            'skills[]': {
-                require_from_group: "You must either fill out 'Keyskills' or 'Other Skills'",
-            },
-
-            other_skill: {
-                require_from_group: "You must either fill out 'Keyskills' or 'Other Skills'",
+            skills: {
+                required: "skill is Required",
             },
             fields_req: {
                 required: "Please Select Field of Requirement",

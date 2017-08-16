@@ -1620,7 +1620,6 @@ class Freelancer extends MY_Controller {
      //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
       }
-  
      if($skilldata){
          $skill[] = $skilldata[0]['skill_id'];
            }else{
@@ -2052,8 +2051,8 @@ class Freelancer extends MY_Controller {
         $this->data['city1'] = $this->data['freelancerpostdata'][0]['city'];
         $this->data['state1'] = $this->data['freelancerpostdata'][0]['state'];
 
-        $skildata = explode(', ', $this->data['freelancerpostdata'][0]['post_skill']);
-        $this->data['selectdata'] = $skildata;
+//        $skildata = explode(', ', $this->data['freelancerpostdata'][0]['post_skill']);
+//        $this->data['selectdata'] = $skildata;
 
 
 //code for search 
@@ -2127,6 +2126,7 @@ class Freelancer extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
+        $skills = explode(',',$skills); 
         $this->form_validation->set_rules('post_name', 'Post Name', 'required');
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         //  $this->form_validation->set_rules('fields_req', 'Field required', 'required');
@@ -2150,11 +2150,38 @@ class Freelancer extends MY_Controller {
         $datereplace = $this->input->post('last_date');
         $lastdate = str_replace('/', '-', $datereplace);
 
+        // skills  start   
+    
+      if(count($skills) > 0){ 
+          
+          foreach($skills as $ski){
+     $contition_array = array('skill' => trim($ski),'type' => 1);
+     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+      if(count($skilldata) < 0){ 
+           $contition_array = array('skill' => trim($ski),'type' => 5);
+     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+      }
+     if($skilldata){
+         $skill[] = $skilldata[0]['skill_id'];
+           }else{
+                 $data = array(
+                    'skill' => trim($ski),
+                    'status' => '1',
+                    'type' => 5,
+                    'user_id' => $userid,
+                 );
+      $skill[] = $this->common->insert_data_getid($data, 'skill');
+           }
+          }
+        //  die();
+          $skills = implode(',',$skill); 
+      }
+        
         $data = array(
             'post_name' => trim($this->input->post('post_name')),
             'post_description' => trim($this->input->post('post_desc')),
             'post_field_req' => trim($this->input->post('fields_req')),
-            'post_skill' => implode(', ', $skills),
+            'post_skill' => $skills,
             'post_other_skill' => trim($this->input->post('other_skill')),
             'post_est_time' => trim($this->input->post('est_time')),
             'post_rate' => trim($this->input->post('rate')),
