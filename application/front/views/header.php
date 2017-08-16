@@ -56,7 +56,7 @@
 
 
         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                            <li id="a_li"><a class=" action-button shadow animate" onclick="return leave_page(5)"><span class="img-all"></span></a>
+                                            <li id="a_li"><a class=" action-button shadow animate" onclick="return leave_page(5)"> <span class="all"></span></a>
 
                                                 <div id="acon">
                                                     <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
@@ -235,7 +235,7 @@
           </a></li> -->
                                         <!-- general notification start -->
                                         <li id="notification_li">
-                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="img-noti"></i>
+                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em><i class="header-icon-notification "></i>
 
                                                 <span id="notification_count"></span>
 
@@ -489,7 +489,7 @@
         <?php } else { ?>
 
                                         <li id="a_li">
-                                            <a id="alink" class=" action-button shadow animate" href="javascript:void(0)"> <span class="img-all"></span>
+                                            <a id="alink" class=" action-button shadow animate" href="javascript:void(0)">  <span class="all"></span>
                                             </a>
 
                                             <div id="acon">
@@ -582,7 +582,7 @@
           </a></li> -->
                                     <!-- general notification start -->
                                     <li id="notification_li">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="img-noti"></i>
+                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
 
                                             <span id="notification_count"></span>
 

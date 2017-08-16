@@ -75,7 +75,7 @@
                             </div>
                             <div class="">
                                 <ul class="" id="dropdownclass">
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="bu_home"></span></a>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <!-- Friend Request Start-->
                                     <li id="add_contact">
@@ -93,7 +93,7 @@
                                         <?php if ($message_count) { ?>
                                                                            <!--  <span class="badge bg-theme"><?php //echo $message_count;      ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
                                             <span id="message_count"></span>
                                         </a>
@@ -113,12 +113,16 @@
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('business-profile/business_resume/' . $businessdata[0]['business_slug']); ?>"><span class="h2-img h2-srrt"></span>View Profile</a> 
-                                                <a href="<?php echo base_url('business-profile/business_information_update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                <a href="<?php echo base_url('business-profile/business_resume/' . $businessdata[0]['business_slug']); ?>">
+                                                <span class="icon-view-profile edit_data"></span>
+      <span> View Profile </span></a> 
+                                                <a href="<?php echo base_url('business-profile/business_information_update'); ?>">
+                                                <span class="icon-edit-profile edit_data"></span>  
+      <span>Edit Profile </span></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
-                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="icon-delete edit_data"></span>  <span>Deactive Profile</span></a>
                                             </div>
                                         </div>
                                     </li>
@@ -162,7 +166,7 @@
                             </div>
                             <div class="">
                                 <ul class="" id="dropdownclass">
-                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="bu_home"></span></a>
+                                    <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <!-- Friend Request Start-->
                                     <li id="add_contact">
@@ -178,7 +182,7 @@
                                         </div>
                                     </li>  
                                     <li id="Inbox_link">
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
                                         </a>
                                         <div id="InboxContainer">
@@ -195,12 +199,16 @@
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
-                                                <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>"><span class="h2-img h2-srrt"></span>View Profile</a> 
-                                                <a href="<?php echo base_url('business-profile/business-information-edit'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>">
+                                                <span class="icon-view-profile edit_data"></span>
+      <span> View Profile </span></a> 
+                                                <a href="<?php echo base_url('business-profile/business-information-edit'); ?>">
+                                                <span class="icon-edit-profile edit_data"></span>  
+      <span>Edit Profile </span></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
-                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
+                                                <a onClick="deactivate(<?php echo $userid; ?>)"><span class="icon-delete edit_data"></span>  <span>Deactive Profile</span></a>
                                             </div>
                                         </div>
                                     </li>

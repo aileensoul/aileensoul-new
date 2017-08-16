@@ -32,7 +32,11 @@
     right: 11px;
 }*/
 /* NOTIFICATION COUNT END*/
-
+.edit_data {
+    margin-top: -4px;
+    display: inline-block;
+    vertical-align: middle;
+}
 /* CONTACT CONTAINER START */
 .h_w{height: 100%;}
 /*#addcontactContainer{
