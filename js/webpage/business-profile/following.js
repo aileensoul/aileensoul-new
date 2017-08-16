@@ -358,6 +358,7 @@ function unfollowuser_list(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'frusercount').html(data.unfollow);
+            $('#' + 'countfollow').html('(' + data.notcount + ')');
             if (data.notcount == 0) {
                 $('.' + 'contact-frnd-post').html(data.notfound);
             } else {

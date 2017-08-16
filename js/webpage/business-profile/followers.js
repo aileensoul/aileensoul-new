@@ -23,7 +23,7 @@ $(document).ready(function () {
             }
         }
     });
-    
+
 });
 var isProcessing = false;
 function business_followers(slug_id, pagenum)
@@ -40,7 +40,7 @@ function business_followers(slug_id, pagenum)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/ajax_followers/" + slug_id + '?page=' + pagenum,
-        data: {total_record:$("#total_record").val()},
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -280,7 +280,8 @@ function followuser_two(clicked_id)
         url: base_url + "business_profile/follow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
+            $('#' + 'frfollow' + clicked_id).html(data);
+//            $('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
@@ -294,7 +295,8 @@ function unfollowuser_two(clicked_id)
         url: base_url + "business_profile/unfollow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
+            $('#' + 'frfollow' + clicked_id).html(data);
+//            $('.' + 'fr' + clicked_id).html(data);
         }
     });
 }
