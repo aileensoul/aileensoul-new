@@ -1124,8 +1124,8 @@ class Freelancer extends MY_Controller {
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
-    public function ajax_freelancer_hire_post($id) {
-
+    public function ajax_freelancer_hire_post($id,$retur) {
+  //   echo $retur;die();
         $userid = $this->session->userdata('aileenuser');
         // echo $userid; die();
         $perpage = 5;
@@ -1204,7 +1204,8 @@ class Freelancer extends MY_Controller {
                 $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 $return_html .= '<li>';
 
-                if ($returnpage == 'freelancer_post') {
+                if ($retur == 'freelancer_post') {
+                  
                     $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '"> ' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
                         $return_html .= ' <div class="fr lction display_inline">
@@ -1217,6 +1218,7 @@ class Freelancer extends MY_Controller {
                                          </div>';
                     }
                 } else {
+                   
                     $return_html .= ' <a class="display_inline" title="' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id']) . '"> ' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction display_inline">
@@ -1362,7 +1364,10 @@ class Freelancer extends MY_Controller {
                     $return_html .= PROFILENA;
                 }
                 $return_html .= '</li>';
-                if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) {
+              
+                
+                if ($retur == '' && $id == 'null') {
+                   
                     $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
                     $return_html .= $this->lang->line("remove");
                     $return_html .= '</a>
@@ -1378,6 +1383,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array()));
                     $return_html .= '</a>';
                 } else {
+                    
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
                     $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');

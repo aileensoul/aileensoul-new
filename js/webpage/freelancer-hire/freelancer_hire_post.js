@@ -1,7 +1,8 @@
 
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
-    freelancerhire_project(user_id);
+    
+    freelancerhire_project(user_id,returnpage);
 
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -20,7 +21,7 @@ $(document).ready(function () {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
                     
-                    freelancerhire_project(user_id,pagenum);
+                    freelancerhire_project(user_id,returnpage,pagenum);
                 }
             }
         }
@@ -28,7 +29,7 @@ $(document).ready(function () {
     
 });
 var isProcessing = false;
-function freelancerhire_project(user_id,pagenum)
+function freelancerhire_project(user_id,returnpage,pagenum)
 {
    
     if (isProcessing) {
@@ -42,7 +43,7 @@ function freelancerhire_project(user_id,pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id +'?page=' + pagenum,
+        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id + '/' + returnpage +'?page=' + pagenum,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {

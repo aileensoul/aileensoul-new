@@ -16,6 +16,7 @@
         <?php echo $header; ?>
         <?php
         $returnpage = $_GET['page'];
+       
         if ($returnpage == 'freelancer_post') {
             echo $freelancer_post_header2_border;
         } else {
@@ -104,7 +105,8 @@
                                     $sub_lname = substr($lname, 0, 1);
                                     ?>
                                     <div class="post-img-user">
-                                        <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                       
+                                        <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname));  ?>
                                     </div>
                                 <?php } ?>
                                 <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
@@ -298,10 +300,12 @@
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
         </script>
+        
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
+            var returnpage = '<?php echo $returnpage; ?>';
             var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_post.js'); ?>"></script>
