@@ -8627,7 +8627,7 @@ class Business_profile extends MY_Controller {
 
             $contactdata = '<div class="art-img-nn">
                                                 <div class="art_no_post_img">
-                                                    <img src="'.base_url().'img/No_Contact_Request.png">
+                                                    <img src="' . base_url() . 'img/No_Contact_Request.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact request Available.
@@ -8786,6 +8786,16 @@ class Business_profile extends MY_Controller {
         $status = $_POST['status'];
         $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
         $contition_array = array('contact_from_id' => $toid, 'contact_to_id' => $userid, 'status' => 'pending');
         $person = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contactid = $person[0]['contact_id'];
@@ -8814,36 +8824,58 @@ class Business_profile extends MY_Controller {
 
                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
                 $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-//echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
-                $contactdata .= '<li id="' . $friend['contact_from_id'] . '">';
+                //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+                $contactdata .= '<li id="' . $contact['contact_from_id'] . '">';
                 $contactdata .= '<div class="list-box">';
                 $contactdata .= '<div class="profile-img">';
                 if ($busdata[0]['business_user_image'] != '') {
+
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                        $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                        $a = $busdata[0]['company_name'];
+                        $acr = substr($a, 0, 1);
+
+                        $contactdata .= '<div class="post-img-div">';
+                        $contactdata .= ucfirst(strtolower($acr));
+                        $contactdata .= '</div>';
                     } else {
+
                         $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                     }
                 } else {
-                    $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
+                    $a = $busdata[0]['company_name'];
+                    $acr = substr($a, 0, 1);
+
+                    $contactdata .= '<div class="post-img-div">';
+                    $contactdata .= ucfirst(strtolower($acr));
+                    $contactdata .= '</div>';
                 }
 
                 $contactdata .= '</div>';
                 $contactdata .= '<div class="profile-content">';
-                $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
-                $contactdata .= '<h5>' . $busdata[0]['company_name'] . '</h5>';
-                $contactdata .= '<p>' . $inddata[0]['industry_name'] . '</p>';
-                $contactdata .= '</a>';
-                $contactdata .= '<p class="connect-link">';
-                $contactdata .= '<a href="#" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                $contactdata .= '<a href="#" onclick = "return contactapprove(' . $contact['contact_from_id'] . ', 0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                $contactdata .= '<div class="main_data_cq">   <span title="' . $busdata[0]['company_name'] . '" class="main_compny_name">' . $busdata[0]['company_name'] . '</span></div>';
+                $contactdata .= '<div class="main_data_cq"><span class="dc_cl_m" title="' . $inddata[0]['industry_name'] . '"> ' . $inddata[0]['industry_name'] . '</span></div>';
+                $contactdata .= '</a></div>';
+                $contactdata .= '<div class="fw"><p class="connect-link">';
+                $contactdata .= '<a href="javascript:void(0);" class="cr-accept acbutton  ani" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i></span></a>';
+                $contactdata .= '<a href="javascript:void(0);" class="cr-decline" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i></span></a>';
                 $contactdata .= '</p>';
                 $contactdata .= '</div>';
                 $contactdata .= '</div>';
                 $contactdata .= '</li>';
             }
         } else {
-            $contactdata = 'No contacts available...';
+//            $contactdata = 'No contact request available...';
+            $contactdata = '<li><div class="art-img-nn" id= "art-blank">
+                                    <div class="art_no_post_img">
+
+                                        <img src="' . base_url('img/No_Contact_Request.png') . '" width="100">
+
+                                    </div>
+        <div class="art_no_post_text" style="font-size: 20px;">
+                                        No Notifiaction Available.
+                                    </div>
+                                    </div></li>';
         }
         echo $contactdata;
     }

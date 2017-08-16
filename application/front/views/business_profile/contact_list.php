@@ -206,7 +206,7 @@
                     }
                 });
             }
-            function contactapprove(toid, status) {
+            function contactapprove1(toid, status) {
                 $.ajax({
                     url: "<?php echo base_url(); ?>business_profile/contact_list_approve",
                     type: "POST",
