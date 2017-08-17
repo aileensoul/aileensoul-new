@@ -333,6 +333,7 @@
             $("#message_count").html('');
             $("#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
+            document.getElementById('message_count').style.display = "none";
         } else
         {
             $('#message_count').html(msg);
