@@ -26,24 +26,6 @@
 	h1, h1 a { font-size: 26px; line-height: 40px; }
 	h2, h2 a { font-size: 24px; line-height: 32px; }
 
-	/*.header ul { text-align: left; }
-	.header ul li { display: block; border-bottom: 1px solid #5b6c90; }
-	.header ul li a { color: #fff; padding: 10px 12px; }
-	.header ul li a i { float: left; width: 30px; display: none; }
-
-	.dropdown .img-circle { display: none; }
-	.dropdown-toggle { background: #fff; color: #000 !important;}
-	#notificationLink span { top: 8px; font-size: 16px; }
-    .dropdown.dropdown-user i { float: right; width: auto; font-size: 20px; padding-top: 3px; }
-    .dropdown-menu { display: block; background: none; width: 100%; position: inherit; box-shadow: none; }
-    .header ul li.dropdown-user ul li a { font-size: 14px;  padding: 8px 10px;}
-
-	.header ul li.dropdown-user a { padding: 10px 12px; }
-	.pushmenu-left.pushmenu-open { background:#3b5283; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
-	.buttonset { background: none; }
-	.buttonset { background: #3b5283; top: -53px; width: 55px; right: 0; float: right; position: relative; height: 52px; padding: 12px;}
-	.pushmenu-push-toright { left: 0; }*/
-
 	.title-section { padding: 20px 0; }
 
 	.midd-section h2 { font-size: 24px;}
@@ -182,9 +164,6 @@
           .header2 input:-moz-placeholder { font-size: 14px; line-height: 3;}  /* Firefox 18- */
           .header2 .profiletitle { font-size: 11px; }
           .stkiy { width: 90%; }
-          /*.dropdown_hover { padding: 8px 40px 3px 8px; }*/
-          .dropdown-content_hover { left: -5px; }
-           .dropdown_hover #art_profile { font-size: 11px; }
            .job-search-box1 input { font-size: 12px; }
     /*   header2 off */   
 
