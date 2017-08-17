@@ -3358,6 +3358,8 @@ $datacount = count($otherdata);
 
 
         if($this->data['artisticdata']){
+
+            $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
         $this->load->view('artistic/artistic_profile', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
