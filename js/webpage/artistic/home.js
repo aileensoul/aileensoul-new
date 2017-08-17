@@ -15,7 +15,7 @@ $(document).ready(function () {
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".art-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".art-all-post").prepend('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
@@ -40,7 +40,7 @@ $(document).ready(function () {
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) { //alert(data);
                         $('.loader').remove();
