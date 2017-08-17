@@ -2212,28 +2212,53 @@ class Freelancer extends MY_Controller {
 
     //Freelancer Job All Post Start
     public function freelancer_apply_post($id = "") {
+        
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        
 //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+       
         if ($freelancerpost_deactive) {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
         //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
+        
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
-        if ($id == $userid || $id == "") {
-            
-            $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        
+         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1,'free_post_step' => 7);
+         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      
+//code for search start
+        $this->freelancer_apply_search();
+// code for search end
+        $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
+    }
+    
+     public function ajax_freelancer_apply_post() {
+         $userid = $this->session->userdata('aileenuser');
+         
+       $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
             $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-            $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
+             
+            $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
             $post_reg_skill = explode(',', $freelancer_post_area);
 
             foreach ($post_reg_skill as $key => $value) {
              $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
-                $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $freelancer_post_data  = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($freelancer_post_data) {
                     $freedata[] = $freelancer_post_data;
                 }
@@ -2246,35 +2271,249 @@ class Freelancer extends MY_Controller {
 
             $unique = array_unique($free_post, SORT_ASC);
             $unique = $this->aasort($unique, "post_id");
+            //echo "</pre>"; print_r($unique);die();
+           
+      
+          $postdetail = array_slice($unique, $start, $perpage);
           
-        } else {
-            $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
-            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = 'created_date', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
-            $post_reg_skill = explode(', ', $freelancer_post_area);
-            foreach ($post_reg_skill as $key => $value) {
-                $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id != ' => $userid, 'FIND_IN_SET("' . $value . '", post_skill) != ' => '0');
-                $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'post_id, post_name, post_field_req, post_est_time, post_skill, post_exp_month, post_exp_year, post_other_skill, post_description, post_rate, post_last_date, user_id, created_date, post_currency, post_rating_type, country, city', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($freelancer_post_data) {
-                    $freedata[] = $freelancer_post_data;
-                }
-            }
-
-            foreach ($freedata as $key1 => $value) {
-                foreach ($value as $ke => $val) {
-                    $free_post[] = $val;
-                }
-            }
-            $unique = array_unique($free_post, SORT_ASC);
-            $unique[] = $this->aasort($unique, "post_id");
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($unique);
         }
-        $this->data['postdetail'] = $unique;
+        $return_html = '';
+         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        
+        
+       // $this->data['postdetail'] = $unique;
+                                        if (count($unique)>0) {
+                                            foreach ($postdetail as $post) {
+                                                  $return_html.='<div class="job-post-detail clearfix">
+                                                        <div class="job-contact-frnd ">';
+                                                         $return_html .='<div class="profile-job-post-detail clearfix margin_btm"  id="removeapply' . $post['post_id'].'">';
+                                                          $return_html.='<div class="profile-job-post-title-inside clearfix">
+                                                                    <div class="profile-job-post-title clearfix margin_btm" >
+                                                                        <div class="profile-job-profile-button clearfix">
+                                                                            <div class="profile-job-details col-md-12">
+                                                                                <ul>
+                                                                                    <li class="fr">';
+                                                                                       $return_html.= $this->lang->line("created_date");
+                                                                                       $return_html.=':';
+                                                                                       $return_html.= trim(date('d-M-Y', strtotime($post['created_date'])));
+                                                                                  $return_html.='</li>
+                                                                                    <li>';
+                                                                                $return_html.='<a href="'.base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post').' " title="'.ucwords($post['post_name']).'" class="display_inline post_title">';
+                                                                                $return_html.= ucwords($post['post_name']);
+                                                                                $return_html.='</a> </li>';
+                                                                                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name; 
+                                                                                    $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name; 
+                                                                                   $return_html.='<li>'; 
+                                                                                        if ($cityname || $countryname) {   
+                                                                                        $return_html.='<div class="fr lction">
+                                                                                                <a href="" title="Location"><i class="fa fa-map-marker" aria-hidden="true" >';
+                                                                                                       
+                                                                                                        if ($cityname) {
+                                                                                                           $return_html.= $cityname . ",";
+                                                                                                        }
+                                                                                                        
+                                                                                                        if ($countryname) {
+                                                                                                            $return_html.= $countryname;
+                                                                                                        }
+                                                                                                         $return_html.='</i></a>
+                                                                                            </div>';
+                                                                                        } 
+                                                                                       
+                                                                                        $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                                                                                        $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+                                                                                        
+                                                                               $return_html.='</li>';
+                                                                             $return_html.='<li><a class="display_inline" title="ucwords($firstname); &nbsp; ucwords($lastname);" href="'. base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post').'">';
+                                                                             $return_html.= ucwords($firstname)." ".ucwords($lastname);
+                                                                              $return_html.='</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div> 
+                                                                        <div class="profile-job-profile-menu">
+                                                                            <ul class="clearfix">
+                                                                                <li> <b>';
+                                                                           $return_html.= $this->lang->line("field"); 
+                                                                            $return_html.='</b> 
+                                                                                    <span>';
+                                                                             $return_html.= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name; 
+                                                                              $return_html.='</span>
+                                                                                </li>
+                                                                                <li> <b>'; 
+                                                                                $return_html.=$this->lang->line("skill"); 
+                                                                              $return_html.='</b> <span>'; 
+                                                                                      
+                                                                                        $comma = ", ";
+                                                                                        $k = 0;
+                                                                                        $aud = $post['post_skill'];
+                                                                                        $aud_res = explode(',', $aud);
+                                                                                        if (!$post['post_skill']) {
 
-//code for search start
-        $this->freelancer_apply_search();
-// code for search end
-        $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
+                                                                                            $return_html.= $post['post_other_skill'];
+                                                                                        } else if (!$post['post_other_skill']) {
+
+                                                                                            foreach ($aud_res as $skill) {
+                                                                                                if ($k != 0) {
+                                                                                                    $return_html.= $comma;
+                                                                                                }
+                                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                                                $return_html.= $cache_time;
+                                                                                                $k++;
+                                                                                            }
+                                                                                        } else if ($post['post_skill'] && $post['post_other_skill']) {
+                                                                                            foreach ($aud_res as $skill) {
+                                                                                                if ($k != 0) {
+                                                                                                    $return_html.= $comma;
+                                                                                                }
+                                                                                                $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                                                                $return_html.= $cache_time;
+                                                                                                $k++;
+                                                                                            } $return_html.= "," . $post['post_other_skill'];
+                                                                                        }
+                                                                            $return_html.='</span>
+                                                                                </li>
+                                                                                <li><b>';
+                                                                       $return_html.=$this->lang->line("project_description"); 
+                                                                          $return_html.='</b><span><p>';
+                                                                                            
+                                                                                            if ($post['post_description']) {
+                                                                                                $return_html.= $post['post_description'];
+                                                                                            } else {
+                                                                                                $return_html.= PROFILENA;
+                                                                                            }
+                                                                                             
+                                                                              $return_html.='</p></span>
+                                                                                </li>
+                                                                                <li><b>';
+                                                                               $return_html.=$this->lang->line("rate");
+                                                                                $return_html.='</b><span>';
+                                                                                        if ($post['post_rate']) {
+                                                                                            $return_html.=$post['post_rate'];
+                                                                                            $return_html.='"&nbsp"';
+                                                                                            $return_html.=$this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                                                                                            $return_html.=' "&nbsp"';
+                                                                                            if ($post['post_rating_type'] == 1) {
+                                                                                                $return_html.='"Hourly"';
+                                                                                            } else {
+                                                                                                $return_html.='"Fixed"';
+                                                                                            }
+                                                                                        } else {
+                                                                                            $return_html.=PROFILENA;
+                                                                                        }
+                                                                                       
+                                                                                 $return_html.='</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <b>';
+                                                                                   $return_html.= $this->lang->line("required_experiance");
+                                                                             $return_html.='</b>
+                                                                                    <span>
+                                                                                        <p>';
+                                                                                            if ($post['post_exp_month'] || $post['post_exp_year']) {
+                                                                                                if ($post['post_exp_year']) {
+                                                                                                    $return_html.= $post['post_exp_year'];
+                                                                                                }
+                                                                                                if ($post['post_exp_month']) {
+
+                                                                                                    if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                                                                                        $return_html.= 0;
+                                                                                                    }
+                                                                                                    $return_html.= ".";
+
+                                                                                                   $return_html.= $post['post_exp_month'];
+                                                                                                } else {
+                                                                                                    $return_html.= "." . "0";
+                                                                                                }
+                                                                                                $return_html.= " Year";
+                                                                                            } else {
+                                                                                                $return_html.= PROFILENA;
+                                                                                            }
+                                                                                           
+                                                                                      $return_html.='</p>  
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li><b>';
+                                                                                $return_html.=$this->lang->line("estimated_time");
+                                                                                $return_html.='</b><span>';
+                                                                               
+                                                                                        if ($post['post_est_time']) {
+                                                                                           $return_html.=$post['post_est_time'];
+                                                                                        } else {
+                                                                                           $return_html.= PROFILENA;
+                                                                                        }
+                                                                                       
+                                                                                 $return_html.='</span>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="profile-job-profile-button clearfix">
+                                                                            <div class="profile-job-details col-md-12">
+                                                                                <ul><li class="job_all_post last_date">';
+                                                                                 $return_html.= $this->lang->line("last_date"); 
+                                                                                 $return_html.=':';
+                                                                                       
+                                                                                        if ($post['post_last_date']) {
+                                                                                            $return_html.= date('d-M-Y', strtotime($post['post_last_date']));
+                                                                                        } else {
+                                                                                            $return_html.= PROFILENA;
+                                                                                        }
+                                                                                        $return_html.='</li>
+                                                                                    <li class=fr>';
+                                                                                        
+                                                                                        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                                                                                        $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                                                                                        $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                        if ($freelancerapply1) {
+                                                                                         $return_html.='<a href="javascript:void(0);" class="button applied">';
+                                                                                              $return_html.=$this->lang->line("applied"); 
+                                                                                         $return_html.='</a>';
+                                                                                        } else {
+                                                                                         $return_html.='<a href="javascript:void(0);"  class= "applypost' . $post['post_id'].' button" onclick="applypopup('.$post['post_id'].' , '.$post['user_id'].')">';
+                                                                                             $return_html.= $this->lang->line("apply");
+                                                                                            $return_html.='</a>
+                                                                                        </li> 
+                                                                                        <li>';
+                                                                                            
+                                                                                            $userid = $this->session->userdata('aileenuser');
+                                                                                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                                                                                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                                            if ($data) {
+                                                                                               
+                                                                                           $return_html.='<a class="saved  button  savedpost' . $post['post_id'].'">';
+                                                                                               $return_html.= $this->lang->line("saved");
+                                                                                              $return_html.='</a>';
+                                                                                             } else { 
+
+                                                                                            $return_html.='<a id="'. $post['post_id'].'" onClick="savepopup('. $post['post_id'].')" href="javascript:void(0);" class="savedpost' . $post['post_id'].' button">';
+                                                                                           $return_html.= $this->lang->line("save");
+                                                                                            $return_html.='</a>';
+                                                                                             } 
+                                                                                         } 
+                                                                                  $return_html.='</li>                        
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                        
+                                                        </div>
+                                                    </div>';
+                                                }
+                                        } else {
+                                         $return_html.='<div class="text-center rio">
+                                                <h4 class="page-heading  product-listing" >';
+                                             $return_html.= $this->lang->line("no_recommen_project");
+                                         $return_html.='</h4>
+                                            </div>';
+                                        }
+                                        echo $return_html;
+        
     }
+
 
     public function freelancer_apply_check() {
         $userid = $this->session->userdata('aileenuser');
