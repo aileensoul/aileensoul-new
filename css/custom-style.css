@@ -446,5 +446,10 @@
         height: 20px;
     }
 
+     #popup-form img{display: none;}
+
+    .paddingtop_fixed_art{padding-top: 62px!important;}
+     
+
 /* EDIT PROFILE END */
 /* PROFILE END */
