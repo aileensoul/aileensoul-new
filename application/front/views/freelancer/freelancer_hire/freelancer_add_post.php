@@ -225,10 +225,10 @@
                                     <div class="fr">           
                                         <fieldset class="hs-submit full-width">
                                             <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
-                                            <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'freelancerlancer_edit_post')) { ?>
+                                            <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                                 <a class="add_post_btnc"  onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                             <?php } else { ?>
-                                                <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer/recommen_candidate'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
+                                                <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                             <?php } ?>
                                             <input type="submit" tabindex="15" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                         </fieldset>
@@ -286,8 +286,8 @@
                 var post_name = document.getElementById('post_name').value;
                 var post_desc = document.getElementById('post_desc').value;
                 var fields_req = document.getElementById('fields_req').value;
-                var skills = document.getElementById('skills').value;
-                var other_skill = document.getElementById('other_skill').value;
+                var skills = document.getElementById('skills2').value;
+               // var other_skill = document.getElementById('other_skill').value;
                 var year = document.getElementById('year').value;
                 var month = document.getElementById('month').value;
                 var rate = document.getElementById('rate').value;
@@ -299,7 +299,7 @@
                 var searchkeyword = $.trim(document.getElementById('tags').value);
                 var searchplace = $.trim(document.getElementById('searchplace').value);
                 var page = document.getElementById('page').value;
-                if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && other_skill == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
+                if (post_name == "" && post_desc == "" && fields_req == "" && skills == ""  && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
                 {
                     if (clicked_id == 1)
                     {
