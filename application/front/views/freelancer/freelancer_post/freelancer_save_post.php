@@ -209,6 +209,7 @@
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
+            var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
 
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_save_post.js'); ?>"></script>

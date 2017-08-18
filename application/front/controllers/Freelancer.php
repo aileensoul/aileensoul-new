@@ -1427,11 +1427,16 @@ class Freelancer extends MY_Controller {
                                                                            </div>';
             }
         } else {
-            $return_html .= '<div class="text-center rio">
-                <h4 class="page-heading  product-listing">';
-            $return_html .= $this->lang->line("no_post");
-            $return_html .= '</h4>
-            </div>';
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="../img/free-no1.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                                     $return_html .= $this->lang->line("no_post");
+                                               $return_html .= ' </div>
+                                            </div>';
         }
 
         echo $return_html;
@@ -1947,11 +1952,16 @@ class Freelancer extends MY_Controller {
                 </div>';
             }
         } else {
-            $return_html .= '<div class = "text-center rio">
-                <h4 class = "page-heading  product-listing" >';
-            $return_html .= $this->lang->line("no_freelancer_found");
-            $return_html .= '</h4>
-                </div>';
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="../img/free-no1.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                                $return_html .= $this->lang->line("no_freelancer_found");
+                                               $return_html .= ' </div>
+                                            </div>';
         }
 
         echo $return_html;
@@ -2505,10 +2515,15 @@ class Freelancer extends MY_Controller {
                                                     </div>';
             }
         } else {
-            $return_html .= '<div class="text-center rio">
-                                                <h4 class="page-heading  product-listing" >';
-            $return_html .= $this->lang->line("no_recommen_project");
-            $return_html .= '</h4>
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="../img/free-no1.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                             $return_html .= $this->lang->line("no_recommen_project");
+                                            $return_html .= ' </div>
                                             </div>';
         }
         echo $return_html;
@@ -3009,11 +3024,17 @@ class Freelancer extends MY_Controller {
                                         </div>';
             }
         } else {
-            $return_html .= '<div class="text-center rio">
-                                        <h4 class="page-heading  product-listing" >';
-            $return_html .= $this->lang->line("no_applied_projects");
-            $return_html .= '</h4>
-                                    </div>';
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="../img/free-no1.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                                    $return_html .= $this->lang->line("no_applied_projects");
+                                              $return_html .= '</div>
+                                            </div>';
+                
         }
         echo $return_html;
     }
@@ -3384,11 +3405,14 @@ class Freelancer extends MY_Controller {
                 </div>';
             }
         } else {
-            $return_html .= '<div class="text-center rio">
-                <h4 class="page-heading  product-listing">';
-            $return_html .= $this->lang->line("no_saved_freelancer");
-            $return_html .= '</h4>
-            </div>';
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+                                                    <img src="../img/free-no1.png">
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                                     $return_html .= $this->lang->line("no_saved_freelancer");
+                                               $return_html .= ' </div>
+                                            </div>';
         }
         echo $return_html;
     }
@@ -3657,11 +3681,17 @@ class Freelancer extends MY_Controller {
                 }
             }
         } else {
-            $return_html .= '<div class="text-center rio">
-                <h4 class="page-heading  product-listing">';
-            $return_html .= $this->lang->line("no_saved_project");
-            $return_html .= '</h4>
-            </div>';
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="../img/free-no1.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">';
+                                                    $return_html .= $this->lang->line("no_saved_project");
+                                            $return_html .= '</div>
+                                            </div>';
+                
         }
         echo $return_html;
     }
