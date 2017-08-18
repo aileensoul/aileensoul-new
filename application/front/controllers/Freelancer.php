@@ -2517,72 +2517,72 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
         $apply_step = $this->data['apply_step'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        //  echo "<pre>"; print_r($apply_step);
+         // echo "<pre>"; print_r($apply_step);die();
         if (count($apply_step) > 0) {
             if ($apply_step[0]['free_post_step'] == 1) {
                 // echo "1111";die();
-                if ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                if ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_address_information');
                 }
             } elseif ($apply_step[0]['free_post_step'] == 2) {
                 // echo "222";die();
-                if ($this->uri->segment(2) == 'freelancer_post_professional_information') {
+                if ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_professional_information');
                 }
             } elseif ($apply_step[0]['free_post_step'] == 3) {
-                if ($this->uri->segment(2) == 'freelancer_post_rate') {
+                if ($this->uri->segment(2) == 'rate') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_professional_information') {
+                } elseif ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_rate');
                 }
             } elseif ($apply_step[0]['free_post_step'] == 4) {
-                if ($this->uri->segment(2) == 'freelancer_post_avability') {
+                if ($this->uri->segment(2) == 'avability') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_rate') {
+                } elseif ($this->uri->segment(2) == 'rate') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_professional_information') {
+                } elseif ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_avability');
                 }
             } elseif ($apply_step[0]['free_post_step'] == 5) {
-                if ($this->uri->segment(2) == 'freelancer_post_education') {
+                if ($this->uri->segment(2) == 'education') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_avability') {
+                } elseif ($this->uri->segment(2) == 'avability') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_rate') {
+                } elseif ($this->uri->segment(2) == 'rate') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_professional_information') {
+                } elseif ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_education');
                 }
             } elseif ($apply_step[0]['free_post_step'] == 6) {
-                if ($this->uri->segment(2) == 'freelancer_post_portfolio') {
+                if ($this->uri->segment(2) == 'portfolio') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_education') {
+                } elseif ($this->uri->segment(2) == 'education') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_avability') {
+                } elseif ($this->uri->segment(2) == 'avability') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_rate') {
+                } elseif ($this->uri->segment(2) == 'rate') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_professional_information') {
+                } elseif ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_post_address_information') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer/freelancer_post/freelancer_post_portfolio');

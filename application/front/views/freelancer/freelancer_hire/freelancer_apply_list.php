@@ -8,7 +8,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
-        <?php echo $freelancer_hire_header2; ?>
+        <?php echo $freelancer_hire_header2_border; ?>
 
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
