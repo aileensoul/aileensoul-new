@@ -156,6 +156,24 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     return one >= second;
 }, "Last date should be grater than and equal to today date");
 //date validation end
+//   validation border is not show in last date start
+            $.validator.addMethod("required1", function(value, element, regexpr) {   
+    //return value == '' || value.trim().length != 0; 
+     if(!value) 
+            {
+                $('.day').addClass('error'); 
+                $('.month').addClass('error'); 
+                $('.year').addClass('error'); 
+                return false;
+            }
+            else
+            {
+              return true;
+            }
+           
+     // return regexpr.test(value);
+}, "Last Date of apply is required.");
+//   validation border is not show in last date end
 
 $(document).ready(function () {
     $("#postinfo").validate({
@@ -177,7 +195,7 @@ $(document).ready(function () {
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             last_date: {
-                required: true,
+                required1: true,
                 isValid: 'Last date should be grater than and equal to today date'
             },
             currency: {
