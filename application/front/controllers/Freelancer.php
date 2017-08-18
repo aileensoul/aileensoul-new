@@ -1124,8 +1124,8 @@ class Freelancer extends MY_Controller {
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
-    public function ajax_freelancer_hire_post($id,$retur) {
-  //   echo $retur;die();
+    public function ajax_freelancer_hire_post($id, $retur) {
+        //   echo $retur;die();
         $userid = $this->session->userdata('aileenuser');
         // echo $userid; die();
         $perpage = 5;
@@ -1205,7 +1205,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<li>';
 
                 if ($retur == 'freelancer_post') {
-                  
+
                     $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '"> ' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
                         $return_html .= ' <div class="fr lction display_inline">
@@ -1218,7 +1218,7 @@ class Freelancer extends MY_Controller {
                                          </div>';
                     }
                 } else {
-                   
+
                     $return_html .= ' <a class="display_inline" title="' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id']) . '"> ' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction display_inline">
@@ -1322,14 +1322,14 @@ class Freelancer extends MY_Controller {
                         $return_html .= $post['post_exp_year'];
                     }
                     if ($post['post_exp_month']) {
-
-                        if ($post['post_exp_year'] == '0') {
+                        if ($post['post_exp_year'] == '' || $post['post_exp_year'] == '0') {
                             $return_html .= 0;
                         }
                         $return_html .= ".";
                         $return_html .= $post['post_exp_month'];
                     }
                     $return_html .= " Year";
+                    // echo $post['post_exp_year'].".".$post['post_exp_month'];
                 } else {
                     $return_html .= PROFILENA;
                 }
@@ -1364,10 +1364,10 @@ class Freelancer extends MY_Controller {
                     $return_html .= PROFILENA;
                 }
                 $return_html .= '</li>';
-              
-                
+
+
                 if ($retur == '' && $id == 'null') {
-                   
+
                     $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">';
                     $return_html .= $this->lang->line("remove");
                     $return_html .= '</a>
@@ -1383,7 +1383,7 @@ class Freelancer extends MY_Controller {
                     $return_html .= count($this->common->select_data_by_id('freelancer_apply', 'post_id', $post['post_id'], $data = '*', $join_str = array()));
                     $return_html .= '</a>';
                 } else {
-                    
+
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
                     $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1569,7 +1569,7 @@ class Freelancer extends MY_Controller {
     public function freelancer_add_post_insert() {
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
-        $skills = explode(',',$skills);
+        $skills = explode(',', $skills);
 
         $this->form_validation->set_rules('post_name', 'Post Name', 'required');
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
@@ -1609,34 +1609,34 @@ class Freelancer extends MY_Controller {
             //echo $ratetype;die();
             // echo $lastdate;die();
             //skill code start
-            if(count($skills) > 0){ 
-          
-          foreach($skills as $ski){
-     $contition_array = array('skill' => trim($ski),'type' => 1);
-     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-      if(count($skilldata) < 0){ 
-           $contition_array = array('skill' => trim($ski),'type' => 5);
-     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-      }
-     if($skilldata){
-         $skill[] = $skilldata[0]['skill_id'];
-           }else{
-                 $data = array(
-                    'skill' => trim($ski),
-                    'status' => '1',
-                    'type' => 5,
-                    'user_id' => $userid,
-                 );
-      $skill[] = $this->common->insert_data_getid($data, 'skill');
-           }
-          }
-        //  die();
-          $skills = implode(',',$skill); 
-      }
-      //skill code end
-      //echo "<pre>";print_r($skills);die();
+            if (count($skills) > 0) {
+
+                foreach ($skills as $ski) {
+                    $contition_array = array('skill' => trim($ski), 'type' => 1);
+                    //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    if (count($skilldata) < 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => 5);
+                        //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+                    if ($skilldata) {
+                        $skill[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => trim($ski),
+                            'status' => '1',
+                            'type' => 5,
+                            'user_id' => $userid,
+                        );
+                        $skill[] = $this->common->insert_data_getid($data, 'skill');
+                    }
+                }
+                //  die();
+                $skills = implode(',', $skill);
+            }
+            //skill code end
+            //echo "<pre>";print_r($skills);die();
             $data = array(
                 'post_name' => trim($this->input->post('post_name')),
                 'post_description' => trim($this->input->post('post_desc')),
@@ -1749,7 +1749,7 @@ class Freelancer extends MY_Controller {
         $final_candidate = array_unique($final_candidate, SORT_REGULAR);
         $candidatefreelancer = $final_candidate;
         $candidatefreelancer1 = array_slice($candidatefreelancer, $start, $perpage);
-        
+
 
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($candidatefreelancer);
@@ -2033,19 +2033,19 @@ class Freelancer extends MY_Controller {
 
 
 //Retrieve Language data Start
-     
-        $language_know = explode(',', $userdata[0]['post_skill']); 
-   // echo $language_know;die();
-        foreach($language_know as $lan){
-     $contition_array = array('skill_id' => $lan,'status' => 1);
-     $languagedata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-     //echo "<pre>";print_r(  $languagedata);
-     $detailes[] = $languagedata[0]['skill'];
-  } 
 
-   $this->data['skill_2'] = implode(',', $detailes); 
-  // echo "<pre>"; print_r($this->data['skill_2']);die();
- //Retrieve Language data End
+        $language_know = explode(',', $userdata[0]['post_skill']);
+        // echo $language_know;die();
+        foreach ($language_know as $lan) {
+            $contition_array = array('skill_id' => $lan, 'status' => 1);
+            $languagedata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            //echo "<pre>";print_r(  $languagedata);
+            $detailes[] = $languagedata[0]['skill'];
+        }
+
+        $this->data['skill_2'] = implode(',', $detailes);
+        // echo "<pre>"; print_r($this->data['skill_2']);die();
+        //Retrieve Language data End
 
         $this->data['country1'] = $this->data['freelancerpostdata'][0]['country'];
         $this->data['city1'] = $this->data['freelancerpostdata'][0]['city'];
@@ -2053,8 +2053,6 @@ class Freelancer extends MY_Controller {
 
 //        $skildata = explode(', ', $this->data['freelancerpostdata'][0]['post_skill']);
 //        $this->data['selectdata'] = $skildata;
-
-
 //code for search 
         $contition_array = array('status' => '1', 'is_delete' => '0');
 
@@ -2126,7 +2124,7 @@ class Freelancer extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         $skills = $this->input->post('skills');
-        $skills = explode(',',$skills); 
+        $skills = explode(',', $skills);
         $this->form_validation->set_rules('post_name', 'Post Name', 'required');
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         //  $this->form_validation->set_rules('fields_req', 'Field required', 'required');
@@ -2151,32 +2149,32 @@ class Freelancer extends MY_Controller {
         $lastdate = str_replace('/', '-', $datereplace);
 
         // skills  start   
-    
-      if(count($skills) > 0){ 
-          
-          foreach($skills as $ski){
-     $contition_array = array('skill' => trim($ski),'type' => 1);
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-      if(count($skilldata) < 0){ 
-           $contition_array = array('skill' => trim($ski),'type' => 5);
-     $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-      }
-     if($skilldata){
-         $skill[] = $skilldata[0]['skill_id'];
-           }else{
-                 $data = array(
-                    'skill' => trim($ski),
-                    'status' => '1',
-                    'type' => 5,
-                    'user_id' => $userid,
-                 );
-      $skill[] = $this->common->insert_data_getid($data, 'skill');
-           }
-          }
-        //  die();
-          $skills = implode(',',$skill); 
-      }
-        
+
+        if (count($skills) > 0) {
+
+            foreach ($skills as $ski) {
+                $contition_array = array('skill' => trim($ski), 'type' => 1);
+                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                if (count($skilldata) < 0) {
+                    $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                }
+                if ($skilldata) {
+                    $skill[] = $skilldata[0]['skill_id'];
+                } else {
+                    $data = array(
+                        'skill' => trim($ski),
+                        'status' => '1',
+                        'type' => 5,
+                        'user_id' => $userid,
+                    );
+                    $skill[] = $this->common->insert_data_getid($data, 'skill');
+                }
+            }
+            //  die();
+            $skills = implode(',', $skill);
+        }
+
         $data = array(
             'post_name' => trim($this->input->post('post_name')),
             'post_description' => trim($this->input->post('post_desc')),
@@ -2212,10 +2210,13 @@ class Freelancer extends MY_Controller {
 
     //Freelancer Job All Post Start
     public function freelancer_apply_post($id = "") {
+
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
 //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
         $freelancerpost_deactive = $this->data['freelancerpost_deactive'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
         if ($freelancerpost_deactive) {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
@@ -2223,57 +2224,290 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
-        if ($id == $userid || $id == "") {
-            
-            $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-            $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
-            $post_reg_skill = explode(',', $freelancer_post_area);
 
-            foreach ($post_reg_skill as $key => $value) {
-             $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
-                $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($freelancer_post_data) {
-                    $freedata[] = $freelancer_post_data;
-                }
-            }
-            foreach ($freedata as $key1 => $value) {
-                foreach ($value as $ke => $val) {
-                    $free_post[] = $val;
-                }
-            }
-
-            $unique = array_unique($free_post, SORT_ASC);
-            $unique = $this->aasort($unique, "post_id");
-          
-        } else {
-            $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
-            $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_area', $sortby = 'created_date', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $freelancer_post_area = $this->data['freelancerdata'][0]['freelancer_post_area'];
-            $post_reg_skill = explode(', ', $freelancer_post_area);
-            foreach ($post_reg_skill as $key => $value) {
-                $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id != ' => $userid, 'FIND_IN_SET("' . $value . '", post_skill) != ' => '0');
-                $freelancer_post_data = $this->data['freelancer_post_data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'post_id, post_name, post_field_req, post_est_time, post_skill, post_exp_month, post_exp_year, post_other_skill, post_description, post_rate, post_last_date, user_id, created_date, post_currency, post_rating_type, country, city', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($freelancer_post_data) {
-                    $freedata[] = $freelancer_post_data;
-                }
-            }
-
-            foreach ($freedata as $key1 => $value) {
-                foreach ($value as $ke => $val) {
-                    $free_post[] = $val;
-                }
-            }
-            $unique = array_unique($free_post, SORT_ASC);
-            $unique[] = $this->aasort($unique, "post_id");
-        }
-        $this->data['postdetail'] = $unique;
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
+        $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //code for search start
         $this->freelancer_apply_search();
 // code for search end
         $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
+    }
+
+    public function ajax_freelancer_apply_post() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
+        $post_reg_skill = explode(',', $freelancer_post_area);
+
+        foreach ($post_reg_skill as $key => $value) {
+            $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+            $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($freelancer_post_data) {
+                $freedata[] = $freelancer_post_data;
+            }
+        }
+        foreach ($freedata as $key1 => $value) {
+            foreach ($value as $ke => $val) {
+                $free_post[] = $val;
+            }
+        }
+
+        $unique = array_unique($free_post, SORT_ASC);
+        $unique = $this->aasort($unique, "post_id");
+        //echo "</pre>"; print_r($unique);die();
+
+
+        $postdetail = array_slice($unique, $start, $perpage);
+
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($unique);
+        }
+        $return_html = '';
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+
+
+        // $this->data['postdetail'] = $unique;
+        if (count($unique) > 0) {
+            foreach ($postdetail as $post) {
+                $return_html .= '<div class="job-post-detail clearfix">
+                                                        <div class="job-contact-frnd ">';
+                $return_html .= '<div class="profile-job-post-detail clearfix margin_btm"  id="removeapply' . $post['post_id'] . '">';
+                $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                                                                    <div class="profile-job-post-title clearfix margin_btm" >
+                                                                        <div class="profile-job-profile-button clearfix">
+                                                                            <div class="profile-job-details col-md-12">
+                                                                                <ul>
+                                                                                    <li class="fr">';
+                $return_html .= $this->lang->line("created_date");
+                $return_html .= ':';
+                $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
+                $return_html .= '</li>
+                                                                                    <li>';
+                $return_html .= '<a href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . ' " title="' . ucwords($post['post_name']) . '" class="display_inline post_title">';
+                $return_html .= ucwords($post['post_name']);
+                $return_html .= '</a> </li>';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                $return_html .= '<li>';
+                if ($cityname || $countryname) {
+                    $return_html .= '<div class="fr lction">
+                                                                                                <a href="" title="Location"><i class="fa fa-map-marker" aria-hidden="true" >';
+
+                    if ($cityname) {
+                        $return_html .= $cityname . ",";
+                    }
+
+                    if ($countryname) {
+                        $return_html .= $countryname;
+                    }
+                    $return_html .= '</i></a>
+                                                                                            </div>';
+                }
+
+                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+
+                $return_html .= '</li>';
+                $return_html .= '<li><a class="display_inline" title="ucwords($firstname); &nbsp; ucwords($lastname);" href="' . base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post') . '">';
+                $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                $return_html .= '</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div> 
+                                                                        <div class="profile-job-profile-menu">
+                                                                            <ul class="clearfix">
+                                                                                <li> <b>';
+                $return_html .= $this->lang->line("field");
+                $return_html .= '</b> 
+                                                                                    <span>';
+                $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                $return_html .= '</span>
+                                                                                </li>
+                                                                                <li> <b>';
+                $return_html .= $this->lang->line("skill");
+                $return_html .= '</b> <span>';
+
+                $comma = ", ";
+                $k = 0;
+                $aud = $post['post_skill'];
+                $aud_res = explode(',', $aud);
+                if (!$post['post_skill']) {
+
+                    $return_html .= $post['post_other_skill'];
+                } else if (!$post['post_other_skill']) {
+
+                    foreach ($aud_res as $skill) {
+                        if ($k != 0) {
+                            $return_html .= $comma;
+                        }
+                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $return_html .= $cache_time;
+                        $k++;
+                    }
+                } else if ($post['post_skill'] && $post['post_other_skill']) {
+                    foreach ($aud_res as $skill) {
+                        if ($k != 0) {
+                            $return_html .= $comma;
+                        }
+                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $return_html .= $cache_time;
+                        $k++;
+                    } $return_html .= "," . $post['post_other_skill'];
+                }
+                $return_html .= '</span>
+                                                                                </li>
+                                                                                <li><b>';
+                $return_html .= $this->lang->line("project_description");
+                $return_html .= '</b><span><p>';
+
+                if ($post['post_description']) {
+                    $return_html .= $post['post_description'];
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</p></span>
+                                                                                </li>
+                                                                                <li><b>';
+                $return_html .= $this->lang->line("rate");
+                $return_html .= '</b><span>';
+                if ($post['post_rate']) {
+                    $return_html .= $post['post_rate'];
+                    $return_html .= '"&nbsp"';
+                    $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                    $return_html .= ' "&nbsp"';
+                    if ($post['post_rating_type'] == 1) {
+                        $return_html .= '"Hourly"';
+                    } else {
+                        $return_html .= '"Fixed"';
+                    }
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <b>';
+                $return_html .= $this->lang->line("required_experiance");
+                $return_html .= '</b>
+                                                                                    <span>
+                                                                                        <p>';
+                if ($post['post_exp_month'] || $post['post_exp_year']) {
+                    if ($post['post_exp_year']) {
+                        $return_html .= $post['post_exp_year'];
+                    }
+                    if ($post['post_exp_month']) {
+
+                        if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                            $return_html .= 0;
+                        }
+                        $return_html .= ".";
+
+                        $return_html .= $post['post_exp_month'];
+                    } else {
+                        $return_html .= "." . "0";
+                    }
+                    $return_html .= " Year";
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</p>  
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li><b>';
+                $return_html .= $this->lang->line("estimated_time");
+                $return_html .= '</b><span>';
+
+                if ($post['post_est_time']) {
+                    $return_html .= $post['post_est_time'];
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</span>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="profile-job-profile-button clearfix">
+                                                                            <div class="profile-job-details col-md-12">
+                                                                                <ul><li class="job_all_post last_date">';
+                $return_html .= $this->lang->line("last_date");
+                $return_html .= ':';
+
+                if ($post['post_last_date']) {
+                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</li>
+                                                                                    <li class=fr>';
+
+                $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if ($freelancerapply1) {
+                    $return_html .= '<a href="javascript:void(0);" class="button applied">';
+                    $return_html .= $this->lang->line("applied");
+                    $return_html .= '</a>';
+                } else {
+                    $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . ' button" onclick="applypopup(' . $post['post_id'] . ' , ' . $post['user_id'] . ')">';
+                    $return_html .= $this->lang->line("apply");
+                    $return_html .= '</a>
+                                                                                        </li> 
+                                                                                        <li>';
+
+                    $userid = $this->session->userdata('aileenuser');
+                    $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                    $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($data) {
+
+                        $return_html .= '<a class="saved  button  savedpost' . $post['post_id'] . '">';
+                        $return_html .= $this->lang->line("saved");
+                        $return_html .= '</a>';
+                    } else {
+
+                        $return_html .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">';
+                        $return_html .= $this->lang->line("save");
+                        $return_html .= '</a>';
+                    }
+                }
+                $return_html .= '</li>                        
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                        
+                                                        </div>
+                                                    </div>';
+            }
+        } else {
+            $return_html .= '<div class="text-center rio">
+                                                <h4 class="page-heading  product-listing" >';
+            $return_html .= $this->lang->line("no_recommen_project");
+            $return_html .= '</h4>
+                                            </div>';
+        }
+        echo $return_html;
     }
 
     public function freelancer_apply_check() {
@@ -2541,6 +2775,245 @@ class Freelancer extends MY_Controller {
     }
 
     //Freelancer view all applied post controller End
+    public function ajax_freelancer_applied_post() {
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $join_str[0]['table'] = 'freelancer_apply';
+        $join_str[0]['join_table_id'] = 'freelancer_apply.post_id';
+        $join_str[0]['from_table_id'] = 'freelancer_post.post_id';
+        $join_str[0]['join_type'] = '';
+        $limit = $perpage;
+        $offset = $start;
+        $contition_array = array('freelancer_apply.job_delete' => 0, 'freelancer_apply.user_id' => $userid);
+        $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'freelancer_post.*, freelancer_apply.app_id, freelancer_apply.user_id as userid, freelancer_apply.modify_date, freelancer_apply.created_date ', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        $postdata1 = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'freelancer_post.*, freelancer_apply.app_id, freelancer_apply.user_id as userid, freelancer_apply.modify_date, freelancer_apply.created_date ', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit, $offset = '', $join_str, $groupby = '');
+
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($postdata);
+        }
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        if (count($postdata) > 0) {
+            foreach ($postdata1 as $post) {
+
+                $return_html .= '<div class="job-detail clearfix" id="removeapply' . $post['app_id'] . '">';
+                $return_html .= '<div class="job-contact-frnd">';
+                $return_html .= '<div class="profile-job-post-detail clearfix" id="removeapplyq ' . $post['post_id'] . '">';
+                $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                                                        <div class="profile-job-post-title clearfix margin_btm">
+                                                            <div class="profile-job-profile-button clearfix">
+                                                                <div class="profile-job-details col-md-12">
+                                                                    <ul>
+                                                                        <li class="fr">';
+                $return_html .= $this->lang->line("applied_date");
+                $return_html .= ':';
+                if ($post['modify_date'] != 0000 - 00 - 00) {
+                    $return_html .= date('d-M-Y', strtotime($post['modify_date']));
+                } else {
+                    $return_html .= date('d-M-Y', strtotime($post['created_date']));
+                }
+
+                $return_html .= '</li>
+                                                                        <li>';
+                $return_html .= '<a href="#" title="' . ucwords($this->common->make_links($post['post_name'])) . '" class="post_title">';
+                $return_html .= ucwords($this->common->make_links($post['post_name']));
+                $return_html .= '</a>   
+                                                                        </li>';
+
+                $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+
+                $return_html .= '<li>
+                                                                            <a class="display_inline" title="' . ucwords($firstname) . '&nbsp; ' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '">';
+                $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                $return_html .= '</a>';
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                if ($cityname || $countryname) {
+                    $return_html .= ' <div class="fr lction">
+                                                                                    <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"> ';
+
+                    if ($cityname) {
+                        $return_html .= $cityname . ",";
+                    }
+
+                    if ($countryname) {
+                        $return_html .= $countryname;
+                    }
+                    $return_html .= '</i></p>
+                                                                                </div>';
+                }
+                $return_html .= '</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="profile-job-profile-menu">
+                                                                <ul class="clearfix">
+                                                                    <li> <b>';
+                $return_html .= $this->lang->line("field");
+                $return_html .= ' </b> <span>';
+                $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+                $return_html .= ' </span>
+                                                                    </li>
+                                                                    <li> <b>';
+                $return_html .= $this->lang->line("skill");
+                $return_html .= ' </b> <span> ';
+
+                $comma = ", ";
+                $k = 0;
+                $aud = $post['post_skill'];
+                $aud_res = explode(',', $aud);
+
+                if (!$post['post_skill']) {
+
+                    $return_html .= $post['post_other_skill'];
+                } else if (!$post['post_other_skill']) {
+
+                    foreach ($aud_res as $skill) {
+                        if ($k != 0) {
+                            $return_html .= $comma;
+                        }
+                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $return_html .= $cache_time;
+                        $k++;
+                    }
+                } else if ($post['post_skill'] && $post['post_other_skill']) {
+                    foreach ($aud_res as $skill) {
+                        if ($k != 0) {
+                            $return_html .= $comma;
+                        }
+                        $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                        $return_html .= $cache_time;
+                        $k++;
+                    } $return_html .= "," . $post['post_other_skill'];
+                }
+
+                $return_html .= '</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <b>';
+                $return_html .= $this->lang->line("project_description");
+                $return_html .= '</b>
+                                                                        <span>
+                                                                            <p>';
+
+                if ($post['post_description']) {
+                    $return_html .= $this->common->make_links($post['post_description']);
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</p>
+                                                                        </span>
+                                                                    </li>
+                                                                    <li><b>';
+                $return_html .= $this->lang->line("rate");
+                $return_html .= '</b><span>';
+
+                if ($post['post_rate']) {
+                    $return_html .= $post['post_rate'];
+                    $return_html .= "&nbsp";
+                    $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                    $return_html .= "&nbsp";
+                    if ($post['post_rating_type'] == 1) {
+                        $return_html .= "Hourly";
+                    } else {
+                        $return_html .= "Fixed";
+                    }
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <b>';
+                $return_html .= $this->lang->line("required_experiance");
+                $return_html .= '</b>
+                                                                        <span>';
+
+                if ($post['post_exp_month'] || $post['post_exp_year']) {
+                    if ($post['post_exp_year']) {
+                        $return_html .= $post['post_exp_year'];
+                    }
+                    if ($post['post_exp_month']) {
+
+                        if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                            $return_html .= 0;
+                        }
+                        $return_html .= ".";
+                        $return_html .= $post['post_exp_month'];
+                    } else {
+                        $return_html .= "." . "0";
+                    }
+                    $return_html .= " Year";
+                } else {
+                    $return_html .= PROFILENA;
+                }
+
+                $return_html .= '</span>
+                                                                    </li>
+                                                                    <li><b>';
+                $return_html .= $this->lang->line("estimated_time");
+                $return_html .= '</b><span>';
+                if ($post['post_est_time']) {
+                    $return_html .= $post['post_est_time'];
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="profile-job-profile-button clearfix">
+                                                                <div class="profile-job-details col-md-12">
+                                                                    <ul>
+                                                                        <li class="job_all_post last_date">';
+                $return_html .= $this->lang->line("last_date");
+                $return_html .= ':';
+
+                if ($post['post_last_date']) {
+                    $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                } else {
+                    $return_html .= PROFILENA;
+                }
+                $return_html .= '</li>
+                                                                        <li class=fr>';
+                $return_html .= '<a href="javascript:void(0);" class="button fr" onclick="removepopup(' . $post['app_id'] . ')">Remove ' . $this->lang->line("remove") . '</a>';
+                $return_html .= '</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+            }
+        } else {
+            $return_html .= '<div class="text-center rio">
+                                        <h4 class="page-heading  product-listing" >';
+            $return_html .= $this->lang->line("no_applied_projects");
+            $return_html .= '</h4>
+                                    </div>';
+        }
+        echo $return_html;
+    }
+
     //Freelancer Delete all Applied & Save post controller Start
     public function freelancer_delete_apply() {
         //echo "hi"; die();
@@ -2933,15 +3406,7 @@ class Freelancer extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-// post detail
-        $join_str[0]['table'] = 'freelancer_post';
-        $join_str[0]['join_table_id'] = 'freelancer_post.post_id';
-        $join_str[0]['from_table_id'] = 'freelancer_apply.post_id';
-        $join_str[0]['join_type'] = '';
 
-        $contition_array = array('freelancer_apply.job_delete' => 1, 'freelancer_apply.user_id' => $userid, 'freelancer_apply.job_save' => 2);
-        $this->data['postdetail'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'freelancer_apply.app_id, freelancer_post.post_id, freelancer_post.user_id, freelancer_post.created_date, freelancer_post.post_name, freelancer_post.post_field_req, freelancer_post.post_est_time, freelancer_post.post_skill, freelancer_post.post_exp_month, freelancer_post.post_exp_year, freelancer_post.post_other_skill, freelancer_post.post_description, freelancer_post.post_rate, freelancer_post.post_last_date, freelancer_post.post_currency, freelancer_post.post_rating_type, freelancer_post.country, freelancer_post.city', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
-//echo "<pre>";print_r($this->data['postdetail']);die();        
 // code for search start
         $this->freelancer_apply_search();
         // code for search end
@@ -2949,6 +3414,253 @@ class Freelancer extends MY_Controller {
     }
 
 //Freelancer Save Post Controller End
+
+    public function ajax_freelancer_save_post() {
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+// job seeker detail
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// post detail
+        $join_str[0]['table'] = 'freelancer_post';
+        $join_str[0]['join_table_id'] = 'freelancer_post.post_id';
+        $join_str[0]['from_table_id'] = 'freelancer_apply.post_id';
+        $join_str[0]['join_type'] = '';
+
+        $limit = $perpage;
+        $offset = $start;
+
+        $contition_array = array('freelancer_apply.job_delete' => 1, 'freelancer_apply.user_id' => $userid, 'freelancer_apply.job_save' => 2);
+        $postdetail = $this->data['postdetail'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'freelancer_apply.app_id, freelancer_post.post_id, freelancer_post.user_id, freelancer_post.created_date, freelancer_post.post_name, freelancer_post.post_field_req, freelancer_post.post_est_time, freelancer_post.post_skill, freelancer_post.post_exp_month, freelancer_post.post_exp_year, freelancer_post.post_other_skill, freelancer_post.post_description, freelancer_post.post_rate, freelancer_post.post_last_date, freelancer_post.post_currency, freelancer_post.post_rating_type, freelancer_post.country, freelancer_post.city', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        $postdetail1 = $this->data['postdetail'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = 'freelancer_apply.app_id, freelancer_post.post_id, freelancer_post.user_id, freelancer_post.created_date, freelancer_post.post_name, freelancer_post.post_field_req, freelancer_post.post_est_time, freelancer_post.post_skill, freelancer_post.post_exp_month, freelancer_post.post_exp_year, freelancer_post.post_other_skill, freelancer_post.post_description, freelancer_post.post_rate, freelancer_post.post_last_date, freelancer_post.post_currency, freelancer_post.post_rating_type, freelancer_post.country, freelancer_post.city', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit, $offset = '', $join_str, $groupby = '');
+//echo "<pre>";print_r($this->data['postdetail']);die();  
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($postdetail);
+        }
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+
+        if (count($postdetail) > 0) {
+            foreach ($postdetail1 as $post) {
+                $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if ($freelancerapply1) {
+                    
+                } else {
+                    $return_html .= '<div class="job-contact-frnd ">
+                        <div class="profile-job-post-detail clearfix" id="postdata' . $post['app_id'] . '">';
+                    $return_html .= ' <div class="profile-job-post-title-inside clearfix">
+                                <div class="profile-job-post-title-inside clearfix">
+                                    <div class="profile-job-post-title clearfix margin_btm">
+                                        <div class="profile-job-profile-button clearfix">
+                                            <div class="profile-job-details col-md-12">
+                                                <ul>
+                                                    <li class="fr">';
+                    $return_html .= $this->lang->line("created_date");
+                    $return_html .= ':';
+                    $return_html .= trim(date('d-M-Y', strtotime($post['created_date'])));
+                    $return_html .= '</li>
+                                                    <li>';
+                    $return_html .= '<a href="#" title="' . ucwords($this->text2link($post['post_name'])) . '" class="post_title">';
+                    $return_html .= ucwords($this->text2link($post['post_name']));
+                    $return_html .= '</a> </li>';
+                    $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
+                    $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
+
+                    $return_html .= '<li><a class="display_inline" title="' . ucwords($firstname) . ' ." ".' . ucwords($lastname) . '" href="' . base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post') . '">';
+                    $return_html .= ucwords($firstname) . "  " . ucwords($lastname);
+                    $return_html .= '</a>';
+                    $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                    $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
+                    if ($cityname || $countryname) {
+                        $return_html .= ' <div class="fr lction">
+                                                                <p title="Location">
+                                                                    <i class="fa fa-map-marker" aria-hidden="true">';
+                        if ($cityname) {
+                            $return_html .= $cityname . ",";
+                        }
+                        if ($countryname) {
+                            $return_html .= $countryname;
+                        }
+                        $return_html .= '</i></p>
+                                                            </div>';
+                    }
+                    $return_html .= '</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="profile-job-profile-menu">
+                                            <ul class="clearfix">
+                                                <li> <b>';
+                    $return_html .= $this->lang->line("field");
+                    $return_html .= '</b> <span>';
+                    $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
+
+                    $return_html .= '</span>
+                                                </li>
+                                                <li> <b>';
+                    $return_html .= $this->lang->line("skill");
+                    $return_html .= '</b> <span>';
+
+                    $comma = ", ";
+                    $k = 0;
+                    $aud = $post['post_skill'];
+                    $aud_res = explode(',', $aud);
+                    if (!$post['post_skill']) {
+                        $return_html .= $post['post_other_skill'];
+                    } else if (!$post['post_other_skill']) {
+                        foreach ($aud_res as $skill) {
+                            if ($k != 0) {
+                                $return_html .= $comma;
+                            }
+                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+
+                            $return_html .= $cache_time;
+                            $k++;
+                        }
+                    } else if ($post['post_skill'] && $post['post_other_skill']) {
+                        foreach ($aud_res as $skill) {
+                            if ($k != 0) {
+                                $return_html .= $comma;
+                            }
+                            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                            $return_html .= $cache_time;
+                            $k++;
+                        } $return_html .= "," . $post['post_other_skill'];
+                    }
+                    $return_html .= '</span>
+                                                </li>
+                                                <li><b>';
+                    $return_html .= $this->lang->line("project_description");
+                    $return_html .= '</b><span><p>';
+
+                    if ($post['post_description']) {
+                        $return_html .= $this->text2link($post['post_description']);
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= ' </p></span>
+                                                </li>
+                                                <li><b>';
+                    $return_html .= $this->lang->line("rate");
+                    $return_html .= '</b><span>';
+
+                    if ($post['post_rate']) {
+                        $return_html .= $post['post_rate'];
+                        $return_html .= "&nbsp";
+                        $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                        $return_html .= "&nbsp";
+                        if ($post['post_rating_type'] == 1) {
+                            $return_html .= "Hourly";
+                        } else {
+                            $return_html .= "Fixed";
+                        }
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= '</span>
+                                                </li>
+                                                <li>
+                                                    <b>';
+                    $return_html .= $this->lang->line("required_experiance");
+                    $return_html .= '</b>
+                                                    <span>';
+
+                    if ($post['post_exp_month'] || $post['post_exp_year']) {
+                        if ($post['post_exp_year']) {
+                            $return_html .= $post['post_exp_year'];
+                        }
+                        if ($post['post_exp_month']) {
+
+                            if ($post['post_exp_year'] == '0' || $post['post_exp_year'] == '') {
+                                $return_html .= 0;
+                            }
+                            $return_html .= ".";
+                            $return_html .= $post['post_exp_month'];
+                        } else {
+                            $return_html .= "." . "0";
+                        }
+
+                        $return_html .= " Year";
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+
+                    $return_html .= '</span>
+                                                </li>
+                                                <li><b>';
+                    $return_html .= $this->lang->line("estimated_time");
+                    $return_html .= '</b><span>';
+
+                    if ($post['post_est_time']) {
+                        $return_html .= $post['post_est_time'];
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= '</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="profile-job-profile-button clearfix">
+                                            <div class="profile-job-details col-md-12">
+                                                <ul>
+                                          <li class="job_all_post last_date">';
+                    $return_html .= $this->lang->line("last_date");
+                    $return_html .= ':';
+
+                    if ($post['post_last_date']) {
+                        $return_html .= date('d-M-Y', strtotime($post['post_last_date']));
+                    } else {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .= '</li>
+                                       <li class=fr>
+                                      <a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['app_id'] . ')">';
+                    $return_html .= $this->lang->line("remove");
+                    $return_html .= '</a>';
+
+                    $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+                    $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                    $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($freelancerapply1) {
+                        
+                    } else {
+                        $return_html .= ' <a href="javascript:void(0);" class="button" onclick="applypopup(' . $post['post_id'] . ',' . $post['app_id'] . ')">';
+                        $return_html .= $this->lang->line("apply");
+                        $return_html .= '</a>
+                                                        </li>';
+                    }
+                    $return_html .= ' </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                }
+            }
+        } else {
+            $return_html .= '<div class="text-center rio">
+                <h4 class="page-heading  product-listing">';
+            $return_html .= $this->lang->line("no_saved_project");
+            $return_html .= '</h4>
+            </div>';
+        }
+        echo $return_html;
+    }
 
     public function user_image_insert() {
 
@@ -2967,18 +3679,18 @@ class Freelancer extends MY_Controller {
         if (empty($_FILES['profilepic']['name'])) {
             $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
         } else {
-            // $config['upload_path'] = 'uploads/user_image/';
-            // $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
-            // $config['file_name'] = $_FILES['profilepic']['name'];
-            // //Load upload library and initialize configuration
-            // $this->load->library('upload', $config);
-            // $this->upload->initialize($config);
-            // if ($this->upload->do_upload('profilepic')) {
-            //     $uploadData = $this->upload->data();
-            //     $picture = $uploadData['file_name'];
-            // } else {
-            //     $picture = '';
-            // }
+// $config['upload_path'] = 'uploads/user_image/';
+// $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
+// $config['file_name'] = $_FILES['profilepic']['name'];
+// //Load upload library and initialize configuration
+// $this->load->library('upload', $config);
+// $this->upload->initialize($config);
+// if ($this->upload->do_upload('profilepic')) {
+//     $uploadData = $this->upload->data();
+//     $picture = $uploadData['file_name'];
+// } else {
+//     $picture = '';
+// }
 
             $freelancer_hire_userimage = '';
             $user['upload_path'] = $this->config->item('free_hire_profile_main_upload_path');
@@ -2988,14 +3700,14 @@ class Freelancer extends MY_Controller {
             $user['max_height'] = $this->config->item('free_hire_profile_main_max_height');
             $this->load->library('upload');
             $this->upload->initialize($user);
-            //Uploading Image
+//Uploading Image
             $this->upload->do_upload('profilepic');
-            //Getting Uploaded Image File Data
+//Getting Uploaded Image File Data
             $imgdata = $this->upload->data();
             $imgerror = $this->upload->display_errors();
-            //echo "$imgerror";die();
+//echo "$imgerror";die();
             if ($imgerror == '') {
-                //Configuring Thumbnail 
+//Configuring Thumbnail 
                 $user_thumb['image_library'] = 'gd2';
                 $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
                 $user_thumb['new_image'] = $this->config->item('free_hire_profile_thumb_upload_path') . $imgdata['file_name'];
@@ -3003,16 +3715,16 @@ class Freelancer extends MY_Controller {
                 $user_thumb['maintain_ratio'] = TRUE;
                 $user_thumb['thumb_marker'] = '';
                 $user_thumb['width'] = $this->config->item('free_hire_profile_thumb_width');
-                //$user_thumb['height'] = $this->config->item('user_thumb_height');
+//$user_thumb['height'] = $this->config->item('user_thumb_height');
                 $user_thumb['height'] = 2;
                 $user_thumb['master_dim'] = 'width';
                 $user_thumb['quality'] = "100%";
                 $user_thumb['x_axis'] = '0';
                 $user_thumb['y_axis'] = '0';
-                //Loading Image Library
+//Loading Image Library
                 $this->load->library('image_lib', $user_thumb);
                 $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
+//Creating Thumbnail
                 $this->image_lib->resize();
                 $thumberror = $this->image_lib->display_errors();
             } else {
@@ -3035,8 +3747,8 @@ class Freelancer extends MY_Controller {
                 } elseif ($this->input->post('hitext') == 4) {
                     redirect('freelancer-hire/employer-details', refresh);
                 }
-                // $redirect_url = site_url('dashboard');
-                // redirect($redirect_url, 'refresh');
+// $redirect_url = site_url('dashboard');
+// redirect($redirect_url, 'refresh');
             } else {
 
                 $contition_array = array('user_id' => $userid);
@@ -3068,7 +3780,7 @@ class Freelancer extends MY_Controller {
             );
 
             $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
-            // echo "<pre>"; print_r($updatdata);die();
+// echo "<pre>"; print_r($updatdata);die();
 
             if ($updatdata) {
                 if ($this->input->post('hitext') == 1) {
@@ -3934,25 +4646,23 @@ class Freelancer extends MY_Controller {
         $this->data['city_data'] = array_values($loc);
         $this->data['demo'] = array_values($result1);
     }
-    
-      public function get_skill($id="") {
-  
-    //get search term
-   $searchTerm = $_GET['term']; 
-      if (!empty($searchTerm)) {
-           $contition_array = array('status' => 1,'type' => 1);
-     $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $citylist = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
-     }
-      foreach($citylist as $key => $value){
-        //   $citydata[$key]['id'] = $value['id'];
-           $citydata[$key]['value'] = $value['text'];
-      }
-      
-      $cdata = array_values($citydata);
-     echo json_encode($cdata);
 
+    public function get_skill($id = "") {
+
+        //get search term
+        $searchTerm = $_GET['term'];
+        if (!empty($searchTerm)) {
+            $contition_array = array('status' => 1, 'type' => 1);
+            $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+            $citylist = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+        }
+        foreach ($citylist as $key => $value) {
+            //   $citydata[$key]['id'] = $value['id'];
+            $citydata[$key]['value'] = $value['text'];
+        }
+
+        $cdata = array_values($citydata);
+        echo json_encode($cdata);
     }
-
 
 }

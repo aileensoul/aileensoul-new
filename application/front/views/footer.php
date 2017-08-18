@@ -300,5 +300,10 @@
 
 </script>
 
+<script type="text/javascript">
+    $('#InboxLink').on('click', function () {
+        document.getElementById('message_count').style.display = "none";
+    });
+</script>
 
 <!-- footer end -->

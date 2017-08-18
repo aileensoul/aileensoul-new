@@ -180,3 +180,7 @@ $route['artistic/artistic-portfolio'] = "artistic/art_portfolio";
 $route['artistic/artistic-portfolio-insert'] = "artistic/art_portfolio_insert";
 
 $route['artistic/home'] = "artistic/art_post";
+$route['artistic/dashboard'] = "artistic/art_manage_post";
+
+$route['artistic/details/(:any)'] = "artistic/artistic_profile/$1";
+$route['artistic/details'] = "artistic/artistic_profile";
