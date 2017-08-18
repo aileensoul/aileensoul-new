@@ -110,7 +110,7 @@
                                         } else {
                                             echo $userdata[0]['first_name'];
                                         }
-                                        ?>">
+                                        ?>"onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                                                <?php echo form_error('firstname'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($lastname) { ?> class="error-msg" <?php } ?>>
@@ -177,14 +177,7 @@
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
             </script>
-            <script>
-                $(document).ready(function () {
-                    var input = $("#firstname");
-                    var len = input.val().length;
-                    input[0].focus();
-                    input[0].setSelectionRange(len, len);
-                });
-            </script>
+            
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_basic_information.js'); ?>"></script>    
          </body>
     </div>

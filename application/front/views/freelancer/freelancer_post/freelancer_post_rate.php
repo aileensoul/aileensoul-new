@@ -91,7 +91,7 @@
                                         if ($hourly1) {
                                             echo $hourly1;
                                         }
-                                        ?>">
+                                        ?>"onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                                                <?php echo form_error('hourly'); ?>
                                     </fieldset>
                                     <fieldset>
@@ -154,14 +154,7 @@
                 var data = <?php echo json_encode($demo); ?>;
                var data1 = <?php echo json_encode($city_data); ?>;
             </script>
-            <script>
-                $(document).ready(function () {
-                    var input = $("#hourly");
-                    var len = input.val().length;
-                    input[0].focus();
-                    input[0].setSelectionRange(len, len);
-                });
-            </script>
+            
            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_rate.js'); ?>"></script>
         </body>
     </div>

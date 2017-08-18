@@ -135,7 +135,7 @@ $(document).ready(function () {
 
             skill_description: {
                 required: true,
-                regx: /^[a-zA-Z0-9\s]*[a-zA-Z][a-zA-Z0-9]*[-@./#&+,\w\s]/
+                regx:/^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             experience_year: {
                 require_from_group: [1, ".day"]

@@ -21,28 +21,28 @@ $(function () {
         }
     });
 });
-  $(function () {
-                $("#tags1").autocomplete({
-                    source: function (request, response) {
-                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                        response($.grep(data, function (item) {
-                            return matcher.test(item.label);
-                        }));
-                    },
-                    minLength: 1,
-                    select: function (event, ui) {
-                        event.preventDefault();
-                        $("#tags1").val(ui.item.label);
-                        $("#selected-tag").val(ui.item.label);
-                        // window.location.href = ui.item.value;
-                    }
-                    ,
-                    focus: function (event, ui) {
-                        event.preventDefault();
-                        $("#tags1").val(ui.item.label);
-                    }
-                });
-            });
+$(function () {
+    $("#tags1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+            // window.location.href = ui.item.value;
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+        }
+    });
+});
 //CODE FOR AUTOFILL OF SEARCH KEYWORD END
 //CODE FOR AUTOFILL OF SEARCH LOCATION START
 $(function () {
@@ -110,91 +110,99 @@ function check() {
 $(".alert").delay(3200).fadeOut(300);
 //FLASH MESSAGE SCRIPT END
 //FORM FILL UP VALIDATION START
- 
-                jQuery.validator.addMethod("noSpace", function (value, element) {
-                    return value == '' || value.trim().length != 0;
-                }, "No space please and don't leave it empty");
 
-                $.validator.addMethod("regx", function (value, element, regexpr) {
-                    if (!value)
-                    {
-                        return true;
-                    } else
-                    {
-                        return regexpr.test(value);
-                    }
-                }, "Number, space and special character are not allowed");
+jQuery.validator.addMethod("noSpace", function (value, element) {
+    return value == '' || value.trim().length != 0;
+}, "No space please and don't leave it empty");
 
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+}, "Number, space and special character are not allowed");
 
-                $(document).ready(function () {
-                    $("#freelancer_post_basicinfo").validate({
-                        rules: {
-                            firstname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
+$.validator.addMethod("regx1", function (value, element, regexpr) {
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+}, "Enter a number between 8 to 15 digit");
 
-                            lastname: {
-                                required: true,
-                                regx: /^[^-\s][a-zA-Z_\s-]+$/,
-                            },
+$(document).ready(function () {
+    $("#freelancer_post_basicinfo").validate({
+        rules: {
+            firstname: {
+                required: true,
+                regx: /^[^-\s][a-zA-Z_\s-]+$/,
+            },
 
-                            email: {
-                                required: true,
-                                email: true,
-                                remote: {
-                                    url:  site + "freelancer/check_email",
-                                    type: "post",
-                                    data: {
-                                        email: function () {
-                                            return $("#email").val();
-                                        },
-                                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                                    },
-                                },
-                            },
+            lastname: {
+                required: true,
+                regx: /^[^-\s][a-zA-Z_\s-]+$/,
+            },
 
-                            phoneno: {
-                                number: true,
-                                minlength: 8,
-                                maxlength: 15
-                            },
-
+            email: {
+                required: true,
+                email: true,
+                remote: {
+                    url: site + "freelancer/check_email",
+                    type: "post",
+                    data: {
+                        email: function () {
+                            return $("#email").val();
                         },
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                    },
+                },
+            },
 
-                        messages: {
-                            firstname: {
-                                required: "First name is required.",
-                            },
+            phoneno: {
+                regx1: /^[0-9\-\+]{9,15}$/,
 
-                            lastname: {
-                                required: "Last name is required.",
-                            },
+            },
 
-                            email: {
-                                required: "Email id is required.",
-                                email: "Please enter valid email id.",
-                                remote: "Email already exists."
-                            },
+        },
 
-                            phoneno: {
-                                minlength: "Minimum length 8 digit",
-                                maxlength: "Maximum length 15 digit"
+        messages: {
+            firstname: {
+                required: "First name is required.",
+            },
 
-                            }
+            lastname: {
+                required: "Last name is required.",
+            },
 
-                        },
+            email: {
+                required: "Email id is required.",
+                email: "Please enter valid email id.",
+                remote: "Email already exists."
+            },
 
-                    });
-                });
+            phoneno: {
+                minlength: "Minimum length 8 digit",
+                maxlength: "Maximum length 15 digit"
+
+            }
+
+        },
+
+    });
+});
 //FORM FILL UP VALIDATION END
 //FOR PREELOADER START
- jQuery(document).ready(function ($) {
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
+jQuery(document).ready(function ($) {
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow', function () {
+            $(this).remove();
+        });
+    });
+});
 //FOR PREELOADER END
 

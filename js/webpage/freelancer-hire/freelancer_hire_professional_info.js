@@ -126,13 +126,13 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
     return regexpr.test(value);
-}, "Only space, only number and only specila characters are not allow");
+}, "Only space, only number and only special characters are not allow");
 $(document).ready(function () {
     $("#professional_info1").validate({
         rules: {
             professional_info: {
                 required: true,
-                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                regx: /^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/ 
             },
         },
         messages: {

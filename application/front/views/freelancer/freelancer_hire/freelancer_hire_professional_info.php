@@ -68,7 +68,7 @@
                                     ?> 
                                     <fieldset class="full-width">
                                         <label><?php echo $this->lang->line("profess_info"); ?>:<span class="red">*</span></label>
-                                        <textarea tabindex="1" autofocus name ="professional_info" id="professional_info" rows="6" cols="50" placeholder="Enter Professional Information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                                        <textarea tabindex="1" autofocus name ="professional_info" id="professional_info" rows="6" cols="50" placeholder="Enter Professional Information" style="resize: none;overflow: auto;" onpaste="OnPaste_StripFormatting(this, event);" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"><?php
                                             if ($professional_info1) {
                                                 echo $professional_info1;
                                             }
@@ -99,14 +99,7 @@
                  var data = <?php echo json_encode($demo); ?>;
                  var data1 = <?php echo json_encode($city_data); ?>;                
             </script>
-            <script>
-                $(document).ready(function () {
-                    var input = $("#professional_info");
-                    var len = input.val().length;
-                    input[0].focus();
-                    input[0].setSelectionRange(len, len);
-                });
-            </script>
+           
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_professional_info.js'); ?>"></script>
           
         </body>
