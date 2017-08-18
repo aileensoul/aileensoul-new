@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <!-- END HEADER -->
+</head>
 <body   class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
    <?php echo $art_header2_border; ?>
