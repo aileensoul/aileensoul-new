@@ -1417,6 +1417,11 @@ function remove_post(abc)
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
+            
+            var total_post = $('.post-design-box').length;
+            if (total_post == 0){
+            $('.art_no_post_avl').show();
+            }
         }
     });
 }

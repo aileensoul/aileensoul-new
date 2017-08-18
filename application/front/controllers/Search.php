@@ -429,7 +429,9 @@ class Search extends CI_Controller {
         $this->data['keyword1'] = $search_place;
         $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        
+        
+        
         $data = array(
             'search_keyword' => $search_business,
             'search_location' => $search_place,

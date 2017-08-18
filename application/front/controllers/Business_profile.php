@@ -922,11 +922,25 @@ class Business_profile extends MY_Controller {
 
 
 
-        if (count($otherdata) == 0) {
-            $notfound = '<div class="contact-frnd-post bor_none">';
-            $notfound .= '<div class="text-center rio">';
-            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
-            $notfound .= '</div></div>';
+        if ($datacount == 0) {
+//            $notfound = '<div class="contact-frnd-post bor_none">';
+//            $notfound .= '<div class="text-center rio">';
+//            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
+//            $notfound .= '</div></div>';
+            
+            $notfound = '<div class="art_no_post_avl" id="art_no_post_avl">
+                                        <h3>Business Post</h3>
+                                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
+
+                                                <img src="' . base_url('img/bui-no.png') . '">
+
+                                            </div>
+                                            <div class="art_no_post_text">
+                                                No Post Available.
+                                            </div>
+                                        </div>
+                                    </div>';
 
             $notvideo = 'Video Not Available';
             $notaudio = 'Audio Not Available';
@@ -3104,10 +3118,6 @@ class Business_profile extends MY_Controller {
         $artdata = $artisticdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
         
-//        echo $id;
-//        echo '<br>';
-//        echo $slug_id;
-//        exit;
         if ($id == $slug_id || $id == '') {
             $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8892,8 +8902,6 @@ class Business_profile extends MY_Controller {
         if ($start < 0)
             $start = 0;
 
-
-
         $this->data['login'] = $login = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $login, 'is_deleted' => 0, 'status' => 1);
 
@@ -9038,7 +9046,7 @@ class Business_profile extends MY_Controller {
         } else {
             $return_html .= '<div class="art-img-nn">
                 <div class="art_no_post_img">
-                    <img src="' . base_url('img/bui-no.png') . '">
+                    <img src="' . base_url('img/No_Contact_Request.png') . '">
     </div>
     <div class="art_no_post_text">
         No Contacts Available.
@@ -10088,18 +10096,30 @@ Your browser does not support the audio tag.
         }
         if (count($businessprofiledatapost) > 0) {
             if (count($count) == count($businessprofiledatapost)) {
-                $return_html .= '<div class = "contact-frnd-post bor_none">
-<div class = "text-center rio">
-<h4 class = "page-heading  product-listing" >No Post Found.</h4>
-</div>
-</div>';
+                $return_html .= '<div class="art_no_post_avl" id="art_no_post_avl">
+                                        <h3>Business Post</h3>
+                                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
+                                                <img src="'.base_url('img/bui-no.png') .'">
+                                            </div>
+                                            <div class="art_no_post_text">
+                                                No Post Available.
+                                            </div>
+                                        </div>
+                                    </div>';
             }
         } else {
-            $return_html .= '<div class = "contact-frnd-post bor_none">
-<div class = "text-center rio">
-<h4 class = "page-heading  product-listing" >No Post Found.</h4>
-</div>
-</div>';
+            $return_html .= '<div class="art_no_post_avl" id="art_no_post_avl">
+                                    <h3>Business Post</h3>
+                                    <div class="art-img-nn">
+                                        <div class="art_no_post_img">
+                                            <img src="'. base_url('img/bui-no.png') .'">
+                                        </div>
+                                        <div class="art_no_post_text">
+                                            No Post Available.
+                                        </div>
+                                    </div>
+                                </div>';
         }
         echo $return_html;
 // return html        

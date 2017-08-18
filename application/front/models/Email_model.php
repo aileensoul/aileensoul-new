@@ -171,11 +171,24 @@ class Email_model extends CI_Model {
                //   echo $to; echo "<br/>";
                //   echo $from; die();
        $this->load->library('email');
+        /* THIS CODE IS COMMENTED */
+       
+//        $config['protocol'] = "SMTP";
+//        $config['smtp_host'] = "SMTP.gmail.com";
+//        $config['smtp_port'] = "465";
+//        $config['smtp_user'] = "aileensoftsolution@gmail.com";
+//        $config['smtp_pass'] = "xyz123456";
+//        $config['charset'] = "utf-8";
+//        $config['mailtype'] = "html";
+//        $config['newline'] = "\r\n";
+       
+       /* THIS CODE IS COMMENTED */ 
+ 
         $config['protocol'] = "SMTP";
-        $config['smtp_host'] = "SMTP.gmail.com";
-        $config['smtp_port'] = "465";
-        $config['smtp_user'] = "aileensoftsolution@gmail.com";
-        $config['smtp_pass'] = "xyz123456";
+        $config['smtp_host'] = "Smtp.gmail.com";
+        $config['smtp_port'] = "25";
+        $config['smtp_user'] = "noreply@aileensoul.com";
+        $config['smtp_pass'] = "aileensoul@123";
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";
