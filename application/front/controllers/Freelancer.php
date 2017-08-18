@@ -134,7 +134,7 @@ class Freelancer extends MY_Controller {
 
         $this->form_validation->set_rules('firstname', 'Full Name', 'required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'required');
-
+        //echo "123";die();
 
         $this->form_validation->set_rules('email', 'EmailId', 'required|valid_email');
 
@@ -179,14 +179,16 @@ class Freelancer extends MY_Controller {
                     'modify_date' => date('Y-m-d', time())
                 );
 
-
+              //  echo "<pre>";print_r($data);die();
 
                 $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
 
                 if ($updatedata) {
+                   
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('freelancer/freelancer_post_address_information', refresh);
                 } else {
+                   
                     $this->session->flashdata('error', 'Your data not inserted');
                     redirect('freelancer/freelancer_post_basic_information', refresh);
                 }
@@ -2229,7 +2231,7 @@ class Freelancer extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+       // echo "<pre>";print_r($freelancerdata);die();
 //code for search start
         $this->freelancer_apply_search();
 // code for search end
