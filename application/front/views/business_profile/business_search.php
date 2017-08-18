@@ -1,16 +1,16 @@
-<div class="col-sm-7 col-md-6 col-xs-6 hidden-mob">
+<div class="col-sm-6 col-md-6 col-xs-6 hidden-mob">
     <div class="job-search-box1 clearfix">
                          
                         <!-- <?php //echo form_open('search/business_search'); ?> -->
                         <form action=<?php echo base_url('search/business_search')?> method="get">
 
-    <fieldset class="col-md-3 col-sm-5 col-xs-5">
+    <fieldset class="col-md-3 col-sm-6 col-xs-5 sec_h2">
             <!--    <label>Find Your Skills</label>
             -->   
           <!-- <input type="text" name="searchartistic" placeholder="Find Your Art"> -->
             <input type="text" id="tags" name="skills" placeholder="Find Your Business">
         </fieldset>
-        <fieldset class="col-md-3 col-sm-5 col-xs-5">
+        <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
             <!--    <label>Find Your Location</label>
             -->   
          

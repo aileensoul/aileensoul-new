@@ -55,7 +55,7 @@
                 <div class="container">
                     <div class="row">
                         <?php echo $business_search; ?>
-                        <div class="col-sm-5 col-md-6 col-xs-12  h2-smladd mob-width">
+                        <div class="col-sm-6 col-md-6 col-xs-12  h2-smladd mob-width">
                             <div class="search-mob-block">
                                 <div class="">
                                     <a href="#search">
@@ -146,7 +146,7 @@
                 <div class="container">
                     <div class="row">
                         <?php echo $business_search; ?>
-                        <div class="col-sm-5 col-md-6 col-xs-12  h2-smladd mob-width">
+                        <div class="col-sm-6 col-md-6 col-xs-12  h2-smladd mob-width">
                             <div class="search-mob-block">
                                 <div class="">
                                     <a href="#search">

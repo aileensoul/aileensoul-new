@@ -240,7 +240,8 @@
 
 .header2{width:940px;}
 
-
+.header2 .job-search-box1 fieldset.sec_h2{ width: 180px; }
+.header2{top: 46px;}
 /*header2 end*/
 
 /*---------------------------------------------------profile-css--------------------------------------------------*/
@@ -393,6 +394,7 @@
 
 /*header2 start*/
 
+.header2 .job-search-box1 fieldset.sec_h2{width: 144px;}
 /*header2 end*/
 
 /*---------------------------------------------------profile-css--------------------------------------------------*/
