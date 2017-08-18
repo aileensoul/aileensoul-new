@@ -1,11 +1,14 @@
 /*header start*/
 
-
 /*header end*/
 
 /*---------------------------------------------------profile-css--------------------------------------------------*/
 
 /*header2 start*/
+
+
+.header-left-menu ul{float: left; width: 100%; padding-bottom: 0px;}
+
 
 /*header2 end*/
 
@@ -241,7 +244,7 @@
 .header2{width:940px;}
 
 .header2 .job-search-box1 fieldset.sec_h2{ width: 180px; }
-.header2{top: 46px;}
+
 /*header2 end*/
 
 /*---------------------------------------------------profile-css--------------------------------------------------*/
@@ -310,7 +313,9 @@
 }
 @media screen and (max-width: 1024px) {
 /*header start*/
-
+.header2 {
+    top: 45px;
+}
 
 /*header end*/
 
@@ -464,12 +469,13 @@
 @media screen and (max-width: 767px) {
 /*header start*/
 
-
+.header-left-menu ul{padding-bottom: 0px;}
 /*header end*/
 
 /*---------------------------------------------------profile-css--------------------------------------------------*/
 
 /*header2 start*/
+
 
 /*header2 end*/
 
