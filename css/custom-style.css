@@ -259,8 +259,8 @@
 /***   FREELANCER HIRE PROFILE  ***/
 
 /***  ADD POST  ***/
-.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
-.date-dropdowns .year{margin-right: 0;}
+/**.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
+.date-dropdowns .year{margin-right: 0;}**/
 .example {
     width: 33%;
     min-width: 400px;
@@ -325,8 +325,8 @@
 /* EDIT PROFILE START */
 
 
-.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
-.date-dropdowns .year{margin-right: 0;}
+/**.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
+.date-dropdowns .year{margin-right: 0;}**/
 .example {
     width: 33%;
     min-width: 400px;
