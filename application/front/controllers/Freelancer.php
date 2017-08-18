@@ -2394,13 +2394,13 @@ class Freelancer extends MY_Controller {
                 $return_html .= '</b><span>';
                 if ($post['post_rate']) {
                     $return_html .= $post['post_rate'];
-                    $return_html .= '"&nbsp"';
+                    $return_html .= "&nbsp";
                     $return_html .= $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
-                    $return_html .= ' "&nbsp"';
+                    $return_html .=  "&nbsp";
                     if ($post['post_rating_type'] == 1) {
-                        $return_html .= '"Hourly"';
+                        $return_html .= "Hourly";
                     } else {
-                        $return_html .= '"Fixed"';
+                        $return_html .= "Fixed";
                     }
                 } else {
                     $return_html .= PROFILENA;

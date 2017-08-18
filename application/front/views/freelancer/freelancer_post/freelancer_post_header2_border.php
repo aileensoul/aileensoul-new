@@ -30,7 +30,7 @@
     </style>
 
     <!--post save success pop up style end -->
-    <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_apply_post')) { ?>
+    <?php if (($this->uri->segment(1) == 'freelancer-work' && $this->uri->segment(2) == 'home')) { ?>
 
 
         <header>
@@ -62,7 +62,7 @@
                                     <ul class="" id="dropdownclass">
 
 
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>"><span class="bu_home"></span></a>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-work/home'); ?>"><span class="bu_home"></span></a>
                                         </li>
                                         <li id="Inbox_link">
                                             <?php if ($message_count) { ?>
@@ -94,8 +94,8 @@
                                                         <div class="my_S">Account</div>
 
                                                     </span>
-                                                    <a href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                                    <a href="<?php echo base_url('freelancer/freelancer_post_basic_information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                                    <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
                                                     <?php
                                                     $userid = $this->session->userdata('aileenuser');
@@ -149,7 +149,7 @@
                                     <ul class="" id="dropdownclass">
 
 
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer') && ($this->uri->segment(2) == 'freelancer_apply_post')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>"><span class="bu_home"></a>
+                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>"><span class="bu_home"></a>
                                         </li>
 
                                         <li id="Inbox_link">
@@ -182,8 +182,8 @@
                                                         <div class="my_S">Account</div>
 
                                                     </span>
-                                                    <a href="<?php echo base_url('freelancer/freelancer_post_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                                    <a href="<?php echo base_url('freelancer/freelancer_post_basic_information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                                    <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
                                                     <?php
                                                     $userid = $this->session->userdata('aileenuser');
@@ -238,7 +238,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "freelancer/deactivate" ?>',
+                url: '<?php echo base_url() . "freelancer-work/deactivate" ?>',
                 data: 'id=' + clicked_id,
                 success: function (data) {
                     window.location = "<?php echo base_url() ?>dashboard";
