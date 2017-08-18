@@ -437,7 +437,7 @@
                                             </div>
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
-                                                if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" || $freelancerpostdata[0]['freelancer_post_ratestate'] != "") {
+                                                if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "") {
                                                     ?>
                                                     <div class="profile-job-post-title clearfix">
                                                         <div class="profile-job-profile-button clearfix">
