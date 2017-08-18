@@ -115,6 +115,7 @@
     padding-bottom: 0px !important;
     padding-top: 0px!important;
 }
+.header ul li #acon a{border-right:none;}
 .header .mCSB_container ul{width:100%; float:left;}
 .header .mCSB_container ul li{width:100%; border-right:none;}
 .header .mCSB_container ul li a{padding-left:0; padding:0 10px 0 0 !important; width: 100%; letter-spacing:0;}

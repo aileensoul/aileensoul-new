@@ -37,7 +37,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>">
