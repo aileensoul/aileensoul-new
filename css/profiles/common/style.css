@@ -2792,5 +2792,56 @@ fieldset.full-width {
 }
 .date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
 .date-dropdowns .year{margin-right: 0;}
+.hs-submit {
+    float: right;
+    text-align: right;
+}
+.hs-submit input {
+    min-width: 150px;
+    width: auto;
+    text-align: center;
+    font-size: 18px!important;
+    margin-top: 23px;
+    border-color: #1b8ab9;
+    text-transform: capitalize;
+}
+.hs-submit input[type=reset] {
+    border-color: #1b8ab9;
+    color: #1b8ab9;
+    padding: 8px 12px 11px;
+}
+.hs-submit input[type=reset]:hover {
+    background: #1b8ab9;
+    color: #fff;
+}
+.hs-submit input[type=submit]:hover {
+    opacity: 0.8;
+    background-color: #156f95!important;
+}
+.hs-submit a {
+    background: #1b8ab9;
+    border: 1px solid #1b8ab9;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    border: 0;
+    padding: 8px 30px 10px;
+    letter-spacing: 1px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+.hs-submit a:hover {
+    background: #156f95;
+    border-color: #000;
+}
+fieldset .add_post_btnc {
+    min-width: 120px;
+    padding: 8px 30px 10px;
+}
+fieldset .add_post_btns {
+    min-width: 120px;
+    padding: 8px 30px 10px;
+}
 
 /***  end form css  ***/
