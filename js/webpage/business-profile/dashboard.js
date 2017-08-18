@@ -1180,18 +1180,32 @@ function edit_postinsert(abc)
 
 function remove_post(abc)
 {
+//    $.ajax({
+//        type: 'POST',
+//        url: base_url + "business_profile/business_profile_delete",
+//        data: 'save_id=' + abc,
+//        success: function (data) {
+//            $('#' + 'removepostdata' + abc).html(data);
+//            var total_post = $('.post-design-box').length;
+//            if (total_post == 0) {
+//                $('.art_no_post_avl').show();
+//            }
+//        }
+//    });
+
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_profile_delete",
-        data: 'save_id=' + abc,
+        url: '<?php echo base_url() . "business_profile/business_profile_deleteforpost" ?>',
+        data: 'business_profile_post_id=' + abc,
         success: function (data) {
-            $('#' + 'removepostdata' + abc).html(data);
+            $('#' + 'removepost' + abc).remove();
             var total_post = $('.post-design-box').length;
             if (total_post == 0) {
                 $('.art_no_post_avl').show();
             }
         }
     });
+
 }
 
 

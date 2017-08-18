@@ -93,6 +93,9 @@ $(document).ready(function () {
 // validation for edit email formate form strat 
 
 $(document).ready(function () {
+    $("#register_form")[0].reset();
+    $("#register_form #email_reg").val('');
+    $("#register_form #password_reg").val('');
 
     $.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
@@ -321,12 +324,7 @@ $(document).ready(function () {
     /* validation */
 });
 
-//For Scroll page at perticular position js Start
-$(document).ready(function () {
-    $("#email_reg").val('');
-    $("#password_reg").val('');
-});
-//For Scroll page at perticular position js End
+
 // disable spacebar js start
 $(document).ready(function () {
     $("#email_reg").on("keydown", function (e) {

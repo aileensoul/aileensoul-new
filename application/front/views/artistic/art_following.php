@@ -394,189 +394,7 @@ if($status == 0 || $status == " "){?>
 
                                 <h3>Following</h3>
                                  <div class="contact-frnd-post">
-                              
-                              <?php if(count($userlist ) > 0){?>
-                        <?php foreach ($userlist as $user) { 
-
-                  $contition_array = array('art_id' => $user['follow_to'], 'status' => '1');
-              $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if($artaval){
-
-
-
-                          ?>
-
-                            <?php
-                                $art_name =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_name;
-                                $art_id =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->user_id;
-
-                                 $art_lastname =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_lastname;
-
-                                 $designation =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->designation;
-                             ?>  
-                                  <div class="job-contact-frnd" id="<?php echo "removefollow" . $user['follow_to']; ?>">
-
-                                        <div class="profile-job-post-detail clearfix">
-                                            <div class="profile-job-post-title-inside clearfix">
-                                                <div class="profile-job-post-location-name">
-                                                    <div class="user_lst"><ul>
-
-                            <li class="fl padding_les_left rsp">
-                            <div class="follow-img">
-                                 <?php if($this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_user_image != ''){ ?>
-                                 <a href="<?php echo base_url('artistic/art_manage_post/'.$art_id); ?>">
-
-                                   <?php 
-
-                                   $uimage = $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_user_image;
-
-if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $uimage)) {
-                                                                $a = $art_name;
-                                                                $acr = substr($a, 0, 1);
-                                                                $b = $art_lastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                                ?>
-                                                                <div class="post-img-userlist">
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div> 
-                                                                <?php
-                                                            } else { ?>
-
-                           <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_user_image);?>" height="50px" width="50px" alt="" >
-
-                           <?php }?>
-
-                            </a>
-                            <?php } else { ?>
-                              <a href="<?php echo base_url('artistic/art_manage_post/'.$art_id); ?>">
-
-
-                           <?php 
-                          $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
-
-                            <div class="post-img-userlist">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
-                            </div>
-                            <?php } ?> 
-                            </div>
-                            </li>
-                            <li class="folle_text">
-                             <div class="">
-                         <div class="follow-li-text ">
-                                <a title="<?php echo ucfirst(strtolower($art_name)); echo "&nbsp;"; echo ucfirst(strtolower($art_lastname)); ?>" href="<?php echo base_url('artistic/art_manage_post/'.$art_id); ?>"><?php echo ucfirst(strtolower($art_name)); echo "&nbsp;"; echo ucfirst(strtolower($art_lastname)); ?></a></div>
-                                  
-                                                        <?php  if ($designation) { ?>
-                                                           <div>
-                                                            <a><?php echo ucfirst(strtolower($designation)); ?></a>
-                                                        </div>
-                                                       <?php  
-                                                        }
-                                                        else
-                                                        {
-                                                          ?>
-                                                          <div>
-                                                            <a><?php echo "Current Work"; ?></a>
-                                                        </div>
-
-                                                      <?php  }
-                                                        ?>
-                                                       
-                            </li>
-                              <?php
-
-                             $userid = $this->session->userdata('aileenuser'); 
-
-
-                            if($artisticdata[0]['user_id'] == $userid){ 
-                             ?>
-                             <li class="fr rsap <?php echo "fruser" . $userid['follow_to']; ?>">
-
-                              <?php
-
-              $contition_array = array('follow_from' =>$artisticdata[0]['art_id'], 'follow_status' => 1,'follow_type' => 1, 'follow_to' => $user['follow_to']);
-            
-             $status =  $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                 
-
-    
-        if($status[0]['follow_status'] == 1){ ?>
-
-                            <div class="user_btn " id= "unfollowdiv">
-                            <button class="bg_following" id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_list(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
-                           </div>
-<?php } ?>
-                             </li>
-
-                             <?php }else{ ?>
-
-                             <li class="fr" id ="<?php echo "frfollow" . $user['follow_to']; ?>">
-
-                              <?php
-
-            
-                 
-             $contition_array = array('user_id' => $userid, 'status' =>'1');
-             $artisticdatauser =  $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-              $contition_array = array('follow_from' =>$artisticdatauser[0]['art_id'], 'follow_status' => 1,'follow_type' => 1, 'follow_to' => $user['follow_to']);
-
-
-             $status_list =  $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
-       
-        if(($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' '  ) && $user['follow_to'] != $artisticdatauser[0]['art_id']){ ?>
-
-                            
-                            <div class="user_btn follow_btn_<?php echo $user['follow_to']; ?>" id= "followdiv">
-                        <button id="<?php echo "follow" . $user['follow_to']; ?>" onClick="followuser_two(<?php echo $user['follow_to']; ?>)">Follow</button>
-                           </div> 
-
-       <?php }else if($user['follow_to'] == $artisticdatauser[0]['art_id']){ ?>
-
-    <?php }else{ ?>
-
-                     <div class="user_btn follow_btn_<?php echo $user['follow_to']; ?>" id= "unfollowdiv">
-                            <button class="bg_following" id="<?php echo "unfollow" . $user['follow_to']; ?>" onClick="unfollowuser_two(<?php echo $user['follow_to']; ?>)"><span>Following</span></button>
-                           </div>   
-
-     <?php }?>
-                             </li>
-
-                             <?php } ?> 
-
-                            </ul>
-                            </div>
-                            </div>
-                            </div>
-                            
-                         </div>
-                                                       
-                                  </div>
-                                   <?php } } ?>
-                                   <?php }else{?>
-
-                            <div class="art-img-nn">
-         <div class="art_no_post_img">
-
-           <img src="<?php echo base_url('img/art-no.png')?>">
-        
-         </div>
-         <div class="art_no_post_text">
-           No Following Available.
-         </div>
-          </div>
-
-                                   <?php }?>
+                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div> 
                                         <div class="col-md-1">
                                         </div>
                                     </div>
@@ -591,12 +409,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $uimage)
     </section>
           
   
-
-
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
- 
-
-
  <!-- Bid-modal  -->
             <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                 <div class="modal-dialog modal-lm">
@@ -824,63 +636,7 @@ $( "#searchplace1" ).autocomplete({
 });
   
 </script>
-<!-- <script>
-//select2 autocomplete start for skill
-$('#searchskills').select2({
-        
-        placeholder: 'Find Your Skills',
-       
-        ajax:{
 
-         
-          url: "<?php echo base_url(); ?>artistic/keyskill",
-          dataType: 'json',
-          delay: 250,
-          
-          processResults: function (data) {
-            
-            return {
-             
-              results: data
-
-
-            };
-            
-          },
-           cache: true
-        }
-      });
-//select2 autocomplete End for skill
-
-//select2 autocomplete start for Location
-$('#searchplace').select2({
-        
-        placeholder: 'Find Your Location',
-        maximumSelectionLength: 1,
-        ajax:{
-
-         
-          url: "<?php echo base_url(); ?>artistic/location",
-          dataType: 'json',
-          delay: 250,
-          
-          processResults: function (data) {
-            
-            return {
-              
-              results: data
-
-
-            };
-            
-          },
-           cache: true
-        }
-      });
-//select2 autocomplete End for Location
-
-</script>
-<!-- popup form edit start -->
  
 <script>
 // Get the modal
@@ -1323,6 +1079,62 @@ function unfollowuser_list(clicked_id)
 
  </script>
  <!-- all popup close close using esc end -->
+
+ <script type="text/javascript">
+  
+  $(document).ready(function () {
+
+var slug_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+    
+    artistic_following(slug_id);
+    
+});
+//var isProcessing = false;
+function artistic_following(slug_id)
+{
+    //if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        //return;
+    //}
+   // isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: '<?php echo base_url() . "artistic/ajax_following" ?>',
+        //url: base_url + "artistic/ajax_following/" + slug_id + '?page=' + pagenum,
+         data: 'slug_id=' + slug_id,
+        //data: {total_record:$("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            //if (pagenum == 'undefined') {
+              //  $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+           // } else {
+           //     $('#loader').show();
+           // }
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.contact-frnd-post').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+           // isProcessing = false;
+        }
+    });
+}
+
+</script>
 
  </body>
 
