@@ -97,7 +97,7 @@
                                 $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
-                                    <?php echo ucfirst(strtolower($sub_fname)) . "  " . ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) .  ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == ''&& $freelancerhiredata[0]['user_id'] == $userid) { ?>
@@ -386,9 +386,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <li> <b><?php echo $this->lang->line("postal_address"); ?></b><span><p> <?php echo $freelancerhiredata[0]['address']; ?> 
-                                                                    </p></span>
-                                                            </li>
+
                                                         </ul>
                                                     </div>
                                                 </div>

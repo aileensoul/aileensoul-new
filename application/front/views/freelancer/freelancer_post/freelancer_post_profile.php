@@ -370,8 +370,7 @@
                                                             }
                                                         }
                                                         ?>
-                                                        <li> <b><?php echo $this->lang->line("postal_address"); ?></b><span><p><?php echo $freelancerpostdata[0]['freelancer_post_address']; ?></p>     </span>
-                                                        </li>
+                                                        
                                                     </ul>
                                                 </div>
                                             </div>
