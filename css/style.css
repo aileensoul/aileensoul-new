@@ -1170,11 +1170,11 @@ footer {
     right: 8px;
     color: #fff;
 }
-.job-post-detail {
+/**.job-post-detail {
     border-radius: 4px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
-}
+}**/
 .page-boxed .job-post-detail {
     border: 1px solid #cacaca;
 }
@@ -2846,12 +2846,12 @@ border-top: none;
 /* job */
 .cls-ve:hover{color: black;}
 .cls-ve{color: #ccc;}
-.job-contact-frnd .profile-job-post-detail {
+/**.job-contact-frnd .profile-job-post-detail {
     background-color: #ffffff;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
     margin-bottom: 15px;
-}
+}**/
 .job-profile-photo {
     position: relative;
     z-index: 1;
@@ -11255,11 +11255,11 @@ style chat css end*/
 #jobseeker_regform #other_keyskill {
     width: 90% !important;
 }
-.contact-frnd-post {
-   /* margin-bottom: 100px;*/
+/**.contact-frnd-post {
+
     width: 100%;
     float: left;
-}
+}**/
 #two_images_buip {
     float: left;
     width: 100%;
@@ -13864,9 +13864,9 @@ end zalak 9-6 css*/
 .profile-main-rec-box-menu td.active {
     background-color: #fff !important;
 }
-.common-form .job-post-detail {
+/**.common-form .job-post-detail {
     border: none;
-}
+}**/
 .common-form .keyskill_border_active ul {
     border: none !important;
 }
@@ -14246,10 +14246,10 @@ body {
 .art-custom .job-menu-profile {
     width: 100%;
 }
-.job-contact-frnd {
+/**.job-contact-frnd {
     width: 100%;
     float: left;
-}
+}**/
 .art-side-menu {
     width: 100%;
     padding-left: 210px;
@@ -14834,7 +14834,7 @@ text-align: center;}
 header.animated {
     z-index: 9;
 }
-.job-contact-frnd .add-post-button{text-align:right;}
+/**.job-contact-frnd .add-post-button{text-align:right;}**/
 .no-post-title{padding-left:10%; display:inline-block; float:left;}
 .no-post-title h4{text-align:left;}
 .add-post-custom{float:left; padding-top:15px; padding-left:20px;}
@@ -15308,9 +15308,9 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
     transform: translate(-50%,-50%) !important;
 }
 .modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
-/**.job-saved-box{margin-bottom:50px; width:100%; float:left;}**/
-/*.job-saved-box{width:100%; float:left; border:1px solid #d9d9d9; margin-bottom:50px; border-radius:4px;}*/
-.contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px; /*border-top:none;*/}
+/**.job-saved-box{margin-bottom:50px; width:100%; float:left;}*
+/*.job-saved-box{width:100%; float:left; border:1px solid #d9d9d9; margin-bottom:50px; border-radius:4px;}
+.contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px;}*/
 #row2{border:1px solid #d9d9d9; border-top:0;}
 .chat_nobcx{margin-top:10px; margin-bottom:5px;}
 
