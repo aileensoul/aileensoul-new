@@ -115,6 +115,8 @@ function plusSlides(n) {
 }
 
 function currentSlide(n) {
+    check_post_available(post_id);
+
     $('.post-design-commnet-box').show();
     showSlides(slideIndex = n);
 }
@@ -1533,6 +1535,17 @@ function check_lengthedit(abc)
     }
 }
 
-function check_post_available(){
-    
+function check_post_available(post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/check_post_available",
+        data: 'post_id=' + post_id,
+        dataType: "json",
+        success: function (data) {
+            if (data == 0) {
+                alert(111);
+                return false;
+            }
+        }
+    });
 }

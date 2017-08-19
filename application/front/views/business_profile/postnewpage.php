@@ -1075,6 +1075,7 @@
                 var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
+                var post_id = '<?php echo $post_id; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/post_detail.js'); ?>"></script>
     </body>

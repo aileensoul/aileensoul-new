@@ -4787,6 +4787,7 @@ class Business_profile extends MY_Controller {
     public function postnewpage($id) {
 
         $userid = $this->session->userdata('aileenuser');
+        $this->data['post_id'] = $id;
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8779,11 +8780,11 @@ class Business_profile extends MY_Controller {
                 }
             }
         } else {
-            
+
             $return_html .= '<li><div class="art-img-nn" id= "art-blank">
                                     <div class="art_no_post_img">
 
-                                        <img src="'. base_url('img/No_Contact_Request.png') .'">
+                                        <img src="' . base_url('img/No_Contact_Request.png') . '">
 
                                     </div>
         <div class="art_no_post_text">
@@ -9728,7 +9729,7 @@ Your browser does not support the audio tag.
                     } elseif (count($businessmultiimage) == 3) {
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
 </a>
 </div>
 <div class = "three-image" >
@@ -11559,6 +11560,39 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $return_html .= '<div class="nofoundpost">
 </div>';
         echo $return_html;
+    }
+
+    public function check_post_available() {
+        $post_id = $_POST['post_id'];
+
+        $condition_array = array('business_profile_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
+            $return = 1;
+        } else {
+            $return = 0;
+        }
+
+        $condition_array = array('user_id' => $profile_data[0]['user_id']);
+        $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+            $return = 1;
+        } else {
+            $return = 0;
+        }
+        if ($profile_data[0]['posted_user_id'] != '0') {
+            $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+        }
+        echo $return;
     }
 
 }

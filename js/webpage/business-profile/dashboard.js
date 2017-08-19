@@ -362,6 +362,7 @@ function openCity(evt, cityName) {
 // post like script start 
 function post_like(clicked_id)
 {
+    check_post_available(clicked_id);
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/like_post",
@@ -2084,3 +2085,19 @@ $('#file-1').on('click', function (e) {
 });
 
 // DROP DOWN SCRIPT END 
+
+function check_post_available(post_id) {
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/check_post_available",
+        data: 'post_id=' + post_id,
+        dataType: "json",
+        success: function (data) {
+            if (data == 0) {
+                alert(111);
+                return false;
+            }
+        }
+    });
+}
