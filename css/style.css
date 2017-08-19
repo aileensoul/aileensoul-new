@@ -15073,7 +15073,7 @@ padding-top: 14px;
 .chat_heae_img{border:1px solid #d9d9d9;}
 .banner-img .cover-pic .fr:hover{background-color: #156f95!important;border:1px solid #1b8ab9;}
 .banner-img .cover-pic .cancel-result:hover{background-color: #fff!important;color: #1b8ab9;border:1px solid #1b8ab9;}
-.custom-row  div#row2 {background-color: #fff;}
+/**.custom-row div#row2 {background-color: #fff;}**/
 .dropdown-content2 a{color: #787878!important;}
 .dropdown-content2 a:hover{color: white!important;}
 .dropdown-content2 a:hover .h4-img{background: url(../img/icon_delete_white.png) no-repeat;background-size:100%;}
@@ -15294,8 +15294,8 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
 /**.job-saved-box{margin-bottom:50px; width:100%; float:left;}*
 /*.job-saved-box{width:100%; float:left; border:1px solid #d9d9d9; margin-bottom:50px; border-radius:4px;}
-.contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px;}*/
-#row2{border:1px solid #d9d9d9; border-top:0;}
+.contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px;}
+#row2{border:1px solid #d9d9d9; border-top:0;}**/
 .chat_nobcx{margin-top:10px; margin-bottom:5px;}
 
 #search .new-search-input{height:215px;}

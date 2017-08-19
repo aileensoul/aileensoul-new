@@ -2928,8 +2928,13 @@ fieldset .add_post_btns {
 .profile-job-details .post_title { font-size: 17px; font-weight: 600; width: 60%; word-break: break-word;
     word-wrap: break-word !important; word-break: break-word !important; cursor: default; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 }
+.profile-job-post-detail .profile-job-post-title .button {font-size: 15px; padding: 3px 13px !important; margin-right: 4px;
+    margin-left: 4px; background-color: #ffffff; text-transform: capitalize; color: #1b8ab9; border: 1px solid #1b8ab9;
+    float: right; font-weight:normal;
+}
+.last_date{ padding-left: 15px; float: left; padding-top: 4px;}
 /*** end  common css for job recrutor and freelancer  ***/
-/*** common css for all profile  ***/
+/***----------- common css for all profile  --------------***/
 /***  left part box  ***/
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
@@ -2975,9 +2980,11 @@ fieldset .add_post_btns {
 .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
 .left_box_menubar li a {padding: 10px; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
-
+/***   cover photo  ***/
+#row2{border:1px solid #d9d9d9; border-top:0;}
+.custom-row div#row2 {background-color: #fff;}
 	
-/*** end  common css for all profile  ***/
+/***---------- end  common css for all profile  -------------***/
 /*** common css for freelance hire and recruiter  ***/ 
 .add-post-button {margin: 30px 10px 10px;}
 

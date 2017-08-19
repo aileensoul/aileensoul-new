@@ -17,12 +17,6 @@
     border-top-right-radius: 3px;
 }
 /*** also use in job profile  ***/
-
-.last_date{ padding-left: 15px; float: left; padding-top: 4px;}
-.profile-job-post-detail .profile-job-post-title .button {font-size: 15px; padding: 3px 13px !important; margin-right: 4px;
-    margin-left: 4px; background-color: #ffffff; text-transform: capitalize; color: #1b8ab9; border: 1px solid #1b8ab9;
-    float: right; font-weight:normal;
-}
 li.fr a {text-decoration: none !important;}
 
 
