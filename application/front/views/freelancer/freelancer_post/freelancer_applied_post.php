@@ -14,7 +14,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
-        <?php echo $freelancer_post_header2; ?>
+        <?php echo $freelancer_post_header2_border; ?>
         <section class="custom-row">
             <div class="container" id="paddingtop_fixed">
                 <div class="row" id="row1" style="display:none;">
