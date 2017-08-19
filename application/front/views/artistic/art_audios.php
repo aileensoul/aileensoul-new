@@ -1,56 +1,25 @@
-<!-- start head -->
 <?php  echo $head; ?>
-
-<style type="text/css">
-    #popup-form img{display: none;}
-</style>
-<!--post save success pop up style strat -->
-
-
-<!--post save success pop up style end -->
-
-
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="<?php //echo base_url('assets/css/croppie.css'); ?>">
- -->
-    <!-- END HEAD -->
-
-    <!-- start header -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <?php echo $header; ?>
-
- <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-
-
- <!-- script for cropiee immage End-->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-  
-    <!-- END HEADER -->
-   
+<script src="<?php echo base_url('js/fb_login.js'); ?>"></script> 
 <?php echo $art_header2_border; ?>
-   
-
   <body   class="page-container-bg-solid page-boxed">
-
     <section class="custom-row">
         <div class="container" id="paddingtop_fixed">
-
             <div class="row" id="row1" style="display:none;">
                 <div class="col-md-12 text-center">
                     <div id="upload-demo" ></div>
                 </div>
                 <div class="col-md-12 cover-pic" >
-
-                    <button class="btn btn-success cancel-result">Cancel</button>
+                   <button class="btn btn-success cancel-result">Cancel</button>
                     <button class="btn btn-success set-btn upload-result" onclick="myFunction()">Save</button>
-
                     <div id="message1" style="display:none;">
                         <div id="floatBarsG">
                             <div id="floatBarsG_1" class="floatBarsG"></div>

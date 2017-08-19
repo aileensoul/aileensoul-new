@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+
 </head>
   <body   class="page-container-bg-solid page-boxed">
   <?php echo $header; ?>
