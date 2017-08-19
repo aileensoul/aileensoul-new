@@ -927,7 +927,7 @@ class Business_profile extends MY_Controller {
 //            $notfound .= '<div class="text-center rio">';
 //            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
 //            $notfound .= '</div></div>';
-            
+
             $notfound = '<div class="art_no_post_avl" id="art_no_post_avl">
                                         <h3>Business Post</h3>
                                         <div class="art-img-nn">
@@ -1662,7 +1662,7 @@ class Business_profile extends MY_Controller {
 
             if (count($businessmultiimage) == 1) {
 
-                
+
                 $allowed = array('gif', 'PNG', 'jpg', 'jpeg', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
                 $allowespdf = array('pdf');
                 $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
@@ -2932,9 +2932,10 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-            if ($busnotification[0]['not_read'] == 2) { 
-            } elseif ($busnotification[0]['not_read'] == 1) { 
+
+            if ($busnotification[0]['not_read'] == 2) {
+                
+            } elseif ($busnotification[0]['not_read'] == 1) {
                 $datafollow = array(
                     'not_read' => 2
                 );
@@ -3080,7 +3081,7 @@ class Business_profile extends MY_Controller {
                     $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('img/icon_no_following.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -3117,7 +3118,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $artdata = $artisticdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
-        
+
         if ($id == $slug_id || $id == '') {
             $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3149,7 +3150,7 @@ class Business_profile extends MY_Controller {
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        
+
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($userlist1);
         }
@@ -3210,11 +3211,11 @@ class Business_profile extends MY_Controller {
                                                                         <li class="fr" id ="frfollow' . $user['follow_from'] . '">';
                 $contition_array = array('user_id' => $userid, 'status' => '1');
                 $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                
-            
+
+
                 $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_from']);
                 $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                
+
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $busdatauser[0]['business_profile_id']) {
 
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
@@ -3236,9 +3237,9 @@ class Business_profile extends MY_Controller {
                                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: none">
+            $return_html .= '<div class="art-img-nn" id= "art-blank">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/bui-no.png') . '">
+                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -3404,7 +3405,7 @@ class Business_profile extends MY_Controller {
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('img/bui-no.png') . '">
+                                                    <img src = "' . base_url('img/icon_no_following.png') . '">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -10100,7 +10101,7 @@ Your browser does not support the audio tag.
                                         <h3>Business Post</h3>
                                         <div class="art-img-nn">
                                             <div class="art_no_post_img">
-                                                <img src="'.base_url('img/bui-no.png') .'">
+                                                <img src="' . base_url('img/bui-no.png') . '">
                                             </div>
                                             <div class="art_no_post_text">
                                                 No Post Available.
@@ -10113,7 +10114,7 @@ Your browser does not support the audio tag.
                                     <h3>Business Post</h3>
                                     <div class="art-img-nn">
                                         <div class="art_no_post_img">
-                                            <img src="'. base_url('img/bui-no.png') .'">
+                                            <img src="' . base_url('img/bui-no.png') . '">
                                         </div>
                                         <div class="art_no_post_text">
                                             No Post Available.
@@ -10559,7 +10560,7 @@ Your browser does not support the audio tag.
     public function bus_user_photos() {
 
         $id = $_POST['bus_slug'];
-        
+
         $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
         $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

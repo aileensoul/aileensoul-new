@@ -36,7 +36,7 @@
                                         </div>
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                    <div class="profile-boxProfileCard_follow  module">
+                                    <div class="profile-boxProfileCard_follow fl  module">
 
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START -->
