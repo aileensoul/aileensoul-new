@@ -405,6 +405,19 @@ class Search extends CI_Controller {
 
         $this->data['de'] = array_values($res);
 
+        $title = '';
+        if ($searchskill) {
+            $title .= $searchskill;
+        }
+        if ($searchskill && $search_place) {
+            $title .= ' Art in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+
         $this->load->view('artistic/recommen_candidate', $this->data);
     }
 
@@ -429,9 +442,9 @@ class Search extends CI_Controller {
         $this->data['keyword1'] = $search_place;
         $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
-        
-        
+
+
+
         $data = array(
             'search_keyword' => $search_business,
             'search_location' => $search_place,
@@ -538,7 +551,21 @@ class Search extends CI_Controller {
         }
 
         $this->data['de'] = array_values($res);
-        $this->data['business_left'] =$this->load->view('business_profile/business_left', $this->data,TRUE);
+        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
+
+        $title = '';
+        if ($search_business) {
+            $title .= $search_business;
+        }
+        if ($search_business && $search_place) {
+            $title .= ' Business in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+
         $this->load->view('business_profile/recommen_business', $this->data);
     }
 
@@ -569,7 +596,7 @@ class Search extends CI_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         // code for insert search keyword in database end
-        
+
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
             $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -679,11 +706,11 @@ class Search extends CI_Controller {
                                                                     <div class="profile-job-post-location-name-rec">
                                                                         <div class="module_Ssearch" style="display: inline-block; float: left;">
                                                                             <div class="search_img" style="height: 110px; width: 108px;" >
-                                                                                <a style=" " href="'. base_url('business-profile/dashboard/' . $p['business_slug']) .'" title="">';
+                                                                                <a style=" " href="' . base_url('business-profile/dashboard/' . $p['business_slug']) . '" title="">';
                     if ($p['business_user_image'] != '') {
-                        $return_html .= '<img src="'. base_url($this->config->item('bus_profile_thumb_upload_path') . $p['business_user_image']) .'" alt="" > </a>';
+                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $p['business_user_image']) . '" alt="" > </a>';
                     } else {
-                        $return_html .= '<img  src="'. base_url(NOBUSIMAGE) .'"  alt="">
+                        $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
                                                                                     </a>';
                     }
                     $return_html .= '</div>
@@ -693,7 +720,7 @@ class Search extends CI_Controller {
                                                                              padding-top: 10px; padding-bottom: 10px;">
                                                                             <ul>
                                                                                 <li style="padding-top: 0px;">
-                                                                                    <a  class="main_search_head" href="'. base_url('business-profile/dashboard/' . $p['business_slug']) .'" title="'. ucfirst(strtolower($p['company_name'])) .'">'.ucfirst(strtolower($p['company_name'])) .'</a>
+                                                                                    <a  class="main_search_head" href="' . base_url('business-profile/dashboard/' . $p['business_slug']) . '" title="' . ucfirst(strtolower($p['company_name'])) . '">' . ucfirst(strtolower($p['company_name'])) . '</a>
                                                                                 </li>
                                                                                 <li style="display: block;">
                                                                                     <a  class="color-search" s title="">';
@@ -832,8 +859,8 @@ class Search extends CI_Controller {
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
                                     <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
                             } else {
-                                $return_html .= '<a class="post_dot" href="'. base_url('business-profile/dashboard/' . $slugname) .'" title="">
-                                    <img  src="'. base_url(NOBUSIMAGE) .'"  alt="">
+                                $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
+                                    <img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
                                 </a>';
                             }
                         }
@@ -873,7 +900,7 @@ class Search extends CI_Controller {
                             <div>
                                 <div id="editpostdata5" style="display:block;">
                                     <a style="margin-bottom: 0px; font-size: 16px">
-                        '. ucfirst(strtolower($p['product_name'])) .'
+                        ' . ucfirst(strtolower($p['product_name'])) . '
                                     </a>
                                 </div>
                                 <div id="editpostbox5" style="display:none;">
@@ -2154,6 +2181,19 @@ class Search extends CI_Controller {
         // echo "<pre>"; print_r($this->data['de']);die();
         // echo "<pre>"; print_r($this->data['postdetail']); die();
 
+        $title = '';
+        if ($searchkeyword) {
+            $title .= $searchkeyword;
+        }
+        if ($searchkeyword && $search_place) {
+            $title .= ' Job Seeker in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+
         $this->load->view('recruiter/recommen_candidate1', $this->data);
     }
 
@@ -2214,7 +2254,7 @@ class Search extends CI_Controller {
 
             $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          
+
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
                 foreach ($results as $postskill) {
@@ -2244,7 +2284,7 @@ class Search extends CI_Controller {
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         
+
             foreach ($skillpost as $ke => $arr) {
                 $postdata[] = $arr;
             }
@@ -2266,7 +2306,7 @@ class Search extends CI_Controller {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
         } else {
-         //   echo "Both";
+            //   echo "Both";
             $contition_array = array('type' => '1', 'status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
             $skilldata = $skill['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2282,7 +2322,7 @@ class Search extends CI_Controller {
                     }
                 }
             }
-          //  echo "<pre>";print_r($skillpost);
+            //  echo "<pre>";print_r($skillpost);
             $contition_array = array('type' => '1', 'status' => '1');
             $search_condition = "(category_name LIKE '%$search_skill%')";
             $fielddata = $field['data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2294,11 +2334,11 @@ class Search extends CI_Controller {
             $join_str[0]['join_type'] = '';
 
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-          //  echo "<pre>";print_r($fieldfound);
+            //  echo "<pre>";print_r($fieldfound);
             $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
-            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array , $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>";print_r($otherdata);
+            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // echo "<pre>";print_r($otherdata);
             foreach ($skillpost as $ke => $arr) {
                 $postdata[] = $arr;
             }
@@ -2318,12 +2358,10 @@ class Search extends CI_Controller {
             foreach ($postdata as $value) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
-            
         }
 
         $this->data['freelancerpostdata'] = $unique;
-       // echo " $this->data['freelancerpostdata']";die();
-        
+        // echo " $this->data['freelancerpostdata']";die();
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2365,10 +2403,26 @@ class Search extends CI_Controller {
         }
 
         $this->data['de'] = array_values($res);
+
+        $title = '';
+        if ($searchkeyword) {
+            $title .= 'Hire ';
+            $title .= $searchkeyword;
+        }
+        if ($searchkeyword && $search_place) {
+            $title .= ' Freelancer in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+
         $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
     }
+
 //freelancer hire search end 
-public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
+    public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
         $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('search_submit')) {
@@ -2418,7 +2472,7 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
 
             $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
             $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          
+
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
                 foreach ($results as $postskill) {
@@ -2448,7 +2502,7 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
 
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         
+
             foreach ($skillpost as $ke => $arr) {
                 $postdata[] = $arr;
             }
@@ -2470,7 +2524,7 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
         } else {
-         //   echo "Both";
+            //   echo "Both";
             $contition_array = array('type' => '1', 'status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
             $skilldata = $skill['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2486,7 +2540,7 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
                     }
                 }
             }
-          //  echo "<pre>";print_r($skillpost);
+            //  echo "<pre>";print_r($skillpost);
             $contition_array = array('type' => '1', 'status' => '1');
             $search_condition = "(category_name LIKE '%$search_skill%')";
             $fielddata = $field['data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2498,11 +2552,11 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
             $join_str[0]['join_type'] = '';
 
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-          //  echo "<pre>";print_r($fieldfound);
+            //  echo "<pre>";print_r($fieldfound);
             $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
-            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array , $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           // echo "<pre>";print_r($otherdata);
+            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // echo "<pre>";print_r($otherdata);
             foreach ($skillpost as $ke => $arr) {
                 $postdata[] = $arr;
             }
@@ -2522,12 +2576,10 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
             foreach ($postdata as $value) {
                 $unique[$value['freelancer_post_reg_id']] = $value;
             }
-            
         }
 
         $this->data['freelancerpostdata'] = $unique;
-       // echo " $this->data['freelancerpostdata']";die();
-        
+        // echo " $this->data['freelancerpostdata']";die();
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2571,6 +2623,7 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
         $this->data['de'] = array_values($res);
         $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
     }
+
 //freelancer hire search end 
 // freelancer post search start
     public function freelancer_post_index() {
@@ -2860,6 +2913,19 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
         }
 
         $this->data['de'] = array_values($res);
+
+        $title = '';
+        if ($search_skill) {
+            $title .= $search_skill;
+        }
+        if ($search_skill && $search_place) {
+            $title .= ' Freelancer in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
     }
@@ -3189,7 +3255,18 @@ public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
         $this->data['demo'] = array_values($result1);
         //echo "<pre>"; print_r($this->data['demo']);die();
 
-
+        $title = '';
+        if ($search_job) {
+            $title .= $search_job;
+        }
+        if ($search_job && $search_place) {
+            $title .= ' Job Opening in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
         $this->load->view('job/job_all_post1', $this->data);
     }
