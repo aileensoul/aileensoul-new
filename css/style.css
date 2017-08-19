@@ -5738,7 +5738,7 @@ label.cameraButton i {
     font-size: 26px;
     padding-top: 2px
 }
-#row2 {
+/**#row2 {
     overflow: hidden;
     width: 100%;
     border: 1px solid #d9d9d9;
@@ -5759,7 +5759,7 @@ label.cameraButton {
     display: inline-block;
     margin: 1em 0;
     cursor: pointer;
-    /* Styles to make it look like a button */
+    
     
     padding: 0.5em;
     border: 1px solid #666;
@@ -5767,11 +5767,11 @@ label.cameraButton {
     background-color: #DDD;
     opacity: 0.3;
 }
-/* Look like a clicked/depressed button */
+
 
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
-}
+}***/
 .cancel-result {
     float: right;
     display: block;
@@ -8707,7 +8707,7 @@ text-overflow: ellipsis;
 .profile-job-post-location-name-rec .post_designation {
     font-size: 15px;
 }
-#row2 {
+/**#row2 {
     overflow: hidden;
     width: 100%;
 }
@@ -8725,7 +8725,7 @@ label.cameraButton {
     display: inline-block;
     margin: 1em 0;
     cursor: pointer;
-    /* Styles to make it look like a button */
+   
     
     padding: 0.5em;
     border: 1px solid #666;
@@ -8733,7 +8733,7 @@ label.cameraButton {
     background-color: #000;
     opacity: 0.6;
 }
-/* Look like a clicked/depressed button */
+
 
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
@@ -9432,7 +9432,7 @@ cover pic css*/
     width: 100px;
     border-radius: 8px;
 }
-#row2 {
+/**#row2 {
     overflow: hidden;
     width: 100%;
 }
@@ -9449,7 +9449,7 @@ cover pic css*/
 label.cameraButton {
     display: inline-block;
     margin: 1em 0;
-    /* Styles to make it look like a button */
+    
     border-radius: 5px;
     padding: 0.5em;
     border: 0px solid #666;
@@ -9460,7 +9460,7 @@ label.cameraButton {
     background-color: black;
     opacity: 0.6;
 }
-/* Look like a clicked/depressed button */
+
 
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
@@ -13878,9 +13878,9 @@ end zalak 9-6 css*/
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-#row2 {
-    /*border-left: 0;*/
-}
+/**#row2 {
+   border-left: 0;
+}**/
 .tabordion section .label-d {
     margin: 0 auto;
     text-align: center;
@@ -14484,7 +14484,7 @@ text-overflow: ellipsis;}**/
 .post-design-name ul li .else_post_d .post-design-product a {
     padding-left: 0;
 }
-.fa-file-pdf-o{font-size: 3em;}
+
 /*.post-design-name ul li .else_post_d {
     padding-left: 7px;
 }*/

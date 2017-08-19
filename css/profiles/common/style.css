@@ -2981,8 +2981,15 @@ fieldset .add_post_btns {
 .left_box_menubar li a {padding: 10px; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
 /***   cover photo  ***/
-#row2{border:1px solid #d9d9d9; border-top:0;}
 .custom-row div#row2 {background-color: #fff;}
+#row2{border:1px solid #d9d9d9; border-top:0; overflow: hidden; width: 100%;}
+#row2 img {height: 350px; width: 100%;}
+.upload-img {float: right; z-index: 1; position: relative; margin-top: -135px; right: 50px;}
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
+    border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
+}
+label.cameraButton:active {border-color: #CCC #EEE #EEE #CCC;}
+
 	
 /***---------- end  common css for all profile  -------------***/
 /*** common css for freelance hire and recruiter  ***/ 
