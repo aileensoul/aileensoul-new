@@ -11570,20 +11570,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-        } else {
-            $return = 0;
-        }
-
-        $condition_array = array('user_id' => $profile_data[0]['user_id']);
-        $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
-            $return = 1;
-        } else {
-            $return = 0;
-        }
-        if ($profile_data[0]['posted_user_id'] != '0') {
-            $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+            
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
             $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
@@ -11591,7 +11579,21 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
             } else {
                 $return = 0;
             }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else {
+            $return = 0;
         }
+
+
         echo $return;
     }
 

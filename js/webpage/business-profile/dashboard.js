@@ -362,25 +362,28 @@ function openCity(evt, cityName) {
 // post like script start 
 function post_like(clicked_id)
 {
-    check_post_available(clicked_id);
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/like_post",
-        data: 'post_id=' + clicked_id,
-        dataType: 'json',
-        success: function (data) {
-            $('.' + 'likepost' + clicked_id).html(data.like);
-            $('.likeusername' + clicked_id).html(data.likeuser);
-            $('.comment_like_count' + clicked_id).html(data.like_user_count);
-            $('.likeduserlist' + clicked_id).hide();
-            if (data.like_user_total_count == '0') {
-                document.getElementById('likeusername' + clicked_id).style.display = "none";
-            } else {
-                document.getElementById('likeusername' + clicked_id).style.display = "block";
+    var is_valid_post = check_post_available(clicked_id);
+    alert(is_valid_post);
+    if (is_valid_post == true) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/like_post",
+            data: 'post_id=' + clicked_id,
+            dataType: 'json',
+            success: function (data) {
+                $('.' + 'likepost' + clicked_id).html(data.like);
+                $('.likeusername' + clicked_id).html(data.likeuser);
+                $('.comment_like_count' + clicked_id).html(data.like_user_count);
+                $('.likeduserlist' + clicked_id).hide();
+                if (data.like_user_total_count == '0') {
+                    document.getElementById('likeusername' + clicked_id).style.display = "none";
+                } else {
+                    document.getElementById('likeusername' + clicked_id).style.display = "block";
+                }
+                $('#likeusername' + clicked_id).addClass('likeduserlist1');
             }
-            $('#likeusername' + clicked_id).addClass('likeduserlist1');
-        }
-    });
+        });
+    }
 }
 //post like script end 
 
@@ -2087,7 +2090,6 @@ $('#file-1').on('click', function (e) {
 // DROP DOWN SCRIPT END 
 
 function check_post_available(post_id) {
-
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/check_post_available",
@@ -2095,8 +2097,11 @@ function check_post_available(post_id) {
         dataType: "json",
         success: function (data) {
             if (data == 0) {
-                alert(111);
+                $('.biderror .mes').html("<div class='pop_content'>this post deleted so you can no take any action</div>");
+                $('#bidmodal').modal('show');
                 return false;
+            } else {
+                return true;
             }
         }
     });
