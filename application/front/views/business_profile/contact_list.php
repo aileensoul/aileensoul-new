@@ -65,11 +65,16 @@
                                         }
                                     } else {
                                         ?>
-                                        <li>
-                                            <div class="cq_main_lp2">
-                                                No Notifications  available...
-                                            </div>
-                                        </li>
+                                        <li><div class="art-img-nn" id= "art-blank">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="<?php echo base_url('img/No_Contact_Request.png') ?>" width="100">
+
+                                                </div>
+                                                <div class="art_no_post_text" style="font-size: 20px;">
+                                                    No Notifiaction Available.
+                                                </div>
+                                            </div></li>
                                     <?php } ?>
                                 </ul>
                             </div>
@@ -152,11 +157,16 @@
                                                     }
                                                 } else {
                                                     ?>
-                                                    <li>
-                                                        <div class="cq_main_lp2">
-                                                            No Notifiaction  available...
-                                                        </div>
-                                                    </li>
+                                                    <li><div class="art-img-nn" id= "art-blank">
+                                                            <div class="art_no_post_img">
+
+                                                                <img src="<?php echo base_url('img/No_Contact_Request.png') ?>" width="100">
+
+                                                            </div>
+                                                            <div class="art_no_post_text" style="font-size: 20px;">
+                                                                No Notifiaction Available.
+                                                            </div>
+                                                        </div></li>
                                                 <?php } ?>
                                             </ul>
                                         </div>
@@ -219,7 +229,7 @@
 
             $(document).ready(function () {
                 business_contact_list();
-                
+
                 $(window).scroll(function () {
                     //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
                     if ($(window).scrollTop() + $(window).height() >= $(document).height()) {

@@ -8779,9 +8779,17 @@ class Business_profile extends MY_Controller {
                 }
             }
         } else {
-            $return_html .= '<li>
-                                            No contacts available...
-                                        </li>';
+            
+            $return_html .= '<li><div class="art-img-nn" id= "art-blank">
+                                    <div class="art_no_post_img">
+
+                                        <img src="'. base_url('img/No_Contact_Request.png') .'">
+
+                                    </div>
+        <div class="art_no_post_text">
+                                        No contacts available...
+                                    </div>
+                                    </div></li>';
         }
         echo $return_html;
     }
