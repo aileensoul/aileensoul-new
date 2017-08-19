@@ -725,10 +725,10 @@ img.aligncenter {
 }
 .ft-15 {
     font-size: 15px !important;
-}**/
+}
 .profile-pho {
     margin-top: -81px!important;
-}
+}**/
 .left_iner_img_profile {
     height: 67px;
     width: 67px;
@@ -2048,14 +2048,14 @@ label.error {
     margin: auto;
     text-align: center;
 }
-#row1 {
+/**#row1 {
     margin: 0 auto;
     border: 1px solid #d9d9d9;
     border-top: none;
     position: relative;
     height: 350px;
     overflow: hidden;
-}
+}**
 .cover-pic {
     position: absolute !important;
     left: 25px;
@@ -2067,10 +2067,10 @@ label.error {
     display: block;
     margin-top:30px;
 }
-.croppie-container .cr-viewport {
+/**.croppie-container .cr-viewport {
     border-color: #f4f4f4;
 }
-.upload-img {
+/**.upload-img {
     z-index: 2;
     margin-top: -90px !important;
 }
@@ -2081,7 +2081,7 @@ label.error {
 .profile-photo {
     position: relative;
     z-index: 0;
-}
+}**/
 .profile-text {
     color: #aba2a2;
     font-size: 16px;
@@ -2093,7 +2093,7 @@ label.error {
     padding-top: 6px;
     /*padding-bottom: 6px;*/
 }
-.profile-pho {
+/**.profile-pho {
     height: 160px;
     width: 160px;
     background-color: #ffffff;
@@ -2101,10 +2101,10 @@ label.error {
     margin-top: -80px;
     border: 3.5px solid #ffffff;
     border: 1px solid #d9d9d9 !important;
-    /*box-shadow: 0px 0px 2px 2px #dad3cb;*/
+    
     
     border-radius: 4px;
-}
+}**/
 .profile-pho-bui {
     height: 160px;
     float: left;
@@ -5771,7 +5771,7 @@ label.cameraButton {
 
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
-}***/
+}**
 .cancel-result {
     float: right;
     display: block;
@@ -5799,7 +5799,7 @@ label.cameraButton input[accept*="camera"] {
     position: fixed;
     /*width: 32.5%;*/
 }
-/*loader*/
+/*loader
 
 #floatBarsG {
     position: absolute;
@@ -5810,7 +5810,7 @@ label.cameraButton input[accept*="camera"] {
     margin-top: 13%;
     transform: scale(0.3);
 }
-.cameraButton .fa.fa-camera{
+/**.cameraButton .fa.fa-camera{
     width:30px;
     height:26px;
     background:url('../img/cam.png') no-repeat;
@@ -5847,7 +5847,7 @@ word-break:break-word;
     background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);      border: 1px solid #d9d9d9;
     font-size: 14px;
 }
-.cover-pic{z-index: 0 !important;}
+/**.cover-pic{z-index: 0 !important;}**/
 
 .dropdown-content1 a{color: #787878 !important;}
 .dropdown-content2 a{color: #787878 !!important;}
@@ -5867,7 +5867,7 @@ word-break:break-word;
         transform: scale(1);
     }
 }
-.floatBarsG {
+/**.floatBarsG {
     position: absolute;
     top: 0;
     background-color: #1b8ab9;
@@ -8738,7 +8738,7 @@ label.cameraButton {
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
 }
-/* This is the part that actually hides the 'Choose file' text box for camera inputs */
+/* This is the part that actually hides the 'Choose file' text box for camera inputs 
 
 label.cameraButton input[accept*="camera"] {
     display: none;
@@ -9208,7 +9208,7 @@ fieldset .add_post_btns {
 }
 /*End*/
 /*Dhaval Tooltip */
-
+/**
 .cameraButton .tooltiptext {
     visibility: hidden;
     width: 180px;
@@ -9465,11 +9465,11 @@ label.cameraButton {
 label.cameraButton:active {
     border-color: #CCC #EEE #EEE #CCC;
 }
-/* This is the part that actually hides the 'Choose file' text box for camera inputs */
+
 
 label.cameraButton input[accept*="camera"] {
     display: none;
-}
+}**/
 #popup-form img {
     display: none;
 }
@@ -9570,7 +9570,7 @@ label.cameraButton input[accept*="camera"] {
     color: red;
 }
 /*end*/
-
+/**
 #upload-demo-i {
     background: #e1e1e1;
     width: 100%;
@@ -9580,7 +9580,7 @@ label.cameraButton input[accept*="camera"] {
 }
 #upload-demo {
     width: 100%;
-}
+}**/
 .main_art {
     padding-bottom: 30px;
     padding-left: 0;
@@ -10570,7 +10570,7 @@ padding: 0px 4px !important;}
 /*
 style chat css start*/
 
-.cancel-result {
+/**.cancel-result {
     color: #1b8ab9;
     background-color: #fff;
     border-color: #1b8ab9;
@@ -10580,7 +10580,7 @@ style chat css start*/
     background-color: rgba(27, 138, 185, 0.8);
     border-color: #1b8ab9;
     margin-right: 10px;
-}
+}**/
 
 
 .input-group-addon {
