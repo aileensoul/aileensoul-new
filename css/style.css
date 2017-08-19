@@ -1009,8 +1009,7 @@ ul.sub-menu li a i {
 .h2-srrt{  margin-right: 12px;height: 19px;
     width:19px;
     float: left;
-        background-size: 100%;
-    
+    background-size: 100%;
    }
 .h2-img{
     background: url(../img/icon_view_profile.png) no-repeat;
@@ -5058,7 +5057,7 @@ border-bottom: 1px solid #000033;
     font-size: 13px;
     color: #5b5b5b;
 }
-.btn-3b {
+/**.btn-3b {
     border-radius: 4px;
     padding: 5px 8px 5px 8px;
     font-size: 14px;
@@ -5071,7 +5070,7 @@ border-bottom: 1px solid #000033;
     background: #1b8ab9;
     color: #fff;
 }
-.add-post-button {
+/**.add-post-button {
     margin: 10px;
     margin-top: 30px;
 }
