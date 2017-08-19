@@ -1,28 +1,15 @@
 $(document).ready(function () { 
-
                 $("#userimage").validate({
-
                     rules: {
-
-                        profilepic: {
-
-                            required: true,
-                         
-                        },
-  
-
+                       profilepic: {
+                            required: true,                     
+                        },  
                     },
-
                     messages: {
-
                         profilepic: {
-
-                            required: "Photo Required",
-                            
+                            required: "Photo Required",                          
                         },
-
                 },
-
                 });
                    });
 
@@ -30,19 +17,16 @@ function updateprofilepopup(id) {
                                 $('#bidmodal-2').modal('show');
                             }
 
-
  function myFunction() {
         document.getElementById("upload-demo").style.visibility = "hidden";
         document.getElementById("upload-demo-i").style.visibility = "hidden";
         document.getElementById('message1').style.display = "block";
     }
 
-
     function showDiv() {
         document.getElementById('row1').style.display = "block";
         document.getElementById('row2').style.display = "none";
     }
-
     $uploadCrop = $('#upload-demo').croppie({
         enableExif: true,
         viewport: {
@@ -56,15 +40,11 @@ function updateprofilepopup(id) {
         }
     });
 
-
-
     $('.upload-result').on('click', function (ev) {
         $uploadCrop.croppie('result', {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
-
-
             $.ajax({
                 url: base_url + "artistic/ajaxpro",
                // url: "<?php echo base_url() ?>artistic/ajaxpro",
@@ -74,81 +54,50 @@ function updateprofilepopup(id) {
                     html = '<img src="' + resp + '" />';
                     if (html) {
                         window.location.reload();
-                    }
-                    //  $("#kkk").html(html);
+                    }                 
                 }
             });
-
         });
     });
-
     $('.cancel-result').on('click', function (ev) {
-
         document.getElementById('row2').style.display = "block";
         document.getElementById('row1').style.display = "none";
         document.getElementById('message1').style.display = "none";
-
     });
 
-//aarati code start
     $('#upload').on('change', function () {
-
-
-        var reader = new FileReader();
-        //alert(reader);
+        var reader = new FileReader();    
         reader.onload = function (e) {
             $uploadCrop.croppie('bind', {
                 url: e.target.result
             }).then(function () {
                 console.log('jQuery bind complete');
             });
-
         }
         reader.readAsDataURL(this.files[0]);
-
-
-
     });
 
     $('#upload').on('change', function () {
-
         var fd = new FormData();
         fd.append("image", $("#upload")[0].files[0]);
-
         files = this.files;
         size = files[0].size;
 
-        //alert(size);
-
-
-// pallavi code start for file type support
 if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-    //alert('not an image');
     picpopup();
-
     document.getElementById('row1').style.display = "none";
     document.getElementById('row2').style.display = "block";
-
     $("#upload").val('');
     return false;
   }
-  // file type code end
-
-        if (size > 10485760)
-        {
-            //show an alert to the user
+      if (size > 10485760)
+        {    
             alert("Allowed file size exceeded. (Max. 10 MB)")
-
             document.getElementById('row1').style.display = "none";
             document.getElementById('row2').style.display = "block";
-
-            // window.location.href = "https://www.aileensoul.com/dashboard"
-            //reset file upload control
             return false;
         }
-
         $.ajax({
-
             url: base_url + "artistic/image",
             //url: "<?php echo base_url(); ?>artistic/image",
             type: "POST",
@@ -156,14 +105,10 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             processData: false,
             contentType: false,
             success: function (response) {
-                //alert(response);
-
             }
         });
     });
 
-
-    
 function divClicked() {
        var divHtml = $(this).html();
         divHtml = divHtml.trim();
@@ -171,44 +116,34 @@ function divClicked() {
        editableText.val(divHtml);
        $(this).replaceWith(editableText);
        editableText.focus();
-       // setup the blur event for this new textarea
        editableText.blur(editableTextBlurred);
    }
    
-   function editableTextBlurred() {
-      
+   function editableTextBlurred() {     
       var html = $(this).val();
       html = html.trim();
-       var viewableText = $("<a>");
-      
+       var viewableText = $("<a>");     
        if (html.match(/^\s*$/) || html == '') { 
        html = "Current Work";
-       } 
-       
+       }    
        viewableText.html(html);
        $(this).replaceWith(viewableText);
-       // setup the click event for this new div
        viewableText.click(divClicked);
-   
        $.ajax({
            url: base_url + "artistic/art_designation",
            //url: "<?php echo base_url(); ?>artistic/art_designation",
            type: "POST",
            data: {"designation": html},
-           success: function (response) {
-   
+           success: function (response) { 
            }
        });
    }
    
    $(document).ready(function () {
-   // alert("hi");
        $("a.designation").click(divClicked);
    });
 
-
    $(function() {
-    // alert('hi');
 $( "#tags" ).autocomplete({
      source: function( request, response ) {
          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -221,7 +156,6 @@ $( "#tags" ).autocomplete({
         event.preventDefault();
         $("#tags").val(ui.item.label);
         $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
     }
     ,
     focus: function(event, ui) {
@@ -232,7 +166,6 @@ $( "#tags" ).autocomplete({
 });
 
 $(function() {
-    // alert('hi');
 $( "#searchplace" ).autocomplete({
      source: function( request, response ) {
          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -245,7 +178,6 @@ $( "#searchplace" ).autocomplete({
         event.preventDefault();
         $("#searchplace").val(ui.item.label);
         $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
     }
     ,
     focus: function(event, ui) {
@@ -256,7 +188,6 @@ $( "#searchplace" ).autocomplete({
 });
 
 $(function() {
-    // alert('hi');
 $( "#tags1" ).autocomplete({
      source: function( request, response ) {
          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -280,7 +211,6 @@ $( "#tags1" ).autocomplete({
 });
 
 $(function() {
-    // alert('hi');
 $( "#searchplace1" ).autocomplete({
      source: function( request, response ) {
          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -293,7 +223,6 @@ $( "#searchplace1" ).autocomplete({
         event.preventDefault();
         $("#searchplace1").val(ui.item.label);
         $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
     }
     ,
     focus: function(event, ui) {
@@ -303,14 +232,10 @@ $( "#searchplace1" ).autocomplete({
 });
 });
 
-function checkvalue() {
-                            //alert("hi");
+function checkvalue() {                
                             var searchkeyword =$.trim(document.getElementById('tags').value);
-                            var searchplace =$.trim(document.getElementById('searchplace').value);
-                            // alert(searchkeyword);
-                            // alert(searchplace);
-                            if (searchkeyword == "" && searchplace == "") {
-                                //alert('Please enter Keyword');
+                            var searchplace =$.trim(document.getElementById('searchplace').value);                        
+                            if (searchkeyword == "" && searchplace == "") {                              
                                 return false;
                             }
                         }
@@ -333,16 +258,10 @@ $('#searchplace').select2({
                                                        // url: "<?php echo base_url(); ?>artistic/location",
                                                         dataType: 'json',
                                                         delay: 250,
-
                                                         processResults: function (data) {
-
                                                             return {
-
                                                                 results: data
-
-
                                                             };
-
                                                         },
                                                         cache: true
                                                     }
@@ -352,58 +271,45 @@ $(document).ready(function() {
       $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
     });
 
-
     function followuser(clicked_id)
-    { //alert(clicked_id);
-
+    { 
         $.ajax({
             type: 'POST',
             url: base_url + "artistic/follow_two",
             //url: '<?php echo base_url() . "artistic/follow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
-
                 $('.' + 'fruser' + clicked_id).html(data);
-
             }
         });
     }
-
 function unfollowuser(clicked_id)
     {
-
         $.ajax({
             type: 'POST',
             url: base_url + "artistic/unfollow_two",
             //url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
-
                 $('.' + 'fruser' + clicked_id).html(data);
-
             }
         });
     }
 
  function readURL(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-            
+            var reader = new FileReader();           
+            reader.onload = function (e) {           
             document.getElementById('preview').style.display = 'block';
                 $('#preview').attr('src', e.target.result);
-            }
-            
+            }          
             reader.readAsDataURL(input.files[0]);
         }
     }
     
     $("#profilepic").change(function(){
-         profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
+         profile = this.files;              
+                    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){                    
                   $('#profilepic').val('');
                    picpopup();
                      return false;
@@ -430,8 +336,7 @@ function picpopup() {
           }
 
  $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
+    if ( e.keyCode === 27 ) {      
         $('#bidmodal-2').modal('hide');
     }
 });  
