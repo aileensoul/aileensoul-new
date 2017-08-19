@@ -7408,6 +7408,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_photos', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
