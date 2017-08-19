@@ -4504,11 +4504,9 @@ public function followtwo() {
         
         $this->data['de'] = array_values($res);
 
-
-
-
-
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_following', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
