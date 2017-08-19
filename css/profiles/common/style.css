@@ -502,6 +502,19 @@ section {
 .margin_btm {
     margin-bottom: 0px!important;
 }
+.padding_les {
+    padding-right: 0px!important;
+    padding-left: 0px!important;
+}
+.padding_less_left {
+    padding-left: 0px!important;
+}
+.padding_less_right {
+    padding-right: 0px!important;
+}
+#padding_dash #row1 .text-center {
+    padding-left: 0px!important;
+}
 .ft-13 {
     font-size: 13px !important;
 }
@@ -2706,6 +2719,9 @@ hr {
 }
 
 /***  end font Awesome  ***/
+.display_inline {
+    display: inline !important;
+}
 /***  place holder  ***/
 ::-webkit-input-placeholder {
     color: #747474;
@@ -2857,4 +2873,96 @@ fieldset .add_post_btns {
 .job-contact-frnd .add-post-button{text-align:right;}
 .job-contact-frnd .profile-job-post-detail { background-color: #ffffff; border: 1px solid #d9d9d9; border-radius: 4px;
     margin-bottom: 15px;}
+.profile-job-profile-button {background-color: #e8f3f8; padding: 4px 0px; border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;}
+.post-img-div{
+    color:#fff;
+    width:50px;
+    height:50px;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+    font-size: 20px;
+    padding: 16px 0;
+    text-align: center;
+    text-transform: uppercase;
+    line-height:1;
+}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul {list-style: none; display: block;
+    width: 100%; clear: both; padding: 10px 4px 6px; margin-left: 4px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li{float:left; width:100%; margin-bottom:5px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a { text-decoration: none; font-weight: 600;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a:hover {text-decoration-line: underline;
+    color: #1b8ab9;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal; font-weight: 600;
+    width: 30%; float: left;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {text-align: justify;
+    word-break: break-word; display: flex; margin-bottom: 0px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
+    text-decoration-line: underline;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: " :";
+    margin-left: -15px; float: left;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
+    word-break: break-word; float: left; padding-right: 10px; width: 65%;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
+    font-weight: 600; width: 30%; float: left;}
 
+/***  left part box  ***/
+.profile-box {max-width: 430px; position: fixed;}
+.full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
+.profile-boxProfileCard {border: 11px solid #ffffff; background: #fff; border-radius: 3px;}
+.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none;}
+.profile-boxProfileCard-bg {background-size: 100%; border-radius: 4px 4px 0 0; background-position: 0 50%; width: 100%;}
+.data_img {height: 95px; width: 100%;}
+.data_img img {height: 100%; width: 100%;}
+.data_img_2 {height: 67px; width: 67px; z-index: 3; position: relative;}
+.data_img_2 img {width: 100%; height: 100%;}
+.data_img_2 div{
+    color:#fff;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+    font-size: 24px;
+    padding: 22px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.profile-boxProfileCard-content:before {width: 100%; height: 1px; display: block; position: absolute; content: "";
+    top: 60px; background: #d9d9d9;}
+.profile-boxProfileCard-content {position: relative; background-color: #e8f3f8;}
+.left_side_box_img {float: left;}
+.buisness-profile-txext {z-index: 1; position: relative; display: inline-block; width: 24%; padding-right: 1px !important;
+    padding-left: 1px !important;}
+.profile-boxProfilebuisness-avatarLink2 {background-color: #fff; border-radius: 6px; margin: 11px 0 12px 12px;
+    padding: 1px; vertical-align: bottom; border: 3px solid #ffffff;
+}
+.a-inlineBlock {display: inline-block!important; width: 75px; z-index: 3; position: relative; height: 75px;}
+.profile-boxProfileCard-content .buisness-profile-txext a img {height: 100%; width: 100%; z-index: 3; position: relative;}
+.right_left_box_design {padding: 10px 10px 0px 16px; width: 76%; display: inline-block; float: left;}
+.right_left_box_design .profile-company-name {display: inline-block; max-width: 100%; overflow: hidden; 
+	text-overflow: ellipsis; white-space: nowrap; width: auto; color: #1b8ab9;
+}
+.profile-company-name a {font-size: 18px; margin-left: 0px; font-weight: 600; color: #1b8ab9;}
+.profile-boxProfile-name{max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.left_box_menubar {width: 100%; padding: 0px; margin: 0px; float: left;}
+.left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
+.left_box_menubar li a {padding: 10px; display: inline-block;}
+.left_box_menubar li:last-child a {text-align: center;}
+
+	
+/***  common css for job recrutor and freelancer  ***/
+	
+	
+	
+	
+	
+	
+	
