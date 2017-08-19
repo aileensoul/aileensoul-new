@@ -1,6 +1,5 @@
 $(document).ready(function () {
     artistic_userlist();
-
     // $(window).scroll(function () {
     //     //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
     //     if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -56,7 +55,6 @@ function artistic_userlist() {
         success: function (data) {
             $('.loader').remove();
             $('.contact-frnd-post').append(data);
-
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -68,7 +66,6 @@ function artistic_userlist() {
         }
     });
 }
-
 function divClicked() {
                                 var divHtml = $(this).html();
                                 var editableText = $("<textarea />");
@@ -78,7 +75,6 @@ function divClicked() {
                                 // setup the blur event for this new textarea
                                 editableText.blur(editableTextBlurred);
                             }
-
                             function editableTextBlurred() {
                                 var html = $(this).val();
                                 var viewableText = $("<a>");
@@ -90,8 +86,7 @@ function divClicked() {
                                 $(this).replaceWith(viewableText);
                                 // setup the click event for this new div
                                 viewableText.click(divClicked);
-
-                                $.ajax({
+                               $.ajax({
                                     url: base_url + "artistic/art_designation",   
                                    // url: "<?php echo base_url(); ?>artistic/art_designation",
                                     type: "POST",
@@ -101,14 +96,12 @@ function divClicked() {
                                     }
                                 });
                             }
-
                             $(document).ready(function () {
                             // alert("hi");
                                 $("a.designation").click(divClicked);
                             });
-
  $(function () {
-                                                            // alert('hi');
+                                                          // alert('hi');
             $("#tags").autocomplete({
              source: function (request, response) {
             var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
@@ -130,8 +123,6 @@ $("#tags").val(ui.item.label);
         }
     });
 });
-
-
  $(function () {
                                                             // alert('hi');
                                                             $("#searchplace").autocomplete({
@@ -204,7 +195,6 @@ $( "#searchplace1" ).autocomplete({
     }
 });
 });
-
 function checkvalue() {
         //alert("hi");
         var searchkeyword =$.trim(document.getElementById('tags').value);
@@ -216,8 +206,6 @@ function checkvalue() {
             return false;
         }
     }
-
-
     function check() {
                             var keyword = $.trim(document.getElementById('tags1').value);
                             var place = $.trim(document.getElementById('searchplace1').value);
@@ -228,46 +216,34 @@ function checkvalue() {
 
 // Get the modal
     var modal = document.getElementById('myModal');
-
 // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
-
 // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks the button, open the modal 
     btn.onclick = function () {
         modal.style.display = "block";
     }
-
 // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
     }
-
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-
  function myFunction() {
         document.getElementById("upload-demo").style.visibility = "hidden";
         document.getElementById("upload-demo-i").style.visibility = "hidden";
         document.getElementById('message1').style.display = "block";
-
         // setTimeout(function () { location.reload(1); }, 9000);
-
     }
-
-
-    function showDiv() {
+  function showDiv() {
         document.getElementById('row1').style.display = "block";
         document.getElementById('row2').style.display = "none";
     }
-
-
     $uploadCrop = $('#upload-demo').croppie({
         enableExif: true,
         viewport: {
@@ -280,16 +256,11 @@ function checkvalue() {
             height: 350
         }
     });
-
-
-
     $('.upload-result').on('click', function (ev) {
         $uploadCrop.croppie('result', {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
-
-
             $.ajax({
                 url: base_url + "artistic/ajaxpro",   
                 //url: "<?php echo base_url() ?>artistic/ajaxpro",
@@ -303,23 +274,17 @@ function checkvalue() {
                     //  $("#kkk").html(html);
                 }
             });
-
         });
     });
-
     $('.cancel-result').on('click', function (ev) {
 
         document.getElementById('row2').style.display = "block";
         document.getElementById('row1').style.display = "none";
         document.getElementById('message1').style.display = "none";
-
     });
-
 //aarati code start
     $('#upload').on('change', function () {
-
-
-        var reader = new FileReader();
+      var reader = new FileReader();
         //alert(reader);
         reader.onload = function (e) {
             $uploadCrop.croppie('bind', {
@@ -327,33 +292,21 @@ function checkvalue() {
             }).then(function () {
                 console.log('jQuery bind complete');
             });
-
         }
         reader.readAsDataURL(this.files[0]);
-
-
-
     });
 
     $('#upload').on('change', function () {
-
         var fd = new FormData();
         fd.append("image", $("#upload")[0].files[0]);
-
         files = this.files;
         size = files[0].size;
 
-        //alert(size);
-
-
-// pallavi code start for file type support
 if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
     //alert('not an image');
     picpopup();
-
     document.getElementById('row1').style.display = "none";
     document.getElementById('row2').style.display = "block";
-
     $("#upload").val('');
     return false;
   }
@@ -363,17 +316,13 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         {
             //show an alert to the user
             alert("Allowed file size exceeded. (Max. 10 MB)")
-
             document.getElementById('row1').style.display = "none";
             document.getElementById('row2').style.display = "block";
-
             // window.location.href = "https://www.aileensoul.com/dashboard"
             //reset file upload control
             return false;
         }
-
         $.ajax({
-
             url: base_url + "artistic/image",   
             //url: "<?php echo base_url(); ?>artistic/image",
             type: "POST",
@@ -382,15 +331,12 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             contentType: false,
             success: function (response) {
                 //alert(response);
-
             }
         });
     });
 
-
     function followuser(clicked_id)
     {
-
         $.ajax({
             type: 'POST',
             url: base_url + "artistic/follow",   
@@ -398,18 +344,13 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) { //alert(data.count);
-
                 $('.' + 'fruser' + clicked_id).html(data.follow);
                 $('#countfollow').html(data.count);
-
-
             }
         });
     }
-
     function unfollowuser(clicked_id)
     {
-
         $.ajax({
             type: 'POST',
             url: base_url + "artistic/unfollow",   
@@ -417,11 +358,8 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
-
-                $('.' + 'fruser' + clicked_id).html(data.follow);
+               $('.' + 'fruser' + clicked_id).html(data.follow);
                 $('#countfollow').html(data.count);
-
-
             }
         });
     }
@@ -429,7 +367,6 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
     function updateprofilepopup(id) {
         $('#bidmodal-2').modal('show');
     }
-
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -438,12 +375,10 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             
             document.getElementById('preview').style.display = 'block';
                 $('#preview').attr('src', e.target.result);
-            }
-            
+            }           
             reader.readAsDataURL(input.files[0]);
         }
-    }
-    
+    }   
     $("#profilepic").change(function(){
          profile = this.files;
                    //alert(profile);
@@ -457,25 +392,12 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
     });
 
 function picpopup() {
-
             $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
             $('#bidmodal').modal('show');
                         }
-
 $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         //$( "#bidmodal" ).hide();
         $('#bidmodal-2').modal('hide');
     }
 });  
-
-
-
-
-$(document).ready(function(){
-    
-   //  $(document).load().scrollTop(1000);
-        
-       $('html,body').animate({scrollTop:265}, 100);
-   
-   });

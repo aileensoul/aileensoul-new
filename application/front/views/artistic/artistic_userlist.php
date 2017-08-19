@@ -28,7 +28,6 @@
             }
             ?>
         </div> 
-
         <div class="common-form">
             <div class="job-saved-box">
                 <h3>Userlist</h3>
@@ -48,7 +47,6 @@
 <footer>
 <?php echo $footer; ?>
 </footer>      
-
  <!-- Bid-modal  -->
             <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
                 <div class="modal-dialog modal-lm">
@@ -62,7 +60,6 @@
                 </div>
             </div>
             <!-- Model Popup Close -->
-
 <!-- Bid-modal-2  -->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
     <div class="modal-dialog modal-lm">
@@ -87,7 +84,6 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-
 <footer>
 <?php echo $footer; ?>
 </footer>
