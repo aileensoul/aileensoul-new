@@ -340,7 +340,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                 <li>
 
                                     <div class="col-md-12"> <div class="form-group">
-                                            <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
+                                            <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="visibility:hidden;">
                                         </div></div>
 
 

@@ -90,14 +90,14 @@
           <ul class="search_ul_an">
        <li>
       <a style="  font-size: 19px;
-         font-weight: 600;" href="<?php echo base_url('artistic/art_manage_post/' . $key['user_id'] . ''); ?>" title="<?php echo $key['art_name'].' '.$key['art_lastname'];?>">
+         font-weight: 600;" href="<?php echo base_url('artistic/dashboard/' . $key['user_id'] . ''); ?>" title="<?php echo $key['art_name'].' '.$key['art_lastname'];?>">
        <?php echo ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname']));?>
        </a>
       </li>
       
      
          <li style="display: block;">
-         <a  class="color-search" href="<?php echo base_url('artistic/art_manage_post/' . $key['user_id'] . ''); ?>">
+         <a  class="color-search" href="<?php echo base_url('artistic/dashboard/' . $key['user_id'] . ''); ?>">
            <?php if($key['designation']){echo $key['designation'];} else{echo "Current work" ;} ?>
          </a>
 
@@ -315,7 +315,7 @@ if($artuserdata1){
 
                                                                                                             <li>
                                                             <div class="post-design-product">
-                                                                <a class="post_dot" href="<?php echo base_url('artistic/art_manage_post/' . $key['user_id'] . ''); ?>" title="<?php echo $key['art_name'].' '.$key['art_lastname'];?>" >
+                                                                <a class="post_dot" href="<?php echo base_url('artistic/dashboard/' . $key['user_id'] . ''); ?>" title="<?php echo $key['art_name'].' '.$key['art_lastname'];?>" >
                                                                     <?php echo ucfirst(strtolower($key['art_name'])).' '.ucfirst(strtolower($key['art_lastname']));?>
                                                                       </a>
                                                                        <span role="presentation" aria-hidden="true"> · </span>
@@ -347,7 +347,7 @@ if($artuserdata1){
                                                             <i class="fa fa-trash-o" aria-hidden="true">
                                                             </i> Delete Post
                                                         </a> -->
-                                                        <a href="<?php echo base_url('artistic/artistic_contactperson/' . $key['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a>
+                                                       <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $key['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
                                                                                                     </div>
                                             </div> 
 
@@ -417,7 +417,7 @@ if($artuserdata1){
 
                                                    
             <div class="one-image" >
-             <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name'])?>"> </a>
+             <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name'])?>"> </a>
                                                     </div>
                                                     
 
@@ -425,7 +425,7 @@ if($artuserdata1){
 
                                                   
              <div>
-            <a href="<?php echo base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) ?>"><div class="pdf_img">
+            <a href="<?php echo base_url('artistic/creat-pdf/' . $artmultiimage[0]['image_id']) ?>"><div class="pdf_img">
                 <img src="<?php echo base_url('images/PDF.jpg')?>" style="height: 100%; width: 100%;">
                                 </div></a>
                                                     </div>
@@ -471,7 +471,7 @@ if($artuserdata1){
 
                                                     
                                                     <div class="two-images">
-                                                        <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']) ?>" > </a>
+                                                        <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']) ?>" > </a>
                                                     </div>
 
                                                     
@@ -483,14 +483,14 @@ if($artuserdata1){
 
                                               
                                                 <div class="three-image-top">
-                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) ?>" style="width: 100%; height:100%; "> </a>
+                                                    <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) ?>" style="width: 100%; height:100%; "> </a>
                                                 </div>
                                                <div class="three-image">
-                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name'])?>" style="width: 100%; height:100%; "> </a>
+                                                    <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name'])?>" style="width: 100%; height:100%; "> </a>
                                                 </div>
 
                                               <div class="three-image">
-                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name'])?>" style="width: 100%; height:100%; "> </a>
+                                                    <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name'])?>" style="width: 100%; height:100%; "> </a>
                                                 </div>
 
                                                 
@@ -505,7 +505,7 @@ if($artuserdata1){
 
                                                     
                                                    <div class="four-image">
-                                                        <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name'])?>" style="width: 100%; height: 100%;"> </a>
+                                                        <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name'])?>" style="width: 100%; height: 100%;"> </a>
 
                                                     </div>
 
@@ -525,7 +525,7 @@ if($artuserdata1){
 
                                                     
                                                   <div class="four-image">
-                                                            <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) ?>" style=""> </a>
+                                                            <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) ?>" style=""> </a>
                                                         </div>
                                                     
                                                     
@@ -537,9 +537,9 @@ if($artuserdata1){
                                                 }
                                                 ?>
                                              <div class="four-image">
-                                                        <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name'])?>" > </a>
+                                                        <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name'])?>" > </a>
 
-   <a href="<?php echo base_url('artistic/postnewpage/' . $key['art_post_id']) ?>" >
+   <a href="<?php echo base_url('artistic/post-detail/' . $key['art_post_id']) ?>" >
                                                     <div class="more-image" >
 
 <span>
