@@ -229,6 +229,7 @@
 
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_professional_information.js'); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
 
             <style type="text/css">
                 #experience_year-error{margin-top: 42px;margin-left: 15px;}

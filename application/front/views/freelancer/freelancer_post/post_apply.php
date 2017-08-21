@@ -140,5 +140,6 @@
             var data = <?php echo json_encode($demo); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/post_apply.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
     </body>               
 </html>

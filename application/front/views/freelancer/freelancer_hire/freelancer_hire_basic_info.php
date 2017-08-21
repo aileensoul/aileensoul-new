@@ -156,6 +156,7 @@
             </script>
            
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
         </body>
     </div>
 </html>

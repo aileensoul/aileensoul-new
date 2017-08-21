@@ -451,5 +451,10 @@
     .paddingtop_fixed_art{padding-top: 62px!important;}
      
 
+      div.panel {
+                      display: none;
+                        }
+    .imge_psot img {height: 70%; width: 100%;}
+
 /* EDIT PROFILE END */
 /* PROFILE END */

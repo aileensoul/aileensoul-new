@@ -73,27 +73,7 @@ function freelancerapply_search(pagenum)
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
 // CODE FOR AUTOFILL OF SEARCH KEYWORD START
-$(function () {
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
-    });
-});
+
 $(function () {
     $("#tags1").autocomplete({
         source: function (request, response) {
@@ -117,27 +97,7 @@ $(function () {
 });
 // CODE FOR AUTOFILL OF SEARCH KEYWORD END
 //CODE FOR AUTOFILL OF SEARCH PLACE START
-$(function () {
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-        }
-    });
-});
+
 $(function () {
     $("#searchplace1").autocomplete({
         source: function (request, response) {

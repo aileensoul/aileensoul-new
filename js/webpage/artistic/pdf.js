@@ -1,4 +1,4 @@
-$(document).ready(function () { 
+ $(document).ready(function () { 
 
                 $("#userimage").validate({
 
@@ -27,7 +27,6 @@ $(document).ready(function () {
                    });
 
 
-
 $(function() {
     // alert('hi');
 $( "#tags" ).autocomplete({
@@ -51,7 +50,6 @@ $( "#tags" ).autocomplete({
     }
 });
 });
-
 
 $(function() {
     // alert('hi');
@@ -126,15 +124,10 @@ $( "#searchplace1" ).autocomplete({
 });
 });
 
-
-function checkvalue() {
-                            //alert("hi");
+ function checkvalue() {                        
                             var searchkeyword =$.trim(document.getElementById('tags').value);
-                            var searchplace =$.trim(document.getElementById('searchplace').value);
-                            // alert(searchkeyword);
-                            // alert(searchplace);
+                            var searchplace =$.trim(document.getElementById('searchplace').value);                           
                             if (searchkeyword == "" && searchplace == "") {
-                                //alert('Please enter Keyword');
                                 return false;
                             }
                         }
@@ -147,17 +140,17 @@ function check() {
                             }
                         }
 
-$(document).ready(function() {
+ $(document).ready(function() {
       $('.blocks').jMosaic({items_type: "li", margin: 0});
       $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
     });
+    
 
-
-function updateprofilepopup(id) {
+    function updateprofilepopup(id) {
                                 $('#bidmodal-2').modal('show');
-}
+    }
 
-function myFunction() {
+    function myFunction() {
         document.getElementById("upload-demo").style.visibility = "hidden";
         document.getElementById("upload-demo-i").style.visibility = "hidden";
         document.getElementById('message1').style.display = "block";
@@ -169,8 +162,7 @@ function myFunction() {
         document.getElementById('row2').style.display = "none";
     }
 
-
-$uploadCrop = $('#upload-demo').croppie({
+ $uploadCrop = $('#upload-demo').croppie({
         enableExif: true,
         viewport: {
             width: 1250,
@@ -217,8 +209,7 @@ $uploadCrop = $('#upload-demo').croppie({
 
     });
 
-//aarati code start
-    $('#upload').on('change', function () {
+$('#upload').on('change', function () {
 
 
         var reader = new FileReader();
@@ -254,11 +245,11 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
     document.getElementById('row1').style.display = "none";
     document.getElementById('row2').style.display = "block";
+
     $("#upload").val('');
     return false;
   }
   // file type code end
-
 
 
         if (size > 10485760)
@@ -289,7 +280,6 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         });
     });
 
-
 function followuser(clicked_id)
     { //alert(clicked_id);
 
@@ -306,7 +296,23 @@ function followuser(clicked_id)
         });
     }
 
- function readURL(input) {
+ function unfollowuser(clicked_id)
+    {
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "artistic/unfollow_two",
+            //url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
+            data: 'follow_to=' + clicked_id,
+            success: function (data) {
+
+                $('.' + 'fruser' + clicked_id).html(data);
+
+            }
+        });
+    }
+
+function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             
@@ -321,7 +327,7 @@ function followuser(clicked_id)
     }
     
     $("#profilepic").change(function(){
- profile = this.files;
+         profile = this.files;
                    //alert(profile);
                       if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                        //alert('not an image');
@@ -332,29 +338,28 @@ function followuser(clicked_id)
                       readURL(this);}
     });
 
- $(document).ready(function() {
+$(document).ready(function() {
   $("html,body").animate({scrollTop: 350}, 100); //100ms for example
 });
 
-  function picpopup() {
+function picpopup() {
 
             $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
             $('#bidmodal').modal('show');
 }
 
-
- $( document ).on( 'keydown', function ( e ) {
+$( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
         $('#bidmodal-2').modal('hide');
     }
 });  
 
-
-$(document).ready(function(){   
+$(document).ready(function(){
     $('html,body').animate({scrollTop:265}, 100);
 });
 
- function divClicked() {
+function divClicked() {
        var divHtml = $(this).html();
         divHtml = divHtml.trim();
        var editableText = $("<textarea />");
@@ -368,7 +373,7 @@ $(document).ready(function(){
    function editableTextBlurred() {
       
       var html = $(this).val();
-       html = html.trim();
+      html = html.trim();
        var viewableText = $("<a>");
       
        if (html.match(/^\s*$/) || html == '') { 
@@ -395,4 +400,3 @@ $(document).ready(function(){
    // alert("hi");
        $("a.designation").click(divClicked);
    });
-

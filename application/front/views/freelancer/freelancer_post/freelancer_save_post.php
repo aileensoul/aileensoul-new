@@ -214,6 +214,7 @@
 
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_save_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
         <script>
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)

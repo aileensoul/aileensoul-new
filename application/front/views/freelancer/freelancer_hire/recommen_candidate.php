@@ -145,5 +145,6 @@
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
     </body>
 </html>

@@ -241,6 +241,7 @@
         var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
     </script>
     <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_save.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
 
 
 
