@@ -1396,19 +1396,15 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
             $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-            $contition_array = array('user_id' => $userid, 'is_delete' => 0);
-            $this->data['artsdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
             $contition_array = array('user_id' => $id, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $this->data['artid'] = $id;
-            
+
             $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $id, $data = '*', $join_str = array());
 
-            $contition_array = array('user_id' => $id, 'is_delete' => 0);
-            $this->data['artsdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         //echo "<pre>"; print_r($this->data['artsdata']); die();
         // code for search

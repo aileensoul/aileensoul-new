@@ -198,3 +198,8 @@ $route['artistic/audios/(:any)'] = "artistic/art_audios/$1";
 $route['artistic/pdf'] = "artistic/art_pdf";
 $route['artistic/pdf/(:any)'] = "artistic/art_pdf/$1";
 
+$route['artistic/post-detail'] = "artistic/postnewpage";
+$route['artistic/post-detail/(:any)'] = "artistic/postnewpage/$1";
+
+$route['artistic/creat-pdf'] = "artistic/creat_pdf";
+
