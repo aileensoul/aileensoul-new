@@ -1,13 +1,11 @@
-   
-
-
-<!-- start head -->
-<?php  echo $head; ?>
-    <!-- END HEAD -->
- 
+<html>
+<head>
+<title><?php echo $title; ?></title>
+<?php echo $head; ?>
  <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link href="<?php echo base_url() ?>css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="<?php echo base_url() ?>js/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
 <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>js/plugins/sortable.js" type="text/javascript"></script>
 <script src="<?php echo base_url() ?>js/fileinput.js" type="text/javascript"></script>
@@ -17,12 +15,10 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-
-    <!-- start header -->
+<script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+<body>
 <?php echo $header; ?>
-    <!-- END HEADER -->
-    <script src="<?php echo base_url('assets/js/jquery.js'); ?>"></script>
-    <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
  <?php echo $art_header2_border; ?>
     <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container">
@@ -30,82 +26,10 @@
 
 
        <div class="col-md-4 profile-box profile-box-custom  animated fadeInDownBig"><div class="">
-  <div class="full-box-module">
-            <div class="profile-boxProfileCard  module">
-               <div class="profile-boxProfileCard-cover">
-                  <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/art_manage_post'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?>">
-                     <?php if ($artdata[0]['profile_background']) { ?>
-                     <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artdata[0]['profile_background']); ?>" alt ="<?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?>" class="bgImage"  >
-                     </div>
-                     <?php } else { ?>
-                     <div class="data_img">
-                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?>"  >
-                     </div>
-                     <?php } ?>
-                  </a>
-               </div>
-               <div class="profile-boxProfileCard-content clearfix">
-                  <div class="left_side_box_img buisness-profile-txext">
-                     <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/art_manage_post'); ?>" title="<?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                        <!-- box image start -->
-                        <?php if ($artdata[0]['art_user_image']) { ?>
-                        <div class="data_img_2">   
-                           <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artdata[0]['art_user_image']); ?>" class="bgImage"  alt="<?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?>" >
-                        </div>
-                        <?php } else { ?> 
-                        <div class="data_img_2">
-
-                          <?php 
-                                                    $a = $artdata[0]['art_name'];
-                                                    $acr = substr($a, 0, 1);
-
-                                                    $b = $artdata[0]['art_lastname'];
-                                                    $bcr = substr($b, 0, 1);
-                                                    ?>
-                                                                <div class="post-img-profile">
-                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
-                                                                </div>
-
-                        </div>
-                        <?php } ?>
-                        <!-- box image end -->
-                     </a>
-                  </div>
-                  <div class="right_left_box_design ">
-                     <span class="profile-company-name ">
-                     <a   href="<?php echo site_url('artistic/art_manage_post'); ?>"> <?php echo ucfirst(strtolower($artdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artdata[0]['art_lastname'])); ?></a>
-                     </span>
-                  
-                     <div class="profile-boxProfile-name">
-                        <a  href="<?php echo site_url('artistic/art_manage_post'); ?>">
-                        <?php
-                           if ($artdata[0]['designation']) {
-                               echo ucfirst(strtolower($artdata[0]['designation']));
-                           } else {
-                               echo "Designation";
-                           }
-                           ?>
-                        </a>
-                     </div>
-                     <ul class=" left_box_menubar">
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Dashboard" href="<?php echo base_url('artistic/art_manage_post'); ?>"> Dashboard</a>
-                        </li>
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artistic/followers'); ?>">Followers <br>(<?php echo (count($followerdata)); ?>)</a>
-                        </li>
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a class="padding_less_right"  title="Following" href="<?php echo base_url('artistic/following'); ?>">Following<br>(<?php echo (count($followingdata)); ?>)</a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-  
-  
-   
+<?php echo $left_artistic; ?> 
 </div>
 </div>
 <!-- left side box close -->
-
 <input type="hidden" name="search" id="search" value="<?php echo $keyword; ?>">
   <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art animated fadeInUp" >
                         <div class="common-form">
@@ -2835,4 +2759,12 @@ if($artuserdata1){
  
  </script>
  <!-- all popup close close using esc end-->
- 
+
+ <script type="text/javascript">
+var base_url = '<?php echo base_url(); ?>';      
+var data = <?php echo json_encode($demo); ?>;
+var data1 = <?php echo json_encode($de); ?>;
+</script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/notification/artistic_post.js'); ?>"></script>
+</body>
+</html>

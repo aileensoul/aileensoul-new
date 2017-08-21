@@ -30,6 +30,11 @@ class Search extends CI_Controller {
         //echo "test sucessfull";
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
+
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
             redirect('artistic/art_post', refresh);
 
@@ -419,8 +424,9 @@ class Search extends CI_Controller {
         }
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
-
+         $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
         $this->load->view('artistic/recommen_candidate', $this->data);
+       
     }
 
     public function business_index() {
