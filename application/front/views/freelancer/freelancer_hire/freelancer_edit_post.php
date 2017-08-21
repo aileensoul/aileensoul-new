@@ -9,6 +9,7 @@
         <!-- Calender Css Start-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
         <!-- Calender Css End-->
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
 
     </head>
     <body class="page-container-bg-solid page-boxed">

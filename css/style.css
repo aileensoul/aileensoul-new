@@ -616,7 +616,7 @@ fieldset ul.token-input-list li {
 .mb-30 {
     margin-bottom: 30px;
 }**/
-/*.job-search-box1 input:hover{background-color: #000; color: #fff;}*/
+/*.job-search-box1 input:hover{background-color: #000; color: #fff;}
 
 .job-search-box1 button:hover {
     background-color: #000;
@@ -795,7 +795,7 @@ line-height: 1;}
 /**.left_box_menubar li a {
     padding: 10px;
     display: inline-block;
-}**/
+}
 .left_box_menubar li:first-child {
     text-align: left;
 }
@@ -1006,7 +1006,7 @@ ul.sub-menu li a i {
     background-size: cover;
     padding: 100px 0;
 }
-.h2-srrt{  margin-right: 12px;height: 19px;
+/**.h2-srrt{  margin-right: 12px;height: 19px;
     width:19px;
     float: left;
     background-size: 100%;
@@ -1017,7 +1017,7 @@ ul.sub-menu li a i {
     background-size:100%;
   
 }
-.dropdown_hover .dropdown-content_hover a:hover .h2-img {
+/**.dropdown_hover .dropdown-content_hover a:hover .h2-img {
     background: url(../img/icon_view_profile_white.png) no-repeat;
     background-size:100%;
 }
@@ -1038,10 +1038,10 @@ ul.sub-menu li a i {
     
    
 }
-.dropdown_hover .dropdown-content_hover a:hover .h4-img {
+/**.dropdown_hover .dropdown-content_hover a:hover .h4-img {
     background: url(../img/icon_delete_white.png) no-repeat;
     background-size:100%;
-}
+}**/
 .midd-section h2 {
     font-size: 36px;
     margin-bottom: 30px;
@@ -2484,12 +2484,12 @@ ul.business_pf_ct_person_detail li b {
 .contact-frnd:hover {
     background-color: #efefef;
 }
-.contact-frnd-post {
+/**.contact-frnd-post {
     padding: 10px;
     background-color: white;
     border: 1px solid #d9d9d9;
 border-top: none;
-}
+}**/
 .profile-boxProfileCard_follow .contact-frnd-post {
     border: none;
 }
@@ -2555,7 +2555,7 @@ border-top: none;
 .delete-contact select {
     padding: 0px;
 }
-.job-search-box1 button {
+/**.job-search-box1 button {
     padding: 5px 15px;
     border-radius: 4px;
     margin-top: 0px;
@@ -2935,12 +2935,12 @@ border-top: none;
     padding-right: 15px;
     margin-right: 0;
 }
-.job-menu-profile {
+/**.job-menu-profile {
     float: left;
     padding-left: 31px;
     width: 22.5%;
     margin-top: 0px;
-}
+}**/
 .bui-menu-profile {
     float: left;
     padding-left: 0px;
@@ -4532,42 +4532,42 @@ abbr {
 /*popup form for text*/
 /* The Modal (background) */
 
-.modal {
+/**.modal {
     display: none;
-    /* Hidden by default */
+    
     
     position: fixed;
-    /* Stay in place */
+    
     
     z-index: 6;
-    /* Sit on top */
+    
     
     padding-top: 100px;
-    /* Location of the box */
+    
     
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
+    
     
     height: 100%;
-    /* Full height */
+    
     
     overflow: auto;
-    /* Enable scroll if needed */
+    
    
     
     background-color: rgba(0, 0, 0, 0.8);
-    /* Black w/ opacity */
+    
 }
 /* Modal Content */
 
-.modal-content {
+/**.modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-   /* display: table;*/
+   
     width: 100%;
     float: left;
 }
@@ -5822,7 +5822,7 @@ label.cameraButton input[accept*="camera"] {
 
 
 /*Dhaval 24/7/17*/
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{font-size: 13px;
+/**.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{font-size: 13px;
 border: none;
 white-space: pre-line;
 background: transparent;
@@ -5831,7 +5831,7 @@ padding:0px;
 font-family: arial;
 display: contents;
 word-break:break-word;
-}
+}**/
 
 
 .user_lst ul li button{
@@ -6874,13 +6874,13 @@ padding: 8px 7px;
 .seeall a:hover {
     text-decoration-line: underline;
 }
-.saved,
+/**.saved,
 .applied {
     color: #fff !important;
     background-color: #1b8ab9 !important;
     pointer-events: none;
     font-weight: bold;
-}
+}**/
 .image_profile {
  position: relative;
  margin-bottom: 10px;
@@ -7823,7 +7823,7 @@ body.modal-open {
     width: 100%;
     height: 100%;*/
 }
-.modal-close, .posterror-modal-close
+/**.modal-close, .posterror-modal-close
 .modal-close1 {
     height: 30px !important;
     width: 30px !important;
@@ -7840,7 +7840,7 @@ body.modal-open {
     margin: 0 !important;
     text-align: center !important;
     z-index: 7 !important;
-}
+}**/
 .modal.checkout .modal-header {
     background: #02caca;
     padding: 15px 8%;
@@ -7878,7 +7878,7 @@ body.modal-open {
 .modal.checkout .checkout-bottom.review {
     padding: 3% 5%;
 }
-.modal.message-box .modal-body {
+/**.modal.message-box .modal-body {
     text-align: center;
 }
 .modal.message-box span.mes {
@@ -7887,7 +7887,7 @@ body.modal-open {
     color: #232323;
     display: block;
     margin: 15px 0;
-}
+}**/
 .modal.message-box span.mes b {
     color: #02caca;
     font-weight: 600;
@@ -8135,20 +8135,19 @@ border-bottom: 1px solid #000033;
     color: #5b5b5b;
     /*font-weight: 600;*/
 }
-.job-search-box1 label i {
+/**.job-search-box1 label i {
     border-radius: 2px;
 
     padding:5px 10px 4px 9px;
     font-size: 19px;
     color: #999;
-    /* padding-left: 10px; */
+    
     
     cursor: pointer;
-    /*
-    padding-top: 2px;*/
+    
     
     background-color: white;
-}
+}**/
 ::-webkit-input-placeholder {
     color: #999;
    
@@ -8692,15 +8691,15 @@ line-height: 40px;
 }
 /* vishang 4-5-17 */
 
-.profile-job-post-location-name-rec .post_name {
+/**.profile-job-post-location-name-rec .post_name {
     font-size: 18px;
     font-weight: 600;
     margin-left: 0px;
     width: 93%;
-/*white-space: nowrap;*/
+
 overflow: hidden;
 text-overflow: ellipsis;
-}
+}**/
 .profile-job-post-location-name-rec .post_designation {
     font-size: 15px;
 }
@@ -8965,7 +8964,7 @@ fieldset .add_post_btns {
 .select2-container .select2-selection--multiple {
     min-height: 28px!important;
 }
-.dropdown_hover span i {
+/**.dropdown_hover span i {
     margin-right: -8px;
 }
 /**.header2 input::-webkit-input-placeholder {
@@ -8998,13 +8997,13 @@ fieldset .add_post_btns {
 .logo h2 {
     color: #fff;
 }
-.dropdown_hover {
+/**.dropdown_hover {
     position: relative;
     display: inline-block;
     color: white;
     padding: 7px 16px 0px 13px;
     cursor: pointer;
-}
+}**
 .dropdown-content_hover {
     padding-bottom: 7px;
     display: none;
@@ -9020,7 +9019,7 @@ fieldset .add_post_btns {
     border-radius: 4px;
 }
 .dropdown-content_hover::before {
-    /* top: -1px; */
+    
     
     content: '';
     display: block;
@@ -9031,11 +9030,11 @@ fieldset .add_post_btns {
     border: 9px solid black;
     border-color: transparent transparent #fff;
     margin-top: -18px;
-    /* margin-left: 104px; */
+    
     
     right: 9px;
 }
-.dropdown_hover .dropdown-content_hover a {
+/**.dropdown_hover .dropdown-content_hover a {
     font-family: arial;
     color: #787878  ;
     width:100%;
@@ -10628,14 +10627,14 @@ style chat css start*/
     float: left;
     padding: 0px 50px 12px;
 }
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{font-size: 13px;
+/**.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{font-size: 13px;
 border: none;
 white-space: pre-line;
 background: transparent;
 padding-top: 2px;
 padding: 0px;
 font-family: arial;
-display: initial;}
+display: initial;}**/
 .people-list {
     border-right: 1px solid #ccc;
     width: 25%;
@@ -11227,9 +11226,9 @@ style chat css end*/
     font-size: 22px;
     padding: 3px 4px;
 }
-.search-mob-block {
+/**.search-mob-block {
     display: none;
-}
+}**/
 #s2id_skils {
     width: 100% !important;
 }
@@ -13745,9 +13744,9 @@ end zalak 9-6 css*/
 .like_cmmt_space {
     margin-left: 6px;
 }
-.deactive {
+/**.deactive {
     padding-top: 20px;
-}
+}**/
 .mar_left {
     margin-left: 6px !important;
 }
@@ -14220,10 +14219,10 @@ body {
 .profile-box-art ul li {
     padding-left: 0 !important;
     padding-right: 3px !important;
-}**/
+}
 .mob-block {
     display: none;
-}
+}**/
 .art-custom .job-menu-profile {
     width: 100%;
 }
@@ -14513,10 +14512,10 @@ text-overflow: ellipsis;}**/
     white-space: nowrap;
     width: auto;
     color: #1b8ab9;
-}**/
+}**
 #bidmodal{
     z-index: 10003;
-}
+}*/
 .alert.alert-danger {
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -14539,7 +14538,7 @@ width: 90px;
 padding: 9px 15px;
 background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
 border: none;}
-.file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}
+/**.file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}**/
 .popup-text textarea {
     overflow-y: hidden;
 }
@@ -14754,7 +14753,7 @@ text-align: center;}
     margin-bottom: 20px;
 }
 .fancybox-close-small:hover {
-    background-color: white !important border-radius: 0px !important;
+    background-color: white !important; border-radius: 0px !important;
 }
 /**
 .header ul li.dropdown-user ul .Setting a {
@@ -15243,8 +15242,8 @@ max-width: inherit;}
 .cover .fancybox-slide .modal-content{border:none; box-shadow: none;}
 
 /***  harshad  ***/
-/*.profile-text textarea{height:100px;}*/
-.modal.message-box span.mes{padding:10px 34px 0;}
+/*.profile-text textarea{height:100px;}
+/**.modal.message-box span.mes{padding:10px 34px 0;}**/
 .cover .modal-close{line-height:32px !important;}
 #popup-form input[type="submit"]{margin:15px 1px 10px 0;}
 .custom-c .middle-section{background:#f3f3f3;}
@@ -15254,11 +15253,11 @@ max-width: inherit;}
 .common-form fieldset.hs-submit input{height:auto; line-height:1;}
 .common-form fieldset input::-webkit-input-placeholder {
      line-height:17px !important;
-}**/
+}
 .job-search-box1 fieldset input{height:28px; line-height:1;}
 .job-search-box1 fieldset input::-webkit-input-placeholder {
      line-height:17px !important;
-}
+}**/
 .job_work_experience_main_div input{height:35px; line-height:1;}
 .job_work_experience_main_div input::-webkit-input-placeholder {
      line-height:20px !important;
@@ -15279,7 +15278,7 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .experience_month{float: left; width: 45%;}**/
 .certificate{border:none; padding:0; margin-top:15px;}
 .hs-submit .delete_btn{margin-top:5px;}
-.modal.in .modal-dialog{
+/**.modal.in .modal-dialog{
     position:absolute;
     top: 50%; left: 50%;
     -ms-transform: translate(-50%,-50%) !important;
@@ -15636,10 +15635,10 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 
 }
 @media (min-width: 1280px) {
-    .container {
+    /**.container {
         width: 1280px;
-    }
-    /*.header2{margin-left: 16px; margin-right: 16px;}*/
+    }**/
+    
     #InboxContainer:before {right:27px;}
 }
 @media screen and (max-width: 1200px) {

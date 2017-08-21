@@ -211,6 +211,12 @@ body {
     font-family: 'arial';
 
 }
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+    outline: 0;
+}
 p {
     margin: 0;
     padding: 0;
@@ -558,6 +564,7 @@ hr {
 .font-white {
     color: #fff;
 }
+
 
 /***  buttons  ***/
 .button {
@@ -2869,10 +2876,25 @@ fieldset .add_post_btns {
 .btn-3b {border-radius: 4px; padding: 5px 8px 5px 8px; font-size: 14px;}
 .btn-3:hover {color: #fff; background: #156f95;}
 .btn-3 {background: #1b8ab9; color: #fff;}
+.btn-3 i{padding-right:5px;}
 
 /***  end css for buttons  ***/
 
 /*** common css for job recrutor and freelancer  ***/
+.mob-block {display: none;}
+.saved,
+.applied {
+    color: #fff !important;
+    background-color: #1b8ab9 !important;
+    pointer-events: none;
+    font-weight: bold;
+}
+.job-menu-profile {
+    float: left;
+    padding-left: 31px;
+    width: 22.5%;
+    margin-top: 0px;
+}
 .contact-frnd-post {width: 100%; float: left;}
 .contact-frnd-post{ border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px;}
 .job-contact-frnd {width: 100%; float: left;}
@@ -2964,13 +2986,37 @@ fieldset .add_post_btns {
 .art-side-menu {width: 100%; padding-left: 210px;}
 .art-side-menu ul {float: left;}
 .right-side-menu {float: left; height: 50px;}
-
+.contact-frnd-post {padding: 10px; background-color: white; border: 1px solid #d9d9d9; border-top: none;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{
+	font-size: 13px;
+	border: none;
+	white-space: pre-line;
+	background: transparent;
+	padding-top: 2px;
+	padding:0px;
+	font-family: arial;
+	display: contents;
+	word-break:break-word;
+}
+.profile-job-post-location-name-rec .post_name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 0px;
+    width: 93%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 
 
 /***----------- end  common css for job recrutor and freelancer  ------------***/
 
 /***----------- common css for all profile  --------------***/
+.user-midd-section {
+    margin: 15px 0 35px;
+    width: 100%;
+    float: left;
+}
 /***  left part box  ***/
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
@@ -3016,6 +3062,8 @@ fieldset .add_post_btns {
 .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
 .left_box_menubar li a {padding: 10px; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
+.left_box_menubar li:first-child { text-align: left;}
+.left_box_menubar li:last-child {text-align: right;}
 
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
@@ -3187,6 +3235,7 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .select2-search-field {width: 100%;}
 .experience_year{float: left; margin-right: 43px; width: 45%;}
 .experience_month{float: left; width: 45%;}
+.file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}
 	
 	
 	
@@ -3196,7 +3245,76 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 .add-post-button {margin: 30px 10px 10px;}
 
 /*** common css for freelance hire and recruiter  ***/ 
-	
+
+/***  model css  ***/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    
+}
+.modal.in .modal-dialog{
+    position:absolute;
+    top: 50%; left: 50%;
+    -ms-transform: translate(-50%,-50%) !important;
+    -webkit-transform: translate(-50%,-50%) !important;
+    -moz-transform: translate(-50%,-50%) !important;
+    -o-transform: translate(-50%,-50%) !important;
+    transform: translate(-50%,-50%) !important;
+}
+.modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;  
+    width: 100%;
+    float: left;
+}
+.modal-close, .posterror-modal-close
+.modal-close1 {
+    height: 30px !important;
+    width: 30px !important;
+    background: #1b8ab9 !important;
+    color: #fff !important;
+    font-size: 24px !important;
+    border: 1px solid #1b8ab9 !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: -15px !important;
+    right: -15px !important;
+    line-height: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    z-index: 7 !important;
+}
+.modal.message-box .modal-body {
+    text-align: center;
+}
+.modal.message-box span.mes {
+    font-size: 20px;
+    line-height: normal;
+    color: #232323;
+    display: block;
+    margin: 15px 0;
+}
+.modal.message-box span.mes{padding:10px 34px 0;}
+.deactive {padding-top: 20px;}
+#bidmodal{z-index: 10003;}
+/*** end model css  ***/
+@media (min-width: 1280px) {
+    .container {
+        width: 1280px;
+    }
+}
 	
 	
 	
