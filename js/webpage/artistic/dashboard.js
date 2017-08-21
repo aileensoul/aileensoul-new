@@ -2,6 +2,7 @@
 // photos video audion pdf fatch using ajax
 
  $(document).ready(function () {
+            artistic_dashboard_post(slug);
                 GetArtPhotos();
                 GetArtVideos();
                 GetArtAudios();
@@ -2171,3 +2172,48 @@ $(document).ready(function(){
        $('html,body').animate({scrollTop:246}, 500);
    });
 
+
+
+//var isProcessing = false;
+function artistic_dashboard_post(slug) { //alert("hii"); alert(slug);
+   // if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+       // return;
+   // }
+   // isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/artistic_dashboard_post",
+        //url: base_url + "artistic/artistic_dashboard_post/" + slug + "?page=" + pagenum,
+        data: 'slug=' + slug,
+       // data: {total_record: $("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            //if (pagenum == 'undefined') {
+                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            //} else {
+                $('#loader').show();
+            //}
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.job-contact-frnd').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            //isProcessing = false;
+        }
+    });
+}
