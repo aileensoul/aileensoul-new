@@ -2199,7 +2199,7 @@ label.error {
 }
 /*#popup-form { display: none; width: 616px; height: 250px; }*/
 
-#popup-form input[type=file] {
+/**#popup-form input[type=file] {
     width: 100%;
 }
 #popup-form input[type=submit] {
@@ -2212,7 +2212,7 @@ label.error {
     max-width: 180px;
     height: 200px;
     margin-top: 10px;
-}
+}**/
 .fancybox-overlay {
     background: rgba(0, 0, 0, 0.4);
 }
@@ -9469,13 +9469,13 @@ label.cameraButton input[accept*="camera"] {
 #popup-form img {
     display: none;
 }
-.popup_previred img {
+/**.popup_previred img {
     border: 1px solid rgb(204, 204, 204);
     display: none;
     margin: 0 auto;
     margin-top: 5px;
     padding: 5px;
-}
+}**/
 .pop_content .cnclbtn {
     /* position: absolute;*/
     
@@ -11310,9 +11310,9 @@ div[class^="likeduserlist"] {
 /* start
 zalak 9-6 css*/
 
-#popup-form input[type=file]:focus {
+/**#popup-form input[type=file]:focus {
     outline: none;
-}
+}**/
 .popup-img-popup::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -14569,9 +14569,9 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-.modal-body {
+/**.modal-body {
     padding: 0px!important
-}
+}**/
 .flw_msg_btn ul li a:hover {
     border-bottom: none;
     box-shadow: none;
@@ -15245,7 +15245,7 @@ max-width: inherit;}
 /*.profile-text textarea{height:100px;}
 /**.modal.message-box span.mes{padding:10px 34px 0;}**/
 .cover .modal-close{line-height:32px !important;}
-#popup-form input[type="submit"]{margin:15px 1px 10px 0;}
+/**#popup-form input[type="submit"]{margin:15px 1px 10px 0;}**/
 .custom-c .middle-section{background:#f3f3f3;}
 /**.common-form1 h3{border: 1px solid rgba(0, 0, 0, 0.1);}**/
 .addcontact-left.custome-approved-contact{width:100% !important;}
