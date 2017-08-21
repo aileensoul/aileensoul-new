@@ -3007,6 +3007,12 @@ fieldset .add_post_btns {
 	text-overflow: ellipsis;
 }
 .profile-job-profile-button ul li a{font-family: 'arial'; font-weight:normal;}
+.dot_free{
+    width:73%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
 
 
 

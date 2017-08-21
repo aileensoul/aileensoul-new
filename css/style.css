@@ -9731,12 +9731,12 @@ margin-top: -6px;
     }
 
 
-   .dot_free{
+/**   .dot_free{
     width:73%;
 text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
-}
+}**/
 .user_lst li a .post-img-userlist{color: #fff;
 width: 100%;
 height: 100%;
