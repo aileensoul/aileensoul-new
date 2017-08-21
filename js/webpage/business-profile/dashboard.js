@@ -2096,6 +2096,7 @@ function check_post_available(post_id) {
         data: 'post_id=' + post_id,
         dataType: "json",
         success: function (data) {
+            alert(data);
             if (data == 0) {
                 $('.biderror .mes').html("<div class='pop_content'>this post deleted so you can no take any action</div>");
                 $('#bidmodal').modal('show');
