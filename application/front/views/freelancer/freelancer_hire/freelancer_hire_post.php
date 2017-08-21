@@ -310,5 +310,6 @@
             var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
     </body>
 </html>

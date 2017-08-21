@@ -229,6 +229,7 @@
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_applied_post.js'); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
 
     </body>
 </html>

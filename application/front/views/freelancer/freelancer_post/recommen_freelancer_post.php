@@ -152,6 +152,7 @@
         </script>
         <!-- script for skill textbox automatic end -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_search_result.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
     </body>
 </html>
 

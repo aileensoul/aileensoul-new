@@ -179,6 +179,7 @@
             </script>
             
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_basic_information.js'); ?>"></script>    
+         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
          </body>
     </div>
 </html>

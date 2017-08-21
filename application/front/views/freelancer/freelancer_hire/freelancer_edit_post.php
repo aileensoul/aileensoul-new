@@ -305,6 +305,7 @@
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
 
         <script type="text/javascript">
             //Leave Page on add and edit post page start

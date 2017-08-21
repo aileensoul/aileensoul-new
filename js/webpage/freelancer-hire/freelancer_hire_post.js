@@ -74,28 +74,7 @@ function freelancerhire_project(user_id,returnpage,pagenum)
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
-$(function () {
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
-    });
-});
+
 $(function () {
     $("#tags1").autocomplete({
         source: function (request, response) {
@@ -120,28 +99,7 @@ $(function () {
 });
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD END
 //SCRIPT FOR AUTOFILL OF SEARCH LOACATION START            
-$(function () {
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-        }
-    });
-});
+
 $(function () {
     $("#searchplace1").autocomplete({
         source: function (request, response) {
