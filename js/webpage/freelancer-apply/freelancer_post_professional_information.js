@@ -1,5 +1,4 @@
 //CODE FOR AUTOFILL OF SEARCH KEYWORD START
-
 $(function () {
                 $("#tags1").autocomplete({
                     source: function (request, response) {
@@ -24,7 +23,6 @@ $(function () {
             });
 //CODE FOR AUTOFILL OF SEARCH KEYWORD END  
 //CODE FOR AUTOFILL OF SEARCH LOCATION START
-
 $(function () {
     $("#searchplace1").autocomplete({
         source: function (request, response) {
@@ -86,10 +84,6 @@ $(document).ready(function () {
                 require_from_group: [1, ".keyskil"]
             },
 
-            otherskill: {
-                require_from_group: [1, ".keyskil"],
-                noSpace: true
-            },
 
             skill_description: {
                 required: true,
@@ -188,19 +182,67 @@ function check() {
                     }
                 }
 //COPY-PASTE CODE END
-//CODE FOR SKILL SELECTED START
- 
-                if (complex != '')
-                {
-                    $("#skill1").select2({
-                        placeholder: "Select a Language",
-                    }).select2('val', complex);
-                }
-                if (complex == '')
-                {
-                    $("#skill1").select2({
-                        placeholder: "Select a Language",
+////CODE FOR SKILL SELECTED START
+//                if (complex != '')
+//                {
+//                    $("#skill1").select2({
+//                        placeholder: "Select a Language",
+//                    }).select2('val', complex);
+//                }
+//                if (complex == '')
+//                {
+//                    $("#skill1").select2({
+//                        placeholder: "Select a Language",
+//
+//                    });
+//                }
+////CODE FOR SKILL SELECTED END
+//NEW SCRIPT FOR SKILL START
 
-                    });
+    $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) { 
+            return split( term ).pop();
+        }
+        $( "#skills1" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url + "general/get_skill", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+            select: function( event, ui ) {
+               
+                var terms = split( this.value );
+                if(terms.length <= 20) {
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push( ui.item.value );
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( ", " );
+                    return false;
+                }else{
+                    var last = terms.pop();
+                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                    $(this).effect("highlight", {}, 1000);
+                    $(this).attr("style","border: solid 1px red;");
+                    return false;
                 }
-//CODE FOR SKILL SELECTED END
+            }
+        });
+    });
+//NEW SCRIPT FOR SKILL END
+

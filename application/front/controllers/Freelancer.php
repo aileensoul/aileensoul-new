@@ -483,8 +483,22 @@ class Freelancer extends MY_Controller {
         $userdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_field,freelancer_post_area,freelancer_post_otherskill,freelancer_post_skill_description,freelancer_post_exp_year,freelancer_post_exp_month,free_post_step,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $skildata = explode(',', $this->data['postdata'][0]['freelancer_post_area']);
-        $this->data['selectdata'] = $skildata;
+//        $skildata = explode(',', $this->data['postdata'][0]['freelancer_post_area']);
+//        $this->data['selectdata'] = $skildata;
+        //Retrieve skill data Start
+
+        $skill_know = explode(',', $userdata[0]['freelancer_post_area']);
+        // echo $language_know;die();
+        foreach ($skill_know as $sk) {
+            $contition_array = array('skill_id' => $sk, 'status' => 1);
+            $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            //echo "<pre>";print_r(  $languagedata);
+            $detailes[] = $skilldata[0]['skill'];
+        }
+
+        $this->data['skill_2'] = implode(',', $detailes);
+        // echo "<pre>"; print_r($this->data['skill_2']);die();
+        //Retrieve skill data End
 
         $contition_array = array('status' => 1);
         $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -518,13 +532,12 @@ class Freelancer extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         $skill1 = $this->input->post('skills');
-
-
+         $skills = explode(',', $skill1);
+    
         if ($this->input->post('next')) {
 
             $this->form_validation->set_rules('field', 'Field', 'required');
             $this->form_validation->set_rules('skill_description', 'Skill Description', 'required');
-
 
 
             if ($this->form_validation->run() == FALSE) {
@@ -554,10 +567,32 @@ class Freelancer extends MY_Controller {
 
                     $updatedata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
                 }
-
+         if (count($skills) > 0) {
+            foreach ($skills as $ski) {
+                $contition_array = array('skill' => trim($ski), 'type' => 1);
+                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                if (count($skilldata) < 0) {
+                    $contition_array = array('skill' => trim($ski), 'type' => 5);
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                }
+                if ($skilldata) {
+                    $skill[] = $skilldata[0]['skill_id'];
+                } else {
+                    $data = array(
+                        'skill' => trim($ski),
+                        'status' => '1',
+                        'type' => 5,
+                        'user_id' => $userid,
+                    );
+                    $skill[] = $this->common->insert_data_getid($data, 'skill');
+                }
+            }
+            //  die();
+            $skills = implode(',', $skill);
+        }
                 $data = array(
                     'freelancer_post_field' => trim($this->input->post('field')),
-                    'freelancer_post_area' => implode(',', $skill1),
+                    'freelancer_post_area' => $skills,
                     'freelancer_post_otherskill' => trim($this->input->post('otherskill')),
                     'freelancer_post_skill_description' => trim($this->input->post('skill_description')),
                     'freelancer_post_exp_month' => trim($this->input->post('experience_month')),
@@ -2002,12 +2037,6 @@ class Freelancer extends MY_Controller {
         $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        //echo "<pre>"; print_r($state);
-        // echo "<pre>"; print_r($this->data['cities']);die();
-        // $contition_array = array('status' => 1);
-        // $citiess=$this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
         $contition_array = array('status' => 1);
         $this->data['category'] = $this->common->select_data_by_condition('category', $contition_array, $data = '*', $sortby = 'category_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2022,11 +2051,11 @@ class Freelancer extends MY_Controller {
         $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-//Retrieve Language data Start
+//Retrieve skill data Start
 
-        $language_know = explode(',', $userdata[0]['post_skill']);
+        $skill_know = explode(',', $userdata[0]['post_skill']);
         // echo $language_know;die();
-        foreach ($language_know as $lan) {
+        foreach ($skill_know as $lan) {
             $contition_array = array('skill_id' => $lan, 'status' => 1);
             $languagedata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
             //echo "<pre>";print_r(  $languagedata);
@@ -2035,7 +2064,7 @@ class Freelancer extends MY_Controller {
 
         $this->data['skill_2'] = implode(',', $detailes);
         // echo "<pre>"; print_r($this->data['skill_2']);die();
-        //Retrieve Language data End
+        //Retrieve skill data End
 
         $this->data['country1'] = $this->data['freelancerpostdata'][0]['country'];
         $this->data['city1'] = $this->data['freelancerpostdata'][0]['city'];

@@ -1,5 +1,4 @@
 //CODE FOR AUTOFILL OF SEARCH KEYWORD START 
-
 $(function () {
     $("#tags1").autocomplete({
         source: function (request, response) {

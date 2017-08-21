@@ -130,12 +130,7 @@
                                     </fieldset>
                                     <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?>>
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <select name="skills[]" id ="skill1" tabindex="2" class="keyskil" multiple="multiple" style="width:100%;" >
-                                            <option></option>
-                                            <?php foreach ($skill1 as $skill) { ?>
-                                                <option value="<?php echo $skill['skill_id']; ?>"><?php echo $skill['skill']; ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <input id="skills1" name="skills" tabindex="7"  style="width:100%;" placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
                                         <?php echo form_error('area'); ?>
                                     </fieldset>
                                     <fieldset>
@@ -223,7 +218,8 @@
             <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.0/select2.js"></script>
             <script>
-                var complex = <?php echo json_encode($selectdata); ?>;
+               // var complex = <?php echo json_encode($selectdata); ?>;
+               var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
 
