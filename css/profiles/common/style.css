@@ -3006,6 +3006,7 @@ fieldset .add_post_btns {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.profile-job-profile-button ul li a{font-family: 'arial'; font-weight:normal;}
 
 
 
@@ -3305,6 +3306,9 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
     color: #232323;
     display: block;
     margin: 15px 0;
+}
+.modal-open .modal {
+    z-index: 10002;
 }
 .modal.message-box span.mes{padding:10px 34px 0;}
 .deactive {padding-top: 20px;}

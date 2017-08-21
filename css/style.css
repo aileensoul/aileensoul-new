@@ -10010,9 +10010,9 @@ background-size: 100%;
     margin-bottom: 0px;
     font-size: 16px
 }
-.modal-open .modal {
+/**.modal-open .modal {
     z-index: 10002;
-}
+}**/
 .pl-4 {
     padding-left: 4px!important;
 }
