@@ -3248,10 +3248,66 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 	
 	
 /***---------- end  common css for all profile  -------------***/
-/*** common css for freelance hire and recruiter  ***/ 
+/***------- common css for freelance hire and recruiter  ----------***/ 
 .add-post-button {margin: 30px 10px 10px;}
 
-/*** common css for freelance hire and recruiter  ***/ 
+/***---------  end common css for freelance hire and recruiter  ----------***/ 
+/***--------- common css for bus and art  ----------***/
+/**  left user list box  **/
+.full-box-module_follow {
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    margin-top: 10px;
+	width:100%;
+	float:left;
+}
+.common-form .user_list_head {  
+    background-color: #fff;
+    color: #1b8ab9;
+    border-bottom: 1px solid #d9d9d9;
+} 
+.seeall {
+    float: right;
+    margin-top: -30px;
+    
+    
+    margin-right: 10px
+}
+.seeall a:hover {
+    text-decoration-line: underline;
+}
+.follow_left_box_main {
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.profile-boxProfileCard_follow {
+    position: relative;
+    max-height: 240px;
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+}
+.profile-boxProfileCard_follow ul {
+    padding: 0;
+    background-color: #fff;
+}
+.profile-boxProfileCard_follow ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin: 0 auto;
+    width: 95%;
+}
+.follow_box_ul_li {
+    border-bottom: 1px solid #d9d9d9;
+}
+.follow_box_ul_li:last-child {
+    border-bottom: none;
+}
+
+/***--------- end common css for bus and art  ----------***/ 
 
 /***  model css  ***/
 .modal {
