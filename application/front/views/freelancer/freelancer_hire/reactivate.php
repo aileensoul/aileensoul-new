@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
     </head>
     <body>
         <?php echo $header; ?>

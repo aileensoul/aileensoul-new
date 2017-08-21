@@ -34,7 +34,7 @@
 <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
 <!-- CSS START -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/animate.css" />

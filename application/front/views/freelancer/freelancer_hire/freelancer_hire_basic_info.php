@@ -5,6 +5,7 @@
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
     </head>
     <div class="js">
         <body class="pushmenu-push">
