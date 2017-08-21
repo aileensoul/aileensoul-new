@@ -10,7 +10,7 @@ class Search extends CI_Controller {
 
         $this->load->library('form_validation');
         $this->load->helper('form');
-         $this->lang->load('message', 'english');
+        $this->lang->load('message', 'english');
 
         $this->load->model('common');
 //        if (!$this->session->userdata('user_id')) {
@@ -2246,47 +2246,6 @@ class Search extends CI_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7);
-        $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '1');
-        $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $unique = array_merge($field, $skill, $freelancer_postdata);
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-        $contition_array = array('status' => '1');
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-
-        $this->data['de'] = array_values($res);
 
         $title = '';
         if ($searchkeyword) {
@@ -2639,27 +2598,16 @@ class Search extends CI_Controller {
     }
 
     public function freelancer_post_search() {
-        //echo "123";die();
         $userid = $this->session->userdata('aileenuser');
-
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-
             redirect('freelancer/freelancer_apply_post', refresh);
         }
-
-
         $search_skill = trim($this->input->get('skills'));
-        //print_r($search_skill);  
-        // $searchskill = implode(',',$search_skill);
         $this->data['keyword'] = $search_skill;
-
         $search_place = trim($this->input->get('searchplace'));
-        //echo $search_place;die();
 // code for insert search keyword into database start
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
-
         $this->data['keyword1'] = $search_place;
-
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2678,62 +2626,6 @@ class Search extends CI_Controller {
         //   echo"<pre>"; print_r($data); die();
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 // code for insert search keyword into database end
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
-
-        $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'designation,freelancer_post_otherskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($freelancer_postdata);die();
-
-        $contition_array = array('status' => '1', 'type' => '1');
-
-        $skill = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $uni = array_merge($skill, $freelancer_postdata, $field);
-        // echo count($unique);
-        // $this->data['demo']=$uni;
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        foreach ($result as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-
-        $this->data['demo'] = array_values($result1);
-
-        $contition_array = array('status' => '1');
-
-
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-
-        $this->data['de'] = array_values($res);
 
         $title = '';
         if ($search_skill) {
@@ -2820,14 +2712,12 @@ class Search extends CI_Controller {
             foreach ($postdata as $value) {
                 $new[$value['post_id']] = $value;
             }
-
-// echo "<pre>";print_r($unique);die();
         } else {
             //echo "both"; die();
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "(skill LIKE '%$search_skill%')";
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($artdata['data']); 
+
             $contition_array = array('status' => '1', 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid);
             $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2878,13 +2768,11 @@ class Search extends CI_Controller {
         if (count($new) > 0) {
             // echo count($freelancerhiredata1);
             foreach ($freelancerhiredata1 as $post) {
-                //echo "5523"; die();
-                // echo "<pre>"; print_r($post);
+
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('user_id' => $userid, 'post_id' => $post['post_id'], 'job_delete' => 0);
                 $jobdata = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($jobdata[0]['job_save'] != 2) {
-                    // echo "6666";die();
                     $return_html .= '<div class="job-post-detail clearfix search">
                                                         <div class="job-contact-frnd ">';
                     $return_html .= '<div class="profile-job-post-detail clearfix" id="removeapply' . $post['post_id'] . '">';
@@ -2915,8 +2803,8 @@ class Search extends CI_Controller {
                     $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction">
-                                                                                                <p><span title="Location">
-                                                                                                        <i class="fa fa-map-marker" aria-hidden="true">';
+                                                 <p><span title="Location">
+                                                     <i class="fa fa-map-marker" aria-hidden="true">';
                         if ($cityname) {
                             $return_html .= $cityname . ",";
                         }
@@ -2924,23 +2812,23 @@ class Search extends CI_Controller {
                         $return_html .= '</i>';
                     }
                     $return_html .= '</span>
-                                                                                                </p>
-                                                                                            </div>';
+                                           </p>
+                                              </div>';
 
                     $return_html .= '</li>
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="profile-job-profile-menu">
-                                                                            <ul class="clearfix">
-                                                                                <li> <b>';
+                                          </ul>
+                                             </div>
+                                                 </div>
+                                                     <div class="profile-job-profile-menu">
+                                                        <ul class="clearfix">
+                                                                <li> <b>';
                     $return_html .= $this->lang->line("field");
                     $return_html .= '</b> 
-                                                                                    <span>';
+                                        <span>';
                     $return_html .= $this->db->get_where('category', array('category_id' => $post['post_field_req']))->row()->category_name;
                     $return_html .= '</span>
-                                                                                </li>
-                                                                                <li> <b>';
+                                          </li>
+                                              <li> <b>';
                     $return_html .= $this->lang->line("skill");
                     $return_html .= '</b> <span>';
 
@@ -2981,8 +2869,8 @@ class Search extends CI_Controller {
                         $return_html .= PROFILENA;
                     }
                     $return_html .= '</p></span>
-                                                                                </li>
-                                                                                <li><b>';
+                                                </li>
+                                                  <li><b>';
                     $return_html .= $this->lang->line("rate");
                     $return_html .= '</b><span>';
 
@@ -3000,12 +2888,12 @@ class Search extends CI_Controller {
                         $return_html .= PROFILENA;
                     }
                     $return_html .= '</span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <b>';
+                                           </li>
+                                              <li>
+                                                 <b>';
                     $return_html .= $this->lang->line("required_experiance");
                     $return_html .= '</b>
-                                                                                    <span>';
+                                         <span>';
 
                     if ($post['post_exp_month'] || $post['post_exp_year']) {
                         if ($post['post_exp_year']) {
@@ -3026,8 +2914,8 @@ class Search extends CI_Controller {
                     }
 
                     $return_html .= ' </span>
-                                                                                </li>
-                                                                                <li><b>';
+                                           </li>
+                                              <li><b>';
                     $return_html .= $this->lang->line("estimated_time");
                     $return_html .= '</b><span> ';
 
@@ -3037,12 +2925,12 @@ class Search extends CI_Controller {
                         $return_html .= PROFILENA;
                     }
                     $return_html .= '</span>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <div class="profile-job-profile-button clearfix">
-                                                                            <div class="profile-job-details col-md-12">
-                                                                                <ul><li class="job_all_post last_date">';
+                                          </li>
+                                            </ul>
+                                              </div>
+                                                 <div class="profile-job-profile-button clearfix">
+                                                   <div class="profile-job-details col-md-12">
+                                                     <ul><li class="job_all_post last_date">';
                     $return_html .= $this->lang->line("last_date");
                     $return_html .= ':';
 
@@ -3099,7 +2987,6 @@ class Search extends CI_Controller {
                                                     </div>';
                 }
             }
-            
         } else {
 
             $return_html .= '<div class="text-center rio">
@@ -3460,6 +3347,5 @@ class Search extends CI_Controller {
         $text = preg_replace('/([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3})/i', '<a href="mailto:\\1" rel="nofollow" target="_blank">\\1</a>', $text);
         return $text;
     }
-
 
 }
