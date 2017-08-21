@@ -24,16 +24,16 @@
 <?php echo $artistic_common; ?>
 <div class="text-center tab-block">
     <div class="container mob-inner-page">
-       <a href="<?php echo base_url('artistic/art_photos/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['user_id']) ?>">
             Photo
         </a>
-       <a href="<?php echo base_url('artistic/art_videos/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['user_id']) ?>">
             Video
         </a>
-       <a href="<?php echo base_url('artistic/art_audios/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['user_id']) ?>">
             Audio
         </a>
-        <a href="<?php echo base_url('artistic/art_pdf/' . $artisticdata[0]['user_id']) ?>">
+        <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['user_id']) ?>">
             PDf
         </a>
     </div>
@@ -49,7 +49,7 @@
 
                         <div class="head_details1">
                             <span>
-                                  <a href="<?php echo base_url('artistic/artistic_profile/' . $this->uri->segment(3)) ?>"> 
+                                  <a href="<?php echo base_url('artistic/details/' . $this->uri->segment(3)) ?>"> 
                                       <h5><i class="fa fa-info-circle" aria-hidden="true"></i>
                                     Information  
                                    </h5>
@@ -110,7 +110,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="<?php echo base_url('artistic/art_photos/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['user_id']) ?>">
                 <div class="full-box-module business_data" id="autorefresh">
                     <div class="profile-boxProfileCard  module buisness_he_module" style="">
 
@@ -121,7 +121,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/art_videos/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['user_id']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/art_audios/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['user_id']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -147,7 +147,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/art_pdf/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['user_id']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
                         <table class="business_data_table">

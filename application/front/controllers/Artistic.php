@@ -1790,7 +1790,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     if ($row['posted_user_id']) {
 
                         if ($userimageposted) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
                                                                 $a = $firstnameposted;
@@ -1809,7 +1809,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .=  '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
                                                 
                                                                 $a = $firstnameposted;
                                                                 $acr = substr($a, 0, 1);
@@ -1824,7 +1824,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         }
                     } else {
                         if ($art_userimage) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $firstname;
@@ -1845,7 +1845,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
 
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                                                                 $a = $firstname;
                                                                 $acr = substr($a, 0, 1);
@@ -1888,8 +1888,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">' . ucwords($firstnameposted) .' '. ucwords($lastnameposted) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">' . ucwords($firstname) .' '. ucwords($lastname) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">' . ucwords($firstnameposted) .' '. ucwords($lastnameposted) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">' . ucwords($firstname) .' '. ucwords($lastname) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -1898,7 +1898,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '" title="' . ucwords($firstname) .' '. ucwords($lastname) . '">
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '" title="' . ucwords($firstname) .' '. ucwords($lastname) . '">
                     ' . ucwords($firstname) .' '.ucwords($lastname). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -2328,7 +2328,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
@@ -2346,7 +2346,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                 $return_html .= '</a>';
 
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                           
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
@@ -2604,7 +2604,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                 $insertid = $this->common->update_data($data1, 'skill', 'skill', $skillname);
             }
             if ($updatdata) {
-                redirect('artistic/art_manage_post', refresh);
+                redirect('artistic/dashboard', refresh);
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('artistic/art_editpost', refresh);
@@ -3059,7 +3059,7 @@ $datacount = count($otherdata);
 
         if ($insertdata) {
 
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('artistic/artistic_contactperson/' . $id, refresh);
@@ -3099,7 +3099,7 @@ $datacount = count($otherdata);
 
 
         if ($this->input->post('cancel1')) {
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } elseif ($this->input->post('cancel2')) {
             redirect('artistic/art_savepost', refresh);
         } elseif ($this->input->post('cancel3')) {
@@ -3107,7 +3107,7 @@ $datacount = count($otherdata);
         } elseif ($this->input->post('cancel4')) {
             redirect('artistic/artistic_profile', refresh);
         } elseif ($this->input->post('cancel5')) {
-            redirect('artistic/art_manage_post', refresh);
+            redirect('artistic/dashboard', refresh);
         } elseif ($this->input->post('cancel6')) {
             redirect('artistic/userlist', refresh);
         } elseif ($this->input->post('cancel7')) {
@@ -3216,7 +3216,7 @@ $datacount = count($otherdata);
 
             if ($updatdata) {
                 if ($this->input->post('hitext') == 1) {
-                    redirect('artistic/art_post', refresh);
+                    redirect('artistic/home', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
                     redirect('artistic/art_savepost', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
@@ -3224,7 +3224,7 @@ $datacount = count($otherdata);
                 } elseif ($this->input->post('hitext') == 4) {
                     redirect('artistic/artistic_profile', refresh);
                 } elseif ($this->input->post('hitext') == 5) {
-                    redirect('artistic/art_manage_post', refresh);
+                    redirect('artistic/dashboard', refresh);
                 } elseif ($this->input->post('hitext') == 6) {
                     redirect('artistic/userlist', refresh);
                 } elseif ($this->input->post('hitext') == 7) {
@@ -3242,7 +3242,7 @@ $datacount = count($otherdata);
                 }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('artistic/art_post', refresh);
+                redirect('artistic/home', refresh);
             }
         }
     }
@@ -5196,7 +5196,7 @@ public function followtwo() {
         if ($updatdata) {
 
             if ($this->input->post('hitext') == 1) {
-                redirect('artistic/art_post', refresh);
+                redirect('artistic/home', refresh);
             } elseif ($this->input->post('hitext') == 2) {
                 redirect('artistic/art_addpost', refresh);
             } elseif ($this->input->post('hitext') == 3) {
@@ -5204,7 +5204,7 @@ public function followtwo() {
             } elseif ($this->input->post('hitext') == 4) {
                 redirect('artistic/art_savepost', refresh);
             } elseif ($this->input->post('hitext') == 5) {
-                redirect('artistic/art_manage_post', refresh);
+                redirect('artistic/dashboard', refresh);
             } elseif ($this->input->post('hitext') == 6) {
                 redirect('artistic/followers', refresh);
             } elseif ($this->input->post('hitext') == 7) {
@@ -5214,7 +5214,7 @@ public function followtwo() {
             }
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         }
 
         //}
@@ -5566,7 +5566,7 @@ public function followtwo() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -5753,7 +5753,7 @@ public function delete_comment_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -5939,7 +5939,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -6133,7 +6133,7 @@ public function delete_commenttwo_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -6672,7 +6672,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -6901,7 +6901,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -7398,7 +7398,7 @@ public function delete_commenttwo_postnewpage() {
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } else {
 
             redirect('artistic/reactivate', refresh);
@@ -8620,7 +8620,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert = '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -8865,7 +8865,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -9077,7 +9077,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
             $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
@@ -9657,7 +9657,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -9861,7 +9861,7 @@ public function delete_commenttwo_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -10062,7 +10062,7 @@ public function delete_commenttwo_postnewpage() {
                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
-                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+                $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
                 
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -10236,7 +10236,7 @@ public function delete_commenttwo_postnewpage() {
 
 
             $fourdata .= '<div class="all-comment-comment-box">';
-            $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+            $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
             $fourdata .= '<div class="post-design-pro-comment-img">';
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -10700,7 +10700,7 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -12406,7 +12406,7 @@ public function delete_commenttwo_postnewpage() {
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -12427,7 +12427,7 @@ public function delete_commenttwo_postnewpage() {
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
@@ -12445,7 +12445,7 @@ public function delete_commenttwo_postnewpage() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">';
-                    $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
                                                 <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
@@ -12453,7 +12453,7 @@ public function delete_commenttwo_postnewpage() {
                     
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -12496,7 +12496,7 @@ public function delete_commenttwo_postnewpage() {
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -12519,7 +12519,7 @@ public function delete_commenttwo_postnewpage() {
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -12538,7 +12538,7 @@ public function delete_commenttwo_postnewpage() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">
                                                                                             <h6>' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) .'</h6>
                                                                                         </a> 
                                                                                     </div>
@@ -12546,7 +12546,7 @@ public function delete_commenttwo_postnewpage() {
                    
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -12588,7 +12588,7 @@ public function delete_commenttwo_postnewpage() {
                     $return_html .= '<div class="profile-job-post-title-inside clearfix">
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">
-                                                                            <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">';
+                                                                            <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">';
                     if ($userlist['art_user_image'] != '') {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
@@ -12620,7 +12620,7 @@ public function delete_commenttwo_postnewpage() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
                                                                                             <h6>' . ucwords($userlist['art_name']) .ucwords($userlist['art_lastname']) .'</h6>
                                                                                         </a> 
                                                                                     </div>
@@ -12669,7 +12669,7 @@ public function delete_commenttwo_postnewpage() {
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {       
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
@@ -12685,7 +12685,7 @@ public function delete_commenttwo_postnewpage() {
                             $return_html .= '</a>';
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -12700,7 +12700,7 @@ public function delete_commenttwo_postnewpage() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
                                                                                             <h6>' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'</h6>
                                                                                         </a> 
                                                                                     </div>
@@ -12889,7 +12889,7 @@ public function art_home_post() {
                     if ($row['posted_user_id']) {
 
                         if ($userimageposted) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
                                                                 $a = $userimagefn;
@@ -12909,7 +12909,7 @@ public function art_home_post() {
 
                         } else {
 
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                                                                 $a = $userimagefn;
                                                                 $acr = substr($a, 0, 1);
@@ -12924,7 +12924,7 @@ public function art_home_post() {
                         }
                     } else {
                         if ($art_userimage) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $userfn;
@@ -12943,7 +12943,7 @@ public function art_home_post() {
                             }
                             $return_html .= '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">
                                                 <img src="' . base_url(NOIMAGE) . '" alt="">
                                             </a>';
                         }
@@ -12984,8 +12984,8 @@ public function art_home_post() {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -12994,7 +12994,7 @@ public function art_home_post() {
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
                     ' . ucfirst(strtolower($firstname)) .' '.ucfirst(strtolower($lastname)). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -13424,7 +13424,7 @@ public function art_home_post() {
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
@@ -13443,7 +13443,7 @@ public function art_home_post() {
 
                                 $return_html .= '</a>';
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $artlastname;
