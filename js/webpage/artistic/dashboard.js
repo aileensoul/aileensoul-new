@@ -1474,7 +1474,13 @@ function khdiv(abc) {
 
 
    function editpost(abc)
-   { //alert("hii");
+   { 
+
+        var editposttitle = $('#editpostval' + abc).html();
+        var editpostdesc = $('#khyatii' + abc).html();
+
+         $("#myDropdown" + abc).removeClass('show');
+
        document.getElementById('editpostdata' + abc).style.display = 'none';
        document.getElementById('editpostbox' + abc).style.display = 'block';
        //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
@@ -1482,13 +1488,16 @@ function khdiv(abc) {
        document.getElementById('editpostsubmit' + abc).style.display = 'block';
        document.getElementById('khyati' + abc).style.display = 'none';
        document.getElementById('khyatii' + abc).style.display = 'none';
-
-       $("#myDropdown" + abc).removeClass("show");
+        editposttitle = editposttitle.trim()
+        editpostdesc = editpostdesc.trim()
+        $('#editpostname' + abc).val(editposttitle);
+        $('#editpostdesc' + abc).html(editpostdesc);
    }
 
    function edit_postinsert(abc)
    {
    
+
        var editpostname = document.getElementById("editpostname" + abc);
        // var editpostdetails = document.getElementById("editpostdesc" + abc);
        // start khyati code

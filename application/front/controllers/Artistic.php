@@ -1982,7 +1982,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                 <div class="post-design-desc">
                                     <div class="ft-15 t_artd">
                                         <div id="editpostdata' . $row['art_post_id'] . '" style="display:block;">
-                                            <a>' . $this->common->make_links($row['art_post']) . '</a>
+                                            <a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
                                         </div>
                                         <div id="editpostbox' . $row['art_post_id'] . '" style="display:none;">
                                             
@@ -13078,7 +13078,7 @@ public function art_home_post() {
                                 <div class="post-design-desc">
                                     <div class="ft-15 t_artd">
                                         <div id="editpostdata' . $row['art_post_id'] . '" style="display:block;">
-                                            <a>' . $this->common->make_links($row['art_post']) . '</a>
+                                            <a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
                                         </div>
                                         <div id="editpostbox' . $row['art_post_id'] . '" style="display:none;">
                                             
@@ -14185,7 +14185,7 @@ public function art_home_post() {
 </div></div>
 </li>';
                 } else {
-                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($firstname)) .'&nbsp;'.ucfirst(strtolower($lastname)).'" href = "'.base_url('business-profile/dashboard/'. $row['user_id']).'">'.ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)).'></a>
+                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($firstname)) .'&nbsp;'.ucfirst(strtolower($lastname)).'" href = "'.base_url('business-profile/dashboard/'. $row['user_id']).'">'.ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)).'</a>
 <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan">
 <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
@@ -14250,7 +14250,7 @@ public function art_home_post() {
                 }
                 $return_html .= '<div class = "ft-15 t_artd">
 <div id = "editpostdata' . $row['art_post_id'] . '" style = "display:block;">
-<a>' . $this->common->make_links($row['art_post']) . '</a>
+<a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
 </div>
 <div id = "editpostbox' . $row['art_post_id'] . '" style = "display:none;">
 <input type = "text" class="my_text" id = "editpostname' . $row['art_post_id'] . '" name = "editpostname" placeholder = "Title" value = "' . $row['art_post'] . '" onKeyDown = check_lengthedit(' . $row['art_post_id'] . ') onKeyup = check_lengthedit(' . $row['art_post_id'] . ');
@@ -14389,12 +14389,12 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $artlike = $this->data['artlike'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $this->data['artlike'][0]['art_like_user'];
-                $likeuserarray = explode(',', $artlike[0]['art_likes_count']);
+                $likeuserarray = explode(',', $artlike[0]['art_like_user']);
 
                 if (!in_array($userid, $likeuserarray)) {
                     $return_html .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>';
                 } else {
-                    $return_html .= '<i class="fa fa-thumbs-up main_color fa-1x" aria-hidden="true"></i>';
+                    $return_html .= '<i class="fa fa-thumbs-up fa-1x main_color" aria-hidden="true"></i>';
                 }
 
                 $return_html .= '<span class="like_As_count">';
