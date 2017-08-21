@@ -2461,14 +2461,8 @@ class Search extends CI_Controller {
             }
         }
 
-        //   $this->data['freelancerpostdata'] = $unique;
-        //  echo count($unique);
-        // echo "<pre>";print_r($unique);die();
         $return_html = '';
         $freelancerpostdata1 = array_slice($unique, $start, $perpage);
-        echo count($unique);
-//          echo "nnn";
-//          echo count($freelancerpostdata1);die();
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($unique);
         }

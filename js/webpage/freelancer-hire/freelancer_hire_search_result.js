@@ -4,13 +4,11 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+       // if ($(window).scrollTop() == $(document).height() - $(window).height()) {
       if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            alert(9999);
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
-            alert(1);
             if (parseInt(perpage_record) <= parseInt(total_record)) {
                 var available_page = total_record / perpage_record;
                 available_page = parseInt(available_page, 10);
