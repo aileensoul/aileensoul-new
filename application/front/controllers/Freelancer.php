@@ -1708,26 +1708,6 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
-//        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-//        $freelancerhiredata = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//        foreach ($freelancerhiredata as $frdata) {
-//            $post_skill_data = $frdata['post_skill'];
-//            $postuserarray = explode(', ', $frdata['post_skill']);
-//
-//            foreach ($postuserarray as $key => $value) {
-//
-//                $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid, 'FIND_IN_SET("' . $value . '", freelancer_post_area) != ' => '0');
-//                $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//                $all_candidate[] = $candidate;
-//            }
-//        }
-//        foreach ($all_candidate as $child) {
-//            foreach ($child as $value) {
-//                $final_candidate[] = $value;
-//            }
-//        }
-//        $final_candidate = array_unique($final_candidate, SORT_REGULAR);
-//        $this->data['candidatefreelancer'] = $final_candidate;
 
         $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
     }
