@@ -128,15 +128,15 @@
                                         </select> 
                                         <?php echo form_error('field'); ?>
                                     </fieldset>
-                                    <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <input id="skills1" name="skills" tabindex="7"  style="width:100%;" placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
+                                        <input id="skills1" name="skills" tabindex="7"   placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
                                         <?php echo form_error('area'); ?>
                                     </fieldset>
-                                    <fieldset>
+<!--                                    <fieldset>
                                         <label><?php echo $this->lang->line("other_skill"); ?> :</label>          
                                         <input type="text" class="keyskil" name="otherskill" tabindex="3" id="otherskill" value="<?php echo $otherskill1; ?>" placeholder="Enter other skill" >
-                                    </fieldset>
+                                    </fieldset>-->
                                     <fieldset  class="full-width">
                                         <label><?php echo $this->lang->line("skill_brief"); ?> :<span class="red">*</span></label>
 
