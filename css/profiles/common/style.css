@@ -2938,6 +2938,35 @@ fieldset .add_post_btns {
     border: 3.5px solid #ffffff; border: 1px solid #d9d9d9 !important; border-radius: 4px;
 }
 .padd_img {padding-left: 5px !important; padding-top: 6px !important;}
+.user-pic {height: 152px; width: 153px; overflow: hidden; border-radius: 4px; position: relative; z-index: 3;}
+.user-pic img {height: 100%; width: 100%; overflow: hidden;}
+.user-pic a {position: absolute; display: none;}
+.user-pic a i {padding-right: 7.1px;}
+.user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 4px 4px 6px;
+    font-size: 12px;
+}
+.profile-box-art {height: auto !important;}
+.profile-box-art ul li a {height: 50px; padding-top: 7px; padding-bottom: 7px;}
+.profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
+.profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
+.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; z-index: -1; background-color: white;}
+.profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
+.profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
+.profile-main-rec-box-menu li a {display: block; color: #1b8ab9; text-align: center; padding: 16px 15px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+}
+.profile-main-rec-box-menu ul li.active {position: relative; background: #fff;}
+.profile-main-rec-box-menu ul li.active a {background: #1b8ab9; color: #ffffff;}
+.profile-main-rec-box-menu li a:hover {background-color: #1b8ab9; color: #ffffff; background-color: #1b8ab9; color: #ffffff;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+.art-side-menu {width: 100%; padding-left: 210px;}
+.art-side-menu ul {float: left;}
+.right-side-menu {float: left; height: 50px;}
+
+
+
 
 /***----------- end  common css for job recrutor and freelancer  ------------***/
 
@@ -2987,7 +3016,8 @@ fieldset .add_post_btns {
 .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
 .left_box_menubar li a {padding: 10px; display: inline-block;}
 .left_box_menubar li:last-child a {text-align: center;}
-/***   cover photo  ***/
+
+/***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{border:1px solid #d9d9d9; border-top:0; overflow: hidden; width: 100%;}
 #row2 img {height: 350px; width: 100%;}
@@ -3121,7 +3151,45 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .profile-photo {position: relative; z-index: 0;}
 
-
+/***  edit profile pages  ***/
+.common-form1 h3 {font-weight: bold; color: #a0b3b0; text-align: center; border-radius: 10px; background: #fff;
+    margin: 10px 0 20px; padding: 6px 15px 8px; font-size: 20px; line-height: 28px; border: 1px solid rgba(0, 0, 0, 0.1);
+	font-family: 'robotoregular';
+}
+.left-side-bar ul {margin: 0; padding: 0;}
+.left-side-bar ul li {list-style: none; margin: 0; padding: 0;}
+.left-side-bar ul li a {background: #1b8ab9; padding: 10px 15px; display: inline-block; margin-bottom: 2px; color: #fff;
+    display: block; font-family: 'robotoregular';
+}
+.left-side-bar ul li a:hover {background: #156f95; text-decoration: none;}
+.left-side-bar ul li.active {position: relative; background: #000;}
+.left-side-bar ul li.active a {background: #156f95!important;}
+.left-side-bar ul li.active:after {content: "\f00c"; font-family: 'FontAwesome'; position: absolute; top: 11px; right: 8px;
+    color: #fff;
+}
+.common-form_border {border: 1px solid #d9d9d9;}
+.red {color: red;}
+.select2-container-multi .select2-choices {min-height: 43px; width: 100%;
+    float: left;
+	background: white;
+    border: 1px solid #cacaca!important;
+    outline: none!important;
+    color: #000!important;
+    font-size: 14px!important;
+    font-weight: 400!important;
+    border-radius: 4px!important;
+	padding:5px 10px !important;
+}
+fieldset .select2-container-multi .select2-choices .select2-search-choice{padding:0 !important;}
+fieldset .select2-container-multi .select2-choices .select2-search-choice div{padding:5px; float:right;}
+fieldset .select2-container-multi .select2-choices .select2-search-choice a.select2-search-choice-close{position:inherit; 	 float:left; left:inherit; right:inherit; top:inherit; margin-top:5px; margin-left:3px;}
+.select2-container-multi .select2-choices .select2-search-field input {height: 33px}
+.select2-search-field {width: 100%;}
+.experience_year{float: left; margin-right: 43px; width: 45%;}
+.experience_month{float: left; width: 45%;}
+	
+	
+	
 	
 /***---------- end  common css for all profile  -------------***/
 /*** common css for freelance hire and recruiter  ***/ 
