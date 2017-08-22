@@ -69,19 +69,12 @@
 
                                                     <?php 
                           $a = $firstnameposted;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $lastnameposted;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                              $acr = substr($a, 0, 1);
+                                              $b = $lastnameposted;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
 
@@ -115,20 +108,13 @@
 
 
                                                  <?php 
-                          $a = $firstname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                         $a = $firstname;
+                                              $acr = substr($a, 0, 1);
+                                              $b = $lastname;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
 
                                                 <?php }?>
@@ -141,20 +127,18 @@
 
 
                                                 <?php 
-                          $a = $row['art_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $row['art_lastname'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+
+
+                                                 $a = $row['art_name'];
+                                              $acr = substr($a, 0, 1);
+                                              $b = $row['art_lastname'];
+                                              $bcr = substr($b, 0, 1);
+
+
+                          ?>
 
                             <div class="post-img-div">
-                            <?php echo ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
 
@@ -646,19 +630,12 @@
 
                                                                       <?php 
                           $a = $companyname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                              $acr = substr($a, 0, 1);
+                                              $b = $lastname;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
 
@@ -825,19 +802,12 @@
                                                                     ?>
                                                                     <?php 
                           $a = $art_firstuser;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $art_lastuser;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                              $acr = substr($a, 0, 1);
+                                              $b = $art_lastuser;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
                                                                     <?php
@@ -1108,20 +1078,13 @@
                                                             } else {
                                                                 ?>
                                                                 <?php 
-                          $a = $art_first;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $art_last;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                           $a = $art_first;
+                                              $acr = substr($a, 0, 1);
+                                              $b = $art_last;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
                                                                 <?php
@@ -1301,19 +1264,12 @@
                                             ?>
                                             <?php 
                           $a = $art_first;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $art_last;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                              $acr = substr($a, 0, 1);
+                                              $b = $art_last;
+                                              $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
                                             <?php
