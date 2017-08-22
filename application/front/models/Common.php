@@ -743,10 +743,14 @@ class Common extends CI_Model {
     return $string ? implode(', ', $string) . ' ago' : 'just now';  
 }
 
-    function make_links($text, $class='content_link', $target='_blank'){ 
-        return preg_replace('!((http\:\/\/|ftp\:\/\/|https\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$1$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
+    // function make_links($text, $class='content_link', $target='_blank'){ 
+    //     return preg_replace('!((http\:\/\/|ftp\:\/\/|https\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$1$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
+    //         $text);
+    // }
+    
+   function make_links($text, $class='content_link', $target='_blank'){ 
+        return preg_replace('!((http:\:\/\/|ftp\:\/\/|https:\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$1$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
             $text);
     }
     
-   
 }
