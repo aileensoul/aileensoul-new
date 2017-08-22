@@ -35,8 +35,7 @@
                                  <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div> 
                                         <div class="col-md-1">
                                         </div>
-                                    </div>
-                    
+                                    </div>                  
             </div>
         </div>
         </div>
