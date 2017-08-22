@@ -8,7 +8,6 @@
                 border-radius: 5px;
             }
         </style>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.0/select2.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
@@ -212,11 +211,8 @@
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.0/select2.js"></script>
             <script>
                // var complex = <?php echo json_encode($selectdata); ?>;
                var base_url = '<?php echo base_url(); ?>';

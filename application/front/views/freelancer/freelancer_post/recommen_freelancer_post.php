@@ -4,7 +4,6 @@
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css'); ?>"><link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
@@ -137,8 +136,6 @@
         <!-- script for skill textbox automatic start (option 2)-->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>">
         </script>
         <script>
