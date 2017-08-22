@@ -1417,10 +1417,10 @@ function remove_ownpost(abc)
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
-                            $('.' + 'dataconpdf').html(data.notpdf);
-                            $('.' + 'dataconvideo').html(data.notvideo);
-                            $('.' + 'dataconaudio').html(data.notaudio);
-                            $('.' + 'dataconphoto').html(data.notphoto);
+                            //$('.' + 'dataconpdf').html(data.notpdf);
+                            //$('.' + 'dataconvideo').html(data.notvideo);
+                            //$('.' + 'dataconaudio').html(data.notaudio);
+                            //$('.' + 'dataconphoto').html(data.notphoto);
                         }
                     }
                 });

@@ -12,11 +12,14 @@
 <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
     <section class="custom-row">
+
         <div class="container" id="paddingtop_fixed">
         </div>
         <div class="user-midd-section art-inner">
             <div class="container">
-<div class="col-md-3"></div>
+<div class="col-md-4">
+    <?php echo $left_artistic; ?>
+</div>
     <div class="col-md-7 col-sm-12 col-xs-12 mob-plr0">
         <div>
             <?php

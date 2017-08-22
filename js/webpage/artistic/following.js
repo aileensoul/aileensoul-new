@@ -30,7 +30,7 @@ $(document).ready(function () {
     artistic_following(slug_id);  
 });
 function artistic_following(slug_id)
-{
+{//alert(slug_id);
     //if (isProcessing) {
         /*
          *This won't go past this condition while

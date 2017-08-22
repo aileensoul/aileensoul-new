@@ -3510,6 +3510,8 @@ $datacount = count($otherdata);
 
 
         if($this->data['artisticdata']){
+       $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+
         $this->load->view('artistic/artistic_userlist', $this->data);
         }else{
        redirect('artistic/');
@@ -4196,7 +4198,7 @@ public function followtwo() {
                     $notfound = '<div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="'.base_url('img/art-no.png').'">
+           <img src="'.base_url('img/icon_no_following.png').'">
         
          </div>
          <div class="art_no_post_text">
@@ -4480,9 +4482,9 @@ public function followtwo() {
                                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: none">
+            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/art-no.png') . '">
+                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -4647,12 +4649,12 @@ public function followtwo() {
         //$start = ($page - 1) * $perpage;
       //  if ($start < 0)
          //   $start = 0;
-
+        $id = $_POST['slug_id'];
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //$slugid = $artdata[0]['business_slug'];
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '') { //echo "1"; die();
 
             $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
 
@@ -4670,7 +4672,7 @@ public function followtwo() {
             $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        } else {
+        } else { //echo "16"; die();
 
             $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = '*');
 
@@ -4716,7 +4718,7 @@ public function followtwo() {
                  $art_image = $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_user_image;
 
                 if ($art_image != '') {
-                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . $art_name . $art_lastname .'">';
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . ucfirst(strtolower($art_name)) .' '. ucfirst(strtolower($art_lastname)) .'">';
                     $uimage = $this->db->get_where('art_reg', array('art_id' => $user['follow_to']))->row()->art_user_image;
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $uimage)) {
 
@@ -4734,7 +4736,7 @@ public function followtwo() {
                     }
                     $return_html .= '</a>';
                 } else {
-                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . $art_name . $art_lastname .'">';
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . ucfirst(strtolower($art_name)).' '. ucfirst(strtolower($art_lastname)) .'">';
 
                                                                 $a = $art_name;
                                                                 $acr = substr($a, 0, 1);
@@ -4751,7 +4753,7 @@ public function followtwo() {
                                     <li class="folle_text">
                                         <div class="">
                                             <div class="follow-li-text" style="padding: 0;">
-                                                <a title="' .ucfirst(strtolower($art_name)) .'&nbsp;'.ucfirst(strtolower($art_lastname)). '" href="' . base_url('artistic/dashboard/' . $art_id) . '">' . $art_name .'&nbsp;'. $art_lastname . '</a></div>
+                                                <a title="' .ucfirst(strtolower($art_name)) .'&nbsp;'.ucfirst(strtolower($art_lastname)). '" href="' . base_url('artistic/dashboard/' . $art_id) . '">' . ucfirst(strtolower($art_name)) .'&nbsp;'. ucfirst(strtolower($art_lastname)) . '</a></div>
                                             <div>';
 
                 $return_html .= '<a>';
@@ -12453,7 +12455,7 @@ public function delete_commenttwo_postnewpage() {
                     
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -12496,7 +12498,7 @@ public function delete_commenttwo_postnewpage() {
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -12519,7 +12521,7 @@ public function delete_commenttwo_postnewpage() {
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -12538,15 +12540,15 @@ public function delete_commenttwo_postnewpage() {
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) .'</h6>
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '.ucfirst(strtolower($userlist['art_lastname'])) . '">
+                                                                                            <h6>' .ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
                    
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -12621,7 +12623,7 @@ public function delete_commenttwo_postnewpage() {
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
                                                                                         <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) .ucwords($userlist['art_lastname']) .'</h6>
+                                                                                            <h6>' . ucwords($userlist['art_name']) .' '.ucwords($userlist['art_lastname']) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -12669,7 +12671,7 @@ public function delete_commenttwo_postnewpage() {
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .' '. ucwords($userlist['art_lastname']) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {       
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
@@ -12685,7 +12687,7 @@ public function delete_commenttwo_postnewpage() {
                             $return_html .= '</a>';
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ' ' .ucwords($userlist['art_lastname']) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -12701,7 +12703,7 @@ public function delete_commenttwo_postnewpage() {
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
                                                                                         <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'</h6>
+                                                                                            <h6>' . ucfirst(strtolower($userlist['art_name'])).' ' . ucfirst(strtolower($userlist['art_lastname'])) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -13717,7 +13719,7 @@ public function art_home_post() {
             }
         } else {
 
-            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
+           // $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
         }
 
         $fetch_result .= '<div class="dataconphoto"></div>';
@@ -13836,7 +13838,7 @@ public function art_home_post() {
         } else {
 
 
-            $fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
+            //$fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
         }
 
         $fetch_video .= '<div class="dataconvideo"></div>';
@@ -13953,7 +13955,7 @@ public function art_home_post() {
             }
             $fetchaudio .= '</tr>';
         } else {
-            $fetchaudio .= '<div class="not_available">  <p>   Audio Not Available </p></div>';
+            //$fetchaudio .= '<div class="not_available">  <p>   Audio Not Available </p></div>';
         }
         $fetchaudio .= '<div class="dataconaudio"></div>';
         echo $fetchaudio;
@@ -14015,7 +14017,7 @@ public function art_home_post() {
                     break;
             }
         } else {
-            $fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
+            //$fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
         }
         $fetch_pdf .= '<div class="dataconpdf"></div>';
         echo $fetch_pdf;
