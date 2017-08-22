@@ -11,6 +11,7 @@
                                 <label><i class="fa fa-search" aria-hidden="true"></i></label>
                             </a>
                         </div>
+                       
                         <div id="search">
                             <button type="button" class="close">×</button>
                             <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
@@ -25,6 +26,7 @@
                                 </div>
                             </form>
                         </div>
+                        
                     </div>
                     <div class="">
                         <ul class="" id="dropdownclass">
