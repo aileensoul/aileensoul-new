@@ -5598,19 +5598,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                   }else{
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -5785,19 +5778,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                   }else{
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -5968,20 +5954,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 }else{
 
 
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -6163,19 +6142,12 @@ public function delete_commenttwo_postnewpage() {
 
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -6700,20 +6672,14 @@ public function delete_commenttwo_postnewpage() {
             }else{
 
 
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -6931,20 +6897,12 @@ public function delete_commenttwo_postnewpage() {
             }else{
 
              
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
+                           $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -8650,20 +8608,13 @@ public function delete_commenttwo_postnewpage() {
                //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
 
 
-                          $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                           $a = $art_name;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -8895,20 +8846,13 @@ public function delete_commenttwo_postnewpage() {
             }else{
 
              
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -9686,19 +9630,12 @@ public function delete_commenttwo_postnewpage() {
             //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
 
                            $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acronym)) .ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .= ucfirst(strtolower($acr)) .ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
 
@@ -9890,20 +9827,13 @@ public function delete_commenttwo_postnewpage() {
 
                 //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
 
-                           $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $a = $art_name;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
                }
@@ -10092,19 +10022,12 @@ public function delete_commenttwo_postnewpage() {
 
                     //
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
 
 
@@ -10268,19 +10191,12 @@ public function delete_commenttwo_postnewpage() {
              
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
                     $fourdata .= '</div>';
             }
@@ -10446,20 +10362,13 @@ public function delete_commenttwo_postnewpage() {
 
                 } else {
 
-                          $a = $art_name1;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                           $a = $art_name1;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $modal .=  '</div>';
                     //$cmtinsert .= '</div>';
 
@@ -10564,20 +10473,13 @@ public function delete_commenttwo_postnewpage() {
 
                     //$modal .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
 
-                          $a = $art_name1;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $art_name1;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $modal .=  '</div>';
 
 
@@ -10730,19 +10632,12 @@ public function delete_commenttwo_postnewpage() {
 
 
                           $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
 
@@ -12945,9 +12840,16 @@ public function art_home_post() {
                             }
                             $return_html .= '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">
-                                                <img src="' . base_url(NOIMAGE) . '" alt="">
-                                            </a>';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
+                                                $a = $userfn;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $userln;
+                                                                $bcr = substr($b, 0, 1);
+                                                               
+                                $return_html .= '<div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                $return_html .= '</div>'; 
+                                           $return_html .=  '</a>';
                         }
                     }
                     $return_html .= '</div>
