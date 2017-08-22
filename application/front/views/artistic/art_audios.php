@@ -32,93 +32,61 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home"><div class="common-form">
                             <div class="">
-
-                                                  <div class="all-box">
-                                            <ul class="audio-sec"> 
-                                              
-                                                                          <?php
-
+                                            <div class="all-box">
+                                            <ul class="audio-sec">                                              
+                                        <?php
           $contition_array = array('user_id' => $artisticdata[0]['user_id']);
-         $artaudio = $this->data['artaudio'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-          
+         $artaudio = $this->data['artaudio'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');         
             foreach ($artaudio as $val) {
-             
-            
-
             $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'image_type' => '1');
             $artmultiaudio = $this->data['artmultiaudio'] =  $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
               $multipleaudio[] = $artmultiaudio;
              }  
-
                   ?>
               <?php   
-
-                $allowesaudio = array('mp3');
-              
-                foreach ($multipleaudio as $mke => $mval) {
-                  
+                $allowesaudio = array('mp3');             
+                foreach ($multipleaudio as $mke => $mval) {                
                   foreach ($mval as $mke1 => $mval1) {
-                      $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-                    
+                      $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);                   
                      if(in_array($ext,$allowesaudio)){ 
                    $singlearray2[] = $mval1;
                      }
                   }
                 } 
                 ?>
-
                <?php  if($singlearray2) { 
-                foreach ($singlearray2 as $audiov) {
-                  
+                foreach ($singlearray2 as $audiov) {                  
                  ?>
                  <li>
-
                             <audio controls>
                             <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['image_name'])?>" type="audio/ogg">
                             <source src="movie.ogg" type="audio/mpeg">
                            Your browser does not support the audio tag.
                             </audio>
                             </li>
-
                <?php } } else{?>
              <div class="art_no_pva_avl">
          <div class="art_no_post_img">
-              <img src="<?php echo base_url('images/color_008.png'); ?>"  >
-                              
+              <img src="<?php echo base_url('images/color_008.png'); ?>"  >                              
          </div>
          <div class="art_no_post_text1">
            No Audio Available.
          </div>
-       </div>
-                         
-              
+       </div>                                    
                <?php }?>             
-                                            </ul>
-                                        </div>
-                              <!--   <div class="add_audio"> -->
-                              
+                </ul>
+               </div>
+                              <!--   <div class="add_audio"> -->                             
 </div>
 </div>
 </div></div>
             </div>
         </div>
-
         <div class="clearfix"></div>
-
-      </div>
-
-   
+      </div>  
     </div>
-
-
-
-
 </div>
 </div>
-
-
 </div>
 </div>
 </section>
@@ -146,10 +114,9 @@
                                                 <?php echo form_open_multipart(base_url('artistic/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
                                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                                 <input type="hidden" name="hitext" id="hitext" value="11">
- <div class="popup_previred">
+                                               <div class="popup_previred">
                                                  <img id="preview" src="#" alt="your image" />
-                                                 </div>
-                                                <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
+                                                 </div>                                                
                                                 <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
                                                 <?php echo form_close(); ?>
                                             </div>

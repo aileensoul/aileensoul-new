@@ -6,39 +6,26 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-    </head>
-    
+    </head>    
     <body class="page-container-bg-solid page-boxed">
-
         <?php echo $header; ?>
         <?php if ($artdata[0]['art_step'] == 4) { ?>
             <?php echo $art_header2_border; ?>
         <?php } ?>
-
     <div class="js">
     <div id="preloader"></div>
-
-
       <section>
         <div class="user-midd-section" id="paddingtop_fixed">
            <div class="common-form1">
              <div class="row">
              <div class="col-md-3 col-sm-4"></div>
-
-
               <?php 
-
              $userid = $this->session->userdata('aileenuser');
-
              $contition_array = array('user_id' => $userid, 'status' => '1');
-             $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-             
+             $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');            
              if($artdata[0]['art_step'] == 4){ ?>
-
-
         <div class="col-md-6 col-sm-8"><h3>You are updating your Artistic Profile.</h3></div>
              <?php }else{
-
              ?>
                       <div class="col-md-6 col-sm-8"><h3>You are making your Artistic Profile.</h3></div>
                         <?php }?>
@@ -51,21 +38,14 @@
                         <div class="left-side-bar">
                             <ul class="left-form-each">
                                 <li class="custom-none"><a href="<?php echo base_url('artistic/artistic-information-update'); ?>">Basic Information</a></li>
-
                                 <li <?php if($this->uri->segment(1) == 'artistic'){?> class="active init" <?php } ?>><a href="#">Address</a></li>
-
                                 <li class="custom-none <?php if($artdata[0]['art_step'] < '2'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/artistic-information'); ?>">Art Information</a></li>
-
                                 <li class="custom-none <?php if($artdata[0]['art_step'] < '3'){echo "khyati";}?>"><a href="<?php echo base_url('artistic/artistic-portfolio'); ?>">Portfolio</a></li>
-
                             </ul>
                         </div>
                     </div>
-
                     <!-- middle section start -->
- 
                     <div class="col-md-6 col-sm-8">
-
                     <div>
                         <?php
                                         if ($this->session->flashdata('error')) {
@@ -75,100 +55,70 @@
                                             echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
                                         }?>
                     </div>
-
                         <div class="common-form common-form_border">
                          <h3>
                            Address
-                        </h3>
-                       
+                        </h3>                       
                             <?php echo form_open(base_url('artistic/art_address_insert'), array('id' => 'address','name' => 'address', 'class' => 'clearfix')); ?>
-<!-- 
-                            <div>
-                                   <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                                </div> -->
-
-
                             <?php
                              $country =  form_error('country');
-                             $state =  form_error('state');
-                             //$address =  form_error('address');
+                             $state =  form_error('state');                           
                          ?>
                                 <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
-								<label>Country:<span style="color:red">*</span></label>
-								
+								<label>Country:<span style="color:red">*</span></label>								
         								<select name="country" id="country" tabindex="1" autofocus>
             							<option value="">Select Country</option>
             							<?php
                                             if(count($countries) > 0){
                                                 foreach($countries as $cnt){
-                                          
-                                            if($country1)
+                                                    if($country1)
                                             {
                                               ?>
-                                                 <option value="<?php echo $cnt['country_id']; ?>" <?php if($cnt['country_id']==$country1) echo 'selected';?>><?php echo $cnt['country_name'];?></option>
-                                               
-                                                <?php
+                                                 <option value="<?php echo $cnt['country_id']; ?>" <?php if($cnt['country_id']==$country1) echo 'selected';?>><?php echo $cnt['country_name'];?></option>              
+                                                 <?php
                                                 }
                                                 else
                                                 {
                                             ?>
-                                                 <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name'];?></option>
-                                                  <?php
-                                            
-                                            }
-       
+                            <option value="<?php echo $cnt['country_id']; ?>"><?php echo $cnt['country_name'];?></option>
+                                                  <?php                                            
+                                            }       
                                             }}
                                             ?>
         							</select><span id="country-error"></span>
 							     <?php echo form_error('country'); ?>
-    							</fieldset>
-                                
+    							</fieldset>                                
                                 <fieldset <?php if($state) {  ?> class="error-msg" <?php } ?>>
 								    <label>state:<span style="color:red">*</span></label>
     								<select name="state" id="state" tabindex="2">
         							<?php
                                           if($state1)
-
                                             {
-                                            foreach($states as $cnt){
-                                                 
-                                              ?>
-
+                                            foreach($states as $cnt){  ?>
                                                  <option value="<?php echo $cnt['state_id']; ?>" <?php if($cnt['state_id']==$state1) echo 'selected';?>><?php echo $cnt['state_name'];?></option>
-                                              
                                                 <?php
-                                                } }
-                                              
-                                                else
+                                                } }                                             
+                                               else
                                                 {
                                             ?>
                                                  <option value="">Select Country First</option>
-                                                  <?php
-                                            
+                                                  <?php                                            
                                             }
                                             ?>
 								    </select><span id="state-error"></span>
                                      <?php echo form_error('state'); ?>
 								</fieldset>
-                               
-
                                 <fieldset>
 								    <label> City:</label>
 									<select name="city" id="city" tabindex="3">
     								<?php
-
                                          if($city1)
-
                                             {
-                                          foreach($cities as $cnt){
-                                               
+                                          foreach($cities as $cnt){                                              
                                               ?>
-
                                                <option value="<?php echo $cnt['city_id']; ?>" <?php if($cnt['city_id']==$city1) echo 'selected';?>><?php echo $cnt['city_name'];?></option>
-
                                                 <?php
                                                 } }
-
                                                 else if($state1)
                                              {
                                             ?>
@@ -176,39 +126,28 @@
                                             <?php
                                             foreach ($cities as $cnt) {
                                                 ?>
-
                                                 <option value="<?php echo $cnt['city_id']; ?>"><?php echo $cnt['city_name']; ?></option>
-
                                                 <?php
                                             }
-                                        }
-                                              
+                                        }                                              
                                                 else
                                                 {
                                             ?>
                                         <option value="">Select State First</option>
-
-                                         <?php
-                                            
+                                         <?php                                          
                                             }
                                             ?>
 									</select><span id="city-error"></span>
                                     <?php echo form_error('city'); ?>
 								</fieldset>
-								
-
                                 <fieldset <?php if($pincode) {  ?> class="error-msg" <?php } ?>>
 									<label>Pincode:</label>
 									<input name="pincode"  type="text" id="pincode" tabindex="4" placeholder="Enter Pincode" value="<?php if($pincode1){ echo $pincode1; } ?>"/><span id="pincode-error"></span>
                                     <?php echo form_error('pincode'); ?>
-									</fieldset>
-								
-                                 <fieldset class="hs-submit full-width">
-                                        
-                                    <input type="submit"  id="next" name="next" tabindex="6" value="Next">
-                                   
-                                </fieldset>
-
+									</fieldset>								
+                                <fieldset class="hs-submit full-width">                                       
+                                   <input type="submit"  id="next" name="next" tabindex="6" value="Next">      
+                                   </fieldset>
                             </form>
                         </div>
                     </div>
@@ -216,25 +155,19 @@
             </div>
         </div>
     </section>
-<footer>
-        
+<footer>        
 <?php echo $footer;  ?>
 </footer>
-
 </div>
-
-<script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script>
-  
+<script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script> 
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-
 <script>
 var data= <?php echo json_encode($demo); ?>;
 var base_url = '<?php echo base_url(); ?>';
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/address.js'); ?>"></script>
 </body>
 </html>
