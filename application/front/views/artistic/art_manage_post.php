@@ -187,18 +187,11 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userima
                 <?php  }else{?>
                     <?php 
                           $a = $artisticdata[0]['art_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $artisticdata[0]['art_lastname'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);?>
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                     <?php   }?> 
                         </div>
@@ -239,18 +232,11 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                             <?php }else{?>
                             <?php 
                           $a = $artisticdata[0]['art_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $artisticdata[0]['art_lastname'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);?>
                             <div class="post-img-div">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                             <?php }?>
                             </div>
