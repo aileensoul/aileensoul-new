@@ -14628,4 +14628,170 @@ $return_html .= '<div class="art-all-comment col-md-12">
         echo $return_html;
     }      
 
+
+ public function postnewpage_fourcomment($postid) {
+
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+
+        //$post_id =  $postid; 
+        $post_id = $_POST['art_post_id'];
+
+        // html start
+
+        $contition_array = array('art_post_id' => $post_id, 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $fourdata = '<div class="insertcommenttwo' . $post_id . '">';
+
+        if ($artdata) {
+            foreach ($artdata as $rowdata) {
+
+                $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+                $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+
+                $fourdata .= '<div class="all-comment-comment-box">';
+                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+                $fourdata .= '<div class="post-design-pro-comment-img">';
+                
+                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
+                if ($art_userimage) {
+
+                    
+                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                            $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                                $fourdata .= '<div class="post-img-div">';
+                                $fourdata .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                                $fourdata .=  '</div>';
+
+
+                        } else {
+                    $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                    }
+
+                    $fourdata .= '</div>';
+                } else {
+
+
+                    //
+                          $a = $artname;
+                          $words = explode(" ", $a);
+                          foreach ($words as $w) {
+                            $acronym = $w[0];
+                            }
+                          
+                          $b = $artlastname;
+                          $words = explode(" ", $b);
+                          foreach ($words as $w) {
+                            $acronym1 = $w[0];
+                            }
+
+                    $fourdata .= '<div class="post-img-div">';
+                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  '</div>';
+
+
+                    $fourdata .= '</div>';
+                    //$fourdata .= '<img src="' . base_url(NOIMAGE) . '" alt=""></div>';
+
+                }
+                $fourdata .= '<div class="comment-name">';
+                $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </div>';
+                $fourdata .= '</a>';
+                $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['artistic_post_comment_id'] . '">';
+
+                $fourdata .= '<div id= "lessmore' . $rowdata['artistic_post_comment_id'] . '"  style="display:block;">';
+
+                    $small = substr($rowdata['comments'], 0, 180);
+
+                $fourdata .= '' . $this->common->make_links($small) . '';
+
+                    // echo $this->common->make_links($small);
+
+                     if (strlen($rowdata['comments']) > 180) {
+                         $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                        }
+
+                $fourdata .= '</div>';
+
+
+                $fourdata .= '<div id= "seemore' . $rowdata['artistic_post_comment_id'] . '"  style="display:none;">';
+
+                $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div></div>';
+
+//                $fourdata .= '<textarea  name="' . $rowdata['artistic_post_comment_id'] . '" id="editcommenttwo' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
+//                $fourdata .= '' . $rowdata['comments'] . '';
+//                $fourdata .= '</textarea>';
+                $fourdata .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
+                $fourdata .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcommenttwo' . $rowdata['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $rowdata['artistic_post_comment_id'] .','.$post_id.')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>';
+                $fourdata .= '<span class="comment-edit-button"><button id="editsubmittwo' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $rowdata['artistic_post_comment_id'] .','.$post_id.')">Save</button></span>';
+//                $fourdata .= '<input type="text" name="' . $rowdata['artistic_post_comment_id'] . '" id="editcommenttwo' . $rowdata['artistic_post_comment_id'] . '" style="display:none" value="' . $rowdata['comments'] . '"  onClick="commentedittwo(this.name)">';
+//                $fourdata .= '<button id="editsubmittwo' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $rowdata['artistic_post_comment_id'] . ')">Comment</button>';
+                $fourdata .= '</div></div><div class="art-comment-menu-design">';
+                $fourdata .= '<div class="comment-details-menu" id="likecomment' . $rowdata['artistic_post_comment_id'] . '">';
+                $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '"   onClick="comment_like(this.id)">';
+
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('artistic_post_comment_id' => $rowdata['artistic_post_comment_id'], 'status' => '1');
+                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+
+                if (!in_array($userid, $likeuserarray)) {
+                    $fourdata .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
+                } else {
+                    $fourdata .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                }
+
+                $fourdata .= '<span> ';
+                if ($rowdata['artistic_comment_likes_count']) {
+                    $fourdata .= '' . $rowdata['artistic_comment_likes_count'] . '';
+                }
+                $fourdata .= '</span></a></div>';
+
+                $userid = $this->session->userdata('aileenuser');
+                if ($rowdata['user_id'] == $userid) {
+
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<div class="comment-details-menu">';
+                    $fourdata .= '<div id="editcommentboxtwo' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">';
+                    $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '"   onClick="comment_editboxtwo(this.id,'.$post_id.')" class="editbox">Edit</a> </div>';
+                    $fourdata .= '<div id="editcancletwo' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
+                    $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id,'.$post_id.')">Cancel</a></div></div>';
+                }
+                $userid = $this->session->userdata('aileenuser');
+                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<div class="comment-details-menu">';
+                    $fourdata .= '<input type="hidden" name="post_delete"  id="post_deletetwo" value= "' . $rowdata['art_post_id'] . '">';
+                    $fourdata .= '<a id="' . $rowdata['artistic_post_comment_id'] . '"';
+                    //$fourdata .= 'onClick="comment_deletetwo(this.id)"> Delete <span class="insertcommenttwo' . $rowdata['artistic_post_comment_id'] . '">';
+                    $fourdata .= 'onClick="comment_deletetwo(this.id)"> Delete';
+                    $fourdata .= '</span> </a> </div>';
+                }
+                $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $fourdata .= '<div class="comment-details-menu">  <p>';
+                $fourdata .= '' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date']))) . '</br></p></div>';
+                $fourdata .= '</div></div>';
+            }
+        } else {
+            $fourdata = 'No comments Available!!!</div>';
+        }
+        echo $fourdata;
+    }
+    
 }
