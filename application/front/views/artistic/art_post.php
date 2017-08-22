@@ -102,10 +102,6 @@
             </div>
          </div>
       </div>
-      <!-- cover pic end -->
-      <!-- popup start -->
-      <!-- Trigger/Open The Modal -->
-      <!-- popup end -->
       <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art animated fadeInUp">
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
@@ -130,7 +126,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
                   <?php }?>
                   <?php }else{
-
                     $a = $artisticdata[0]['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $artisticdata[0]['art_lastname'];
