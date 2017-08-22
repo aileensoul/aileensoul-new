@@ -184,7 +184,14 @@ if(data == 0){
     return false;
     });
 
+$('#file-1').on('click', function(e){
 
+var a = document.getElementById('test-upload-product').value;
+var b = document.getElementById('test-upload-des').value;
+    document.getElementById("artpostform").reset();
+    document.getElementById('test-upload-product').value = a;
+    document.getElementById('test-upload-des').value = b;
+    });
 
             var modal = document.getElementById('myModal3');
 
@@ -2154,14 +2161,7 @@ $( document ).on( 'keydown', function ( e ) {
        }
    });  
   
-  $('#file-1').on('click', function(e){
-
-var a = document.getElementById('test-upload-product').value;
-var b = document.getElementById('test-upload-des').value;
-    document.getElementById("artpostform").reset();
-    document.getElementById('test-upload-product').value = a;
-    document.getElementById('test-upload-des').value = b;
-    });
+  
 
 $('#common-limit').on('click', function () {
     $('#myModal').modal('show');
@@ -2226,3 +2226,5 @@ function artistic_dashboard_post(slug) { //alert("hii"); alert(slug);
         }
     });
 }
+
+

@@ -2242,7 +2242,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         $return_html .= '<div class="like_one_other">';
 
-                        if ($userid == $likelistarray[0]) {
+                        if (in_array($userid, $likelistarray)) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
@@ -6412,7 +6412,7 @@ public function delete_commenttwo_postnewpage() {
                 //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
              
 
-                if ($userid == $likelistarray[0]) {
+                if (in_array($userid, $likelistarray)) {
                     $cmtlikeuser .= 'You &nbsp';
                 } else {
                     $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
@@ -13245,7 +13245,7 @@ public function art_home_post() {
 
                         $return_html .= '<div class="like_one_other">';
 
-                        if ($userid == $likelistarray[0]) {
+                        if (in_array($userid, $likelistarray)) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
@@ -14377,7 +14377,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                  $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                     $return_html .= '<div class="like_one_other">';
-                    if ($userid == $likelistarray[0]) {
+                    if (in_array($userid, $likelistarray)) {
                         $return_html .= "You";
                         $return_html .= "&nbsp;";
                     } else {

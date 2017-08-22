@@ -161,7 +161,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              <div class="nofoundpost"> 
                              </div>
                              </div>
-      </section>
+      </div>
       <footer>
          <?php echo $footer; ?>
       </footer>
