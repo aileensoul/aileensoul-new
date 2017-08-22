@@ -534,7 +534,7 @@
                                                             <?php
                                                         }
                                                         ?>
-                                                        <div class="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" style="display:none">
+                                                        <div class="likeduserlist <?php echo "likeusernameimg" . $artdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" style="display:none">
                                                             <?php
                                                             $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
                                                             $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

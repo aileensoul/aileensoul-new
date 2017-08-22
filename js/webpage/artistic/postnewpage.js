@@ -1552,7 +1552,7 @@ function post_likeimg(clicked_id)
                                     } else {
                                         document.getElementById('likeusernameimg' + clicked_id).style.display = "block";
                                     }
-                                    $('#likeusernameimg' + clicked_id).addClass('likeduserlistimg1');
+                                    //$('#likeusernameimg' + clicked_id).addClass('likeduserlistimg1');
                                 }
                             });
                         }

@@ -8234,7 +8234,7 @@ public function delete_commenttwo_postnewpage() {
                        $cmtlikeuser .= '<div class="like_one_other">';
 
                  
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8323,7 +8323,7 @@ public function delete_commenttwo_postnewpage() {
                        $cmtlikeuser .= '<div class="like_one_other">';
 
                  
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8452,7 +8452,7 @@ public function delete_commenttwo_postnewpage() {
                     }
       $cmtlikeuser .= '<div class="like_one_other">';
 
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);" class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8462,7 +8462,7 @@ public function delete_commenttwo_postnewpage() {
 
               
                     if ($userid == $commnetcount[0]['user_id']) {
-                        $cmtlikeuser .= 'You &nbsp';
+                        $cmtlikeuser .= 'You';
                     } else {
                         $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '';
                         $cmtlikeuser .= '&nbsp;';
