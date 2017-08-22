@@ -15,16 +15,16 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
     }, "No space please and don't leave it empty");
 
 
- $.validator.addMethod("regx", function(value, element, regexpr) {          
-    if(!value) 
-            {
-                return true;
-            }
-            else
-            {
-                  return regexpr.test(value);
-            }
-}, "Number, space and special character are not allowed");
+//  $.validator.addMethod("regx", function(value, element, regexpr) {          
+//     if(!value) 
+//             {
+//                 return true;
+//             }
+//             else
+//             {
+//                   return regexpr.test(value);
+//             }
+// }, "Number, space and special character are not allowed");
 
 
             $(document).ready(function () { 
@@ -36,16 +36,16 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
                         firstname: {
 
                             required: true,
-                            regx:/^[^-\s][a-zA-Z_\s-]+$/,
-                            //noSpace: true
+                            //regx:/^[^-\s][a-zA-Z_\s-]+$/,
+                            noSpace: true
                         },
 
 
                         lastname: {
 
                             required: true,
-                            regx:/^[^-\s][a-zA-Z_\s-]+$/,
-                            //noSpace: true
+                            //regx:/^[^-\s][a-zA-Z_\s-]+$/,
+                            noSpace: true
                         },
 
 
