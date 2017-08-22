@@ -2378,7 +2378,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= $this->common->make_links($small);
 
                             if (strlen($rowdata['comments']) > 180) {
-                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">view More</span>';
                             }
                             $return_html .= '</div>';
                             $return_html .= '<div id="seemore' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
@@ -10050,7 +10050,7 @@ public function delete_commenttwo_postnewpage() {
                     // echo $this->common->make_links($small);
 
                      if (strlen($rowdata['comments']) > 180) {
-                         $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                         $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">View More</span>';
                         }
 
                 $fourdata .= '</div>';
@@ -13382,7 +13382,7 @@ public function art_home_post() {
                             $return_html .= $this->common->make_links($small);
 
                             if (strlen($rowdata['comments']) > 180) {
-                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">view More</span>';
                             }
                             $return_html .= '</div>';
                             $return_html .= '<div id="seemore' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
@@ -14489,7 +14489,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                         $return_html .= $this->common->make_links($small);
 
                         if (strlen($rowdata['comments']) > 180) {
-                            $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                            $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">View More</span>';
                         }
                         $return_html .= '</div>
 
