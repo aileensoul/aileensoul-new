@@ -14354,7 +14354,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 </div>';
                 // if ($row['business_likes_count'] > 0) {
                 //     $return_html .= '<div class="likeduserlist1 likeduserlist' . $row['business_profile_post_id'] . '">';
-                $return_html .= '<div class="class="likeduserlist1 likeusername '. $row['art_post_id'].'" id="likeusername'. $row['art_post_id'].'" style="display:block">';
+                $return_html .= '<div class="likeduserlist1 likeusername '. $row['art_post_id'].'" id="likeusername'. $row['art_post_id'].'" style="display:block">';
     
                     $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
