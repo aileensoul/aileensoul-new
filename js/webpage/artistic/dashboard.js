@@ -2,6 +2,7 @@
 // photos video audion pdf fatch using ajax
 
  $(document).ready(function () {
+            artistic_dashboard_post(slug);
                 GetArtPhotos();
                 GetArtVideos();
                 GetArtAudios();
@@ -183,8 +184,59 @@ if(data == 0){
     return false;
     });
 
+$('#file-1').on('click', function(e){
+
+var a = document.getElementById('test-upload-product').value;
+var b = document.getElementById('test-upload-des').value;
+    document.getElementById("artpostform").reset();
+    document.getElementById('test-upload-product').value = a;
+    document.getElementById('test-upload-des').value = b;
+    });
 
 
+
+function check_length(my_form)
+            {
+                maxLen = 50;
+             
+
+                // max number of characters allowed
+                if (my_form.my_text.value.length > maxLen) {
+                    // Alert message if maximum limit is reached. 
+                    // If required Alert can be removed. 
+                    var msg = "You have reached your maximum limit of characters allowed";
+                    $("#test-upload-product").prop("readonly", true);
+                    //    alert(msg);
+                   // my_form.text_num.value = maxLen - my_form.my_text.value.length;
+                    $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
+                    $('#bidmodal-limit').modal('show');
+                    // Reached the Maximum length so trim the textarea
+                    my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
+                } else {
+                    // Maximum length not reached so update the value of my_text counter
+                    my_form.text_num.value = maxLen - my_form.my_text.value.length;
+                }
+            }
+
+function check_lengthedit(abc)
+   { 
+       maxLen = 50;
+       var product_name = document.getElementById("editpostname" +abc).value;
+       if (product_name.length > maxLen) { 
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+           $("#editpostname" + abc).prop("readonly", true);
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+       } else { 
+           text_num = maxLen - product_name.length;
+           document.getElementById("text_num_" + abc).value = text_num;
+       }
+   }
+
+   
             var modal = document.getElementById('myModal3');
 
             // Get the button that opens the modal
@@ -220,6 +272,73 @@ if(data == 0){
                 });
             });
 
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+
+if(document.getElementById('bidmodal-limit').style.display === "block"){ 
+        $('#bidmodal-limit').modal('hide');
+    $("#test-upload-product").prop("readonly", false);
+        
+        $('#myModal3').model('show');
+ }else if(document.getElementById('myModal3').style.display === "block"){ 
+        document.getElementById('myModal3').style.display === "none";
+
+ }
+
+    }
+});  
+
+
+$(document).on('keydown', function (e) { 
+       if (e.keyCode === 27) {
+           if($('.modal-post').show()){
+   
+             $( document ).on( 'keydown', function ( e ) {
+             if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+          $('.modal-post').hide();
+
+           }
+          });  
+        
+   
+           }
+            document.getElementById('myModal3').style.display = "none";
+            }
+    });
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#likeusermodal').modal('hide');
+    }
+});
+
+$( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
+
+   $('#common-limit').on('click', function () {
+    $('#myModal').modal('show');
+    $("#test-upload-product").prop("readonly", false);
+    });
+
+
+$('#postedit').on('click', function () {
+   // $('#myModal').modal('show');
+    $(".my_text").prop("readonly", false);
+    });
+  
 
 $(function () {
                 var showTotalChar = 200, showChar = "More", hideChar = "";
@@ -1416,10 +1535,10 @@ function remove_ownpost(abc)
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
-                            $('.' + 'dataconpdf').html(data.notpdf);
-                            $('.' + 'dataconvideo').html(data.notvideo);
-                            $('.' + 'dataconaudio').html(data.notaudio);
-                            $('.' + 'dataconphoto').html(data.notphoto);
+                            //$('.' + 'dataconpdf').html(data.notpdf);
+                            //$('.' + 'dataconvideo').html(data.notvideo);
+                            //$('.' + 'dataconaudio').html(data.notaudio);
+                            //$('.' + 'dataconphoto').html(data.notphoto);
                         }
                     }
                 });
@@ -1473,7 +1592,13 @@ function khdiv(abc) {
 
 
    function editpost(abc)
-   { //alert("hii");
+   { 
+
+        var editposttitle = $('#editpostval' + abc).html();
+        var editpostdesc = $('#khyatii' + abc).html();
+
+         $("#myDropdown" + abc).removeClass('show');
+
        document.getElementById('editpostdata' + abc).style.display = 'none';
        document.getElementById('editpostbox' + abc).style.display = 'block';
        //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
@@ -1481,13 +1606,16 @@ function khdiv(abc) {
        document.getElementById('editpostsubmit' + abc).style.display = 'block';
        document.getElementById('khyati' + abc).style.display = 'none';
        document.getElementById('khyatii' + abc).style.display = 'none';
-
-       $("#myDropdown" + abc).removeClass("show");
+        editposttitle = editposttitle.trim()
+        editpostdesc = editpostdesc.trim()
+        $('#editpostname' + abc).val(editposttitle);
+        $('#editpostdesc' + abc).html(editpostdesc);
    }
 
    function edit_postinsert(abc)
    {
    
+
        var editpostname = document.getElementById("editpostname" + abc);
        // var editpostdetails = document.getElementById("editpostdesc" + abc);
        // start khyati code
@@ -1909,53 +2037,7 @@ function likeuserlist(post_id) {
                 });
             }
 
- function check_length(my_form)
-            {
-                maxLen = 50;
-             
-
-                // max number of characters allowed
-                if (my_form.my_text.value.length > maxLen) {
-                    // Alert message if maximum limit is reached. 
-                    // If required Alert can be removed. 
-                    var msg = "You have reached your maximum limit of characters allowed";
-                    $("#test-upload-product").prop("readonly", true);
-                    //    alert(msg);
-                   // my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                    $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
-                    $('#bidmodal-limit').modal('show');
-                    // Reached the Maximum length so trim the textarea
-                    my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
-                } else {
-                    // Maximum length not reached so update the value of my_text counter
-                    my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                }
-            }
-
-function check_lengthedit(abc)
-   { 
-       maxLen = 50;
-
-       var product_name = document.getElementById("editpostname" +abc).value;
-     
-       if (product_name.length > maxLen) { 
-           text_num = maxLen - product_name.length;
-           var msg = "You have reached your maximum limit of characters allowed";
-
-           $("#editpostname" + abc).prop("readonly", true);
-           
-           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
-           $('#postedit').modal('show');
-        
-           var substrval = product_name.substring(0, maxLen);
-           $('#editpostname' + abc).val(substrval);
-         
-       } else { 
-           text_num = maxLen - product_name.length;
-
-           document.getElementById("text_num").value = text_num;
-       }
-   }
+ 
 
     $('body').on("click", "*", function (e) {
                 var classNames = $(e.target).attr("class").toString().split(' ').pop();
@@ -2036,12 +2118,7 @@ function picpopup() {
             $('#profileimage').modal('show');
 }
 
- $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
-    }
-});  
+ 
 
 jQuery(document).mouseup(function (e) {
             
@@ -2071,41 +2148,6 @@ jQuery(document).mouseup(function (e) {
         $('#myModal3').modal('show');
     });
 
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-
-if(document.getElementById('bidmodal-limit').style.display === "block"){ 
-        $('#bidmodal-limit').modal('hide');
-    $("#test-upload-product").prop("readonly", false);
-        
-        $('#myModal3').model('show');
- }else if(document.getElementById('myModal3').style.display === "block"){ 
-        document.getElementById('myModal3').style.display === "none";
-
- }
-
-    }
-});  
-
-
-$(document).on('keydown', function (e) { 
-       if (e.keyCode === 27) {
-           if($('.modal-post').show()){
-   
-             $( document ).on( 'keydown', function ( e ) {
-             if ( e.keyCode === 27 ) {
-           //$( "#bidmodal" ).hide();
-          $('.modal-post').hide();
-
-           }
-          });  
-        
-   
-           }
-            document.getElementById('myModal3').style.display = "none";
-            }
-    });
 
 
  $( document ).on( 'keydown', function (e) {
@@ -2133,36 +2175,10 @@ $('.modal-post').hide();
                 
    }
 
-$( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           //$( "#bidmodal" ).hide();
-           $('#postedit').modal('hide');
-         $('.my_text').attr('readonly', false);
 
-            //$('.modal-post').show();
-
-       }
-   });  
   
-  $('#file-1').on('click', function(e){
+  
 
-var a = document.getElementById('test-upload-product').value;
-var b = document.getElementById('test-upload-des').value;
-    document.getElementById("artpostform").reset();
-    document.getElementById('test-upload-product').value = a;
-    document.getElementById('test-upload-des').value = b;
-    });
-
-$('#common-limit').on('click', function () {
-    $('#myModal').modal('show');
-    $("#test-upload-product").prop("readonly", false);
-    });
-
-
-$('#postedit').on('click', function () {
-   // $('#myModal').modal('show');
-    $(".my_text").prop("readonly", false);
-    });
 
  // post upload using ajaax start
 
@@ -2170,4 +2186,51 @@ $('#postedit').on('click', function () {
 $(document).ready(function(){  
        $('html,body').animate({scrollTop:246}, 500);
    });
+
+
+
+//var isProcessing = false;
+function artistic_dashboard_post(slug) { //alert("hii"); alert(slug);
+   // if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+       // return;
+   // }
+   // isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/artistic_dashboard_post",
+        //url: base_url + "artistic/artistic_dashboard_post/" + slug + "?page=" + pagenum,
+        data: 'slug=' + slug,
+       // data: {total_record: $("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            //if (pagenum == 'undefined') {
+                //  $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            //} else {
+                $('#loader').show();
+            //}
+        },
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.job-contact-frnd').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            //isProcessing = false;
+        }
+    });
+}
+
 

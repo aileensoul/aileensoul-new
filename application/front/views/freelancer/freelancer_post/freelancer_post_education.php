@@ -208,8 +208,6 @@
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
             <!-- This Js is used for call popup -->
             <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
             <!-- This Js is used for call popup -->
@@ -221,6 +219,7 @@
                 var data1 = <?php echo json_encode($city_data); ?>;
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_education.js'); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
         </body>
     </div>
 </html>

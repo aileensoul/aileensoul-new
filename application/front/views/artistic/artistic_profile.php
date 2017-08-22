@@ -180,7 +180,7 @@ if ($artisticdata[0]['art_bestofmine']) {
    echo "Pdf not available."
     ?>
 <?php }else{  ?>
-        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>">PDF</a>
+        <a href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $artisticdata[0]['art_bestofmine']) ?>"><i style="color: red; font-size:22px;" class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 <?php }?>
          <?php
          } ?>  

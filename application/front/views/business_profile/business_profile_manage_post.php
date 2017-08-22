@@ -312,13 +312,13 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                     </div>
                                 </div>
                                 <div class="business-all-post">
-                                    <div class="nofoundpost"> 
-                                    </div>
+<!--                                    <div class="nofoundpost"> 
+                                    </div>-->
                                 </div>
                                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                                 <!-- middle section start -->
-                                <div class="nofoundpost">
-                                </div>
+<!--                                <div class="nofoundpost">
+                                </div>-->
                             </div>
                             <!-- business_profile _manage_post end -->
                         </div>

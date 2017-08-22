@@ -1,16 +1,21 @@
 <!--post save success pop up style strat -->
 <div class="bg-search">
+    <?php if(($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate')){?>
     <div class="header2 headerborder  animated fadeInDownBig">
+        <?php } else {?>
+        <div class="header2 headerborder">
+        <?php }?>
         <div class="container">
             <div class="row">
                 <?php echo $freelancer_hire_search; ?>
-                <div class="col-sm-5 col-md-5 col-xs-6 fw-479">
+                <div class="col-sm-5 col-md-5 col-xs-12 fw-479">
                     <div class="search-mob-block">
                         <div class="">
                             <a href="#search">
                                 <label><i class="fa fa-search" aria-hidden="true"></i></label>
                             </a>
                         </div>
+                       
                         <div id="search">
                             <button type="button" class="close">×</button>
                             <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
@@ -25,6 +30,7 @@
                                 </div>
                             </form>
                         </div>
+                        
                     </div>
                     <div class="">
                         <ul class="" id="dropdownclass">

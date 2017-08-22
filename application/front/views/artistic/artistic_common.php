@@ -105,20 +105,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                 <?php } else { ?>
 
                     <?php 
-                          $a = $artisticdata[0]['art_name'];
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }?>
-                          <?php 
-                          $b = $artisticdata[0]['art_lastname'];
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }?>
+                           $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);?>
 
                             <div class="post-img-user">
-                            <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                        
 
@@ -142,7 +135,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
 
                             <div class="profile-left">
-         <h4 class="profile-head-text"><a href="<?php echo site_url('artistic/art_manage_post/' . $artisticdata[0]['user_id']); ?>">
+         <h4 class="profile-head-text"><a href="<?php echo site_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>">
                 <?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?></a>
 </h4>
             <!-- text head start -->
@@ -196,10 +189,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                  <ul class="pro-fw4">
                    <?php } ?>  
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/art_manage_post/' . $artisticdata[0]['user_id']); ?>"> Dashboard</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>"> Dashboard</a>
                     </li>
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'artistic_profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/artistic_profile/' . $artisticdata[0]['user_id']); ?>"> Details</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'artistic_profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/details/' . $artisticdata[0]['user_id']); ?>"> Details</a>
                     </li>
 
 

@@ -10,6 +10,7 @@
         <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
@@ -199,8 +200,6 @@
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
@@ -209,9 +208,11 @@
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($city_data); ?>;
+            var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
 
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_save_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
         <script>
             //APPLY FOR PROJECT CODE START
             function apply_post(abc, xyz)

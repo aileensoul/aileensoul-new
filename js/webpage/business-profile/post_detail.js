@@ -110,10 +110,14 @@ function closeModal() {
 var slideIndex = 1;
 showSlides(slideIndex);
 function plusSlides(n) {
+    $('.post-design-commnet-box').show();
     showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
+    check_post_available(post_id);
+
+    $('.post-design-commnet-box').show();
     showSlides(slideIndex = n);
 }
 
@@ -1514,7 +1518,6 @@ $(document).on('keydown', function (e) {
 // 180 words more than script end
 
 
-
 function check_lengthedit(abc)
 {
     maxLen = 50;
@@ -1530,4 +1533,19 @@ function check_lengthedit(abc)
         text_num = maxLen - product_name.length;
         document.getElementById("text_num").value = text_num;
     }
+}
+
+function check_post_available(post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/check_post_available",
+        data: 'post_id=' + post_id,
+        dataType: "json",
+        success: function (data) {
+            if (data == 0) {
+                alert(111);
+                return false;
+            }
+        }
+    });
 }

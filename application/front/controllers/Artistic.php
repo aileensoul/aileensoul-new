@@ -1374,7 +1374,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
         $userid = $this->session->userdata('aileenuser');
 
-        $this->data['artid'] = $id;
+        
 
          //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
@@ -1392,21 +1392,19 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['artid'] = $userid;
 
             $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-            $contition_array = array('user_id' => $userid, 'is_delete' => 0);
-            $this->data['artsdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
             $contition_array = array('user_id' => $id, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $this->data['artid'] = $id;
 
             $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $id, $data = '*', $join_str = array());
 
-            $contition_array = array('user_id' => $id, 'is_delete' => 0);
-            $this->data['artsdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         //echo "<pre>"; print_r($this->data['artsdata']); die();
         // code for search
@@ -1792,7 +1790,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     if ($row['posted_user_id']) {
 
                         if ($userimageposted) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
                                                                 $a = $firstnameposted;
@@ -1811,7 +1809,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .=  '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
                                                 
                                                                 $a = $firstnameposted;
                                                                 $acr = substr($a, 0, 1);
@@ -1826,7 +1824,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         }
                     } else {
                         if ($art_userimage) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $firstname;
@@ -1847,7 +1845,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
 
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                                                                 $a = $firstname;
                                                                 $acr = substr($a, 0, 1);
@@ -1890,8 +1888,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">' . ucwords($firstnameposted) .' '. ucwords($lastnameposted) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">' . ucwords($firstname) .' '. ucwords($lastname) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">' . ucwords($firstnameposted) .' '. ucwords($lastnameposted) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">' . ucwords($firstname) .' '. ucwords($lastname) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -1900,7 +1898,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '" title="' . ucwords($firstname) .' '. ucwords($lastname) . '">
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '" title="' . ucwords($firstname) .' '. ucwords($lastname) . '">
                     ' . ucwords($firstname) .' '.ucwords($lastname). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -1984,7 +1982,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                 <div class="post-design-desc">
                                     <div class="ft-15 t_artd">
                                         <div id="editpostdata' . $row['art_post_id'] . '" style="display:block;">
-                                            <a>' . $this->common->make_links($row['art_post']) . '</a>
+                                            <a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
                                         </div>
                                         <div id="editpostbox' . $row['art_post_id'] . '" style="display:none;">
                                             
@@ -2040,13 +2038,14 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
-                            $return_html .= '<a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                            $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div>
-                                                <a title="click to open" href="' . base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_id']).'">
+
+                                                <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
                                                     </div>
                                                 </a>
@@ -2081,25 +2080,25 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div  class="two-images">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
                                             </a>
                                         </div>';
@@ -2108,7 +2107,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -2119,7 +2118,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -2130,10 +2129,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         }
 
                         $return_html .= '<div class="four-image">
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($artmultiimage) - 4) . ')</span>
@@ -2243,7 +2242,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         $return_html .= '<div class="like_one_other">';
 
-                        if ($userid == $likelistarray[0]) {
+                        if (in_array($userid, $likelistarray)) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
@@ -2330,7 +2329,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
@@ -2348,7 +2347,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                 $return_html .= '</a>';
 
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                           
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
@@ -2379,7 +2378,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= $this->common->make_links($small);
 
                             if (strlen($rowdata['comments']) > 180) {
-                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">view More</span>';
                             }
                             $return_html .= '</div>';
                             $return_html .= '<div id="seemore' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
@@ -2606,7 +2605,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                 $insertid = $this->common->update_data($data1, 'skill', 'skill', $skillname);
             }
             if ($updatdata) {
-                redirect('artistic/art_manage_post', refresh);
+                redirect('artistic/dashboard', refresh);
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('artistic/art_editpost', refresh);
@@ -3061,7 +3060,7 @@ $datacount = count($otherdata);
 
         if ($insertdata) {
 
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('artistic/artistic_contactperson/' . $id, refresh);
@@ -3101,7 +3100,7 @@ $datacount = count($otherdata);
 
 
         if ($this->input->post('cancel1')) {
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } elseif ($this->input->post('cancel2')) {
             redirect('artistic/art_savepost', refresh);
         } elseif ($this->input->post('cancel3')) {
@@ -3109,7 +3108,7 @@ $datacount = count($otherdata);
         } elseif ($this->input->post('cancel4')) {
             redirect('artistic/artistic_profile', refresh);
         } elseif ($this->input->post('cancel5')) {
-            redirect('artistic/art_manage_post', refresh);
+            redirect('artistic/dashboard', refresh);
         } elseif ($this->input->post('cancel6')) {
             redirect('artistic/userlist', refresh);
         } elseif ($this->input->post('cancel7')) {
@@ -3218,7 +3217,7 @@ $datacount = count($otherdata);
 
             if ($updatdata) {
                 if ($this->input->post('hitext') == 1) {
-                    redirect('artistic/art_post', refresh);
+                    redirect('artistic/home', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
                     redirect('artistic/art_savepost', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
@@ -3226,7 +3225,7 @@ $datacount = count($otherdata);
                 } elseif ($this->input->post('hitext') == 4) {
                     redirect('artistic/artistic_profile', refresh);
                 } elseif ($this->input->post('hitext') == 5) {
-                    redirect('artistic/art_manage_post', refresh);
+                    redirect('artistic/dashboard', refresh);
                 } elseif ($this->input->post('hitext') == 6) {
                     redirect('artistic/userlist', refresh);
                 } elseif ($this->input->post('hitext') == 7) {
@@ -3244,7 +3243,7 @@ $datacount = count($otherdata);
                 }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('artistic/art_post', refresh);
+                redirect('artistic/home', refresh);
             }
         }
     }
@@ -3432,31 +3431,9 @@ $datacount = count($otherdata);
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id !=' => $userid, 'art_step' => 4);
-        $this->data['userlist'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
 
-
-        // followers count
-        $join_str[0]['table'] = 'follow';
-        $join_str[0]['join_table_id'] = 'follow.follow_to';
-        $join_str[0]['from_table_id'] = 'art_reg.art_id';
-        $join_str[0]['join_type'] = '';
-        $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1 , 'art_reg.art_step' => 4);
-
-        $this->data['followers'] = count($this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
-
-        // follow count end
-        // fllowing count
-        $join_str[0]['table'] = 'follow';
-        $join_str[0]['join_table_id'] = 'follow.follow_from';
-        $join_str[0]['from_table_id'] = 'art_reg.art_id';
-        $join_str[0]['join_type'] = '';
-
-        $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1,'art_reg.art_step' => 4);
-
-        $this->data['following'] = count($this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
-
-        //following end
+       
 // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0' ,'art_step' => 4);
 
@@ -3534,11 +3511,152 @@ $datacount = count($otherdata);
 
 
         if($this->data['artisticdata']){
+       $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+
         $this->load->view('artistic/artistic_userlist', $this->data);
         }else{
        redirect('artistic/');
        }
     }
+
+
+public function ajax_userlist() {
+
+        //$perpage = 5;
+       // $page = 1;
+        //if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+        //    $page = $_GET["page"];
+       // }
+
+        // $start = ($page - 1) * $perpage;
+        // if ($start < 0)
+        //     $start = 0;
+
+        $userid = $this->session->userdata('aileenuser');
+
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
+        $contition_array = array('user_id' => $userid);
+        $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //$limit = $perpage;
+        //$offset = $start;
+
+        $contition_array = array('art_step' => 4, 'is_delete' => 0, 'status' => 1, 'user_id !=' => $userid);
+        $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str = array(), $groupby = '');
+        //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $artisticdata1 = $artisticdata1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+// followers count
+        $join_str[0]['table'] = 'follow';
+        $join_str[0]['join_table_id'] = 'follow.follow_to';
+        $join_str[0]['from_table_id'] = 'art_reg.art_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+        $followers = count($this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
+
+// follow count end
+// fllowing count
+        $join_str[0]['table'] = 'follow';
+        $join_str[0]['join_table_id'] = 'follow.follow_from';
+        $join_str[0]['from_table_id'] = 'art_reg.art_id';
+        $join_str[0]['join_type'] = '';
+
+        $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+        $following = count($this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = ''));
+
+//following end
+
+        // if (empty($_GET["total_record"])) {
+        //     $_GET["total_record"] = count($userlist1);
+        // }
+        // $return_html = '';
+        // $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        // $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+
+
+        foreach ($userlist as $user) {
+            $return_html .= '<div class="job-contact-frnd ">
+                                                <div class="profile-job-post-detail clearfix">
+                                                    <div class="profile-job-post-title-inside clearfix">
+                                                        <div class="profile-job-post-location-name">
+                                                            <div class="user_lst"><ul>
+                                                                <li class="fl padding_less_left">
+                                                                        <div class="follow-img">';
+            if ($user['art_user_image'] != '') {
+                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['user_id']) . '">';
+                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image'])) {
+                                            $a = $user['art_name'];
+                                            $acr = substr($a, 0, 1);
+                                            $b = $user['art_lastname'];
+                                            $bcr = substr($b, 0, 1);
+                    $return_html .=  '<div class="post-img-userlist">';
+                    $return_html .=    ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                    $return_html .= '</div>'; 
+
+                } else {
+
+                    $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image']) . '" height="50px" width="50px" alt="" >';
+                }
+                $return_html .= '</a>';
+            } else {
+                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $user['user_id']) . '">';
+                                            $a = $user['art_name'];
+                                            $acr = substr($a, 0, 1);
+                                            $b = $user['art_lastname'];
+                                            $bcr = substr($b, 0, 1);
+                    $return_html .=  '<div class="post-img-userlist">';
+                    $return_html .=    ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                    $return_html .= '</div>';   
+
+                $return_html .=   '</a>';
+            }
+            $return_html .= '</div>
+                                        </li>
+                                                <li class="folle_text">
+                                                     <div class="">
+                                                     <div class="follow-li-text " style="padding: 0;">
+                                                <a title="' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) . '" href="' . base_url('artistic/dashboard/' . $user['user_id']) . '">' . ucfirst(strtolower($user['art_name'])) .'&nbsp;'. ucfirst(strtolower($user['art_lastname'])) .'</a>
+                                                                            </div>
+                                                                            <div>';
+            
+            $return_html .= '<a>';
+            if ($user['designation']) {
+                $return_html .= ucfirst(strtolower($user['designation']));
+            } else {
+                $return_html .= 'Current Work';
+            }
+            $return_html .= '</a>
+                                                                            </div>
+                                                                    </li>
+                                                                    <li class="fruser' . $user['art_id'] . ' fr">';
+
+            $status = $this->db->get_where('follow', array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $user['art_id']))->row()->follow_status;
+            if ($status == 0 || $status == " ") {
+                $return_html .= '<div id= "followdiv " class="user_btn">
+                                                                                <button id="follow' . $user['art_id'] . '" onClick="followuser(' . $user['art_id'] . ')">
+                                                                                    Follow 
+                                                                                </button></div>';
+            } elseif ($status == 1) {
+                $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
+                                                                                <button class="bg_following" id="unfollow' . $user['art_id'] . '" onClick="unfollowuser(' . $user['art_id'] . ')">
+                                                                                    Following 
+                                                                                </button></div>';
+            }
+            $return_html .= '</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+        }
+        echo $return_html;
+    }
+
+
 
     public function follow() {
         $userid = $this->session->userdata('aileenuser');
@@ -4081,7 +4199,7 @@ public function followtwo() {
                     $notfound = '<div class="art-img-nn">
          <div class="art_no_post_img">
 
-           <img src="'.base_url('img/art-no.png').'">
+           <img src="'.base_url('img/icon_no_following.png').'">
         
          </div>
          <div class="art_no_post_text">
@@ -4365,9 +4483,9 @@ public function followtwo() {
                                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: none">
+            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/art-no.png') . '">
+                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -4504,11 +4622,9 @@ public function followtwo() {
         
         $this->data['de'] = array_values($res);
 
-
-
-
-
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_following', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -4521,6 +4637,195 @@ public function followtwo() {
     }
 
 // end of user lidt
+
+
+    public function ajax_following($id = "") {
+        $userid = $this->session->userdata('aileenuser');
+        //$perpage = 5;
+        //$page = 1;
+        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+        //     $page = $_GET["page"];
+        // }
+
+        //$start = ($page - 1) * $perpage;
+      //  if ($start < 0)
+         //   $start = 0;
+        $id = $_POST['slug_id'];
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //$slugid = $artdata[0]['business_slug'];
+        if ($id == $userid || $id == '') { //echo "1"; die();
+
+            $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
+
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $join_str[0]['table'] = 'follow';
+            $join_str[0]['join_table_id'] = 'follow.follow_from';
+            $join_str[0]['from_table_id'] = 'art_reg.art_id';
+            $join_str[0]['join_type'] = '';
+
+           // $limit = $perpage;
+           // $offset = $start;
+
+            $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
+            //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        } else { //echo "16"; die();
+
+            $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = '*');
+
+            $contition_array = array('user_id' => $id, 'art_step' => 4);
+            $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $join_str[0]['table'] = 'follow';
+            $join_str[0]['join_table_id'] = 'follow.follow_from';
+            $join_str[0]['from_table_id'] = 'art_reg.art_id';
+            $join_str[0]['join_type'] = '';
+
+           // $limit = $perpage;
+            //$offset = $start;
+
+            $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
+            $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
+           // $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        }
+        // if (empty($_GET["total_record"])) {
+        //     $_GET["total_record"] = count($userlist1);
+        // }
+        // $return_html = '';
+        // $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        // $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (count($userlist) > 0) {
+            foreach ($userlist as $user) {
+                $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
+    <div class = "profile-job-post-detail clearfix">
+        <div class = "profile-job-post-title-inside clearfix">
+            <div class = "profile-job-post-location-name">
+                <div class = "user_lst">
+                    <ul>
+                        <li class = "fl padding_les_left rsp"">
+                            <div class = "follow-img">';
+
+               $art_name =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_name;
+                $art_id =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->user_id;
+
+                $art_lastname =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_lastname;
+
+                 $designation =  $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->designation;
+                 $art_image = $this->db->get_where('art_reg',array('art_id' => $user['follow_to']))->row()->art_user_image;
+
+                if ($art_image != '') {
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . ucfirst(strtolower($art_name)) .' '. ucfirst(strtolower($art_lastname)) .'">';
+                    $uimage = $this->db->get_where('art_reg', array('art_id' => $user['follow_to']))->row()->art_user_image;
+                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $uimage)) {
+
+                                                                $a = $art_name;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $art_lastname;
+                                                                $bcr = substr($b, 0, 1);
+
+                        $return_html .= '<div class="post-img-userlist">';
+                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
+                        $return_html .= '</div> ';
+
+                    } else {
+                        $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $this->db->get_where('art_reg', array('art_id' => $user['follow_to']))->row()->art_user_image) . '" height="50px" width="50px" alt="" >';
+                    }
+                    $return_html .= '</a>';
+                } else {
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_id) . '" title="' . ucfirst(strtolower($art_name)).' '. ucfirst(strtolower($art_lastname)) .'">';
+
+                                                                $a = $art_name;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $art_lastname;
+                                                                $bcr = substr($b, 0, 1);
+
+                        $return_html .= '<div class="post-img-userlist">';
+                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
+                        $return_html .= '</div> ';
+
+                }
+                $return_html .= '</div>
+                                    </li>
+                                    <li class="folle_text">
+                                        <div class="">
+                                            <div class="follow-li-text" style="padding: 0;">
+                                                <a title="' .ucfirst(strtolower($art_name)) .'&nbsp;'.ucfirst(strtolower($art_lastname)). '" href="' . base_url('artistic/dashboard/' . $art_id) . '">' . ucfirst(strtolower($art_name)) .'&nbsp;'. ucfirst(strtolower($art_lastname)) . '</a></div>
+                                            <div>';
+
+                $return_html .= '<a>';
+                if ($designation) {
+                    $return_html .= ucfirst(strtolower($designation));
+                } else {
+                    $return_html .= 'Current Work';
+                }
+
+                $return_html .= '</a>
+                                            </div>
+                                    </li>';
+                $userid = $this->session->userdata('aileenuser');
+                if ($artisticdata[0]['user_id'] == $userid) {
+                    $return_html .= '<li class="fr fruser' . $user['follow_to'] . '">';
+
+                    $contition_array = array('follow_from' => $artisticdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'follow_to' => $user['follow_to']);
+                    $status = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if ($status[0]['follow_status'] == 1) {
+                        $return_html .= '<div class="user_btn" id= "unfollowdiv">
+                                            <button class="bg_following" id="unfollow' . $user['follow_to'] . '" onClick="unfollowuser_list(' . $user['follow_to'] . ')"><span>Following</span></button>
+                                        </div>';
+                    }
+                    $return_html .= '</li>';
+                } else {
+                    $return_html .= '<li class="fr" id ="frfollow' . $user['follow_to'].'">';
+
+                    $contition_array = array('user_id' => $userid, 'status' => '1');
+                    $artisticdatauser = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $contition_array = array('follow_from' => $artisticdatauser[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'follow_to' => $user['follow_to']);
+                    $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $artisticdatauser[0]['art_id']) {
+                        $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
+                                            <button id="<?php
+                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')">Follow</button>
+                            </div>';
+                    } else if ($user['follow_to'] == $artisticdatauser[0]['art_id']) {
+                        
+                    } else {
+                        $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
+                                <button id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
+                                                    </div>';
+                    }
+                    $return_html .= '</li>';
+                }
+                $return_html .= '</ul>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>';
+            }
+        } else {
+
+            $return_html .= '<div class = "art-img-nn">
+                                                    <div class = "art_no_post_img">
+                                                    <img src = "' . base_url('img/icon_no_following.png') . '">
+                                                    </div>
+                                                    <div class = "art_no_post_text">
+                                                    No Following Available.
+                                                    </div>
+                                                    </div>';
+        }
+        $return_html .= '<div class = "col-md-1">
+                                                    </div>';
+
+        echo $return_html;
+    }
+
+
     //deactivate user start
     public function deactivate() {
 
@@ -4894,7 +5199,7 @@ public function followtwo() {
         if ($updatdata) {
 
             if ($this->input->post('hitext') == 1) {
-                redirect('artistic/art_post', refresh);
+                redirect('artistic/home', refresh);
             } elseif ($this->input->post('hitext') == 2) {
                 redirect('artistic/art_addpost', refresh);
             } elseif ($this->input->post('hitext') == 3) {
@@ -4902,7 +5207,7 @@ public function followtwo() {
             } elseif ($this->input->post('hitext') == 4) {
                 redirect('artistic/art_savepost', refresh);
             } elseif ($this->input->post('hitext') == 5) {
-                redirect('artistic/art_manage_post', refresh);
+                redirect('artistic/dashboard', refresh);
             } elseif ($this->input->post('hitext') == 6) {
                 redirect('artistic/followers', refresh);
             } elseif ($this->input->post('hitext') == 7) {
@@ -4912,7 +5217,7 @@ public function followtwo() {
             }
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         }
 
         //}
@@ -5264,7 +5569,7 @@ public function followtwo() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -5294,19 +5599,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                   }else{
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -5410,6 +5708,187 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     "commentcount" => $cntinsert));
     }
 
+
+
+public function delete_comment_postnewpage() {
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+        $post_id = $_POST["post_id"];
+        $post_delete = $_POST["post_delete"];
+
+        $data = array(
+            'status' => 0,
+        );
+
+        $updatdata = $this->common->update_data($data, 'artistic_post_comment', 'artistic_post_comment_id', $post_id);
+
+        $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+//echo '<pre>'; print_r($artdata); die();
+        // all count of commnet 
+
+        $contition_array = array('art_post_id' => $_POST["post_delete"], 'status' => '1');
+        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// khyati changes start
+        if (count($artdata) > 0) {
+            foreach ($artdata as $art) {
+
+                $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+                $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+                $cmtinsert .= '<div class="all-comment-comment-box">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+                if($art_userimage){
+
+
+
+
+
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                            $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                                $cmtinsert .= '<div class="post-img-div">';
+                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                                $cmtinsert .=  '</div>';
+
+
+                        } else {
+
+                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+
+                    }
+
+                  $cmtinsert .= '</div>';
+                  }else{
+
+                          $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                    $cmtinsert .=  '</div>';
+
+
+                    $cmtinsert .= '</div>';
+
+                  }
+
+                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+                $cmtinsert .= '</div>';
+                $cmtinsert .= '</a>';
+                $cmtinsert .= '<div class="comment-details" id="showcomment' . $art['artistic_post_comment_id'] . '" >';
+                $cmtinsert .= $this->common->make_links($art['comments']);
+                $cmtinsert .= '</div>';
+                $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
+
+//              $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcomment' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedit(this.name)">';
+//              $cmtinsert .= '' . $art['comments'] . '';
+//              $cmtinsert .= '</textarea>';
+
+                $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcomment' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedit(' . $art['artistic_post_comment_id'] .','.$post_delete.')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
+                $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] .','.$post_delete.')">Save</button></span>';
+                $cmtinsert .= '</div></div>';
+
+//              $cmtinsert .= '<button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+
+                $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                $cmtinsert .= 'onClick="comment_like1(this.id)">';
+
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
+                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+
+                if (!in_array($userid, $likeuserarray)) {
+
+
+                    $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
+                } else {
+                    $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                }
+                $cmtinsert .= '<span> ';
+
+                if ($art['artistic_comment_likes_count'] > 0) {
+                    $cmtinsert .= '' . $art['artistic_comment_likes_count'];
+                }
+                $cmtinsert .= '</span>';
+                $cmtinsert .= '</a></div>';
+
+                $userid = $this->session->userdata('aileenuser');
+                if ($art['user_id'] == $userid) {
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<div class="comment-details-menu">';
+                    $cmtinsert .= '<div id="editcommentbox' . $art['artistic_post_comment_id'] . '" style="display:block;">';
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                    $cmtinsert .= 'onClick="comment_editbox(this.id,'.$post_delete.')">';
+                    $cmtinsert .= 'Edit';
+                    $cmtinsert .= '</a></div>';
+                    $cmtinsert .= '<div id="editcancle' . $art['artistic_post_comment_id'] . '" style="display:none;">';
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancle(this.id,'.$post_delete.')">Cancel  </a></div>';
+                    $cmtinsert .= '</div>';
+                }
+
+                $userid = $this->session->userdata('aileenuser');
+                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+                if ($art['user_id'] == $userid || $art_userid == $userid) {
+
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<div class="comment-details-menu">';
+                    $cmtinsert .=  '<input type="hidden" name="post_delete"';
+                    $cmtinsert .=  'id="post_delete' . $art['artistic_post_comment_id'] . '" value= "' . $art['art_post_id'] . '">';
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete';
+                    $cmtinsert .= '<span class="insertcomment' . $art['artistic_post_comment_id'] . '"></span>';
+                    $cmtinsert .=  '</a></div>';
+ 
+                }
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+                $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
+
+                $cmtcount = '<a onclick="commentall(this.id)" id="' . $art['art_post_id'] . '">';
+                $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">' .
+                        count($allcomnt) . '</i></a>';
+                
+                $cntinsert =  '<span class="comment_count" >';
+                          if (count($allcomnt) > 0) {
+           $cntinsert .= '' . count($allcomnt) . ''; 
+           $cntinsert .=   '</span>'; 
+           $cntinsert .=  '<span> Comment</span>';
+                                }
+            }
+        } else {
+//            $cmtcount = '<a onClick="commentall(this.id)" id="' . $art['art_post_id'] . '">';
+//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
+//            $cmtcount .= '</i></a>';
+            $cmtcount = '';
+        }
+        echo json_encode(
+                array("comment" => $cmtinsert,
+                    "count" => $cmtcount,
+                    "commentcount" => $cntinsert));
+    }
+
+
     public function delete_commenttwo() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -5449,7 +5928,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -5476,20 +5955,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 }else{
 
 
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -5551,6 +6023,193 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     $cmtinsert .= '</a></div>';
                     $cmtinsert .= '<div id="editcancletwo' . $art['artistic_post_comment_id'] . '" style="display:none;">';
                     $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id)">Cancel  </a></div>';
+
+                    $cmtinsert .= '</div>';
+                }
+
+                $userid = $this->session->userdata('aileenuser');
+
+                $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+
+                if ($art['user_id'] == $userid || $art_userid == $userid) {
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<div class="comment-details-menu">';
+                    $cmtinsert .= '<input type="hidden" name="post_delete"';
+                    $cmtinsert .= 'id="post_deletetwo"';
+                    $cmtinsert .= 'value= "' . $art['art_post_id'] . '">';
+
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                    $cmtinsert .= 'onClick="comment_deletetwo(this.id)">';
+                    $cmtinsert .= 'Delete';
+                    $cmtinsert .= '</a></div>';
+                }
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+                $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
+
+                // comment aount variable start
+                $idpost = $art['art_post_id'];
+                $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
+                $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
+                $cmtcount .= ' ' . count($artdata) . '';
+                $cmtcount .= '</i></a>';
+                
+           $cntinsert =  '<span class="comment_count" >';
+                          if (count($artdata) > 0) {
+           $cntinsert .= '' . count($artdata) . ''; 
+           $cntinsert .=   '</span>'; 
+           $cntinsert .=  '<span> Comment</span>';
+                                }
+            }
+        } else {
+//            $idpost = $art['art_post_id'];
+//            $cmtcount = '<a onClick="commentall1(this.id)" id="' . $idpost . '">';
+//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
+//            $cmtcount .= '</i></a>';
+            $cmtcount .= '';
+        }
+        //echo $cmtinsert;
+        echo json_encode(
+                array("comment" => $cmtinsert,
+                    "count" => $cmtcount,
+                    "commentcount" => $cntinsert));
+    }
+
+
+public function delete_commenttwo_postnewpage() {
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+        $post_id = $_POST["post_id"];
+        $post_delete = $_POST["post_delete"];
+
+        $data = array(
+            'status' => 0,
+        );
+
+        $updatdata = $this->common->update_data($data, 'artistic_post_comment', 'artistic_post_comment_id', $post_id);
+
+
+        $contition_array = array('art_post_id' => $post_delete, 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//echo '<pre>'; print_r($artdata); die();
+// khyati changes start
+        if (count($artdata) > 0) {
+            foreach ($artdata as $art) {
+
+                $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+
+                $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+
+
+
+                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+                $cmtinsert .= '<div class="all-comment-comment-box">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+                $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+                if($art_userimage){
+
+                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                            $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                                $cmtinsert .= '<div class="post-img-div">';
+                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                                $cmtinsert .=  '</div>';
+
+
+                        } else {
+
+
+                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+
+                    }
+
+                  $cmtinsert .= '</div>';
+                }else{
+
+
+                          $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                    $cmtinsert .=  '</div>';
+
+
+                    $cmtinsert .= '</div>';
+
+                }
+
+                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+                $cmtinsert .= '</div>';
+                $cmtinsert .= '</a>';
+                $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
+                $cmtinsert .= $this->common->make_links($art['comments']);
+                $cmtinsert .= '</div>';
+
+                $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
+//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
+//            $cmtinsert .= '' . $art['comments'] . '';
+//            $cmtinsert .= '</textarea>';
+                $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] .','.$post_delete.')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
+                //$cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+                $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] .','.$post_delete.')">Save</button></span>';
+                $cmtinsert .= '</div></div>';
+
+                $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                $cmtinsert .= 'onClick="comment_like1(this.id)">';
+
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
+                $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+
+                if (!in_array($userid, $likeuserarray)) {
+
+
+                    $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
+                } else {
+                    $cmtinsert .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                }
+                $cmtinsert .= '<span> ';
+
+                if ($art['artistic_comment_likes_count'] > 0) {
+                    $cmtinsert .= '' . $art['artistic_comment_likes_count'];
+                }
+                $cmtinsert .= '</span>';
+                $cmtinsert .= '</a></div>';
+
+                $userid = $this->session->userdata('aileenuser');
+                if ($art['user_id'] == $userid) {
+
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<div class="comment-details-menu">';
+
+
+                    $cmtinsert .= '<div id="editcommentboxtwo' . $art['artistic_post_comment_id'] . '" style="display:block;">';
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                    $cmtinsert .= 'onClick="comment_editboxtwo(this.id,'.$post_delete.')">';
+                    $cmtinsert .= 'Edit';
+                    $cmtinsert .= '</a></div>';
+                    $cmtinsert .= '<div id="editcancletwo' . $art['artistic_post_comment_id'] . '" style="display:none;">';
+                    $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id,'.$post_delete.')">Cancel  </a></div>';
 
                     $cmtinsert .= '</div>';
                 }
@@ -5753,7 +6412,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
              
 
-                if ($userid == $likelistarray[0]) {
+                if (in_array($userid, $likelistarray)) {
                     $cmtlikeuser .= 'You &nbsp';
                 } else {
                     $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
@@ -5988,7 +6647,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -6014,20 +6673,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             }else{
 
 
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -6217,7 +6870,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -6245,20 +6898,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             }else{
 
              
-                          $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
-
+                           $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -6622,6 +7267,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){
+            $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
         $this->load->view('artistic/postnewpage', $this->data);
     }
        else {
@@ -6713,7 +7359,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
         $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('artistic/art_post', refresh);
+            redirect('artistic/home', refresh);
         } else {
 
             redirect('artistic/reactivate', refresh);
@@ -7104,6 +7750,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_photos', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7228,6 +7876,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_videos', $this->data);
          }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7353,6 +8003,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+
         $this->load->view('artistic/art_audios', $this->data);
         }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7478,6 +8130,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
         if($this->data['artisticdata']){ 
+        $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+            
         $this->load->view('artistic/art_pdf', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7580,7 +8234,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                        $cmtlikeuser .= '<div class="like_one_other">';
 
                  
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7669,7 +8323,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                        $cmtlikeuser .= '<div class="like_one_other">';
 
                  
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);"  class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7798,7 +8452,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     }
       $cmtlikeuser .= '<div class="like_one_other">';
 
-                    $cmtlikeuser .= '<a href="javascript:void(0);"  onclick="likeuserlistimg(' . $post_image . ')">';
+                    $cmtlikeuser .= '<a href="javascript:void(0);" class="likeuserlist1" onclick="likeuserlistimg(' . $post_image . ')">';
 
                     $contition_array = array('post_image_id' => $post_image, 'is_unlike' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -7808,7 +8462,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
               
                     if ($userid == $commnetcount[0]['user_id']) {
-                        $cmtlikeuser .= 'You &nbsp';
+                        $cmtlikeuser .= 'You';
                     } else {
                         $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '';
                         $cmtlikeuser .= '&nbsp;';
@@ -7927,7 +8581,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert = '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -7955,20 +8609,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
 
 
-                          $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                           $a = $art_name;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
 
 
@@ -8025,14 +8672,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '<div id="editcommentboximg' . $art_comment['post_image_comment_id'] . '"style="display:block;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editboximg(this.id)">';
+                $cmtinsert .= 'onClick="comment_editboximg(this.id,'.$post_image_id.')">';
                 $cmtinsert .= 'Edit';
                 $cmtinsert .= '</a></div>';
 
                 $cmtinsert .= '<div id="editcancleimg' . $art_comment['post_image_comment_id'] . '"style="display:none;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editcancleimg(this.id)">';
+                $cmtinsert .= 'onClick="comment_editcancleimg(this.id,'.$post_image_id.')">';
                 $cmtinsert .= 'Cancel';
                 $cmtinsert .= '</a></div>';
 
@@ -8091,6 +8738,223 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     "count" => $cmtcount,
                     "commentcount" => $cntinsert));
     }
+
+
+     public function insert_commentthree_postnewpage() {
+
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+
+    $post_id = $_POST["post_id"];
+      $post_comment = $_POST["comment"];
+//die();
+
+        $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $data = array(
+            'user_id' => $userid,
+            'art_post_id' => $post_id,
+            'comments' => $post_comment,
+            'created_date' => date('Y-m-d H:i:s', time()),
+            'status' => 1,
+            'is_delete' => 0
+        );
+
+
+
+        $insert_id = $this->common->insert_data_getid($data, 'artistic_post_comment');
+
+        // insert notification
+
+        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {
+            
+        } else {
+            $notificationdata = array(
+                'not_type' => 6,
+                'not_from_id' => $userid,
+                'not_to_id' => $artdatacomment[0]['user_id'],
+                'not_read' => 2,
+                'not_product_id' => $insert_id,
+                'not_from' => 3,
+                'not_img' => 1,
+                'not_active' => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+            //echo "<pre>"; print_r($notificationdata); 
+            $insert_id_notification = $this->common->insert_data_getid($notificationdata, 'notification');
+        }
+        // end notoification
+
+
+
+        $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($artdata); die();
+        // all count of commnet 
+
+        $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
+        $allcomnt = $this->data['allcomnt'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        // echo '<pre>'; print_r($artdata); die();            
+// khyati changes start
+
+        foreach ($artdata as $art) {
+
+            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+
+            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+
+
+            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+            $cmtinsert .= '<div class="all-comment-comment-box">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
+
+
+                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                            $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                                $cmtinsert .= '<div class="post-img-div">';
+                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                                $cmtinsert .=  '</div>';
+
+
+                        } else {
+
+            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+
+                  }
+              $cmtinsert .= '</div>';
+
+
+            }else{
+
+             
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                    $cmtinsert .=  '</div>';
+
+
+                    $cmtinsert .= '</div>'; 
+            }
+
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+            $cmtinsert .= '</div>';
+            $cmtinsert .= '</a>';
+            $cmtinsert .= '<div class="comment-details" id= "showcomment' . $art['artistic_post_comment_id'] . '" >';
+            $cmtinsert .= $this->common->make_links($art['comments']);
+            $cmtinsert .= '</div>';
+            $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
+            $cmtinsert .= '<div contenteditable="true" class="editable_text"  name="' . $art['artistic_post_comment_id'] . '" id="editcomment' . $art['artistic_post_comment_id'] . '" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" onkeyup="commentedit(' . $art['artistic_post_comment_id'] .','.$post_id.')" onpaste="OnPaste_StripFormatting(this, event);">';
+            $cmtinsert .= '' . $art['comments'] . '';
+            $cmtinsert .= '</div>';
+            $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] .','.$post_id.')">Save</button></span>';
+            $cmtinsert .= '</div></div>';
+            //$cmtinsert .= '<button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+
+            $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+            $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+            $cmtinsert .= 'onClick="comment_like1(this.id)">';
+
+
+
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
+            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+
+            if (!in_array($userid, $likeuserarray)) {
+
+
+                $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
+            } else {
+                $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+            }
+            $cmtinsert .= '<span>';
+
+            if ($art['artistic_comment_likes_count'] > 0) {
+                $cmtinsert .= ' ' . $art['artistic_comment_likes_count'];
+            }
+            $cmtinsert .= '</span>';
+            $cmtinsert .= '</a></div>';
+
+            $userid = $this->session->userdata('aileenuser');
+            if ($art['user_id'] == $userid) {
+
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+                $cmtinsert .= '<div id="editcommentbox' . $art['artistic_post_comment_id'] . '" style="display:block;">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                $cmtinsert .= 'onClick="comment_editbox(this.id,'.$post_id.')">';
+                $cmtinsert .= 'Edit';
+                $cmtinsert .= '</a></div>';
+                $cmtinsert .= '<div id="editcancle' . $art['artistic_post_comment_id'] . '" style="display:none;">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancle(this.id,'.$post_id.')">Cancel  </a></div>';
+
+                $cmtinsert .= '</div>';
+            }
+
+            $userid = $this->session->userdata('aileenuser');
+            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+
+            if ($art['user_id'] == $userid || $art_userid == $userid) {
+
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+                
+   $cmtinsert .=  '<input type="hidden" name="post_delete"';
+   $cmtinsert .=  'id="post_delete' . $art['artistic_post_comment_id'] . '" value= "' . $art['art_post_id'] . '">';
+   $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete';
+   $cmtinsert .= '<span class="insertcomment' . $art['artistic_post_comment_id'] . '"></span>';
+   $cmtinsert .=  '</a></div>';
+ 
+            }
+
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<div class="comment-details-menu">';
+            $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
+//          $cntinsert .= '<a onclick="commentall(this.id)" id="' . $art['art_post_id'] . '">';
+ //          $cntinsert .= '<i class="fa fa-comment-o" aria-hidden="true">' .
+//                    count($allcomnt) . '</i>';
+            
+          $cntinsert =  '<span class="comment_count" >';
+     if (count($allcomnt) > 0) {
+           $cntinsert .= '' . count($allcomnt) . ''; 
+           $cntinsert .=   '</span>'; 
+           $cntinsert .=  '<span> Comment</span>';
+        
+           }
+       }
+        echo json_encode(
+                array("count" => $cntinsert,
+                    "comment" => $cmtinsert,
+                    "commentcount" => $cntinsert));
+
+        // khyati chande 
+    }
+
 
     public function mulimg_comment() {
 
@@ -8160,7 +9024,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
             $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
@@ -8740,7 +9604,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -8767,19 +9631,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
 
                            $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acronym)) .ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .= ucfirst(strtolower($acr)) .ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
 
@@ -8834,14 +9691,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '<div id="editcommentboximg' . $art_comment['post_image_comment_id'] . '"style="display:block;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editboximg(this.id)">';
+                $cmtinsert .= 'onClick="comment_editboximg(this.id,'.$post_delete.')">';
                 $cmtinsert .= 'Edit';
                 $cmtinsert .= '</a></div>';
 
                 $cmtinsert .= '<div id="editcancleimg' . $art_comment['post_image_comment_id'] . '"style="display:none;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editcancleimg(this.id)">';
+                $cmtinsert .= 'onClick="comment_editcancleimg(this.id,'.$post_delete.')">';
                 $cmtinsert .= 'Cancel';
                 $cmtinsert .= '</a></div>';
 
@@ -8944,7 +9801,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if($art_userimage){
@@ -8971,20 +9828,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                 //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';
 
-                           $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $a = $art_name;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
                }
@@ -9039,14 +9889,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     $cmtinsert .= '<div id="editcommentboximgtwo' . $art_comment['post_image_comment_id'] . '"style="display:block;">';
 
                     $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                    $cmtinsert .= 'onClick="comment_editboximgtwo(this.id)">';
+                    $cmtinsert .= 'onClick="comment_editboximgtwo(this.id,'.$post_delete.')">';
                     $cmtinsert .= 'Edit';
                     $cmtinsert .= '</a></div>';
 
                     $cmtinsert .= '<div id="editcancleimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;">';
 
                     $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                    $cmtinsert .= 'onClick="comment_editcancleimgtwo(this.id)">';
+                    $cmtinsert .= 'onClick="comment_editcancleimgtwo(this.id,'.$post_delete.')">';
                     $cmtinsert .= 'Cancel';
                     $cmtinsert .= '</a></div>';
 
@@ -9145,7 +9995,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
-                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+                $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
                 
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -9173,19 +10023,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     //
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
 
 
@@ -9207,7 +10050,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     // echo $this->common->make_links($small);
 
                      if (strlen($rowdata['comments']) > 180) {
-                         $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                         $fourdata .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">View More</span>';
                         }
 
                 $fourdata .= '</div>';
@@ -9319,7 +10162,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
             $fourdata .= '<div class="all-comment-comment-box">';
-            $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+            $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
             $fourdata .= '<div class="post-design-pro-comment-img">';
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
@@ -9349,19 +10192,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
              
 
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
                     $fourdata .= '</div>';
             }
@@ -9412,9 +10248,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
                 $fourdata .= '<div class="comment-details-menu">';
                 $fourdata .= '<div id="editcommentboximgtwo' . $rowdata['post_image_comment_id'] . '" style="display:block;">';
-                $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="comment_editboximgtwo(this.id)">Edit</a> </div>';
+                $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="comment_editboximgtwo(this.id,'.$image_id.')">Edit</a> </div>';
                 $fourdata .= '<div id="editcancleimgtwo' . $rowdata['post_image_comment_id'] . '" style="display:none;">';
-                $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '" onClick="comment_editcancleimgtwo(this.id)">Cancel</a></div></div>';
+                $fourdata .= '<a id="' . $rowdata['post_image_comment_id'] . '" onClick="comment_editcancleimgtwo(this.id,'.$image_id.')">Cancel</a></div></div>';
             }
             $userid = $this->session->userdata('aileenuser');
             $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
@@ -9527,20 +10363,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                 } else {
 
-                          $a = $art_name1;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                           $a = $art_name1;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $modal .=  '</div>';
                     //$cmtinsert .= '</div>';
 
@@ -9645,20 +10474,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     //$modal .= '<img src="' . base_url(NOIMAGE) . '" alt="">';
 
-                          $a = $art_name1;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                         $a = $art_name1;
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $modal .= '<div class="post-img-div">';
-                    $modal .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $modal .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $modal .=  '</div>';
 
 
@@ -9783,7 +10605,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/art_manage_post/' . $art_comment['user_id'] . '') . '">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
             if($art_userimage){
@@ -9811,19 +10633,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
                           $a = $art_name;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $art_lastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $art_lastname;
+                            $bcr = substr($b, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
                     $cmtinsert .= '</div>';
 
@@ -9879,14 +10694,14 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $cmtinsert .= '<div id="editcommentboximgtwo' . $art_comment['post_image_comment_id'] . '"style="display:block;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editboximgtwo(this.id)">';
+                $cmtinsert .= 'onClick="comment_editboximgtwo(this.id,'.$post_image_id.')">';
                 $cmtinsert .= 'Edit';
                 $cmtinsert .= '</a></div>';
 
                 $cmtinsert .= '<div id="editcancleimgtwo' . $art_comment['post_image_comment_id'] . '"style="display:none;">';
 
                 $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
-                $cmtinsert .= 'onClick="comment_editcancleimgtwo(this.id)">';
+                $cmtinsert .= 'onClick="comment_editcancleimgtwo(this.id,'.$post_image_id.')">';
                 $cmtinsert .= 'Cancel';
                 $cmtinsert .= '</a></div>';
 
@@ -11489,7 +12304,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -11510,7 +12325,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . '">';
                                                                                     
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
@@ -11528,7 +12343,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">';
-                    $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
                                                 <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                                                                                         </a> 
                                                                                     </div>
@@ -11536,7 +12351,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -11579,7 +12394,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '. ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -11602,7 +12417,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -11621,15 +12436,15 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) .  ucwords($userlist['art_lastname']) .'</h6>
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' '.ucfirst(strtolower($userlist['art_lastname'])) . '">
+                                                                                            <h6>' .ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
                    
                     $return_html .= '<li>
                                                                                     <div class="post-design-product_follow_main" style="display:block;">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'">
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])).' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
                                                                                             <p>';
                     if ($userlist['designation']) {
                         $return_html .= $userlist['designation'];
@@ -11671,7 +12486,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     $return_html .= '<div class="profile-job-post-title-inside clearfix">
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">
-                                                                            <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">';
+                                                                            <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">';
                     if ($userlist['art_user_image'] != '') {
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
@@ -11703,8 +12518,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) .ucwords($userlist['art_lastname']) .'</h6>
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
+                                                                                            <h6>' . ucwords($userlist['art_name']) .' '.ucwords($userlist['art_lastname']) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -11752,7 +12567,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) .' '. ucwords($userlist['art_lastname']) . '">';
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {       
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
@@ -11768,7 +12583,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                             $return_html .= '</a>';
 
                     } else {
-                        $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . ' ' .ucwords($userlist['art_lastname']) . '">';
                                                                 $a = $userlist['art_name'];
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $userlist['art_lastname'];
@@ -11783,8 +12598,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                                                                             <ul>
                                                                                 <li>
                                                                                     <div class="post-design-product_follow">
-                                                                                        <a href="' . base_url('artistic/art_manage_post/' . $userlist['user_id']) . '">
-                                                                                            <h6>' . ucwords($userlist['art_name']) . ucwords($userlist['art_lastname']) .'</h6>
+                                                                                        <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">
+                                                                                            <h6>' . ucfirst(strtolower($userlist['art_name'])).' ' . ucfirst(strtolower($userlist['art_lastname'])) .'</h6>
                                                                                         </a> 
                                                                                     </div>
                                                                                 </li>';
@@ -11972,7 +12787,7 @@ public function art_home_post() {
                     if ($row['posted_user_id']) {
 
                         if ($userimageposted) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
                                                                 $a = $userimagefn;
@@ -11992,7 +12807,7 @@ public function art_home_post() {
 
                         } else {
 
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">';
 
                                                                 $a = $userimagefn;
                                                                 $acr = substr($a, 0, 1);
@@ -12007,7 +12822,7 @@ public function art_home_post() {
                         }
                     } else {
                         if ($art_userimage) {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
 
                             if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $userfn;
@@ -12026,9 +12841,16 @@ public function art_home_post() {
                             }
                             $return_html .= '</a>';
                         } else {
-                            $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">
-                                                <img src="' . base_url(NOIMAGE) . '" alt="">
-                                            </a>';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">';
+                                                $a = $userfn;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $userln;
+                                                                $bcr = substr($b, 0, 1);
+                                                               
+                                $return_html .= '<div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                $return_html .= '</div>'; 
+                                           $return_html .=  '</a>';
                         }
                     }
                     $return_html .= '</div>
@@ -12067,8 +12889,8 @@ public function art_home_post() {
                         $return_html .= '<li>
                                                 <div class="else_post_d">
                                                     <div class="post-design-product">
-                                                        <a class="post_dot" href="' . base_url('artistic/art_manage_post/' . $row['posted_user_id']) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
-                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
+                                                        <a class="post_dot" href="' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">' . ucfirst(strtolower($firstnameposted)) .' '. ucfirst(strtolower($lastnameposted)) . '</a>
+                                                        <p class="posted_with" > Posted With</p> <a class="post_dot1 padding_less_left"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '">' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '</a>
                                                         <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                                                         </span> </div></div>
@@ -12077,7 +12899,7 @@ public function art_home_post() {
                     } else {
                         $return_html .= '<li>
                                                 <div class="post-design-product">
-                                                    <a class="post_dot"  href="' . base_url('artistic/art_manage_post/' . $row['user_id']) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
+                                                    <a class="post_dot"  href="' . base_url('artistic/dashboard/' . $row['user_id']) . '" title="' . ucfirst(strtolower($firstname)) .' '. ucfirst(strtolower($lastname)) . '">
                     ' . ucfirst(strtolower($firstname)) .' '.ucfirst(strtolower($lastname)). '</a>
                                                     <span role="presentation" aria-hidden="true"> · </span>
                                                     <div class="datespan"> <span class="ctre_date" > 
@@ -12161,7 +12983,7 @@ public function art_home_post() {
                                 <div class="post-design-desc">
                                     <div class="ft-15 t_artd">
                                         <div id="editpostdata' . $row['art_post_id'] . '" style="display:block;">
-                                            <a>' . $this->common->make_links($row['art_post']) . '</a>
+                                            <a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
                                         </div>
                                         <div id="editpostbox' . $row['art_post_id'] . '" style="display:none;">
                                             
@@ -12217,13 +13039,16 @@ public function art_home_post() {
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
-                            $return_html .= '<a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                            $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div>
-                                                <a title="click to open" href="' . base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+
+                            <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+
+                                               <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
                                                     </div>
                                                 </a>
@@ -12258,25 +13083,25 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div  class="two-images">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
                                             </a>
                                         </div>';
@@ -12285,7 +13110,7 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -12296,7 +13121,7 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -12307,10 +13132,10 @@ public function art_home_post() {
                         }
 
                         $return_html .= '<div class="four-image">
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($artmultiimage) - 4) . ')</span>
@@ -12420,7 +13245,7 @@ public function art_home_post() {
 
                         $return_html .= '<div class="like_one_other">';
 
-                        if ($userid == $likelistarray[0]) {
+                        if (in_array($userid, $likelistarray)) {
                             $return_html .= "You";
                             $return_html .= "&nbsp;";
                         } else {
@@ -12507,7 +13332,7 @@ public function art_home_post() {
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
@@ -12526,7 +13351,7 @@ public function art_home_post() {
 
                                 $return_html .= '</a>';
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id']) . '">';
+                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $artlastname;
@@ -12557,7 +13382,7 @@ public function art_home_post() {
                             $return_html .= $this->common->make_links($small);
 
                             if (strlen($rowdata['comments']) > 180) {
-                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">See More</span>';
+                                $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">view More</span>';
                             }
                             $return_html .= '</div>';
                             $return_html .= '<div id="seemore' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
@@ -12800,7 +13625,7 @@ public function art_home_post() {
             }
         } else {
 
-            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
+           // $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
         }
 
         $fetch_result .= '<div class="dataconphoto"></div>';
@@ -12919,7 +13744,7 @@ public function art_home_post() {
         } else {
 
 
-            $fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
+            //$fetch_video .= '<div class="not_available">  <p>     Video Not Available </p></div>';
         }
 
         $fetch_video .= '<div class="dataconvideo"></div>';
@@ -13036,7 +13861,7 @@ public function art_home_post() {
             }
             $fetchaudio .= '</tr>';
         } else {
-            $fetchaudio .= '<div class="not_available">  <p>   Audio Not Available </p></div>';
+            //$fetchaudio .= '<div class="not_available">  <p>   Audio Not Available </p></div>';
         }
         $fetchaudio .= '<div class="dataconaudio"></div>';
         echo $fetchaudio;
@@ -13088,7 +13913,8 @@ public function art_home_post() {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['image_name']).'">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -13098,11 +13924,708 @@ public function art_home_post() {
                     break;
             }
         } else {
-            $fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
+            //$fetch_pdf .= '<div class="not_available">  <p> Pdf Not Available </p></div>';
         }
         $fetch_pdf .= '<div class="dataconpdf"></div>';
         echo $fetch_pdf;
     }
-       
+ // dashboard post using ajax strat
+
+ public function artistic_dashboard_post($id = '') {
+// manage post start
+
+        // $perpage = 5;
+        // $page = 1;
+        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+        //     $page = $_GET["page"];
+        // }
+
+        // $start = ($page - 1) * $perpage;
+        // if ($start < 0)
+        //     $start = 0;
+        $id = $_POST['slug'];
+        $userid = $this->session->userdata('aileenuser');
+        $user_name = $this->session->userdata('user_name');
+
+        if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //$limit = $perpage;
+            //$offset = $start;
+
+            $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
+            $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            //$business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } else {
+            $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
+            $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+           // $limit = $perpage;
+            //$offset = $start;
+
+            $contition_array = array('user_id' => $id, 'status' => 1, 'is_delete' => '0');
+            $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            //$business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+
+        // $return_html = '';
+
+        // if (empty($_GET["total_record"])) {
+        //     $_GET["total_record"] = count($business_profile_data1);
+        // }
+
+        // $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        // $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (count($artsdata) > 0) {
+
+            foreach ($artsdata as $row) {
+                $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
+                $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $return_html .= '<div id = "removepost' . $row['art_post_id'] . '">
+<div class = "profile-job-post-detail clearfix">
+<div class = "post-design-box">
+<div class = "post-design-top col-md-12" >
+<div class = "post-design-pro-img">';
+                $userid = $this->session->userdata('aileenuser');
+                $userimage = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_user_image;
+                $userimageposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_user_image;
+
+                $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+
+                $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+                $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+
+                if ($row['posted_user_id']) {
+                    if ($userimageposted) {
+
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimageposted)) {
+
+                             $a = $firstnameposted;
+                             $acr = substr($a, 0, 1);
+                             $b = $lastnameposted;
+                             $bcr = substr($b, 0, 1);
+
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artistic/dashboard/' . $row['posted_user_id']).'">';
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                            $return_html .= '</div> ';
+                            $return_html .= '</a>';
+
+                        } else {
+
+                            $return_html .= '<img src = "' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted) . '" name = "image_src" id = "image_src" />';
+                        }
+                    } else {
+
+
+                             $a = $firstnameposted;
+                             $acr = substr($a, 0, 1);
+                             $b = $lastnameposted;
+                             $bcr = substr($b, 0, 1);
+
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)). ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artistic/dashboard/' . $row['posted_user_id']).'">';
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                            $return_html .= '</div> ';
+                            $return_html .= '</a>';
+                    }
+                } else {
+                    if ($userimage) {
+
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userimage)) {
+
+
+                             $a = $firstname;
+                             $acr = substr($a, 0, 1);
+                             $b = $lastname;
+                             $bcr = substr($b, 0, 1);
+
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artistic/dashboard/' . $row['user_id']).'">';
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                            $return_html .= '</div>';
+                            $return_html .= '</a>';
+                        } else {
+
+                            $return_html .= '<img src = "' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimage) . '" name = "image_src" id = "image_src" />';
+                        }
+                    } else {
+
+
+                             $a = $firstname;
+                             $acr = substr($a, 0, 1);
+                             $b = $lastname;
+                             $bcr = substr($b, 0, 1);
+
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artistic/dashboard/' . $row['user_id']).'">';
+
+                            $return_html .= '<div class="post-img-div">';
+                            $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                            $return_html .= '</div>';
+                            $return_html .= '</a>';
+                    }
+                }
+                $return_html .= '</div>
+<div class = "post-design-name fl col-xs-8 col-md-10">
+<ul>';
+                $firstname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_name;
+                $lastname = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->art_lastname;
+
+               $firstnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_name;
+               $lastnameposted = $this->db->get_where('art_reg', array('user_id' => $row['posted_user_id']))->row()->art_lastname;
+                                                              
+              $designation = $this->db->get_where('art_reg', array('user_id' => $row['user_id']))->row()->designation;
+
+                if ($row['posted_user_id']) {
+                    $return_html .= '<li>
+<div class = "else_post_d">
+<div class = "post-design-product">
+<a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($firstnameposted)) .'&nbsp;'. ucfirst(strtolower($lastnameposted)) . '" href = "' . base_url('artistic/dashboard/' . $row['posted_user_id']) . '">' . ucfirst(strtolower($firstnameposted)). '&nbsp;' .ucfirst(strtolower($lastnameposted)).  '</a>
+<p class = "posted_with" > Posted With</p>
+<a class = "other_name post_dot" href = "' . base_url('artistic/details/' . $row['user_id']) . '">' .ucfirst(strtolower($firstname)).'&nbsp;'.ucfirst(strtolower($lastname)).'</a>
+<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
+</div></div>
+</li>';
+                } else {
+                    $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($firstname)) .'&nbsp;'.ucfirst(strtolower($lastname)).'" href = "'.base_url('business-profile/dashboard/'. $row['user_id']).'">'.ucfirst(strtolower($firstname)) . ' ' . ucfirst(strtolower($lastname)).'</a>
+<span role = "presentation" aria-hidden = "true"> · </span>
+<div class = "datespan">
+<span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
+</div>
+</div>
+</li>';
+                }
+                
+                $return_html .= '<li><div class = "post-design-product"> <a class = "buuis_desc_a" title = "Designation">';
+
+                if ($designation) {
+                    $return_html .= ucfirst(strtolower($designation));
+                } else {
+                    $return_html .= 'Current Work.';
+                }
+
+                $return_html .= '</a> </div>
+</li>
+<li>
+</li>
+</ul>
+</div>';
+
+ if($userid == $row['posted_user_id'] || $row['user_id'] == $userid){
+
+ $return_html .= '<div class = "dropdown2">
+<a onClick = "myFunction1(' . $row['art_post_id'] . ')" class = "dropbtn2 dropbtn2 fa fa-ellipsis-v"></a>
+<div id = "myDropdown' . $row['art_post_id'] . '" class = "dropdown-content2">';
+                if ($row['posted_user_id'] != 0) {
+                    if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
+                        $return_html .= '<a onclick = "deleteownpostmodel(' . $row['art_post_id'] . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>
+<a id = "' . $row['art_post_id'] . '" onClick = "editpost(this.id)">
+<i class = "fa fa-pencil-square-o" aria-hidden = "true">
+</i>Edit
+</a>';
+                    } else {
+                        $return_html .= '<a onclick = "deleteownpostmodel(' . $row['art_post_id'] . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>';
+// $return_html .= '<a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
+// <i class = "fa fa-user" aria-hidden = "true">
+// </i> Contact Person
+// </a>';
+                    }
+                } else {
+                    if ($this->session->userdata('aileenuser') == $row['user_id']) {
+                        $return_html .= '<a onclick = "deleteownpostmodel(' . $row['art_post_id'] . ')"><i class = "fa fa-trash-o" aria-hidden = "true"></i> Delete Post</a>
+<a id = "' . $row['art_post_id'] . '" onClick = "editpost(this.id)"><i class = "fa fa-pencil-square-o" aria-hidden = "true"></i>Edit</a>';
+                    } else {
+                        // $return_html .= '<a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class = "fa fa-user" aria-hidden = "true"></i> Contact Person</a>';
+                    }
+                }
+                $return_html .= '</div>
+</div>';
+       }    
+                if ($row['art_post'] || $row['art_description']) {
+                    $return_html .= '<div class = "post-design-desc ">';
+                }
+                $return_html .= '<div class = "ft-15 t_artd">
+<div id = "editpostdata' . $row['art_post_id'] . '" style = "display:block;">
+<a id="editpostval' . $row['art_post_id'].'">' . $this->common->make_links($row['art_post']) . '</a>
+</div>
+<div id = "editpostbox' . $row['art_post_id'] . '" style = "display:none;">
+<input type = "text" class="my_text" id = "editpostname' . $row['art_post_id'] . '" name = "editpostname" placeholder = "Title" value = "' . $row['art_post'] . '" onKeyDown = check_lengthedit(' . $row['art_post_id'] . ') onKeyup = check_lengthedit(' . $row['art_post_id'] . ');
+onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
+                if ($row['art_post']) {
+                    $counter = $row['art_post'];
+                    $a = strlen($counter);
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                } else {
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
+                }
+                $return_html .= '</div>
+</div>
+<div id = "khyati' . $row['art_post_id'] . '" style = "display:block;">';
+                $small = substr($row['art_description'], 0, 180);
+                $return_html .= $this->common->make_links($small);
+                if (strlen($row['art_description']) > 180) {
+                    $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                }
+                $return_html .= '</div>
+<div id = "khyatii' . $row['art_post_id'] . '" style = "display:none;">';
+                $return_html .= $row['art_description'];
+                $return_html .= '</div>
+<div id = "editpostdetailbox' . $row['art_post_id'] . '" style = "display:none;">
+<div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['art_description'] . '</div>
+</div><button class = "fr" id = "editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save</button>
+</div> ';
+                if ($row['art_post'] || $row['art_description']) {
+                    $return_html .= '</div>';
+                }
+                $return_html .= '<div class="post-design-mid col-md-12" >  
+    <div class="mange_post_image">';
+
+                $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if (count($artmultiimage) == 1) {
+
+                    $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+                    $allowespdf = array('pdf');
+                    $allowesvideo = array('mp4', 'webm','MP4');
+                    $allowesaudio = array('mp3');
+                    $filename = $artmultiimage[0]['image_name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (in_array($ext, $allowed)) {
+                        $return_html .= '<div class="one-image">
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> </a>
+        </div>';
+                    } elseif (in_array($ext, $allowespdf)) {
+
+                        $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'"> 
+
+           <div class="pdf_img">
+                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
+                                                     width: 100%;
+">
+                </div></a>
+        </div>';
+                    } elseif (in_array($ext, $allowesvideo)) {
+                        $return_html .= '<div>
+            <video class="video" width="100%" height="350" controls>
+                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>';
+                    } elseif (in_array($ext, $allowesaudio)) {
+                        $return_html .= '<div class="audio_main_div">
+            <div class="audio_img">
+                <img src="' . base_url('images/music-icon.png') . '">  
+            </div>
+            <div class="audio_source">
+                <audio  controls>
+                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="audio/mp3">
+                    <source src="movie.ogg" type="audio/ogg">
+                    Your browser does not support the audio tag.
+                </audio>
+            </div>
+            <div class="audio_mp3" id="postname' . $row['art_post_id'] . '">
+                <p title="' . $row['art_post'] . '">' . $row['art_post'] . '</p>
+            </div>
+        </div>';
+                    }
+                } elseif (count($artmultiimage) == 2) {
+                    foreach ($artmultiimage as $multiimage) {
+                        $return_html .= '<div  class="two-images" >
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;"> </a>
+        </div>';
+                    }
+                } elseif (count($artmultiimage) == 3) {
+                    $return_html .= '<div class="three-imag-top" >
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '" style="width: 100%;"> </a>
+        </div>
+        <div class="three-image" >
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '" style="width: 100%;"> </a>
+        </div>
+        <div class="three-image" >
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '" style="width: 100%;"> </a>
+        </div>';
+                } elseif (count($artmultiimage) == 4) {
+
+                    foreach ($artmultiimage as $multiimage) {
+                        $return_html .= '<div class="four-image">
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;"> </a>
+        </div>';
+                    }
+                } elseif (count($artmultiimage) > 4) {
+
+                    $i = 0;
+                    foreach ($artmultiimage as $multiimage) {
+                        $return_html .= '<div class="four-image">
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+        </div>';
+                        $i++;
+                        if ($i == 3)
+                            break;
+                    }
+                    $return_html .= '<div class="four-image">
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '" style=" width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+                <div class="more-image" >
+                    <span> View All (+' . (count($artmultiimage) - 4) . ')
+                    </span></div>
+            </a>
+        </div>';
+                }
+                $return_html .= '<div>
+        </div>
+    </div>
+</div>
+<div class="post-design-like-box col-md-12">
+    <div class="post-design-menu">
+        <ul class="col-md-6">
+            <li class="likepost' . $row['art_post_id'] . '">
+                <a class="ripple like_h_w" id="' . $row['art_post_id'] . '"   onClick="post_like(this.id)">';
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
+                $artlike = $this->data['artlike'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $likeuser = $this->data['artlike'][0]['art_like_user'];
+                $likeuserarray = explode(',', $artlike[0]['art_like_user']);
+
+                if (!in_array($userid, $likeuserarray)) {
+                    $return_html .= '<i class="fa fa-thumbs-up" style="color: #999;" aria-hidden="true"></i>';
+                } else {
+                    $return_html .= '<i class="fa fa-thumbs-up fa-1x main_color" aria-hidden="true"></i>';
+                }
+
+                $return_html .= '<span class="like_As_count">';
+                // if ($row['business_likes_count'] > 0) {
+                //     $return_html .= $row['business_likes_count'];
+                // }
+                $return_html .= '</span>
+                </a>
+            </li>
+
+            <li id="insertcount' . $row['art_post_id'] . '" style="visibility:show">';
+                $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
+                $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                $return_html .= '<a title="Comment" class="ripple like_h_w" onClick="commentall(this.id)" id="' . $row['art_post_id'] . '"><i class="fa fa-comment-o" aria-hidden="true">';
+                $return_html .= '</i> 
+                </a>
+            </li> 
+        </ul>
+        <ul class="col-md-6 like_cmnt_count">
+            <li>
+                <div class="like_cmmt_space comnt_count_ext_a like_count_ext'.$row['art_post_id'].'">
+                    <span class="comment_count">';
+                if (count($commnetcount) > 0) {
+                    $return_html .= count($commnetcount);
+                    $return_html .= '</span>';
+                    $return_html .= '<span> Comment</span>';
+                }
+                
+
+                $return_html .= '</div>
+            </li>
+
+            <li>
+                <div class="comnt_count_ext_a comnt_count_ext' . $row['art_post_id'].'">
+                    <span class="comment_like_count"> ';
+                if ($row['art_likes_count'] > 0) {
+                    $return_html .= $row['art_likes_count'];
+                     $return_html .= '</span>'; 
+                    $return_html .= '<span> Like</span>';
+                }
+               
+                 $return_html .=  '</div>
+            </li>
+        </ul>
+    </div>
+</div>';
+                // if ($row['business_likes_count'] > 0) {
+                //     $return_html .= '<div class="likeduserlist1 likeduserlist' . $row['business_profile_post_id'] . '">';
+                $return_html .= '<div class="class="likeduserlist1 likeusername '. $row['art_post_id'].'" id="likeusername'. $row['art_post_id'].'" style="display:block">';
+    
+                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
+                    $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $likeuser = $commnetcount[0]['art_like_user'];
+                    $countlike = $commnetcount[0]['art_likes_count'] - 1;
+                    $likelistarray = explode(',', $likeuser);
+                    foreach ($likelistarray as $key => $value) {
+                        $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
+                        $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
+                    }
+                    $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['art_post_id'] . ');">';
+                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
+                    $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    $likeuser = $commnetcount[0]['art_like_user'];
+                    $countlike = $commnetcount[0]['art_likes_count'] - 1;
+                    $likelistarray = explode(',', $likeuser);
+
+                  $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                 $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+
+                    $return_html .= '<div class="like_one_other">';
+                    if (in_array($userid, $likelistarray)) {
+                        $return_html .= "You";
+                        $return_html .= "&nbsp;";
+                    } else {
+                        $return_html .= ucfirst(strtolower($art_fname)).' '.ucfirst(strtolower($art_lname));
+                        $return_html .= "&nbsp;";
+                    }
+                    if (count($likelistarray) > 1) {
+                        $return_html .= "and";
+                        $return_html .= $countlike;
+                        $return_html .= "&nbsp;";
+                        $return_html .= "others";
+                    }
+                    $return_html .= '</div>
+    </a>
+</div>';
+                //}
+
+//                 $return_html .= '<div  class="likeduserlist1  likeusername' . $row['business_profile_post_id'] . '" id="likeusername' . $row['business_profile_post_id'] . '" style="display:none">';
+//                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+//                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//                 $likeuser = $commnetcount[0]['business_like_user'];
+//                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
+//                 $likelistarray = explode(',', $likeuser);
+//                 foreach ($likelistarray as $key => $value) {
+//                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//                 }
+//                 $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
+//                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
+//                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+//                 $likeuser = $commnetcount[0]['business_like_user'];
+//                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
+//                 $likelistarray = explode(',', $likeuser);
+
+//                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//                 $return_html .= '<div class="like_one_other">';
+//                 $return_html .= ucfirst(strtolower($business_fname1));
+//                 $return_html .= "&nbsp;";
+//                 if (count($likelistarray) > 1) {
+//                     $return_html .= "and";
+//                     $return_html .= $countlike;
+//                     $return_html .= "&nbsp;";
+//                     $return_html .= "others";
+//                 }
+//                 $return_html .= '</div>
+//     </a>
+// </div>
+
+$return_html .= '<div class="art-all-comment col-md-12">
+    <div id="fourcomment' . $row['art_post_id'] . '" style="display:none;">
+    </div>
+    <div  id="threecomment' . $row['art_post_id'] . '" style="display:block">
+        <div class="insertcomment' . $row['art_post_id'] . '">';
+                $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
+                $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($artdata) {
+                    foreach ($artdata as $rowdata) {
+                        $artname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_name;
+
+                        $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
+
+                        $return_html .= '<div class="all-comment-comment-box">
+                <div class="post-design-pro-comment-img">';
+                        $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
+
+                        if ($art_userimage) {
+
+                            if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+
+                                $a = $artname;
+                                $acr = substr($a, 0, 1);
+                                $b = $artlastname;
+                                $bcr = substr($b, 0, 1);
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                $return_html .= ' <div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                $return_html .= '</div> </a>';
+
+                            } else {
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                                $return_html .= '</a>';
+                            }
+                        } else {
+
+
+                                $a = $artname;
+                                $acr = substr($a, 0, 1);
+                                $b = $artlastname;
+                                $bcr = substr($b, 0, 1);
+
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                $return_html .= ' <div class="post-img-div">';
+                                $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                $return_html .= '</div> </a>';
+                        }
+                        $return_html .= '</div>
+                <div class="comment-name">
+                    <b>';
+                        $return_html .= ucfirst(strtolower($artname)).' '.ucfirst(strtolower($artlastname));
+                        $return_html .= '</b>';
+                         $return_html .= '</br>';
+
+                $return_html .= '</div>
+                <div class="comment-details" id= "showcomment' . $rowdata['artistic_post_comment_id'] . '">
+                    <div id="lessmore' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">';
+                        $small = substr($rowdata['comments'], 0, 180);
+                        $return_html .= $this->common->make_links($small);
+
+                        if (strlen($rowdata['comments']) > 180) {
+                            $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['artistic_post_comment_id'] . ')">View More</span>';
+                        }
+                        $return_html .= '</div>
+
+                    <div id="seemore' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">';
+                        $new_product_comment = $this->common->make_links($rowdata['comments']);
+                        $return_html .= nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                        $return_html .= '</div>
+                </div>
+                <div class="edit-comment-box">
+                    <div class="inputtype-edit-comment">
+                        <div contenteditable="true"  class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment"' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                        <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
+                    </div>
+                </div>
+                <div class="art-comment-menu-design"> 
+                    <div class="comment-details-menu" id="likecomment1' . $rowdata['artistic_post_comment_id'] . '">
+                        <a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_like1(this.id)">';
+                        $userid = $this->session->userdata('aileenuser');
+                        $contition_array = array('artistic_post_comment_id' => $rowdata['artistic_post_comment_id'], 'status' => '1');
+                        $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+                        if (!in_array($userid, $likeuserarray)) {
+                            $return_html .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i> ';
+                        } else {
+                            $return_html .= '<i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>';
+                        }
+                        $return_html .= '<span>';
+                        if ($rowdata['artistic_comment_likes_count']) {
+                            $return_html .= $rowdata['artistic_comment_likes_count'];
+                        }
+                        $return_html .= '</span>
+                        </a>
+                    </div>';
+
+                        $userid = $this->session->userdata('aileenuser');
+                        if ($rowdata['user_id'] == $userid) {
+                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <div id="editcommentbox' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">
+                            <a id="' . $rowdata['artistic_post_comment_id'] . '"   onClick="comment_editbox(this.id)" class="editbox">Edit
+                            </a>
+                        </div>
+                        <div id="editcancle' . $rowdata['artistic_post_comment_id'] . '" style="display:none;">
+                            <a id="' . $rowdata['artistic_post_comment_id'] . '" onClick="comment_editcancle(this.id)">Cancel
+                            </a>
+                        </div>
+                    </div>';
+                        }
+                        $userid = $this->session->userdata('aileenuser');
+                        $art_userid = $this->db->get_where('art_post', array('art_post_id' => $rowdata['art_post_id'], 'status' => 1))->row()->user_id;
+                        if ($rowdata['user_id'] == $userid || $art_userid == $userid) {
+                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['artistic_post_comment_id'] . '" value= "' . $rowdata['art_post_id'] . '">
+                        <a id="' . $rowdata['artistic_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete<span class="insertcomment' . $rowdata['artistic_post_comment_id'] . '">
+                            </span>
+                        </a>
+                    </div>';
+                        }
+                        $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                    <div class="comment-details-menu">
+                        <p>';
+
+                        $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
+                        $return_html .= '</br>';
+                        $return_html .= '</p></div>
+                </div></div>';
+                    }
+                }
+                $return_html .= '</div>
+    </div>
+</div>
+<div class="post-design-commnet-box col-md-12">
+    <div class="post-design-proo-img"> ';
+
+                $userid = $this->session->userdata('aileenuser');
+                $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                
+                if ($art_userimage) {
+
+                    if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+
+                        $a = $artisticdata[0]['art_name'];
+                        $acr = substr($a, 0, 1);
+                        $b = $artisticdata[0]['art_lastname'];
+                        $bcr = substr($b, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                        $return_html .= '</div> ';
+
+                    } else {
+
+                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                    }
+                } else {
+
+
+                        $a = $artisticdata[0]['art_name'];
+                        $acr = substr($a, 0, 1);
+                        $b = $artisticdata[0]['art_lastname'];
+                        $bcr = substr($b, 0, 1);
+
+                        $return_html .= '<div class="post-img-div">';
+                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                        $return_html .= '</div> ';
+                }
+                $return_html .= '</div>
+    <div id="content" class="col-md-12  inputtype-comment cmy_2" >
+        <div contenteditable="true" class="editable_text edt_2" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment...." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
+    </div>';
+                $return_html .= form_error('post_comment');
+                $return_html .= '<div class="comment-edit-butn">       
+        <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)">Comment</button></div>
+</div>
+</div>
+</div> </div>';
+            }
+        } else {
+            $return_html .= '<div class="art_no_post_avl" id="no_post_avl">
+                                <h3> Post</h3>
+                                <div class="art-img-nn">
+                                    <div class="art_no_post_img">
+
+                                        <img src="' . base_url('img/art-no.png') . '">
+
+                                    </div>
+                                    <div class="art_no_post_text">
+                                        No Post Available.
+                                    </div>
+                                </div>
+                            </div> ';
+        }
+        $return_html .= '<div class="nofoundpost">
+</div>';
+        echo $return_html;
+    }      
 
 }

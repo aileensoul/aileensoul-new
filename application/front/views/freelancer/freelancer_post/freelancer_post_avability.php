@@ -120,15 +120,14 @@
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
             <script>
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_avability.js'); ?>"></script>           
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_avability.js'); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
         </body>
     </div>
 </html>

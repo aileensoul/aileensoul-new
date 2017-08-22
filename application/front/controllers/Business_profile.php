@@ -922,11 +922,25 @@ class Business_profile extends MY_Controller {
 
 
 
-        if (count($otherdata) == 0) {
-            $notfound = '<div class="contact-frnd-post bor_none">';
-            $notfound .= '<div class="text-center rio">';
-            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
-            $notfound .= '</div></div>';
+        if ($datacount == 0) {
+//            $notfound = '<div class="contact-frnd-post bor_none">';
+//            $notfound .= '<div class="text-center rio">';
+//            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
+//            $notfound .= '</div></div>';
+
+            $notfound = '<div class="art_no_post_avl" id="art_no_post_avl">
+                                        <h3>Business Post</h3>
+                                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
+
+                                                <img src="' . base_url('img/bui-no.png') . '">
+
+                                            </div>
+                                            <div class="art_no_post_text">
+                                                No Post Available.
+                                            </div>
+                                        </div>
+                                    </div>';
 
             $notvideo = 'Video Not Available';
             $notaudio = 'Audio Not Available';
@@ -1648,7 +1662,7 @@ class Business_profile extends MY_Controller {
 
             if (count($businessmultiimage) == 1) {
 
-                
+
                 $allowed = array('gif', 'PNG', 'jpg', 'jpeg', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
                 $allowespdf = array('pdf');
                 $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
@@ -2918,9 +2932,10 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
             $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-            if ($busnotification[0]['not_read'] == 2) { 
-            } elseif ($busnotification[0]['not_read'] == 1) { 
+
+            if ($busnotification[0]['not_read'] == 2) {
+                
+            } elseif ($busnotification[0]['not_read'] == 1) {
                 $datafollow = array(
                     'not_read' => 2
                 );
@@ -3066,7 +3081,7 @@ class Business_profile extends MY_Controller {
                     $notfound = ' <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
-                                        <img src="' . base_url('img/bui-no.png') . '">
+                                        <img src="' . base_url('img/icon_no_following.png') . '">
 
                                     </div>
                                     <div class="art_no_post_text">
@@ -3103,11 +3118,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $artdata = $artisticdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
-        
-//        echo $id;
-//        echo '<br>';
-//        echo $slug_id;
-//        exit;
+
         if ($id == $slug_id || $id == '') {
             $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
             $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3139,7 +3150,7 @@ class Business_profile extends MY_Controller {
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        
+
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($userlist1);
         }
@@ -3200,11 +3211,11 @@ class Business_profile extends MY_Controller {
                                                                         <li class="fr" id ="frfollow' . $user['follow_from'] . '">';
                 $contition_array = array('user_id' => $userid, 'status' => '1');
                 $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                
-            
+
+
                 $contition_array = array('follow_from' => $busdatauser[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'follow_to' => $user['follow_from']);
                 $status_list = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-                
+
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $busdatauser[0]['business_profile_id']) {
 
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
@@ -3226,9 +3237,9 @@ class Business_profile extends MY_Controller {
                                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: none">
+            $return_html .= '<div class="art-img-nn" id= "art-blank">
                                                 <div class="art_no_post_img">
-                                                    <img src="' . base_url('img/bui-no.png') . '">
+                                                    <img src="' . base_url('img/icon_no_follower.png') . '">
                                                 </div>
                                                 <div class="art_no_post_text">
                                                     No Followers Available.
@@ -3394,7 +3405,7 @@ class Business_profile extends MY_Controller {
 
             $return_html .= '<div class = "art-img-nn">
                                                     <div class = "art_no_post_img">
-                                                    <img src = "' . base_url('img/bui-no.png') . '">
+                                                    <img src = "' . base_url('img/icon_no_following.png') . '">
                                                     </div>
                                                     <div class = "art_no_post_text">
                                                     No Following Available.
@@ -4776,6 +4787,7 @@ class Business_profile extends MY_Controller {
     public function postnewpage($id) {
 
         $userid = $this->session->userdata('aileenuser');
+        $this->data['post_id'] = $id;
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8768,9 +8780,17 @@ class Business_profile extends MY_Controller {
                 }
             }
         } else {
-            $return_html .= '<li>
-                                            No contacts available...
-                                        </li>';
+
+            $return_html .= '<li><div class="art-img-nn" id= "art-blank">
+                                    <div class="art_no_post_img">
+
+                                        <img src="' . base_url('img/No_Contact_Request.png') . '">
+
+                                    </div>
+        <div class="art_no_post_text">
+                                        No contacts available...
+                                    </div>
+                                    </div></li>';
         }
         echo $return_html;
     }
@@ -8891,8 +8911,6 @@ class Business_profile extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-
-
 
         $this->data['login'] = $login = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $login, 'is_deleted' => 0, 'status' => 1);
@@ -9038,7 +9056,7 @@ class Business_profile extends MY_Controller {
         } else {
             $return_html .= '<div class="art-img-nn">
                 <div class="art_no_post_img">
-                    <img src="' . base_url('img/bui-no.png') . '">
+                    <img src="' . base_url('img/No_Contact_Request.png') . '">
     </div>
     <div class="art_no_post_text">
         No Contacts Available.
@@ -9711,7 +9729,7 @@ Your browser does not support the audio tag.
                     } elseif (count($businessmultiimage) == 3) {
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
 </a>
 </div>
 <div class = "three-image" >
@@ -10088,18 +10106,30 @@ Your browser does not support the audio tag.
         }
         if (count($businessprofiledatapost) > 0) {
             if (count($count) == count($businessprofiledatapost)) {
-                $return_html .= '<div class = "contact-frnd-post bor_none">
-<div class = "text-center rio">
-<h4 class = "page-heading  product-listing" >No Post Found.</h4>
-</div>
-</div>';
+                $return_html .= '<div class="art_no_post_avl" id="art_no_post_avl">
+                                        <h3>Business Post</h3>
+                                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
+                                                <img src="' . base_url('img/bui-no.png') . '">
+                                            </div>
+                                            <div class="art_no_post_text">
+                                                No Post Available.
+                                            </div>
+                                        </div>
+                                    </div>';
             }
         } else {
-            $return_html .= '<div class = "contact-frnd-post bor_none">
-<div class = "text-center rio">
-<h4 class = "page-heading  product-listing" >No Post Found.</h4>
-</div>
-</div>';
+            $return_html .= '<div class="art_no_post_avl" id="art_no_post_avl">
+                                    <h3>Business Post</h3>
+                                    <div class="art-img-nn">
+                                        <div class="art_no_post_img">
+                                            <img src="' . base_url('img/bui-no.png') . '">
+                                        </div>
+                                        <div class="art_no_post_text">
+                                            No Post Available.
+                                        </div>
+                                    </div>
+                                </div>';
         }
         echo $return_html;
 // return html        
@@ -10539,7 +10569,7 @@ Your browser does not support the audio tag.
     public function bus_user_photos() {
 
         $id = $_POST['bus_slug'];
-        
+
         $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
         $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -11530,6 +11560,41 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $return_html .= '<div class="nofoundpost">
 </div>';
         echo $return_html;
+    }
+
+    public function check_post_available() {
+        $post_id = $_POST['post_id'];
+
+        $condition_array = array('business_profile_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
+            $return = 1;
+            
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else {
+            $return = 0;
+        }
+
+
+        echo $return;
     }
 
 }

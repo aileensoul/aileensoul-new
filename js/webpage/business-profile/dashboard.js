@@ -362,24 +362,28 @@ function openCity(evt, cityName) {
 // post like script start 
 function post_like(clicked_id)
 {
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/like_post",
-        data: 'post_id=' + clicked_id,
-        dataType: 'json',
-        success: function (data) {
-            $('.' + 'likepost' + clicked_id).html(data.like);
-            $('.likeusername' + clicked_id).html(data.likeuser);
-            $('.comment_like_count' + clicked_id).html(data.like_user_count);
-            $('.likeduserlist' + clicked_id).hide();
-            if (data.like_user_total_count == '0') {
-                document.getElementById('likeusername' + clicked_id).style.display = "none";
-            } else {
-                document.getElementById('likeusername' + clicked_id).style.display = "block";
+    var is_valid_post = check_post_available(clicked_id);
+    alert(is_valid_post);
+    if (is_valid_post == true) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/like_post",
+            data: 'post_id=' + clicked_id,
+            dataType: 'json',
+            success: function (data) {
+                $('.' + 'likepost' + clicked_id).html(data.like);
+                $('.likeusername' + clicked_id).html(data.likeuser);
+                $('.comment_like_count' + clicked_id).html(data.like_user_count);
+                $('.likeduserlist' + clicked_id).hide();
+                if (data.like_user_total_count == '0') {
+                    document.getElementById('likeusername' + clicked_id).style.display = "none";
+                } else {
+                    document.getElementById('likeusername' + clicked_id).style.display = "block";
+                }
+                $('#likeusername' + clicked_id).addClass('likeduserlist1');
             }
-            $('#likeusername' + clicked_id).addClass('likeduserlist1');
-        }
-    });
+        });
+    }
 }
 //post like script end 
 
@@ -1180,18 +1184,32 @@ function edit_postinsert(abc)
 
 function remove_post(abc)
 {
+//    $.ajax({
+//        type: 'POST',
+//        url: base_url + "business_profile/business_profile_delete",
+//        data: 'save_id=' + abc,
+//        success: function (data) {
+//            $('#' + 'removepostdata' + abc).html(data);
+//            var total_post = $('.post-design-box').length;
+//            if (total_post == 0) {
+//                $('.art_no_post_avl').show();
+//            }
+//        }
+//    });
+
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_profile_delete",
-        data: 'save_id=' + abc,
+        url: '<?php echo base_url() . "business_profile/business_profile_deleteforpost" ?>',
+        data: 'business_profile_post_id=' + abc,
         success: function (data) {
-            $('#' + 'removepostdata' + abc).html(data);
+            $('#' + 'removepost' + abc).remove();
             var total_post = $('.post-design-box').length;
             if (total_post == 0) {
                 $('.art_no_post_avl').show();
             }
         }
     });
+
 }
 
 
@@ -2070,3 +2088,22 @@ $('#file-1').on('click', function (e) {
 });
 
 // DROP DOWN SCRIPT END 
+
+function check_post_available(post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/check_post_available",
+        data: 'post_id=' + post_id,
+        dataType: "json",
+        success: function (data) {
+            alert(data);
+            if (data == 0) {
+                $('.biderror .mes').html("<div class='pop_content'>this post deleted so you can no take any action</div>");
+                $('#bidmodal').modal('show');
+                return false;
+            } else {
+                return true;
+            }
+        }
+    });
+}

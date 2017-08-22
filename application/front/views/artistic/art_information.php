@@ -234,7 +234,7 @@
                                     <fieldset class="full-width" <?php if($skills) {  ?> class="error-msg" <?php } ?> >
                                         <label>Art:<span style="color:red">*</span></label>
                                     
-                                      <input id="skills2" value="<?php echo $work_skill; ?>" name="skills"  size="90">
+                                      <input placeholder="Enter Art" id="skills2" value="<?php echo $work_skill; ?>" name="skills"  size="90">
 
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>

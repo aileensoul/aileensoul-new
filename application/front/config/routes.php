@@ -181,6 +181,27 @@ $route['artistic/artistic-portfolio-insert'] = "artistic/art_portfolio_insert";
 
 $route['artistic/home'] = "artistic/art_post";
 $route['artistic/dashboard'] = "artistic/art_manage_post";
+$route['artistic/dashboard/(:any)'] = "artistic/art_manage_post/$1";
+
 
 $route['artistic/details/(:any)'] = "artistic/artistic_profile/$1";
 $route['artistic/details'] = "artistic/artistic_profile";
+
+$route['artistic/photos'] = "artistic/art_photos";
+$route['artistic/photos/(:any)'] = "artistic/art_photos/$1";
+
+$route['artistic/videos'] = "artistic/art_videos";
+$route['artistic/videos/(:any)'] = "artistic/art_videos/$1";
+
+$route['artistic/audios'] = "artistic/art_audios";
+$route['artistic/audios/(:any)'] = "artistic/art_audios/$1";
+
+
+$route['artistic/pdf'] = "artistic/art_pdf";
+$route['artistic/pdf/(:any)'] = "artistic/art_pdf/$1";
+
+$route['artistic/post-detail'] = "artistic/postnewpage";
+$route['artistic/post-detail/(:any)'] = "artistic/postnewpage/$1";
+
+$route['artistic/creat-pdf'] = "artistic/creat_pdf";
+

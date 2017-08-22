@@ -68,96 +68,6 @@ function freelancerhire_save(pagenum)
 }
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
-// CODE FOR AUTOFILL OF SEARCH KEYWORD START
-$(function () {
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
-    });
-});
-$(function () {
-    $("#tags1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-        }
-    });
-});
-
-//CODE FOR AUTOFILL OF SEARCH KEYWORD END
-//  CODE FOR AUTOFILL OF SEARCH LOCATION START
-$(function () {
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-        }
-    });
-});
-$(function () {
-    $("#searchplace1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-        }
-    });
-});
-// CODE FOR AUTOFILL OF SEARCH LOCATION END
-
 //CODE FOR DESIGNATION START
 function divClicked() {
     var divHtml = $(this).html();
@@ -374,7 +284,7 @@ function remove_user(abc)
             $('#' + 'removeapply' + abc).parent().removeClass();
             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
             if (numItems == '0') {
-                var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Saved Freelancer Found.</h4></div>";
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">no_saved</div></div>';
                 $('.contact-frnd-post').html(nodataHtml);
             }
         }

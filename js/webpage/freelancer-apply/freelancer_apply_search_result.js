@@ -1,92 +1,77 @@
-// CODE FOR AUTOFILL OF SEARCH KEYWORD START
-$(function () {
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
-    });
-});
-$(function () {
-    $("#tags1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
+//CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
+$(document).ready(function () {
+    
+    freelancerapply_search();
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    
+                    freelancerapply_search(pagenum);
+                }
+            }
         }
     });
+    
 });
-// CODE FOR AUTOFILL OF SEARCH KEYWORD END
-//CODE FOR AUTOFILL OF SEARCH PLACE START
-$(function () {
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
+var isProcessing = false;
+function freelancerapply_search(pagenum)
+{
+
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "search/ajax_freelancer_post_search?page=" + pagenum + "&skill="  + skill + "&place=" + place + "&button=" + button ,
+        data: {total_record:$("#total_record").val()},
+        dataType: "html",
+        beforeSend: function () {
+            if (pagenum == 'undefined') {
+                $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
+                $('#loader').show();
+            }
         },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
+        complete: function () {
+            $('#loader').hide();
+        },
+        success: function (data) {
+            $('.loader').remove();
+            $('.contact-frnd-post').append(data);
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            isProcessing = false;
         }
     });
-});
-$(function () {
-    $("#searchplace1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-        }
-    });
-});
-//CODE FOR AUTOFILL OF SEARCH PLACE END
+}
+
+//CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
+
 //FUNCTION FOR CHECK VALUE OF SEARCH KEYWORD AND PLACE ARE BLANK START
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);

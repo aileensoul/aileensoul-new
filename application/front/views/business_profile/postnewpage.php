@@ -667,7 +667,6 @@
                                             }
                                             ?>
                                         </div>
-
                                         <div class="col-md-12 inputtype-comment cmy_2">
                                             <div contenteditable="true" class="editable_text" name="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"  id="<?php echo "post_comment" . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Add a Comment ..." value= "" onClick="entercomment(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
                                         </div>
@@ -1076,6 +1075,7 @@
                 var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
+                var post_id = '<?php echo $post_id; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/post_detail.js'); ?>"></script>
     </body>

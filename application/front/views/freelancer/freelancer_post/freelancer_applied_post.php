@@ -7,13 +7,14 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
         <style type="text/css">
             #popup-form img{display: none;}
         </style>
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
-        <?php echo $freelancer_post_header2; ?>
+        <?php echo $freelancer_post_header2_border; ?>
         <section class="custom-row">
             <div class="container" id="paddingtop_fixed">
                 <div class="row" id="row1" style="display:none;">
@@ -216,8 +217,6 @@
         </div>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
@@ -228,6 +227,7 @@
             var data1 = <?php echo json_encode($city_data); ?>;
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_applied_post.js'); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
 
     </body>
 </html>

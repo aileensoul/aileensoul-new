@@ -104,14 +104,14 @@
 
                                 <?php $user_email = strtolower($art[0]['user_email']); ?>
                                     <label>E-mail address:<span style="color:red">*</span></label>
-                                    <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter E-mail address" value="<?php if($email1){ echo $email1; } else { echo $user_email; } ?>">
+                                    <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter E-mail Address" value="<?php if($email1){ echo $email1; } else { echo $user_email; } ?>">
                                      <?php echo form_error('email'); ?>
                                 </fieldset>
                                
 
                                 <fieldset <?php if($phoneno) {  ?> class="error-msg" <?php } ?>>
                                     <label>Phone number:</label>
-                                    <input name="phoneno"  type="text" id="phoneno" tabindex="4" placeholder="Enter Phone number" value="<?php if($phoneno1){ echo $phoneno1; } ?>">
+                                    <input name="phoneno"  type="text" id="phoneno" tabindex="4" placeholder="Enter Phone Number" value="<?php if($phoneno1){ echo $phoneno1; } ?>">
                                     <?php echo form_error('phoneno'); ?><br/>
                                 </fieldset>
                                 

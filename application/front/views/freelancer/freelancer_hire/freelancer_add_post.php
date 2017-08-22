@@ -262,8 +262,7 @@
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+        
        
 
         <!-- This Js is used for call popup -->
@@ -429,7 +428,8 @@
             }
             // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_add_post.js'); ?>"></script>    
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_add_post.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
 
         <style type="text/css">
             #skills-error{margin-top: 42px;}

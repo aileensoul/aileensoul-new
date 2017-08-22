@@ -8,7 +8,6 @@
                 border-radius: 5px;
             }
         </style>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.0/select2.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
@@ -128,20 +127,15 @@
                                         </select> 
                                         <?php echo form_error('field'); ?>
                                     </fieldset>
-                                    <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?>>
+                                    <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <select name="skills[]" id ="skill1" tabindex="2" class="keyskil" multiple="multiple" style="width:100%;" >
-                                            <option></option>
-                                            <?php foreach ($skill1 as $skill) { ?>
-                                                <option value="<?php echo $skill['skill_id']; ?>"><?php echo $skill['skill']; ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <input id="skills1" name="skills" tabindex="7"   placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
                                         <?php echo form_error('area'); ?>
                                     </fieldset>
-                                    <fieldset>
+<!--                                    <fieldset>
                                         <label><?php echo $this->lang->line("other_skill"); ?> :</label>          
                                         <input type="text" class="keyskil" name="otherskill" tabindex="3" id="otherskill" value="<?php echo $otherskill1; ?>" placeholder="Enter other skill" >
-                                    </fieldset>
+                                    </fieldset>-->
                                     <fieldset  class="full-width">
                                         <label><?php echo $this->lang->line("skill_brief"); ?> :<span class="red">*</span></label>
 
@@ -217,18 +211,17 @@
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-            <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.3.0/select2.js"></script>
             <script>
-                var complex = <?php echo json_encode($selectdata); ?>;
+               // var complex = <?php echo json_encode($selectdata); ?>;
+               var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
 
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_professional_information.js'); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
 
             <style type="text/css">
                 #experience_year-error{margin-top: 42px;margin-left: 15px;}

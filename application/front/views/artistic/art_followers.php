@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 </head>
 <body  class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
@@ -91,7 +92,7 @@
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;   
 var data1 = <?php echo json_encode($city_data); ?>;
-var slug_id = '<?php echo $this->session->userdata('aileenuser'); ?>';
+var slug_id = '<?php echo $artisticdata[0]['user_id'] ?>';
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/followers.js'); ?>"></script>
 </body>

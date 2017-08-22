@@ -142,7 +142,7 @@
                                                 else
                                                 {
                                             ?>
-                                                 <option value="">Select country first</option>
+                                                 <option value="">Select Country First</option>
                                                   <?php
                                             
                                             }
@@ -186,7 +186,7 @@
                                                 else
                                                 {
                                             ?>
-                                        <option value="">Select state first</option>
+                                        <option value="">Select State First</option>
 
                                          <?php
                                             
