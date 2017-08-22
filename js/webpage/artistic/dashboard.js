@@ -193,6 +193,50 @@ var b = document.getElementById('test-upload-des').value;
     document.getElementById('test-upload-des').value = b;
     });
 
+
+
+function check_length(my_form)
+            {
+                maxLen = 50;
+             
+
+                // max number of characters allowed
+                if (my_form.my_text.value.length > maxLen) {
+                    // Alert message if maximum limit is reached. 
+                    // If required Alert can be removed. 
+                    var msg = "You have reached your maximum limit of characters allowed";
+                    $("#test-upload-product").prop("readonly", true);
+                    //    alert(msg);
+                   // my_form.text_num.value = maxLen - my_form.my_text.value.length;
+                    $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
+                    $('#bidmodal-limit').modal('show');
+                    // Reached the Maximum length so trim the textarea
+                    my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
+                } else {
+                    // Maximum length not reached so update the value of my_text counter
+                    my_form.text_num.value = maxLen - my_form.my_text.value.length;
+                }
+            }
+
+function check_lengthedit(abc)
+   { 
+       maxLen = 50;
+       var product_name = document.getElementById("editpostname" +abc).value;
+       if (product_name.length > maxLen) { 
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+           $("#editpostname" + abc).prop("readonly", true);
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+       } else { 
+           text_num = maxLen - product_name.length;
+           document.getElementById("text_num_" + abc).value = text_num;
+       }
+   }
+
+   
             var modal = document.getElementById('myModal3');
 
             // Get the button that opens the modal
@@ -228,6 +272,73 @@ var b = document.getElementById('test-upload-des').value;
                 });
             });
 
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+
+if(document.getElementById('bidmodal-limit').style.display === "block"){ 
+        $('#bidmodal-limit').modal('hide');
+    $("#test-upload-product").prop("readonly", false);
+        
+        $('#myModal3').model('show');
+ }else if(document.getElementById('myModal3').style.display === "block"){ 
+        document.getElementById('myModal3').style.display === "none";
+
+ }
+
+    }
+});  
+
+
+$(document).on('keydown', function (e) { 
+       if (e.keyCode === 27) {
+           if($('.modal-post').show()){
+   
+             $( document ).on( 'keydown', function ( e ) {
+             if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+          $('.modal-post').hide();
+
+           }
+          });  
+        
+   
+           }
+            document.getElementById('myModal3').style.display = "none";
+            }
+    });
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#likeusermodal').modal('hide');
+    }
+});
+
+$( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
+
+   $('#common-limit').on('click', function () {
+    $('#myModal').modal('show');
+    $("#test-upload-product").prop("readonly", false);
+    });
+
+
+$('#postedit').on('click', function () {
+   // $('#myModal').modal('show');
+    $(".my_text").prop("readonly", false);
+    });
+  
 
 $(function () {
                 var showTotalChar = 200, showChar = "More", hideChar = "";
@@ -1926,53 +2037,7 @@ function likeuserlist(post_id) {
                 });
             }
 
- function check_length(my_form)
-            {
-                maxLen = 50;
-             
-
-                // max number of characters allowed
-                if (my_form.my_text.value.length > maxLen) {
-                    // Alert message if maximum limit is reached. 
-                    // If required Alert can be removed. 
-                    var msg = "You have reached your maximum limit of characters allowed";
-                    $("#test-upload-product").prop("readonly", true);
-                    //    alert(msg);
-                   // my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                    $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
-                    $('#bidmodal-limit').modal('show');
-                    // Reached the Maximum length so trim the textarea
-                    my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
-                } else {
-                    // Maximum length not reached so update the value of my_text counter
-                    my_form.text_num.value = maxLen - my_form.my_text.value.length;
-                }
-            }
-
-function check_lengthedit(abc)
-   { 
-       maxLen = 50;
-
-       var product_name = document.getElementById("editpostname" +abc).value;
-     
-       if (product_name.length > maxLen) { 
-           text_num = maxLen - product_name.length;
-           var msg = "You have reached your maximum limit of characters allowed";
-
-           $("#editpostname" + abc).prop("readonly", true);
-           
-           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
-           $('#postedit').modal('show');
-        
-           var substrval = product_name.substring(0, maxLen);
-           $('#editpostname' + abc).val(substrval);
-         
-       } else { 
-           text_num = maxLen - product_name.length;
-
-           document.getElementById("text_num").value = text_num;
-       }
-   }
+ 
 
     $('body').on("click", "*", function (e) {
                 var classNames = $(e.target).attr("class").toString().split(' ').pop();
@@ -2053,12 +2118,7 @@ function picpopup() {
             $('#profileimage').modal('show');
 }
 
- $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-        $('#likeusermodal').modal('hide');
-    }
-});  
+ 
 
 jQuery(document).mouseup(function (e) {
             
@@ -2088,41 +2148,6 @@ jQuery(document).mouseup(function (e) {
         $('#myModal3').modal('show');
     });
 
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        //$( "#bidmodal" ).hide();
-
-if(document.getElementById('bidmodal-limit').style.display === "block"){ 
-        $('#bidmodal-limit').modal('hide');
-    $("#test-upload-product").prop("readonly", false);
-        
-        $('#myModal3').model('show');
- }else if(document.getElementById('myModal3').style.display === "block"){ 
-        document.getElementById('myModal3').style.display === "none";
-
- }
-
-    }
-});  
-
-
-$(document).on('keydown', function (e) { 
-       if (e.keyCode === 27) {
-           if($('.modal-post').show()){
-   
-             $( document ).on( 'keydown', function ( e ) {
-             if ( e.keyCode === 27 ) {
-           //$( "#bidmodal" ).hide();
-          $('.modal-post').hide();
-
-           }
-          });  
-        
-   
-           }
-            document.getElementById('myModal3').style.display = "none";
-            }
-    });
 
 
  $( document ).on( 'keydown', function (e) {
@@ -2150,29 +2175,10 @@ $('.modal-post').hide();
                 
    }
 
-$( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           //$( "#bidmodal" ).hide();
-           $('#postedit').modal('hide');
-         $('.my_text').attr('readonly', false);
 
-            //$('.modal-post').show();
-
-       }
-   });  
   
   
 
-$('#common-limit').on('click', function () {
-    $('#myModal').modal('show');
-    $("#test-upload-product").prop("readonly", false);
-    });
-
-
-$('#postedit').on('click', function () {
-   // $('#myModal').modal('show');
-    $(".my_text").prop("readonly", false);
-    });
 
  // post upload using ajaax start
 

@@ -14167,9 +14167,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 if ($row['art_post']) {
                     $counter = $row['art_post'];
                     $a = strlen($counter);
-                    $return_html .= '<input size = 1 id = "text_num' . $row['art_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
                 } else {
-                    $return_html .= '<input size = 1 id = "text_num' . $row['art_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
                 }
                 $return_html .= '</div>
 </div>
