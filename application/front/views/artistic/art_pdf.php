@@ -103,17 +103,25 @@
   <li>
   <div class="main_box_pdf">
 <div class="main_box_img">
-        <a href="<?php echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>">
+
+  <?php 
+              $contition_array = array('art_post_id' => $pdfv['post_id']);
+             $artistictitle = $this->data['artistictitle'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+              ?>
+
+        <!-- <a href="<?php //echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>"> -->
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['image_name']) ?>">
+
         <div class="margin_less" >
               <img src="<?php echo base_url('images/PDF.jpg')?>" style="height: 100%; width: 100%;">
                                                               
               </div></a> </div> 
 
-              <?php 
-              $contition_array = array('art_post_id' => $pdfv['post_id']);
-             $artistictitle = $this->data['artistictitle'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-              ?>
-        <div class="pdf_name"><a title="Zalak infotech .in pdf" href="<?php echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?></a> </div>
+              
+        <div class="pdf_name">
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['image_name']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>
+          
+        </a> </div>
 </div>
 </li>
         <!-- <a href="<?php echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>">

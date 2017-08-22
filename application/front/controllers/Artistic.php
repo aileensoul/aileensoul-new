@@ -2038,13 +2038,14 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
-                            $return_html .= '<a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                            $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div>
-                                                <a title="click to open" href="' . base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_id']).'">
+
+                                                <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
                                                     </div>
                                                 </a>
@@ -2079,25 +2080,25 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div  class="two-images">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
                                             </a>
                                         </div>';
@@ -2106,7 +2107,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -2117,7 +2118,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -2128,10 +2129,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         }
 
                         $return_html .= '<div class="four-image">
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($artmultiimage) - 4) . ')</span>
@@ -13038,13 +13039,16 @@ public function art_home_post() {
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
-                            $return_html .= '<a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                            $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div>
-                                                <a title="click to open" href="' . base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+
+                            <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+
+                                               <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
                                                     </div>
                                                 </a>
@@ -13079,25 +13083,25 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div  class="two-images">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="three-image" >
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
                                             </a>
                                         </div>';
@@ -13106,7 +13110,7 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -13117,7 +13121,7 @@ public function art_home_post() {
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
-                                                <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                                <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                     <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
                                                 </a>
                                             </div>';
@@ -13128,10 +13132,10 @@ public function art_home_post() {
                         }
 
                         $return_html .= '<div class="four-image">
-                                            <a href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '">
+                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
                                             </a>
-                                            <a class="text-center" href="' . base_url('artistic/postnewpage/' . $row['art_post_id']) . '" >
+                                            <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
                                                     <span>View All (+
                      ' . (count($artmultiimage) - 4) . ')</span>
@@ -13909,7 +13913,8 @@ public function art_home_post() {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['image_name']).'">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -14204,8 +14209,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
-                        $return_html .= '<div>
-            <a href="' . base_url('artistic/creat-pdf/' . $artmultiimage[0]['image_id']) . '"><div class="pdf_img">
+                        $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'"> 
+
+           <div class="pdf_img">
                     <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
                                                      width: 100%;
 ">
