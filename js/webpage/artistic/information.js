@@ -80,13 +80,13 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
 
                         firstname: {
 
-                            required: "First name Is Required.",
+                            required: "First name is required.",
                             
                         },
 
                         lastname: {
 
-                            required: "Last name Is Required.",
+                            required: "Last name is required.",
                             
                         },
 

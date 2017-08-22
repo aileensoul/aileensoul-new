@@ -62,7 +62,22 @@ textarea.onkeyup = function(evt) {
     this.scrollTop = this.scrollHeight;
 }
 
-
+if(complex != '')
+    { 
+        //alert(789);
+         $("#skils").select2({
+         placeholder: "Select your art",
+         }).select2('val', complex);
+    }
+   if(complex == '')
+    {
+        //alert(123);
+         $("#skils").select2({
+         placeholder: "Select your art",
+ 
+        });
+    }
+    
 jQuery.validator.addMethod("noSpace", function(value, element) { 
       return value == '' || value.trim().length != 0;  
     }, "No space please and don't leave it empty");
@@ -119,19 +134,19 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
 
                         artname: {
 
-                            required: "Speciality Is Required.",
+                            required: "Speciality is required.",
                             
                         },
 
                          skills: {
 
-                    required: "Skill Is Required.",
+                    required: "Skill is required.",
                    
                 },
 
                         desc_art: {
 
-                            required: "Description of your Art Is Required.",
+                            required: "Description of your art is required.",
                             
                         },
                        
@@ -142,21 +157,7 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
 
 
 
-if(complex != '')
-    { 
-        //alert(789);
-         $("#skils").select2({
-         placeholder: "Select your art",
-         }).select2('val', complex);
-    }
-   if(complex == '')
-    {
-        //alert(123);
-         $("#skils").select2({
-         placeholder: "Select your art",
- 
-        });
-    }
+
 
 
  $(".alert").delay(3200).fadeOut(300);
