@@ -101,7 +101,12 @@
            
                         <?php if($userdata[0]['art_bestofmine']){?>
                               <div style="visibility:show;" id ="pdffile">
-                              <a href="<?php echo base_url('artistic/creat_pdf1/'.$userdata[0]['art_id']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+
+                                 <a title="<?php echo ucfirst(strtolower($userdata[0]['art_bestofmine'])); ?>" href="<?php echo base_url($this->config->item('art_portfolio_main_upload_path') . $userdata[0]['art_bestofmine']) ?>">
+
+                             <!--  <a href="<?php //echo base_url('artistic/creat_pdf1/'.$userdata[0]['art_id']) ?>"> -->
+
+                              <i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
 
                               <a style="position: absolute; cursor:pointer;" onclick="delpdf();"><i class="fa fa-times" aria-hidden="true"></i></a>
 

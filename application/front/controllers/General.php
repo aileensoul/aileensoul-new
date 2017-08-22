@@ -64,7 +64,7 @@ class General extends MY_Controller {
       if (!empty($searchTerm)) {
            $contition_array = array('status' => 1,'type' => 2);
      $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-     $citylist = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+     $citylist = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill as text', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
      }
       foreach($citylist as $key => $value){
         //   $citydata[$key]['id'] = $value['id'];
