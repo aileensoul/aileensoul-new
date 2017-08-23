@@ -168,6 +168,7 @@ var data= <?php echo json_encode($demo); ?>;
 var base_url = '<?php echo base_url(); ?>';
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/address.js'); ?>"></script>
 </body>
 </html>

@@ -401,6 +401,7 @@ var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
 var slug = '<?php echo $artid; ?>';
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/dashboard.js'); ?>"></script>
  </body>
 </html>

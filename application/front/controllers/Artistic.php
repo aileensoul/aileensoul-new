@@ -113,81 +113,7 @@ class Artistic extends MY_Controller {
                 $this->data['phoneno1'] = $userdata[0]['art_phnno'];
             }
         }
-       // echo "<pre>"; print_r($this->data['email1']); die();
-        // code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
-
+      
         $this->load->view('artistic/art_basic_information', $this->data);
     }
 
@@ -349,79 +275,6 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                 //$this->data['address1'] = $userdata[0]['art_address'];
             }
         }
-        // code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $citiesss = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-        //    
-
-        foreach ($citiesss as $key1) {
-              
-                 $location[] = $key1['city_name'];
-             
-          }
-         // echo "<pre>"; print_r($location);die();
-          foreach ($location as $key => $value) {
-              $loc[$key]['label'] =$value;
-              $loc[$key]['value'] =$value;
-          }
-        
-        $this->data['city_data']= $loc;
-
 
         $this->load->view('artistic/art_address', $this->data);
     }
@@ -577,82 +430,6 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         $skildata = explode(',', $userdata[0]['art_skill']);
         $this->data['selectdata'] = $skildata;
         //echo "<pre>"; print_r( $this->data['selectdata']); die();
-        // code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
-
 
         $this->load->view('artistic/art_information', $this->data);
     }
@@ -779,81 +556,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
             }
         }
 
-        // code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
+   
 
         $this->load->view('artistic/art_portfolio', $this->data);
     }
@@ -1276,92 +979,9 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         }
 
         array_multisort($post, SORT_DESC, $qbc);
-        // echo '<pre>';
-        // print_r($qbc);
-        // exit;
         $this->data['finalsorting'] = $qbc;
-        //echo "<pre>"; print_r($this->data['finalsorting'] );
-       // echo count($this->data['finalsorting']); die();
-        // die();
-        // sorting end
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        // / echo "<pre>"; print_r($result);die();
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
        
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
-       // echo "<pre>"; print_r($this->data['artisticdata'][0]['art_step']); die();
-        if(!$this->data['artisticdata']){ //echo"mm"; die();
+        if(!$this->data['artisticdata']){ 
         redirect('artistic/');
        }else{ //echo "123456789"; die();
        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
@@ -1407,80 +1027,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
         }
         //echo "<pre>"; print_r($this->data['artsdata']); die();
-        // code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' , 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
         
-        $this->data['de'] = array_values($res);
 
        if(!$this->data['artisticdata'] && !$this->data['artsdata']){ //echo "22222222"; die();
       
@@ -3275,87 +2822,6 @@ $datacount = count($otherdata);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-
-
-     $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
-
-
-
-
         if($this->data['artisticdata']){
 
             $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
@@ -3429,86 +2895,6 @@ $datacount = count($otherdata);
 
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        
-
-       
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0' ,'art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
 
         if($this->data['artisticdata']){
        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
@@ -4242,79 +3628,7 @@ public function followtwo() {
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         }
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
 
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
 
         if($this->data['artisticdata']){
 
@@ -4547,80 +3861,6 @@ public function followtwo() {
 
             $this->data['userlist'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
 
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
@@ -4975,75 +4215,6 @@ public function followtwo() {
         }
 
 //artistics mange post data end
-// code for search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $this->data['demo'] = $result;
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
 
         $this->load->view('artistic/art_savepost', $this->data);
     }
@@ -7193,77 +6364,7 @@ public function delete_commenttwo_postnewpage() {
 
         //echo "<pre>"; print_r($this->data['art_data']);die();
 
-        //code search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
         
-        $this->data['de'] = array_values($res);
 
 
         if($this->data['artisticdata']){
@@ -7676,77 +6777,6 @@ public function delete_commenttwo_postnewpage() {
 
            $this->data['artistic_data'] = $art_data; 
         }
-//code search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
 
 
         if($this->data['artisticdata']){
@@ -7802,78 +6832,7 @@ public function delete_commenttwo_postnewpage() {
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        //code search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-     $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
         
-        $this->data['de'] = array_values($res);
-
 
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
@@ -7929,77 +6888,6 @@ public function delete_commenttwo_postnewpage() {
         }
 
 
-        //code search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-             $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
 
 
         if($this->data['artisticdata']){
@@ -8055,79 +6943,6 @@ public function delete_commenttwo_postnewpage() {
 
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-        //code search
-        $contition_array = array('status' => '1', 'is_delete' => '0','art_step' => 4);
-
-
-        $artdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $return_array = array();
-        //  //echo  $return_array;
-
-        foreach ($artdata as $get) {
-            $return = array();
-            $return = $get;
-
-
-            $return['firstname'] = $get['art_name'] . " " . $get['art_lastname'];
-            unset($return['art_name']);
-            unset($return['art_lastname']);
-
-            array_push($return_array, $return);
-            //echo $returnarray; 
-        }
-
-        $contition_array = array('status' => '1', 'type' => '2');
-
-        $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($artpost);die();
-
-
-        $uni = array_merge($return_array, $artpost);
-        //   echo count($unique);
-
-
-        foreach ($uni as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-
-     $contition_array = array('status' => '1');
-
-       
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-           
-
-            foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-        
-        $this->data['de'] = array_values($res);
-
 
         if($this->data['artisticdata']){ 
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
@@ -14793,5 +13608,55 @@ $return_html .= '<div class="art-all-comment col-md-12">
         }
         echo $fourdata;
     }
+
+    // for search function start
+
+     public function artistic_search_keyword($id = "") {
+       
+        $searchTerm = $_GET['term'];
+        if (!empty($searchTerm)) {
+        
+       
+       $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => '4');
+        $search_condition = "(art_name LIKE '" . trim($searchTerm) . "%' OR art_lastname LIKE '" . trim($searchTerm) . "%' OR designation LIKE '" . trim($searchTerm) . "%'OR other_skill LIKE '" . trim($searchTerm) . "%')";
+        $artistic_postdata = $this->common->select_data_by_search('art_reg', $search_condition,$contition_array, $data = 'art_name,art_lastname,designation,other_skill', $sortby = 'art_name,art_lastname,designation,other_skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'art_name,art_lastname,designation,other_skill');
+
+        $contition_array = array('status' => '1', 'type' => '2');
+        $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+        $skill = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = 'skill', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+        }
+        $unique = array_merge($skill, $artistic_postdata);
+        foreach ($unique as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $result[] = $val;
+                }
+            }
+        }
+        foreach ($result as $key => $value) {
+            $result1[$key]['value'] = $value;
+        }
+        $result1 = array_values($result1);
+
+        echo json_encode($result1);
+    }
+public function artistic_search_city($id = "") {
+    $searchTerm = $_GET['term'];
+     if (!empty($searchTerm)) {
+        $contition_array = array('status' => '1');
+        $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
+        $location_list = $this->common->select_data_by_search('cities', $search_condition,$contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+          foreach ($location_list as $key1 => $value) {
+            foreach ($value as $ke1 => $val1) {
+                $location[] = $val1;
+            }
+        }
+        foreach ($location as $key => $value) {
+            $city_data[$key]['value'] = $value;
+        }
+       echo json_encode($city_data);
+     }
+}
+   
     
 }

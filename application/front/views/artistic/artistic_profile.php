@@ -305,6 +305,7 @@ var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 var slug = '<?php echo $artid; ?>';
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/details.js'); ?>"></script>
  </body>
 </html>

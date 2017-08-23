@@ -177,6 +177,7 @@ var data1 = <?php echo json_encode($city_data); ?>;
  var art_step = "<?php echo $art_reg_data[0]['art_step']; ?>";
  
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/portfolio.js'); ?>"></script>
 </body>
 </html>
