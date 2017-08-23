@@ -1442,13 +1442,13 @@ function followuser(clicked_id)
    {
    
        var editpostname = document.getElementById("editpostname" + abc);
-       alert(editpostname);
+       //alert(editpostname);
        var $field = $('#editpostdesc' + abc);
        var editpostdetails = $('#editpostdesc' + abc).html();
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
       
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
+       if ((editpostname.value.trim() == '') && (editpostdetails == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
