@@ -3044,7 +3044,7 @@ public function ajax_userlist() {
 
 
 
-    public function follow() {
+    public function follow() { //echo "2"; die();
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start
@@ -3070,29 +3070,24 @@ public function ajax_userlist() {
         $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        if ($follow) {
-            $data = array(
-                'follow_type' => 1,
-                'follow_from' => $artdata[0]['art_id'],
-                'follow_to' => $art_id,
-                'follow_status' => 1,
-            );
-            $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
 
             // insert notification
 
 
-            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3, 'not_img' => 2);
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
             $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($artnotification[0]['not_read'] == 2) {
+            //echo "<pre>"; print_r($artnotification); die();
+                if ($artnotification[0]['not_read'] == 2) {//echo "11"; die();
                     
-                } elseif ($artnotification[0]['not_read'] == 1) {
+                } elseif ($artnotification[0]['not_read'] == 1) {//echo "22"; die();
 
                     $datafollow = array(
-                        'not_read' => 2
+                        'not_read' => 2,
+                        'not_created_date' => date('Y-m-d H:i:s')
+
                     );
 
-                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $artfollowuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3, 'not_img' => 2);
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
                     $this->db->where($where);
                     $updatdata = $this->db->update('notification', $datafollow);
                 } 
@@ -3110,6 +3105,18 @@ public function ajax_userlist() {
 // //echo '<pre>'; print_r($data); die();
 //             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
+
+
+        if ($follow) {
+            $data = array(
+                'follow_type' => 1,
+                'follow_from' => $artdata[0]['art_id'],
+                'follow_to' => $art_id,
+                'follow_status' => 1,
+            );
+            $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+
 
        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
         $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3206,6 +3213,8 @@ public function ajax_userlist() {
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
+
+
         if ($follow) {
             $data = array(
                 'follow_type' => 1,
@@ -3267,6 +3276,9 @@ public function ajax_userlist() {
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //  echo "<pre>"; print_r($follow); die();
 
+        $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
+        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
         if ($follow) {
             $data = array(
                 'follow_type' => 1,
@@ -3278,18 +3290,36 @@ public function ajax_userlist() {
 
             // insert notification
 
-            $data = array(
-                'not_type' => 8,
-                'not_from_id' => $artdata[0]['art_id'],
-                'not_to_id' => $art_id,
-                'not_read' => 2,
-                'not_product_id' => $follow[0]['follow_id'],
-                'not_from' => 3,
-                'not_active' => 1,
-                'not_created_date' => date('Y-m-d H:i:s')
-            );
 
-            $insert_id = $this->common->insert_data_getid($data, 'notification');
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+            $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if ($artnotification[0]['not_read'] == 2) {
+                    
+                } elseif ($artnotification[0]['not_read'] == 1) {
+
+                    $datafollow = array(
+                        'not_read' => 2,
+                        'not_created_date' => date('Y-m-d H:i:s')
+
+                    );
+
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+                    $this->db->where($where);
+                    $updatdata = $this->db->update('notification', $datafollow);
+                } 
+
+            // $data = array(
+            //     'not_type' => 8,
+            //     'not_from_id' => $artdata[0]['art_id'],
+            //     'not_to_id' => $art_id,
+            //     'not_read' => 2,
+            //     'not_product_id' => $follow[0]['follow_id'],
+            //     'not_from' => 3,
+            //     'not_active' => 1,
+            //     'not_created_date' => date('Y-m-d H:i:s')
+            // );
+
+            // $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
 
@@ -3363,6 +3393,8 @@ public function followtwo() {
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //  echo "<pre>"; print_r($follow); die();
+        $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
+        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($follow) {
             $data = array(
@@ -3375,18 +3407,36 @@ public function followtwo() {
 
             // insert notification
 
-            $data = array(
-                'not_type' => 8,
-                'not_from_id' => $artdata[0]['art_id'],
-                'not_to_id' => $art_id,
-                'not_read' => 2,
-                'not_product_id' => $follow[0]['follow_id'],
-                'not_from' => 3,
-                'not_active' => 1,
-                'not_created_date' => date('Y-m-d H:i:s')
-            );
 
-            $insert_id = $this->common->insert_data_getid($data, 'notification');
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+            $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if ($artnotification[0]['not_read'] == 2) {
+                    
+                } elseif ($artnotification[0]['not_read'] == 1) {
+
+                    $datafollow = array(
+                        'not_read' => 2,
+                        'not_created_date' => date('Y-m-d H:i:s')
+
+                    );
+
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+                    $this->db->where($where);
+                    $updatdata = $this->db->update('notification', $datafollow);
+                } 
+
+            // $data = array(
+            //     'not_type' => 8,
+            //     'not_from_id' => $artdata[0]['art_id'],
+            //     'not_to_id' => $art_id,
+            //     'not_read' => 2,
+            //     'not_product_id' => $follow[0]['follow_id'],
+            //     'not_from' => 3,
+            //     'not_active' => 1,
+            //     'not_created_date' => date('Y-m-d H:i:s')
+            // );
+
+            // $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
 
