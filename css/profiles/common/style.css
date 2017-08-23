@@ -3656,9 +3656,59 @@ padding: 8px 7px;
     text-align: justify;
     font-size: 13px;
     color: black;
-
 }
-
+.post-design-mid {
+    padding-top: 5px;
+    background-color: #ffffff;
+    border-bottom: 6px solid #f6f4f5;
+    background-color: #ffffff;
+    padding-left: 23px;
+    padding-right: 23px;
+    border-bottom: none;
+    border-top: none;
+    float: left;
+    width: 100%;
+}
+.audio_img {
+    height: 300px!important;
+    width: 350px!important;
+    position: relative!important;
+}
+.audio_img img {
+    height: 100%;
+    width: 100%;
+}
+.audio_main_div {
+    margin: 0 auto;
+    width: 50%;
+}
+.audio_source {
+    position: absolute;
+    bottom: 0;
+}
+.audio_source audio {
+    width: 350px;
+}
+.audio_mp3 {
+    width: 46.5%;
+    position: absolute;
+    top: 8px;
+    left: 27%;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    word-break: all;
+}
+.audio_mp3 p {
+    text-align: center;
+    width: 64%;
+    margin-left: 18%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
 
 
 

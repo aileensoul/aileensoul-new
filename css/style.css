@@ -6014,21 +6014,20 @@ word-break:break-word;
     height: 100%;
     width: 100%;
 }
-.post-design-mid {
+/**.post-design-mid {
     padding-top: 5px;
     background-color: #ffffff;
     border-bottom: 6px solid #f6f4f5;
     background-color: #ffffff;
     padding-left: 23px;
     padding-right: 23px;
-    /* border: 1px solid #efefef; */
-    /* z-index: 9;*/
+    
     
     border-bottom: none;
     border-top: none;
     float: left;
     width: 100%;
-}
+}**/
 .post-design-pro-comment-img {
     margin-top: 3px;
     display: inline-block;
@@ -9355,7 +9354,7 @@ border-top-right-radius: 4px;
     margin-left: 10px;
 }
 /*
-audio*/
+audio
 
 .audio_img {
     height: 300px!important;
@@ -9396,7 +9395,7 @@ audio*/
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: default;
-}
+}**/
 .common_form_set {
     border: 1px solid #ddd;
     border-top: 1;
