@@ -293,6 +293,15 @@ function post_like(clicked_id)
 
 
    // insert comment scrpit start
+// for only br tag not valid scrtipt strat
+
+function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }
+
 
 
 function insert_comment(clicked_id)
@@ -310,7 +319,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/div>/gi, 'p>');
 
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            return false;
        }
        if (/^\s+$/gi.test(txt))
@@ -377,9 +386,10 @@ function insert_comment(clicked_id)
                txt = txt.replace(/<br>$/, '');
 
               txt = txt.replace(/div>/gi, 'p>');
+              //alert(txt); return false;
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    return false;
                }
                if (/^\s+$/gi.test(txt))
@@ -543,7 +553,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/<br>$/, '');
         txt = txt.replace(/div>/gi, 'p>');
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
            $('#bidmodal').modal('show');
            return false;
@@ -591,7 +601,7 @@ function insert_comment(clicked_id)
                txt = txt.replace(/div>/gi, 'p>');
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                    $('#bidmodal').modal('show');
                    return false;
@@ -646,7 +656,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/div>/gi, 'p>');
 
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
            $('#bidmodal').modal('show');
            return false;
@@ -696,7 +706,7 @@ function insert_comment(clicked_id)
                txt = txt.replace(/div>/gi, 'p>');
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                    $('#bidmodal').modal('show');
                    return false;
@@ -1432,12 +1442,13 @@ function followuser(clicked_id)
    {
    
        var editpostname = document.getElementById("editpostname" + abc);
+       alert(editpostname);
        var $field = $('#editpostdesc' + abc);
        var editpostdetails = $('#editpostdesc' + abc).html();
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
       
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
