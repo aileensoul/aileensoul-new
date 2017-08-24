@@ -19,9 +19,9 @@
                                   <form action=<?php echo base_url('search/execute_search')?> method="get">
                                         <div class="new-search-input">
 
-                                             <input type="text" id="tags1" name="skills" placeholder="Find Your Art">
+                                             <input type="text" id="tags1" name="skills" placeholder="Artists, Skills, Keywords">
 
-                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location">
+                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
                                             
                                             <button type="submit" class="btn btn-primary" onclick="return check()">Search</button>
                                         </div>
@@ -107,8 +107,8 @@
                                     <button type="button" class="close">×</button>
                                    <form action=<?php echo base_url('search/execute_search')?> method="get">
                                         <div class="new-search-input">
-                                              <input type="text" id="tags1" name="skills" placeholder="Find Your Art">
-                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location">
+                                              <input type="text" id="tags1" name="skills" placeholder="Artists, Skills, Keywords">
+                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
                                              <button type="submit" class="btn btn-primary" onclick="return check()">Search</button>
                                         </div>
                                     </form>
