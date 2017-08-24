@@ -8457,7 +8457,7 @@ class Business_profile extends MY_Controller {
                             $contactdata .= '</div>';
                         }
                         $contactdata .= '</div>';
-                        $contactdata .= '<div class="addcontact-text">';
+                        $contactdata .= '<div class="addcontact-text_full">';
                         $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
                         //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                         $contactdata .= '</div>';
