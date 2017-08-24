@@ -2720,7 +2720,7 @@ border-top: none;
     content: " :";
     margin-left: -15px;
     float: left;
-}**/
+}**
 .profile-job-post-location-name {
     padding: 12px 21px;
     font-weight: bold;
@@ -2786,7 +2786,7 @@ border-top: none;
     width: 100%;
     height: 100%;
 }
-.bui_res_i {
+/**.bui_res_i {
     position: relative;
     width: 225px;
     margin: 0px;
@@ -4495,9 +4495,9 @@ abbr {
     background-color: #f9f9f9;
     cursor: pointer;
 }
-.buisness-profile-pic img {
+/**.buisness-profile-pic img {
     width: 100%;
-}
+}**/
 .buisness-contact-head {
     background: #e6e6e6;
     padding: 2px;
@@ -4568,7 +4568,7 @@ abbr {
     width: 100%;
     float: left;
 }
-/* The Close Button */
+/* The Close Button *
 
 .close {
     color: #aaaaaa;
@@ -4593,13 +4593,13 @@ abbr {
 .job_rec_post ul li {
     display: block;
 }
-.follow-img {
+/**.follow-img {
     height: 60px;
     margin-bottom: 14px;
     width: 60px;
-}
+}**
 .profile-job-post-location-name ul li .follow-img img {
-    /*border-radius: 100%;*/
+    
     
     height: 100%;
     width: 100%;
@@ -4611,7 +4611,7 @@ abbr {
     display: inline-block;
     padding: 7px 0px 0px;
     font-weight: 400;
-}
+}**/
 .follow-box ul li .Frnd_req-pic {
     height: 100px;
     width: 100px;
@@ -4643,7 +4643,7 @@ abbr {
 .profile-job-post-title-inside .profile-job-profile-button .job-all-post-lastdate-date {
     padding-left: 10px;
 }
-/* profile box*/
+/* profile box*
 
 .follow-li-text {
     white-space: nowrap;
@@ -4654,10 +4654,10 @@ abbr {
     display: block;
     text-overflow: ellipsis;
     width: 90%;
-    /* min-width: 30%; */
+    
     
     white-space: nowrap;
-}
+}**/
 .win10-wrapper .profile-box {
     display: none
 }
@@ -5813,7 +5813,7 @@ padding:0px;
 font-family: arial;
 display: contents;
 word-break:break-word;
-}**/
+}**
 
 
 .user_lst ul li button{
@@ -9078,9 +9078,9 @@ fieldset .add_post_btns {
 
 .notificationsmsg #notificationTitle{display: none !important;}
 
-.user_lst li .follow-li-text a {
+/**.user_lst li .follow-li-text a {
     color: #1b8ab9!important;
-}
+}**/
 .user_lst li .follow-li-text a:hover {
     color: #136386!important;
 }
@@ -9105,16 +9105,16 @@ fieldset .add_post_btns {
 }
 /**.post-design-pro-img_follow img {
     border: 1px solid #d9d9d9;
-}**/
+}**
 .follow-img {
     border: 1px solid #d9d9d9;
-}
+}**/
 .edit_bui_img {
     border: 1px solid #d9d9d9;
 }
-.buisness-profile-pic img {
+/**.buisness-profile-pic img {
     border: 1px solid #d9d9d9;
-}
+}**/
 .all-box li img {
     border: 1px solid #d9d9d9;
 }/**
@@ -9154,12 +9154,12 @@ fieldset .add_post_btns {
 .bor_none {
     border-top: 1px solid #d9d9d9;
 }
-.user_lst li a {
+/**.user_lst li a {
     color: #91949d!important;
 }
-.profile-job-post-detail .buisness-profile-pic {
+/**.profile-job-post-detail .buisness-profile-pic {
     padding: 3px 4px;
-}
+}**/
 .pdf{padding: 0px !important;}
 #jobseeker_regform_higher_secondary .job_education_submitbox {
     margin-top: 20px;
@@ -9865,14 +9865,14 @@ font-weight: 600;}
     display: table;
     clear: both;
 }
-.column1 {
+/**.column1 {
     float: left;
     float: left;
     margin-bottom: 6px;
     margin-top: 10px;
     width: 227px;
     height: 173px;
-}
+}**/
 .art_no_post_text_c{color: #bfbfbf; font-size: 20px;   }
 .images_add_bui{display: block;
 text-align: center;
@@ -11300,10 +11300,10 @@ zalak 9-6 css*/
 .modal_popup {
     padding-top: 42px!important;
 }
-.popup-img-popup {
+/**.popup-img-popup {
     height: 325px;
     overflow-y: scroll;
-}
+}**
 .bui_popup_img {
     display: inline-block;
     height: 129px;
@@ -11313,7 +11313,7 @@ zalak 9-6 css*/
 .bui_popup_img img {
     width: 100%;
     height: 100%;
-}
+}**/
 .slider_img {
     width: 100%;
     height: 430px;
@@ -15059,22 +15059,22 @@ padding-top: 14px;
 .header .mCSB_container ul{width:100%; float:left;}
 .header .mCSB_container ul li{width:100%; border-right:none;}
 .header .mCSB_container ul li a{padding-left:0; padding:0 10px 0 0 !important; width: 100%; letter-spacing:0;}
-.header .mCSB_container .day-text{padding-top:1px;}**/
+.header .mCSB_container .day-text{padding-top:1px;}**
 /**.header2 .mCSB_container li{border-right:0px !important;}
 .header2 ul.notification_data_in_h2 li .data_noti_msg{margin-top:2px; width:100%; float:left;}
 header .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical, header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {margin:0;}
-**/
+**
 
-/*style_harshad*/
+/*style_harshad*
 /**.header2 #InboxFooter a {
     color: #000;
     font-weight: 500;
     font-size: 13px;
-}**/
-.cont_req button{font-size: 12px; width: 100px;}
+}**
+.cont_req button{font-size: 12px; width: 100px;}**/
 .action-button #message_count{/*line-height: 10px;*/}
 .cancel_req_busi{margin:5px 4px;}
-.user_btn button{margin-top: 10px;}
+/**.user_btn button{margin-top: 10px;}**/
 .select2-container--open .select2-dropdown--below{z-index: 900;}
 /**.header2 ul li a#addcontactLink{padding: 6px 15px;}
 .header2 ul li a.bus-h{padding: 8px 12px;}
