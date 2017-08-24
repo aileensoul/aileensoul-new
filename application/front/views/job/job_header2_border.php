@@ -1,25 +1,7 @@
 
 
 <!--post save success pop up style end -->
-
-<style type="text/css">
-  
- .dropdown-content_hover{   display: none;
-    position: absolute;
-    color: #3b5283;
-    background-color: #fff;
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    margin-top: 3px;
-    z-index: 1;
-    left: -23px;
-    border-radius: 4px;
- padding-bottom: 7px;}
-
-</style>
-
  
-   
 <header>
 
     <div class="bg-search">
@@ -59,10 +41,10 @@
                                 <li id="art_profile" <?php if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('job/job_all_post'); ?>" title="Home"><span class="home-22x22-h"></span></a>
                                     </li>
                                 <!-- Friend Request Start-->
-<!-- <h3>hello</h3> -->
+
                                      <li id="Inbox_link " class="job_con">
                                         <?php if ($message_count) { ?>
-                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;  ?></span> -->
+                                                          
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -121,8 +103,6 @@
        </div> 
     </header>
     
-    
-
     
 
  <!-- Bid-modal  -->

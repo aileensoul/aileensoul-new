@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
 <!-- This Css is used for call popup -->
 <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
 <?php //if($jobdata[0]['job_step'] == 10){ ?>
-<?php echo $job_header2_border; ?>
-<?php //} ?>
+<!-- <?php //echo $job_header2_border; ?>
+ --><?php //} ?>
 <!-- END HEADER -->
 <!-- This style is used for autocomplete start -->
  <style type="text/css">
@@ -202,10 +203,13 @@
                <div class="job-saved-boxe_2" >
                   <div class="edu_tab fw">
                      <h3>Educational  Qualification</h3>
+
+
                      <div class="col-md-12 col-sm-12 col-xs-12">
+
                         <div class="panel-group wrap" id="bs-collapse">
+
                            <div class="panel">
-                             
                               <div <?php if($this->uri->segment(3) =="primary"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?> id="panel-heading">
                                  <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle">
@@ -214,6 +218,7 @@
                                  </h4>
                               </div>
                               <div id="one" <?php if($this->uri->segment(3) =="primary"){ ?> class="panel-collapse collapse in"<?php }else{ ?> class="panel-collapse collapse" <?php } ?>>
+
                                  <div class="panel-body">
                                     <section id="section1">
                                        <article class="none_aaaart">
@@ -1143,6 +1148,7 @@
 <!-- Calender JS Start-->
 <!-- Calender JS Start-->
 <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js') ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
@@ -1333,8 +1339,8 @@
                     </script>
 
 <!-- duplicate div -->
-<script type="text/javascript" src="<?php echo base_url('js/app.js') ?>"></script> 
-<!-- duplicate div end -->
+<!-- <script type="text/javascript" src="<?php //echo base_url('js/app.js') ?>"></script> 
+ --><!-- duplicate div end -->
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
 <!--validation for edit email formate form-->
@@ -3468,10 +3474,14 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this D
              if($('#panel-heading').hasClass('active')){
    
                        $('#panel-heading').removeClass('active');
+                         // $('#one').removeClass('in'); 
+                         //  $('#toggle').addClass('collapsed');
    
              }else{
                        //$('#one').addClass('in');
                        $('#panel-heading').addClass('active'); 
+                        // $('#one').addClass('in'); 
+                        //  $('#toggle').removeClass('collapsed');
                         $('#panel-heading1').removeClass('active');
                         $('#panel-heading2').removeClass('active');
                         $('#panel-heading3').removeClass('active');
@@ -3808,14 +3818,3 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this D
    //script for only jpg png image upload start
 </script>
 
-
-
-<style type="text/css">
-   #stream1-error{margin-right: 34px;}
-   #university1-error{margin-right: 32px;}
- /*  #university1-error{margin-right: 0px;}*/
-   #college1-error{margin-right:33px;}
-   #percentage1-error{margin-right: 33px;}
-   #pass_year1-error{margin-right: 32px;}
-   #degree1-error{margin-right: 34px;}
-</style>
