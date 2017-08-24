@@ -328,8 +328,12 @@ function unfollowuser_list(clicked_id)
                $('.' + 'frusercount').html(data.unfollow);
                if(data.notcount == 0){
                  $('.' + 'contact-frnd-post').html(data.notfound);
+               $('#countfollow').html(data.notcount);
+
                }else{ 
               $('#' + 'removefollow' + clicked_id).fadeOut(4000);
+               $('#countfollow').html(data.notcount);
+
                  }   
                 }
             }); 
