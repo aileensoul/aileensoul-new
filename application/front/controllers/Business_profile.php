@@ -11418,34 +11418,24 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $multiimage['image_name']) . '" style="width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $multiimage['image_name']) . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -11460,9 +11450,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $businessmultiimage[3]['image_name']) . '"> </a>
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')
