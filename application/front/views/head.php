@@ -43,7 +43,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/profiles/common/mobile.css" />
 <script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
 <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
 
