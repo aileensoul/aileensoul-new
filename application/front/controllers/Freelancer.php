@@ -4241,21 +4241,21 @@ class Freelancer extends MY_Controller {
 // cover pic controller
 
     public function ajaxpro_hire() {
-        echo "hiiii";
+       
        // echo "<pre>";print_r($_POST['image']);die();
         $userid = $this->session->userdata('aileenuser');
 
+
+
         $contition_array = array('user_id' => $userid);
-        $user_reg_data = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'profile_background, profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $user_reg_data = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $user_reg_prev_image = $user_reg_data[0]['profile_background'];
         $user_reg_prev_main_image = $user_reg_data[0]['profile_background_main'];
 
         if ($user_reg_prev_image != '') {
-           // echo "5555";die();
             $user_image_main_path = $this->config->item('free_hire_bg_main_upload_path');
             $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
-            echo "<pre>"; print_r($user_bg_full_image);die();
             if (isset($user_bg_full_image)) {
                 unlink($user_bg_full_image);
             }
@@ -4267,7 +4267,6 @@ class Freelancer extends MY_Controller {
             }
         }
         if ($user_reg_prev_main_image != '') {
-            echo "99999";die();
             $user_image_original_path = $this->config->item('free_hire_bg_original_upload_path');
             $user_bg_origin_image = $user_image_original_path . $user_reg_prev_main_image;
             if (isset($user_bg_origin_image)) {
@@ -4275,16 +4274,19 @@ class Freelancer extends MY_Controller {
             }
         }
 
+
         $data = $_POST['image'];
+
 
         // $imageName = time() . '.png';
         // $base64string = $data;
-        // file_put_contents('uploads/free_hire_bg/' . $imageName, base64_decode(explode(', ', $base64string)[1]));
+        // file_put_contents('uploads/free_hire_bg/' . $imageName, base64_decode(explode(',', $base64string)[1]));
+
 
         $user_bg_path = $this->config->item('free_hire_bg_main_upload_path');
         $imageName = time() . '.png';
         $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
+        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
 
         $user_thumb_path = $this->config->item('free_hire_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('free_hire_bg_thumb_width');
@@ -4294,20 +4296,27 @@ class Freelancer extends MY_Controller {
 
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
+
+
         $data = array(
             'profile_background' => $imageName
         );
 
         $update = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
-
-        $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = '*', $join_str = array());
-
-        echo '<img src = "' . $this->data['jobdata'][0]['profile_background'] . '" />';
+        //echo $userid;die();
+        $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
+       // echo "<pre>";print_r($this->data['jobdata']);die();
+        //echo $this->data['jobdata'][0]['profile_background'];
+      //  $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
+        $coverpic='<img  src="'. base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
+      echo $coverpic;
+     // echo "<pre>"; print_r($coverpic);die();
+       // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
 
     public function image_hire() {
         
-        echo "dddd";die();
+       
         //echo "hhhhhhhhh";die();
         $userid = $this->session->userdata('aileenuser');
 
