@@ -1023,12 +1023,14 @@ function followuser(clicked_id)
    
        $.ajax({
            type: 'POST',
-           url: base_url + "artistic/follow_two",
+           url: base_url + "artistic/follow_home",
            //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
            data: 'follow_to=' + clicked_id,
            success: function (data) {
    
-               $('.' + 'fr' + clicked_id).html(data);
+               $('.' + 'fr' + clicked_id).html(data.follow);
+               $('#countfollow').html(data.count);
    
            }
    

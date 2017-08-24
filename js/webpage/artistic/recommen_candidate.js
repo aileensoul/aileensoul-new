@@ -889,12 +889,14 @@ function followuser(clicked_id)
       //alert(clicked_id);
         $.ajax({
             type: 'POST',
-            url: base_url + "artistic/follow_two",
+            url: base_url + "artistic/follow",
             //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+                $('#countfollow').html(data.count);
 
             }
         });
@@ -905,12 +907,14 @@ function followuser(clicked_id)
 
         $.ajax({
             type: 'POST',
-            url: base_url + "artistic/unfollow_two",
+            url: base_url + "artistic/unfollow",
             //url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('#countfollow').html(data.count);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
 
             }
         });

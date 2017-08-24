@@ -3256,6 +3256,152 @@ public function ajax_userlist() {
         }
     }
 
+
+public function follow_home() { //echo "2"; die();
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+
+        $art_id = $_POST["follow_to"];
+
+        $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
+
+        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //  echo "<pre>"; print_r($follow); die();
+
+        $contition_array = array('art_id' => $art_id, 'status' => 1, 'is_delete' => 0 ,'art_step' => 4);
+        $followuserid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+
+            // insert notification
+
+
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+            $artnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($artnotification); die();
+                if ($artnotification[0]['not_read'] == 2) {//echo "11"; die();
+                    
+                } elseif ($artnotification[0]['not_read'] == 1) {//echo "22"; die();
+
+                    $datafollow = array(
+                        'not_read' => 2,
+                        'not_created_date' => date('Y-m-d H:i:s')
+
+                    );
+
+                    $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $followuserid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 3);
+                    $this->db->where($where);
+                    $updatdata = $this->db->update('notification', $datafollow);
+                } 
+
+//             $data = array(
+//                 'not_type' => 8,
+//                 'not_from_id' => $userid,
+//                 'not_to_id' => $followuserid[0]['user_id'],
+//                 'not_read' => 2,
+//                 'not_product_id' => $follow[0]['follow_id'],
+//                 'not_from' => 3,
+//                 'not_active' => 1,
+//                 'not_created_date' => date('Y-m-d H:i:s')
+//             );
+// //echo '<pre>'; print_r($data); die();
+//             $insert_id = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+
+
+        if ($follow) {
+            $data = array(
+                'follow_type' => 1,
+                'follow_from' => $artdata[0]['art_id'],
+                'follow_to' => $art_id,
+                'follow_status' => 1,
+            );
+            $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+
+
+       $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($update) {
+
+
+                $follow = '<div id="unfollowdiv">';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                  $follow .= '</div>'; */
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '</div>';
+                
+               $datacount = '('.count($followcount).')';
+
+
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
+            }
+        } else {
+            $data = array(
+                'follow_type' => 1,
+                'follow_from' => $artdata[0]['art_id'],
+                'follow_to' => $art_id,
+                'follow_status' => 1,
+            );
+            $insert = $this->common->insert_data_getid($data, 'follow');
+
+            // insert notification
+
+            $data = array(
+                'not_type' => 8,
+                'not_from_id' => $userid,
+                'not_to_id' => $followuserid[0]['user_id'],
+                'not_read' => 2,
+                'not_product_id' => $insert,
+                'not_from' => 3,
+                'not_active' => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'notification');
+            // end notoification
+
+
+        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($insert) {
+
+               $follow = '<div id="unfollowdiv">';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                  $follow .= '</div>'; */
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '</div>';
+
+                $datacount = '('.count($followcount).')';
+
+
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
+
+
+            }
+        }
+    }
     public function follow_two() {
         $userid = $this->session->userdata('aileenuser');
 
