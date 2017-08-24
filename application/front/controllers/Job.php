@@ -4469,15 +4469,7 @@ public function delete_workexp()
             
     }
 //THIS FUNCTION IS USED TO CHECK IF USER NOT REGISTER AND OPEN DIRECT URL THEN GO TO REGISTRATION PAGE END
-public function temp(){
 
-    $this->load->view('job/temp');
-    }
-     public function temp4(){
-
-    $this->load->view('job/temo4');
-    }
-    
     // recruiter available chek
 public function job_avail_check($userid = " ") 
  {
@@ -4495,4 +4487,36 @@ public function job_avail_check($userid = " ")
          
         $this->load->view('job/notavalible', $this->data);  
      }
+
+
+//Retrive all data of dergree,stream and university start
+      public function ajax_data() {
+
+         $userid = $this->session->userdata('aileenuser');
+        // ajax for degree start
+
+        if (isset($_POST["degree_id"]) && !empty($_POST["degree_id"])) {
+            //Get all stream data
+             $contition_array = array('is_delete' => '0','degree_id' => $_POST["degree_id"]);
+          $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+            $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            //Count total number of rows
+            //Display stram list
+            if (count($stream) > 0) {
+                echo '<option value="">Select stream</option>';
+                foreach ($stream as $st) {
+                    echo '<option value="' . $st['stream_id'] . '">' . $st['stream_name'] . '</option>';
+                   die();
+                }
+            } else {
+                echo '<option value="">Stream not available</option>';
+               die();
+            }
+        }
+
+        // ajax for degree end
+
+    }
+     //Retrive all data of dergree,stream and university start
 }

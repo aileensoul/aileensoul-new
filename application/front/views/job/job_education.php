@@ -967,8 +967,14 @@
 <!--validation for edit email formate form-->
 
 <script>
-     var base_url = '<?php echo base_url(); ?>';
+    var base_url = '<?php echo base_url(); ?>';
     var predefine_data =' <?php echo $predefine_data; ?>';
+    var stream_alldata='<?php foreach ($stream_alldata as $stream){?>';
+    var stream_id='<?php echo $stream['stream_id']; ?>"';
+    var stream_name='<?php echo $stream['stream_name']; ?>';
+    var bracket='<?php } ?>';
+    var stream_otherdata='<?php echo $stream_otherdata[0]['stream_id']; ?>';
+    var stream_otherdata_stream='<?php echo $stream_otherdata[0]['stream_name']; ?>';
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_education.js'); ?>"></script>
