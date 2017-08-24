@@ -17424,14 +17424,7 @@ font-size: 12px;
 }
 /*** test for form ***/
 
-@media screen and (max-width: 320px) {
-    .main-txt{width: 82%;}
-    .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
-    .how-it-popup{width: 97%;}
-    .header2 ul li.active a{padding: 9px 0px 9px;}
-    .created_date {font-size: 8px; letter-spacing: 0.5px;}
-    .profile-job-details .post_title{font-size: 9px;}
-}
+
 /***  all keyframe css  ***/
 
 /***  keyfream css  ***/
@@ -17603,7 +17596,4 @@ img.aligncenter {
     margin-left: auto;
     display: block;
     clear: both;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__rendered li.select2-search--inline {
-    width: 100%;
 }
