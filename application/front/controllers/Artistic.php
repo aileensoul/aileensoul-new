@@ -1935,7 +1935,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -6012,6 +6012,225 @@ public function delete_commenttwo_postnewpage() {
         // khyati chande 
     }
 
+
+
+
+public function insert_comment_postnewpage() {
+
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to artistic/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
+
+        $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if($artistic_deactive)
+        {
+             redirect('artistic/');
+        }
+     //if user deactive profile then redirect to artistic/index untill active profile End
+
+        $post_id = $_POST["post_id"];
+        $post_comment = $_POST["comment"];
+
+        $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
+        $artdatacomment = $this->data['artdatacomment'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $data = array(
+            'user_id' => $userid,
+            'art_post_id' => $post_id,
+            'comments' => $post_comment,
+            'created_date' => date('Y-m-d H:i:s', time()),
+            'status' => 1,
+            'is_delete' => 0
+        );
+
+
+
+        $insert_id = $this->common->insert_data_getid($data, 'artistic_post_comment');
+
+
+        // insert notification
+
+        if ($artdatacomment[0]['user_id'] == $userid || $artdatacomment[0]['is_delete'] == '1') {
+            
+        } else {
+            $data = array(
+                'not_type' => 6,
+                'not_from_id' => $userid,
+                'not_to_id' => $artdatacomment[0]['user_id'],
+                'not_read' => 2,
+                'not_product_id' => $insert_id,
+                'not_from' => 3,
+                'not_img' => 1,
+                'not_active' => 1,
+                'not_created_date' => date('Y-m-d H:i:s')
+            );
+
+            $insert_id = $this->common->insert_data_getid($data, 'notification');
+        }
+        // end notoification
+
+
+
+        $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// khyati changes start
+        $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
+        foreach ($artdata as $art) {
+
+            $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
+
+            $artlastname = $this->db->get_where('art_reg', array('user_id' => $art['user_id']))->row()->art_lastname;
+
+
+            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
+
+            $cmtinsert .= '<div class="all-comment-comment-box">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+            $cmtinsert .= '<div class="post-design-pro-comment-img">';
+
+            if($art_userimage){
+
+                if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
+                            $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+                                $cmtinsert .= '<div class="post-img-div">';
+                                $cmtinsert .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                                $cmtinsert .=  '</div>';
+
+
+                        } else {
+
+            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+
+                }
+
+              $cmtinsert .=  '</div>';
+            }else{
+
+
+                         $a = $artname;
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
+
+
+                    $cmtinsert .= '<div class="post-img-div">';
+                    $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
+                    $cmtinsert .=  '</div>';
+
+
+                    $cmtinsert .= '</div>';
+
+            }
+
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+            $cmtinsert .= '</div>';
+            $cmtinsert .= '</a>';
+            $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
+            $cmtinsert .= $this->common->make_links($art['comments']);
+            $cmtinsert .= '</div>';
+            $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
+//            $cmtinsert .= '<textarea  name="' . $art['artistic_post_comment_id'] . '" id="editcommenttwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="commentedittwo(this.name)">';
+//            $cmtinsert .= '' . $art['comments'] . '';
+//            $cmtinsert .= '</textarea>';
+            $cmtinsert .= '<div contenteditable="true" style="display:none; min-height:37px !important; margin-top: 0px!important; margin-left: 1.5% !important; width: 81%;" class="editable_text" name="' . $art['artistic_post_comment_id'] . '"  id="editcommenttwo' . $art['artistic_post_comment_id'] . '" placeholder="Type Message ..." value= ""  onkeyup="commentedittwo(' . $art['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $art['comments'] . '</div>';
+            $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onclick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Save</button></span>';
+            $cmtinsert .= '</div></div>';
+
+//            $cmtinsert .= '<button id="editsubmittwo' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_commenttwo(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+            $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
+            $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+            $cmtinsert .= 'onClick="comment_like1(this.id)">';
+
+
+
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('artistic_post_comment_id' => $art['artistic_post_comment_id'], 'status' => '1');
+            $artcommentlike = $this->data['artcommentlike'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $likeuserarray = explode(',', $artcommentlike[0]['artistic_comment_like_user']);
+
+            if (!in_array($userid, $likeuserarray)) {
+
+
+                $cmtinsert .= '<i class="fa fa-thumbs-up fa-1x" aria-hidden="true"></i>';
+            } else {
+                $cmtinsert .= '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+            }
+            $cmtinsert .= '<span>';
+
+            if ($art['artistic_comment_likes_count'] > 0) {
+                $cmtinsert .= ' ' . $art['artistic_comment_likes_count'];
+            }
+            $cmtinsert .= '</span>';
+            $cmtinsert .= '</a></div>';
+
+            $userid = $this->session->userdata('aileenuser');
+            if ($art['user_id'] == $userid) {
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+
+
+                $cmtinsert .= '<div id="editcommentboxtwo' . $art['artistic_post_comment_id'] . '" style="display:block;">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                $cmtinsert .= 'onClick="comment_editboxtwo(this.id)">';
+                $cmtinsert .= 'Edit';
+                $cmtinsert .= '</a></div>';
+                $cmtinsert .= '<div id="editcancletwo' . $art['artistic_post_comment_id'] . '" style="display:none;">';
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '" onClick="comment_editcancletwo(this.id)">Cancel  </a></div>';
+
+                $cmtinsert .= '</div>';
+            }
+
+            $userid = $this->session->userdata('aileenuser');
+
+            $art_userid = $this->db->get_where('art_post', array('art_post_id' => $art['art_post_id'], 'status' => 1))->row()->user_id;
+
+            if ($art['user_id'] == $userid || $art_userid == $userid) {
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<div class="comment-details-menu">';
+
+                $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
+                $cmtinsert .= 'id="post_deletetwo"';
+                $cmtinsert .= 'value= "' . $art['art_post_id'] . '">';
+
+                $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
+                $cmtinsert .= 'onClick="comment_deletetwo(this.id)">';
+                $cmtinsert .= 'Delete';
+                $cmtinsert .= '</a></div>';
+            }
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<div class="comment-details-menu">';
+            $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($art['created_date']))) . '</p></div></div></div>';
+
+
+            // comment aount variable start
+//            $idpost = $art['art_post_id'];
+//            $cmtcount = '<a onClick="commentall(this.id)" id="' . $idpost . '">';
+//            $cmtcount .= '<i class="fa fa-comment-o" aria-hidden="true">';
+//            $cmtcount .= ' ' . count($artdata) . '';
+//            $cmtcount .= '</i></a>';
+//            
+             $cntinsert =  '<span class="comment_count" >';
+     if (count($artdata) > 0) {
+           $cntinsert .= '' . count($artdata) . ''; 
+           $cntinsert .=   '</span>'; 
+           $cntinsert .=  '<span> Comment</span>';
+        
+           }
+        }
+        //echo $cmtinsert;
+        echo json_encode(
+                array("comment" => $cmtinsert,
+                    "comment" => $cmtinsert,
+                    "commentcount" => $cntinsert));
+        // khyati chande 
+    }
     public function insert_commentthree() {
 
         $userid = $this->session->userdata('aileenuser');
@@ -12257,7 +12476,7 @@ public function art_home_post() {
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -13365,7 +13584,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 </div>
                 <div class="edit-comment-box">
                     <div class="inputtype-edit-comment">
-                        <div contenteditable="true"  class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment"' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                        <div contenteditable="true"  style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment"' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                         <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                     </div>
                 </div>
@@ -13554,19 +13773,12 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                     //
                           $a = $artname;
-                          $words = explode(" ", $a);
-                          foreach ($words as $w) {
-                            $acronym = $w[0];
-                            }
-                          
-                          $b = $artlastname;
-                          $words = explode(" ", $b);
-                          foreach ($words as $w) {
-                            $acronym1 = $w[0];
-                            }
+                            $acr = substr($a, 0, 1);
+                            $b = $artlastname;
+                            $bcr = substr($b, 0, 1);
 
                     $fourdata .= '<div class="post-img-div">';
-                    $fourdata .=  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); 
+                    $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
 
 

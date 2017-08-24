@@ -1448,7 +1448,7 @@ function followuser(clicked_id)
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
       
-       if ((editpostname.value.trim() == '') && (editpostdetails == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
+       if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    

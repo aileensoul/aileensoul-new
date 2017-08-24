@@ -2898,10 +2898,7 @@ fieldset .add_post_btns {
     width: 22.5%;
     margin-top: 0px;
 }
-.job-contact-frnd {width: 100%; float: left;}
 .job-contact-frnd .add-post-button{text-align:right;}
-.job-contact-frnd .profile-job-post-detail { background-color: #ffffff; border: 1px solid #d9d9d9; border-radius: 4px;
-    margin-bottom: 15px;}
 .profile-job-profile-button {background-color: #e8f3f8; padding: 4px 0px; border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul {list-style: none; display: block;
@@ -3002,6 +2999,9 @@ fieldset .add_post_btns {
 /***----------- end  common css for job recrutor and freelancer  ------------***/
 
 /***----------- common css for all profile  --------------***/
+.job-contact-frnd {width: 100%; float: left;}
+.job-contact-frnd .profile-job-post-detail { background-color: #ffffff; border: 1px solid #d9d9d9; border-radius: 4px;
+    margin-bottom: 15px;}
 .contact-frnd-post {width: 100%; float: left; border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px; padding: 10px; background-color: white; border: 1px solid #d9d9d9; border-top: none;}
 .user-midd-section {
     margin: 15px 0 35px;
@@ -3249,11 +3249,29 @@ fieldset .select2-container-multi .select2-choices .select2-search-choice a.sele
 	
 	
 /***---------- end  common css for all profile  -------------***/
+
 /***------- common css for freelance hire and recruiter  ----------***/ 
 .add-post-button {margin: 30px 10px 10px;}
 
 /***---------  end common css for freelance hire and recruiter  ----------***/ 
+
 /***--------- common css for bus and art  ----------***/
+.job-saved-box h3 {
+    background: #fff !important;
+    margin: 0;
+    padding: 8px 15px 8px;
+    color: #1b8ab9;
+	border: 1px solid #d9d9d9;
+    text-align: center;
+    font-size: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 28px;
+    border-top-left-radius: 4px;
+    border: 1px solid #d9d9d9;
+    border-top-right-radius: 3px;
+}
 /**  left user list box  **/
 .full-box-module_follow {
     border: 1px solid #d9d9d9;
@@ -3495,15 +3513,12 @@ padding: 8px 7px;
     border-radius: 3px;
 }
 .post-design-top {
-    
-    
     padding-top: 10px!important;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 5px;
     padding-bottom: 0px;
     background-color: #ffffff;
-    
     width: 100%;
     border-bottom: none;
 }
@@ -4626,112 +4641,88 @@ max-width: inherit;
 background-image: url('../images/music-icon.png');
 background-size: 100%;
 }
-
-
-
-
-
-
-
-
-/***--------- end common css for bus and art  ----------***/ 
-
-/***---------  model css  -------------***/
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 6;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-    
+.profile-job-post-detail .buisness-profile-pic {
+    padding: 3px 4px;
 }
-.modal-body {
-    padding: 0px!important
-}
-.modal.in .modal-dialog{
-    position:absolute;
-    top: 50%; left: 50%;
-    -ms-transform: translate(-50%,-50%) !important;
-    -webkit-transform: translate(-50%,-50%) !important;
-    -moz-transform: translate(-50%,-50%) !important;
-    -o-transform: translate(-50%,-50%) !important;
-    transform: translate(-50%,-50%) !important;
-}
-.modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;  
-    width: 100%;
+.column1 {
     float: left;
-}
-.modal-close, .posterror-modal-close
-.modal-close1 {
-    height: 30px !important;
-    width: 30px !important;
-    background: #1b8ab9 !important;
-    color: #fff !important;
-    font-size: 24px !important;
-    border: 1px solid #1b8ab9 !important;
-    border-radius: 50% !important;
-    position: absolute !important;
-    top: -15px !important;
-    right: -15px !important;
-    line-height: 22px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    text-align: center !important;
-    z-index: 7 !important;
-}
-.modal.message-box .modal-body {
-    text-align: center;
-}
-.modal.message-box span.mes {
-    font-size: 20px;
-    line-height: normal;
-    color: #232323;
-    display: block;
-    margin: 15px 0;
-}
-.modal-open .modal {
-    z-index: 10002;
-}
-.modal.message-box span.mes{padding:10px 34px 0;}
-#popup-form input[type=file] {
-    width: 100%;
-}
-#popup-form input[type=submit] {
-    float: right;
-    width: auto;
-    margin: 10px 0;
-    margin-right: 1px;
-}
-#popup-form img {
-    max-width: 180px;
-    height: 200px;
+    float: left;
+    margin-bottom: 6px;
     margin-top: 10px;
+    width: 227px;
+    height: 173px;
 }
-.popup_previred img {
-    border: 1px solid rgb(204, 204, 204);
-    display: none;
-    margin: 0 auto;
-    margin-top: 5px;
-    padding: 5px;
+.bui_res_i {
+    position: relative;
+    width: 225px;
+    margin: 0px;
+    height: 165px;
+    display: inline-block;
+    float: left;
+ 
+    padding-left: 10px;
 }
-#popup-form input[type=file]:focus {
-    outline: none;
+.bui_res_i img {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
 }
-#popup-form input[type="submit"]{margin:15px 1px 10px 0;}
-.deactive {padding-top: 20px;}
-#bidmodal{z-index: 10003;}
+.buisness-profile-pic img {
+    width: 100%;
+	border: 1px solid #d9d9d9;
+}
 
-/** post model **/
+
+/** css **/
+.dropdown2 a {
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.dropdown2 .fa-ellipsis-v {
+    color: #999999;
+}
+.dropdown2 {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 15;
+}
+.dropdown-content2 a {
+    color: #1b8ab9;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown2 a:hover {
+    background-color: #f1f1f1
+}
+.dropdown2 .dropdown-content2 a:hover {
+    background: #1b8ab9;
+    color: #fff;
+}
+.dropdown2 a:hover {
+    background-color: #f1f1f1
+}
+.dropdown-content2 a{color: #787878!important;}
+.dropdown-content2 a:hover{color: white!important;}
+.dropdown-content2 a:hover .h4-img{background: url(../img/icon_delete_white.png) no-repeat;background-size:100%;}
+.dropdown-content2 a:hover .h3-img{background:url(../img/icon_edit_profile_white.png) no-repeat;background-size:100%;}
+.dropdown-content2 a:hover .h2-img{background: :url(../img/icon_view_profile_white.png) no-repeat,background-size:100%;}
+.dropdown-content2 a i {
+    padding-right: 13px;
+}
+
+/** popup **/
 .modal-post {
     display: none;
     position: fixed;
@@ -4847,53 +4838,205 @@ background-size: 100%;
     font-size: 15px;
     margin-bottom: 4px;
 }
-.dropdown2 a {
-    color: #000000;
-    cursor: pointer;
-    padding: 5px 10px;
-}
-.dropdown2 .fa-ellipsis-v {
-    color: #999999;
-}
-.dropdown2 {
+.close {
+    color: #aaaaaa;
     float: right;
-    position: relative;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.popup-img-popup {
+    height: 325px;
+    overflow-y: scroll;
+}
+.bui_popup_img {
+    display: inline-block;
+    height: 129px;
+    width: 129px;
+    padding: 3px;
+}
+.bui_popup_img img {
+    width: 100%;
+    height: 100%;
+}
+.profile-job-post-location-name {
+    padding: 12px 21px;
+    font-weight: bold;
+}
+.profile-job-post-location-name ul {
+    padding: 0;
+    font-size: 0;
+}
+.profile-job-post-location-name ul li {
+    margin: 0;
+    list-style: none;
     display: inline-block;
 }
-.dropdown-content2 {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    right: 0;
-    z-index: 15;
+.profile-job-post-location-name ul li i {
+    padding-right: 5px;
 }
-.dropdown-content2 a {
-    color: #1b8ab9;
-    padding: 12px 10px;
-    text-decoration: none;
+.follow-img {
+    border: 1px solid #d9d9d9;
+    height: 60px;
+    margin-bottom: 14px;
+    width: 60px;
+}
+.user_lst li a {
+    color: #91949d!important;
+}
+.profile-job-post-location-name ul li .follow-img img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.profile-job-post-location-name ul li .follow-li-text {
+    font-size: 18px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 7px 0px 0px;
+    font-weight: 400;
+}
+.user_lst li .follow-li-text a {
+    color: #1b8ab9!important;
+}
+.follow-li-text {
+    white-space: nowrap;
+    width: 100%;
+}
+.follow-li-text a {
+    overflow: hidden;
     display: block;
+    text-overflow: ellipsis;
+    width: 90%;
+    white-space: nowrap;
 }
-.dropdown2 a:hover {
-    background-color: #f1f1f1
+.user_lst ul li button{
+    font-weight: normal;
+    font-family: robotoregular;
+    background: -moz-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -ms-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);      border: 1px solid #d9d9d9;
+    font-size: 14px;
 }
-.dropdown2 .dropdown-content2 a:hover {
-    background: #1b8ab9;
-    color: #fff;
+.user_btn button{margin-top: 10px;}
+.cont_req button{font-size: 12px; width: 100px;}
+
+
+
+
+
+
+/***--------- end common css for bus and art  ----------***/ 
+
+/*** ---------  only bus  -----------  ***/
+
+
+/*** ---------  end only bus  -----------  ***/
+
+/***---------  model css  -------------***/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 6;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    
 }
-.dropdown2 a:hover {
-    background-color: #f1f1f1
+.modal-body {
+    padding: 0px!important
 }
-.dropdown-content2 a{color: #787878!important;}
-.dropdown-content2 a:hover{color: white!important;}
-.dropdown-content2 a:hover .h4-img{background: url(../img/icon_delete_white.png) no-repeat;background-size:100%;}
-.dropdown-content2 a:hover .h3-img{background:url(../img/icon_edit_profile_white.png) no-repeat;background-size:100%;}
-.dropdown-content2 a:hover .h2-img{background: :url(../img/icon_view_profile_white.png) no-repeat,background-size:100%;}
-.dropdown-content2 a i {
-    padding-right: 13px;
+.modal.in .modal-dialog{
+    position:absolute;
+    top: 50%; left: 50%;
+    -ms-transform: translate(-50%,-50%) !important;
+    -webkit-transform: translate(-50%,-50%) !important;
+    -moz-transform: translate(-50%,-50%) !important;
+    -o-transform: translate(-50%,-50%) !important;
+    transform: translate(-50%,-50%) !important;
 }
+.modal.in .modal-dialog .mes .pop_content{padding-bottom:5px;}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;  
+    width: 100%;
+    float: left;
+}
+.modal-close, .posterror-modal-close
+.modal-close1 {
+    height: 30px !important;
+    width: 30px !important;
+    background: #1b8ab9 !important;
+    color: #fff !important;
+    font-size: 24px !important;
+    border: 1px solid #1b8ab9 !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: -15px !important;
+    right: -15px !important;
+    line-height: 22px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    z-index: 7 !important;
+}
+.modal.message-box .modal-body {
+    text-align: center;
+}
+.modal.message-box span.mes {
+    font-size: 20px;
+    line-height: normal;
+    color: #232323;
+    display: block;
+    margin: 15px 0;
+}
+.modal-open .modal {
+    z-index: 10002;
+}
+.modal.message-box span.mes{padding:10px 34px 0;}
+#popup-form input[type=file] {
+    width: 100%;
+}
+#popup-form input[type=submit] {
+    float: right;
+    width: auto;
+    margin: 10px 0;
+    margin-right: 1px;
+}
+#popup-form img {
+    max-width: 180px;
+    height: 200px;
+    margin-top: 10px;
+}
+.popup_previred img {
+    border: 1px solid rgb(204, 204, 204);
+    display: none;
+    margin: 0 auto;
+    margin-top: 5px;
+    padding: 5px;
+}
+#popup-form input[type=file]:focus {
+    outline: none;
+}
+#popup-form input[type="submit"]{margin:15px 1px 10px 0;}
+.deactive {padding-top: 20px;}
+#bidmodal{z-index: 10003;}
+
+
+
 
 
 

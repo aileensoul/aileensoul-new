@@ -3821,18 +3821,6 @@ class Freelancer extends MY_Controller {
         if (empty($_FILES['profilepic']['name'])) {
             $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
         } else {
-            // $config['upload_path'] = 'uploads/user_image/';
-            // $config['allowed_types'] = 'jpg|jpeg|png|gif|mp4|3gp|mpeg|mpg|mpe|qt|mov|avi|pdf';
-            // $config['file_name'] = $_FILES['profilepic']['name'];
-            // //Load upload library and initialize configuration
-            // $this->load->library('upload', $config);
-            // $this->upload->initialize($config);
-            // if ($this->upload->do_upload('profilepic')) {
-            //     $uploadData = $this->upload->data();
-            //     $picture = $uploadData['file_name'];
-            // } else {
-            //     $picture = '';
-            // }
 
 
             $freelancer_post_userimage = '';
@@ -3881,11 +3869,11 @@ class Freelancer extends MY_Controller {
             if ($error) {
                 $this->session->set_flashdata('error', $error[0]);
                 if ($this->input->post('hitext') == 1) {
-                    redirect('freelancer/freelancer_applied_post', refresh);
+                    redirect('freelancer-work/freelancer_applied_post', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer/freelancer_save_post', refresh);
+                    redirect('freelancer-work/saved-projects', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
-                    redirect('freelancer/freelancer_post_profile', refresh);
+                    redirect('freelancer-work/freelancer-details', refresh);
                 }
                 // $redirect_url = site_url('dashboard');
                 // redirect($redirect_url, 'refresh');

@@ -77,8 +77,8 @@
                 <div class="profile-photo">
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
-                            <?php if ($jobdata[0]['freelancer_post_user_image'] != '') { ?>
-                                <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $jobdata[0]['freelancer_post_user_image']); ?>" alt="" >
+                            <?php if ($freepostdata[0]['freelancer_post_user_image'] != '') { ?>
+                                <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="" >
                                 <?php
                             } else {
                                 $fname = $freepostdata[0]['freelancer_post_fullname'];
