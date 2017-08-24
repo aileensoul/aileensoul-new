@@ -3868,13 +3868,14 @@ public function followtwo() {
             $join_str[0]['from_table_id'] = 'art_reg.art_id';
             $join_str[0]['join_type'] = '';
 
-            
+
 
             //$limit = $perpage;
             //$offset = $start;
 
             $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'follow_status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
+            //echo "<pre>"; print_r($userlist); die();
             //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'art_step' => 4);
