@@ -42,7 +42,7 @@
                                                                     <?php foreach ($databus as $data) {
                                                                         ?>
                                                                         <li>
-                                                                            <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>
+                                                                            <img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>
                                                                         </li>
                                                                         <?php
                                                                         $i++;

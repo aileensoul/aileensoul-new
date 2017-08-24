@@ -737,6 +737,19 @@ $config['bus_profile_thumb_width'] = '160';
 $config['bus_profile_thumb_height'] = '160';
 
 
+// BUSINESS DETAILS IMAGE
+$config['bus_detail_main_upload_path'] = 'uploads/business_profile/main/';
+$config['bus_detail_main_allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+$config['bus_detail_main_max_size'] = '800000'; //in KB
+$config['bus_detail_main_max_width'] = '4500';
+$config['bus_detail_main_max_height'] = '3000';
+
+// BUSINESS DETAILS IMAGE THUMBS
+$config['bus_detail_thumb_upload_path'] = 'uploads/business_profile/thumbs/';
+$config['bus_detail_thumb_width'] = '235';
+$config['bus_detail_thumb_height'] = '165';
+
+
 // BUSINESS PROFILE BACKGROUND
 $config['bus_bg_main_upload_path'] = 'uploads/business_bg/main/';
 //$config['bus_bg_main_allowed_types'] = 'jpg|jpeg|png|gif|pdf';
@@ -756,7 +769,7 @@ $config['bus_bg_original_upload_path'] = 'uploads/business_bg/original/';
 
 // BUSINESS POST 
 $config['bus_post_main_upload_path'] = 'uploads/business_post/main/';
-//$config['bus_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|pdf|mp4|mp3|avi|ogg|3gp|webm';
+$config['bus_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
 $config['bus_post_main_allowed_types'] = '*';
 $config['bus_post_main_max_size'] = '800000'; //in KB
 $config['bus_post_main_max_width'] = '4500';
@@ -764,8 +777,23 @@ $config['bus_post_main_max_height'] = '3000';
 
 // BUSINESS POST THUMBS
 $config['bus_post_thumb_upload_path'] = 'uploads/business_post/thumbs/';
-$config['bus_post_thumb_width'] = '350';
-$config['bus_post_thumb_height'] = '200';
+$config['bus_post_thumb_width'] = '335';
+$config['bus_post_thumb_height'] = '250';
+
+// BUSINESS POST 335 X 320
+$config['bus_post_350_320_upload_path'] = 'uploads/business_post/335X320/';
+$config['bus_post_350_320_width'] = '335';
+$config['bus_post_350_320_height'] = '320';
+
+// BUSINESS POST 335 X 245
+$config['bus_post_335_245_upload_path'] = 'uploads/business_post/335X245/';
+$config['bus_post_335_245_width'] = '335';
+$config['bus_post_335_245_height'] = '245';
+
+// BUSINESS POST 210 X 210
+$config['bus_post_210_210_upload_path'] = 'uploads/business_post/210X210/';
+$config['bus_post_210_210_width'] = '210';
+$config['bus_post_210_210_height'] = '210';
 
 
 // ARTISTIC PROFILE IMAGE
