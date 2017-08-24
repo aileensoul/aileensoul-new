@@ -590,7 +590,7 @@
                                                             <!-- khyati changes start -->
 
                                                             <div  id="<?php echo "threecommentimg" . $artdata['image_id']; ?>" style="display:block">
-                                                                <div class="<?php echo 'insertcommentimg' . $artdata['image_id']; ?>">
+                                                                <div class="hidebottomborder <?php echo 'insertcommentimg' . $artdata['image_id']; ?>">
                                                                     <?php
                                                                     $contition_array = array('post_image_id' => $artdata['image_id'], 'is_delete' => '0');
                                                                     $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -1036,7 +1036,7 @@
                                     <!-- khyati changes start -->
 
                                     <div  id="<?php echo "threecomment" . $art_data[0]['art_post_id']; ?>" style="display:block">
-                                        <div class="<?php echo 'insertcomment' . $art_data[0]['art_post_id']; ?>">
+                                        <div class="hidebottomborder <?php echo 'insertcomment' . $art_data[0]['art_post_id']; ?>">
                                             <?php
                                             $contition_array = array('art_post_id' => $art_data[0]['art_post_id'], 'status' => '1');
                                             $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');

@@ -387,6 +387,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                             document.getElementById('editcancle' + clicked_id).style.display = 'block';
                             $($('#box_hide' + abc)).hide();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                            
                         }
 
 
@@ -396,6 +398,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcomment' + clicked_id).style.display = 'none';
                             document.getElementById('showcomment' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
 
                             $($('#box_hide' + abc)).show();
                         }
@@ -414,6 +418,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                             document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                             $($('#box_hide' + abc)).hide();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
                         }
 
 
@@ -426,6 +432,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
                             $($('#box_hide' + abc)).show();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                         }
 
 function edit_comment2(abc)
@@ -873,6 +881,8 @@ function edit_comment(abc,clicked_id)
                                     document.getElementById('editcancle' + abc).style.display = 'none';
                                     $('#' + 'showcomment' + abc).html(data);
                                     $('#box_hide' + clicked_id).show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -921,6 +931,8 @@ function edit_comment(abc,clicked_id)
                                             document.getElementById('editcancle' + abc).style.display = 'none';
                                             $('#' + 'showcomment' + abc).html(data);
                                             $('#box_hide' + clicked_id).show();
+                                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                         }
                                     });
                                 }
@@ -964,6 +976,8 @@ function edit_commenttwo(abc,clicked_id)
                                     document.getElementById('editcancletwo' + abc).style.display = 'none';
                                     $('#' + 'showcommenttwo' + abc).html(data);
                                     $('#box_hide' + clicked_id).show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -1019,7 +1033,8 @@ function edit_commenttwo(abc,clicked_id)
 
                                             $('#' + 'showcommenttwo' + abc).html(data);
                                             $('#box_hide' + clicked_id).show();
-
+                                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                                         }
                                     });
                                 }

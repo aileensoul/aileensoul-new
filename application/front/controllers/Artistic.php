@@ -1861,7 +1861,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         <div  id="fourcomment' . $row['art_post_id'] . '" style="display:none;">
                         </div>
                         <div id="threecomment' . $row['art_post_id'] . '" style="display:block">
-                            <div class="insertcomment' . $row['art_post_id'] . '">';
+                            <div class="hidebottomborder insertcomment' . $row['art_post_id'] . '">';
 
                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
                    $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -5857,7 +5857,7 @@ public function delete_commenttwo_postnewpage() {
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // khyati changes start
-        $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
+        $cmtinsert = '<div  class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($artdata as $art) {
 
             $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
@@ -6077,7 +6077,7 @@ public function insert_comment_postnewpage() {
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // khyati changes start
-        $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
+        $cmtinsert = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
         foreach ($artdata as $art) {
 
             $artname = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_name;
@@ -9070,7 +9070,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('art_post_id' => $post_id, 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $fourdata = '<div class="insertcommenttwo' . $post_id . '">';
+        $fourdata = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
 
         if ($artdata) {
             foreach ($artdata as $rowdata) {
@@ -9233,7 +9233,7 @@ public function insert_comment_postnewpage() {
 
         // echo '<pre>'; print_r($artmulimage1); die();
 
-        $fourdata = '<div class="insertcommentimgtwo' . $image_id . '">';
+        $fourdata = '<div class="hidebottombordertwo insertcommentimgtwo' . $image_id . '">';
 
 
         foreach ($artmulimage1 as $rowdata) {
@@ -9677,7 +9677,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('post_image_id' => $post_image_id, 'is_delete' => '0');
         $artcont = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $cmtinsert = '<div class="insertcommentimgtwo' . $post_image_id . '">';
+        $cmtinsert = '<div class="hidebottombordertwo insertcommentimgtwo' . $post_image_id . '">';
         //echo "<pre>"; print_r($artcomment); die();
         foreach ($artcomment as $art_comment) {
 
@@ -12401,7 +12401,7 @@ public function art_home_post() {
                         <div  id="fourcomment' . $row['art_post_id'] . '" style="display:none;">
                         </div>
                         <div id="threecomment' . $row['art_post_id'] . '" style="display:block">
-                            <div class="insertcomment' . $row['art_post_id'] . '">';
+                            <div class="hidebottomborder insertcomment' . $row['art_post_id'] . '">';
 
                    $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
                    $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -13514,7 +13514,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     <div id="fourcomment' . $row['art_post_id'] . '" style="display:none;">
     </div>
     <div  id="threecomment' . $row['art_post_id'] . '" style="display:block">
-        <div class="insertcomment' . $row['art_post_id'] . '">';
+        <div class="hidebottomborder insertcomment' . $row['art_post_id'] . '">';
                 $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
                 $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
 
@@ -13736,7 +13736,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
         $contition_array = array('art_post_id' => $post_id, 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $fourdata = '<div class="insertcommenttwo' . $post_id . '">';
+        $fourdata = '<div class="hidebottombordertwo insertcommenttwo' . $post_id . '">';
 
         if ($artdata) {
             foreach ($artdata as $rowdata) {

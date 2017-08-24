@@ -946,6 +946,8 @@ function entercomment(clicked_id)
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
             }
 
 
@@ -955,7 +957,7 @@ function entercomment(clicked_id)
                 document.getElementById('editcomment' + clicked_id).style.display = 'none';
                 document.getElementById('showcomment' + clicked_id).style.display = 'block';
                 document.getElementById('editsubmit' + clicked_id).style.display = 'none';
-
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                 $('.post-design-commnet-box').show();
             }
 
@@ -973,6 +975,8 @@ function entercomment(clicked_id)
                 document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
             }
 
 
@@ -985,6 +989,8 @@ function entercomment(clicked_id)
                 document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                 document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
                 $('.post-design-commnet-box').show();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
             }
 
             function comment_editbox3(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
@@ -1074,6 +1080,8 @@ function entercomment(clicked_id)
                         document.getElementById('editcancle' + abc).style.display = 'none';
                         $('#' + 'showcomment' + abc).html(data);
                         $('.post-design-commnet-box').show();
+                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1153,6 +1161,8 @@ function edit_comment2(abc)
                                 document.getElementById('editcancle' + abc).style.display = 'none';
                                 $('#' + 'showcomment' + abc).html(data);
                                 $('.post-design-commnet-box').show();
+                                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                             }
                         });
                     }
@@ -1201,6 +1211,8 @@ function edit_commenttwo(abc)
                         document.getElementById('editcancletwo' + abc).style.display = 'none';
                         $('#' + 'showcommenttwo' + abc).html(data);
                         $('.post-design-commnet-box').show();
+                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                        $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1259,6 +1271,8 @@ function commentedittwo(abc)
 
                                 $('#' + 'showcommenttwo' + abc).html(data);
                                 $('.post-design-commnet-box').show();
+                                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
 
                             }
                         });

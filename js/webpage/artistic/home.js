@@ -462,6 +462,10 @@ function insert_comment(clicked_id)
        document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
        document.getElementById('editcancle' + clicked_id).style.display = 'block';
        $('.post-design-commnet-box').hide();
+
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+       
+
    }
 
     function comment_editcancle(clicked_id) {
@@ -470,7 +474,11 @@ function insert_comment(clicked_id)
        document.getElementById('editcomment' + clicked_id).style.display = 'none';
        document.getElementById('showcomment' + clicked_id).style.display = 'block';
        document.getElementById('editsubmit' + clicked_id).style.display = 'none';
-   
+
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
+       //$('div#hidebottomborder .all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');  
+      
        $('.post-design-commnet-box').show();
    }
 
@@ -488,6 +496,13 @@ function insert_comment(clicked_id)
        document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
        document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
        $('.post-design-commnet-box').hide();
+
+       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+      
+
+      // $('#hidebottomborder'+ clicked_id).css({"border-bottom": "0px"});
+
    }
 
    function comment_editbox3(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
@@ -501,15 +516,20 @@ function insert_comment(clicked_id)
    
    }
    
-   function comment_editcancle3(clicked_id) {
+   function comment_editcancletwo(clicked_id) {
    
-       document.getElementById('editcommentbox3' + clicked_id).style.display = 'block';
-       document.getElementById('editcancle3' + clicked_id).style.display = 'none';
+       document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'block';
+       document.getElementById('editcancletwo' + clicked_id).style.display = 'none';
    
-       document.getElementById('editcomment3' + clicked_id).style.display = 'none';
-       document.getElementById('showcomment3' + clicked_id).style.display = 'block';
-       document.getElementById('editsubmit3' + clicked_id).style.display = 'none';
-   
+       document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
+       document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
+       document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+
+       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
+          
+    
        $('.post-design-commnet-box').show();
    
    }
@@ -576,6 +596,9 @@ function insert_comment(clicked_id)
                document.getElementById('editcancle' + abc).style.display = 'none';
                $('#' + 'showcomment' + abc).html(data);
                $('.post-design-commnet-box').show();
+              
+               $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
            }
        });
        $(".scroll").click(function (event) {
@@ -631,6 +654,9 @@ function insert_comment(clicked_id)
                        document.getElementById('editcancle' + abc).style.display = 'none';
                        $('#' + 'showcomment' + abc).html(data);
                        $('.post-design-commnet-box').show();
+                       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                         
+
                    }
                });
            }
@@ -680,6 +706,9 @@ function insert_comment(clicked_id)
                document.getElementById('editcancletwo' + abc).style.display = 'none';
                $('#' + 'showcommenttwo' + abc).html(data);
                $('.post-design-commnet-box').show();
+               $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+               $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
            }
        });
        $(".scroll").click(function (event) {
@@ -739,6 +768,9 @@ function insert_comment(clicked_id)
    
                        $('#' + 'showcommenttwo' + abc).html(data);
                        $('.post-design-commnet-box').show();
+                       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
    
                    }
                });
