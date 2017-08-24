@@ -3868,6 +3868,8 @@ public function followtwo() {
             $join_str[0]['from_table_id'] = 'art_reg.art_id';
             $join_str[0]['join_type'] = '';
 
+            
+
             //$limit = $perpage;
             //$offset = $start;
 
