@@ -1,170 +1,12 @@
-//new script for jobtitle,company and skill start
- $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-        
-        $( "#tags" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url();?>general/get_alldata", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#tags").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-     
-        });
-    });
-//new script for jobtitle,company and skill  end
-
-//new script for jobtitle,company and skill start for mobile view
- $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-        
-        $( "#tags1" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url();?>general/get_alldata", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#tags1").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-     
-        });
-    });
-//new script for jobtitle,company and skill for mobile view end
-
-//new script for cities start
- $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-        
-        $( "#searchplace" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url();?>general/get_location", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-     
-        });
-    });
-//new script for cities end
-
-//new script for cities start mobile view start
- $(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-        
-        $( "#searchplace1" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON("<?php echo base_url();?>general/get_location", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-
-             select: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace1").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       },
-     
-        });
-    });
-//new script for cities end mobile view end
-
-//for search validation start
-  function checkvalue() {
-     
-       var searchkeyword = $.trim(document.getElementById('tags').value);
-       var searchplace = $.trim(document.getElementById('searchplace').value);
+ //LOADER START
+ jQuery(document).ready(function($) {  
    
-       if (searchkeyword == "" && searchplace == "") {
-           return false;
-       }
-   }
-
-    function check() {
-                            var keyword = $.trim(document.getElementById('tags1').value);
-                            var place = $.trim(document.getElementById('searchplace1').value);
-                            if (keyword == "" && place == "") {
-                                return false;
-                            }
-                        }
-  //for search validation End
+   // site preloader -- also uncomment the div in the header and the css style for #preloader
+   $(window).load(function(){
+   $('#preloader').fadeOut('slow',function(){$(this).remove();});
+   });
+   });
+ //LOADER END
 
   //validation primary start
  $().ready(function () {
@@ -635,6 +477,177 @@
    //pattern validation at percentage end//
    //validation degree end
 
+
+//new script for jobtitle,company and skill start
+ $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+        
+        $( "#tags" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+             select: function(event, ui) {
+           event.preventDefault();
+           $("#tags").val(ui.item.label);
+           $("#selected-tag").val(ui.item.label);
+           // window.location.href = ui.item.value;
+       },
+     
+        });
+    });
+//new script for jobtitle,company and skill  end
+
+//new script for jobtitle,company and skill start for mobile view
+ $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+        
+        $( "#tags1" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+             select: function(event, ui) {
+           event.preventDefault();
+           $("#tags1").val(ui.item.label);
+           $("#selected-tag").val(ui.item.label);
+           // window.location.href = ui.item.value;
+       },
+     
+        });
+    });
+//new script for jobtitle,company and skill for mobile view end
+
+//new script for cities start
+ $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+        
+        $( "#searchplace" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url +"general/get_location", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+             select: function(event, ui) {
+           event.preventDefault();
+           $("#searchplace").val(ui.item.label);
+           $("#selected-tag").val(ui.item.label);
+           // window.location.href = ui.item.value;
+       },
+     
+        });
+    });
+//new script for cities end
+
+//new script for cities start mobile view start
+ $(function() {
+        function split( val ) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+        
+        $( "#searchplace1" ).bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        })
+        .autocomplete({
+            minLength: 2,
+            source: function( request, response ) { 
+                // delegate back to autocomplete, but extract the last term
+                $.getJSON(base_url +"general/get_location", { term : extractLast( request.term )},response);
+            },
+            focus: function() {
+                // prevent value inserted on focus
+                return false;
+            },
+
+             select: function(event, ui) {
+           event.preventDefault();
+           $("#searchplace1").val(ui.item.label);
+           $("#selected-tag").val(ui.item.label);
+           // window.location.href = ui.item.value;
+       },
+     
+        });
+    });
+//new script for cities end mobile view end
+
+//for search validation start
+  function checkvalue() {
+     
+       var searchkeyword = $.trim(document.getElementById('tags').value);
+       var searchplace = $.trim(document.getElementById('searchplace').value);
+   
+       if (searchkeyword == "" && searchplace == "") {
+           return false;
+       }
+   }
+
+    function check() {
+                            var keyword = $.trim(document.getElementById('tags1').value);
+                            var place = $.trim(document.getElementById('searchplace1').value);
+                            if (keyword == "" && place == "") {
+                                return false;
+                            }
+                        }
+  //for search validation End
+
+
+
    //Clone input type start
     $('#btnRemove').attr('disabled', 'disabled');
    
@@ -686,7 +699,7 @@
    
        var num = $('.clonedInput').length;
    
-       if (num - 1 == <?php echo $predefine_data; ?>)
+       if (num - 1 == predefine_data)
        {
    
            $('#btnRemove').attr('disabled', 'disabled');
@@ -705,643 +718,6 @@
    
    });
 // Clone input type End
-
-//stream change depend on degeree start
- $(document).on('change', '#input1 select.degree', function (event) {
-                   var aa = $(this).attr('id');
-                   var lastChar = aa.substr(aa.length - 1);
-                   var degreeID = $('option:selected', this).val();   
-                   if (degreeID) {
-   
-                       $.ajax({
-                           type: 'POST',
-                           url: '<?php echo base_url() . "job/ajax_data"; ?>',
-                           data: 'degree_id=' + degreeID,
-                           success: function (html) {
-                               $("#input1 #stream"+ lastChar).html(html); }
-                       });
-                   } else {$('#stream' + lastChar).html('<option value="">Select Degree first</option>');
-                   }
-               });
-   
-    $(document).on('change', '#input2 select.degree', function (event) {
-                   var aa = $(this).attr('id');
-                   var lastChar = aa.substr(aa.length - 1);
-                   var degreeID = $('option:selected', this).val();   
-                   if (degreeID) {
-   
-                       $.ajax({
-                           type: 'POST',
-                           url: '<?php echo base_url() . "job/ajax_data"; ?>',
-                           data: 'degree_id=' + degreeID,
-                           success: function (html) {
-                               $("#input2 #stream"+ lastChar).html(html); }
-                       });
-                   } else {$('#stream' + lastChar).html('<option value="">Select Degree first</option>');
-                   }
-               });
-   
-     $(document).on('change', '#input3 select.degree', function (event) {
-                   var aa = $(this).attr('id');
-                   var lastChar = aa.substr(aa.length - 1);
-                   var degreeID = $('option:selected', this).val();   
-                   if (degreeID) {
-   
-                       $.ajax({
-                           type: 'POST',
-                           url: '<?php echo base_url() . "job/ajax_data"; ?>',
-                           data: 'degree_id=' + degreeID,
-                           success: function (html) {
-                               $("#input3 #stream"+ lastChar).html(html); }
-                       });
-                   } else {$('#stream' + lastChar).html('<option value="">Select Degree first</option>');
-                   }
-               });
-   
-      $(document).on('change', '#input4 select.degree', function (event) {
-                   var aa = $(this).attr('id');
-                   var lastChar = aa.substr(aa.length - 1);
-                   var degreeID = $('option:selected', this).val();   
-                   if (degreeID) {
-   
-                       $.ajax({
-                           type: 'POST',
-                           url: '<?php echo base_url() . "job/ajax_data"; ?>',
-                           data: 'degree_id=' + degreeID,
-                           success: function (html) {
-                               $("#input4 #stream"+ lastChar).html(html); }
-                       });
-                   } else {$('#stream' + lastChar).html('<option value="">Select Degree first</option>');
-                   }
-               });
-   
-       $(document).on('change', '#input5 select.degree', function (event) {
-                   var aa = $(this).attr('id');
-                   var lastChar = aa.substr(aa.length - 1);
-                   var degreeID = $('option:selected', this).val();   
-                   if (degreeID) {
-   
-                       $.ajax({
-                           type: 'POST',
-                           url: '<?php echo base_url() . "job/ajax_data"; ?>',
-                           data: 'degree_id=' + degreeID,
-                           success: function (html) {
-                               $("#input5 #stream"+ lastChar).html(html); }
-                       });
-                   } else {$('#stream' + lastChar).html('<option value="">Select Degree first</option>');
-                   }
-               });
-           
-//stream change depend on degree End
-
- $(".alert").delay(3200).fadeOut(300);
-
- //Click on University other option process Start 
-
- $(document).on('change', '#input1 .university', function (event) {
-      var item=$(this);
-      var uni=(item.val());
-      if(uni == 463)
-      {
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');   
-
-   $('.message #univer').on('click', function () {
-
-      var $textbox = $('.message').find('input[type="text"]'),
-      textVal  = $textbox.val();
-      $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_university" ?>',
-                          dataType: 'json',
-                          data: 'other_university=' + textVal,
-                          success: function (response) {
-                       
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><div class="fw text-center"><button data-fancybox-close="" class="btn">OK</button></div></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                   $('.university').html(response.select1);
-                                   $('#input1 .university').html(response.select);
-                              }
-                          }
-                      });
-      
-                  });
-      }
-     
-   });
-   
-   $(document).on('change', '#input2 .university', function (event) {
-      var item=$(this);
-      var uni=(item.val());
-      if(uni == 463)
-      {
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
-   
-             $('.message #univer').on('click', function () {
-      var $textbox = $('.message').find('input[type="text"]'),
-      textVal  = $textbox.val();
-      $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_university" ?>',
-                          dataType: 'json',
-                          data: 'other_university=' + textVal,
-                          success: function (response) {
-                       
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                   $('.university').html(response.select1);
-                                   $('#input2 .university').html(response.select);
-                              }
-                          }
-                      });
-      
-                  });
-      }
-     
-   });
-   
-   $(document).on('change', '#input3 .university', function (event) {
-      var item=$(this);
-      var uni=(item.val());
-      if(uni == 463)
-      {
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
-   
-             $('.message #univer').on('click', function () {
-      var $textbox = $('.message').find('input[type="text"]'),
-      textVal  = $textbox.val();
-      $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_university" ?>',
-                          dataType: 'json',
-                          data: 'other_university=' + textVal,
-                          success: function (response) {
-                       
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                   $('.university').html(response.select1);
-                                   $('#input3 .university').html(response.select);
-                              }
-                          }
-                      });
-      
-                  });
-      }
-     
-   });
-   
-   $(document).on('change', '#input4 .university', function (event) {
-      var item=$(this);
-      var uni=(item.val());
-      if(uni == 463)
-      {
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
-   
-             $('.message #univer').on('click', function () {
-      var $textbox = $('.message').find('input[type="text"]'),
-      textVal  = $textbox.val();
-      $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_university" ?>',
-                          dataType: 'json',
-                          data: 'other_university=' + textVal,
-                          success: function (response) {
-                       
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                   $('.university').html(response.select1);
-                                   $('#input4 .university').html(response.select);
-                              }
-                          }
-                      });
-      
-                  });
-      }
-     
-   });
-   
-   $(document).on('change', '#input5 .university', function (event) {
-      var item=$(this);
-      var uni=(item.val());
-      if(uni == 463)
-      {
-            $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
-   
-             $('.message #univer').on('click', function () {
-      var $textbox = $('.message').find('input[type="text"]'),
-      textVal  = $textbox.val();
-      $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_university" ?>',
-                          dataType: 'json',
-                          data: 'other_university=' + textVal,
-                          success: function (response) {
-                       
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written University already available in University Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                   $('.university').html(response.select1);
-                                   $('#input5 .university').html(response.select);
-                              }
-                          }
-                      });
-      
-                  });
-      }
-     
-   });
-//Click on University other option process End 
-
-//Click on Degree other option process Start 
-   $(document).on('change', '#input1 .degree', function (event) {
-      var item=$(this);
-      var degree=(item.val());
-      
-      if(degree == 54)
-      {
-            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
-             $('.message #univer').on('click', function () {
-                 var degree = document.querySelector(".message #other_degree").value;
-                 var stream = document.querySelector(".message #other_stream").value;     
-           if (stream == '' || degree == '')
-           {
-               if(degree == '' && stream != '')
-               {
-                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if(stream == '' && degree != '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if (stream == '' && degree == '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-                return false;
-           }
-           else
-            {   
-                var $textbox = $('.message').find('input[type="text"]'),
-                textVal  = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
-               
-                $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
-                          dataType: 'json',
-                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
-                          success: function (response) {
-                     
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.degree').html(response.select1);
-                                    $('#input1 .degree').html(response.select);
-                                    $('#input1 .stream').html(response.select2);      
-                              }
-                          }
-                      });
-                  }
-                  });
-       }
-   });
-   
-   $(document).on('change', '#input2 .degree', function (event) {
-      var item=$(this);
-      var degree=(item.val());
-      
-      if(degree == 54)
-      {
-            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
-             $('.message #univer').on('click', function () {
-                 var degree = document.querySelector(".message #other_degree").value;
-                 var stream = document.querySelector(".message #other_stream").value;     
-           if (stream == '' || degree == '')
-           {
-               if(degree == '' && stream != '')
-               {
-                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if(stream == '' && degree != '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if (stream == '' && degree == '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-                return false;
-           }
-           else
-            {   
-                var $textbox = $('.message').find('input[type="text"]'),
-                textVal  = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
-               
-                $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
-                          dataType: 'json',
-                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
-                          success: function (response) {
-                     
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.degree').html(response.select1);
-                                    $('#input2 .degree').html(response.select);
-                                    $('#input2 .stream').html(response.select2);      
-                              }
-                          }
-                      });
-                  }
-                  });
-       }
-   });
-   
-   $(document).on('change', '#input3 .degree', function (event) {
-      var item=$(this);
-      var degree=(item.val());
-      
-      if(degree == 54)
-      {
-            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
-             $('.message #univer').on('click', function () {
-                 var degree = document.querySelector(".message #other_degree").value;
-                 var stream = document.querySelector(".message #other_stream").value;     
-           if (stream == '' || degree == '')
-           {
-               if(degree == '' && stream != '')
-               {
-                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if(stream == '' && degree != '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if (stream == '' && degree == '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-                return false;
-           }
-           else
-            {   
-                var $textbox = $('.message').find('input[type="text"]'),
-                textVal  = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
-               
-                $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
-                          dataType: 'json',
-                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
-                          success: function (response) {
-                     
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.degree').html(response.select1);
-                                    $('#input3 .degree').html(response.select);
-                                    $('#input3 .stream').html(response.select2);      
-                              }
-                          }
-                      });
-                  }
-                  });
-       }
-   });
-   
-   $(document).on('change', '#input4 .degree', function (event) {
-      var item=$(this);
-      var degree=(item.val());
-      
-      if(degree == 54)
-      {
-            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
-             $('.message #univer').on('click', function () {
-                 var degree = document.querySelector(".message #other_degree").value;
-                 var stream = document.querySelector(".message #other_stream").value;     
-           if (stream == '' || degree == '')
-           {
-               if(degree == '' && stream != '')
-               {
-                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if(stream == '' && degree != '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if (stream == '' && degree == '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-                return false;
-           }
-           else
-            {   
-                var $textbox = $('.message').find('input[type="text"]'),
-                textVal  = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
-               
-                $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
-                          dataType: 'json',
-                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
-                          success: function (response) {
-                     
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.degree').html(response.select1);
-                                    $('#input4 .degree').html(response.select);
-                                    $('#input4 .stream').html(response.select2);      
-                              }
-                          }
-                      });
-                  }
-                  });
-       }
-   });
-   
-   $(document).on('change', '#input5 .degree', function (event) {
-      var item=$(this);
-      var degree=(item.val());
-      
-      if(degree == 54)
-      {
-            $.fancybox.open('<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>');
-             $('.message #univer').on('click', function () {
-                 var degree = document.querySelector(".message #other_degree").value;
-                 var stream = document.querySelector(".message #other_stream").value;     
-           if (stream == '' || degree == '')
-           {
-               if(degree == '' && stream != '')
-               {
-                    $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if(stream == '' && degree != '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-               if (stream == '' && degree == '')
-               {
-                  $.fancybox.open('<div class="message"><h2>Empty Degree and Empty Stream are not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-               }
-                return false;
-           }
-           else
-            {   
-                var $textbox = $('.message').find('input[type="text"]'),
-                textVal  = $textbox.val();
-                var selectbox_stream = $('.message').find(":selected").text()
-               
-                $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_degree" ?>',
-                          dataType: 'json',
-                          data: 'other_degree=' + textVal+ '&other_stream=' + selectbox_stream,
-                          success: function (response) {
-                     
-                               if(response.select == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Degree already available in Degree Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response.select == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Degree is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.degree').html(response.select1);
-                                    $('#input5 .degree').html(response.select);
-                                    $('#input5 .stream').html(response.select2);      
-                              }
-                          }
-                      });
-                  }
-                  });
-       }
-   });
-   
-
- $(document).on('change', '.message #other_stream', function (event) {
-
-var item1=$(this);
-var other_stream=(item1.val());
- 
- if(other_stream == 61)
-{
-    $.fancybox.open('<div class="message1"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
-
-      $('.message1 #univer1').on('click', function () {
-      var $textbox1 = $('.message1').find('input[type="text"]'),
-      textVal1  = $textbox1.val();
-
-       $.ajax({
-                          type: 'POST',
-                          url: '<?php echo base_url() . "job/job_other_stream" ?>',
-                          data: 'other_stream=' + textVal1,
-                          success: function (response) {
-                       
-                               if(response == 0)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Written Stream already available in  Stream Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }
-                              else if(response == 1)
-                              {
-                                $.fancybox.open('<div class="message"><h2>Empty Stream is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                              }  
-                              else
-                              {
-                                   $.fancybox.close();
-                                    $('.message #other_stream').html(response);
-                              }
-                          }
-                      });
-    
-      });
-}
-       
-       }); 
-//Click on Degree other option process End
 
 //script start for next button start
 function next_page()
@@ -2071,7 +1447,9 @@ function next_page()
    //edit time next page
    function next_page_edit() {
    
-       $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="<?php echo base_url() ?>job/job_project_update">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+       $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="base_url + job/job_project_update">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
    }
       
   //script start for next button end
+
+    $(".alert").delay(3200).fadeOut(300);

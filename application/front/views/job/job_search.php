@@ -2,7 +2,7 @@
                          <form action=<?php echo base_url('search/job_search')?> method="get">
                             <fieldset class="col-md-4 col-sm-5 col-xs-5 sec_h2">
                             
-                                 <input type="text" id="tags" name="skills" placeholder="Job Tittle, Skill, Company" maxlength="255">
+                                 <input type="text" id="tags" name="skills" placeholder="Job Title, Skill, Company" maxlength="255">
                                
                             </fieldset>
                             <fieldset class="col-md-4 col-sm-5 col-xs-5 sec_h2">
