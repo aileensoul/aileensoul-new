@@ -7,7 +7,7 @@
             <!--    <label>Find Your Skills</label>
             -->   
           <!-- <input type="text" name="searchartistic" placeholder="Find Your Art"> -->
-            <input type="text" id="tags" name="skills" placeholder="Artists, Skills, Keywords">
+            <input type="text" id="tags" name="skills" placeholder=" Artists, Skills, Keywords">
         </fieldset>
         <fieldset class="col-md-3 col-sm-5 col-xs-5">
             <!--    <label>Find Your Location</label>
