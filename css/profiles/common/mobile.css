@@ -22,7 +22,11 @@
     #InboxContainer:before {right:27px;}
 }
 @media screen and (max-width: 1200px) {
+    .header ul li a{padding: 0px!important}
+    .header ul li.dropdown-user a{padding:4px 0px 0px!important}
+
         #InboxContainer{right: -7px;}
+
     .circle-1 strong{font-size: 27px;   top: 31px;}
     .edit_profile_job{bottom: 32px;}
     .edit_pr_bar .circles{padding-left: 0px;}
@@ -35,6 +39,8 @@
         padding: 5px 7px;
         width: 25px;
     }
+        
+
     .job_edit_menu{width: 22.5% !important;}
     .job_edit_pr{padding-left: 225px;}
     .comment-name {
@@ -44,11 +50,6 @@
         /*font-size: 25px;
         line-height: 30px;*/
     }
-    .header ul li a {
-        padding-bottom: 2px !important;
-        padding-top: 9px !important;
-    }
-    .header ul li.dropdown-user a {padding-top:11px !important;}
     .cmy_2 {
         width: 74%;
         float: left;
@@ -94,8 +95,7 @@ overflow: hidden;
     .post-design-name_follow{width: 42%;    }
     .follow_left_box_main_btn button{width: 72px;
 padding: 5px 7px;}
-    .header ul li a{padding-bottom: 0px !important;
-padding-top: 7px !important;}
+
     .email-verify{ padding-left: 3%;}
     .profile-text1 .as-p{font-size: 12px; letter-spacing: 0px;}
     .profile-text1 .chng_email{font-size: 12px;}
@@ -168,9 +168,7 @@ padding-top: 7px !important;}
     .header2 ul {
         padding-right: 0;
     }
-    .header ul li a {
-        
-    }
+
     .chat .chat-history .other-message::after {
         left: 96%;
     }
@@ -216,7 +214,6 @@ padding-top: 7px !important;}
     .header2 .job-search-box1 fieldset.sec_h2 {
     width: 172px;
 }
-    .header ul li.dropdown-user a{padding-right: 0px;}
     .tab-none{display:none;}
         #InboxContainer{right: -4px;}
     .common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -257,14 +254,6 @@ padding-top: 7px !important;}
         font-size: 12px;
     }
     
-/*    .header ul li a {
-        padding-top: 6px !important;
-        padding-bottom: 6px !important;
-    }*/
-    .header ul li.dropdown-user a {
-        padding-top: 10px !important;
-        padding-bottom: 6px !important;
-    }
     .tab-block {
         display: block;
     }
@@ -501,12 +490,13 @@ padding-top: 7px !important;}
 .mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 767px) {
+
+    .header ul{margin: 4px 0px;}
     .designation_rec{width: 50%!important;}
     .common-form1 h3{margin:20px 0;}
     .job-search-box1 fieldset{padding-left:0; padding-right:5px;}
     .experience_year{margin-right:33px;}
     header .header{/*padding-top:5px;*/}
-    .header ul li a{padding-top:11px !important;}
     #notificationLink span{top:10px !important;}
     .backdiv-mob{display:block;}
     #onload-Modal{/*display:none !important;*/}
@@ -723,11 +713,6 @@ padding-top: 7px !important;}
     {
         width: 33% !important;
     }
-    .header ul li a {
-        padding-top: 10px!important;
-        padding-bottom: 0px !important;
-        padding: 16px;
-    }
     .header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-noti{width:27px; height:27px; background-size:100%;}
@@ -742,10 +727,6 @@ padding-top: 7px !important;}
     .profile-text1 .as-p{font-size: 12px; padding-bottom: 0px;}
     .post-design-name ul li .post_dot1 {
         font-size: 14px;
-    }
-    .header ul li.dropdown-user a {
-        padding-top: 11px !important;
-        padding-bottom: 0px !important;
     }
     .mob-block {
         display: block;
@@ -785,9 +766,10 @@ padding-top: 7px !important;}
         position: inherit !important;
     }
     #notificationContainer {
-        width: 100%;
+        width:98%;
         margin-top: 20px;
         top:27px;
+        right: 7px;
     }
     #InboxContainer {
         width: 100%;
@@ -796,7 +778,7 @@ padding-top: 7px !important;}
         right: 0;
     }
     #notificationContainer::before {
-       right: 103px;
+    right: 54px;
     }
     #InboxContainer::before {
         right: 166px;
@@ -1315,14 +1297,12 @@ padding: 5px 8px; font-size: 12px;}
     .post-design-product span{font-size: 11px;}
     .post-design-pro-img{padding-left: 7px;}
     #a_li{position: inherit !important;}
-    #acon::before{right:138px !important;}
-    #acon{width: 100% !important; margin-top: 20px !important;}
-    #notificationContainer::before{right: 95px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
+    #acon::before{right:115px !important;}
+    #acon{width: 100% !important; margin-top: 22px !important;}
+    #notificationContainer::before{right:55px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
     .how-it-popup .modal-body h3{display: block;}
     .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
     .banner{padding-top: 21px;}
-    .header ul li a{padding-top: 11px !important; padding-bottom: 0px !important; padding: 0px 8px;}
-    .header ul li.dropdown-user a{/*padding-top: 6px !important; padding-bottom: 6px !important;*/}
     .profile-detail h2{font-size: 13px;}
     .custom-box .custom-width .right-box a{font-size: 12px; }
     .btn-1{padding: 7px 30px}
@@ -1676,6 +1656,11 @@ padding: 5px 8px; font-size: 12px;}
     .people-list .search input{width:93%;}
 }
 @media screen and (max-width: 360px) {
+    .header ul {
+    margin: 12px 0px 1px;
+}
+#notificationContainer{top: 31px;}
+
     #industry option{width:100%;}
     .designation_rec_1{width: 75%;}
     .bg-search .header2{margin-top:-7px;}
@@ -1697,11 +1682,8 @@ margin-left: 7px !important;}
     #acon::before{right: 125px!important;}
     .header2 ul li a#addcontactLink{padding: 6px 2px !important;}
    .header2 ul li a#InboxLink{padding: 12px 8px 4px;}
-    #notificationContainer::before{right: 82px;}
-    .header ul li a{}
-    .header ul li.dropdown-user a{padding: 0px 4px;}
+    #notificationContainer::before{right: 55px;}
     .email-verify{float: left; width: 100%; }
-    .header ul li.dropdown-user a{}
     .logo h2{padding:0; line-height:27px;}
     
     .alert{float: left;}
@@ -1798,7 +1780,7 @@ font-size: 12px;
         padding: 3px 14px !important;
     }
     .logo {
-        padding: 4px 0;
+        padding: 7px 0 0px;
     }
     .right-side-menu {
         width: 100%;

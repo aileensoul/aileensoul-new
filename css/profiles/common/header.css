@@ -393,6 +393,7 @@ right: 17px;
 }
 #notificationsBody li a {
     padding: 0px!important;
+    width: 100%;
 }
 #notification_inside h6{height:auto;}
 .notifications li {
@@ -458,7 +459,7 @@ right: 17px;
     left: inherit !important;
     position: absolute;
     border: none;
-    top: 25px;
+    top: 30px;
 }
 ul.dropdown-menu li {
     display: block;
@@ -932,8 +933,11 @@ overflow: inherit;
 text-overflow: inherit;
 max-width: 200px;
 max-width: 100%;}
-
-
+.header ul li.dropdown-user ul li{padding: 0;}
+.header ul li.dropdown-user ul li.logout {
+    padding: 0px 0px 10px;
+}
+.header ul li .notifications li{padding: 0px; border-right: none;}
 
 
 @media screen and (max-width: 767px) {
