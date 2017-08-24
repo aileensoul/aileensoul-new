@@ -272,6 +272,12 @@ function check_lengthedit(abc)
                 });
             });
 
+function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }
 
 
 $( document ).on( 'keydown', function ( e ) {
@@ -786,7 +792,7 @@ function insert_comment(clicked_id)
                // alert(post_comment);
                // return false;
 
-                if (post_comment == '' || post_comment == '<br>') {
+                if (post_comment == '' || post_comment == '<br>' || check_perticular(post_comment) == true) {
                     return false;
                 }
                 if (/^\s+$/gi.test(post_comment))
@@ -863,7 +869,7 @@ function entercomment(clicked_id)
 
                         //     txt = txt.replace(/^\s+|\s+$/g, "")
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             return false;
                         }
                         if (/^\s+$/gi.test(txt))
@@ -932,11 +938,11 @@ function entercomment(clicked_id)
 
  // edit comment script start
  
-             function comment_editbox(clicked_id) {
-                document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
+             function comment_editbox(clicked_id) { //alert("hii");
+                document.getElementById('editcomment' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment' + clicked_id).style.display = 'none';
-                document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
-                //document.getElementById('editbox' + clicked_id).style.display = 'none';
+               document.getElementById('editsubmit' + clicked_id).style.display = 'block';
+                document.getElementById('editbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
@@ -1045,7 +1051,7 @@ function entercomment(clicked_id)
                 txt = txt.replace(/div>/gi, 'p>');
 
 
-                if (txt == '' || txt == '<br>') {
+                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
                     return false;
@@ -1117,7 +1123,7 @@ function edit_comment2(abc)
                         txt = txt.replace(/div>/gi, 'p>');
 
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                             return false;
@@ -1171,7 +1177,7 @@ function edit_commenttwo(abc)
                  txt = txt.replace(/div>/gi, 'p>');
 
 
-                if (txt == '' || txt == '<br>') {
+                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
                     return false;
@@ -1220,7 +1226,7 @@ function commentedittwo(abc)
                          txt = txt.replace(/div>/gi, 'p>');
 
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                             return false;
@@ -1530,7 +1536,7 @@ function khdiv(abc) {
 //alert(editpostdetails);
 
    
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+       if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
