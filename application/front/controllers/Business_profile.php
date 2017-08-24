@@ -1311,7 +1311,7 @@ class Business_profile extends MY_Controller {
 
                         $thumb_image_width = $this->config->item('bus_post_thumb_width');
                         $thumb_image_height = $this->config->item('bus_post_thumb_height');
-                        
+
                         if ($image_width > $image_height) {
                             $n_h = $thumb_image_height;
                             $image_ratio = $image_height / $n_h;
@@ -1344,18 +1344,18 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse->resize();
 
-                        /* CROP 335 X 320*/
+                        /* CROP 335 X 320 */
                         // reconfigure the image lib for cropping
-                        
+
                         $resized_image_width = $this->config->item('bus_post_350_320_width');
                         $resized_image_height = $this->config->item('bus_post_350_320_height');
-                        if($thumb_image_width < $resized_image_width){
+                        if ($thumb_image_width < $resized_image_width) {
                             $resized_image_width = $thumb_image_width;
                         }
-                        if($thumb_image_height < $resized_image_height){
+                        if ($thumb_image_height < $resized_image_height) {
                             $resized_image_height = $thumb_image_height;
                         }
-                        
+
                         $conf_new[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $business_profile_post_thumb[$i]['new_image'],
@@ -1380,22 +1380,22 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse1->crop();
 
-                        /* CROP 335 X 320*/
+                        /* CROP 335 X 320 */
 
 
-                        /* CROP 335 X 245*/
+                        /* CROP 335 X 245 */
                         // reconfigure the image lib for cropping
-                        
+
                         $resized_image_width = $this->config->item('bus_post_335_245_width');
                         $resized_image_height = $this->config->item('bus_post_335_245_height');
-                        if($thumb_image_width < $resized_image_width){
+                        if ($thumb_image_width < $resized_image_width) {
                             $resized_image_width = $thumb_image_width;
                         }
-                        if($thumb_image_height < $resized_image_height){
+                        if ($thumb_image_height < $resized_image_height) {
                             $resized_image_height = $thumb_image_height;
                         }
-                        
-                        
+
+
                         $conf_new1[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $business_profile_post_thumb[$i]['new_image'],
@@ -1420,21 +1420,21 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse2->crop();
 
-                        /* CROP 335 X 245*/
-                        
-                        /* CROP 210 X 210*/
+                        /* CROP 335 X 245 */
+
+                        /* CROP 210 X 210 */
                         // reconfigure the image lib for cropping
-                        
+
                         $resized_image_width = $this->config->item('bus_post_210_210_width');
                         $resized_image_height = $this->config->item('bus_post_210_210_height');
-                        if($thumb_image_width < $resized_image_width){
+                        if ($thumb_image_width < $resized_image_width) {
                             $resized_image_width = $thumb_image_width;
                         }
-                        if($thumb_image_height < $resized_image_height){
+                        if ($thumb_image_height < $resized_image_height) {
                             $resized_image_height = $thumb_image_height;
                         }
-                        
-                        
+
+
                         $conf_new2[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $business_profile_post_thumb[$i]['new_image'],
@@ -1459,7 +1459,7 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse3->crop();
 
-                        /* CROP 210 X 210*/
+                        /* CROP 210 X 210 */
 
                         $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
@@ -1904,25 +1904,25 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div  class="two-images">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
                 }
             } elseif (count($businessmultiimage) == 3) {
                 $return_html .= '<div class="three-image-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
             </a>
         </div>
         <div class="three-image" >
 
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> 
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> 
             </a>
         </div>';
             } elseif (count($businessmultiimage) == 4) {
@@ -1931,7 +1931,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
                 }
@@ -1942,7 +1942,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
 
@@ -1953,7 +1953,7 @@ class Business_profile extends MY_Controller {
 
                 $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
             </a>
             <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
                 <div class="more-image" >
@@ -9934,25 +9934,25 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
                         }
                     } elseif (count($businessmultiimage) == 3) {
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '">
 </a>
 </div>';
                     } elseif (count($businessmultiimage) == 4) {
@@ -9961,7 +9961,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
                         }
@@ -9972,7 +9972,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
 
@@ -9983,9 +9983,9 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style = "width: 100%; height: 100%;">
+<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
@@ -11782,7 +11782,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-            
+
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
             $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
