@@ -74,3 +74,9 @@
    #percentage1-error{margin-right: 33px;}
    #pass_year1-error{margin-right: 32px;}
    #degree1-error{margin-right: 34px;}
+
+   .job_work_experience_main_div{
+   margin-top: 10px;
+   display: inline-block;
+   }
+   .img_remove img{display: none!important;}

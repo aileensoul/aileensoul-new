@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+<html>
+   <head>
 <!-- start head -->
 <?php echo $head; ?>
-<!-- END HEAD -->
 <!-- Calender Css Start-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
 <!-- Calender Css End-->
@@ -8,6 +10,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+
+</head>
+<!-- END HEAD -->
+
 <!-- start header -->
 <?php echo $header; ?>
 <!-- END HEADER -->
@@ -81,353 +88,22 @@
       </div>
    </section>
    <!-- END CONTAINER -->
+
+ <!-- script for skill textbox automatic start -->
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+<!-- script for skill textbox automatic end -->
    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
    <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+  
+
    <script>
-      // job title script start
-         $(function() {
-             function split( val ) {
-                 return val.split( /,\s*/ );
-             }
-             function extractLast( term ) {
-                 return split( term ).pop();
-             }
-             
-             $( "#job_title" ).bind( "keydown", function( event ) {
-                 if ( event.keyCode === $.ui.keyCode.TAB &&
-                     $( this ).autocomplete( "instance" ).menu.active ) {
-                     event.preventDefault();
-                 }
-             })
-             .autocomplete({
-                 minLength: 2,
-                 source: function( request, response ) { 
-                     // delegate back to autocomplete, but extract the last term
-                     $.getJSON("<?php echo base_url();?>general/get_jobtitle", { term : extractLast( request.term )},response);
-                 },
-                 focus: function() {
-                     // prevent value inserted on focus
-                     return false;
-                 },
-      
-                  select: function(event, ui) {
-                event.preventDefault();
-                $("#job_title").val(ui.item.label);
-                $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
-            },
-          
-             });
-         });
-   </script>
-   <script>
-      $.validator.addMethod("lowercase", function(value, element, regexpr) {          
-          return regexpr.test(value);
-      }, "email Should be in Small Character");
-      
-      
-       $.validator.addMethod("regx2", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
-          //alert(value);
-           if(!value) 
-                  {
-                      return true;
-                  }
-                  else
-                  {
-                      //alert(value);
-                      return regexpr.test(value);
-      
-                      //return false;
-                  }
-           // return regexpr.test(value);
-      },"special character and space not allow in the beginning");
-      
-      $.validator.addMethod("regx_digit", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
-          //alert(value);
-           if(!value) 
-                  {
-                      return true;
-                  }
-                  else
-                  {
-                      //alert(value);
-                      return regexpr.test(value);
-      
-                      //return false;
-                  }
-           // return regexpr.test(value);
-      },"digit is not allow");
-      
-      $.validator.addMethod("regx1", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
-           if(!value) 
-                  {
-                      return true;
-                  }
-                  else
-                  {
-                        return regexpr.test(value);
-                  }
-           // return regexpr.test(value);
-      }, "only space, only number and only special characters are not allow");
-      
-      
-       $("#jobseeker_regform").validate({
-      
-                 ignore: '*:not([name])',
-              
-               rules: {
-      
-                      first_name: {
-      
-                          required: true,
-                          regx2:/^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
-                           regx_digit:/^([^0-9]*)$/,
-                          //noSpace: true
-      
-                      },
-      
-                      last_name: {
-      
-                          required: true,
-                          regx2:/^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
-                           regx_digit:/^([^0-9]*)$/,
-                          //noSpace: true
-      
-                      },
-                      
-                      cities: {
-      
-                          required: true,
-                        //  regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                          //noSpace: true
-      
-                      },
-      
-                      email: {
-      
-                          required: true,
-                          email: true,
-                          lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
-                         remote: {
-                             url: "<?php echo base_url() . 'job/check_email' ?>",
-                             //async is used for double click on submit avoid
-                             async:false,
-                             type: "post",
-                             data: {
-                                 email: function () {
-      
-                                     return $("#email").val();
-                                 },
-                                 '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                             },
-                         },
-                      },
-      
-                      fresher: {
-      
-                          required: true,
-      
-                      },
-                      
-                       job_title: {
-      
-                          required: "#test2:checked",
-                           regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                      //    regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                       //   noSpace: true
-                       },
-                       
-                       industry: {
-      
-                          required: true,
-                         // regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                         // noSpace: true
-                       },
-                       
-                       cities: {
-      
-                          required: true,
-                           regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                      //    regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                        //  noSpace: true
-                       },
-                       
-                       skills: {
-      
-                          required: true,
-                           regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                                  //required:true 
-                      },
-                     
-                  },
-      
-                  messages: {
-      
-                      first_name: {
-      
-                          required: "first name Is Required.",
-      
-                      },
-      
-                      last_name: {
-      
-                          required: "last name Is Required.",
-      
-                      },
-      
-                      email: {
-      
-                          required: "email Address Is Required.",
-                          email: "please Enter Valid Email Id.",
-                          remote: "email already exists"
-                      },
-                     
-                      fresher: {
-      
-                          required: "fresher Is Required.",
-      
-                      },
-                      
-                      industry: {
-      
-                          required: "industry Is Required.",
-      
-                      },
-                      
-                      cities: {
-      
-                          required: "city Is Required.",
-      
-                      },
-                      
-                      job_title: {
-      
-                          required: "job title Is Required.",
-      
-                      },
-                      
-                       skills: {
-      
-                           required: "skill Is Required.",
-      
-                      }
-      
-                  },
-      
-              });
-             
-   </script>
-   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-   <!--new script for cities start-->
-   <script>
-      $(function() {
-          function split( val ) {
-              return val.split( /,\s*/ );
-          }
-          function extractLast( term ) {
-              return split( term ).pop();
-          }
-          
-          $( "#cities2" ).bind( "keydown", function( event ) {
-              if ( event.keyCode === $.ui.keyCode.TAB &&
-                  $( this ).autocomplete( "instance" ).menu.active ) {
-                  event.preventDefault();
-              }
-          })
-          .autocomplete({
-              minLength: 2,
-              source: function( request, response ) { 
-                  // delegate back to autocomplete, but extract the last term
-                  $.getJSON("<?php echo base_url();?>general/get_location", { term : extractLast( request.term )},response);
-              },
-              focus: function() {
-                  // prevent value inserted on focus
-                  return false;
-              },
-              select: function( event, ui ) {
-                 
-                  var terms = split( this.value );
-                  if(terms.length <= 10) {
-                      // remove the current input
-                      terms.pop();
-                      // add the selected item
-                      terms.push( ui.item.value );
-                      // add placeholder to get the comma-and-space at the end
-                      terms.push( "" );
-                      this.value = terms.join( ", " );
-                      return false;
-                  }else{
-                      var last = terms.pop();
-                      $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                      $(this).effect("highlight", {}, 1000);
-                      $(this).attr("style","border: solid 1px red;");
-                      return false;
-                  }
-              }
-      
-      
-      
-          });
-      });
-   </script>
-   <!--new script for cities end-->
-   <!--new script for skill start-->
-   <script>
-      $(function() {
-          function split( val ) {
-              return val.split( /,\s*/ );
-          }
-          function extractLast( term ) { 
-              return split( term ).pop();
-          }
-          
-          $( "#skills2" ).bind( "keydown", function( event ) {
-              if ( event.keyCode === $.ui.keyCode.TAB &&
-                  $( this ).autocomplete( "instance" ).menu.active ) {
-                  event.preventDefault();
-              }
-          })
-          .autocomplete({
-              minLength: 2,
-              source: function( request, response ) { 
-                  // delegate back to autocomplete, but extract the last term
-                  $.getJSON("<?php echo base_url();?>general/get_skill", { term : extractLast( request.term )},response);
-              },
-              focus: function() {
-                  // prevent value inserted on focus
-                  return false;
-              },
-              select: function( event, ui ) {
-                 
-                  var terms = split( this.value );
-                  if(terms.length <= 20) {
-                      // remove the current input
-                      terms.pop();
-                      // add the selected item
-                      terms.push( ui.item.value );
-                      // add placeholder to get the comma-and-space at the end
-                      terms.push( "" );
-                      this.value = terms.join( ", " );
-                      return false;
-                  }else{
-                      var last = terms.pop();
-                      $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                      $(this).effect("highlight", {}, 1000);
-                      $(this).attr("style","border: solid 1px red;");
-                      return false;
-                  }
-              }
-      
-      
-      
-          });
-      });
-   </script>
-   <!--new script for skill end-->
+     var base_url = '<?php echo base_url(); ?>';
+  </script>
+
+
+  <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_reg.js'); ?>"></script>
+
 </body>
 </html>

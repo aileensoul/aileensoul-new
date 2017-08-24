@@ -4460,7 +4460,7 @@ public function delete_workexp()
          $apply_step  = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
      
-            if ($apply_step[0]['job_step'] == "") 
+            if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0") 
             {
                
                   redirect('job/job_reg');
