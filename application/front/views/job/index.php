@@ -236,7 +236,7 @@
 <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
 
 <script>
-var data1= <?php echo json_encode($city_data); ?>;
+//var data1= <?php //echo json_encode($city_data); ?>;
 var base_url = '<?php echo base_url(); ?>';
 var date_picker ='<?php echo date('Y-m-d',strtotime($job[0]['user_dob']));?>';
 var  date_picker_edit='<?php echo date('Y-m-d',strtotime($dob1));?>';
