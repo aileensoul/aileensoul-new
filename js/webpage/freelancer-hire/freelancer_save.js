@@ -1,3 +1,21 @@
+//VALIDATION FOR PROFILE PIC START
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+});
+//VALIDATION FOR PROFILE PIC END
+
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
     freelancerhire_save();
@@ -303,34 +321,6 @@ function picpopup() {
 }
 //CODE FOR PROFILE PIC AND COVERPIC IMG TYPE POPUP END
 
-//VALIDATION FOR PROFILE PIC START
-$(document).ready(function () {
-
-    $("#userimage").validate({
-
-        rules: {
-
-            profilepic: {
-
-                required: true,
-
-            },
-
-        },
-
-        messages: {
-
-            profilepic: {
-
-                required: "Photo Required",
-
-            },
-
-        },
-
-    });
-});
-//VALIDATION FOR PROFILE PIC END
 
 //ALL POPUP CLOSE BY ESC START
 $(document).on('keydown', function (e) {
@@ -343,7 +333,6 @@ $(document).on('keydown', function (e) {
         $('#bidmodal-2').modal('hide');
     }
 });
-
 //ALL POPUP CLOSE BY ESC END
 
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS START
@@ -351,6 +340,34 @@ $(document).ready(function () {
     $('html,body').animate({scrollTop: 265}, 100);
 });
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
+//UOPLOAD PROFILE PIC START
+function profile_pic(){
+   if (typeof FormData !== 'undefined') {
+   // var fd = new FormData();
+    var formData = new FormData( $("#userimage")[0] );
+//    fd.append("image", $("#profilepic")[0].files[0]);
+//         files = this.files;
+       $.ajax({
+     // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+      url:  base_url + "freelancer/user_image_insert",
+      type: "POST",
+      data: formData,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $('#bidmodal-2').modal('hide');
+      $(".user-pic").html(data);
+      document.getElementById('profilepic').value= null;
+      //document.getElementById('profilepic').value == '';
+      $('.popup_previred').hide();
+        },          
+     });
+      return false;
+}
+}
+//UOPLOAD PROFILE PIC END
 
 
 

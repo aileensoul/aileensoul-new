@@ -1,9 +1,52 @@
-
+// VALIDATION FOR PROFILE PIC START
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true
+            }
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required"
+            }
+        },
+         submitHandler: profile_pic
+    });
+});
+// VALIDATION FOR PROFILE PIC END
+//UOPLOAD PROFILE PIC START
+function profile_pic(){
+   if (typeof FormData !== 'undefined') {
+   // var fd = new FormData();
+    var formData = new FormData( $("#userimage")[0] );
+//    fd.append("image", $("#profilepic")[0].files[0]);
+//         files = this.files;
+       $.ajax({
+     // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+      url:  base_url + "freelancer/user_image_insert",
+      type: "POST",
+      data: formData,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $('#bidmodal-2').modal('hide');
+      $(".user-pic").html(data);
+      document.getElementById('profilepic').value= null;
+      //document.getElementById('profilepic').value == '';
+      $('.popup_previred').hide();
+        },          
+     });
+      return false;
+}
+}
+//UOPLOAD PROFILE PIC END
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
     
     freelancerhire_project(user_id,returnpage);
-
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -187,10 +230,10 @@ $('.upload-result').on('click', function (ev) {
             type: "POST",
             data: {"image": resp},
             success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html) {
-                    window.location.reload();
-                }
+//                html = '<img src="' + resp + '" />';
+//                if (html) {
+//                    window.location.reload();
+//                }
             }
         });
 
@@ -218,6 +261,7 @@ $('#upload').on('change', function () {
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
     size = files[0].size;
+    //alert(size);
     //  code start for file type support
     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
         picpopup();
@@ -357,32 +401,3 @@ $(document).ready(function () {
 });
 
 //CODE FOR SCROLL PAGE AT PERTICULAR END
-// VALIDATION FOR PROFILE PIC START
-
-$(document).ready(function () {
-
-    $("#userimage").validate({
-
-        rules: {
-
-            profilepic: {
-
-                required: true
-
-            }
-
-        },
-
-        messages: {
-
-            profilepic: {
-
-                required: "Photo Required"
-
-            }
-
-        }
-
-    });
-});
-// VALIDATION FOR PROFILE PIC END
