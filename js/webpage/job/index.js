@@ -123,9 +123,9 @@
    // return regexpr.test(value);
    }, "Phone number is not in proper format");
    //PHONE NUMBER VALIDATION FUNCTION END
-   
+    
        $("#jobseeker_regform").validate({
-   
+    
            ignore: ".language",
            rules: {
    
@@ -151,30 +151,21 @@
                },
    
                email: {
-   
+                  
                    required: true,
                    email: true,
                    lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                    remote: {
                        url: base_url + "job/check_email",
                        type: "post",
-                       data: {
-                           email: function () {
-   
-                               return $("#email").val();
-                           },
-                           //'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
-                       },
                    },
                },
    
                phnno: {
    
-                          // number: true,
                           minlength: 8,
                           maxlength:15,
                           matches: /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/,   
-                           
                            
                        },
                        
@@ -257,11 +248,7 @@
                    required: "Address  Is Required.",
    
                },
-               dob: {
-   
-                 //  required: "Date of Birth Is Required.",
-   
-               },
+              
                gender: {
    
                    required: "Gender Is Required.",

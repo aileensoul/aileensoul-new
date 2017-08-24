@@ -313,9 +313,11 @@ class Job extends MY_Controller {
 //job seeker basic info controller end
 //job seeker email already exist checking controller start
 
-    public function check_email() {
+    public function check_email($id = " ") {
 
-        $email = $this->input->post('email');
+       // $email = $this->input->post('email');
+        $email = $_POST['email'];
+        //echo $email;die();
 
         $userid = $this->session->userdata('aileenuser');
 
