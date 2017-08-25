@@ -9227,31 +9227,31 @@ class Business_profile extends MY_Controller {
                 } else {
                     if ($clistuser[0]['status'] == 'cancel') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
                     } elseif ($clistuser[0]['status'] == 'pending') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ",'pending'" . ')">
+                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ",'pending'" . ')" class="contact_user_list">
                                 Cancel request
                             </button>
                         </div>';
                     } else if ($clistuser[0]['status'] == 'confirm') {
                         $return_html .= '<div class="user_btn cont_req" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ", 'confirm'" . ')">
+                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ", 'confirm'" . ')" class="contact_user_list">
                                 In contacts
                             </button> 
                         </div>';
                     } else if ($clistuser[0]['status'] == 'reject') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
                     } else {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
@@ -9402,7 +9402,7 @@ No Contacts Available.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
 
 
                 $contactdata .= 'Cancel request';
@@ -9417,7 +9417,7 @@ No Contacts Available.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
 
 
                 $contactdata .= 'Cancel request';
@@ -9438,7 +9438,7 @@ No Contacts Available.
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
-            $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+            $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
             $contactdata .= 'Cancel request';
             $contactdata .= '</button>';
         }
