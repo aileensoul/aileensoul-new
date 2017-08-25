@@ -6714,7 +6714,12 @@ public function insert_comment_postnewpage() {
 
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
 
-        echo '<img src="' . $this->data['artdata'][0]['profile_background'] . '" />';
+
+        $coverpic='<img  src="'. base_url($this->config->item('art_bg_main_upload_path') . $this->data['artdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
+      echo $coverpic;
+
+
+        //echo '<img src="' . $this->data['artdata'][0]['profile_background'] . '" />';
     }
 
     public function image() {

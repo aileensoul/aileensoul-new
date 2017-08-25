@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
 <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <!-- END HEADER -->
