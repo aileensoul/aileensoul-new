@@ -969,12 +969,10 @@
 <script>
     var base_url = '<?php echo base_url(); ?>';
     var predefine_data =' <?php echo $predefine_data; ?>';
-    var stream_alldata='<?php foreach ($stream_alldata as $stream){?>';
-    var stream_id='<?php echo $stream['stream_id']; ?>"';
-    var stream_name='<?php echo $stream['stream_name']; ?>';
-    var bracket='<?php } ?>';
-    var stream_otherdata='<?php echo $stream_otherdata[0]['stream_id']; ?>';
-    var stream_otherdata_stream='<?php echo $stream_otherdata[0]['stream_name']; ?>';
+
+    var html = '<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>';
+
+   
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_education.js'); ?>"></script>
