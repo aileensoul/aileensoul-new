@@ -20,7 +20,6 @@
       echo $job_header2_border;  
 ?>
 <!-- END HEADER -->
-<!-- This style is used for autocomplete start -->
  
 <div class="js">
 <body class="page-container-bg-solid page-boxed">
@@ -949,8 +948,7 @@
    </div>
    <!-- Model Popup Close -->
    <footer>
-</body>
-</html>
+
 <!-- Calender JS Start-->
 <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
@@ -976,3 +974,5 @@
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_education.js'); ?>"></script>
+</body>
+</html>
