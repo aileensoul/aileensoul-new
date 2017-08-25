@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-md-12 cover-pic" >
                         <button class="btn btn-success  cancel-result" onclick="" ><?php echo $this->lang->line("cancel"); ?></button>
-                        <button class="btn btn-success set-btn upload-result " onclick="myFunction()"><?php echo $this->lang->line("save"); ?></button>
+                        <button class="btn btn-success set-btn upload-result "><?php echo $this->lang->line("save"); ?></button>
                         <div id="message1" style="display:none;">
                             <div id="floatBarsG">
                                 <div id="floatBarsG_1" class="floatBarsG"></div>
