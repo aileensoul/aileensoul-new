@@ -42,13 +42,10 @@ class Job extends MY_Controller {
          
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');           
             $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           //echo "<pre>"; print_r($this->data['job']); die();
-
-
+          
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($jobdata); die();
-
+          
             $contition_array = array('status' => 1);
             $this->data['language1'] = $this->common->select_data_by_condition('language', $contition_array, $data = '*', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -65,9 +62,7 @@ class Job extends MY_Controller {
             } else if ($jobdata[0]['job_step'] == 4) {
                 redirect('job/job_skill_update', refresh);
              }
-             //else if ($jobdata[0]['job_step'] == 5) {
-            //     redirect('job/job_apply_for_update', refresh);
-            // } 
+             
             else if ($jobdata[0]['job_step'] == 5 || $jobdata[0]['job_step'] == 6) {
                 redirect('job/job_work_exp_update', refresh);
             } else if ($jobdata[0]['job_step'] == 7) {
@@ -83,7 +78,7 @@ class Job extends MY_Controller {
             }
         }
     }
-    
+
     public function job_basicinfo_update() {
 
        $this->job_apply_check(); 
