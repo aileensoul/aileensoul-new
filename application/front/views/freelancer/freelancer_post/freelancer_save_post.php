@@ -22,24 +22,23 @@
                         <div id="upload-demo" ></div>
                     </div>
                     <div class="col-md-12 cover-pic" >
-                        <button class="btn btn-success  cancel-result set-btn" onclick="" ><?php echo $this->lang->line("cancel"); ?></button>
-                        <button class="btn btn-success set-btn upload-result" onclick="myFunction()"><?php echo $this->lang->line("cancel"); ?></button>
+                        <button class="btn btn-success  cancel-result set-btn" ><?php echo $this->lang->line("cancel"); ?></button>
+                        <button class="btn btn-success set-btn upload-result"><?php echo $this->lang->line("save"); ?></button>
                         <div id="message1" style="display:none;">
-                            <div id="floatBarsG">
-                                <div id="floatBarsG_1" class="floatBarsG"></div>
-                                <div id="floatBarsG_2" class="floatBarsG"></div>
-                                <div id="floatBarsG_3" class="floatBarsG"></div>
-                                <div id="floatBarsG_4" class="floatBarsG"></div>
-                                <div id="floatBarsG_5" class="floatBarsG"></div>
-                                <div id="floatBarsG_6" class="floatBarsG"></div>
-                                <div id="floatBarsG_7" class="floatBarsG"></div>
-                                <div id="floatBarsG_8" class="floatBarsG"></div>
-                            </div>
-
+                        <div id="floatBarsG">
+                            <div id="floatBarsG_1" class="floatBarsG"></div>
+                            <div id="floatBarsG_2" class="floatBarsG"></div>
+                            <div id="floatBarsG_3" class="floatBarsG"></div>
+                            <div id="floatBarsG_4" class="floatBarsG"></div>
+                            <div id="floatBarsG_5" class="floatBarsG"></div>
+                            <div id="floatBarsG_6" class="floatBarsG"></div>
+                            <div id="floatBarsG_7" class="floatBarsG"></div>
+                            <div id="floatBarsG_8" class="floatBarsG"></div>
                         </div>
                     </div>
-                    <div class="col-md-12"  style="visibility: hidden; ">
-                        <div id="upload-demo-i" ></div>
+                    </div>
+                   <div class="col-md-12"  style="visibility: hidden; ">
+                        <div id="upload-demo-i"></div>
                     </div>
                 </div>
                 <div class="">
@@ -183,14 +182,16 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-<?php echo form_open_multipart(base_url('freelancer/user_image_add'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
+                                <input type="hidden" name="hitext" id="hitext" value="2">
                                 <div class="popup_previred">
                                     <img id="preview" src="#" alt="your image" />
                                 </div>
-                                <input type="hidden" name="hitext" id="hitext" value="2">
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save"  >
-<?php echo form_close(); ?>
+                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                 </form>
+                                <?php //echo form_close(); ?>
                             </div>
                         </span>
                     </div>

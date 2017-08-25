@@ -1,6 +1,52 @@
+//PROFILE PIC VALIDATION START
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+});
+//PROFILE PIC VALIDATION END
+//UOPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        // var fd = new FormData();
+        var formData = new FormData($("#userimage")[0]);
+//    fd.append("image", $("#profilepic")[0].files[0]);
+//         files = this.files;
+        $.ajax({
+            // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+            url: base_url + "freelancer/user_image_add",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                //document.getElementById('profilepic').value == '';
+                $('#preview').prop('src', '#');
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UOPLOAD PROFILE PIC END
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
- 
+
     freelancerwork_save();
 
     $(window).scroll(function () {
@@ -19,18 +65,18 @@ $(document).ready(function () {
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    
+
                     freelancerwork_save(pagenum);
                 }
             }
         }
     });
-    
+
 });
 var isProcessing = false;
 function freelancerwork_save(pagenum)
 {
-    
+
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -43,7 +89,7 @@ function freelancerwork_save(pagenum)
     $.ajax({
         type: 'POST',
         url: base_url + "freelancer/ajax_freelancer_save_post?page=" + pagenum,
-        data: {total_record:$("#total_record").val()},
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -73,212 +119,212 @@ function freelancerwork_save(pagenum)
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
 //DESIGNATION START
- function divClicked() {
-                var divHtml = $(this).html();
-                var editableText = $("<textarea/>");
-                editableText.val(divHtml);
-                $(this).replaceWith(editableText);
-                editableText.focus();
-                editableText.blur(editableTextBlurred);
-            }
-            function editableTextBlurred() {
-                var html = $(this).val();
-                var viewableText = $("<a>");
-                if (html.match(/^\s*$/) || html == '') {
-                    html = "Current Work";
-                }
-                viewableText.html(html);
-                $(this).replaceWith(viewableText);
-                // setup the click event for this new div
-                viewableText.click(divClicked);
-                $.ajax({
-                    url:  base_url + "freelancer/designation",
-                    type: "POST",
-                    data: {"designation": html},
-                    success: function (response) {
-                    }
-                });
-            }
-            $(document).ready(function () {
-                $("a.designation").click(divClicked);
-            });
+function divClicked() {
+    var divHtml = $(this).html();
+    var editableText = $("<textarea/>");
+    editableText.val(divHtml);
+    $(this).replaceWith(editableText);
+    editableText.focus();
+    editableText.blur(editableTextBlurred);
+}
+function editableTextBlurred() {
+    var html = $(this).val();
+    var viewableText = $("<a>");
+    if (html.match(/^\s*$/) || html == '') {
+        html = "Current Work";
+    }
+    viewableText.html(html);
+    $(this).replaceWith(viewableText);
+    // setup the click event for this new div
+    viewableText.click(divClicked);
+    $.ajax({
+        url: base_url + "freelancer/designation",
+        type: "POST",
+        data: {"designation": html},
+        success: function (response) {
+        }
+    });
+}
+$(document).ready(function () {
+    $("a.designation").click(divClicked);
+});
 //DESIGNATION END
 //UPLOAD PROFILE PIC CODE START
-            function updateprofilepopup(id) {
-                $('#bidmodal-2').modal('show');
-            }
-             function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        document.getElementById('preview').style.display = 'block';
-                        $('#preview').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
+}
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('preview').style.display = 'block';
+            $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
-            $("#profilepic").change(function () {
-                profile = this.files;
-                if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                    $('#profilepic').val('');
-                    picpopup();
-                    return false;
-                } else {
-                    readURL(this);
-                }
-            });
+$("#profilepic").change(function () {
+    profile = this.files;
+    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        $('#profilepic').val('');
+        picpopup();
+        return false;
+    } else {
+        readURL(this);
+    }
+});
 //UPLOAD PROFILE PIC CODE END
 //COVER IMAGE CODE START
-            function myFunction() {
-                document.getElementById("upload-demo").style.visibility = "hidden";
-                document.getElementById("upload-demo-i").style.visibility = "hidden";
-                document.getElementById('message1').style.display = "block";
-            }
-            function showDiv() {
-                document.getElementById('row1').style.display = "block";
-                document.getElementById('row2').style.display = "none";
-            }
-            $uploadCrop = $('#upload-demo').croppie({
-                enableExif: true,
-                viewport: {
-                    width: 1250,
-                    height: 350,
-                    type: 'square'
-                },
-                boundary: {
-                    width: 1250,
-                    height: 350
-                }
-            });
-            $('.upload-result').on('click', function (ev) {
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport'
-                }).then(function (resp) {
-
-                    $.ajax({
-
-                        url:  base_url + "freelancer/ajaxpro_work",
-                        type: "POST",
-                        data: {"image": resp},
-                        success: function (data) {
-                            html = '<img src="' + resp + '" />';
-                            if (html) {
-                                window.location.reload();
-                            }
-                        }
-                    });
-                });
-            });
-            $('.cancel-result').on('click', function (ev) {
+function showDiv() {
+    document.getElementById('row1').style.display = "block";
+    document.getElementById('row2').style.display = "none";
+}
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
+$('.upload-result').off('click').on('click', function (ev) {
+//$('.upload-result').on('click', function (ev) {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $.ajax({
+            url: base_url + "freelancer/ajaxpro_work",
+            type: "POST",
+            data: {"image": resp},
+            success: function (data) {
+                $("#row2").html(data);
                 document.getElementById('row2').style.display = "block";
                 document.getElementById('row1').style.display = "none";
                 document.getElementById('message1').style.display = "none";
-            });
-            $('#upload').on('change', function () {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function () {
-                        console.log('jQuery bind complete');
-                    });
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
-
-
-            $('#upload').on('change', function () {
-                var fd = new FormData();
-                fd.append("image", $("#upload")[0].files[0]);
-                files = this.files;
-                size = files[0].size;
-                if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-                    picpopup();
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    $("#upload").val('');
-                    return false;
-                }
-
-                if (size > 26214400)
-                {
-                    alert("Allowed file size exceeded. (Max. 25 MB)")
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('row2').style.display = "block";
-                    return false;
-                }
-                $.ajax({
-
-                    url:  base_url() + "freelancer/image_work",
-                    type: "POST",
-                    data: fd,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-
-
-                    }
-                });
-            });
-
-            // Get the modal
-            var modal = document.getElementById('myModal');
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            // When the user clicks the button, open the modal 
-            btn.onclick = function () {
-                modal.style.display = "block";
+                document.getElementById("upload-demo").style.visibility = "visible";
+                document.getElementById("upload-demo-i").style.visibility = "visible";
             }
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
+        });
+    });
+});
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+$('#upload').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+
+
+$('#upload').on('change', function () {
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+    files = this.files;
+    size = files[0].size;
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        picpopup();
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        $("#upload").val('');
+        return false;
+    }
+
+    if (size > 26214400)
+    {
+        alert("Allowed file size exceeded. (Max. 25 MB)")
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        return false;
+    }
+    $.ajax({
+
+        url: base_url() + "freelancer/image_work",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+
+
+        }
+    });
+});
+
+// Get the modal
+var modal = document.getElementById('myModal');
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 //COVER IMAGE CODE END
 //REMOVE SAVE POST START
-            function remove_post(abc)
-            {
-                var savepara = 'save';
-                $.ajax({
-                    type: 'POST',
-                    url:  base_url + "freelancer/freelancer_delete_apply",
-                    data: 'app_id=' + abc + '&para=' + savepara,
-                    success: function (data) {
-                        $('#' + 'postdata' + abc).html(data);
-                        $('#' + 'postdata' + abc).parent().removeClass();
-                        var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-                        if (numItems == '0') {
-                            var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text"> no_saved </div></div>';
-                            $('.contact-frnd-post').html(nodataHtml);
-                        }
-                    }
-                });
+function remove_post(abc)
+{
+    var savepara = 'save';
+    $.ajax({
+        type: 'POST',
+        url: base_url + "freelancer/freelancer_delete_apply",
+        data: 'app_id=' + abc + '&para=' + savepara,
+        success: function (data) {
+            $('#' + 'postdata' + abc).html(data);
+            $('#' + 'postdata' + abc).parent().removeClass();
+            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+            if (numItems == '0') {
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text"> no_saved </div></div>';
+                $('.contact-frnd-post').html(nodataHtml);
             }
-             function removepopup(id) {
-                $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                $('#bidmodal').modal('show');
-            }
+        }
+    });
+}
+function removepopup(id) {
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
 //REMOVE SAVE POST END
 
 
 //CHECK SEARCH KEYWORD AND LOCATION BLANK START
-            function checkvalue() {
-                var searchkeyword = $.trim(document.getElementById('tags').value);
-                var searchplace = $.trim(document.getElementById('searchplace').value);
-                if (searchkeyword == "" && searchplace == "") {
-                    return  false;
-                }
-            }
-            function check() {
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return  false;
+    }
+}
+function check() {
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
     if (keyword == "" && place == "") {
@@ -287,40 +333,26 @@ function freelancerwork_save(pagenum)
 }
 //CHECK SEARCH KEYWORD AND LOCATION BLANK END
 
-//PROFILE PIC VALIDATION START
- $(document).ready(function () {
-                $("#userimage").validate({
-                    rules: {
-                        profilepic: {
-                            required: true,
-                        },
-                    },
-                    messages: {
-                        profilepic: {
-                            required: "Photo Required",
-                        },
-                    },
-                });
-            });
-       function picpopup() {
-                $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
-                $('#bidmodal').modal('show');
-            }
-//PROFILE PIC VALIDATION END
+
+function picpopup() {
+    $('.biderror .mes').html("<div class='pop_content'>Please select only Image type File.(jpeg,jpg,png,gif)");
+    $('#bidmodal').modal('show');
+}
+
 //ALL POPUP CLOSE USING ESC START
-  $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    $('#bidmodal').modal('hide');
-                }
-            });
-            $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                    $('#bidmodal-2').modal('hide');
-                }
-            });
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal').modal('hide');
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal-2').modal('hide');
+    }
+});
 //ALL POPUP CLOSE USING ESC END
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS START
- $(document).ready(function () {
-                $('html,body').animate({scrollTop: 265}, 100);
-            });
+$(document).ready(function () {
+    $('html,body').animate({scrollTop: 265}, 100);
+});
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
