@@ -83,3 +83,18 @@
 
     .keyskil, #other_keyskill1, #other_keyskill{width:93% !important;}    
   .common-form .edit_other_skill1{width: 93% !important;margin-top: 6px;}
+
+  .job_work_experience_main_div{
+   margin-top: 10px;
+   border-bottom: 2px solid #d9d9d9;
+   margin-bottom: 20px;
+   }
+
+   .hs-submit img{
+   display: none !important;
+   }
+
+    #experience_month-error{margin-top: 0px;margin-right: 35px;}
+   #experience_year-error{margin-top: 39px;margin-right: 35px;}
+   #jobtitle-error{margin-right: 35px; margin-top: 0px;}
+   #companyname-error{margin-right: 35px; margin-top: 0px;}
