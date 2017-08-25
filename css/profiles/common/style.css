@@ -5597,6 +5597,9 @@ line-height: 1;}
 .title-section {
     padding: 42px 0;
 }
+.freelancer-midd {
+    height: 100%;
+}
 
 
 
@@ -5634,3 +5637,106 @@ line-height: 1;}
 
 /*** dashboard  ***/
 .hew:hover{  transition-duration: 2s;}
+
+/*** footer ***/
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.footer-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.copyright {
+    background-color: #222222;
+    padding: 10px 0;
+}
+.copyright p {
+    color: #fff;
+    padding-top: 6px;
+    font-size: 14px;
+}
+.copyright ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+.copyright ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.copyright ul li a {
+    background: #000;
+    color: #1b8ab9;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2.3;
+    font-size: 14px;
+    margin: 0 4px;
+}
+.copyright ul li a:hover {
+    background: #1b8ab9;
+}
+
+/***  extra ***/
+.user-profile {
+    padding: 20px 0;
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 40px;
+}
+.user-img .img-circle {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 100%;
+}
+.user-detail {
+    padding-top: 22px;
+    padding-left: 15px;
+}
+.user-detail span {
+    font-size: 16px;
+    font-weight: 400;
+}
+.user-detail h6 {
+    font-weight: 700;
+}
+/*** \views\notification\freelancer_hire_post.php **/
+.freelancer_work_detail ul {
+    margin: 0;
+    padding: 0 0 0 28px;
+}
+.freelancer_work_detail ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+}
+
+/** registration page **/
+.registration {
+    padding: 60px 0;
+}
+.registration h4 {
+    background: #1b8ab9;
+    padding: 8px 15px 11px;
+    color: #fff;
+}
+.registration form {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: 0;
+}
+.registration form fieldset {
+    width: 50%;
+}
+
+/*-----------------------------*/
+

@@ -976,7 +976,7 @@ ul.sub-menu li a i {
 .header ul li:hover .sub-menu {
     display: block;
 }
-***/
+***
 .title-section {
     padding: 42px 0;
 }
@@ -984,7 +984,7 @@ ul.sub-menu li a i {
     background: url(../images/freelancer-bg.jpg) no-repeat;
     background-size: cover;
     padding: 100px 0;
-}
+}**
 /**.h2-srrt{  margin-right: 12px;height: 19px;
     width:19px;
     float: left;
@@ -1020,21 +1020,19 @@ ul.sub-menu li a i {
 /**.dropdown_hover .dropdown-content_hover a:hover .h4-img {
     background: url(../img/icon_delete_white.png) no-repeat;
     background-size:100%;
-}**/
+}**
 .midd-section h2 {
     font-size: 36px;
     margin-bottom: 30px;
     
-}
-.freelancer-midd {
+}**/
+/**.freelancer-midd {
     height: 100%;
-}
+}**
 .about_btm {
     margin-top: 15%;
-}
-.freelancer-midd .title-section {
-    padding-bottom: 114px;
-}
+}**
+
 footer {
     position: absolute;
     width: 100%;
@@ -1053,7 +1051,7 @@ footer {
 .footer ul li { list-style: none; color: #fff; font-size: 14px; font-weight: 300; padding: 1px 0; margin: 0; }
 .footer ul li a { color: #fff; font-size: 14px; font-weight: 300; }
 .footer ul li a:hover { color: #000033; }
-*/
+*
 
 .copyright {
     background-color: #222222;
@@ -1090,18 +1088,18 @@ footer {
 .copyright ul li a:hover {
     background: #1b8ab9;
 }
-/* User Profile */
+/* User Profile *
 
 .user-profile {
     padding: 20px 0;
     border-bottom: 1px solid #f5f5f5;
     margin-bottom: 40px;
-}
+}**
 .user-img .img-circle {
     width: 100px !important;
     height: 100px !important;
     border-radius: 100%;
-}
+}**
 .user-detail {
     padding-top: 22px;
     padding-left: 15px;
@@ -1237,7 +1235,7 @@ footer {
 .apply-btn a:hover {
     color: #fff;
     background: #1b8ab9;
-}**/
+}**
 .role-model-title {
     background: #4f4f4f;
     color: #fff;
@@ -1249,7 +1247,7 @@ footer {
 .role-model-detail {
     background: #f6f6f6;
     padding: 10px;
-}
+}**
 .add-post {
     display: block;
 }
@@ -1272,7 +1270,7 @@ footer {
 }
 .dropdown {
     position: relative;
-}**/
+}**
 .next {
     right: 300px
 }
@@ -1335,7 +1333,7 @@ ul.dropdown-menu li a i {
     margin: 0 0 3px;
     padding: 0;
     display: block;
-}**/
+}**
 .two-select-box select {
     width: 50%;
     float: left;
@@ -1348,19 +1346,19 @@ ul.dropdown-menu li a i {
     margin: 13px 10px;
     vertical-align: middle;
     display: inline-block;
-}**/
+}**
 .form-title h3 {
     background: #1b8ab9;
     color: #fff;
     padding: 8px 20px;
 }
-/* Freelancer Post*/
+/* Freelancer Post*
 
 .user-midd-section {
     margin: 15px 0 35px;
     width: 100%;
     float: left;
-}
+}**
 .post-midd-section {
     margin: 50px 0;
 }
@@ -1416,7 +1414,7 @@ ul.dropdown-menu li a i {
 :-moz-placeholder {
     color: #747474;
 }
-**/
+**
 .found-result {
     color: #a2a2a2;
     font-size: 16px;
@@ -1473,7 +1471,7 @@ ul.dropdown-menu li a i {
 }
 .shedule-interview a:hover {
     background: #1b8ab9;
-}
+}**
 .freelancer_work_detail ul {
     margin: 0;
     padding: 0 0 0 28px;
@@ -1484,7 +1482,7 @@ ul.dropdown-menu li a i {
     margin: 0;
     padding: 5px;
 }
-/* Registration Page */
+/* Registration Page *
 
 .registration {
     padding: 60px 0;
@@ -1501,7 +1499,7 @@ ul.dropdown-menu li a i {
 }
 .registration form fieldset {
     width: 50%;
-}
+}**/
 .radio {
     margin-top: 4px;
 }
@@ -1533,7 +1531,7 @@ ul.dropdown-menu li a i {
 width: 87px;
 padding: 8px 7px;
 margin-bottom: 15px;
-}**/
+}**
 
 .home {
     background: url(../images/Home-page-bg.jpg) no-repeat center center;
@@ -1563,7 +1561,7 @@ margin-bottom: 15px;
 .home .copyright ul li a {
     opacity: 0.6;
 }
-/* Freelance Post Detail */
+/* Freelance Post Detail *
 
 .freelance-post-detail {
     margin: 50px 0;
@@ -1624,7 +1622,7 @@ margin-bottom: 15px;
 .freelance-post-box fieldset button:hover {
     color: #1b8ab9;
 }
-/* CV Form Page */
+/* CV Form Page *
 
 .cv-section {
     margin: 50px 0;
@@ -1670,7 +1668,7 @@ margin-bottom: 15px;
     background: #1b8ab9;
     color: #fff;
     padding: 8px 20px;
-}
+}**/
 
 #jobseeker_regform input:focus{   border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;}
@@ -1683,7 +1681,7 @@ margin-bottom: 15px;
 #jobseeker_regform input[type="submit"]:focus{color: white!important;}
     .message .btn:focus{color: white;}
         .message .btn:hover{color: white;}
-.cv-form input[type=submit],
+/**.cv-form input[type=submit],
 .cv-form input[type=button],
 .cv-form button {
     width: auto;
@@ -1715,7 +1713,7 @@ ul.cv-btn li a:hover {
 }
 ul.cv-btn li a i {
     padding-right: 6px;
-}
+}**/
 .contact_form {
     border: 5px solid white;
     border-bottom: none;
@@ -1855,7 +1853,7 @@ ul.cv-btn li a i {
     font-family: 'FontAwesome';
     padding-right: 15px;
 }
-.role-model-normal {
+/**.role-model-normal {
     font-size: 22px;
     border: 1px solid #1b8ab9;
     color: #1b8ab9;
@@ -1868,8 +1866,8 @@ ul.cv-btn li a i {
     padding: 0;
     text-align: center;
 }
-/* Developer */
-#s2id_skills{width: 100%;}
+/* Developer *
+#s2id_skills{width: 100%;}**
 .form-group {
     margin-bottom: 0;
 }
@@ -15738,4 +15736,20 @@ img.aligncenter {
     margin-left: auto;
     display: block;
     clear: both;
+}
+.midd-section {
+    background: url(../images/freelancer-bg.jpg) no-repeat;
+    background-size: cover;
+    padding: 100px 0;
+}
+.midd-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    
+}
+.about_btm {
+    margin-top: 15%;
+}
+.freelancer-midd .title-section {
+    padding-bottom: 114px;
 }
