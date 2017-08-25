@@ -15,10 +15,9 @@ class Business_profile extends MY_Controller {
         $this->lang->load('message', 'english');
         
         //AWS access info start
-        
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-
+            $this->load->library('S3');
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //AWS access info end
 
 
@@ -1312,6 +1311,8 @@ class Business_profile extends MY_Controller {
                     $imgdata = $this->upload->data();
 
                     if ($this->upload->do_upload('postattach')) {
+                        
+                        $s3->putObjectFile($tmp, $bucket , 'Business_post/'.$actual_image_name, S3::ACL_PUBLIC_READ)
 
                         $response['result'][] = $this->upload->data();
 
