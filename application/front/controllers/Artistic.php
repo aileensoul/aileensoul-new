@@ -3908,6 +3908,11 @@ public function followtwo() {
         if (count($userlist) > 0) {
             foreach ($userlist as $user) {
 
+
+                 $contition_array = array('art_id' => $user['follow_from'], 'status' => '1');
+              $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                if($artaval){
+
                 $return_html .= '<div class="job-contact-frnd ">
                                                     <div class="profile-job-post-detail clearfix">
                                                         <div class="profile-job-post-title-inside clearfix">
@@ -3985,8 +3990,8 @@ public function followtwo() {
                 } else if ($user['follow_from'] == $artisticdatauser[0]['business_profile_id']) {
                     
                 } else {
-                    $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
-                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
+                    $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
+                                        <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
                                                                                 </div>';
                 }
                 $return_html .= '</li>
@@ -3996,7 +4001,7 @@ public function followtwo() {
                                                         </div>
                                                     </div>
                                                 </div>';
-            }
+            } }
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
                                                 <div class="art_no_post_img">
