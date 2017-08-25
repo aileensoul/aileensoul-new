@@ -103,6 +103,7 @@ var data1 = <?php echo json_encode($de); ?>;
 var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/userlist.js'); ?>"></script>
  </body>
 </html>

@@ -1,9 +1,52 @@
-
+// VALIDATION FOR PROFILE PIC START
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true
+            }
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required"
+            }
+        },
+        submitHandler: profile_pic
+    });
+});
+// VALIDATION FOR PROFILE PIC END
+//UOPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        // var fd = new FormData();
+        var formData = new FormData($("#userimage")[0]);
+//    fd.append("image", $("#profilepic")[0].files[0]);
+//         files = this.files;
+        $.ajax({
+            // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+            url: base_url + "freelancer/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                //document.getElementById('profilepic').value == '';
+                $('#preview').prop('src', '#');
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UOPLOAD PROFILE PIC END
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
-    
-    freelancerhire_project(user_id,returnpage);
-
+    freelancerhire_project(user_id, returnpage);
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
@@ -20,18 +63,17 @@ $(document).ready(function () {
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    
-                    freelancerhire_project(user_id,returnpage,pagenum);
+
+                    freelancerhire_project(user_id, returnpage, pagenum);
                 }
             }
         }
     });
-    
+
 });
 var isProcessing = false;
-function freelancerhire_project(user_id,returnpage,pagenum)
+function freelancerhire_project(user_id, returnpage, pagenum)
 {
-   
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -43,8 +85,8 @@ function freelancerhire_project(user_id,returnpage,pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id + '/' + returnpage +'?page=' + pagenum,
-        data: {total_record:$("#total_record").val()},
+        url: base_url + "freelancer/ajax_freelancer_hire_post/" + user_id + '/' + returnpage + '?page=' + pagenum,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -136,6 +178,7 @@ function readURL(input) {
         reader.onload = function (e) {
             document.getElementById('preview').style.display = 'block';
             $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -154,11 +197,6 @@ $("#profilepic").change(function () {
 
 //FUNCTION FOR PROFILE PIC END
 //FUNCTION FOR COVER IMG START
-function myFunction() {
-    document.getElementById("upload-demo").style.visibility = "hidden";
-    document.getElementById("upload-demo-i").style.visibility = "hidden";
-    document.getElementById('message1').style.display = "block";
-}
 function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
@@ -177,7 +215,14 @@ $uploadCrop = $('#upload-demo').croppie({
         height: 350
     }
 });
-$('.upload-result').on('click', function (ev) {
+//$(document).off('click','.upload-result').on('click','.upload-result', function (ev) {
+//$('.upload-result').on('click', function (ev) {
+$('.upload-result').off('click').on('click', function (ev) {
+    alert(789);
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -187,9 +232,12 @@ $('.upload-result').on('click', function (ev) {
             type: "POST",
             data: {"image": resp},
             success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html) {
-                    window.location.reload();
+                if (data) {
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+
                 }
             }
         });
@@ -218,6 +266,7 @@ $('#upload').on('change', function () {
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
     size = files[0].size;
+    //alert(size);
     //  code start for file type support
     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
         picpopup();
@@ -266,7 +315,6 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
-
 //CODE FOR COVER IMAGE END
 //CODE FOR SAVE POST START
 function savepopup(id) {
@@ -357,32 +405,3 @@ $(document).ready(function () {
 });
 
 //CODE FOR SCROLL PAGE AT PERTICULAR END
-// VALIDATION FOR PROFILE PIC START
-
-$(document).ready(function () {
-
-    $("#userimage").validate({
-
-        rules: {
-
-            profilepic: {
-
-                required: true
-
-            }
-
-        },
-
-        messages: {
-
-            profilepic: {
-
-                required: "Photo Required"
-
-            }
-
-        }
-
-    });
-});
-// VALIDATION FOR PROFILE PIC END

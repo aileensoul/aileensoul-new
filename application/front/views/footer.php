@@ -124,6 +124,7 @@
         //ON CLICK GENERAL NOTIFICATION ICON EVENT IN HEADER
         $("#notificationLink").click(function ()
         {
+              $("#acon").hide();
             $("#InboxContainer").hide();
             $("#Inbox_count").hide();
             $(".dropdown-menu").hide();
@@ -277,8 +278,7 @@
     {
         $("#alink").click(function ()
         {
-            $("#acon").fadeToggle(300);
-            $("#acont").fadeOut("slow");
+      
 
             $("#InboxContainer").hide();
             $("#Inbox_count").hide();
@@ -292,6 +292,8 @@
             $("#Frnd_reqContainer").hide();
             $("#Frnd_req_count").hide();
 
+            $("#acon").fadeToggle(300);
+            $("#acont").fadeOut("slow");
 
             return false;
         });

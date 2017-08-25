@@ -107,102 +107,13 @@ $(document).ready(function ()
             });
 
 
-                                                $(function () {
+        function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }                                        
 
-                                                    $("#tags").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        },
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
-
-
-
- $(function () {
-
-                                                    $("#searchplace").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data1, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#searchplace").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        },
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#searchplace").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
-
-
-$(function() {
-    // alert('hi');
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
-
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
 
 $(document).ready(function () {
                             $('.blocks').jMosaic({items_type: "li", margin: 0});
@@ -317,7 +228,7 @@ function comment_like1(clicked_id)
                                 success: function (data) {
                                     $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
                                    //     $('#' + 'insertcount' + post_delete.value).html(data.count);
-                                $('.like_count_ext' + post_delete.value).html(data.commentcount);
+                                $('.like_count_ext' + post_delete1.value).html(data.commentcount);
                                     $('.post-design-commnet-box').show();
                                 }
                             });
@@ -337,7 +248,7 @@ function insert_comment(clicked_id)
                             txt = txt.replace(/div/gi, 'p');
 
 
-                            if (txt == '' || txt == '<br>') {
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 return false;
                             }
                             if (/^\s+$/gi.test(txt))
@@ -405,7 +316,7 @@ function insert_comment(clicked_id)
                                     txt = txt.replace(/<br>$/, '');
                                     txt = txt.replace(/div/gi, 'p');
 
-                                    if (txt == '' || txt == '<br>') {
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         return false;
                                     }
                                     if (/^\s+$/gi.test(txt))
@@ -476,6 +387,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                             document.getElementById('editcancle' + clicked_id).style.display = 'block';
                             $($('#box_hide' + abc)).hide();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                            
                         }
 
 
@@ -485,6 +398,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcomment' + clicked_id).style.display = 'none';
                             document.getElementById('showcomment' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
 
                             $($('#box_hide' + abc)).show();
                         }
@@ -503,6 +418,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                             document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                             $($('#box_hide' + abc)).hide();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
                         }
 
 
@@ -515,6 +432,8 @@ function comment_editbox(clicked_id,abc) {
                             document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
                             $($('#box_hide' + abc)).show();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                         }
 
 function edit_comment2(abc)
@@ -750,7 +669,7 @@ $(function () {
 
        // end khyati code
    
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+       if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
@@ -805,10 +724,19 @@ function remove_post(abc)
                                 success: function (data) {
 
                                     $('#' + 'removepost' + abc).html(data);
-                                    window.location = "<?php echo base_url() ?>artistic/art_post";
+                                   // window.location = "<?php echo base_url() ?>artistic/art_post";
+                                    window.location = base_url + "artistic/home";
                                 }
                             });
                         }
+
+ function deletepostmodel(abc) {
+   
+   
+       $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this post from your profile?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='del_particular_userpost(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+       $('#bidmodal').modal('show');
+   }
+   
 
 function del_particular_userpost(abc)
                         {
@@ -821,6 +749,8 @@ function del_particular_userpost(abc)
                                 success: function (data) {
 
                                     $('#' + 'removepost' + abc).html(data);
+                                    window.location = base_url + "artistic/home";
+
                                 }
                             });
 }
@@ -930,7 +860,7 @@ function edit_comment(abc,clicked_id)
 
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
-                            if (txt == '' || txt == '<br>') {
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
@@ -951,6 +881,8 @@ function edit_comment(abc,clicked_id)
                                     document.getElementById('editcancle' + abc).style.display = 'none';
                                     $('#' + 'showcomment' + abc).html(data);
                                     $('#box_hide' + clicked_id).show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -971,7 +903,7 @@ function edit_comment(abc,clicked_id)
                                     var txt = sel.html();
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
-                                    if (txt == '' || txt == '<br>') {
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
                                         return false;
@@ -999,6 +931,8 @@ function edit_comment(abc,clicked_id)
                                             document.getElementById('editcancle' + abc).style.display = 'none';
                                             $('#' + 'showcomment' + abc).html(data);
                                             $('#box_hide' + clicked_id).show();
+                                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                         }
                                     });
                                 }
@@ -1019,7 +953,7 @@ function edit_commenttwo(abc,clicked_id)
                             var txt = sel.html();
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
-                            if (txt == '' || txt == '<br>') {
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
@@ -1042,6 +976,8 @@ function edit_commenttwo(abc,clicked_id)
                                     document.getElementById('editcancletwo' + abc).style.display = 'none';
                                     $('#' + 'showcommenttwo' + abc).html(data);
                                     $('#box_hide' + clicked_id).show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -1063,7 +999,7 @@ function edit_commenttwo(abc,clicked_id)
                                     var txt = sel.html();
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
-                                    if (txt == '' || txt == '<br>') {
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
                                         return false;
@@ -1097,7 +1033,8 @@ function edit_commenttwo(abc,clicked_id)
 
                                             $('#' + 'showcommenttwo' + abc).html(data);
                                             $('#box_hide' + clicked_id).show();
-
+                                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                                         }
                                     });
                                 }
@@ -1237,7 +1174,7 @@ function entercommentimg(clicked_id)
                                     e.preventDefault();
                                     var sel = $("#post_commentimg" + clicked_id);
                                     var txt = sel.html();
-                                    if (txt == '') {
+                                    if (txt == '' || check_perticular(txt) == true) {
                                         return false;
                                     }
                                     $('#post_commentimg' + clicked_id).html("");
@@ -1678,7 +1615,7 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
 
-                            if (txt == '') {
+                            if (txt == '' || check_perticular(txt) == true) {
                                 return false;
                             }
 
@@ -1738,7 +1675,7 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
 
-                            if (txt == '' || txt == '<br>') {
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
@@ -1850,7 +1787,7 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
 
-                            if (txt == '' || txt == '<br>') {
+                            if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
                                 return false;
@@ -1915,7 +1852,7 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/div/gi, "p");
 
 
-                                    if (txt == '' || txt == '<br>') {
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deleteimg(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
                                         return false;
@@ -1970,7 +1907,7 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
 
-                                    if (txt == '' || txt == '<br>') {
+                                    if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deleteimgtwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
                                         return false;

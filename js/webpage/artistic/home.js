@@ -293,6 +293,15 @@ function post_like(clicked_id)
 
 
    // insert comment scrpit start
+// for only br tag not valid scrtipt strat
+
+function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }
+
 
 
 function insert_comment(clicked_id)
@@ -310,7 +319,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/div>/gi, 'p>');
 
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            return false;
        }
        if (/^\s+$/gi.test(txt))
@@ -377,9 +386,10 @@ function insert_comment(clicked_id)
                txt = txt.replace(/<br>$/, '');
 
               txt = txt.replace(/div>/gi, 'p>');
+              //alert(txt); return false;
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    return false;
                }
                if (/^\s+$/gi.test(txt))
@@ -452,6 +462,10 @@ function insert_comment(clicked_id)
        document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
        document.getElementById('editcancle' + clicked_id).style.display = 'block';
        $('.post-design-commnet-box').hide();
+
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+       
+
    }
 
     function comment_editcancle(clicked_id) {
@@ -460,7 +474,11 @@ function insert_comment(clicked_id)
        document.getElementById('editcomment' + clicked_id).style.display = 'none';
        document.getElementById('showcomment' + clicked_id).style.display = 'block';
        document.getElementById('editsubmit' + clicked_id).style.display = 'none';
-   
+
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
+       //$('div#hidebottomborder .all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');  
+      
        $('.post-design-commnet-box').show();
    }
 
@@ -478,6 +496,13 @@ function insert_comment(clicked_id)
        document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
        document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
        $('.post-design-commnet-box').hide();
+
+       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+      
+
+      // $('#hidebottomborder'+ clicked_id).css({"border-bottom": "0px"});
+
    }
 
    function comment_editbox3(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
@@ -491,15 +516,20 @@ function insert_comment(clicked_id)
    
    }
    
-   function comment_editcancle3(clicked_id) {
+   function comment_editcancletwo(clicked_id) {
    
-       document.getElementById('editcommentbox3' + clicked_id).style.display = 'block';
-       document.getElementById('editcancle3' + clicked_id).style.display = 'none';
+       document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'block';
+       document.getElementById('editcancletwo' + clicked_id).style.display = 'none';
    
-       document.getElementById('editcomment3' + clicked_id).style.display = 'none';
-       document.getElementById('showcomment3' + clicked_id).style.display = 'block';
-       document.getElementById('editsubmit3' + clicked_id).style.display = 'none';
-   
+       document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
+       document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
+       document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+
+       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
+          
+    
        $('.post-design-commnet-box').show();
    
    }
@@ -543,7 +573,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/<br>$/, '');
         txt = txt.replace(/div>/gi, 'p>');
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
            $('#bidmodal').modal('show');
            return false;
@@ -566,6 +596,9 @@ function insert_comment(clicked_id)
                document.getElementById('editcancle' + abc).style.display = 'none';
                $('#' + 'showcomment' + abc).html(data);
                $('.post-design-commnet-box').show();
+              
+               $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
            }
        });
        $(".scroll").click(function (event) {
@@ -591,7 +624,7 @@ function insert_comment(clicked_id)
                txt = txt.replace(/div>/gi, 'p>');
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                    $('#bidmodal').modal('show');
                    return false;
@@ -621,6 +654,9 @@ function insert_comment(clicked_id)
                        document.getElementById('editcancle' + abc).style.display = 'none';
                        $('#' + 'showcomment' + abc).html(data);
                        $('.post-design-commnet-box').show();
+                       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                         
+
                    }
                });
            }
@@ -646,7 +682,7 @@ function insert_comment(clicked_id)
        txt = txt.replace(/div>/gi, 'p>');
 
 
-       if (txt == '' || txt == '<br>') {
+       if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
            $('#bidmodal').modal('show');
            return false;
@@ -670,6 +706,9 @@ function insert_comment(clicked_id)
                document.getElementById('editcancletwo' + abc).style.display = 'none';
                $('#' + 'showcommenttwo' + abc).html(data);
                $('.post-design-commnet-box').show();
+               $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+               $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
            }
        });
        $(".scroll").click(function (event) {
@@ -696,7 +735,7 @@ function insert_comment(clicked_id)
                txt = txt.replace(/div>/gi, 'p>');
 
 
-               if (txt == '' || txt == '<br>') {
+               if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                    $('#bidmodal').modal('show');
                    return false;
@@ -729,6 +768,9 @@ function insert_comment(clicked_id)
    
                        $('#' + 'showcommenttwo' + abc).html(data);
                        $('.post-design-commnet-box').show();
+                       $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                       $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
    
                    }
                });
@@ -981,12 +1023,14 @@ function followuser(clicked_id)
    
        $.ajax({
            type: 'POST',
-           url: base_url + "artistic/follow_two",
+           url: base_url + "artistic/follow_home",
            //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
            data: 'follow_to=' + clicked_id,
            success: function (data) {
    
-               $('.' + 'fr' + clicked_id).html(data);
+               $('.' + 'fr' + clicked_id).html(data.follow);
+               $('#countfollow').html(data.count);
    
            }
    
@@ -1379,127 +1423,7 @@ function followuser(clicked_id)
            });
 
 
-      //jQuery.noConflict();
-   
-   (function ($) {
-   
-       $(function () {
-        
-           $("#tags").autocomplete({
-               source: function (request, response) {
-                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                   response($.grep(data, function (item) {
-                       return matcher.test(item.label);
-                   }));
-               },
-               minLength: 1,
-               select: function (event, ui) {
-                   event.preventDefault();
-                   $("#tags").val(ui.item.label);
-                   $("#selected-tag").val(ui.item.label);
-                   // window.location.href = ui.item.value;
-               }
-               ,
-               focus: function (event, ui) {
-                   event.preventDefault();
-                   $("#tags").val(ui.item.label);
-               }
-           });
-       });
-   
-   })(jQuery);
-
-
-   //jQuery.noConflict();
-   
-   (function ($) {
-   
-       $(function () {
-           // alert('hi');
-           $("#searchplace").autocomplete({
-               source: function (request, response) {
-                   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                   response($.grep(data1, function (item) {
-                       return matcher.test(item.label);
-                   }));
-               },
-               minLength: 1,
-               select: function (event, ui) {
-                   event.preventDefault();
-                   $("#searchplace").val(ui.item.label);
-                   $("#selected-tag").val(ui.item.label);
-                   // window.location.href = ui.item.value;
-               }
-               ,
-               focus: function (event, ui) {
-                   event.preventDefault();
-                   $("#searchplace").val(ui.item.label);
-               }
-           });
-       });
-   
-   })(jQuery);
-
-   // jQuery.noConflict();
-   
-   // (function ($) {
-   
-   //     $(function () {
-   //         $("#tags1").autocomplete({
-   //             source: function (request, response) {
-   //                 var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-   //                 response($.grep(data, function (item) {
-   //                     return matcher.test(item.label);
-   //                 }));
-   //             },
-   //             minLength: 1,
-   //             select: function (event, ui) {
-   //                 event.preventDefault();
-   //                 $("#tag1").val(ui.item.label);
-   //                 $("#selected-tag").val(ui.item.label);
-   //                 // window.location.href = ui.item.value;
-   //             }
-   //             ,
-   //             focus: function (event, ui) {
-   //                 event.preventDefault();
-   //                 $("#tags1").val(ui.item.label);
-   //             }
-   //         });
-   //     });
-   
-   // })(jQuery);
-
-
-   // jQuery.noConflict();
-   
-   // (function ($) {
-   
-   //     $(function () {
-         
-   //         $("#searchplace1").autocomplete({
-   //             source: function (request, response) {
-   //                 var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-   //                 response($.grep(data1, function (item) {
-   //                     return matcher.test(item.label);
-   //                 }));
-   //             },
-   //             minLength: 1,
-   //             select: function (event, ui) {
-   //                 event.preventDefault();
-   //                 $("#searchplace1").val(ui.item.label);
-   //                 $("#selected-tag").val(ui.item.label);
-   //                 // window.location.href = ui.item.value;
-   //             }
-   //             ,
-   //             focus: function (event, ui) {
-   //                 event.preventDefault();
-   //                 $("#searchplace1").val(ui.item.label);
-   //             }
-   //         });
-   //     });
-   
-   // })(jQuery);
-
+     
 
      function khdiv(abc) {
          
@@ -1552,12 +1476,13 @@ function followuser(clicked_id)
    {
    
        var editpostname = document.getElementById("editpostname" + abc);
+       //alert(editpostname);
        var $field = $('#editpostdesc' + abc);
        var editpostdetails = $('#editpostdesc' + abc).html();
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
       
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+       if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    

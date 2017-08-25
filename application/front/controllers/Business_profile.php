@@ -22,7 +22,7 @@ class Business_profile extends MY_Controller {
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '	business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
             redirect('business-profile/');
@@ -612,25 +612,76 @@ class Business_profile extends MY_Controller {
                 $this->upload->do_upload();
 
                 if ($this->upload->do_upload('image1')) {
+
+                    // $fileData = $this->upload->data();
+                    // $uploadData[$i]['file_name'] = $fileData['file_name'];
                     $response['result'][] = $this->upload->data();
+
+                    $image_width = $response['result'][$i]['image_width'];
+                    $image_height = $response['result'][$i]['image_height'];
+
+                    $thumb_image_width = $this->config->item('bus_detail_thumb_width');
+                    $thumb_image_height = $this->config->item('bus_detail_thumb_height');
+
+                    if ($image_width > $image_height) {
+                        $n_h = $thumb_image_height;
+                        $image_ratio = $image_height / $n_h;
+                        $n_w = round($image_width / $image_ratio);
+                    } else if ($image_width < $image_height) {
+                        $n_w = $thumb_image_width;
+                        $image_ratio = $image_width / $n_w;
+                        $n_h = round($image_height / $image_ratio);
+                    } else {
+                        $n_w = $thumb_image_width;
+                        $n_h = $thumb_image_height;
+                    }
+
                     $business_profile_post_thumb[$i]['image_library'] = 'gd2';
                     $business_profile_post_thumb[$i]['source_image'] = $this->config->item('bus_profile_main_upload_path') . $response['result'][$i]['file_name'];
                     $business_profile_post_thumb[$i]['new_image'] = $this->config->item('bus_profile_thumb_upload_path') . $response['result'][$i]['file_name'];
                     $business_profile_post_thumb[$i]['create_thumb'] = TRUE;
-                    $business_profile_post_thumb[$i]['maintain_ratio'] = TRUE;
+                    $business_profile_post_thumb[$i]['maintain_ratio'] = FALSE;
                     $business_profile_post_thumb[$i]['thumb_marker'] = '';
-                    $business_profile_post_thumb[$i]['width'] = $this->config->item('bus_profile_thumb_width');
-                    $business_profile_post_thumb[$i]['height'] = 2;
-                    $business_profile_post_thumb[$i]['master_dim'] = 'width';
+                    $business_profile_post_thumb[$i]['width'] = $n_w;
+                    $business_profile_post_thumb[$i]['height'] = $n_h;
                     $business_profile_post_thumb[$i]['quality'] = "100%";
                     $business_profile_post_thumb[$i]['x_axis'] = '0';
                     $business_profile_post_thumb[$i]['y_axis'] = '0';
                     $instanse = "image_$i";
-//Loading Image Library
+                    //Loading Image Library
                     $this->load->library('image_lib', $business_profile_post_thumb[$i], $instanse);
                     $dataimage = $response['result'][$i]['file_name'];
-//Creating Thumbnail
+                    //Creating Thumbnail
                     $this->$instanse->resize();
+                    /* CROP */
+                    // reconfigure the image lib for cropping
+                    $conf_new[$i] = array(
+                        'image_library' => 'gd2',
+                        'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                        'create_thumb' => FALSE,
+                        'maintain_ratio' => FALSE,
+                        'width' => $thumb_image_width,
+                        'height' => $thumb_image_height
+                    );
+
+                    $conf_new[$i]['new_image'] = $this->config->item('bus_profile_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+                    $left = ($n_w / 2) - ($thumb_image_width / 2);
+                    $top = ($n_h / 2) - ($thumb_image_height / 2);
+
+                    $conf_new[$i]['x_axis'] = $left;
+                    $conf_new[$i]['y_axis'] = $top;
+
+                    $instanse1 = "image1_$i";
+                    //Loading Image Library
+                    $this->load->library('image_lib', $conf_new[$i], $instanse1);
+                    $dataimage = $response['result'][$i]['file_name'];
+                    //Creating Thumbnail
+                    $this->$instanse1->crop();
+
+                    /* CROP */
+
+
                     $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
                     $return['data'][] = $imgdata;
@@ -1254,25 +1305,162 @@ class Business_profile extends MY_Controller {
                     if ($this->upload->do_upload('postattach')) {
 
                         $response['result'][] = $this->upload->data();
+
+                        $image_width = $response['result'][$i]['image_width'];
+                        $image_height = $response['result'][$i]['image_height'];
+
+                        $thumb_image_width = $this->config->item('bus_post_thumb_width');
+                        $thumb_image_height = $this->config->item('bus_post_thumb_height');
+
+                        if ($image_width > $image_height) {
+                            $n_h = $thumb_image_height;
+                            $image_ratio = $image_height / $n_h;
+                            $n_w = round($image_width / $image_ratio);
+                        } else if ($image_width < $image_height) {
+                            $n_w = $thumb_image_width;
+                            $image_ratio = $image_width / $n_w;
+                            $n_h = round($image_height / $image_ratio);
+                        } else {
+                            $n_w = $thumb_image_width;
+                            $n_h = $thumb_image_height;
+                        }
+
                         $business_profile_post_thumb[$i]['image_library'] = 'gd2';
                         $business_profile_post_thumb[$i]['source_image'] = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
                         $business_profile_post_thumb[$i]['new_image'] = $this->config->item('bus_post_thumb_upload_path') . $response['result'][$i]['file_name'];
                         $business_profile_post_thumb[$i]['create_thumb'] = TRUE;
-                        $business_profile_post_thumb[$i]['maintain_ratio'] = TRUE;
+                        $business_profile_post_thumb[$i]['maintain_ratio'] = FALSE;
                         $business_profile_post_thumb[$i]['thumb_marker'] = '';
-                        $business_profile_post_thumb[$i]['width'] = $this->config->item('bus_post_thumb_width');
-//$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
-                        $business_profile_post_thumb[$i]['height'] = 2;
-                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
+                        $business_profile_post_thumb[$i]['width'] = $n_w;
+                        $business_profile_post_thumb[$i]['height'] = $n_h;
+//                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
                         $business_profile_post_thumb[$i]['quality'] = "100%";
                         $business_profile_post_thumb[$i]['x_axis'] = '0';
                         $business_profile_post_thumb[$i]['y_axis'] = '0';
                         $instanse = "image_$i";
-//Loading Image Library
+                        //Loading Image Library
                         $this->load->library('image_lib', $business_profile_post_thumb[$i], $instanse);
                         $dataimage = $response['result'][$i]['file_name'];
-//Creating Thumbnail
+                        //Creating Thumbnail
                         $this->$instanse->resize();
+
+                        /* CROP 335 X 320 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('bus_post_350_320_width');
+                        $resized_image_height = $this->config->item('bus_post_350_320_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+                        $conf_new[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new[$i]['new_image'] = $this->config->item('bus_post_350_320_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new[$i]['x_axis'] = $left;
+                        $conf_new[$i]['y_axis'] = $top;
+
+                        $instanse1 = "image1_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new[$i], $instanse1);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse1->crop();
+
+                        /* CROP 335 X 320 */
+
+
+                        /* CROP 335 X 245 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('bus_post_335_245_width');
+                        $resized_image_height = $this->config->item('bus_post_335_245_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+
+                        $conf_new1[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new1[$i]['new_image'] = $this->config->item('bus_post_335_245_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new1[$i]['x_axis'] = $left;
+                        $conf_new1[$i]['y_axis'] = $top;
+
+                        $instanse2 = "image2_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new1[$i], $instanse2);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse2->crop();
+
+                        /* CROP 335 X 245 */
+
+                        /* CROP 210 X 210 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('bus_post_210_210_width');
+                        $resized_image_height = $this->config->item('bus_post_210_210_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+
+                        $conf_new2[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new2[$i]['new_image'] = $this->config->item('bus_post_210_210_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new2[$i]['x_axis'] = $left;
+                        $conf_new2[$i]['y_axis'] = $top;
+
+                        $instanse3 = "image3_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new2[$i], $instanse3);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse3->crop();
+
+                        /* CROP 210 X 210 */
+
                         $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
                         $return['data'][] = $imgdata;
@@ -1285,6 +1473,8 @@ class Business_profile extends MY_Controller {
                             'post_id' => $insert_id,
                             'is_deleted' => 1
                         );
+
+                        //echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_image');
                     } else {
                         echo $this->upload->display_errors();
@@ -1714,25 +1904,25 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div  class="two-images">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
                 }
             } elseif (count($businessmultiimage) == 3) {
                 $return_html .= '<div class="three-image-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
             </a>
         </div>
         <div class="three-image" >
 
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> 
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> 
+                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> 
             </a>
         </div>';
             } elseif (count($businessmultiimage) == 4) {
@@ -1741,7 +1931,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
                 }
@@ -1752,7 +1942,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> 
             </a>
         </div>';
 
@@ -1763,7 +1953,7 @@ class Business_profile extends MY_Controller {
 
                 $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style="width: 100%; height: 100%;"> 
+                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
             </a>
             <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
                 <div class="more-image" >
@@ -8352,7 +8542,9 @@ class Business_profile extends MY_Controller {
         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
         $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+
         $unique_user = array_merge($contactperson_req, $contactperson_con);
+
 
         $new = array();
         foreach ($unique_user as $value) {
@@ -8360,125 +8552,145 @@ class Business_profile extends MY_Controller {
         }
 
         $post = array();
+
         foreach ($new as $key => $row) {
+
             $post[$key] = $row['contact_id'];
         }
         array_multisort($post, SORT_DESC, $new);
 
         $contactperson = $new;
-        $contactdata .= '<ul id="' . $contact['contact_id'] . '">';
-        if ($contactperson) {
-            foreach ($contactperson as $contact) {
 
-                if ($contact['contact_to_id'] == $userid) {
-                    $contition_array = array('user_id' => $contact['contact_from_id'], 'status' => '1');
-                    $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if ($contactperson_from) {
-                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
-                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-                        $contactdata .= '<li>';
-                        $contactdata .= '<div class="addcontact-left">';
-                        $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
-                        $contactdata .= '<div class="addcontact-pic">';
+//echo "<pre>"; print_r($contactperson); die();
 
-                        if ($busdata[0]['business_user_image']) {
 
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                $a = $busdata[0]['company_name'];
-                                $acr = substr($a, 0, 1);
 
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr));
-                                $contactdata .= '</div>';
-                            } else {
+        foreach ($contactperson as $contact) {
 
-                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-                            }
-                        } else {
+
+            //echo $busdata[0]['industriyal'];  echo '<pre>'; print_r($inddata); die();
+            //$contactdata .= '<ul id="' . $contact['contact_id'] . '">';
+
+            if ($contact['contact_to_id'] == $userid) {
+
+                $contition_array = array('user_id' => $contact['contact_from_id'], 'status' => '1');
+                $contactperson_from = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($contactperson_from) {
+
+                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_from_id'], $data = '*', $join_str = array());
+                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+                    $contactdata .= '<li>';
+                    $contactdata .= '<div class="addcontact-left">';
+                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                    $contactdata .= '<div class="addcontact-pic">';
+
+                    if ($busdata[0]['business_user_image']) {
+
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
                             $a = $busdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
 
                             $contactdata .= '<div class="post-img-div">';
                             $contactdata .= ucfirst(strtolower($acr));
                             $contactdata .= '</div>';
-                        }
-                        $contactdata .= '</div>';
-                        $contactdata .= '<div class="addcontact-text">';
-                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
-                        $contactdata .= '' . $inddata[0]['industry_name'] . '';
-                        $contactdata .= '</div>';
-                        $contactdata .= '</a>';
-                        $contactdata .= '</div>';
-                        $contactdata .= '<div class="addcontact-right">';
-                        $contactdata .= '<a href="javascript:void(0);" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                        $contactdata .= '<a href="javascript:void(0);" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
-                        $contactdata .= '</div>';
-                        $contactdata .= '</li>';
-                    }
-                } else {
-
-
-
-                    $contition_array = array('user_id' => $contact['contact_to_id'], 'status' => '1');
-                    $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    if ($contactperson_to) {
-
-
-                        $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
-
-
-                        $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
-
-                        $contactdata .= '<li>';
-                        $contactdata .= '<div class="addcontact-left custome-approved-contact">';
-                        $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
-                        $contactdata .= '<div class="addcontact-pic">';
-
-                        if ($busdata[0]['business_user_image']) {
-
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                                $a = $busdata[0]['company_name'];
-                                $acr = substr($a, 0, 1);
-
-                                $contactdata .= '<div class="post-img-div">';
-                                $contactdata .= ucfirst(strtolower($acr));
-                                $contactdata .= '</div>';
-                            } else {
-
-                                $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
-                            }
                         } else {
+
+                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                        }
+                    } else {
+                        $a = $busdata[0]['company_name'];
+                        $acr = substr($a, 0, 1);
+
+                        $contactdata .= '<div class="post-img-div">';
+                        $contactdata .= ucfirst(strtolower($acr));
+                        $contactdata .= '</div>';
+                    }
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-text">';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b></span>';
+                    $contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-right">';
+                    $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="#" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</li>';
+                }
+            } else {
+
+
+
+                $contition_array = array('user_id' => $contact['contact_to_id'], 'status' => '1');
+                $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($contactperson_to) {
+
+
+                    $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
+
+
+                    $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
+
+                    $contactdata .= '<li>';
+                    $contactdata .= '<div class="addcontact-left custome-approved-contact">';
+                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                    $contactdata .= '<div class="addcontact-pic">';
+
+                    if ($busdata[0]['business_user_image']) {
+
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
                             $a = $busdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
 
                             $contactdata .= '<div class="post-img-div">';
                             $contactdata .= ucfirst(strtolower($acr));
                             $contactdata .= '</div>';
+                        } else {
+
+                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                         }
+                    } else {
+                        $a = $busdata[0]['company_name'];
+                        $acr = substr($a, 0, 1);
+
+                        $contactdata .= '<div class="post-img-div">';
+                        $contactdata .= ucfirst(strtolower($acr));
                         $contactdata .= '</div>';
-                        $contactdata .= '<div class="addcontact-text">';
-                        $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
-                        //$contactdata .= '' . $inddata[0]['industry_name'] . '';
-                        $contactdata .= '</div>';
-                        $contactdata .= '</a>';
-                        $contactdata .= '</div>';
-                        $contactdata .= '</li>';
                     }
+                    $contactdata .= '</div>';
+                    $contactdata .= '<div class="addcontact-text_full">';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
+                    //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</a>';
+                    $contactdata .= '</div>';
+                    $contactdata .= '</li>';
                 }
             }
-            $contactdata .= '</ul>';
+            //$contactdata .= '</ul>';
+        }
+
+        if ($contactperson) {
+            $seeall = '<a class="fr" href="' . base_url() . 'business_profile/contact_list">See All</a>';
         } else {
-            $contactdata .= '<div class="art-img-nn">
+            $seeall = '<div class="fw"><div class="art-img-nn">
                                                 <div class="art_no_post_img">
                                                     <img src="' . base_url() . 'img/No_Contact_Request.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
                                                     No Contact Request Available.
                                                 </div>
-                             </div>';
+                             </div></div>';
         }
-        echo $contactdata;
+        echo json_encode(
+                array(
+                    "contactdata" => $contactdata,
+                    "seeall" => $seeall,
+        ));
     }
 
     public function contact_approve() {
@@ -9015,31 +9227,31 @@ class Business_profile extends MY_Controller {
                 } else {
                     if ($clistuser[0]['status'] == 'cancel') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
                     } elseif ($clistuser[0]['status'] == 'pending') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ",'pending'" . ')">
+                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ",'pending'" . ')" class="contact_user_list">
                                 Cancel request
                             </button>
                         </div>';
                     } else if ($clistuser[0]['status'] == 'confirm') {
                         $return_html .= '<div class="user_btn cont_req" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ", 'confirm'" . ')">
+                            <button onclick="contact_person_cancle(' . $cdata[0]['user_id'] . ", 'confirm'" . ')" class="contact_user_list">
                                 In contacts
                             </button> 
                         </div>';
                     } else if ($clistuser[0]['status'] == 'reject') {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
                     } else {
                         $return_html .= '<div class="user_btn" id="statuschange' . $cdata[0]['user_id'] . '">
-                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')">
+                            <button onclick="contact_person_menu(' . $cdata[0]['user_id'] . ')" class="contact_user_list">
                                 Add to contact
                             </button>
                         </div>';
@@ -9190,7 +9402,7 @@ No Contacts Available.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
 
 
                 $contactdata .= 'Cancel request';
@@ -9205,7 +9417,7 @@ No Contacts Available.
 
                 $updatdata = $this->common->update_data($data, 'contact_person', 'contact_id', $contact_id);
 
-                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+                $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
 
 
                 $contactdata .= 'Cancel request';
@@ -9226,7 +9438,7 @@ No Contacts Available.
 
             $insert_id = $this->common->insert_data_getid($data, 'contact_person');
 
-            $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')">';
+            $contactdata = '<button onClick = "contact_person_cancle(' . $to_id . ", " . "'" . 'pending' . "'" . ')" class="contact_user_list">';
             $contactdata .= 'Cancel request';
             $contactdata .= '</button>';
         }
@@ -9722,25 +9934,25 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "two-columns" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
                         }
                     } elseif (count($businessmultiimage) == 3) {
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style = "width: 100%; height:100%; ">
+<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '">
 </a>
 </div>';
                     } elseif (count($businessmultiimage) == 4) {
@@ -9749,7 +9961,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
                         }
@@ -9760,7 +9972,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style = "width: 100%; height: 100%;">
+<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '">
 </a>
 </div>';
 
@@ -9771,9 +9983,9 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style = "width: 100%; height: 100%;">
+<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
@@ -11206,34 +11418,24 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%;
-                                                                                                                                            height:100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $multiimage['image_name']) . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -11241,16 +11443,14 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $multiimage['image_name']) . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%;
-                                                                                                                                            height: 100%;
-"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_210_210_upload_path') . $businessmultiimage[3]['image_name']) . '"> </a>
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')
@@ -11570,7 +11770,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
         if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
             $return = 1;
-            
+
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
             $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 

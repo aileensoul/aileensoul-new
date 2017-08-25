@@ -1,18 +1,4 @@
- //validation for edit email formate form
-            $(document).ready(function () { 
-                $("#userimage").validate({ 
-                    rules: {
-                        profilepic: {
-                           required: true,
-                        },
-                    },
-                    messages: {
-                       profilepic: {
-                            required: "Image Required",
-                        },
-                    },
-                });
-            });
+
 $(document).ready(function () {
     artistic_followers(slug_id);
 });
@@ -115,97 +101,7 @@ var modal = document.getElementById('myModal');
    // alert("hi");
        $("a.designation").click(divClicked);
    });
-    $(function() {
-   $( "#tags" ).autocomplete({
-        source: function( request, response ) {
-            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-            response( $.grep( data, function( item ){
-                return matcher.test( item.label );
-            }) );
-      },
-       minLength: 1,
-       select: function(event, ui) {
-           event.preventDefault();
-           $("#tags").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       }
-       ,
-       focus: function(event, ui) {
-           event.preventDefault();
-           $("#tags").val(ui.item.label);
-       }
-   });
-   });
-    $(function() {
-       // alert('hi');
-   $( "#searchplace" ).autocomplete({
-        source: function( request, response ) {
-            var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-            response( $.grep( data1, function( item ){
-                return matcher.test( item.label );
-            }) );
-      },
-       minLength: 1,
-       select: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace").val(ui.item.label);
-           $("#selected-tag").val(ui.item.label);
-           // window.location.href = ui.item.value;
-       }
-       ,
-       focus: function(event, ui) {
-           event.preventDefault();
-           $("#searchplace").val(ui.item.label);
-       }
-   });
-   });
- $(function() {
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
-
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
+    
 function checkvalue() {
        var searchkeyword =$.trim(document.getElementById('tags').value);
        var searchplace =$.trim(document.getElementById('searchplace').value);
@@ -398,27 +294,7 @@ function showDiv() {
            }
        });
    }
-// script for profile pic strat
 
- function readURL(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();       
-         reader.onload = function (e) {        
-          document.getElementById('preview').style.display = 'block';
-              $('#preview').attr('src', e.target.result);
-          }         
-          reader.readAsDataURL(input.files[0]);
-      }
-   }  
-   $("#profilepic").change(function(){
-       profile = this.files;
-                    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                $('#profilepic').val('');
-                 picpopup();
-                   return false;
-                 }else{
-                    readURL(this);}
-   });
 function picpopup() {  
           $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
           $('#bidmodal').modal('show');

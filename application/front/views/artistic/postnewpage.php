@@ -222,7 +222,7 @@
                                                 <?php } else {
                                                     ?>
 
-                                                    <!--<a id="<?php //echo $art_data[0]['art_post_id']; ?>" onClick="deleteownpostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>-->
+                                                    <!--  <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a> -->
 
                                                    <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
 
@@ -241,7 +241,7 @@
 
                                                     <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="editpost(this.id)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
                                                 <?php } else { ?>
-                                                    <!--<a href="<?php echo "#popup5" . $row['art_post_id']; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>-->
+                                                    <a id="<?php echo $art_data[0]['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete Post</a>
 
                                                    <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $art_data[0]['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
                                                     <?php
@@ -590,7 +590,7 @@
                                                             <!-- khyati changes start -->
 
                                                             <div  id="<?php echo "threecommentimg" . $artdata['image_id']; ?>" style="display:block">
-                                                                <div class="<?php echo 'insertcommentimg' . $artdata['image_id']; ?>">
+                                                                <div class="hidebottomborder <?php echo 'insertcommentimg' . $artdata['image_id']; ?>">
                                                                     <?php
                                                                     $contition_array = array('post_image_id' => $artdata['image_id'], 'is_delete' => '0');
                                                                     $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -1036,7 +1036,7 @@
                                     <!-- khyati changes start -->
 
                                     <div  id="<?php echo "threecomment" . $art_data[0]['art_post_id']; ?>" style="display:block">
-                                        <div class="<?php echo 'insertcomment' . $art_data[0]['art_post_id']; ?>">
+                                        <div class="hidebottomborder <?php echo 'insertcomment' . $art_data[0]['art_post_id']; ?>">
                                             <?php
                                             $contition_array = array('art_post_id' => $art_data[0]['art_post_id'], 'status' => '1');
                                             $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -1375,6 +1375,7 @@ var base_url = '<?php echo base_url(); ?>';
 var data = <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;                                       
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/postnewpage.js'); ?>"></script>
 </body>
 </html>

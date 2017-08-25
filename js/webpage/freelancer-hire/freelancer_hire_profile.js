@@ -1,4 +1,20 @@
-
+//PROFILE PIC VALIDATION START
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+});
+//PROFILE PIC VALIDATION END
 //CODE FOR DESIGNATION START
 function divClicked() {
     var divHtml = $(this).html();
@@ -230,32 +246,33 @@ $(document).ready(function () {
 });
 //FOR SCROLL PAGE AT PERTICUKAR POSITION IS END
 
-//PROFILE PIC VALIDATION START
-$(document).ready(function () {
+//UOPLOAD PROFILE PIC START
+function profile_pic(){
+   if (typeof FormData !== 'undefined') {
+   // var fd = new FormData();
+    var formData = new FormData( $("#userimage")[0] );
+//    fd.append("image", $("#profilepic")[0].files[0]);
+//         files = this.files;
+       $.ajax({
+     // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+      url:  base_url + "freelancer/user_image_insert",
+      type: "POST",
+      data: formData,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+      $('#bidmodal-2').modal('hide');
+      $(".user-pic").html(data);
+      document.getElementById('profilepic').value= null;
+      //document.getElementById('profilepic').value == '';
+      $('.popup_previred').hide();
+        },          
+     });
+      return false;
+}
+}
+//UOPLOAD PROFILE PIC END
 
-    $("#userimage").validate({
-
-        rules: {
-
-            profilepic: {
-
-                required: true,
-
-            },
-
-        },
-
-        messages: {
-
-            profilepic: {
-
-                required: "Photo Required",
-
-            },
-
-        },
-
-    });
-});
-//PROFILE PIC VALIDATION END
 

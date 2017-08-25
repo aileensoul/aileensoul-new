@@ -304,6 +304,7 @@ var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
 
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/art_information.js'); ?>"></script>
 </body>
 </html>

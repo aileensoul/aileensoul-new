@@ -240,7 +240,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                     <?php
                     if ($artisticdata[0]['user_id'] == $userid) {
                         ?>        
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following'); ?>">Following <br> (<?php echo $countfr; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following'); ?>">Following <br> <div id="countfollow">(<?php echo $countfr; ?>)</div></a>
                         </li>
                         <?php
                     } else {

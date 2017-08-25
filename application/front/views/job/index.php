@@ -10,65 +10,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-      <style type="text/css">
-         .date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
-         .date-dropdowns .year{margin-right: 0;}
-         .example {
-         width: 33%;
-         min-width: 400px;
-         padding: 15px;
-         display: inline-block;
-         box-sizing: border-box;
-         text-align: center;
-         }
-         .example:first-of-type {
-         position: relative;
-         bottom: 35px;
-         }
-         /* Example Heading */
-         .example h2 {
-         font-family: "Roboto Condensed", helvetica, arial, sans-serif;
-         font-size: 1.3em;
-         margin: 15px 0;
-         color: #4F5462;
-         }
-         .example input {
-         display: block;
-         margin: 0 auto 20px auto;
-         width: 150px;
-         padding: 8px 10px;
-         border: 1px solid #CCCCCC;
-         border-radius: 3px;
-         background: #F2F2F2;
-         text-align: center;
-         font-size: 1em;
-         letter-spacing: 0.02em;
-         font-family: "Roboto Condensed", helvetica, arial, sans-serif;
-         }
-         .example select {
-         padding: 10px;
-         background: #ffffff;
-         border: 1px solid #CCCCCC;
-         border-radius: 3px;
-         margin: 0 3px;
-         }
-         .example select.invalid {
-         color: #E9403C;
-         }
-         .example input[type="submit"] {
-         margin-top: 10px;
-         }
-         .example input[type="submit"]:hover {
-         cursor: pointer;
-         background-color: #e5e5e5;
-         }
-      </style>
-
-      <!-- THIS FUNCTION IS USED FOR PASTE SAME DESCRIPTION THAT COPIED END -->  
-      <style type="text/css">
-        .date-dropdowns label{margin-top: 42px !important;}
-      </style>
-      <!-- css for date picker end-->
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
    </head>
    <!-- END HEAD -->
    <!-- start header -->
@@ -109,17 +51,13 @@
                                echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
                            }
                            
-                           
-                           
                            ?>
                      </div>
                      <div class="clearfix">
                         <div class="common-form common-form_border">
                            <h3>Basic Information</h3>
                            <?php echo form_open(base_url('job/job_basicinfo_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
-                           <!-- <div>
-                              <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> <span style="color:#7f7f7e">Indicates required field</span>
-                              </div> -->
+                         
                            <?php
                               $fname = form_error('fname');
                               $lname = form_error('lname');
@@ -236,11 +174,12 @@
 <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
 
 <script>
- var data1= <?php echo json_encode($city_data); ?>;
- var base_url = '<?php echo base_url(); ?>';
+var base_url = '<?php echo base_url(); ?>';
 var date_picker ='<?php echo date('Y-m-d',strtotime($job[0]['user_dob']));?>';
 var  date_picker_edit='<?php echo date('Y-m-d',strtotime($dob1));?>';
+
 </script>
+
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/index.js'); ?>"></script>
 

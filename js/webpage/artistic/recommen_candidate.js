@@ -89,53 +89,7 @@ $(".search").highlite({
  text: text
 });
 
- $(function () {
-                                                    // alert('hi');
-                                                    $("#tags").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        }
-                                                        ,
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#tags").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
-
-$(function () {
-                                                    // alert('hi');
-                                                    $("#searchplace").autocomplete({
-                                                        source: function (request, response) {
-                                                            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                                            response($.grep(data1, function (item) {
-                                                                return matcher.test(item.label);
-                                                            }));
-                                                        },
-                                                        minLength: 1,
-                                                        select: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#searchplace").val(ui.item.label);
-                                                            $("#selected-tag").val(ui.item.label);
-                                                            // window.location.href = ui.item.value;
-                                                        }
-                                                        ,
-                                                        focus: function (event, ui) {
-                                                            event.preventDefault();
-                                                            $("#searchplace").val(ui.item.label);
-                                                        }
-                                                    });
-                                                });
+ 
 
 
 function post_like(clicked_id)
@@ -935,12 +889,14 @@ function followuser(clicked_id)
       //alert(clicked_id);
         $.ajax({
             type: 'POST',
-            url: base_url + "artistic/follow_two",
+            url: base_url + "artistic/follow",
             //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
+                $('#countfollow').html(data.count);
 
             }
         });
@@ -951,12 +907,14 @@ function followuser(clicked_id)
 
         $.ajax({
             type: 'POST',
-            url: base_url + "artistic/unfollow_two",
+            url: base_url + "artistic/unfollow",
             //url: '<?php echo base_url() . "artistic/unfollow_two" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) {
 
-                $('.' + 'fruser' + clicked_id).html(data);
+                $('#countfollow').html(data.count);
+                $('.' + 'fruser' + clicked_id).html(data.follow);
 
             }
         });

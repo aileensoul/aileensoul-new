@@ -89,35 +89,6 @@
             }
 
 // Get the modal
-// validation for profile pic upload
-
-            $(document).ready(function () { 
-
-                $("#userimage").validate({ 
-
-                    rules: {
-
-                        profilepic: {
-
-                            required: true,
-
-                        },
-
-                    },
-
-                    messages: {
-
-                        profilepic: {
-
-                            required: "Image Required",
-
-                        },
-
-                    },
-
-                });
-            });
-
 
 
  jQuery(document).ready(function ($) {
@@ -272,6 +243,12 @@ function check_lengthedit(abc)
                 });
             });
 
+function check_perticular(input) {
+                        var testData = input.replace(/\s/g, '');
+                        var regex = /^(<br>)*$/;
+                        var isValid = regex.test(testData);
+                        return isValid;
+                    }
 
 
 $( document ).on( 'keydown', function ( e ) {
@@ -451,110 +428,7 @@ $('#file-fr').fileinput({
             });
 
 
-(function ($) {
-                                                
-$(function () {
-                                                       
-    $("#tags").autocomplete({
-   source: function (request, response) {
-    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-    response($.grep(data, function (item) {
-    return matcher.test(item.label);
-    }));
- },
-    minLength: 1,
-    select: function (event, ui) {
-    event.preventDefault();
-    $("#tags").val(ui.item.label);
-    $("#selected-tag").val(ui.item.label);
-                                                                
- },
-focus: function (event, ui) {
-event.preventDefault();
- $("#tags").val(ui.item.label);
-    }
-});
-  });
-})(jQuery);
 
-
- (function ($) {
-
-    $(function () {
-                                                      
-   $("#searchplace").autocomplete({
-   source: function (request, response) {
-   var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-    response($.grep(data1, function (item) {
-    return matcher.test(item.label);
- }));
- },
- minLength: 1,
- select: function (event, ui) {
- event.preventDefault();
- $("#searchplace").val(ui.item.label);
- $("#selected-tag").val(ui.item.label);
-                                                               
-},
- focus: function (event, ui) {
-    event.preventDefault();
-    $("#searchplace").val(ui.item.label);
- }
-});
-});
- })(jQuery);
-
-
-// $(function() {
-//     // alert('hi');
-// $( "#tags1" ).autocomplete({
-//      source: function( request, response ) {
-//          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-//          response( $.grep( data, function( item ){
-//              return matcher.test( item.label );
-//          }) );
-//    },
-//     minLength: 1,
-//     select: function(event, ui) {
-//         event.preventDefault();
-//         $("#tags1").val(ui.item.label);
-//         $("#selected-tag").val(ui.item.label);
-//         // window.location.href = ui.item.value;
-//     }
-//     ,
-//     focus: function(event, ui) {
-//         event.preventDefault();
-//         $("#tags1").val(ui.item.label);
-//     }
-// });
-// });
-
-        
-// $(function() {
-//     // alert('hi');
-// $( "#searchplace1" ).autocomplete({
-//      source: function( request, response ) {
-//          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-//          response( $.grep( data1, function( item ){
-//              return matcher.test( item.label );
-//          }) );
-//    },
-//     minLength: 1,
-//     select: function(event, ui) {
-//         event.preventDefault();
-//         $("#searchplace1").val(ui.item.label);
-//         $("#selected-tag").val(ui.item.label);
-//         // window.location.href = ui.item.value;
-//     }
-//     ,
-//     focus: function(event, ui) {
-//         event.preventDefault();
-//         $("#searchplace1").val(ui.item.label);
-//     }
-// });
-// });
-
-// cover image script start
 
  (function ($) {
                 $uploadCrop = $('#upload-demo').croppie({
@@ -889,7 +763,7 @@ function insert_comment(clicked_id)
                // alert(post_comment);
                // return false;
 
-                if (post_comment == '' || post_comment == '<br>') {
+                if (post_comment == '' || post_comment == '<br>' || check_perticular(post_comment) == true) {
                     return false;
                 }
                 if (/^\s+$/gi.test(post_comment))
@@ -966,7 +840,7 @@ function entercomment(clicked_id)
 
                         //     txt = txt.replace(/^\s+|\s+$/g, "")
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             return false;
                         }
                         if (/^\s+$/gi.test(txt))
@@ -1035,14 +909,16 @@ function entercomment(clicked_id)
 
  // edit comment script start
  
-             function comment_editbox(clicked_id) {
-                document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
+             function comment_editbox(clicked_id) { //alert("hii");
+                document.getElementById('editcomment' + clicked_id).style.display = 'block';
                 document.getElementById('showcomment' + clicked_id).style.display = 'none';
-                document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
-                //document.getElementById('editbox' + clicked_id).style.display = 'none';
+               document.getElementById('editsubmit' + clicked_id).style.display = 'block';
+                document.getElementById('editbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
             }
 
 
@@ -1052,7 +928,7 @@ function entercomment(clicked_id)
                 document.getElementById('editcomment' + clicked_id).style.display = 'none';
                 document.getElementById('showcomment' + clicked_id).style.display = 'block';
                 document.getElementById('editsubmit' + clicked_id).style.display = 'none';
-
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                 $('.post-design-commnet-box').show();
             }
 
@@ -1070,6 +946,8 @@ function entercomment(clicked_id)
                 document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                 document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                 $('.post-design-commnet-box').hide();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
             }
 
 
@@ -1082,6 +960,8 @@ function entercomment(clicked_id)
                 document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                 document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
                 $('.post-design-commnet-box').show();
+                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
             }
 
             function comment_editbox3(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
@@ -1148,7 +1028,7 @@ function entercomment(clicked_id)
                 txt = txt.replace(/div>/gi, 'p>');
 
 
-                if (txt == '' || txt == '<br>') {
+                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
                     return false;
@@ -1171,6 +1051,8 @@ function entercomment(clicked_id)
                         document.getElementById('editcancle' + abc).style.display = 'none';
                         $('#' + 'showcomment' + abc).html(data);
                         $('.post-design-commnet-box').show();
+                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1220,7 +1102,7 @@ function edit_comment2(abc)
                         txt = txt.replace(/div>/gi, 'p>');
 
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                             return false;
@@ -1250,6 +1132,8 @@ function edit_comment2(abc)
                                 document.getElementById('editcancle' + abc).style.display = 'none';
                                 $('#' + 'showcomment' + abc).html(data);
                                 $('.post-design-commnet-box').show();
+                                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                             }
                         });
                     }
@@ -1274,7 +1158,7 @@ function edit_commenttwo(abc)
                  txt = txt.replace(/div>/gi, 'p>');
 
 
-                if (txt == '' || txt == '<br>') {
+                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                     $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
                     return false;
@@ -1298,6 +1182,8 @@ function edit_commenttwo(abc)
                         document.getElementById('editcancletwo' + abc).style.display = 'none';
                         $('#' + 'showcommenttwo' + abc).html(data);
                         $('.post-design-commnet-box').show();
+                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                        $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                     }
                 });
                 $(".scroll").click(function (event) {
@@ -1323,7 +1209,7 @@ function commentedittwo(abc)
                          txt = txt.replace(/div>/gi, 'p>');
 
 
-                        if (txt == '' || txt == '<br>') {
+                        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                             $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                             $('#bidmodal').modal('show');
                             return false;
@@ -1356,6 +1242,8 @@ function commentedittwo(abc)
 
                                 $('#' + 'showcommenttwo' + abc).html(data);
                                 $('.post-design-commnet-box').show();
+                                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
 
                             }
                         });
@@ -1633,7 +1521,7 @@ function khdiv(abc) {
 //alert(editpostdetails);
 
    
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+       if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
            $('#bidmodal').modal('show');
    
@@ -2047,33 +1935,7 @@ function likeuserlist(post_id) {
             });
 
 
-    // script for profile pic strat
 
-    function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-
-                        document.getElementById('preview').style.display = 'block';
-                        $('#preview').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#profilepic").change(function () {
-                profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
-                  $('#profilepic').val('');
-                   picpopup();
-                     return false;
-                   }else{
-                      readURL(this);}
-            });
 
  $(document).ready(function () {
                 $('.video').mediaelementplayer({

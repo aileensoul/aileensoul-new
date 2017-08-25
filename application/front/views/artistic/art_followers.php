@@ -50,14 +50,14 @@
             <div class="modal-body">
                <span class="mes">
                   <div id="popup-form">
-                     <?php echo form_open_multipart(base_url('artistic/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                      <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                      <input type="hidden" name="hitext" id="hitext" value="8">
                      <div class="popup_previred">
                         <img id="preview" src="#" alt="your image" />
                      </div>
                      <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                     <?php echo form_close(); ?>
+                    </form>
                   </div>
                </span>
             </div>
@@ -94,6 +94,7 @@ var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 var slug_id = '<?php echo $artisticdata[0]['user_id'] ?>';
 </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/followers.js'); ?>"></script>
 </body>
 </html>
