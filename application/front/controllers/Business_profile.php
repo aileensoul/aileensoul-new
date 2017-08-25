@@ -13,6 +13,15 @@ class Business_profile extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
+        
+        //AWS access info start
+        
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+
+        //AWS access info end
+
+
         include ('include.php');
 
 // DEACTIVATE PROFILE START

@@ -79,9 +79,8 @@ define('FREELANCERPORTFOLIOIMG', 'uploads/freelancer_portfolio_attachment/');
 // S3BUCKET
 
 // Bucket Name
-$bucket="aileensoulimages";
-if (!class_exists('S3'))require_once('S3.php');
-			
+define('bucket', 'aileensoulimages');
+
 //AWS access info
 define('awsAccessKey', 'AKIAI2ZIGZWVAZWQJOPA');
 define('awsSecretKey', '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');
