@@ -388,22 +388,6 @@ class Job extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // //upload education certificate process start
-        // $config['upload_path'] = 'uploads/job_edu_certificate/';
-        // $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-        // $config['file_name'] = $_FILES['edu_certificate_primary']['name'];
-
-        // //Load upload library and initialize configuration
-        // $this->load->library('upload', $config);
-        // $this->upload->initialize($config);
-
-        // if ($this->upload->do_upload('edu_certificate_primary')) {
-        //     $uploadData = $this->upload->data();
-        //     $certificate = $uploadData['file_name'];
-        // } else {
-        //     $certificate = '';
-        // }
-        //upload education certificate process End
         $error = '';
         if($_FILES['edu_certificate_primary']['name'] != '' ){
           
@@ -618,26 +602,6 @@ class Job extends MY_Controller {
      //if user deactive profile then redirect to job/index untill active profile End
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        // //upload education certificate process start
-        // $config['upload_path'] = 'uploads/job_edu_certificate/';
-        // $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
-        // // $config['file_name'] = $_FILES['picture']['name'];
-        // $config['file_name'] = $_FILES['edu_certificate_secondary']['name'];
-
-        // //Load upload library and initialize configuration
-        // $this->load->library('upload', $config);
-        // $this->upload->initialize($config);
-
-        // if ($this->upload->do_upload('edu_certificate_secondary')) {
-        //     $uploadData = $this->upload->data();
-        //     //$picture = $uploadData['file_name']."-".date("Y_m_d H:i:s");
-        //     $certificate = $uploadData['file_name'];
-        //     // echo $certificate;die();
-        // } else {
-        //     $certificate = '';
-        // }
-        //upload education certificate process End
 
          $error = '';
         if($_FILES['edu_certificate_secondary']['name'] != '' ){
