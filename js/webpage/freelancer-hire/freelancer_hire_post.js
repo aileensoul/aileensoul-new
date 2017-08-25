@@ -36,6 +36,7 @@ function profile_pic() {
                 $(".user-pic").html(data);
                 document.getElementById('profilepic').value = null;
                 //document.getElementById('profilepic').value == '';
+                $('#preview').prop('src', '#');
                 $('.popup_previred').hide();
             },
         });
@@ -45,7 +46,6 @@ function profile_pic() {
 //UOPLOAD PROFILE PIC END
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
-
     freelancerhire_project(user_id, returnpage);
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -74,7 +74,6 @@ $(document).ready(function () {
 var isProcessing = false;
 function freelancerhire_project(user_id, returnpage, pagenum)
 {
-
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -179,6 +178,7 @@ function readURL(input) {
         reader.onload = function (e) {
             document.getElementById('preview').style.display = 'block';
             $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -197,13 +197,6 @@ $("#profilepic").change(function () {
 
 //FUNCTION FOR PROFILE PIC END
 //FUNCTION FOR COVER IMG START
-function myFunction() {
-
-    document.getElementById("upload-demo").style.visibility = "hidden";
-    document.getElementById("upload-demo-i").style.visibility = "hidden";
-    document.getElementById('message1').style.display = "block";
-
-}
 function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
@@ -226,6 +219,10 @@ $uploadCrop = $('#upload-demo').croppie({
 //$('.upload-result').on('click', function (ev) {
 $('.upload-result').off('click').on('click', function (ev) {
     alert(789);
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -240,11 +237,10 @@ $('.upload-result').off('click').on('click', function (ev) {
                     document.getElementById('row2').style.display = "block";
                     document.getElementById('row1').style.display = "none";
                     document.getElementById('message1').style.display = "none";
-                    
+
                 }
             }
         });
-        return false;
 
     });
 });
@@ -266,7 +262,6 @@ $('#upload').on('change', function () {
 });
 
 $('#upload').on('change', function () {
-
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
@@ -320,7 +315,6 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
-
 //CODE FOR COVER IMAGE END
 //CODE FOR SAVE POST START
 function savepopup(id) {
