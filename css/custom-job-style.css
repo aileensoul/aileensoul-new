@@ -80,3 +80,6 @@
    display: inline-block;
    }
    .img_remove img{display: none!important;}
+
+    .keyskil, #other_keyskill1, #other_keyskill{width:93% !important;}    
+  .common-form .edit_other_skill1{width: 93% !important;margin-top: 6px;}

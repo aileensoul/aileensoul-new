@@ -3810,19 +3810,6 @@ class Freelancer extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->post('cancel1')) {  //echo "hii"; die();
-            redirect('freelancer/freelancer_apply_post', refresh);
-        } elseif ($this->input->post('cancel2')) {
-            redirect('freelancer/freelancer_save_post', refresh);
-        } elseif ($this->input->post('cancel3')) {
-            redirect('freelancer/freelancer_post_profile', refresh);
-        }
-
-        if (empty($_FILES['profilepic']['name'])) {
-            $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
-        } else {
-
-
             $freelancer_post_userimage = '';
             $user['upload_path'] = $this->config->item('free_post_profile_main_upload_path');
             $user['allowed_types'] = $this->config->item('free_post_profile_main_allowed_types');
@@ -3912,18 +3899,21 @@ class Freelancer extends MY_Controller {
             $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
 
             if ($updatdata) {
-                if ($this->input->post('hitext') == 1) {
-                    redirect('freelancer/freelancer_applied_post', refresh);
-                } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer/freelancer_save_post', refresh);
-                } elseif ($this->input->post('hitext') == 3) {
-                    redirect('freelancer/freelancer_post_profile', refresh);
-                }
+                
+                $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+                $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+                
+               $userimage .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']) . '" alt="" >';
+                $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+                $userimage .= $this->lang->line("update_profile_picture");
+                $userimage .='</a>';
+                
+                echo $userimage;
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('freelancer/freelancer_apply_post', refresh);
             }
-        }
+        
     }
 
     public function freelancer_hire_profile($id = "") {
@@ -4358,11 +4348,12 @@ class Freelancer extends MY_Controller {
     // cover pic end
     // cover pic controller
 
-    public function ajaxpro_work() {
+   public function ajaxpro_work() {
         $userid = $this->session->userdata('aileenuser');
 
+
         $contition_array = array('user_id' => $userid);
-        $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background, profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $user_reg_prev_image = $user_reg_data[0]['profile_background'];
         $user_reg_prev_main_image = $user_reg_data[0]['profile_background_main'];
@@ -4388,12 +4379,16 @@ class Freelancer extends MY_Controller {
             }
         }
 
+
+
+
         $data = $_POST['image'];
+
 
         $user_bg_path = $this->config->item('free_post_bg_main_upload_path');
         $imageName = time() . '.png';
         $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
+        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
 
         $user_thumb_path = $this->config->item('free_post_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('free_post_bg_thumb_width');
@@ -4410,12 +4405,13 @@ class Freelancer extends MY_Controller {
 
         $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
 
-        $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = '*', $join_str = array());
-
-        echo '<img src = "' . $this->data['jobdata'][0]['profile_background'] . '" />';
+        $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
+        $coverpic='<img  src="'. base_url($this->config->item('free_post_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
+      echo $coverpic;
+       // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
 
-    public function image_work() {
+     public function image_work() {
         //echo "hiiii"; die();
         $userid = $this->session->userdata('aileenuser');
 

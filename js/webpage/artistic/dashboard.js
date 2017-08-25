@@ -807,13 +807,15 @@ function entercomment(clicked_id)
 
  // edit comment script start
  
-             function comment_editbox(clicked_id) { //alert("hii");
-                document.getElementById('editcomment' + clicked_id).style.display = 'block';
+             function comment_editbox(clicked_id) {
+
                 document.getElementById('showcomment' + clicked_id).style.display = 'none';
-               document.getElementById('editsubmit' + clicked_id).style.display = 'block';
-                document.getElementById('editbox' + clicked_id).style.display = 'none';
+               // document.getElementById('editbox' + clicked_id).style.display = 'none';
                 document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
+                document.getElementById('editcomment' + clicked_id).style.display = 'block';
                 document.getElementById('editcancle' + clicked_id).style.display = 'block';
+               document.getElementById('editsubmit' + clicked_id).style.display = 'block';
+
                 $('.post-design-commnet-box').hide();
                 $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
 
