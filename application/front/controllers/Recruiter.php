@@ -322,23 +322,24 @@ class Recruiter extends MY_Controller {
             redirect('recruiter/');
         }
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
-        // FETCH COUNTRY DATA    
-        $contition_array = array('status' => 1);
-        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        // FETCH STATE DATA  
-        $contition_array = array('status' => 1, 'country_id' => $state_citydata[0]['re_comp_country']);
-        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        // FETCH CITY DATA
-        $contition_array = array('status' => '1', 'state_id' => $state_citydata[0]['re_comp_state']);
-        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         // FETCH RECRUITER DATA    
         $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
         $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        // FETCH COUNTRY DATA    
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id,country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        // FETCH STATE DATA  
+        $contition_array = array('status' => 1, 'country_id' => $recdata[0]['re_comp_country']);
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = '*', $sortby = 'state_id,state_name,country_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        // FETCH CITY DATA
+        $contition_array = array('status' => '1', 'state_id' => $recdata[0]['re_comp_state']);
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = 'city_name,city_id,state_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
         if ($recdata) {
             $step = $recdata[0]['re_step'];
 
@@ -355,7 +356,7 @@ class Recruiter extends MY_Controller {
                 $this->data['compsector'] = $recdata[0]['re_comp_sector'];
                 $this->data['comp_profile1'] = $recdata[0]['re_comp_profile'];
                 $this->data['other_activities1'] = $recdata[0]['re_comp_activities'];
-                $this->data['complogo1'] = $recdata[0]['comp_logo'];
+                $this->data['complogo1'] = $recdata[0]['comp_logo']; 
             }
         }
 
@@ -615,27 +616,36 @@ class Recruiter extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
+    //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($recruiter_deactive) {
             redirect('recruiter/');
         }
-        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
+    //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
+    
+    // FETCH RECRUITER POST    
+    
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-        $recruiterdata = $this->data['recruiterdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recpostdata = $this->data['recpostdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+    //FETCH RECRUITER DATA
+        
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
-        $this->data['recruiterdata1'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+    //FETCH SKILL DATA
+        
         $contition_array = array('user_id' => $userid, 'type' => '4', 'status' => 1);
         $skillotherdata = $this->data['skillotherdata'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+    //FETCH JOB DATA
+        
         $contition_array = array('job_reg.user_id !=' => $userid, 'job_step' => 10);
-
-
         $candidate = $this->data['candidate'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'keyskill,job_id,user_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+     
         foreach ($skillotherdata as $othrd) {
             if ($othrd['skill'] != '') {
-
                 $contition_array1 = array('type' => '3', 'FIND_IN_SET("' . $othrd['skill'] . '",skill)!=' => '0');
                 $candidate1[] = $this->data['candidate1'] = $this->common->select_data_by_condition('skill', $contition_array1, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
@@ -659,16 +669,13 @@ class Recruiter extends MY_Controller {
                 );
 
                 $contition_array = array('job_reg.user_id' => $ke['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1, 'job_reg.job_step' => 10);
-
-
                 $jobr11[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
             }
         }
 
-        foreach ($recruiterdata as $recruiter) {
+        foreach ($recpostdata as $postdata) {
 
-
-            $recskill = explode(',', $recruiter['post_skill']);
+            $recskill = explode(',', $postdata['post_skill']);
 
             $recskill = array_filter(array_map('trim', $recskill));
 
@@ -695,15 +702,12 @@ class Recruiter extends MY_Controller {
                             'from_table_id' => 'job_graduation.user_id')
                     );
 
-                    $contition_array = array('job_reg.user_id' => $candi['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
-
-
-                    $jobr[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+               $contition_array = array('job_reg.user_id' => $candi['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
+               $jobr[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
                 }
             }
         }
         if (count($jobr11) == 0) {
-
             $unique = $jobr;
         } elseif (count($jobr) == 0) {
             $unique = $jobr11;
@@ -721,9 +725,9 @@ class Recruiter extends MY_Controller {
             $new[$value['user_id']] = $value;
         }
         $this->data['candidatejob'] = $new;
-
-       
-        $this->load->view('recruiter/recommen_candidate', $this->data);
+        
+     
+        $this->load->view('recruiter/recommehn_candidate', $this->data);
     }
 
     // RECRUITER RECOMMANDED FUNCTION END

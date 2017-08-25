@@ -29,18 +29,18 @@
                                                aria-hidden="true" rel="noopener">
 
                                                 <?php
-                                                $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $recruiterdata1[0]['profile_background'];
+                                                $image_ori = $this->config->item('rec_bg_thumb_upload_path') . $recdata[0]['profile_background'];
 
-                                                if ($recruiterdata1[0]['profile_background'] != '' && file_exists($image_ori)) {
+                                                if ($recdata[0]['profile_background'] != '' && file_exists($image_ori)) {
                                                     ?>
 
                                                     <!-- box image start -->
-                                                    <img src="<?php echo base_url($this->config->item('rec_bg_thumb_upload_path') . $recruiterdata1[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $recruiterdata1[0]['rec_firstname'] . ' ' . $recruiterdata1[0]['rec_lastname']; ?>">
+                                                    <img src="<?php echo base_url($this->config->item('rec_bg_thumb_upload_path') . $recdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>">
                                                     <!-- box image end -->
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recruiterdata1[0]['rec_firstname'] . ' ' . $recruiterdata1[0]['rec_lastname']; ?>" >
+                                                    <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
                                                     <?php
                                                 }
                                                 ?>
@@ -49,22 +49,22 @@
                                         <div class="profile-boxProfileCard-content clearfix">
                                             <div class="left_side_box_img buisness-profile-txext">
 
-                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/rec_profile/' . $recruiterdata1[0]['user_id']); ?>" title="<?php echo $recruiterdata1[0]['rec_firstname'] . ' ' . $recruiterdata1[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('recruiter/rec_profile/' . $recdata[0]['user_id']); ?>" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                     <?php
-//echo "<pre>"; print_r($recruiterdata1); die();
-                                                    $image_profile = $this->config->item('rec_profile_thumb_upload_path') . $recruiterdata1[0]['recruiter_user_image'];
 
-                                                    if ($recruiterdata1[0]['recruiter_user_image'] != '' && file_exists($image_profile)) {
+                                                    $image_profile = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+
+                                                    if ($recdata[0]['recruiter_user_image'] != '' && file_exists($image_profile)) {
                                                         ?>
-                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recruiterdata1[0]['recruiter_user_image']); ?>" alt="<?php echo $recruiterdata1[0]['rec_firstname'] . ' ' . $recruiterdata1[0]['rec_lastname']; ?>" >
+                                                        <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>" >
                                                         <?php
                                                     } else {
 
 
-                                                        $a = $recruiterdata1[0]['rec_firstname'];
+                                                        $a = $recdata[0]['rec_firstname'];
                                                         $acr = substr($a, 0, 1);
 
-                                                        $b = $recruiterdata1[0]['rec_lastname'];
+                                                        $b = $recdata[0]['rec_lastname'];
                                                         $acr1 = substr($b, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
@@ -72,7 +72,6 @@
 
                                                         </div>
 
-    <!--  <img src="<?php //echo base_url(NOIMAGE);  ?>" alt="<?php //echo $recruiterdata1[0]['rec_firstname'] . ' ' . $recruiterdata1[0]['rec_lastname'];  ?>"> -->
                                                         <?php
                                                     }
                                                     ?>
@@ -80,15 +79,15 @@
                                             </div>
                                             <div class="right_left_box_design ">
                                                 <span class="profile-company-name ">
-                                                    <a href="<?php echo site_url('recruiter/rec_profile'); ?>" title="<?php echo ucfirst(strtolower($recruiterdata1['rec_firstname'])) . ' ' . ucfirst(strtolower($recruiterdata1['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recruiterdata1[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recruiterdata1[0]['rec_lastname'])); ?></a>
+                                                    <a href="<?php echo site_url('recruiter/rec_profile'); ?>" title="<?php echo ucfirst(strtolower($recdata['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata['rec_lastname'])); ?>">   <?php echo ucfirst(strtolower($recdata[0]['rec_firstname'])) . ' ' . ucfirst(strtolower($recdata[0]['rec_lastname'])); ?></a>
                                                 </span>
 
-                                                <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
+                                                <?php //$category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                                 <div class="profile-boxProfile-name">
-                                                    <a href="<?php echo site_url('recruiter/rec_profile/' . $recruiterdata1[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recruiterdata1[0]['designation'])); ?>">
+                                                    <a href="<?php echo site_url('recruiter/rec_profile/' . $recdata[0]['user_id']); ?>" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>">
                                                         <?php
-                                                        if (ucfirst(strtolower($recruiterdata1[0]['designation']))) {
-                                                            echo ucfirst(strtolower($recruiterdata1[0]['designation']));
+                                                        if (ucfirst(strtolower($recdata[0]['designation']))) {
+                                                            echo ucfirst(strtolower($recdata[0]['designation']));
                                                         } else {
                                                             echo "Designation";
                                                         }
@@ -129,7 +128,7 @@
                                         <div class="job-contact-frnd ">
                                             <!-- khyati start -->
 <?php
-//                                       echo "<pre>"; print_r($candidatejob);die();
+//                                      
 if ($candidatejob) {
     foreach ($candidatejob as $row) {
 
@@ -725,9 +724,28 @@ if ($candidatejob) {
                <!-- MIDDLE SECTION END -->
         </section>
         <!-- END CONTAINER -->
+        
         <!-- BEGIN FOOTER -->
-<?php echo $footer; ?>
+       <!-- BID MODAL START -->
+                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+                        <div class="modal-dialog modal-lm">
+                            <div class="modal-content">
+                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                                <div class="modal-body">
+                                    <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                                    <span class="mes"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      <!-- BID MODAL END-->
+      <!-- START FOOTER -->
+        <footer>
+     <?php echo $footer; ?>
+        </footer>
         <!-- END FOOTER -->
+        
+         
         <!-- FIELD VALIDATION JS START -->
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
