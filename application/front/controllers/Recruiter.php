@@ -384,8 +384,8 @@ class Recruiter extends MY_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
-        $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-              if ($recdata) {
+            $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($recdata) {
                 $step = $recdata[0]['re_step'];
 
                 if ($step == 3 || $step > 3 || ($step >= 1 && $step <= 3)) {
@@ -497,6 +497,7 @@ class Recruiter extends MY_Controller {
             }
             $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             if ($recdata) {
                 $logoimage = $_FILES['comp_logo']['name'];
                 if ($logoimage == "") {
@@ -523,10 +524,9 @@ class Recruiter extends MY_Controller {
                     're_step' => 3
                 );
 
-                $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $userdata[0]['rec_id']);
+                $insert_id = $this->common->update_data($data, 'recruiter', 'rec_id', $recdata[0]['rec_id']);
 
                 if ($insert_id) {
-
                     $this->session->set_flashdata('success', 'company information updated successfully');
                     redirect('recruiter/recommen_candidate', refresh);
                 } else {
@@ -565,14 +565,15 @@ class Recruiter extends MY_Controller {
             }
         }
     }
+
     // RECRUITER CHECK EMAIL FUCNTION IN COMPANY INFORMATION INSERT CODE END   
     // RECRUITER CHECK EMAIL COMAPNY FUNCTION START   
-       public function check_email_com() { //echo "hello"; die();
+    public function check_email_com() { //echo "hello"; die();
         $email = $this->input->post('comp_email');
 
         $userid = $this->session->userdata('aileenuser');
 
-      
+
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -605,183 +606,125 @@ class Recruiter extends MY_Controller {
             die();
         }
     }
+
     // RECRUITER CHECK EMAIL COMAPNY FUNCTION END   
     // RECRUITER RECOMMANDED FUNCTION START
-        public function recommen_candidate() {
+    public function recommen_candidate() {
 
-         $this->recruiter_apply_check(); 
+        $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
-         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
+        //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
         if ($recruiter_deactive) {
             redirect('recruiter/');
         }
         //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
-
-
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $recruiterdata = $this->data['recruiterdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
-         $this->data['recruiterdata1'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['recruiterdata1'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('user_id' => $userid, 'type' => '4', 'status' => 1);
+        $skillotherdata = $this->data['skillotherdata'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('job_reg.user_id !=' => $userid, 'job_step' => 10);
 
 
-           $contition_array = array('user_id' => $userid,'type' => '4','status' => 1);
-
-      $skillotherdata =  $this->data['skillotherdata'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-// echo "<pre>";
-// print_r($skillotherdata); die();       
-         $contition_array = array('job_reg.user_id !=' => $userid,'job_step' => 10);
-
-    
         $candidate = $this->data['candidate'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'keyskill,job_id,user_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-         foreach($skillotherdata as $othrd){
+        foreach ($skillotherdata as $othrd) {
+            if ($othrd['skill'] != '') {
 
-
-    //echo "<pre>"; print_r($othrd['skill']);
-        if ($othrd['skill'] != '') {
-            
-        $contition_array1 = array('type'=>'3','FIND_IN_SET("'.$othrd['skill'].'",skill)!='=>'0'); 
- // echo "<pre>"; print_r($contition_array1); 
-
-
-        $candidate1[] = $this->data['candidate1'] = $this->common->select_data_by_condition('skill', $contition_array1, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-     
+                $contition_array1 = array('type' => '3', 'FIND_IN_SET("' . $othrd['skill'] . '",skill)!=' => '0');
+                $candidate1[] = $this->data['candidate1'] = $this->common->select_data_by_condition('skill', $contition_array1, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            }
         }
- 
-      }
 
-     //  echo "<pre>"; print_r($candidate1); 
-     // die();
+        foreach ($candidate1 as $key => $candi) {
 
+            foreach ($candi as $ke) {
 
-   foreach ($candidate1 as $key => $candi) {
+                $join_str1 = array(
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_add_edu',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_add_edu.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
 
-    foreach ($candi as $ke) {
-        
-         $join_str1 = array(
-            array(
-                'join_type' => 'left',
-                'table' => 'job_add_edu',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_add_edu.user_id'),
-           
-             array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-        );
-
-            $contition_array = array('job_reg.user_id' => $ke['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1,'job_reg.job_step' => 10);
+                $contition_array = array('job_reg.user_id' => $ke['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1, 'job_reg.job_step' => 10);
 
 
-            $jobr11[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
-    }       
-          
-}
-
-//echo "<pre>"; print_r($jobr11);
-  
-
-              
-       
-
-       
-          
-          foreach($recruiterdata as $recruiter){
-
-
-             $recskill = explode(',', $recruiter['post_skill']);
-
-             $recskill = array_filter(array_map('trim', $recskill));
-
-          foreach($candidate as $candi){
-
-            $candiskill = explode(',', $candi['keyskill']);
-             $candiskill = array_filter(array_map('trim', $candiskill));
-  
-             $result1 = array_intersect($recskill, $candiskill);
-
-
-          if(count($result1) > 0){
-
-            $join_str1 = array(
-            array(
-                'join_type' => 'left',
-                'table' => 'job_add_edu',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_add_edu.user_id'),
-           
-             array(
-                'join_type' => 'left',
-                'table' => 'job_graduation',
-                'join_table_id' => 'job_reg.user_id',
-                'from_table_id' => 'job_graduation.user_id')
-        );
-
-            $contition_array = array('job_reg.user_id' => $candi['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
-
-
-            $jobr[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
-           
-         
+                $jobr11[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
             }
-           
-          }
+        }
 
-          }
+        foreach ($recruiterdata as $recruiter) {
 
-          //echo "<pre>"; print_r($jobr);  die();
 
-      if (count($jobr11) == 0) {
-                
-                $unique = $jobr;
-                
-            } 
-            elseif (count($jobr) == 0) {
-                $unique = $jobr11;
-                
-            }
-            else {
-                $unique = array_merge($jobr11, $jobr);
-            }
+            $recskill = explode(',', $recruiter['post_skill']);
 
-// echo "<pre>";print_r($jobr);
-// echo "<pre>";print_r($jobr11);
+            $recskill = array_filter(array_map('trim', $recskill));
 
-//die();
+            foreach ($candidate as $candi) {
 
-              foreach ($unique as $ke => $arr) {
-               foreach ($arr as $va) {
-        
-    
-                    $skildataa[] = $va;
+                $candiskill = explode(',', $candi['keyskill']);
+                $candiskill = array_filter(array_map('trim', $candiskill));
+
+                $result1 = array_intersect($recskill, $candiskill);
+
+
+                if (count($result1) > 0) {
+
+                    $join_str1 = array(
+                        array(
+                            'join_type' => 'left',
+                            'table' => 'job_add_edu',
+                            'join_table_id' => 'job_reg.user_id',
+                            'from_table_id' => 'job_add_edu.user_id'),
+                        array(
+                            'join_type' => 'left',
+                            'table' => 'job_graduation',
+                            'join_table_id' => 'job_reg.user_id',
+                            'from_table_id' => 'job_graduation.user_id')
+                    );
+
+                    $contition_array = array('job_reg.user_id' => $candi['user_id'], 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
+
+
+                    $jobr[] = $this->data['jobrec'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
                 }
             }
-//echo "<pre>";print_r($postdata);
-                $new = array();
-                foreach ($skildataa as $value) {
-                    $new[$value['user_id']] = $value;
-                }
+        }
+        if (count($jobr11) == 0) {
 
-           //  $new = array_unique($unique, SORT_REGULAR);
-                 
+            $unique = $jobr;
+        } elseif (count($jobr) == 0) {
+            $unique = $jobr11;
+        } else {
+            $unique = array_merge($jobr11, $jobr);
+        }
+        foreach ($unique as $ke => $arr) {
+            foreach ($arr as $va) {
+                $skildataa[] = $va;
+            }
+        }
 
-    //echo "<pre>"; print_r($new); 
-
-       // die();
-      
+        $new = array();
+        foreach ($skildataa as $value) {
+            $new[$value['user_id']] = $value;
+        }
         $this->data['candidatejob'] = $new;
-      
 
+       
         $this->load->view('recruiter/recommen_candidate', $this->data);
-
     }
-    // RECRUITER RECOMMANDED FUNCTION END
 
+    // RECRUITER RECOMMANDED FUNCTION END
 }
