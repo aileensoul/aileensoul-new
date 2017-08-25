@@ -218,7 +218,6 @@ $uploadCrop = $('#upload-demo').croppie({
 //$(document).off('click','.upload-result').on('click','.upload-result', function (ev) {
 //$('.upload-result').on('click', function (ev) {
 $('.upload-result').off('click').on('click', function (ev) {
-    alert(789);
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
     document.getElementById('message1').style.display = "block";
@@ -237,6 +236,8 @@ $('.upload-result').off('click').on('click', function (ev) {
                     document.getElementById('row2').style.display = "block";
                     document.getElementById('row1').style.display = "none";
                     document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
 
                 }
             }

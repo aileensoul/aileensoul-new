@@ -135,6 +135,7 @@ function readURL(input) {
         reader.onload = function (e) {
             document.getElementById('preview').style.display = 'block';
             $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -191,20 +192,28 @@ $uploadCrop = $('#upload-demo').croppie({
         height: 350
     }
 });
-$('.upload-result').on('click', function (ev) {
+$('.upload-result').off('click').on('click', function (ev) {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
     }).then(function (resp) {
-
         $.ajax({
             url: base_url + "freelancer/ajaxpro_hire",
             type: "POST",
             data: {"image": resp},
             success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html) {
-                    window.location.reload();
+                if (data) {
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+
                 }
             }
         });
@@ -341,31 +350,32 @@ $(document).ready(function () {
 });
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS END
 //UOPLOAD PROFILE PIC START
-function profile_pic(){
-   if (typeof FormData !== 'undefined') {
-   // var fd = new FormData();
-    var formData = new FormData( $("#userimage")[0] );
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        // var fd = new FormData();
+        var formData = new FormData($("#userimage")[0]);
 //    fd.append("image", $("#profilepic")[0].files[0]);
 //         files = this.files;
-       $.ajax({
-     // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
-      url:  base_url + "freelancer/user_image_insert",
-      type: "POST",
-      data: formData,
-      contentType: false,
-          cache: false,
-      processData:false,
-      success: function(data)
-        {
-      $('#bidmodal-2').modal('hide');
-      $(".user-pic").html(data);
-      document.getElementById('profilepic').value= null;
-      //document.getElementById('profilepic').value == '';
-      $('.popup_previred').hide();
-        },          
-     });
-      return false;
-}
+        $.ajax({
+            // url: "<?php echo base_url(); ?>freelancer/user_image_insert",
+            url: base_url + "freelancer/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                //document.getElementById('profilepic').value == '';
+                $('#preview').prop('src', '#');
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
 }
 //UOPLOAD PROFILE PIC END
 
