@@ -6714,7 +6714,12 @@ public function insert_comment_postnewpage() {
 
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
 
-        echo '<img src="' . $this->data['artdata'][0]['profile_background'] . '" />';
+
+        $coverpic='<img  src="'. base_url($this->config->item('art_bg_main_upload_path') . $this->data['artdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
+      echo $coverpic;
+
+
+        //echo '<img src="' . $this->data['artdata'][0]['profile_background'] . '" />';
     }
 
     public function image() {
@@ -13635,36 +13640,6 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 </div>';
                 //}
 
-//                 $return_html .= '<div  class="likeduserlist1  likeusername' . $row['business_profile_post_id'] . '" id="likeusername' . $row['business_profile_post_id'] . '" style="display:none">';
-//                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
-//                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//                 $likeuser = $commnetcount[0]['business_like_user'];
-//                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
-//                 $likelistarray = explode(',', $likeuser);
-//                 foreach ($likelistarray as $key => $value) {
-//                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-//                 }
-//                 $return_html .= '<a href="javascript:void(0);"  onclick="likeuserlist(' . $row['business_profile_post_id'] . ');">';
-//                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1', 'is_delete' => '0');
-//                 $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-//                 $likeuser = $commnetcount[0]['business_like_user'];
-//                 $countlike = $commnetcount[0]['business_likes_count'] - 1;
-//                 $likelistarray = explode(',', $likeuser);
-
-//                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-//                 $return_html .= '<div class="like_one_other">';
-//                 $return_html .= ucfirst(strtolower($business_fname1));
-//                 $return_html .= "&nbsp;";
-//                 if (count($likelistarray) > 1) {
-//                     $return_html .= "and";
-//                     $return_html .= $countlike;
-//                     $return_html .= "&nbsp;";
-//                     $return_html .= "others";
-//                 }
-//                 $return_html .= '</div>
-//     </a>
-// </div>
 
 $return_html .= '<div class="art-all-comment col-md-12">
     <div id="fourcomment' . $row['art_post_id'] . '" style="display:none;">
@@ -13740,7 +13715,9 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 </div>
                 <div class="edit-comment-box">
                     <div class="inputtype-edit-comment">
-                        <div contenteditable="true"  style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment"' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+
+                         <div contenteditable="true"  style="display:none" class="editable_text editav_2" name="'. $rowdata['artistic_post_comment_id'] .'"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+
                         <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                     </div>
                 </div>

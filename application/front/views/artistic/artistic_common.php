@@ -6,21 +6,21 @@
             <div class="col-md-12 cover-pic" >
                 <button class="btn btn-success cancel-result" onclick="" >Cancel</button>
 
-                <button class="btn btn-success set-btn upload-result" onclick="myFunction()">Save</button>
+                <button class="btn btn-success set-btn upload-result">Save</button>
 
                 <div id="message1" style="display:none;">
-                    <div class="loader"><div id="floatBarsG">
-                            <div id="floatBarsG_1" class="floatBarsG"></div>
-                            <div id="floatBarsG_2" class="floatBarsG"></div>
-                            <div id="floatBarsG_3" class="floatBarsG"></div>
-                            <div id="floatBarsG_4" class="floatBarsG"></div>
-                            <div id="floatBarsG_5" class="floatBarsG"></div>
-                            <div id="floatBarsG_6" class="floatBarsG"></div>
-                            <div id="floatBarsnoG_7" class="floatBarsG"></div>
-                            <div id="floatBarsG_8" class="floatBarsG"></div>
+                            <div id="floatBarsG">
+                                <div id="floatBarsG_1" class="floatBarsG"></div>
+                                <div id="floatBarsG_2" class="floatBarsG"></div>
+                                <div id="floatBarsG_3" class="floatBarsG"></div>
+                                <div id="floatBarsG_4" class="floatBarsG"></div>
+                                <div id="floatBarsG_5" class="floatBarsG"></div>
+                                <div id="floatBarsG_6" class="floatBarsG"></div>
+                                <div id="floatBarsG_7" class="floatBarsG"></div>
+                                <div id="floatBarsG_8" class="floatBarsG"></div>
+                            </div>
+
                         </div>
-                    </div>
-                </div>
             </div>
             <div class="col-md-12"  style="visibility: hidden; ">
                 <div id="upload-demo-i" ></div>

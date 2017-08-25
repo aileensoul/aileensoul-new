@@ -62,8 +62,6 @@ define('ARTISTICIMAGE', 'uploads/art_images/');
 define('ARTPOSTIMAGE', 'uploads/khyati_images/');
 define('BUSPOSTIMAGE', 'uploads/bus_post_image/');
 
-
-
 define('ARTBGIMAGE', 'uploads/art_bg/');
 define('RECBGIMAGE', 'uploads/rec_bg/');
 define('JOBBGIMAGE', 'uploads/job_bg/');
@@ -73,12 +71,19 @@ define('ARTBGIMG', 'uploads/free_work_bg/');
 define('BUSBGIMG', 'uploads/bus_bg/');
 define('PROFILENA', '--');
 
-
-
 define('BUSINESSPROFILEIMAGE', 'uploads/business_profile_images/');
 define('FREELANCERPORTFOLIOIMG', 'uploads/freelancer_portfolio_attachment/');
 
 
+
+// S3BUCKET
+
+// Bucket Name
+define('bucket', 'aileensoulimages');
+
+//AWS access info
+define('awsAccessKey', 'AKIAI2ZIGZWVAZWQJOPA');
+define('awsSecretKey', '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');
 
 
 
