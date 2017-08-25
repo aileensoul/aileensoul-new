@@ -1,3 +1,111 @@
+
+// validation for profile pic upload
+
+            $(document).ready(function () { 
+
+                $("#userimage").validate({ 
+
+                    rules: {
+
+                        profilepic: {
+
+                            required: true,
+
+                        },
+
+                    },
+
+                    messages: {
+
+                        profilepic: {
+
+                            required: "Image Required",
+
+                        },
+
+                    },
+
+                     submitHandler: profile_pic
+
+                });
+            });
+
+
+    // script for profile pic strat
+
+    function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        document.getElementById('preview').style.display = 'block';
+                        $('#preview').attr('src', e.target.result);
+                        $('.popup_previred').show();
+
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#profilepic").change(function () {
+                profile = this.files;
+                   //alert(profile);
+                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+                       //alert('not an image');
+                  $('#profilepic').val('');
+                   picpopup();
+                     return false;
+                   }else{
+                      readURL(this);}
+            });
+
+
+
+function profile_pic(event){
+
+
+
+        var fd = new FormData();
+                
+         fd.append("image", $("#profilepic")[0].files[0]);
+
+         files = this.files;
+
+       
+    $.ajax({
+      url: base_url + "artistic/profilepic",
+      //url: "<?php echo base_url(); ?>artistic/profilepic",
+      type: "POST",
+      data: fd,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+
+        
+      $('#bidmodal-2').modal('hide');
+
+      $(".user-pic").html(data);
+
+      document.getElementById('profilepic').value= null;
+
+      //document.getElementById('profilepic').value == '';
+
+      $('.popup_previred').hide();
+     $('#preview').prop('src', '#');
+
+        },          
+     });
+  return false;
+
+}
+
+
+
+
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
     $(function() {
         function split( val ) {

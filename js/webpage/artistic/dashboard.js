@@ -89,35 +89,6 @@
             }
 
 // Get the modal
-// validation for profile pic upload
-
-            $(document).ready(function () { 
-
-                $("#userimage").validate({ 
-
-                    rules: {
-
-                        profilepic: {
-
-                            required: true,
-
-                        },
-
-                    },
-
-                    messages: {
-
-                        profilepic: {
-
-                            required: "Image Required",
-
-                        },
-
-                    },
-
-                });
-            });
-
 
 
  jQuery(document).ready(function ($) {
@@ -1964,33 +1935,7 @@ function likeuserlist(post_id) {
             });
 
 
-    // script for profile pic strat
 
-    function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-
-                        document.getElementById('preview').style.display = 'block';
-                        $('#preview').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#profilepic").change(function () {
-                profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
-                  $('#profilepic').val('');
-                   picpopup();
-                     return false;
-                   }else{
-                      readURL(this);}
-            });
 
  $(document).ready(function () {
                 $('.video').mediaelementplayer({

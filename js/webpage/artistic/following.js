@@ -1,30 +1,3 @@
-//validation for edit email formate form
-            $(document).ready(function () { 
-                $("#userimage").validate({
-                  rules: {
-                      profilepic: {
-                            required: true,                        
-                        },
-                    },
-                    messages: {
-                      profilepic: {
-                            required: "Photo Required",                            
-                        },
-                },
-                });
-                   });
-
-            $("#profilepic").change(function(){
-         profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
-                  $('#profilepic').val('');
-                   picpopup();
-                     return false;
-                   }else{
-                      readURL(this);}
-    });
 
 $(document).ready(function () {  
     artistic_following(slug_id);  
@@ -340,20 +313,6 @@ function unfollowuser_list(clicked_id)
 }
 
  
-
-function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();           
-            reader.onload = function (e) {           
-            document.getElementById('preview').style.display = 'block';
-                $('#preview').attr('src', e.target.result);
-            }           
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-    
-
 function picpopup() {
             $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
             $('#bidmodal').modal('show');

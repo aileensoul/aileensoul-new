@@ -14071,5 +14071,106 @@ public function artistic_search_city($id = "") {
      }
 }
    
+ 
+
+ // profile image uplaod usingajax start
+
+   public function profilepic(){
+
+
+         $userid = $this->session->userdata('aileenuser');
+
+        $config = array(
+            'upload_path' => $this->config->item('art_profile_main_upload_path'),
+            'max_size' => $this->config->item('art_profile_main_max_size'),
+            'allowed_types' => $this->config->item('art_profile_main_allowed_types'),
+            'file_name' => $_FILES['profilepic']['name']
+               
+        );
+
+
+        $images = array();
+        
+
+        $files = $_FILES;
+       
+        $this->load->library('upload');
+
+            $fileName = $_FILES['image']['name'];
+            $images[] = $fileName;
+            $config['file_name'] = $fileName;
+
+         $this->upload->initialize($config);
+        $this->upload->do_upload();
+
+            
+        if ($this->upload->do_upload('image')) {
+           // echo "hi"; die();
+
+            // $uploadData = $this->upload->data();
+
+            // $picture = $uploadData['file_name'];
+
+             $response['result']= $this->upload->data();
+            // echo "<pre>"; print_r($response['result']); die();
+                $art_post_thumb['image_library'] = 'gd2';
+                $art_post_thumb['source_image'] = $this->config->item('art_profile_main_upload_path') . $response['result']['file_name'];
+                $art_post_thumb['new_image'] = $this->config->item('art_profile_thumb_upload_path') . $response['result']['file_name'];
+                $art_post_thumb['create_thumb'] = TRUE;
+                $art_post_thumb['maintain_ratio'] = TRUE;
+                $art_post_thumb['thumb_marker'] = '';
+                $art_post_thumb['width'] = $this->config->item('art_profile_thumb_width');
+                //$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
+                $art_post_thumb['height'] = 2;
+                $art_post_thumb['master_dim'] = 'width';
+                $art_post_thumb['quality'] = "100%";
+                $art_post_thumb['x_axis'] = '0';
+                $art_post_thumb['y_axis'] = '0';
+                $instanse = "image_$i";
+                //Loading Image Library
+                $this->load->library('image_lib', $art_post_thumb, $instanse);
+                $dataimage = $response['result']['file_name'];
+
+                                //Creating Thumbnail
+                $this->$instanse->resize();
+                $response['error'][] = $thumberror = $this->$instanse->display_errors();
+                
+                
+                $return['data'][] = $this->upload->data();
+                $return['status'] = "success";
+                $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+      
+        } 
+
+       
+
+  //      //echo "<pre>"; print_r($dataimage); die();
+
+        //if ($dataimage) {
+            $data = array(
+                'art_user_image' => $dataimage,
+                'modified_date' => date('Y-m-d', time())
+               
+            );
+
+            $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+
+
+      $contition_array = array('user_id'=> $userid,'status' => '1','is_delete'=> '0');
+
+        $artistic_user = $this->data['artistic_user'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+
+        //echo "<pre>"; print_r($artistic_user); die();
+            $userimage .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $artistic_user[0]['art_user_image']).'" alt="" >';
+
+            $userimage.= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>';
+
+            echo  $userimage;
+           
+
+    }
+
     
 }
