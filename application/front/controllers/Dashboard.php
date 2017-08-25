@@ -21,7 +21,7 @@ class Dashboard extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
+       $contition_array = array('user_id' => $userid);
         $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 're_status' => '1');
