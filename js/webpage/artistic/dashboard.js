@@ -1309,10 +1309,15 @@ function remove_ownpost(abc)
                     //alert(data);
                     success: function (data) { //alert('#' + 'removepost' + abc);
                         $('#' + 'removepost' + abc).remove();
+                        GetArtPhotos();
+                GetArtVideos();
+                GetArtAudios();
+                GetArtPdf();
                         if(data.notcount == 0){ 
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
+
                             //$('.' + 'dataconpdf').html(data.notpdf);
                             //$('.' + 'dataconvideo').html(data.notvideo);
                             //$('.' + 'dataconaudio').html(data.notaudio);
