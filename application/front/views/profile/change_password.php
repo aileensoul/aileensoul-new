@@ -6,8 +6,8 @@
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="../css/common-style.css">
-        <link rel="stylesheet" href="../css/style-main.css">
+         <link rel="stylesheet" href="<?php echo base_url() ?>css/common-style.css" />
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/style-main.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
@@ -44,13 +44,13 @@
 
 <!-- middele data -->
       <div class="main_otp_box_middle">
-  Please check your email for the verification code.Your verification code has been sent to<a href="">dshah1341@gmail.com</a>
+  Please check your email for the verification code.Your verification code has been sent to<a><?php echo $emailid[0]['user_email'] ?></a>
  Please enter verification code here to verify your account.
 
 
  <div class="main_otp_box_middle_submit">
    
- <input type="text" name="code" id="code" value="" placeholder="Enter Otp">
+ <input type="text" name="code" id="code" value="" placeholder="Enter Code">
 <input type="hidden" name="userid" id="userid" value="<?php echo $user_changeid; ?>">
  </div>
 </div>
