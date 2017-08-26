@@ -764,8 +764,7 @@ class Recruiter extends MY_Controller {
     $contition_array = array('is_delete' => '0','degree_name !=' => "Other");
     $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
     $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          // echo "<pre>";print_r($this->data['degree']);die();
-
+       
     $contition_array = array('is_delete' => '0' , 'status' => 1,'degree_name' => "Other");
     $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
