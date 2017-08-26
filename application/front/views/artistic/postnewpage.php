@@ -321,7 +321,7 @@
                                         foreach ($artmultiimage as $data) {
 
 
-                                            $allowed = array('gif', 'png', 'jpg');
+                                            $allowed = array('gif', 'png', 'jpg','jpeg');
                                             $allowespdf = array('pdf');
                                             $allowesvideo = array('mp4', '3gp');
                                             $allowesaudio = array('mp3');
