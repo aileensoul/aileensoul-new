@@ -5300,7 +5300,16 @@ background-size: 100%;
     display: inline-block;
     width: 136px;
 }
-
+.progress-bar{background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;}
+.vidoe_tag {
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+}
+.vidoe_tag video {
+    height: 100%;
+    width: 100%;
+}
 
 
 
@@ -5463,6 +5472,32 @@ padding: 16px 0;
 text-align: center;
 text-transform: uppercase;
 line-height: 1;}
+.bui_close {
+    margin-left: -12px;
+    margin-top: -10px;
+    margin-right: 15px;
+}
+#image_main {
+    margin-top: 20px;
+}
+.bui_close label {
+    background: #fff;
+    cursor: pointer;
+    padding: 4px!important;
+    border-radius: 50%;
+    color: darkgray;
+}
+.edit_bui_img {
+    height: 90px;
+    width: 90px;
+    margin-bottom: 15px;
+    display: inline-block;
+    float: left;
+}
+.edit_bui_img img {
+    width: 100%;
+    height: 100%;
+}
 
 
 /*** ---------  end only bus  -----------  ***/
@@ -5686,57 +5721,20 @@ footer {
     background: #1b8ab9;
 }
 
-/***  extra ***/
-.user-profile {
-    padding: 20px 0;
-    border-bottom: 1px solid #f5f5f5;
-    margin-bottom: 40px;
-}
-.user-img .img-circle {
-    width: 100px !important;
-    height: 100px !important;
-    border-radius: 100%;
-}
-.user-detail {
-    padding-top: 22px;
-    padding-left: 15px;
-}
-.user-detail span {
+/***  only cover page  ***/
+.profile-text1 {
+    color: #aba2a2;
     font-size: 16px;
-    font-weight: 400;
+    cursor: pointer;
+    padding-top: 10px;
+    position:absolute;
+    width:100%;
+    top:37px;
+    z-index:9;
 }
-.user-detail h6 {
-    font-weight: 700;
+.profile-text1 p {
+    color: #aba2a2;
+    font-size: 32px;
+    cursor: pointer;
 }
-/*** \views\notification\freelancer_hire_post.php **/
-.freelancer_work_detail ul {
-    margin: 0;
-    padding: 0 0 0 28px;
-}
-.freelancer_work_detail ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 0;
-    padding: 5px;
-}
-
-/** registration page **/
-.registration {
-    padding: 60px 0;
-}
-.registration h4 {
-    background: #1b8ab9;
-    padding: 8px 15px 11px;
-    color: #fff;
-}
-.registration form {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-top: 0;
-}
-.registration form fieldset {
-    width: 50%;
-}
-
-/*-----------------------------*/
 
