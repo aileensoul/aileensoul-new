@@ -1726,7 +1726,7 @@ class Freelancer extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-        $freelancerhiredata = $freelancerhiredata = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $freelancerhiredata = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "</pre>";print_r($freelancerhiredata);die();
         foreach ($freelancerhiredata as $frdata) {
             $post_skill_data = $frdata['post_skill'];
@@ -1738,14 +1738,23 @@ class Freelancer extends MY_Controller {
                 $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $all_candidate[] = $candidate;
             }
+            
         }
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid,'freelancer_post_field' => $frdata['post_field_req']);
+             $freelancerpostfield =  $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // $field_post[]=$freelancerpostfield;
+      //  echo "<pre>";print_r($freelancerpostfield);
+       // echo "<pre>";print_r($field_post);die();
         foreach ($all_candidate as $child) {
             foreach ($child as $value) {
                 $final_candidate[] = $value;
             }
         }
-        // echo "</pre>";print_r($all_candidate);die();
-        $final_candidate = array_unique($final_candidate, SORT_REGULAR);
+       
+        // echo "<pre>";print_r($final_candidate);die();
+         $applyuser_merge= array_merge($final_candidate,$freelancerpostfield);
+    
+        $final_candidate = array_unique($applyuser_merge, SORT_REGULAR);
         $candidatefreelancer = $final_candidate;
         $candidatefreelancer1 = array_slice($candidatefreelancer, $start, $perpage);
 
