@@ -11464,9 +11464,15 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $filename = $businessmultiimage[0]['image_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
-                        $return_html .= '<div class="one-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
-        </div>';
+//                        $return_html .= '<div class="one-image">
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">'
+//                                . '<img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
+//        </div>';
+                        
+                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<img src = "https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/' . $businessmultiimage[0]['image_name'] . '">
+</a>
+</div>';        
                     } elseif (in_array($ext, $allowespdf)) {
 
                         $return_html .= '<div>
