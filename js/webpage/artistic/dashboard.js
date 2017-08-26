@@ -98,14 +98,6 @@
     var options = {
     beforeSend: function () { 
     // Replace this with your loading gif image
-
-    var data = $('.profile-job-post-detail').length;
-
-if(data == 0){
-           
-            document.getElementById("no_post_avl").style.display = "none";
-           }
-
            
     document.getElementById("progress_div").style.display = "block";
     var percentVal = '0%';
@@ -128,6 +120,17 @@ if(data == 0){
             document.getElementById('test-upload-product').value = '';
            document.getElementById('test-upload-des').value = '';
            document.getElementById('file-1').value = '';
+
+
+            var data = $('.post-design-box').length;
+            //alert(data);
+
+          if(data == 0){ 
+           
+            document.getElementById("no_post_avl").style.display = "none";
+           }
+
+
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
 //            $('#progress_div').fadeOut('5000').remove();
@@ -1304,7 +1307,7 @@ function remove_ownpost(abc)
                     dataType: 'json',
                     data: 'art_post_id=' + abc,
                     //alert(data);
-                    success: function (data) { alert('#' + 'removepost' + abc);
+                    success: function (data) { //alert('#' + 'removepost' + abc);
                         $('#' + 'removepost' + abc).remove();
                         if(data.notcount == 0){ 
                             $('.' + 'nofoundpost').html(data.notfound);
