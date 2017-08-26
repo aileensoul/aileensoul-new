@@ -198,15 +198,15 @@
                                                 <div class="btns">
 
                                                     <?php if ($job[0]['job_step'] != 10) { ?>
-                                                        <a class="btn-1" href="<?php echo base_url('job/job_reg'); ?>">Register</a>
+                                                        <a class="btn-1" href="<?php echo base_url('job/'); ?>">Register</a>
                                                     <?php } elseif ($job[0]['status'] == '0' && $job[0]['job_step'] == 10) {
                                                         ?>
 
-                                                        <a class="btn-1" href="<?php echo base_url('job'); ?>">Active</a>
+                                                        <a class="btn-1" href="<?php echo base_url('job/'); ?>">Active</a>
                                                     <?php } else {
                                                         ?> 
 
-                                                        <a class="btn-4" href="<?php echo base_url('job/job_all_post'); ?>">Take me in</a> 
+                                                        <a class="btn-4" href="<?php echo base_url('job/'); ?>">Take me in</a> 
 
                                                     <?php } ?>
                                                     <a data-fancybox data-src="#jop-popup" href="javascript:;" class="pl20 ml20 hew">How it works?</a>

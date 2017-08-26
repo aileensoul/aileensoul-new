@@ -13,11 +13,11 @@ class Business_profile extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
-        
+        $this->load->helper('smiley');
         //AWS access info start
-            $this->load->library('S3');
-            $s3 = new S3(awsAccessKey, awsSecretKey);
-            $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $this->load->library('S3');
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //AWS access info end
 
 
@@ -1311,11 +1311,15 @@ class Business_profile extends MY_Controller {
                     $imgdata = $this->upload->data();
 
                     if ($this->upload->do_upload('postattach')) {
-                        
-                        $s3->putObjectFile($tmp, $bucket , 'Business_post/'.$actual_image_name, S3::ACL_PUBLIC_READ)
-
                         $response['result'][] = $this->upload->data();
 
+                        $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][0]['file_name'];
+                        $this->load->library('S3');
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+                        $abc = $s3->putObjectFile($main_image, bucket, 'business_post/main/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
+
+                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/business_post/main/' . $response['result'][0]['file_name'];
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
 
@@ -3424,7 +3428,7 @@ class Business_profile extends MY_Controller {
                 } else if ($user['follow_from'] == $busdatauser[0]['business_profile_id']) {
                     
                 } else {
-                    $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
+                    $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
                                                                                     <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
                                                                                 </div>';
                 }
@@ -3574,7 +3578,7 @@ class Business_profile extends MY_Controller {
                     }
                     $return_html .= '</li>';
                 } else {
-                    $return_html .= '<li class="fr">';
+                    $return_html .= '<li class="fr' . $user['follow_to'] . '">';
 
                     $contition_array = array('user_id' => $userid, 'status' => '1');
                     $busdatauser = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3588,7 +3592,7 @@ class Business_profile extends MY_Controller {
                     } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
                         
                     } else {
-                        $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
+                        $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
                                 <button id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
                                                     </div>';
                     }
