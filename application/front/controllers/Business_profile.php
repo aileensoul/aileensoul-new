@@ -1271,6 +1271,7 @@ class Business_profile extends MY_Controller {
             $insert_id = $this->common->insert_data_getid($data, 'business_profile_post');
         }
         $config = array(
+            'image_library' => 'gd',
             'upload_path' => $this->config->item('bus_post_main_upload_path'),
             'allowed_types' => $this->config->item('bus_post_main_allowed_types'),
             'overwrite' => true,
@@ -1312,12 +1313,26 @@ class Business_profile extends MY_Controller {
 
                     if ($this->upload->do_upload('postattach')) {
                         $response['result'][] = $this->upload->data();
+
                         
-                        $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][0]['file_name'];
+                        /* RESIZE */
+
+                        $business_profile_post_main[$i]['image_library'] = 'gd2';
+                        $business_profile_post_main[$i]['source_image'] = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        $business_profile_post_main[$i]['new_image'] = $this->config->item('bus_post_resize_upload_path') . $response['result'][$i]['file_name'];
+                        $business_profile_post_main[$i]['quality'] = "50%";
+                        $instanse10 = "image10_$i";
+                        $this->load->library('image_lib', $business_profile_post_main[$i], $instanse10);
+                        $this->$instanse10->watermark();
+
+                        /* RESIZE */
+                        
+                        $main_image = $this->config->item('bus_post_resize_upload_path') . $response['result'][0]['file_name'];
+
                         $this->load->library('S3');
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-                        $abc = $s3->putObjectFile($main_image, bucket, 'uploads/business_post/main/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
+                        $abc = $s3->putObjectFile($main_image, bucket, 'uploads/business_post/resize/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
 
 //                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/' . $response['result'][0]['file_name'];
                         $image_width = $response['result'][$i]['image_width'];
@@ -1325,9 +1340,9 @@ class Business_profile extends MY_Controller {
 
                         $thumb_image_width = $this->config->item('bus_post_thumb_width');
                         $thumb_image_height = $this->config->item('bus_post_thumb_height');
-                        
+
                         $main_image_size = $_FILES['postattach']['size'];
-                        
+
 
                         if ($image_width > $image_height) {
                             $n_h = $thumb_image_height;
@@ -1343,7 +1358,7 @@ class Business_profile extends MY_Controller {
                         }
 
                         $business_profile_post_thumb[$i]['image_library'] = 'gd2';
-                        $business_profile_post_thumb[$i]['source_image'] = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        $business_profile_post_thumb[$i]['source_image'] = $this->config->item('bus_post_resize_upload_path') . $response['result'][$i]['file_name'];
                         $business_profile_post_thumb[$i]['new_image'] = $this->config->item('bus_post_thumb_upload_path') . $response['result'][$i]['file_name'];
                         $business_profile_post_thumb[$i]['create_thumb'] = TRUE;
                         $business_profile_post_thumb[$i]['maintain_ratio'] = FALSE;
@@ -1351,7 +1366,7 @@ class Business_profile extends MY_Controller {
                         $business_profile_post_thumb[$i]['width'] = $n_w;
                         $business_profile_post_thumb[$i]['height'] = $n_h;
 //                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
-                        $business_profile_post_thumb[$i]['quality'] = "50%";
+                        $business_profile_post_thumb[$i]['quality'] = "100%";
                         $business_profile_post_thumb[$i]['x_axis'] = '0';
                         $business_profile_post_thumb[$i]['y_axis'] = '0';
                         $instanse = "image_$i";
@@ -1880,15 +1895,15 @@ class Business_profile extends MY_Controller {
                 if (in_array($ext, $allowed)) {
 
                     $return_html .= '<div class="one-image">';
-                   /* $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
-            </a>
-        </div>'; 
-                    */
+                    /* $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                      <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '">
+                      </a>
+                      </div>';
+                     */
                     $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/'.$businessmultiimage[0]['image_name'].'"> 
+                <img src="https://' . bucket . '.s3.amazonaws.com/uploads/business_post/resize/' . $businessmultiimage[0]['image_name'] . '"> 
             </a>
-        </div>'; 
+        </div>';
                 } elseif (in_array($ext, $allowespdf)) {
                     $return_html .= '<div>
             <a title="click to open" href="' . base_url('business_profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
@@ -9916,17 +9931,13 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                             $return_html .= '<div class = "one-image">';
                             $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/'.$businessmultiimage[0]['image_name'].'">
+<img src = "https://' . bucket . '.s3.amazonaws.com/uploads/business_post/resize/' . $businessmultiimage[0]['image_name'] . '">
 </a>
 </div>';
                             $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 <img src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '">
 </a>
 </div>';
-                             
-                            
-                            
-                            
                         } elseif (in_array($ext, $allowespdf)) {
                             $return_html .= '<div>
 <a title = "click to open" href = "' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class = "pdf_img">
@@ -10433,9 +10444,7 @@ Your browser does not support the audio tag.
         $userlistview4 = $userlastview;
 
         $return_html = '';
-        $return_html .= '<ul>
-<li class = "follow_box_ul_li">
-<div class = "contact-frnd-post follow_left_main_box">';
+        $return_html .= '<ul>';
         if ($userlistview1 > 0) {
             foreach ($userlistview1 as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
@@ -10445,7 +10454,8 @@ Your browser does not support the audio tag.
                 $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                 if (!$businessfollow) {
 
-                    $return_html .= '<div class = "profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class = "follow_box_ul_li">
+<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
 <div class = " col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
 <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
@@ -10505,7 +10515,7 @@ Your browser does not support the audio tag.
 </i>
 </span>
 </div>
-</div>';
+</div></div></li>';
                 }
             }
         }
@@ -10517,7 +10527,8 @@ Your browser does not support the audio tag.
                 $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
                 $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                 if (!$businessfollow) {
-                    $return_html .= '<div class = "profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class = "follow_box_ul_li">
+<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
 <div class = "col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
 <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
@@ -10577,7 +10588,7 @@ Your browser does not support the audio tag.
 </i>
 </span>
 </div>
-</div>';
+</div></div></li>';
                 }
             }
         }
@@ -10590,7 +10601,8 @@ Your browser does not support the audio tag.
                 $buisnessfollow = $this->data['buisnessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                 if (!$buisnessfollow) {
 
-                    $return_html .= '<div class = "profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class = "follow_box_ul_li">
+<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
 <div class = "col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
 <div class = "post-design-pro-img_follow">
 <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">';
@@ -10645,7 +10657,7 @@ Your browser does not support the audio tag.
 </i>
 </span>
 </div>
-</div>';
+</div></div></li>';
                 }
             }
         }
@@ -10658,7 +10670,8 @@ Your browser does not support the audio tag.
                 $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (!$businessfollow) {
 
-                    $return_html .= '<div class = "profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class = "follow_box_ul_li">
+<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
 <div class = " col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
 <div class = "post-design-pro-img_follow">';
                     if ($userlist['business_user_image']) {
@@ -10716,14 +10729,12 @@ Your browser does not support the audio tag.
 </i>
 </span>
 </div>
-</div>';
+</div></div></li>';
                 }
             }
         }
 
-        $return_html .= '</div>
-</li>
-</ul>';
+        $return_html .= '</ul>';
 
 
         echo $return_html;
