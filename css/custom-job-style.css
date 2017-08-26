@@ -98,3 +98,9 @@
    #experience_year-error{margin-top: 39px;margin-right: 35px;}
    #jobtitle-error{margin-right: 35px; margin-top: 0px;}
    #companyname-error{margin-right: 35px; margin-top: 0px;}
+
+    @media (max-height: 600px), (max-width: 480px) {
+   .credits {
+   position: inherit;
+   }
+   }
