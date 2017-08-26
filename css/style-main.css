@@ -1412,11 +1412,14 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
 .main_otp_box_middle_submit input[type="password"]{background-color: white;
    
     border: none;
- border-bottom: 1px solid #1b8ab9;}
+ border-bottom: 1px solid #d9d9d9;}
+
+
 .main_otp_box_middle_submit input[type="text"]{background-color: white;
    
     border: none;
- border-bottom: 1px solid #1b8ab9;}
+ border-bottom: 1px solid #d9d9d9;}
+ .main_otp_box_middle_submit input[type="text"]:focus{border-bottom: 1px solid #1b8ab9;}
 .otp_bottom_submit input{
 	background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
@@ -1468,9 +1471,15 @@ padding: 4px;
 
 .main_otp_box_middle_submit input[type="password"] , .main_otp_box_middle_submit input[type="text"]{width: 30%;}
 .main_otp_box_middle_submit input[type="password"]::placeholder , .main_otp_box_middle_submit input[type="text"]::placeholder {
-  color: rgb(27, 138, 185,0.7);
+  color:#d9d9d9;
 }
-
+.main_otp_box_middle_submit input[type="password"]:focus , .main_otp_box_middle_submit input[type="text"]:focus {
+  border-bottom: 1px solid #1b8ab9;
+  color: #1b8ab9;
+}
+.main_otp_box_middle_submit input[type="password"]:focus::placeholder , .main_otp_box_middle_submit input[type="text"]:focus::placeholder {
+  color:#1b8ab9;
+}
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}

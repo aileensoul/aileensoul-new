@@ -5320,6 +5320,24 @@ background-size: 100%;
     height: 100%;
     width: 100%;
 }
+.post-design-box .post-design-desc input {
+    font-size: 15px!important;
+    width: 82%;
+}
+.post-design-box .post-design-desc .editable_text {
+    min-height: 80px!important;
+    float: left;
+    margin-bottom: 5px;
+    width: 82%;
+}
+.post-design-box .post-design-desc .textbuis {
+    font-size: 13px;
+}
+.post-design-box .post-design-desc .fr {
+    position: absolute;
+    right: 9px;
+    bottom: 0px;
+}
 
 
 

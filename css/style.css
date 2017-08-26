@@ -209,21 +209,7 @@ ul.business_pf_ct_person_detail li b {
     width: 100%;
     clear: both;
 }*/
-.like_button {
-    color: #fff;
-    background: #262627;
-    font-size: 16px;
-    padding: 6px 12px 7px;
-    border-radius: 2px;
-    display: inline-block;
-}
-.like_button i {
-    font-size: 18px;
-    padding-right: 4px;
-}
-.like_button:hover {
-    color: #fff;
-}
+
 .job-post-detail .job-post-title .job-profile-menu ul {
     list-style: none;
     display: block;
@@ -251,7 +237,6 @@ ul.business_pf_ct_person_detail li b {
     padding: 6px 16px;
     text-transform: capitalize;
 }
-.common-form fieldset.mgrd input{margin: 0px 10px; }
 .job-post-detail .job-post-title .button:hover {
     color: #ffffff;
     background-color: #000;
@@ -265,49 +250,6 @@ ul.business_pf_ct_person_detail li b {
 .user-midd-section .khyati {
     pointer-events: none;
 }
-.artistic_commentpost {
-    font-size: 14px;
-}
-.artistic_commentpost {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 14px;
-    margin-bottom: 15px;
-}
-.artistic_commentpost_comment {
-    padding: 8px 0 10px;
-    width: 100%;
-    clear: both;
-}
-.like_button {
-    color: #fff;
-    background: #262627;
-    font-size: 16px;
-    padding: 6px 12px 7px;
-    border-radius: 2px;
-    display: inline-block;
-}
-.like_button i {
-    font-size: 18px;
-    padding-right: 4px;
-}
-.like_button:hover {
-    color: #fff;
-}
-
-.job-post-detail .job-post-title .button {
-    padding: 6px 16px;
-    text-transform: capitalize;
-}
-.job-post-detail .job-post-title .button:hover {
-    color: #ffffff;
-    background-color: #000;
-}
-.job-post-title-inside .job-post-title {
-    padding: 0px;
-}
-
-/*  contact */
-
 .contact-frnd-post .contact-frnd .button {
     float: right;
     margin-top: 4px;
@@ -398,10 +340,6 @@ ul.business_pf_ct_person_detail li b {
     margin-top: 27px;
     padding: 8px 30px 8px 28px;
 }
-.profile-page .user-midd-section .news-feed-post .row {
-    margin: 0px;
-}
-
 .dele_highrt{margin-top: 15px;  }
 .dele_highrt img{float: left;}
 .tsecondary_certi{float: left;
@@ -623,7 +561,7 @@ li.active2 .notification-database:hover {
     cursor: pointer;
 }
 .view_bui {
-     position: absolute;
+    position: absolute;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     height: 166px;
@@ -3275,63 +3213,36 @@ div[class^="likeduserlist"] {
     max-height: 100%;
     transform: translate(-50%, -50%);
 }
-
 .fa-2x {
     font-size: 2em;
 }
-
 .profile-job-post-detail .post-design-box {
     border: none;
     margin-bottom: 0;
 }
-
-
-
 .custom-row .user-pic:hover a {
     padding: 4px 4.4px;
 }
-
 .profile-text-bui-user .profile-boxProfile-name a {
     padding-left: 0px !important
 }
 .business_pf_ct_person_form form ul li span {
     word-wrap: break-word;
     word-break: break-word;
-    /* text-align: justify; */
-    
     padding-right: 10px !important;
     display: flex !important;
     float: right;
     width: 65% !important;
-    /* display: inline-block; */
 }
 .business_pf_ct_person_form form ul li span::before {
     content: " :";
     padding-right: 20px;
     float: left;
 }
-.post-design-box .post-design-desc input {
-    font-size: 15px!important;
-    width: 82%;
-}
-
-.post-design-box .post-design-desc .textbuis {
-    font-size: 13px;
-}
 .post-design-box .post-design-desc a {
     color: black;
 }
-.post-design-box .post-design-desc .editable_text {
-    min-height: 80px!important;
-    float: left;
-    margin-bottom: 5px;
-    width: 82%;
-}
-.post-design-box .post-design-desc .fr {
-    position: absolute;
-    right: 9px;
-    bottom: 8px;
-}
+
 .profile-art-box .right_left_box_design {
     padding-bottom: 0px !important;
 }
@@ -3666,10 +3577,6 @@ body {
 .mySlides .post-design-commnet-box .cmy_2 {
     width: 89%;
 }
-.post-design-name ul li .else_post_d .post-design-product a {
-    padding-left: 0;
-}
-
 .text-center.tab-block a {
     font-size: 16px;
     margin: 0px 15px;
@@ -3714,11 +3621,7 @@ border: none;}
 .addtocont {
     position: absolute;
     display: block;
-    /* margin-left: 69.4%; */
-    /* margin-top: 0%; */
-    
-    right: 7%;
-    /* top: 62px; */
+	right: 7%;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -4406,7 +4309,6 @@ img.aligncenter {
     margin: 0;
     padding: 5px;
 }
-
 /** registration page **/
 .registration {
     padding: 60px 0;
