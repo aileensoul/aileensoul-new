@@ -963,7 +963,8 @@ max-width: 100%;}
     font-size: 30px;
     color: #8c8c8c;
 }
-
+.profile-boxProfileCard_follow ul li{width: 100%!important; border-bottom: none;}
+.profile-boxProfileCard_follow ul li .contact-frnd-post{padding: 2px 8px 0;}
 @media screen and (max-width:1200px)
 {
     .custom_footer_left ul li a{font-size: 12px;}

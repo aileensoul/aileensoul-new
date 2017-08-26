@@ -1,8 +1,5 @@
 ﻿/* font-family: 'FontAwesome'; */
 
-.page-boxed .job-post-detail {
-    border: 1px solid #cacaca;
-}
 .job-post-title {
     padding: 10px 15px;
 }
@@ -18,49 +15,6 @@
     word-break: break-word;
     word-wrap: break-word;
 }
-.exper-location {
-    background: #efefef;
-    padding: 10px 0;
-}
-.exper-location ul {
-    margin: 0;
-    padding: 0;
-}
-.exper-location ul li {
-    list-style: none;
-    display: inline-block;
-    padding: 0 14px;
-    margin: 0;
-}
-.exper-location ul li a {
-    text-transform: capitalize;
-}
-.exper-location ul li i {
-    padding-right: 8px;
-}
-.job-about {
-    padding: 15px;
-}
-.job-about ul {
-    margin: 0;
-    padding: 0;
-}
-.job-about ul li {
-    list-style: none;
-    margin: 4px 0;
-    clear: both;
-    padding: 0;
-}
-.job-about ul li label {
-    float: left;
-    width: 135px;
-    font-weight: 600;
-}
-.job-about ul li span {
-    color: #545454;
-    font-size: 14px;
-}
-
 .radio {
     margin-top: 4px;
 }
@@ -86,16 +40,10 @@
     width: auto;
     float: right;
 }
+#jobseeker_regform input:focus{border: 1px solid #1b8ab9 !important;color: #1b8ab9!important;}
+#jobseeker_regform input#submit:focus{border: none!important;}
+#industry:focus{border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
 
-
-#jobseeker_regform input:focus{   border: 1px solid #1b8ab9 !important;
-    color: #1b8ab9!important;}
-    #jobseeker_regform input#submit:focus{border: none!important;}
-    #industry:focus{   border: 1px solid #1b8ab9 !important;
-    color: #1b8ab9!important;}
-
-.radio_job:focus + label:before{   border: 1px solid #1b8ab9 !important;
-    color: #1b8ab9!important;}
 #jobseeker_regform input[type="submit"]:focus{color: white!important;}
     .message .btn:focus{color: white;}
         .message .btn:hover{color: white;}
@@ -104,7 +52,6 @@
     border: 5px solid white;
     border-bottom: none;
 }
-
 #jobseeker_regform_primary {
     border: none !important;
     margin-bottom: 0px!important;
@@ -3808,7 +3755,6 @@ input[type=number]::-webkit-outer-spin-button {
     color: #a8aab1;
     display: block;
     float:left;
-
 }
 .custom-box.even-custom{border-bottom:1px solid transparent;}
 .common-form fieldset.hs-submit input:focus{color: white!important;}

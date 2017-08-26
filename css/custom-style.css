@@ -261,7 +261,7 @@
 /***  ADD POST  ***/
 /**.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
 .date-dropdowns .year{margin-right: 0;}**/
-.example {
+/*.example {
     width: 33%;
     min-width: 400px;
     padding: 15px;
@@ -275,7 +275,7 @@
     bottom: 35px;
 }
 
-/* Example Heading */
+
 .example h2 {
     font-family: "Roboto Condensed", helvetica, arial, sans-serif;
     font-size: 1.3em;
@@ -327,7 +327,7 @@
 
 /**.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
 .date-dropdowns .year{margin-right: 0;}**/
-.example {
+/**.example {
     width: 33%;
     min-width: 400px;
     padding: 15px;
@@ -341,7 +341,7 @@
     bottom: 35px;
 }
 
-/* Example Heading */
+
 .example h2 {
     font-family: "Roboto Condensed", helvetica, arial, sans-serif;
     font-size: 1.3em;
@@ -383,7 +383,7 @@
     cursor: pointer;
     background-color: #e5e5e5;
 }
-
+**/
 
 .date-dropdowns label{margin-top: 42px !important;}
 
@@ -414,9 +414,7 @@
    width: 100% !important;
    background-color: #fff !important;
    }
-
-
-   .progress 
+	.progress 
     {
         display:none; 
         position:relative; 
@@ -445,15 +443,11 @@
         width:45px;
         height: 20px;
     }
-
-     #popup-form img{display: none;}
-
+	#popup-form img{display: none;}
     .paddingtop_fixed_art{padding-top: 62px!important;}
-     
-
-      div.panel {
-                      display: none;
-                        }
+    div.panel {
+        display: none;
+    }
     .imge_psot img {height: 70%; width: 100%;}
 
 /* EDIT PROFILE END */
