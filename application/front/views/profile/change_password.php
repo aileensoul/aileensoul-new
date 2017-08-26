@@ -64,7 +64,7 @@
 </div> -->
 <div class="fr otp_bottom_submit">  
 <input type="submit" name="sublitcode" value="Continue" id="submitcode">
- <input type="submit" name="" id="cancel" class="cancel_password" value="Cancel">
+ <input type="reset" name="" id="cancel" class="cancel_password" value="Cancel">
 </div>
   
 </div>
