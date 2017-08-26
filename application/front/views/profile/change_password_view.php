@@ -18,7 +18,7 @@
 
         <div class="main-inner">
 
-            <?php echo $login_header; ?>
+            <?php echo $forgetpassword_header; ?>
           <section class="middle-main">
     <div class="container">
       <div class="form-pd row">

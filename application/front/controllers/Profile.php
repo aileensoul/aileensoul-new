@@ -226,7 +226,7 @@ class Profile extends CI_Controller {
       $this->data['user_changeid'] = $abc;
             $this->data['emailid'] = $this->common->select_data_by_id('user', 'user_id', $abc, '*', '');
 
-        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['forgetpassword_header'] = $this->load->view('forgetpassword_header', $this->data,TRUE);
       
 
       $this->load->view('profile/change_password', $this->data);
@@ -238,7 +238,7 @@ class Profile extends CI_Controller {
      $this->data['userid'] = $userid = $this->input->post('userid');
 
 
-        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->data['forgetpassword_header'] = $this->load->view('forgetpassword_header', $this->data,TRUE);
 
       $checkdata = $this->common->select_data_by_id('user', 'user_id', $userid, '*', '');
 
