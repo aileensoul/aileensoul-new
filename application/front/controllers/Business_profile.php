@@ -1320,7 +1320,6 @@ class Business_profile extends MY_Controller {
                         $abc = $s3->putObjectFile($main_image, bucket, 'business_post/main/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
 
                         echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/business_post/main/' . $response['result'][0]['file_name'];
-                        exit;
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
 
@@ -3429,7 +3428,7 @@ class Business_profile extends MY_Controller {
                 } else if ($user['follow_from'] == $busdatauser[0]['business_profile_id']) {
                     
                 } else {
-                    $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
+                    $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
                                                                                     <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
                                                                                 </div>';
                 }
@@ -3593,7 +3592,7 @@ class Business_profile extends MY_Controller {
                     } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
                         
                     } else {
-                        $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
+                        $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
                                 <button id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
                                                     </div>';
                     }
