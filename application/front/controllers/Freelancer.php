@@ -2232,7 +2232,6 @@ class Freelancer extends MY_Controller {
 
     public function ajax_freelancer_apply_post() {
         $userid = $this->session->userdata('aileenuser');
-
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {

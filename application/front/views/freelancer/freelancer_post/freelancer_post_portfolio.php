@@ -50,7 +50,7 @@
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-work/rate'); ?>"><?php echo $this->lang->line("rate"); ?></a></li>
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-work/avability'); ?>"><?php echo $this->lang->line("add_avability"); ?></a></li>
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-work/education'); ?>"><?php echo $this->lang->line("education"); ?></a></li>           
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("portfolio"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-work') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("portfolio"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>
