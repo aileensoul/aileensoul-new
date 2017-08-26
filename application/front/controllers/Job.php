@@ -2872,9 +2872,9 @@ public function job_applied_post() {
                     $join_str[0]['join_type'] = '';
                     $contition_array = array('job_apply.job_delete' => 0,'rec_post.is_delete' => 0,'job_apply.user_id' => $userid);
                 
-                 $this->data['postdetail'] = $this->common->select_data_by_condition('rec_post', $contition_array, 'rec_post.*,job_apply.app_id,job_apply.user_id as userid,job_apply.modify_date', $sortby = 'job_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+                 $this->data['postdetail'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data='rec_post.*,job_apply.app_id,job_apply.user_id as userid,job_apply.modify_date', $sortby = 'job_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         
-                // echo "<pre>"; print_r($this->data['postdetail']); die();
+              //echo "<pre>"; print_r($this->data['postdetail']); die();
 
 
  //For Counting Profile data start

@@ -546,7 +546,6 @@
     var base_url = '<?php echo base_url(); ?>';
     var count_profile_value='<?php echo $count_profile_value;?>';
     var count_profile='<?php echo $count_profile;?>';
-   // var aileenuser_id='<?php //echo $aileenuser_id; ?>';
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_applied_post.js'); ?>"></script>
