@@ -241,13 +241,24 @@ class Profile extends CI_Controller {
         $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
 
       $checkdata = $this->common->select_data_by_id('user', 'user_id', $userid, '*', '');
-      if($checkdata[0]['code'] == $code){ 
 
-    $this->load->view('profile/change_password_view', $this->data);
-     }else{
-      $this->session->set_flashdata('error', "<div class='alert alert-danger'>You enter some text doesn't match your code.Please try right code.</div>");
-                redirect('profile/change_password', 'refresh');
-     }
+
+      if ($checkdata[0]['code'] == $code) {
+        echo 'true';
+        die();
+        } else {
+        echo 'false';
+        die();
+        }
+
+
+    //   if($checkdata[0]['code'] == $code){ 
+
+    // $this->load->view('profile/change_password_view', $this->data);
+    //  }else{
+    //   $this->session->set_flashdata('error', "<div class='alert alert-danger'>You enter some text doesn't match your code.Please try right code.</div>");
+    //             redirect('profile/change_password', 'refresh');
+    //  }
 
   }
   public function new_forgetpassword(){

@@ -97,7 +97,18 @@ $(document).ready(function () { //alert("hii");
                   code: {
                       required: true,
                       minlength: 6,
-                      maxlength: 6
+                      maxlength: 6,
+                      remote: {
+                                      url: "<?php echo site_url() . 'profile/code_check' ?>",
+                                      type: "post",
+                                      data: {
+                                     email_reg: function () {
+                                     // alert("hi");
+                                        return $("#code").val();
+                                    },
+                                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                                },
+                              },
                         }
                   
                         },
@@ -106,6 +117,7 @@ $(document).ready(function () { //alert("hii");
                     required: "Code Is Required.",
                   	minlength: "Your code is 6 character long",
                   	maxlength: "Your code is 6 character long",
+                    remote: "You enter some text doesn't match your code.Please try right code.",
                       }
 
                     
