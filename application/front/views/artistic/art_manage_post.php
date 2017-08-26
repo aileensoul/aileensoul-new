@@ -284,8 +284,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                             <div class="art-all-post">
                 <div class="job-contact-frnd ">
                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
-    <div class="nofoundpost">
-    </div>
+   <!--  <div class="nofoundpost">
+    </div> -->
              </div>
              </div>
             </div>           

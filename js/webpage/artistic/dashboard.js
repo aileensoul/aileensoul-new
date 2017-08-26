@@ -1304,7 +1304,7 @@ function remove_ownpost(abc)
                     dataType: 'json',
                     data: 'art_post_id=' + abc,
                     //alert(data);
-                    success: function (data) { //alert('#' + 'removepost' + abc);
+                    success: function (data) { alert('#' + 'removepost' + abc);
                         $('#' + 'removepost' + abc).remove();
                         if(data.notcount == 0){ 
                             $('.' + 'nofoundpost').html(data.notfound);

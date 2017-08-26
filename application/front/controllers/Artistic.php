@@ -2194,7 +2194,7 @@ $datacount = count($otherdata);
 
 
         if (count($otherdata) == 0) {
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
