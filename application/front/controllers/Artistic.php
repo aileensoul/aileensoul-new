@@ -2442,6 +2442,8 @@ $datacount = count($otherdata);
     }
 
 
+
+
     public function artistic_contactperson($id) {
 
         $userid = $this->session->userdata('aileenuser');

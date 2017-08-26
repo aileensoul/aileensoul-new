@@ -346,19 +346,19 @@ $(function () {
 $('#file-fr').fileinput({
                 language: 'fr',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $('#file-es').fileinput({
                 language: 'es',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $("#file-0").fileinput({
-                'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $("#file-1").fileinput({
                 uploadUrl: '#', // you must set a valid URL here else you will get an error
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf'],
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg'],
                 overwriteInitial: false,
                 maxFileSize: 1000000,
                 maxFilesNum: 10,
@@ -405,7 +405,7 @@ $('#file-fr').fileinput({
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
-                    'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf'],
+                    'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg'],
                     'elErrorContainer': '#errorBlock'
                 });
                 $("#kv-explorer").fileinput({
