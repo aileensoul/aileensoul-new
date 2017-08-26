@@ -121,25 +121,22 @@ class General extends MY_Controller {
    $searchTerm = $_GET['term']; 
   if (!empty($searchTerm)) {
 
-        $contition_array = array('re_status' => '1','re_step' => 3);
-        $search_condition = "(re_comp_name LIKE '" . trim($searchTerm) . "%')";
-        $results_recruiter = $this->common->select_data_by_search('recruiter', $search_condition,$contition_array, $data = 're_comp_name', $sortby = 're_comp_name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 're_comp_name');
+    $contition_array = array('re_status' => '1','re_step' => 3);
+    $search_condition = "(re_comp_name LIKE '" . trim($searchTerm) . "%')";
+    $results_recruiter = $this->common->select_data_by_search('recruiter', $search_condition,$contition_array, $data = 're_comp_name', $sortby = 're_comp_name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 're_comp_name');
 
+    $contition_array = array('status' => '1');
+    $search_condition = "(other_skill LIKE '" . trim($searchTerm) . "%')";
+    $results_post = $this->common->select_data_by_search('rec_post', $search_condition,$contition_array, $data = 'other_skill', $sortby = 'other_skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_skill');
+   
+    $contition_array = array('status' => '1', 'type' => '1');
+    $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+    $skill = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill', $sortby = 'skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
 
-        $contition_array = array('status' => '1');
-        $search_condition = "(other_skill LIKE '" . trim($searchTerm) . "%')";
-        $results_post = $this->common->select_data_by_search('rec_post', $search_condition,$contition_array, $data = 'other_skill', $sortby = 'other_skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_skill');
+    $contition_array = array('status' => 'publish');
+    $search_condition = "(name LIKE '" . trim($searchTerm) . "%')";
+    $jobtitle = $this->common->select_data_by_search('job_title', $search_condition,$contition_array, $data = 'name', $sortby = 'name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'name');
 
-       
-        $contition_array = array('status' => '1', 'type' => '1');
-        $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
-        $skill = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill', $sortby = 'skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
-
-      $contition_array = array('status' => 'publish');
-      $search_condition = "(name LIKE '" . trim($searchTerm) . "%')";
-       $jobtitle = $this->common->select_data_by_search('job_title', $search_condition,$contition_array, $data = 'name', $sortby = 'name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'name');
-
-    
 }
 
       $uni = array_merge($results_recruiter, $results_post, $skill,$jobtitle);

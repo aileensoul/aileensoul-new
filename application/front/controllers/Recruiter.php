@@ -775,8 +775,7 @@ class Recruiter extends MY_Controller {
 
         $contition_array = array('status' => '1','type' =>'1');
         $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = 'skill', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-      //  echo "<pre>"; print_r($this->data['skill']);die();
-
+      
         $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
          //jobtitle data fetch
@@ -793,8 +792,6 @@ class Recruiter extends MY_Controller {
             $result1[$key]['value'] = $value;
         }
       $this->data['jobtitle'] = array_values($result1);
-
-
 
         $this->load->view('recruiter/add_post', $this->data);
     }

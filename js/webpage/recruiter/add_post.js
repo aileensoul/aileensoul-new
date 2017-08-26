@@ -555,7 +555,7 @@ $(function () {
                 minLength: 2,
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term
-                    $.getJSON("<?php echo base_url(); ?>general/get_skill", {term: extractLast(request.term)}, response);
+                    $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
                 },
                 focus: function () {
                     // prevent value inserted on focus
@@ -643,7 +643,7 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
 
 
     if (clicked_id == 4) {
-        url = '<?php echo base_url() . "search/recruiter_search" ?>';
+        url = base_url + "search/recruiter_search";
 
 
         data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
@@ -660,27 +660,27 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
             {
                 // alert("hsjdh");
 
-                window.location = "<?php echo base_url() ?>recruiter/recommen_candidate";
+                window.location = base_url + "recruiter/recommen_candidate";
             } else if (clicked_id == 2)
             {
-                window.location = "<?php echo base_url() ?>recruiter/rec_profile";
+                window.location = base_url + "recruiter/rec_profile";
             } else if (clicked_id == 3)
             {
-                window.location = "<?php echo base_url() ?>recruiter/rec_basic_information";
+                window.location = base_url + "recruiter/rec_basic_information";
             } else if (clicked_id == 4)
             {
                 if (searchkeyword == "")
                 {
 
-                    window.location = "<?php echo base_url() ?>search/recruiter_search/" + 0 + "/" + searchplace;
+                    window.location = base_url + "search/recruiter_search/" + 0 + "/" + searchplace;
 
                 } else if (searchplace == "")
                 {
 
-                    window.location = "<?php echo base_url() ?>search/recruiter_search/" + searchkeyword + "/" + 0;
+                    window.location = base_url + "search/recruiter_search/" + searchkeyword + "/" + 0;
                 } else
                 {
-                    window.location = "<?php echo base_url() ?>search/recruiter_search/" + searchkeyword + "/" + searchplace;
+                    window.location = base_url + "search/recruiter_search/" + searchkeyword + "/" + searchplace;
                 }
 
             } else if (clicked_id == 5)
@@ -690,13 +690,13 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
 
             } else if (clicked_id == 6)
             {
-                window.location = "<?php echo base_url() . 'profile' ?>";
+                window.location = base_url + "profile";
             } else if (clicked_id == 7)
             {
-                window.location = "<?php echo base_url('registration/changepassword') ?>";
+                window.location = base_url + "registration/changepassword";
             } else if (clicked_id == 8)
             {
-                window.location = "<?php echo base_url('dashboard/logout') ?>";
+                window.location = base_url + "dashboard/logout";
             } else if (clicked_id == 9)
             {
                 location.href = 'javascript:history.back()';
@@ -762,7 +762,7 @@ $(document).ready(function () {
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "job_profile/ajax_data"; ?>',
+                url: bas_url + "job_profile/ajax_data",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
@@ -780,7 +780,7 @@ $(document).ready(function () {
         if (stateID) {
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "job_profile/ajax_data"; ?>',
+                url: base_url + "job_profile/ajax_data",
                 data: 'state_id=' + stateID,
                 success: function (html) {
                     $('#city').html(html);
@@ -873,7 +873,7 @@ $(document).on('change', '#industry', function (event) {
                     textVal = $textbox.val();
             $.ajax({
                 type: 'POST',
-                url: '<?php echo base_url() . "recruiter/recruiter_other_industry" ?>',
+                url: base_url + "recruiter/recruiter_other_industry",
                 dataType: 'json',
                 data: 'other_industry=' + textVal,
                 success: function (response) {
@@ -931,15 +931,15 @@ function leave_page(clicked_id)
         //alert("hi");
         if (clicked_id == 1)
         {
-            location.href = '<?php echo base_url() ?>recruiter/recommen_candidate';
+            location.href = base_url + "recruiter/recommen_candidate";
         }
         if (clicked_id == 2)
         {
-            location.href = '<?php echo base_url() ?>recruiter/rec_profile';
+            location.href = base_url + "recruiter/rec_profile";
         }
         if (clicked_id == 3)
         {
-            location.href = '<?php echo base_url() ?>recruiter/rec_basic_information';
+            location.href = base_url + "recruiter/rec_basic_information";
         }
         if (clicked_id == 4)
 
@@ -953,14 +953,14 @@ function leave_page(clicked_id)
             {
                 if (searchkeyword == "")
                 {
-                    location.href = '<?php echo base_url() ?>search/recruiter_search/' + 0 + '/' + searchplace;
+                    location.href = base_url + 'recruiter_search/' + 0 + '/' + searchplace;
 
                 } else if (searchplace == "")
                 {
-                    location.href = '<?php echo base_url() ?>search/recruiter_search/' + searchkeyword + '/' + 0;
+                    location.href = base_url + 'search/recruiter_search/' + searchkeyword + '/' + 0;
                 } else
                 {
-                    location.href = '<?php echo base_url() ?>search/recruiter_search/' + searchkeyword + '/' + searchplace;
+                    location.href = base_url + 'search/recruiter_search/' + searchkeyword + '/' + searchplace;
                 }
 
 
