@@ -1774,10 +1774,7 @@ line-height: 40px;
     width: 100px;
     border-radius: 8px;
 }
-.popup .pop_content {
-    text-align: center;
-    margin-top: 40px;
-}
+
 @media screen and (max-width: 700px) {
     .box {
         width: 70%;
@@ -2146,50 +2143,14 @@ border-top-right-radius: 4px;
 /*
 cover pic css*/
 
-.pop_content .okbtn {
-    margin-right: 20px;
-    /*position: absolute;*/
-    
-    transition: all 200ms;
-    font-size: 16px;
-    text-decoration: none;
-    color: #fff;
-    padding: 8px 18px;
-    background-color: #1b8ab9!important;
-    left: 170px;
-    margin-top: 8px;
-    width: 100px;
-    border-radius: 8px;
-}
+
 
 #popup-form img {
     display: none;
 }
 
-.pop_content .cnclbtn {
-    /* position: absolute;*/
-    
-    transition: all 200ms;
-    font-size: 16px;
-    text-decoration: none;
-    color: #fff;
-    padding: 8px 18px;
-    background-color: #1b8ab9!important;
-    right: 170px;
-    margin-top: 8px;
-    width: 100px;
-    border-radius: 8px;
-}
-.popup .pop_content {
-    text-align: center;
-    margin-top: 40px;
-}
-.model_ok_cancel {
-    width: 100%;
-    float: left;
-    padding-top: 25px;
-    padding-bottom: 20px;
-}
+
+
 /* vishang 24-5-17 start */
 
 .display_inline_block {
@@ -3377,12 +3338,7 @@ div[class^="likeduserlist"] {
     margin-bottom: 0;
 }
 
-.pop_content .cnclbtn:hover {
-    background-color: #156f95 !important
-}
-.pop_content .okbtn:hover {
-    background-color: #156f95 !important
-}
+
 
 .custom-row .user-pic:hover a {
     padding: 4px 4.4px;
@@ -4466,21 +4422,9 @@ img.aligncenter {
     display: block;
     clear: both;
 }
-.midd-section {
-    background: url(../images/freelancer-bg.jpg) no-repeat;
-    background-size: cover;
-    padding: 100px 0;
-}
-.midd-section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    
-}
+
 .about_btm {
     margin-top: 15%;
-}
-.freelancer-midd .title-section {
-    padding-bottom: 114px;
 }
 
 /***  extra ***/
