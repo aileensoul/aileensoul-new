@@ -98,14 +98,6 @@
     var options = {
     beforeSend: function () { 
     // Replace this with your loading gif image
-
-    var data = $('.profile-job-post-detail').length;
-
-if(data == 0){
-           
-            document.getElementById("no_post_avl").style.display = "none";
-           }
-
            
     document.getElementById("progress_div").style.display = "block";
     var percentVal = '0%';
@@ -128,6 +120,17 @@ if(data == 0){
             document.getElementById('test-upload-product').value = '';
            document.getElementById('test-upload-des').value = '';
            document.getElementById('file-1').value = '';
+
+
+            var data = $('.post-design-box').length;
+            //alert(data);
+
+          if(data == 0){ 
+           
+            document.getElementById("no_post_avl").style.display = "none";
+           }
+
+
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
 //            $('#progress_div').fadeOut('5000').remove();
@@ -346,19 +349,19 @@ $(function () {
 $('#file-fr').fileinput({
                 language: 'fr',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $('#file-es').fileinput({
                 language: 'es',
                 uploadUrl: '#',
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $("#file-0").fileinput({
-                'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf']
+                'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg']
             });
             $("#file-1").fileinput({
                 uploadUrl: '#', // you must set a valid URL here else you will get an error
-                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf'],
+                allowedFileExtensions: ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg'],
                 overwriteInitial: false,
                 maxFileSize: 1000000,
                 maxFilesNum: 10,
@@ -405,7 +408,7 @@ $('#file-fr').fileinput({
             $(document).ready(function () {
                 $("#test-upload").fileinput({
                     'showPreview': false,
-                    'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf'],
+                    'allowedFileExtensions': ['jpg', 'png', 'gif','mp4','mp3','pdf','jpeg'],
                     'elErrorContainer': '#errorBlock'
                 });
                 $("#kv-explorer").fileinput({
@@ -1306,10 +1309,15 @@ function remove_ownpost(abc)
                     //alert(data);
                     success: function (data) { //alert('#' + 'removepost' + abc);
                         $('#' + 'removepost' + abc).remove();
+                        GetArtPhotos();
+                GetArtVideos();
+                GetArtAudios();
+                GetArtPdf();
                         if(data.notcount == 0){ 
                             $('.' + 'nofoundpost').html(data.notfound);
                             $('.' + 'not_available').remove();
                             $('.' + 'image_profile').remove();
+
                             //$('.' + 'dataconpdf').html(data.notpdf);
                             //$('.' + 'dataconvideo').html(data.notvideo);
                             //$('.' + 'dataconaudio').html(data.notaudio);

@@ -941,6 +941,10 @@ max-width: 100%;}
 
 
 /*zalak*/
+/*business*/
+.profile-boxProfileCard_follow ul li{float: left; width: 100%;}
+
+.profile-boxProfileCard_follow ul{float: left;}
 /*freelancer*/
 .custom_footer_left{background: white; border:1px solid #d9d9d9; padding: 8px; border-radius: 2px; margin-bottom: 20px;}
 

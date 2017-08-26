@@ -2194,7 +2194,7 @@ $datacount = count($otherdata);
 
 
         if (count($otherdata) == 0) {
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
@@ -2440,6 +2440,8 @@ $datacount = count($otherdata);
 
 
     }
+
+
 
 
     public function artistic_contactperson($id) {
@@ -11528,9 +11530,7 @@ public function insert_comment_postnewpage() {
         }
 
         $return_html = '';
-        $return_html .= '<ul>
-                                            <li class="follow_box_ul_li">
-                                                <div class="contact-frnd-post follow_left_main_box">';
+        $return_html .= '<ul>';
         if ($userlistview1 > 0) {
             foreach ($userlistview1 as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
@@ -11544,7 +11544,8 @@ public function insert_comment_postnewpage() {
                
                 if (!$artfollow) {
 
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class="follow_box_ul_li">
+                                                <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
@@ -11621,7 +11622,7 @@ public function insert_comment_postnewpage() {
                                                                             </i>
                                                                         </span>
                                                                     </div>
-                                                                </div>';
+                                                                </div></div></li>';
                 }
             }
         }
@@ -11635,7 +11636,8 @@ public function insert_comment_postnewpage() {
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                               
                 if (!$artfollow) {
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class="follow_box_ul_li">
+                                                <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
@@ -11714,7 +11716,7 @@ public function insert_comment_postnewpage() {
                                                                             </i>
                                                                         </span>
                                                                     </div>
-                                                                </div>';
+                                                                </div></div></li>';
                 }
             }
         }
@@ -11728,7 +11730,8 @@ public function insert_comment_postnewpage() {
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (!$artfollow) {
 
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class="follow_box_ul_li">
+                                                <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
                                                                     <div class="col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">
                                                                             <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '">';
@@ -11794,7 +11797,7 @@ public function insert_comment_postnewpage() {
                                                                             </i>
                                                                         </span>
                                                                     </div>
-                                                                </div>';
+                                                                </div></div></li>';
                 }
             }
         }
@@ -11808,7 +11811,8 @@ public function insert_comment_postnewpage() {
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (!$artfollow) {
 
-                    $return_html .= '<div class="profile-job-post-title-inside clearfix">
+                    $return_html .= '<li class="follow_box_ul_li">
+                                                <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
@@ -11875,14 +11879,12 @@ public function insert_comment_postnewpage() {
                                                                             </i>
                                                                         </span>
                                                                     </div>
-                                                                </div>';
+                                                                </div></div></li>';
                 }
             }
         }
 
-        $return_html .= '</div>
-                                            </li>
-                                        </ul>';
+        $return_html .= '</ul>';
 
 
         echo $return_html;

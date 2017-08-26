@@ -1312,19 +1312,22 @@ class Business_profile extends MY_Controller {
 
                     if ($this->upload->do_upload('postattach')) {
                         $response['result'][] = $this->upload->data();
-
+                        
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][0]['file_name'];
                         $this->load->library('S3');
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-                        $abc = $s3->putObjectFile($main_image, bucket, 'business_post/main/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
+                        $abc = $s3->putObjectFile($main_image, bucket, 'uploads/business_post/main/' . $response['result'][0]['file_name'], S3::ACL_PUBLIC_READ);
 
-                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/business_post/main/' . $response['result'][0]['file_name'];
+//                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/' . $response['result'][0]['file_name'];
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
 
                         $thumb_image_width = $this->config->item('bus_post_thumb_width');
                         $thumb_image_height = $this->config->item('bus_post_thumb_height');
+                        
+                        $main_image_size = $_FILES['postattach']['size'];
+                        
 
                         if ($image_width > $image_height) {
                             $n_h = $thumb_image_height;
@@ -1348,7 +1351,7 @@ class Business_profile extends MY_Controller {
                         $business_profile_post_thumb[$i]['width'] = $n_w;
                         $business_profile_post_thumb[$i]['height'] = $n_h;
 //                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
-                        $business_profile_post_thumb[$i]['quality'] = "100%";
+                        $business_profile_post_thumb[$i]['quality'] = "50%";
                         $business_profile_post_thumb[$i]['x_axis'] = '0';
                         $business_profile_post_thumb[$i]['y_axis'] = '0';
                         $instanse = "image_$i";
@@ -1490,6 +1493,7 @@ class Business_profile extends MY_Controller {
 
                         //echo "<pre>"; print_r($data1);
                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_image');
+                        //unlink($main_image);
                     } else {
                         echo $this->upload->display_errors();
                         exit;
@@ -1876,10 +1880,15 @@ class Business_profile extends MY_Controller {
                 if (in_array($ext, $allowed)) {
 
                     $return_html .= '<div class="one-image">';
-                    $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                   /* $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
             </a>
-        </div>';
+        </div>'; 
+                    */
+                    $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                <img src="https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/'.$businessmultiimage[0]['image_name'].'"> 
+            </a>
+        </div>'; 
                 } elseif (in_array($ext, $allowespdf)) {
                     $return_html .= '<div>
             <a title="click to open" href="' . base_url('business_profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
@@ -9907,9 +9916,17 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                             $return_html .= '<div class = "one-image">';
                             $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<img src = "https://' . bucket . '.s3.amazonaws.com/uploads/business_post/main/'.$businessmultiimage[0]['image_name'].'">
+</a>
+</div>';
+                            $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 <img src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '">
 </a>
 </div>';
+                             
+                            
+                            
+                            
                         } elseif (in_array($ext, $allowespdf)) {
                             $return_html .= '<div>
 <a title = "click to open" href = "' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class = "pdf_img">
