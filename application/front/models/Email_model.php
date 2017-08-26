@@ -33,9 +33,11 @@ class Email_model extends CI_Model {
         background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); 
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#3bb0ac", endColorstr="#1b8ab9",GradientType=0 );
         font-size:16px;
-        color:#fff;
-        padding:10px 25px;
-        text-decoration:none;
+           color:#fff;
+      padding: 7px 12px;
+    text-decoration: none;
+    font-family: arial;
+    letter-spacing: 1px;
     }
     .btn:hover{}
 </style>
@@ -70,27 +72,27 @@ class Email_model extends CI_Model {
                         <tr>
                             <td style="text-align:center; padding:0 10px;" width="20%">
                                 <img src="'.base_url() .'img/m1.png">
-                                <h3 style="font-size:13px;">Job Profile</h3>
+                                <h3 style="font-size:13px; font-family:arial;">Job Profile</h3>
                                 <p style="font-size:9px;">Find best job options and connect with recruiters.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
                                 <img src="'.base_url() .'img/m2.png">
-                                <h3 style="font-size:13px;">Recruiter Profile</h3>
+                                <h3 style="font-size:13px; font-family:arial;">Recruiter Profile</h3>
                                 <p style="font-size:9px;">Hire quality employees here.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
                                 <img src="'.base_url() .'img/m3.png">
-                                <h3 style="font-size:13px; ">Freelance Profile</h3>
+                                <h3 style="font-size:13px; font-family:arial; ">Freelance Profile</h3>
                                 <p style="font-size:9px;">Hire freelancers and also find freelance work.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
                                 <img src="'.base_url() .'img/m4.png">
-                                <h3 style="font-size:13px;">Business Profile</h3>
+                                <h3 style="font-size:13px; font-family:arial;">Business Profile</h3>
                                 <p style="font-size:9px;">Grow your business network.</p>
                             </td>
                             <td style="text-align:center; padding:0 10px;" width="20%">
                                 <img src="'.base_url() .'img/m5.png">
-                                <h3 style="font-size:13px;">Artistic Profile</h3>
+                                <h3 style="font-size:13px; font-family:arial;">Artistic Profile</h3>
                                 <p style="font-size:9px;">Show your art & talent to the world.</p>
                             </td>
                         </tr>

@@ -6,8 +6,8 @@
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="../css/common-style.css">
-        <link rel="stylesheet" href="../css/style-main.css">
+         <link rel="stylesheet" href="<?php echo base_url() ?>css/common-style.css" />
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/style-main.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
@@ -16,7 +16,7 @@
 
         <div class="main-inner">
 
-            <?php echo $login_header; ?>
+            <?php echo $forgetpassword_header; ?>
           <section class="middle-main">
     <div class="container">
       <div class="form-pd row">
@@ -44,13 +44,13 @@
 
 <!-- middele data -->
       <div class="main_otp_box_middle">
-  Please check your email for the verification code.Your verification code has been sent to<a href="">dshah1341@gmail.com</a>
+  Please check your email for the verification code.Your verification code has been sent to<a><?php echo $emailid[0]['user_email'] ?></a>
  Please enter verification code here to verify your account.
 
 
  <div class="main_otp_box_middle_submit">
    
- <input type="text" name="code" id="code" value="" placeholder="Enter Otp">
+ <input type="text" name="code" id="code" value="" placeholder="Enter Code">
 <input type="hidden" name="userid" id="userid" value="<?php echo $user_changeid; ?>">
  </div>
 </div>
@@ -97,7 +97,18 @@ $(document).ready(function () { //alert("hii");
                   code: {
                       required: true,
                       minlength: 6,
-                      maxlength: 6
+                      maxlength: 6,
+                      remote: {
+                                      url: "<?php echo site_url() . 'profile/code_check' ?>",
+                                      type: "post",
+                                      data: {
+                                     email_reg: function () {
+                                     // alert("hi");
+                                        return $("#code").val();
+                                    },
+                                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                                },
+                              },
                         }
                   
                         },
@@ -106,6 +117,7 @@ $(document).ready(function () { //alert("hii");
                     required: "Code Is Required.",
                   	minlength: "Your code is 6 character long",
                   	maxlength: "Your code is 6 character long",
+                    remote: "You enter some text doesn't match your code.Please try right code.",
                       }
 
                     

@@ -775,6 +775,10 @@ $config['bus_post_main_max_size'] = '100000000'; //in KB
 $config['bus_post_main_max_width'] = '4500';
 $config['bus_post_main_max_height'] = '3000';
 
+// BUSINESS POST RESIZED
+$config['bus_post_resize_upload_path'] = 'uploads/business_post/resize/';
+
+
 // BUSINESS POST THUMBS
 $config['bus_post_thumb_upload_path'] = 'uploads/business_post/thumbs/';
 $config['bus_post_thumb_width'] = '335';

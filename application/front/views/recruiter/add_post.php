@@ -72,14 +72,14 @@
                                       <option></option>
 
                                         <?php //foreach ($skill as $ski) {  ?>
-                                  <option value="<?php //echo $ski['skill_id'];       ?>"><?php // echo $ski['skill'];       ?></option>
+                                  <option value="<?php //echo $ski['skill_id'];        ?>"><?php // echo $ski['skill'];        ?></option>
                                         <?php //} ?>
                                     </select>  -->
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
 
 
-<!--   <fieldset class="full-width" <?php //if ($other_skill) {       ?> class="error-msg" <?php //}       ?> >
+<!--   <fieldset class="full-width" <?php //if ($other_skill) {        ?> class="error-msg" <?php //}        ?> >
     <label class="control-label">Other Skill: --><!-- <span style="color:red">*</span> --><!-- </label>
     <input name="other_skill" type="text" class="skill_other" tabindex="3" id="other_skill" placeholder="Enter Your Skill" />
     <span id="fullname-error"></span>
@@ -214,27 +214,11 @@
                                     <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
                                         <label>Education:</label> 
 
-                                        <select name="education[]" id ="education" multiple="multiple" style="width: 100%"  tabindex="8">
-                                            <option></option>
-
-                                            <?php foreach ($degree as $deg) { ?>
-                                                <option value="<?php echo $deg['degree_id']; ?>"><?php echo $deg['degree_name']; ?></option>
-                                            <?php } ?>
-                                        </select>
+                                         <input type="search" tabindex="1" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                        <span id="fullname-error"></span>
                                         <?php echo form_error('education'); ?>
 
                                     </fieldset>
-
-
-                                    <fieldset>
-                                        <label class="control-label">Other Education:</label>
-                                        <input name="other_education" type="text" id="other_education"  placeholder="Enter Other Education" /><span id="fullname-error"></span>
-                                        <?php echo form_error('other_education'); ?>
-                                    </fieldset>
-
-
-
-
 
                                     <fieldset class="form-group full-width">
                                         <label class="control-label">Job description:<span style="color:red">*</span></label>
@@ -390,17 +374,50 @@
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
+       
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
 
+        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+
+        <!--SCRIPT FOR DATE START-->
+
+        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
+
         <script>
-                                            var base_url = '<?php echo base_url(); ?>';
-                                            var data1 = <?php echo json_encode($de); ?>;
-                                            var data = <?php echo json_encode($demo); ?>;
-                                            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                            var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                                                var base_url = '<?php echo base_url(); ?>';
+                                                var data1 = <?php echo json_encode($de); ?>;
+                                                var data = <?php echo json_encode($demo); ?>;
+                                                var jobdata = <?php echo json_encode($jobtitle); ?>;
+                                                var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/company_info.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/add_post.js'); ?>"></script>
+
+
+        <style type="text/css">
+
+            .keyskill_border_active {
+                border: 3px solid #f00 !important;
+
+            }
+            #skills-error{margin-top: 40px !important;}
+
+            #minmonth-error{    margin-top: 40px; margin-right: 9px;}
+            #minyear-error{margin-top: 42px !important;margin-right: 9px;}
+            #maxmonth-error{margin-top: 42px !important;margin-right: 9px;}
+            #maxyear-error{margin-top: 42px !important;margin-right: 9px;}
+
+            #minmonth-error{margin-top: 39px !important;}
+            #minyear-error{margin-top: auto !important;}
+            #maxmonth-error{margin-top: 39px !important;}
+            #maxyear-error{margin-top: auto !important;}
+            #example2-error{margin-top: 40px !important}
+
+
+        </style>
     </body>
 </html>

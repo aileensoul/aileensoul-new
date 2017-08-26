@@ -8,8 +8,8 @@
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <link rel="stylesheet" href="../css/common-style.css">
-        <link rel="stylesheet" href="../css/style-main.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/common-style.css" />
+        <link rel="stylesheet" href="<?php echo base_url() ?>css/style-main.css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
@@ -18,7 +18,7 @@
 
         <div class="main-inner">
 
-            <?php echo $login_header; ?>
+            <?php echo $forgetpassword_header; ?>
           <section class="middle-main">
     <div class="container">
       <div class="form-pd row">
@@ -46,8 +46,9 @@
 <input type="hidden" name="usercon" id="usercon" value="<?php echo $userid; ?>">
 
 <span>
-  <input type="submit" name="" value="hide">
-  <input type="submit" name="" value="?">
+<a href="#" onclick="toggle_password('new_password');" id="showhide">Show</a>
+  <!-- <input type="submit" name="" value="hide" id="showhide" onclick="toggle_password('new_password');"> -->
+ 
 </span>
  </div>
 </div>
@@ -105,4 +106,23 @@ $(document).ready(function () { //alert("hii");
             /* validation */
                                     
           });
+</script>
+
+<script type="text/javascript">
+  
+  function toggle_password(target){
+    var d = document;
+    var tag = d.getElementById(target);
+    var tag2 = d.getElementById("showhide");
+
+    if (tag2.innerHTML == 'Show'){
+        tag.setAttribute('type', 'text');   
+        tag2.innerHTML = 'Hide';
+
+    } else {
+        tag.setAttribute('type', 'password');   
+        tag2.innerHTML = 'Show';
+    }
+}
+
 </script>
