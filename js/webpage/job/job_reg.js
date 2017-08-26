@@ -7,41 +7,36 @@
       
       
        $.validator.addMethod("regx2", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
-          //alert(value);
+        
            if(!value) 
                   {
                       return true;
                   }
                   else
                   {
-                      //alert(value);
                       return regexpr.test(value);
       
-                      //return false;
                   }
-           // return regexpr.test(value);
+           
       },"special character and space not allow in the beginning");
       
       $.validator.addMethod("regx_digit", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
-          //alert(value);
+         
            if(!value) 
                   {
                       return true;
                   }
                   else
                   {
-                      //alert(value);
+                      
                       return regexpr.test(value);
       
-                      //return false;
                   }
-           // return regexpr.test(value);
+          
       },"digit is not allow");
       
       $.validator.addMethod("regx1", function(value, element, regexpr) {          
-          //return value == '' || value.trim().length != 0; 
+         
            if(!value) 
                   {
                       return true;
@@ -50,7 +45,7 @@
                   {
                         return regexpr.test(value);
                   }
-           // return regexpr.test(value);
+           
       }, "only space, only number and only special characters are not allow");
       
       
@@ -65,8 +60,7 @@
                           required: true,
                           regx2:/^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
                            regx_digit:/^([^0-9]*)$/,
-                          //noSpace: true
-      
+                         
                       },
       
                       last_name: {
@@ -74,16 +68,11 @@
                           required: true,
                           regx2:/^[a-zA-Z0-9-.,']*[0-9a-zA-Z][a-zA-Z]*/,
                            regx_digit:/^([^0-9]*)$/,
-                          //noSpace: true
-      
                       },
                       
                       cities: {
       
                           required: true,
-                        //  regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                          //noSpace: true
-      
                       },
       
                       email: {
@@ -96,13 +85,7 @@
                              //async is used for double click on submit avoid
                              async:false,
                              type: "post",
-                             // data: {
-                             //     email: function () {
-      
-                             //         return $("#email").val();
-                             //     },
-                              
-                           //  },
+                            
                          },
                       },
       
@@ -116,30 +99,25 @@
       
                           required: "#test2:checked",
                            regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                      //    regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                       //   noSpace: true
+                     
                        },
                        
                        industry: {
       
                           required: true,
-                         // regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                         // noSpace: true
                        },
                        
                        cities: {
       
                           required: true,
                            regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                      //    regx2:/^[^-\s][a-zA-Z_\s-]+$/,
-                        //  noSpace: true
                        },
                        
                        skills: {
       
                           required: true,
                            regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                                  //required:true 
+                                 
                       },
                      
                   },
@@ -230,7 +208,7 @@
                 event.preventDefault();
                 $("#job_title").val(ui.item.label);
                 $("#selected-tag").val(ui.item.label);
-                // window.location.href = ui.item.value;
+               
             },
           
              });
@@ -239,6 +217,7 @@
              
 //new script for cities start
  $(function() {
+ 
           function split( val ) {
               return val.split( /,\s*/ );
           }
@@ -263,9 +242,19 @@
                   return false;
               },
               select: function( event, ui ) {
+                 var text =this.value;
+                 var terms = split( this.value );
                  
-                  var terms = split( this.value );
-                  if(terms.length <= 10) {
+                text = text == null || text == undefined ? "" : text;
+                var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+               if (checked == 'checked') {
+      
+                    terms.push( ui.item.value );
+                    this.value = terms.split( ", " );
+               }//if end
+              else {
+         
+                      if(terms.length <= 10) {
                       // remove the current input
                       terms.pop();
                       // add the selected item
@@ -274,6 +263,7 @@
                       terms.push( "" );
                       this.value = terms.join( ", " );
                       return false;
+
                   }else{
                       var last = terms.pop();
                       $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
@@ -281,8 +271,9 @@
                       $(this).attr("style","border: solid 1px red;");
                       return false;
                   }
+              }//else end    
+                  
               }
-      
       
       
           });
@@ -317,7 +308,17 @@ $(function() {
               },
               select: function( event, ui ) {
                  
-                  var terms = split( this.value );
+                var text =this.value;
+                var terms = split( this.value );
+                 
+                text = text == null || text == undefined ? "" : text;
+                var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+               if (checked == 'checked') {
+      
+                    terms.push( ui.item.value );
+                    this.value = terms.split( ", " );
+               }//if end
+              else {
                   if(terms.length <= 20) {
                       // remove the current input
                       terms.pop();
@@ -334,6 +335,7 @@ $(function() {
                       $(this).attr("style","border: solid 1px red;");
                       return false;
                   }
+                }//else end
               }
       
       
