@@ -727,7 +727,7 @@ class Recruiter extends MY_Controller {
         $this->data['candidatejob'] = $new;
         
      
-        $this->load->view('recruiter/recommehn_candidate', $this->data);
+        $this->load->view('recruiter/recommen_candidate', $this->data);
     }
 
     // RECRUITER RECOMMANDED FUNCTION END

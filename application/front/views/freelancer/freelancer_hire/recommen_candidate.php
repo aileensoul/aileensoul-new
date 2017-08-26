@@ -81,6 +81,29 @@
                                         </div>
                                     </div>                             
                                 </div>
+
+                                 <div class="custom_footer_left fw">
+          <div class="fl">
+            <ul>
+              <li><a href=""> About Us </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Contact Us</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a  href="">Blogs</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Terms & Condition </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Privacy Policy</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
+
+        </div>
+        
                                 <div  class="add-post-button">
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                                 </div>

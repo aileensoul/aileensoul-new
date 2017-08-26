@@ -222,7 +222,6 @@ $(function() {
           event.preventDefault();
           $("#searchplace1").val(ui.item.label);
           $("#selected-tag").val(ui.item.label);
-          // window.location.href = ui.item.value;
       },
     
        });

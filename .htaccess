@@ -26,6 +26,12 @@ AddType audio/ogg ogg oga
 AddType video/webm webm
 </IfModule>
 
+<ifmodule mod_rewrite.c>
+RewriteCond %{REQUEST_URI} !^/favicon\.ico [NC]
+RewriteCond %{REQUEST_URI} favicon\.ico    [NC]
+RewriteRule (.*) https://www.aileensoul.com/images/favicon.png [R=301,L]
+</ifmodule>
+
 <IfModule mod_php5.c>
     #Session timeout
     php_value session.cookie_lifetime 144000
@@ -50,5 +56,5 @@ RewriteRule ^(.*)$ index.php/$1 [L]
    RewriteRule ^(.*)$ http://www.aileensoul.com/$1 [L,R=301,NC]
 
 
-
+php_flag display_errors On
 

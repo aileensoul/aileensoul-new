@@ -940,6 +940,32 @@ max-width: 100%;}
 .header ul li .notifications li{padding: 0px; border-right: none;}
 
 
+/*zalak*/
+/*freelancer*/
+.custom_footer_left{background: white; border:1px solid #d9d9d9; padding: 8px; border-radius: 2px; margin-bottom: 20px;}
+
+.custom_footer_left ul{float: left; padding: 0px; margin: 0px;}
+.custom_footer_left ul li{
+    display: inline-block;
+    padding: 5px 6px 0px;
+    margin: 0;
+    float: left;}
+
+.custom_footer_left ul li a{padding: 0px; float: left; color: #8c8c8c;}
+.custom_footer_left ul li a:hover{color: #1b8ab9;}
+.custom_footer_dot{
+        float: left;
+    padding: 5px 1px 0px;
+    font-size: 30px;
+    color: #8c8c8c;
+}
+
+@media screen and (max-width:1200px)
+{
+    .custom_footer_left ul li a{font-size: 12px;}
+} 
+
+
 @media screen and (max-width: 767px) {
 	.search-mob-block{display:block;}
 }

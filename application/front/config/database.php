@@ -60,8 +60,8 @@ if($_SERVER['HTTP_HOST']=="localhost")
 	$db['default']['db_debug'] = TRUE;
 	$db['default']['cache_on'] = FALSE;
 	$db['default']['cachedir'] = '';
-	$db['default']['char_set'] = 'utf8';
-	$db['default']['dbcollat'] = 'utf8_general_ci';
+	$db['default']['char_set'] = 'utf8mb4';
+	$db['default']['dbcollat'] = 'utf8mb4_unicode_ci';
 	$db['default']['swap_pre'] = '';
 	$db['default']['autoinit'] = TRUE;
 	$db['default']['stricton'] = FALSE;
@@ -75,7 +75,7 @@ else
 	$db['default']['dbdriver'] = 'mysqli';
 	$db['default']['dbprefix'] = 'ailee_';
 	$db['default']['pconnect'] = TRUE;
-	$db['default']['db_debug'] = FALSE;
+	$db['default']['db_debug'] = TRUE;
 	$db['default']['cache_on'] = FALSE;
 	$db['default']['cachedir'] = '';
 	$db['default']['char_set'] = 'utf8';
