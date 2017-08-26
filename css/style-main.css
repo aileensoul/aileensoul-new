@@ -1401,6 +1401,7 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
     transform: translate(-50%, -50%);
 }
 .otp_lform .login{box-shadow: none;}
+	
 .main_otp_box_head h3{font-size: 23px; margin: 0; padding: 14px;}
 .main_otp_box_head {border-bottom: 1px solid #d9d9d9;}
 .main_otp_box_middle{padding: 14px; border-bottom: 1px solid #d9d9d9; line-height: 22px;}
@@ -1465,7 +1466,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', end
 }
 
 .main_otp_box_middle_submit input[type="password"] , .main_otp_box_middle_submit input[type="text"]{width: 30%;}
-.main_otp_box_middle_submit input[type="password"] , .main_otp_box_middle_submit input[type="text"]::placeholder {
+.main_otp_box_middle_submit input[type="password"]::placeholder , .main_otp_box_middle_submit input[type="text"]::placeholder {
   color: rgb(27, 138, 185,0.7);
 }
 
