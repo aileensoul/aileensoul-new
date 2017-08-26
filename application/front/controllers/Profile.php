@@ -171,13 +171,28 @@ class Profile extends CI_Controller {
          $lastname= $forgot_email_check[0]['last_name'];
             
             $toemail= $forgot_email; 
+
             
-           $msg = "Hey !" . $username ."<br/>"; 
-           $msg .=  " " . $firstname . " " . $lastname . ",";
-           $msg .= "This is your code.";
-           $msg .= "<br>"; 
-           $msg .= " " . $rand_password . " "; 
-           $msg .= "<a href=" .  base_url('profile/change_password/' . $forgot_email_check[0]['user_id']) . ">Change password</a>"; 
+            
+           // $msg .= "Hey !" . $username ."<br/>"; 
+           // $msg .=  " " . $firstname . " " . $lastname . ",";
+           // $msg .= "This is your code.";
+           // $msg .= "<br>"; 
+           // $msg .= " " . $rand_password . " "; 
+           // $msg .= "<a href=" .  base_url('profile/change_password/' . $forgot_email_check[0]['user_id']) . ">Change password</a>"; 
+
+
+                 
+        $msg .= '<tr>
+              <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
+        $msg .= '<p style="margin:0; font-family:arial;">Hi,' . ucwords($firstname) .' '.ucwords($lastname) . '</p>
+                <p style="padding:25px 0 ; font-family:arial; margin:0;">This is your code: '.$rand_password .'</p>
+                <p><a class="btn" href="' . base_url() . 'profile/change_password/' . $forgot_email_check[0]['user_id'] . '">Reset password</a></p>
+              </td>
+            </tr>';
+
+
+          
            echo $msg; die();
             $subject = "Forgot password";
 
