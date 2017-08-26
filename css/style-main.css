@@ -110,6 +110,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 .btn1:focus{
 	opacity:0.6;
 }
+.fw{width: 100%; float: left;}
 /*.btn1 {
   border: 0 solid;
   box-shadow: inset 0 0 20px rgba(27, 138, 185, 0);
@@ -127,8 +128,6 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
   outline-offset: 15px;
   text-shadow: 1px 1px 2px #427388; 
 }*/
-
-
 
 
 .btn2{
@@ -1389,6 +1388,86 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
 
 
 
+/* otp */
+
+
+.fl{float: left;}
+.fr{float: right;}
+.otp_lform{width: 680px!important; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* margin: 0 auto; */
+    transform: translate(-50%, -50%);
+}
+.otp_lform .login{}
+.main_otp_box_head h3{font-size: 23px; margin: 0; padding: 14px;}
+.main_otp_box_head {border-bottom: 1px solid #d9d9d9;}
+.main_otp_box_middle{padding: 14px; border-bottom: 1px solid #d9d9d9; line-height: 22px;}
+.otp_bottom{padding: 10px 14px;}
+.otp_bottom_link{    vertical-align: middle;
+    padding-top: 6px;}
+.main_otp_box_middle_submit{ padding: 14px 0px }
+.main_otp_box_middle_submit input[type="password"]{background-color: white;
+   
+    border: none;
+ border-bottom: 1px solid #1b8ab9;}
+.main_otp_box_middle_submit input[type="text"]{background-color: white;
+   
+    border: none;
+ border-bottom: 1px solid #1b8ab9;}
+.otp_bottom_submit input{
+	background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important; /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 ); /* ie6-9 */
+    border: none;
+       padding: 4px 10px;
+    vertical-align: middle;
+    color: white;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 87px;
+    letter-spacing: 0.5px;
+    font-family: arial;
+}
+
+.main_otp_box_middle_submit label{
+	    display: block;
+    color: #1b8ab9;
+    padding-bottom: 3px;
+}
+.main_otp_box_middle_submit input:focus{outline: none;}
+.main_otp_box_middle_submit input[type="submit"]{
+
+    border: 1px solid #d9d9d9;
+   color: #7b7c7c;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -ms-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);
+    -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
+    border: 1px solid #dcdcdc!important;}
+.otp_bottom_submit input.cancel_password{
+	 border: 1px solid #d9d9d9;
+   color: #7b7c7c;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -ms-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%)!important;
+    -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
+    border: 1px solid #dcdcdc!important;
+}
+
+.main_otp_box_middle_submit input[type="password"] , .main_otp_box_middle_submit input[type="text"]{width: 30%;}
+.main_otp_box_middle_submit input[type="password"] , .main_otp_box_middle_submit input[type="text"]::placeholder {
+  color: rgb(27, 138, 185,0.7);
+}
 
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {

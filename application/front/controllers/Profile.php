@@ -209,6 +209,8 @@ class Profile extends CI_Controller {
  public function change_password($abc){ 
 
       $this->data['user_changeid'] = $abc;
+        $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+      
 
       $this->load->view('profile/change_password', $this->data);
 
