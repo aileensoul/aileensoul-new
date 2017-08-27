@@ -15,7 +15,7 @@
     word-break: break-word;
     word-wrap: break-word;
 }
-.radio {
+/*.radio {
     margin-top: 4px;
 }
 .radio span {
@@ -39,15 +39,13 @@
 .submit input {
     width: auto;
     float: right;
-}
+}*/
 #jobseeker_regform input:focus{border: 1px solid #1b8ab9 !important;color: #1b8ab9!important;}
 #jobseeker_regform input#submit:focus{border: none!important;}
 #industry:focus{border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
-
 #jobseeker_regform input[type="submit"]:focus{color: white!important;}
-    .message .btn:focus{color: white;}
-        .message .btn:hover{color: white;}
-
+    /*.message .btn:focus{color: white;}
+        .message .btn:hover{color: white;}*/
 .contact_form {
     border: 5px solid white;
     border-bottom: none;
@@ -56,25 +54,19 @@
     border: none !important;
     margin-bottom: 0px!important;
 }
-
 .none_aaaart .common-form form {
     border: none!important;
 }
-
 .common-form .cntact-ss {
     border: none!important;
     border-top: 0!important;
     padding: 0px!important;
     background-color: white;
 }
-
 #popup {
     display: none;
 }
-
 .bestofmine_image_secondary{position: relative;}
-
-
 .login {
     width: 50%;
     background: #fff;
@@ -96,7 +88,6 @@
     border: 1px solid #ddd;
     margin: 8px 0;
 }
-
 .login input[type=submit]:hover {
     background: #089de3;
 }
@@ -117,7 +108,6 @@ label.error {
     border: 1px solid #f00;
 }
 /* Profile */
-
 /*
 .profile-banner {
     background: url(../images/16128502_1322030877858370_27811870_n.jpg) no-repeat center;
@@ -128,7 +118,6 @@ label.error {
     border-color: rgba(0, 0, 0, .10);
     border-top-color: rgba(0, 0, 0, .1);
 }
-
 .profile-banner:after {
     background: rgba(76, 76, 76, 0.02);
     background: -moz-linear-gradient(top, rgba(76, 76, 76, 0.02) 0%, rgba(19, 19, 19, 0.1) 100%);
@@ -145,7 +134,6 @@ label.error {
     bottom: 0;
     left: 0;
 }*/
-
 /*.profile-text {
     color: #aba2a2;
     font-size: 16px;
@@ -155,7 +143,6 @@ label.error {
 }*/
 
 /* Business Profile */
-
 .business_pf_ct_person_form {
     padding-bottom: 0px;
     background-color: white;
@@ -188,7 +175,6 @@ ul.business_pf_ct_person_detail li b {
     width: 30%;
 }
 .notification-data-inside h6 b i{color: #000;}
-
 #notificationLink:hover span {
     background: #1b8ab9;
     color: #fff;
@@ -209,7 +195,6 @@ ul.business_pf_ct_person_detail li b {
     width: 100%;
     clear: both;
 }*/
-
 .job-post-detail .job-post-title .job-profile-menu ul {
     list-style: none;
     display: block;
@@ -259,7 +244,6 @@ ul.business_pf_ct_person_detail li b {
     color: #FFFFFF;
     padding: 0px;
 }
-
 .contact-head {
     background: #1b8ab9;
     padding: 3px;
@@ -268,24 +252,19 @@ ul.business_pf_ct_person_detail li b {
     color: #FFFFFF;
     float: left;
 }
-
 /* job-post*/
 .edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}
 .job_edit_menu{width: 18.5% !important;}
 .post-design-box .post-design-desc a.content_link:hover{text-decoration: underline;}
 .post-design-box .post-design-desc a.content_link { color: #707070; }
-
 .profile-job-details p {
     color: #5b5b5b;
 }
 .profile-job-details p i {
     margin-left: 10px;
 }
-
 .cls-ve:hover{color: black;}
 .cls-ve{color: #ccc;}
-
-
 .profile-text a {
     color: #8c8c8c;
     font-size: 15px;
@@ -302,7 +281,6 @@ ul.business_pf_ct_person_detail li b {
     padding-right: 28px;
     color: #000;
 }
-
 .job-profile-left-side-bar .left-side-bar ul li.active {
     position: relative;
     background: #156f95;
@@ -325,7 +303,6 @@ ul.business_pf_ct_person_detail li b {
     padding-right: 15px;
     margin-right: 0;
 }
-
 .job-menu-profile h5 {
     text-transform: capitalize;
     font-size: 25px;
@@ -352,8 +329,6 @@ ul.business_pf_ct_person_detail li b {
     cursor: pointer;}
     .tsecondary_certi i{color: white; cursor: pointer; font-size: 12px;}
 .job_work_experience_main_div h6{padding: 10px 0px 2px; font-size: 17px;}
-
-
 ul.buttons {
     padding: 4px 0 4px 10px;
     color: white;
@@ -366,7 +341,6 @@ ul.buttons li {
     position: relative;
 }
 /* resume-menu*/
-
 .profile-text1 .as-p{font-size: 13px;
 padding-left: 0px;
 letter-spacing: 0.3px;
@@ -382,7 +356,6 @@ border-radius: 3px;
 font-size: 14px;
 margin: 10px;}
 .cls-ve{cursor: pointer;}
-
 .email-verify{width: 100%; padding-left: 3%;}
 .vs-o{ padding: 10px;}
 .progressbar {
@@ -391,7 +364,6 @@ margin: 10px;}
 }
 
 /* Change Password */
-
 .change-password {
     padding: 80px 0;
     text-align: center;
@@ -412,8 +384,6 @@ margin: 10px;}
     background: #1b8ab9;
     color: #fff;
     padding: 6px 15px;
-    /*margin-bottom: 20px;*/
-    
     text-align: center;
 }
 .change-password-box .hs-submit input {
