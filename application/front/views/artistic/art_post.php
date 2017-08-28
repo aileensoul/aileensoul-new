@@ -83,26 +83,26 @@
    <body>
    <?php echo $header; ?>
    <?php echo $art_header2_border; ?>
-      <div class="user-midd-section" id="paddingtop_fixed">
+      <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
       <div class="container">
       <div class="row">
-      <div class="profile-art-box profile-box-custom col-md-4 animated fadeInLeftBig">
+      <div class="profile-art-box profile-box-custom col-md-4 fixed_left_side animated fadeInLeftBig" >
          <?php ?>
 <?php echo $left_artistic; ?>
-         <div class="full-box-module_follow">
-            <!-- follower list start  -->  
+          <div class="full-box-module_follow fixed_right_display_none">
+          <!--   follower list start    -->
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
-                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
+                  <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
                <div class="profile-boxProfileCard_follow  module">     
                </div>
-               <!-- follower list end  -->
+              <!--  follower list end  -->
             </div>
          </div>
       </div>
-      <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art animated fadeInUp">
+      <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-art animated fadeInUp">
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
                <div class="popup-img">
@@ -157,9 +157,21 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              </div>
                              </div>
       </div>
-      <footer>
-         <?php echo $footer; ?>
-      </footer>
+      <div class="col-md-3 fixed_right_side fixed_right_display">
+         <div class="full-box-module_follow" style="margin-top: 0px;">
+            <!-- follower list start  -->  
+            <div class="common-form">
+               <h3 class="user_list_head">User List</h3>
+               <div class="seeall">
+                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
+               </div>
+               <div class="profile-boxProfileCard_follow  module">     
+               </div>
+               <!-- follower list end  -->
+            </div>
+         </div>
+      </div>
+     
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">
@@ -222,7 +234,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                 </div>
             </div>
             <!-- Bid-modal for this modal appear or not  Popup Close -->
-		<!-- The Modal -->
+    <!-- The Modal -->
          <div id="myModal" class="modal-post">
             <!-- Modal content -->
             <div class="modal-content-post">
@@ -321,5 +333,7 @@ var textarea = document.getElementById("textarea");
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/home.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
+
+
 </body>
 </html>
