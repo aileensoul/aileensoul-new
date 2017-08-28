@@ -201,7 +201,10 @@ class Dashboard extends MY_Controller {
         $update = $this->common->update_data($data, 'user', 'user_id', $userid);
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-        echo '<img src="' . $this->data['userdata'][0]['profile_background'] . '" />';
+        //echo '<img src="' . $this->data['userdata'][0]['profile_background'] . '" />';
+        $coverpic='<img  src="'. base_url($this->config->item('user_bg_main_upload_path') . $this->data['userdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
+      echo $coverpic;
+
     }
 
     public function image() {
