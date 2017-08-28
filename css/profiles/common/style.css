@@ -2969,7 +2969,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
 .profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
-.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; z-index: -1; background-color: white;}
+.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; border-top: none; z-index: -1; background-color: white;}
 .profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
 .profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
 .profile-main-rec-box-menu li a {display: block; color: #1b8ab9; text-align: center; padding: 16px 15px;
@@ -3161,14 +3161,14 @@ line-height: 1;}
 .bui_art_left_box .follow_left_box_main_btn button{width: 82px; padding: 5px 3px; margin-left: 0px;   }
 .bui_art_left_box .left_iner_img_profile{width: 60px; height:60px;}
 .bui_art_left_box .profile-boxProfileCard-bg img{height: 84px;}
-
+.profile-job-details p i{margin-right: 6px;}
 /*ZALAK END CHANGES OF 28-8*/
 
 
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9;}
+#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -5881,8 +5881,15 @@ footer {
   
 } 
 
+@media screen and (max-width: 1279px) {
+.header2{width:1140px;}
+}
 
-
+@media screen and (max-width: 1199px) {
+.header2 {
+    width: 940px;
+}
+}
 @media screen and (max-width:1200px)
    
 { 
