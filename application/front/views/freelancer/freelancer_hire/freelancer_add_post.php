@@ -7,7 +7,6 @@
         </title>
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-       
         <!-- This Css is used for call popup start -->
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" /> 
         <!--call popup end-->
@@ -262,9 +261,6 @@
         <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        
-       
-
         <!-- This Js is used for call popup -->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- Calender JS Start-->

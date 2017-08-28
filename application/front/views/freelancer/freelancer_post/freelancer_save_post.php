@@ -7,7 +7,6 @@
             #popup-form img{display: none;}
         </style>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">

@@ -2,11 +2,11 @@
     <div class="job-search-box1 clearfix">
         <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
             <fieldset class="col-md-3 col-sm-5 col-xs-5">
-                <input type="text" id="tags" name="skills" placeholder="Find Your freelancer">
+                <input type="text" id="tags" name="skills" placeholder="Designation, Skills, Field">
                 <!--<input id="skills2" name="skills" tabindex="7" size="90" placeholder="Enter SKills">-->
             </fieldset>
             <fieldset class="col-md-3 col-sm-5 col-xs-5">
-                <input type="text" id="searchplace" name="searchplace" placeholder="Find Your Location"> 
+                <input type="text" id="searchplace" name="searchplace" placeholder="Find Location"> 
             </fieldset>
             <fieldset class="col-md-2 col-sm-2 col-xs-2">
                 <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>

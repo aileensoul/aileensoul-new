@@ -50,9 +50,7 @@
                                                        <?php
                                                        if ($freelancerdata[0]['freelancer_post_user_image']) {
                                                            ?>
-                                                        <div class="">
                                                             <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
-                                                        </div>
                                                         <?php
                                                     } else {
                                                         $fname = $freelancerdata[0]['freelancer_post_fullname'];

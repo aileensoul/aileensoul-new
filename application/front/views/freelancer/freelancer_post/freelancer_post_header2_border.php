@@ -1,5 +1,3 @@
-
-
 <!--post save success pop up style strat -->
 <style type="text/css">
     .dropdown-content_hover {
@@ -30,12 +28,14 @@
     </style>
 
     <!--post save success pop up style end -->
-    <?php if (($this->uri->segment(1) == 'freelancer-work' && $this->uri->segment(2) == 'home')) { ?>
-
-
+   
         <header>
             <div class="bg-search">
+                 <?php if (($this->uri->segment(1) == 'freelancer-work' && $this->uri->segment(2) == 'home')) { ?>
                 <div class="header2 headerborder animated fadeInDownBig">
+                 <?php } else { ?>
+                    <div class="header2 headerborder">
+                 <?php } ?>
                     <div class="container">
                         <div class="row">
 
@@ -51,8 +51,8 @@
                                         <button type="button" class="close">×</button>
                                         <form action=<?php echo base_url('search/freelancer_post_search') ?> method="get">
                                             <div class="new-search-input">
-                                                <input type="text" id="tags1" name="skills" placeholder="Find Your freelancer" />
-                                                <input type="text" id="searchplace1" name="searchplace" placeholder="Find Your Location" />
+                                                <input type="text" id="tags1" name="skills" placeholder="Post Title, Skills, Keywords" />
+                                                <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location" />
                                                 <button type="submit" onclick="return check()" class="btn btn-primary">Search</button>
                                             </div>
                                         </form>
@@ -117,96 +117,6 @@
                 </div>
             </div> 
         </header>
-    <?php
-    } else {
-        ?>
-        <header>
-            <div class="bg-search">
-                <div class="header2">
-                    <div class="container">
-                        <div class="row">
-
-                            <?php echo $freelancer_post_search; ?>
-                            <div class="col-sm-5 col-md-5 col-xs-6 mob-width">
-                                <div class="search-mob-block">
-                                    <div class="">
-                                        <a href="#search">
-                                            <label><i class="fa fa-search" aria-hidden="true"></i></label>
-                                        </a>
-                                    </div>
-                                    <div id="search">
-                                        <button type="button" class="close">×</button>
-                                        <form>
-                                            <div class="new-search-input">
-                                                <input type="search" value="" placeholder="Find Your Freelancer" />
-                                                <input type="search" value="" placeholder="Find Your Location" />
-                                                <button type="submit" class="btn btn-primary">Search</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class=" ">
-                                    <ul class="" id="dropdownclass">
-
-
-                                        <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'home')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer/freelancer_apply_post'); ?>"><span class="bu_home"></a>
-                                        </li>
-
-                                        <li id="Inbox_link">
-                                            <?php if ($message_count) { ?>
-                                                                  <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
-                                            <?php } ?>
-                                            <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
-
-                                                <span id="message_count"></span>
-                                            </a>
-
-                                            <div id="InboxContainer">
-                                                <div id="InboxBody" class="Inbox">
-                                                    <div id="notificationTitle">Mwessages</div>
-
-                                                    <div id="notificationsmsgBody" class="notificationsmsg">
-                                                    </div>
-                                                </div>
-                                        </li> 
-                                        <!-- Friend Request Start-->
-
-                                        <li>
-
-
-
-                                            <div class="dropdown_hover">
-                                                <span id="art_profile">Freelancer Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                                <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                                    <span class="my_account">
-                                                        <div class="my_S">Account</div>
-
-                                                    </span>
-                                                    <a href="<?php echo base_url('freelancer-work/freelancer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                                    <a href="<?php echo base_url('freelancer-work/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
-
-                                                    <?php
-                                                    $userid = $this->session->userdata('aileenuser');
-                                                    ?>
-                                                    <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Friend Request End-->
-
-                                        <!-- END USER LOGIN DROPDOWN -->
-                                    </ul>
-                                </div> 
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </header>
-
-    <?php } ?>
 
 
 

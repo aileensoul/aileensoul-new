@@ -2,7 +2,7 @@
                         <div class="job-search-box1 clearfix">
                          <form action=<?php echo base_url('freelancer-work/search')?> method="get">
                             <fieldset class="col-md-3 col-sm-5 col-xs-5">
-                              <input type="text" id="tags" name="skills" placeholder="Find Your freelancer">
+                              <input type="text" id="tags" name="skills" placeholder="Post Title, Skills, Keywords">
                                 </select>
 
                             </fieldset>

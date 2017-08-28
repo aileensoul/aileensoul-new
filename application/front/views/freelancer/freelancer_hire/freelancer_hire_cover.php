@@ -4,7 +4,6 @@
         </div>
         <div class="profile-photo">
             <div class="profile-pho">
-
                 <div class="user-pic">
                     <?php if ($freelancerdata[0]['freelancer_hire_user_image'] != '') { ?>
                         <img src="<?php echo base_url(USERIMAGE . $freelancerdata[0]['freelancer_hire_user_image']); ?>" alt="" >
