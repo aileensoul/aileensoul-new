@@ -152,7 +152,7 @@ function post_like(clicked_id)
 
                         function comment_deleted(clicked_id)
                         {
-                            var post_delete = document.getElementById("post_delete");
+                            var post_delete = document.getElementById("post_delete" + clicked_id);
                             //alert(post_delete.value);
                             $.ajax({
                                 type: 'POST',
@@ -332,6 +332,8 @@ function entercomment(clicked_id)
                             document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
                             document.getElementById('editcancle' + clicked_id).style.display = 'block';
                             $('.post-design-commnet-box').hide();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
                         }
 
 
@@ -343,6 +345,8 @@ function entercomment(clicked_id)
                             document.getElementById('editsubmit' + clicked_id).style.display = 'none';
 
                             $('.post-design-commnet-box').show();
+                            $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                         }
 
                         function comment_editboxtwo(clicked_id) {
@@ -360,6 +364,8 @@ function entercomment(clicked_id)
                             document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
                             document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
                             $('.post-design-commnet-box').hide();
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','0px');
+
                         }
 
 
@@ -371,6 +377,8 @@ function entercomment(clicked_id)
                             document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
                             document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
                             document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+                            $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                             $('.post-design-commnet-box').show();
                         }
 
@@ -449,6 +457,8 @@ function edit_comment(abc)
                                     document.getElementById('editcancle' + abc).style.display = 'none';
                                     $('#' + 'showcomment' + abc).html(data);
                                     $('.post-design-commnet-box').show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -491,6 +501,8 @@ function commentedit(abc)
                                             document.getElementById('editcancle' + abc).style.display = 'none';
                                             $('#' + 'showcomment' + abc).html(data);
                                             $('.post-design-commnet-box').show();
+                                    $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                         }
                                     });
                                 }
@@ -527,6 +539,8 @@ function commentedit(abc)
                                     document.getElementById('editcancletwo' + abc).style.display = 'none';
                                     $('#' + 'showcommenttwo' + abc).html(data);
                                     $('.post-design-commnet-box').show();
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+
                                 }
                             });
                             $(".scroll").click(function (event) {
@@ -575,6 +589,8 @@ function commentedit(abc)
 
                                             $('#' + 'showcommenttwo' + abc).html(data);
                                             $('.post-design-commnet-box').show();
+                                    $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
+                                            
 
                                         }
                                     });
@@ -854,6 +870,7 @@ function deleteownpostmodel(abc) {
                                     $('#' + 'removepost' + abc).html(data);
 
 
+
                                 }
                             });
 
@@ -877,6 +894,8 @@ function del_particular_userpost(abc)
                                 success: function (data) {
 
                                     $('#' + 'removepost' + abc).html(data);
+                                    window.location = base_url + "artistic/home";
+
 
 
                                 }

@@ -343,11 +343,7 @@ if($artuserdata1){
                                              <div class="dropdown1">
                                                <a onClick="myFunction(<?php echo $key['art_post_id']; ?>)" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
                      <div id="<?php echo "myDropdown" . $key['art_post_id']; ?>" class="dropdown-content1">
-                                                        <!-- <a href="#popup25">
-                                                            <i class="fa fa-trash-o" aria-hidden="true">
-                                                            </i> Delete Post
-                                                        </a> -->
-                                                       <!--  <a href="<?php echo base_url('artistic/artistic_contactperson/' . $key['user_id'] . ''); ?>"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</a> -->
+                                                          <a id="<?php echo $key['art_post_id']; ?>" onClick="deletepostmodel(this.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post</a>
                                                                                                     </div>
                                             </div> 
 
@@ -738,7 +734,7 @@ if($artuserdata1){
                                             </div>
                                             
                                             <div  id="<?php echo "threecomment" . $key['art_post_id']; ?>" style="display:block">
-                                                <div class="<?php echo 'insertcomment' . $key['art_post_id']; ?>">
+                                                <div class="hidebottomborder <?php echo 'insertcomment' . $key['art_post_id']; ?>">
                                                     <?php
                                                     $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1');
                                                     $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
@@ -852,7 +848,7 @@ if($artuserdata1){
                                                                         ?> 
                                                                         <span role="presentation" aria-hidden="true"> · </span>
                                                                         <div class="comment-details-menu">
-                                                                            <input type="hidden" name="post_delete"  id="post_delete" value= "<?php echo $rowdata['art_post_id']; ?>">
+                                                                            <input type="hidden" name="post_delete"  id="<?php echo "post_delete" . $rowdata['artistic_post_comment_id']; ?>" value= "<?php echo $rowdata['art_post_id']; ?>">
                                                                             <a id="<?php echo $rowdata['artistic_post_comment_id']; ?>"   onClick="comment_delete(this.id)"> Delete<span class="<?php echo 'insertcomment' . $rowdata['artistic_post_comment_id']; ?>">
                                                                                 </span>
                                                                             </a>
