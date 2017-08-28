@@ -1,6 +1,6 @@
 <html>
 <head> 
-<title><?php echo $title; ?></title> 
+<title><?php echo "Audios - Aileensoul.com"; ?></title> 
 <?php echo $head; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
