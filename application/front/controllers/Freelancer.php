@@ -815,12 +815,27 @@ class Freelancer extends MY_Controller {
 // code for display page start
         $this->freelancer_apply_check();
         // code for display page end
-        $contition_array = array('status' => 1);
-        $this->data['degree_data'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //for getting degree data Strat
+        $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $degree_data = $this->data['degree_data'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        $contition_array = array('status' => 1, 'is_delete' => '0', 'degree_name' => "Other");
+        $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //for getting degree data End
+//        $contition_array = array('status' => 1);
+//        $this->data['degree_data'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //for getting stream data
-        $contition_array = array('status' => 1);
-        $this->data['stream_data'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      //For getting all Stream Strat
+         $contition_array = array('is_delete' => '0','stream_name !=' => "Other");
+          $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+           $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+           
+          $contition_array = array('status' => 1,'is_delete' => 0,'stream_name' => "Other");                                         
+        $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+        //For getting all Stream End
+//        $contition_array = array('status' => 1);
+//        $this->data['stream_data'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //for getting univesity data Start
         $contition_array = array('is_delete' => '0', 'university_name !=' => "Other");
@@ -895,13 +910,6 @@ class Freelancer extends MY_Controller {
 
                     $select .= '<option value="' . $university_otherdata[0]['university_id'] . '">' . $university_otherdata[0]['university_name'] . '</option>';
 
-//  //for getting university data in clone start
-// $select1 = '<option value="" selected option disabled>Select your University</option>';
-//  foreach ($university as $st) {
-//      $select1 .= '<option value="' . $st['university_id'] . '">'. $st['university_name'] .'</option>';
-//  }
-//  $select1 .= '<option value="' . $university_otherdata[0]['university_id'] . '">' . $university_otherdata[0]['university_name'] . '</option>';   
-//  //for getting university data in clone End
                 }
             } else {
                 $select .= 0;
@@ -1227,12 +1235,12 @@ class Freelancer extends MY_Controller {
                     $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $post['user_id'] . '?page=freelancer_post') . '"> ' . ucwords($firstname) . '&nbsp;' . ucwords($lastname) . '</a>';
                     if ($cityname || $countryname) {
                         $return_html .= ' <div class="fr lction display_inline">
-                                          <p title="Location"><i class="fa fa-map-marker" aria-hidden="true">';
+                                          <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"></i>';
                         if ($cityname) {
                             $return_html .= $cityname . ",";
                         }
                         $return_html .= $countryname;
-                        $return_html .= '</i></p>
+                        $return_html .= '</p>
                                          </div>';
                     }
                 } else {
@@ -1241,12 +1249,12 @@ class Freelancer extends MY_Controller {
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction display_inline">
                                                             <p title="Location">
-                                                                <i class="fa fa-map-marker" aria-hidden="true">';
+                                                                <i class="fa fa-map-marker" aria-hidden="true"></i>';
                         if ($cityname) {
                             $return_html .= $cityname . ",";
                         }
                         $return_html .= $countryname;
-                        $return_html .= '</i>
+                        $return_html .= '
                                                  </p>
                                                         </div>';
                     }
@@ -1626,8 +1634,8 @@ class Freelancer extends MY_Controller {
         } else {
             $datereplace = $this->input->post('last_date');
             $lastdate = str_replace('/', '-', $datereplace);
-           
-            
+
+
             //skill code start
             if (count($skills) > 0) {
 
@@ -1738,22 +1746,21 @@ class Freelancer extends MY_Controller {
                 $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $all_candidate[] = $candidate;
             }
-            
         }
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid,'freelancer_post_field' => $frdata['post_field_req']);
-             $freelancerpostfield =  $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // $field_post[]=$freelancerpostfield;
-      //  echo "<pre>";print_r($freelancerpostfield);
-       // echo "<pre>";print_r($field_post);die();
+        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'freelancer_post_field' => $frdata['post_field_req']);
+        $freelancerpostfield = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        // $field_post[]=$freelancerpostfield;
+        //  echo "<pre>";print_r($freelancerpostfield);
+        // echo "<pre>";print_r($field_post);die();
         foreach ($all_candidate as $child) {
             foreach ($child as $value) {
                 $final_candidate[] = $value;
             }
         }
-       
+
         // echo "<pre>";print_r($final_candidate);die();
-         $applyuser_merge= array_merge($final_candidate,$freelancerpostfield);
-    
+        $applyuser_merge = array_merge($final_candidate, $freelancerpostfield);
+
         $final_candidate = array_unique($applyuser_merge, SORT_REGULAR);
         $candidatefreelancer = $final_candidate;
         $candidatefreelancer1 = array_slice($candidatefreelancer, $start, $perpage);
@@ -2256,9 +2263,9 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
-        $date=date('Y-m-d', time());
+        $date = date('Y-m-d', time());
         foreach ($post_reg_skill as $key => $value) {
-            $contition_array = array('is_delete' => 0, 'status' => '1','post_last_date >='=>$date, 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+            $contition_array = array('is_delete' => 0, 'status' => '1', 'post_last_date >=' => $date, 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
             $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
@@ -2311,7 +2318,7 @@ class Freelancer extends MY_Controller {
                 $return_html .= '<li>';
                 if ($cityname || $countryname) {
                     $return_html .= '<div class="fr lction">
-                                                                                                <a href="" title="Location"><i class="fa fa-map-marker" aria-hidden="true" >';
+                                                                                                <a href="" title="Location"><i class="fa fa-map-marker" aria-hidden="true" ></i>';
 
                     if ($cityname) {
                         $return_html .= $cityname . ",";
@@ -2320,7 +2327,7 @@ class Freelancer extends MY_Controller {
                     if ($countryname) {
                         $return_html .= $countryname;
                     }
-                    $return_html .= '</i></a>
+                    $return_html .= '</a>
                                                                                             </div>';
                 }
 
@@ -2853,7 +2860,7 @@ class Freelancer extends MY_Controller {
                 $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                 if ($cityname || $countryname) {
                     $return_html .= ' <div class="fr lction">
-                                                                                    <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"> ';
+                                                                                    <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"> </i>';
 
                     if ($cityname) {
                         $return_html .= $cityname . ",";
@@ -2862,7 +2869,7 @@ class Freelancer extends MY_Controller {
                     if ($countryname) {
                         $return_html .= $countryname;
                     }
-                    $return_html .= '</i></p>
+                    $return_html .= '</p>
                                                                                 </div>';
                 }
                 $return_html .= '</li>
@@ -3495,14 +3502,14 @@ class Freelancer extends MY_Controller {
                     if ($cityname || $countryname) {
                         $return_html .= ' <div class="fr lction">
                                                                 <p title="Location">
-                                                                    <i class="fa fa-map-marker" aria-hidden="true">';
+                                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>';
                         if ($cityname) {
                             $return_html .= $cityname . ",";
                         }
                         if ($countryname) {
                             $return_html .= $countryname;
                         }
-                        $return_html .= '</i></p>
+                        $return_html .= '</p>
                                                             </div>';
                     }
                     $return_html .= '</li>
@@ -3676,7 +3683,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function user_image_insert() {
-     //work is left file name is not get 
+        //work is left file name is not get 
 
         $userid = $this->session->userdata('aileenuser');
 // $config['upload_path'] = 'uploads/user_image/';
@@ -3700,228 +3707,226 @@ class Freelancer extends MY_Controller {
 //               
 //        );
 
-        
 
-            $freelancer_hire_userimage = '';
-            $user['upload_path'] = $this->config->item('free_hire_profile_main_upload_path');
-            $user['allowed_types'] = $this->config->item('free_hire_profile_main_allowed_types');
-            $user['max_size'] = $this->config->item('free_hire_profile_main_max_size');
-            $user['max_width'] = $this->config->item('free_hire_profile_main_max_width');
-            $user['max_height'] = $this->config->item('free_hire_profile_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($user);
+
+        $freelancer_hire_userimage = '';
+        $user['upload_path'] = $this->config->item('free_hire_profile_main_upload_path');
+        $user['allowed_types'] = $this->config->item('free_hire_profile_main_allowed_types');
+        $user['max_size'] = $this->config->item('free_hire_profile_main_max_size');
+        $user['max_width'] = $this->config->item('free_hire_profile_main_max_width');
+        $user['max_height'] = $this->config->item('free_hire_profile_main_max_height');
+        $this->load->library('upload');
+        $this->upload->initialize($user);
 //Uploading Image
-            $this->upload->do_upload('profilepic');
+        $this->upload->do_upload('profilepic');
 //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-           // echo "<pre>";print_r($imgdata);die();
-            $imgerror = $this->upload->display_errors();
+        $imgdata = $this->upload->data();
+        // echo "<pre>";print_r($imgdata);die();
+        $imgerror = $this->upload->display_errors();
 //echo "$imgerror";die();
-            if ($imgerror == '') {
+        if ($imgerror == '') {
 //Configuring Thumbnail 
-                $user_thumb['image_library'] = 'gd2';
-                $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
-                $user_thumb['new_image'] = $this->config->item('free_hire_profile_thumb_upload_path') . $imgdata['file_name'];
-                $user_thumb['create_thumb'] = TRUE;
-                $user_thumb['maintain_ratio'] = TRUE;
-                $user_thumb['thumb_marker'] = '';
-                $user_thumb['width'] = $this->config->item('free_hire_profile_thumb_width');
+            $user_thumb['image_library'] = 'gd2';
+            $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
+            $user_thumb['new_image'] = $this->config->item('free_hire_profile_thumb_upload_path') . $imgdata['file_name'];
+            $user_thumb['create_thumb'] = TRUE;
+            $user_thumb['maintain_ratio'] = TRUE;
+            $user_thumb['thumb_marker'] = '';
+            $user_thumb['width'] = $this->config->item('free_hire_profile_thumb_width');
 //$user_thumb['height'] = $this->config->item('user_thumb_height');
-                $user_thumb['height'] = 2;
-                $user_thumb['master_dim'] = 'width';
-                $user_thumb['quality'] = "100%";
-                $user_thumb['x_axis'] = '0';
-                $user_thumb['y_axis'] = '0';
+            $user_thumb['height'] = 2;
+            $user_thumb['master_dim'] = 'width';
+            $user_thumb['quality'] = "100%";
+            $user_thumb['x_axis'] = '0';
+            $user_thumb['y_axis'] = '0';
 //Loading Image Library
-                $this->load->library('image_lib', $user_thumb);
-                $dataimage = $imgdata['file_name'];
+            $this->load->library('image_lib', $user_thumb);
+            $dataimage = $imgdata['file_name'];
 //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
-            } else {
-                $thumberror = '';
+            $this->image_lib->resize();
+            $thumberror = $this->image_lib->display_errors();
+        } else {
+            $thumberror = '';
+        }
+        if ($imgerror != '' || $thumberror != '') {
+            $error[0] = $imgerror;
+            $error[1] = $thumberror;
+        } else {
+            $error = array();
+        }
+        if ($error) {
+            $this->session->set_flashdata('error', $error[0]);
+            if ($this->input->post('hitext') == 1) {
+                redirect('freelancer-hire/add-projects', refresh);
+            } elseif ($this->input->post('hitext') == 2) {
+                redirect('freelancer-hire/projects', refresh);
+            } elseif ($this->input->post('hitext') == 3) {
+                redirect('freelancer-hire/freelancer-save', refresh);
+            } elseif ($this->input->post('hitext') == 4) {
+                redirect('freelancer-hire/employer-details', refresh);
             }
-            if ($imgerror != '' || $thumberror != '') {
-                $error[0] = $imgerror;
-                $error[1] = $thumberror;
-            } else {
-                $error = array();
-            }
-            if ($error) {
-                $this->session->set_flashdata('error', $error[0]);
-                if ($this->input->post('hitext') == 1) {
-                    redirect('freelancer-hire/add-projects', refresh);
-                } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer-hire/projects', refresh);
-                } elseif ($this->input->post('hitext') == 3) {
-                    redirect('freelancer-hire/freelancer-save', refresh);
-                } elseif ($this->input->post('hitext') == 4) {
-                    redirect('freelancer-hire/employer-details', refresh);
-                }
 // $redirect_url = site_url('dashboard');
 // redirect($redirect_url, 'refresh');
-            } else {
+        } else {
 
-                $contition_array = array('user_id' => $userid);
-                $user_reg_data = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('user_id' => $userid);
+            $user_reg_data = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $user_reg_prev_image = $user_reg_data[0]['freelancer_hire_user_image'];
+            $user_reg_prev_image = $user_reg_data[0]['freelancer_hire_user_image'];
 
 
-                if ($user_reg_prev_image != '') {
-                    $user_image_main_path = $this->config->item('free_hire_profile_main_upload_path');
-                    $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
-                    if (isset($user_bg_full_image)) {
-                        unlink($user_bg_full_image);
-                    }
-
-                    $user_image_thumb_path = $this->config->item('free_hire_profile_thumb_upload_path');
-                    $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
-                    if (isset($user_bg_thumb_image)) {
-                        unlink($user_bg_thumb_image);
-                    }
+            if ($user_reg_prev_image != '') {
+                $user_image_main_path = $this->config->item('free_hire_profile_main_upload_path');
+                $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+                if (isset($user_bg_full_image)) {
+                    unlink($user_bg_full_image);
                 }
 
-                $freelancer_hire_userimage = $imgdata['file_name'];
+                $user_image_thumb_path = $this->config->item('free_hire_profile_thumb_upload_path');
+                $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+                if (isset($user_bg_thumb_image)) {
+                    unlink($user_bg_thumb_image);
+                }
             }
-            
-            $data = array(
-                'freelancer_hire_user_image' => $freelancer_hire_userimage,
-                'modified_date' => date('Y-m-d', time())
-            );
 
-            $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
+            $freelancer_hire_userimage = $imgdata['file_name'];
+        }
 
+        $data = array(
+            'freelancer_hire_user_image' => $freelancer_hire_userimage,
+            'modified_date' => date('Y-m-d', time())
+        );
 
-
-
-            if ($updatdata) {
-
-                $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-                $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-                
-                $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
-                $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
-                $userimage .= $this->lang->line("update_profile_picture");
-                $userimage .='</a>';
+        $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
 
 
-                echo $userimage;
-            } else {
-                $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer-hire/projects', refresh);
-            }
-     
+
+
+        if ($updatdata) {
+
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+            $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= $this->lang->line("update_profile_picture");
+            $userimage .= '</a>';
+
+
+            echo $userimage;
+        } else {
+            $this->session->flashdata('error', 'Your data not inserted');
+            redirect('freelancer-hire/projects', refresh);
+        }
     }
 
     public function user_image_add() {
 
         $userid = $this->session->userdata('aileenuser');
 
-            $freelancer_post_userimage = '';
-            $user['upload_path'] = $this->config->item('free_post_profile_main_upload_path');
-            $user['allowed_types'] = $this->config->item('free_post_profile_main_allowed_types');
-            $user['max_size'] = $this->config->item('free_post_profile_main_max_size');
-            $user['max_width'] = $this->config->item('free_post_profile_main_max_width');
-            $user['max_height'] = $this->config->item('free_post_profile_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($user);
-            //Uploading Image
-            $this->upload->do_upload('profilepic');
-            //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-            $imgerror = $this->upload->display_errors();
-            if ($imgerror == '') {
-                //Configuring Thumbnail 
-                $user_thumb['image_library'] = 'gd2';
-                $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
-                $user_thumb['new_image'] = $this->config->item('free_post_profile_thumb_upload_path') . $imgdata['file_name'];
-                $user_thumb['create_thumb'] = TRUE;
-                $user_thumb['maintain_ratio'] = TRUE;
-                $user_thumb['thumb_marker'] = '';
-                $user_thumb['width'] = $this->config->item('free_post_profile_thumb_width');
-                //$user_thumb['height'] = $this->config->item('user_thumb_height');
-                $user_thumb['height'] = 2;
-                $user_thumb['master_dim'] = 'width';
-                $user_thumb['quality'] = "100%";
-                $user_thumb['x_axis'] = '0';
-                $user_thumb['y_axis'] = '0';
-                //Loading Image Library
-                $this->load->library('image_lib', $user_thumb);
-                $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
-            } else {
-                $thumberror = '';
+        $freelancer_post_userimage = '';
+        $user['upload_path'] = $this->config->item('free_post_profile_main_upload_path');
+        $user['allowed_types'] = $this->config->item('free_post_profile_main_allowed_types');
+        $user['max_size'] = $this->config->item('free_post_profile_main_max_size');
+        $user['max_width'] = $this->config->item('free_post_profile_main_max_width');
+        $user['max_height'] = $this->config->item('free_post_profile_main_max_height');
+        $this->load->library('upload');
+        $this->upload->initialize($user);
+        //Uploading Image
+        $this->upload->do_upload('profilepic');
+        //Getting Uploaded Image File Data
+        $imgdata = $this->upload->data();
+        $imgerror = $this->upload->display_errors();
+        if ($imgerror == '') {
+            //Configuring Thumbnail 
+            $user_thumb['image_library'] = 'gd2';
+            $user_thumb['source_image'] = $user['upload_path'] . $imgdata['file_name'];
+            $user_thumb['new_image'] = $this->config->item('free_post_profile_thumb_upload_path') . $imgdata['file_name'];
+            $user_thumb['create_thumb'] = TRUE;
+            $user_thumb['maintain_ratio'] = TRUE;
+            $user_thumb['thumb_marker'] = '';
+            $user_thumb['width'] = $this->config->item('free_post_profile_thumb_width');
+            //$user_thumb['height'] = $this->config->item('user_thumb_height');
+            $user_thumb['height'] = 2;
+            $user_thumb['master_dim'] = 'width';
+            $user_thumb['quality'] = "100%";
+            $user_thumb['x_axis'] = '0';
+            $user_thumb['y_axis'] = '0';
+            //Loading Image Library
+            $this->load->library('image_lib', $user_thumb);
+            $dataimage = $imgdata['file_name'];
+            //Creating Thumbnail
+            $this->image_lib->resize();
+            $thumberror = $this->image_lib->display_errors();
+        } else {
+            $thumberror = '';
+        }
+        if ($imgerror != '' || $thumberror != '') {
+            $error[0] = $imgerror;
+            $error[1] = $thumberror;
+        } else {
+            $error = array();
+        }
+        if ($error) {
+            $this->session->set_flashdata('error', $error[0]);
+            if ($this->input->post('hitext') == 1) {
+                redirect('freelancer-work/freelancer_applied_post', refresh);
+            } elseif ($this->input->post('hitext') == 2) {
+                redirect('freelancer-work/saved-projects', refresh);
+            } elseif ($this->input->post('hitext') == 3) {
+                redirect('freelancer-work/freelancer-details', refresh);
             }
-            if ($imgerror != '' || $thumberror != '') {
-                $error[0] = $imgerror;
-                $error[1] = $thumberror;
-            } else {
-                $error = array();
-            }
-            if ($error) {
-                $this->session->set_flashdata('error', $error[0]);
-                if ($this->input->post('hitext') == 1) {
-                    redirect('freelancer-work/freelancer_applied_post', refresh);
-                } elseif ($this->input->post('hitext') == 2) {
-                    redirect('freelancer-work/saved-projects', refresh);
-                } elseif ($this->input->post('hitext') == 3) {
-                    redirect('freelancer-work/freelancer-details', refresh);
-                }
-                // $redirect_url = site_url('dashboard');
-                // redirect($redirect_url, 'refresh');
-            } else {
+            // $redirect_url = site_url('dashboard');
+            // redirect($redirect_url, 'refresh');
+        } else {
 
 
-                $contition_array = array('user_id' => $userid);
-                $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $contition_array = array('user_id' => $userid);
+            $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $user_reg_prev_image = $user_reg_data[0]['freelancer_post_user_image'];
+            $user_reg_prev_image = $user_reg_data[0]['freelancer_post_user_image'];
 
 
-                if ($user_reg_prev_image != '') {
-                    $user_image_main_path = $this->config->item('free_post_profile_main_upload_path');
-                    $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
-                    if (isset($user_bg_full_image)) {
-                        unlink($user_bg_full_image);
-                    }
-
-                    $user_image_thumb_path = $this->config->item('free_post_profile_thumb_upload_path');
-                    $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
-                    if (isset($user_bg_thumb_image)) {
-                        unlink($user_bg_thumb_image);
-                    }
+            if ($user_reg_prev_image != '') {
+                $user_image_main_path = $this->config->item('free_post_profile_main_upload_path');
+                $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+                if (isset($user_bg_full_image)) {
+                    unlink($user_bg_full_image);
                 }
 
-                $freelancer_post_userimage = $imgdata['file_name'];
+                $user_image_thumb_path = $this->config->item('free_post_profile_thumb_upload_path');
+                $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+                if (isset($user_bg_thumb_image)) {
+                    unlink($user_bg_thumb_image);
+                }
             }
 
+            $freelancer_post_userimage = $imgdata['file_name'];
+        }
 
-            $data = array(
-                'freelancer_post_user_image' => $freelancer_post_userimage,
-                'modify_date' => date('Y-m-d', time())
-            );
 
-            $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
+        $data = array(
+            'freelancer_post_user_image' => $freelancer_post_userimage,
+            'modify_date' => date('Y-m-d', time())
+        );
 
-            if ($updatdata) {
-                
-                $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-                $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-                
-               $userimage .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']) . '" alt="" >';
-                $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
-                $userimage .= $this->lang->line("update_profile_picture");
-                $userimage .='</a>';
-                
-                echo $userimage;
-            } else {
-                $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer/freelancer_apply_post', refresh);
-            }
-        
+        $updatdata = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
+
+        if ($updatdata) {
+
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+            $userimage .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']) . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= $this->lang->line("update_profile_picture");
+            $userimage .= '</a>';
+
+            echo $userimage;
+        } else {
+            $this->session->flashdata('error', 'Your data not inserted');
+            redirect('freelancer/freelancer_apply_post', refresh);
+        }
     }
 
     public function freelancer_hire_profile($id = "") {
@@ -4239,8 +4244,8 @@ class Freelancer extends MY_Controller {
 // cover pic controller
 
     public function ajaxpro_hire() {
-       
-       // echo "<pre>";print_r($_POST['image']);die();
+
+        // echo "<pre>";print_r($_POST['image']);die();
         $userid = $this->session->userdata('aileenuser');
 
 
@@ -4303,18 +4308,18 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
         //echo $userid;die();
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
-       // echo "<pre>";print_r($this->data['jobdata']);die();
+        // echo "<pre>";print_r($this->data['jobdata']);die();
         //echo $this->data['jobdata'][0]['profile_background'];
-      //  $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
-        $coverpic='<img  src="'. base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
-      echo $coverpic;
-     // echo "<pre>"; print_r($coverpic);die();
-       // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
+        //  $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
+        $coverpic = '<img  src="' . base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        echo $coverpic;
+        // echo "<pre>"; print_r($coverpic);die();
+        // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
 
     public function image_hire() {
-        
-       
+
+
         //echo "hhhhhhhhh";die();
         $userid = $this->session->userdata('aileenuser');
 
@@ -4356,7 +4361,7 @@ class Freelancer extends MY_Controller {
     // cover pic end
     // cover pic controller
 
-   public function ajaxpro_work() {
+    public function ajaxpro_work() {
         $userid = $this->session->userdata('aileenuser');
 
 
@@ -4414,12 +4419,12 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
 
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
-        $coverpic='<img  src="'. base_url($this->config->item('free_post_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
-      echo $coverpic;
-       // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
+        $coverpic = '<img  src="' . base_url($this->config->item('free_post_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        echo $coverpic;
+        // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
 
-     public function image_work() {
+    public function image_work() {
         //echo "hiiii"; die();
         $userid = $this->session->userdata('aileenuser');
 
@@ -4690,6 +4695,182 @@ class Freelancer extends MY_Controller {
 
         $cdata = array_values($citydata);
         echo json_encode($cdata);
+    }
+    public function freelancer_other_degree(){
+        $other_degree = $_POST['other_degree'];
+        $other_stream = $_POST['other_stream'];
+        
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('is_delete' => '0','degree_name' => $other_degree);
+         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+         $userdata = $this->data['userdata'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $count=count($userdata);
+          
+          if($other_degree != NULL)
+     {
+        if($count==0)
+        {
+                  $data = array(
+                    'degree_name' => $other_degree,
+                     'created_date' => date('Y-m-d h:i:s', time()),
+                     'status' => 2,
+                    'is_delete' => 0,
+                    'is_other' => '1',
+                    'user_id' => $userid
+                    );
+        $insert_id = $this->common->insert_data_getid($data, 'degree');
+        $degree_id=$insert_id;
+        
+        $contition_array = array('is_delete' => '0' , 'status' => 2,'stream_name' => $other_stream,'user_id' => $userid);
+        $stream_data = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
+        $count1=count($stream_data);
+        
+        if($count1 == 0)
+        {
+            $data = array(
+                    'stream_name' => $other_stream,
+                    'degree_id'  => $degree_id,
+                     'created_date' => date('Y-m-d h:i:s', time()),
+                     'status' => 2,
+                    'is_delete' => 0,
+                     'is_other' => '1',
+                     'user_id' => $userid
+                    );
+        $insert_id = $this->common->insert_data_getid($data, 'stream');
+        }
+        else
+        {
+             $data = array(
+                    'stream_name' => $other_stream,
+                    'degree_id'  => $degree_id,
+                     'created_date' => date('Y-m-d h:i:s', time()),
+                     'status' => 2,
+                    'is_delete' => 0,
+                     'is_other' => '1',
+                     'user_id' => $userid
+                    );
+          $updatedata = $this->common->update_data($data, 'stream', 'stream_id', $stream_data[0]['stream_id']);
+        }
+         if ($insert_id || $updatedata) 
+          {
+          
+              $contition_array = array('is_delete' => '0','degree_name !=' => "Other");
+             $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+               $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+               if (count($degree) > 0) {
+                   
+                   $select = '<option value="" Selected option disabled="">Select your Degree</option>';
+                
+                    foreach ($degree as $st) {
+                        
+                 $select .= '<option value="' . $st['degree_id'] . '"';
+                     if($st['degree_name'] == $other_degree){
+                   $select .= 'selected'; 
+                       }
+                       $select .=    '>' . $st['degree_name'] . '</option>';
+                            } 
+                }  
+//For Getting Other at end
+$contition_array = array('is_delete' => '0' , 'status' => 1,'degree_name' => "Other");
+$degree_otherdata = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
+     
+$select .= '<option value="' . $degree_otherdata[0]['degree_id'] . '">' . $degree_otherdata[0]['degree_name'] . '</option>';   
+
+ //for getting selected stream data start
+  $contition_array = array('is_delete' => '0','degree_id' => $degree_id);
+  $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+  $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+ $select2 = '<option value="" Selected option disabled="">Select your Stream</option>';
+ $select2 .= '<option value="' . $stream[0]['stream_id'] . '"';
+                     if($stream[0]['stream_name'] == $other_stream){
+  $select2 .= 'selected'; 
+                       }
+  $select2 .=    '>' . $stream[0]['stream_name'] . '</option>';
+      //for getting selected stream data End         
+           }
+    }else{
+           $select .= 0;
+          
+            }
+    }
+    else
+    {
+        $select .= 1;
+       
+    }
+   
+      echo json_encode(array(
+                            "select" => $select,
+                           // "select1" => $select1,
+                            "select2" => $select2,
+                   ));
+        
+        
+    }
+    
+    public function freelancer_other_stream(){
+        $other_stream = $_POST['other_stream'];
+         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+      
+         $contition_array = array('is_delete' => '0','stream_name' => $other_stream);
+         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+         $userdata = $this->data['userdata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $count=count($userdata);
+                   
+    if($other_stream != NULL)
+     {
+        if($count==0)
+        {
+                  $data = array(
+                    'stream_name' => $other_stream,
+                     'created_date' => date('Y-m-d h:i:s', time()),
+                     'status' => 2,
+                    'is_delete' => 0,
+                     'is_other' => '1',
+                     'user_id' => $userid
+                    );
+        $insert_id = $this->common->insert_data_getid($data, 'stream');
+        
+        
+                if ($insert_id) 
+                {
+   
+               $contition_array = array('is_delete' => '0','stream_name !=' => "Other");
+             $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+               $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+               
+            if (count($stream) > 0) {
+               $select = '<option value="" selected option disabled="">Select your Stream</option>';
+                
+                    foreach ($stream as $st) {
+                        
+                 $select .= '<option value="' . $st['stream_id'] . '"';
+                     if($st['stream_name'] == $other_stream){
+                   $select .= 'selected'; 
+                       }
+                       $select .=    '>' . $st['stream_name'] . '</option>';
+                            }      
+                }  
+//For Getting Other at end
+$contition_array = array('is_delete' => '0' , 'status' => 1,'stream_name' => "Other");
+$stream_otherdata = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
+     
+$select .= '<option value="' . $stream_otherdata[0]['stream_id'] . '">' . $stream_otherdata[0]['stream_name'] . '</option>';   
+        }
+    }else{
+            $select .= 0;
+            }
+    }
+    else
+    {
+        $select .= 1;
+    }
+    
+    echo $select;
+        
+        
     }
 
 }

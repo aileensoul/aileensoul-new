@@ -125,9 +125,9 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
-                                        <div class="job-contact-frnd ">
+                                        <div class="job-contact-frnd">
                                      <!--AJAX DATA...........-->
-                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif"/></div>
                                             <!-- body tag inner data end -->
                                             <div class="col-md-1">
                                             </div>
