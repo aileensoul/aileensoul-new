@@ -7,7 +7,32 @@
                 GetArtVideos();
                 GetArtAudios();
                 GetArtPdf();
-            });
+
+
+                $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    artistic_dashboard_post(slug, pagenum);
+                }
+            }
+        }
+    });
+});
+         
 
 
 
@@ -1946,23 +1971,23 @@ $(document).ready(function(){
 
 
 
-//var isProcessing = false;
-function artistic_dashboard_post(slug) { //alert("hii"); alert(slug);
-   // if (isProcessing) {
+var isProcessing = false;
+function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
+    if (isProcessing) {
         /*
          *This won't go past this condition while
          *isProcessing is true.
          *You could even display a message.
          **/
        // return;
-   // }
-   // isProcessing = true;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "artistic/artistic_dashboard_post",
+        url: base_url + "artistic/artistic_dashboard_post/"+ slug + "?page=" + pagenum,
         //url: base_url + "artistic/artistic_dashboard_post/" + slug + "?page=" + pagenum,
-        data: 'slug=' + slug,
-       // data: {total_record: $("#total_record").val()},
+       // data: 'slug=' + slug,
+       data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             //if (pagenum == 'undefined') {
@@ -1985,7 +2010,7 @@ function artistic_dashboard_post(slug) { //alert("hii"); alert(slug);
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-            //isProcessing = false;
+            isProcessing = false;
         }
     });
 }

@@ -3,7 +3,7 @@
    <head>
       <!-- start head -->
       <?php echo $head; ?>
-      <title>gyhfg</title>
+      <title>Basic Information - Aileensoul.com</title>
       <!-- Calender Css Start-->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
       <!-- Calender Css End-->

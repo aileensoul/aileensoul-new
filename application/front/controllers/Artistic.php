@@ -2912,15 +2912,15 @@ $datacount = count($otherdata);
 
 public function ajax_userlist() {
 
-        //$perpage = 5;
-       // $page = 1;
-        //if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-        //    $page = $_GET["page"];
-       // }
+        $perpage = 7;
+       $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+           $page = $_GET["page"];
+       }
 
-        // $start = ($page - 1) * $perpage;
-        // if ($start < 0)
-        //     $start = 0;
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -2928,12 +2928,12 @@ public function ajax_userlist() {
         $contition_array = array('user_id' => $userid);
         $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        //$limit = $perpage;
-        //$offset = $start;
+        $limit = $perpage;
+        $offset = $start;
 
         $contition_array = array('art_step' => 4, 'is_delete' => 0, 'status' => 1, 'user_id !=' => $userid);
         $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str = array(), $groupby = '');
-        //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $artisticdata1 = $artisticdata1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2958,13 +2958,13 @@ public function ajax_userlist() {
 
 //following end
 
-        // if (empty($_GET["total_record"])) {
-        //     $_GET["total_record"] = count($userlist1);
-        // }
-        // $return_html = '';
-        // $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
-        // $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
-        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($userlist1);
+        }
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
 
         foreach ($userlist as $user) {
@@ -13205,16 +13205,18 @@ public function art_home_post() {
  public function artistic_dashboard_post($id = '') {
 // manage post start
 
-        // $perpage = 5;
-        // $page = 1;
-        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-        //     $page = $_GET["page"];
-        // }
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
 
-        // $start = ($page - 1) * $perpage;
-        // if ($start < 0)
-        //     $start = 0;
-        $id = $_POST['slug'];
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+
+       // $id = $_GET['slug'];
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
@@ -13222,34 +13224,34 @@ public function art_home_post() {
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            //$limit = $perpage;
-            //$offset = $start;
+            $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
             $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-            //$business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artsdata1 = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'art_step' => 4);
             $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-           // $limit = $perpage;
-            //$offset = $start;
+           $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('user_id' => $id, 'status' => 1, 'is_delete' => '0');
             $artsdata = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-            //$business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artsdata1 = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-        // $return_html = '';
+        $return_html = '';
 
-        // if (empty($_GET["total_record"])) {
-        //     $_GET["total_record"] = count($business_profile_data1);
-        // }
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($artsdata1);
+        }
 
-        // $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
-        // $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
-        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
-        if (count($artsdata) > 0) {
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (count($artsdata1) > 0) {
 
             foreach ($artsdata as $row) {
                 $contition_array = array('user_id' => $row['user_id'], 'status' => '1');

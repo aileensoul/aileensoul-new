@@ -6,7 +6,8 @@ if (!defined('BASEPATH'))
 class Business_profile extends MY_Controller {
 
     public $data;
-
+    public $s3;
+    
     public function __construct() {
         parent::__construct();
 
@@ -1342,9 +1343,9 @@ class Business_profile extends MY_Controller {
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
 
-                        $this->load->library('S3');
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+//                        $this->load->library('S3');
+//                        $s3 = new S3(awsAccessKey, awsSecretKey);
+//                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
                         $abc = $s3->putObjectFile($main_image, bucket, $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'], S3::ACL_PUBLIC_READ);
 
 //                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/'.$this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -3916,11 +3917,22 @@ class Business_profile extends MY_Controller {
         }
 
 // REMOVE OLD IMAGE FROM FOLDER
+//        $data = $_POST['image'];
+//        $user_bg_path = $this->config->item('bus_bg_main_upload_path');
+//        $imageName = time() . '.png';
+//        $base64string = $data;
+//        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
+
         $data = $_POST['image'];
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
         $user_bg_path = $this->config->item('bus_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path.$imageName;
+        $success = file_put_contents($file, $data);
+        
+        
 
         $user_thumb_path = $this->config->item('bus_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('bus_bg_thumb_width');
@@ -10112,11 +10124,11 @@ Your browser does not support the audio tag.
 
                         foreach ($businessmultiimage as $multiimage) {
 
-                        /*    $return_html .= '<div class = "two-images">
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '">
-</a>
-</div>';*/
+                            /*    $return_html .= '<div class = "two-images">
+                              <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                              <img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '">
+                              </a>
+                              </div>'; */
 
                             $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
@@ -10986,7 +10998,7 @@ Your browser does not support the audio tag.
             foreach ($singlearray as $mi) {
                 $fetch_result .= '<div class = "image_profile">';
 //                $fetch_result .= '<img src = "' . base_url($this->config->item('bus_post_210_210_upload_path') . $mi['image_name']) . '" alt = "img1">';
-                $fetch_result .= '<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $mi['image_name'] . '" alt = "'.$mi['image_name'].'">';
+                $fetch_result .= '<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $mi['image_name'] . '" alt = "' . $mi['image_name'] . '">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -11739,6 +11751,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 }
                 $return_html .= '<div>
         </div>
+    </div>
     </div>
 <div class="post-design-like-box col-md-12">
     <div class="post-design-menu">
