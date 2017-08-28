@@ -344,7 +344,7 @@
              
                      $("#input1 .university").removeClass("error");
                      $('label.error').remove();
-                    return true;     
+                    return false;     
                 }
 
           
