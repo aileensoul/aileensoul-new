@@ -1,3 +1,4 @@
+<!-- Dropdown CLose while outside body click Start -->
 <script type="text/javascript">
     $(document).ready(function () {
         $('.dropdown_hover').click(function (event) {
@@ -16,11 +17,12 @@
     $(document).ready(function () {
         $("body").click(function (event) {
             $(".dropdown-content_hover").hide();
-            event.stopPropagation();
+          //  event.stopPropagation();
         });
 
     });
 </script>
+<!-- Dropdown CLose while outside body click End -->
 
 <!-- IMAGE PRELOADER SCRIPT -->
 <script type="text/javascript">

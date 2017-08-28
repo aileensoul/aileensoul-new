@@ -781,7 +781,7 @@
       </div>
       </div>
       <div class="">
-      </div
+      </div>
       </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
