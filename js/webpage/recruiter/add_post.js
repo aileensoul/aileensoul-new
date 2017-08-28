@@ -378,7 +378,7 @@ $(document).ready(function () {
             }
         })
                 .autocomplete({
-                    minLength: 2,
+                    minLength: 0,
                     source: function (request, response) {
                         // delegate back to autocomplete, but extract the last term
                         $.getJSON(base_url + "general/get_degree", {term: extractLast(request.term)}, response);
@@ -762,7 +762,7 @@ $(document).ready(function () {
         if (countryID) {
             $.ajax({
                 type: 'POST',
-                url: bas_url + "job_profile/ajax_data",
+                url: base_url + "job_profile/ajax_data",
                 data: 'country_id=' + countryID,
                 success: function (html) {
                     $('#state').html(html);
