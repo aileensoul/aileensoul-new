@@ -1199,8 +1199,7 @@ class Freelancer extends MY_Controller {
         $return_html = '';
         $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
         $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
-
-
+        
 
         if (count($postdata) > 0) {
             foreach ($postdata1 as $post) {
