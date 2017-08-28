@@ -33,6 +33,7 @@
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
         <link rel="stylesheet" href="css/common-style.css">
         <link rel="stylesheet" href="css/style-main.css">
         <link rel="stylesheet" href="css/style_new.css">

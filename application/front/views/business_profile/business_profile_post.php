@@ -140,7 +140,7 @@
                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                         </div>
 
-                        <div class="col-md-3 fixed_right_side">
+                        <div class="col-md-3 fixed_right_side animated fadeInRightBig">
                             <div class="full-box-module_follow fixed_right_display ">
                                     <!-- follower list start  -->  
                                     <div class="common-form">
