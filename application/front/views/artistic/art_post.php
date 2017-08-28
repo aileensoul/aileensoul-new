@@ -108,6 +108,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              <div class="nofoundpost"> 
                              </div>
                              </div>
+
+                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
       </div>
       <div class="col-md-3 fixed_right_side animated fadeInRightBig fixed_right_display">
          <div class="full-box-module_follow" style="margin-top: 0px;">
