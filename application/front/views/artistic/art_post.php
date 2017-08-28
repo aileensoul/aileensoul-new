@@ -10,75 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <script>
-         $(document).ready(function ()
-         {
-             /* Uploading Profile BackGround Image */
-             $('body').on('change', '#bgphotoimg', function ()
-             {
-                 $("#bgimageform").ajaxForm({target: '#timelineBackground',
-                     beforeSubmit: function () {},
-                     success: function () {
-                         $("#timelineShade").hide();
-                         $("#bgimageform").hide();
-                     },
-                     error: function () {
-                     }}).submit();
-             });
-             /* Banner position drag */
-             $("body").on('mouseover', '.headerimage', function ()
-             {
-                 var y1 = $('#timelineBackground').height();
-                 var y2 = $('.headerimage').height();
-                 $(this).draggable({
-                     scroll: false,
-                     axis: "y",
-                     drag: function (event, ui) {
-                         if (ui.position.top >= 0)
-                         {
-                             ui.position.top = 0;
-                         } else if (ui.position.top <= y1 - y2)
-                         {
-                             ui.position.top = y1 - y2;
-                         }
-                     },
-                     stop: function (event, ui)
-                     {
-                     }
-                 });
-             });
-             /* Bannert Position Save*/
-             $("body").on('click', '.bgSave', function ()
-             {
-                 var id = $(this).attr("id");
-                 var p = $("#timelineBGload").attr("style");
-                 var Y = p.split("top:");
-                 var Z = Y[1].split(";");
-                 var dataString = 'position=' + Z[0];
-                 $.ajax({
-                     type: "POST",
-                     url: "<?php echo base_url('artistic/image_saveBG_ajax'); ?>",
-                     data: dataString,
-                     cache: false,
-                     beforeSend: function () { },
-                     success: function (html)
-                     {
-                         if (html)
-                         {
-                             window.location.reload();
-                             $(".bgImage").fadeOut('slow');
-                             $(".bgSave").fadeOut('slow');
-                             $("#timelineShade").fadeIn("slow");
-                             $("#timelineBGload").removeClass("headerimage");
-                             $("#timelineBGload").css({'margin-top': html});
-                             return false;
-                         }
-                     }
-                 });
-                 return false;
-             }); 
-         });   
-      </script>
    </head>
    <body>
    <?php echo $header; ?>
@@ -89,8 +20,8 @@
       <div class="profile-art-box profile-box-custom col-md-4 fixed_left_side animated fadeInLeftBig" >
          <?php ?>
 <?php echo $left_artistic; ?>
-          <div class="full-box-module_follow fixed_right_display_none">
-          <!--   follower list start    -->
+          <!-- <div class="full-box-module_follow fixed_right_display_none">
+          
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
                <div class="seeall">
@@ -98,9 +29,30 @@
                </div>
                <div class="profile-boxProfileCard_follow  module">     
                </div>
-              <!--  follower list end  -->
+             
             </div>
-         </div>
+         </div> -->
+         <div class="custom_footer_left fw">
+          <div class="fl">
+            <ul>
+              <li><a href="<?php echo base_url('about_us'); ?>"> About Us </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('blog'); ?>">Blogs</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Terms &amp; Condition </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Privacy Policy</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
+
+        </div>
       </div>
       <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-art animated fadeInUp">
          <div class="post-editor col-md-12">
@@ -157,7 +109,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              </div>
                              </div>
       </div>
-      <div class="col-md-3 fixed_right_side fixed_right_display">
+      <div class="col-md-3 fixed_right_side animated fadeInRightBig fixed_right_display">
          <div class="full-box-module_follow" style="margin-top: 0px;">
             <!-- follower list start  -->  
             <div class="common-form">
