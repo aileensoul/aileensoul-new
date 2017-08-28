@@ -11900,7 +11900,17 @@ public function insert_comment_postnewpage() {
 public function art_home_post() {
         // return html
 
-        $page_id = $_POST['page'];
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+        //$page_id = $_POST['page'];
 
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
@@ -11997,10 +12007,24 @@ public function art_home_post() {
         $finalsorting = $qbc;
         $return_html = '';
         //echo "<pre>"; print_r($finalsorting); die();
+
+        $finalsorting1 = array_slice($finalsorting, $start, $perpage);
+
+
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($finalsorting);
+        }
+
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+
+       // echo count($finalsorting1);  echo count($finalsorting); die();
+
         if (count($finalsorting) > 0) {
             //$row = $businessprofiledatapost[0];
 
-            foreach ($finalsorting as $row) {
+            foreach ($finalsorting1 as $row) {
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1');
                 $artdelete = $this->data['artdelete'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
