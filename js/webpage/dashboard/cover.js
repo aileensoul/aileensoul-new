@@ -169,6 +169,7 @@ function readURL(input) {
         reader.onload = function (e) {
             document.getElementById('preview').style.display = 'block';
             $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -210,8 +211,51 @@ $(document).ready(function () {
                 required: "Photo Required",
             },
         },
+         submitHandler: profile_pic
     });
 });
+
+
+function profile_pic(event){
+
+
+
+        var fd = new FormData();
+                
+         fd.append("image", $("#profilepic")[0].files[0]);
+
+         files = this.files;
+
+       
+    $.ajax({
+      url: base_url + "dashboard/profilepic",
+      //url: "<?php echo base_url(); ?>artistic/profilepic",
+      type: "POST",
+      data: fd,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+
+        
+      $('#bidmodal-2').modal('hide');
+
+      $(".profile-photo").html(data);
+
+      document.getElementById('profilepic').value= null;
+
+      //document.getElementById('profilepic').value == '';
+
+      $('.popup_previred').hide();
+     $('#preview').prop('src', '#');
+
+        },          
+     });
+  return false;
+
+}
+
 
 function updateprofilepopup(id) {
     $('#bidmodal-2').modal('show');

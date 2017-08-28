@@ -281,4 +281,104 @@ class Dashboard extends MY_Controller {
         $updatedata = $this->common->update_data($data, 'user', 'user_id', $userid);
     }
 
+
+    // profile image uplaod usingajax start
+
+   public function profilepic(){
+
+
+         $userid = $this->session->userdata('aileenuser');
+
+        $config = array(
+            'upload_path' => $this->config->item('user_main_upload_path'),
+            'max_size' => $this->config->item('user_main_max_size'),
+            'allowed_types' => $this->config->item('user_main_allowed_types'),
+            'file_name' => $_FILES['profilepic']['name']
+               
+        );
+
+
+        $images = array();
+        
+
+        $files = $_FILES;
+       
+        $this->load->library('upload');
+
+            $fileName = $_FILES['image']['name'];
+            $images[] = $fileName;
+            $config['file_name'] = $fileName;
+
+         $this->upload->initialize($config);
+        $this->upload->do_upload();
+
+            
+        if ($this->upload->do_upload('image')) {
+           // echo "hi"; die();
+
+            // $uploadData = $this->upload->data();
+
+            // $picture = $uploadData['file_name'];
+
+             $response['result']= $this->upload->data();
+            // echo "<pre>"; print_r($response['result']); die();
+                $user_thumb['image_library'] = 'gd2';
+                $user_thumb['source_image'] = $this->config->item('user_main_upload_path') . $response['result']['file_name'];
+                $user_thumb['new_image'] = $this->config->item('user_thumb_upload_path') . $response['result']['file_name'];
+                $user_thumb['create_thumb'] = TRUE;
+                $user_thumb['maintain_ratio'] = TRUE;
+                $user_thumb['thumb_marker'] = '';
+                $user_thumb['width'] = $this->config->item('user_thumb_width');
+                //$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
+                $user_thumb['height'] = 2;
+                $user_thumb['master_dim'] = 'width';
+                $user_thumb['quality'] = "100%";
+                $user_thumb['x_axis'] = '0';
+                $user_thumb['y_axis'] = '0';
+                $instanse = "image_$i";
+                //Loading Image Library
+                $this->load->library('image_lib', $user_thumb, $instanse);
+                $dataimage = $response['result']['file_name'];
+
+                                //Creating Thumbnail
+                $this->$instanse->resize();
+                $response['error'][] = $thumberror = $this->$instanse->display_errors();
+                
+                
+                $return['data'][] = $this->upload->data();
+                $return['status'] = "success";
+                $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+      
+        } 
+
+       
+
+  //      //echo "<pre>"; print_r($dataimage); die();
+
+        //if ($dataimage) {
+            $data = array(
+                'user_image' => $dataimage,
+                'modified_date' => date('Y-m-d', time())
+               
+            );
+
+            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+
+
+      $contition_array = array('user_id'=> $userid,'status' => '1','is_delete'=> '0');
+
+        $user = $this->data['user'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+
+        //echo "<pre>"; print_r($artistic_user); die();
+            $userimage .= '<img src="'.base_url($this->config->item('user_thumb_upload_path') . $user[0]['user_image']).'" alt="" class="main-pic">';
+
+            $userimage.= '<a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="'.base_url().'img/u1.png">Update Profile Picture</a>';
+
+            echo  $userimage;
+           
+
+    }
+
 }
