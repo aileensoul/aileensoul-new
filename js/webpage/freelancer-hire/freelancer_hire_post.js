@@ -63,7 +63,6 @@ $(document).ready(function () {
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-
                     freelancerhire_project(user_id, returnpage, pagenum);
                 }
             }

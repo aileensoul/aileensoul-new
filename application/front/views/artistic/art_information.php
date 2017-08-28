@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $title; ?></title>
+        <title><?php echo "Information - Aileensoul.com"; ?></title>
         <?php echo $head; ?> 
 
         <style type="text/css">

@@ -105,28 +105,34 @@
                                                 }
                                             }
                                             ?>
+                                            <option value="<?php echo $degree_otherdata[0]['degree_id']; ?> "><?php echo $degree_otherdata[0]['degree_name']; ?></option>
                                         </select>
                                         <?php echo form_error('degree'); ?>
                                     </fieldset>
+                                    <?php
+                                    $contition_array = array('is_delete' => '0', 'degree_id' => $degree1);
+                                    $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+                                    $stream_data = $this->data['$stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+                                    ?>
                                     <fieldset <?php if ($stream) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("stream"); ?>:</label>
                                         <select name="stream" id="stream" tabindex="2">
                                             <?php
+                                            if ($stream1) {
                                             foreach ($stream_data as $cnt) {
-                                                if ($stream1) {
                                                     ?>
                                                     <option value="<?php echo $cnt['stream_id']; ?>" <?php if ($cnt['stream_id'] == $stream1) echo 'selected'; ?>><?php echo $cnt['stream_name']; ?></option>
                                                     <?php
                                                 }
+                                                 }
                                                 else {
                                                     ?>
                                                     <option value=""><?php echo $this->lang->line("select_degree"); ?></option>
                                                     <?php
                                                 }
-                                            }
                                             ?>
                                         </select>
-                                        <?php echo form_error('stream'); ?>  
+<?php echo form_error('stream'); ?>  
                                     </fieldset>
                                     <fieldset <?php if ($univercity) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("university"); ?>:</label>
@@ -151,7 +157,7 @@
                                             ?>
                                             <option value="<?php echo $university_otherdata[0]['university_id']; ?> "><?php echo $university_otherdata[0]['university_name']; ?></option>
                                         </select>
-                                        <?php echo form_error('university'); ?> 
+<?php echo form_error('university'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($college) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("college"); ?>:</label>
@@ -160,7 +166,7 @@
                                             echo $college1;
                                         }
                                         ?>">
-                                               <?php echo form_error('college'); ?> 
+<?php echo form_error('college'); ?> 
                                     </fieldset>
                                     <fieldset <?php if ($percentage) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("percentage"); ?>:</label>
@@ -169,7 +175,7 @@
                                             echo $percentage1;
                                         }
                                         ?>">
-                                               <?php echo form_error('percentage'); ?>
+<?php echo form_error('percentage'); ?>
                                     </fieldset>
                                     <fieldset <?php if ($passingyear) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("year_passing"); ?>:</label>
@@ -191,12 +197,12 @@
                                             }
                                             ?> 
                                         </select> 
-                                        <?php echo form_error('passingyear'); ?>
+<?php echo form_error('passingyear'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
                                         <input type="submit"  tabindex="7" id="next" name="next" value="Next">
                                     </fieldset>
-                                    <?php echo form_close(); ?>
+<?php echo form_close(); ?>
                                 </div>
                             </div>
                         </div>
@@ -204,7 +210,7 @@
                 </div>
             </section>
             <footer>
-                <?php echo $footer; ?>
+<?php echo $footer; ?>
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
             <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
@@ -217,9 +223,10 @@
                 var base_url = '<?php echo base_url(); ?>';
                 var data = <?php echo json_encode($demo); ?>;
                 var data1 = <?php echo json_encode($city_data); ?>;
+                var html = '<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>';
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_education.js'); ?>"></script>
-             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
         </body>
     </div>
 </html>

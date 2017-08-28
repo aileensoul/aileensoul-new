@@ -2277,7 +2277,7 @@ class Search extends CI_Controller {
     //freelancer hire  ajax search start 
     public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
         $userid = $this->session->userdata('aileenuser');
-        $perpage = 6;
+        $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];

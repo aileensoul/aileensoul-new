@@ -1,27 +1,4 @@
-//Dropdown CLose while outside body click Start
- $(document).ready(function(){
-       $('.dropdown_hover').click(function(event){
-           event.stopPropagation();
-            $(".dropdown-content_hover").fadeToggle("fast");
-       });
-       $(".dropdown-content_hover").on("dropdown_hover", function (event) {
-          event.stopPropagation();
-       });
-   });
-   
-   $(document).on("dropdown_hover", function () {
-       $(".dropdown-content_hover").hide(600);
-   });
-   
-   $(document).ready(function() {
-        $("body").click(function(event) {
-           $(".dropdown-content_hover").fadeOut(600);
-           // event.stopPropagation();
-       });
-    
-   });
-//Dropdown CLose while outside body click End
-
+ 
 //Deactivate Job Profile Start
  function deactivate(clicked_id) { 
        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your job profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");

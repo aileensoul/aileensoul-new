@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Aileensoul Blog</title>
+        <title>Official Blog - Aileensoul.com</title>
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
         <?php
         foreach ($blog_detail as $blog) {
             ?>

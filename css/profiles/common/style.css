@@ -2969,7 +2969,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
 .profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
-.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; z-index: -1; background-color: white;}
+.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; border-top: none; z-index: -1; background-color: white;}
 .profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
 .profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
 .profile-main-rec-box-menu li a {display: block; color: #1b8ab9; text-align: center; padding: 16px 15px;
@@ -3058,6 +3058,8 @@ li.fr a {text-decoration: none !important;}
     text-transform: uppercase;
     line-height:1;
 }
+
+
 /***  left part box  ***/
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
@@ -3143,10 +3145,30 @@ line-height: 1;}
 .a-inlineBlock .data_img_2 .post-img-profile{line-height: 1;}
 .notac_a{text-align: center;}
 
+/*ZALAK START CHANGES OF 28-8*/
+.bui_art_left_box .profile-boxProfilebuisness-avatarLink2{background-color:transparent; border: none; margin: 9px 0 8px 4px; height: 60px; width: 60px; }
+.bui_art_left_box .profile-company-name a{font-size: 15px;}
+.bui_art_left_box .profile-boxProfile-name a{font-size: 14px;}
+.bui_art_left_box .profile-boxProfile-name, .profile-company-name {
+    line-height: 18px;
+}
+.bui_art_left_box .left_box_menubar li a{font-size: 12px; padding: 4px;}
+.bui_art_left_box .data_img_2 div{padding: 19px 0px;}
+.bui_art_left_box .data_img_2{width: 60px; height: 60px;}
+.bui_art_left_box .profile-boxProfileCard-content::before{top: 49px;}
+.bui_art_left_box .data_img{height: 84px;}
+.bui_art_left_box .right_left_box_design{padding: 7px 9px 0px 5px!important;}
+.bui_art_left_box .follow_left_box_main_btn button{width: 82px; padding: 5px 3px; margin-left: 0px;   }
+.bui_art_left_box .left_iner_img_profile{width: 60px; height:60px;}
+.bui_art_left_box .profile-boxProfileCard-bg img{height: 84px;}
+.profile-job-details p i{margin-right: 6px;}
+/*ZALAK END CHANGES OF 28-8*/
+
+
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9;}
+#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -3570,7 +3592,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
     border-radius: 3px;
     padding-right: 0px;
     border: 1px solid #d9d9d9;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
     float: left;
     
@@ -5722,7 +5744,27 @@ line-height: 1;}
     
 }
 
-
+/*ZALAK START CHANGES OF 28-8*/
+.bui_art_left_box .follow_left_box_main_btn button {
+    width: 82px;
+    padding: 5px 3px;
+    margin-left: 0px;
+}
+.bui_art_left_box .follow_left_box_main_btn{margin-left: 8px;}
+.bui_art_left_box .post-design-name_follow{width: 45%;}
+.bui_art_left_box .post-design-product_follow{padding-top: 5px;}
+.bui_art_left_box .common-form .user_list_head{padding: 4px 15px;}
+.bui_art_left_box .seeall a{font-size: 16px;}
+.fixed_left_side{width: 350px;}
+.fixed_middle_side{left: 325px; width: 610px;}
+.fixed_right_side{ right: 33px;
+    width: 350px;
+    position: fixed;}
+.bui_art_left_box    .comment-edit-butn{right: 20px;}
+.editor-content{width: 89%;}
+.profile-boxProfileCard_follow ul{width: 100%;}
+.full-box-module_follow{margin-top: 0px;}
+/*ZALAK END CHANGES OF 28-8*/
 
 
 /***-------- end model css  ---------***/
@@ -5731,6 +5773,7 @@ line-height: 1;}
     .container {
         width: 1280px;
     }
+
 }
 	
 	
@@ -5825,3 +5868,47 @@ footer {
     cursor: pointer;
 }
 
+
+
+.fixed_right_display_none{display: none;}
+
+
+/*zalak start 28-8  media*/
+@media screen and (max-width:1280px)
+{
+    
+  .fixed_right_side{right: 0;}
+  
+} 
+
+@media screen and (max-width: 1279px) {
+.header2{width:1140px;}
+}
+
+@media screen and (max-width: 1199px) {
+.header2 {
+    width: 940px;
+}
+}
+@media screen and (max-width:1200px)
+   
+{ 
+  .fixed_right_side{right: 0;}
+
+    .fixed_right_display_none{display:block;}
+.fixed_right_display{display: none;}
+
+
+}
+@media screen and (max-width: 991px){
+    .fixed_right_side{display: none;}
+    .fixed_middle_side{width: 100%; left: 0;}
+}
+
+@media screen and (max-width: 767px) {
+    .search-mob-block{display:block;}
+}
+
+
+
+/*zalak start 28-8  media*/

@@ -540,7 +540,11 @@
          </div>
       </div>
       <!-- Model Popup Close -->
-   
+
+<footer>        
+<?php echo $footer;  ?>
+</footer>   
+
 <!-- script for skill textbox automatic start-->
 <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>

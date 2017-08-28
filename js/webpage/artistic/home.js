@@ -1,25 +1,166 @@
- 
+ $(document).ready(function ()
+         {
+             /* Uploading Profile BackGround Image */
+             $('body').on('change', '#bgphotoimg', function ()
+             {
+                 $("#bgimageform").ajaxForm({target: '#timelineBackground',
+                     beforeSubmit: function () {},
+                     success: function () {
+                         $("#timelineShade").hide();
+                         $("#bgimageform").hide();
+                     },
+                     error: function () {
+                     }}).submit();
+             });
+             /* Banner position drag */
+             $("body").on('mouseover', '.headerimage', function ()
+             {
+                 var y1 = $('#timelineBackground').height();
+                 var y2 = $('.headerimage').height();
+                 $(this).draggable({
+                     scroll: false,
+                     axis: "y",
+                     drag: function (event, ui) {
+                         if (ui.position.top >= 0)
+                         {
+                             ui.position.top = 0;
+                         } else if (ui.position.top <= y1 - y2)
+                         {
+                             ui.position.top = y1 - y2;
+                         }
+                     },
+                     stop: function (event, ui)
+                     {
+                     }
+                 });
+             });
+             /* Bannert Position Save*/
+             $("body").on('click', '.bgSave', function ()
+             {
+                 var id = $(this).attr("id");
+                 var p = $("#timelineBGload").attr("style");
+                 var Y = p.split("top:");
+                 var Z = Y[1].split(";");
+                 var dataString = 'position=' + Z[0];
+                 $.ajax({
+                     type: "POST",
+                     url: "<?php echo base_url('artistic/image_saveBG_ajax'); ?>",
+                     data: dataString,
+                     cache: false,
+                     beforeSend: function () { },
+                     success: function (html)
+                     {
+                         if (html)
+                         {
+                             window.location.reload();
+                             $(".bgImage").fadeOut('slow');
+                             $(".bgSave").fadeOut('slow');
+                             $("#timelineShade").fadeIn("slow");
+                             $("#timelineBGload").removeClass("headerimage");
+                             $("#timelineBGload").css({'margin-top': html});
+                             return false;
+                         }
+                     }
+                 });
+                 return false;
+             }); 
+         });   
+
+
+
+
+ // follow user script start
+
+function followuser(clicked_id)
+   {
+   
+       $("#fad" + clicked_id).fadeOut(6000);
+   
+   
+       $.ajax({
+           type: 'POST',
+           url: base_url + "artistic/follow_home",
+           //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
+           data: 'follow_to=' + clicked_id,
+           success: function (data) {
+   
+               $('.' + 'fr' + clicked_id).html(data.follow);
+               $('#countfollow').html(data.count);
+   
+           }
+   
+   
+       });
+   
+   }
+
+    function followclose(clicked_id)
+   { //alert("hii");
+       $("#fad" + clicked_id).fadeOut(3000);
+   }
+
+
+
+
 $(document).ready(function () {
                 art_home_post();
-                art_home_three_user_list()
+                art_home_three_user_list();
+
+                 $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    art_home_post(pagenum);
+                }
+            }
+        }
+    });
             });
 
 
 
+var isProcessing = false;
+  function art_home_post(pagenum) {
 
-  function art_home_post() {
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
+
                 $.ajax({
                     type: 'POST',
-                    url: base_url + "artistic/art_home_post",
+                    url: base_url + "artistic/art_home_post?page=" + pagenum,
                     //url: '<?php echo base_url() . "artistic/art_home_post/" ?>',
-                    data: '',
+                    data: {total_record: $("#total_record").val()},                  
                     dataType: "html",
-                    beforeSend: function () {
-                        $(".art-all-post").prepend('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    beforeSend: function () {                     
+                        $('#loader').show();       
+                    },
+                    complete: function () { //alert("hii");
+                    $('#loader').hide();
                     },
                     success: function (data) {
                         $('.loader').remove();
-                        $('.art-all-post').html(data);
+                        $('.art-all-post').append(data);
 
                         // second header class add for scroll
                         var nb = $('.post-design-box').length;
@@ -28,6 +169,8 @@ $(document).ready(function () {
                         } else {
                             $("#dropdownclass").removeClass("no-post-h2");
                         }
+                         isProcessing = false;
+
                     }
                 });
             }
@@ -1013,37 +1156,7 @@ function insert_comment(clicked_id)
    
    }
 
-   // follow user script start
-
-function followuser(clicked_id)
-   {
    
-       $("#fad" + clicked_id).fadeOut(6000);
-   
-   
-       $.ajax({
-           type: 'POST',
-           url: base_url + "artistic/follow_home",
-           //url: '<?php echo base_url() . "artistic/follow_two" ?>',
-            dataType: 'json',
-           data: 'follow_to=' + clicked_id,
-           success: function (data) {
-   
-               $('.' + 'fr' + clicked_id).html(data.follow);
-               $('#countfollow').html(data.count);
-   
-           }
-   
-   
-       });
-   
-   }
-
-    function followclose(clicked_id)
-   {
-       $("#fad" + clicked_id).fadeOut(3000);
-   }
-
    // insert post validation start
 
    function imgval(event) { 
@@ -1084,7 +1197,7 @@ function followuser(clicked_id)
                var ext = vfirstname.split('.').pop();
                var ext1 = vname.split('.').pop();
                var allowedExtensions = ['jpg', 'jpeg', 'PNG', 'gif', 'png'];
-               var allowesvideo = ['mp4', 'webm'];
+               var allowesvideo = ['mp4', 'webm', 'MP4'];
                var allowesaudio = ['mp3'];
                var allowespdf = ['pdf'];
    

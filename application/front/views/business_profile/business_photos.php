@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html> -->
 <html>
     <head>
         <title><?php echo $title; ?></title>
@@ -87,7 +87,8 @@
                                                             <div class="mySlides">
                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                                                 <div class="slider_img_p">
-                                                                    <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['image_name']) ?>" >
+                                                                    <!--<img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['image_name']) ?>" >-->
+                                                                    <?php echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_main_upload_path') . $busdata['image_name'] . '" >'; ?>
                                                                 </div>
                                                                 <!-- like comment start -->
                                                                 <div>
@@ -266,7 +267,7 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+        <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>

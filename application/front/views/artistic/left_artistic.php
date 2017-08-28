@@ -84,3 +84,4 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                </div>
             </div>
          </div>
+           

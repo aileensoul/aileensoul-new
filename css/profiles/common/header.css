@@ -955,7 +955,13 @@ max-width: 100%;}
     margin: 0;
     float: left;}
 
-.custom_footer_left ul li a{padding: 0px; float: left; color: #8c8c8c;}
+.custom_footer_left ul li a{padding: 0px; float: left; color: #8c8c8c; }
+.bui_art_left_box .custom_footer_left ul li{
+    display: inline-block;
+    padding: 5px 2px 0px;
+    margin: 0;
+    float: left;}
+.bui_art_left_box .custom_footer_left ul li a{padding: 0px; float: left; color: #8c8c8c; font-size: 12px; }
 .custom_footer_left ul li a:hover{color: #1b8ab9;}
 .custom_footer_dot{
         float: left;

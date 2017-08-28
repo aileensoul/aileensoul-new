@@ -947,7 +947,10 @@
       </div>
    </div>
    <!-- Model Popup Close -->
-   <footer>
+
+<footer>        
+<?php echo $footer;  ?>
+</footer>
 
 <!-- Calender JS Start-->
 <script src="<?php echo base_url('js/jquery.js'); ?>"></script>

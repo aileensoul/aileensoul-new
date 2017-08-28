@@ -781,7 +781,7 @@
       </div>
       </div>
       <div class="">
-      </div
+      </div>
       </section>
       <!-- Model Popup Open -->
       <!-- Bid-modal  -->
@@ -796,7 +796,10 @@
          </div>
       </div>
       <!-- Model Popup Close -->
-   
+<footer>        
+<?php echo $footer;  ?>
+</footer>
+
 <!-- script for skill textbox automatic start-->
 <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>

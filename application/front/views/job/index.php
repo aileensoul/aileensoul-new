@@ -3,6 +3,7 @@
    <head>
       <!-- start head -->
       <?php echo $head; ?>
+      <title>gyhfg</title>
       <!-- Calender Css Start-->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
       <!-- Calender Css End-->
@@ -164,7 +165,10 @@
          </div>
       </section>
       <!-- END CONTAINER -->
-   
+<footer>        
+<?php echo $footer;  ?>
+</footer>
+
 <!-- script for skill textbox automatic start -->
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>

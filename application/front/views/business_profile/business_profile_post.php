@@ -24,13 +24,13 @@
         <!-- END HEADER -->
         <?php echo $business_header2_border; ?>
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
+            <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4  animated fadeInLeftBig profile-box profile-box-custom">
+                        <div class="col-md-4 fixed_left_side animated fadeInLeftBig profile-box profile-box-custom">
                             <div class="">
                                 <?php echo $business_left; ?>
-                                <div class="full-box-module_follow">
+                                <div class="full-box-module_follow fw fixed_right_display_none ">
                                     <!-- follower list start  -->  
                                     <div class="common-form">
                                         <h3 class="user_list_head">User List
@@ -41,12 +41,33 @@
                                         </div>
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
-                                    <div class="profile-boxProfileCard_follow fl  module">
+                                    <div class="profile-boxProfileCard_follow fw  module">
 
                                     </div>
                                     <!-- GET USER FOLLOE SUGESSION LIST START -->
                                     <!-- follower list end  -->
                                 </div>
+                                <div class="custom_footer_left fw" style="margin-top: 15px;">
+          <div class="fl">
+            <ul>
+              <li><a href=""> About Us </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Contact Us</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a  href="">Blogs</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Terms & Condition </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Privacy Policy</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
+
+        </div>
                             </div>
                             <br>
                             <div id="result"></div>   
@@ -54,7 +75,96 @@
                         <!-- popup start -->
                         <!-- Trigger/Open The Modal -->
                         <!-- <div id="myBtn">Open Modal</div>-->
-                        <!-- The Modal -->
+                      
+                        <?php
+                        if ($this->session->flashdata('error')) {
+                            echo $this->session->flashdata('error');
+                        }
+                        ?>
+
+                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business custom-right-art fixed_middle_side animated fadeInUp">
+                            <div class="post-editor col-md-12">
+                                <div class="main-text-area col-md-12">
+                                    <div class="popup-img"> 
+                                        <?php if ($businessdata[0]['business_user_image']) { ?>
+
+                                            <?php
+                                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                
+                                                ?>
+                                               <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                    ?>
+
+                                                <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+
+    <?php } ?>
+
+                                        <?php } else { ?>
+                                           <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                            <?php } ?>
+                                    </div>
+                                    <div id="myBtn"  class="editor-content popup-text">
+                                        <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
+                                        <div class="padding-left padding_les_left camer_h">
+                                            <i class="fa fa-camera"></i> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- body content start-->
+                            <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
+                            <!--                      video tag   khytai chndge 8-7    <div>
+                            <video width="100%" height="350" controls>
+                         <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
+                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/ogg">
+                             Your browser does not support the video tag.
+                                 </video>
+                        </div>-->
+                            <div class="bs-example">
+                                <div class="progress progress-striped" id="progress_div">
+                                    <div class="progress-bar" style="width: 0%;">
+                                        <span class="sr-only">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                            <div class='progress' id="progress_div">
+                                                            <div class='bar' id='bar'></div>
+                                                            <div class='percent' id='percent'>0%</div>
+                                                        </div>-->
+                            <div class="business-all-post">
+                                <div class="nofoundpost"> 
+                                </div>
+                                <!-- no post found div end -->
+                            </div>
+                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                        </div>
+
+                        <div class="col-md-3 fixed_right_side animated fadeInRightBig">
+                            <div class="full-box-module_follow fixed_right_display ">
+                                    <!-- follower list start  -->  
+                                    <div class="common-form">
+                                        <h3 class="user_list_head">User List
+                                        </h3>
+                                        <div class="seeall">
+                                            <a href="<?php echo base_url('business-profile/userlist/' . $businessdata[0]['business_slug']); ?>">All User
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START [AJAX DATA DISPLAY UNDER profile-boxProfileCard_follow CLASS]-->
+                                    <div class="profile-boxProfileCard_follow fw  module">
+
+                                    </div>
+                                    <!-- GET USER FOLLOE SUGESSION LIST START -->
+                                    <!-- follower list end  -->
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+
+        </section>
+          <!-- The Modal -->
                         <div id="myModal" class="modal-post">
                             <!-- Modal content -->
                             <div class="modal-content-post">
@@ -142,74 +252,6 @@
                             </div>
                         </div>
                         <!-- popup end -->  
-                        <?php
-                        if ($this->session->flashdata('error')) {
-                            echo $this->session->flashdata('error');
-                        }
-                        ?>
-
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business  animated fadeInUp">
-                            <div class="post-editor col-md-12">
-                                <div class="main-text-area col-md-12">
-                                    <div class="popup-img"> 
-                                        <?php if ($businessdata[0]['business_user_image']) { ?>
-
-                                            <?php
-                                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                
-                                                ?>
-                                               <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                    <?php } else {
-                                                    ?>
-
-                                                <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
-
-    <?php } ?>
-
-                                        <?php } else { ?>
-                                           <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                            <?php } ?>
-                                    </div>
-                                    <div id="myBtn"  class="editor-content popup-text">
-                                        <span> <?php echo $this->lang->line("post_your_product"); ?></span> 
-                                        <div class="padding-left padding_les_left camer_h">
-                                            <i class="fa fa-camera"></i> 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- body content start-->
-                            <!-- ALL POST DATA DISPLAY IN TO business-all-post CLASS AFTER CALL AJAX -->
-                            <!--                      video tag   khytai chndge 8-7    <div>
-                            <video width="100%" height="350" controls>
-                         <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
-                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/ogg">
-                             Your browser does not support the video tag.
-                                 </video>
-                        </div>-->
-                            <div class="bs-example">
-                                <div class="progress progress-striped" id="progress_div">
-                                    <div class="progress-bar" style="width: 0%;">
-                                        <span class="sr-only">0%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--                            <div class='progress' id="progress_div">
-                                                            <div class='bar' id='bar'></div>
-                                                            <div class='percent' id='percent'>0%</div>
-                                                        </div>-->
-                            <div class="business-all-post">
-                                <div class="nofoundpost"> 
-                                </div>
-                                <!-- no post found div end -->
-                            </div>
-                            <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
-                        </div>
-                    </div>
-                </div>
-
-        </section>
-
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">

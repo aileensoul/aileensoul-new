@@ -82,7 +82,7 @@
 
                     </div>
                 </div>
-                <div class="container tablate-container art-profile">    
+                <div class=" tablate-container art-profile">    
                     <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <div class="upload-img">
 
@@ -93,6 +93,7 @@
 
                     <?php } ?>
                     <!-- cover image end-->
+
                     <div class="profile-photo">
                         <div class="profile-pho">
                             <div class="user-pic padd_img">

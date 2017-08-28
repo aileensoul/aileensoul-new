@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title><?php echo $title; ?></title>
+    <head> 
+        <title><?php echo "Dashboard - Aileensoul.com"; ?></title>
         <?php echo $head; ?>  
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="../css/jquery.jMosaic.css">
@@ -283,11 +283,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                             </div>
                             <div class="art-all-post">
                 <div class="job-contact-frnd ">
-                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                    
    <!--  <div class="nofoundpost">
     </div> -->
              </div>
+
              </div>
+              <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
             </div>           
         </div>
     </div>

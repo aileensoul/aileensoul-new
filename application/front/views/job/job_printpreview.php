@@ -96,14 +96,14 @@
                      <img src="<?php echo base_url($this->config->item('job_profile_thumb_upload_path') . $job[0]['job_user_image']); ?>" alt="" >
                      <?php } else { ?>
                      <?php
-                        $a = $job[0]['fname'];
+                        $a = trim($job[0]['fname']);
                         $words = explode(" ", $a);
                         foreach ($words as $w) {
                             $acronym = $w[0];
                         }
                         ?>
                      <?php
-                        $b = $job[0]['lname'];
+                        $b = trim($job[0]['lname']);
                         $words = explode(" ", $b);
                         foreach ($words as $w) {
                             $acronym1 = $w[0];
@@ -1553,6 +1553,10 @@
          </div>
       </div>
       <!-- Model Popup Close -->
+
+<footer>        
+<?php echo $footer;  ?>
+</footer>
 
       <!-- script for skill textbox automatic start-->
       <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
