@@ -3157,9 +3157,9 @@ line-height: 1;}
 .bui_art_left_box .data_img_2{width: 60px; height: 60px;}
 .bui_art_left_box .profile-boxProfileCard-content::before{top: 49px;}
 .bui_art_left_box .data_img{height: 84px;}
-.bui_art_left_box .right_left_box_design{padding: 7px 9px 0px 5px;}
+.bui_art_left_box .right_left_box_design{padding: 7px 9px 0px 5px!important;}
 .bui_art_left_box .follow_left_box_main_btn button{width: 82px; padding: 5px 3px; margin-left: 0px;   }
-.bui_art_left_box .left_iner_img_profile{width: 100%; height: 100%;}
+.bui_art_left_box .left_iner_img_profile{width: 60px; height:60px;}
 .bui_art_left_box .profile-boxProfileCard-bg img{height: 84px;}
 
 /*ZALAK END CHANGES OF 28-8*/
@@ -5763,6 +5763,7 @@ line-height: 1;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
 .editor-content{width: 89%;}
 .profile-boxProfileCard_follow ul{width: 100%;}
+.full-box-module_follow{margin-top: 0px;}
 /*ZALAK END CHANGES OF 28-8*/
 
 
