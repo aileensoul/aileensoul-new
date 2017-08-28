@@ -183,11 +183,11 @@ class Freelancer extends MY_Controller {
                 if ($updatedata) {
 
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('freelancer/freelancer_post_address_information', refresh);
+                    redirect('freelancer-work/address-information', refresh);
                 } else {
 
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('freelancer/freelancer_post_basic_information', refresh);
+                    redirect('freelancer-work/basic-information', refresh);
                 }
             } else {
 
@@ -211,10 +211,10 @@ class Freelancer extends MY_Controller {
                 if ($insert_id) {
 
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('freelancer/freelancer_post_address_information', refresh);
+                    redirect('freelancer-work/address-information', refresh);
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('freelancer/freelancer_post_basic_information', refresh);
+                    redirect('freelancer-work/basic-information', refresh);
                 }
             }
         }
@@ -454,10 +454,10 @@ class Freelancer extends MY_Controller {
 
                 if ($updatdata) {
                     $this->session->set_flashdata('success', 'Address information updated successfully');
-                    redirect('freelancer/freelancer_post_professional_information', refresh);
+                    redirect('freelancer-work/professional-information', refresh);
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('freelancer/freelancer_post_address_information', refresh);
+                    redirect('freelancer-work/address-information', refresh);
                 }
             }
         }
@@ -605,10 +605,10 @@ class Freelancer extends MY_Controller {
 
                 if ($updatdata) {
                     $this->session->set_flashdata('success', 'professional information updated successfully');
-                    redirect('freelancer/freelancer_post_rate', refresh);
+                    redirect('freelancer-work/rate', refresh);
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('freelancer/freelancer_post_professional_information', refresh);
+                    redirect('freelancer-work/professional-information', refresh);
                 }
             }
         }
@@ -705,10 +705,10 @@ class Freelancer extends MY_Controller {
 
             if ($updatdata) {
                 $this->session->set_flashdata('success', 'Rate information updated successfully');
-                redirect('freelancer/freelancer_post_avability', refresh);
+                redirect('freelancer-work/avability', refresh);
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer/freelancer_post_rate', refresh);
+                redirect('freelancer-work/rate', refresh);
             }
             //}
         }
@@ -791,10 +791,10 @@ class Freelancer extends MY_Controller {
 
             if ($updatdata) {
                 $this->session->set_flashdata('success', 'Avability information updated successfully');
-                redirect('freelancer/freelancer_post_education', refresh);
+                redirect('freelancer-work/education', refresh);
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('freelancer/freelancer_post_avability', refresh);
+                redirect('freelancer-work/avability', refresh);
             }
             //}
         }
@@ -982,10 +982,10 @@ class Freelancer extends MY_Controller {
 
         if ($updatdata) {
             $this->session->set_flashdata('success', 'Education information updated successfully');
-            redirect('freelancer/freelancer_post_portfolio', refresh);
+            redirect('freelancer-work/portfolio', refresh);
         } else {
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('freelancer/freelancer_post_education', refresh);
+            redirect('freelancer-work/education', refresh);
         }
     }
 
@@ -1715,7 +1715,7 @@ class Freelancer extends MY_Controller {
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
-
+        $this->data['title']='HOME - Aileensoul.com';
         $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
     }
 
