@@ -3848,16 +3848,17 @@ public function followtwo() {
 
     public function ajax_followers($id = "") {
         $userid = $this->session->userdata('aileenuser');
-        $id = $_POST['slug_id'];
-        // $perpage = 5;
-        // $page = 1;
-        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-        //     $page = $_GET["page"];
-        // }
+        //$id = $_POST['slug_id'];
+        //echo $id; die();
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
 
-        // $start = ($page - 1) * $perpage;
-        // if ($start < 0)
-        //     $start = 0;
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
 
         
         if ($id == $userid || $id == '') {
@@ -3872,13 +3873,13 @@ public function followtwo() {
 
 
 
-            //$limit = $perpage;
-            //$offset = $start;
+            $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'follow_status' => 1);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             //echo "<pre>"; print_r($userlist); die();
-            //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 'status' => 1, 'art_step' => 4);
             $artisticdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3891,23 +3892,23 @@ public function followtwo() {
             $join_str[0]['from_table_id'] = 'art_reg.art_id';
             $join_str[0]['join_type'] = '';
 
-            //$limit = $perpage;
-            //$offset = $start;
+            $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('follow_to' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4, 'follow_status' => 1,);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         
-        // if (empty($_GET["total_record"])) {
-        //     $_GET["total_record"] = count($userlist1);
-        // }
-        // $return_html = '';
-        // $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
-        // $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
-        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($userlist1);
+        }
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
-        if (count($userlist) > 0) {
+        if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
 
 
@@ -4089,16 +4090,16 @@ public function followtwo() {
 
     public function ajax_following($id = "") {
         $userid = $this->session->userdata('aileenuser');
-        //$perpage = 5;
-        //$page = 1;
-        // if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
-        //     $page = $_GET["page"];
-        // }
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
 
-        //$start = ($page - 1) * $perpage;
-      //  if ($start < 0)
-         //   $start = 0;
-        $id = $_POST['slug_id'];
+        $start = ($page - 1) * $perpage;
+       if ($start < 0)
+           $start = 0;
+        //$id = $_POST['slug_id'];
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4115,12 +4116,12 @@ public function followtwo() {
             $join_str[0]['from_table_id'] = 'art_reg.art_id';
             $join_str[0]['join_type'] = '';
 
-           // $limit = $perpage;
-           // $offset = $start;
+           $limit = $perpage;
+           $offset = $start;
 
             $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-            //$userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else { //echo "16"; die();
 
             $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = '*');
@@ -4133,21 +4134,21 @@ public function followtwo() {
             $join_str[0]['from_table_id'] = 'art_reg.art_id';
             $join_str[0]['join_type'] = '';
 
-           // $limit = $perpage;
-            //$offset = $start;
+           $limit = $perpage;
+            $offset = $start;
 
             $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => 1, 'follow_type' => 1, 'art_reg.art_step' => 4);
             $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
-           // $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+           $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-        // if (empty($_GET["total_record"])) {
-        //     $_GET["total_record"] = count($userlist1);
-        // }
-        // $return_html = '';
-        // $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
-        // $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
-        // $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
-        if (count($userlist) > 0) {
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($userlist1);
+        }
+        $return_html = '';
+        $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
+        $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+        if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
                 $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
     <div class = "profile-job-post-detail clearfix">
