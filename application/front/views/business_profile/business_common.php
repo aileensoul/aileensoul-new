@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12"  style="visibility: hidden; ">
+        <div class="col-md-12" style="visibility: hidden; ">
             <div id="upload-demo-i"></div>
         </div>
     </div>
