@@ -3147,7 +3147,7 @@ line-height: 1;}
 
 /*ZALAK START CHANGES OF 28-8*/
 .bui_art_left_box .profile-boxProfilebuisness-avatarLink2{background-color:transparent; border: none; margin: 9px 0 8px 4px; height: 60px; width: 60px; }
-.bui_art_left_box.profile-company-name a{font-size: 15px;}
+.bui_art_left_box .profile-company-name a{font-size: 15px;}
 .bui_art_left_box .profile-boxProfile-name a{font-size: 14px;}
 .bui_art_left_box .profile-boxProfile-name, .profile-company-name {
     line-height: 18px;
@@ -3159,6 +3159,9 @@ line-height: 1;}
 .bui_art_left_box .data_img{height: 84px;}
 .bui_art_left_box .right_left_box_design{padding: 7px 9px 0px 5px;}
 .bui_art_left_box .follow_left_box_main_btn button{width: 82px; padding: 5px 3px; margin-left: 0px;   }
+.bui_art_left_box .left_iner_img_profile{width: 100%; height: 100%;}
+.bui_art_left_box .profile-boxProfileCard-bg img{height: 84px;}
+
 /*ZALAK END CHANGES OF 28-8*/
 
 
@@ -5758,6 +5761,8 @@ line-height: 1;}
     width: 350px;
     position: fixed;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
+.editor-content{width: 89%;}
+.profile-boxProfileCard_follow ul{width: 100%;}
 /*ZALAK END CHANGES OF 28-8*/
 
 
