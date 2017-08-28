@@ -1969,7 +1969,7 @@ class Freelancer extends MY_Controller {
             $return_html .= ' </div>
                                             </div>';
         }
-
+        
         echo $return_html;
     }
 

@@ -5,7 +5,7 @@
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -51,7 +51,7 @@
                                                         $sub_lname = substr($lname, 0, 1);
                                                         ?>
                                                         <div class="post-img-profile">
-                                                            <?php echo ucfirst(strtolower($sub_fname)) .  ucfirst(strtolower($sub_lname)); ?>
+                                                            <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                                         </div>
                                                         <?php
                                                     }
@@ -82,28 +82,28 @@
                                     </div>                             
                                 </div>
 
-                                 <div class="custom_footer_left fw">
-          <div class="fl">
-            <ul>
-              <li><a href=""> About Us </a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Contact Us</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a  href="">Blogs</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Terms & Condition </a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Privacy Policy</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Send Us Feedback</a></li>
-            </ul>
-          </div>
-        <div>
-          
-        </div>
+                                <div class="custom_footer_left fw">
+                                    <div class="fl">
+                                        <ul>
+                                            <li><a href=""> About Us </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Contact Us</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a  href="">Blogs</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Terms & Condition </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Privacy Policy</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Send Us Feedback</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
 
-        </div>
-        
+                                    </div>
+
+                                </div>
+
                                 <div  class="add-post-button">
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
                                 </div>
@@ -126,12 +126,14 @@
                                     <h3><?php echo $this->lang->line("recommended_freelancer"); ?></h3>
                                     <div class="contact-frnd-post">
                                         <div class="job-contact-frnd">
-                                     <!--AJAX DATA...........-->
-                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif"/></div>
+                                            <!--AJAX DATA...........-->
+
                                             <!-- body tag inner data end -->
                                             <div class="col-md-1">
                                             </div>
                                         </div>
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+
                                     </div>
                                 </div>
                             </div>
@@ -159,14 +161,14 @@
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-       
-        </script>
-        <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
-        </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
-    </body>
+
+    </script>
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+        var data = <?php echo json_encode($demo); ?>;
+        var data1 = <?php echo json_encode($city_data); ?>;
+    </script>
+    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
+</body>
 </html>
