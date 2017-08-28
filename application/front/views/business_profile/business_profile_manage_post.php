@@ -11,6 +11,11 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>" />
+        <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+        </style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>

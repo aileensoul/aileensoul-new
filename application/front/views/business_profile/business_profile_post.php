@@ -12,6 +12,11 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+        </style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->

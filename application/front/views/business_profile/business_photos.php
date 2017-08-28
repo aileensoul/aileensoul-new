@@ -42,7 +42,8 @@
                                                                     <?php foreach ($databus as $data) {
                                                                         ?>
                                                                         <li>
-                                                                            <img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>
+                                                                            <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
+                                                                            <?php echo '<img src="https://'. bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide('.$i.')" class="hover-shadow cursor"/>' ; ?>
                                                                         </li>
                                                                         <?php
                                                                         $i++;
