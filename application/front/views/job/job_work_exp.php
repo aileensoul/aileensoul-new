@@ -403,7 +403,11 @@
          </div>
       </section>
       <!-- END CONTAINER -->
-  
+
+<footer>        
+<?php echo $footer;  ?>
+</footer>
+
 <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js') ?>"></script>
 <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
