@@ -1705,20 +1705,14 @@ jQuery.noConflict();
                 type: "POST",
                 data: {"image": resp},
                 beforeSend: function (data) {
-                    document.getElementById('message1').style.display="block";
+                    document.getElementById('message1').style.display = "block";
                 },
                 success: function (data) {
-                    html = '<img id="image_src" name="image_src" src="' + resp + '" />';
-                    if (html)
-                    {
-                        document.getElementById('row2').style.display = "block";
-                        document.getElementById('row1').style.display = "none";
-                        document.getElementById('message1').style.display = "none";
-                        $('#row2').html(html);
-
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    $('#row2').html(data);
 //                        window.location.reload();
-                    }
-
                 }
             });
         });

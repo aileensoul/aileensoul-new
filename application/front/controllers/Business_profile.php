@@ -6,8 +6,7 @@ if (!defined('BASEPATH'))
 class Business_profile extends MY_Controller {
 
     public $data;
-    public $s3;
-    
+
     public function __construct() {
         parent::__construct();
 
@@ -17,8 +16,8 @@ class Business_profile extends MY_Controller {
         $this->load->helper('smiley');
         //AWS access info start
         $this->load->library('S3');
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+//        $s3 = new S3(awsAccessKey, awsSecretKey);
+//        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         //AWS access info end
 
 
@@ -1343,9 +1342,8 @@ class Business_profile extends MY_Controller {
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
 
-//                        $this->load->library('S3');
-//                        $s3 = new S3(awsAccessKey, awsSecretKey);
-//                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+                        $s3 = new S3(awsAccessKey, awsSecretKey);
+                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
                         $abc = $s3->putObjectFile($main_image, bucket, $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'], S3::ACL_PUBLIC_READ);
 
 //                        echo $s3file = 'https://' . bucket . '.s3.amazonaws.com/'.$this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -3929,10 +3927,15 @@ class Business_profile extends MY_Controller {
         $user_bg_path = $this->config->item('bus_bg_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
-        $file = $user_bg_path.$imageName;
+        $file = $user_bg_path . $imageName;
         $success = file_put_contents($file, $data);
+       
+        $main_image = $user_bg_path.$imageName;
         
-        
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
 
         $user_thumb_path = $this->config->item('bus_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('bus_bg_thumb_width');
@@ -3941,6 +3944,9 @@ class Business_profile extends MY_Controller {
         $upload_image = $user_bg_path . $imageName;
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
+        $thumb_image = $user_thumb_path.$imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+        
         $data = array(
             'profile_background' => $imageName
         );
@@ -3948,7 +3954,9 @@ class Business_profile extends MY_Controller {
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
         $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
 
-        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
+//        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
+        echo '<img id="image_src" name="image_src" src = "https://' . bucket . '.s3.amazonaws.com/' . $main_image . '" />';
+        
     }
 
     public function imagedata() {
