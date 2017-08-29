@@ -8736,12 +8736,10 @@ class Business_profile extends MY_Controller {
         //if user deactive profile then redirect to business_profile/index untill active profile End
 
         $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
-        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
-        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+        $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = 'contact_id,contact_from_id,contact_to_id,contact_type,created_date,modify_date as action_date,status,contact_desc,not_read', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         $unique_user = array_merge($contactperson_req, $contactperson_con);
 
 
@@ -8832,7 +8830,7 @@ class Business_profile extends MY_Controller {
 
                     $contactdata .= '<li>';
                     $contactdata .= '<div class="addcontact-left custome-approved-contact">';
-                    $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                    $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
@@ -8860,6 +8858,9 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '<div class="addcontact-text_full">';
                     $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
                     //$contactdata .= '' . $inddata[0]['industry_name'] . '';
+                    $contactdata .= '<br><span class="data_noti_msg">';
+                    $contactdata .= $this->time_elapsed_string($contact['action_date']);
+                    $contactdata .= '</span>';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
@@ -8870,7 +8871,7 @@ class Business_profile extends MY_Controller {
         }
 
         if ($contactperson) {
-            $seeall = '<a class="fr" href="' . base_url() . 'business_profile/contact_list">See All</a>';
+            $seeall = '<a class="fr" href="' . base_url() . 'business-profile/contact-list">See All</a>';
         } else {
             $seeall = '<div class="fw"><div class="art-img-nn">
                                                 <div class="art_no_post_img">
@@ -8900,7 +8901,7 @@ class Business_profile extends MY_Controller {
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
-            redirect('business_profile/');
+            redirect('business-profile/');
         }
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
@@ -8909,7 +8910,7 @@ class Business_profile extends MY_Controller {
         $contactid = $person[0]['contact_id'];
         if ($status == 1) {
             $data = array(
-                'modify_date' => date('Y-m-d', time()),
+                'modify_date' => date('Y-m-d H:i:s', time()),
                 'status' => 'confirm',
                 'not_read' => 2
             );
