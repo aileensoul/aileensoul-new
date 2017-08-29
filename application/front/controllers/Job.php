@@ -107,6 +107,8 @@ class Job extends MY_Controller {
         $skildata = explode(',', $userdata[0]['language']);
         $this->data['selectdata'] = $skildata;
 
+         $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/index', $this->data);
     }
 
@@ -323,7 +325,7 @@ class Job extends MY_Controller {
         }
 
        
-
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
         $this->load->view('job/job_education', $this->data);
     }
 
@@ -1060,6 +1062,8 @@ class Job extends MY_Controller {
             }
         }
 
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/job_project', $this->data);
     }
 
@@ -1178,8 +1182,9 @@ class Job extends MY_Controller {
    $this->data['work_skill'] = implode(',', $detailes); 
    $this->data['work_city'] = implode(',', $cities); 
   
+   $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
 
-        $this->load->view('job/job_skill', $this->data);
+   $this->load->view('job/job_skill', $this->data);
     }
 
     public function job_skill_insert() {  
@@ -1319,6 +1324,8 @@ class Job extends MY_Controller {
             }
         }
       
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/job_work_exp', $this->data);
     }
 
@@ -1863,10 +1870,11 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $this->data['count_profile']=  $count_profile;
      $this->data['count_profile_value']= ($count_profile/100);
 
+      $jobseeker_name = $this->get_jobseeker_name($id);
+      $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
+
         $this->load->view('job/job_printpreview', $this->data);
-        //for getting other skill data
-        $contition_array = array('user_id' => $userid, 'type' => 3, 'status' => 1);
-        $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
     }
 
     //job seeker PRINTDATA controller end
@@ -2121,6 +2129,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $this->data['count_profile']=  $count_profile;
      $this->data['count_profile_value']= ($count_profile/100);
 
+      $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/job_all_post', $this->data);
     }
 
@@ -2336,6 +2346,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $this->data['count_profile_value']= ($count_profile/100);
 
 //For Counting Profile data End
+     $jobseeker_name = $this->get_jobseeker_name($id);
+     $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
         $this->load->view('job/job_applied_post', $this->data);
     }
@@ -2536,6 +2548,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 //For Counting Profile data End
 
 
+     $jobseeker_name = $this->get_jobseeker_name($id);
+     $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
         $this->load->view('job/job_save_post', $this->data);
     }
@@ -3632,4 +3646,17 @@ public function job_avail_check($userid = " ")
         }
   }
 //if user deactive profile then redirect to job/index untill active profile End
+
+//Get Job Seeker Name for title Start
+public function get_jobseeker_name($id=''){
+
+        $userid = $this->session->userdata('aileenuser');
+       
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        return $jobseeker_name = $jobdata[0]['fname'].' '.$jobdata[0]['lname'];    
+    }
+//Get Job Seeker Name for title End
+
 }

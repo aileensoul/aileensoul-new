@@ -3251,9 +3251,6 @@ class Search extends CI_Controller {
         }
 
 
-
-
-
         $this->data['demo'] = array_values($result1);
         //echo "<pre>"; print_r($this->data['demo']);die();
 

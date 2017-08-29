@@ -5,7 +5,7 @@
       <?php  echo $head; ?>
       <!-- END HEAD -->
 
-       <title>Work Area - Aileensoul.com</title>
+      <title><?php echo $title; ?></title>
 
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
