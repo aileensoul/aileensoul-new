@@ -136,7 +136,7 @@ function followuser(clicked_id)
 $(document).ready(function () {
                 art_home_post();
                 art_home_three_user_list();
-                art_home_cellphone_user_list();
+               // art_home_cellphone_user_list();
 
                  $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -224,22 +224,22 @@ var isProcessing = false;
             }
 
 
-             function art_home_cellphone_user_list() {
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + "artistic/art_home_cellphone_user_list",
-                    //url: '<?php echo base_url() . "artistic/art_home_three_user_list/" ?>',
-                    data: '',
-                    dataType: "html",
-                    beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
-                    },
-                    success: function (data) { //alert(data);
-                        $('.loader').remove();
-                        $('.profile-boxProfileCard_follow_mobile').html(data);
-                    }
-                });
-            }
+            //  function art_home_cellphone_user_list() {
+            //     $.ajax({
+            //         type: 'POST',
+            //         url: base_url + "artistic/art_home_cellphone_user_list",
+            //         //url: '<?php echo base_url() . "artistic/art_home_three_user_list/" ?>',
+            //         data: '',
+            //         dataType: "html",
+            //         beforeSend: function () {
+            //             $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+            //         },
+            //         success: function (data) { //alert(data);
+            //             $('.loader').remove();
+            //             $('.profile-boxProfileCard_follow_mobile').html(data);
+            //         }
+            //     });
+            // }
 
 
  $(document).ready(function () {

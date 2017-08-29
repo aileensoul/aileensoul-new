@@ -33,7 +33,6 @@
              
             </div>
          </div>
-
          <div class="custom_footer_left fw">
           <div class="fl">
             <ul>
