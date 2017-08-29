@@ -1638,7 +1638,26 @@ function imgval(event) {
                    var foundPresent1 = $.inArray(ext1, allowedExtensions) > -1;
    
                    if (foundPresent1 == true && fileInput.length <= 10) {
-                   } else {
+                   } else if(fileInput.length > 10){
+
+
+                    $('#post .mes').html("<div class='pop_content'>You can't upload more than 10 images at a time.");
+                       $('#post').modal('show');
+                       //setInterval('window.location.reload()', 10000);
+                       // window.location='';
+                        $( document ).on( 'keydown', function ( e ) {
+                     if ( e.keyCode === 27 ) {
+                   //$( "#bidmodal" ).hide();
+                   $('#post').modal('hide');
+                   $('.modal-post').show();
+   
+                  }
+               });  
+   
+                       event.preventDefault();
+                       return false;
+
+                   }else if(foundPresent1 == false){
    
                        $('#post .mes').html("<div class='pop_content'>You can only upload one type of file at a time...either photo or video or audio or pdf.");
                        $('#post').modal('show');
