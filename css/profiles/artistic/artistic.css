@@ -249,9 +249,9 @@ label.cameraButton input[accept*="camera"] {display: none;}
 .bui_art_left_box .profile-boxProfileCard-content {position: relative; background-color: #e8f3f8;}
 .bui_art_left_box .left_side_box_img {float: left;}
 .bui_art_left_box .buisness-profile-txext {z-index: 1; position: relative; display: inline-block; width: 24%; padding-right: 1px !important; padding-left: 1px !important;}
-.bui_art_left_box .profile-boxProfilebuisness-avatarLink2 {background-color: transparent; border-radius: 6px; margin: 9px 0 8px 4px; border: none; height: 60px; width: 60px; padding: 1px; vertical-align: bottom; border: 3px solid #ffffff;}
+.bui_art_left_box .profile-boxProfilebuisness-avatarLink2 {background-color: transparent; border-radius: 6px; margin: 9px 0 8px 4px; border: none; height: 60px; width: 60px; padding: 1px; vertical-align: bottom;}
 
-.bui_art_left_box .a-inlineBlock {display: inline-block!important; width: 75px; z-index: 3; position: relative; height: 75px;}
+.bui_art_left_box .a-inlineBlock {display: inline-block!important; width: 60px; z-index: 3; position: relative; height: 60px;}
 .bui_art_left_box .profile-boxProfileCard-content .buisness-profile-txext a img {height: 100%; width: 100%; z-index: 3; .position: relative;}
 .bui_art_left_box .right_left_box_design {padding: 7px 9px 0px 5px; width: 76%; display: inline-block; float: left;}
 .bui_art_left_box .right_left_box_design .profile-company-name {display: block; max-width: 100%; overflow: hidden; 
@@ -314,7 +314,6 @@ line-height: 1;}
     width: 350px;
     position: fixed;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
-.editor-content{width: 89%;}
 .profile-boxProfileCard_follow ul{width: 100%;}
 .full-box-module_follow{margin-top: 0px;}
 
@@ -542,7 +541,7 @@ line-height: 1;}
     margin-bottom: 5px;
 }
 .editor-content {
-    width: 90%;
+    width: 89%;
     float: left;
 }
 .popup-text {
