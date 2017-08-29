@@ -101,11 +101,42 @@ function followuser(clicked_id)
    }
 
 
+   function followusercell(clicked_id)
+   {
+   
+       $("#fadcell" + clicked_id).fadeOut(6000);
+   
+   
+       $.ajax({
+           type: 'POST',
+           url: base_url + "artistic/follow_home",
+           //url: '<?php echo base_url() . "artistic/follow_two" ?>',
+            dataType: 'json',
+           data: 'follow_to=' + clicked_id,
+           success: function (data) {
+   
+               $('.' + 'fr' + clicked_id).html(data.follow);
+               $('#countfollow').html(data.count);
+   
+           }
+   
+   
+       });
+   
+   }
+
+    function followclosecell(clicked_id)
+   { //alert("hii");
+       $("#fadcell" + clicked_id).fadeOut(3000);
+   }
+
+
 
 
 $(document).ready(function () {
                 art_home_post();
                 art_home_three_user_list();
+                art_home_cellphone_user_list();
 
                  $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -188,6 +219,24 @@ var isProcessing = false;
                     success: function (data) { //alert(data);
                         $('.loader').remove();
                         $('.profile-boxProfileCard_follow').html(data);
+                    }
+                });
+            }
+
+
+             function art_home_cellphone_user_list() {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "artistic/art_home_cellphone_user_list",
+                    //url: '<?php echo base_url() . "artistic/art_home_three_user_list/" ?>',
+                    data: '',
+                    dataType: "html",
+                    beforeSend: function () {
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    },
+                    success: function (data) { //alert(data);
+                        $('.loader').remove();
+                        $('.profile-boxProfileCard_follow_mobile').html(data);
                     }
                 });
             }
