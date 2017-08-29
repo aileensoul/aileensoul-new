@@ -28,11 +28,12 @@
                <div class="seeall">
                   <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
                </div>
-               <div class="profile-boxProfileCard_follow  module">     
+               <div class="profile-boxProfileCard_follow_mobile  module">     
                </div>
              
             </div>
          </div>
+
          <div class="custom_footer_left fw">
           <div class="fl">
             <ul>
