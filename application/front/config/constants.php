@@ -47,6 +47,11 @@ else
   			
 
 define('SITEPATH',$_SERVER['DOCUMENT_ROOT'].'/aileensoul/');
+
+define('TITLEPOSTFIX','- Aileensoul.com');
+
+
+
 define('ARTISTICUPLOAD', SITEPATH.'uploads/art_images/');
 define('USERUPLOAD', SITEPATH.'uploads/user_image/');
 

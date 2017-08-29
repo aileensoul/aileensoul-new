@@ -906,7 +906,8 @@ class Business_profile extends MY_Controller {
             $post[$key] = $row['business_profile_post_id'];
         }
         array_multisort($post, SORT_DESC, $new);
-
+        
+        $this->data['title'] = 'Business-Home'.TITLEPOSTFIX;
         $this->data['businessprofiledatapost'] = $new;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
         $this->load->view('business_profile/business_profile_post', $this->data);

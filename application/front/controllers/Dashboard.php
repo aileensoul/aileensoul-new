@@ -38,7 +38,8 @@ class Dashboard extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        
+        $this->data['title'] = 'Dashboard - Aileensoul.com';
         $this->load->view('dashboard/cover', $this->data);
     }
 
