@@ -3589,6 +3589,8 @@ public function followtwo() {
             // $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
+        $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($update) {
 
@@ -3598,7 +3600,17 @@ public function followtwo() {
                   $follow .= '</div>'; */
                 $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')">Following</button>';
                 $follow .= '</div>';
-                echo $follow;
+
+                $datacount = '('.count($followcount).')';
+
+
+                
+                 echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
+
             }
         } else {
             $data = array(
@@ -3625,6 +3637,10 @@ public function followtwo() {
             $insert_id = $this->common->insert_data_getid($data, 'notification');
             // end notoification
 
+
+             $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             if ($insert) {
 
                 $follow = '<div class=" user_btn follow_btn_'.$art_id.'" id="unfollowdiv">';
@@ -3632,7 +3648,14 @@ public function followtwo() {
                   $follow .= '</div>'; */
                 $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')">Following</button>';
                 $follow .= '</div>';
-                echo $follow;
+
+                $datacount = '('.count($followcount).')';
+
+                echo json_encode(
+                        array(
+                            "follow" => $follow,
+                            "count" => $datacount,
+                ));
             }
         }
     }
@@ -3717,6 +3740,10 @@ public function followtwo() {
                 'follow_status' => 0,
             );
             $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+            $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
+        $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
             if ($update) {
 
 
@@ -3728,7 +3755,15 @@ public function followtwo() {
                                Follow 
                       </button></div>';
 
-                echo $unfollow;
+                $datacount = '('.count($followcount).')';
+
+
+                
+                 echo json_encode(
+                        array(
+                            "follow" => $unfollow,
+                            "count" => $datacount,
+                ));
             }
         }
     }
