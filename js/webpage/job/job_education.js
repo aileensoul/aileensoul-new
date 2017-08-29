@@ -332,22 +332,12 @@
    }, "No space please and don't leave it empty");
 
   
-    $.validator.addMethod("valueNotEquals", function(value, element, arg){ 
+     $.validator.addMethod("valueNotEquals", function(value, element, arg){ 
       if(arg == value)
       { 
-         if(($.fancybox.open()))
+         if ($('.message').length > 0) 
          {
-                  
-               if($('#input1 #university1').hasClass('error') )
-               {
-                     
-             
-                     $("#input1 .university").removeClass("error");
-                     $('label.error').remove();
-                    return false;     
-                }
-
-          
+                    return true;     
          }
 
          return false;
@@ -356,7 +346,7 @@
       {
          return true;
       }
- }, "Other Option Selection Is Not Valid");
+    }, "Other Option Selection Is Not Valid");
 
    
    $.validator.addMethod("regx", function(value, element, regexpr) {          
@@ -379,6 +369,7 @@
                'degree[]': {
    
                    required: true,
+                   valueNotEquals: 54,
    
                },
    
