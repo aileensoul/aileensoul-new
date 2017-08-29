@@ -109,98 +109,63 @@ class Search extends CI_Controller {
                 }
             }
             //echo "<pre>"; print_r($artskillpost); die();
+
+
+
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or art_yourart LIKE '%$searchskill%')";
             // echo $search_condition;
             $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($other['data']); die();
+            //echo "<pre>"; print_r($otherdata); die();
 
+            foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
+               
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
+
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+            //echo "<pre>"; print_r($artpostone); die();
+
+            }
+            foreach ($artpostone as $keyone => $valueone) {
+               
+               foreach ($valueone as $keytwo => $valuetwo) {
+                   $posttwo[] = $valuetwo;
+               }
+            } //echo "<pre>"; print_r($posttwo); die();
 
             $join_str[0]['table'] = 'art_reg';
             $join_str[0]['join_table_id'] = 'art_reg.user_id';
             $join_str[0]['from_table_id'] = 'art_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('art_post.user_id !=' => $userid, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
+            $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
 
-            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
 
 
-            $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-            // echo "<pre>"; print_r($artpost); die();
-            $fullname = explode(" ", $searchskill);
-
-            // echo "<pre>"; print_r($fullname) ;
-            if ($fullname[1] == "") {
-                //echo "pallavi";
-                //echo count($artskillpost); 
-
-                if (count($artskillpost) == 0) {
-                    // echo "tt";
+                   if (count($artskillpost) == 0) {
                     $unique = $otherdata;
-                    // echo "<pre>";print_r($unique);die();
                 } else {
-                    //echo "pqr";
                     $unique = array_merge($artskillpost, $otherdata);
-                }
+                } 
 
-
-                // echo "<pre>";print_r($unique);die();
-                // echo count($unique);
-
-                foreach ($unique as $ke => $arr) {
-
-                    $postdata[] = $arr;
-                }
-//die();
-                // echo '<pre>'; print_r($postdata); die();
-
-                $new = array();
-                foreach ($postdata as $value) {
-                    $new[$value['art_id']] = $value;
-                }
-
-
-
-                //echo "<pre>";print_r($new);die();
-            } else {
-                //  echo "panalia"; die();
-                $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
-                $contition_array = array('art_reg.art_step' => 4);
-
-                // echo $search_condition;
-                $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                // echo "<pre>"; print_r($artfullname);
-
-                if (count($artskillpost) == 0) {
-                    $unique = array_merge($otherdata, $artfullname);
+                $new = array_unique($unique, SORT_REGULAR);
+                if (count($artposttwo) == 0) {
+                    $uniquedata = $posttwo;
                 } else {
-                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
+                    $uniquedata = array_merge($artposttwo, $posttwo);
                 }
+                $artpost = array_unique($uniquedata, SORT_REGULAR);                
+//echo "<pre>"; print_r($artpost); die();
 
-
-                // $unique=array_merge($artskillpost,$artpost,$otherdata,$artfullname);
-                // echo count($unique);
-
-                foreach ($unique as $ke => $arr) {
-
-
-                    $postdata[] = $arr;
-                }
-
-                $new = array();
-                foreach ($postdata as $value) {
-                    $new[$value['art_id']] = $value;
-                }
-
-
-
-                // echo "<pre>";print_r($new);die();
-            }
         } else {
             // echo "both";
 
@@ -238,6 +203,27 @@ class Search extends CI_Controller {
             $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             // echo "<pre>"; print_r($otherdata); 
 
+            foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
+               
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
+
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+            //echo "<pre>"; print_r($artpostone); die();
+
+            }
+            foreach ($artpostone as $keyone => $valueone) {
+               
+               foreach ($valueone as $keytwo => $valuetwo) {
+                   $posttwo[] = $valuetwo;
+               }
+            } 
+
+
             $join_str[0]['table'] = 'art_reg';
             $join_str[0]['join_table_id'] = 'art_reg.user_id';
             $join_str[0]['from_table_id'] = 'art_post.user_id';
@@ -247,91 +233,33 @@ class Search extends CI_Controller {
 
 
             $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
-            $artpost = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($artpost);
 
             $fullname = explode(" ", $searchskill);
 
 
-
-
-            // echo $fullname;
-            if ($fullname[1] == "") {
-
-                if (count($artskillpost) == 0) {
-                    $unique = array_merge($otherdata, $artfullname);
+            if (count($artskillpost) == 0) {
+                    $unique = $otherdata;
                 } else {
-                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
-                }
-                // echo count($unique);
+                    $unique = array_merge($artskillpost, $otherdata);
+                } 
 
-                foreach ($unique as $ke => $arr) {
-
-
-                    $postdata[] = $arr;
-                }
-//die();
-                // echo '<pre>'; print_r($postdata); die();
-
-                $new = array();
-                foreach ($postdata as $value) {
-                    $new[$value['art_id']] = $value;
-                }
-
-
-
-                // echo "<pre>";print_r($new);die();
-            } else {
-
-                $search_condition = "(art_name LIKE '%$fullname[0]%' or art_lastname LIKE '%$fullname[1]%')";
-
-                // echo $search_condition;
-                $contition_array = array('art_reg.art_city' => $cache_time, 'art_step' => 4);
-                $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-                // echo "<pre>"; print_r($artfullname);
-
-
-
-                if (count($artskillpost) == 0) {
-                    $unique = array_merge($otherdata, $artfullname);
+                $new = array_unique($unique, SORT_REGULAR);
+                if (count($artposttwo) == 0) {
+                    $uniquedata = $posttwo;
                 } else {
-                    $unique = array_merge($artskillpost, $otherdata, $artfullname);
+                    $uniquedata = array_merge($artposttwo, $posttwo);
                 }
-                // echo count($unique);
+                $artpost = array_unique($uniquedata, SORT_REGULAR);  
 
-                foreach ($unique as $ke => $arr) {
-
-
-                    $postdata[] = $arr;
-                }
-
-                $new = array();
-                foreach ($postdata as $value) {
-                    $new[$value['art_id']] = $value;
-                }
-
-
-
-                // echo "<pre>";print_r($new);
-            }
         }
-
-
-        //echo "<pre>";print_r($new); die();
 
 
         $this->data['artuserdata'] = $new;
 
-        $this->data['artuserdata1'] = $artpost;
+        $this->data['artpostdata'] = $artpost;
 
-        //echo "<pre>";print_r($artpost['art_description']); die();
-        //   echo "*********";
-        // echo "<pre>"; print_r($this->data['artuserdata']);
-        // echo "---------------";
-        // echo "<pre>"; print_r($this->data['artuserdata1']);
-        // die();
         // code for search
         $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4);
 
@@ -354,12 +282,7 @@ class Search extends CI_Controller {
             array_push($return_array, $return);
             //echo $returnarray; 
         }
-        //        echo "<pre>";print_r($return_array);
-        // $unique_items=array_unique($return_array);
-        //  echo "<pre>";print_r($unique_items);die();
-        // $contition_array = array('status' => '1');
-        // $artpost= $this->data['results'] =  $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+       
         $contition_array = array('status' => '1', 'type' => '2');
 
         $artpost = $this->data['results'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
