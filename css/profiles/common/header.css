@@ -945,6 +945,10 @@ max-width: 100%;}
 .profile-boxProfileCard_follow ul li{float: left; width: 100%;}
 
 .profile-boxProfileCard_follow ul{float: left;}
+
+.profile-boxProfileCard_follow_mobile ul li{float: left; width: 100%;}
+
+.profile-boxProfileCard_follow_mobile ul{float: left;}
 /*freelancer*/
 .custom_footer_left{background: white; border:1px solid #d9d9d9; padding: 8px; border-radius: 2px; margin-bottom: 20px;}
 
@@ -972,6 +976,8 @@ max-width: 100%;}
 .profile-boxProfileCard_follow ul li{width: 100%!important; border-bottom: none;}
 .profile-boxProfileCard_follow ul li .contact-frnd-post{padding: 2px 8px 0;}
 
+.profile-boxProfileCard_follow_mobile ul li{width: 100%!important; border-bottom: none;}
+.profile-boxProfileCard_follow_mobile ul li .contact-frnd-post{padding: 2px 8px 0;}
 
 
 /*zalak start 29-8*/
