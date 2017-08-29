@@ -2,7 +2,7 @@
     <div class="profile-boxProfileCard  module">
         <div class="profile-boxProfileCard-cover"> 
             <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-               href="<?php echo base_url('business-profile/dashboard'); ?>"
+               href="<?php echo base_url('business-profile/dashboard/'. $businessdata[0]['business_slug']); ?>"
                tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo $businessdata[0]['company_name']; ?>">
                 <!-- BOX IMAGE START -->
                 <?php if ($businessdata[0]['profile_background'] != '') { ?>
@@ -18,7 +18,7 @@
         <div class="profile-boxProfileCard-content clearfix">
             <div class="left_side_box_img buisness-profile-txext">
 
-                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business-profile/dashboard'); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
+                <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo base_url('business-profile/dashboard/'. $businessdata[0]['business_slug']); ?>" title="<?php echo $businessdata[0]['company_name']; ?>" tabindex="-1" aria-hidden="true" rel="noopener" >
                     <?php
                     if ($businessdata[0]['business_user_image']) {
                         ?>
@@ -44,14 +44,14 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
             </div>
             <div class="right_left_box_design ">
                 <span class="profile-company-name ">
-                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
+                    <a  href="<?php echo base_url('business-profile/dashboard/'. $businessdata[0]['business_slug']); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
                         <?php echo ucwords($businessdata[0]['company_name']); ?>
                     </a> 
                 </span>
 
                 <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                 <div class="profile-boxProfile-name">
-                    <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
+                    <a  href="<?php echo base_url('business-profile/dashboard/'. $businessdata[0]['business_slug']); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                         <?php
                         if ($category) {
                             echo $category;
@@ -65,7 +65,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                     <li
                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'dashboard') { ?> class="active" 
                         <?php } ?>>
-                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business-profile/dashboard'); ?>">Dashboard
+                        <a  class="padding_less_left" title="Dashboard" href="<?php echo base_url('business-profile/dashboard/'. $businessdata[0]['business_slug']); ?>">Dashboard
                         </a>
                     </li>
                     <li 

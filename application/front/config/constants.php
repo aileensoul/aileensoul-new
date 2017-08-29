@@ -48,7 +48,7 @@ else
 
 define('SITEPATH',$_SERVER['DOCUMENT_ROOT'].'/aileensoul/');
 
-define('TITLEPOSTFIX','- Aileensoul.com');
+define('TITLEPOSTFIX',' - Aileensoul.com');
 
 
 

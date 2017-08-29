@@ -68,6 +68,7 @@ $route['privacy-policy'] = "main/privacy_policy";
 $route['business-profile'] = "business_profile/index";
 $route['business-profile/business-information-insert'] = "business_profile/business_information_insert";
 $route['business-profile/business-information-update'] = "business_profile/business_information_update";
+$route['business-profile/business-information-edit'] = "business_profile/business_information_update";
 
 $route['business-profile/contact-information'] = "business_profile/contact_information";
 $route['business-profile/contact-information-insert'] = "business_profile/contact_information_insert";

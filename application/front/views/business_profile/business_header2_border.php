@@ -84,14 +84,42 @@
                                             <span id="addcontact_count"></span>
                                         </a>
                                         <div id="addcontactContainer">
-                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business-profile/contact-list'); ?>">See All</a></div>
                                             <div id="addcontactBody" class="notifications">
+                                                <?php
+                                                $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
+                                                $contactperson_req = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                                $contition_array = array('contact_from_id' => $userid, 'status' => 'confirm');
+                                                $contactperson_con = $this->common->select_data_by_condition('contact_person', $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                                                $unique_user = array_merge($contactperson_req, $contactperson_con);
+
+                                                $new = array();
+                                                foreach ($unique_user as $value) {
+                                                    $new[$value['contact_id']] = $value;
+                                                }
+
+                                                $post = array();
+
+                                                foreach ($new as $key => $row) {
+                                                    $post[$key] = $row['contact_id'];
+                                                }
+                                                array_multisort($post, SORT_DESC, $new);
+
+                                                $contactperson = $new;
+                                                ?>
+                                                <div id="addcontactTitle">Contact Request <span class="see_link" id="seecontact"></span></div>
+                                                <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
+                                                    <div>
+                                                        <ul class="notification_data_in_con">
+                                                        </ul></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                           <!--  <span class="badge bg-theme"><?php //echo $message_count;      ?></span> -->
+                                                                                               <!--  <span class="badge bg-theme"><?php //echo $message_count;          ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
@@ -114,11 +142,11 @@
                                                     <div class="my_S">Account</div>
                                                 </span>
                                                 <a href="<?php echo base_url('business-profile/business_resume/' . $businessdata[0]['business_slug']); ?>">
-                                                <span class="icon-view-profile edit_data"></span>
-      <span> View Profile </span></a> 
+                                                    <span class="icon-view-profile edit_data"></span>
+                                                    <span> View Profile </span></a> 
                                                 <a href="<?php echo base_url('business-profile/business_information_update'); ?>">
-                                                <span class="icon-edit-profile edit_data"></span>  
-      <span>Edit Profile </span></a>
+                                                    <span class="icon-edit-profile edit_data"></span>  
+                                                    <span>Edit Profile </span></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
@@ -171,16 +199,20 @@
                                     <!-- Friend Request Start-->
                                     <li id="add_contact">
                                         <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
-                                           <!--  <span class="hidden-xs">Contact Request &nbsp;</span>  -->
                                             <span class="bu_req"></span>
                                             <span id="addcontact_count"></span>
                                         </a>
                                         <div id="addcontactContainer">
-                                            <div id="addcontactTitle">Contact Request <a class="fr" href="<?php echo base_url('business-profile/contact-list'); ?>">See All</a></div>
                                             <div id="addcontactBody" class="notifications">
+                                                <div id="addcontactTitle">Contact Request <span class="see_link" id="seecontact"></span></div>
+                                                <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
+                                                    <div>
+                                                        <ul class="notification_data_in_con">
+                                                        </ul></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </li>  
+                                    </li>   
                                     <li id="Inbox_link">
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
@@ -200,11 +232,11 @@
                                                     <div class="my_S">Account</div>
                                                 </span>
                                                 <a href="<?php echo base_url('business-profile/details/' . $businessdata[0]['business_slug']); ?>">
-                                                <span class="icon-view-profile edit_data"></span>
-      <span> View Profile </span></a> 
+                                                    <span class="icon-view-profile edit_data"></span>
+                                                    <span> View Profile </span></a> 
                                                 <a href="<?php echo base_url('business-profile/business-information-edit'); ?>">
-                                                <span class="icon-edit-profile edit_data"></span>  
-      <span>Edit Profile </span></a>
+                                                    <span class="icon-edit-profile edit_data"></span>  
+                                                    <span>Edit Profile </span></a>
                                                 <?php
                                                 $userid = $this->session->userdata('aileenuser');
                                                 ?>
@@ -269,8 +301,12 @@
         $.ajax({
             url: "<?php echo base_url(); ?>business_profile/contact_notification",
             type: "POST",
+            dataType: 'json',
+            data: '',
             success: function (data) {
-                $('#addcontactBody').html(data);
+//                $('#addcontactBody').html(data.seeall);
+                $('.notification_data_in_con').html(data.contactdata);
+                $('#seecontact').html(data.seeall);
             }
         });
     }
@@ -293,15 +329,15 @@
                 $('#addcontactBody').html(data.contactdata);
                 $('.contactcount').html(data.contactcount);
                 var segment = '<?php echo $this->uri->segment(2); ?>';
-                if(segment == 'contacts'){
+                if (segment == 'contacts') {
                     var slug = '<?php echo $slug_id; ?>';
                     $('.art-img-nn').hide();
                     business_contacts_header(slug);
                 }
-                
-                var not_contact_count =  $('.addcontact-left').length;
-                if(not_contact_count == 0){
-                    
+
+                var not_contact_count = $('.addcontact-left').length;
+                if (not_contact_count == 0) {
+
                     var data_html = "<li><div class='art-img-nn' id='art-blank'><div class='art_no_post_img'><img src='<?php echo base_url(); ?>img/No_Contact_Request.png'></div><div class='art_no_post_text'>No Contact Request Available.</div></div></li>";
                     $('#contactlist').html(data_html);
                 }

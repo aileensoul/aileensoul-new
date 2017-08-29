@@ -224,7 +224,7 @@ class Business_profile extends MY_Controller {
                 $this->data['address1'] = $userdata[0]['address'];
             }
         }
-
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->load->view('business_profile/business_info', $this->data);
     }
 
@@ -371,7 +371,7 @@ class Business_profile extends MY_Controller {
                 $this->data['contactwebsite1'] = $userdata[0]['contact_website'];
             }
         }
-
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->load->view('business_profile/contact_info', $this->data);
     }
 
@@ -476,6 +476,7 @@ class Business_profile extends MY_Controller {
                 $this->data['other_industry'] = $userdata[0]['other_industrial'];
             }
         }
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->load->view('business_profile/description', $this->data);
     }
 
@@ -548,6 +549,7 @@ class Business_profile extends MY_Controller {
                 $this->data['busimage'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'image_id,image_name,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
         }
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->load->view('business_profile/image', $this->data);
     }
 
@@ -907,7 +909,7 @@ class Business_profile extends MY_Controller {
         }
         array_multisort($post, SORT_DESC, $new);
         
-        $this->data['title'] = 'Business-Home'.TITLEPOSTFIX;
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->data['businessprofiledatapost'] = $new;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
         $this->load->view('business_profile/business_profile_post', $this->data);
@@ -940,7 +942,9 @@ class Business_profile extends MY_Controller {
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
-
+        
+        $company_name = $this->get_company_name($id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
 //manage post end
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_profile_manage_post', $this->data);
@@ -2780,7 +2784,9 @@ class Business_profile extends MY_Controller {
             $this->data['busimagedata'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-
+        $company_name = $this->get_company_name($id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
+        
 //manage post end
         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_resume', $this->data);
@@ -2887,9 +2893,11 @@ class Business_profile extends MY_Controller {
 //location automatic retrieve controller End
 // user list of artistic users
 
-    public function userlist() {
+    public function userlist($id='') {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
+        
+        $compnay_name = $this->get_company_name($id);
+        $this->data['title'] =$compnay_name.TITLEPOSTFIX;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
         $this->load->view('business_profile/business_userlist', $this->data);
     }
@@ -3440,6 +3448,10 @@ class Business_profile extends MY_Controller {
 
     public function followers($id = "") {
         $this->data['slug_id'] = $id;
+        
+        $company_name = $this->get_company_name($id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
+        
         $this->load->view('business_profile/business_followers', $this->data);
     }
 
@@ -3592,6 +3604,10 @@ class Business_profile extends MY_Controller {
 
     public function following($id = "") {
         $this->data['slug_id'] = $id;
+        
+        $company_name = $this->get_company_name($id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
+        
         $this->load->view('business_profile/business_following', $this->data);
     }
 
@@ -5154,8 +5170,13 @@ class Business_profile extends MY_Controller {
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
-        $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $this->data['busienss_data'] = $busienss_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+//        echo '<pre>';
+//        print_r($busienss_data);
+//        exit;
+        
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
         $this->load->view('business_profile/postnewpage', $this->data);
     }
@@ -5363,9 +5384,7 @@ class Business_profile extends MY_Controller {
 
 
     public function business_photos($id) {
-
         $userid = $this->session->userdata('aileenuser');
-
         $contition_array = array('user_id' => $userid, 'status' => '1');
 
         $this->data['slug_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5398,6 +5417,9 @@ class Business_profile extends MY_Controller {
             $data = 'business_profile_post_id, image_id, image_name';
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
+        $company_name = $this->get_company_name($slug_id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
+        
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
         $this->load->view('business_profile/business_photos', $this->data);
     }
@@ -5430,6 +5452,8 @@ class Business_profile extends MY_Controller {
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
+        $company_name = $this->get_company_name($slug_id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
         $this->load->view('business_profile/business_videos', $this->data);
     }
 
@@ -5463,6 +5487,8 @@ class Business_profile extends MY_Controller {
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
+        $company_name = $this->get_company_name($slug_id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
         $this->load->view('business_profile/business_audios', $this->data);
     }
 
@@ -5495,6 +5521,8 @@ class Business_profile extends MY_Controller {
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
         $this->data['file_header'] = $this->load->view('business_profile/file_header', $this->data, true);
+        $company_name = $this->get_company_name($slug_id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
         $this->load->view('business_profile/business_pdf', $this->data);
     }
 
@@ -8694,7 +8722,7 @@ class Business_profile extends MY_Controller {
         echo $contactdata;
     }
 
-    public function contact_notification() {
+     public function contact_notification() {
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -8799,11 +8827,7 @@ class Business_profile extends MY_Controller {
                 $contactperson_to = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if ($contactperson_to) {
-
-
                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $contact['contact_to_id'], $data = '*', $join_str = array());
-
-
                     $inddata = $this->common->select_data_by_id('industry_type', 'industry_id', $busdata[0]['industriyal'], $data = '*', $join_str = array());
 
                     $contactdata .= '<li>';
@@ -9063,7 +9087,8 @@ class Business_profile extends MY_Controller {
 
 
         $this->data['friendlist'] = array_merge($friendlist_con, $friendlist_req);
-
+        
+        $this->data['title'] = 'Business Profile'.TITLEPOSTFIX;
         $this->load->view('business_profile/contact_list', $this->data);
     }
 
@@ -9280,6 +9305,10 @@ class Business_profile extends MY_Controller {
 
     public function bus_contact($id = "") {
         $this->data['slug_id'] = $id;
+        
+        $company_name = $this->get_company_name($id);
+        $this->data['title'] = $company_name.TITLEPOSTFIX;
+        
         $this->load->view('business_profile/bus_contact', $this->data);
     }
 
@@ -12095,6 +12124,13 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
 
         echo $return;
+    }
+    public function get_company_name($id=''){
+        $contition_array = array('business_slug' => $id, 'is_deleted' => 0, 'status' => 1);
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        return $company_name = $businessdata[0]['company_name'];
+        
     }
 
 }
