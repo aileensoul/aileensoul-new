@@ -2401,7 +2401,22 @@ padding: 7px 5px 0px 5px;}
  .bui_art_left_box .custom_footer_left ul li{padding-top: 2px;}
 .custom_footer_left{padding: 5px;} 
 .profile-boxProfileCard_follow ul li .contact-frnd-post{padding-top: 0px;}
-.profile-boxProfileCard_follow_mobile ul li .contact-frnd-post{padding-top: 0px;}
+.profile-boxProfileCard_follow_mobile ul li .contact-frnd-post{padding-top: 0px; border: none; padding: 0px 8px 0px 0px;}
 
 /*zalak end 29-8_mobile_mobile_mobile
 */
+
+
+
+
+/*media zalak start*/
+
+@media screen and (max-width: 1200px){
+    .bui_art_left_box .profile-boxProfileCard-content::before {
+    top: 50px;}
+    .right_left_box_design {
+    padding: 11px 4px 13px 13px !important;
+        padding-bottom: 13px;
+}
+}
+/*media zalak end*/
