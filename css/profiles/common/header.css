@@ -971,6 +971,12 @@ max-width: 100%;}
 }
 .profile-boxProfileCard_follow ul li{width: 100%!important; border-bottom: none;}
 .profile-boxProfileCard_follow ul li .contact-frnd-post{padding: 2px 8px 0;}
+
+
+
+/*zalak start 29-8*/
+.post-design-name ul li .post_dot1{font-size: 15px!important;}
+/*zalak end 29-8*/
 @media screen and (max-width:1200px)
 {
     .custom_footer_left ul li a{font-size: 12px;}

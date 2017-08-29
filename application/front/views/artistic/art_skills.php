@@ -1,6 +1,7 @@
 <!--start head -->
 <?php  echo $head; ?>
 <link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>

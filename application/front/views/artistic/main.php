@@ -49,6 +49,7 @@
        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_login.css'); ?>">
        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
+       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
      </head>
 
 

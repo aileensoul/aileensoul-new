@@ -14,7 +14,7 @@
 
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
 
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>
