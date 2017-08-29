@@ -429,7 +429,7 @@ line-height: 1;}
     font-size: 12px;
 }
 .post-design-name_follow {
-    width: 46%;
+    width: 42%;
     overflow: hidden;
 }
 .post-design-name_follow ul {
@@ -1312,7 +1312,7 @@ display: inline-block;
     position: absolute;
     cursor: pointer;
     width: 100%;
-    height: 249px;
+    height: 274px;
     background: rgba(0, 0, 0, 0.5);
 }
 .more-image span {
