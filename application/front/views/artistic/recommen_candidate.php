@@ -14,22 +14,22 @@
 <body>
 <?php echo $header; ?>
  <?php echo $art_header2_border; ?>
-    <div class="user-midd-section" id="paddingtop_fixed">
+    <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
 
 
-       <div class="col-md-4 profile-box profile-box-custom  animated fadeInDownBig"><div class="">
+       <div class="col-md-4 fixed_art profile-box profile-box-custom fixed_left_side animated fadeInDownBig"><div class="">
 <?php echo $left_artistic; ?> 
 </div>
 </div>
 <!-- left side box close -->
 <input type="hidden" name="search" id="search" value="<?php echo $keyword; ?>">
-  <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art animated fadeInUp" >
+  <div class="col-md-7 col-sm-12 fixed_middle_side col-md-push-4 custom-right-art animated fadeInUp" >
                         <div class="common-form">
                             <div class="job-saved-box">
 
-                                <h3 style="background-color: #fff; text-align: center; color: #003;">Search result of 
+                                <h3 style="border-bottom: 1px solid #d9d9d9;  background-color: #fff; text-align: center; color: #003;">Search result of 
                                   <?php  if($keyword != "" && $keyword1 == ""){echo '"' .  $keyword . '"';}
                                   elseif ($keyword == "" && $keyword1 != "") {
                                     echo '"' .  $keyword1 . '"';
