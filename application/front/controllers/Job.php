@@ -1974,34 +1974,51 @@ $work_job_title=$jobdata[0]['work_job_title'];
                  if (count($recommendata) == 0) {
                 
                 $unique = $recommendata1;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
          
                 
             } 
             elseif (count($recommendata1) == 0) {
                 $unique = $recommendata;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_city) == 0) {
                 $unique = $recommendata_city;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_industry) == 0) {
                 $unique = $recommendata_industry;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_industry) == 0) {
                 $unique = $recommendata_title;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
                
             }
             else {
-                $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
-              
+                 $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
+                  $newArray = array();
+                  foreach ($unique as $key => $innerArr1) {
+                       foreach ($innerArr1 as $key1 => $innerArr)
+                      {
+                            $newArray[][] = $innerArr;
+                      }
+                  }
+                  $qbc = array_unique($newArray, SORT_REGULAR);
+                  $qbc  = array_filter($qbc);
             }
         
              
 //array_unique is used for remove duplicate values
-               $qbc = array_unique($unique, SORT_REGULAR);
-                 $qbc  = array_filter($qbc);
+               
                  $this->data['postdetail'] = $qbc;
                  
               
