@@ -171,7 +171,7 @@ class Search extends CI_Controller {
                 $contition_array = array('art_reg.art_step' => 4);
 
                 // echo $search_condition;
-                $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $artfullname = $fullnamedata['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
                 // echo "<pre>"; print_r($artfullname);
