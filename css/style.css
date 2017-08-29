@@ -3765,61 +3765,9 @@ float: right; position:relative;}
   font-family:'arial';
 }
 
-.edit_profile_progress{
- 
-    width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin: 15px 0px; padding: 10px 0px 0px;}
-.progre_bar_text p{color: #000;
-font-size: 13px;
-font-weight: 600;
-text-align: center;}
-
-.edit_profile_progress:hover{
-         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    cursor: pointer;
-
-}
-.progre_bar_text{padding: 0px 17px;}
-.count_main_progress{}
-   .circle-1 {
-  width: 175px;
-  margin: 6px 6px 20px;
-  display: inline-block;
-  position: relative;
-  text-align: center;
-  line-height: 1.2;
-  height:214px;
-}
-.edit_profile_job{
-    position: absolute;
-bottom: 90px;
-left: 51px;
-
-}
-
-.edit_pr_bar .circles{ padding-left: 48px; }
-.circles{
-    padding-left: 20px;
-padding-top: 14px;
-}
 
 
-.circle-1 canvas {
-  vertical-align: middle;
-  width:175px;
-  height:175px;
-  border:1px solid transparent;
-  display:black;
-}
 
-.circle-1 strong {
-  position: absolute;
-  top: 55px;
-  left: 5px;
-  width: 100%;
-  text-align: center;
-  line-height: 40px;
-  font-size: 30px;
-}
 .messagedelete .fa{color:#777;}
 .messagedelete:hover .fa{color:#1b8ab9;}
 .chat-header a:hover{color:#156f95;}
@@ -4018,21 +3966,14 @@ max-width: inherit;}
     top: 0;
 }
 
-.profile-box-left .edi_origde .edit_profile_progress{width:100%; float:left;}
-.profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:39px 22px 0;}
-.profile-box-left .edi_origde .count_main_progress{width:185px; float:left;}
-.profile-box-left .edi_origde .count_main_progress .circles{padding:0;}
-.profile-box-left .edi_origde .progre_bar_text p{text-align:left; color:#4c4c4c;}
+
 
 /* Example stylistic flourishes */
 .fileContainer [type=file] {cursor: pointer;}
 .fileContainer:hover{background: #d9d9d9 none repeat scroll 0 0;}
 .edit_profile_progress{/*display:none;*/}
-.edit_profile_job{display:none;}
-.tr_text{display:none;}
-.true_progtree img{display:none;}
-.edit_profile_progress{float:right;}
-.edit_profile_job{bottom:50px;}
+
+
 .mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff;}
 .mob-progressbar .progress { height: 30px; margin-top:5px; background:#e5e5e5; margin-bottom:6px;}
 .mob-progressbar p{font-size:12px;}
@@ -4052,7 +3993,7 @@ max-width: inherit;}
 .mob-progressbar .mob-edit-pro .fa{padding-right:5px;}
 .temp .mob-edit-pro a{pointer-events: none; cursor: default;}
 .temp .mob-edit-pro .fa{display:none;}
-.circle-1{height:175px;}
+
 .complete_profile .circle-1{height:214px;}
 .edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
 .clonedInput h6{padding: 5px 0px;}

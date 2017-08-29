@@ -11,6 +11,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
       <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->

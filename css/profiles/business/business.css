@@ -307,14 +307,14 @@ line-height: 1;}
 .bui_art_left_box .profile-boxProfileCard-bg img{height: 84px;}
 .profile-job-details p i{margin-right: 6px;}
 
-
-.fixed_left_side{width: 350px;}
+.custom-right-business{margin-left:10px;}
+.fixed_right_display{margin-top:0 !important;}
+.fixed_left_side{width: 350px; position: fixed;}
 .fixed_middle_side{left: 325px; width: 610px;}
 .fixed_right_side{ right: 33px;
     width: 350px;
     position: fixed;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
-.editor-content{width: 89%;}
 .profile-boxProfileCard_follow ul{width: 100%;}
 .full-box-module_follow{margin-top: 0px;}
 
@@ -542,7 +542,7 @@ line-height: 1;}
     margin-bottom: 5px;
 }
 .editor-content {
-    width: 90%;
+    width: 89%;
     float: left;
 }
 .popup-text {
