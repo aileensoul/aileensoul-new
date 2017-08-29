@@ -1,4 +1,4 @@
-/***  freelance apply  ***/
+/***  recruiter  ***/
 /*** common css for job recrutor and freelancer  ***/
 .mob-block {display: none;}
 .saved,
@@ -436,12 +436,4 @@ label.cameraButton input[accept*="camera"] {display: none;}
 	
 /***---------- end  common css for all profile  -------------***/
 
-
-
-
-
-
-
-
-
-
+.add-post-button {margin: 30px 10px 10px;}

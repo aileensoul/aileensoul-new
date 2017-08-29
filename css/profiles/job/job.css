@@ -1,4 +1,4 @@
-/***  freelance apply  ***/
+/***  job  ***/
 /*** common css for job recrutor and freelancer  ***/
 .mob-block {display: none;}
 .saved,
@@ -123,7 +123,6 @@ li.fr a {text-decoration: none !important;}
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 /***  left part box  ***/
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
@@ -435,13 +434,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 	
 	
 /***---------- end  common css for all profile  -------------***/
-
-
-
-
-
-
-
-
-
-
+/*** ---------  only job  -----------  ***/
+.job_reg_page_fprm{width: 640px; margin: 0 auto;}
+.radio_job:focus + label:before{   border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
+/*** ---------  end only job  -----------  ***/
