@@ -1,7 +1,7 @@
 
 
 <?php echo $head; ?>
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
 <?php echo $header; ?>
 
 

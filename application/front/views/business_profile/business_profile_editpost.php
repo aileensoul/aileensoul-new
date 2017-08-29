@@ -1,4 +1,5 @@
 <?php  echo $head; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>

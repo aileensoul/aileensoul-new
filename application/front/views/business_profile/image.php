@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
         <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
         <style type="text/css">
             .header2{border-bottom-left-radius: 4px;border-bottom-right-radius: 4px; }
             .full-width  img{display: none;}

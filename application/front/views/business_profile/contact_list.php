@@ -4,6 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->
