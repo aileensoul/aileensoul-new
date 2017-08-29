@@ -5,7 +5,7 @@
             event.stopPropagation();
         });
         $("body").click(function (event) {
-            $("#addcontactContainer").hide(600);
+            $("#addcontactContainer").hide();
             event.stopPropagation();
         });
     });
