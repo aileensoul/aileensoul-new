@@ -2776,7 +2776,7 @@ form {
 }
 .common-form form {
     border-top: 0;
-    padding: 10px;
+    /*padding: 10px;*/
     background-color: white;
 }
 .common-form h3 {
@@ -3199,6 +3199,8 @@ footer {
 {
     
   .fixed_right_side{right: 0;}
+  .fixed_right_display_none{display:block;}
+  .fixed_right_display{display: none;}
   
 } 
 
@@ -3216,8 +3218,7 @@ footer {
 { 
   .fixed_right_side{right: 0;}
 
-    .fixed_right_display_none{display:block;}
-.fixed_right_display{display: none;}
+    
 
 
 }

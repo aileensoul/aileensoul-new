@@ -50,10 +50,10 @@
     border: 5px solid white;
     border-bottom: none;
 }
-#jobseeker_regform_primary {
+/**#jobseeker_regform_primary {
     border: none !important;
     margin-bottom: 0px!important;
-}
+}**/
 .none_aaaart .common-form form {
     border: none!important;
 }
@@ -252,17 +252,15 @@ ul.business_pf_ct_person_detail li b {
     color: #FFFFFF;
     float: left;
 }
-/* job-post*/
-.edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}
+/* job-post*//**
+.edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}**/
 .job_edit_menu{width: 18.5% !important;}
 .post-design-box .post-design-desc a.content_link:hover{text-decoration: underline;}
 .post-design-box .post-design-desc a.content_link { color: #707070; }
-.profile-job-details p {
-    color: #5b5b5b;
-}
+/**
 .profile-job-details p i {
     margin-left: 10px;
-}
+}**/
 .cls-ve:hover{color: black;}
 .cls-ve{color: #ccc;}
 .profile-text a {
@@ -317,8 +315,8 @@ ul.business_pf_ct_person_detail li b {
     margin-top: 27px;
     padding: 8px 30px 8px 28px;
 }
-.dele_highrt{margin-top: 15px;  }
-.dele_highrt img{float: left;}
+/**.dele_highrt{margin-top: 15px;  }
+.dele_highrt img{float: left;}**/
 .tsecondary_certi{float: left;
     margin-left: -12px;
     background: #1b8ab9;
@@ -1806,12 +1804,12 @@ line-height: 40px;
     padding-top: 80px!important;
 }
 
-.profile-job-details .job_companyname {
+/**.profile-job-details .job_companyname {
     width: 350px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
+}**/
 
 
 .profiletitle {
@@ -3374,22 +3372,22 @@ div[class^="likeduserlist"] {
 /***  notification hover effect  ***/
 
 
-.panel {
+/**.panel {
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: #fff;
     background: none;
     box-shadow: none;
-}
+}**
 .panel:last-child {
     border-bottom: none;
 }
-.panel-group > .panel:first-child .panel-heading {
+/**.panel-group > .panel:first-child .panel-heading {
     border-radius: 4px 4px 0 0;
 }
-.panel-group .panel {
+/**.panel-group .panel {
     border-radius: 0;
-}
+}**
 .panel-group .panel + .panel {
     margin-top: 0;
 }
@@ -3425,7 +3423,7 @@ div[class^="likeduserlist"] {
     border-radius: 0;
     transition: border-radius linear 0s;
 }
-/* #bs-collapse icon scale option */
+/* #bs-collapse icon scale option *
 
 .panel-heading a:before {
     content: '\f067';
@@ -3441,7 +3439,7 @@ div[class^="likeduserlist"] {
     content: ' ';
     transition: all 0.5s;
     transform: scale(0);
-}
+}**
 #bs-collapse .panel-heading a:after {
     content: ' ';
     font-size: 20px;
@@ -3468,15 +3466,15 @@ div[class^="likeduserlist"] {
     font-size: 18px;
     line-height: 1;
 }
-.panel-group.wrap {
+/**.panel-group.wrap {
     margin-top: 25px;
-}
+}**
 .panel-group.wrap .panel {
     margin-bottom: 10px;
-}
+}**
 .panel-group.wrap .panel-heading {
     border-radius: 0 !important;
-}
+}**
 .border {
     border: 1px solid #ddd;
 }
@@ -3488,6 +3486,9 @@ html {
 }
 body {
     min-height: 100%;
+}
+.border {
+    border: 1px solid #ddd;
 }
 .custom-right-art {
     margin-left: 10px;
