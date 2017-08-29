@@ -82,7 +82,7 @@
                         }
                         ?>
 
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business custom-right-art fixed_middle_side animated fadeInUp">
+                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp">
                             <div class="post-editor col-md-12">
                                 <div class="main-text-area col-md-12">
                                     <div class="popup-img"> 
