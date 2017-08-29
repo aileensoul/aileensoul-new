@@ -21,7 +21,7 @@
       <div class="profile-art-box profile-box-custom col-md-4 fixed_left_side animated fadeInLeftBig" >
          <?php ?>
 <?php echo $left_artistic; ?>
-          <!-- <div class="full-box-module_follow fixed_right_display_none">
+          <div class="full-box-module_follow fixed_right_display_none">
           
             <div class="common-form">
                <h3 class="user_list_head">User List</h3>
@@ -32,7 +32,7 @@
                </div>
              
             </div>
-         </div> -->
+         </div>
          <div class="custom_footer_left fw">
           <div class="fl">
             <ul>
