@@ -313,6 +313,7 @@ line-height: 1;}
 .fixed_right_side{ right: 33px;
     width: 350px;
     position: fixed;}
+    .fixed_middle_side_postnew{width: 610px;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
 .profile-boxProfileCard_follow ul{width: 100%;}
 .profile-boxProfileCard_follow_mobile ul{width: 100%;}

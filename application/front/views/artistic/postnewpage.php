@@ -13,15 +13,15 @@
     <body>
     <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
-        <div class="user-midd-section" id="paddingtop_fixed">
+        <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
 
-                    <div class="profile-box profile-box-custom col-md-4">
+                    <div class="profile-box profile-box-custom fixed_left_side col-md-4">
                         <?php ?>
 <?php echo $left_artistic; ?>
                       </div>
-                     <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-art">
+                     <div class="col-md-7 col-sm-12  fixed_middle_side_postnew custom-right-art">
 
  <?php if($art_data[0]){ ?>
     <div class="col-md-12 col-sm-12 post-design-box">
