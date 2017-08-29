@@ -5752,7 +5752,7 @@ line-height: 1;}
     
 }
 
-/*ZALAK START CHANGES OF 28-8*/
+/*ZALAK START CHANGES OF 28-8* bus and art **/
 .bui_art_left_box .follow_left_box_main_btn button {
     width: 82px;
     padding: 5px 3px;
@@ -5763,10 +5763,10 @@ line-height: 1;}
 .bui_art_left_box .post-design-product_follow{padding-top: 5px;}
 .bui_art_left_box .common-form .user_list_head{padding: 4px 15px;}
 .bui_art_left_box .seeall a{font-size: 16px;}
-.fixed_left_side{width: 350px;}
-.fixed_middle_side{left: 325px; width: 610px;}
+.fixed_left_side{width: 26%;}
+.fixed_middle_side{left: 26%; width: 48%;}
 .fixed_right_side{ right: 33px;
-    width: 350px;
+    width: 26%;
     position: fixed;}
 .bui_art_left_box    .comment-edit-butn{right: 20px;}
 .editor-content{width: 89%;}
