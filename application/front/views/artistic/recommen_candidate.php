@@ -228,24 +228,11 @@
                                             </div> 
                                        <div class="post-design-desc">
                                           <div>
-                                             <!-- <div id="editpostdata5" style="display:block;">
-                                                <a style="margin-bottom: 0px; font-size: 16px"><b>
-                                                Zalak infotech </b>
-                                                </a>
-                                             </div> -->
                                              <div id="<?php echo "editpostbox" . $key['art_post_id']; ?>" style="display:none;">
                                                         <input type="text" id="<?php echo "editpostname" . $key['art_post_id']; ?>" name="editpostname" placeholder="Product Name" value="zalak">
                                             </div>
 
                                           </div>
-                                          <!-- <div id="editpostdetails" style="display:block;">
-                                             <div id="khyati303" style="display:block;">
-                                                zalak infotech in best website developer                                                                                    
-                                             </div>
-                                             <div id="khyatii303" style="display:none;">
-                                                zalak infotech in best website developer                                                                                    
-                                             </div>
-                                          </div> -->
 
                                           <div id="<?php echo "khyati" . $key['art_post_id']; ?>" style="display:block;">
                                             <?php
@@ -279,9 +266,9 @@
                                             ?>
                                             <?php if (count($artmultiimage) == 1) { ?>
                                                 <?php
-                                                $allowed = array('gif', 'png', 'jpg');
+                                                $allowed = array('gif', 'png', 'jpg', 'jpeg');
                                                 $allowespdf = array('pdf');
-                                                $allowesvideo = array('mp4', '3gp', 'avi');
+                                                $allowesvideo = array('mp4', '3gp', 'avi','MP4');
                                                 $allowesaudio = array('mp3');
                                                 $filename = $artmultiimage[0]['image_name'];
                                                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
