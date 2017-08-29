@@ -3187,6 +3187,12 @@ footer {
 
 .fixed_right_display_none{display: none;}
 
+/***  bus and art  ***/
+.full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
+.profile-boxProfileCard {border: 11px solid #ffffff; background: #fff; border-radius: 3px;}
+.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none;}
+.profile-boxProfileCard-bg {background-size: 100%; border-radius: 4px 4px 0 0; background-position: 0 50%; width: 100%;}
+
 
 /*zalak start 28-8  media*/
 @media screen and (max-width:1280px)
