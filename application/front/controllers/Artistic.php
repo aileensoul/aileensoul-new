@@ -3709,7 +3709,7 @@ public function followtwo() {
     }
 
 
-    public function unfollowtwo() {
+    public function unfollowtwo() { //echo "hii"; die();
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start
@@ -3723,14 +3723,14 @@ public function followtwo() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
-        $art_id = $_POST["follow_to"];
+        $art_id = $_POST["follow_to"]; 
 
         $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
 
         $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_to' => $art_id);
 
         $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        //echo "<pre>"; print_r($follow); die();
 
         if ($follow) {
             $data = array(
@@ -3743,7 +3743,7 @@ public function followtwo() {
 
             $contition_array = array('follow_type' => 1, 'follow_from' => $artdata[0]['art_id'], 'follow_status' => 1);
         $followcount = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
             if ($update) {
 
 
@@ -4025,7 +4025,7 @@ public function followtwo() {
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
                                                                                     <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')">Follow</button>
                                                                                 </div>';
-                } else if ($user['follow_from'] == $artisticdatauser[0]['business_profile_id']) {
+                } else if ($user['follow_from'] == $artisticdatauser[0]['art_id']) {
                     
                 } else {
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
