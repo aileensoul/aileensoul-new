@@ -17,11 +17,11 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="profile-box profile-box-custom fixed_left_side col-md-4">
+                    <div class="profile-box profile-box-custom fixed_art fixed_left_side col-md-4">
                         <?php ?>
 <?php echo $left_artistic; ?>
                       </div>
-                     <div class="col-md-7 col-sm-12  fixed_middle_side_postnew custom-right-art">
+                     <div class="col-md-7 col-sm-12  fixed_middle_side custom-right-art">
 
  <?php if($art_data[0]){ ?>
     <div class="col-md-12 col-sm-12 post-design-box">
