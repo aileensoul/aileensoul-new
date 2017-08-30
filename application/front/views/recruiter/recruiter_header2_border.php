@@ -1,7 +1,4 @@
 
-<!--post save success pop up style strat -->
-
-</style>
  <?php if(($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate')){?>
    
 <header>
@@ -11,7 +8,7 @@
                 <div class="row">
                   <div class="col-sm-7 col-md-7 col-xs-6 hidden-mob">
                         <div class="job-search-box1 clearfix">
-                           <?php echo $rec_search; ?>
+                           <?php echo $rec_search;  ?>
                     </div>
                     </div>
                   <div class="col-sm-5 col-md-5 col-xs-12 h2-smladd fw-479">
