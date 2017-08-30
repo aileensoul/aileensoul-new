@@ -1124,7 +1124,7 @@ class Freelancer extends MY_Controller {
 //freelancer Portfolio page controller End
 
     public function freelancer_hire_post($id) {
-
+        $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -1163,7 +1163,7 @@ class Freelancer extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-
+$id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         if ($id == 'null') {
             //  echo $userid; die();
             $join_str[0]['table'] = 'freelancer_hire_reg';
@@ -1742,7 +1742,7 @@ class Freelancer extends MY_Controller {
             foreach ($postuserarray as $key => $value) {
 
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value . '", freelancer_post_area) != ' => '0');
-                $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $all_candidate[] = $candidate;
             }
         }
@@ -1803,7 +1803,7 @@ class Freelancer extends MY_Controller {
                 <div class = "designation_rec fl">
                 <ul>
                 <li>
-                <a href = " ' . base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
+                <a href = " ' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">
                 <h6>';
                 $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
                 $return_html .= '</h6>
@@ -2332,9 +2332,9 @@ class Freelancer extends MY_Controller {
 
                 $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                 $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-
+                $hireslug = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->freelancer_hire_slug;
                 $return_html .= '</li>';
-                $return_html .= '<li><a class="display_inline" title="ucwords($firstname); &nbsp; ucwords($lastname);" href="' . base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post') . '">';
+                $return_html .= '<li><a class="display_inline" title="ucwords($firstname); &nbsp; ucwords($lastname);" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
                 $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                 $return_html .= '</a>
                                                                                     </li>
@@ -3929,6 +3929,7 @@ class Freelancer extends MY_Controller {
     }
 
     public function freelancer_hire_profile($id = "") {
+        $id= $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -3977,6 +3978,8 @@ class Freelancer extends MY_Controller {
 //Remove save candidate controller End
 
     public function freelancer_post_profile($id) {
+       // echo $id;die();
+        $id=  $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');

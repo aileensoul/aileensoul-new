@@ -448,6 +448,7 @@ function tabindexart() {
 function sendmail(abc) {
 
     //alert(abc);
+document.getElementById("verifydiv").style.display = "none";
 
     $.ajax({
 

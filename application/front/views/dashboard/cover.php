@@ -44,7 +44,7 @@
                     </div>
                 </div> 
                 <?php
-            } else if ($userdata[0]['user_verify'] == 2 && count($result) > 0) {
+            } else if ($userdata[0]['user_verify'] == 0 && count($result) > 0) {
                 $d1 = strtotime($userdata[0]['user_last_login']);
                 $d2 = strtotime(date("Y-m-d H:i:s"));
                 $result_var = $d2 - $d1;
