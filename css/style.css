@@ -254,7 +254,7 @@ ul.business_pf_ct_person_detail li b {
 }
 /* job-post*//**
 .edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}**/
-.job_edit_menu{width: 18.5% !important;}
+
 .post-design-box .post-design-desc a.content_link:hover{text-decoration: underline;}
 .post-design-box .post-design-desc a.content_link { color: #707070; }
 /**
@@ -1567,49 +1567,7 @@ line-height: 40px;
     background-clip: padding-box;
     text-align: center;
 }
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.3);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 10;
-}
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
-}
-.popup {
-    margin: 70px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    width: 30%;
-    height: 200px;
-    position: relative;
-    transition: all 5s ease-in-out;
-}
-.okk {
-    text-align: center;
-}
-.popup .okbtn {
-    position: absolute;
-    transition: all 200ms;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
-    padding: 8px 18px;
-    background-color: darkcyan;
-    left: 25px;
-    margin-top: 15px;
-    width: 100px;
-    border-radius: 8px;
-}
+
 .bg_following:hover {
     background-color: darkred;
 }
@@ -2054,40 +2012,7 @@ cover pic css*/
 }
 /*.add_audio{padding: 10px;}*/
 /*no post foun design start*/
-.art_no_post_avl{    background: white;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    margin-top: 0px;
-    display: inline-block;
-    width: 100%;
-}
-.art_no_pva_avl
-{
-    background: white;
-    display: inline-block;
-    width: 100%;
 
-}
-.art-img-nn{width: 100%;
-text-align: center;
-margin: 30px 0px;}
-.art_no_post_avl h3{
-    padding: 4px 0px;
-width: 100%;
-text-align: center;
-color: #1b8ab9;
-border-bottom: 1px solid #d9d9d9;}
-.art_no_post_img {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.art_no_post_text{
-    line-height: 40px;
-color: #cccccc;
-font-size: 32px;
-padding-top: 30px;}
-.art_no_post_text1{color: #ccc;
-font-size: 32px;}
 .bui_res_i2{height: 166px;
 width: 223px;
 position: relative;}
@@ -3975,26 +3900,6 @@ max-width: inherit;}
 .edit_profile_progress{/*display:none;*/}
 
 
-.mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff;}
-.mob-progressbar .progress { height: 30px; margin-top:5px; background:#e5e5e5; margin-bottom:6px;}
-.mob-progressbar p{font-size:12px;}
-.mob-progressbar .progress .skill { line-height: 30px; padding: 0; margin: 0 0 0 20px; text-transform: uppercase;}
-.mob-progressbar .progress .skill .val {font-style: normal; margin: 0 20px 0 0;}
-.mob-progressbar .progress-bar { text-align: center; transition-duration: 3s;}
-.mob-progressbar .progress-bar-custom{
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
-}
-.mob-progressbar .mob-edit-pro{text-align:center;}
-.mob-progressbar .mob-edit-pro .fa{padding-right:5px;}
-.temp .mob-edit-pro a{pointer-events: none; cursor: default;}
-.temp .mob-edit-pro .fa{display:none;}
-
 .complete_profile .circle-1{height:214px;}
 .edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
 .clonedInput h6{padding: 5px 0px;}
@@ -4004,7 +3909,7 @@ max-width: inherit;}
 /*style_harshad close*/
 
 
-.bui_pop_rd{    padding: 16px 0px 11px 16px;}
+.bui_pop_rd{padding: 16px 0px 11px 16px;}
 .popup-img-bui{padding-left:3px !important;
     padding-right: 0px;
     padding-top: 0  px;

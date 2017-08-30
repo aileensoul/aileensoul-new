@@ -2639,6 +2639,111 @@ margin-left: 10px;
 left:310px;
 position: relative;}
 
+.art_no_post_avl{    background: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    margin-top: 0px;
+    display: inline-block;
+    width: 100%;
+}
+.art_no_pva_avl
+{
+    background: white;
+    display: inline-block;
+    width: 100%;
+
+}
+.art-img-nn{width: 100%;
+text-align: center;
+margin: 30px 0px;}
+.art_no_post_avl h3{
+    padding: 4px 0px;
+width: 100%;
+text-align: center;
+color: #1b8ab9;
+border-bottom: 1px solid #d9d9d9;}
+.art_no_post_img {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.art_no_post_text{
+    line-height: 40px;
+color: #cccccc;
+font-size: 32px;
+padding-top: 30px;}
+.art_no_post_text1{color: #ccc;
+font-size: 32px;}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    height: 200px;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+.okk {
+    text-align: center;
+}
+.popup .okbtn {
+    position: absolute;
+    transition: all 200ms;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 18px;
+    background-color: darkcyan;
+    left: 25px;
+    margin-top: 15px;
+    width: 100px;
+    border-radius: 8px;
+}
+.profile-job-profile-button {background-color: #e8f3f8; padding: 4px 0px; border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul {list-style: none; display: block;
+    width: 100%; clear: both; padding: 10px 4px 6px; margin-left: 4px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li{float:left; width:100%; margin-bottom:5px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a { text-decoration: none; font-weight: 600;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a:hover {text-decoration-line: underline;
+    color: #1b8ab9;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;
+    width: 30%; float: left;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {text-align: justify;
+    word-break: break-word; display: flex; margin-bottom: 0px;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
+    text-decoration-line: underline;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: " :";
+    margin-left: -15px; float: left;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
+    word-break: break-word; float: left; padding-right: 10px; width: 65%;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
+    font-weight: 600; width: 30%; float: left;}
+.profile-job-details ul li {list-style: none;}
+.profile-job-details {font-size: 18px; padding-left: 20px;}
+.profile-job-details ul {padding: 0px;}
+.profile-job-details ul li {list-style: none; position: relative; padding-left: 0px; margin: 0;}
+.profile-job-details ul li a {padding-left: 0px; font-weight: bold; display: block; color: #5b5b5b;}
+.profile-job-details ul li a:hover { padding-left: 0px; display: block; text-decoration: none;}
+.profile-job-details ul li p {margin-bottom: 0;display: inline-block; font-size: 15px; font-weight: 600;}
+
 /*media zalak start*/
 
 @media screen and (max-width: 1280px){

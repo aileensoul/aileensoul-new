@@ -35,7 +35,7 @@
 <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
 <!-- CSS START -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/animate.css" />
@@ -43,6 +43,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/profiles/common/mobile.css" />
 <script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
