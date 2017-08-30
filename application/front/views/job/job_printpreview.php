@@ -123,7 +123,7 @@
                   </div>
                </div>
                <div class="job-menu-profile  mob-block">
-                  <a  href="<?php echo site_url('job/job_printpreview/' . $job[0]['user_id']); ?>">
+                  <a  href="<?php echo site_url('job/resume/' . $job[0]['user_id']); ?>">
                      <h5 class="profile-head-text"> <?php echo $job[0]['fname'] . ' ' . $job[0]['lname']; ?></h5>
                   </a>
                   <!-- text head start -->
@@ -196,7 +196,7 @@
                      else
                      {
                      ?>
-                  <a href="<?php echo base_url('job/job_basicinfo_update')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                  <a href="<?php echo base_url('job/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
                   <?php
                      }
                      ?>
@@ -499,7 +499,7 @@
                                  <div class="profile-job-profile-menu">
                                     <ul class="clearfix">
                                        <div class="text-center">
-                                          <a href="<?php echo base_url('job/job_education_update');?>">Click Here To fill Up Education Detail</a>
+                                          <a href="<?php echo base_url('job/qualification');?>">Click Here To fill Up Education Detail</a>
                                        </div>
                                     </ul>
                                  </div>
@@ -837,7 +837,7 @@
                                  <div class="profile-job-profile-menu">
                                     <ul class="clearfix">
                                        <div class="text-center">
-                                          <a href="<?php echo base_url('job/job_project_update');?>">Click Here To fill Up Project And Training / Internship Detail</a>
+                                          <a href="<?php echo base_url('job/project');?>">Click Here To fill Up Project And Training / Internship Detail</a>
                                        </div>
                                     </ul>
                                  </div>
@@ -1208,7 +1208,7 @@
                                        <div class="profile-job-profile-menu">
                                           <ul class="clearfix">
                                              <div class="text-center">
-                                                <a href="<?php echo base_url('job/job_work_exp_update');?>">Click Here To fill Up Work Experience Detail</a>
+                                                <a href="<?php echo base_url('job/work-experience');?>">Click Here To fill Up Work Experience Detail</a>
                                              </div>
                                           </ul>
                                        </div>
@@ -1508,7 +1508,7 @@
                      <div class="second circle-1">
                         <div>
                            <strong></strong>
-                           <a href="<?php echo base_url('job/job_basicinfo_update')?>" class="edit_profile_job">Edit Profile
+                           <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile
                            </a>
                         </div>
                      </div>
