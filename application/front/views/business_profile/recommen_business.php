@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
         <script>
             $(function () {
                 var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
@@ -127,18 +128,18 @@
         <!-- END HEADER -->
         <?php echo $business_header2_border; ?>
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
+            <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4  profile-box profile-box-custom  animated fadeInLeftBig">
+                        <div class="col-md-4  profile-box profile-box-custom fixed_art fixed_left_side  animated fadeInLeftBig">
                             <div class="">
                                 <?php echo $business_left; ?>
                             </div>
                         </div>
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp" style="height: 150%;">
+                        <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
                             <div class="common-form">
                                 <div class="job-saved-box">
-                                    <h3 style="background-color: #fff; text-align: center; color: #003;">
+                                    <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {

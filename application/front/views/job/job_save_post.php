@@ -4,11 +4,15 @@
       <!-- start head -->
       <?php  echo $head; ?>
       <!-- END HEAD -->
+
+      <title><?php echo $title; ?></title>
+
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
       <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
       <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -103,7 +107,7 @@
                   </div>
                </div>
                <div class="job-menu-profile mob-block">
-                  <a  href="<?php echo site_url('job/job_printpreview/' . $jobdata[0]['user_id']); ?>">
+                  <a  href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">
                      <h3 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h3>
                   </a>
                   <!-- text head start -->
@@ -123,7 +127,7 @@
          </div>
          <div class="middle-part container padding_set_res">
             <div class="job-menu-profile job_edit_menu mob-none">
-               <a  href="<?php echo site_url('job/job_printpreview/' . $jobdata[0]['user_id']); ?>">
+               <a  href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">
                   <h3 class="profile-head-text"> <?php echo $jobdata[0]['fname'] . ' ' . $jobdata[0]['lname']; ?></h3>
                </a>
                <!-- text head start -->
@@ -152,7 +156,7 @@
                         else
                         {
                         ?>
-                     <a href="<?php echo base_url('job/job_basicinfo_update')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                     <a href="<?php echo base_url('job/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
                      <?php
                         }
                         ?>
@@ -485,7 +489,7 @@
                      <div class="second circle-1">
                         <div>
                            <strong></strong>
-                           <a href="<?php echo base_url('job/job_basicinfo_update')?>" class="edit_profile_job">Edit Profile
+                           <a href="<?php echo base_url('job/basic-information')?>" class="edit_profile_job">Edit Profile
                            </a>
                         </div>
                      </div>

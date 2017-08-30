@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
 <body   class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
@@ -36,10 +37,11 @@
                 <h3>Userlist</h3>
                 <div class="contact-frnd-post">
 
-                  <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                 
                  <div class="col-md-1">
                     </div>
                 </div>
+                 <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
             </div>
         </div>
     </div>
@@ -101,7 +103,8 @@ var data1 = <?php echo json_encode($de); ?>;
 var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/userlist.js'); ?>"></script>
+<script type="text/javascript" src="<?php //echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
+
  </body>
 </html>

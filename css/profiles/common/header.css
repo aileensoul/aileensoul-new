@@ -798,7 +798,7 @@ height: 25px; width: 25px; }
         color: #000;
         padding-top: 0;
     }
-    #addcontactBody  li .addcontact-right a.add-right-true{background-color:#fff; border:1px solid #1b8ab9;}
+    #addcontactBody  li .addcontact-right a.add-right-true{float: right; background-color:#fff; border:1px solid #1b8ab9;}
         #addcontactBody  li .addcontact-right a.add-left-true i{color:#fff;}
     #addcontactBody  li .addcontact-right a.add-left-true{
                                     border:1px solid transparent;
@@ -905,8 +905,7 @@ height: 25px; width: 25px; }
         background:#fff;
     }
 .addcontact-left.custome-approved-contact{width:100% !important;}
-.addcontact-left{width: 71%!important;
-margin: 0 auto;
+.addcontact-left{
 text-align: center;}
 .addcontact-left a{padding-left: 0px !important;}
 .contct-no li {
@@ -945,6 +944,10 @@ max-width: 100%;}
 .profile-boxProfileCard_follow ul li{float: left; width: 100%;}
 
 .profile-boxProfileCard_follow ul{float: left;}
+
+.profile-boxProfileCard_follow_mobile ul li{float: left; width: 100%;}
+
+.profile-boxProfileCard_follow_mobile ul{float: left;}
 /*freelancer*/
 .custom_footer_left{background: white; border:1px solid #d9d9d9; padding: 8px; border-radius: 2px; margin-bottom: 20px;}
 
@@ -971,6 +974,15 @@ max-width: 100%;}
 }
 .profile-boxProfileCard_follow ul li{width: 100%!important; border-bottom: none;}
 .profile-boxProfileCard_follow ul li .contact-frnd-post{padding: 2px 8px 0;}
+
+.profile-boxProfileCard_follow_mobile ul li{width: 100%!important; border-bottom: none;}
+.profile-boxProfileCard_follow_mobile ul li .contact-frnd-post{padding: 2px 8px 0;}
+
+
+.fixed_art{position: fixed;}
+/*zalak start 29-8*/
+.post-design-name ul li .post_dot1{font-size: 15px!important;}
+/*zalak end 29-8*/
 @media screen and (max-width:1200px)
 {
     .custom_footer_left ul li a{font-size: 12px;}

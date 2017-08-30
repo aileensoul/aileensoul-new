@@ -1,58 +1,56 @@
 $(document).ready(function () {
     artistic_userlist();
-    // $(window).scroll(function () {
-    //     //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-    //     if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
 
-    //         var page = $(".page_number:last").val();
-    //         var total_record = $(".total_record").val();
-    //         var perpage_record = $(".perpage_record").val();
-    //         if (parseInt(perpage_record) <= parseInt(total_record)) {
-    //             var available_page = total_record / perpage_record;
-    //             available_page = parseInt(available_page, 10);
-    //             var mod_page = total_record % perpage_record;
-    //             if (mod_page > 0) {
-    //                 available_page = available_page + 1;
-    //             }
-    //             //if ($(".page_number:last").val() <= $(".total_record").val()) {
-    //             if (parseInt(page) <= parseInt(available_page)) {
-    //                 var pagenum = parseInt($(".page_number:last").val()) + 1;
-    //                 business_userlist(pagenum);
-    //             }
-    //         }
-    //     }
-    // });
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    artistic_userlist(pagenum);
+                }
+            }
+        }
+    });
 });
-//var isProcessing = false;
-function artistic_userlist() {
-    //if (isProcessing) {
+
+var isProcessing = false;
+function artistic_userlist(pagenum) {
+    if (isProcessing) {
         /*
          *This won't go past this condition while
          *isProcessing is true.
          *You could even display a message.
          **/
-     //   return;
-    //}
-   // isProcessing = true;
+        return;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "artistic/ajax_userlist",   
-       // url: "<?php echo base_url() ?>artistic/ajax_userlist",
-        //url: base_url + "business_profile/ajax_userlist/?page=" + pagenum,
-        //data: 'follow_to=' + clicked_id,
-        //data: {total_record: $("#total_record").val()},
+        url: base_url + "artistic/ajax_userlist/?page=" + pagenum,  
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {
+        beforeSend: function () { 
             //if (pagenum == 'undefined') {
                 //  $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             //} else {
                 $('#loader').show();
             //}
         },
-        complete: function () {
+        complete: function () {  
             $('#loader').hide();
         },
-        success: function (data) {
+        success: function (data) { 
             $('.loader').remove();
             $('.contact-frnd-post').append(data);
             // second header class add for scroll
@@ -62,7 +60,7 @@ function artistic_userlist() {
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-            //isProcessing = false;
+            isProcessing = false;
         }
     });
 }

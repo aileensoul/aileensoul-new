@@ -1,7 +1,7 @@
 <!--post save success pop up style end -->
 <header>
    <div class="bg-search">
-   <?php if(($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post')){?>
+   <?php if(($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'home')){?>
    <div class="header2 headerborder animated fadeInDownBig">
    <?php  } else {?>
    <div class="header2 headerborder">
@@ -33,7 +33,7 @@
                </div>
                <div class="">
                   <ul class="" id="dropdownclass">
-                     <li id="art_profile" <?php if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post'){?> class="active" <?php } ?>><a href="<?php echo base_url('job/job_all_post'); ?>" title="Home"><span class="home-22x22-h"></span></a>
+                     <li id="art_profile" <?php if($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'home'){?> class="active" <?php } ?>><a href="<?php echo base_url('job/home'); ?>" title="Home"><span class="home-22x22-h"></span></a>
                      </li>
                      <!-- Friend Request Start-->
                      <li id="Inbox_link " class="job_con">
@@ -61,9 +61,9 @@
                      <span class="my_account">
                      <div class="my_S">Account</div>
                      </span>
-                     <a href="<?php echo base_url('job/job_printpreview'); ?>" title="View Profile"><span class="icon-view-profile edit_data"></span>
+                     <a href="<?php echo base_url('job/resume'); ?>" title="View Profile"><span class="icon-view-profile edit_data"></span>
                      <span> View Profile </span></a>
-                     <a href="<?php echo base_url('job/job_basicinfo_update'); ?>" title="Edit Profile"><span class="icon-edit-profile edit_data"></span>  
+                     <a href="<?php echo base_url('job/basic-information'); ?>" title="Edit Profile"><span class="icon-edit-profile edit_data"></span>  
                      <span>Edit Profile </span></a>
                      <?php
                         $userid = $this->session->userdata('aileenuser');

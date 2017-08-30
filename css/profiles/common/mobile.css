@@ -1558,10 +1558,10 @@ padding: 5px 8px; font-size: 12px;}
         width: 50px;
     }
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
-        width: 43%;
+        width: 32%;
     }
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
-        width: 57%;
+        width: 68%;
     }
     /*.padding_job_rs ul li {width: 100%;}*/
     /*  .padding_job_rs ul li .lction{width: 100%;}*/
@@ -1722,11 +1722,11 @@ margin-left: 7px !important;}
     font-size: 12px;
 }
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
-       width: 52%;
+       width: 42%;
 font-size: 12px;
     }
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
-        width: 48%;
+        width: 58%;
         font-size: 12px;
     }
     .profile-box-art .right-side-menu .pro-fw li a {

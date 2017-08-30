@@ -4,12 +4,16 @@
       <!-- start head -->
       <?php  echo $head; ?>
       <!-- END HEAD -->
+
+      <title><?php echo $title; ?></title>
+
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
       <!-- This Css is used for call popup -->
       <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->

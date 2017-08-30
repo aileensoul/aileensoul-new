@@ -440,6 +440,7 @@
                                             </div>
                                             <?php
                                             if ($returnpage == 'freelancer_hire') {
+                                                $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
                                                 if ($freelancerpostdata[0]['freelancer_post_hourly'] != "" && $freelancerpostdata[0]['freelancer_post_ratestate'] != "") {
                                                     ?>
                                                     <div class="profile-job-post-title clearfix">
@@ -495,7 +496,7 @@
                                                         <ul class="clearfix">
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_hourly']) {
-                                                                $currancy = $this->db->get_where('currency', array('currency_id' => $freelancerpostdata[0]['freelancer_post_ratestate']))->row()->currency_name;
+                                                                
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("hourly"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_hourly'] . '  ' . $currancy; ?> </span>
                                                                 </li>

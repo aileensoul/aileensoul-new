@@ -4,6 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->
@@ -207,15 +208,15 @@
         <?php echo $footer; ?>
         <!-- script for update all read notification start-->
         <script type="text/javascript">
-            function contactperson() {
-                $.ajax({
-                    url: "<?php echo base_url(); ?>business_profile/contact_notification",
-                    type: "POST",
-                    success: function (data) {
-                        $('#addcontactBody').html(data);
-                    }
-                });
-            }
+//            function contactperson() {
+//                $.ajax({
+//                    url: "<?php echo base_url(); ?>business_profile/contact_notification",
+//                    type: "POST",
+//                    success: function (data) {
+//                        $('#addcontactBody').html(data);
+//                    }
+//                });
+//            }
             function contactapprove1(toid, status) {
                 $.ajax({
                     url: "<?php echo base_url(); ?>business_profile/contact_list_approve",

@@ -1,36 +1,56 @@
 
 $(document).ready(function () {
     artistic_followers(slug_id);
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    artistic_followers(slug_id, pagenum);
+                }
+            }
+        }
+    });
+
 });
- //var isProcessing = false;
-function artistic_followers(slug_id)
+ var isProcessing = false;
+function artistic_followers(slug_id, pagenum)
 { 
-    //if (isProcessing) {
+    if (isProcessing) {
         /*
          *This won't go past this condition while
          *isProcessing is true.
          *You could even display a message.
          **/
-        //return;
-    //}
-    //isProcessing = true;
+        return;
+    }
+    isProcessing = true;
     $.ajax({
         type: 'POST',
-        //url: base_url + "artistic/ajax_followers/" + slug_id,
-        //data: {total_record: $("#total_record").val()},
-           url: base_url + "artistic/ajax_followers",	
-         //url: '<?php echo base_url() . "artistic/ajax_followers" ?>',
-         data: 'slug_id=' + slug_id,
-
+        url: base_url + "artistic/ajax_followers/" + slug_id + '?page=' + pagenum,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {
+        beforeSend: function () { 
             // if (pagenum == 'undefined') {
             //     $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             // } else {
-            //     $('#loader').show();
+                 $('#loader').show();
             // }
         },
-        complete: function () {
+        complete: function () { 
             $('#loader').hide();
         },
         success: function (data) {
@@ -43,7 +63,7 @@ function artistic_followers(slug_id)
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-            //isProcessing = false;
+            isProcessing = false;
         }
     });
 }
@@ -89,7 +109,7 @@ var modal = document.getElementById('myModal');
        // setup the click event for this new div
        viewableText.click(divClicked); 
        $.ajax({
-           url: base_url + "artistic/art_designation",	
+           url: base_url + "artistic/art_designation",  
           // url: "<?php echo base_url(); ?>artistic/art_designation",
            type: "POST",
            data: {"designation": html},
@@ -120,7 +140,7 @@ function check() {
    $('#searchskills').select2({           
            placeholder: 'Find Your Skills',         
            ajax:{           
-             url: base_url + "artistic/keyskill",	
+             url: base_url + "artistic/keyskill", 
              //url: "<?php echo base_url(); ?>artistic/keyskill",
              dataType: 'json',
              delay: 250,            
@@ -152,7 +172,7 @@ $(document).ready(function () {
    {   
       $.ajax({
                    type:'POST',
-                    url: base_url + "artistic/follow_two",	
+                    url: base_url + "artistic/follow_two",  
                    //url:'<?php echo base_url() . "artistic/follow_two" ?>',
                     data:'follow_to='+clicked_id,
                    success:function(data){    
@@ -164,7 +184,7 @@ $(document).ready(function () {
    {  
       $.ajax({
                    type:'POST',
-                    url: base_url + "artistic/unfollow_two",	
+                    url: base_url + "artistic/unfollow_two",  
                    //url:'<?php echo base_url() . "artistic/unfollow_two" ?>',
                     data:'follow_to='+clicked_id,
                    success:function(data){   
@@ -180,11 +200,14 @@ $(document).ready(function () {
    { 
       $.ajax({
                    type:'POST',
-                    url: base_url + "artistic/followtwo",	
+                    url: base_url + "artistic/followtwo", 
                    //url:'<?php echo base_url() . "artistic/followtwo" ?>',
+                    dataType: 'json',
                     data:'follow_to='+clicked_id,
-                   success:function(data){                    
-                      $('#' + 'frfollow' + clicked_id).html(data);  
+                   success:function(data){   //alert(data.count);                 
+                      $('#' + 'frfollow' + clicked_id).html(data.follow);
+                      $('#' + 'countfollow').html(data.count);  
+
                    }
                }); 
    }
@@ -192,11 +215,14 @@ $(document).ready(function () {
    { 
        $.ajax({
            type: 'POST',
-           url: base_url + "artistic/unfollowtwo",	
+           url: base_url + "artistic/unfollowtwo",  
           // url: '<?php echo base_url() . "artistic/unfollowtwo" ?>',
+           dataType: 'json',
            data: 'follow_to=' + clicked_id,
            success: function (data) { 
-               $('#' + 'frfollow' + clicked_id).html(data);
+               $('#' + 'frfollow' + clicked_id).html(data.follow);
+               $('#' + 'countfollow').html(data.count);
+
            }
        });
    }

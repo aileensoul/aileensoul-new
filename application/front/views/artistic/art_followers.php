@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo "Followers - Aileensoul.com"; ?></title>
+<title><?php echo $title; ?></title>
 <?php echo $head; ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
 </head>
 <body  class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
@@ -32,10 +33,11 @@
          <div class="job-saved-box">
             <h3>Followers</h3>
             <div class="contact-frnd-post">
-                  <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>                  
+                             
                   <div class="col-md-1">
                   </div>
                </div>
+               <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>       
             </div>
          </div>
       </div>
