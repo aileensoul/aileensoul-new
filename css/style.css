@@ -898,7 +898,7 @@ label.cameraButton input[accept*="camera"] {
 
 @media screen and (min-width: 800px) {
     #floatBarsG {
-        transform: scale(1);
+       transform: scale(1);
     }
 }
 
