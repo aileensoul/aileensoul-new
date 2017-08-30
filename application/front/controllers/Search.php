@@ -2370,17 +2370,17 @@ class Search extends CI_Controller {
                                                                     <div style="display: inline-block; float: left;">
                                                                         <div  class="buisness-profile-pic-candidate">';
                 if ($row['freelancer_post_user_image']) {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $row['freelancer_post_user_image']) . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
                 } else {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"> </a>';
                 }
                 $return_html .= '</div></div>
                                                                     <div class="designation_rec" style="float: left;">
                                                                         <ul>
                                                                             <li>';
-                $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['user_id'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
                 $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
                 $return_html .= '</h6>
                                                                                 </a>
@@ -2729,8 +2729,8 @@ class Search extends CI_Controller {
 
                     $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                     $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
-
-                    $return_html .= '<li><a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="' . base_url('freelancer/freelancer_hire_profile/' . $post['user_id'] . '?page=freelancer_post') . '">';
+                    $hireslug = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id'], 'status' => 1))->row()->freelancer_hire_slug;
+                    $return_html .= '<li><a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
                     $return_html .= ucwords($firstname) . " " . ucwords($lastname);
                     $return_html .= '</a>';
                     $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
