@@ -4,15 +4,15 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
-        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.date('s')); ?>">
+        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.date('s')); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.date('s')); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.date('s')); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.date('s')); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.date('s')); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.date('s')); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.date('s')); ?>">
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -323,19 +323,19 @@
                     <footer>
 <?php echo $footer; ?>
                     </footer>
-                    <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-                    <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-                    <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script> 
-                    <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
-                    <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+                    <script src="<?php echo base_url('js/jquery.wallform.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.date('s')); ?>"></script> 
+                    <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.date('s')); ?>"></script> 
+                    <script src="<?php echo base_url('js/bootstrap.min.js?ver='.date('s')); ?>"></script>
                     <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
                     <!-- POST BOX JAVASCRIPT START --> 
-                    <script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
+                    <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.date('s')); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.date('s')); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
                     <script>
                                                             var base_url = '<?php echo base_url(); ?>';
