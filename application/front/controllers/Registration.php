@@ -378,6 +378,15 @@ class Registration extends CI_Controller {
         $firstname = $userdata[0]['first_name'];
         $lastname = $userdata[0]['last_name'];
 
+
+         $data = array(
+                        'user_verify' => '2',
+                        'verify_date' => date('Y-m-d', time())
+                    );
+
+                    $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
+
+
         $to_email = $email;
         //echo $toemail; die();
 

@@ -260,7 +260,49 @@ line-height: 1;}
     line-height:1;
 }
 
-
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    height: 200px;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+.okk {
+    text-align: center;
+}
+.popup .okbtn {
+    position: absolute;
+    transition: all 200ms;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 18px;
+    background-color: darkcyan;
+    left: 25px;
+    margin-top: 15px;
+    width: 100px;
+    border-radius: 8px;
+}
 
 
 

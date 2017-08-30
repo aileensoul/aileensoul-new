@@ -1,3 +1,6 @@
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <!-- SEO CHANGES START -->
 <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
@@ -30,22 +33,20 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
-<meta content="" name="description" />
-<meta content="" name="author" />
-<link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
+<link rel="icon" href="<?php echo base_url('images/favicon.png?ver='.date('s')); ?>">
 <!-- CSS START -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver='.date('s')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/animate.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver='.date('s')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.date('s')); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/profiles/common/mobile.css" />
-<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-1.11.1.min.js?ver='.date('s')); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js?ver='.date('s')); ?>"></script>
 
