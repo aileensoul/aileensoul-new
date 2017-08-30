@@ -206,3 +206,10 @@ $route['artistic/post-detail/(:any)'] = "artistic/postnewpage/$1";
 
 $route['artistic/creat-pdf'] = "artistic/creat_pdf";
 
+//BLOG ROUTES SETTINGS
+$route['blog/popular'] = "blog/popular";
+$route['blog/read_more'] = "blog/read_more";
+$route['blog/comment_insert'] = "blog/comment_insert";
+$route['blog/tag/(:any)'] = "blog/tagsearch/$1";
+$route['blog/(:any)'] = "blog/index/$1";
+
