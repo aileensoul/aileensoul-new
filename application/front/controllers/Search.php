@@ -1539,12 +1539,7 @@ class Search extends CI_Controller {
             foreach ($result4 as $ke => $arr) {
 
                 /// foreach ($arr as $valu) {
-
-
-
-
                 $new3[$arr['user_id']] = $arr;
-
                 //  }
             }
 
