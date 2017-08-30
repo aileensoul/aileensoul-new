@@ -1885,154 +1885,6 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-
-// job seeker detail
-        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-    $job_skill = $this->data['jobdata'][0]['keyskill'];
-            $postuserarray = explode(',', $job_skill);
-        
-// post detail
-        $contition_array = array('is_delete' => 0, 'status' => 1);
-        $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-       
-         $contition_array = array('status' => 1 ,'user_id' => $userid, 'type' => 3);
-        $skill_data=$this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    
-         $date=date('Y-m-d', time());
-   //for getting data from rec_post table for keyskill    
-        foreach ($postdata as $post) {
-            $skill_id = explode(',', $post['post_skill']);
-
-             $skill_id = array_filter(array_map('trim', $skill_id));
-             $postuserarray = array_filter(array_map('trim', $postuserarray));
-
-              $result = array_intersect($postuserarray, $skill_id);
-  
-                 if (count($result) > 0) { 
-                  
-                    $contition_array = array('post_id' => $post['post_id'],'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1);
-                    $data = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                  
-                    if($data[0]['user_id'] != $userid ){
-                       
-                    $recommendata[] = $data;
-                    
-                    }
-
-                }
-          
-        }
-     
-       
-   //for getting data from skill table for other skill
-       foreach ($skill_data as $skill) {  
-
-          $contition_array = array('FIND_IN_SET("'.$skill['skill'].'",other_skill)!='=>'0','post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
-                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $recommendata1[] = $data1;
-
-               }
-//    echo "<pre>";print_r($recommendata1);die(); 
- // Retrieve data according to city match start   
-$work_job_city=$jobdata[0]['work_job_city'];
-
-            $work_city=explode(',',$work_job_city);
-      
-                foreach ($work_city as $city)
-                {
-                    $data='*';
-                    $contition_array = array('FIND_IN_SET("'.$city.'",city)!='=>'0','post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
-                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $recommendata_city[] = $data1;
-                }       
-        // Retrieve data according to city match End   
-
- // Retrieve data according to industry match start   
-$work_job_industry=$jobdata[0]['work_job_industry'];
-  foreach ($postdata as $post) {
-
-                    $data='*';
-                    $contition_array = array('industry_type'=>$work_job_industry,'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
-                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $recommendata_industry[] = $data1;
-
-    }
- // Retrieve data according to industry match End   
-
-// Retrieve data according to Job Title match start   
-$work_job_title=$jobdata[0]['work_job_title'];
-
-      
-                foreach ($postdata as $post)
-                {
-                     $data='*';
-                    $contition_array = array('post_name'=>$work_job_title,'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
-                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $recommendata_title[] = $data1;
-
-                }       
-        // Retrieve data according to  Job Title match End   
-       
-
-                 if (count($recommendata) == 0) {
-               
-                $unique = $recommendata1;
-
-                $qbc = array_unique($unique, SORT_REGULAR);
-                $qbc  = array_filter($qbc);
-         
-                
-            } 
-            elseif (count($recommendata1) == 0) {
-                $unique = $recommendata;
-                $qbc = array_unique($unique, SORT_REGULAR);
-                $qbc  = array_filter($qbc);
-              
-            }
-             elseif (count($recommendata_city) == 0) {
-                $unique = $recommendata_city;
-                $qbc = array_unique($unique, SORT_REGULAR);
-                $qbc  = array_filter($qbc);
-              
-            }
-             elseif (count($recommendata_industry) == 0) {
-                $unique = $recommendata_industry;
-                $qbc = array_unique($unique, SORT_REGULAR);
-                $qbc  = array_filter($qbc);
-              
-            }
-             elseif (count($recommendata_industry) == 0) {
-                $unique = $recommendata_title;
-                $qbc = array_unique($unique, SORT_REGULAR);
-                $qbc  = array_filter($qbc);
-               
-            }
-            else {
-
-                 $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
-                  $newArray = array();
-                  foreach ($unique as $key => $innerArr1) {
-                       foreach ($innerArr1 as $key1 => $innerArr)
-                      {
-                            $newArray[][] = $innerArr;
-                      }
-                  }
-                  $qbc = array_unique($newArray, SORT_REGULAR);
-                  $qbc  = array_filter($qbc);
-            }
-        
-             
-//array_unique is used for remove duplicate values
-               
-                 $this->data['postdetail'] = $qbc;
-                 
-              
-        $this->data['falguni'] = 1;
-
-
      //For Counting Profile data start
     $contition_array = array('user_id'=> $userid,'status' => '1','is_delete'=> '0');
 
@@ -3658,5 +3510,410 @@ public function get_jobseeker_name($id=''){
         return $jobseeker_name = $jobdata[0]['fname'].' '.$jobdata[0]['lname'];    
     }
 //Get Job Seeker Name for title End
+
+//GET JOB ALL POST DATA WITH AJAX START
+public function ajax_recommen_job() {
+
+        $perpage = 5;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
+
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+       // job seeker detail
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+    $job_skill = $this->data['jobdata'][0]['keyskill'];
+            $postuserarray = explode(',', $job_skill);
+        
+// post detail
+        $contition_array = array('is_delete' => 0, 'status' => 1);
+        $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+       
+         $contition_array = array('status' => 1 ,'user_id' => $userid, 'type' => 3);
+        $skill_data=$this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+         $date=date('Y-m-d', time());
+
+   //for getting data from rec_post table for keyskill    
+        foreach ($postdata as $post) {
+            $skill_id = explode(',', $post['post_skill']);
+
+             $skill_id = array_filter(array_map('trim', $skill_id));
+             $postuserarray = array_filter(array_map('trim', $postuserarray));
+
+              $result = array_intersect($postuserarray, $skill_id);
+  
+                 if (count($result) > 0) { 
+                  
+                    $contition_array = array('post_id' => $post['post_id'],'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1);
+                    $data = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                  
+                    if($data[0]['user_id'] != $userid ){
+                       
+                    $recommendata[] = $data;
+                    
+                    }
+
+                }
+          
+        }
+     
+       
+   //for getting data from skill table for other skill
+       foreach ($skill_data as $skill) {  
+
+          $contition_array = array('FIND_IN_SET("'.$skill['skill'].'",other_skill)!='=>'0','post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
+                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $recommendata1[] = $data1;
+
+               }
+//    echo "<pre>";print_r($recommendata1);die(); 
+ // Retrieve data according to city match start   
+$work_job_city=$jobdata[0]['work_job_city'];
+
+            $work_city=explode(',',$work_job_city);
+      
+                foreach ($work_city as $city)
+                {
+                    $data='*';
+                    $contition_array = array('FIND_IN_SET("'.$city.'",city)!='=>'0','post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
+                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $recommendata_city[] = $data1;
+                }       
+        // Retrieve data according to city match End   
+
+ // Retrieve data according to industry match start   
+$work_job_industry=$jobdata[0]['work_job_industry'];
+  foreach ($postdata as $post) {
+
+                    $data='*';
+                    $contition_array = array('industry_type'=>$work_job_industry,'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
+                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $recommendata_industry[] = $data1;
+
+    }
+ // Retrieve data according to industry match End   
+
+// Retrieve data according to Job Title match start   
+$work_job_title=$jobdata[0]['work_job_title'];
+
+      
+                foreach ($postdata as $post)
+                {
+                     $data='*';
+                    $contition_array = array('post_name'=>$work_job_title,'post_last_date >=' => $date,'is_delete' => 0, 'status' => 1); 
+                    $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data , $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $recommendata_title[] = $data1;
+
+                }       
+        // Retrieve data according to  Job Title match End   
+       
+
+                 if (count($recommendata) == 0) {
+               
+                $unique = $recommendata1;
+
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
+         
+                
+            } 
+            elseif (count($recommendata1) == 0) {
+                $unique = $recommendata;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
+              
+            }
+             elseif (count($recommendata_city) == 0) {
+                $unique = $recommendata_city;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
+              
+            }
+             elseif (count($recommendata_industry) == 0) {
+                $unique = $recommendata_industry;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
+              
+            }
+             elseif (count($recommendata_industry) == 0) {
+                $unique = $recommendata_title;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
+               
+            }
+            else {
+
+                 $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
+                  $newArray = array();
+                  foreach ($unique as $key => $innerArr1) {
+                       foreach ($innerArr1 as $key1 => $innerArr)
+                      {
+                            $newArray[][] = $innerArr;
+                      }
+                  }
+                  $qbc = array_unique($newArray, SORT_REGULAR);
+                  $qbc  = array_filter($qbc);
+            }
+
+ $postdetail = $this->data['postdetail'] = $qbc;
+  $falguni=$this->data['falguni'] = 1;
+ //echo "<pre>";print_r( $postdetail);die();
+  $postdetail1 = array_slice($postdetail, $start, $perpage);
+
+
+        if (empty($_GET["total_record"])) {
+            $_GET["total_record"] = count($postdetail);
+        }
+
+        $return_html = '';
+
+        $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
+        $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
+        $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
+
+       if ($falguni == 1) {        
+                        if (count($postdetail) > 0) { 
+                                foreach ($postdetail1 as $postdetaildata) {
+                                        foreach ($postdetaildata as $post) {
+
+                $return_html .= '<div class="job-contact-frnd ">
+                <div class="profile-job-post-detail clearfix" id="applypost'. $post['app_id'].'">
+                <div class = "profile-job-post-title clearfix">
+                <div class = "profile-job-profile-button clearfix">
+                <div class = "profile-job-details col-md-12 col-xs-12  padding_job_rs">
+                <ul>
+                        <li class="fr date_re">
+                              Created Date :' .date('d-M-Y',strtotime($post['created_date'])).'
+                        </li>
+
+                        <li>';
+
+              $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+
+              $return_html .= '<a href="javascript:void(0);" title="'.$cache_time.'" class=" post_title">' ; 
+
+                if($cache_time)
+                {
+                              $return_html .= $cache_time;
+                }
+                else
+                {
+                              $return_html .= $post['post_name'];
+                }                     
+                $return_html .= '</a></li><li>';
+
+                $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
+                $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name; 
+
+                if($countryname || $cityname)
+                {
+                $return_html .= '<div class="fr lction">
+                                 <p title="Location"><i class="fa fa-map-marker" aria-hidden="true"></i>';                                
+                  if($cityname)
+                  {
+                     $return_html .= $cityname.', ';
+                  }
+                   $return_html .= $countryname.'</p></div>'; 
+                                      
+                }
+
+                $cache_time1 = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->re_comp_name; 
+
+                 $return_html .='<a class="job_companyname "  href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'" title="'.$cache_time1.'">';
+                                               
+                    $out = strlen($cache_time1) > 40 ? substr($cache_time1,0,40)."..." : $cache_time1;       
+                $return_html .= $out.'</a></li>';
+                 $return_html .= '<li><a class="display_inline" title="Recruiter Name" href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'">';
+                 
+                $cache_time = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->rec_firstname;
+                                                
+                $cache_time1 = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->rec_lastname;
+                    
+                $return_html .=  ucwords($cache_time)."  ".ucwords($cache_time1).'</a></li>';
+                                                   
+                $return_html .='</ul></div></div>';
+
+                 $return_html .= '<div class="profile-job-profile-menu">
+                                       <ul class="clearfix">
+                                          <li> <b> Skills</b> <span>';
+
+                            $comma = ",";
+                            $k = 0;
+                            $aud = $post['post_skill'];
+                            $aud_res = explode(',', $aud);  
+              if(!$post['post_skill'])
+              {
+                                                
+                  $return_html .= $post['other_skill'];
+                                                
+              }
+              else if(!$post['other_skill']){
+                     foreach ($aud_res as $skill) 
+                     {
+                        if ($k != 0) 
+                        {
+                                      $return_html .= $comma;
+                        }
+
+              $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                
+                                     $return_html .= $cache_time;
+                        $k++;
+                    }
+                                                
+              }
+              else if($post['post_skill'] && $post['other_skill'])
+              {
+                      foreach ($aud_res as $skill) {
+                          if ($k != 0) 
+                          {
+                                      $return_html .= $comma;
+                          }
+            $cache_time = $this->db->get_where('skill', array('skill_id' => $skill))->row()->skill;
+                                                
+                      $return_html .= $cache_time;
+                      $k++;
+              }
+               $return_html .= ',' . $post['other_skill'];
+             }
+                                                     
+              $return_html .='</span></li><li>
+                                  <b>Job Description</b>
+                              <span><p>';
+
+            if ($post['post_description']) 
+            { 
+                    $return_html .='<pre>'.$this->common->make_links($post['post_description']).'</pre>';
+           }
+           else
+          { 
+                    $return_html .= PROFILENA; 
+          } 
+                                                
+                $return_html .= '</p></span></li>';
+                $return_html .='<li><b>Interview Process</b>
+                                  <span><pre>';
+
+                if($post['interview_process'])
+                { 
+
+                  $return_html .=$this->common->make_links($post['interview_process']);
+                }
+                else
+                {
+                   $return_html .= PROFILENA;
+                }
+                                             
+                $return_html .= '</pre></span></li>';
+              
+                 $return_html .='<li><b>Required Experience</b><span><p title="Min - Max">';
+                            
+                if(($post['min_year'] !='0' || $post['max_year'] !='0') && ($post['fresher'] == 1))
+                { 
+                   $return_html .= $post['min_year'].' Year - '.$post['max_year'] .' Year'." , ".   "Fresher can also apply.";
+                } 
+                else if(($post['min_year'] !='0' || $post['max_year'] !='0'))
+                {
+                    $return_html .= $post['min_year'].' Year - '.$post['max_year'] . ' Year';
+                }
+                else
+                {
+                      $return_html .= "Fresher";
+                                                      
+                }
+                 $return_html .='</p></span></li>'; 
+
+                $return_html .='<li><b>Salary</b><span title="Min - Max">';
+                                             
+        $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
+                                                
+              if($post['min_sal'] || $post['max_sal'])
+              {
+                  $return_html .= $post['min_sal']." - ".$post['max_sal'].' '. $currency . ' '. $post['salary_type']; 
+              } 
+              else 
+              { 
+                $return_html .= PROFILENA;
+              } 
+              $return_html .='</span></li>';
+                                                                              
+              $return_html .='<li><b>No of Position</b><span>'.$post['post_position'].' '. 'Position</span></li>';                           
+                 
+              $return_html .='<li><b>Industry Type</b> <span>';
+                                      
+              $cache_time = $this->db->get_where('job_industry', array('industry_id' => $post['industry_type']))->row()->industry_name;
+
+                $return_html .= $cache_time.'</span></li>';
+                                                
+          if ($post['degree_name'] != '' || $post['other_education'] != '') 
+          { 
+                $return_html .= '<li> <b>Education Required</b> <span> ';
+                                            
+                   $comma = ", ";
+                   $k = 0;
+                   $edu = $post['degree_name'];
+                   $edu_nm = explode(',', $edu);
+                                                
+                  if(!$post['degree_name'])
+                  {
+                        $return_html .= $post['other_education'];
+                                                
+                  }
+                  else if(!$post['other_education'])
+                  {    
+                      foreach ($edu_nm as $edun) {
+                        if ($k != 0) {
+                                      $return_html .= $comma;
+                                      }
+                      $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
+                                                
+                                                
+                          $return_html .= $cache_time;
+                          $k++;
+                                                }
+                                                 
+                  }
+                  else if($post['degree_name'] && $post['other_education'])
+                  {
+                      foreach ($edu_nm as $edun) {
+                        if ($k != 0) {
+                                        $return_html .= $comma;
+                                      }
+                        $cache_time = $this->db->get_where('degree', array('degree_id' => $edun))->row()->degree_name;
+                                        $return_html .= $cache_time;
+                                        $k++;
+                                                } 
+                               $return_html .= ",". $post['other_education']; 
+                  }
+                               $return_html .='</span> </li>';                   
+                                             
+              }
+              else
+              { 
+                     $return_html .='<li><b>Education Required</b><span>'.PROFILENA.'</span></li>';
+                                            
+              }
+                                                                        
+                                                                
+                                         
+                $return_html .='</ul></div>';
+               $return_html .= '</div></div></div>';
+               }
+             }
+           }
+         }
+        
+        echo $return_html;
+    }
+//GET JOB ALL POST DATA WITH AJAX END
 
 }
