@@ -262,31 +262,6 @@
 
 
 
-    <script type="text/javascript">
-  
-
-$(document).ready(function(){
-    $('.dropdown_hover').click(function(event){
-        event.stopPropagation();
-         $(".dropdown-content_hover").fadeToggle("fast");
-    });
-    $(".dropdown-content_hover").on("dropdown_hover", function (event) {
-        event.stopPropagation();
-    });
-});
-
-$(document).on("dropdown_hover", function () {
-    $(".dropdown-content_hover").hide();
-});
-
-$(document).ready(function() {
-     $("body").click(function(event) {
-        $(".dropdown-content_hover").hide();
-      //  event.stopPropagation();
-    });
- 
-});
-</script>
 
 
 <script type="text/javascript">

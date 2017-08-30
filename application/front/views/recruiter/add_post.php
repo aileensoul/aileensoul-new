@@ -54,9 +54,8 @@
                                     $degree1 = form_error('education1');
                                     ?>
                                     <fieldset class="full-width"<?php if ($post_name) { ?> class=" error-msg" <?php } ?> >
-                                        <label class="control-label">Job Title:<span style="color:red">*</span></label>
-                                       <!--  <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder="Position [Ex:- Sr. Engineer, Jr. Engineer]" /> -->
-                                        <input type="search" tabindex="1" autofocus id="post_name" name="post_name" value="" placeholder="Position [Ex:- Sr. Engineer, Jr. Engineer]" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                       <label class="control-label">Job Title:<span style="color:red">*</span></label>
+                                       <input type="search" tabindex="1" autofocus id="post_name" name="post_name" value="" placeholder="Position [Ex:- Sr. Engineer, Jr. Engineer]" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('post_name'); ?>
                                     </fieldset>
@@ -72,14 +71,14 @@
                                       <option></option>
 
                                         <?php //foreach ($skill as $ski) {  ?>
-                                  <option value="<?php //echo $ski['skill_id'];        ?>"><?php // echo $ski['skill'];        ?></option>
+                                  <option value="<?php //echo $ski['skill_id'];         ?>"><?php // echo $ski['skill'];         ?></option>
                                         <?php //} ?>
                                     </select>  -->
                                         <?php echo form_error('skills'); ?>
                                     </fieldset>
 
 
-<!--   <fieldset class="full-width" <?php //if ($other_skill) {        ?> class="error-msg" <?php //}        ?> >
+<!--   <fieldset class="full-width" <?php //if ($other_skill) {         ?> class="error-msg" <?php //}         ?> >
     <label class="control-label">Other Skill: --><!-- <span style="color:red">*</span> --><!-- </label>
     <input name="other_skill" type="text" class="skill_other" tabindex="3" id="other_skill" placeholder="Enter Your Skill" />
     <span id="fullname-error"></span>
@@ -214,7 +213,7 @@
                                     <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
                                         <label>Education:</label> 
 
-                                         <input type="search" tabindex="1" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                        <input type="search" tabindex="1" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('education'); ?>
 
@@ -364,6 +363,20 @@
             <!-- MIDDLE SECTION END-->
         </section>
         <!-- END CONTAINER -->
+
+        <!-- BID MODAL START -->
+        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                    <div class="modal-body">
+                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
+                        <span class="mes"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BID MODAL END -->
         <!-- BEGIN FOOTER -->
         <?php echo $footer; ?>
         <!-- END FOOTER -->
@@ -375,7 +388,7 @@
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
-       
+
         <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
 
         <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
