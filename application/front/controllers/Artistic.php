@@ -113,7 +113,8 @@ class Artistic extends MY_Controller {
                 $this->data['phoneno1'] = $userdata[0]['art_phnno'];
             }
         }
-      
+
+        $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
         $this->load->view('artistic/art_basic_information', $this->data);
     }
 
@@ -275,7 +276,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                 //$this->data['address1'] = $userdata[0]['art_address'];
             }
         }
-
+        $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX; 
         $this->load->view('artistic/art_address', $this->data);
     }
 
@@ -430,6 +431,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         $skildata = explode(',', $userdata[0]['art_skill']);
         $this->data['selectdata'] = $skildata;
         //echo "<pre>"; print_r( $this->data['selectdata']); die();
+        $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
 
         $this->load->view('artistic/art_information', $this->data);
     }
@@ -558,7 +560,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
             }
         }
 
-   
+        $this->data['title'] = 'Artistic Profile'.TITLEPOSTFIX;
+    
 
         $this->load->view('artistic/art_portfolio', $this->data);
     }
@@ -987,6 +990,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         redirect('artistic/');
        }else{ //echo "123456789"; die();
        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+      
+       $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
+
         $this->load->view('artistic/art_post', $this->data);
        
        }
@@ -1043,6 +1050,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
        }
        else{
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
+        $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
       $this->load->view('artistic/art_manage_post', $this->data);
        }
     }
@@ -2828,6 +2837,8 @@ $datacount = count($otherdata);
 
         if($this->data['artisticdata']){
 
+            $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
             $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
         $this->load->view('artistic/artistic_profile', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
@@ -2902,7 +2913,8 @@ $datacount = count($otherdata);
 
         if($this->data['artisticdata']){
        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
-
+       $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->load->view('artistic/artistic_userlist', $this->data);
         }else{
        redirect('artistic/');
@@ -3866,7 +3878,8 @@ public function followtwo() {
 
 
         if($this->data['artisticdata']){
-
+            $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
         $this->load->view('artistic/art_followers', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
@@ -4107,6 +4120,8 @@ public function followtwo() {
         }
 
         if($this->data['artisticdata']){
+            $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
 
         $this->load->view('artistic/art_following', $this->data);
@@ -6836,6 +6851,8 @@ public function insert_comment_postnewpage() {
 
 
         if($this->data['artisticdata']){
+            $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
             $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
         $this->load->view('artistic/postnewpage', $this->data);
     }
@@ -7249,7 +7266,8 @@ public function insert_comment_postnewpage() {
 
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
-
+        $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->load->view('artistic/art_photos', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7304,7 +7322,8 @@ public function insert_comment_postnewpage() {
 
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
-
+        $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->load->view('artistic/art_videos', $this->data);
          }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7360,7 +7379,8 @@ public function insert_comment_postnewpage() {
 
         if($this->data['artisticdata']){
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
-
+        $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;
         $this->load->view('artistic/art_audios', $this->data);
         }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -7414,7 +7434,8 @@ public function insert_comment_postnewpage() {
 
         if($this->data['artisticdata']){ 
         $this->data['artistic_common'] = $this->load->view('artistic/artistic_common', $this->data, true);
-            
+        $artistic_name = $this->get_artistic_name($id);
+      $this->data['title'] = $artistic_name.TITLEPOSTFIX;    
         $this->load->view('artistic/art_pdf', $this->data);
        }else if(!$this->data['artisticdata'] && $id != $userid){
 
@@ -14660,5 +14681,17 @@ public function artistic_search_city($id = "") {
 
     }
 
+
+//Get artistic Name for title Start
+public function get_artistic_name($id=''){
+
+        $userid = $this->session->userdata('aileenuser');
+       
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $artdata = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_name,art_lastname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        return $artistic_name = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'];    
+    }
+//Get Job Seeker Name for title End
     
 }

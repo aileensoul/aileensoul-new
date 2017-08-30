@@ -26,10 +26,10 @@
         <?php echo $business_header2_border; ?>
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 fixed_left_side animated fadeInLeftBig profile-box profile-box-custom">
-                            <div class="">
+                <div class="container art_container">
+                    <div class="">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+                            <div class="left_fixed">
                                 <?php echo $business_left; ?>
                                 <div class="full-box-module_follow fw fixed_right_display_none ">
                                     <!-- follower list start  -->  
@@ -83,7 +83,9 @@
                         }
                         ?>
 
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp">
+                        <div class=" custom-right-art animated fadeInUp">
+      <div class="mian_middle_post_box">  
+          <div class="right_side_posrt fl"> 
                             <div class="post-editor col-md-12">
                                 <div class="main-text-area col-md-12">
                                     <div class="popup-img"> 
@@ -141,8 +143,9 @@
                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
                         </div>
 
-                        <div class="col-md-3 fixed_right_side animated fadeInRightBig">
-                            <div class="full-box-module_follow fixed_right_display ">
+                       <div class="animated fadeInRightBig ">
+      <div class="right_middle_side_posrt fixed_right_display"> 
+                           <div class="full-box-module_follow" style="margin-top: 0px;">
                                     <!-- follower list start  -->  
                                     <div class="common-form">
                                         <h3 class="user_list_head">User List
@@ -159,8 +162,9 @@
                                     <!-- GET USER FOLLOE SUGESSION LIST START -->
                                     <!-- follower list end  -->
                                 </div>
+                                </div>
                         </div>
-
+                        </div>
                     </div>
                 </div>
 

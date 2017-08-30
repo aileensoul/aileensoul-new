@@ -208,15 +208,15 @@
         <?php echo $footer; ?>
         <!-- script for update all read notification start-->
         <script type="text/javascript">
-            function contactperson() {
-                $.ajax({
-                    url: "<?php echo base_url(); ?>business_profile/contact_notification",
-                    type: "POST",
-                    success: function (data) {
-                        $('#addcontactBody').html(data);
-                    }
-                });
-            }
+//            function contactperson() {
+//                $.ajax({
+//                    url: "<?php echo base_url(); ?>business_profile/contact_notification",
+//                    type: "POST",
+//                    success: function (data) {
+//                        $('#addcontactBody').html(data);
+//                    }
+//                });
+//            }
             function contactapprove1(toid, status) {
                 $.ajax({
                     url: "<?php echo base_url(); ?>business_profile/contact_list_approve",

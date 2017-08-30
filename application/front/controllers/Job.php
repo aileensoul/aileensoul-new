@@ -40,10 +40,10 @@ class Job extends MY_Controller {
           $job= $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($job[0]['job_step'] == 10) {
-                 redirect('job/job_all_post', refresh);
+                 redirect('job/home', refresh);
                }
             else {
-                redirect('job/job_reg', refresh);
+                redirect('job/profile', refresh);
             }
         }
     }
@@ -106,6 +106,8 @@ class Job extends MY_Controller {
 
         $skildata = explode(',', $userdata[0]['language']);
         $this->data['selectdata'] = $skildata;
+
+         $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
 
         $this->load->view('job/index', $this->data);
     }
@@ -190,10 +192,10 @@ class Job extends MY_Controller {
                 $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
                 if ($updatedata) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('job/job_education_update', refresh);
+                    redirect('job/qualification', refresh);
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('job/job_basicinfo_update', refresh);
+                    redirect('job/basic-information', refresh);
                 }
             } else {
 
@@ -217,10 +219,10 @@ class Job extends MY_Controller {
                 $insert_id = $this->common->insert_data_getid($data, 'job_reg');
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('job/job_education_update');
+                    redirect('job/qualification');
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('job/job_basicinfo_update', 'refresh');
+                    redirect('job/basic-information', 'refresh');
                 }
             }
         }
@@ -323,7 +325,7 @@ class Job extends MY_Controller {
         }
 
        
-
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
         $this->load->view('job/job_education', $this->data);
     }
 
@@ -457,10 +459,10 @@ class Job extends MY_Controller {
 
             if ($updatedata) {
                 $this->session->set_flashdata('success', 'Primary Education updated successfully');
-                redirect('job/job_education_update/secondary');
+                redirect('job/qualification/secondary');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         } 
 
@@ -479,10 +481,10 @@ class Job extends MY_Controller {
 
             if ($insert_id) {
                 $this->session->set_flashdata('success', 'Primary Education updated successfully');
-                redirect('job/job_education_update/secondary');
+                redirect('job/qualification/secondary');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         }
     }
@@ -612,11 +614,10 @@ class Job extends MY_Controller {
 
             if ($updatedata) {
                 $this->session->set_flashdata('success', 'Secondary Education updated successfully');
-                // redirect('job/job_project_update');
-                redirect('job/job_education_update/higher-secondary');
+                redirect('job/qualification/higher-secondary');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         } else {
             $data = array(
@@ -632,10 +633,10 @@ class Job extends MY_Controller {
 
             if ($insert_id) {
                 $this->session->set_flashdata('success', 'Secondary Education updated successfully');
-                redirect('job/job_education_update/higher-secondary');
+                redirect('job/qualification/higher-secondary');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         }
     }
@@ -766,10 +767,10 @@ class Job extends MY_Controller {
 
             if ($updatedata) {
                 $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
-                redirect('job/job_education_update/graduation');
+                redirect('job/qualification/graduation');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         } else {
             $data = array(
@@ -787,10 +788,10 @@ class Job extends MY_Controller {
 
             if ($insert_id) {
                 $this->session->set_flashdata('success', 'Higher Secondary Education updated successfully');
-                redirect('job/job_education_update/graduation');
+                redirect('job/qualification/graduation');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         }
     }
@@ -822,7 +823,7 @@ class Job extends MY_Controller {
                 redirect('job/job_add_education', refresh);
             } else {
                 echo "<script>alert('You Can only add 5 Education field');</script>";
-                redirect('job/job_education_update', refresh);
+                redirect('job/qualification', refresh);
             }
         }
 //Click on Add_More_Education Process End
@@ -1021,11 +1022,11 @@ class Job extends MY_Controller {
         if ($insert_id || $updatedata1) {
 
             $this->session->set_flashdata('success', 'Education updated successfully');
-            redirect('job/job_project_update');
+            redirect('job/project');
         } else {
             //echo "welome";die();
             $this->session->flashdata('error', 'Your data not inserted');
-            redirect('job/job_education_update', 'refresh');
+            redirect('job/qualification', 'refresh');
         }
     }
 
@@ -1060,6 +1061,8 @@ class Job extends MY_Controller {
             }
         }
 
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/job_project', $this->data);
     }
 
@@ -1070,7 +1073,7 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->post('previous')) {
-            redirect('job/job_education_update', refresh);
+            redirect('job/qualification', refresh);
         }
         if ($this->input->post('next')) {
 
@@ -1091,10 +1094,10 @@ class Job extends MY_Controller {
             if ($updatedata) {
 
                 $this->session->set_flashdata('success', 'Project And Training / Internship updated successfully');
-                redirect('job/job_skill_update');
+                redirect('job/work-area');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_project_update', 'refresh');
+                redirect('job/project', 'refresh');
             }
         }
     }
@@ -1178,8 +1181,9 @@ class Job extends MY_Controller {
    $this->data['work_skill'] = implode(',', $detailes); 
    $this->data['work_city'] = implode(',', $cities); 
   
+   $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
 
-        $this->load->view('job/job_skill', $this->data);
+   $this->load->view('job/job_skill', $this->data);
     }
 
     public function job_skill_insert() {  
@@ -1199,7 +1203,7 @@ class Job extends MY_Controller {
       $cities = explode(',',$cities); 
        
         if ($this->input->post('previous')) {
-            redirect('job/job_project_update', refresh);
+            redirect('job/project', refresh);
         }
         if ($this->input->post('next')) {
             
@@ -1281,15 +1285,14 @@ class Job extends MY_Controller {
                     
                 );
          
-                $updatdata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
       
             if ($updatedata) {
-
                 $this->session->set_flashdata('success', 'Skill updated successfully');
-                redirect('job/job_work_exp_update');
+                redirect('job/work-experience');
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_skill_update', 'refresh');
+                redirect('job/work-area', 'refresh');
             }
         }
     }
@@ -1319,6 +1322,8 @@ class Job extends MY_Controller {
             }
         }
       
+        $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
+
         $this->load->view('job/job_work_exp', $this->data);
     }
 
@@ -1332,7 +1337,7 @@ class Job extends MY_Controller {
         $count1 = count($userdata[0]['jobtitle']);
        
         if ($this->input->post('previous')) { 
-            redirect('job/job_skill_update', refresh);
+            redirect('job/work-area', refresh);
         }
         $post_data = $this->input->post();
         
@@ -1416,10 +1421,10 @@ class Job extends MY_Controller {
 
                 if ($updatedata && $updatedata1 || $updatedata && $insertid) {
                     $this->session->set_flashdata('success', 'Work Experience updated successfully');
-                    redirect('job/job_all_post');
+                    redirect('job/home');
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('job/job_work_exp_update', 'refresh');
+                    redirect('job/work-experience', 'refresh');
                 }
             } else {
 
@@ -1679,10 +1684,10 @@ $files[] = $_FILES;
 
                 if ($insert_id && $updatedata || $updatedata1 && $updatedata) {
                     $this->session->set_flashdata('success', 'Work Experience updated successfully');
-                    redirect('job/job_all_post');
+                    redirect('job/home');
                 } else {
                     $this->session->flashdata('error', 'Your data not inserted');
-                    redirect('job/job_work_exp_update', 'refresh');
+                    redirect('job/work-experience', 'refresh');
                 }
             }
         }
@@ -1863,10 +1868,11 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $this->data['count_profile']=  $count_profile;
      $this->data['count_profile_value']= ($count_profile/100);
 
+      $jobseeker_name = $this->get_jobseeker_name($id);
+      $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
+
         $this->load->view('job/job_printpreview', $this->data);
-        //for getting other skill data
-        $contition_array = array('user_id' => $userid, 'type' => 3, 'status' => 1);
-        $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
     }
 
     //job seeker PRINTDATA controller end
@@ -1919,7 +1925,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
                 }
           
         }
-        
+     
        
    //for getting data from skill table for other skill
        foreach ($skill_data as $skill) {  
@@ -1929,7 +1935,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
                     $recommendata1[] = $data1;
 
                }
-
+//    echo "<pre>";print_r($recommendata1);die(); 
  // Retrieve data according to city match start   
 $work_job_city=$jobdata[0]['work_job_city'];
 
@@ -1972,36 +1978,55 @@ $work_job_title=$jobdata[0]['work_job_title'];
        
 
                  if (count($recommendata) == 0) {
-                
+               
                 $unique = $recommendata1;
+
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
          
                 
             } 
             elseif (count($recommendata1) == 0) {
                 $unique = $recommendata;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_city) == 0) {
                 $unique = $recommendata_city;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_industry) == 0) {
                 $unique = $recommendata_industry;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
               
             }
              elseif (count($recommendata_industry) == 0) {
                 $unique = $recommendata_title;
+                $qbc = array_unique($unique, SORT_REGULAR);
+                $qbc  = array_filter($qbc);
                
             }
             else {
-                $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
-              
+
+                 $unique = array_merge($recommendata1, $recommendata,$recommendata_city,$recommendata_industry,$recommendata_title);
+                  $newArray = array();
+                  foreach ($unique as $key => $innerArr1) {
+                       foreach ($innerArr1 as $key1 => $innerArr)
+                      {
+                            $newArray[][] = $innerArr;
+                      }
+                  }
+                  $qbc = array_unique($newArray, SORT_REGULAR);
+                  $qbc  = array_filter($qbc);
             }
         
              
 //array_unique is used for remove duplicate values
-               $qbc = array_unique($unique, SORT_REGULAR);
-                 $qbc  = array_filter($qbc);
+               
                  $this->data['postdetail'] = $qbc;
                  
               
@@ -2103,6 +2128,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $count_profile=($count*100)/23;
      $this->data['count_profile']=  $count_profile;
      $this->data['count_profile_value']= ($count_profile/100);
+
+      $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
 
         $this->load->view('job/job_all_post', $this->data);
     }
@@ -2319,6 +2346,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
      $this->data['count_profile_value']= ($count_profile/100);
 
 //For Counting Profile data End
+     $jobseeker_name = $this->get_jobseeker_name($id);
+     $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
         $this->load->view('job/job_applied_post', $this->data);
     }
@@ -2519,6 +2548,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 //For Counting Profile data End
 
 
+     $jobseeker_name = $this->get_jobseeker_name($id);
+     $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
         $this->load->view('job/job_save_post', $this->data);
     }
@@ -2535,13 +2566,13 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
  
 
         if ($this->input->post('cancel1')) {
-            redirect('job/job_all_post', refresh);
+            redirect('job/home', refresh);
         } elseif ($this->input->post('cancel2')) {
-            redirect('job/job_printpreview', refresh);
+            redirect('job/resume', refresh);
         } elseif ($this->input->post('cancel3')) {
-            redirect('job/job_applied_post', refresh);
+            redirect('job/applied-job', refresh);
         } elseif ($this->input->post('cancel4')) {
-            redirect('job/job_save_post', refresh);
+            redirect('job/saved-job', refresh);
         }
 
         if (empty($_FILES['profilepic']['name'])) {
@@ -2638,17 +2669,17 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 
             if ($updatdata) {
                 if ($this->input->post('hitext') == 1) {
-                    redirect('job/job_all_post', refresh);
+                    redirect('job/home', refresh);
                 } elseif ($this->input->post('hitext') == 2) {
-                    redirect('job/job_printpreview', refresh);
+                    redirect('job/resume', refresh);
                 } elseif ($this->input->post('hitext') == 3) {
-                    redirect('job/job_applied_post', refresh);
+                    redirect('job/applied-job', refresh);
                 } elseif ($this->input->post('hitext') == 4) {
-                    redirect('job/job_save_post', refresh);
+                    redirect('job/saved-job', refresh);
                 }
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('job/job_all_post', refresh);
+                redirect('job/home', refresh);
             }
         }
     }
@@ -2818,7 +2849,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         $updatdata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('job/job_all_post', refresh);
+            redirect('job/home', refresh);
         } else {
 
             redirect('job/reactivate', refresh);
@@ -3134,7 +3165,7 @@ public function creat_pdf_primary($id,$seg) {
             {
                  $select = '<title>'.$pdf[0]['edu_certificate'].'</title>';
                 $select .= '<link rel="icon" href="'.base_url('images/favicon.png').'">';
-                $select .= '<form action="'.base_url().'/job/job_education_update/primary" method="post">';
+                $select .= '<form action="'.base_url().'/job/qualification/primary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
@@ -3165,7 +3196,7 @@ public function creat_pdf_secondary($id,$seg) {
             {
                 $select = '<title>'.$pdf[0]['edu_certificate'].'</title>';
                 $select .= '<link rel="icon" href="'.base_url('images/favicon.png').'">';
-                $select .= '<form action="'.base_url().'/job/job_education_update/secondary" method="post">';
+                $select .= '<form action="'.base_url().'/job/qualification/secondary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
@@ -3195,7 +3226,7 @@ public function creat_pdf_higher_secondary($id,$seg) {
             {
                 $select = '<title>'.$pdf[0]['edu_certificate'].'</title>';
                 $select .= '<link rel="icon" href="'.base_url('images/favicon.png').'">';
-                $select .= '<form action="'.base_url().'/job/job_education_update/higher-secondary" method="post">';
+                $select .= '<form action="'.base_url().'/job/qualification/higher-secondary" method="post">';
                 $select .= '<button type="submit">Back</button>';
                 $select .= '</form>';
                 echo $select;
@@ -3520,10 +3551,10 @@ public function delete_workexp()
                 $insert_id = $this->common->insert_data_getid($data, 'job_reg');
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('job/job_all_post');
+                    redirect('job/home');
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('job/job_reg', 'refresh');
+                    redirect('job/profile', 'refresh');
                 }
        
     }
@@ -3544,7 +3575,7 @@ public function delete_workexp()
             if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0") 
             {
                
-                  redirect('job/job_reg');
+                  redirect('job/profile');
                 
             } 
             
@@ -3615,4 +3646,17 @@ public function job_avail_check($userid = " ")
         }
   }
 //if user deactive profile then redirect to job/index untill active profile End
+
+//Get Job Seeker Name for title Start
+public function get_jobseeker_name($id=''){
+
+        $userid = $this->session->userdata('aileenuser');
+       
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       
+        return $jobseeker_name = $jobdata[0]['fname'].' '.$jobdata[0]['lname'];    
+    }
+//Get Job Seeker Name for title End
+
 }

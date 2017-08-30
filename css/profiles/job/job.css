@@ -14,6 +14,16 @@
     width: 22.5%;
     margin-top: 0px;
 }
+.profile-job-details p {
+    color: #5b5b5b;
+}
+.profile-job-details .job_companyname {
+    width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .buisness-profile-pic-candidate {border: 1px solid #d9d9d9; margin-left: 17px!important;  width: 50px; margin-top: 5px;
     height: 50px; margin-left:17px; margin-bottom: 6px; display: inline-block;} 
 .buisness-profile-pic-candidate img { width: 100%; height: 100%;}
@@ -83,7 +93,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
 .profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
-.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; border-top: none; z-index: -1; background-color: white;}
+.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; z-index: -1; background-color: white;}
 .profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
 .profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
 .profile-main-rec-box-menu li a {display: block; color: #1b8ab9; text-align: center; padding: 16px 15px;
@@ -437,4 +447,177 @@ label.cameraButton input[accept*="camera"] {display: none;}
 /*** ---------  only job  -----------  ***/
 .job_reg_page_fprm{width: 640px; margin: 0 auto;}
 .radio_job:focus + label:before{   border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
+.panel-group.wrap {
+    margin-top: 25px;
+}
+.panel {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    background: none;
+    box-shadow: none;
+}
+.panel-group > .panel:first-child .panel-heading {
+    border-radius: 4px 4px 0 0;
+}
+.panel-group.wrap .panel-heading {
+    border-radius: 0 !important;
+}
+.panel:last-child {
+    border-bottom: none;
+}
+.panel-group.wrap .panel {
+    margin-bottom: 10px;
+}
+.panel-group .panel {
+    border-radius: 0;
+}
+.panel-group .panel + .panel {
+    margin-top: 0;
+}
+.panel-heading.active {
+    background-color: #156f95;
+}
+.panel-heading {
+    background-color: #1b8ab9;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    padding: 0;
+}
+.panel-title a {
+    display: block;
+    color: #fff;
+    padding: 15px;
+    position: relative;
+    font-size: 22px;
+    font-weight: 400;
+}
+.panel-body {
+    background: #fff;
+}
+.panel:last-child .panel-body {
+    border-radius: 0 0 4px 4px;
+}
+.panel:last-child .panel-heading {
+    border-radius: 0 0 4px 4px;
+    transition: border-radius 0.3s linear 0.2s;
+}
+.panel:last-child .panel-heading.active {
+    border-radius: 0;
+    transition: border-radius linear 0s;
+}
+.panel-heading a:before {
+    content: '\f067';
+    position: absolute;
+    font-family: 'FontAwesome';
+    right: 15px;
+    top: 10px;
+    font-size: 20px;
+    transition: all 0.5s;
+    transform: scale(1);
+}
+.panel-heading.active a:before {
+    content: ' ';
+    transition: all 0.5s;
+    transform: scale(0);
+}
+#bs-collapse .panel-heading a:after {
+    content: ' ';
+    font-size: 20px;
+    position: absolute;
+    font-family: 'FontAwesome';
+    right: 15px;
+    top: 10px;
+    transform: scale(0);
+    transition: all 0.5s;
+}
+#bs-collapse .panel-heading.active a:after {
+    content: '\f068';
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+#accordion .panel-heading.active a:before {
+    transform: rotate(0deg);
+    transition: all 0.5s;
+}
+
+.panel-group.wrap .panel-title a {
+    padding: 10px 15px;
+    font-size: 18px;
+    line-height: 1;
+}
+#jobseeker_regform_primary {
+    border: none !important;
+    margin-bottom: 0px!important;
+}
+.dele_highrt{margin-top: 15px;}
+.dele_highrt img{float: left;}
+.dele_highrt .fa-file-pdf-o{font-size:3em;}
+
+
+
 /*** ---------  end only job  -----------  ***/
+
+/***  profile progreess box  ***/
+.edit_profile_job{display:none;}
+.tr_text{display:none;}
+.true_progtree img{display:none;}
+.edit_profile_progress{float:right;}
+.edit_profile_progress{width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin: 15px 0px; padding: 10px 0px 0px;}
+.progre_bar_text p{color: #000;
+font-size: 13px;
+font-weight: 600;
+text-align: center;}
+.circle-1 {
+  width: 175px;
+  margin: 6px 6px 20px;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+
+}
+.edit_profile_progress:hover{
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+
+}
+.progre_bar_text{padding: 0px 17px;}
+  
+.edit_profile_job{
+    position: absolute;
+bottom: 50px;
+left: 51px;
+
+}
+.edit_pr_bar .circles{ padding-left: 48px; }
+.circles{
+    padding-left: 20px;
+padding-top: 14px;
+}
+.circle-1 canvas {
+  vertical-align: middle;
+  width:175px;
+  height:175px;
+  border:1px solid transparent;
+  display:black;
+}
+.circle-1 strong {
+  position: absolute;
+  top: 55px;
+  left: 5px;
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+}
+.profile-box-left .edi_origde .edit_profile_progress{width:100%; float:left;}
+.profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:39px 22px 0;}
+.profile-box-left .edi_origde .count_main_progress{width:185px; float:left;}
+.profile-box-left .edi_origde .count_main_progress .circles{padding:0;}
+.profile-box-left .edi_origde .progre_bar_text p{text-align:left; color:#4c4c4c;}
+.edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}
+
+

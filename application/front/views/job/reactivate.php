@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
       <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
    </head>
    <!--header start-->
    <?php echo $header; ?>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo "Home - Aileensoul.com"; ?></title>
+<title><?php echo $title; ?></title>
 <?php echo $head; ?>
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
@@ -16,9 +16,10 @@
    <?php echo $header; ?>
    <?php echo $art_header2_border; ?>
       <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-      <div class="container">
-      <div class="row">
-      <div class="profile-art-box profile-box-custom col-md-4 fixed_left_side animated fadeInLeftBig" >
+      <div class="container art_container">
+      <div class="">
+      <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+      <div class="left_fixed"> 
          <?php ?>
 <?php echo $left_artistic; ?>
           <div class="full-box-module_follow fixed_right_display_none">
@@ -56,7 +57,9 @@
 
         </div>
       </div>
-      <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-art animated fadeInUp">
+     </div> 
+      <div class=" custom-right-art animated fadeInUp">
+      <div class="mian_middle_post_box">      <div class="right_side_posrt fl"> 
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
                <div class="popup-img">
@@ -112,8 +115,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              </div>
 
                              <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
-      </div>
-      <div class="col-md-3 fixed_right_side animated fadeInRightBig fixed_right_display">
+       </div>
+      <div class="animated fadeInRightBig ">
+      <div class="right_middle_side_posrt fixed_right_display"> 
          <div class="full-box-module_follow" style="margin-top: 0px;">
             <!-- follower list start  -->  
             <div class="common-form">
@@ -127,7 +131,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
             </div>
          </div>
       </div>
-     
+      </div>
+    </div>
+
+    </div> 
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">

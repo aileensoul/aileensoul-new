@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><?php echo "Following - Aileensoul.com"; ?></title>
+<title><?php echo $title; ?></title>
 <?php echo $head; ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">

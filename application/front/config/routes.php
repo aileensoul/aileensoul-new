@@ -206,3 +206,27 @@ $route['artistic/post-detail/(:any)'] = "artistic/postnewpage/$1";
 
 $route['artistic/creat-pdf'] = "artistic/creat_pdf";
 
+//BLOG ROUTES SETTINGS
+$route['blog/popular'] = "blog/popular";
+$route['blog/read_more'] = "blog/read_more";
+$route['blog/comment_insert'] = "blog/comment_insert";
+$route['blog/tag/(:any)'] = "blog/tagsearch/$1";
+$route['blog/(:any)'] = "blog/index/$1";
+
+//JOB ROUTES SETTINGS
+$route['job/home'] = "job/job_all_post";
+
+$route['job/resume'] = "job/job_printpreview";
+$route['job/resume/(:any)'] = "job/job_printpreview/$1";
+
+$route['job/saved-job'] = "job/job_save_post";
+$route['job/applied-job'] = "job/job_applied_post";
+$route['job/basic-information'] = "job/job_basicinfo_update";
+
+$route['job/qualification'] = "job/job_education_update";
+$route['job/qualification/(:any)'] = "job/job_education_update/$1";
+
+$route['job/project'] = "job/job_project_update";
+$route['job/work-area'] = "job/job_skill_update";
+$route['job/work-experience'] = "job/job_work_exp_update";
+$route['job/profile'] = "job/job_reg";

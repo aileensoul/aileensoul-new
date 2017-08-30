@@ -3,7 +3,7 @@
    <head>
       <!-- start head -->
       <?php echo $head; ?>
-      <title>Basic Information - Aileensoul.com</title>
+      <title><?php echo $title; ?></title>
       <!-- Calender Css Start-->
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
       <!-- Calender Css End-->
@@ -12,6 +12,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
    </head>
    <!-- END HEAD -->
    <!-- start header -->

@@ -109,10 +109,10 @@
         });
         // CONTAINER HIDE : NOTIFICATION, PROFILEBOX, MESSAGEBOX
         $("body").click(function (event) {
-            $("#notificationContainer").hide(600);
-            $("#InboxContainer").hide(600);
-            $(".dropdown-menu").hide(600);
-            $("#acon").hide(600);
+            $("#notificationContainer").hide();
+            $("#InboxContainer").hide();
+            $(".dropdown-menu").hide();
+            $("#acon").hide();
         });
         // EDIT PROFILE DROPDOWN 
         $('.dropdown-user').click(function (event) {

@@ -85,17 +85,17 @@
         <!-- END HEADER -->
         <?php echo $business_header2_border; ?>
         <section>
-            <div class="user-midd-section" id="paddingtop_fixed">
+            <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 profile-box profile-box-custom  animated fadeInLeftBig">
+                        <div class="col-md-4 profile-box profile-box-custom fixed_art fixed_left_side  animated fadeInLeftBig">
                             <div class="">
                                 <?php echo $business_left; ?>
                             </div>
                         </div>
                         <!-- Trigger/Open The Modal -->
                         <!-- The Modal -->
-                        <div class=" col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp" >
+                        <div class=" col-md-7 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp" >
                             <!-- body content start-->
                             <div class="col-md-12 col-sm-12 post-design-box">
                                 <!-- pop up box start-->
