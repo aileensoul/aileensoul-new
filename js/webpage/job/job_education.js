@@ -2074,7 +2074,7 @@ function next_page()
    //edit time next page
    function next_page_edit() {
    
-       $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/job_project_update">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+       $.fancybox.open('<div class="message"><h2>Do you want to leave this page?</h2><a class="mesg_link" href="' +base_url+'job/project">OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
    }
       
   //script start for next button end
