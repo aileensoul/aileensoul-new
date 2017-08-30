@@ -1416,7 +1416,7 @@ class Business_profile extends MY_Controller {
                             'height' => $resized_image_height
                         );
 
-                        $conf_new[$i]['new_image'] = $this->config->item('bus_post_350_320_upload_path') . $response['result'][$i]['file_name'];
+                        $conf_new[$i]['new_image'] = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
 
                         $left = ($n_w / 2) - ($resized_image_width / 2);
                         $top = ($n_h / 2) - ($resized_image_height / 2);
@@ -1431,7 +1431,7 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse1->crop();
 
-                        $resize_image = $this->config->item('bus_post_350_320_upload_path') . $response['result'][$i]['file_name'];
+                        $resize_image = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
 
                         $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
                         /* CROP 335 X 320 */
@@ -1459,7 +1459,7 @@ class Business_profile extends MY_Controller {
                             'height' => $resized_image_height
                         );
 
-                        $conf_new1[$i]['new_image'] = $this->config->item('bus_post_335_245_upload_path') . $response['result'][$i]['file_name'];
+                        $conf_new1[$i]['new_image'] = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
 
                         $left = ($n_w / 2) - ($resized_image_width / 2);
                         $top = ($n_h / 2) - ($resized_image_height / 2);
@@ -1474,7 +1474,7 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse2->crop();
 
-                        $resize_image1 = $this->config->item('bus_post_335_245_upload_path') . $response['result'][$i]['file_name'];
+                        $resize_image1 = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
 
                         $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
 
@@ -1502,7 +1502,7 @@ class Business_profile extends MY_Controller {
                             'height' => $resized_image_height
                         );
 
-                        $conf_new2[$i]['new_image'] = $this->config->item('bus_post_210_210_upload_path') . $response['result'][$i]['file_name'];
+                        $conf_new2[$i]['new_image'] = $this->config->item('bus_post_resize3_upload_path') . $response['result'][$i]['file_name'];
 
                         $left = ($n_w / 2) - ($resized_image_width / 2);
                         $top = ($n_h / 2) - ($resized_image_height / 2);
@@ -1517,7 +1517,7 @@ class Business_profile extends MY_Controller {
                         //Creating Thumbnail
                         $this->$instanse3->crop();
 
-                        $resize_image2 = $this->config->item('bus_post_210_210_upload_path') . $response['result'][$i]['file_name'];
+                        $resize_image2 = $this->config->item('bus_post_resize3_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
 
                         /* CROP 210 X 210 */
@@ -2010,12 +2010,12 @@ class Business_profile extends MY_Controller {
 
 //                    $return_html .= '<div  class="two-images">
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//                <img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> 
+//                <img class="two-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name']) . '"> 
 //            </a>
 //        </div>';
                     $return_html .= '<div  class="two-images">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="two-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name'] . '"> 
+                <img class="two-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name'] . '"> 
             </a>
         </div>';
                 }
@@ -2028,12 +2028,12 @@ class Business_profile extends MY_Controller {
 //        <div class="three-image" >
 //
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> 
+//                <img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name']) . '"> 
 //            </a>
 //        </div>
 //        <div class="three-image" >
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//                <img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> 
+//                <img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name']) . '"> 
 //            </a>
 //        </div>';
                 $return_html .= '<div class="three-image-top" >
@@ -2044,12 +2044,12 @@ class Business_profile extends MY_Controller {
         <div class="three-image" >
 
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name'] . '"> 
+                <img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name'] . '"> 
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name'] . '"> 
+                <img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name'] . '"> 
             </a>
         </div>';
             } elseif (count($businessmultiimage) == 4) {
@@ -2058,13 +2058,13 @@ class Business_profile extends MY_Controller {
 
 //                    $return_html .= '<div class="four-image">
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> 
+//                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '"> 
 //            </a>
 //        </div>';
 
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="breakpoint" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '"> 
+                <img class="breakpoint" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '"> 
             </a>
         </div>';
                 }
@@ -2075,14 +2075,14 @@ class Business_profile extends MY_Controller {
 
                     /*    $return_html .= '<div class="four-image">
                       <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                      <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '">
+                      <img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '">
                       </a>
                       </div>';
 
                      */
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '"> 
+                <img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '"> 
             </a>
         </div>';
 
@@ -2093,7 +2093,7 @@ class Business_profile extends MY_Controller {
 
 //                $return_html .= '<div class="four-image">
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//                <img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
+//                <img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
 //            </a>
 //            <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
 //                <div class="more-image" >
@@ -2107,7 +2107,7 @@ class Business_profile extends MY_Controller {
 
                 $return_html .= '<div class="four-image">
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name'] . '"> 
+                <img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name'] . '"> 
             </a>
             <a class="text-center" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '" >
                 <div class="more-image" >
@@ -10165,13 +10165,13 @@ Your browser does not support the audio tag.
 
                             /*    $return_html .= '<div class = "two-images">
                               <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                              <img class = "two-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '">
+                              <img class = "two-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name']) . '">
                               </a>
                               </div>'; */
 
                             $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "two-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name'] . '">
+<img class = "two-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name'] . '">
 </a>
 </div>';
                         }
@@ -10184,12 +10184,12 @@ Your browser does not support the audio tag.
 //<div class = "three-image" >
 //
 //<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '">
+//<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name']) . '">
 //</a>
 //</div>
 //<div class = "three-image" >
 //<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '">
+//<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name']) . '">
 //</a>
 //</div>';
                         $return_html .= '<div class = "three-image-top" >
@@ -10200,12 +10200,12 @@ Your browser does not support the audio tag.
 <div class = "three-image" >
 
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name'] . '">
+<img class = "three-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name'] . '">
+<img class = "three-columns" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name'] . '">
 </a>
 </div>';
                     } elseif (count($businessmultiimage) == 4) {
@@ -10214,12 +10214,12 @@ Your browser does not support the audio tag.
 
 //                            $return_html .= '<div class = "four-image">
 //<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '">
+//<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '">
 //</a>
 //</div>';
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "breakpoint" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '">
+<img class = "breakpoint" src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '">
 </a>
 </div>';
                         }
@@ -10230,12 +10230,12 @@ Your browser does not support the audio tag.
 
 //                            $return_html .= '<div class = "four-image">
 //<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//<img src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '">
+//<img src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '">
 //</a>
 //</div>';
                             $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '">
+<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '">
 </a>
 </div>';
 
@@ -10246,7 +10246,7 @@ Your browser does not support the audio tag.
 
 //                        $return_html .= '<div class = "four-image">
 //<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-//<img src = "' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '">
+//<img src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name']) . '">
 //</a>
 //<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 //<div class = "more-image" >
@@ -10259,7 +10259,7 @@ Your browser does not support the audio tag.
 //</div>';
                         $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name'] . '">
+<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name'] . '">
 </a>
 <a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 <div class = "more-image" >
@@ -11036,8 +11036,8 @@ Your browser does not support the audio tag.
             $i = 0;
             foreach ($singlearray as $mi) {
                 $fetch_result .= '<div class = "image_profile">';
-//                $fetch_result .= '<img src = "' . base_url($this->config->item('bus_post_210_210_upload_path') . $mi['image_name']) . '" alt = "img1">';
-                $fetch_result .= '<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $mi['image_name'] . '" alt = "' . $mi['image_name'] . '">';
+//                $fetch_result .= '<img src = "' . base_url($this->config->item('bus_post_resize3_upload_path') . $mi['image_name']) . '" alt = "img1">';
+                $fetch_result .= '<img src = "https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize3_upload_path') . $mi['image_name'] . '" alt = "' . $mi['image_name'] . '">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -11722,10 +11722,10 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div  class="two-images" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name']) . '"> </a>
 //        </div>';
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $multiimage['image_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $multiimage['image_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
@@ -11733,28 +11733,28 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
 //        </div>
 //        <div class="three-image" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name']) . '"> </a>
 //        </div>
 //        <div class="three-image" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name']) . '"> </a>
 //        </div>';
                     $return_html .= '<div class="three-imag-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[1]['image_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['image_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_350_320_upload_path') . $businessmultiimage[2]['image_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['image_name'] . '"> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '"> </a>
 //        </div>';
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -11762,17 +11762,17 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name']) . '" > </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name']) . '" > </a>
 //        </div>';
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $multiimage['image_name'] . '" > </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $multiimage['image_name'] . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
 //                    $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name']) . '"> </a>
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
 //                <div class="more-image" >
 //                    <span> View All (+' . (count($businessmultiimage) - 4) . ')
@@ -11780,7 +11780,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //            </a>
 //        </div>';
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_335_245_upload_path') . $businessmultiimage[3]['image_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['image_name'] . '"> </a>
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')

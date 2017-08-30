@@ -424,3 +424,4 @@ if (IMAGEPATHFROM == 's3bucket') {
     define('BLOG_THUMB_UPLOAD_PATH',BASEURL.'uploads/blog/thumbs/');
     
 }
+
