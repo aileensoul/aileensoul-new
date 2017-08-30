@@ -797,7 +797,7 @@ $config['bus_post_resize2_height'] = '245';
 // BUSINESS POST 210 X 210
 $config['bus_post_resize3_upload_path'] = 'uploads/business_post/resize3/';
 $config['bus_post_resize3_width'] = '210';
-$config['bus_post_210_210_height'] = '210';
+$config['bus_post_resize3_height'] = '210';
 
 
 // ARTISTIC PROFILE IMAGE

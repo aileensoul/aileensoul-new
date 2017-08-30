@@ -57,6 +57,7 @@ define('WHITEIMAGE', 'uploads/white.png');
 define('PROFILENA', '--');
 
 define('IMAGEPATHFROM', 's3bucket'); //upload,s3bucket 
+//define('IMAGEPATHFROM', 'upload'); //upload,s3bucket 
 // S3BUCKET START
 // Bucket Name
 define('bucket', 'aileensoulimages');
@@ -82,346 +83,345 @@ if (IMAGEPATHFROM == 's3bucket') {
     define('CATEGORY_WEB_IMAGE_THUMB',BUCKETLINK.'admin/../uploads/category/thumb/');
 
 // USER BACKGROUND IMAGE
-    define('USER_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/user_bg/main/');
+    define('USER_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/user_bg/main/');
     
 // USER BACKGROUND THUMB IMAGE 
-    define('USER_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/user_bg/thumbs/');
+    define('USER_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/user_bg/thumbs/');
     
 // USER BACKGROUND ORIGINAL IMAGE 
-    define('USER_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/user_bg/original/');
+    define('USER_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/user_bg/original/');
 
 // USER PROFILE IMAGE
-    define('USER_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/user_profile/main/');
+    define('USER_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/user_profile/main/');
     
 // USER PROFILE THUMB IMAGE
-    define('USER_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/user_profile/thumbs/');
+    define('USER_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/user_profile/thumbs/');
     
 // JOB PROFILE IMAGE 
-    define('JOB_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/job_profile/main/');
+    define('JOB_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/job_profile/main/');
     
 // JOB PROFILE THUMB IMAGE
-    define('JOB_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/job_profile/thumbs/');
+    define('JOB_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/job_profile/thumbs/');
 
 // JOB BACKGROUND IMAGE 
-    define('JOB_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/job_bg/main/');
+    define('JOB_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/job_bg/main/');
 
 // JOB BACKGROUND THUMB IMAGE
-    define('JOB_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/job_bg/thumbs/');
+    define('JOB_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/job_bg/thumbs/');
 
 // JOB BACKGROUND ORIGINAL IMAGE
-    define('JOB_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/job_bg/original/');
+    define('JOB_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/job_bg/original/');
 
 // JOB EDUCATION CERTIFICATE
-    define('JOB_EDU_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/job_education/main/');
+    define('JOB_EDU_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/job_education/main/');
 
 // JOB EDUCATION THUMB CERTIFICATE
-    define('JOB_EDU_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/job_education/thumbs/');
+    define('JOB_EDU_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/job_education/thumbs/');
 
 // JOB WORK EXPERIENCE CERTIFICATE
-    define('JOB_WORK_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/job_work/main/');
+    define('JOB_WORK_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/job_work/main/');
 
 //  JOB WORK EXPERIENCE THUMB CERTIFICATE
-    define('JOB_WORK_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/job_work/thumbs/');
+    define('JOB_WORK_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/job_work/thumbs/');
 
 // RECRUITER PROFILE IMAGE 
-    define('REC_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/recruiter_profile/main/');
+    define('REC_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/recruiter_profile/main/');
 
 // RECRUITER PROFILE THUMB IMAGE
-    define('REC_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/recruiter_profile/thumbs/');
+    define('REC_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/recruiter_profile/thumbs/');
 
 // RECRUITER BACKGROUND IMAGE 
-    define('REC_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/recruiter_bg/main/');
+    define('REC_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/recruiter_bg/main/');
 
 // RECRUITER BACKGROUND THUMB IMAGE
-    define('REC_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/recruiter_bg/thumbs/');
+    define('REC_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/recruiter_bg/thumbs/');
 
 // RECRUITER BACKGROUND ORIGINAL IMAGE
-    define('REC_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/recruiter_bg/original/');
+    define('REC_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/recruiter_bg/original/');
 
 // FREELANCER PORTFOLIO ATTACHMENT 
-    define('FREE_PORTFOLIO_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_portfolio/main/');
+    define('FREE_PORTFOLIO_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_portfolio/main/');
 
 // FREELANCER PORTFOLIO ATTACHMENT THUMBS
-    define('FREE_PORTFOLIO_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_portfolio/thumbs/');
+    define('FREE_PORTFOLIO_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_portfolio/thumbs/');
 
 // FREELANCER HIRE PROFILE 
-    define('FREE_HIRE_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_hire_profile/main/');
+    define('FREE_HIRE_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_hire_profile/main/');
 
 // FREELANCER HIRE PROFILE THUMBS
-    define('FREE_HIRE_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_hire_profile/thumbs/');
+    define('FREE_HIRE_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_hire_profile/thumbs/');
 
 // FREELANCER HIRE BACKGROUND
-    define('FREE_HIRE_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_hire_bg/main/');
+    define('FREE_HIRE_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_hire_bg/main/');
 
 // FREELANCER HIRE BACKGROUND THUMB
-    define('FREE_HIRE_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_hire_bg/thumbs/');
+    define('FREE_HIRE_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_hire_bg/thumbs/');
 
 // FREELANCER HIRE BACKGROUND ORIGINAL
-    define('FREE_HIRE_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_hire_bg/original/');
+    define('FREE_HIRE_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_hire_bg/original/');
 
 // FREELANCER POST PROFILE
-    define('FREE_POST_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_profile/main/');
+    define('FREE_POST_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_profile/main/');
 
 // FREELANCER POST PROFILE THUMBS
-    define('FREE_POST_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_profile/thumbs/');
+    define('FREE_POST_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_profile/thumbs/');
 
 // FREELANCER POST PROFILE BACKGROUND
-    define('FREE_POST_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_bg/main/');
+    define('FREE_POST_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_bg/main/');
 
 // FREELANCER POST PROFILE BACKGROUND THUMBS
-    define('FREE_POST_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_bg/thumbs/');
+    define('FREE_POST_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_bg/thumbs/');
 
 // FREELANCER POST PROFILE BACKGROUND ORIGINAL
-    define('FREE_POST_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/freelancer_post_bg/original/');
+    define('FREE_POST_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/freelancer_post_bg/original/');
 
 // BUSINESS PROFILE IMAGE
-    define('BUS_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/business_profile/main/');
+    define('BUS_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/business_profile/main/');
 
 // BUSINESS PROFILE IMAGE THUMBS
-    define('BUS_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/business_profile/thumbs/');
+    define('BUS_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/business_profile/thumbs/');
 
 // BUSINESS DETAILS IMAGE
-    define('BUS_DETAIL_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/business_profile/main/');
+    define('BUS_DETAIL_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/business_profile/main/');
 
 // BUSINESS DETAILS IMAGE THUMBS
-    define('BUS_DETAIL_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/business_profile/thumbs/');
+    define('BUS_DETAIL_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/business_profile/thumbs/');
 
 // BUSINESS PROFILE BACKGROUND
-    define('BUS_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/business_bg/main/');
+    define('BUS_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/business_bg/main/');
 
 // BUSINESS PROFILE BACKGROUND THUMBS
-    define('BUS_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/business_bg/thumbs/');
+    define('BUS_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/business_bg/thumbs/');
 
 // BUSINESS PROFILE BACKGROUND ORIGINAL
-    define('BUS_BG_ORIGINAL_UPLOAD_PATH',BUCKETLINK.'uploads/business_bg/original/');
+    define('BUS_BG_ORIGINAL_UPLOAD_URL',BUCKETLINK.'uploads/business_bg/original/');
 
 // BUSINESS POST 
-    define('BUS_POST_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/main/');
+    define('BUS_POST_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/business_post/main/');
 
 // BUSINESS POST RESIZED
-    define('BUS_POST_RESIZE_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/resize/');
+    define('BUS_POST_RESIZE_UPLOAD_URL',BUCKETLINK.'uploads/business_post/resize/');
 
 // BUSINESS POST THUMBS
-    define('BUS_POST_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/thumbs/');
+    define('BUS_POST_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/business_post/thumbs/');
 
 // BUSINESS POST 335 X 320
-    define('BUS_POST_350_320_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/335X320/');
+    define('BUS_POST_RESIZE1_UPLOAD_URL',BUCKETLINK.'uploads/business_post/resize1/');
 
 // BUSINESS POST 335 X 245
-    define('BUS_POST_335_245_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/335X245/');
+    define('BUS_POST_RESIZE2_UPLOAD_URL',BUCKETLINK.'uploads/business_post/resize2/');
 
 // BUSINESS POST 210 X 210
-    define('BUS_POST_210_210_UPLOAD_PATH',BUCKETLINK.'uploads/business_post/210X210/');
+    define('BUS_POST_RESIZE3_UPLOAD_URL',BUCKETLINK.'uploads/business_post/resize3/');
 
 // ARTISTIC PROFILE IMAGE
-    define('ART_PROFILE_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_profile/main/');
+    define('ART_PROFILE_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/artistic_profile/main/');
 
 // ARTISTIC PROFILE IMAGE THUMBS
-    define('ART_PROFILE_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_profile/thumbs/');
+    define('ART_PROFILE_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/artistic_profile/thumbs/');
 
 // ARTISTIC PROFILE BACKGROUND
-    define('ART_BG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_bg/main/');
+    define('ART_BG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/artistic_bg/main/');
 
 // ARTISTIC PROFILE BACKGROUND THUMBS
-    define('ART_BG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_bg/thumbs/');
+    define('ART_BG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/artistic_bg/thumbs/');
 
 // ARTISTIC PROFILE BACKGROUND ORIGINAL
-    define('ART_BG_original_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_bg/original/');
+    define('ART_BG_original_UPLOAD_URL',BUCKETLINK.'uploads/artistic_bg/original/');
 
 // ARTISTIC PORTFOLIO
-    define('ART_PORTFOLIO_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_portfolio/main/');
+    define('ART_PORTFOLIO_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/artistic_portfolio/main/');
 
 // ARTISTIC PORTFOLIO THUMBS
-    define('ART_PORTFOLIO_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_portfolio/thumbs/');
+    define('ART_PORTFOLIO_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/artistic_portfolio/thumbs/');
 
 // ARTISTIC POST 
-    define('ART_POST_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_post/main/');
+    define('ART_POST_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/main/');
 
 // ARTISTIC POST THUMBS
-    define('ART_POST_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/artistic_post/thumbs/');
+    define('ART_POST_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/thumbs/');
 
 // BLOG MAIN IMAGE
-    define('BLOG_MAIN_UPLOAD_PATH',BUCKETLINK.'uploads/blog/main/');
+    define('BLOG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/blog/main/');
 
 // BLOG THUMB THUMB
-    define('BLOG_THUMB_UPLOAD_PATH',BUCKETLINK.'uploads/blog/thumbs/');
+    define('BLOG_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/blog/thumbs/');
     
 } else {
     //USER PHOTO 
-    define('USER_WEB_IMAGE',BASEURL.'admin/../uploads/users/main/');
-    define('USER_IMAGE',BASEURL.'../uploads/users/main/');
-    define('USERS_IMAGE',BASEURL.'uploads/users/main/');
+    define('USER_WEB_IMAGE_URL',BASEURL.'admin/../uploads/users/main/');
+    define('USER_IMAGE_URL',BASEURL.'../uploads/users/main/');
+    define('USERS_IMAGE_URL',BASEURL.'uploads/users/main/');
 
     //CATEGORY PHOTO 
-    define('CATEGORY_IMAGE',BASEURL.'uploads/category/main/');
-    define('CATEGORY_IMAGE_THUMB',BASEURL.'uploads/category/thumb/');
-    define('CATEGORY_WEB_IMAGE',BASEURL.'admin/../uploads/category/main/');
-    define('CATEGORY_WEB_IMAGE_THUMB',BASEURL.'admin/../uploads/category/thumb/');
+    define('CATEGORY_IMAGE_URL',BASEURL.'uploads/category/main/');
+    define('CATEGORY_IMAGE_THUMB_URL',BASEURL.'uploads/category/thumb/');
+    define('CATEGORY_WEB_IMAGE_URL',BASEURL.'admin/../uploads/category/main/');
+    define('CATEGORY_WEB_IMAGE_THUMB_URL',BASEURL.'admin/../uploads/category/thumb/');
 
 // USER BACKGROUND IMAGE
-    define('USER_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/user_bg/main/');
+    define('USER_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/user_bg/main/');
     
 // USER BACKGROUND THUMB IMAGE 
-    define('USER_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/user_bg/thumbs/');
+    define('USER_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/user_bg/thumbs/');
     
 // USER BACKGROUND ORIGINAL IMAGE 
-    define('USER_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/user_bg/original/');
+    define('USER_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/user_bg/original/');
 
 // USER PROFILE IMAGE
-    define('USER_MAIN_UPLOAD_PATH',BASEURL.'uploads/user_profile/main/');
+    define('USER_MAIN_UPLOAD_URL',BASEURL.'uploads/user_profile/main/');
     
 // USER PROFILE THUMB IMAGE
-    define('USER_THUMB_UPLOAD_PATH',BASEURL.'uploads/user_profile/thumbs/');
+    define('USER_THUMB_UPLOAD_URL',BASEURL.'uploads/user_profile/thumbs/');
     
 // JOB PROFILE IMAGE 
-    define('JOB_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/job_profile/main/');
+    define('JOB_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/job_profile/main/');
     
 // JOB PROFILE THUMB IMAGE
-    define('JOB_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/job_profile/thumbs/');
+    define('JOB_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/job_profile/thumbs/');
 
 // JOB BACKGROUND IMAGE 
-    define('JOB_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/job_bg/main/');
+    define('JOB_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/job_bg/main/');
 
 // JOB BACKGROUND THUMB IMAGE
-    define('JOB_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/job_bg/thumbs/');
+    define('JOB_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/job_bg/thumbs/');
 
 // JOB BACKGROUND ORIGINAL IMAGE
-    define('JOB_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/job_bg/original/');
+    define('JOB_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/job_bg/original/');
 
 // JOB EDUCATION CERTIFICATE
-    define('JOB_EDU_MAIN_UPLOAD_PATH',BASEURL.'uploads/job_education/main/');
+    define('JOB_EDU_MAIN_UPLOAD_URL',BASEURL.'uploads/job_education/main/');
 
 // JOB EDUCATION THUMB CERTIFICATE
-    define('JOB_EDU_THUMB_UPLOAD_PATH',BASEURL.'uploads/job_education/thumbs/');
+    define('JOB_EDU_THUMB_UPLOAD_URL',BASEURL.'uploads/job_education/thumbs/');
 
 // JOB WORK EXPERIENCE CERTIFICATE
-    define('JOB_WORK_MAIN_UPLOAD_PATH',BASEURL.'uploads/job_work/main/');
+    define('JOB_WORK_MAIN_UPLOAD_URL',BASEURL.'uploads/job_work/main/');
 
 //  JOB WORK EXPERIENCE THUMB CERTIFICATE
-    define('JOB_WORK_THUMB_UPLOAD_PATH',BASEURL.'uploads/job_work/thumbs/');
+    define('JOB_WORK_THUMB_UPLOAD_URL',BASEURL.'uploads/job_work/thumbs/');
 
 // RECRUITER PROFILE IMAGE 
-    define('REC_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/recruiter_profile/main/');
+    define('REC_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/recruiter_profile/main/');
 
 // RECRUITER PROFILE THUMB IMAGE
-    define('REC_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/recruiter_profile/thumbs/');
+    define('REC_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/recruiter_profile/thumbs/');
 
 // RECRUITER BACKGROUND IMAGE 
-    define('REC_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/recruiter_bg/main/');
+    define('REC_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/recruiter_bg/main/');
 
 // RECRUITER BACKGROUND THUMB IMAGE
-    define('REC_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/recruiter_bg/thumbs/');
+    define('REC_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/recruiter_bg/thumbs/');
 
 // RECRUITER BACKGROUND ORIGINAL IMAGE
-    define('REC_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/recruiter_bg/original/');
+    define('REC_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/recruiter_bg/original/');
 
 // FREELANCER PORTFOLIO ATTACHMENT 
-    define('FREE_PORTFOLIO_MAIN_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_portfolio/main/');
+    define('FREE_PORTFOLIO_MAIN_UPLOAD_URL',BASEURL.'uploads/freelancer_post_portfolio/main/');
 
 // FREELANCER PORTFOLIO ATTACHMENT THUMBS
-    define('FREE_PORTFOLIO_THUMB_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_portfolio/thumbs/');
+    define('FREE_PORTFOLIO_THUMB_UPLOAD_URL',BASEURL.'uploads/freelancer_post_portfolio/thumbs/');
 
 // FREELANCER HIRE PROFILE 
-    define('FREE_HIRE_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/freelancer_hire_profile/main/');
+    define('FREE_HIRE_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/freelancer_hire_profile/main/');
 
 // FREELANCER HIRE PROFILE THUMBS
-    define('FREE_HIRE_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/freelancer_hire_profile/thumbs/');
+    define('FREE_HIRE_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/freelancer_hire_profile/thumbs/');
 
 // FREELANCER HIRE BACKGROUND
-    define('FREE_HIRE_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/freelancer_hire_bg/main/');
+    define('FREE_HIRE_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/freelancer_hire_bg/main/');
 
 // FREELANCER HIRE BACKGROUND THUMB
-    define('FREE_HIRE_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/freelancer_hire_bg/thumbs/');
+    define('FREE_HIRE_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/freelancer_hire_bg/thumbs/');
 
 // FREELANCER HIRE BACKGROUND ORIGINAL
-    define('FREE_HIRE_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/freelancer_hire_bg/original/');
+    define('FREE_HIRE_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/freelancer_hire_bg/original/');
 
 // FREELANCER POST PROFILE
-    define('FREE_POST_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_profile/main/');
+    define('FREE_POST_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/freelancer_post_profile/main/');
 
 // FREELANCER POST PROFILE THUMBS
-    define('FREE_POST_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_profile/thumbs/');
+    define('FREE_POST_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/freelancer_post_profile/thumbs/');
 
 // FREELANCER POST PROFILE BACKGROUND
-    define('FREE_POST_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_bg/main/');
+    define('FREE_POST_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/freelancer_post_bg/main/');
 
 // FREELANCER POST PROFILE BACKGROUND THUMBS
-    define('FREE_POST_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_bg/thumbs/');
+    define('FREE_POST_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/freelancer_post_bg/thumbs/');
 
 // FREELANCER POST PROFILE BACKGROUND ORIGINAL
-    define('FREE_POST_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/freelancer_post_bg/original/');
+    define('FREE_POST_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/freelancer_post_bg/original/');
 
 // BUSINESS PROFILE IMAGE
-    define('BUS_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/business_profile/main/');
+    define('BUS_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/business_profile/main/');
 
 // BUSINESS PROFILE IMAGE THUMBS
-    define('BUS_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/business_profile/thumbs/');
+    define('BUS_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/business_profile/thumbs/');
 
 // BUSINESS DETAILS IMAGE
-    define('BUS_DETAIL_MAIN_UPLOAD_PATH',BASEURL.'uploads/business_profile/main/');
+    define('BUS_DETAIL_MAIN_UPLOAD_URL',BASEURL.'uploads/business_profile/main/');
 
 // BUSINESS DETAILS IMAGE THUMBS
-    define('BUS_DETAIL_THUMB_UPLOAD_PATH',BASEURL.'uploads/business_profile/thumbs/');
+    define('BUS_DETAIL_THUMB_UPLOAD_URL',BASEURL.'uploads/business_profile/thumbs/');
 
 // BUSINESS PROFILE BACKGROUND
-    define('BUS_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/business_bg/main/');
+    define('BUS_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/business_bg/main/');
 
 // BUSINESS PROFILE BACKGROUND THUMBS
-    define('BUS_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/business_bg/thumbs/');
+    define('BUS_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/business_bg/thumbs/');
 
 // BUSINESS PROFILE BACKGROUND ORIGINAL
-    define('BUS_BG_ORIGINAL_UPLOAD_PATH',BASEURL.'uploads/business_bg/original/');
+    define('BUS_BG_ORIGINAL_UPLOAD_URL',BASEURL.'uploads/business_bg/original/');
 
 // BUSINESS POST 
-    define('BUS_POST_MAIN_UPLOAD_PATH',BASEURL.'uploads/business_post/main/');
+    define('BUS_POST_MAIN_UPLOAD_URL',BASEURL.'uploads/business_post/main/');
 
 // BUSINESS POST RESIZED
-    define('BUS_POST_RESIZE_UPLOAD_PATH',BASEURL.'uploads/business_post/resize/');
+    define('BUS_POST_RESIZE_UPLOAD_URL',BASEURL.'uploads/business_post/resize/');
 
 // BUSINESS POST THUMBS
-    define('BUS_POST_THUMB_UPLOAD_PATH',BASEURL.'uploads/business_post/thumbs/');
+    define('BUS_POST_THUMB_UPLOAD_URL',BASEURL.'uploads/business_post/thumbs/');
 
 // BUSINESS POST 335 X 320
-    define('BUS_POST_350_320_UPLOAD_PATH',BASEURL.'uploads/business_post/335X320/');
+    define('BUS_POST_RESIZE1_UPLOAD_URL',BASEURL.'uploads/business_post/resize1/');
 
 // BUSINESS POST 335 X 245
-    define('BUS_POST_335_245_UPLOAD_PATH',BASEURL.'uploads/business_post/335X245/');
+    define('BUS_POST_RESIZE2_UPLOAD_URL',BASEURL.'uploads/business_post/resize2/');
 
 // BUSINESS POST 210 X 210
-    define('BUS_POST_210_210_UPLOAD_PATH',BASEURL.'uploads/business_post/210X210/');
+    define('BUS_POST_RESIZE3_UPLOAD_URL',BASEURL.'uploads/business_post/resize3/');
 
 // ARTISTIC PROFILE IMAGE
-    define('ART_PROFILE_MAIN_UPLOAD_PATH',BASEURL.'uploads/artistic_profile/main/');
+    define('ART_PROFILE_MAIN_UPLOAD_URL',BASEURL.'uploads/artistic_profile/main/');
 
 // ARTISTIC PROFILE IMAGE THUMBS
-    define('ART_PROFILE_THUMB_UPLOAD_PATH',BASEURL.'uploads/artistic_profile/thumbs/');
+    define('ART_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/artistic_profile/thumbs/');
 
 // ARTISTIC PROFILE BACKGROUND
-    define('ART_BG_MAIN_UPLOAD_PATH',BASEURL.'uploads/artistic_bg/main/');
+    define('ART_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/artistic_bg/main/');
 
 // ARTISTIC PROFILE BACKGROUND THUMBS
-    define('ART_BG_THUMB_UPLOAD_PATH',BASEURL.'uploads/artistic_bg/thumbs/');
+    define('ART_BG_THUMB_UPLOAD_URL',BASEURL.'uploads/artistic_bg/thumbs/');
 
 // ARTISTIC PROFILE BACKGROUND ORIGINAL
-    define('ART_BG_original_UPLOAD_PATH',BASEURL.'uploads/artistic_bg/original/');
+    define('ART_BG_original_UPLOAD_URL',BASEURL.'uploads/artistic_bg/original/');
 
 // ARTISTIC PORTFOLIO
-    define('ART_PORTFOLIO_MAIN_UPLOAD_PATH',BASEURL.'uploads/artistic_portfolio/main/');
+    define('ART_PORTFOLIO_MAIN_UPLOAD_URL',BASEURL.'uploads/artistic_portfolio/main/');
 
 // ARTISTIC PORTFOLIO THUMBS
-    define('ART_PORTFOLIO_THUMB_UPLOAD_PATH',BASEURL.'uploads/artistic_portfolio/thumbs/');
+    define('ART_PORTFOLIO_THUMB_UPLOAD_URL',BASEURL.'uploads/artistic_portfolio/thumbs/');
 
 // ARTISTIC POST 
-    define('ART_POST_MAIN_UPLOAD_PATH',BASEURL.'uploads/artistic_post/main/');
+    define('ART_POST_MAIN_UPLOAD_URL',BASEURL.'uploads/artistic_post/main/');
 
 // ARTISTIC POST THUMBS
-    define('ART_POST_THUMB_UPLOAD_PATH',BASEURL.'uploads/artistic_post/thumbs/');
+    define('ART_POST_THUMB_UPLOAD_URL',BASEURL.'uploads/artistic_post/thumbs/');
 
 // BLOG MAIN IMAGE
-    define('BLOG_MAIN_UPLOAD_PATH',BASEURL.'uploads/blog/main/');
+    define('BLOG_MAIN_UPLOAD_URL',BASEURL.'uploads/blog/main/');
 
 // BLOG THUMB THUMB
-    define('BLOG_THUMB_UPLOAD_PATH',BASEURL.'uploads/blog/thumbs/');
-    
+    define('BLOG_THUMB_UPLOAD_URL',BASEURL.'uploads/blog/thumbs/');
+   
 }
-
