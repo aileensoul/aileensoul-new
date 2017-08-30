@@ -8,7 +8,7 @@
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.date('s')); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.date('s')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.date('s')); ?>">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.date('s')) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.date('s')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.date('s')); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.date('s')); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
@@ -328,7 +328,7 @@
                     <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.date('s')); ?>"></script> 
                     <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.date('s')); ?>"></script> 
                     <script src="<?php echo base_url('js/bootstrap.min.js?ver='.date('s')); ?>"></script>
-                    <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
+                    <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.date('s')) ?>"></script> 
                     <!-- POST BOX JAVASCRIPT START --> 
                     <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.date('s')); ?>"></script>
                     <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.date('s')); ?>"></script>
@@ -342,7 +342,7 @@
                                                             var data = <?php echo json_encode($demo); ?>;
                                                             var data1 = <?php echo json_encode($city_data); ?>;
                     </script>
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js'); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js?ver='.date('s')); ?>"></script>
 <?php
 //$this->minify->js(array('webpage/business-profile/home_1.js'));
 ?>
