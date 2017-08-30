@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head> 
-        <title><?php echo "Dashboard - Aileensoul.com"; ?></title>
+        <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css'); ?>" />
         <link rel="stylesheet" type="text/css" href="../css/jquery.jMosaic.css">
