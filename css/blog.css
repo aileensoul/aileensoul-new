@@ -67,7 +67,7 @@ border: 1px solid #d9d9d9;}
 .blog_main_post_img{/*height: 350px;*/ width: 100%; border-bottom: 1px solid #d9d9d9; text-align: center; /*padding: 10px 0px;*/}
 .blog_main_post_img img{ /*height: 100%;*/ width:100%;}
 .social_icon_bloag li{float: left; list-style: none; display: inline-block; margin: 0; padding: 0;}
-.social_icon_bloag li a{float: left; padding: 6px; font-size: 17px; cursor: default;}
+.social_icon_bloag li a{float: left; padding: 6px; font-size: 17px; cursor: pointer;}
 .social_icon_bloag{margin: 0px; padding: 0px;}
 .blog_class_main_social{float: left; width: 100%; border-top:1px solid #d9d9d9; padding: 6px 0px; }
 .date_blog_left{width: 10%; float: left; padding-right: 15px;}

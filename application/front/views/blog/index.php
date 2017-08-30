@@ -40,8 +40,10 @@
          
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/blog.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
+    
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
    </head>
    <body class="blog">
       <div class="main-inner">
@@ -316,6 +318,7 @@
                      }//else end
                      ?>
                </div>
+			
                <div class="col-md-3 col-sm-4 hidden-xs">
                   <div class="blog_search">
                      <h6> Blog Search </h6>
@@ -360,6 +363,8 @@
                </div>
             </div>
          </div>
+		</div>
+		</div>
       </section>
       <footer class="footer">
          <div class="container pt20">
@@ -376,6 +381,7 @@
             </div>
          </div>
       </footer>
+	</div>
    </body>
 </html>
 

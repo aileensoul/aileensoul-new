@@ -613,6 +613,7 @@ padding-top: 14px;
   line-height: 40px;
   font-size: 30px;
 }
+.job_edit_menu{width: 18.5% !important;}
 .profile-box-left .edi_origde .edit_profile_progress{width:100%; float:left;}
 .profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:39px 22px 0;}
 .profile-box-left .edi_origde .count_main_progress{width:185px; float:left;}
@@ -620,4 +621,59 @@ padding-top: 14px;
 .profile-box-left .edi_origde .progre_bar_text p{text-align:left; color:#4c4c4c;}
 .edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}
 
+/*** mobile progress bar  ***/
+.mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff;}
+.mob-progressbar .progress { height: 30px; margin-top:5px; background:#e5e5e5; margin-bottom:6px;}
+.mob-progressbar p{font-size:12px;}
+.mob-progressbar .progress .skill { line-height: 30px; padding: 0; margin: 0 0 0 20px; text-transform: uppercase;}
+.mob-progressbar .progress .skill .val {font-style: normal; margin: 0 20px 0 0;}
+.mob-progressbar .progress-bar { text-align: center; transition-duration: 3s;}
+.mob-progressbar .progress-bar-custom{
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+}
+.mob-progressbar .mob-edit-pro{text-align:center;}
+.mob-progressbar .mob-edit-pro .fa{padding-right:5px;}
+.temp .mob-edit-pro a{pointer-events: none; cursor: default;}
+.temp .mob-edit-pro .fa{display:none;}
+
+.art_no_post_avl{    background: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    margin-top: 0px;
+    display: inline-block;
+    width: 100%;
+}
+.art_no_pva_avl
+{
+    background: white;
+    display: inline-block;
+    width: 100%;
+
+}
+.art-img-nn{width: 100%;
+text-align: center;
+margin: 30px 0px;}
+.art_no_post_avl h3{
+    padding: 4px 0px;
+width: 100%;
+text-align: center;
+color: #1b8ab9;
+border-bottom: 1px solid #d9d9d9;}
+.art_no_post_img {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.art_no_post_text{
+    line-height: 40px;
+color: #cccccc;
+font-size: 32px;
+padding-top: 30px;}
+.art_no_post_text1{color: #ccc;
+font-size: 32px;}
 
