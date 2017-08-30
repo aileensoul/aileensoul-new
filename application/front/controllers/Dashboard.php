@@ -278,7 +278,7 @@ class Dashboard extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         $data = array(
-            'user_last_login' => date('Y-m-d h:i:s', time()),
+            'verify_date' => date('Y-m-d h:i:s', time()),
             'user_verify' => '2'
         );
 
