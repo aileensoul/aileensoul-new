@@ -1,3 +1,36 @@
+function check_lengthedit(abc)
+   { //alert("hii");
+       maxLen = 50;
+   
+
+       var product_name = document.getElementById("editpostname" +abc).value;
+       //alert(product_name);
+      
+ 
+       if (product_name.length > maxLen) { 
+
+           
+           text_num = maxLen - product_name.length;
+           var msg = "You have reached your maximum limit of characters allowed";
+
+            $("#editpostname" + abc).prop("readonly", true);
+              
+           $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+           $('#postedit').modal('show');
+           
+           var substrval = product_name.substring(0, maxLen);
+           $('#editpostname' + abc).val(substrval);
+         
+       } else { 
+           text_num = maxLen - product_name.length;
+
+           document.getElementById("text_num_").value = text_num;
+       }
+   }
+
+
+
+
 var modal = document.getElementById('myModal');
 
                         // Get the button that opens the modal
@@ -1215,3 +1248,5 @@ function likeuserlist(post_id) {
         $('#bidmodal').modal('hide');
     }
 });  
+
+
