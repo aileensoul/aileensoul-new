@@ -772,64 +772,74 @@ function khdiv(abc) {
    
    }
 
-    function editpost(abc)
-   {
-       document.getElementById('editpostdata' + abc).style.display = 'none';
-       document.getElementById('editpostbox' + abc).style.display = 'block';
-       //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
-       document.getElementById('editpostdetailbox' + abc).style.display = 'block';
-       document.getElementById('editpostsubmit' + abc).style.display = 'block';
-       document.getElementById('khyati' + abc).style.display = 'none';
-       document.getElementById('khyatii' + abc).style.display = 'none';
+     function editpost(abc)
+                        {
+                            var editposttitle = $('#editpostval' + abc).html();
+                            var editpostdesc = $('#khyatii' + abc).html();
 
-   }
+                            $("#myDropdown" + abc).removeClass('show');
+
+                        document.getElementById('editpostdata' + abc).style.display = 'none';
+                        document.getElementById('editpostbox' + abc).style.display = 'block';
+                        //document.getElementById('editpostdetails' + abc).style.display = 'none', 'display:inline !important';
+                        document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+                        document.getElementById('editpostsubmit' + abc).style.display = 'block';
+                        document.getElementById('khyati' + abc).style.display = 'none';
+                        document.getElementById('khyatii' + abc).style.display = 'none';
+
+                         editposttitle = editposttitle.trim()
+                         editpostdesc = editpostdesc.trim()
+    
+                        $('#editpostname' + abc).val(editposttitle);
+                        $('#editpostdesc' + abc).html(editpostdesc);
+
+                        }
 
    function edit_postinsert(abc)
    {
    
        var editpostname = document.getElementById("editpostname" + abc);
-       // var editpostdetails = document.getElementById("editpostdesc" + abc);
-       // start khyati code
-       var $field = $('#editpostdesc' + abc);
-       //var data = $field.val();
-       var editpostdetails = $('#editpostdesc' + abc).html();
-       // end khyati code
-   
-       if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
-           $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
-           $('#bidmodal').modal('show');
-   
-           document.getElementById('editpostdata' + abc).style.display = 'block';
-           document.getElementById('editpostbox' + abc).style.display = 'none';
-         //  document.getElementById('editpostdetails' + abc).style.display = 'block';
-           document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-   
-           document.getElementById('editpostsubmit' + abc).style.display = 'none';
-       } else {
-           $.ajax({
-               type: 'POST',
-               url: base_url + "artistic/edit_post_insert",
-               //url: '<?php echo base_url() . "artistic/edit_post_insert" ?>',
-               data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + editpostdetails,
-               dataType: "json",
-               success: function (data) {
-   
-                   document.getElementById('editpostdata' + abc).style.display = 'block';
-                   document.getElementById('editpostbox' + abc).style.display = 'none';
-                 //  document.getElementById('editpostdetails' + abc).style.display = 'block';
-                   document.getElementById('editpostdetailbox' + abc).style.display = 'none';
-                   document.getElementById('editpostsubmit' + abc).style.display = 'none';
-                   //alert(data.description);
-                   document.getElementById('khyati' + abc).style.display = 'block';
-                   $('#' + 'editpostdata' + abc).html(data.title);
-                  // $('#' + 'editpostdetails' + abc).html(data.description);
-                   $('#' + 'khyati' + abc).html(data.description);
-                 
-               }
-           });
-       }
-   
-   }
+       var editpostname = document.getElementById("editpostname" + abc);
+                        // var editpostdetails = document.getElementById("editpostdesc" + abc);
+                        // start khyati code
+                        var $field = $('#editpostdesc' + abc);
+                        //var data = $field.val();
+                        var editpostdetails = $('#editpostdesc' + abc).html();
+                        editpostdetails = editpostdetails.replace(/&gt;/gi, ">");
+                        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+                        // end khyati code
+                        //alert(editpostdetails);
+                        if ((editpostname.value == '') && (editpostdetails == '' || editpostdetails == '<br>')) {
+                        $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
+                        $('#bidmodal').modal('show');
+                        document.getElementById('editpostdata' + abc).style.display = 'block';
+                        document.getElementById('editpostbox' + abc).style.display = 'none';
+                        document.getElementById('khyati' + abc).style.display = 'block';
+                        document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+                        document.getElementById('editpostsubmit' + abc).style.display = 'none';
+                        } else {
+                            $.ajax({
+                            type: 'POST',
+                            url: base_url + "artistic/edit_post_insert",
+                            data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + editpostdetails,
+                            dataType: "json",
+                            success: function (data) {
+
+                                document.getElementById('editpostdata' + abc).style.display = 'block';
+                                document.getElementById('editpostbox' + abc).style.display = 'none';
+                                //  document.getElementById('editpostdetails' + abc).style.display = 'block';
+                                document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+                                document.getElementById('editpostsubmit' + abc).style.display = 'none';
+                                //alert(data.description);
+                                document.getElementById('khyati' + abc).style.display = 'block';
+                                $('#' + 'editpostdata' + abc).html(data.title);
+                                // $('#' + 'editpostdetails' + abc).html(data.description);
+                                $('#' + 'khyati' + abc).html(data.description);
+                                $('#' + 'postname' + abc).html(data.postname);
+                                }
+                        });
+                        }
+    }
 
    function save_post(abc)
                         {
