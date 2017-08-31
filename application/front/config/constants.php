@@ -55,6 +55,8 @@ define('NOIMAGE', 'uploads/avatar.png');
 define('NOBUSIMAGE', 'uploads/nobusimage.jpg?ver='.time());
 define('WHITEIMAGE', 'uploads/white.png?ver='.time());
 define('PROFILENA', '--');
+define('FNOIMAGE', 'uploads/Email_Verification_female.png');
+define('MNOIMAGE', 'uploads/Email_Verification_male.png');
 
 define('IMAGEPATHFROM', 's3bucket'); //upload,s3bucket 
 //define('IMAGEPATHFROM', 'upload'); //upload,s3bucket 

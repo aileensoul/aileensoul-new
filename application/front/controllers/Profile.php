@@ -193,7 +193,7 @@ class Profile extends CI_Controller {
 
 
           
-           echo $msg; die();
+           //echo $msg; die();
             $subject = "Forgot password";
 
 
