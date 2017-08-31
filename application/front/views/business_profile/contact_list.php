@@ -96,7 +96,7 @@
                                 <ul  id="contactlist">
                                     <!-- AJAX DATA ... -->
                                 </ul>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
                             </div>        
                         </div>
                         <!-- END PAGE TITLE -->
