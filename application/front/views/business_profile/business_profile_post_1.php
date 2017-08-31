@@ -1893,7 +1893,7 @@
                         bar.width(percentVal)
                         percent.html(percentVal);
                         document.getElementById("myModal").style.display = "none";
-//                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+//                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     uploadProgress: function (event, position, total, percentComplete) {
                         var percentVal = percentComplete + '%';
@@ -1952,7 +1952,7 @@
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
@@ -1976,7 +1976,7 @@
                     data: '',
                     dataType: "html",
                     beforeSend: function () {
-                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".profile-boxProfileCard_follow").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
