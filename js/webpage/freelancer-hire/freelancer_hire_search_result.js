@@ -41,7 +41,7 @@ function freelancerhire_search(pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + skill + "&place=" + place + "&button=" + button ,
+        url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place + "&button=" + button ,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {

@@ -2199,7 +2199,7 @@ class Search extends CI_Controller {
 //freelancer hire  search end 
     //freelancer hire  ajax search start 
     public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
-        
+        echo 123;die();
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
         $page = 1;
@@ -2213,7 +2213,7 @@ class Search extends CI_Controller {
         echo $this->input->get('skills');
         if ($_GET["button"]) {
             echo "123";
-            $searchkeyword = urldecode($_GET["skill"]);
+            $searchkeyword = decodeURIComponent($_GET["skill"]);
             $searchplace = $_GET["place"];
             echo $searchkeyword;
             echo $searchplace;die();
