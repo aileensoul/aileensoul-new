@@ -168,7 +168,7 @@
                             </a>
                             <!-- user pdf  end-->
                         </div>
-                        <div class="col-md-7 custom-right-business">
+                        <div class="col-md-6 custom-right-business">
                             <?php
                             $userid = $this->session->userdata('aileenuser');
                             $other_user = $businessdata1[0]['business_profile_id'];

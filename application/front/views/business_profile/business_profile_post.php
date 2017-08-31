@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
         <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.time()); ?>">  DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -216,6 +217,7 @@
                                 <div class="row"></div>
                                 <div  id="text"  class="editor-content col-md-12 popup-textarea" >
                                     <textarea id="test-upload-des" name="product_desc" class="description" placeholder="Enter Description" tabindex="2"></textarea>
+                                                                        
                                 </div>
                                 <div class="print_privew_post">
                                 </div>
