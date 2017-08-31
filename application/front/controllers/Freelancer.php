@@ -826,17 +826,16 @@ class Freelancer extends MY_Controller {
 //        $contition_array = array('status' => 1);
 //        $this->data['degree_data'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //for getting stream data
-      //For getting all Stream Strat
-         $contition_array = array('is_delete' => '0','stream_name !=' => "Other");
-          $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-           $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
-           
-          $contition_array = array('status' => 1,'is_delete' => 0,'stream_name' => "Other");                                         
+        //For getting all Stream Strat
+        $contition_array = array('is_delete' => '0', 'stream_name !=' => "Other");
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+
+        $contition_array = array('status' => 1, 'is_delete' => 0, 'stream_name' => "Other");
         $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
         //For getting all Stream End
 //        $contition_array = array('status' => 1);
 //        $this->data['stream_data'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
         //for getting univesity data Start
         $contition_array = array('is_delete' => '0', 'university_name !=' => "Other");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
@@ -909,7 +908,6 @@ class Freelancer extends MY_Controller {
                     $university_otherdata = $this->common->select_data_by_condition('university', $contition_array, $data = '*', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     $select .= '<option value="' . $university_otherdata[0]['university_id'] . '">' . $university_otherdata[0]['university_name'] . '</option>';
-
                 }
             } else {
                 $select .= 0;
@@ -1124,7 +1122,7 @@ class Freelancer extends MY_Controller {
 //freelancer Portfolio page controller End
 
     public function freelancer_hire_post($id) {
-        $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+        $id = $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -1139,18 +1137,20 @@ class Freelancer extends MY_Controller {
             // code for display page end
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
-            $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+          $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $userid = $id;
             $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
             $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
-            $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+         $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-
+        
+         $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
     public function ajax_freelancer_hire_post($id, $retur) {
+       
         //   echo $retur;die();
         $userid = $this->session->userdata('aileenuser');
         // echo $userid; die();
@@ -1163,9 +1163,10 @@ class Freelancer extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-$id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+        
         if ($id == 'null') {
-            //  echo $userid; die();
+            
+             // echo $userid; die();
             $join_str[0]['table'] = 'freelancer_hire_reg';
             $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
             $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
@@ -1180,8 +1181,10 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
             $postdata1 = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data, $sortby = 'freelancer_post.post_id', $orderby = 'desc', $limit, $offset = '', $join_str, $groupby = '');
             //echo "<pre>"; print_r($postdata1);die();
         } else {
+            $id = $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+           // echo "3333";
             $userid = $id;
-            //  echo $userid; die();
+             // echo $userid; die();
             $join_str[0]['table'] = 'freelancer_hire_reg';
             $join_str[0]['join_table_id'] = 'freelancer_hire_reg.user_id';
             $join_str[0]['from_table_id'] = 'freelancer_post.user_id';
@@ -1199,7 +1202,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $return_html = '';
         $return_html .= '<input type="hidden" class="page_number" value="' . $page . '" />';
         $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
-        
+
 
         if (count($postdata) > 0) {
             foreach ($postdata1 as $post) {
@@ -1494,11 +1497,17 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $contition_array = array('status' => 1);
         $this->data['currency'] = $this->common->select_data_by_condition('currency', $contition_array, $data = '*', $sortby = 'currency_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+         $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
+            $data = 'username,fullname';
+         $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+       
+        
+         $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
 
         $this->load->view('freelancer/freelancer_hire/freelancer_add_post', $this->data);
     }
 
-// khyati changes start 7-4
+
     public function aasort(&$array, $key) {
         $sorter = array();
         $ret = array();
@@ -1602,16 +1611,11 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field required', 'required');
 
-        // $this->form_validation->set_rules('est_time', 'Estimated time', 'required');
         $this->form_validation->set_rules('rate', 'Rate', 'required');
         $this->form_validation->set_rules('currency', 'Currency', 'required');
-        // $this->form_validation->set_rules('rating', 'Rating', 'required');
-        // $this->form_validation->set_rules('month', 'Month', 'required');
-        // $this->form_validation->set_rules('year', 'Year', 'required');
-        //$this->form_validation->set_rules('location', 'Location', 'required');
+
         $this->form_validation->set_rules('country', 'Country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
-        // $this->form_validation->set_rules('last_date', 'Last date', 'required');
 
 
         if ($this->form_validation->run() == FALSE) {
@@ -1715,7 +1719,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         // code for display page start
         $this->freelancer_hire_check();
         // code for display page end
-        $this->data['title']='HOME - Aileensoul.com';
+        $this->data['title'] = 'Freelancer Hire' . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/recommen_candidate', $this->data);
     }
 
@@ -1968,7 +1972,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
             $return_html .= ' </div>
                                             </div>';
         }
-        
+
         echo $return_html;
     }
 
@@ -2066,69 +2070,13 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
 
 //        $skildata = explode(', ', $this->data['freelancerpostdata'][0]['post_skill']);
 //        $this->data['selectdata'] = $skildata;
+        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
+        $data = 'username,fullname';
+        $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        
+         $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
 //code for search 
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-
-        $field = $this->data['results'] = $this->common->select_data_by_condition('category', $contition_array, $data = 'category_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7);
-
-        $freelancer_postdata = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_otherskill, designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        // echo "<pre>"; print_r($results_recruiter);die();
-
-        $contition_array = array('status' => '1', 'type' => '1');
-
-        $skill = $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $unique = array_merge($field, $skill, $freelancer_postdata);
-        // echo count($unique);
-        // $this->data['demo']=$unique;
-
-
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-
-
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-        $contition_array = array('status' => '1');
-        $citiess = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-
-        foreach ($citiess as $key) {
-            $location[] = $key['city_name'];
-        }
-
-
-        // foreach ($location_list as $key1 => $value1) {
-        //     foreach ($value1 as $ke1 => $val1) {
-        //        $location[] = $val1;
-        //     }
-        // }
-        //echo "<pre>"; print_r($location);die();
-        foreach ($location as $key => $value) {
-            $loc[$key]['label'] = $value;
-            $loc[$key]['value'] = $value;
-        }
-
-        //echo "<pre>"; print_r($loc);die();
-
-        $this->data['city_data'] = $loc;
-
-        $this->data['demo'] = array_values($result1);
-
-
-
-
+     
 
         $this->load->view('freelancer/freelancer_hire/freelancer_edit_post', $this->data);
     }
@@ -2241,7 +2189,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1, 'free_post_step' => 7);
         $freelancerdata = $this->data['freelancerdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         // echo "<pre>";print_r($freelancerdata);die();
-
+        $this->data['title'] = 'Freelancer Apply' . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/post_apply', $this->data);
     }
 
@@ -2784,6 +2732,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $contition_array = array('freelancer_apply.job_delete' => 0, 'freelancer_apply.user_id' => $userid);
         $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = 'freelancer_post.*, freelancer_apply.app_id, freelancer_apply.user_id as userid, freelancer_apply.modify_date, freelancer_apply.created_date ', $sortby = 'freelancer_apply.modify_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
+        $this->data['title'] = $jobdata[0]['freelancer_post_fullname']. " ".$jobdata[0]['freelancer_post_username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_applied_post', $this->data);
     }
 
@@ -3119,6 +3068,11 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $this->freelancer_hire_check();
         // code for display page end
 
+        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
+         $data = 'username,fullname';
+         $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+         $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
+        
         $this->data['postid'] = $id;
         //echo "<pre>"; print_r($this->data['postid']);die();
         $join_str[0]['table'] = 'freelancer_apply';
@@ -3192,6 +3146,10 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $this->freelancer_hire_check();
         // code for display page end
 
+        $contition_array = array('is_delete' => '0', 'user_id' => $userid, 'status' => '1', 'free_hire_step' => 3);
+        $data = 'username,fullname,designation,freelancer_hire_user_image,user_id';
+        $hire_data =  $this->data['freelancr_user_data'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_save', $this->data);
     }
 
@@ -3419,10 +3377,10 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $this->freelancer_apply_check();
 // code for display page end
 // job seeker detail
-        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1,'free_post_step' => 7);
         $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
+        $this->data['title'] = $jobdata[0]['freelancer_post_fullname']. " ".$jobdata[0]['freelancer_post_username'] . TITLEPOSTFIX;
 
         $this->load->view('freelancer/freelancer_post/freelancer_save_post', $this->data);
     }
@@ -3929,7 +3887,7 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
     }
 
     public function freelancer_hire_profile($id = "") {
-        $id= $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
+        $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -3944,13 +3902,13 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         if ($id == $userid || $id == '') {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => 3);
-            $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
-
+        $this->data['title'] = $hire_data[0]['fullname']." ".$hire_data[0]['username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_profile', $this->data);
     }
 
@@ -3978,8 +3936,8 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
 //Remove save candidate controller End
 
     public function freelancer_post_profile($id) {
-       // echo $id;die();
-        $id=  $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
+        // echo $id;die();
+        $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
@@ -3993,11 +3951,12 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         // code for display page end
         if ($id == $userid || $id == '') {
             $contition_array = array('user_id' => $userid);
-            $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'free_post_step' => 7);
-            $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
+        $this->data['title'] = $apply_data[0]['freelancer_post_fullname']. " ".$apply_data[0]['freelancer_post_username'] . TITLEPOSTFIX;
         $this->load->view('freelancer/freelancer_post/freelancer_post_profile', $this->data);
     }
 
@@ -4698,181 +4657,163 @@ $id= $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_h
         $cdata = array_values($citydata);
         echo json_encode($cdata);
     }
-    public function freelancer_other_degree(){
+
+    public function freelancer_other_degree() {
         $other_degree = $_POST['other_degree'];
         $other_stream = $_POST['other_stream'];
-        
+
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('is_delete' => '0','degree_name' => $other_degree);
-         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-         $userdata = $this->data['userdata'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          $count=count($userdata);
-          
-          if($other_degree != NULL)
-     {
-        if($count==0)
-        {
-                  $data = array(
+        $contition_array = array('is_delete' => '0', 'degree_name' => $other_degree);
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = count($userdata);
+
+        if ($other_degree != NULL) {
+            if ($count == 0) {
+                $data = array(
                     'degree_name' => $other_degree,
-                     'created_date' => date('Y-m-d h:i:s', time()),
-                     'status' => 2,
+                    'created_date' => date('Y-m-d h:i:s', time()),
+                    'status' => 2,
                     'is_delete' => 0,
                     'is_other' => '1',
                     'user_id' => $userid
+                );
+                $insert_id = $this->common->insert_data_getid($data, 'degree');
+                $degree_id = $insert_id;
+
+                $contition_array = array('is_delete' => '0', 'status' => 2, 'stream_name' => $other_stream, 'user_id' => $userid);
+                $stream_data = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $count1 = count($stream_data);
+
+                if ($count1 == 0) {
+                    $data = array(
+                        'stream_name' => $other_stream,
+                        'degree_id' => $degree_id,
+                        'created_date' => date('Y-m-d h:i:s', time()),
+                        'status' => 2,
+                        'is_delete' => 0,
+                        'is_other' => '1',
+                        'user_id' => $userid
                     );
-        $insert_id = $this->common->insert_data_getid($data, 'degree');
-        $degree_id=$insert_id;
-        
-        $contition_array = array('is_delete' => '0' , 'status' => 2,'stream_name' => $other_stream,'user_id' => $userid);
-        $stream_data = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
-        $count1=count($stream_data);
-        
-        if($count1 == 0)
-        {
-            $data = array(
-                    'stream_name' => $other_stream,
-                    'degree_id'  => $degree_id,
-                     'created_date' => date('Y-m-d h:i:s', time()),
-                     'status' => 2,
-                    'is_delete' => 0,
-                     'is_other' => '1',
-                     'user_id' => $userid
+                    $insert_id = $this->common->insert_data_getid($data, 'stream');
+                } else {
+                    $data = array(
+                        'stream_name' => $other_stream,
+                        'degree_id' => $degree_id,
+                        'created_date' => date('Y-m-d h:i:s', time()),
+                        'status' => 2,
+                        'is_delete' => 0,
+                        'is_other' => '1',
+                        'user_id' => $userid
                     );
-        $insert_id = $this->common->insert_data_getid($data, 'stream');
-        }
-        else
-        {
-             $data = array(
-                    'stream_name' => $other_stream,
-                    'degree_id'  => $degree_id,
-                     'created_date' => date('Y-m-d h:i:s', time()),
-                     'status' => 2,
-                    'is_delete' => 0,
-                     'is_other' => '1',
-                     'user_id' => $userid
-                    );
-          $updatedata = $this->common->update_data($data, 'stream', 'stream_id', $stream_data[0]['stream_id']);
-        }
-         if ($insert_id || $updatedata) 
-          {
-          
-              $contition_array = array('is_delete' => '0','degree_name !=' => "Other");
-             $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-               $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-               if (count($degree) > 0) {
-                   
-                   $select = '<option value="" Selected option disabled="">Select your Degree</option>';
-                
-                    foreach ($degree as $st) {
-                        
-                 $select .= '<option value="' . $st['degree_id'] . '"';
-                     if($st['degree_name'] == $other_degree){
-                   $select .= 'selected'; 
-                       }
-                       $select .=    '>' . $st['degree_name'] . '</option>';
-                            } 
-                }  
+                    $updatedata = $this->common->update_data($data, 'stream', 'stream_id', $stream_data[0]['stream_id']);
+                }
+                if ($insert_id || $updatedata) {
+
+                    $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
+                    $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+                    $degree = $this->data['degree'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if (count($degree) > 0) {
+
+                        $select = '<option value="" Selected option disabled="">Select your Degree</option>';
+
+                        foreach ($degree as $st) {
+
+                            $select .= '<option value="' . $st['degree_id'] . '"';
+                            if ($st['degree_name'] == $other_degree) {
+                                $select .= 'selected';
+                            }
+                            $select .= '>' . $st['degree_name'] . '</option>';
+                        }
+                    }
 //For Getting Other at end
-$contition_array = array('is_delete' => '0' , 'status' => 1,'degree_name' => "Other");
-$degree_otherdata = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
-     
-$select .= '<option value="' . $degree_otherdata[0]['degree_id'] . '">' . $degree_otherdata[0]['degree_name'] . '</option>';   
+                    $contition_array = array('is_delete' => '0', 'status' => 1, 'degree_name' => "Other");
+                    $degree_otherdata = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
- //for getting selected stream data start
-  $contition_array = array('is_delete' => '0','degree_id' => $degree_id);
-  $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-  $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $select .= '<option value="' . $degree_otherdata[0]['degree_id'] . '">' . $degree_otherdata[0]['degree_name'] . '</option>';
 
- $select2 = '<option value="" Selected option disabled="">Select your Stream</option>';
- $select2 .= '<option value="' . $stream[0]['stream_id'] . '"';
-                     if($stream[0]['stream_name'] == $other_stream){
-  $select2 .= 'selected'; 
-                       }
-  $select2 .=    '>' . $stream[0]['stream_name'] . '</option>';
-      //for getting selected stream data End         
-           }
-    }else{
-           $select .= 0;
-          
+                    //for getting selected stream data start
+                    $contition_array = array('is_delete' => '0', 'degree_id' => $degree_id);
+                    $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+                    $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    $select2 = '<option value="" Selected option disabled="">Select your Stream</option>';
+                    $select2 .= '<option value="' . $stream[0]['stream_id'] . '"';
+                    if ($stream[0]['stream_name'] == $other_stream) {
+                        $select2 .= 'selected';
+                    }
+                    $select2 .= '>' . $stream[0]['stream_name'] . '</option>';
+                    //for getting selected stream data End         
+                }
+            } else {
+                $select .= 0;
             }
+        } else {
+            $select .= 1;
+        }
+
+        echo json_encode(array(
+            "select" => $select,
+            // "select1" => $select1,
+            "select2" => $select2,
+        ));
     }
-    else
-    {
-        $select .= 1;
-       
-    }
-   
-      echo json_encode(array(
-                            "select" => $select,
-                           // "select1" => $select1,
-                            "select2" => $select2,
-                   ));
-        
-        
-    }
-    
-    public function freelancer_other_stream(){
+
+    public function freelancer_other_stream() {
         $other_stream = $_POST['other_stream'];
-         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-      
-         $contition_array = array('is_delete' => '0','stream_name' => $other_stream);
-         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-         $userdata = $this->data['userdata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          $count=count($userdata);
-                   
-    if($other_stream != NULL)
-     {
-        if($count==0)
-        {
-                  $data = array(
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('is_delete' => '0', 'stream_name' => $other_stream);
+        $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = count($userdata);
+
+        if ($other_stream != NULL) {
+            if ($count == 0) {
+                $data = array(
                     'stream_name' => $other_stream,
-                     'created_date' => date('Y-m-d h:i:s', time()),
-                     'status' => 2,
+                    'created_date' => date('Y-m-d h:i:s', time()),
+                    'status' => 2,
                     'is_delete' => 0,
-                     'is_other' => '1',
-                     'user_id' => $userid
-                    );
-        $insert_id = $this->common->insert_data_getid($data, 'stream');
-        
-        
-                if ($insert_id) 
-                {
-   
-               $contition_array = array('is_delete' => '0','stream_name !=' => "Other");
-             $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-               $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-               
-            if (count($stream) > 0) {
-               $select = '<option value="" selected option disabled="">Select your Stream</option>';
-                
-                    foreach ($stream as $st) {
-                        
-                 $select .= '<option value="' . $st['stream_id'] . '"';
-                     if($st['stream_name'] == $other_stream){
-                   $select .= 'selected'; 
-                       }
-                       $select .=    '>' . $st['stream_name'] . '</option>';
-                            }      
-                }  
+                    'is_other' => '1',
+                    'user_id' => $userid
+                );
+                $insert_id = $this->common->insert_data_getid($data, 'stream');
+
+
+                if ($insert_id) {
+
+                    $contition_array = array('is_delete' => '0', 'stream_name !=' => "Other");
+                    $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
+                    $stream = $this->data['stream'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    if (count($stream) > 0) {
+                        $select = '<option value="" selected option disabled="">Select your Stream</option>';
+
+                        foreach ($stream as $st) {
+
+                            $select .= '<option value="' . $st['stream_id'] . '"';
+                            if ($st['stream_name'] == $other_stream) {
+                                $select .= 'selected';
+                            }
+                            $select .= '>' . $st['stream_name'] . '</option>';
+                        }
+                    }
 //For Getting Other at end
-$contition_array = array('is_delete' => '0' , 'status' => 1,'stream_name' => "Other");
-$stream_otherdata = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');  
-     
-$select .= '<option value="' . $stream_otherdata[0]['stream_id'] . '">' . $stream_otherdata[0]['stream_name'] . '</option>';   
-        }
-    }else{
-            $select .= 0;
+                    $contition_array = array('is_delete' => '0', 'status' => 1, 'stream_name' => "Other");
+                    $stream_otherdata = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                    $select .= '<option value="' . $stream_otherdata[0]['stream_id'] . '">' . $stream_otherdata[0]['stream_name'] . '</option>';
+                }
+            } else {
+                $select .= 0;
             }
-    }
-    else
-    {
-        $select .= 1;
-    }
-    
-    echo $select;
-        
-        
+        } else {
+            $select .= 1;
+        }
+
+        echo $select;
     }
 
 }
