@@ -1566,7 +1566,7 @@ class Recruiter extends MY_Controller {
         $postdata .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         
 
-        $postdata .= '<div class = "job-contact-frnd ">';
+      
         if ($candidatejob) {
             foreach ($candidatejob1 as $row) {
 
@@ -2011,7 +2011,7 @@ class Recruiter extends MY_Controller {
         }
         $postdata .= '<div class="col-md-1">';
         $postdata .= '</div>';
-        $postdata .= '</div>';
+  //      $postdata .= '</div>';
         echo $postdata;
     }
 

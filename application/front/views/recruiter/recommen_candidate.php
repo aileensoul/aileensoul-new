@@ -125,7 +125,9 @@
                                         </h3>
                                     <?php } ?>
                                     <div class="contact-frnd-post">
+                                         <div class = "job-contact-frnd">
                                        <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->
+                                         </div>
                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
                                     </div>
                                 </div>

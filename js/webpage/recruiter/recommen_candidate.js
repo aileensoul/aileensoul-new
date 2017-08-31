@@ -293,7 +293,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-      alert(123);
+      
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -314,7 +314,7 @@ $(document).ready(function () {
     });
 });
 var isProcessing = false;
-function recommen_candidate_post(pagenum) {alert("123");
+function recommen_candidate_post(pagenum) {
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -329,19 +329,19 @@ function recommen_candidate_post(pagenum) {alert("123");
         url: base_url + "recruiter/recommen_candidate_post?page=" + pagenum,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {alert(123);
-            //if (pagenum == 'undefined') {
-                // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
-            //} else {
+        beforeSend: function () {
+            if (pagenum == 'undefined') {
+                 $(".job-contact-frnd").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            } else {
                 $('#loader').show();
-            //}
+           }
         },
         complete: function () {
             $('#loader').hide();
         },
         success: function (data) {
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.job-contact-frnd').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
