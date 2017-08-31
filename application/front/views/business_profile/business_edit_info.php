@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
 <!--start head -->
 <?php  echo $head; ?>
     <!-- END HEAD -->
@@ -135,8 +135,8 @@
 
 
 
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     $('#country').on('change',function(){ 

@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -219,12 +219,12 @@
             </footer>
         </div>
 
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
@@ -237,6 +237,6 @@
             var state_validation = '<?php echo $this->lang->line('state_validation') ?>';
             var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/information.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/information.js?ver='.time()); ?>"></script>
     </body>
 </html>

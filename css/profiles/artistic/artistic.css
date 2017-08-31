@@ -2613,6 +2613,11 @@ font-size: 32px;}
 .profile-job-details ul li a:hover { padding-left: 0px; display: block; text-decoration: none;}
 .profile-job-details ul li p {margin-bottom: 0;display: inline-block; font-size: 15px; font-weight: 600;}
 
+.contact_form {
+    border: 5px solid white;
+    border-bottom: none;
+}
+
 /*media zalak start*/
 
 @media screen and (max-width: 1280px){

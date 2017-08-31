@@ -102,10 +102,10 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
 
-<!-- <link rel="stylesheet" href="<?php //echo base_url('assets/css/croppie.css'); ?>">
+<!-- <link rel="stylesheet" href="<?php //echo base_url('assets/css/croppie.css?ver='.time()); ?>">
  --><style type="text/css" media="screen">
 #row2 { overflow: hidden; width: 100%; }
 #row2 img { height: 350px;width: 100%; } 
@@ -143,7 +143,7 @@ label.cameraButton input[accept*="camera"] {
 
 
  <!-- script for cropiee immage End-->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
@@ -1123,11 +1123,11 @@ if(count($likelistarray) > 1) {
 
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
 <!-- script for skill textbox automatic start-->
- <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+ <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
  <!-- script for cropiee immage start-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <!-- script for skill textbox automatic end-->

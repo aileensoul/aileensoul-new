@@ -137,6 +137,7 @@ class Registration extends CI_Controller {
 
 
                     $email = $this->input->post('email_reg');
+                    $gender = $this->input->post('selgen');
 
                     $toemail = $this->input->post('email_reg');
                     $fname = $this->input->post('first_name');
@@ -149,20 +150,24 @@ class Registration extends CI_Controller {
                              $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
                      } else {
 
-                           $msg .= '<img src="' . base_url(NOIMAGE) . '">';
+                           if($gender == 'F'){
+                                 $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
+                            }else{
+                                 $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
+                            }
                         }
                      $msg .= '</td>
                               </tr>
                             <tr>
                                <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
                     $msg .= '<p style="margin:0;">Hi,' . ucwords($fname) .' '.ucwords($lname) . '</p>
-                            <p style="padding:25px 0 ; margin:0;">Aileensoul has send you verification mail for verify your account successfully.</p>
-                             <p><a class="btn" href="' . base_url() . 'registration/verify/' . $user_id . '">verify account</a></p>
+                            <p style="padding:25px 0 ; margin:0;">Verify your email address.</p>
+                             <p><a class="btn" href="' . base_url() . 'registration/verify/' . $user_id . '">Verify</a></p>
                               </td>
                               </tr>';
                               //echo "<pre>"; print_r($msg); die();
 
-                    $subject = "Aileensoul account verification link";
+                    $subject = "Welcome to aileensoul";
 
                     $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail, $subject, $msg);
 
@@ -386,7 +391,7 @@ class Registration extends CI_Controller {
         $username = $userdata[0]['user_name'];
         $firstname = $userdata[0]['first_name'];
         $lastname = $userdata[0]['last_name'];
-
+         $gender = $userdata[0]['user_gender'];
 
          $data = array(
                         'user_verify' => '2',
@@ -406,7 +411,11 @@ class Registration extends CI_Controller {
             $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
         } else {
 
-            $msg .= '<img src="' . base_url(NOIMAGE) . '">';
+            if($gender == 'F'){
+                                 $msg .= '<img src="' . base_url(FNOIMAGE) . '">';
+                            }else{
+                                 $msg .= '<img src="' . base_url(MNOIMAGE) . '">';
+                            }
         }
         $msg .= '</td>
             </tr>

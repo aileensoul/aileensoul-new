@@ -140,16 +140,40 @@
                                 <div class="left-profile">
                                     <?php
                                     $image_ori = $userdata[0]['user_image'];
+                                    $first_name = $userdata[0]['first_name'];
+                                    $last_name = $userdata[0]['last_name'];
+
                                     if ($image_ori) {
                                         ?>
                                         <div class="profile-photo">
+                                           <?php 
+if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
+                                                                $a = $first_name;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $last_name;
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                 <div class= "post-img-mainuser">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
                                             <img src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" class="main-pic">
+                                            <?php } ?>
+
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
                                                 <img src="<?php echo base_url(); ?>img/cam.png">Update Profile Picture</a>
                                         </div>
                                     <?php } else { ?>
                                         <div class="profile-photo no-image-upload">
-                                            <img src="<?php echo base_url(NOIMAGE); ?>" alt="" class="main-pic"> 
+                                            <?php               $a = $first_name;
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $last_name;
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                 <div class= "post-img-mainuser">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div>  
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
                                                 <img src="<?php echo base_url(); ?>img/u1.png">Update Profile Picture</a>
                                         </div>

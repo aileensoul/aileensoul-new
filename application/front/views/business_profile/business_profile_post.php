@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.time()); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.time()); ?>">  DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
         <style type="text/css">
             .two-images, .three-image, .four-image{
@@ -342,7 +342,7 @@
                                                             var data = <?php echo json_encode($demo); ?>;
                                                             var data1 = <?php echo json_encode($city_data); ?>;
                     </script>
-                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js?ver='.time()); ?>"></script>
+                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/home.js?ver='.time()); ?>"></script>
 <?php
 //$this->minify->js(array('webpage/business-profile/home_1.js'));
 ?>

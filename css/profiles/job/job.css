@@ -682,3 +682,110 @@ padding-top: 14px;
 	font-size: 32px;
 }
 
+/***  job new registration  ***/
+#jobseeker_regform {
+    border: none !important;
+    margin-bottom: 0px!important;
+	padding:10px;
+}
+#jobseeker_regform input:focus{border: 1px solid #1b8ab9 !important;color: #1b8ab9!important;}
+#jobseeker_regform input#submit:focus{border: none!important;}
+#jobseeker_regform input[type="submit"]:focus{color: white!important;}
+#industry:focus{border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
+.job_reg_main{border: 1px solid #d9d9d9; border-radius: 3px;}
+.job_reg_main form{border-radius: 3px;}
+.job_reg_main h3{    
+	border-bottom: 1px solid #d9d9d9;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 15px 0px;
+    font-size: 24px;
+	background:#fff;
+	color:#1b8ab9;
+	text-align: center;
+}
+.job_reg{margin: 15px 0px;}
+.fresher_radio{padding:6px 8px;}
+.common-form fieldset.fresher_radio label{display: inline-block;}
+.common-form  fieldset.main_select_data select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    background: url(../../../img/down-arrow.png) no-repeat;
+    background-position: right;
+}
+.common-form fieldset.fresher_select select{overflow: hidden;}
+
+.main_raio [type="radio"]:checked,
+.main_raio [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+.main_raio [type="radio"]:checked + .point_radio,
+.main_raio [type="radio"]:not(:checked) + .point_radio
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+.main_raio [type="radio"]:checked + .point_radio:before,
+.main_raio [type="radio"]:not(:checked) + .point_radio:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+.main_raio{display: inline-block;padding: 6px 5px 0px;}
+.main_raio [type="radio"]:checked + .point_radio:after,
+[type="radio"]:not(:checked) + .point_radio:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #1b8ab9;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.main_raio [type="radio"]:not(:checked) + .point_radio:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.main_raio [type="radio"]:checked + .point_radio:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.job_reg input[type="submit"]{
+    font-size: 17px !important; 
+    height: auto;
+    font-weight: 600;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );}
+
+.job_reg input[type="submit"]:hover{background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
+    background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
+    background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
+    background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
+    background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
+}
+
+

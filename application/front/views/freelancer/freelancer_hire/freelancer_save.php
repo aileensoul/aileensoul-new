@@ -59,7 +59,7 @@
                         $image_ori = $image[0]['profile_background'];
                         if ($image_ori) {
                             ?>
-                            <img src="<?php echo base_url($this->config->item('free_hire_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                            <img src="<?php echo base_url($this->config->item('free_hire_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
@@ -83,12 +83,12 @@
                     <div class="profile-pho">
 
                         <div class="user-pic padd_img">
-                            <?php if ($freehiredata[0]['freelancer_hire_user_image'] != '') { ?>
-                                <img src="<?php echo base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freehiredata[0]['freelancer_hire_user_image']); ?>" alt="" >
+                            <?php if ($freelancr_user_data[0]['freelancer_hire_user_image'] != '') { ?>
+                                <img src="<?php echo base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancr_user_data[0]['freelancer_hire_user_image']); ?>" alt="" >
                                 <?php
                             } else {
-                                $fname = $freehiredata[0]['fullname'];
-                                $lname = $freehiredata[0]['username'];
+                                $fname = $freelancr_user_data[0]['fullname'];
+                                $lname = $freelancr_user_data[0]['username'];
                                 $sub_fname = substr($fname, 0, 1);
                                 $sub_lname = substr($lname, 0, 1);
                                 ?>
@@ -101,15 +101,15 @@
                         </div>
                     </div>
                     <div class="job-menu-profile mob-block">
-                        <a href="javascript:void(0);">   <h3> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freehiredata[0]['username']); ?></h3></a>
+                        <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
-                            if ($freehiredata[0]['designation'] == '') {
+                            if ($freelancr_user_data[0]['designation'] == '') {
                                 ?>
                                 <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                             <?php } else { ?> 
-                                <a id="designation" class="designation" title="<?php echo ucwords($freehiredata[0]['designation']); ?>"><?php echo ucwords($freehiredata[0]['designation']); ?></a>                <?php } ?>
+                                <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>                <?php } ?>
                         </div>
                     </div>         
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
@@ -118,7 +118,7 @@
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
-                            if ($freehiredata[0]['user_id'] == $userid) {
+                            if ($freelancr_user_data[0]['user_id'] == $userid) {
                                 ?>     
                                 <ul class="current-user pro-fw">
 
@@ -144,15 +144,15 @@
         </div>
         <div class="middle-part container">
             <div class="job-menu-profile mob-none pt20">
-                <a href="javascript:void(0);">   <h5> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freehiredata[0]['username']); ?></h5></a>
+                <a href="javascript:void(0);">   <h5> <?php echo ucwords($freelancr_user_data[0]['fullname']) . ' ' . ucwords($freelancr_user_data[0]['username']); ?></h5></a>
                 <div class="profile-text">
                     <?php
-                    if ($freehiredata[0]['designation'] == '') {
+                    if ($freelancr_user_data[0]['designation'] == '') {
                         ?>
                         <a id="designation" class="designation" title="Designation"><?php echo $this->lang->line("designation"); ?></a>
 
                     <?php } else { ?> 
-                        <a id="designation" class="designation" title="<?php echo ucwords($freehiredata[0]['designation']); ?>"><?php echo ucwords($freehiredata[0]['designation']); ?></a>  <?php } ?>
+                        <a id="designation" class="designation" title="<?php echo ucwords($freelancr_user_data[0]['designation']); ?>"><?php echo ucwords($freelancr_user_data[0]['designation']); ?></a>  <?php } ?>
                 </div>
                 <div  class="add-post-button">
                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>

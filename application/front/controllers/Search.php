@@ -2257,88 +2257,30 @@ class Search extends CI_Controller {
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array , $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
              $unique = array_merge($candidate,$fieldfound, $otherdata);
-             //$unique=array_unique($unique1,SORT_STRING);
-            
-             echo count($unique);
-            // echo "<pre>"; print_r($unique);die();
-//            foreach ($skillpost as $ke => $arr) {
-//                $postdata[] = $arr;
-//            }
-//            $new = array();
-//            foreach ($postdata as $value) {
-//                $new[$value['freelancer_post_reg_id']] = $value;
-//            }
-//
-//            if (count($new) == 0) {
-//                $unique1 = array_merge($otherdata, $fieldfound);
-//            } else {
-//                $unique1 = array_merge($new, $otherdata, $fieldfound);
-//            }
-//            foreach ($unique1 as $ke => $arr) {
-//                $postdata[] = $arr;
-//            }
-//            $new1 = array();
-//            foreach ($postdata as $value) {
-//                $unique[$value['freelancer_post_reg_id']] = $value;
-//            }
-            //  echo "<pre>";print_r($unique);die();
+
         } else {
             //   echo "Both";
-            $contition_array = array('type' => '1', 'status' => '1');
-            $search_condition = "(skill LIKE '%$search_skill%')";
-            $skilldata = $skill['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $contion_array = array('freelancer_post_reg_id !=' => '', 'status' => '1', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'free_post_step' => 7);
-            $results = $this->data['results'] = $this->common->select_data_by_condition('freelancer_post_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                foreach ($results as $postskill) {
-                    $skill = explode(',', $postskill['freelancer_post_area']);
-                    if (in_array($id, $skill)) {
-                        $skillpost[] = $postskill;
-                    }
-                }
-            }
-            //  echo "<pre>";print_r($skillpost);
-            $contition_array = array('type' => '1', 'status' => '1');
-            $search_condition = "(category_name LIKE '%$search_skill%')";
-            $fielddata = $field['data'] = $this->common->select_data_by_search('category', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>";print_r($fielddata);
-            $contition_array = array('freelancer_post_field' => $fielddata[0]['category_id'], 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7, 'freelancer_post_reg.status' => '1');
-            $join_str[0]['table'] = 'category';
-            $join_str[0]['join_table_id'] = 'category.category_id';
-            $join_str[0]['from_table_id'] = 'freelancer_post_reg.freelancer_post_field';
-            $join_str[0]['join_type'] = '';
-
+            
+            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0','freelancer_post_city' => $cache_time, 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
+            $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+           
+            $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+           
+            $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1','freelancer_post_city' => $cache_time);
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-            //  echo "<pre>";print_r($fieldfound);
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'freelancer_post_reg.user_id !=' => $userid, 'freelancer_post_reg.free_post_step' => 7);
+           
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7,'freelancer_post_city' => $cache_time);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
-            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>";print_r($otherdata);
-            foreach ($skillpost as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new = array();
-            foreach ($postdata as $value) {
-                $new[$value['freelancer_post_reg_id']] = $value;
-            }
-            if (count($new) == 0) {
-                $unique1 = array_merge($otherdata, $fieldfound);
-            } else {
-                $unique1 = array_merge($new, $otherdata, $fieldfound);
-            }
-            foreach ($unique1 as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new1 = array();
-            foreach ($postdata as $value) {
-                $unique[$value['freelancer_post_reg_id']] = $value;
-            }
+            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array , $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            $unique = array_merge($candidate,$fieldfound, $otherdata);
         }
 
         $return_html = '';
         $freelancerpostdata1 = array_slice($unique, $start, $perpage);
+       
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($unique);
         }
@@ -2578,12 +2520,14 @@ class Search extends CI_Controller {
 
         $search_skill = $_GET["skill"];
         $search_place = $_GET["place"];
+       
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
 
 // code for insert search keyword into database end
         if ($search_skill == "") {
+          
 //$contition_array = array('freelancer_post.city' => $search_place[0], 'freelancer_hire_reg.status' => '1');
             $join_str[0]['table'] = 'freelancer_post';
             $join_str[0]['join_table_id'] = 'freelancer_post.user_id';
@@ -2595,80 +2539,46 @@ class Search extends CI_Controller {
 
             //echo "<pre>"; print_r($unique);die();
         } elseif ($search_place == "") {
-           
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(skill LIKE '%$search_skill%')";
+            
+             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1,'type' => '1'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'post_last_date >='=>$date,'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
+            $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $contition_array = array('status' => '1', 'freelancer_post.user_id !=' => $userid,'post_last_date >='=>$date);
-            $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>";print_r($recdata);
+            $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+            $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid,  'status' => '1','city' => $cache_time,'post_last_date >='=>$date);
+            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                foreach ($recdata as $postskill) {
-                    $skill = explode(',', $postskill['post_skill']);
-                    if (in_array($id, $skill)) {
-                        $freeskillpost[] = $postskill;
-                    }
-                }
-            }
-            //echo $freeskillpost;die();
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
             $contion_array = array('freelancer_post.user_id !=' => $userid,'freelancer_post.post_last_date >='=>$date);
-
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>";print_r($freeldata);die();
-            if (count($freeskillpost) == 0) {
-                $unique = array_merge($freeldata);
-            } else {
-                $unique = array_merge($freeskillpost, $freeldata);
-            }
-            foreach ($unique as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new = array();
-            foreach ($postdata as $value) {
+            $unique = array_merge($freeskillpost, $freeldata,$fieldfound);
+               $new = array();
+            foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
             }
+           
         } else {
-            //echo "both"; die();
-            $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(skill LIKE '%$search_skill%')";
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $contition_array = array('status' => '1', 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid,'post_last_date >='=>$date);
-            $recdata = $userdata['data'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                foreach ($recdata as $postskill) {
-                    $skill = explode(',', $postskill['post_skill']);
-                    if (in_array($id, $skill)) {
-                        $freeskillpost[] = $postskill;
-                    }
-                }
-            }
-
+            
+            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1,'type' => '1'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0','city' => $cache_time, 'post_last_date >='=>$date,'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
+            $freeskillpost = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+            $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
+           // echo $category_temp;die();
+            $contition_array = array('post_field_req' => $category_temp, 'user_id !=' => $userid,  'status' => '1','is_delete'=>0,'city' => $cache_time,'post_last_date >='=>$date);
+            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+            
+             //  echo "<pre>"; print_r($fieldfound);die();
             $search_condition = "(post_name LIKE '%$search_skill%' or post_other_skill LIKE '%$search_skill%' or post_est_time LIKE '%$search_skill%' or post_rate LIKE '%$search_skill%' or  post_exp_year LIKE '%$search_skill%' or  post_exp_month LIKE '%$search_skill%')";
-            $contion_array = array('post_name=' => $search_job, 'city' => $cache_time, 'freelancer_post.user_id !=' => $userid,'post_last_date >='=>$date);
-
+            $contion_array = array('city' => $cache_time, 'freelancer_post.user_id !=' => $userid,'post_last_date >='=>$date);
             $freeldata = $this->common->select_data_by_search('freelancer_post', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            if (count($freeskillpost) == 0) {
-                $unique = array_merge($freeldata);
-            } else {
-                $unique = array_merge($freeskillpost, $freeldata);
-            }
-            foreach ($unique as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new = array();
-            foreach ($postdata as $value) {
+             $unique = array_merge($freeskillpost, $freeldata,$fieldfound);
+               $new = array();
+            foreach ($unique as $value) {
                 $new[$value['post_id']] = $value;
             }
-
-// echo "<pre>";print_r($unique);
         }
         // echo "<pre>";print_r($new);die();
         $this->data['freelancerhiredata'] = $new;

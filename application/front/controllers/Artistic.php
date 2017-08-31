@@ -2405,7 +2405,7 @@ $datacount = count($otherdata);
                     $datacount = "count";
 
 
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
@@ -2423,7 +2423,7 @@ $datacount = count($otherdata);
 
                     $datacount = "count";
 
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
@@ -3821,7 +3821,7 @@ public function followtwo() {
                 $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
                 $followingotherdata = $this->data['followingotherdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $followingdatacount = '('.count($followingotherdata).')';
+                $followingdatacount = count($followingotherdata);
 
                 $unfollow = '<div>(';
                 $unfollow .= '' . $followingdatacount . '';
@@ -13292,7 +13292,7 @@ public function art_home_post() {
         }
         if (count($finalsorting) > 0) {
             if (count($count) == count($finalsorting)) {
-                $return_html .= ' <div class="art_no_post_avl">
+                $return_html .= ' <div class="art_no_post_avl" id="no_post_avl">
                                            <h3>Artistic Post</h3>
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
@@ -13307,7 +13307,7 @@ public function art_home_post() {
                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art_no_post_avl"><h3>Artistic Post</h3>
+            $return_html .= '<div class="art_no_post_avl" id="no_post_avl"><h3>Artistic Post</h3>
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 
