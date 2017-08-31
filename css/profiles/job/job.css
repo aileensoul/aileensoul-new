@@ -681,4 +681,16 @@ padding-top: 14px;
 	color: #ccc;
 	font-size: 32px;
 }
+.job_reg_main{border: 1px solid #d9d9d9; border-radius: 3px;}
+.job_reg_main form{border-radius: 3px;}
+.job_reg_main h3{    
+	border-bottom: 1px solid #d9d9d9;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 15px 0px;
+    font-size: 24px;
+	background:none;
+	color:#1b8ab9;
+}
+.job_reg{margin: 15px 0px;}
 
