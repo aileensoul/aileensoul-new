@@ -1,35 +1,3 @@
- function myFunction1(clicked_id) {
-   
-        document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-    
-         $( document ).on( 'keydown', function ( e ) {
-                   if ( e.keyCode === 27 ) { 
-   
-                   document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                    $(".dropdown-content2").removeClass('show');
-   
-       }
-      
-   }); 
-   
-   }
-
-   window.onclick = function (event) {
-       if (!event.target.matches('.dropbtn1')) {
-   
-           var dropdowns = document.getElementsByClassName("dropdown-content2");
-           var i;
-           for (i = 0; i < dropdowns.length; i++) {
-               var openDropdown = dropdowns[i];
-               if (openDropdown.classList.contains('show')) {
-                   openDropdown.classList.remove('show');
-               }
-           }
-       }
-   }
-
-
-
  $(document).ready(function ()
          {
              /* Uploading Profile BackGround Image */
@@ -99,7 +67,35 @@
          });   
 
 
+function myFunction1(clicked_id) {
+   
+        document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+    
+         $( document ).on( 'keydown', function ( e ) {
+                   if ( e.keyCode === 27 ) { 
+   
+                   document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+                    $(".dropdown-content2").removeClass('show');
+   
+       }
+      
+   }); 
+   
+   }
 
+   window.onclick = function (event) {
+       if (!event.target.matches('.dropbtn1')) {
+   
+           var dropdowns = document.getElementsByClassName("dropdown-content2");
+           var i;
+           for (i = 0; i < dropdowns.length; i++) {
+               var openDropdown = dropdowns[i];
+               if (openDropdown.classList.contains('show')) {
+                   openDropdown.classList.remove('show');
+               }
+           }
+       }
+   }
 
  // follow user script start
 
@@ -1057,9 +1053,6 @@ function insert_comment(clicked_id)
            modal.style.display = "none";
        }
    }
-
-
-   
 
    //  multi image add post khyati start
 
