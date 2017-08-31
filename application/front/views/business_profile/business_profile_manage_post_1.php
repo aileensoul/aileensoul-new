@@ -3103,7 +3103,7 @@
                     url: '<?php echo base_url() . "business_profile/bus_photos" ?>',
                     data: 'bus_slug=' + slug,
                     beforeSend: function () {
-                        $(".bus_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".bus_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
@@ -3122,7 +3122,7 @@
                     url: '<?php echo base_url() . "business_profile/bus_videos" ?>',
                     data: 'bus_slug=' + slug,
                     beforeSend: function () {
-                        $(".bus_videos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".bus_videos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
@@ -3139,7 +3139,7 @@
                     url: '<?php echo base_url() . "business_profile/bus_audio" ?>',
                     data: 'bus_slug=' + slug,
                     beforeSend: function () {
-                        $(".bus_audios").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".bus_audios").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();
@@ -3157,7 +3157,7 @@
                     url: '<?php echo base_url() . "business_profile/bus_pdf" ?>',
                     data: 'bus_slug=' + slug,
                     beforeSend: function () {
-                        $(".bus_pdf").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        $(".bus_pdf").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                     },
                     success: function (data) {
                         $('.loader').remove();

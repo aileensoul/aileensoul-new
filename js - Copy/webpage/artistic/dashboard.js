@@ -44,7 +44,7 @@
                     //url: '<?php echo base_url() . "artistic/artistic_photos" ?>',
                     data: 'art_id=' + slug,
                     beforeSend: function () {
-                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                         $(".art_photos").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
                     success: function (data) {
