@@ -117,54 +117,54 @@ function check() {
 }
 
 //select2 autocomplete start for skill
-$('#searchskills').select2({
-    placeholder: 'Find Your Skills',
-    ajax: {
-        url: "<?php echo base_url(); ?>recruiter/keyskill",
-        dataType: 'json',
-        delay: 250,
-        processResults: function (data) {
-            return {
-                //alert(data);
-                results: data
-            };
-        },
-        cache: true
-    }
-});
+//$('#searchskills').select2({
+//    placeholder: 'Find Your Skills',
+//    ajax: {
+//        url: "<?php echo base_url(); ?>recruiter/keyskill",
+//        dataType: 'json',
+//        delay: 250,
+//        processResults: function (data) {
+//            return {
+//                //alert(data);
+//                results: data
+//            };
+//        },
+//        cache: true
+//    }
+//});
 //select2 autocomplete End for skill
 //select2 autocomplete start for Location
-$('#searchplace').select2({
-    placeholder: 'Find Your Location',
-    maximumSelectionLength: 1,
-    ajax: {
-        url: "<?php echo base_url(); ?>recruiter/location",
-        dataType: 'json',
-        delay: 250,
-        processResults: function (data) { //alert(data);
-            return {
-
-                results: data
-            };
-        },
-        cache: true
-    }
-});
+//$('#searchplace').select2({
+//    placeholder: 'Find Your Location',
+//    maximumSelectionLength: 1,
+//    ajax: {
+//        url: "<?php echo base_url(); ?>recruiter/location",
+//        dataType: 'json',
+//        delay: 250,
+//        processResults: function (data) { //alert(data);
+//            return {
+//
+//                results: data
+//            };
+//        },
+//        cache: true
+//    }
+//});
 //select2 autocomplete End for Location
 // Get the modal
-var modal = document.getElementById('myModal');
+//var modal = document.getElementById('myModal');
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+//var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
+//btn.onclick = function () {
+//   modal.style.display = "block";
+//}
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+//span.onclick = function () {
+//    modal.style.display = "none";
+//}
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
@@ -287,19 +287,20 @@ $(document).ready(function () {
 
 });
 //AJAX DATA LOAD BY LAZZY LOADER START
-$(document).ready(function() {
-    business_home_post(), business_home_three_user_list(), $(window).scroll(function() {
+$(document).ready(function () {
+    recommen_candidate_post(),
+            $(window).scroll(function () {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
             var e = $(".page_number:last").val(),
-                t = $(".total_record").val(),
-                o = $(".perpage_record").val();
+                    t = $(".total_record").val(),
+                    o = $(".perpage_record").val();
             if (parseInt(o) <= parseInt(t)) {
                 var n = t / o;
                 n = parseInt(n, 10);
                 var l = t % o;
                 if (l > 0 && (n += 1), parseInt(e) <= parseInt(n)) {
                     var s = parseInt($(".page_number:last").val()) + 1;
-                    business_home_post(s)
+                    recommen_candidate_post(s)
                 }
             }
         }
@@ -307,21 +308,21 @@ $(document).ready(function() {
 });
 var isProcessing = !1;
 
-function business_home_post(e) {
+function recommen_candidate_post(e) {
     isProcessing || (isProcessing = !0, $.ajax({
         type: "POST",
-        url: base_url + "business_profile/business_home_post?page=" + e,
+        url: base_url + "recruiter/recommen_candidate_post?page=" + e,
         data: {
             total_record: $("#total_record").val()
         },
         dataType: "html",
-        beforeSend: function() {
+        beforeSend: function () {
             "undefined" == e || $("#loader").show()
         },
-        complete: function() {
+        complete: function () {
             $("#loader").hide()
         },
-        success: function(e) {
+        success: function (e) {
             $(".loader").remove(), $(".business-all-post").append(e);
             var t = $(".post-design-box").length;
             0 == t ? $("#dropdownclass").addClass("no-post-h2") : $("#dropdownclass").removeClass("no-post-h2"), isProcessing = !1
