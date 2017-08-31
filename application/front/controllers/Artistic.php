@@ -3964,7 +3964,7 @@ public function followtwo() {
               $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if($artaval){
 
-                $return_html .= '<div class="job-contact-frnd ">
+                $return_html .= '
                                                     <div class="profile-job-post-detail clearfix">
                                                         <div class="profile-job-post-title-inside clearfix">
                                                             <div class="profile-job-post-location-name">
@@ -4051,7 +4051,7 @@ public function followtwo() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>';
+                                                ';
             } }
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
@@ -4200,8 +4200,8 @@ public function followtwo() {
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
-                $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
-    <div class = "profile-job-post-detail clearfix">
+                $return_html .= '
+    <div class = "profile-job-post-detail clearfix" id = "removefollow' . $user['follow_to'] . '">
         <div class = "profile-job-post-title-inside clearfix">
             <div class = "profile-job-post-location-name">
                 <div class = "user_lst">
@@ -4305,7 +4305,7 @@ public function followtwo() {
                                                     </div>
                                                     </div>
                                                     </div>
-                                                    </div>';
+                                                    ';
             }
         } else {
 
