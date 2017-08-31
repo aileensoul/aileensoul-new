@@ -288,46 +288,71 @@ $(document).ready(function () {
 });
 //AJAX DATA LOAD BY LAZZY LOADER START
 $(document).ready(function () {
-    recommen_candidate_post(),
-            $(window).scroll(function () {
+    recommen_candidate_post();
+    
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-            var e = $(".page_number:last").val(),
-                    t = $(".total_record").val(),
-                    o = $(".perpage_record").val();
-            if (parseInt(o) <= parseInt(t)) {
-                var n = t / o;
-                n = parseInt(n, 10);
-                var l = t % o;
-                if (l > 0 && (n += 1), parseInt(e) <= parseInt(n)) {
-                    var s = parseInt($(".page_number:last").val()) + 1;
-                    recommen_candidate_post(s)
+      alert(123);
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    recommen_candidate_post(pagenum);
                 }
             }
         }
-    })
+    });
 });
-var isProcessing = !1;
-
-function recommen_candidate_post(e) {
-    isProcessing || (isProcessing = !0, $.ajax({
-        type: "POST",
-        url: base_url + "recruiter/recommen_candidate_post?page=" + e,
-        data: {
-            total_record: $("#total_record").val()
-        },
+var isProcessing = false;
+function recommen_candidate_post(pagenum) {alert("123");
+    if (isProcessing) {
+        /*
+         *This won't go past this condition while
+         *isProcessing is true.
+         *You could even display a message.
+         **/
+        return;
+    }
+    isProcessing = true;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "recruiter/recommen_candidate_post?page=" + pagenum,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
-        beforeSend: function () {
-            "undefined" == e || $("#loader").show()
+        beforeSend: function () {alert(123);
+            //if (pagenum == 'undefined') {
+                // $(".business-all-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+            //} else {
+                $('#loader').show();
+            //}
         },
         complete: function () {
-            $("#loader").hide()
+            $('#loader').hide();
         },
-        success: function (e) {
-            $(".loader").remove(), $(".business-all-post").append(e);
-            var t = $(".post-design-box").length;
-            0 == t ? $("#dropdownclass").addClass("no-post-h2") : $("#dropdownclass").removeClass("no-post-h2"), isProcessing = !1
+        success: function (data) {
+            $('.loader').remove();
+            $('.contact-frnd-post').append(data);
+
+            // second header class add for scroll
+            var nb = $('.post-design-box').length;
+            if (nb == 0) {
+                $("#dropdownclass").addClass("no-post-h2");
+            } else {
+                $("#dropdownclass").removeClass("no-post-h2");
+            }
+            isProcessing = false;
         }
-    }))
+    });
 }
 //AJAX DATA LOAD BY LAZZY LOADER END
 
