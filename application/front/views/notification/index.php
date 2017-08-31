@@ -14,20 +14,7 @@
     <!-- END HEADER MENU -->
 </div>
 <!-- END HEADER -->
-<style type="text/css">
-    #noti_pc{ margin-bottom: 5px;
-    border-radius: 50%;
-    margin-left: 10px;
-    display: inline-block;
-    
-    margin-top: 5px;   }
-    .job-saved-box .notification-box ul li{display: flex!important;}
-    #notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px;
-    margin-left: 11px;
-    display: inline-block;}
-    #noti_pc img{border-radius: none;}
-      #notification_inside h6{font-size: 17px;}
-</style>
+
 <div class="user-midd-section" id="paddingtop_fixed">
     <div class="container">
         <div class="row">
@@ -37,19 +24,7 @@
                 <div class="common-form">
 
                     <div class="job-saved-box">
-                        <h3 style="    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
-    border-bottom: 1px solid #d9d9d9;
-    padding-left: 24px;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
-    background: -moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
-    background-color: #f9f9f9;font-weight: 600;
-    color: #000033;">View Notification</h3>
+                        <h3>View Notification</h3>
 
                         <!-- BEGIN CONTAINER -->
                         <!--  <div class="page-container">

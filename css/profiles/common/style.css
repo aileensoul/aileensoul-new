@@ -1307,6 +1307,18 @@ label.cameraButton {
     cursor: pointer;
 }
 .notification-pic img{border:1px solid #d9d9d9 !important;}
+#noti_pc{ 
+	margin-bottom: 5px;
+    border-radius: 50%;
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 5px;   
+}
+#notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px; margin-left: 11px; 
+	display: inline-block;
+}
+#noti_pc img{border-radius: none;}
+#notification_inside h6{font-size: 17px;}
 
 
 
@@ -1330,7 +1342,6 @@ body.blog{height:auto;}
     margin-top: 15px;
     width: 100%;
 }
-
 
 /*zalak start 28-8  media*/
 @media screen and (max-width:1280px)

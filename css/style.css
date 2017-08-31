@@ -425,18 +425,7 @@ margin: 10px;}
 }
 
 /*contact req*/
- #noti_pc{ margin-bottom: 5px;
-    border-radius: 50%;
-    margin-left: 10px;
-    display: inline-block;
-    margin-top: 5px;   }
-
-    
-    #notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px;
-    margin-left: 11px;
-    display: inline-block;}
-    #noti_pc img{border-radius: none;}
-    #notification_inside h6{font-size: 17px;}
+ 
 	 .profile-content a h5{    color: #404040;
     line-height: 20px;
 font-size: 15px;}
@@ -3796,14 +3785,15 @@ max-width: inherit;}
 /***  all keyframe css  ***/
 
 /***  keyfream css  ***/
-
+/**
 @keyframes pulse1 {
   0%{transform:scale(0.1);opacity: 0;}
   50%{ opacity: 0.4;}
   100%{transform: scale(1.6); opacity: 0;}
 }
-
+**/
 /* Move it (define the animation) */
+/**
 @-moz-keyframes marquee-main {
     0% {
         -moz-transform: translateX(70%);
@@ -3839,7 +3829,9 @@ max-width: inherit;}
         
         transform: translateX(0%);
     }
-}
+}**/
+
+/**
 @keyframes bounce_floatBarsG {
     0% {
         transform: scale(1);
@@ -3890,7 +3882,7 @@ max-width: inherit;}
         background-color: rgb(255, 255, 255);
     }
 }
-
+*/
 /* ripple */
 
 @-webkit-keyframes ripple {
@@ -3921,7 +3913,7 @@ max-width: inherit;}
 }
 
 
-
+/*
 @-webkit-keyframes fa-spin {
     0% {
         -webkit-transform: rotate(0deg);
@@ -3942,7 +3934,7 @@ max-width: inherit;}
         transform: rotate(359deg);
     }
 }
-
+*/
 
 /***  not use css  ***/
 .alignleft,
