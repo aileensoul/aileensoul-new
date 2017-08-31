@@ -1903,7 +1903,7 @@ class Business_profile extends MY_Controller {
     <div id="khyati' . $row['business_profile_post_id'] . '" style="display:block;">';
 
             $small = substr($row['product_description'], 0, 180);
-            $return_html .= $this->common->make_links($small);
+            $return_html .= nl2br($this->common->make_links($small));
             if (strlen($row['product_description']) > 180) {
                 $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
             }
@@ -5233,7 +5233,7 @@ class Business_profile extends MY_Controller {
             }
             if ($this->data['businessdata'][0]['product_description']) {
                 $small = substr($businessdata[0]['product_description'], 0, 180);
-                $editpostdes .= $this->common->make_links($small);
+                $editpostdes .= nl2br($this->common->make_links($small));
                 if (strlen($businessdata[0]['product_description']) > 180) {
                     $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["business_profile_post_id"] . ')">View More</div>';
                 }
@@ -7251,7 +7251,7 @@ class Business_profile extends MY_Controller {
 
                 $small = substr($rowdata['comments'], 0, 180);
 
-                $fourdata .= '' . $this->common->make_links($small) . '';
+                $fourdata .= '' . nl2br($this->common->make_links($small)) . '';
 
 // echo $this->common->make_links($small);
 
@@ -9725,7 +9725,7 @@ No Contacts Available.
 
         if ($this->data['businessdata'][0]['product_description']) {
 
-            $editpostdes .= $this->data['businessdata'][0]['product_description'];
+            $editpostdes .= nl2br($this->data['businessdata'][0]['product_description']);
         }
         echo json_encode(
                 array(
@@ -10081,7 +10081,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyati' . $row['business_profile_post_id'] . '" style = "display:block;">';
 
                     $small = substr($row['product_description'], 0, 180);
-                    $return_html .= $small;
+                    $return_html .= nl2br($small);
                     if (strlen($row['product_description']) > 180) {
                         $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
                     }
@@ -10489,7 +10489,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<div id = "lessmore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">';
                             $small = substr($rowdata['comments'], 0, 180);
-                            $return_html .= $this->common->make_links($small);
+                            $return_html .= nl2br($this->common->make_links($small));
 
                             if (strlen($rowdata['comments']) > 180) {
                                 $return_html .= '... <span id = "kkkk" onClick = "seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
@@ -11648,7 +11648,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 </div>
 <div id = "khyati' . $row['business_profile_post_id'] . '" style = "display:block;">';
                 $small = substr($row['product_description'], 0, 180);
-                $return_html .= $this->common->make_links($small);
+                $return_html .= nl2br($this->common->make_links($small));
                 if (strlen($row['product_description']) > 180) {
                     $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
                 }
@@ -11985,7 +11985,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 <div class="comment-details" id= "showcomment' . $rowdata['business_profile_post_comment_id'] . '">
                     <div id="lessmore' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">';
                         $small = substr($rowdata['comments'], 0, 180);
-                        $return_html .= $this->common->make_links($small);
+                        $return_html .= nl2br($this->common->make_links($small));
 
                         if (strlen($rowdata['comments']) > 180) {
                             $return_html .= '... <span id="kkkk" onClick="seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
