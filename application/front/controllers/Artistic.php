@@ -2980,7 +2980,7 @@ public function ajax_userlist() {
 
 
         foreach ($userlist as $user) {
-            $return_html .= '<div class="job-contact-frnd ">
+            $return_html .= '
                                                 <div class="profile-job-post-detail clearfix">
                                                     <div class="profile-job-post-title-inside clearfix">
                                                         <div class="profile-job-post-location-name">
@@ -3053,7 +3053,7 @@ public function ajax_userlist() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>';
+                                            ';
         }
         echo $return_html;
     }

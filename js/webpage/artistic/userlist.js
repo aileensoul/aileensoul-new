@@ -42,7 +42,7 @@ function artistic_userlist(pagenum) {
         dataType: "html",
         beforeSend: function () { 
             //if (pagenum == 'undefined') {
-                //  $(".contact-frnd-post").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                //  $(".job-contact-frnd ").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             //} else {
                 $('#loader').show();
             //}
@@ -52,7 +52,7 @@ function artistic_userlist(pagenum) {
         },
         success: function (data) { 
             $('.loader').remove();
-            $('.contact-frnd-post').append(data);
+            $('.job-contact-frnd ').append(data);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
