@@ -1,5 +1,5 @@
 ﻿/* font-family: 'FontAwesome'; */
-
+/*
 .job-post-title {
     padding: 10px 15px;
 }
@@ -14,7 +14,7 @@
 .job-post-detail span {
     word-break: break-word;
     word-wrap: break-word;
-}
+}*/
 /*.radio {
     margin-top: 4px;
 }
@@ -40,16 +40,12 @@
     width: auto;
     float: right;
 }*/
-#jobseeker_regform input:focus{border: 1px solid #1b8ab9 !important;color: #1b8ab9!important;}
-#jobseeker_regform input#submit:focus{border: none!important;}
-#industry:focus{border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
-#jobseeker_regform input[type="submit"]:focus{color: white!important;}
+
+
+
     /*.message .btn:focus{color: white;}
         .message .btn:hover{color: white;}*/
-.contact_form {
-    border: 5px solid white;
-    border-bottom: none;
-}
+
 /**#jobseeker_regform_primary {
     border: none !important;
     margin-bottom: 0px!important;
@@ -435,7 +431,7 @@ margin: 10px;}
     display: inline-block;
     margin-top: 5px;   }
 
-    .job-saved-box .notification-box ul li{display: flex!important;}
+    
     #notification_inside{ margin-left: 0px; margin-top: 0px;   padding: 5px 10px 9px 10px;
     margin-left: 11px;
     display: inline-block;}
@@ -489,31 +485,7 @@ li.active2 .notification-database:hover {
     display: block;
 }
 
-.job-saved-box .notification-box ul {
-    font-size: 0;
-    margin: 0;
-    padding: 10px;
-}
-.job-saved-box .notification-box ul li {
-    list-style: none;
-    background-color: #fff;
-    padding: 10px;
-    margin: 10px;
-    position: relative;
-    border-radius: 3px;
-    border: 1px solid #bfbfbf;
-    cursor: pointer;
-}
-.job-saved-box .notification-box ul li:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
-    background: -moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: -ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
-    background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-    background-color: #f9f9f9;
-    cursor: pointer;
-}
+
 
 .buisness-contact-head {
     background: #e6e6e6;
@@ -1976,10 +1948,7 @@ cover pic css*/
     border: none !important;
     margin-bottom: 0px!important;
 }
-#jobseeker_regform {
-    border: none !important;
-    margin-bottom: 0px!important;
-}
+
 .job_edu_graduation_submit_btn {
     padding: 6px 9px 6px;
     font-size: 14px;
@@ -2342,11 +2311,6 @@ fieldset .add_post_btns:hover {
     padding-top: 80px;
 }
 
-.bg{
-    background-color: white;
-    border:1px solid #d9d9d9;
-    padding-bottom: 10px;
-}
 
 .notification-data-inside h6 b i {
     padding-left: 0!important;
@@ -3185,46 +3149,11 @@ div[class^="likeduserlist"] {
 }
 /*jon new design*/
 
-.main_raio [type="radio"]:checked,
-.main_raio [type="radio"]:not(:checked) {
-    position: absolute;
-    left: -9999px;
-}
-.main_raio [type="radio"]:checked + .point_radio,
-.main_raio [type="radio"]:not(:checked) + .point_radio
-{
-    position: relative;
-    padding-left: 28px;
-    cursor: pointer;
-    line-height: 20px;
-    display: inline-block;
-    color: #666;
-}
-.main_raio [type="radio"]:checked + .point_radio:before,
-.main_raio [type="radio"]:not(:checked) + .point_radio:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 18px;
-    height: 18px;
-    border: 1px solid #ddd;
-    border-radius: 100%;
-    background: #fff;
-}
+
 
 .common-form fieldset label#other_skill{font-size: 13px; color: #808080;}
 .common-form fieldset label#other_skill .other_skill_clik{font-weight: 600; color: #1b8ab9;}
-.common-form  fieldset.main_select_data select {
-    
- 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: relative;
-    background: url(../img/down-arrow.png) no-repeat;
-    background-position: right;
-}
+
 .login .form-group input, .login .form-group select, .login .form-group textarea {
     border: none;
     border-bottom: 1px solid #d9d9d9;
@@ -3236,56 +3165,13 @@ div[class^="likeduserlist"] {
     padding-left: 6px;
 }
 .common-form fieldset label#other_skill:hover .other_skill_clik{text-decoration: underline; cursor: pointer; color: #1b8ab9; text-transform: inherit;}
-.job_reg input[type="submit"]{
-    font-size: 17px !important; 
-    height: auto;
-    font-weight: 600;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9));
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );}
 
-.job_reg input[type="submit"]:hover{background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
-    background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-    background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
-    background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
-    background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
-}
 .text_center{text-align: center;}
-.main_raio{display: inline-block;padding: 6px 5px 0px;}
-.main_raio [type="radio"]:checked + .point_radio:after,
-[type="radio"]:not(:checked) + .point_radio:after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: #1b8ab9;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    border-radius: 100%;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-}
-.main_raio [type="radio"]:not(:checked) + .point_radio:after {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-}
-.main_raio [type="radio"]:checked + .point_radio:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-}
 
-.job_reg_main h3{background: white;
-    color: #1b8ab9;
-    text-align: center;}
- .common-form fieldset.fresher_radio label{display: inline-block;}
- .common-form fieldset.fresher_select select{overflow: hidden;}
+
+
+
+ 
 /***  notification hover effect  ***/
 
 
@@ -3695,7 +3581,7 @@ float: right; position:relative;}
 .chat_heae_img{border:1px solid #d9d9d9;}
 
 
-.notification-pic img{border:1px solid #d9d9d9 !important;}
+
 .about-content{width: 80% !important;line-height: 28px !important;}
 
 
@@ -3859,7 +3745,7 @@ max-width: inherit;}
   50%{ opacity: .4;}
   100%{transform: scale(1.6); opacity: 0;}
 }
-.fresher_radio{padding:6px 8px;}
+
 .fileContainer {
     overflow: hidden;
     position: relative;

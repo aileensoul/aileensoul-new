@@ -140,6 +140,9 @@
 .header ul li #abody ul li a .text-all{width: 160px; float: left; padding: 16px 10px;}
 .header ul li #abody ul li:last-child{border:none;}
 .header ul li a .all:hover{ background-position: -0px -0px; width: 32px; height: 32px; }
+.header ul li #abody ul li a{width:100%; float:left;}
+.header #notification_li li a .notification-data-inside i{display:none;}
+
 
 #InboxContainer {
    border-radius: 5px;
