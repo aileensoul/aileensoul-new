@@ -945,7 +945,7 @@ class Business_profile extends MY_Controller {
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
 //manage post end
-        if ($this->session->userdata('aileenuser')) {
+         if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_profile_manage_post', $this->data);
         } else {
             $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);

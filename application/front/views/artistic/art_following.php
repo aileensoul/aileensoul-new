@@ -34,10 +34,13 @@
                                 <h3>Following</h3>
                                  <div class="contact-frnd-post">
                                  
+                                    <div class = "job-contact-frnd" >
+                                    </div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>      
                                         <div class="col-md-1">
                                         </div>
                                     </div>  
-                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>                
+                                               
             </div>
         </div>
         </div>

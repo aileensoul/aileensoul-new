@@ -114,7 +114,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              </div>
                              </div>
 
-                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url() ?>images/loader.gif" /></div>
+                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
        </div>
       <div class="animated fadeInRightBig ">
       <div class="right_middle_side_posrt fixed_right_display"> 

@@ -3476,7 +3476,7 @@
 //                document.getElementById("progress-div").style.display = "block";
 //                $("#progress-bar").width('0%');
                 document.getElementById("myModal").style.display = "none";
-                $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+                $(".business-all-post").prepend('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
             },
 //            uploadProgress: function (event, position, total, percentComplete) {
 //                $("#progress-bar").width(percentComplete + '%');

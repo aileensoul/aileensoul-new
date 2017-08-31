@@ -52,8 +52,8 @@ define('SITEPATH', $_SERVER['DOCUMENT_ROOT'] . '/aileensoul-new/');
 define('TITLEPOSTFIX', ' - Aileensoul.com');
 
 define('NOIMAGE', 'uploads/avatar.png');
-define('NOBUSIMAGE', 'uploads/nobusimage.jpg');
-define('WHITEIMAGE', 'uploads/white.png');
+define('NOBUSIMAGE', 'uploads/nobusimage.jpg?ver='.time());
+define('WHITEIMAGE', 'uploads/white.png?ver='.time());
 define('PROFILENA', '--');
 
 define('IMAGEPATHFROM', 's3bucket'); //upload,s3bucket 
