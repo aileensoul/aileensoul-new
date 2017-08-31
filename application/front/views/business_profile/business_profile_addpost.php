@@ -1,8 +1,8 @@
 <!-- start head -->
 <?php  echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+<link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css?ver='.time()); ?>">
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>
@@ -240,14 +240,14 @@ return false;
 </html>
 
 
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
- <script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 
 
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 
             //validation for edit email formate form
@@ -307,7 +307,7 @@ return false;
 
   <!-- script for skill textbox automatic start (option 2)-->
 
- <script src="<?php echo base_url('js/select2-4.0.3.min.js'); ?>"></script>
+ <script src="<?php echo base_url('js/select2-4.0.3.min.js?ver='.time()); ?>"></script>
 <!-- script for skill textbox automatic end (option 2)-->
 
   <script>

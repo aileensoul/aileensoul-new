@@ -3,11 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
         <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -976,13 +976,13 @@
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
                         <!-- script for skill textbox automatic start (option 2)-->
-                        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-                        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-                        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-                        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-                        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-                        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-                        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+                        <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+                        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+                        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+                        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+                        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+                        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+                        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
                         <!-- script for business autofill -->
                         <script>
                                                 var base_url = '<?php echo base_url(); ?>';
@@ -1275,7 +1275,7 @@
 
                             });
                         </script>
-                        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js'); ?>"></script>
+                        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js?ver='.time()); ?>"></script>
                         <script>
                             function login_profile() {
                                 $('#login').modal('show');

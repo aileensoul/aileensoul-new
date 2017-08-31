@@ -1,7 +1,7 @@
 
 
 <?php echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
 <?php echo $header; ?>
 
 
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="reactivate_btn_n">
 		  <a href="<?php echo base_url('dashboard'); ?>">No</a>
         </div>
-          <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+          <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
 
 		</div>
            </center>

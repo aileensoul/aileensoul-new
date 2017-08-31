@@ -1,8 +1,8 @@
 <!-- start head -->
 <?php  echo $head; ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+<link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
     <!-- END HEAD -->
     <!-- start header -->
   <header>
@@ -381,10 +381,10 @@ return false;
 </html>
 <!-- script for skill textbox automatic start (option 2)-->
 
-<script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/select2-4.0.3.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/select2-4.0.3.min.js?ver='.time()); ?>"></script>
 
 <!-- script for skill textbox automatic end (option 2)-->
 

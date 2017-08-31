@@ -4,19 +4,19 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
-        <link href="<?php echo base_url() ?>css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url() ?>js/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo base_url() ?>js/jquery-2.0.3.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url() ?>js/plugins/sortable.js" type="text/javascript"></script>
-        <script src="<?php echo base_url() ?>js/fileinput.js" type="text/javascript"></script>
-        <script src="<?php echo base_url() ?>js/themes/explorer/theme.js" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">
+        <link href="<?php echo base_url('css/fileinput.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <script src="<?php echo base_url('js/jquery-2.0.3.min.js?ver='.time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/fileinput.js?ver='.time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()) ?>" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
         <script>
             $(function () {
                 var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
@@ -194,12 +194,12 @@
         <footer>
             <?php echo $footer ?>
         </footer>
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.highlite.js'); ?>">
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>">
         </script>
         <script>
             $('#content').on('change keyup keydown paste cut', 'textarea', function () {
@@ -213,6 +213,6 @@
             var keyword = '<?php echo $keyword; ?>';
             var keyword1 = '<?php echo $keyword1; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js?ver='.time()); ?>"></script>
     </body>
 </html>
