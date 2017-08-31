@@ -67,7 +67,35 @@
          });   
 
 
+function myFunction1(clicked_id) {
+   
+        document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+    
+         $( document ).on( 'keydown', function ( e ) {
+                   if ( e.keyCode === 27 ) { 
+   
+                   document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+                    $(".dropdown-content2").removeClass('show');
+   
+       }
+      
+   }); 
+   
+   }
 
+   window.onclick = function (event) {
+       if (!event.target.matches('.dropbtn1')) {
+   
+           var dropdowns = document.getElementsByClassName("dropdown-content2");
+           var i;
+           for (i = 0; i < dropdowns.length; i++) {
+               var openDropdown = dropdowns[i];
+               if (openDropdown.classList.contains('show')) {
+                   openDropdown.classList.remove('show');
+               }
+           }
+       }
+   }
 
  // follow user script start
 
@@ -1026,37 +1054,6 @@ function insert_comment(clicked_id)
        }
    }
 
-
-   function myFunction1(clicked_id) {
-   
-        document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-    
-         $( document ).on( 'keydown', function ( e ) {
-                   if ( e.keyCode === 27 ) { 
-   
-                   document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                    $(".dropdown-content2").removeClass('show');
-   
-       }
-      
-   }); 
-   
-   }
-
-   window.onclick = function (event) {
-       if (!event.target.matches('.dropbtn1')) {
-   
-           var dropdowns = document.getElementsByClassName("dropdown-content2");
-           var i;
-           for (i = 0; i < dropdowns.length; i++) {
-               var openDropdown = dropdowns[i];
-               if (openDropdown.classList.contains('show')) {
-                   openDropdown.classList.remove('show');
-               }
-           }
-       }
-   }
-
    //  multi image add post khyati start
 
    var $fileUpload = $("#files"),
@@ -1837,9 +1834,12 @@ function seemorediv(abc) {
             $(".art-all-post").prepend(response.responseText);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
-            if (nb == 0) {
+            //alert(nb);
+            if (nb == 0) { //alert("hii");
             $("#dropdownclass").addClass("no-post-h2");
-            } else {
+            } else { 
+            document.getElementById("no_post_avl").style.display = "none";
+
             $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);

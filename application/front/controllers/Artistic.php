@@ -2405,7 +2405,7 @@ $datacount = count($otherdata);
                     $datacount = "count";
 
 
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
@@ -2423,7 +2423,7 @@ $datacount = count($otherdata);
 
                     $datacount = "count";
 
-                    $notfound = '<div class="art_no_post_avl">
+                    $notfound = '<div class="art_no_post_avl" id="no_post_avl">
          <h3> Post</h3>
           <div class="art-img-nn">
          <div class="art_no_post_img">
@@ -2980,7 +2980,7 @@ public function ajax_userlist() {
 
 
         foreach ($userlist as $user) {
-            $return_html .= '<div class="job-contact-frnd ">
+            $return_html .= '
                                                 <div class="profile-job-post-detail clearfix">
                                                     <div class="profile-job-post-title-inside clearfix">
                                                         <div class="profile-job-post-location-name">
@@ -3053,7 +3053,7 @@ public function ajax_userlist() {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>';
+                                            ';
         }
         echo $return_html;
     }
@@ -3821,7 +3821,7 @@ public function followtwo() {
                 $contition_array = array('follow_from' => $artdata[0]['art_id'], 'follow_status' => '1', 'follow_type' => '1');
                 $followingotherdata = $this->data['followingotherdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $followingdatacount = '('.count($followingotherdata).')';
+                $followingdatacount = count($followingotherdata);
 
                 $unfollow = '<div>(';
                 $unfollow .= '' . $followingdatacount . '';
@@ -3964,7 +3964,7 @@ public function followtwo() {
               $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if($artaval){
 
-                $return_html .= '<div class="job-contact-frnd ">
+                $return_html .= '
                                                     <div class="profile-job-post-detail clearfix">
                                                         <div class="profile-job-post-title-inside clearfix">
                                                             <div class="profile-job-post-location-name">
@@ -4051,7 +4051,7 @@ public function followtwo() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>';
+                                                ';
             } }
         } else {
             $return_html .= '<div class="art-img-nn" id= "art-blank" style="display: block">
@@ -4200,8 +4200,8 @@ public function followtwo() {
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($userlist1) > 0) {
             foreach ($userlist as $user) {
-                $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
-    <div class = "profile-job-post-detail clearfix">
+                $return_html .= '
+    <div class = "profile-job-post-detail clearfix" id = "removefollow' . $user['follow_to'] . '">
         <div class = "profile-job-post-title-inside clearfix">
             <div class = "profile-job-post-location-name">
                 <div class = "user_lst">
@@ -4305,7 +4305,7 @@ public function followtwo() {
                                                     </div>
                                                     </div>
                                                     </div>
-                                                    </div>';
+                                                    ';
             }
         } else {
 
@@ -13292,7 +13292,7 @@ public function art_home_post() {
         }
         if (count($finalsorting) > 0) {
             if (count($count) == count($finalsorting)) {
-                $return_html .= ' <div class="art_no_post_avl">
+                $return_html .= ' <div class="art_no_post_avl" id="no_post_avl">
                                            <h3>Artistic Post</h3>
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
@@ -13307,7 +13307,7 @@ public function art_home_post() {
                                 </div>';
             }
         } else {
-            $return_html .= '<div class="art_no_post_avl"><h3>Artistic Post</h3>
+            $return_html .= '<div class="art_no_post_avl" id="no_post_avl"><h3>Artistic Post</h3>
                               <div class="art-img-nn">
                                <div class="art_no_post_img">
 

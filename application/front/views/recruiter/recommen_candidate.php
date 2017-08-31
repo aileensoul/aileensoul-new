@@ -763,7 +763,13 @@ if ($candidatejob) {
                                                                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                                                                 var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
+        
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
+                   
         <!-- FIELD VALIDATION JS END -->
+          <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
+
 
     </body>
 </html>

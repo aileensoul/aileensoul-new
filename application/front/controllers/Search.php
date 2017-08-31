@@ -2199,7 +2199,7 @@ class Search extends CI_Controller {
 //freelancer hire  search end 
     //freelancer hire  ajax search start 
     public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
-        echo 123;die();
+        
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
         $page = 1;
@@ -2212,11 +2212,10 @@ class Search extends CI_Controller {
             $start = 0;
         echo $this->input->get('skills');
         if ($_GET["button"]) {
-            echo "123";
-            $searchkeyword = decodeURIComponent($_GET["skill"]);
+           
+            $searchkeyword = $_GET["skill"];
             $searchplace = $_GET["place"];
-            echo $searchkeyword;
-            echo $searchplace;die();
+           
         } else {
 
             if ($this->uri->segment(3) == "0") {
@@ -2230,7 +2229,7 @@ class Search extends CI_Controller {
                 $searchplace = urldecode($searchplace);
             }
         }
-        echo $searchkeyword;
+        
         $search_skill = $searchkeyword;
         $search_place = $searchplace;
 
@@ -2246,37 +2245,42 @@ class Search extends CI_Controller {
             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
             $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            echo "<pre>"; print_r($candidate);
-            echo $search_skill;
+            
+           
             $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
-            echo $category_temp;die();
+           
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1');
             $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
-           echo "<pre>"; print_r($fieldfound);die();
+           
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array , $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            foreach ($skillpost as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new = array();
-            foreach ($postdata as $value) {
-                $new[$value['freelancer_post_reg_id']] = $value;
-            }
-
-            if (count($new) == 0) {
-                $unique1 = array_merge($otherdata, $fieldfound);
-            } else {
-                $unique1 = array_merge($new, $otherdata, $fieldfound);
-            }
-            foreach ($unique1 as $ke => $arr) {
-                $postdata[] = $arr;
-            }
-            $new1 = array();
-            foreach ($postdata as $value) {
-                $unique[$value['freelancer_post_reg_id']] = $value;
-            }
+             $unique = array_merge($candidate,$fieldfound, $otherdata);
+             //$unique=array_unique($unique1,SORT_STRING);
+            
+             echo count($unique);
+            // echo "<pre>"; print_r($unique);die();
+//            foreach ($skillpost as $ke => $arr) {
+//                $postdata[] = $arr;
+//            }
+//            $new = array();
+//            foreach ($postdata as $value) {
+//                $new[$value['freelancer_post_reg_id']] = $value;
+//            }
+//
+//            if (count($new) == 0) {
+//                $unique1 = array_merge($otherdata, $fieldfound);
+//            } else {
+//                $unique1 = array_merge($new, $otherdata, $fieldfound);
+//            }
+//            foreach ($unique1 as $ke => $arr) {
+//                $postdata[] = $arr;
+//            }
+//            $new1 = array();
+//            foreach ($postdata as $value) {
+//                $unique[$value['freelancer_post_reg_id']] = $value;
+//            }
             //  echo "<pre>";print_r($unique);die();
         } else {
             //   echo "Both";

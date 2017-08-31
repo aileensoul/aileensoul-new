@@ -120,7 +120,7 @@ class Registration extends CI_Controller {
                         'status' => '1',
                         'created_date' => date('Y-m-d h:i:s', time()),
                         'edit_ip' => $ip,
-                        'user_last_login' => date('Y-m-d h:i:s', time()),
+                        'verify_date' => date('Y-m-d h:i:s', time()),
                         'user_verify' => '0',
                         'user_slider' => '1',
                     );
@@ -136,28 +136,37 @@ class Registration extends CI_Controller {
                 if ($user_id) {
 
 
-                    $email = $this->input->post('email');
+                    $email = $this->input->post('email_reg');
 
-                    $toemail = $this->input->post('email');
-                    $userdata = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
+                    $toemail = $this->input->post('email_reg');
+                    $fname = $this->input->post('first_name');
+                    $lname = $this->input->post('last_name');
+                    $userdata = $this->common->select_data_by_id('user', 'user_id', $user_id, $data = '*', $join_str = array());
+                   
+                   $msg = '<tr>
+                             <td style="text-align:center; padding-top:15px;">';
+                             if ($userdata[0]['user_image']) {
+                             $msg .= '<img src="' . base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']) . '">';
+                     } else {
 
-                    $msg = 'Hey !' . " " . $toemail . "<br/>";
+                           $msg .= '<img src="' . base_url(NOIMAGE) . '">';
+                        }
+                     $msg .= '</td>
+                              </tr>
+                            <tr>
+                               <td style="text-align:center; padding:10px 0 30px; font-size:15px;">';
+                    $msg .= '<p style="margin:0;">Hi,' . ucwords($fname) .' '.ucwords($lname) . '</p>
+                            <p style="padding:25px 0 ; margin:0;">Aileensoul has send you verification mail for verify your account successfully.</p>
+                             <p><a class="btn" href="' . base_url() . 'registration/verify/' . $user_id . '">verify account</a></p>
+                              </td>
+                              </tr>';
+                              //echo "<pre>"; print_r($msg); die();
 
-                    $msg .= $this->input->post('fname') . $this->input->post('lname') . ',';
+                    $subject = "Aileensoul account verification link";
 
-                    $msg .= 'Click hear to verify your account';
+                    $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail, $subject, $msg);
 
-                    $msg .= "<br>";
-
-                    $msg .= "<b><u><a href=" . base_url('registration/verify/' . $user_id) . ">click here</a></b></u>";
-
-                    $msg .= $this->input->post('msg');
-                    //print_r($msg) ;die();
-
-                    $subject = "contact message";
-
-
-                    $mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
+                    //$mail = $this->email_model->do_email($msg, $subject, $toemail, $from);
                 }
 
 
