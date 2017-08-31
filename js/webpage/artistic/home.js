@@ -1837,9 +1837,12 @@ function seemorediv(abc) {
             $(".art-all-post").prepend(response.responseText);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
-            if (nb == 0) {
+            //alert(nb);
+            if (nb == 0) { //alert("hii");
             $("#dropdownclass").addClass("no-post-h2");
-            } else {
+            } else { 
+            document.getElementById("no_post_avl").style.display = "none";
+
             $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
