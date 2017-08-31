@@ -153,6 +153,7 @@
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($de); ?>;
             var skill = '<?php echo  $this->input->get('skills'); ?>';
+            alert(skill);
             var place = '<?php echo  $this->input->get('searchplace'); ?>';
             var button = '<?php echo  $this->input->get('search_submit'); ?>';
            

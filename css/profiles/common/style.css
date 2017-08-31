@@ -1124,10 +1124,7 @@ label.cameraButton {
     opacity: 0.6;
 }
 .upload-result {color: #fff; background-color: rgba(27, 138, 185, 0.8); border-color: #1b8ab9; margin-right: 10px;}
-#floatBarsG {position: absolute; width: 19%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;
-    
-}
-
+#floatBarsG {position: absolute; width: 19%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;}
 .floatBarsG {
     position: absolute;
     top: 0;

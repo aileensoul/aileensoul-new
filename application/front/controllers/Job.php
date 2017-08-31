@@ -3903,9 +3903,80 @@ $work_job_title=$jobdata[0]['work_job_title'];
                                             
               }
                                                                         
-                                                                
-                                         
+                 $return_html .='<li><b>Employment Type</b><span>';
+                                             
+                  if($post['emp_type'] != '')
+                  {
+                          $return_html .='<pre>'.$this->common->make_links($post['emp_type']).'  Job</pre>';
+                   }
+                   else
+                   { 
+                       $return_html .= PROFILENA; 
+                    }
+                     $return_html .='</span></li>';
+                                             
+                     $return_html .='<li><b>Company Profile</b><span>';
+                                                 
+                      $currency = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->re_comp_profile;
+                                                   
+                        if($currency != '')
+                        {
+                              $return_html .=  '<pre>'.$this->common->make_links($currency).'</pre>';
+                         }
+                         else
+                          {   
+                             $return_html .= PROFILENA; 
+                          }
+                $return_html .='</span></li>';                         
                 $return_html .='</ul></div>';
+
+                 $return_html .='<div class="profile-job-profile-button clearfix">
+                                       <div class="profile-job-details col-md-12 col-xs-12">
+                                          <ul>';
+                 $return_html .='<li class="job_all_post last_date">Last Date :';
+                                          
+                    if($post['post_last_date'] != "0000-00-00")
+                    { 
+                       $return_html .= date('d-M-Y',strtotime($post['post_last_date'])); 
+                    }
+                    else
+                    {   
+                      $return_html .= PROFILENA;
+                    }
+
+                $return_html .= '</li>';
+
+          $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+          $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+          $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            if ($jobsave) 
+            {
+              $return_html .='<a href="javascript:void(0);" class="button applied">Applied</a>';
+            }
+            else
+            {
+              $return_html .='<li class="fr"><a href="javascript:void(0);"  class= "applypost'.$post['post_id'].'  button" onclick="applypopup('.$post['post_id'].','.$post['user_id'].')">Apply</a></li>';
+            
+            $return_html .='<li class="fr">';
+
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+            $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                
+            if ($jobsave) 
+            {
+                   $return_html .='<a class="button saved save_saved_btn">Saved</a>';                  
+             } 
+             else 
+             {        
+                  $return_html .='<a id="'.$post['post_id'].'" onClick="savepopup('.$post['post_id'].')" href="javascript:void(0);" class="savedpost' . $post['post_id']. 'button save_saved_btn">Save</a>';
+              } 
+                  $return_html .='</li>';           
+                                         
+          }
+                                           
+
+                $return_html .= '</ul></div></div>';
                $return_html .= '</div></div></div>';
                }
              }
