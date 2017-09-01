@@ -2618,6 +2618,20 @@ font-size: 32px;}
     border-bottom: none;
 }
 
+.h3_edit {
+    background: #ffffff!important;
+    margin: 0;
+    padding: 8px 15px 8px;
+    color: #1b8ab9!important;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    border-top-left-radius: 4px;
+    border: 1px solid #bfbfbf;
+    border-top-right-radius: 3px;
+}
+
 /*media zalak start*/
 
 @media screen and (max-width: 1280px){
@@ -2632,7 +2646,7 @@ font-size: 32px;}
     .right_left_box_design {
     padding: 11px 4px 13px 13px !important;
         padding-bottom: 13px;
-}
+	}
 }
 @media screen and (max-width: 991px)
 {

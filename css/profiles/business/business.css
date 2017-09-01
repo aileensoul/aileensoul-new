@@ -2730,7 +2730,7 @@ font-size: 32px;}
     word-break: break-word; display: flex; margin-bottom: 0px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: " :";
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: ":";
     margin-left: -15px; float: left;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
     word-break: break-word; float: left; padding-right: 10px; width: 65%;}
@@ -2745,7 +2745,6 @@ font-size: 32px;}
 .profile-job-details ul li p {margin-bottom: 0;display: inline-block; font-size: 15px; font-weight: 600;}
 
 /*media zalak start*/
-
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
     .fixed_right_display{display: none;}

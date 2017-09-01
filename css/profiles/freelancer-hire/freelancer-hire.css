@@ -457,3 +457,17 @@ font-size: 32px;
 padding-top: 30px;}
 .art_no_post_text1{color: #ccc;
 font-size: 32px;}
+
+.h3_edit {
+    background: #ffffff!important;
+    margin: 0;
+    padding: 8px 15px 8px;
+    color: #1b8ab9!important;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    border-top-left-radius: 4px;
+    border: 1px solid #bfbfbf;
+    border-top-right-radius: 3px;
+}
