@@ -588,6 +588,7 @@ class Freelancer extends MY_Controller {
                         }
                     }
                     //  die();
+                    
                     $skills = implode(',', $skill);
                 }
                 $data = array(
@@ -1643,14 +1644,18 @@ class Freelancer extends MY_Controller {
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
+                   
                     $contition_array = array('skill' => trim($ski), 'type' => 1);
                     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    
                     if (count($skilldata) < 0) {
                         $contition_array = array('skill' => trim($ski), 'type' => 5);
-                        //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        
                     }
+                    
+                   
                     if ($skilldata) {
                         $skill[] = $skilldata[0]['skill_id'];
                     } else {
@@ -1664,6 +1669,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
                 //  die();
+                $skill= array_unique($skill,SORT_REGULAR);
                 $skills = implode(',', $skill);
             }
             //skill code end
@@ -2133,6 +2139,7 @@ class Freelancer extends MY_Controller {
                 }
             }
             //  die();
+            $skill= array_unique($skill,SORT_REGULAR);
             $skills = implode(',', $skill);
         }
 
