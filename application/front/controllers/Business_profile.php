@@ -1786,7 +1786,7 @@ class Business_profile extends MY_Controller {
                 $return_html .= '<li>
             <div class="else_post_d">
                 <div class="post-design-product">
-                    <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
+                    <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst($companynameposted) . '</a>
                     <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
                     <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
@@ -1796,8 +1796,8 @@ class Business_profile extends MY_Controller {
             } else {
                 $return_html .= '<li>
             <div class="post-design-product">
-                <a class="post_dot"  href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="' . ucfirst(strtolower($companyname)) . '">
-                    ' . ucfirst(strtolower($companyname)) . '</a>
+                <a class="post_dot"  href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="' . ucfirst($companyname) . '">
+                    ' . ucfirst($companyname) . '</a>
                 <span role="presentation" aria-hidden="true"> · </span>
                 <div class="datespan"> <span class="ctre_date" > 
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
@@ -4321,7 +4321,7 @@ class Business_profile extends MY_Controller {
                     $acr = substr($a, 0, 1);
 
                     $cmtinsert .= '<div class="post-img-div">';
-                    $cmtinsert .= ucfirst(strtolower($acr));
+                    $cmtinsert .= ucfirst($acr);
                     $cmtinsert .= '</div>';
 
                     $cmtinsert .= '</div>';
@@ -4885,7 +4885,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -5046,7 +5046,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7244,7 +7244,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
+                $fourdata .= '' . ucfirst($companyname) . '</br></b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['business_profile_post_comment_id'] . '"  style="display:block;">';
@@ -7379,7 +7379,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '</div>';
                 }
                 $fourdata .= '<div class="comment-name"><b>';
-                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br>';
+                $fourdata .= '' . ucfirst($companyname) . '</br>';
                 $fourdata .= '</b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comment']) . '</br> </div>';
@@ -7499,7 +7499,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
+                $fourdata .= '' . ucfirst($companyname) . '</br></b></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div>';
                 $fourdata .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
@@ -7642,7 +7642,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7827,7 +7827,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($company_name)) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8275,7 +8275,7 @@ class Business_profile extends MY_Controller {
                     $mulimgfour .= '</div>';
                 }
                 $mulimgfour .= '<div class="comment-name"><b>';
-                $mulimgfour .= '' . ucfirst(strtolower($companyname)) . '</br></b></div>';
+                $mulimgfour .= '' . ucfirst($companyname) . '</br></b></div>';
                 $mulimgfour .= '<div class="comment-details" id="imgshowcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
 
 

@@ -2499,11 +2499,11 @@ padding: 7px 5px 0px 5px;}
 
 
 .right_side_posrt{float: left; width: 600px;}
-.right_middle_side_posrt{width: 310px; float: left; margin-left: 10px;}
+.right_middle_side_posrt{width: 310px; float: left; margin-left: 10px; position:fixed; margin-left:940px;}
 .mian_middle_post_box{float: left;
-width: 920px;
+width: 600px;
 margin-left: 10px;
-left:310px;
+left:320px;
 position: relative;}
 
 

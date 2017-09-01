@@ -1650,7 +1650,7 @@ function insert_comment(clicked_id)
    }
 
    function edit_postinsert(abc)
-   {
+   { //alert("hii");
    
        var editpostname = document.getElementById("editpostname" + abc);
        //alert(editpostname);
@@ -1658,6 +1658,9 @@ function insert_comment(clicked_id)
        var editpostdetails = $('#editpostdesc' + abc).html();
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+        editpostdetails = editpostdetails.replace(/div>/gi, 'p>');
+        //alert(editpostdetails);
+
       
        if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
@@ -1675,9 +1678,9 @@ function insert_comment(clicked_id)
                type: 'POST',
                url: base_url + "artistic/edit_post_insert",
                //url: '<?php echo base_url() . "artistic/edit_post_insert" ?>',
-               data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + editpostdetails,
+               data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + encodeURIComponent(editpostdetails),
                dataType: "json",
-               success: function (data) {
+               success: function (data) { //alert("hii");
    
                    document.getElementById('editpostdata' + abc).style.display = 'block';
                    document.getElementById('editpostbox' + abc).style.display = 'none';
