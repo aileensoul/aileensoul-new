@@ -2894,6 +2894,8 @@ class Search extends CI_Controller {
             $temp = $this->db->get_where('skill', array('skill' => $search_job, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid,'post_last_date >=' => $date ,'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $results_skill = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//echo "<pre>";print_r($results_skill);die();
+
             //Search FOr Skill End
            
             
