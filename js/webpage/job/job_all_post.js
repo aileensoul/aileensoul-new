@@ -109,7 +109,7 @@ function job_home(pagenum)
            return split( term ).pop();
        }
        
-       $( "#tags" ).bind( "keydown", function( event ) {
+       $( ".tags" ).bind( "keydown", function( event ) {
            if ( event.keyCode === $.ui.keyCode.TAB &&
                $( this ).autocomplete( "instance" ).menu.active ) {
                event.preventDefault();
@@ -128,7 +128,7 @@ function job_home(pagenum)
    
             select: function(event, ui) {
           event.preventDefault();
-          $("#tags").val(ui.item.label);
+          $(".tags").val(ui.item.label);
           $("#selected-tag").val(ui.item.label);
          
       },
@@ -136,43 +136,6 @@ function job_home(pagenum)
        });
    });
 //new script for jobtitle,company and skill  end
-
-//new script for jobtitle,company and skill start for mobile view Start
- $(function() {
-       function split( val ) {
-           return val.split( /,\s*/ );
-       }
-       function extractLast( term ) {
-           return split( term ).pop();
-       }
-       
-       $( "#tags1" ).bind( "keydown", function( event ) {
-           if ( event.keyCode === $.ui.keyCode.TAB &&
-               $( this ).autocomplete( "instance" ).menu.active ) {
-               event.preventDefault();
-           }
-       })
-       .autocomplete({
-           minLength: 2,
-           source: function( request, response ) { 
-               // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
-           },
-           focus: function() {
-               // prevent value inserted on focus
-               return false;
-           },
-   
-            select: function(event, ui) {
-          event.preventDefault();
-          $("#tags1").val(ui.item.label);
-          $("#selected-tag").val(ui.item.label);
-          
-      },
-    
-       });
-   });
-//new script for jobtitle,company and skill start for mobile view End
 
 //new script for cities start
  $(function() {
@@ -183,7 +146,7 @@ function job_home(pagenum)
            return split( term ).pop();
        }
        
-       $( "#searchplace" ).bind( "keydown", function( event ) {
+       $( ".searchplace" ).bind( "keydown", function( event ) {
            if ( event.keyCode === $.ui.keyCode.TAB &&
                $( this ).autocomplete( "instance" ).menu.active ) {
                event.preventDefault();
@@ -202,7 +165,7 @@ function job_home(pagenum)
    
             select: function(event, ui) {
           event.preventDefault();
-          $("#searchplace").val(ui.item.label);
+          $(".searchplace").val(ui.item.label);
           $("#selected-tag").val(ui.item.label);
          
       },
@@ -210,43 +173,6 @@ function job_home(pagenum)
        });
    });
 //new script for cities End
-
-//new script for cities start mobile view Start
-$(function() {
-       function split( val ) {
-           return val.split( /,\s*/ );
-       }
-       function extractLast( term ) {
-           return split( term ).pop();
-       }
-       
-       $( "#searchplace1" ).bind( "keydown", function( event ) {
-           if ( event.keyCode === $.ui.keyCode.TAB &&
-               $( this ).autocomplete( "instance" ).menu.active ) {
-               event.preventDefault();
-           }
-       })
-       .autocomplete({
-           minLength: 2,
-           source: function( request, response ) { 
-               // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_location", { term : extractLast( request.term )},response);
-           },
-           focus: function() {
-               // prevent value inserted on focus
-               return false;
-           },
-   
-            select: function(event, ui) {
-          event.preventDefault();
-          $("#searchplace1").val(ui.item.label);
-          $("#selected-tag").val(ui.item.label);
-          
-      },
-    
-       });
-   });
-//new script for cities start mobile view End
 
 //for search validation Start
  function check() {

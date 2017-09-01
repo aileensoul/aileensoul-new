@@ -1118,7 +1118,7 @@ class Job extends MY_Controller {
         $contition_array = array('status' => '1', 'type' => '1');
         $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'type' => '3');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'type' => '4');
         $this->data['skill_other'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -1232,7 +1232,7 @@ class Job extends MY_Controller {
   
      if(!$skilldata){ 
      
-           $contition_array = array('skill' => trim($ski),'type' => 3);
+           $contition_array = array('skill' => trim($ski),'type' => 4);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
     
       } 
@@ -1244,7 +1244,7 @@ class Job extends MY_Controller {
                  $data = array(
                     'skill' => $ski,
                     'status' => '1',
-                    'type' => 3,
+                    'type' => 4,
                     'user_id' => $userid,
                  );
       $skill[] = $this->common->insert_data_getid($data, 'skill');
@@ -1741,7 +1741,7 @@ $files[] = $_FILES;
             $this->data['job_work'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
             
             //for getting other skill data
-            $contition_array = array('user_id' => $userid, 'type' => 3, 'status' => 1);
+            $contition_array = array('user_id' => $userid, 'type' => 4, 'status' => 1);
 
             $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
      
@@ -1773,7 +1773,7 @@ $files[] = $_FILES;
             $this->data['job_work'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
             
              //for getting other skill data
-            $contition_array = array('user_id' => $id, 'type' => 3, 'status' => 1);
+            $contition_array = array('user_id' => $id, 'type' => 4, 'status' => 1);
 
             $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
@@ -3327,7 +3327,7 @@ public function delete_workexp()
      $contition_array = array('skill' => trim($ski),'type' => 1);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
       if(!$skilldata){ 
-           $contition_array = array('skill' => trim($ski),'type' => 3);
+           $contition_array = array('skill' => trim($ski),'type' => 4);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
       }
   
@@ -3337,7 +3337,7 @@ public function delete_workexp()
                  $data = array(
                     'skill' => trim($ski),
                     'status' => '1',
-                    'type' => 3,
+                    'type' => 4,
                     'user_id' => $userid,
                  );
       $skill[] = $this->common->insert_data_getid($data, 'skill');
@@ -3518,8 +3518,6 @@ $contition_array = array(
   'status' => 1
 );
 $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
-$job_skill = $this->data['jobdata'][0]['keyskill'];
-$postuserarray = explode(',', $job_skill);
 
 // post detail
 
@@ -3528,53 +3526,26 @@ $contition_array = array(
   'status' => 1
 );
 $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
-$contition_array = array(
-  'status' => 1,
-  'user_id' => $userid,
-  'type' => 3
-);
-$skill_data = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array() , $groupby = '');
+
 $date = date('Y-m-d', time());
 
 // for getting data from rec_post table for keyskill
 
-foreach($postdata as $post)
-  {
-  $skill_id = explode(',', $post['post_skill']);
-  $skill_id = array_filter(array_map('trim', $skill_id));
-  $postuserarray = array_filter(array_map('trim', $postuserarray));
-  $result = array_intersect($postuserarray, $skill_id);
-  if (count($result) > 0)
-    {
-    $contition_array = array(
-      'post_id' => $post['post_id'],
-      'post_last_date >=' => $date,
-      'is_delete' => 0,
-      'status' => 1
-    );
-    $data = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
-    if ($data[0]['user_id'] != $userid)
-      {
-      $recommendata[] = $data;
-      }
-    }
-  }
-
-// for getting data from skill table for other skill
-
-foreach($skill_data as $skill)
+$work_job_skill = $jobdata[0]['keyskill'];
+$work_skill = explode(',', $work_job_skill);
+  foreach($work_skill as $skill)
   {
   $contition_array = array(
-    'FIND_IN_SET("' . $skill['skill'] . '",other_skill)!=' => '0',
+    'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
     'post_last_date >=' => $date,
     'is_delete' => 0,
     'status' => 1
   );
-  $data1 = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
-  $recommendata1[] = $data1;
+  $data = $this->data['data'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
+  $recommendata[] = $data;
   }
+ 
 
-//    echo "<pre>";print_r($recommendata1);die();
 // Retrieve data according to city match start
 
 $work_job_city = $jobdata[0]['work_job_city'];
@@ -3597,7 +3568,6 @@ foreach($work_city as $city)
 // Retrieve data according to industry match start
 
 $work_job_industry = $jobdata[0]['work_job_industry'];
-
 foreach($postdata as $post)
   {
   $data = '*';
@@ -3629,41 +3599,46 @@ foreach($postdata as $post)
   $recommendata_title[] = $data1;
   }
 
+  $recskill=count(array_filter( $recommendata));
+  $reccity=count(array_filter( $recommendata_city));
+  $recindustry=count(array_filter( $recommendata_industry));
+  $rectitle=count(array_filter( $recommendata_title));
+ 
 // Retrieve data according to  Job Title match End
+//echo "<pre>";print_r($recommendata);die();
 
-if (count($recommendata) == 0)
+if ($recskill != 0  && $reccity==0 && $recindustry==0 && $rectitle==0)
   {
-  $unique = $recommendata1;
-  $qbc = array_unique($unique, SORT_REGULAR);
-  $qbc = array_filter($qbc);
-  }
-elseif (count($recommendata1) == 0)
-  {
+    
   $unique = $recommendata;
   $qbc = array_unique($unique, SORT_REGULAR);
   $qbc = array_filter($qbc);
   }
-elseif (count($recommendata_city) == 0)
+
+elseif ($recskill == 0  && $reccity!=0 && $recindustry==0 && $rectitle==0)
   {
+
   $unique = $recommendata_city;
   $qbc = array_unique($unique, SORT_REGULAR);
   $qbc = array_filter($qbc);
   }
-elseif (count($recommendata_industry) == 0)
+elseif ($recskill == 0  && $reccity==0 && $recindustry!=0 && $rectitle==0)
   {
   $unique = $recommendata_industry;
   $qbc = array_unique($unique, SORT_REGULAR);
   $qbc = array_filter($qbc);
   }
-elseif (count($recommendata_industry) == 0)
+elseif ($recskill == 0  && $reccity==0 && $recindustry==0 && $rectitle!=0)
   {
+
   $unique = $recommendata_title;
   $qbc = array_unique($unique, SORT_REGULAR);
   $qbc = array_filter($qbc);
   }
   else
   {
-  $unique = array_merge($recommendata1, $recommendata, $recommendata_city, $recommendata_industry, $recommendata_title);
+   
+  $unique = array_merge($recommendata, $recommendata_city, $recommendata_industry, $recommendata_title);
   $newArray = array();
   foreach($unique as $key => $innerArr1)
     {
@@ -3675,12 +3650,12 @@ elseif (count($recommendata_industry) == 0)
 
   $qbc = array_unique($newArray, SORT_REGULAR);
   $qbc = array_filter($qbc);
+
   }
 
 $postdetail = $this->data['postdetail'] = $qbc;
 
-// echo "<pre>";print_r( $postdetail);die();
-
+ 
 $postdetail1 = array_slice($postdetail, $start, $perpage);
 
 if (empty($_GET["total_record"]))
