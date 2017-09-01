@@ -81,36 +81,12 @@ class Search extends CI_Controller {
             $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
             $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-            //echo "skill"; 
-
-            $contition_array = array('is_delete' => '0', 'status' => '1', 'type' => '2');
-
-            $search_condition = "(skill LIKE '%$searchskill%')";
-
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($skilldata); 
-            $contion_array = array('art_reg.status' => '1', 'art_step' => 4);
-            $artregdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            // echo "<pre>";print_r($artregdata);
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                // echo $id; echo "<br>";
-                foreach ($artregdata as $postskill) {
-                    $skill = explode(',', $postskill['art_skill']);
-                    ;
 
 
-                    if (in_array($id, $skill)) {
-                        // echo "Match found"; echo "</br>";
-                        // echo $postskill['post_id'];
-                        $artskillpost[] = $postskill;
-                    }
-                }
-            }
-            //echo "<pre>"; print_r($artskillpost); die();
-
-
+             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
 
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
@@ -137,7 +113,8 @@ class Search extends CI_Controller {
                foreach ($valueone as $keytwo => $valuetwo) {
                    $posttwo[] = $valuetwo;
                }
-            } //echo "<pre>"; print_r($posttwo); die();
+            } 
+            //echo "<pre>"; print_r($posttwo); die();
 
             $join_str[0]['table'] = 'art_reg';
             $join_str[0]['join_table_id'] = 'art_reg.user_id';
@@ -151,13 +128,9 @@ class Search extends CI_Controller {
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
-                   if (count($artskillpost) == 0) {
-                    $unique = $otherdata;
-                } else {
-                    $unique = array_merge($artskillpost, $otherdata);
-                } 
+                 $unique = array_merge($artskillpost, $otherdata);
+                 $new = array_unique($unique, SORT_REGULAR);
 
-                $new = array_unique($unique, SORT_REGULAR);
                 if (count($artposttwo) == 0) {
                     $uniquedata = $posttwo;
                 } else {
@@ -169,39 +142,20 @@ class Search extends CI_Controller {
         } else {
             // echo "both";
 
-            $contition_array = array('is_delete' => '0', 'status' => '1', 'type' => '2');
 
-            $search_condition = "(skill LIKE '%$searchskill%')";
+             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
 
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($skilldata); 
-            $contion_array = array('status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
-            $artregdata = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contion_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-            foreach ($skilldata as $key) {
-                $id = $key['skill_id'];
-                // echo $id; echo "<br>";
-                foreach ($artregdata as $postskill) {
-                    $skill = explode(',', $postskill['art_skill']);
-                    ;
-
-
-                    if (in_array($id, $skill)) {
-                        // echo "Match found"; echo "</br>";
-                        // echo $postskill['post_id'];
-                        $artskillpost[] = $postskill;
-                    }
-                }
-            }
-            // echo "<pre>"; print_r($artskillpost);
+            
 
             $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
 
             $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($otherdata); 
+             //echo "<pre>"; print_r($otherdata); die();
 
             foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
                
@@ -236,16 +190,14 @@ class Search extends CI_Controller {
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($artpost);
 
-            $fullname = explode(" ", $searchskill);
+           
 
-
-            if (count($artskillpost) == 0) {
-                    $unique = $otherdata;
-                } else {
-                    $unique = array_merge($artskillpost, $otherdata);
-                } 
+           
+                $unique = array_merge($artskillpost, $otherdata);
+              
 
                 $new = array_unique($unique, SORT_REGULAR);
+
                 if (count($artposttwo) == 0) {
                     $uniquedata = $posttwo;
                 } else {
