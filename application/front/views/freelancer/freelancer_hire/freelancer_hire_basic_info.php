@@ -149,8 +149,6 @@
 
             <script>
                 var site_url = '<?php echo site_url(); ?>';
-                var data = <?php echo json_encode($demo); ?>;
-                var data1 = <?php echo json_encode($city_data); ?>;
             </script>
            
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js'); ?>"></script>
