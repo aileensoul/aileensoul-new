@@ -6,10 +6,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">-->
         <link href="<?php echo base_url('css/fileinput.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <script src="<?php echo base_url('js/jquery-2.0.3.min.js?ver='.time()) ?>" type="text/javascript"></script>
+        <!--<script src="<?php // echo base_url('js/jquery-2.0.3.min.js?ver='.time()) ?>" type="text/javascript"></script>-->
         <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('js/fileinput.js?ver='.time()) ?>" type="text/javascript"></script>
         <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()) ?>" type="text/javascript"></script>
@@ -208,8 +208,6 @@
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
             var keyword = '<?php echo $keyword; ?>';
             var keyword1 = '<?php echo $keyword1; ?>';
         </script>

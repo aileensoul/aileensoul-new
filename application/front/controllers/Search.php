@@ -391,51 +391,13 @@ class Search extends CI_Controller {
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-
+        
         $this->data['description'] = $business_post;
 
         $this->data['profile'] = $business_profile;
-
-        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
-        $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $industrytype = $this->data['results'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $unique = array_merge($businessdata, $businesstype, $industrytype);
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $this->data['demo'] = array_values($result1);
-
-        $contition_array = array('status' => '1');
-        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-
-        $this->data['de'] = array_values($res);
+        
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
-
+        
         $title = '';
         if ($search_business) {
             $title .= $search_business;
@@ -447,16 +409,19 @@ class Search extends CI_Controller {
             $title .= $search_place;
         }
         $this->data['title'] = "$title | Aileensoul";
+        
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
-
+        
         $this->load->view('business_profile/recommen_business', $this->data);
     }
 
     public function ajax_business_search() {
+        
         $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home/', refresh);
         }
+        
         // code for insert search keyword in database start
         $search_business = trim($this->input->get('skills'));
         $keyword = $search_business;
@@ -481,9 +446,11 @@ class Search extends CI_Controller {
         // code for insert search keyword in database end
 
         if ($search_business == "") {
+            echo 1;
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
             $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
+            
             $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
@@ -507,8 +474,10 @@ class Search extends CI_Controller {
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post1', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
+            
+            
             $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_step' => 4);
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -529,51 +498,18 @@ class Search extends CI_Controller {
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post1', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
-
+        echo '<pre>';
+        print_r($business_post);
+        exit;
         $description = $business_post;
 
         $profile = $business_profile;
 
-        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
-        $businessdata = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $businesstype = $results = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $industrytype = $results = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        $unique = array_merge($businessdata, $businesstype, $industrytype);
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $result[] = $val;
-                }
-            }
-        }
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-        $demo = array_values($result1);
-
-        $contition_array = array('status' => '1');
-        $cty = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-        foreach ($cty as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $resu[] = $val;
-                }
-            }
-        }
-        $resul = array_unique($resu);
-        foreach ($resul as $key => $value) {
-            $res[$key]['label'] = $value;
-            $res[$key]['value'] = $value;
-        }
-
-        $de = array_values($res);
+        echo '<pre>';
+        print_r($description);
+        exit;
         //$this->load->view('business_profile/recommen_business', $this->data);
         //AJAX DATA
         $return_html = '';
