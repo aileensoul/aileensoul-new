@@ -588,7 +588,7 @@ class Freelancer extends MY_Controller {
                         }
                     }
                     //  die();
-                    
+                    $skill= array_unique($skill,SORT_REGULAR);
                     $skills = implode(',', $skill);
                 }
                 $data = array(

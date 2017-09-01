@@ -20,8 +20,8 @@
                             <button type="button" class="close">×</button>
                             <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
                                 <div class="new-search-input">
-                                    <input type="text" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
-                                    <input type="text" id="searchplace1" name="searchplace"  placeholder="Find Location" />
+                                    <input type="text" class="skill_keyword" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
+                                    <input type="text" class="skill_place" id="searchplace1" name="searchplace"  placeholder="Find Location" />
                                     <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
                                         <input type="submit" name="search_submit" value="Search" onclick="return leave_page(4)" class="btn btn-primary">
                                     <?php } else { ?>

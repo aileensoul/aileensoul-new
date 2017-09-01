@@ -175,8 +175,16 @@ function check() {
                 return false;
             },
             select: function( event, ui ) {
-               
+               var text =this.value;
                 var terms = split( this.value );
+                text = text == null || text == undefined ? "" : text;
+                var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+                 if (checked == 'checked') {
+      
+                    terms.push( ui.item.value );
+                    this.value = terms.split( ", " );
+               }//if end
+               else{
                 if(terms.length <= 20) {
                     // remove the current input
                     terms.pop();
@@ -194,6 +202,7 @@ function check() {
                     return false;
                 }
             }
+        }
         });
     });
 //NEW SCRIPT FOR SKILL END
