@@ -51,56 +51,9 @@
     margin-bottom: 0px!important;
 }**/
 
-.common-form .cntact-ss {
-    border: none!important;
-    border-top: 0!important;
-    padding: 0px!important;
-    background-color: white;
-}
-#popup {
-    display: none;
-}
-.bestofmine_image_secondary{position: relative;}
-.login {
-    width: 50%;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    margin: auto;
-    margin-top: -231px;
-    left: 0;
-    right: 0;
-    height: 462px;
-}
-.login input[type=text],
-.login input[type=password] {
-    background: #fff;
-    border: 0;
-    border: 1px solid #ddd;
-    margin: 8px 0;
-}
-.login input[type=submit]:hover {
-    background: #089de3;
-}
-.error-msg input {
-    border: 1px solid #f00;
-}
-.error-msg p,
-label.error {
-    background: #737373;
-    color: #fff !important;
-    padding: 4px 10px !important;
-    position: absolute;
-    right: 8px;
-    z-index: 8;
-    font-size: 12px;
-}
-.error-msg select {
-    border: 1px solid #f00;
-}
+
+
+
 /* Profile */
 /*
 .profile-banner {
@@ -137,37 +90,7 @@ label.error {
 }*/
 
 /* Business Profile */
-.business_pf_ct_person_form {
-    padding-bottom: 0px;
-    background-color: white;
-    border: 1px solid #cacaca;
-    padding: 10px;
-    border-radius: 4px;
-    padding-bottom: 0px;
-}
-.business_pf_ct_person_form h3 {
-    background: #1b8ab9;
-    padding: 12px;
-    color: #fff;
-}
-ul.business_pf_ct_person_detail,
-ul.artistic_pf_ct_person_detail {
-    margin: 0;
-    background: #f8f8f8;
-    padding: 8px 15px;
-    margin: 15px 0;
-}
-ul.business_pf_ct_person_detail li,
-ul.artistic_pf_ct_person_detail {
-    list-style: none;
-    padding: 0;
-    margin-top: 0px;
-}
-ul.business_pf_ct_person_detail li b {
-    font-size: 16px;
-    display: inline-block;
-    width: 30%;
-}
+
 .notification-data-inside h6 b i{color: #000;}
 #notificationLink:hover span {
     background: #1b8ab9;
