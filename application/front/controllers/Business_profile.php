@@ -12165,23 +12165,23 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $businessdata = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // GET BUSINESS TYPE
-        
+
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $search_condition = "(business_name LIKE '" . trim($term) . "%' )";
         $businesstype = $this->data['results'] = $this->common->select_data_by_search('business_type', $search_condition, $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-       
+
 // GET INDUSTRIAL TYPE
-        
+
         $contition_array = array('status' => '1', 'is_delete' => '0');
-        $search_condition = "(industry_type LIKE '" . trim($term) . "%' )";
-        $industrytype = $this->data['results'] = $this->common->select_data_by_search('industry_type', $search_condition, $contition_array, $data = 'industry_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-       
+        $search_condition = "(industry_name LIKE '" . trim($term) . "%' )";
+        $industrytype = $this->data['results'] = $this->common->select_data_by_search('industry_type', $search_condition, $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
 // GET PRODUCT
-        
+
         $contition_array = array('status' => '1', 'is_delete' => '0');
         $search_condition = "(product_name LIKE '" . trim($term) . "%' OR product_description LIKE '" . trim($term) . "%')";
         $productdata = $this->data['results'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'product_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $unique = array_merge($businessdata, $businesstype, $industrytype, $productdata);
         foreach ($unique as $key => $value) {
             foreach ($value as $ke => $val) {
@@ -12193,12 +12193,28 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
         $results = array_unique($result);
         foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
             $result1[$key]['value'] = $value;
         }
-        echo '<pre>';
-        print_r($result1);
-        exit;
+
+        echo json_encode($result1);
+    }
+
+    public function ajax_location_data() {
+        $term = $_GET['term'];
+        if (!empty($term)) {
+            $contition_array = array('status' => '1');
+            $search_condition = "(city_name LIKE '" . trim($term) . "%')";
+            $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+            foreach ($location_list as $key1 => $value) {
+                foreach ($value as $ke1 => $val1) {
+                    $location[] = $val1;
+                }
+            }
+            foreach ($location as $key => $value) {
+                $city_data[$key]['value'] = $value;
+            }
+            echo json_encode($city_data);
+        }
     }
 
 }

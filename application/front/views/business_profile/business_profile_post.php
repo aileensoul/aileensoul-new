@@ -373,7 +373,7 @@
                                                             },
                                                             select: function (event, ui) {
                                                                 var terms = split(this.value);
-                                                                if (terms.length <= 5) {
+                                                                if (terms.length <= 1) {
                                                                     // remove the current input
                                                                     terms.pop();
                                                                     // add the selected item
@@ -393,7 +393,7 @@
                                                         });
                                                 /* first box*/
                                                 /* location box*/
-                                                $("#skills2").bind("keydown", function (event) {
+                                                $("#searchplace").bind("keydown", function (event) {
                                                     if (event.keyCode === $.ui.keyCode.TAB &&
                                                             $(this).autocomplete("instance").menu.active) {
                                                         event.preventDefault();
@@ -403,7 +403,7 @@
                                                             minLength: 1,
                                                             source: function (request, response) {
                                                                 // delegate back to autocomplete, but extract the last term
-                                                                $.getJSON("skills.php", {term: extractLast(request.term)}, response);
+                                                                $.getJSON(base_url + "business_profile/ajax_location_data", {term: extractLast(request.term)}, response);
                                                             },
                                                             focus: function () {
                                                                 // prevent value inserted on focus
@@ -411,7 +411,7 @@
                                                             },
                                                             select: function (event, ui) {
                                                                 var terms = split(this.value);
-                                                                if (terms.length <= 5) {
+                                                                if (terms.length <= 1) {
                                                                     // remove the current input
                                                                     terms.pop();
                                                                     // add the selected item
