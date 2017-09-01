@@ -3482,6 +3482,49 @@ public function job_avail_check($userid = " ")
   }
 //if user deactive profile then redirect to job/index untill active profile End
 
+//Get All data for search Start
+    public function get_alldata($id="") {
+  
+    //get search term
+   $searchTerm = $_GET['term']; 
+  if (!empty($searchTerm)) {
+
+    $contition_array = array('re_status' => '1','re_step' => 3);
+    $search_condition = "(re_comp_name LIKE '" . trim($searchTerm) . "%')";
+    $results_recruiter = $this->common->select_data_by_search('recruiter', $search_condition,$contition_array, $data = 're_comp_name', $sortby = 're_comp_name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 're_comp_name');
+
+    $contition_array = array('status' => '1');
+    $search_condition = "(other_skill LIKE '" . trim($searchTerm) . "%')";
+    $results_post = $this->common->select_data_by_search('rec_post', $search_condition,$contition_array, $data = 'other_skill', $sortby = 'other_skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'other_skill');
+   
+    $contition_array = array('status' => '1', 'type' => '1');
+    $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
+    $skill = $this->common->select_data_by_search('skill', $search_condition,$contition_array, $data = 'skill', $sortby = 'skill', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
+
+    $contition_array = array('status' => 'publish');
+    $search_condition = "(name LIKE '" . trim($searchTerm) . "%')";
+    $jobtitle = $this->common->select_data_by_search('job_title', $search_condition,$contition_array, $data = 'name', $sortby = 'name', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'name');
+
+}
+
+      $uni = array_merge($results_recruiter, $results_post, $skill,$jobtitle);
+
+     foreach ($uni as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $result[] = $val;
+                }
+            }
+        }
+         foreach ($result as $key => $value) {
+            $result1[$key]['value'] = $value;
+        }
+        $result1 = array_values($result);
+        echo json_encode($result1);   
+
+    }
+//Get All data for search End
+
 //Get Job Seeker Name for title Start
 public function get_jobseeker_name($id=''){
 
@@ -4598,13 +4641,45 @@ if (count($postdetail) != '0')
             $return_html.='</span></li>';                        
                                                                                                             
       $return_html.='</ul></div>';      
-      //have ahi niche thi add karvu                
+      
+      $return_html.='<div class="profile-job-profile-button clearfix">
+                                    <div class="profile-job-details col-md-12 col-xs-12">
+                                       <ul>';
+
+       $return_html.='<li class="job_all_post last_date">Last Date :';
+
+       if($post['post_last_date'] != "0000-00-00")
+       {
+          $return_html.=date('d-M-Y',strtotime($post['post_last_date']));
+       }
+       else
+       {
+           $return_html.=PROFILENA;
+       }
+       $return_html.='</li>';
+                                       
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+        $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');    
+
+        $return_html.='<li class="fr"><a href="javascript:void(0);" class="button" onclick="removepopup('.$post['app_id'].')">Remove</a></li> ';
+                                         
+                                                                   
+
+      $return_html.='</ul></div></div>';             
       $return_html.='</div></div>';
     }
 }
 else
 {
-
+      $return_html.='<div class="art-img-nn">
+                           <div class="art_no_post_img">
+                              <img src="'.base_url('img/job-no.png').'">
+                           </div>
+                           <div class="art_no_post_text">
+                              No  Applied Post Available.
+                           </div>
+                        </div>';
 }
 echo $return_html;
 

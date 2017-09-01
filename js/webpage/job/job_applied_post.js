@@ -146,7 +146,7 @@ function job_apply(pagenum)
            minLength: 2,
            source: function( request, response ) { 
                // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
+               $.getJSON(base_url +"job/get_alldata", { term : extractLast( request.term )},response);
            },
            focus: function() {
                // prevent value inserted on focus
@@ -346,11 +346,11 @@ function removepopup(id) {
            data: 'app_id=' + abc,
            success: function (data) {
                $('#' + 'removeapply' + abc).html(data);
-               $('#' + 'removeapply' + abc).parent().removeClass();
-               var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+               $('#' + 'removeapply' + abc).removeClass();
+               var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
                if (numItems == '0') {
           
-                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='" + base_url + "('img/job-no.png')''></div><div class='art_no_post_text'>No  Applied Post Available</div></div>";
+                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "img/job-no.png'/></div><div class='art_no_post_text'>No  Applied Post Available</div></div>";
                    $('.contact-frnd-post').html(nodataHtml);
                }
            }
