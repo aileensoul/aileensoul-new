@@ -1,4 +1,4 @@
-<form action=<?php echo base_url('search/job_search')?> method="get">
+<form action=<?php echo base_url('job/job_search')?> method="get">
 <fieldset class="col-md-4 col-sm-5 col-xs-5 sec_h2">
    <input type="text" id="tags" name="skills" class="tags" placeholder="Job Title, Skill, Company" maxlength="255">
 </fieldset>
