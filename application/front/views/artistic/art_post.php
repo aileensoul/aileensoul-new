@@ -58,8 +58,9 @@
         </div>
       </div>
      </div> 
-      <div class=" custom-right-art animated fadeInUp">
-      <div class="mian_middle_post_box">      <div class="right_side_posrt fl"> 
+      <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
+		     
+		<div class="right_side_posrt fl"> 
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
                <div class="popup-img">
@@ -116,8 +117,12 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                              <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
        </div>
-      <div class="animated fadeInRightBig ">
-      <div class="right_middle_side_posrt fixed_right_display"> 
+      
+		
+
+    </div> 
+	<div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display">
+     
          <div class="full-box-module_follow" style="margin-top: 0px;">
             <!-- follower list start  -->  
             <div class="common-form">
@@ -130,11 +135,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                <!-- follower list end  -->
             </div>
          </div>
+     
       </div>
-      </div>
-    </div>
-
-    </div> 
   <!-- Bid-modal  -->
                     <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
                         <div class="modal-dialog modal-lm deactive">
