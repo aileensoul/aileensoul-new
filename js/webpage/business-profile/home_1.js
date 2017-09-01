@@ -872,7 +872,7 @@ function check_length(my_form)
         // If required Alert can be removed. 
         var msg = "You have reached your maximum limit of characters allowed";
         $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
-        $('#bidmodal').modal('show');
+        $('#posterrormodal').modal('show');
 
         // Reached the Maximum length so trim the textarea
         my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);

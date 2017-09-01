@@ -1,5 +1,5 @@
 
-<?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate')) { ?>
+<?php  if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate')) { ?>
 
     <header>
         <div class="bg-search">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form  action=<?php echo base_url('search/recruiter_search') ?> method="get">
+                                    <form  action=<?php echo base_url('recruiter/recruiter_search') ?> method="get">
                                         <div class="new-search-input">
                                             <input type="text" id="tags1" name="skills" placeholder="Job Title, Skills, Industries">
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
@@ -118,7 +118,7 @@
                                 </div>
                                 <div id="search">
                                     <button type="button" class="close">×</button>
-                                    <form  action=<?php echo base_url('search/recruiter_search') ?> method="get">
+                                    <form  action=<?php echo base_url('recruiter/recruiter_search') ?> method="get">
                                         <div class="new-search-input">
                                             <input type="text" id="tags1" name="skills" placeholder="Job Title, Skills, Industries">
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
