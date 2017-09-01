@@ -854,7 +854,7 @@ function khdiv(abc) {
                             $.ajax({
                             type: 'POST',
                             url: base_url + "artistic/edit_post_insert",
-                            data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + editpostdetails,
+                            data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + encodeURIComponent(editpostdetails),
                             dataType: "json",
                             success: function (data) {
 

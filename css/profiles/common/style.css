@@ -1343,6 +1343,54 @@ body.blog{height:auto;}
     width: 100%;
 }
 
+/***  not sure use or not  ***
+.login {
+    width: 50%;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin: auto;
+    margin-top: -231px;
+    left: 0;
+    right: 0;
+    height: 462px;
+}
+.login input[type=text],
+.login input[type=password] {
+    background: #fff;
+    border: 0;
+    border: 1px solid #ddd;
+    margin: 8px 0;
+}
+.login input[type=submit]:hover {
+    background: #089de3;
+}
+.error-msg input {
+    border: 1px solid #f00;
+}
+.error-msg p,
+label.error {
+    background: #737373;
+    color: #fff !important;
+    padding: 4px 10px !important;
+    position: absolute;
+    right: 8px;
+    z-index: 8;
+    font-size: 12px;
+}
+.error-msg select {
+    border: 1px solid #f00;
+}
+
+#popup {
+    display: none;
+}
+
+/***  end use  ***/
+
 /*zalak start 28-8  media*/
 @media screen and (max-width:1280px)
 {
