@@ -1223,19 +1223,24 @@ class Job extends MY_Controller {
       }
       
       // skills  start   
+      //echo "<pre>";print_r($skills);die();
       if(count($skills) > 0){ 
           
           foreach($skills as $ski){
      $contition_array = array('skill' => trim($ski),'type' => 1);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-   
-     if(count($skilldata) < 0){ 
+  
+     if(!$skilldata){ 
+     
            $contition_array = array('skill' => trim($ski),'type' => 3);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+    
       } 
      if($skilldata){
+    
          $skill[] = $skilldata[0]['skill_id'];
            }else{
+            
                  $data = array(
                     'skill' => $ski,
                     'status' => '1',
@@ -3321,7 +3326,7 @@ public function delete_workexp()
           foreach($skills as $ski){
      $contition_array = array('skill' => trim($ski),'type' => 1);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-      if(count($skilldata) < 0){ 
+      if(!$skilldata){ 
            $contition_array = array('skill' => trim($ski),'type' => 3);
      $skilldata = $this->common->select_data_by_condition('skill',$contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
       }

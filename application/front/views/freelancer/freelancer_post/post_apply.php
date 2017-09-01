@@ -5,7 +5,7 @@
         <?php echo $head; ?> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
         <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
@@ -50,7 +50,7 @@
                                                        <?php
                                                        if ($freelancerdata[0]['freelancer_post_user_image']) {
                                                            ?>
-                                                            <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
+                                                        <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freelancerdata[0]['freelancer_post_fullname'] . ' ' . $freelancerdata[0]['freelancer_post_username']; ?>" >
                                                         <?php
                                                     } else {
                                                         $fname = $freelancerdata[0]['freelancer_post_fullname'];
@@ -92,27 +92,27 @@
                                         </div>
                                     </div>                             
                                 </div>
-                                   <div class="custom_footer_left fw">
-          <div class="fl">
-            <ul>
-              <li><a href=""> About Us </a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Contact Us</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a  href="">Blogs</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Terms & Condition </a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Privacy Policy</a></li>
-              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Send Us Feedback</a></li>
-            </ul>
-          </div>
-        <div>
-          
-        </div>
+                                <div class="custom_footer_left fw">
+                                    <div class="fl">
+                                        <ul>
+                                            <li><a href=""> About Us </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Contact Us</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a  href="">Blogs</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Terms & Condition </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Privacy Policy</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Send Us Feedback</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
 
-        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                         <!-- cover pic end -->
@@ -121,8 +121,8 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("recommended_project"); ?></h3>
                                     <div class="contact-frnd-post">
-                                      <!--.............AJAX DATA............-->
-                                      <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                        <!--.............AJAX DATA............-->
+                                        <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                     </div>
                                 </div>
                             </div>
