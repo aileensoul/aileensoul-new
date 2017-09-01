@@ -1658,6 +1658,8 @@ function insert_comment(clicked_id)
        var editpostdetails = $('#editpostdesc' + abc).html();
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+        editpostdetails = editpostdetails.replace(/div>/gi, 'p>');
+
       
        if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {
            $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
