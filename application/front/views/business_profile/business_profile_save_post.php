@@ -1123,7 +1123,7 @@ if(count($likelistarray) > 1) {
 
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 
-<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<!--<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 <!-- script for skill textbox automatic start-->
  <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
