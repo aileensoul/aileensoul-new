@@ -904,8 +904,9 @@ function deleteownpostmodel(abc) {
 
                             $.ajax({
                                 type: 'POST',
-                                url: base_url + "artistic/art_deletepost",
+                                url: base_url + "artistic/art_delete_post",
                                 //url: '<?php echo base_url() . "artistic/art_deletepost" ?>',
+                                dataType: 'json',
                                 data: 'art_post_id=' + abc,
                                 //alert(data);
                                 success: function (data) {
@@ -937,7 +938,7 @@ function del_particular_userpost(abc)
                                 success: function (data) {
 
                                     $('#' + 'removepost' + abc).html(data);
-                                    window.location = base_url + "artistic/home";
+                                    //window.location = base_url + "artistic/home";
 
 
 
