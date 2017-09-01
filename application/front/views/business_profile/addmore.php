@@ -22,7 +22,7 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                             <ul>
-                                <li><a href="<?php echo base_url('business_profile/business_information_update'); ?>">Business information</a></li>
+                                <li><a href="<?php echo base_url('business-profile/business-information-update'); ?>">Business information</a></li>
                                 <li><a href="<?php echo base_url('business_profile/contact_information'); ?>">Contact information</a></li>
                                 <li><a href="<?php echo base_url('business_profile/description'); ?>">Description</a></li>
                                 <li><a href="<?php echo base_url('business_profile/image'); ?>">Images</a></li>

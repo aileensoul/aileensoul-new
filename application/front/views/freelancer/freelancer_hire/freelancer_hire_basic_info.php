@@ -7,9 +7,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
     </head>
-    <div class="js">
+    <!--<div class="js">-->
         <body class="pushmenu-push">
-            <div id="preloader"></div>
+            <!--<div id="preloader"></div>-->
             <?php echo $header; ?>
             <?php
             if ($freehiredata[0]['free_hire_step'] == '3') {
@@ -156,5 +156,5 @@
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js'); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
         </body>
-    </div>
+    <!--</div>-->
 </html>
