@@ -144,7 +144,7 @@
                                                 <a href="<?php echo base_url('business-profile/business_resume/' . $businessdata[0]['business_slug']); ?>">
                                                     <span class="icon-view-profile edit_data"></span>
                                                     <span> View Profile </span></a> 
-                                                <a href="<?php echo base_url('business-profile/business_information_update'); ?>">
+                                                <a href="<?php echo base_url('business-profile/business-information-update'); ?>">
                                                     <span class="icon-edit-profile edit_data"></span>  
                                                     <span>Edit Profile </span></a>
                                                 <?php
