@@ -2276,19 +2276,7 @@ fieldset .add_post_btns:hover {
     color: #777;
     max-height:24px;
 }
-.h3_edit {
-    background: #ffffff!important;
-    margin: 0;
-    padding: 8px 15px 8px;
-    color: #1b8ab9!important;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 28px;
-    border-top-left-radius: 4px;
-    border: 1px solid #bfbfbf;
-    border-top-right-radius: 3px;
-}
+
 
 .pad_left {
     padding-left: 5px;
