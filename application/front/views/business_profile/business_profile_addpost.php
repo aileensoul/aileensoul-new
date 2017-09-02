@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
 <link rel="stylesheet" href="<?php echo base_url('css/select2-4.0.3.min.css?ver='.time()); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>

@@ -846,4 +846,14 @@ padding-top: 14px;
 #paddingtop_fixed_job {
     padding-top: 80px!important;
 }
+.tsecondary_certi{float: left;
+    margin-left: -12px;
+    background: #1b8ab9;
+    color: white;
+    padding: 3px 5px 1px;
+    border-radius: 100%;
+    margin-top: -10px;
+    cursor: pointer;}
+.tsecondary_certi i{color: white; cursor: pointer; font-size: 12px;}
+.job_work_experience_main_div h6{font-size: 17px; padding: 5px 0px;}
 

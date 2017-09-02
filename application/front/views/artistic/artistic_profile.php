@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
 <!-- END HEADER -->
 </head>
 <body   class="page-container-bg-solid page-boxed">

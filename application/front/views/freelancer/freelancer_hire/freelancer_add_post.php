@@ -332,7 +332,8 @@
                     }
                     if (clicked_id == 5)
                     {
-                        location.href = '<?php echo base_url('dashboard') ?>';
+                        document.getElementById('acon').style.display = 'block !important';
+                       // location.href = '<?php //echo base_url('dashboard') ?>';
                     }
                     if (clicked_id == 6)
                     {
@@ -356,22 +357,41 @@
 
                     }
 
-                } else
+                } 
+                else
                 {
-
-                    return home(clicked_id, searchkeyword, searchplace);
+                    
+                        return home(clicked_id, searchkeyword, searchplace);
+                   
+                    
                 }
             }
+
+            
             function home(clicked_id, searchkeyword, searchplace) {
 
+                if(clicked_id == 5)
+                {
+                     $('.header ul li #abody ul li a').click(function () {
+
+                            var all_clicked_href = $(this).attr('href');
+                        $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ',' + '"' + all_clicked_href + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                        $('#bidmodal').modal('show');
+                        return false;
+
+                         });
+                }
+                else
+                {
                  $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                $('#bidmodal').modal('show');
-                return false;
+                    $('#bidmodal').modal('show');
+                    return false;
+                }
+                
                
             }
 
-            function home_profile(clicked_id, searchkeyword, searchplace) {
-             
+            function home_profile(clicked_id, searchkeyword, searchplace,all_clicked_href) {
                 var url, data;
                 if (clicked_id == 4) {
                   
@@ -409,7 +429,7 @@
                             }
                         } else if (clicked_id == 5)
                         {
-                            window.location = "<?php echo base_url('dashboard') ?>";
+                           window.location = all_clicked_href;
                         } else if (clicked_id == 6)
                         {
                             window.location = "<?php echo base_url() . 'profile' ?>";

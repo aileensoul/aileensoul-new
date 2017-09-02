@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- http://bootsnipp.com/snippets/4jXW -->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body>
         <?php echo $header; ?>

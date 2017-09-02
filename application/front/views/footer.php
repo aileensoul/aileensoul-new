@@ -213,7 +213,7 @@
         });
     }
     
-    /*
+    
     function addmsg_contact(type, msg)
     {
         if (msg == 0)
@@ -244,7 +244,7 @@
             }
         });
     }
-    */
+    
     // USER PROFILE DROPDOWN IN HEADER
     $(document).on("dropdown-user", function () {
         $(".dropdown-menu").hide();

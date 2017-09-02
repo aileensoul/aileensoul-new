@@ -9428,7 +9428,7 @@ class Business_profile extends MY_Controller {
                 }
                 $return_html .= '</div>
                                                                         </li>
-                                                                        <li style="width: 67%">
+                                                                        <li class="bui_bcon">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
                                             <a href="' . base_url('business-profile/dashboard/' . $cdata[0]['business_slug']) . '">' . ucfirst(strtolower($cdata[0]['company_name'])) . '</a>

@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -18,7 +19,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3" style="width: 22%;"></div>
-                        <div class="col-md-7 col-sm-7">
+                        <div class="col-md-7 col-sm-12">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>Details </h3> 
