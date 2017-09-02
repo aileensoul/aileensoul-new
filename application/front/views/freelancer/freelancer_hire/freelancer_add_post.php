@@ -332,7 +332,8 @@
                     }
                     if (clicked_id == 5)
                     {
-                        location.href = '<?php echo base_url('dashboard') ?>';
+                        document.getElementById('acon').style.display = 'block !important';
+                       // location.href = '<?php //echo base_url('dashboard') ?>';
                     }
                     if (clicked_id == 6)
                     {
@@ -409,7 +410,9 @@
                             }
                         } else if (clicked_id == 5)
                         {
-                            window.location = "<?php echo base_url('dashboard') ?>";
+                            alert("hi");
+                            document.getElementById('acon').style.display = 'block !important';
+                            //window.location = "<?php //echo base_url('dashboard') ?>";
                         } else if (clicked_id == 6)
                         {
                             window.location = "<?php echo base_url() . 'profile' ?>";

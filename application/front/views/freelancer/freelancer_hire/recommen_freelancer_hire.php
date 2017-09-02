@@ -152,10 +152,32 @@
             var base_url = '<?php echo base_url(); ?>';
             var data = <?php echo json_encode($demo); ?>;
             var data1 = <?php echo json_encode($de); ?>;
-            var skill = '<?php echo  $this->input->get('skills'); ?>';
-        
-            var place = '<?php echo  $this->input->get('searchplace'); ?>';
-            var button = '<?php echo  $this->input->get('search_submit'); ?>';
+
+            //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE START
+            var seg3='<?php echo $this->uri->segment(3); ?>';
+            var seg4='<?php echo $this->uri->segment(4); ?>';
+           
+            if(seg3==0 && seg4!="")
+            {
+                var skill = "";
+                var place = seg4;
+            }
+            else if(seg4==0 && seg3!="")
+            {
+                var skill = seg3;
+                var place = "";
+            }
+            else if(seg3!="" && seg4!="")
+            {
+                var skill = seg3;
+                var place = seg4;
+            }
+            else
+            {
+                var skill = '<?php echo  $this->input->get('skills'); ?>';
+                var place = '<?php echo  $this->input->get('searchplace'); ?>';
+            }
+           //LEAVE PAGE AT ADD AND EDIT FREELANCER PAGE THEN PROBLEM SO BELOW CODE END
            
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_search_result.js'); ?>"></script>

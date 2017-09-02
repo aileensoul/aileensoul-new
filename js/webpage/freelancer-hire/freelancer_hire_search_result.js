@@ -38,10 +38,11 @@ function freelancerhire_search(pagenum)
          **/
         return;
     }
+    // url = '<?php echo base_url() . "freelancer-hire/search?page=" ?>'+clicked_id+"&skill="  + encodeURIComponent(searchkeyword) + "&place=" + searchplace;
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place + "&button=" + button ,
+        url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
         beforeSend: function () {

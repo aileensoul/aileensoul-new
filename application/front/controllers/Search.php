@@ -1752,7 +1752,6 @@ class Search extends CI_Controller {
             } else if ($this->uri->segment(4) == "0") {
 
                 $searchkeyword = urldecode($searchkeyword);
-               // echo $searchkeyword;die();
                 $searchplace = "";
             } else {
                 $searchkeyword = urldecode($searchkeyword);
@@ -1816,28 +1815,12 @@ class Search extends CI_Controller {
         if ($start < 0)
             $start = 0;
         echo $this->input->get('skills');
-        if ($_GET["button"]) {
-           
-            $searchkeyword = $_GET["skill"];
-            $searchplace = $_GET["place"];
-           
-        } else {
 
-            if ($this->uri->segment(3) == "0") {
-                $searchplace = urldecode($searchplace);
-                $searchkeyword = "";
-            } else if ($this->uri->segment(4) == "0") {
-                $searchkeyword = urldecode($searchkeyword);
-                $searchplace = "";
-            } else {
-                $searchkeyword = urldecode($searchkeyword);
-                $searchplace = urldecode($searchplace);
-            }
-        }
-        
+         $searchkeyword = $_GET["skill"];
+         $searchplace = $_GET["place"];
+      
         $search_skill = $searchkeyword;
         $search_place = $searchplace;
-
 
 
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
