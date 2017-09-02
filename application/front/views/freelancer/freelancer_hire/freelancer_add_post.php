@@ -279,6 +279,7 @@
             // LEAVE PAGE ON ADD AND EDIT POST PAGE START
             function leave_page(clicked_id)
             {
+                alert("hi");
                 var post_name = document.getElementById('post_name').value;
                 var post_desc = document.getElementById('post_desc').value;
                 var fields_req = document.getElementById('fields_req').value;

@@ -34,7 +34,7 @@
                     </div>
                     <div class="">
                         <ul class="" id="dropdownclass">
-                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>"><span class="bu_home"></span></a>
+                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
                             </li>
                             <li id="Inbox_link">
                                 <?php if ($message_count) { ?>
@@ -62,8 +62,8 @@
                                         <span class="my_account">
                                             <div class="my_S">Account</div>
                                         </span>
-                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
                                         <?php
                                         $userid = $this->session->userdata('aileenuser');
                                         ?>
