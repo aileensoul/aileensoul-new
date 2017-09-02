@@ -279,12 +279,11 @@
             // LEAVE PAGE ON ADD AND EDIT POST PAGE START
             function leave_page(clicked_id)
             {
-                alert("hi");
+                
                 var post_name = document.getElementById('post_name').value;
                 var post_desc = document.getElementById('post_desc').value;
                 var fields_req = document.getElementById('fields_req').value;
                 var skills = document.getElementById('skills2').value;
-               // var other_skill = document.getElementById('other_skill').value;
                 var year = document.getElementById('year').value;
                 var month = document.getElementById('month').value;
                 var rate = document.getElementById('rate').value;
@@ -359,17 +358,23 @@
 
                 } else
                 {
+
                     return home(clicked_id, searchkeyword, searchplace);
                 }
             }
             function home(clicked_id, searchkeyword, searchplace) {
-                $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+
+                 $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                 $('#bidmodal').modal('show');
+                return false;
+               
             }
 
             function home_profile(clicked_id, searchkeyword, searchplace) {
+             
                 var url, data;
                 if (clicked_id == 4) {
+                  
                     url = '<?php echo base_url() . "freelancer-hire/search" ?>';
                     data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
                 }
@@ -389,12 +394,14 @@
                             window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
                         } else if (clicked_id == 4)
                         {
+                            
                             if (searchkeyword == "")
                             {
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
 
                             } else if (searchplace == "")
                             {
+                                
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
                             } else
                             {

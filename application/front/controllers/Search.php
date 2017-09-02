@@ -2014,7 +2014,8 @@ class Search extends CI_Controller {
         $this->load->view('freelancer_hire/freelancer_hire_search', $this->data);
     }
 
-    public function freelancer_hire_search($searchkeyword, $searchplace) {
+    public function freelancer_hire_search($searchkeyword="", $searchplace="") {
+        
         $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('search_submit')) {
@@ -2025,7 +2026,9 @@ class Search extends CI_Controller {
                 $searchplace = urldecode($searchplace);
                 $searchkeyword = "";
             } else if ($this->uri->segment(4) == "0") {
+
                 $searchkeyword = urldecode($searchkeyword);
+               // echo $searchkeyword;die();
                 $searchplace = "";
             } else {
                 $searchkeyword = urldecode($searchkeyword);
@@ -2076,7 +2079,7 @@ class Search extends CI_Controller {
 
 //freelancer hire  search end 
     //freelancer hire  ajax search start 
-    public function ajax_freelancer_hire_search($searchkeyword, $searchplace) {
+    public function ajax_freelancer_hire_search($searchkeyword="", $searchplace="") {
         
         $userid = $this->session->userdata('aileenuser');
         $perpage = 5;
