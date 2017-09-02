@@ -2523,7 +2523,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 
 //job serach user for recruiter start 
 
-    public function job_user($id) {
+    public function job_user($id="") {
 
          $this->job_deactive_profile(); 
 
@@ -2989,7 +2989,7 @@ $select .= '<option value="' . $stream_otherdata[0]['stream_id'] . '">' . $strea
 
 // create pdf start
 
-public function creat_pdf_primary($id,$seg) {
+public function creat_pdf_primary($id="",$seg="") {
 
         $contition_array = array('edu_id' => $id, 'status' => '1');
         $pdf=$this->data['pdf'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data='edu_certificate_primary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3020,7 +3020,7 @@ public function creat_pdf_primary($id,$seg) {
         }
 }
 
-public function creat_pdf_secondary($id,$seg) {
+public function creat_pdf_secondary($id="",$seg="") {
 
         $contition_array = array('edu_id' => $id, 'status' => '1');
         $pdf=$this->data['pdf'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data='edu_certificate_secondary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3050,7 +3050,7 @@ public function creat_pdf_secondary($id,$seg) {
         }
 }
 
-public function creat_pdf_higher_secondary($id,$seg) {
+public function creat_pdf_higher_secondary($id="",$seg="") {
     
         $contition_array = array('edu_id' => $id, 'status' => '1');
         $pdf=$this->data['pdf'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data='  edu_certificate_higher_secondary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3080,7 +3080,7 @@ public function creat_pdf_higher_secondary($id,$seg) {
         }
 }
 
-public function creat_pdf_graduation($id,$seg) {
+public function creat_pdf_graduation($id="",$seg="") {
     
         $contition_array = array('job_graduation_id' => $id);
         $pdf=$this->data['pdf'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data='edu_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -3106,7 +3106,7 @@ public function creat_pdf_graduation($id,$seg) {
         }
 }
 
-public function creat_pdf_workexp($id) {
+public function creat_pdf_workexp($id="") {
     
         $contition_array = array('work_id' => $id);
         $pdf=$this->data['pdf'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data='work_certificate', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
