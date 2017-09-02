@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver=' . time()); ?>">  DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" 
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
