@@ -14755,9 +14755,26 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
-            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+
+             $contition_array = array('status' => 1, 'type' => '2');
+
+            $search_condition = "(skill LIKE '%$searchskill%')";
+            // echo $search_condition;
+            $temp = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($temp); die();
+
+            foreach ($temp as $keytemp => $valuetemp) {
+               
+          
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $valuetemp['skill_id'] . '", art_skill) != ' => '0');
+            $artskill[] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            }
+            //echo "<pre>"; print_r($artskillpost); die();
+            $artskillpost = array_reduce($artskill, 'array_merge', array());
+            //$artskillpost = array_unique($result, SORT_REGULAR);                
+
+            //echo "<pre>"; print_r($artskillpost); die();
             
 
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
@@ -14802,6 +14819,7 @@ public function get_artistic_name($id=''){
 
                  $unique = array_merge($artskillpost, $otherdata);
                  $new = array_unique($unique, SORT_REGULAR);
+                // echo "<pre>"; print_r($new); die();
 
                 if (count($artposttwo) == 0) {
                     $uniquedata = $posttwo;
@@ -14962,9 +14980,27 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
-            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //  $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            // $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+            // $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+             $contition_array = array('status' => 1, 'type' => '2');
+
+            $search_condition = "(skill LIKE '%$searchskill%')";
+            // echo $search_condition;
+            $temp = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($temp); die();
+
+            foreach ($temp as $keytemp => $valuetemp) {
+               
+          
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $valuetemp['skill_id'] . '", art_skill) != ' => '0');
+            $artskill[] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            }
+            //echo "<pre>"; print_r($artskillpost); die();
+            $artskillpost = array_reduce($artskill, 'array_merge', array());
+            
             
 
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
