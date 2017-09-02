@@ -21,59 +21,12 @@
     font-style: normal;
 }
 @font-face {
- font-family: 'Gotham Book';
- src: url('../../../fonts/font/Gotham-Book.eot');
- src: url('../../../fonts/font/Gotham-Book.eot?#iefix') format('embedded-opentype'),
-  url('../../../fonts/font/Gotham-Book.woff') format('woff'),
-  url('../../../fonts/font/Gotham-Book.ttf') format('truetype');
- font-weight: normal;
- font-style: normal;
-}
-@font-face {
- font-family: 'Gotham';
- src: url('../../../fonts/font/Gotham-Medium.eot');
- src: url('../../../fonts/font/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
-  url('../../../fonts/font/Gotham-Medium.woff') format('woff'),
-  url('../../../fonts/font/Gotham-Medium.ttf') format('truetype');
- font-weight: 500;
- font-style: normal;
-}
-@font-face {
- font-family: 'Helvetica LT Narrow';
- src: url('../../../fonts/font/HelveticaLT-Narrow-Bold.eot');
- src: url('../../../fonts/font/HelveticaLT-Narrow-Bold.eot?#iefix') format('embedded-opentype'),
-  url('../../../fonts/font/HelveticaLT-Narrow-Bold.woff') format('woff'),
-  url('../../../fonts/font/HelveticaLT-Narrow-Bold.ttf') format('truetype');
- font-weight: bold;
- font-style: normal;
-}
-@font-face {
-    font-family: 'robotoblack';
-    src: url('../../../fonts/font/roboto-black-webfont.eot');
-    src: url('../../../fonts/font/roboto-black-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-black-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-black-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-black-webfont.svg#robotoblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
     font-family: 'robotobold';
     src: url('../../../fonts/font/roboto-bold-webfont.eot');
     src: url('../../../fonts/font/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
          url('../../../fonts/font/roboto-bold-webfont.woff2') format('woff2'),
          url('../../../fonts/font/roboto-bold-webfont.woff') format('woff'),
          url('../../../fonts/font/roboto-bold-webfont.svg#robotobold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'robotolight';
-    src: url('../../../fonts/font/roboto-light-webfont.eot');
-    src: url('../../../fonts/font/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-light-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-light-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-light-webfont.svg#robotolight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -97,96 +50,6 @@
     font-weight: normal;
     font-style: normal;
 
-}
-@font-face {
-    font-family: 'times_new_romanbold';
-    src: url('../../../fonts/font/timesbd-webfont.eot');
-    src: url('../../../fonts/font/timesbd-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/timesbd-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/timesbd-webfont.woff') format('woff'),
-         url('../../../fonts/font/timesbd-webfont.svg#times_new_romanbold') format('svg');
-    font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-    font-family: 'times_new_romanregular';
-    src: url('../../../fonts/font/times-webfont.eot');
-    src: url('../../../fonts/font/times-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/times-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/times-webfont.woff') format('woff'),
-         url('../../../fonts/font/times-webfont.svg#times_new_romanregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'swis721_blkcn_btblack';
-    src: url('../../../fonts/font/tt0173m_-webfont.eot');
-    src: url('../../../fonts/font/tt0173m_-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/tt0173m_-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/tt0173m_-webfont.woff') format('woff'),
-         url('../../../fonts/font/tt0173m_-webfont.svg#swis721_blkcn_btblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'robotobold';
-    src: url('../../../fonts/font/roboto-bold-webfont.eot');
-    src: url('../../../fonts/font/roboto-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-bold-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-bold-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-bold-webfont.svg#robotobold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'robotolight';
-    src: url('../../../fonts/font/roboto-light-webfont.eot');
-    src: url('../../../fonts/font/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-light-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-light-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-light-webfont.svg#robotolight') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'robotomedium';
-    src: url('../../../fonts/font/roboto-medium-webfont.eot');
-    src: url('../../../fonts/font/roboto-medium-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-medium-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-medium-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-medium-webfont.svg#robotomedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'robotoregular';
-    src: url('../../../fonts/font/roboto-regular-webfont.eot');
-    src: url('../../../fonts/font/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/roboto-regular-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/roboto-regular-webfont.woff') format('woff'),
-         url('../../../fonts/font/roboto-regular-webfont.svg#robotoregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'times_new_romanbold';
-    src: url('../../../fonts/font/timesbd-webfont.eot');
-    src: url('../../../fonts/font/timesbd-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/timesbd-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/timesbd-webfont.woff') format('woff'),
-         url('../../../fonts/font/timesbd-webfont.svg#times_new_romanbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'swis721_blkcn_btblack';
-    src: url('../../../fonts/font/tt0173m_-webfont.eot');
-    src: url('../../../fonts/font/tt0173m_-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../../fonts/font/tt0173m_-webfont.woff2') format('woff2'),
-         url('../../../fonts/font/tt0173m_-webfont.woff') format('woff'),
-         url('../../../fonts/font/tt0173m_-webfont.svg#swis721_blkcn_btblack') format('svg');
-    font-weight: normal;
-    font-style: normal;
 }
 @font-face {
     font-family: 'FontAwesome';
@@ -1729,6 +1592,92 @@ label.error {
 
 
 /*** end chat ***/
+/***  all profile  ***/
+.alert{cursor: default;}
+.profile-text a {
+    color: #8c8c8c;
+    font-size: 15px;
+    cursor: pointer;
+}
+.profile-text {
+    color: #aba2a2;
+    font-size: 18px;
+    padding-top: 0;
+}
+.profile-text p {
+    font-weight: 400 !important;
+    font-size: 22px;
+    padding-right: 28px;
+    color: #000;
+}
+.job-menu-profile h5 {
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 600;
+    display: inline-block;
+}
+.job-menu-profile1 {
+    float: left;
+    padding-left: 31px;
+    width: 22.5%;
+    margin-top: 5px;
+}
+.job-menu-profile1 a h5 {
+    text-transform: capitalize;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 600;
+}
+/*** end all profile  ***/
+/***  business css  ***/
+.view_bui:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.view_bui {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 166px;
+    width: 221px;
+    left: 0px;
+}
+
+.view_bui #myBtn {
+    position: absolute;
+    bottom: 0;
+    left: 37%;
+    color: #fff;
+}
+/***  end business css  ***/
+/***  Change Password  ***/
+.change-password {
+    padding: 80px 0;
+    text-align: center;
+}
+.change-password-box {
+    width: 100%;
+    margin: auto;
+}
+.change-password-box fieldset {
+    margin-bottom: 4px;
+}
+.change-password-box form {
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.change-password-box h4 {
+    background: #1b8ab9;
+    color: #fff;
+    padding: 6px 15px;
+    text-align: center;
+}
+.change-password-box .hs-submit input {
+    min-width: 100px;
+    font-size: 16px;
+}
+/***  end change password  ***/
 
 .panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
 .user-section-free-up {

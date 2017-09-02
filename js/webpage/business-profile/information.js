@@ -1,1 +1,108 @@
-function checkvalue(){var e=$.trim(document.getElementById("tags").value),t=$.trim(document.getElementById("searchplace").value);return""==e&&""==t?!1:void 0}function check(){var e=$.trim(document.getElementById("tags1").value),t=$.trim(document.getElementById("searchplace1").value);return""==e&&""==t?!1:void 0}jQuery(document).ready(function(e){e(window).load(function(){e("#preloader").fadeOut("slow",function(){e(this).remove()})})}),$(function(){$("#tags").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tags").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags").val(t.item.label)}})}),$(function(){$("#searchplace").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label)}})}),$("#searchplace").select2({placeholder:"Find Your Location",maximumSelectionLength:1,ajax:{url:base_url+"business_profile/location",dataType:"json",delay:250,processResults:function(e){return{results:e}},cache:!0}}),$.validator.addMethod("regx",function(e,t,a){return e?a.test(e):!0},"Only space, only number and only special characters are not allow"),$(document).ready(function(){$("#businessinfo").validate({rules:{companyname:{required:!0,regx:/^[-@.\/#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/},country:{required:!0},state:{required:!0},business_address:{required:!0,regx:/^[-@.\/#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/}},messages:{companyname:{required:company_name_validation},country:{required:country_validation},state:{required:state_validation},business_address:{required:address_validation}}})}),$(".alert").delay(3200).fadeOut(300),$(function(){$("#tags1").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tag1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags1").val(t.item.label)}})}),$(function(){$("#searchplace1").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label)}})}),$(document).ready(function(){$("#country").on("change",function(){var e=$(this).val();e?$.ajax({type:"POST",url:base_url+"business_profile/ajax_data",data:"country_id="+e,success:function(e){$("#state").html(e),$("#city").html('<option value="">Select state first</option>')}}):($("#state").html('<option value="">Select country first</option>'),$("#city").html('<option value="">Select state first</option>'))}),$("#state").on("change",function(){var e=$(this).val();e?$.ajax({type:"POST",url:base_url+"business_profile/ajax_data",data:"state_id="+e,success:function(e){$("#city").html(e)}}):$("#city").html('<option value="">Select state first</option>')})});
+jQuery(document).ready(function ($) {
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow', function () {
+            $(this).remove();
+        });
+    });
+});
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+// end of business search auto fill 
+
+//validation for edit email formate form
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+}, "Only space, only number and only special characters are not allow");
+
+$(document).ready(function () {
+    $("#businessinfo").validate({
+        rules: {
+            companyname: {
+                required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            },
+            country: {
+                required: true,
+            },
+            state: {
+                required: true,
+            },
+            business_address: {
+                required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+            },
+        },
+        messages: {
+            companyname: {
+                required: company_name_validation,
+            },
+            country: {
+                required: country_validation,
+            },
+            state: {
+                required: state_validation,
+            },
+            business_address: {
+                required: address_validation,
+            },
+        },
+    });
+});
+// footer end 
+$(".alert").delay(3200).fadeOut(300);
+
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
+
+
+$(document).ready(function () {
+    $('#country').on('change', function () {
+        var countryID = $(this).val();
+        if (countryID) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/ajax_data",
+                data: 'country_id=' + countryID,
+                success: function (html) {
+                    $('#state').html(html);
+                    $('#city').html('<option value="">Select state first</option>');
+                }
+            });
+        } else {
+            $('#state').html('<option value="">Select country first</option>');
+            $('#city').html('<option value="">Select state first</option>');
+        }
+    });
+
+    $('#state').on('change', function () {
+        var stateID = $(this).val();
+        if (stateID) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/ajax_data",
+                data: 'state_id=' + stateID,
+                success: function (html) {
+                    $('#city').html(html);
+                }
+            });
+        } else {
+            $('#city').html('<option value="">Select state first</option>');
+        }
+    });
+});

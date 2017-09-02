@@ -1,1 +1,198 @@
-function checkvalue(){var e=$.trim(document.getElementById("tags").value),t=$.trim(document.getElementById("searchplace").value);return""==e&&""==t?!1:void 0}function busSelectCheck(e){var t=document.getElementById("industriyal").value,n=document.getElementById("business_type").value;if(e){var l=document.getElementById("busOption").value;l==e.value?(document.getElementById("busDivCheck").style.display="block",document.getElementById("bustype").style.display="block",document.getElementById("other-business").style.display="block",$("#busDivCheck .half-width label").html('Other Business Type:<span style="color:red;" >*</span>')):(document.getElementById("bustype").style.display="none",0==t&&0==n&&($("#busDivCheck .half-width label").text(""),$("#bustype-error").remove()),0==t&&0!=n&&($("#busDivCheck .half-width label").text(""),$("#bustype-error").remove()))}else document.getElementById("bustype").style.display="none",$("#busDivCheck .half-width label").text("")}function indSelectCheck(e){e?(indOptionValue=document.getElementById("indOption").value,indOptionValue==e.value?(document.getElementById("indDivCheck").style.display="block",document.getElementById("indtype").style.display="block",document.getElementById("other-category").style.display="block"):document.getElementById("indDivCheck").style.display="none"):document.getElementById("indDivCheck").style.display="none"}function check(){var e=$.trim(document.getElementById("tags1").value),t=$.trim(document.getElementById("searchplace1").value);return""==e&&""==t?!1:void 0}jQuery(document).ready(function(e){e(window).load(function(){e("#preloader").fadeOut("slow",function(){e(this).remove()})})}),$(function(){$("#tags").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tags").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags").val(t.item.label)}})}),$(function(){$("#searchplace").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label)}})}),$(document).ready(function(){$("#industriyal").on("change",function(){var e=$(this).val();e?$.ajax({type:"POST",url:base_url+"business_profile/ajax_data",data:"industry_id="+e,success:function(e){$("#subindustriyal").html(e)}}):$("#subindustriyal").html('<option value="">Select industriyal first</option>')})}),jQuery.validator.addMethod("noSpace",function(e,t){return""==e||0!=e.trim().length},"No space please and don't leave it empty"),$.validator.addMethod("regx",function(e,t,n){return e?n.test(e):!0},"Only space, only number and only special characters are not allow"),$(document).ready(function(){$("#businessdis").validate({rules:{business_type:{required:!0},industriyal:{required:!0},subindustriyal:{required:!0},business_details:{required:!0,regx:/^[-@.\/#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/}},messages:{business_type:{required:"Business type Is Required."},industriyal:{required:"Industrial Is Required."},subindustriyal:{required:"Subindustrial Is Required."},business_details:{required:"Business details Is Required."}}})}),$(".alert").delay(3200).fadeOut(300),$(function(){$("#tags1").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tag1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags1").val(t.item.label)}})}),$(function(){$("#searchplace1").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label)}})});
+jQuery(document).ready(function ($) {
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow', function () {
+            $(this).remove();
+        });
+    });
+});
+
+function checkvalue() {
+
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+// end of business search auto fill 
+function busSelectCheck(nameSelect)
+{
+    var industriyal = document.getElementById("industriyal").value;
+    var business_type = document.getElementById("business_type").value;
+    if (nameSelect) {
+        var busOptionValue = document.getElementById("busOption").value;
+        if (busOptionValue == nameSelect.value) {
+            document.getElementById("busDivCheck").style.display = "block";
+            document.getElementById("bustype").style.display = "block";
+            document.getElementById("other-business").style.display = "block";
+            $("#busDivCheck .half-width label").html('Other Business Type:<span style="color:red;" >*</span>');
+        } else {
+            document.getElementById("bustype").style.display = "none";
+            if (industriyal == 0 && business_type == 0) {
+                $("#busDivCheck .half-width label").text('');
+                $("#bustype-error").remove();
+            }
+            if (industriyal == 0 && business_type != 0) {
+                $("#busDivCheck .half-width label").text('');
+                $("#bustype-error").remove();
+            }
+        }
+    } else {
+        document.getElementById("bustype").style.display = "none";
+        $("#busDivCheck .half-width label").text('');
+    }
+}
+
+function indSelectCheck(nameSelect)
+{
+    if (nameSelect) {
+        indOptionValue = document.getElementById("indOption").value;
+        if (indOptionValue == nameSelect.value) {
+            document.getElementById("indDivCheck").style.display = "block";
+            document.getElementById("indtype").style.display = "block";
+            document.getElementById("other-category").style.display = "block";
+        } else {
+            document.getElementById("indDivCheck").style.display = "none";
+        }
+    } else {
+        document.getElementById("indDivCheck").style.display = "none";
+    }
+}
+
+$(document).ready(function () {
+    $('#industriyal').on('change', function () {
+        var industriyalID = $(this).val();
+        if (industriyalID) {
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/ajax_data",
+                data: 'industry_id=' + industriyalID,
+                success: function (html) {
+                    $('#subindustriyal').html(html);
+                }
+            });
+        } else {
+            $('#subindustriyal').html('<option value="">Select industriyal first</option>');
+        }
+    });
+});
+//validation for edit email formate form
+
+
+jQuery.validator.addMethod("noSpace", function (value, element) {
+    return value == '' || value.trim().length != 0;
+}, "No space please and don't leave it empty");
+$.validator.addMethod("regx", function (value, element, regexpr) {
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+    // return regexpr.test(value);
+}, "Only space, only number and only special characters are not allow");
+$(document).ready(function () {
+
+    $("#businessdis").validate({
+
+        rules: {
+
+            business_type: {
+
+                required: true,
+            },
+            industriyal: {
+
+                required: true,
+            },
+            subindustriyal: {
+
+                required: true,
+            },
+            business_details: {
+
+                required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                        //noSpace: true
+
+            },
+        },
+        messages: {
+
+            business_type: {
+
+                required: "Business type Is Required.",
+            },
+            industriyal: {
+
+                required: "Industrial Is Required.",
+            },
+            subindustriyal: {
+
+                required: "Subindustrial Is Required.",
+            },
+            business_details: {
+
+                required: "Business details Is Required.",
+            },
+        },
+    });
+});
+$(".alert").delay(3200).fadeOut(300);
+
+
+$(function () {
+
+    $("#tags1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#tag1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+            // window.location.href = ui.item.value;
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#tags1").val(ui.item.label);
+        }
+    });
+});
+
+$(function () {
+
+    $("#searchplace1").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(data1, function (item) {
+                return matcher.test(item.label);
+            }));
+        },
+        minLength: 1,
+        select: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+            $("#selected-tag").val(ui.item.label);
+            // window.location.href = ui.item.value;
+        }
+        ,
+        focus: function (event, ui) {
+            event.preventDefault();
+            $("#searchplace1").val(ui.item.label);
+        }
+    });
+});
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
