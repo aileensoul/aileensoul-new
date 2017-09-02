@@ -327,6 +327,7 @@
             function home(clicked_id, searchkeyword, searchplace) {
                 $('.biderror .mes').html("<div class='pop_content'>Do you want to discard your changes?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                 $('#bidmodal').modal('show');
+                return false;
 
             }
 
