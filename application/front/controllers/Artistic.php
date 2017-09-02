@@ -14693,5 +14693,212 @@ public function get_artistic_name($id=''){
         return $artistic_name = $artdata[0]['art_name'].' '.$artdata[0]['art_lastname'];    
     }
 //Get Job Seeker Name for title End
+
+
+    //for search code start
+
+    public function execute_search() {
+        //echo "test sucessfull";
+        $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
+
+
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
+        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        
+        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
+            redirect('artistic/art_post', refresh);
+
+            // $abc[] = $results;
+            // $this->data['falguni'] = 1;        
+        }
+
+//         // Retrieve the posted search term.
+//        //echo "<pre>";print_r($_POST);die();
+        $searchskill = trim($this->input->get('skills'));
+        $this->data['keyword'] = $searchskill;
+
+
+        // echo $searchskill; die();
+        //$searchskill = explode(',',$search_skill);
+        //echo"<pre>";print_r($searchskill);die();
+        $search_place = trim($this->input->get('searchplace'));
+//insert search keyword into data base code start
+
+        $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
+
+        $this->data['keyword1'] = $search_place;
+
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+        $this->data['city'] = $city = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        //echo "hi"; die();
+        $data = array(
+            'search_keyword' => $searchskill,
+            'search_location' => $search_place,
+            'user_location' => $city[0]['art_city'],
+            'user_id' => $userid,
+            'created_date' => date('Y-m-d h:i:s', time()),
+            'status' => 1,
+            'module'=>'6'
+        );
+
+        // echo"<pre>"; print_r($data); die();
+
+        $insert_id = $this->common->insert_data_getid($data, 'search_info');
+//insert search keyword into data base code end
+
+        if ($searchskill == "") {
+            $contition_array = array('art_city' => $cache_time, 'status' => '1', 'art_step' => 4);
+            $new = $this->data['results'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        } elseif ($search_place == "") {
+
+
+             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+
+            $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
+
+            $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+            // echo $search_condition;
+            $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($otherdata); die();
+
+            foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
+               
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
+
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+            //echo "<pre>"; print_r($artpostone); die();
+
+            }
+            foreach ($artpostone as $keyone => $valueone) {
+               
+               foreach ($valueone as $keytwo => $valuetwo) {
+                   $posttwo[] = $valuetwo;
+               }
+            } 
+            //echo "<pre>"; print_r($posttwo); die();
+
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('art_reg.art_step' => 4, 'art_post.is_delete' => '0','art_reg.is_delete' => '0', 'art_reg.status' => '1');
+
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%' or art_reg.designation LIKE '%$searchskill%' or art_reg.other_skill LIKE '%$searchskill%')";
+
+
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+
+                 $unique = array_merge($artskillpost, $otherdata);
+                 $new = array_unique($unique, SORT_REGULAR);
+
+                if (count($artposttwo) == 0) {
+                    $uniquedata = $posttwo;
+                } else {
+                    $uniquedata = array_merge($artposttwo, $posttwo);
+                }
+                $artpost = array_unique($uniquedata, SORT_REGULAR);                
+//echo "<pre>"; print_r($artpost); die();
+
+        } else {
+            // echo "both";
+
+
+             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'art_city' => $cache_time, 'art_step' => 4,  'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
+            $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+
+            
+
+            $contition_array = array('is_delete' => '0', 'status' => '1', 'art_city' => $cache_time, 'art_step' => 4);
+
+            $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
+
+            $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+             //echo "<pre>"; print_r($otherdata); die();
+
+            foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
+               
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
+
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+            //echo "<pre>"; print_r($artpostone); die();
+
+            }
+            foreach ($artpostone as $keyone => $valueone) {
+               
+               foreach ($valueone as $keytwo => $valuetwo) {
+                   $posttwo[] = $valuetwo;
+               }
+            } 
+
+
+            $join_str[0]['table'] = 'art_reg';
+            $join_str[0]['join_table_id'] = 'art_reg.user_id';
+            $join_str[0]['from_table_id'] = 'art_post.user_id';
+            $join_str[0]['join_type'] = '';
+
+            $search_condition = "(art_post.art_post LIKE '%$searchskill%' or art_post.art_description LIKE '%$searchskill%' or art_post.other_skill LIKE '%$searchskill%')";
+
+
+            $contition_array = array('art_reg.art_city' => $cache_time, 'art_reg.art_step' => 4, 'art_post.is_delete' => '0');
+            $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.art_name,art_reg.art_lastname,art_reg.art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            // echo "<pre>"; print_r($artpost);
+
+           
+
+           
+                $unique = array_merge($artskillpost, $otherdata);
+              
+
+                $new = array_unique($unique, SORT_REGULAR);
+
+                if (count($artposttwo) == 0) {
+                    $uniquedata = $posttwo;
+                } else {
+                    $uniquedata = array_merge($artposttwo, $posttwo);
+                }
+                $artpost = array_unique($uniquedata, SORT_REGULAR);  
+
+        }
+
+
+        $this->data['artuserdata'] = $new;
+
+        $this->data['artpostdata'] = $artpost;
+
+              $title = '';
+        if ($searchskill) {
+            $title .= $searchskill;
+        }
+        if ($searchskill && $search_place) {
+            $title .= ' Art in ';
+        }
+        if ($search_place) {
+            $title .= $search_place;
+        }
+        $this->data['title'] = "$title | Aileensoul";
+        $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+         $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+        $this->load->view('artistic/recommen_candidate', $this->data);
+       
+    }
     
 }
