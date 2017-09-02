@@ -18,7 +18,7 @@
 .buisness-profile-pic-candidate {border: 1px solid #d9d9d9; margin-left: 17px!important;  width: 50px; margin-top: 5px;
     height: 50px; margin-left:17px; margin-bottom: 6px; display: inline-block;} 
 .buisness-profile-pic-candidate img { width: 100%; height: 100%;}
-.designation_rec { float: left; width: 60%; padding-top: 1px;}
+.designation_rec { float: left; width: 60%; padding-top: 1px;line-height: 19px;}
 .profile-job-post-location-name-rec ul {padding: 0;}
 .profile-job-post-location-name-rec ul li { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     padding: 2px 3px 0 8px; margin: 0; list-style: none; display: inline-block;}
@@ -97,7 +97,7 @@ li.fr a {text-decoration: none !important;}
 }
 .art-side-menu {width: 100%; padding-left: 210px;}
 .art-side-menu ul {float: left;}
-.right-side-menu {float: left; height: 50px;}
+.right-side-menu {float: left; height: 50px;border-top: 1px solid #d9d9d9;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{
 	font-size: 13px;
 	border: none;
@@ -124,6 +124,8 @@ li.fr a {text-decoration: none !important;}
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+.lction .fa{margin-right: 5px;}
 
 /***  left part box  ***/
 .profile-box {max-width: 430px; position: fixed;}
@@ -233,18 +235,18 @@ line-height: 1;}
     border: 1px solid #d9d9d9;
     border-top-right-radius: 3px;
 }
-.job-contact-frnd {width: 100%; float: left;}
+.job-contact-frnd {width: 100%; float: left;margin-bottom: 15px;}
 .job-contact-frnd .profile-job-post-detail { background-color: #ffffff; border: 1px solid #d9d9d9; border-radius: 4px;
     margin-bottom: 10px;}
-.contact-frnd-post {width: 100%; float: left; border-bottom-left-radius: 4px;  border-bottom-right-radius: 4px; padding: 10px 10px 0; background-color: white; border: 1px solid #d9d9d9;}
+.contact-frnd-post {width: 100%; float: left; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; padding: 10px 10px 0; background-color: white; border: 1px solid #d9d9d9;}
 .user-midd-section {
     margin: 15px 0 35px;
     width: 100%;
     float: left;
 }
 
-
-
+.deactive .modal-content{padding: 0px !important;}
+.deactive .model_ok_cancel{padding-bottom: 24px !important;padding-top: 20px !important;}
 
 
 

@@ -39,7 +39,7 @@ $uploadCrop = $('#upload-demo').croppie({
         width: 1250,
         height: 350
     }
-});
+})(jQuery);
 $('.upload-result').on('click', function (ev) {
     $uploadCrop.croppie('result', {
         type: 'canvas',
@@ -58,12 +58,12 @@ $('.upload-result').on('click', function (ev) {
             }
         });
     });
-});
+})(jQuery);
 $('.cancel-result').on('click', function (ev) {
     document.getElementById('row2').style.display = "block";
     document.getElementById('row1').style.display = "none";
     document.getElementById('message1').style.display = "none";
-});
+})(jQuery);
 $('#upload').on('change', function () {
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -74,7 +74,7 @@ $('#upload').on('change', function () {
         });
     }
     reader.readAsDataURL(this.files[0]);
-});
+})(jQuery);
 $('#upload').on('change', function () {
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
@@ -106,7 +106,7 @@ $('#upload').on('change', function () {
         success: function (response) {
         }
     });
-});
+})(jQuery);
 // UPLOAD COVER PIC end
 
 /* FOLLOW USER START */
