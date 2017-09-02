@@ -2732,6 +2732,9 @@ font-size: 32px;}
     .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
     .right_side_posrt{width: 100%;}
     .art_container{padding: 0px;}
+    .comment-name {
+    width: 85%;
+    }
 }
 @media screen and (max-width: 767px)
 {
@@ -2753,5 +2756,6 @@ font-size: 32px;}
     }
     .post-edit-popup .popup-text textarea{width: 85%;}
     .fifty_val{top: 16px;}
+    .post-design-name ul li .post_dot{max-width: 60%;}
 }
 /*media zalak end*/
