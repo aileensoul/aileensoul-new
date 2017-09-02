@@ -39,7 +39,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
-                            <!-- <div class="logo"><a href="<?php echo base_url('dashboard') ?>"><img src="<?php echo base_url('images/logo-white.png'); ?>"></a></div> -->
+                           
                             <div class="logo">
                                 <a tabindex="-200" href="<?php echo base_url('dashboard') ?>"> <h2  style="color: white;">Aileensoul</h2></a>
                             </div>
@@ -229,10 +229,6 @@
         <?php } ?>
 
 
-
-          <!-- <li><a href="#" id="notificationLink" onclick = "return getNotification()">Notification <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
-              <span id="notification_count"></span>
-          </a></li> -->
                                         <!-- general notification start -->
                                         <li id="notification_li">
                                             <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em><i class="header-icon-notification "></i>
@@ -252,28 +248,6 @@
                                         $userid = $this->session->userdata('aileenuser');
                                         ?>
 
-                                    <!-- <li><a href="<?php //echo base_url('message/message_chat/')       ?>">Message <i class="fa fa-commenting" aria-hidden="true"></i></a></li> -->
-                                        <!--                                <li id="Inbox_link">
-                                        <?php if ($message_count) { ?>
-                                                                                                 <span class="badge bg-theme"><?php //echo $message_count; ?></span> 
-        <?php } ?>
-                                                                            <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
-                                                                            
-                                                                                <span id="message_count"></span>
-                                                                            </a>
-                                        
-                                                                            <div id="InboxContainer">
-                                                                                <div id="InboxBody" class="Inbox">
-                                                                                   <div id="notificationTitle">Messages</div>
-                                        
-                                                                                    <div id="notificationsmsgBody" class="notificationsmsg">
-                                        
-                                        
-                                                                                    </div>
-                                                                                </div>
-                                                                        </li>-->
-
-                                   <!--  <li><a href="<?php //echo base_url('friendrequest')       ?>">Friend Request <i class="fa fa-user" aria-hidden="true"></i></a></li> -->
 
                                         <!-- BEGIN USER LOGIN DROPDOWN -->
                                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -293,7 +267,7 @@
             <?php echo ucfirst(strtolower($acr)); ?>
 
                                                     </div>
-                                                                                    <!-- <img alt="" class="img-circle" src="<?php //echo base_url(NOIMAGE); ?>" height="50" width="50" alt="Smiley face" /> -->
+                                                                                   
         <?php } ?>
 
                                                 <span class="u2 username username-hide-on-mobile hidden-xs"> <?php
@@ -362,7 +336,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
-                        <!-- <div class="logo"><a href="<?php echo base_url('dashboard') ?>"><img src="<?php echo base_url('images/logo-white.png'); ?>"></a></div> -->
+                       
                         <div class="logo">
                             <a tabindex="-200" href="<?php echo base_url('dashboard') ?>"> <h2  style="color: white;">Aileensoul</h2></a>
                         </div>
@@ -552,9 +526,7 @@
 
 
 
-          <!-- <li><a href="#" id="notificationLink" onclick = "return getNotification()">Notification <i class="fa fa-bell-slash-o" aria-hidden="true"></i>
-              <span id="notification_count"></span>
-          </a></li> -->
+        
                                     <!-- general notification start -->
                                     <li id="notification_li">
                                         <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
@@ -573,27 +545,6 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     ?>
-
-                                    <!-- <li><a href="<?php //echo base_url('message/message_chat/')      ?>">Message <i class="fa fa-commenting" aria-hidden="true"></i></a></li> -->
-                                    <!--                                <li id="Inbox_link">
-        <?php if ($message_count) { ?>
-        <?php } ?>
-                                                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
-                                                                            <span id="message_count"></span>
-                                                                        </a>
-                                    
-                                                                        <div id="InboxContainer">
-                                                                            <div id="InboxBody" class="Inbox">
-                                                                               <div id="notificationTitle">Messages</div>
-                                    
-                                                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                    
-                                    
-                                                                                </div>
-                                                                            </div>
-                                                                    </li>-->
-
-                                   <!--  <li><a href="<?php //echo base_url('friendrequest')       ?>">Friend Request <i class="fa fa-user" aria-hidden="true"></i></a></li> -->
 
                                     <!-- BEGIN USER LOGIN DROPDOWN -->
                                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -615,7 +566,7 @@
 
                                                 </div>
 
-                                                       <!--  <img alt="" class="img-circle" src="<?php //echo base_url(NOIMAGE);  ?>" height="50" width="50" alt="Smiley face" /> -->
+                                                     
                                                 <?php } ?>
 
                                             <span class="u2 username username-hide-on-mobile hidden-xs"> <?php
@@ -651,7 +602,7 @@
         <?php } ?>
 
 
-                                                <!--                                            Logout-->
+                                                <!--Logout-->
                                             </li>
 
                                         </ul>
