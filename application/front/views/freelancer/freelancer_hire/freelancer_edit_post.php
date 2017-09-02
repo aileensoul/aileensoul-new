@@ -256,7 +256,7 @@
                                     </select><span id="city-error"></span>
                                     <?php echo form_error('city'); ?>
                                 </fieldset>
-                                <fieldset class="hs-submit full-width">
+                                <fieldset class="hs-submit half-width">
                                     <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
                                         <a class="add_post_btnc" onclick="return leave_page(9)"><?php echo $this->lang->line("cancel"); ?></a>
                                     <?php } else { ?>
