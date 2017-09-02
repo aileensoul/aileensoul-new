@@ -636,7 +636,7 @@ form {
 }
 .common-form form {
     border-top: 0;
-    /*padding: 10px;*/
+    padding: 10px;
     background-color: white;
 }
 .common-form h3 {
@@ -745,7 +745,10 @@ fieldset .add_post_btns {
 
 /***  end css for buttons  ***/
 
-
+.logo a:focus {
+    outline: none !important;
+    text-decoration: none!important;
+}
 
 
 
@@ -754,14 +757,6 @@ fieldset .add_post_btns {
 
 
 /***---------  end common css for freelance hire and recruiter  ----------***/ 
-
-
-
-
-
-
-
-
 
 
 /***---------  model css  -------------***/
@@ -1388,36 +1383,388 @@ label.error {
 #popup {
     display: none;
 }
+.not_txt{
+    bottom: 0;
+    columns: #1b8ab9;
+    color: #ebebeb;
+    font-size: 40px;
+    font-family:Roboto light;
+    left: 18px;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    width: 95%;
+	line-height: 40px;
+}
+.demo {
+    opacity: 0.6;
+}
+.box {
+    width: 40%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 35px;
+    border: 1px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+.popup .cnclbtn {
+    position: absolute;
+    transition: all 200ms;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 18px;
+    background-color: darkcyan;
+    right: 25px;
+    margin-top: 15px;
+    width: 100px;
+    border-radius: 8px;
+}
+
+.invite_border {
+    border: 1px solid #1b8ab9 !important;
+    margin-right: 10px!important;
+    float: none!important;
+    padding: 4px 20px !important;
+}
+
+
+.invited {
+    background-color: #1b8ab9!important;
+    margin-left: 0px!important;
+    font-weight: bold;
+   
+    
+    margin-right: 10px!important;
+    color: #fff!important;
+    float: none !important;
+}
+.but1 {
+    padding: 17px 20px 17px 2px;
+    overflow: hidden;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    margin-left: 16px;
+    text-align: center;
+}
+.but1:before {
+    font-family: FontAwesome;
+    content: "\f177";
+    font-size: 18px;
+    position: absolute;
+    top: 15px;
+    margin-left: 5px;
+    left: -3%;
+    visibility: hidden;
+    transition: all 200ms ease;
+}
+.but1:hover:before {
+    left: 7px;
+    visibility: visible;
+}
+.profile-boxProfileCard-bg img {
+    height: 95PX;
+    width: 100%;
+}
+
+.pdf_img {
+    height: 40%;
+    margin: 0 auto;
+    width: 40%;
+    padding: 5px;
+}
+
 
 /***  end use  ***/
+/*** chat page css  ***/
+.people-list {
+    border-right: 1px solid #ccc;
+    width: 25%;
+    float: left;
+    opacity: 0.9;
+    background-color: #fff;
+}
+.people-list .about {
+    float: left;
+    width: 78%;
+	padding-left: 9px;
+}
+.people-list .status {
+    color: #92959E;
+}
+.people-list .fa-search {
+    position: relative;
+    color: #d9d9d9;
+    left: -25px;
+}
+.people-list .search {
+    padding-top: 16px!important;
+    padding-right: 0px!important;
+    padding-left: 22px!important;
+    padding: 13px;
+}
+.people-list .search input:focus .fa-search{color: #1b8ab9;}
+.people-list .search input:focus{   border-bottom: 1px solid #1b8ab9 !important;       
+    color: #1b8ab9!important;}
+.people-list .search input {
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    padding-right: 24px;
+    background: #fff;
+    width: 90%;
+    font-size: 14px;
+    height: 31px;
+}
+.people-list ul {
+    background: #fff;
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+    padding:0px;
+    overflow-y: scroll;
+    height: 492px;
+    overflow: auto;
+}
+.people-list ul li {
+    padding: 15px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    margin-bottom: 0px!important;
+    line-height: 17px!important;
+    border-bottom: 1px solid #d9d9d9;
+	list-style: none;
+}
+.people-list ul li.active {
+    color: #003;
+    background-color: #e9f4f8;
+}
+.people-list ul li:hover {
+  background-color: #e9f6fc ;
+}
+.people-list img {
+    float: left;
+}
+.people-list input{border-radius:0;}
+.people-list input:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #1b8ab9;
+}
+.people-list input:focus::-moz-placeholder { /* Firefox 19+ */
+  color: #1b8ab9;
+}
+.people-list input:focus:-ms-input-placeholder { /* IE 10+ */
+  color: #1b8ab9;
+}
+.people-list input:focus:-moz-placeholder { /* Firefox 18- */
+  color: #1b8ab9;
+}
+
+.people-list input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+  font-family:'arial';
+}
+.people-list input::-moz-placeholder { /* Firefox 19+ */
+
+  font-family:'arial';
+}
+.people-list input:-ms-input-placeholder { /* IE 10+ */
+
+  font-family:'arial';
+}
+.people-list input:-moz-placeholder { /* Firefox 18- */
+
+  font-family:'arial';
+  }
+.people-list ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 5px;
+}
+.people-list ul::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+.chat-history ul{padding:0;}
+.chat-history ul li {
+    list-style: none;
+	padding-left:0;
+}
+.chat {
+    height: 553px;
+    width: 75%;
+    float: left;
+	background-color: #fff10;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #434651;
+}
+.chat .chat-history .message-data-time {
+    font-size: 13px;
+    text-align: center;
+    width:100%;
+    float:left;
+    color: #a8aab1;
+	margin: 0px auto 5px;
+	display: block;
+}
+.chat .chat-history {
+    background: white;
+    padding: 25px 30px 20px;
+    display:block;
+    overflow-y: scroll;
+    height: 438px;
+    position:relative;
+}
+.chat .chat-history .message-data {
+    margin-bottom: 15px;
+    text-align: center;
+    margin-left: 8px;
+}
+.chat .chat-history .message {
+    color: white;
+    padding: 5px 18px;
+    line-height: 22px;
+    font-size: 15px;
+    border-radius: 7px;
+    margin-bottom: 0px;
+    position: relative;
+}
+.chat .chat-header .chat_drop img{height:auto;}
+.message-data-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 6px;
+}
+.chat .chat-history .msg_right:after {
+    bottom: 100%;
+    right:5px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #d8eff6;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.chat .chat-history .msg_left_data:after {
+    bottom: 100%;
+    left:15px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #eddfed;
+    border-width: 10px;
+    margin-left: -10px;
+} 
+.chat .chat-history .my-message {
+    padding-top: 6px;
+    background: #eddfed;
+    color: #003;
+}
+.chat .chat-history .other-message {
+    padding-top: 6px;
+    background: #d8eff6;
+    color: #000033;
+    max-width:96%;
+    float:left;
+	word-wrap:break-word;
+}
+.msg_right{position: relative;}
+
+.chat .chat-header {
+    background-color: white;
+    padding-left: 14px;
+    padding:5px 32px;
+    color: #003;
+    height: 61px;
+}
+.msg_left_data{max-width: 80%; position: relative;}
+.chat .chat-header img {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+.chat_heae_img {
+    float: left;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border:1px solid #d9d9d9;
+}
+.chat_heae_img img {
+    width: 100%;
+    height: 100%;
+}
+.chat .chat-header .chat-about {
+    float: left;
+    padding-left: 10px;
+    
+}
+.chat .chat-header .chat-with {
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 5px;
+}
+.chat .chat-header .chat-num-messages {
+    color: #92959E;
+    font-size: 12px;
+}
+.main_send {
+    padding: 10px!important;
+    background: #1b8ab9!important;
+    right: 10px !important;
+    border: 1px solid #1b8ab9!important;
+    position: absolute!important;
+    bottom: 10px !important;
+}
+
+
+
+
+/*** end chat ***/
+
+.panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
+.user-section-free-up {
+    height: 38%;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+   
+}
+:-ms-input-placeholder {
+    color: #999;
+   
+}
+
+input:-moz-placeholder {
+    color: #999;
+   
+}
 
 /*zalak start 28-8  media*/
-@media screen and (max-width:1280px)
-{
-    
+@media screen and (max-width:1280px){
   .fixed_right_side{right: 0;}
   .fixed_right_display_none{display:block;}
   .fixed_right_display{display: none;}
-  
 } 
 
 @media screen and (max-width: 1279px) {
-.header2{width:1140px;}
+	.header2{width:1140px;}
 }
 
 @media screen and (max-width: 1199px) {
-.header2 {
-    width: 940px;
+	.header2 {width: 940px;}
 }
-}
-@media screen and (max-width:1200px)
-   
-{ 
+@media screen and (max-width:1200px){ 
   .fixed_right_side{right: 0;}
-
-    
-
-
 }
 @media screen and (max-width: 991px){
     .fixed_right_side{display: none;}
