@@ -8,7 +8,7 @@
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
@@ -410,8 +410,8 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
+        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<!--        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
         <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 

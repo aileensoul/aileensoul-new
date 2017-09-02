@@ -143,13 +143,13 @@
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
-                                            echo '"' . $keyword . '"';
+                                            echo '"' . trim($keyword,',') . '"';
                                         } elseif ($keyword == "" && $keyword1 != "") {
-                                            echo '"' . $keyword1 . '"';
+                                            echo '"' . trim($keyword1,',') . '"';
                                         } else {
-                                            echo '"' . $keyword . '"';
+                                            echo '"' . trim($keyword,',') . '"';
                                             echo " and ";
-                                            echo '"' . $keyword1 . '"';
+                                            echo '"' . trim($keyword1,',') . '"';
                                         }
                                         ?>
                                     </h3>
@@ -212,5 +212,6 @@
             var keyword1 = '<?php echo $keyword1; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
