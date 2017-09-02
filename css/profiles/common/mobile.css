@@ -622,7 +622,9 @@ padding: 5px 7px;}
         margin-top: 0px;
     }
     .profile-head-text {
+        line-height: 8px;
         font-size: 18px !important;
+          padding-top: 0px;
     }
     .profile-text a {
         font-size: 16px !important;
@@ -1069,7 +1071,7 @@ padding: 5px 7px;}
     .profile-text1 .alert.alert-warning{width:100%; float:left;}
     .email-img{float: left; width: 35px;}
     .main-txt{float: left; width: 87%; text-align: justify;}
-    .profile-left{width:70%;}
+    .profile-left{width:100%;}
     #contact_per{width:30%;}
     .art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
@@ -1141,6 +1143,8 @@ padding: 5px 7px;}
     }
     .profile-head-text_dg a {
         font-size: 16px;
+        line-height: 8px;
+        padding-top: 0px;
     }
 }
 @media screen and (max-width: 539px) {
@@ -1567,6 +1571,7 @@ padding: 5px 8px; font-size: 12px;}
         height: 50px;
         width: 50px;
     }
+    .profile-left{margin-left: 5px;}
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
         width: 32%;
     }
@@ -1607,6 +1612,8 @@ padding: 5px 8px; font-size: 12px;}
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .profile-head-text{margin-top: 8px;}
+    .profile-head-text_dg{line-height: 18px;}
     .bui-menu-profile .profile-head-text_dg a {
         font-size: 12px;
     }
@@ -1658,7 +1665,7 @@ padding: 5px 8px; font-size: 12px;}
     .cover-pic .btn{font-size:13px; padding:3px 10px;}
     .add-contact div{width:40px; height:40px;}
     #contact_per .addtocont{top:30px;}
-    .profile-left{width:60%;}
+   
     #contact_per{width:40%;}
     .text-center.tab-block a{margin:0 10px;}
     .details_all_tital{font-size:18px;}
