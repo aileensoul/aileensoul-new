@@ -15210,7 +15210,7 @@ public function get_artistic_name($id=''){
 
                                            }
                                        $return_html .= '</div>
-                                       <button onclick="'.base_url('chat/abc/6/6/' . $key['user_id']).'"> Message</button>
+                                       <a href = "' . base_url('chat/abc/6/6/' . $key['user_id']) .'"> Message</a>
                                     </div>';
                                     }
                                    // follow meassge div end 
