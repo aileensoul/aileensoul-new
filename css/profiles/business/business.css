@@ -2845,7 +2845,16 @@ font-size: 32px;}
     .art_container{padding: 0px;}
 }
 @media screen and (max-width: 767px){
-    .art_container{padding: 0px 15px;}
+    .art_container{padding: 10px 15px;}
+}
+@media screen and (max-width: 479px)
+{
+    .popup-text textarea{ font-size: 12px!important;  }
+    .editor-content {
+        width: 81%;
+    }
+
+    .post-edit-popup .popup-text textarea{width: 85%;}
 }
 /*media zalak end*/
 
