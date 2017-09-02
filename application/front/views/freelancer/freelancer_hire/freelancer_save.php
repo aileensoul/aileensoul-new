@@ -228,7 +228,7 @@
     </div>
     <!-- Model Popup Close -->
     <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-    <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+    <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
     <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
