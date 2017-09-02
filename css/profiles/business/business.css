@@ -2851,8 +2851,22 @@ font-size: 32px;}
      .editor-content{width: 86%;}
         .business-profile-right .profile-main-box-buis-menu .flw_msg_btn ul{float: none;}
 }
+
+@media screen and (max-width: 640px){
+.bui_bcon {
+    width: 56%;
+}
+.user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
+.profile-job-post-location-name ul li .follow-li-text{font-size: 14px;}
+.bui_bcon {
+    width: 50%;
+}
+}
 @media screen and (max-width: 479px)
 {
+    .bui_bcon {
+    width: 49%;
+}
     .folle_text {
     width: 42%;
 }
@@ -2863,6 +2877,16 @@ font-size: 32px;}
     .camer_h i{font-size: 22px;}
     .post-edit-popup .popup-text textarea{width: 85%;}
 }
+
+@media screen and (max-width: 430px)
+{
+  
+.bui_bcon {
+    width: 35%;
+}
+
+}
+
 @media screen and (max-width: 320px){
      .editor-content{width: 78%;}
 }
