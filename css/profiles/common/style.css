@@ -434,7 +434,9 @@ hr {
 .font-white {
     color: #fff;
 }
-
+.border_none {
+    border: none;
+}
 
 /***  buttons  ***/
 .button {
@@ -1587,7 +1589,10 @@ label.error {
     position: absolute!important;
     bottom: 10px !important;
 }
-
+.bg-images {
+    position: relative;
+}
+#msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
 
 
 
@@ -1628,8 +1633,78 @@ label.error {
     font-size: 25px;
     font-weight: 600;
 }
+.left-side-menu {
+    width: 16%;
+    float: left;
+    height: 50px;
+    border-right: none;
+}
+.add-post-button a:hover {
+    color: #ffffff;
+}
+label.cameraButton input[accept*="camera"] {
+    display: none;
+}
+.alert-danger{color: black!important;font-size: 22px !important;}
+.notificationsmsg #notificationTitle{display: none !important;}
+
+
 /*** end all profile  ***/
-/***  business css  ***/
+/***  business and art css  ***/
+.profile-box-bui-menu {
+    padding-right: 2px !important;
+    margin-top: -38px;
+    border-top: 1px solid #d9d9d9;
+}
+.profile-box-bui-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+.profile-box-bui-menu li {
+    float: left;
+	padding-left: 15px;
+}
+.profile-box-bui-menu li:last-child {
+    border-right: none;
+}
+.profile-box-bui-menu li a:hover {
+    color: #1b8ab9;
+}
+.profile-box-bui-menu li a {
+    margin-right: 6px;
+    display: block;
+    text-align: center;
+    padding: 2px 12px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #5b5b5b;
+}
+.profile-box-user {
+    padding-right: 1px !important;
+    padding-left: 6px !important;
+}
+.camera_in {
+    margin-top: 5px;
+}
+.close3 {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close3:hover,
+.close3:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.slider_img img {
+    border: 1px solid #d9d9d9;
+}
+/***  end business and art css  ***/
+/***  only business css  ***/
 .view_bui:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -1649,7 +1724,34 @@ label.error {
     left: 37%;
     color: #fff;
 }
-/***  end business css  ***/
+.tabcontent {
+    display: none;
+	border: 1px solid #ccc;
+    border-top: none;
+}
+.edit_bui_img {
+    border: 1px solid #d9d9d9;
+}
+/***  end only business css  ***/
+/***  only art css  ***/
+.flw_msg_btn ul .fruser {
+    padding-left: 5px!important;
+}
+.action-buttons {
+    background-color: #1b8ab9;
+    border-radius: 50px;
+    display: inline-block;
+    float: right;
+    height: 30px;
+    margin-top: 5px;
+    padding: 8px 9px;
+    width: 30px;
+}
+.profile-art-box {
+    position: fixed;
+    /*width: 32.5%;*/
+}
+/***  end only art css  ***/
 /***  Change Password  ***/
 .change-password {
     padding: 80px 0;
