@@ -311,7 +311,7 @@ line-height: 1;}
 .custom-right-business{margin-left:10px;}
 .fixed_right_display{margin-top:0 !important;}
 .fixed_left_side{width: 350px; position: fixed;}
-.fixed_middle_side{left: 325px; width: 610px;}
+
 .fixed_right_side{ right: 33px;
     width: 350px;
     position: fixed;}
@@ -1070,6 +1070,7 @@ line-height: 1;}
 }
 .all-comment-comment-box span {
     color: #999999;
+    vertical-align: middle;
 }
 .post-design-pro-comment-img {
     border: 1px solid #d9d9d9;

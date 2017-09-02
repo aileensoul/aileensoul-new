@@ -15767,7 +15767,7 @@ public function get_artistic_name($id=''){
 
                            // no data avaloble code  start
                         if(count($artuserdata) == 0 && count($artpostdata) == 0){
-                        $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px;"> <h4 class="search_head"></h4><div class="inner_search"><div class="text-center rio">
+                        $return_html .= '<div class="profile_search" style="background-color: white; margin-bottom: 10px; margin-top: 10px; border-top: 1px solid #d9d9d9;"> <div class="inner_search"><div class="text-center rio">
                                                 <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
                                                 <p style="text-transform:none !important;border:0px;">We could not find what you were looking for.</p>
                                                 <ul class="padding_less_left">
