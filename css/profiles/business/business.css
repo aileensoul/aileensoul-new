@@ -1857,7 +1857,7 @@ background-size: 100%;
     color: #999;
     padding-left: 0px!important;
 }
-.editor-content.popup-textarea{width: 100%;padding: 10px; padding-bottom: 0px; padding:0px !important; margin: 3px!important}
+.editor-content.popup-textarea{width: 100%;padding: 10px; padding-bottom: 0px; padding:0px 10px !important; margin: 3px!important}
 .popup-textarea textarea {
     border: none;
     width: 100%;
