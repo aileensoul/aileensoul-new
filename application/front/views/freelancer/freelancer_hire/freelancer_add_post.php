@@ -333,7 +333,6 @@
                     if (clicked_id == 5)
                     {
                         document.getElementById('acon').style.display = 'block !important';
-                       // location.href = '<?php //echo base_url('dashboard') ?>';
                     }
                     if (clicked_id == 6)
                     {
