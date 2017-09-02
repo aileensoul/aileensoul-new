@@ -19,7 +19,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3" style="width: 22%;"></div>
-                        <div class="col-md-7 col-sm-7">
+                        <div class="col-md-7 col-sm-12">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>Details </h3> 

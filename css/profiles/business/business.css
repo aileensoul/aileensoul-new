@@ -2851,6 +2851,9 @@ font-size: 32px;}
 }
 @media screen and (max-width: 479px)
 {
+    .folle_text {
+    width: 42%;
+}
     .popup-text textarea{ font-size: 12px!important;  }
     .editor-content {
         width: 81%;
