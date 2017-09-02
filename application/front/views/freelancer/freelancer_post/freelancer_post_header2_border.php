@@ -51,8 +51,8 @@
                                         <button type="button" class="close">×</button>
                                         <form action=<?php echo base_url('search/freelancer_post_search') ?> method="get">
                                             <div class="new-search-input">
-                                                <input type="text" id="tags1" name="skills" placeholder="Post Title, Skills, Keywords" />
-                                                <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location" />
+                                                <input type="text" class="skill_keyword" id="tags1" name="skills" placeholder="Post Title, Skills, Keywords" />
+                                                <input type="text" class="skill_place" id="searchplace1" name="searchplace" placeholder="Find Location" />
                                                 <button type="submit" onclick="return check()" class="btn btn-primary">Search</button>
                                             </div>
                                         </form>

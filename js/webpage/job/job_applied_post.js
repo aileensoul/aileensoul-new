@@ -136,7 +136,7 @@ function job_apply(pagenum)
            return split( term ).pop();
        }
        
-       $( "#tags" ).bind( "keydown", function( event ) {
+       $( ".tags" ).bind( "keydown", function( event ) {
            if ( event.keyCode === $.ui.keyCode.TAB &&
                $( this ).autocomplete( "instance" ).menu.active ) {
                event.preventDefault();
@@ -146,7 +146,7 @@ function job_apply(pagenum)
            minLength: 2,
            source: function( request, response ) { 
                // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
+               $.getJSON(base_url +"job/get_alldata", { term : extractLast( request.term )},response);
            },
            focus: function() {
                // prevent value inserted on focus
@@ -155,49 +155,13 @@ function job_apply(pagenum)
    
             select: function(event, ui) {
           event.preventDefault();
-          $("#tags").val(ui.item.label);
+          $(".tags").val(ui.item.label);
           $("#selected-tag").val(ui.item.label);
       },
     
        });
    });
 //new script for jobtitle,company and skill End
-
-//new script for jobtitle,company and skill start for mobile view Start
-$(function() {
-       function split( val ) {
-           return val.split( /,\s*/ );
-       }
-       function extractLast( term ) {
-           return split( term ).pop();
-       }
-       
-       $( "#tags1" ).bind( "keydown", function( event ) {
-           if ( event.keyCode === $.ui.keyCode.TAB &&
-               $( this ).autocomplete( "instance" ).menu.active ) {
-               event.preventDefault();
-           }
-       })
-       .autocomplete({
-           minLength: 2,
-           source: function( request, response ) { 
-               // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_alldata", { term : extractLast( request.term )},response);
-           },
-           focus: function() {
-               // prevent value inserted on focus
-               return false;
-           },
-   
-            select: function(event, ui) {
-          event.preventDefault();
-          $("#tags1").val(ui.item.label);
-          $("#selected-tag").val(ui.item.label);
-      },
-    
-       });
-   });
-//new script for jobtitle,company and skill start for mobile view End
 
 //new script for cities start
  $(function() {
@@ -208,7 +172,7 @@ $(function() {
            return split( term ).pop();
        }
        
-       $( "#searchplace" ).bind( "keydown", function( event ) {
+       $( ".searchplace" ).bind( "keydown", function( event ) {
            if ( event.keyCode === $.ui.keyCode.TAB &&
                $( this ).autocomplete( "instance" ).menu.active ) {
                event.preventDefault();
@@ -227,49 +191,13 @@ $(function() {
    
             select: function(event, ui) {
           event.preventDefault();
-          $("#searchplace").val(ui.item.label);
+          $(".searchplace").val(ui.item.label);
           $("#selected-tag").val(ui.item.label);
       },
     
        });
    });
 //new script for cities End
-
-//new script for cities start mobile view Start
-$(function() {
-       function split( val ) {
-           return val.split( /,\s*/ );
-       }
-       function extractLast( term ) {
-           return split( term ).pop();
-       }
-       
-       $( "#searchplace1" ).bind( "keydown", function( event ) {
-           if ( event.keyCode === $.ui.keyCode.TAB &&
-               $( this ).autocomplete( "instance" ).menu.active ) {
-               event.preventDefault();
-           }
-       })
-       .autocomplete({
-           minLength: 2,
-           source: function( request, response ) { 
-               // delegate back to autocomplete, but extract the last term
-               $.getJSON(base_url +"general/get_location", { term : extractLast( request.term )},response);
-           },
-           focus: function() {
-               // prevent value inserted on focus
-               return false;
-           },
-   
-            select: function(event, ui) {
-          event.preventDefault();
-          $("#searchplace1").val(ui.item.label);
-          $("#selected-tag").val(ui.item.label);
-      },
-    
-       });
-   });
-//new script for cities start mobile view End
 
 //For Search Validation Start
  function check() {
@@ -418,11 +346,11 @@ function removepopup(id) {
            data: 'app_id=' + abc,
            success: function (data) {
                $('#' + 'removeapply' + abc).html(data);
-               $('#' + 'removeapply' + abc).parent().removeClass();
-               var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+               $('#' + 'removeapply' + abc).removeClass();
+               var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
                if (numItems == '0') {
           
-                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='" + base_url + "('img/job-no.png')''></div><div class='art_no_post_text'>No  Applied Post Available</div></div>";
+                   var nodataHtml = "<div class='art-img-nn'><div class='art_no_post_img'><img src='"+ base_url + "img/job-no.png'/></div><div class='art_no_post_text'>No  Applied Post Available</div></div>";
                    $('.contact-frnd-post').html(nodataHtml);
                }
            }

@@ -171,8 +171,8 @@
                            <!-- loop start for post -->
                            <?php foreach ($artpostdata as $key) {
                               ?>
-
-                              <div class="col-md-12 col-sm-12 post-design-box" id="<?php echo "removepost" . $key['art_post_id']; ?>" style="box-shadow: none; ">
+                              <div id="<?php echo "removepost" . $key['art_post_id']; ?>">
+                              <div class="col-md-12 col-sm-12 post-design-box"  style="box-shadow: none; ">
                                  <div class="post_radius_box">
                                     <div class="post-design-search-top col-md-12" style="background-color: none!important;">
                                        <div class="post-design-pro-img ">
@@ -695,6 +695,7 @@
                                        </div>
                                     </div>
                                  </div>
+                              </div>
                               </div>
                               <?php }?>
                               <!-- loop end for post -->

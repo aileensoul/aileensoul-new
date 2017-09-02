@@ -22,10 +22,10 @@
                   </div>
                   <div id="search">
                      <button type="button" class="close">×</button>
-                     <form action=<?php echo base_url('search/job_search')?> method="get">
+                     <form action=<?php echo base_url('job/job_search')?> method="get">
                         <div class="new-search-input">
-                           <input type="search" id="tags1" name="skills" value="" placeholder="Job Title,Skill,Company" />
-                           <input type="search" id="searchplace1" name="searchplace" value="" placeholder="Find Location" />
+                           <input type="search" id="tags1" class="tags" name="skills" value="" placeholder="Job Title,Skill,Company" />
+                           <input type="search" id="searchplace1" class="searchplace" name="searchplace" value="" placeholder="Find Location" />
                            <button type="submit"  id="search_btn" class="btn btn-primary" onclick="return check();">Search</button>
                         </div>
                      </form>

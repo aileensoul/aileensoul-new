@@ -247,6 +247,11 @@ var isProcessing = false;
                     success: function (data) { //alert(data);
                         $('.loader').remove();
                         $('.profile-boxProfileCard_follow').html(data);
+                        var nb = $('.follow_box_ul_li').length;
+                        // alert(nb);
+                         if(nb > 0){ //alert("jii");
+                          document.getElementById("hideuserlist").style.display = "block";
+                         }
                     }
                 });
             }

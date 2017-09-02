@@ -945,7 +945,7 @@ class Business_profile extends MY_Controller {
         $company_name = $this->get_company_name($id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
 //manage post end
-         if ($this->session->userdata('aileenuser')) {
+        if ($this->session->userdata('aileenuser')) {
             $this->load->view('business_profile/business_profile_manage_post', $this->data);
         } else {
             $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
@@ -3946,9 +3946,9 @@ class Business_profile extends MY_Controller {
         $success = file_put_contents($file, $data);
 
         $main_image = $user_bg_path . $imageName;
-        
+
         $main_image_size = filesize($main_image);
-        
+
         if ($main_image_size > '1000000') {
             $quality = "50%";
         } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
@@ -3973,7 +3973,7 @@ class Business_profile extends MY_Controller {
 //        $this->image_lib->watermark();
 
         /* RESIZE */
-        
+
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
@@ -12155,6 +12155,66 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         return $company_name = $businessdata[0]['company_name'];
+    }
+
+    public function ajax_business_skill() {
+        $term = $_GET['term'];
+
+        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
+        $search_condition = "(company_name LIKE '" . trim($term) . "%' OR other_industrial LIKE '" . trim($term) . "%' OR other_business_type LIKE '" . trim($term) . "%')";
+        $businessdata = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET BUSINESS TYPE
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $search_condition = "(business_name LIKE '" . trim($term) . "%' )";
+        $businesstype = $this->data['results'] = $this->common->select_data_by_search('business_type', $search_condition, $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET INDUSTRIAL TYPE
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $search_condition = "(industry_name LIKE '" . trim($term) . "%' )";
+        $industrytype = $this->data['results'] = $this->common->select_data_by_search('industry_type', $search_condition, $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET PRODUCT
+
+        $contition_array = array('status' => '1', 'is_delete' => '0');
+        $search_condition = "(product_name LIKE '" . trim($term) . "%' OR product_description LIKE '" . trim($term) . "%')";
+        $productdata = $this->data['results'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'product_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $unique = array_merge($businessdata, $businesstype, $industrytype, $productdata);
+        foreach ($unique as $key => $value) {
+            foreach ($value as $ke => $val) {
+                if ($val != "") {
+                    $result[] = $val;
+                }
+            }
+        }
+
+        $results = array_unique($result);
+        foreach ($results as $key => $value) {
+            $result1[$key]['value'] = $value;
+        }
+
+        echo json_encode($result1);
+    }
+
+    public function ajax_location_data() {
+        $term = $_GET['term'];
+        if (!empty($term)) {
+            $contition_array = array('status' => '1');
+            $search_condition = "(city_name LIKE '" . trim($term) . "%')";
+            $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
+            foreach ($location_list as $key1 => $value) {
+                foreach ($value as $ke1 => $val1) {
+                    $location[] = $val1;
+                }
+            }
+            foreach ($location as $key => $value) {
+                $city_data[$key]['value'] = $value;
+            }
+            echo json_encode($city_data);
+        }
     }
 
 }

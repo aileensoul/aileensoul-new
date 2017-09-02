@@ -588,6 +588,7 @@ class Freelancer extends MY_Controller {
                         }
                     }
                     //  die();
+                    $skill= array_unique($skill,SORT_REGULAR);
                     $skills = implode(',', $skill);
                 }
                 $data = array(
@@ -1121,7 +1122,7 @@ class Freelancer extends MY_Controller {
 
 //freelancer Portfolio page controller End
 
-    public function freelancer_hire_post($id) {
+    public function freelancer_hire_post($id="") {
         $id = $category = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $id, 'status' => 1))->row()->user_id;
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  start
@@ -1149,7 +1150,7 @@ class Freelancer extends MY_Controller {
         $this->load->view('freelancer/freelancer_hire/freelancer_hire_post', $this->data);
     }
 
-    public function ajax_freelancer_hire_post($id, $retur) {
+    public function ajax_freelancer_hire_post($id="", $retur="") {
        
         //   echo $retur;die();
         $userid = $this->session->userdata('aileenuser');
@@ -1643,14 +1644,18 @@ class Freelancer extends MY_Controller {
             if (count($skills) > 0) {
 
                 foreach ($skills as $ski) {
+                   
                     $contition_array = array('skill' => trim($ski), 'type' => 1);
                     //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    
                     if (count($skilldata) < 0) {
                         $contition_array = array('skill' => trim($ski), 'type' => 5);
-                        //$search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        
                     }
+                    
+                   
                     if ($skilldata) {
                         $skill[] = $skilldata[0]['skill_id'];
                     } else {
@@ -1664,6 +1669,7 @@ class Freelancer extends MY_Controller {
                     }
                 }
                 //  die();
+                $skill= array_unique($skill,SORT_REGULAR);
                 $skills = implode(',', $skill);
             }
             //skill code end
@@ -2133,6 +2139,7 @@ class Freelancer extends MY_Controller {
                 }
             }
             //  die();
+            $skill= array_unique($skill,SORT_REGULAR);
             $skills = implode(',', $skill);
         }
 

@@ -4,16 +4,16 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
-        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver='.time()); ?>">  DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver=' . time()); ?>">
+        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver=' . time()); ?>">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver=' . time()); ?>">  DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -140,7 +140,7 @@
                                         </div>
                                         <!-- no post found div end -->
                                     </div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 </div>
 
                                 <div class="animated fadeInRightBig ">
@@ -193,7 +193,7 @@
 
                                                 <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
 
-    <?php } ?>
+                                            <?php } ?>
 
                                             <?php
                                         } else {
@@ -217,7 +217,7 @@
                                 <div class="row"></div>
                                 <div  id="text"  class="editor-content col-md-12 popup-textarea" >
                                     <textarea id="test-upload-des" name="product_desc" class="description" placeholder="Enter Description" tabindex="2"></textarea>
-                                                                        
+
                                 </div>
                                 <div class="print_privew_post">
                                 </div>
@@ -252,7 +252,7 @@
                                     <button type="submit"  value="Submit">Post
                                     </button>    
                                 </div>
-<?php echo form_close(); ?>
+                                <?php echo form_close(); ?>
                             </div>
                         </div>
                     </div>
@@ -323,30 +323,114 @@
                         </div>
                     </div>
                     <footer>
-<?php echo $footer; ?>
+                        <?php echo $footer; ?>
                     </footer>
-                    <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-                    <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-                    <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>--> 
-                    <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>--> 
-                    <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-                    <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()) ?>"></script> 
+                    <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+                    <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());      ?>"></script>-->
+                    <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());      ?>"></script>--> 
+                    <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());      ?>"></script>--> 
+                    <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+                    <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
                     <!-- POST BOX JAVASCRIPT START --> 
-                    <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-                    <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
+                    <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
                     <script>
-                                                            var base_url = '<?php echo base_url(); ?>';
-                                                            var data = <?php echo json_encode($demo); ?>;
-                                                            var data1 = <?php echo json_encode($city_data); ?>;
+                                            var base_url = '<?php echo base_url(); ?>';
                     </script>
-                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/home.js?ver='.time()); ?>"></script>
-<?php
+                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/home.js?ver=' . time()); ?>"></script>
+                    <?php
 //$this->minify->js(array('webpage/business-profile/home_1.js'));
-?>
+                    ?>
+                    <script>
+                                            $(function () {
+                                                function split(val) {
+                                                    return val.split(/,\s*/);
+                                                }
+                                                function extractLast(term) {
+                                                    return split(term).pop();
+                                                }
+                                                /* first box */
+                                                $("#tags").bind("keydown", function (event) {
+                                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                                            $(this).autocomplete("instance").menu.active) {
+                                                        event.preventDefault();
+                                                    }
+                                                })
+                                                        .autocomplete({
+                                                            minLength: 1,
+                                                            source: function (request, response) {
+                                                                // delegate back to autocomplete, but extract the last term
+                                                                $.getJSON(base_url + "business_profile/ajax_business_skill", {term: extractLast(request.term)}, response);
+                                                            },
+                                                            focus: function () {
+                                                                // prevent value inserted on focus
+                                                                return false;
+                                                            },
+                                                            select: function (event, ui) {
+                                                                var terms = split(this.value);
+                                                                if (terms.length <= 1) {
+                                                                    // remove the current input
+                                                                    terms.pop();
+                                                                    // add the selected item
+                                                                    terms.push(ui.item.value);
+                                                                    // add placeholder to get the comma-and-space at the end
+                                                                    terms.push("");
+                                                                    this.value = terms.join(", ");
+                                                                    return false;
+                                                                } else {
+                                                                    var last = terms.pop();
+                                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                                    $(this).effect("highlight", {}, 1000);
+                                                                    $(this).attr("style", "border: solid 1px red;");
+                                                                    return false;
+                                                                }
+                                                            }
+                                                        });
+                                                /* first box*/
+                                                /* location box*/
+                                                $("#searchplace").bind("keydown", function (event) {
+                                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                                            $(this).autocomplete("instance").menu.active) {
+                                                        event.preventDefault();
+                                                    }
+                                                })
+                                                        .autocomplete({
+                                                            minLength: 1,
+                                                            source: function (request, response) {
+                                                                // delegate back to autocomplete, but extract the last term
+                                                                $.getJSON(base_url + "business_profile/ajax_location_data", {term: extractLast(request.term)}, response);
+                                                            },
+                                                            focus: function () {
+                                                                // prevent value inserted on focus
+                                                                return false;
+                                                            },
+                                                            select: function (event, ui) {
+                                                                var terms = split(this.value);
+                                                                if (terms.length <= 1) {
+                                                                    // remove the current input
+                                                                    terms.pop();
+                                                                    // add the selected item
+                                                                    terms.push(ui.item.value);
+                                                                    // add placeholder to get the comma-and-space at the end
+                                                                    terms.push("");
+                                                                    this.value = terms.join(", ");
+                                                                    return false;
+                                                                } else {
+                                                                    var last = terms.pop();
+                                                                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                                                                    $(this).effect("highlight", {}, 1000);
+                                                                    $(this).attr("style", "border: solid 1px red;");
+                                                                    return false;
+                                                                }
+                                                            }
+                                                        });
+                                                /* location box*/
+                                            });
+                    </script>
                     </body>
                     </html>

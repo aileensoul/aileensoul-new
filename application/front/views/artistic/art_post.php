@@ -121,7 +121,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 		
 
     </div> 
-	<div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display">
+	<div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" style="display: none">
      
          <div class="full-box-module_follow" style="margin-top: 0px;">
             <!-- follower list start  -->  

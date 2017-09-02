@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
+<!--        <script src="<?php //echo base_url('js/jquery.min.js'); ?>"></script>-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
+        <!--<link rel="stylesheet" href="<?php //echo base_url('css/bootstrap.min.css'); ?>" />-->
        
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
         <style type="text/css">
@@ -299,7 +299,7 @@
         </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+<!--        <script src="<?php// echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
@@ -307,8 +307,6 @@
         
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
             var returnpage = '<?php echo $returnpage; ?>';
             var user_id =<?php echo json_encode($this->uri->segment(3)) ?>;
         </script>

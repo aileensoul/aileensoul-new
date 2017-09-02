@@ -421,9 +421,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 /***---------- end  common css for all profile  -------------***/
 
 .add-post-button {margin: 30px 10px 10px;}
-
- 
-.art_no_post_avl{    background: white;
+.art_no_post_avl{background: white;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
     margin-top: 0px;
@@ -452,9 +450,10 @@ border-bottom: 1px solid #d9d9d9;}
 }
 .art_no_post_text{
     line-height: 40px;
-color: #cccccc;
-font-size: 32px;
-padding-top: 30px;}
+	color: #cccccc;
+	font-size: 32px;
+	padding-top: 30px;
+}
 .art_no_post_text1{color: #ccc;
 font-size: 32px;}
 
@@ -470,4 +469,56 @@ font-size: 32px;}
     border-top-left-radius: 4px;
     border: 1px solid #bfbfbf;
     border-top-right-radius: 3px;
+}
+.reactivatebox {
+    height: 160px;
+    width: 80%;
+    background-color: #fff;
+    margin-top: 16%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 2px #bfbfbf;
+    align-items: center;
+}
+.reactivate_header {
+    padding: 3px;
+}
+.reactivate_header h2 {
+    margin: 10px 0px;
+}
+.reactivate_btn_y {
+    height: 20px;
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-top: 25px;
+}
+.reactivate_btn_y a {
+    text-decoration: none;
+    padding: 10px 35px;
+    background-color: #1b8ab9;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 20px;
+}
+.reactivate_btn_y a:hover {
+    color: #fff;
+}
+.reactivate_btn_n {
+    height: 20px;
+    width: 50%;
+    text-align: center;
+    float: left;
+    margin-top: 25px;
+}
+.reactivate_btn_n a {
+    text-decoration: none;
+    padding: 10px 35px;
+    border-radius: 6px;
+    background-color: #1b8ab9;
+    font-size: 20px;
+    color: #fff;
+}
+.reactivate_btn_n a:hover {
+    color: #fff;
 }

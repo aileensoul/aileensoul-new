@@ -20,8 +20,8 @@
                             <button type="button" class="close">×</button>
                             <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
                                 <div class="new-search-input">
-                                    <input type="text" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
-                                    <input type="text" id="searchplace1" name="searchplace"  placeholder="Find Location" />
+                                    <input type="text" class="skill_keyword" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
+                                    <input type="text" class="skill_place" id="searchplace1" name="searchplace"  placeholder="Find Location" />
                                     <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
                                         <input type="submit" name="search_submit" value="Search" onclick="return leave_page(4)" class="btn btn-primary">
                                     <?php } else { ?>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="">
                         <ul class="" id="dropdownclass">
-                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>"><span class="bu_home"></span></a>
+                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
                             </li>
                             <li id="Inbox_link">
                                 <?php if ($message_count) { ?>
@@ -62,8 +62,8 @@
                                         <span class="my_account">
                                             <div class="my_S">Account</div>
                                         </span>
-                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
                                         <?php
                                         $userid = $this->session->userdata('aileenuser');
                                         ?>

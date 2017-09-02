@@ -13,8 +13,8 @@
         <?php if ($businessdata[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <div class="js">
-            <div id="preloader"></div>
+        <!--<div class="js">-->
+<!--            <div id="preloader"></div>-->
             <section>
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="common-form1">
@@ -217,12 +217,12 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-        </div>
+        <!--</div>-->
 
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
