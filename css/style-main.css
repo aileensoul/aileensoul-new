@@ -1224,10 +1224,10 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .custom-box.even .custom-width .left-box{text-align:right;}
 
 .custom-box .custom-width .right-box h1{position:relative; padding-top:25px;}
-.custom-box .custom-width .right-box h1 a{font-size:65px; position:relative; font-family:'times_new_romanbold';}
+.custom-box .custom-width .right-box h1 a{font-size:65px; position:relative; font-family: 'robotomedium';}
 .custom-box .custom-width .right-box h1 a:after{width:140px; height:1px; background:#1b8ab9; position:absolute; left:0;bottom:0; content:"";}
 .custom-box.even .custom-width .right-box h1 a:after{right:0; left:inherit;}
-.custom-box .custom-width .right-box p{font-size:20px; padding-top:20px; font-family: 'times_new_romanregular';}
+.custom-box .custom-width .right-box p{font-size:20px; padding-top:20px; font-family:'arial';}
 .custom-box .custom-width .right-box .btns{padding-top:70px;}
 .custom-box .custom-width .right-box .btns a:hover{color:#1b83b9; text-decoration: underline;}
 .custom-box .custom-width .right-box .btns a.btn-4:hover{text-decoration: none; background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
@@ -1480,6 +1480,25 @@ padding: 4px;
 .main_otp_box_middle_submit input[type="password"]:focus::placeholder , .main_otp_box_middle_submit input[type="text"]:focus::placeholder {
   color:#1b8ab9;
 }
+
+.cls-ve:hover{color: black;}
+.cls-ve{color: #ccc; cursor: pointer;}
+.profile-text1 .as-p{font-size: 13px;
+padding-left: 0px;
+letter-spacing: 0.3px;
+cursor: default;
+}
+.profile-text1 .chng_email{text-decoration: underline; }
+.profile-text1 .vert_email{color: white;
+    cursor: pointer;
+background: #1b8ab9;
+padding: 5px;
+border-radius: 3px;
+font-size: 14px;
+margin: 10px;}
+.email-verify{width: 100%; padding-left: 3%;}
+.vs-o{ padding: 10px;}
+
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
