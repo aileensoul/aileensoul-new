@@ -1,2 +1,1466 @@
-function check(){var e=$.trim(document.getElementById("tags1").value),t=$.trim(document.getElementById("searchplace1").value);return""==e&&""==t?!1:void 0}function openModal(){document.getElementById("myModal1").style.display="block"}function closeModal(){document.getElementById("myModal1").style.display="none"}function plusSlides(e){$(".post-design-commnet-box").show(),showSlides(slideIndex+=e)}function currentSlide(e){check_post_available(post_id),$(".post-design-commnet-box").show(),showSlides(slideIndex=e)}function showSlides(e){var t,n=document.getElementsByClassName("mySlides"),o=document.getElementsByClassName("demo"),s=document.getElementById("caption");for(e>n.length&&(slideIndex=1),1>e&&(slideIndex=n.length),t=0;t<n.length;t++)n[t].style.display="none";for(t=0;t<o.length;t++)o[t].className=o[t].className.replace(" active","");n[slideIndex-1].style.display="block",o[slideIndex-1].className+=" active",s.innerHTML=o[slideIndex-1].alt}function post_like(e){$.ajax({type:"POST",url:base_url+"business_profile/like_post",data:"post_id="+e,dataType:"json",success:function(t){$(".likepost"+e).html(t.like),$(".likeusername"+e).html(t.likeuser),$(".comment_like_count"+e).html(t.like_user_count),$(".likeduserlist"+e).hide(),"0"==t.like_user_total_count?document.getElementById("likeusername"+e).style.display="none":document.getElementById("likeusername"+e).style.display="block",$("#likeusername"+e).addClass("likeduserlist1")}})}function insert_comment(e){$("#post_comment"+e).click(function(){$(this).prop("contentEditable",!0),$(this).html("")});var t=$("#post_comment"+e),n=t.html();if(n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),n=n.replace(/&gt;/gi,">"),n=n.replace(/div/gi,"p"),""==n||"<br>"==n)return!1;if(/^\s+$/gi.test(n))return!1;n=n.replace(/&/g,"%26"),$("#post_comment"+e).html("");var o=document.getElementById("threecomment"+e),s=document.getElementById("fourcomment"+e);"block"===o.style.display&&"none"===s.style.display?$.ajax({type:"POST",url:base_url+"business_profile/pninsert_commentthree",data:"post_id="+e+"&comment="+encodeURIComponent(n),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$(".insertcomment"+e).html(t.comment),$(".comment_count"+e).html(t.comment_count)}}):$.ajax({type:"POST",url:base_url+"business_profile/pninsert_comment",data:"post_id="+e+"&comment="+encodeURIComponent(n),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$("#fourcomment"+e).html(t.comment),$(".comment_count"+e).html(t.comment_count)}})}function entercomment(e){$("#post_comment"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#post_comment"+e).keypress(function(t){if(13==t.keyCode&&!t.shiftKey){t.preventDefault();var n=$("#post_comment"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),o=o.replace(/&gt;/gi,">"),o=o.replace(/div/gi,"p"),""==o||"<br>"==o)return!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),$("#post_comment"+e).html(""),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500);var s=document.getElementById("threecomment"+e),i=document.getElementById("fourcomment"+e);"block"===s.style.display&&"none"===i.style.display?$.ajax({type:"POST",url:base_url+"business_profile/pninsert_commentthree",data:"post_id="+e+"&comment="+encodeURIComponent(o),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$(".insertcomment"+e).html(t.comment),$(".comment_count"+e).html(t.comment_count)}}):$.ajax({type:"POST",url:base_url+"business_profile/pninsert_comment",data:"post_id="+e+"&comment="+encodeURIComponent(o),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$("#fourcomment"+e).html(t.comment),$(".comment_count"+e).html(t.comment_count)}})}})}function commentall(e){var t=document.getElementById("threecomment"+e),n=document.getElementById("fourcomment"+e),o=document.getElementById("insertcount"+e);$(".post-design-commnet-box").show(),"block"===t.style.display&&"none"===n.style.display&&(t.style.display="none",n.style.display="block",o.style.visibility="show",$.ajax({type:"POST",url:base_url+"business_profile/pnfourcomment",data:"bus_post_id="+e,success:function(t){$("#fourcomment"+e).html(t)}}))}function comment_like(e){$.ajax({type:"POST",url:base_url+"business_profile/like_comment",data:"post_id="+e,success:function(t){$("#likecomment"+e).html(t)}})}function comment_like1(e){$.ajax({type:"POST",url:base_url+"business_profile/like_comment1",data:"post_id="+e,success:function(t){$("#likecomment1"+e).html(t)}})}function comment_delete(e){$(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='comment_deleted("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function comment_deleted(e){var t=document.getElementById("post_delete"+e);$.ajax({type:"POST",url:base_url+"business_profile/pndelete_comment",data:"post_id="+e+"&post_delete="+t.value,dataType:"json",success:function(e){$(".insertcomment"+t.value).html(e.comment),$(".comment_count"+t.value).html(e.comment_count+" Comment"),$(".post-design-commnet-box").show()}})}function comment_deletetwo(e){$(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='comment_deletedtwo("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function comment_deletedtwo(e){var t=document.getElementById("post_deletetwo"+e);$.ajax({type:"POST",url:base_url+"business_profile/pndelete_commenttwo",data:"post_id="+e+"&post_delete="+t.value,dataType:"json",success:function(e){$(".insertcommenttwo"+t.value).html(e.comment),$(".comment_count"+t.value).html(e.comment_count+"<span> Comment</span>"),$(".post-design-commnet-box").show()}})}function comment_editbox(e){document.getElementById("editcomment"+e).style.display="inline-block",document.getElementById("showcomment"+e).style.display="none",document.getElementById("editsubmit"+e).style.display="inline-block",document.getElementById("editcommentbox"+e).style.display="none",document.getElementById("editcancle"+e).style.display="block",$(".post-design-commnet-box").hide()}function comment_editcancle(e){document.getElementById("editcommentbox"+e).style.display="block",document.getElementById("editcancle"+e).style.display="none",document.getElementById("editcomment"+e).style.display="none",document.getElementById("showcomment"+e).style.display="block",document.getElementById("editsubmit"+e).style.display="none",$(".post-design-commnet-box").show()}function comment_editboxtwo(e){$("div[id^=editcommenttwo]").css("display","none"),$("div[id^=showcommenttwo]").css("display","block"),$("button[id^=editsubmittwo]").css("display","none"),$("div[id^=editcommentboxtwo]").css("display","block"),$("div[id^=editcancletwo]").css("display","none"),document.getElementById("editcommenttwo"+e).style.display="inline-block",document.getElementById("showcommenttwo"+e).style.display="none",document.getElementById("editsubmittwo"+e).style.display="inline-block",document.getElementById("editcommentboxtwo"+e).style.display="none",document.getElementById("editcancletwo"+e).style.display="block",$(".post-design-commnet-box").hide()}function comment_editcancletwo(e){document.getElementById("editcommentboxtwo"+e).style.display="block",document.getElementById("editcancletwo"+e).style.display="none",document.getElementById("editcommenttwo"+e).style.display="none",document.getElementById("showcommenttwo"+e).style.display="block",document.getElementById("editsubmittwo"+e).style.display="none",$(".post-design-commnet-box").show()}function comment_editbox3(e){document.getElementById("editcomment3"+e).style.display="block",document.getElementById("showcomment3"+e).style.display="none",document.getElementById("editsubmit3"+e).style.display="block",document.getElementById("editcommentbox3"+e).style.display="none",document.getElementById("editcancle3"+e).style.display="block",$(".post-design-commnet-box").hide()}function comment_editcancle3(e){document.getElementById("editcommentbox3"+e).style.display="block",document.getElementById("editcancle3"+e).style.display="none",document.getElementById("editcomment3"+e).style.display="none",document.getElementById("showcomment3"+e).style.display="block",document.getElementById("editsubmit3"+e).style.display="none",$(".post-design-commnet-box").show()}function comment_editbox4(e){document.getElementById("editcomment4"+e).style.display="block",document.getElementById("showcomment4"+e).style.display="none",document.getElementById("editsubmit4"+e).style.display="block",document.getElementById("editcommentbox4"+e).style.display="none",document.getElementById("editcancle4"+e).style.display="block",$(".post-design-commnet-box").hide()}function comment_editcancle4(e){document.getElementById("editcommentbox4"+e).style.display="block",document.getElementById("editcancle4"+e).style.display="none",document.getElementById("editcomment4"+e).style.display="none",document.getElementById("showcomment4"+e).style.display="block",document.getElementById("editsubmit4"+e).style.display="none",$(".post-design-commnet-box").show()}function edit_comment(e){$("#editcomment"+e).click(function(){$(this).prop("contentEditable",!0)});var t=$("#editcomment"+e),n=t.html();return n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),n=n.replace(/&gt;/gi,">"),n=n.replace(/div/gi,"p"),""==n||"<br>"==n?!1:/^\s+$/gi.test(n)?!1:(n=n.replace(/&/g,"%26"),$.ajax({type:"POST",url:base_url+"business_profile/edit_comment_insert",data:"post_id="+e+"&comment="+encodeURIComponent(n),success:function(t){document.getElementById("editcomment"+e).style.display="none",document.getElementById("showcomment"+e).style.display="block",document.getElementById("editsubmit"+e).style.display="none",document.getElementById("editcommentbox"+e).style.display="block",document.getElementById("editcancle"+e).style.display="none",$("#showcomment"+e).html(t),$(".post-design-commnet-box").show()}}),void $(".scroll").click(function(e){e.preventDefault(),$("html,body").animate({scrollTop:$(this.hash).offset().top},1200)}))}function commentedit(e){$("#editcomment"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#editcomment"+e).keypress(function(t){if(13==t.which&&1!=t.shiftKey){t.preventDefault();var n=$("#editcomment"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),o=o.replace(/&gt;/gi,">"),o=o.replace(/div/gi,"p"),""==o||"<br>"==o)return!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500),$.ajax({type:"POST",url:base_url+"business_profile/edit_comment_insert",data:"post_id="+e+"&comment="+encodeURIComponent(o),success:function(t){document.getElementById("editcomment"+e).style.display="none",document.getElementById("showcomment"+e).style.display="block",document.getElementById("editsubmit"+e).style.display="none",document.getElementById("editcommentbox"+e).style.display="block",document.getElementById("editcancle"+e).style.display="none",$("#showcomment"+e).html(t),$(".post-design-commnet-box").show()}})}}),$(".scroll").click(function(e){e.preventDefault(),$("html,body").animate({scrollTop:$(this.hash).offset().top},1200)})}function edit_commenttwo(e){$("#editcommenttwo"+e).click(function(){$(this).prop("contentEditable",!0)});var t=$("#editcommenttwo"+e),n=t.html();return n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),n=n.replace(/&gt;/gi,">"),n=n.replace(/div/gi,"p"),""==n||"<br>"==n?!1:/^\s+$/gi.test(n)?!1:(n=n.replace(/&/g,"%26"),$.ajax({type:"POST",url:base_url+"business_profile/edit_comment_insert",data:"post_id="+e+"&comment="+encodeURIComponent(n),success:function(t){document.getElementById("editcommenttwo"+e).style.display="none",document.getElementById("showcommenttwo"+e).style.display="block",document.getElementById("editsubmittwo"+e).style.display="none",document.getElementById("editcommentboxtwo"+e).style.display="block",document.getElementById("editcancletwo"+e).style.display="none",$("#showcommenttwo"+e).html(t),$(".post-design-commnet-box").show()}}),void $(".scroll").click(function(e){e.preventDefault(),$("html,body").animate({scrollTop:$(this.hash).offset().top},1200)}))}function commentedittwo(e){$("#editcommenttwo"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#editcommenttwo"+e).keypress(function(t){if(13==t.which&&1!=t.shiftKey){t.preventDefault();var n=$("#editcommenttwo"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),o=o.replace(/&gt;/gi,">"),o=o.replace(/div/gi,"p"),""==o||"<br>"==o)return!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500),$.ajax({type:"POST",url:base_url+"business_profile/edit_comment_insert",data:"post_id="+e+"&comment="+encodeURIComponent(o),success:function(t){document.getElementById("editcommenttwo"+e).style.display="none",document.getElementById("showcommenttwo"+e).style.display="block",document.getElementById("editsubmittwo"+e).style.display="none",document.getElementById("editcommentboxtwo"+e).style.display="block",document.getElementById("editcancletwo"+e).style.display="none",$("#showcommenttwo"+e).html(t),$(".post-design-commnet-box").show()}})}}),$(".scroll").click(function(e){e.preventDefault(),$("html,body").animate({scrollTop:$(this.hash).offset().top},1200)})}function myFunction(e){document.getElementById("myDropdown"+e).classList.toggle("show"),$(document).on("keydown",function(t){27===t.keyCode&&(document.getElementById("myDropdown"+e).classList.toggle("hide"),$(".dropdown-content1").removeClass("show"))})}function read(e){return function(t){var n=t.target.result,o=$("<img/>",{src:n,title:encodeURIComponent(e.name),"class":"thumb"}),s=$("<span/>",{html:o,"class":"thumbParent"}).append('<span class="remove_thumb"/>');thumbsArray.push(n),$list.append(s)}}function handleFileSelect(e){e.preventDefault();var t=e.target.files,n=t.length;if(n>maxUpload||thumbsArray.length>=maxUpload)return alert("Sorry you can upload only 5 images");for(var o=0;n>o;o++){var s=t[o];if(s.type.match("image.*")){var i=new FileReader;i.onload=read(s),i.readAsDataURL(s)}}}function save_post(e){$.ajax({type:"POST",url:base_url+"business_profile/business_profile_save",data:"business_profile_post_id="+e,success:function(t){$(".savedpost"+e).html(t)}})}function remove_post(e){$.ajax({type:"POST",url:base_url+"business_profile/business_profile_deletepost",data:"business_profile_post_id="+e,success:function(t){$("#removepost"+e).html(t),window.location="<?php echo base_url() ?>business_profile/business_profile_post"}})}function del_particular_userpost(e){$.ajax({type:"POST",url:base_url+"business_profile/del_particular_userpost",data:"business_profile_post_id="+e,success:function(t){$("#removepost"+e).html(t)}})}function mulimg_like(e){$.ajax({type:"POST",url:base_url+"business_profile/mulimg_like",data:"post_image_id="+e,dataType:"json",success:function(t){$(".likepostimg"+e).html(t.like),$(".likeusernameimg"+e).html(t.likeuser),$(".comnt_count_ext_img"+e).html(t.like_user_count),$(".likeduserlistimg"+e).hide(),"0"==t.like_user_total_count?document.getElementById("likeusernameimg"+e).style.display="none":document.getElementById("likeusernameimg"+e).style.display="block",$("#likeusernameimg"+e).addClass("likeduserlist1")}})}function insert_commentimg(e){$("#post_imgcomment"+e).click(function(){$(this).prop("contentEditable",!0),$(this).html("")});var t=$("#post_imgcomment"+e),n=t.html();if(n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),""==n||"<br>"==n)return!1;if(/^\s+$/gi.test(n))return!1;n=n.replace(/&/g,"%26"),$("#post_imgcomment"+e).html("");var o=document.getElementById("threeimgcomment"+e),s=document.getElementById("fourimgcomment"+e);"block"===o.style.display&&"none"===s.style.display?$.ajax({type:"POST",url:base_url+"business_profile/pnmulimgcommentthree",data:"post_image_id="+e+"&comment="+encodeURIComponent(n),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$(".insertimgcomment"+e).html(t.comment),$(".like_count_ext_img"+e).html(t.comment_count)}}):$.ajax({type:"POST",url:base_url+"business_profile/pnmulimg_comment",data:"post_image_id="+e+"&comment="+encodeURIComponent(n),dataType:"json",success:function(t){$("textarea").each(function(){$(this).val("")}),$("#fourimgcomment"+e).html(t.comment),$(".like_count_ext_img"+e).html(t.comment_count)}})}function entercommentimg(e){$("#post_imgcomment"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#post_imgcomment"+e).keypress(function(t){if(13==t.keyCode&&!t.shiftKey){t.preventDefault();var n=$("#post_imgcomment"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),""==o||"<br>"==o)return!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),$("#post_imgcomment"+e).html(""),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500);var s=document.getElementById("threeimgcomment"+e),i=document.getElementById("fourimgcomment"+e);"block"===s.style.display&&"none"===i.style.display?$.ajax({type:"POST",url:base_url+"business_profile/pnmulimgcommentthree",data:"post_image_id="+e+"&comment="+encodeURIComponent(o),dataType:"json",success:function(t){$(".insertimgcomment"+e).html(t.comment),$(".like_count_ext_img"+e).html(t.comment_count)}}):$.ajax({type:"POST",url:base_url+"business_profile/pnmulimg_comment",data:"post_image_id="+e+"&comment="+encodeURIComponent(o),success:function(t){$("#fourimgcomment"+e).html(t.comment),$(".like_count_ext_img"+e).html(t.comment_count+"<span> Comment</span>")}})}})}function imgcommentall(e){var t=document.getElementById("threeimgcomment"+e),n=document.getElementById("fourimgcomment"+e),o=document.getElementById("insertcountimg"+e);$(".post-design-commnet-box").show(),"block"===t.style.display&&"none"===n.style.display&&(t.style.display="none",n.style.display="block",o.style.visibility="show",$.ajax({type:"POST",url:base_url+"business_profile/pnmulimagefourcomment",data:"bus_img_id="+e,success:function(t){$("#fourimgcomment"+e).html(t)}}))}function commentall1(e){var t=document.getElementById("threecomment1"+e),n=document.getElementById("fourcomment1"+e);"block"===t.style.display&&"none"===n.style.display?(t.style.display="none",n.style.display="block"):(t.style.display="block",n.style.display="none")}function imgcommentall1(e){var t=document.getElementById("threeimgcomment1"+e),n=document.getElementById("fourimgcomment1"+e);"block"===t.style.display&&"none"===n.style.display?(t.style.display="none",n.style.display="block"):(t.style.display="block",n.style.display="none")}function imgcomment_like(e){$.ajax({type:"POST",url:base_url+"business_profile/mulimg_comment_like",data:"post_image_comment_id="+e,success:function(t){$("#imglikecomment"+e).html(t)}})}function imgcomment_liketwo(e){$.ajax({type:"POST",url:base_url+"business_profile/mulimg_comment_liketwo",data:"post_image_comment_id="+e,success:function(t){$("#imglikecomment1"+e).html(t)}})}function imgcomment_editbox(e){document.getElementById("imgeditcomment"+e).style.display="inline-block",document.getElementById("imgshowcomment"+e).style.display="none",document.getElementById("imgeditsubmit"+e).style.display="inline-block",document.getElementById("imgeditcommentbox"+e).style.display="none",document.getElementById("imgeditcancle"+e).style.display="block",$(".post-design-commnet-box").hide()}function imgcomment_editcancle(e){document.getElementById("imgeditcommentbox"+e).style.display="block",document.getElementById("imgeditcancle"+e).style.display="none",document.getElementById("imgeditcomment"+e).style.display="none",document.getElementById("imgshowcomment"+e).style.display="block",document.getElementById("imgeditsubmit"+e).style.display="none",$(".post-design-commnet-box").show()}function imgcomment_editboxtwo(e){$("div[id^=imgeditcommenttwo]").css("display","none"),$("div[id^=imgshowcommenttwo]").css("display","block"),$("button[id^=imgeditsubmittwo]").css("display","none"),$("div[id^=imgeditcommentboxtwo]").css("display","block"),$("div[id^=imgeditcancletwo]").css("display","none"),document.getElementById("imgeditcommenttwo"+e).style.display="inline-block",document.getElementById("imgshowcommenttwo"+e).style.display="none",document.getElementById("imgeditsubmittwo"+e).style.display="inline-block",document.getElementById("imgeditcommentboxtwo"+e).style.display="none",document.getElementById("imgeditcancletwo"+e).style.display="block",$(".post-design-commnet-box").hide()}function imgcomment_editcancletwo(e){document.getElementById("imgeditcommentboxtwo"+e).style.display="block",document.getElementById("imgeditcancletwo"+e).style.display="none",document.getElementById("imgeditcommenttwo"+e).style.display="none",document.getElementById("imgshowcommenttwo"+e).style.display="block",document.getElementById("imgeditsubmittwo"+e).style.display="none",$(".post-design-commnet-box").show()}function imgedit_comment(e){$("#imgeditcomment"+e).click(function(){$(this).prop("contentEditable",!0)});var t=$("#imgeditcomment"+e),n=t.html();return n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),""==n||"<br>"==n?($(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deleted("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show"),!1):/^\s+$/gi.test(n)?!1:(n=n.replace(/&/g,"%26"),void $.ajax({type:"POST",url:base_url+"business_profile/mul_edit_com_insert",data:"post_image_comment_id="+e+"&comment="+encodeURIComponent(n),success:function(t){document.getElementById("imgeditcomment"+e).style.display="none",document.getElementById("imgshowcomment"+e).style.display="block",document.getElementById("imgeditsubmit"+e).style.display="none",document.getElementById("imgeditcommentbox"+e).style.display="block",document.getElementById("imgeditcancle"+e).style.display="none",$("#imgshowcomment"+e).html(t),$(".post-design-commnet-box").show()}}))}function imgcommentedit(e){$("#imgeditcomment"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#imgeditcomment"+e).keypress(function(t){if(13==t.which&&1!=t.shiftKey){t.preventDefault();var n=$("#imgeditcomment"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),""==o||"<br>"==o)return $(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deleted("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show"),!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500),$.ajax({type:"POST",url:base_url+"business_profile/mul_edit_com_insert",data:"post_image_comment_id="+e+"&comment="+encodeURIComponent(o),success:function(t){document.getElementById("imgeditcomment"+e).style.display="none",document.getElementById("imgshowcomment"+e).style.display="block",document.getElementById("imgeditsubmit"+e).style.display="none",document.getElementById("imgeditcommentbox"+e).style.display="block",document.getElementById("imgeditcancle"+e).style.display="none",$("#imgshowcomment"+e).html(t),$(".post-design-commnet-box").show()}})}})}function imgedit_commenttwo(e){$("#imgeditcommenttwo"+e).click(function(){$(this).prop("contentEditable",!0)});var t=$("#imgeditcommenttwo"+e),n=t.html();return n=n.replace(/&nbsp;/gi," "),n=n.replace(/<br>$/,""),""==n||"<br>"==n?($(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deletedtwo("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show"),!1):/^\s+$/gi.test(n)?!1:(n=n.replace(/&/g,"%26"),$.ajax({type:"POST",url:base_url+"business_profile/mul_edit_com_insert",data:"post_image_comment_id="+e+"&comment="+encodeURIComponent(n),success:function(t){document.getElementById("imgeditcommenttwo"+e).style.display="none",document.getElementById("imgshowcommenttwo"+e).style.display="block",document.getElementById("imgeditsubmittwo"+e).style.display="none",document.getElementById("imgeditcommentboxtwo"+e).style.display="block",document.getElementById("imgeditcancletwo"+e).style.display="none",$("#imgshowcommenttwo"+e).html(t),$(".post-design-commnet-box").show()}}),void $(".scroll").click(function(e){e.preventDefault(),$("html,body").animate({scrollTop:$(this.hash).offset().top},1200)}))}function imgcommentedittwo(e){$("#imgeditcommenttwo"+e).click(function(){$(this).prop("contentEditable",!0)}),$("#imgeditcommenttwo"+e).keypress(function(t){if(13==t.which&&1!=t.shiftKey){t.preventDefault();var n=$("#imgeditcommenttwo"+e),o=n.html();if(o=o.replace(/&nbsp;/gi," "),o=o.replace(/<br>$/,""),""==o||"<br>"==o)return $(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deletedtwo("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show"),!1;if(/^\s+$/gi.test(o))return!1;if(o=o.replace(/&/g,"%26"),window.preventDuplicateKeyPresses)return;window.preventDuplicateKeyPresses=!0,window.setTimeout(function(){window.preventDuplicateKeyPresses=!1},500),$.ajax({type:"POST",url:base_url+"business_profile/mul_edit_com_insert",data:"post_image_comment_id="+e+"&comment="+encodeURIComponent(o),success:function(t){document.getElementById("imgeditcommenttwo"+e).style.display="none",document.getElementById("imgshowcommenttwo"+e).style.display="block",document.getElementById("imgeditsubmittwo"+e).style.display="none",document.getElementById("imgeditcommentboxtwo"+e).style.display="block",document.getElementById("imgeditcancletwo"+e).style.display="none",$("#imgshowcommenttwo"+e).html(t),$(".post-design-commnet-box").show()}})}})}function imgcomment_delete(e){$(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deleted("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function imgcomment_deleted(e){var t=document.getElementById("imgpost_delete_"+e);$.ajax({type:"POST",url:base_url+"business_profile/mul_delete_comment",dataType:"json",data:"post_image_comment_id="+e+"&post_delete="+t.value,success:function(e){$(".insertimgcomment"+t.value).html(e.comment),$(".like_count_ext_img"+t.value).html(e.comment_count),$(".post-design-commnet-box").show()}})}function imgcomment_deletetwo(e){$(".biderror .mes").html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='imgcomment_deletedtwo("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function imgcomment_deletedtwo(e){var t=document.getElementById("imgpost_deletetwo_"+e);$.ajax({type:"POST",url:base_url+"business_profile/mul_delete_commenttwo",data:"post_image_comment_id="+e+"&post_delete="+t.value,dataType:"json",success:function(e){$(".insertimgcommenttwo"+t.value).html(e.comment),$("#insertimgcount"+t.value).html(e.count),$(".like_count_ext_img"+t.value).html(e.comment_count),$(".post-design-commnet-box").show()}})}function h(e){$(e).css({height:"29px","overflow-y":"hidden"}).height(e.scrollHeight)}function editpost(e){$("#myDropdown"+e).removeClass("show"),document.getElementById("editpostdata"+e).style.display="none",document.getElementById("editpostbox"+e).style.display="block",document.getElementById("editpostdetailbox"+e).style.display="block",document.getElementById("editpostsubmit"+e).style.display="block",document.getElementById("khyatii"+e).style.display="none",document.getElementById("khyati"+e).style.display="none"}function edit_postinsert(e){var t=document.getElementById("editpostname"+e),n=($("#editpostname"+e),$("#editpostdesc"+e).html());n=n.replace(/&/g,"%26"),n=n.replace(/&gt;/gi,">"),n=n.replace(/&nbsp;/gi," "),n=n.replace(/div/gi,"p"),""==t.value&&""==n?($(".biderror .mes").html("<div class='pop_content'>You must either fill title or description."),$("#bidmodal").modal("show"),document.getElementById("editpostdata"+e).style.display="block",document.getElementById("editpostbox"+e).style.display="none",document.getElementById("khyati"+e).style.display="block",document.getElementById("editpostdetailbox"+e).style.display="none",document.getElementById("editpostsubmit"+e).style.display="none"):$.ajax({type:"POST",url:base_url+"business_profile/edit_post_insert",data:"business_profile_post_id="+e+"&product_name="+t.value+"&product_description="+n,dataType:"json",success:function(t){document.getElementById("editpostdata"+e).style.display="block",document.getElementById("editpostbox"+e).style.display="none",document.getElementById("editpostdetailbox"+e).style.display="none",document.getElementById("editpostsubmit"+e).style.display="none",document.getElementById("khyati"+e).style.display="block",$("#editpostdata"+e).html(t.title),$("#khyati"+e).html(t.description)}})}function likeuserlist(e){$.ajax({type:"POST",url:base_url+"business_profile/likeuserlist",data:"post_id="+e,dataType:"html",success:function(e){var t=e;$("#likeusermodal .mes").html(t),$("#likeusermodal").modal("show")}})}function likeuserlistimg(e){$.ajax({type:"POST",url:base_url+"business_profile/imglikeuserlist",data:"post_id="+e,dataType:"html",success:function(e){var t=e;$("#likeusermodal .mes").html(t),$("#likeusermodal").modal("show")}})}function user_postdelete(e){$(".biderror .mes").html("<div class='pop_content'> Do you want to delete this post?<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='remove_post("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function user_postdeleteparticular(e){$(".biderror .mes").html("<div class='pop_content'> Do You want to delete this post from your profile?.<div class='model_ok_cancel'><a class='okbtn' id="+e+" onClick='del_particular_userpost("+e+")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>"),$("#bidmodal").modal("show")}function OnPaste_StripFormatting(e,t){if(t.originalEvent&&t.originalEvent.clipboardData&&t.originalEvent.clipboardData.getData){t.preventDefault();var n=t.originalEvent.clipboardData.getData("text/plain");window.document.execCommand("insertText",!1,n)}else if(t.clipboardData&&t.clipboardData.getData){t.preventDefault();var n=t.clipboardData.getData("text/plain");
-window.document.execCommand("insertText",!1,n)}else window.clipboardData&&window.clipboardData.getData&&(_onPaste_StripFormatting_IEPaste||(_onPaste_StripFormatting_IEPaste=!0,t.preventDefault(),window.document.execCommand("ms-pasteTextOnly",!1)),_onPaste_StripFormatting_IEPaste=!1)}function khdiv(e){$.ajax({type:"POST",url:base_url+"business_profile/edit_more_insert",data:"business_profile_post_id="+e,dataType:"json",success:function(t){document.getElementById("editpostdata"+e).style.display="block",document.getElementById("editpostbox"+e).style.display="none",document.getElementById("editpostdetailbox"+e).style.display="none",document.getElementById("editpostsubmit"+e).style.display="none",document.getElementById("khyati"+e).style.display="none",document.getElementById("khyatii"+e).style.display="block",$("#editpostdata"+e).html(t.title),$("#khyatii"+e).html(t.description)}})}function seemorediv(e){document.getElementById("seemore"+e).style.display="block",document.getElementById("lessmore"+e).style.display="none"}function check_lengthedit(e){maxLen=50;var t=document.getElementById("editpostname"+e).value;if(t.length>maxLen){text_num=maxLen-t.length;var n="You have reached your maximum limit of characters allowed";$("#postedit .mes").html("<div class='pop_content'>"+n+"</div>"),$("#postedit").modal("show");var o=t.substring(0,maxLen);$("#editpostname"+e).val(o)}else text_num=maxLen-t.length,document.getElementById("text_num").value=text_num}function check_post_available(e){$.ajax({type:"POST",url:base_url+"business_profile/check_post_available",data:"post_id="+e,dataType:"json",success:function(e){return 0==e?(alert(111),!1):void 0}})}$(function(){$("#tags").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tags").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags").val(t.item.label)}})}),$(function(){$("#searchplace").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label)}})}),$(function(){$("#tags1").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tag1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags1").val(t.item.label)}})}),$(function(){$("#searchplace1").autocomplete({source:function(e,t){var n=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return n.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label)}})}),$(document).ready(function(){$(".blocks").jMosaic({items_type:"li",margin:0}),$(".pictures").jMosaic({min_row_height:150,margin:3,is_first_big:!0})}),$(window).load(function(){}),$(window).resize(function(){});var slideIndex=1;showSlides(slideIndex);var modal=document.getElementById("myModal"),btn=document.getElementById("myBtn"),span=document.getElementsByClassName("close1")[0];btn.onclick=function(){modal.style.display="block"},span.onclick=function(){modal.style.display="none"},window.onclick=function(e){e.target==modal&&(modal.style.display="none")},$(function(){var e=180,t="ReadMore",n="";$(".show_desc").each(function(){var n=$(this).html();if(n=n.replace(/ /g,""),n.length>e){var o=n.substr(0,e),s=n.substr(e,n.length-e),i=o+'<span class="dots">...</span><span class="morectnt"><span>'+s+'</span>&nbsp;&nbsp;<a href="" class="showmoretxt">'+t+"</a></span>";$(this).html(i)}}),$(".showmoretxt").click(function(){return $(this).hasClass("sample")?($(this).removeClass("sample"),$(this).text(t)):($(this).addClass("sample"),$(this).text(n)),$(this).parent().prev().toggle(),$(this).prev().toggle(),!1})}),window.onclick=function(e){if(!e.target.matches(".dropbtn1")){var t,n=document.getElementsByClassName("dropdown-content1");for(t=0;t<n.length;t++){var o=n[t];o.classList.contains("show")&&o.classList.remove("show")}}};var $fileUpload=$("#files"),$list=$("#list"),thumbsArray=[],maxUpload=5;$fileUpload.change(function(e){handleFileSelect(e)}),$list.on("click",".remove_thumb",function(){var e=$(".remove_thumb"),t=e.index(this);$(this).closest("span.thumbParent").remove(),thumbsArray.splice(t,1)}),$(".textarea").each(function(){h(this)}).on("input",function(){h(this)}),$("body").on("click","*",function(e){var t=$(e.target).attr("class").toString().split(" ").pop();"fa-ellipsis-v"!=t&&$("div[id^=myDropdown]").hide().removeClass("show")}),$(document).keydown(function(e){e||(e=window.event),(27==e.keyCode||27==e.charCode)&&closeModal()});var _onPaste_StripFormatting_IEPaste=!1;$(document).on("keydown",function(e){27===e.keyCode&&$("#bidmodal").modal("hide")}),$(document).on("keydown",function(e){27===e.keyCode&&$("#likeusermodal").modal("hide")}),$("#postedit").on("click",function(){}),$(document).on("keydown",function(e){27===e.keyCode&&$("#postedit").modal("hide")});
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
+
+$(document).ready(function () {
+    $('.blocks').jMosaic({items_type: "li", margin: 0});
+    $('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
+});
+$(window).load(function () {
+});
+$(window).resize(function () {
+});
+function openModal() {
+    document.getElementById('myModal1').style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById('myModal1').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+function plusSlides(n) {
+    $('.post-design-commnet-box').show();
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    check_post_available(post_id);
+
+    $('.post-design-commnet-box').show();
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+function post_like(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/like_post",
+        data: 'post_id=' + clicked_id,
+        dataType: 'json',
+        success: function (data) {
+            $('.' + 'likepost' + clicked_id).html(data.like);
+            $('.likeusername' + clicked_id).html(data.likeuser);
+            $('.comment_like_count' + clicked_id).html(data.like_user_count);
+            $('.likeduserlist' + clicked_id).hide();
+            if (data.like_user_total_count == '0') {
+                document.getElementById('likeusername' + clicked_id).style.display = "none";
+            } else {
+                document.getElementById('likeusername' + clicked_id).style.display = "block";
+            }
+            $('#likeusername' + clicked_id).addClass('likeduserlist1');
+        }
+    });
+}
+function insert_comment(clicked_id)
+{
+    $("#post_comment" + clicked_id).click(function () {
+        $(this).prop("contentEditable", true);
+        $(this).html("");
+    });
+    var sel = $("#post_comment" + clicked_id);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    txt = txt.replace(/&gt;/gi, ">");
+    txt = txt.replace(/div/gi, 'p');
+    if (txt == '' || txt == '<br>') {
+        return false;
+    }
+    if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    }
+    txt = txt.replace(/&/g, "%26");
+    $('#post_comment' + clicked_id).html("");
+    var x = document.getElementById('threecomment' + clicked_id);
+    var y = document.getElementById('fourcomment' + clicked_id);
+    if (x.style.display === 'block' && y.style.display === 'none') {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pninsert_commentthree",
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+            dataType: "json",
+            success: function (data) {
+                $('textarea').each(function () {
+                    $(this).val('');
+                });
+                $('.insertcomment' + clicked_id).html(data.comment);
+                $('.comment_count' + clicked_id).html(data.comment_count);
+            }
+        });
+    } else {
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pninsert_comment",
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+            dataType: "json",
+            success: function (data) {
+                $('textarea').each(function () {
+                    $(this).val('');
+                });
+                $('#' + 'fourcomment' + clicked_id).html(data.comment);
+                $('.comment_count' + clicked_id).html(data.comment_count);
+            }
+        });
+    }
+}
+function entercomment(clicked_id)
+{
+    $("#post_comment" + clicked_id).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#post_comment' + clicked_id).keypress(function (e) {
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            var sel = $("#post_comment" + clicked_id);
+            var txt = sel.html();
+            //txt = txt.replace(/^(&nbsp;|<br>)+/, '');
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            txt = txt.replace(/&gt;/gi, ">");
+            txt = txt.replace(/div/gi, 'p');
+            if (txt == '' || txt == '<br>') {
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            $('#post_comment' + clicked_id).html("");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            var x = document.getElementById('threecomment' + clicked_id);
+            var y = document.getElementById('fourcomment' + clicked_id);
+            if (x.style.display === 'block' && y.style.display === 'none') {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/pninsert_commentthree",
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    dataType: "json",
+                    success: function (data) {
+                        $('textarea').each(function () {
+                            $(this).val('');
+                        });
+                        $('.insertcomment' + clicked_id).html(data.comment);
+                        $('.comment_count' + clicked_id).html(data.comment_count);
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/pninsert_comment",
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    dataType: "json",
+                    success: function (data) {
+                        $('textarea').each(function () {
+                            $(this).val('');
+                        });
+                        $('#' + 'fourcomment' + clicked_id).html(data.comment);
+                        $('.comment_count' + clicked_id).html(data.comment_count);
+                    }
+                });
+            }
+        }
+    });
+}
+
+function commentall(clicked_id) {
+
+    var x = document.getElementById('threecomment' + clicked_id);
+    var y = document.getElementById('fourcomment' + clicked_id);
+    var z = document.getElementById('insertcount' + clicked_id);
+    $('.post-design-commnet-box').show();
+    if (x.style.display === 'block' && y.style.display === 'none') {
+
+        x.style.display = 'none';
+        y.style.display = 'block';
+        z.style.visibility = 'show';
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pnfourcomment",
+            data: 'bus_post_id=' + clicked_id,
+            //alert(data);
+            success: function (data) {
+                $('#' + 'fourcomment' + clicked_id).html(data);
+            }
+        });
+    }
+}
+
+
+function comment_like(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/like_comment",
+        data: 'post_id=' + clicked_id,
+        success: function (data) {
+            $('#' + 'likecomment' + clicked_id).html(data);
+        }
+    });
+}
+function comment_like1(clicked_id)
+{
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/like_comment1",
+        data: 'post_id=' + clicked_id,
+        success: function (data) {
+            $('#' + 'likecomment1' + clicked_id).html(data);
+        }
+    });
+}
+function comment_delete(clicked_id) {
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deleted(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+
+function comment_deleted(clicked_id)
+{
+    var post_delete = document.getElementById("post_delete" + clicked_id);
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/pndelete_comment",
+        data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
+        dataType: "json",
+        success: function (data) {
+            //                alert(data.comment_count);
+            $('.' + 'insertcomment' + post_delete.value).html(data.comment);
+            //$('#' + 'insertcount' + post_delete.value).html(data.count);
+            $('.comment_count' + post_delete.value).html(data.comment_count + ' Comment');
+            $('.post-design-commnet-box').show();
+        }
+    });
+}
+
+function comment_deletetwo(clicked_id)
+{
+
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='comment_deletedtwo(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+function comment_deletedtwo(clicked_id)
+{
+
+    var post_delete1 = document.getElementById("post_deletetwo" + clicked_id);
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/pndelete_commenttwo",
+        data: 'post_id=' + clicked_id + '&post_delete=' + post_delete1.value,
+        dataType: "json",
+        success: function (data) {
+            $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
+            $('.comment_count' + post_delete1.value).html(data.comment_count + '<span> Comment</span>');
+            $('.post-design-commnet-box').show();
+        }
+    });
+}
+
+function comment_editbox(clicked_id) {
+    document.getElementById('editcomment' + clicked_id).style.display = 'inline-block';
+    document.getElementById('showcomment' + clicked_id).style.display = 'none';
+    document.getElementById('editsubmit' + clicked_id).style.display = 'inline-block';
+    document.getElementById('editcommentbox' + clicked_id).style.display = 'none';
+    document.getElementById('editcancle' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function comment_editcancle(clicked_id) {
+
+    document.getElementById('editcommentbox' + clicked_id).style.display = 'block';
+    document.getElementById('editcancle' + clicked_id).style.display = 'none';
+    document.getElementById('editcomment' + clicked_id).style.display = 'none';
+    document.getElementById('showcomment' + clicked_id).style.display = 'block';
+    document.getElementById('editsubmit' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+function comment_editboxtwo(clicked_id) {
+
+    $('div[id^=editcommenttwo]').css('display', 'none');
+    $('div[id^=showcommenttwo]').css('display', 'block');
+    $('button[id^=editsubmittwo]').css('display', 'none');
+    $('div[id^=editcommentboxtwo]').css('display', 'block');
+    $('div[id^=editcancletwo]').css('display', 'none');
+    document.getElementById('editcommenttwo' + clicked_id).style.display = 'inline-block';
+    document.getElementById('showcommenttwo' + clicked_id).style.display = 'none';
+    document.getElementById('editsubmittwo' + clicked_id).style.display = 'inline-block';
+    document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'none';
+    document.getElementById('editcancletwo' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function comment_editcancletwo(clicked_id) {
+    document.getElementById('editcommentboxtwo' + clicked_id).style.display = 'block';
+    document.getElementById('editcancletwo' + clicked_id).style.display = 'none';
+    document.getElementById('editcommenttwo' + clicked_id).style.display = 'none';
+    document.getElementById('showcommenttwo' + clicked_id).style.display = 'block';
+    document.getElementById('editsubmittwo' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+function comment_editbox3(clicked_id) {
+    document.getElementById('editcomment3' + clicked_id).style.display = 'block';
+    document.getElementById('showcomment3' + clicked_id).style.display = 'none';
+    document.getElementById('editsubmit3' + clicked_id).style.display = 'block';
+    document.getElementById('editcommentbox3' + clicked_id).style.display = 'none';
+    document.getElementById('editcancle3' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function comment_editcancle3(clicked_id) {
+
+    document.getElementById('editcommentbox3' + clicked_id).style.display = 'block';
+    document.getElementById('editcancle3' + clicked_id).style.display = 'none';
+    document.getElementById('editcomment3' + clicked_id).style.display = 'none';
+    document.getElementById('showcomment3' + clicked_id).style.display = 'block';
+    document.getElementById('editsubmit3' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+function comment_editbox4(clicked_id) { //alert(clicked_id); alert('editcomment' + clicked_id); alert('showcomment' + clicked_id); alert('editsubmit' + clicked_id); 
+    document.getElementById('editcomment4' + clicked_id).style.display = 'block';
+    document.getElementById('showcomment4' + clicked_id).style.display = 'none';
+    document.getElementById('editsubmit4' + clicked_id).style.display = 'block';
+    document.getElementById('editcommentbox4' + clicked_id).style.display = 'none';
+    document.getElementById('editcancle4' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function comment_editcancle4(clicked_id) {
+
+    document.getElementById('editcommentbox4' + clicked_id).style.display = 'block';
+    document.getElementById('editcancle4' + clicked_id).style.display = 'none';
+    document.getElementById('editcomment4' + clicked_id).style.display = 'none';
+    document.getElementById('showcomment4' + clicked_id).style.display = 'block';
+    document.getElementById('editsubmit4' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+function edit_comment(abc)
+{
+
+    $("#editcomment" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    var sel = $("#editcomment" + abc);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    txt = txt.replace(/&gt;/gi, ">");
+    txt = txt.replace(/div/gi, 'p');
+    if (txt == '' || txt == '<br>') {
+        return false;
+    }
+    if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    }
+    txt = txt.replace(/&/g, "%26");
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/edit_comment_insert",
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+        success: function (data) {
+
+            document.getElementById('editcomment' + abc).style.display = 'none';
+            document.getElementById('showcomment' + abc).style.display = 'block';
+            document.getElementById('editsubmit' + abc).style.display = 'none';
+            document.getElementById('editcommentbox' + abc).style.display = 'block';
+            document.getElementById('editcancle' + abc).style.display = 'none';
+            $('#' + 'showcomment' + abc).html(data);
+            $('.post-design-commnet-box').show();
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
+}
+
+
+function commentedit(abc)
+{
+
+    $("#editcomment" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#editcomment' + abc).keypress(function (event) {
+        if (event.which == 13 && event.shiftKey != 1) {
+            event.preventDefault();
+            var sel = $("#editcomment" + abc);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            txt = txt.replace(/&gt;/gi, ">");
+            txt = txt.replace(/div/gi, 'p');
+            if (txt == '' || txt == '<br>') {
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/edit_comment_insert",
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                success: function (data) { //alert('falguni');
+                    document.getElementById('editcomment' + abc).style.display = 'none';
+                    document.getElementById('showcomment' + abc).style.display = 'block';
+                    document.getElementById('editsubmit' + abc).style.display = 'none';
+                    document.getElementById('editcommentbox' + abc).style.display = 'block';
+                    document.getElementById('editcancle' + abc).style.display = 'none';
+                    $('#' + 'showcomment' + abc).html(data);
+                    $('.post-design-commnet-box').show();
+                }
+            });
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
+}
+
+function edit_commenttwo(abc)
+{
+
+    $("#editcommenttwo" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    var sel = $("#editcommenttwo" + abc);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    txt = txt.replace(/&gt;/gi, ">");
+    txt = txt.replace(/div/gi, 'p');
+    if (txt == '' || txt == '<br>') {
+        return false;
+    }
+    if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    }
+    txt = txt.replace(/&/g, "%26");
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/edit_comment_insert",
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+        success: function (data) { //alert('falguni');
+
+            document.getElementById('editcommenttwo' + abc).style.display = 'none';
+            document.getElementById('showcommenttwo' + abc).style.display = 'block';
+            document.getElementById('editsubmittwo' + abc).style.display = 'none';
+            document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
+            document.getElementById('editcancletwo' + abc).style.display = 'none';
+            $('#' + 'showcommenttwo' + abc).html(data);
+            $('.post-design-commnet-box').show();
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
+}
+
+
+function commentedittwo(abc)
+{
+    $("#editcommenttwo" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#editcommenttwo' + abc).keypress(function (event) {
+        if (event.which == 13 && event.shiftKey != 1) {
+            event.preventDefault();
+            var sel = $("#editcommenttwo" + abc);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            txt = txt.replace(/&gt;/gi, ">");
+            txt = txt.replace(/div/gi, 'p');
+            if (txt == '' || txt == '<br>') {
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/edit_comment_insert",
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                success: function (data) {
+                    document.getElementById('editcommenttwo' + abc).style.display = 'none';
+                    document.getElementById('showcommenttwo' + abc).style.display = 'block';
+                    document.getElementById('editsubmittwo' + abc).style.display = 'none';
+                    document.getElementById('editcommentboxtwo' + abc).style.display = 'block';
+                    document.getElementById('editcancletwo' + abc).style.display = 'none';
+                    $('#' + 'showcommenttwo' + abc).html(data);
+                    $('.post-design-commnet-box').show();
+                }
+            });
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
+}
+
+
+var modal = document.getElementById('myModal');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close1")[0];
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+$(function () {
+    var showTotalChar = 180, showChar = "ReadMore", hideChar = "";
+    $('.show_desc').each(function () {
+        var content = $(this).html();
+        content = content.replace(/ /g, '');
+        if (content.length > showTotalChar) {
+            var con = content.substr(0, showTotalChar);
+            var hcon = content.substr(showTotalChar, content.length - showTotalChar);
+            var txt = con + '<span class="dots">...</span><span class="morectnt"><span>' + hcon + '</span>&nbsp;&nbsp;<a href="" class="showmoretxt">' + showChar + '</a></span>';
+            $(this).html(txt);
+        }
+    });
+    $(".showmoretxt").click(function () {
+        if ($(this).hasClass("sample")) {
+            $(this).removeClass("sample");
+            $(this).text(showChar);
+        } else {
+            $(this).addClass("sample");
+            $(this).text(hideChar);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
+});
+function myFunction(clicked_id) {
+    document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+
+            document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+            $(".dropdown-content1").removeClass('show');
+        }
+
+    });
+}
+window.onclick = function (event) {
+    if (!event.target.matches('.dropbtn1')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content1");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+var $fileUpload = $("#files"),
+        $list = $('#list'),
+        thumbsArray = [],
+        maxUpload = 5;
+function read(f) {
+    return function (e) {
+        var base64 = e.target.result;
+        var $img = $('<img/>', {
+            src: base64,
+            title: encodeURIComponent(f.name),
+            "class": "thumb"
+        });
+        var $thumbParent = $("<span/>", {html: $img, "class": "thumbParent"}).append('<span class="remove_thumb"/>');
+        thumbsArray.push(base64);
+        $list.append($thumbParent);
+    };
+}
+
+
+function handleFileSelect(e) {
+    e.preventDefault();
+    var files = e.target.files;
+    var len = files.length;
+    if (len > maxUpload || thumbsArray.length >= maxUpload) {
+        return alert("Sorry you can upload only 5 images");
+    }
+    for (var i = 0; i < len; i++) {
+        var f = files[i];
+        if (!f.type.match('image.*'))
+            continue;
+        var reader = new FileReader();
+        reader.onload = read(f);
+        reader.readAsDataURL(f);
+    }
+}
+
+$fileUpload.change(function (e) {
+    handleFileSelect(e);
+});
+$list.on('click', '.remove_thumb', function () {
+    var $removeBtns = $('.remove_thumb');
+    var idx = $removeBtns.index(this);
+    $(this).closest('span.thumbParent').remove();
+    thumbsArray.splice(idx, 1);
+});
+function save_post(abc)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/business_profile_save",
+        data: 'business_profile_post_id=' + abc,
+        success: function (data) {
+
+            $('.' + 'savedpost' + abc).html(data);
+        }
+    });
+}
+
+function remove_post(abc)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/business_profile_deletepost",
+        data: 'business_profile_post_id=' + abc,
+        success: function (data) {
+            $('#' + 'removepost' + abc).html(data);
+            window.location = "<?php echo base_url() ?>business_profile/business_profile_post";
+        }
+    });
+}
+function del_particular_userpost(abc)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/del_particular_userpost",
+        data: 'business_profile_post_id=' + abc,
+        success: function (data) {
+            $('#' + 'removepost' + abc).html(data);
+        }
+    });
+}
+
+function mulimg_like(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mulimg_like",
+        data: 'post_image_id=' + clicked_id,
+        dataType: 'json',
+        success: function (data) {
+
+            $('.' + 'likepostimg' + clicked_id).html(data.like);
+            $('.likeusernameimg' + clicked_id).html(data.likeuser);
+            $('.comnt_count_ext_img' + clicked_id).html(data.like_user_count);
+            $('.likeduserlistimg' + clicked_id).hide();
+            if (data.like_user_total_count == '0') {
+                document.getElementById('likeusernameimg' + clicked_id).style.display = "none";
+            } else {
+                document.getElementById('likeusernameimg' + clicked_id).style.display = "block";
+            }
+            $('#likeusernameimg' + clicked_id).addClass('likeduserlist1');
+        }
+    });
+}
+function insert_commentimg(clicked_id)
+{
+
+    $("#post_imgcomment" + clicked_id).click(function () {
+        $(this).prop("contentEditable", true);
+        $(this).html("");
+    });
+    var sel = $("#post_imgcomment" + clicked_id);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    if (txt == '' || txt == '<br>') {
+        return false;
+    }
+    if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    }
+    txt = txt.replace(/&/g, "%26");
+    $('#post_imgcomment' + clicked_id).html("");
+    var x = document.getElementById('threeimgcomment' + clicked_id);
+    var y = document.getElementById('fourimgcomment' + clicked_id);
+    if (x.style.display === 'block' && y.style.display === 'none') {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pnmulimgcommentthree",
+            data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+            dataType: "json",
+            success: function (data) {
+                $('textarea').each(function () {
+                    $(this).val('');
+                });
+                $('.' + 'insertimgcomment' + clicked_id).html(data.comment);
+                // $('#' + 'insertcountimg' + clicked_id).html(data.count);
+                $('.like_count_ext_img' + clicked_id).html(data.comment_count);
+            }
+        });
+    } else {
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pnmulimg_comment",
+            data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+            dataType: "json",
+            success: function (data) {
+                $('textarea').each(function () {
+                    $(this).val('');
+                });
+                $('#' + 'fourimgcomment' + clicked_id).html(data.comment);
+                $('.like_count_ext_img' + clicked_id).html(data.comment_count);
+            }
+        });
+    }
+}
+
+function entercommentimg(clicked_id)
+{
+
+
+    $("#post_imgcomment" + clicked_id).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#post_imgcomment' + clicked_id).keypress(function (e) {
+
+        if (e.keyCode == 13 && !e.shiftKey) {
+            e.preventDefault();
+            var sel = $("#post_imgcomment" + clicked_id);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            if (txt == '' || txt == '<br>') {
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            $('#post_imgcomment' + clicked_id).html("");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            var x = document.getElementById('threeimgcomment' + clicked_id);
+            var y = document.getElementById('fourimgcomment' + clicked_id);
+            if (x.style.display === 'block' && y.style.display === 'none') {
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/pnmulimgcommentthree",
+                    data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    dataType: "json",
+                    success: function (data) {
+
+                        $('.' + 'insertimgcomment' + clicked_id).html(data.comment);
+                        $('.like_count_ext_img' + clicked_id).html(data.comment_count);
+                    }
+                });
+            } else {
+
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/pnmulimg_comment",
+                    data: 'post_image_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                    success: function (data) {
+                        $('#' + 'fourimgcomment' + clicked_id).html(data.comment);
+                        $('.like_count_ext_img' + clicked_id).html(data.comment_count + '<span> Comment</span>');
+                    }
+                });
+            }
+        }
+    });
+}
+
+
+function imgcommentall(clicked_id) {
+
+
+    var x = document.getElementById('threeimgcomment' + clicked_id);
+    var y = document.getElementById('fourimgcomment' + clicked_id);
+    var z = document.getElementById('insertcountimg' + clicked_id);
+    $('.post-design-commnet-box').show();
+    if (x.style.display === 'block' && y.style.display === 'none') {
+        x.style.display = 'none';
+        y.style.display = 'block';
+        z.style.visibility = 'show';
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/pnmulimagefourcomment",
+            data: 'bus_img_id=' + clicked_id,
+            success: function (data) {
+                $('#' + 'fourimgcomment' + clicked_id).html(data);
+            }
+        });
+    }
+}
+
+
+function commentall1(clicked_id) { //alert("xyz");
+
+//alert(clicked_id);
+    var x = document.getElementById('threecomment1' + clicked_id);
+    var y = document.getElementById('fourcomment1' + clicked_id);
+    if (x.style.display === 'block' && y.style.display === 'none') {
+        x.style.display = 'none';
+        y.style.display = 'block';
+    } else {
+        x.style.display = 'block';
+        y.style.display = 'none';
+    }
+
+}
+
+
+function imgcommentall1(clicked_id) { //alert("xyz");
+
+//alert(clicked_id);
+    var x = document.getElementById('threeimgcomment1' + clicked_id);
+    var y = document.getElementById('fourimgcomment1' + clicked_id);
+    if (x.style.display === 'block' && y.style.display === 'none') {
+        x.style.display = 'none';
+        y.style.display = 'block';
+    } else {
+        x.style.display = 'block';
+        y.style.display = 'none';
+    }
+
+}
+
+
+function imgcomment_like(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mulimg_comment_like",
+        data: 'post_image_comment_id=' + clicked_id,
+        success: function (data) {
+            $('#' + 'imglikecomment' + clicked_id).html(data);
+        }
+    });
+}
+function imgcomment_liketwo(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mulimg_comment_liketwo",
+        data: 'post_image_comment_id=' + clicked_id,
+        success: function (data) {
+            $('#' + 'imglikecomment1' + clicked_id).html(data);
+        }
+    });
+}
+
+
+function imgcomment_editbox(clicked_id) {
+    document.getElementById('imgeditcomment' + clicked_id).style.display = 'inline-block';
+    document.getElementById('imgshowcomment' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditsubmit' + clicked_id).style.display = 'inline-block';
+    document.getElementById('imgeditcommentbox' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditcancle' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function imgcomment_editcancle(clicked_id) {
+
+    document.getElementById('imgeditcommentbox' + clicked_id).style.display = 'block';
+    document.getElementById('imgeditcancle' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditcomment' + clicked_id).style.display = 'none';
+    document.getElementById('imgshowcomment' + clicked_id).style.display = 'block';
+    document.getElementById('imgeditsubmit' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+function imgcomment_editboxtwo(clicked_id) {
+
+    $('div[id^=imgeditcommenttwo]').css('display', 'none');
+    $('div[id^=imgshowcommenttwo]').css('display', 'block');
+    $('button[id^=imgeditsubmittwo]').css('display', 'none');
+    $('div[id^=imgeditcommentboxtwo]').css('display', 'block');
+    $('div[id^=imgeditcancletwo]').css('display', 'none');
+    document.getElementById('imgeditcommenttwo' + clicked_id).style.display = 'inline-block';
+    document.getElementById('imgshowcommenttwo' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditsubmittwo' + clicked_id).style.display = 'inline-block';
+    document.getElementById('imgeditcommentboxtwo' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditcancletwo' + clicked_id).style.display = 'block';
+    $('.post-design-commnet-box').hide();
+}
+
+function imgcomment_editcancletwo(clicked_id) {
+    document.getElementById('imgeditcommentboxtwo' + clicked_id).style.display = 'block';
+    document.getElementById('imgeditcancletwo' + clicked_id).style.display = 'none';
+    document.getElementById('imgeditcommenttwo' + clicked_id).style.display = 'none';
+    document.getElementById('imgshowcommenttwo' + clicked_id).style.display = 'block';
+    document.getElementById('imgeditsubmittwo' + clicked_id).style.display = 'none';
+    $('.post-design-commnet-box').show();
+}
+
+
+
+function imgedit_comment(abc)
+{
+    $("#imgeditcomment" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    var sel = $("#imgeditcomment" + abc);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    if (txt == '' || txt == '<br>') {
+        $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='imgcomment_deleted(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
+        return false;
+    } else if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    } else {
+        txt = txt.replace(/&/g, "%26");
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/mul_edit_com_insert",
+            data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
+            success: function (data) {
+
+
+                document.getElementById('imgeditcomment' + abc).style.display = 'none';
+                document.getElementById('imgshowcomment' + abc).style.display = 'block';
+                document.getElementById('imgeditsubmit' + abc).style.display = 'none';
+                document.getElementById('imgeditcommentbox' + abc).style.display = 'block';
+                document.getElementById('imgeditcancle' + abc).style.display = 'none';
+                $('#' + 'imgshowcomment' + abc).html(data);
+                $('.post-design-commnet-box').show();
+            }
+        });
+    }
+
+}
+
+
+
+
+function imgcommentedit(abc)
+{
+    $("#imgeditcomment" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#imgeditcomment' + abc).keypress(function (event) {
+
+        if (event.which == 13 && event.shiftKey != 1) {
+            event.preventDefault();
+            var sel = $("#imgeditcomment" + abc);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            if (txt == '' || txt == '<br>') {
+                $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='imgcomment_deleted(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                $('#bidmodal').modal('show');
+                return false;
+            } else if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            } else {
+                txt = txt.replace(/&/g, "%26");
+                if (window.preventDuplicateKeyPresses)
+                    return;
+                window.preventDuplicateKeyPresses = true;
+                window.setTimeout(function () {
+                    window.preventDuplicateKeyPresses = false;
+                }, 500);
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "business_profile/mul_edit_com_insert",
+                    data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                    success: function (data) {
+
+
+                        document.getElementById('imgeditcomment' + abc).style.display = 'none';
+                        document.getElementById('imgshowcomment' + abc).style.display = 'block';
+                        document.getElementById('imgeditsubmit' + abc).style.display = 'none';
+                        document.getElementById('imgeditcommentbox' + abc).style.display = 'block';
+                        document.getElementById('imgeditcancle' + abc).style.display = 'none';
+                        $('#' + 'imgshowcomment' + abc).html(data);
+                        $('.post-design-commnet-box').show();
+                    }
+                });
+            }
+
+        }
+    });
+}
+
+
+function imgedit_commenttwo(abc)
+{
+
+    $("#imgeditcommenttwo" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    var sel = $("#imgeditcommenttwo" + abc);
+    var txt = sel.html();
+    txt = txt.replace(/&nbsp;/gi, " ");
+    txt = txt.replace(/<br>$/, '');
+    if (txt == '' || txt == '<br>') {
+        $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='imgcomment_deletedtwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+        $('#bidmodal').modal('show');
+        return false;
+    }
+    if (/^\s+$/gi.test(txt))
+    {
+        return false;
+    }
+    txt = txt.replace(/&/g, "%26");
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mul_edit_com_insert",
+        data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
+        success: function (data) {
+            //alert(data);
+            document.getElementById('imgeditcommenttwo' + abc).style.display = 'none';
+            document.getElementById('imgshowcommenttwo' + abc).style.display = 'block';
+            document.getElementById('imgeditsubmittwo' + abc).style.display = 'none';
+            document.getElementById('imgeditcommentboxtwo' + abc).style.display = 'block';
+            document.getElementById('imgeditcancletwo' + abc).style.display = 'none';
+            $('#' + 'imgshowcommenttwo' + abc).html(data);
+            $('.post-design-commnet-box').show();
+        }
+    });
+    $(".scroll").click(function (event) {
+        event.preventDefault();
+        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+    });
+}
+
+
+function imgcommentedittwo(abc)
+{
+
+    $("#imgeditcommenttwo" + abc).click(function () {
+        $(this).prop("contentEditable", true);
+    });
+    $('#imgeditcommenttwo' + abc).keypress(function (event) {
+        if (event.which == 13 && event.shiftKey != 1) {
+            event.preventDefault();
+            var sel = $("#imgeditcommenttwo" + abc);
+            var txt = sel.html();
+            txt = txt.replace(/&nbsp;/gi, " ");
+            txt = txt.replace(/<br>$/, '');
+            if (txt == '' || txt == '<br>') {
+                $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='imgcomment_deletedtwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                $('#bidmodal').modal('show');
+                return false;
+            }
+            if (/^\s+$/gi.test(txt))
+            {
+                return false;
+            }
+            txt = txt.replace(/&/g, "%26");
+            if (window.preventDuplicateKeyPresses)
+                return;
+            window.preventDuplicateKeyPresses = true;
+            window.setTimeout(function () {
+                window.preventDuplicateKeyPresses = false;
+            }, 500);
+            $.ajax({
+                type: 'POST',
+                url: base_url + "business_profile/mul_edit_com_insert",
+                data: 'post_image_comment_id=' + abc + '&comment=' + encodeURIComponent(txt),
+                success: function (data) {
+
+
+                    document.getElementById('imgeditcommenttwo' + abc).style.display = 'none';
+                    document.getElementById('imgshowcommenttwo' + abc).style.display = 'block';
+                    document.getElementById('imgeditsubmittwo' + abc).style.display = 'none';
+                    document.getElementById('imgeditcommentboxtwo' + abc).style.display = 'block';
+                    document.getElementById('imgeditcancletwo' + abc).style.display = 'none';
+                    $('#' + 'imgshowcommenttwo' + abc).html(data);
+                    $('.post-design-commnet-box').show();
+                }
+            });
+        }
+    });
+}
+
+
+function imgcomment_delete(clicked_id) {
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='imgcomment_deleted(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+function imgcomment_deleted(clicked_id)
+{
+    var post_delete = document.getElementById("imgpost_delete_" + clicked_id);
+    //alert(post_delete.value);
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mul_delete_comment",
+        dataType: 'json',
+        data: 'post_image_comment_id=' + clicked_id + '&post_delete=' + post_delete.value,
+        success: function (data) {
+            //$('#' + 'insertimgcount' + post_delete.value).html(data.count);
+            //                $('#' + 'insertcountimg' + post_delete.value).html(data.count);
+            $('.' + 'insertimgcomment' + post_delete.value).html(data.comment);
+            //   $('.comment_count_img' + post_delete.value).html(data.comment_count);
+            $('.like_count_ext_img' + post_delete.value).html(data.comment_count);
+            $('.post-design-commnet-box').show();
+        }
+    });
+}
+
+
+function imgcomment_deletetwo(clicked_id)
+{
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='imgcomment_deletedtwo(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+
+function imgcomment_deletedtwo(clicked_id)
+{
+    var post_delete1 = document.getElementById("imgpost_deletetwo_" + clicked_id);
+    //        alert(post_delete1.value);
+    //        return false;
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/mul_delete_commenttwo",
+        data: 'post_image_comment_id=' + clicked_id + '&post_delete=' + post_delete1.value,
+        dataType: "json",
+        success: function (data) {
+            //$('.' + 'insertcommenttwo' + post_delete1.value).html(data);
+            $('.' + 'insertimgcommenttwo' + post_delete1.value).html(data.comment);
+            $('#' + 'insertimgcount' + post_delete1.value).html(data.count);
+            $('.like_count_ext_img' + post_delete1.value).html(data.comment_count);
+            $('.post-design-commnet-box').show();
+        }
+    });
+}
+
+
+function h(e) {
+    $(e).css({'height': '29px', 'overflow-y': 'hidden'}).height(e.scrollHeight);
+}
+$('.textarea').each(function ()
+{
+    h(this);
+}).on('input', function () {
+    h(this);
+});
+function editpost(abc)
+{
+    $("#myDropdown" + abc).removeClass('show');
+    document.getElementById('editpostdata' + abc).style.display = 'none';
+    document.getElementById('editpostbox' + abc).style.display = 'block';
+    document.getElementById('editpostdetailbox' + abc).style.display = 'block';
+    document.getElementById('editpostsubmit' + abc).style.display = 'block';
+    document.getElementById('khyatii' + abc).style.display = 'none';
+    document.getElementById('khyati' + abc).style.display = 'none';
+}
+
+
+function edit_postinsert(abc)
+{
+
+    var editpostname = document.getElementById("editpostname" + abc);
+    var $field = $('#editpostname' + abc);
+    var editpostdetails = $('#editpostdesc' + abc).html();
+    editpostdetails = editpostdetails.replace(/&/g, "%26");
+    editpostdetails = editpostdetails.replace(/&gt;/gi, ">");
+    editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
+    editpostdetails = editpostdetails.replace(/div/gi, "p");
+    if (editpostname.value == '' && editpostdetails == '') {
+        $('.biderror .mes').html("<div class='pop_content'>You must either fill title or description.");
+        $('#bidmodal').modal('show');
+        document.getElementById('editpostdata' + abc).style.display = 'block';
+        document.getElementById('editpostbox' + abc).style.display = 'none';
+        document.getElementById('khyati' + abc).style.display = 'block';
+        document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+        document.getElementById('editpostsubmit' + abc).style.display = 'none';
+    } else {
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/edit_post_insert",
+            data: 'business_profile_post_id=' + abc + '&product_name=' + editpostname.value + '&product_description=' + editpostdetails,
+            dataType: "json",
+            success: function (data) {
+
+                document.getElementById('editpostdata' + abc).style.display = 'block';
+                document.getElementById('editpostbox' + abc).style.display = 'none';
+                //                    document.getElementById('editpostdetails' + abc).style.display = 'block';
+                document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+                document.getElementById('editpostsubmit' + abc).style.display = 'none';
+                document.getElementById('khyati' + abc).style.display = 'block';
+                $('#' + 'editpostdata' + abc).html(data.title);
+                //                    $('#' + 'editpostdetails' + abc).html(data.description);
+                $('#' + 'khyati' + abc).html(data.description);
+            }
+        });
+    }
+}
+
+function likeuserlist(post_id) {
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/likeuserlist",
+        data: 'post_id=' + post_id,
+        dataType: "html",
+        success: function (data) {
+            var html_data = data;
+            $('#likeusermodal .mes').html(html_data);
+            $('#likeusermodal').modal('show');
+        }
+    });
+}
+function likeuserlistimg(post_id) {
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/imglikeuserlist",
+        data: 'post_id=' + post_id,
+        dataType: "html",
+        success: function (data) {
+            var html_data = data;
+            $('#likeusermodal .mes').html(html_data);
+            $('#likeusermodal').modal('show');
+        }
+    });
+}
+
+// post delete login user script start 
+
+function user_postdelete(clicked_id)
+{
+
+    $('.biderror .mes').html("<div class='pop_content'> Do you want to delete this post?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='remove_post(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+// post delete login user end 
+// post delete particular login user script start 
+
+function user_postdeleteparticular(clicked_id)
+{
+
+    $('.biderror .mes').html("<div class='pop_content'> Do You want to delete this post from your profile?.<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='del_particular_userpost(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+}
+
+// post delete particular login user end 
+// This  script use for close dropdown in every post 
+
+$('body').on("click", "*", function (e) {
+    var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    if (classNames != 'fa-ellipsis-v') {
+        $('div[id^=myDropdown]').hide().removeClass('show');
+    }
+});
+$(document).keydown(function (e) {
+    if (!e)
+        e = window.event;
+    if (e.keyCode == 27 || e.charCode == 27) {
+        closeModal();
+    }
+});
+// This  script use for close dropdown in every post 
+
+var _onPaste_StripFormatting_IEPaste = false;
+function OnPaste_StripFormatting(elem, e) {
+
+    if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+        e.preventDefault();
+        var text = e.originalEvent.clipboardData.getData('text/plain');
+        window.document.execCommand('insertText', false, text);
+    } else if (e.clipboardData && e.clipboardData.getData) {
+        e.preventDefault();
+        var text = e.clipboardData.getData('text/plain');
+        window.document.execCommand('insertText', false, text);
+    } else if (window.clipboardData && window.clipboardData.getData) {
+        // Stop stack overflow
+        if (!_onPaste_StripFormatting_IEPaste) {
+            _onPaste_StripFormatting_IEPaste = true;
+            e.preventDefault();
+            window.document.execCommand('ms-pasteTextOnly', false);
+        }
+        _onPaste_StripFormatting_IEPaste = false;
+    }
+
+}
+
+
+// all popup close close using esc start 
+
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+//$( "#bidmodal" ).hide();
+        $('#bidmodal').modal('hide');
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+//$( "#bidmodal" ).hide();
+        $('#likeusermodal').modal('hide');
+    }
+});
+// all popup close close using esc end
+
+//<khyati chnages 24-4 start
+
+
+function khdiv(abc) {
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/edit_more_insert",
+        data: 'business_profile_post_id=' + abc,
+        dataType: "json",
+        success: function (data) {
+
+            document.getElementById('editpostdata' + abc).style.display = 'block';
+            document.getElementById('editpostbox' + abc).style.display = 'none';
+            //  document.getElementById('editpostdetails' + abc).style.display = 'block';
+            document.getElementById('editpostdetailbox' + abc).style.display = 'none';
+            document.getElementById('editpostsubmit' + abc).style.display = 'none';
+            document.getElementById('khyati' + abc).style.display = 'none';
+            document.getElementById('khyatii' + abc).style.display = 'block';
+            //alert(data.description);
+            $('#' + 'editpostdata' + abc).html(data.title);
+            // $('#' + 'editpostdetails' + abc).html(data.description);
+            $('#' + 'khyatii' + abc).html(data.description);
+        }
+    });
+}
+
+
+// edit post start 
+
+
+// 180 words more than script start 
+
+
+
+function seemorediv(abc) { //alert("hii");
+
+    document.getElementById('seemore' + abc).style.display = 'block';
+    document.getElementById('lessmore' + abc).style.display = 'none';
+}
+
+$('#postedit').on('click', function () {
+// $('.my_text').attr('readonly', false);
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+//$( "#bidmodal" ).hide();
+        $('#postedit').modal('hide');
+        // $('.my_text').attr('readonly', false);
+
+        //$('.modal-post').show();
+
+    }
+});
+// 180 words more than script end
+
+
+function check_lengthedit(abc)
+{
+    maxLen = 50;
+    var product_name = document.getElementById("editpostname" + abc).value;
+    if (product_name.length > maxLen) {
+        text_num = maxLen - product_name.length;
+        var msg = "You have reached your maximum limit of characters allowed";
+        $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
+        $('#postedit').modal('show');
+        var substrval = product_name.substring(0, maxLen);
+        $('#editpostname' + abc).val(substrval);
+    } else {
+        text_num = maxLen - product_name.length;
+        document.getElementById("text_num").value = text_num;
+    }
+}
+
+function check_post_available(post_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/check_post_available",
+        data: 'post_id=' + post_id,
+        dataType: "json",
+        success: function (data) {
+            if (data == 0) {
+                alert(111);
+                return false;
+            }
+        }
+    });
+}
