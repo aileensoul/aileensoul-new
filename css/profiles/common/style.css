@@ -1593,7 +1593,66 @@ label.error {
     position: relative;
 }
 #msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
-
+#mychat_dropdown a:hover .h4-img {      
+    background: url('../../../img/icon_delete_white.png') no-repeat;      
+    background-size: auto auto;     
+    background-size: 100%;      
+}
+.chatdropbtn {      
+    color:#838383;      
+    font-size: 16px;       
+    border: none;       
+    cursor: pointer;        
+}       
+.chatdropbtn:hover, .chatdropbtn:focus {        
+    background-color: #3e8e41;      
+}       
+.chatdropbtn {      
+    position: relative;        
+    display: inline-block;      
+    padding-top: 12px;      
+    padding: 10px 10px;     
+    opacity: 0.8px;
+    right:-25px;
+}        
+a.chatdropbtn:hover{background-color: #f1f1f1;} 
+.chatdropdown-content {     
+    display: none;        
+    position: absolute;     
+    background-color: #f9f9f9;      
+    min-width: 160px;       
+    overflow: auto;     
+    box-shadow: 0px 2px 10px 2px rgba(0,0,0,0.2);       
+    z-index: 1;     
+    right: 22px;        
+    top: 48px;      
+}       
+.chatdropdown-content a {       
+    color: black;       
+    padding: 12px 16px;     
+    text-decoration: none;      
+    display: block;     
+    background-color: white;        
+}       
+.chatdropdown-content a:hover {     
+    background: #1b8ab9;        
+    color: #fff;        
+}
+.day-text{
+	padding-top:6px;
+	float: left;
+}
+.day-text2{float: left;}
+.clockimg{height: 13px; width: 13px; float: left; background-size: 100% !important; background: url("../../../img/clock.png") no-repeat;}
+.msg_desc_a {
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #777;
+    max-height:24px;
+}
 
 
 /*** end chat ***/
@@ -1647,6 +1706,16 @@ label.cameraButton input[accept*="camera"] {
 }
 .alert-danger{color: black!important;font-size: 22px !important;}
 .notificationsmsg #notificationTitle{display: none !important;}
+#popup-form img {
+    display: none;
+}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
+    list-style: none;
+    display: block;
+    width: 100%;
+    clear: both;
+    padding: 10px 2px 6px;
+}
 
 
 /*** end all profile  ***/
@@ -1703,6 +1772,37 @@ label.cameraButton input[accept*="camera"] {
 .slider_img img {
     border: 1px solid #d9d9d9;
 }
+#kkkk{color: #838384;
+	font-size: 12px;
+	cursor: pointer;
+	font-weight: 600;
+}
+#kkkk:hover{color:#1b8ab9;}
+.posted_with {
+    padding-left: 4px!important;
+    padding-right: 4px!important;
+    word-spacing: 2px;
+    font-weight: 500!important;
+    color: #91949d;
+    display: inline-block;
+}
+.editav_2 {
+    display: none;
+    min-height: 37px !important;
+    margin-top: 0px!important;
+    margin-left: 1.5% !important;
+    width: 78%;
+}
+.audio_source {
+    cursor: pointer;
+}
+.edit-comment-box button {
+    padding: 8px 14px 7px
+}
+.picture {
+    display: table;
+}
+
 /***  end business and art css  ***/
 /***  only business css  ***/
 .view_bui:hover {
@@ -1732,8 +1832,57 @@ label.cameraButton input[accept*="camera"] {
 .edit_bui_img {
     border: 1px solid #d9d9d9;
 }
+#basic-responsive-image {
+    height: 333px;
+    width: auto;
+    max-width: 100%;
+    text-align: center;
+}
+#basic-responsive-image img {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+}
+.bui_res_i2{height: 166px;
+	width: 223px;
+	position: relative;
+}
+.bui_res_i2 img{height: 100%; width: 100%;}
+.alert-danger1 {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    box-shadow: 0 1px 5px 1px;
+    color: #a94442;
+    margin: 10px 0px !important;
+    text-align: center;
+}
+.art_no_post_text_c{color: #bfbfbf; font-size: 20px;   }
+.images_add_bui{
+	display: block;
+	text-align: center;
+	padding: 15px;
+}
+.post_dot_2 {
+    max-width: 26%;
+    width: auto;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 15px;
+    font-weight: 600;
+    color: #1b8ab9;
+    margin-bottom: -3px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.padding_adust {
+    padding-right: 20px;
+}
+
+
 /***  end only business css  ***/
 /***  only art css  ***/
+#paddingtop_fixed_art{padding-top:84px !important;}
 .flw_msg_btn ul .fruser {
     padding-left: 5px!important;
 }
@@ -1749,8 +1898,34 @@ label.cameraButton input[accept*="camera"] {
 }
 .profile-art-box {
     position: fixed;
-    /*width: 32.5%;*/
 }
+.profile-job-post-title-inside .profile_search .search_head {
+    
+    border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+
+    background-color: #fff;
+    color: #1b8ab9;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 3px;
+    padding-left: 25px;
+    border: 1px solid #ccc;
+}
+.margin_less {
+    margin: 0px!important;
+}
+.inner_search_2{padding: 10px;}
+.pht_ph_dash {
+   float: left;
+    display: inline-block;
+}
+.pht_ph_dash img {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
 /***  end only art css  ***/
 /***  Change Password  ***/
 .change-password {
@@ -1780,6 +1955,16 @@ label.cameraButton input[accept*="camera"] {
     font-size: 16px;
 }
 /***  end change password  ***/
+/***  header  ***/
+.headerborder {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.notificationsmsg li {
+    border-bottom: 1px solid #efefef;
+}
+
+/***  end header  ***/
 
 .panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
 .user-section-free-up {

@@ -856,4 +856,106 @@ padding-top: 14px;
     cursor: pointer;}
 .tsecondary_certi i{color: white; cursor: pointer; font-size: 12px;}
 .job_work_experience_main_div h6{font-size: 17px; padding: 5px 0px;}
+.job_paddtop {
+    padding-top: 0px!important;
+}
+#jobseeker_regform_higher_secondary .job_education_submitbox {
+    margin-top: 20px;
+}
+#jobseeker_regform_secondary .job_education_submitbox {
+    margin-top: 20px;
+}
+.job_education_submitbox {
+    text-align: right !important;
+}
+#jobseeker_regform input#btnAdd:focus{color: white!important}
+#btnAdd {
+    color: white !important;
+    padding: 6px 12px 6px!important;
+    min-width: 49px!important;
+}
+#btnRemove {
+    padding: 6px 12px 6px!important;
+    min-width: 49px!important;
+}
+.pagi_exp .tablinks {
+    padding: 2px 3px;
+    background-color: white;
+    color: black;
+}
+.data_exp {
+    border: none!important;
+}
+.pagi_exp {
+    margin: 0 auto;
+    text-align: center;
+}
+.pagi_exp .tablinks:hover {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+}
+.display_inline_block {
+    display: inline-block;
+}
+#jobseeker_regform_secondary {
+    border: none !important;
+    margin-bottom: 0px!important;
+}
+#jobseeker_regform_higher_secondary {
+    border: none !important;
+    margin-bottom: 0px!important;
+}
+.job_edu_graduation_submit_btn {
+    padding: 6px 9px 6px;
+    font-size: 14px;
+}
+.job_edu_graduation_removebox {
+    margin-left: 10px;
+}
+.job_edu_graduation_removebtn {
+    padding: 5px !important;
+    font-size: 13px !important;
+    margin-right: 0px !important;
+}
+.job_edu_graduation_nextbtnbox {
+    padding: 20px 0 0;
+}
+.job_edu_graduation_nextbtn {
+    font-size: 16px !important;
+    min-width: 120px !important;
+    margin-right: 0px !important;
+}
+.job_work_experience_main_div input.datad_delete{
+    background: url('../../../img/error.png') no-repeat;      
+    background-size: auto auto;     
+    background-size: 100%;      
+    height: 20px;
+	width: 20px;
+	min-width: 20px;
+	padding: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+	margin-left: -10px;
+	margin-top: -6px;
+}
+.job_education_submitbox {
+    width: 100%;
+    text-align: center;
+}
+.job_edu_graduation_addbtnbox {
+    margin-right: 10px;
+}
+.job_edu_graduation_addbtn {
+    padding: 5px !important;
+    font-size: 13px !important;
+    margin-right: 0px !important;
+}
+.job_edu_graduation_submitposition {
+    margin-right: 0px;
+    padding: 9px;
+}
+.job_edu_graduation_submitbtn {
+    padding: 5px 9px !important;
+    margin-right: 0px !important;
+}
 
