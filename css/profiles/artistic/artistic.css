@@ -2778,7 +2778,9 @@ font-size: 32px;}
 @media screen and (max-width: 360px)
 {
 
-
+.mySlides .post-design-commnet-box .cmy_2 {
+    width: 85%;
+}
     .post-design-name ul li .post_dot{max-width: 45%:;}
 
 }
