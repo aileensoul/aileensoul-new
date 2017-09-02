@@ -30,7 +30,7 @@ class Recruiter extends MY_Controller {
 //        $contition_array = array('status' => '1');
 //        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 //
-//        foreach ($cty as $key => $value) {
+//                                                                        foreach ($cty as $key => $value) {
 //            foreach ($value as $ke => $val) {
 //                if ($val != "") {
 //                    $resu[] = $val;
