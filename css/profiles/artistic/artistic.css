@@ -2744,11 +2744,12 @@ font-size: 32px;}
      .business-profile-right .profile-main-box-buis-menu .flw_msg_btn ul{float: none;}
      .business-profile-right .profile-main-box-buis-menu ul li{text-align: center;}
      .flw_msg_btn ul li button{margin-top: 0px; padding: 9px;}
-     .fixed_middle_side{left: 21px;}
+     .fixed_middle_side{left: 21px; width: 100%;}
 }
 
 @media screen and (max-width: 540px)
 {
+    .fixed_middle_side{left: 0px; }
     .numbertext{top: -23px;}
     .close2{top: -6px;}
         .camer_h i{font-size: 22px;}
@@ -2771,6 +2772,14 @@ font-size: 32px;}
     }
     .post-edit-popup .popup-text textarea{width: 85%;}
     .fifty_val{top: 16px;}
-    .post-design-name ul li .post_dot{max-width: 60%;}
+    .post-design-name ul li .post_dot{max-width: 48%;}
+}
+
+@media screen and (max-width: 360px)
+{
+
+
+    .post-design-name ul li .post_dot{max-width: 48%:;}
+
 }
 /*media zalak end*/
