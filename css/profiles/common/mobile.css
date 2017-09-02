@@ -1079,6 +1079,8 @@ padding: 5px 7px;}
     .people-list ul{height:auto;}
 }
 @media screen and (max-width: 640px) {
+    .edit_sd{width: 70%!important}
+    .like_user_list_main_desc{max-width: 75%;}
     .job_reg_page_fprm{width: 90%;}
         .post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
     .pt_mn2{padding-top: 20px !important;}
@@ -1158,7 +1160,7 @@ padding: 5px 7px;}
     .common-form1 h3{font-size: 15px;}
     select{padding: 5px}
     .h2-smladd{margin-top: 0px;}
-    .like_user_list_main_desc{width: 78%;}
+    .like_user_list_main_desc{width: 73%;}
     .cls-ve{top: 23px; /*right: 3px;*/}
     .custom-right-business .popup-img img{height: 43px; width: 43px;}
     .profile-job-post-location-name-rec .post_designation{font-size: 12PX;}
@@ -1275,6 +1277,7 @@ padding: 5px 7px;}
     .designation_rec {
   width: 39% !important;
 }
+  .edit_sd{width: 60%!important}
 .profile-pho-bui{border: none;}
      .post-img-user {
     font-size: 16px;
@@ -1822,6 +1825,7 @@ font-size: 12px;
         width: 76%;
     }
 
+
     .comment-name {
         width: 78%;
     }
@@ -1842,6 +1846,7 @@ font-size: 12px;
 
 }
 @media screen and (max-width: 320px) {
+
     .main-txt{width: 82%;}
     .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
     .how-it-popup{width: 97%;}
