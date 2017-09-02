@@ -27,7 +27,7 @@ $(document).ready(function () {
             }
         }
     });
-});
+})(jQuery);
 
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);

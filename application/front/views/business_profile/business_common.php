@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="">
-        <div class="row" id="">
+        <div id="row2">
             <?php
             $userid = $this->session->userdata('aileenuser');
             if ($this->uri->segment(3) == $userid) {
