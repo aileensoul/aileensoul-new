@@ -384,8 +384,7 @@ return false;
 <script src="<?php echo base_url('js/jquery.min.js?ver='.time()); ?>"></script>
 <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
 <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/select2-4.0.3.min.js?ver='.time()); ?>"></script>
-
+                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 <!-- script for skill textbox automatic end (option 2)-->
 
 <script>

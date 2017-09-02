@@ -2736,5 +2736,22 @@ font-size: 32px;}
 @media screen and (max-width: 767px)
 {
     .art_container{padding: 0px 15px;}
+    #search .btn{margin-top: 30px;}
+}
+
+@media screen and (max-width: 540px)
+{
+
+    .fifty_val{right: 34px;}
+    .popup-text textarea{padding-right: 20px; padding-top: 10px;}
+}
+@media screen and (max-width: 479px)
+{
+    .popup-text textarea{ font-size: 12px!important;  }
+    .editor-content {
+        width: 81%;
+    }
+    .post-edit-popup .popup-text textarea{width: 85%;}
+    .fifty_val{top: 16px;}
 }
 /*media zalak end*/
