@@ -408,14 +408,15 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
 <?php echo $footer; ?>
         </footer>
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-       
+        
 <!--        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
         <script src="<?php  echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
         <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
+        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+               
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()) ?>"></script> 
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
@@ -423,7 +424,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
-
+        
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                     var base_url = '<?php echo base_url(); ?>';

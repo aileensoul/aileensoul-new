@@ -29,6 +29,20 @@ $(document).ready(function () {
     });
 })(jQuery);
 
+//validation for edit email formate form
+$("#userimage").validate({
+    rules: {
+        profilepic: {
+            required: true,
+        },
+    },
+    messages: {
+        profilepic: {
+            required: "Image Required",
+        },
+    },
+});
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -1834,19 +1848,7 @@ $(document).on('keydown', function (e) {
         document.getElementById('myModal3').style.display = "none";
     }
 });
-//validation for edit email formate form
-$("#userimage").validate({
-    rules: {
-        profilepic: {
-            required: true,
-        },
-    },
-    messages: {
-        profilepic: {
-            required: "Image Required",
-        },
-    },
-});
+
 // contact person script start 
 
 $(document).on('keydown', function (e) {
