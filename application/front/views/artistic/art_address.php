@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>    
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>

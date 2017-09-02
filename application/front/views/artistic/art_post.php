@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    </head>
    <body>
