@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>" />
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>" />
@@ -407,14 +407,15 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         <footer>
 <?php echo $footer; ?>
         </footer>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+        
+<!--        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
         <script src="<?php  echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
-        <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> 
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+        <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
+        <!--<script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>-->
 
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()) ?>"></script> 
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>

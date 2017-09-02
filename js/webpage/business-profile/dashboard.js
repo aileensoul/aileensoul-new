@@ -1,3 +1,34 @@
+$(document).ready(function () {
+    business_dashboard_post(slug);
+    GetBusPhotos();
+    GetBusVideos();
+    GetBusAudios();
+    GetBusPdf();
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    business_dashboard_post(slug, pagenum);
+                }
+            }
+        }
+    });
+});
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -74,36 +105,7 @@ jQuery(document).ready(function ($) {
     return false;
 });
 // Upload Post end
-$(document).ready(function () {
-    business_dashboard_post(slug);
-    GetBusPhotos();
-    GetBusVideos();
-    GetBusAudios();
-    GetBusPdf();
 
-    $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-
-            var page = $(".page_number:last").val();
-            var total_record = $(".total_record").val();
-            var perpage_record = $(".perpage_record").val();
-            if (parseInt(perpage_record) <= parseInt(total_record)) {
-                var available_page = total_record / perpage_record;
-                available_page = parseInt(available_page, 10);
-                var mod_page = total_record % perpage_record;
-                if (mod_page > 0) {
-                    available_page = available_page + 1;
-                }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
-                if (parseInt(page) <= parseInt(available_page)) {
-                    var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    business_dashboard_post(slug, pagenum);
-                }
-            }
-        }
-    });
-});
 var isProcessing = false;
 function business_dashboard_post(slug, pagenum) {
     if (isProcessing) {
