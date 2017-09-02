@@ -160,159 +160,6 @@
 }
 
 */
-/*popup form text*/
-
-.profile-box-bui-menu {
-    padding-right: 2px !important;
-    margin-top: -38px;
-    border-top: 1px solid #d9d9d9;
-}
-.right-section {
-    padding-right: 2px !important;
-}
-.profile-box-user {
-    padding-right: 1px !important;
-    padding-left: 6px !important;
-}
-.profile-box-bui-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-}
-.user-section-free-up {
-    height: 38%;
-}
-.profile-box-bui-menu li {
-    float: left;
-}
-.bg-images {
-    position: relative;
-}
-.profile-box-bui-menu li:last-child {
-    border-right: none;
-}
-.profile-box-bui-menu li a:hover {
-    color: #1b8ab9;
-}
-.profile-box-bui-menu li a {
-    margin-right: 6px;
-    display: block;
-    text-align: center;
-    padding: 2px 12px;
-    text-decoration: none;
-    font-size: 13px;
-    color: #5b5b5b;
-}
-.flw_msg_btn ul .fruser {
-    padding-left: 5px!important;
-}
-.profile-main-rec-box-menu td a {
-    display: block;
-    color: #1b8ab9;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-}
-.profile-main-rec-box-menu td {
-    padding: 0 0 0 10px !important;
-    border: none !important;
-}
-.profile-main-rec-box-menu table {
-    border: none;
-    margin-bottom: 0;
-    width: auto;
-}
-.profile-main-rec-box-menu table td.active a {
-    background: #1b8ab9;
-    color: #ffffff;
-}
-.border_none {
-    border: none;
-}
-.profile-main-rec-box-menu td a:hover {
-    background-color: #1b8ab9;
-    color: #ffffff;
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-    /* -webkit-transform: scale(1.1);
-     transform: scale(1.1);*/
-    
-    background-color: #1b8ab9;
-    color: #ffffff;
-}
-.left-side-menu {
-    width: 16%;
-    float: left;
-    height: 50px;
-    border-right: none;
-}
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    /*padding: 6px 12px;*/
-    
-    border: 1px solid #ccc;
-    border-top: none;
-}
-/* Style the close button */
-.add-post-button a:hover {
-    color: #ffffff;
-}
-
-/*cover pic */
-
-
-.camera_in {
-    margin-top: 5px;
-}
-
-.close3 {
-    color: #ffffff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close3:hover,
-.close3:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
-
-/*button of add fileld*/
-
-.action-buttons {
-    background-color: #1b8ab9;
-    border-radius: 50px;
-    display: inline-block;
-    float: right;
-    height: 30px;
-    margin-top: 5px;
-    padding: 8px 9px;
-    width: 30px;
-}
-.action-buttons i {
-    color: white;
-}
-
-label.cameraButton input[accept*="camera"] {
-    display: none;
-}
-
-.profile-art-box {
-    position: fixed;
-    /*width: 32.5%;*/
-}
-
-.dropdown-content1 a:hover{color: #fff  !important}
-.profile-boxProfileCard .not_available p{text-align:center;}
-.alert-danger{color: black!important;font-size: 22px !important;}
-.addcontact-pic{border: 1ps solid #d9d9d9;}
-
 @media screen and (min-width: 800px) {
     #floatBarsG {
        transform: scale(1);
@@ -351,7 +198,7 @@ label.cameraButton input[accept*="camera"] {
         width: 70%;
     }
 }
-
+/**
 .back {
     width: 50%;
     position: relative;
@@ -367,40 +214,16 @@ label.cameraButton input[accept*="camera"] {
     white-space: nowrap;
     text-overflow: ellipsis;
 }**/
-
-
-.notificationsmsg #notificationTitle{display: none !important;}
-
 /**.user_lst li .follow-li-text a {
     color: #1b8ab9!important;
-}**/
+}
 .user_lst li .follow-li-text a:hover {
     color: #136386!important;
 }
 
+**/
 
-.edit_bui_img {
-    border: 1px solid #d9d9d9;
-}
 
-.slider_img img {
-    border: 1px solid #d9d9d9;
-}
-
-.profile-box-custom tr:nth-child(4) td span {
-    text-transform: capitalize;
-}
-.profile-box-custom tr:nth-child(6) td span {
-    text-transform: capitalize;
-}
-.change-password .change-password-box {
-    margin: 0;
-}
-.head_title {
-    margin: 5px;
-    display: inline-block;
-    border-bottom: 2px solid;
-}
 .job_paddtop {
     padding-top: 0px!important;
 }
@@ -756,9 +579,7 @@ fieldset .add_post_btns:hover {
 .profile-text-bui-user .profile-boxProfile-name a:hover {
     color: #1b8ab9
 }
-.profile-box-bui-menu ul li {
-    padding-left: 15px;
-}
+
 .profile-box-busi-menu ul li {
     padding-left: 0px;
 }
@@ -1297,9 +1118,6 @@ div[class^="likeduserlist"] {
 }
 .common-form .keyskill_border_active ul {
     border: 1px solid red !important;
-}
-.profile-main-rec-box-menu td.active {
-    background-color: #fff !important;
 }
 .common-form .keyskill_border_active ul {
     border: none !important;
