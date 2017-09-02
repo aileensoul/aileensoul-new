@@ -168,7 +168,7 @@ $(function () {
                     if (checked == 'checked') {
 
                         terms.push(ui.item.value);
-                        this.value = terms.split(", ");
+                        this.value = terms.split("");
                     }//if end
 
                     else {
@@ -179,7 +179,7 @@ $(function () {
                             terms.push(ui.item.value);
                             // add placeholder to get the comma-and-space at the end
                             terms.push("");
-                            this.value = terms.join(", ");
+                            this.value = terms.join("");
                             return false;
                         } else {
                             var last = terms.pop();
@@ -229,7 +229,7 @@ $(function () {
                     if (checked == 'checked') {
 
                         terms.push(ui.item.value);
-                        this.value = terms.split(", ");
+                        this.value = terms.split("");
                     }//if end
 
                     else {
@@ -240,7 +240,7 @@ $(function () {
                             terms.push(ui.item.value);
                             // add placeholder to get the comma-and-space at the end
                             terms.push("");
-                            this.value = terms.join(", ");
+                            this.value = terms.join("");
                             return false;
                         } else {
                             var last = terms.pop();

@@ -1885,7 +1885,7 @@ class Business_profile extends MY_Controller {
             <a>' . $this->common->make_links($row['product_name']) . '</a>
         </div>
         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
-            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
+            <input type="text" class="productpostname" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
 
 
             if ($row['product_name']) {
@@ -9428,7 +9428,7 @@ class Business_profile extends MY_Controller {
                 }
                 $return_html .= '</div>
                                                                         </li>
-                                                                        <li style="width: 67%">
+                                                                        <li class="bui_bcon">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
                                             <a href="' . base_url('business-profile/dashboard/' . $cdata[0]['business_slug']) . '">' . ucfirst(strtolower($cdata[0]['company_name'])) . '</a>
@@ -10062,7 +10062,7 @@ No Contacts Available.
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 
 
-<input type = "text" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 >';
@@ -11635,7 +11635,7 @@ Your browser does not support the audio tag.
 <a>' . $this->common->make_links($row['product_name']) . '</a>
 </div>
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<input type = "text" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($row['product_name']) {
                     $counter = $row['product_name'];

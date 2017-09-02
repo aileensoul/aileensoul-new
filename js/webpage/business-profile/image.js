@@ -1,1 +1,90 @@
-function checkvalue(){var e=$.trim(document.getElementById("tags").value),t=$.trim(document.getElementById("searchplace").value);return""==e&&""==t?!1:void 0}function delete_job_exp(e){$.ajax({type:"POST",url:base_url+"business_profile/bus_img_delete",data:"grade_id="+e,success:function(t){t&&$(".job_work_edit_"+e).remove()}})}function readURL(e){if(e.files&&e.files[0]){var t=new FileReader;t.onload=function(e){document.getElementById("preview").style.display="none",$("#preview").attr("src",e.target.result)},t.readAsDataURL(e.files[0])}}function validate(e){var t=document.getElementById("image1").files;if(""!=t)for(var a=0;a<t.length;a++){var l=t[a].name,n=l.split(".").pop(),c=["jpg","jpeg","png","gif","PNG"],u=$.inArray(n,c)>-1;1==u||($(".bus_image").html("Please select only Image File."),e.preventDefault())}}function removemsg(){$(".bus_image").html(" "),document.getElementById("image1").value=null}function check(){var e=$.trim(document.getElementById("tags1").value),t=$.trim(document.getElementById("searchplace1").value);return""==e&&""==t?!1:void 0}jQuery(document).ready(function(e){e(window).load(function(){e("#preloader").fadeOut("slow",function(){e(this).remove()})})}),$(function(){$("#tags").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tags").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags").val(t.item.label)}})}),$(function(){$("#searchplace").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace").val(t.item.label)}})}),$(".alert").delay(3200).fadeOut(300),$("#image1").change(function(){readURL(this)}),$(function(){$("#tags1").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#tag1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#tags1").val(t.item.label)}})}),$(function(){$("#searchplace1").autocomplete({source:function(e,t){var a=new RegExp("^"+$.ui.autocomplete.escapeRegex(e.term),"i");t($.grep(data1,function(e){return a.test(e.label)}))},minLength:1,select:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label),$("#selected-tag").val(t.item.label)},focus:function(e,t){e.preventDefault(),$("#searchplace1").val(t.item.label)}})});
+jQuery(document).ready(function ($) {
+// site preloader -- also uncomment the div in the header and the css style for #preloader
+    $(window).load(function () {
+        $('#preloader').fadeOut('slow', function () {
+            $(this).remove();
+        });
+    });
+});
+
+function checkvalue() {
+
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+// end of business search auto fill 
+$(".alert").delay(3200).fadeOut(300);
+function delete_job_exp(grade_id) {
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/bus_img_delete",
+        data: 'grade_id=' + grade_id,
+        success: function (data) {
+
+            if (data) {
+
+                $('.job_work_edit_' + grade_id).remove();
+            }
+        }
+    });
+}
+
+// footer end 
+// script for profile pic strat 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('preview').style.display = 'none';
+            $('#preview').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#image1").change(function () {
+    readURL(this);
+});
+// only iamge upload validation strat
+
+
+function validate(event) {
+
+
+    var fileInput = document.getElementById("image1").files;
+    if (fileInput != '')
+    {
+        for (var i = 0; i < fileInput.length; i++)
+        {
+
+            var vname = fileInput[i].name;
+            var ext = vname.split('.').pop();
+            var allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'PNG'];
+            var foundPresent = $.inArray(ext, allowedExtensions) > -1;
+            // alert(foundPresent);
+
+            if (foundPresent == true)
+            {
+            } else {
+                $(".bus_image").html("Please select only Image File.");
+                event.preventDefault();
+                //return false; 
+            }
+        }
+    }
+}
+function removemsg() {
+    $(".bus_image").html(" ");
+    document.getElementById("image1").value = null;
+}
+
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}

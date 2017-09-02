@@ -211,8 +211,10 @@ padding: 5px 7px;}
     }
 }
 @media screen and (max-width: 991px) {
+    .cq_latest_right{width: 68%:;}
+    .cq_latest_left{width: 27%;}
     .header2 .job-search-box1 fieldset.sec_h2 {
-    width: 172px;
+    width: 145px;
 }
     .tab-none{display:none;}
         #InboxContainer{right: -4px;}
@@ -456,7 +458,7 @@ padding: 5px 7px;}
     ul.current-user {
         float: none;
     }
-    .profile-main-box-buis-menu li a{font-size:12px; padding:17px 5px 12px;}
+    .profile-main-box-buis-menu li a{font-size:12px; padding:12px 15px 12px;}
     .flw_msg_btn ul li a{margin-top:0;}
     .left_side_box_img{width:100%; text-align:center;}
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
@@ -490,7 +492,11 @@ padding: 5px 7px;}
 .mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 767px) {
-
+    .cq_latest_left{width: 10%;}
+    .cq_latest_right{width: 88%;}
+    .user_lst ul li button{margin-right: 0px;}
+    .search-mob-block label{margin-top: 7px; margin-left: 7px;}
+    .search-mob-block label i{font-size: 20px;}
     .header ul{margin: 4px 0px;}
     .designation_rec{width: 50%!important;}
     .common-form1 h3{margin:20px 0;}
@@ -621,7 +627,9 @@ padding: 5px 7px;}
         margin-top: 0px;
     }
     .profile-head-text {
+        line-height: 8px;
         font-size: 18px !important;
+          padding-top: 0px;
     }
     .profile-text a {
         font-size: 16px !important;
@@ -634,7 +642,7 @@ padding: 5px 7px;}
         width: 100%;
     }
     .pro-fw li {
-        width: 20% !important;
+        width: 25% !important;
     }
     .pro-fw4 {
         width: 100%;
@@ -655,7 +663,7 @@ padding: 5px 7px;}
         border-bottom: 1px solid #d9d9d9;
     }
     .bpro-fw6 li {
-        width: 16.66% !important;
+        width: 19.66% !important;
     }
     .bpro-fw6 li a {
         text-align: center;
@@ -916,8 +924,8 @@ padding: 5px 7px;}
         font-size: 15px;
     }
     .cmy_2 {
-        width: 100%;
-    }
+    width: 93%;
+}
     .two-images {
         height: 250px;
     }
@@ -1068,7 +1076,7 @@ padding: 5px 7px;}
     .profile-text1 .alert.alert-warning{width:100%; float:left;}
     .email-img{float: left; width: 35px;}
     .main-txt{float: left; width: 87%; text-align: justify;}
-    .profile-left{width:70%;}
+    .profile-left{width:100%;}
     #contact_per{width:30%;}
     .art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
@@ -1076,8 +1084,17 @@ padding: 5px 7px;}
     #chat{width:100%;}
     .people-list .search input{width:96%;}
     .people-list ul{height:auto;}
+    .addcontact-left{width: 86%;}
+    .addcontact-right{width: 14%;}
 }
 @media screen and (max-width: 640px) {
+    .cq_latest_left{width: 14%}
+    .cq_latest_right {
+    width: 84%;}
+       .user_lst ul li button{margin-right:10px;}
+    
+    .edit_sd{width: 70%!important}
+    .like_user_list_main_desc{max-width: 75%;}
     .job_reg_page_fprm{width: 90%;}
         .post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
     .pt_mn2{padding-top: 20px !important;}
@@ -1128,7 +1145,7 @@ padding: 5px 7px;}
         height: 30%;
     }
     .editor-content {
-        width: 85%;
+        width: 80%;
     }
     .post-edit-popup .editor-content {
         width: 87%;
@@ -1138,7 +1155,11 @@ padding: 5px 7px;}
     }
     .profile-head-text_dg a {
         font-size: 16px;
+        line-height: 8px;
+        padding-top: 0px;
     }
+    .addcontact-left{width: 80%;}
+    .addcontact-right{width: 20%;}
 }
 @media screen and (max-width: 539px) {
     #row2 img {
@@ -1157,13 +1178,13 @@ padding: 5px 7px;}
     .common-form1 h3{font-size: 15px;}
     select{padding: 5px}
     .h2-smladd{margin-top: 0px;}
-    .like_user_list_main_desc{width: 78%;}
+    .like_user_list_main_desc{width: 73%;}
     .cls-ve{top: 23px; /*right: 3px;*/}
     .custom-right-business .popup-img img{height: 43px; width: 43px;}
     .profile-job-post-location-name-rec .post_designation{font-size: 12PX;}
-    .fifty_val{right: 22px;}
+
     .post-design-desc{padding: 5px 0px 0px 9px;}
-    .post-design-box .post-design-desc .fr{right: -14px;bottom: 0;}
+    .post-design-box .post-design-desc .fr{right: 3px;bottom: 0;}
     .post-design-desc span button{padding: 6px 16px 8px;}
     .post-design-box .post-design-desc .editable_text{ float: none;}
     .midd-section{padding: 85px 0;}
@@ -1267,11 +1288,27 @@ padding: 5px 7px;}
     .header2 ul li.active a{padding:9px 10px 10px}
     .camer_h i{font-size: 19px;}
     .people-list .search input{width:95%;}
+   
 }
 @media screen and (max-width: 479px) {
+    .cq_latest_right{width: 76%;}
+    .cq_latest_left{width: 16%;}
+    .addcontact-left{width: 75%;}
+    .addcontact-right{width: 25%;}
+
+      .search-mob-block label{margin-top: 7px; margin-left: 0px;}
     .designation_rec {
   width: 39% !important;
 }
+  .edit_sd{width: 60%!important}
+.profile-pho-bui{border: none;}
+     .post-img-user {
+    font-size: 16px;
+    height: 67px;
+    line-height: 0;
+    padding: 22px 0;
+    width: 48px;}
+
 .search_button button{width: 78px;
 padding: 5px 8px; font-size: 12px;}
   .floatBarsG{width: 20px; height: 20px;}
@@ -1393,7 +1430,7 @@ padding: 5px 8px; font-size: 12px;}
     }
     .post-design-name ul li .post_dot {
         font-size: 14px;
-        max-width: 61%;
+       
     }
     .post-design-product {
         font-size: 12px;
@@ -1472,17 +1509,13 @@ padding: 5px 8px; font-size: 12px;}
     .post-design-commnet-box {
         padding: 10px 14px;
     }
-    .editor-content {
-        width: 78%;
-    }
+    
     .post-edit-popup .editor-content {
         width: 80%;
     }
-    .post-edit-popup .popup-text textarea {
-        width: 87%;
-    }
     .profile-main-box-buis-menu li a {
         padding: 10px 5px 12px !important;
+        width: 100%;
     }
     .job-menu-profile.mob-block {
         margin-top: 0px;
@@ -1557,6 +1590,7 @@ padding: 5px 8px; font-size: 12px;}
         height: 50px;
         width: 50px;
     }
+    .profile-left{margin-left: 5px;}
     .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
         width: 32%;
     }
@@ -1572,9 +1606,9 @@ padding: 5px 8px; font-size: 12px;}
         margin-top: 12px;
     }
     .profile-pho-bui .user-pic {
-        height: 43px;
-        width: 42px;
-    }
+    height: 49px;
+    width: 49px;
+}
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
@@ -1597,6 +1631,8 @@ padding: 5px 8px; font-size: 12px;}
         overflow: hidden;
         text-overflow: ellipsis;
     }
+    .profile-head-text{margin-top: 8px;}
+    .profile-head-text_dg{line-height: 18px;}
     .bui-menu-profile .profile-head-text_dg a {
         font-size: 12px;
     }
@@ -1635,8 +1671,8 @@ padding: 5px 8px; font-size: 12px;}
     }
     .user_btn button {
         font-size: 12px;
-        width: 80px;
-        padding: 6px 7px;
+        width: 98px;
+padding: 4px 7px;
         margin-top: 10px;
     }
 
@@ -1648,19 +1684,29 @@ padding: 5px 8px; font-size: 12px;}
     .cover-pic .btn{font-size:13px; padding:3px 10px;}
     .add-contact div{width:40px; height:40px;}
     #contact_per .addtocont{top:30px;}
-    .profile-left{width:60%;}
+   
     #contact_per{width:40%;}
     .text-center.tab-block a{margin:0 10px;}
     .details_all_tital{font-size:18px;}
     .cls-ve{top:35px;}
     .people-list .search input{width:93%;}
+     .tabs-left > li > a {
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 360px) {
+.addcontact-left{width: 70%;}
+    .addcontact-right{width: 30%;}
+   .user_lst ul li button{
+        margin-right: 14px;
+width: 83px;
+    }
     .header ul {
     margin: 12px 0px 1px;
 }
 #notificationContainer{top: 31px;}
-
+.cq_latest_right{width: 70%;}
+.cq_latest_left{width: 25%;}
     #industry option{width:100%;}
     .designation_rec_1{width: 75%;}
     .bg-search .header2{margin-top:-7px;}
@@ -1735,9 +1781,7 @@ font-size: 12px;
         font-size: 11px;
         text-align: center;
     }
-    .tabs-left > li > a {
-        font-size: 12px;
-    }
+   
     .nav > li > a {
         padding: 10px 7px;
     }
@@ -1813,9 +1857,8 @@ font-size: 12px;
     .post-edit-popup .editor-content {
         width: 76%;
     }
-    .post-edit-popup .popup-text textarea {
-        width: 88%;
-    }
+
+
     .comment-name {
         width: 78%;
     }
@@ -1836,6 +1879,7 @@ font-size: 12px;
 
 }
 @media screen and (max-width: 320px) {
+
     .main-txt{width: 82%;}
     .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
     .how-it-popup{width: 97%;}

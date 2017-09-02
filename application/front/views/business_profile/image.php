@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
         <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
         <style type="text/css">
             .header2{border-bottom-left-radius: 4px;border-bottom-right-radius: 4px; }
             .full-width  img{display: none;}
@@ -155,11 +156,10 @@
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                                                 var base_url = '<?php echo base_url(); ?>';
-                                                                                var data = <?php echo json_encode($demo); ?>;
-                                                                                var data1 = <?php echo json_encode($city_data); ?>;
                                                                                 var slug = '<?php echo $slugid; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/image.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
 

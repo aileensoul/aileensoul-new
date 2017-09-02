@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -171,12 +172,13 @@
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+//            var data = <?php echo json_encode($demo); ?>;
+//            var data1 = <?php echo json_encode($city_data); ?>;
             var slug = '<?php echo $slugid; ?>';
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/contact_info.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

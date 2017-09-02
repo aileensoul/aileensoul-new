@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
 <!--start head -->
 <?php  echo $head; ?>
     <!-- END HEAD -->
@@ -174,7 +175,7 @@ $(document).ready(function(){
     });
 });
 </script>
-
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 
                     
                 </div>

@@ -40,9 +40,6 @@
     width: auto;
     float: right;
 }*/
-
-
-
     /*.message .btn:focus{color: white;}
         .message .btn:hover{color: white;}*/
 
@@ -50,10 +47,6 @@
     border: none !important;
     margin-bottom: 0px!important;
 }**/
-
-
-
-
 /* Profile */
 /*
 .profile-banner {
@@ -88,7 +81,6 @@
     word-wrap: break-word;
     width: 100%;
 }*/
-
 /* Business Profile */
 
 /* Artistic */
@@ -106,174 +98,15 @@
     width: 100%;
     clear: both;
 }*/
-
-
-.user-midd-section .khyati {
-    pointer-events: none;
-}
-.contact-frnd-post .contact-frnd .button {
-    float: right;
-    margin-top: 4px;
-    margin-right: 2px;
-}
-.contact-frnd-post .contact-frnd .button a {
-    color: #FFFFFF;
-    padding: 0px;
-}
-.contact-head {
-    background: #1b8ab9;
-    padding: 3px;
-}
-.contact-head h3 {
-    color: #FFFFFF;
-    float: left;
-}
 /* job-post*//**
 .edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}**/
-
-.post-design-box .post-design-desc a.content_link:hover{text-decoration: underline;}
-.post-design-box .post-design-desc a.content_link { color: #707070; }
 /**
 .profile-job-details p i {
     margin-left: 10px;
 }**/
-.cls-ve:hover{color: black;}
-.cls-ve{color: #ccc;}
-.profile-text a {
-    color: #8c8c8c;
-    font-size: 15px;
-    cursor: pointer;
-}
-.profile-text {
-    color: #aba2a2;
-    font-size: 18px;
-    padding-top: 0;
-}
-.profile-text p {
-    font-weight: 400 !important;
-    font-size: 22px;
-    padding-right: 28px;
-    color: #000;
-}
-.job-profile-left-side-bar .left-side-bar ul li.active {
-    position: relative;
-    background: #156f95;
-}
-.job-profile-left-side-bar .left-side-bar ul li.active a {
-    background: #1b8ab9;
-}
-.job-profile-left-side-bar .left-side-bar ul li.active:after {
-    content: "\f00c";
-    font-family: 'FontAwesome';
-    position: absolute;
-    font-size: 17px;
-    top: 11px;
-    right: 8px;
-    color: #fff;
-}
-.job-search-box button {
-    margin-top: 26px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-right: 0;
-}
-.job-menu-profile h5 {
-    text-transform: capitalize;
-    font-size: 25px;
-    font-weight: 600;
-    display: inline-block;
-}
-.job-search-box fieldset {
-    padding-left: 16px;
-    padding-right: 0px;
-}
-.job-search-box fieldset input[type=submit] {
-    margin-top: 27px;
-    padding: 8px 30px 8px 28px;
-}
 /**.dele_highrt{margin-top: 15px;  }
 .dele_highrt img{float: left;}**/
-.tsecondary_certi{float: left;
-    margin-left: -12px;
-    background: #1b8ab9;
-    color: white;
-    padding: 3px 5px 1px;
-    border-radius: 100%;
-    margin-top: -10px;
-    cursor: pointer;}
-    .tsecondary_certi i{color: white; cursor: pointer; font-size: 12px;}
-.job_work_experience_main_div h6{padding: 10px 0px 2px; font-size: 17px;}
-ul.buttons {
-    padding: 4px 0 4px 10px;
-    color: white;
-}
-ul.buttons li {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-    position: relative;
-}
 /* resume-menu*/
-.profile-text1 .as-p{font-size: 13px;
-padding-left: 0px;
-letter-spacing: 0.3px;
-cursor: default;
-}
-.alert{cursor: default;}
-.profile-text1 .chng_email{text-decoration: underline; }
-.profile-text1 .vert_email{color: white;
-    cursor: pointer;
-background: #1b8ab9;
-padding: 5px;
-border-radius: 3px;
-font-size: 14px;
-margin: 10px;}
-.cls-ve{cursor: pointer;}
-.email-verify{width: 100%; padding-left: 3%;}
-.vs-o{ padding: 10px;}
-.progressbar {
-    text-align: right;
-    float: right;
-}
-
-/* Change Password */
-.change-password {
-    padding: 80px 0;
-    text-align: center;
-}
-.change-password-box {
-    width: 100%;
-    margin: auto;
-}
-.change-password-box fieldset {
-    margin-bottom: 4px;
-}
-.change-password-box form {
-    text-align: left;
-    border: 1px solid #ddd;
-    padding: 20px;
-}
-.change-password-box h4 {
-    background: #1b8ab9;
-    color: #fff;
-    padding: 6px 15px;
-    text-align: center;
-}
-.change-password-box .hs-submit input {
-    min-width: 100px;
-    font-size: 16px;
-}
-.freelancer_apply_post {
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    padding: 15px;
-}
-.comment-post-detail {
-    border-radius: 4px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-}
 /* Freelancer Apply List *
 
 .freelancer_apply_list {
@@ -292,12 +125,7 @@ margin: 10px;}
     list-style: none;
 }
 /* chat*/
-
-
-/*contact req*/
-
 /*
-
 #Inbox_count {
     padding: 3px 7px 3px 7px;
     background: #cc0000;
@@ -332,310 +160,6 @@ margin: 10px;}
 }
 
 */
-
-
-.view_bui:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-.view_bui {
-    position: absolute;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 166px;
-    width: 221px;
-    left: 0px;
-}
-
-.view_bui #myBtn {
-    position: absolute;
-    bottom: 0;
-    left: 37%;
-    color: #fff;
-}
-
-/*popup form text*/
-
-
-.profile-box-menu {
-    padding-right: 2px !important;
-}
-.profile-box-bui-menu {
-    padding-right: 2px !important;
-    margin-top: -38px;
-    border-top: 1px solid #d9d9d9;
-}
-.all-form-content {
-    padding-left: 2px !important;
-    padding-right: 2px !important;
-}
-.profile-box-menu-2 {
-    padding-right: 2px !important;
-}
-.right-section {
-    padding-right: 2px !important;
-}
-.profile-box-user {
-    padding-right: 1px !important;
-    padding-left: 6px !important;
-}
-
-.profile-boxProfileCard .profile-box-menu {
-    margin-left: 0px;
-    /*border-top: 1px solid #d9d9d9;*/
-    
-    border-bottom: 1px solid #d9d9d9;
-}
-.profile-boxProfileCard .profile-box-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.profile-boxProfileCard .profile-box-menu li {
-    float: left;
-}
-.profile-boxProfileCard .profile-box-menu li:last-child {
-    border-right: none;
-}
-.profile-boxProfileCard .profile-box-menu li a {
-    margin-right: 0px;
-    display: block;
-    color: #1b8ab9;
-    text-align: center;
-    padding: 5px 14px;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px transparent;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-}
-.profile-boxProfileCard .profile-box-menu ul li {
-    margin: 0px;
-}
-.profile-boxProfileCard .profile-box-menu li a:hover {
-    background-color: #1b8ab9;
-    color: #ffffff;
-    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-}
-.profile-box-menu-2 {
-    margin-left: 0px;
-    border-bottom: 1px solid #d9d9d9;
-}
-.profile-box-menu-2 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-.profile-box-menu-2 li {
-    float: left;
-}
-.profile-box-menu-2 li:last-child {
-    border-right: none;
-}
-.profile-box-menu-2 li a {
-    margin-right: 0px;
-    display: block;
-    color: #1b8ab9;
-    text-align: center;
-    padding: 5px 8px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px transparent;
-    -webkit-transition-duration: 0.5s;
-    transition-duration: 0.5s;
-}
-
-.profile-box-menu-2 ul li {
-    margin: 0px;
-    padding-left: 0px;
-}
-.profile-box-menu-2 li a:hover {
-    background-color: #1b8ab9;
-    color: #ffffff;
-    transform: scale(1.2);
-}
-
-.profile-box-bui-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-}
-.user-section-free-up {
-    height: 38%;
-}
-.profile-box-bui-menu li {
-    float: left;
-
-}
-.bg-images {
-    position: relative;
-}
-
-.profile-box-bui-menu li:last-child {
-    border-right: none;
-}
-.profile-box-bui-menu li a:hover {
-    color: #1b8ab9;
-}
-.profile-box-bui-menu li a {
-    margin-right: 6px;
-    display: block;
-    text-align: center;
-    padding: 2px 12px;
-    text-decoration: none;
-    font-size: 13px;
-    color: #5b5b5b;
-}
-.flw_msg_btn ul .fruser {
-    padding-left: 5px!important;
-}
-.profile-main-rec-box-menu td a {
-    display: block;
-    color: #1b8ab9;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-}
-.profile-main-rec-box-menu td {
-    padding: 0 0 0 10px !important;
-    border: none !important;
-}
-.profile-main-rec-box-menu table {
-    border: none;
-    margin-bottom: 0;
-    width: auto;
-}
-
-.profile-main-rec-box-menu table td.active a {
-    background: #1b8ab9;
-    color: #ffffff;
-}
-
-.border_none {
-    border: none;
-}
-
-.profile-main-rec-box-menu td a:hover {
-    background-color: #1b8ab9;
-    color: #ffffff;
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-    /* -webkit-transform: scale(1.1);
-     transform: scale(1.1);*/
-    
-    background-color: #1b8ab9;
-    color: #ffffff;
-}
-
-.left-side-menu {
-    width: 16%;
-    float: left;
-    height: 50px;
-    border-right: none;
-}
-.job-menu-profile1 {
-    float: left;
-    padding-left: 31px;
-    width: 22.5%;
-    margin-top: 5px;
-}
-.job-menu-profile1 a h5 {
-    text-transform: capitalize;
-    display: inline-block;
-    font-size: 25px;
-    font-weight: 600;
-}
-
-
-/* Style the tab content */
-
-.tabcontent {
-    display: none;
-    /*padding: 6px 12px;*/
-    
-    border: 1px solid #ccc;
-    border-top: none;
-}
-/* Style the close button */
-
-.no_user_Av {
-    padding: 10px;
-    display: inline-block;
-    padding-left: 16px;
-    color: #808080;
-}
-
-.add-post-button a:hover {
-    color: #ffffff;
-}
-
-/*cover pic */
-
-
-.camera_in {
-    margin-top: 5px;
-}
-
-.close3 {
-    color: #ffffff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close3:hover,
-.close3:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
-
-/*button of add fileld*/
-
-.action-buttons {
-    background-color: #1b8ab9;
-    border-radius: 50px;
-    display: inline-block;
-    float: right;
-    height: 30px;
-    margin-top: 5px;
-    padding: 8px 9px;
-    width: 30px;
-}
-.action-buttons i {
-    color: white;
-}
-
-label.cameraButton input[accept*="camera"] {
-    display: none;
-}
-
-.profile-art-box {
-    position: fixed;
-    /*width: 32.5%;*/
-}
-
-.dropdown-content1 a:hover{color: #fff  !important}
-.profile-boxProfileCard .not_available p{text-align:center;}
-.alert-danger{color: black!important;font-size: 22px !important;}
-.addcontact-pic{border: 1ps solid #d9d9d9;}
-
 @media screen and (min-width: 800px) {
     #floatBarsG {
        transform: scale(1);
@@ -674,7 +198,7 @@ label.cameraButton input[accept*="camera"] {
         width: 70%;
     }
 }
-
+/**
 .back {
     width: 50%;
     position: relative;
@@ -690,40 +214,16 @@ label.cameraButton input[accept*="camera"] {
     white-space: nowrap;
     text-overflow: ellipsis;
 }**/
-
-
-.notificationsmsg #notificationTitle{display: none !important;}
-
 /**.user_lst li .follow-li-text a {
     color: #1b8ab9!important;
-}**/
+}
 .user_lst li .follow-li-text a:hover {
     color: #136386!important;
 }
 
+**/
 
-.edit_bui_img {
-    border: 1px solid #d9d9d9;
-}
 
-.slider_img img {
-    border: 1px solid #d9d9d9;
-}
-
-.profile-box-custom tr:nth-child(4) td span {
-    text-transform: capitalize;
-}
-.profile-box-custom tr:nth-child(6) td span {
-    text-transform: capitalize;
-}
-.change-password .change-password-box {
-    margin: 0;
-}
-.head_title {
-    margin: 5px;
-    display: inline-block;
-    border-bottom: 2px solid;
-}
 .job_paddtop {
     padding-top: 0px!important;
 }
@@ -1079,9 +579,7 @@ fieldset .add_post_btns:hover {
 .profile-text-bui-user .profile-boxProfile-name a:hover {
     color: #1b8ab9
 }
-.profile-box-bui-menu ul li {
-    padding-left: 15px;
-}
+
 .profile-box-busi-menu ul li {
     padding-left: 0px;
 }
@@ -1620,9 +1118,6 @@ div[class^="likeduserlist"] {
 }
 .common-form .keyskill_border_active ul {
     border: 1px solid red !important;
-}
-.profile-main-rec-box-menu td.active {
-    background-color: #fff !important;
 }
 .common-form .keyskill_border_active ul {
     border: none !important;
@@ -2229,7 +1724,7 @@ max-width: inherit;}
 
 .complete_profile .circle-1{height:214px;}
 .edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
-.clonedInput h6{padding: 5px 0px;}
+
 #notificationContainer .content.mCustomScrollbar{overflow: hidden; border-radius: 3px;}
 .chat_nobcx .post-img-div{width:50px; height:50px; padding:16px 0;}
 .mian_box_num{right: 0; top: 0; padding-top: 1px;}

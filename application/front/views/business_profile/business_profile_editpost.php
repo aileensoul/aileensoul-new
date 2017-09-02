@@ -1,5 +1,6 @@
 <?php  echo $head; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     <!-- END HEAD -->
     <!-- start header -->
 <?php echo $header; ?>
@@ -146,5 +147,5 @@
 </body>
 </html>
 <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
-
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     <!-- footer end -->

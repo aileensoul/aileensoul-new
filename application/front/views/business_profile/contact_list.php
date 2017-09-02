@@ -4,7 +4,8 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->
@@ -96,7 +97,7 @@
                                 <ul  id="contactlist">
                                     <!-- AJAX DATA ... -->
                                 </ul>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                             </div>        
                         </div>
                         <!-- END PAGE TITLE -->
@@ -290,6 +291,7 @@
             }
 
         </script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <!-- script for update all read notification end -->
     </body>
 </html>

@@ -2044,23 +2044,22 @@ class Recruiter extends MY_Controller {
             $search_condition = "(skill LIKE '%$rec_search%')";
             // echo $search_condition;die();
 
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            // echo "<pre>"; print_r($skilldata);  die();
-
-            $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
+            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
+//            $join_str = array(array(
+//                    'join_type' => 'left',
+//                    'table' => 'job_add_edu',
+//                    'join_table_id' => 'job_reg.user_id',
+//                    'from_table_id' => 'job_add_edu.user_id'),
+//                array(
+//                    'join_type' => 'left',
+//                    'table' => 'job_graduation',
+//                    'join_table_id' => 'job_reg.user_id',
+//                    'from_table_id' => 'job_graduation.user_id')
+//            );
             $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-            //  echo "<pre>"; print_r($jobdata); die();
+            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'keyskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str='', $groupby = '');
+             echo "<pre>"; print_r($jobdata); die();
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];

@@ -988,6 +988,8 @@ max-width: 100%;}
 /*zalak end 29-8*/
 .ui-autocomplete{background:#fff;}
 
+.ui-widget{max-height:210px!important;  overflow-y: scroll; overflow-x: hidden; position: fixed!important; z-index: 100000000!important;}
+
 
 
 @media screen and (max-width:1200px)

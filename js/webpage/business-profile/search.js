@@ -66,7 +66,6 @@ function business_search_post(pagenum) {
     });
 }
 
-
 function check() {
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
@@ -89,6 +88,25 @@ function checkvalue() {
     }
 }
 
+//select2 autocomplete start for Location
+$('#searchplace').select2({
+    placeholder: 'Find Your Location',
+    maximumSelectionLength: 1,
+    ajax: {
+        url: base_url + "business_profile/location",
+        dataType: 'json',
+        delay: 250,
+        processResults: function (data) {
+            return {
+                //alert(data);
+                results: data
+            };
+        }
+        ,
+        cache: true
+    }
+});
+// like comment script start 
 // post like script start 
 
 function post_like(clicked_id)

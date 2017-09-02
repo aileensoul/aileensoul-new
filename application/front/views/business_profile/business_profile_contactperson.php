@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
 <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
 <?php echo $header; ?>
 <!--  <?php if($businessdata[0]['business_step'] == 4){?> -->
 <?php echo $business_header2_border; ?>
@@ -98,17 +98,13 @@
 </body>
 </html>
 <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+<!--<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
 
 
 
 <!-- script for business autofill -->
 <script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
         
 $(function() {
     // alert('hi');
@@ -166,7 +162,7 @@ $( "#searchplace" ).autocomplete({
 });
   
 </script>
-
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     <!-- footer end -->
 
    <!--  <script>

@@ -3,7 +3,7 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>" />
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>" />
@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>" /> 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -406,13 +407,13 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         <footer>
 <?php echo $footer; ?>
         </footer>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-<!--        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
-        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
+       
+<!--        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+        <script src="<?php  echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
+        <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()) ?>"></script> 
@@ -426,10 +427,9 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                     var base_url = '<?php echo base_url(); ?>';
-                                                    var data = <?php echo json_encode($demo); ?>;
-                                                    var data1 = <?php echo json_encode($city_data); ?>;
                                                     var slug = '<?php echo $slugid; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

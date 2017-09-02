@@ -42,5 +42,5 @@
 </script>
 
 
-
+                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
 

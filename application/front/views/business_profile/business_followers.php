@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -19,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-3">
                         </div>
-                        <div class="col-md-8 col-sm-8">
+                        <div class="col-md-8 col-sm-12">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3> Followers</h3>
@@ -99,10 +100,9 @@
         <!-- script for business autofill -->
         <script>
                                                                                         var base_url = '<?php echo base_url(); ?>';
-                                                                                        var data = <?php echo json_encode($demo); ?>;
-                                                                                        var data1 = <?php echo json_encode($city_data); ?>;
                                                                                         var slug_id = '<?php echo $slug_id; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

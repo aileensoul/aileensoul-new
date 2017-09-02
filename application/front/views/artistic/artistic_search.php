@@ -1,7 +1,7 @@
 <div class="col-sm-7 col-md-7 col-xs-7 hidden-mob">
     <div class="job-search-box1 clearfix">
         <!-- <?php //echo form_open('search/execute_search'); ?> -->
-        <form action=<?php echo base_url('search/execute_search')?> method="get">
+        <form action=<?php echo base_url('artistic/execute_search')?> method="get">
 
         <fieldset class="col-md-3 col-sm-5 col-xs-5">
             <!--    <label>Find Your Skills</label>

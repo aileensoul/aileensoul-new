@@ -1,6 +1,7 @@
 /***  Business Profile  ***/
 
 /***----------- common css for all profile  --------------***/
+.bui_bcon{width: 67%;}
 .job-saved-box{margin-bottom:50px; width:100%; float:left;}
 .job-saved-box h3 {
     background: #fff !important;
@@ -310,7 +311,7 @@ line-height: 1;}
 .custom-right-business{margin-left:10px;}
 .fixed_right_display{margin-top:0 !important;}
 .fixed_left_side{width: 350px; position: fixed;}
-.fixed_middle_side{left: 325px; width: 610px;}
+
 .fixed_right_side{ right: 33px;
     width: 350px;
     position: fixed;}
@@ -1069,6 +1070,7 @@ line-height: 1;}
 }
 .all-comment-comment-box span {
     color: #999999;
+    vertical-align: middle;
 }
 .post-design-pro-comment-img {
     border: 1px solid #d9d9d9;
@@ -2846,6 +2848,48 @@ font-size: 32px;}
 }
 @media screen and (max-width: 767px){
     .art_container{padding: 0px 15px;}
+    .bui_bcon{width: 60%;}
+     .editor-content{width: 86%;}
+        .business-profile-right .profile-main-box-buis-menu .flw_msg_btn ul{float: none;}
+}
+
+@media screen and (max-width: 640px){
+.bui_bcon {
+    width: 56%;
+}
+.user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
+.profile-job-post-location-name ul li .follow-li-text{font-size: 14px;}
+.bui_bcon {
+    width: 50%;
+}
+}
+@media screen and (max-width: 479px)
+{
+    .bui_bcon {
+    width: 49%;
+}
+    .folle_text {
+    width: 42%;
+}
+    .popup-text textarea{ font-size: 12px!important;  }
+    .editor-content {
+        width: 81%;
+    }
+    .camer_h i{font-size: 22px;}
+    .post-edit-popup .popup-text textarea{width: 85%;}
+}
+
+@media screen and (max-width: 430px)
+{
+  
+.bui_bcon {
+    width: 35%;
+}
+
+}
+
+@media screen and (max-width: 320px){
+     .editor-content{width: 78%;}
 }
 /*media zalak end*/
 
