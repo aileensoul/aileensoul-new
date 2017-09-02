@@ -2847,6 +2847,7 @@ font-size: 32px;}
 @media screen and (max-width: 767px){
     .art_container{padding: 0px 15px;}
      .editor-content{width: 86%;}
+        .business-profile-right .profile-main-box-buis-menu .flw_msg_btn ul{float: none;}
 }
 @media screen and (max-width: 479px)
 {
