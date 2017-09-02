@@ -98,17 +98,13 @@
 </body>
 </html>
 <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+<!--<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
 
 
 
 <!-- script for business autofill -->
 <script>
-
-var data= <?php echo json_encode($demo); ?>;
-// alert(data);
-
         
 $(function() {
     // alert('hi');
@@ -166,7 +162,7 @@ $( "#searchplace" ).autocomplete({
 });
   
 </script>
-
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     <!-- footer end -->
 
    <!--  <script>

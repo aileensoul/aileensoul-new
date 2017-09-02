@@ -307,7 +307,7 @@ return false;
 
   <!-- script for skill textbox automatic start (option 2)-->
 
- <script src="<?php echo base_url('js/select2-4.0.3.min.js?ver='.time()); ?>"></script>
+ <!--<script src="<?php echo base_url('js/select2-4.0.3.min.js?ver='.time()); ?>"></script>-->
 <!-- script for skill textbox automatic end (option 2)-->
 
   <script>
@@ -340,3 +340,4 @@ $('#searchplace').select2({
 //select2 autocomplete End for Location
 
 </script>
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>

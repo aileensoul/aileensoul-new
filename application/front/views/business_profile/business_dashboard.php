@@ -955,8 +955,6 @@
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                 var base_url = '<?php echo base_url(); ?>';
-                                                var data = <?php echo json_encode($demo); ?>;
-                                                var data1 = <?php echo json_encode($city_data); ?>;
                                                 var slug = '<?php echo $slugid; ?>';
         </script>
         <!-- script for login  user valoidtaion start -->
@@ -1245,6 +1243,7 @@
             });
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <script>
             function login_profile() {
                 $('#login').modal('show');

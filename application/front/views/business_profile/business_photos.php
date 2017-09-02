@@ -3,11 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -44,7 +44,7 @@
                                                                         ?>
                                                                         <li>
                                                                             <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
-                                                                            <?php echo '<img src="https://'. bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide('.$i.')" class="hover-shadow cursor"/>' ; ?>
+                                                                            <?php echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
                                                                         </li>
                                                                         <?php
                                                                         $i++;
@@ -268,17 +268,16 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php echo base_url('js/jquery-ui.min.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
         <script>
                                                             var base_url = '<?php echo base_url(); ?>';
-                                                            var data = <?php echo json_encode($demo); ?>;
-                                                            var data1 = <?php echo json_encode($city_data); ?>;
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/photos.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/photos.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

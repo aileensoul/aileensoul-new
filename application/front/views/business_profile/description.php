@@ -15,8 +15,8 @@
         <?php if ($businessdata[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <div class="js">
-            <div id="preloader"></div>
+<!--        <div class="js">
+            <div id="preloader"></div>-->
             <section>
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="common-form1">
@@ -225,7 +225,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        <!--</div>-->
         <footer>
             <?php echo $footer; ?>
         </footer>
@@ -238,11 +238,10 @@
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                     var base_url = '<?php echo base_url(); ?>';
-                                                    var data = <?php echo json_encode($demo); ?>;
-                                                    var data1 = <?php echo json_encode($city_data); ?>;
                                                     var slug = '<?php echo $slugid; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/description.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
 

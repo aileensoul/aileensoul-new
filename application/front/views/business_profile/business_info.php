@@ -227,8 +227,6 @@
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
             var slug = '<?php echo $slugid; ?>';
             
             var company_name_validation = '<?php echo $this->lang->line('company_name_validation') ?>';
@@ -237,5 +235,6 @@
             var address_validation = '<?php echo $this->lang->line('address_validation') ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/information.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

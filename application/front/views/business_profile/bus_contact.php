@@ -3,11 +3,11 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -24,10 +24,10 @@
                                 <div class="job-saved-box">
                                     <h3>Contacts</h3>
                                     <div class="contact-frnd-post">
-                                       <!-- AJAX DATA..... --> 
+                                        <!-- AJAX DATA..... --> 
                                         <div class="col-md-1"></div>
                                     </div>
-                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                    <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
-        
+
         <!-- Bid-modal  -->
         <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -91,19 +91,18 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
-                                                                            var base_url = '<?php echo base_url(); ?>';
-                                                                            var data = <?php echo json_encode($demo); ?>;
-                                                                            var data1 = <?php echo json_encode($city_data); ?>;
-                                                                            var slug = '<?php echo $slug_id; ?>';
+            var base_url = '<?php echo base_url(); ?>';
+            var slug = '<?php echo $slug_id; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/contacts.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/contacts.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>

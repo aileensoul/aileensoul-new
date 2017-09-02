@@ -99,10 +99,9 @@
         <!-- script for business autofill -->
         <script>
                                                                                         var base_url = '<?php echo base_url(); ?>';
-                                                                                        var data = <?php echo json_encode($demo); ?>;
-                                                                                        var data1 = <?php echo json_encode($city_data); ?>;
                                                                                         var slug_id = '<?php echo $slug_id; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/followers.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
