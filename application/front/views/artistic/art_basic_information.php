@@ -4,10 +4,10 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
-            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed">
     <?php echo $header; ?>
@@ -104,18 +104,19 @@
      <?php echo $footer;  ?>
     </footer>
     </div>
-  <script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js') ?>"></script>  
-  <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-  <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/jquery-ui.js?ver='.time()) ?>"></script>  
+  <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+  <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+  
+  <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 <script>
  var base_url = '<?php echo base_url(); ?>';
 var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($de); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/information.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/information.js?ver='.time()); ?>"></script>
 </body>
 </html>
