@@ -15047,8 +15047,15 @@ public function get_artistic_name($id=''){
 
             $artposttwo = $artpostdata['data'] = $this->common->select_data_by_search('art_post', $search_condition, $contition_array, $data = 'art_post.*,art_reg.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
+                 
+                 if($artskillpost){
                  $unique = array_merge($artskillpost, $otherdata);
+                }else{
+                    $unique = $otherdata;
+                }
+                 //echo "<pre>"; print_r($unique); die();
                  $new = array_unique($unique, SORT_REGULAR);
+
 
                 if (count($artposttwo) == 0) {
                     $uniquedata = $posttwo;
@@ -15112,7 +15119,11 @@ public function get_artistic_name($id=''){
            
 
            
-                $unique = array_merge($artskillpost, $otherdata);
+               if($artskillpost){
+                 $unique = array_merge($artskillpost, $otherdata);
+                }else{
+                    $unique = $otherdata;
+                }
               
 
                 $new = array_unique($unique, SORT_REGULAR);
