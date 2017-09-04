@@ -472,7 +472,7 @@ padding: 5px 7px;}
     .post-edit-popup .popup-textarea{width: 100%;}
     .mySlides .post-design-commnet-box .cmy_2 {
     width: 84%;
-}
+            }
 }
 @media screen and (max-width: 900px) {
     .custom-right {
@@ -504,6 +504,7 @@ padding: 5px 7px;}
 .mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 767px) {
+
     .profile-job-post-location-name-rec .designation_rec{width: 78%!important;}
     .mySlides .post-design-commnet-box .cmy_2{width: 92%;}
     #notificationsmsgBody li a{width: 100%;}
@@ -567,7 +568,7 @@ padding: 5px 7px;}
         padding-top: 17PX;
     }
     .profile-box-art .right-side-menu ul li {
-        width: 33%;
+        width: 33%!important;
     }
     .profile-box-art .right-menu-jr ul li {
         width: auto;
@@ -732,10 +733,10 @@ padding: 5px 7px;}
         top: 42px;
     }
     .profile-box-art .right-menu-jr .pro-fw{width: 100%;}
-    .profile-box-art .right-menu-jr .pro-fw li
-    {
-        width: 33% !important;
-    }
+  .profile-box-art .right-menu-jr .pro-fw li {
+    width: 33.3% !important;
+    padding-right: 0px !important;
+}
     .header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-noti{width:27px; height:27px; background-size:100%;}
@@ -1317,7 +1318,7 @@ padding: 5px 7px;}
 }
 
   .edit_sd{width: 60%!important}
-}
+
 .profile-pho-bui{border: none;}
      .post-img-user {
     font-size: 16px;
@@ -1380,9 +1381,9 @@ padding: 5px 8px; font-size: 12px;}
     .pl15-mob {
         padding-left: 15px;
     }
-    .fw-479 {
+/*    .fw-479 {
         width: 100%;
-    }
+    }*/
     .logo h2 {
         font-size: 20px;
     }
@@ -1625,7 +1626,7 @@ padding: 5px 8px; font-size: 12px;}
     .profile-pho-bui .user-pic {
     height: 49px;
     width: 49px;
-}
+    }
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
@@ -1666,8 +1667,8 @@ padding: 5px 8px; font-size: 12px;}
         margin-top: 0px;
     }
     .profile-job-details {
-        padding-left: 3px !important;
-        padding-right: 3px !important;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
     }
     fieldset .add_post_btnc {
         min-width: 83px;
@@ -1676,7 +1677,7 @@ padding: 5px 8px; font-size: 12px;}
     }
     fieldset .add_post_btns {
         min-width: 83px;
-        padding: 5px 5px 7px;
+        padding: 12px 5px 11px;
         font-size: 12px !important;
     }
     .modal.in .modal-dialog {
