@@ -1639,7 +1639,7 @@ height: 146px;}
 	.custom-box .custom-width{max-width:90%;}
 	.middle-section{margin-bottom:90px;}
 	.how-it-popup .pro_img img{margin-left: 25px; width: 50px; margin-top:-15px;}
-	.how-it-popup .pro_img{padding:25px 10px 15px;}
+	.how-it-popup .pro_img{padding:22px 10px 1px;}
 	.how-it-popup .modal-header h1{font-size:26px;}
 	.carousel-fade .carousel-caption h3{font-size:24px;}
 	.top-middle h3{font-size:24px;}
@@ -1649,7 +1649,7 @@ height: 146px;}
 	.right-profile .right-menu-box:hover{background-size:100%;}*/
 	footer .container{padding:20px 15px 0px;}
 	footer ul{padding-top:0;}
-	.banner{padding-top:33px;}
+	.banner{padding-top:21px;}
 	.cameraButton .fa.fa-camera{height:20px; width:24px; background-size:100%;}
 	.banner-box .upload-camera{height:34px; width:44px;}
 	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
@@ -1715,8 +1715,10 @@ width: 93px;}
 	.login h4{font-size:20px;}
 	.md-2{width:90% !important;}
 /*	.mid-trns{width:90%;}*/
-	.btns .btn-4{padding:10px 20px;}
+	.btns .btn-4{padding:5px 20px;}
 	.profile-detail h2{line-height:1.5; margin-top:10px;}
+	.btn-4{font-size: 12px;}
+	.btn-4{padding: 5px 20px;}
 	
 }
 @media screen and (max-width: 360px) {
@@ -1724,6 +1726,7 @@ width: 93px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
 }
 @media screen and (max-width: 320px) {
+	.por_content ul li{padding: 10px;}
 .login .form-group select{width:60px; margin-right: 5px; }
 .por_content ul li .pro-text{font-size: 12px;}
 .por_content ul li img{margin-right: 3px;

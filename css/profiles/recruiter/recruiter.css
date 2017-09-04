@@ -587,3 +587,9 @@ label.cameraButton input[accept*="camera"] {display: none;}
     border: 1px solid red !important;
     border-radius: 4px;
 }
+
+@media screen and (max-width: 360px) {
+    .profile-job-post-location-name-rec .designation_rec {
+    width: 70% !important;
+}
+}
