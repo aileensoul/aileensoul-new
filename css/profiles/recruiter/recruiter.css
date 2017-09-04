@@ -577,3 +577,13 @@ label.cameraButton input[accept*="camera"] {display: none;}
     font-size: 13px;
     color: #7f7f7e;
 }
+.pad_left {
+    padding-left: 5px;
+}
+.pad_right {
+    padding-right: 9px;
+}
+.keyskill_border_active {
+    border: 1px solid red !important;
+    border-radius: 4px;
+}

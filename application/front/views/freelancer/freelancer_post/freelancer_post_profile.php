@@ -6,10 +6,10 @@
         <style type="text/css">
             #popup-form img{display: none;}
         </style>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed">
         <?php echo $header; ?>
@@ -23,65 +23,65 @@
         ?>
         <section class="custom-row">
             <div class="container" id="paddingtop_fixed">
-               <div class="row" id="row1" style="display:none;">
-                <div class="col-md-12 text-center">
-                    <div id="upload-demo" ></div>
-                </div>
-                <div class="col-md-12 cover-pic" >
-                    <button class="btn btn-success  cancel-result set-btn" ><?php echo $this->lang->line("cancel"); ?></button>
+                <div class="row" id="row1" style="display:none;">
+                    <div class="col-md-12 text-center">
+                        <div id="upload-demo" ></div>
+                    </div>
+                    <div class="col-md-12 cover-pic" >
+                        <button class="btn btn-success  cancel-result set-btn" ><?php echo $this->lang->line("cancel"); ?></button>
                         <button class="btn btn-success set-btn upload-result"><?php echo $this->lang->line("save"); ?></button>
-                    <div id="message1" style="display:none;">
-                        <div id="floatBarsG">
-                            <div id="floatBarsG_1" class="floatBarsG"></div>
-                            <div id="floatBarsG_2" class="floatBarsG"></div>
-                            <div id="floatBarsG_3" class="floatBarsG"></div>
-                            <div id="floatBarsG_4" class="floatBarsG"></div>
-                            <div id="floatBarsG_5" class="floatBarsG"></div>
-                            <div id="floatBarsG_6" class="floatBarsG"></div>
-                            <div id="floatBarsG_7" class="floatBarsG"></div>
-                            <div id="floatBarsG_8" class="floatBarsG"></div>
+                        <div id="message1" style="display:none;">
+                            <div id="floatBarsG">
+                                <div id="floatBarsG_1" class="floatBarsG"></div>
+                                <div id="floatBarsG_2" class="floatBarsG"></div>
+                                <div id="floatBarsG_3" class="floatBarsG"></div>
+                                <div id="floatBarsG_4" class="floatBarsG"></div>
+                                <div id="floatBarsG_5" class="floatBarsG"></div>
+                                <div id="floatBarsG_6" class="floatBarsG"></div>
+                                <div id="floatBarsG_7" class="floatBarsG"></div>
+                                <div id="floatBarsG_8" class="floatBarsG"></div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-12"  style="visibility: hidden; ">
+                        <div id="upload-demo-i"></div>
+                    </div>
                 </div>
-                <div class="col-md-12"  style="visibility: hidden; ">
-                    <div id="upload-demo-i"></div>
-                </div>
-            </div>
 
-               <div class="">
-                <div class="" id="row2">
-                    <?php
-                    $userid = $this->session->userdata('aileenuser');
-                    if ($this->uri->segment(3) == $userid) {
-                        $user_id = $userid;
-                    } elseif ($this->uri->segment(3) == "") {
-                        $user_id = $userid;
-                    } else {
-                        $user_id = $this->uri->segment(3);
-                    }
-                    $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
-                    $image = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $image_ori = $image[0]['profile_background'];
-                    if ($image_ori) {
-                        ?>
-
-                        <img src="<?php echo base_url($this->config->item('free_post_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                <div class="">
+                    <div class="" id="row2">
                         <?php
-                    } else {
-                        ?>
+                        $userid = $this->session->userdata('aileenuser');
+                        if ($this->uri->segment(3) == $userid) {
+                            $user_id = $userid;
+                        } elseif ($this->uri->segment(3) == "") {
+                            $user_id = $userid;
+                        } else {
+                            $user_id = $this->uri->segment(3);
+                        }
+                        $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
+                        $image = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                             <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+                        $image_ori = $image[0]['profile_background'];
+                        if ($image_ori) {
+                            ?>
 
-                         <?php }
-                         ?>
+                            <img src="<?php echo base_url($this->config->item('free_post_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                            <?php
+                        } else {
+                            ?>
 
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+
+                             <?php }
+                             ?>
+
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="container tablate-container art-profile">    
-                <?php if ($returnpage == ''&& $freelancerpostdata[0]['user_id'] == $userid) { ?>
-                   <div class="upload-img">
+                <?php if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) { ?>
+                    <div class="upload-img">
                         <label class="cameraButton"><span class="tooltiptext"><?php echo $this->lang->line("upload_cover_photo"); ?></span><i class="fa fa-camera" aria-hidden="true"></i>
                             <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                         </label>
@@ -100,7 +100,7 @@
                                 $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
-                                    <?php echo ucfirst(strtolower($sub_fname)) .  ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) { ?>
@@ -496,7 +496,6 @@
                                                         <ul class="clearfix">
                                                             <?php
                                                             if ($freelancerpostdata[0]['freelancer_post_hourly']) {
-                                                                
                                                                 ?>
                                                                 <li> <b><?php echo $this->lang->line("hourly"); ?></b> <span> <?php echo $freelancerpostdata[0]['freelancer_post_hourly'] . '  ' . $currancy; ?> </span>
                                                                 </li>
@@ -934,16 +933,16 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
-                                <input type="hidden" name="hitext" id="hitext" value="2">
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image" />
-                                </div>
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                                 </form>
-                                <?php //echo form_close(); ?>
+                                <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));  ?>
+                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
+                                    <input type="hidden" name="hitext" id="hitext" value="2">
+                                    <div class="popup_previred">
+                                        <img id="preview" src="#" alt="your image" />
+                                    </div>
+                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                </form>
+                                <?php //echo form_close();  ?>
                             </div>
                         </span>
                     </div>
@@ -951,19 +950,18 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js'); ?>">
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
+//           
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_profile.js'); ?>"></script>
-         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_profile.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
 
     </body>
 </html>

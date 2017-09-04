@@ -1770,7 +1770,7 @@ class Business_profile extends MY_Controller {
                 }
             }
             $return_html .= '</div>
-<div class="post-design-name fl col-md-10">
+<div class="post-design-name fl col-xs-8 col-md-10">
     <ul>';
             $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->company_name;
             $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
@@ -1885,7 +1885,7 @@ class Business_profile extends MY_Controller {
             <a>' . $this->common->make_links($row['product_name']) . '</a>
         </div>
         <div id="editpostbox' . $row['business_profile_post_id'] . '" style="display:none;">
-            <input type="text" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
+            <input type="text" class="productpostname" id="editpostname' . $row['business_profile_post_id'] . '" name="editpostname" placeholder="Product Name" value="' . $row['product_name'] . '" onKeyDown=check_lengthedit(' . $row['business_profile_post_id'] . '); onKeyup=check_lengthedit(' . $row['business_profile_post_id'] . '); onblur=check_lengthedit(' . $row['business_profile_post_id'] . ');>';
 
 
             if ($row['product_name']) {
@@ -2417,9 +2417,13 @@ class Business_profile extends MY_Controller {
 
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="edt_2 editable_text" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
-    </div>
+<div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'] .'" onClick="insert_comment(this.id)"><img src="'.base_url('img/send.png') .'">
+                            </button>
+                        </div>    
+</div>
     ' . form_error('post_comment') . ' 
-    <div class="comment-edit-butn">       
+    <div class="comment-edit-butn hidden-mob">       
         <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment
         </button>
     </div>
@@ -9428,7 +9432,7 @@ class Business_profile extends MY_Controller {
                 }
                 $return_html .= '</div>
                                                                         </li>
-                                                                        <li style="width: 67%">
+                                                                        <li class="bui_bcon">
                                                                             <div class="">
                                                                                 <div class="follow-li-text " style="padding: 0;">
                                             <a href="' . base_url('business-profile/dashboard/' . $cdata[0]['business_slug']) . '">' . ucfirst(strtolower($cdata[0]['company_name'])) . '</a>
@@ -9946,7 +9950,7 @@ No Contacts Available.
                         }
                     }
                     $return_html .= '</div>
-                        <div class = "post-design-name fl col-md-10">
+                        <div class = "post-design-name fl col-xs-8 col-md-10">
                     <ul>';
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->company_name;
                     $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
@@ -10062,7 +10066,7 @@ No Contacts Available.
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 
 
-<input type = "text" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 >';
@@ -10600,9 +10604,13 @@ Your browser does not support the audio tag.
 
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $row['business_profile_post_id'] . '" id = "post_comment' . $row['business_profile_post_id'] . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $row['business_profile_post_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
+<div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            </button>
+                        </div>
 </div>
 ' . form_error('post_comment') . '
-<div class = "comment-edit-butn">
+<div class = "comment-edit-butn hidden-mob">
 <button id = "' . $row['business_profile_post_id'] . '" onClick = "insert_comment(this.id)">Comment
 </button>
 </div>
@@ -11635,7 +11643,7 @@ Your browser does not support the audio tag.
 <a>' . $this->common->make_links($row['product_name']) . '</a>
 </div>
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<input type = "text" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ') onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($row['product_name']) {
                     $counter = $row['product_name'];
@@ -12087,9 +12095,13 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $return_html .= '</div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment... " onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
+            <div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            </button>
+                        </div>
     </div>';
                 $return_html .= form_error('post_comment');
-                $return_html .= '<div class="comment-edit-butn">       
+                $return_html .= '<div class="comment-edit-butn hidden-mob">       
         <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment</button></div>
 </div>
 </div>

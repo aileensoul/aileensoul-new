@@ -1,3 +1,143 @@
+//validation for edit email formate form
+$("#userimage").validate({
+    rules: {
+        profilepic: {
+            required: true,
+        },
+    },
+    messages: {
+        profilepic: {
+            required: "Image Required",
+        },
+    },
+});
+
+
+// cover image start 
+
+function myFunction() {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+}
+
+function showDiv() {
+    document.getElementById('row1').style.display = "block";
+    document.getElementById('row2').style.display = "none";
+}
+
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
+$('.upload-result').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $.ajax({
+            url: base_url + "business_profile/ajaxpro",
+            type: "POST",
+            data: {"image": resp},
+            success: function (data) {
+                html = '<img src="' + resp + '" />';
+                if (html)
+                {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+});
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+$('#upload').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+$('#upload').on('change', function () {
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+    files = this.files;
+    size = files[0].size;
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        picpopup();
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        $("#upload").val('');
+        return false;
+    }
+    // file type code end
+    if (size > 4194304)
+    {
+        //show an alert to the user
+        alert("Allowed file size exceeded. (Max. 4 MB)")
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        //reset file upload control
+        return false;
+    }
+    $.ajax({
+        url: base_url + "business_profile/imagedata",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+        }
+    });
+});
+// cover image end 
+
+$(document).ready(function () {
+    business_dashboard_post(slug);
+    GetBusPhotos();
+    GetBusVideos();
+    GetBusAudios();
+    GetBusPdf();
+
+    $(window).scroll(function () {
+        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+            var page = $(".page_number:last").val();
+            var total_record = $(".total_record").val();
+            var perpage_record = $(".perpage_record").val();
+            if (parseInt(perpage_record) <= parseInt(total_record)) {
+                var available_page = total_record / perpage_record;
+                available_page = parseInt(available_page, 10);
+                var mod_page = total_record % perpage_record;
+                if (mod_page > 0) {
+                    available_page = available_page + 1;
+                }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
+                if (parseInt(page) <= parseInt(available_page)) {
+                    var pagenum = parseInt($(".page_number:last").val()) + 1;
+                    business_dashboard_post(slug, pagenum);
+                }
+            }
+        }
+    });
+})(jQuery);
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -13,7 +153,6 @@ function check() {
         return false;
     }
 }
-
 
 // Upload Post start
 jQuery(document).ready(function ($) {
@@ -74,36 +213,7 @@ jQuery(document).ready(function ($) {
     return false;
 });
 // Upload Post end
-$(document).ready(function () {
-    business_dashboard_post(slug);
-    GetBusPhotos();
-    GetBusVideos();
-    GetBusAudios();
-    GetBusPdf();
 
-    $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-
-            var page = $(".page_number:last").val();
-            var total_record = $(".total_record").val();
-            var perpage_record = $(".perpage_record").val();
-            if (parseInt(perpage_record) <= parseInt(total_record)) {
-                var available_page = total_record / perpage_record;
-                available_page = parseInt(available_page, 10);
-                var mod_page = total_record % perpage_record;
-                if (mod_page > 0) {
-                    available_page = available_page + 1;
-                }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
-                if (parseInt(page) <= parseInt(available_page)) {
-                    var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    business_dashboard_post(slug, pagenum);
-                }
-            }
-        }
-    });
-});
 var isProcessing = false;
 function business_dashboard_post(slug, pagenum) {
     if (isProcessing) {
@@ -1578,118 +1688,6 @@ function likeuserlist(post_id) {
 }
 
 
-// cover image start 
-
-function myFunction() {
-    document.getElementById("upload-demo").style.visibility = "hidden";
-    document.getElementById("upload-demo-i").style.visibility = "hidden";
-    document.getElementById('message1').style.display = "block";
-}
-
-function showDiv() {
-    document.getElementById('row1').style.display = "block";
-    document.getElementById('row2').style.display = "none";
-}
-
-
-
-jQuery.noConflict();
-(function ($) {
-    $uploadCrop = $('#upload-demo').croppie({
-        enableExif: true,
-        viewport: {
-            width: 1250,
-            height: 350,
-            type: 'square'
-        },
-        boundary: {
-            width: 1250,
-            height: 350
-        }
-    });
-    $('.upload-result').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-
-            $.ajax({
-                url: base_url + "business_profile/ajaxpro",
-                type: "POST",
-                data: {"image": resp},
-                beforeSend: function (data) {
-                    document.getElementById('message1').style.display = "block";
-                },
-                success: function (data) {
-                    document.getElementById('row2').style.display = "block";
-                    document.getElementById('row1').style.display = "none";
-                    document.getElementById('message1').style.display = "none";
-                    $('#row2').html(data);
-//                        window.location.reload();
-                }
-            });
-        });
-    });
-    $('.cancel-result').on('click', function (ev) {
-        document.getElementById('row2').style.display = "block";
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('message1').style.display = "none";
-    });
-    $('#upload').on('change', function () {
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $uploadCrop.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-            });
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-    $('#upload').on('change', function () {
-
-        var fd = new FormData();
-        fd.append("image", $("#upload")[0].files[0]);
-        files = this.files;
-        size = files[0].size;
-        if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            picpopup();
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('row2').style.display = "block";
-            $("#upload").val('');
-            return false;
-        }
-        // file type code end
-
-        if (size > 4194304)
-        {
-            //show an alert to the user
-            alert("Allowed file size exceeded. (Max. 4 MB)")
-
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('row2').style.display = "block";
-            //reset file upload control
-            return false;
-        }
-
-        $.ajax({
-
-            url: base_url + "business_profile/imagedata",
-            type: "POST",
-            data: fd,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-
-
-            }
-        });
-    });
-})(jQuery);
-//aarati code end
-
-// cover image end 
 
 // post delete login user script start 
 
@@ -1832,19 +1830,7 @@ $(document).on('keydown', function (e) {
         document.getElementById('myModal3').style.display = "none";
     }
 });
-//validation for edit email formate form
-$("#userimage").validate({
-    rules: {
-        profilepic: {
-            required: true,
-        },
-    },
-    messages: {
-        profilepic: {
-            required: "Image Required",
-        },
-    },
-});
+
 // contact person script start 
 
 $(document).on('keydown', function (e) {

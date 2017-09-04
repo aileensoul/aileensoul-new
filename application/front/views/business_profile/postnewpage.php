@@ -671,8 +671,12 @@
                                         </div>
                                         <div class="col-md-12 inputtype-comment cmy_2">
                                             <div contenteditable="true" class="editable_text" name="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"  id="<?php echo "post_comment" . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Add a Comment ..." value= "" onClick="entercomment(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
+                                                <div class="mob-comment">       
+                            <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
+                            </button>
+                        </div>
                                         </div>
-                                        <div class="comment-edit-butn">        
+                                        <div class="comment-edit-butn hidden-mob">        
                                             <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)">Comment</button>
                                         </div>
                                     </div>
@@ -1005,8 +1009,12 @@
                                         </div>
                                         <div class="col-md-12 inputtype-comment cmy_2">
                                             <div contenteditable="true" class="editable_text" name="<?php echo $busdata['image_id']; ?>" id="<?php echo "post_imgcomment" . $busdata['image_id']; ?>" placeholder="Add a Comment ..." onkeyup="entercommentimg(<?php echo $busdata['image_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
+    <div class="mob-comment">       
+                            <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
+                            </button>
+                        </div>
                                         </div>
-                                        <div class="comment-edit-butn">                                      
+                                        <div class="comment-edit-butn hidden-mob">                                      
                                             <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button>
                                         </div>
                                     </div>

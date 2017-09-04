@@ -7,11 +7,10 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -103,20 +102,20 @@
    
 
 <!-- Calender JS Start-->
-<script src="<?php echo base_url('js/jquery.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js') ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
 
   
 <script>
     var base_url = '<?php echo base_url(); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_project.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_project.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

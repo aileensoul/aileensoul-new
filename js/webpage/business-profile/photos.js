@@ -1,22 +1,18 @@
-function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    if (searchkeyword == "" && searchplace == "") {
-        return false;
-    }
-}
-
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-// for mobile view ssearch script end
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
+//validation for edit email formate form
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+    });
+});
 
 // UPLOAD COVER PIC START 
 function myFunction() {
@@ -109,6 +105,28 @@ $('#upload').on('change', function () {
 });
 // UPLOAD COVER PIC end
 
+
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
+// for mobile view ssearch script end
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
+}
+
+
 /* FOLLOW USER START */
 function followuser_two(clicked_id)
 {
@@ -160,21 +178,6 @@ $("#profilepic").change(function () {
 });
 /* SCRIPT FOR PROFILE PIC END */
 
-//validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo Required",
-            },
-        },
-    });
-});
 
 function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
