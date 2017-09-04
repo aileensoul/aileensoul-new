@@ -7,26 +7,14 @@ class MY_Controller extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        // echo $this->session->userdata('aileenuser');  echo "hello"; die();
+       
+    $segment2 = $this->uri->segment(2);
+    $segment2_names = array('search', 'dashboard', 'details', 'execute_search');
 
+    $segment1 = $this->uri->segment(1);
+    $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic');
 
-        if ((($this->uri->segment(2) == 'dashboard' || $this->uri->segment(2) == 'details') && $this->uri->segment(1) == 'business-profile')) 
-        { 
-              
-        }
-        else if($this->uri->segment(2) == 'search' && $this->uri->segment(1) == 'job')
-        {
-               
-        }
-         else if($this->uri->segment(2) == 'search' && $this->uri->segment(1) == 'freelancer-hire')
-        {
-             
-        }
-         else if($this->uri->segment(2) == 'execute_search' && $this->uri->segment(1) == 'artistic')
-        {
-            
-        }
-        else
+         if(!in_array($segment2,$segment2_names) || !in_array($segment1,$segment1_names))
         {
            
              if (!$this->session->userdata('aileenuser')) 
@@ -38,8 +26,7 @@ class MY_Controller extends CI_Controller {
                     $this->data['userid'] = $this->session->userdata('aileenuser');
                }
         }
-
-
+       
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];
