@@ -16153,20 +16153,20 @@ public function get_artistic_name($id=''){
                                             if($status == 0 || $status == " "){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
-                                            <button id="follow' . $key['art_id'].'" onClick="followuser('.$key['art_id'].')">
+                                            <button id="follow' . $key['art_id'].'" onClick="login_profile();">
                                              Follow 
                                              </button>
                                           </div>';
                                            } elseif($status == 1){ 
 
                                           $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
-                                         <button class="bg_following" id="unfollow' . $key['art_id'].'" onClick="unfollowuser('.$key['art_id'].') ">
+                                         <button class="bg_following" id="unfollow' . $key['art_id'].'" onClick="login_profile();">
                                           Following 
                                         </button></div>';
 
                                            }
                                        $return_html .= '</div>
-                                       <a href = "' . base_url('chat/abc/6/6/' . $key['user_id']) .'"> Message</a>
+                                       <a href="javascript:void(0);" onclick="login_profile();"> Message</a>
                                     </div>';
                                     }
                                    // follow meassge div end 
@@ -16242,7 +16242,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                        </div>
                                        <div class="dropdown1">
-                                               <a onClick="myFunction('.$key['art_post_id'].')" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
+                                               <a href="javascript:void(0);" onclick="login_profile();" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
                                                   <div id="myDropdown'.$key['art_post_id'].'" class="dropdown-content1">';
                                                             
                                                             if ($key['posted_user_id'] != 0) {
@@ -16322,11 +16322,11 @@ public function get_artistic_name($id=''){
                           if (in_array($ext, $allowed)) {
                                                              
            $return_html .= '<div class="one-image" >
-             <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']).'"> </a>
+             <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']).'"> </a>
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
-            <a href="'.base_url('artistic/creat-pdf/' . $artmultiimage[0]['image_id']).'"><div class="pdf_img">
+            <a href="javascript:void(0);" onclick="login_profile();"><div class="pdf_img">
                 <img src="'.base_url('images/PDF.jpg').'" style="height: 100%; width: 100%;">
                     </div></a>
                     </div>';
@@ -16352,25 +16352,25 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                   
                     $return_html .= '<div class="two-images">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'><img class="two-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']).'" > </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();"><img class="two-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']).'" > </a>
                                                     </div>';                                                    
                                                  } 
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) .'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) .'" style="width: 100%; height:100%; "> </a>
                                                 </div>
                                                <div class="three-image">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']).'" style="width: 100%; height:100%; "> </a>
                                                 </div>
                                               <div class="three-image">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']).'" style="width: 100%; height:100%; "> </a>
                                                 </div>';
                                              } elseif (count($artmultiimage) == 4) { 
                                                
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                      
                     $return_html .= '<div class="four-image">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img class="breakpoint" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']).'" style="width: 100%; height: 100%;"> </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();"><img class="breakpoint" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']).'" style="width: 100%; height: 100%;"> </a>
                                                    </div>';                                                   
                                                 } 
                                             } elseif (count($artmultiimage) > 4) { 
@@ -16379,7 +16379,7 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                        
                 $return_html .= '<div class="four-image">
-                                                            <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) .'" style=""> </a>
+                                                            <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) .'" style=""> </a>
                                                         </div>';                                             
                                                    
                                                     $i++;
@@ -16388,7 +16388,7 @@ public function get_artistic_name($id=''){
                                                 }
                                                 
                 $return_html .= '<div class="four-image">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name']).'" > </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name']).'" > </a>
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'" >
                                                     <div class="more-image" >
                                                 <span>
@@ -16408,7 +16408,7 @@ public function get_artistic_name($id=''){
                                        <div class="post-design-menu">
                                           <ul class="col-md-6">
                                              <li class="likepost' . $key['art_post_id'].'">
-                                                <a class="ripple like_h_w" id="'.$key['art_post_id'].'" onClick="post_like(this.id)">';
+                                                <a href="javascript:void(0);" onclick="login_profile();">';
                                               
                                                    $userid = $this->session->userdata('aileenuser');
                                                    $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1');
@@ -16429,7 +16429,7 @@ public function get_artistic_name($id=''){
                                                         $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1', 'is_delete' => '0');
                                                         $commnetcount = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         
-                                               $return_html .= '<a class="ripple like_h_w" onClick="commentall(this.id)" id="'.$key['art_post_id'].'">
+                                               $return_html .= '<a class="ripple like_h_w" href="javascript:void(0);" onclick="login_profile();">
                                                 <i class="fa fa-comment-o" aria-hidden="true"> 
                                                 <span style="display: none;"></span>
                                                 </i> 
@@ -16438,7 +16438,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                           <ul class="col-md-6 like_cmnt_count">
                                              <li>
-                                                <div class="like_count_ext'.$key['art_post_id'].'">
+                                                <div class="like_count_ext">
                                                    <span class="comment_count">';
                                                     
                                                       if (count($commnetcount) > 0) {
@@ -16491,7 +16491,7 @@ public function get_artistic_name($id=''){
                                                     $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                                    
                                                    $return_html .= '<div class="like_one_other">
-                                                    <a href="javascript:void(0);"  onclick="likeuserlist('.$key['art_post_id'].')">';
+                                                    <a  href="javascript:void(0);" onclick="login_profile();">';
                                                         
                                                        $return_html .=ucfirst(strtolower($art_fname));
                                                         $return_html .= '&nbsp;';
@@ -16537,7 +16537,7 @@ public function get_artistic_name($id=''){
                                                 $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
                                                 $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
                                               
-                                     $return_html .= '<a href="javascript:void(0);" onclick="likeuserlist('.$key['art_post_id'].');">
+                                     $return_html .= '<a href="javascript:void(0);" onclick="login_profile();">
                                           <div class="like_one_other">';
                                              
                                                     $return_html .= ucfirst(strtolower($art_fname));
@@ -16607,7 +16607,7 @@ public function get_artistic_name($id=''){
                                                                 </div>
                                                                     <div class="art-comment-menu-design"> 
                                                                     <div class="comment-details-menu" id="likecomment1' . $rowdata['artistic_post_comment_id'].'">
-                                                                        <a id="'.$rowdata['artistic_post_comment_id'].'"   onClick="comment_like1(this.id)">';
+                                                                        <a href="javascript:void(0);" onclick="login_profile();">';
 
                                                                           
                                                                             $userid = $this->session->userdata('aileenuser');
@@ -16676,41 +16676,8 @@ public function get_artistic_name($id=''){
                                           $return_html .= '</div>
                                        </div>
                                     </div>
-                                    <div class="post-design-commnet-box col-md-12">';
-                                     
-                                            $userid = $this->session->userdata('aileenuser');
-                                            $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
-
-                                            $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
-                                            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
-                                           
-                                      $return_html .= '<div class="post-design-proo-img">';
-                                           if ($art_userimage) { 
-                                    $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'" name="image_src" id="image_src" />';
-                                                   
-                                                } else {
-                                                    
-                                                      
-                                                                $a = $art_name;
-                                                                $acr = substr($a, 0, 1);
-                                                                 $b = $art_lastname;
-                                                                $bcr = substr($b, 0, 1);
-                                                               
-                                        $return_html .= '<div class="post-img-profile">';
-                                        $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                        $return_html .= '</div>';
-                                                    
-                                                }
-                                                
-                                      $return_html .= '</div>
-                                       <div id="content" class="col-md-12 inputtype-comment cmy_2">
-                                          <div contenteditable="true" style="min-height:37px !important; margin-top: 0px!important" class="editable_text" name="'.$key['art_post_id'].'" id="post_comment'. $key['art_post_id'].'" placeholder="Type Message ..." onclick="entercomment('.$key['art_post_id'].')"></div>
-                                       </div>';
-                                        $return_html .= form_error('post_comment');
-                                      $return_html .= '<div class="comment-edit-butn">       
-                                           <button id="'.$key['art_post_id'].'" onClick="insert_comment(this.id)">Comment</button> 
-                                       </div>
-                                    </div>
+                                    
+                                       
                                  </div>
                               </div>
                               </div>';

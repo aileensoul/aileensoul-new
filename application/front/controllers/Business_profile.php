@@ -1287,6 +1287,9 @@ class Business_profile extends MY_Controller {
         $count = count($_FILES['postattach']['name']);
         $title = time();
 
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+
         if ($_FILES['postattach']['name'][0] != '') {
 
             for ($i = 0; $i < $count; $i++) {
@@ -1344,11 +1347,9 @@ class Business_profile extends MY_Controller {
 
                         /* RESIZE */
 
-                        echo $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        echo '<br>';
-                        $s3 = new S3(awsAccessKey, awsSecretKey);
-                        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-                        $abc = $s3->putObjectFile($main_image, bucket, $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'], S3::ACL_PUBLIC_READ);
+                        $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        
+                        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
@@ -2418,7 +2419,7 @@ class Business_profile extends MY_Controller {
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="edt_2 editable_text" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="'.$row['business_profile_post_id'] .'" onClick="insert_comment(this.id)"><img src="'.base_url('img/send.png') .'">
+                            <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
                             </button>
                         </div>    
 </div>
@@ -10605,7 +10606,7 @@ Your browser does not support the audio tag.
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $row['business_profile_post_id'] . '" id = "post_comment' . $row['business_profile_post_id'] . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $row['business_profile_post_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
 <div class="mob-comment">       
-                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
                             </button>
                         </div>
 </div>
@@ -12096,7 +12097,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment... " onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
             <div class="mob-comment">       
-                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)"><img src="' . base_url('img/send.png') . '">
                             </button>
                         </div>
     </div>';
