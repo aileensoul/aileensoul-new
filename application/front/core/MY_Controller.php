@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         // echo $this->session->userdata('aileenuser');  echo "hello"; die();
 
-        if (($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') {
+        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'job_search') && $this->uri->segment(1) != 'job')) {
             if (!$this->session->userdata('aileenuser')) {
                 redirect('login', 'refresh');
             } else {
