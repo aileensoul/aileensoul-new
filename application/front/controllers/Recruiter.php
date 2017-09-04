@@ -587,7 +587,7 @@ class Recruiter extends MY_Controller {
 //FETCH RECRUITER DATA
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
-        $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,designation,recruiter_user_image,profile_background', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,designation,recruiter_user_image,profile_background,re_step', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //FETCH SKILL DATA
 
@@ -2037,44 +2037,29 @@ class Recruiter extends MY_Controller {
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
             
             
-                        $contition_array = array('is_delete' => '0', 'status' => '1');
-            $search_condition = "(skill LIKE '%$rec_search%')";
+           $contition_array = array('is_delete' => '0', 'status' => '1');
+           $search_condition = "(skill LIKE '%$rec_search%')";
            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-          
+        //  echo '<pre>'; print_r($skilldata); die();
+                       $values = array_map('array_pop', $skilldata);
+            $imploded = implode(',', $values);
+            echo $imploded;die();
            foreach($skilldata as $ski){
                 $sss[] = $ski[skill_id];
        
             }
      $dattta = implode(',', $sss);
-     
-            $contition_array = array('FIND_IN_SET("' . $dattta . '", keyskill) != ' => '0');
-            $candidate = $this->common->select_data_by_condition('jjjob_reg', $contition_array, $data = 'job_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-           
-            
             $search  = "keyskill IN (".$dattta.")";
     $this->db->where($search);
     $result = $this->db->get('jo_reg')->result_array();
-        echo "121212"; die();
-echo '<pre>'; print_r($candidate); die();
- //code start
- $this->db->select('job_id');
-       $this->db->where('is_delete','0');
-       $this->db->where('status','1');
-        $result = $this->db->get('job_reg')->result_array();
-  echo '<pre>'; print_r($result); die();
-   
-    die();
-// code end
-    
-   die();
-
+        
+echo '<pre>'; print_r($result); die();
+ 
             //echo "Place Search";die();
            // echo "Place Search";die();
             // echo "<pre>"; print_r($rec_search);die();
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
-
-
             $search_condition = "(skill LIKE '%$rec_search%')";
             // echo $search_condition;die();
 
