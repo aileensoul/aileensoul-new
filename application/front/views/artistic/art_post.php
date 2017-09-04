@@ -3,14 +3,14 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
-<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
+<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    </head>
    <body>
@@ -278,18 +278,15 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 <footer>
 <?php echo $footer; ?>
 </footer>
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-<script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script>
-<script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;
@@ -297,8 +294,8 @@ var data1 = <?php echo json_encode($city_data); ?>;
 var complex = <?php echo json_encode($selectdata); ?>;
 var textarea = document.getElementById("textarea");
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/home.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/home.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 
 
 </body>

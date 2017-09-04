@@ -3,15 +3,15 @@
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
-<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css'); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
+<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
 <!-- END HEADER -->
 </head>
 <body   class="page-container-bg-solid page-boxed">
@@ -291,14 +291,10 @@ echo PROFILENA;
 <?php echo $footer; ?>
 </footer>
 <!-- script for skill textbox automatic start (option 2)-->
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 <script>
 var base_url = '<?php echo base_url(); ?>';   
 var data= <?php echo json_encode($demo); ?>;
@@ -307,7 +303,7 @@ var data= <?php echo json_encode($demo); ?>;
 var data1 = <?php echo json_encode($city_data); ?>;
 var slug = '<?php echo $artid; ?>';
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/details.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/details.js?ver='.time()); ?>"></script>
  </body>
 </html>
