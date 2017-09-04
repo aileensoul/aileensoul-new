@@ -1,3 +1,19 @@
+//validation for edit email formate form
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+    });
+});
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -160,21 +176,6 @@ $("#profilepic").change(function () {
 });
 /* SCRIPT FOR PROFILE PIC END */
 
-//validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo Required",
-            },
-        },
-    });
-});
 
 function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");

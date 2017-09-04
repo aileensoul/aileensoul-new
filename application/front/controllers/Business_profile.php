@@ -2417,9 +2417,13 @@ class Business_profile extends MY_Controller {
 
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="edt_2 editable_text" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
-    </div>
+<div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'] .'" onClick="insert_comment(this.id)"><img src="'.base_url('img/send.png') .'">
+                            </button>
+                        </div>    
+</div>
     ' . form_error('post_comment') . ' 
-    <div class="comment-edit-butn">       
+    <div class="comment-edit-butn hidden-mob">       
         <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment
         </button>
     </div>
@@ -10600,9 +10604,13 @@ Your browser does not support the audio tag.
 
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $row['business_profile_post_id'] . '" id = "post_comment' . $row['business_profile_post_id'] . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $row['business_profile_post_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
+<div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            </button>
+                        </div>
 </div>
 ' . form_error('post_comment') . '
-<div class = "comment-edit-butn">
+<div class = "comment-edit-butn hidden-mob">
 <button id = "' . $row['business_profile_post_id'] . '" onClick = "insert_comment(this.id)">Comment
 </button>
 </div>
@@ -12087,9 +12095,13 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $return_html .= '</div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['business_profile_post_id'] . '"  id="post_comment' . $row['business_profile_post_id'] . '" placeholder="Add a Comment... " onClick="entercomment(' . $row['business_profile_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
+            <div class="mob-comment">       
+                            <button id="'.$row['business_profile_post_id'].'" onClick="insert_comment(this.id)"><img src="'. base_url('img/send.png') .'">
+                            </button>
+                        </div>
     </div>';
                 $return_html .= form_error('post_comment');
-                $return_html .= '<div class="comment-edit-butn">       
+                $return_html .= '<div class="comment-edit-butn hidden-mob">       
         <button id="' . $row['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment</button></div>
 </div>
 </div>
