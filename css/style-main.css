@@ -108,7 +108,13 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8a
 }
 
 .btn1:focus{
-	opacity:0.6;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1b8ab9), color-stop(56%, #3bb0ac), color-stop(100%, #3bb0ac)); 
+	background: -webkit-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
+	background: -o-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%);
+	background: -ms-linear-gradient(96deg, #3bb0ac 0%, #3bb0ac 44%, #1b8ab9 100%); 
+	background: linear-gradient(354deg, #3bb0ac 0%, #1b8ab9 44%, #1b8ab9 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b8ab9', endColorstr='#3bb0ac',GradientType=0 ); 
+	color: white;
 }
 .fw{width: 100%; float: left;}
 /*.btn1 {
@@ -231,6 +237,13 @@ header h2{
 	color:#1b8ab9;
 	border:1px solid #fff;
 }
+.header-login .btn1:focus{
+		background:#fff;
+	color:#1b8ab9;
+	border:1px solid #fff
+}
+.form-text a:focus{text-decoration: underline;
+color: #337ab7;}
 .header-login input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #ddd;
 }
@@ -1065,26 +1078,6 @@ h3.text-effect span {
 
 }
 
-/***  validation  ***/
-.error{color: #ff0000 !important; font-weight:normal;}
-label.error{font-size: 12px; color: #ff0000 !important; font-weight:normal;}
-#forgot_password .modal-body label.error{color: #ff0000 !important;}
-.login .form-group select{top: 0;}
-.dob{position: relative;}
-.form-control.error{ border-bottom: 1px solid red !important;}
-.dob .error{
-	position: absolute;
-	left: 0;
-	bottom: -25px;
-	
-}
-.gender-custom{position: relative;}
-.gender-custom .error{
-	position: absolute;
-	left: 0;
-	bottom: -25px;
-	
-}
 
 .form-group{position: relative;}
 .form-group label.error{position: absolute; left: 0;}
@@ -1339,7 +1332,8 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .cover .fancybox-slide .modal-dialog{margin:0; border-radius: 5px;}
 
 
-#selgen{color:#848484 !important;}
+#selgen{color:#848484;}
+#selgen:focus{border: none;border-bottom: 1px solid #1b8ab9;}
 input.form-control{box-shadow:none !important; -webkit-appearance: none;}
 
 
@@ -1499,6 +1493,34 @@ margin: 10px;}
 .email-verify{width: 100%; padding-left: 3%;}
 .vs-o{ padding: 10px;}
 
+/***  validation  ***/
+.error{color: #ff0000 !important; font-weight:normal;}
+label.error{font-size: 14px; color: #ff0000 !important; font-weight:normal;}
+#forgot_password .modal-body label.error{color: #ff0000 !important;}
+.login .form-group select{top: 0;}
+.dob{position: relative;}
+.form-control.error{ border-bottom: 1px solid red !important;}
+.dob .error{
+	position: absolute;
+	left: 0;
+	bottom: -25px;
+	
+}
+.gender-custom{position: relative;}
+.gender-custom .error{
+	position: absolute;
+	left: 0;
+	bottom: -25px;
+	
+}
+
+#selgen.error{color: red!important;}
+#selday.error{ border-bottom: 1px solid red !important;}
+#selmonth.error{ border-bottom: 1px solid red !important;}
+#selyear.error{ border-bottom: 1px solid red !important;}
+#selgen.error{ border-bottom: 1px solid red !important;}
+
+
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
@@ -1535,7 +1557,7 @@ height: 146px;}
 }
 
 @media screen and (max-width: 991px) {
-	.error{font-size: 10px;}
+	.error{font-size: 14px;}
 
     .main-inner .pd-low{/*padding-top: 100px;*/}
 	/*.banner-box .left-profile{left: 0px!important;}*/

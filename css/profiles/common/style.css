@@ -163,6 +163,16 @@ a:focus {
 [contenteditable]:focus {
     outline: none;
 }
+.input-group .comment[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  color: #ccc;
+}
+.post-design-desc [contenteditable=true]:empty:before {
+  content: attr(placeholder);
+  color:#acacac;
+  font-size:15px;
+}
 .border_none {
     border: none!important;
 }
@@ -248,6 +258,13 @@ input[type="date"]::-webkit-search-cancel-button,
 input[type="date"]::-webkit-search-results-button,
 input[type="date"]::-webkit-search-results-decoration {
     display: none;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 fieldset {
     width: 50%;
@@ -552,6 +569,7 @@ fieldset.full-width {
 .common-form fieldset input[type="file"]{height: auto;}
 .common-form fieldset input{height:35px; line-height:1;}
 .common-form fieldset.hs-submit input{height:auto; line-height:1;}
+.common-form fieldset.hs-submit input:focus{color: white!important;}
 .common-form fieldset input:focus{   border: 1px solid #1b8ab9 !important; color: #1b8ab9!important;}
 .fullwidth_experience select {width: 49%;}
 .margin-month {margin-left: 1%;}
@@ -1132,6 +1150,16 @@ label.cameraButton {
     font-size: 32px;
     cursor: pointer;
 }
+.cover .modal.in .modal-dialog{
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    margin:0;
+    float:left;
+}
+.cover .modal-close, .posterror-modal-close{line-height:30px;}
+/***  end cover  ***/
 
 .post-img-div{
     color:#fff;
@@ -1776,7 +1804,33 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .chat_nobcx .panel-footer {
     padding: 0;
 }
-
+#notificationsBody1 img:hover {
+    cursor: pointer;
+    background-color: #d9d9d9;
+    border-radius: 30%;
+}
+.message-data .message-data-time {
+    width: 110px;
+    display: block;
+    margin: 0 auto;
+}
+#msg_block{padding:0;}
+#msg_block .input-group{background:#fff; border-top:1px solid #d9d9d9;}
+#msg_block .input-group .comment{border-top:0;}
+.panel-footer{position:relative;}
+#chat.chat{position:relative;}
+.chat .post-img-div{float:left;}
+.chat_nobcx .post-img-div{float:left;}
+.msg_right{
+	max-width: 80%;
+	float: right; 
+	position:relative;
+}
+.msg_right .messagedelete a{font-size:18px; padding-right:10px;}
+.messagedelete .fa{color:#777;}
+.messagedelete:hover .fa{color:#1b8ab9;}
+.chat-header a:hover{color:#156f95;}
+.chat_heae_img{border:1px solid #d9d9d9;}
 
 /*** end chat ***/
 /***  all profile  ***/
@@ -1877,6 +1931,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .ui-autocomplete {
 	outline: none;
+	max-width: 300px!important;
 }
 .ui-state-focus {
     margin: 0 !important;
@@ -2075,6 +2130,21 @@ div[class^="likeduserlist"] {
 .mySlides .post-design-commnet-box .cmy_2 {
     width: 89%;
 }
+div .comment {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding-right: 150px!important;
+    word-break: break-all;
+    background-color: #fff;
+    padding: 10px 20px 10px;
+    cursor: inherit;
+    font-size: 13px;
+    min-height: 41px;
+    position: relative;
+    max-height: 120px;
+    overflow-y: scroll;
+    overflow-y: auto;
+}
 
 
 /***  end business and art css  ***/
@@ -2191,6 +2261,19 @@ div[class^="likeduserlist"] {
     padding-right: 20px;
     float: left;
 }
+.addtocont {
+    position: absolute;
+    display: block;
+	right: 7%;
+}
+#contact_per .addtocont{
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    text-align:center;
+}
 
 
 /***  end only business css  ***/
@@ -2240,6 +2323,9 @@ border-top-right-radius: 4px;
 }
 .follow_mid {
     margin-bottom: 100px;
+}
+.mob-comment {
+    display: none;
 }
 
 /***  end only art css  ***/
@@ -2408,6 +2494,9 @@ border-top-right-radius: 4px;
     cursor: pointer;
     font-size: 22px;
     padding: 3px 4px;
+}
+header.animated {
+    z-index: 9;
 }
 
 

@@ -40,6 +40,7 @@ function freelancerhire_search(pagenum)
     }
     // url = '<?php echo base_url() . "freelancer-hire/search?page=" ?>'+clicked_id+"&skill="  + encodeURIComponent(searchkeyword) + "&place=" + searchplace;
     isProcessing = true;
+    
     $.ajax({
         type: 'POST',
         url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,

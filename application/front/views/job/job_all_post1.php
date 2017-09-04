@@ -156,6 +156,8 @@
     var base_url = '<?php echo base_url(); ?>';
     var skill = '<?php echo  $this->input->get('skills'); ?>';
     var place = '<?php echo  $this->input->get('searchplace'); ?>';
+    var userid ='<?php echo $this->session->userdata('aileenuser') ?>';
+   
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_search.js?ver='.time()); ?>"></script>

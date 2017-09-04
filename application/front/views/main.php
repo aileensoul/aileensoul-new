@@ -30,16 +30,19 @@
           });
         </script>-->
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
-        <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
+        <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
-        <link rel="stylesheet" href="css/common-style.css">
-        <link rel="stylesheet" href="css/style-main.css">
-        <link rel="stylesheet" href="css/style_new.css">
-        <link rel="stylesheet" href="css/style_harshad.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_new.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.time()); ?>">
+        <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script> 
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     </head>
     <body>
         <script type="application/ld+json">
@@ -99,7 +102,7 @@
                                         <div class="carousel-inner" role="listbox">
                                             <div class="item active">  
                                                 <div class="carousel-caption">
-                                                    <img src="<?php echo base_url(); ?>img/job1.png" alt="Job Profile">
+                                                    <img src="<?php echo base_url('img/job1.png?ver='.time()); ?>" alt="Job Profile">
                                                     <div class="carousel-text">
                                                         <h3>Job Profile</h3>
                                                         <p>Find best job options and connect with recruiters.</p>
@@ -108,7 +111,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="<?php echo base_url(); ?>img/rec.png" alt="Recruiter">
+                                                    <img src="<?php echo base_url('img/rec.png?ver='.time()); ?>" alt="Recruiter">
                                                     <div class="carousel-text">
                                                         <h3>Recruiter Profile</h3>
                                                         <p>Hire quality employees here.</p>
@@ -117,7 +120,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="<?php echo base_url(); ?>img/freelancer.png" alt="Freelancer">
+                                                    <img src="<?php echo base_url('img/freelancer.png?ver='.time()); ?>" alt="Freelancer">
                                                     <div class="carousel-text">
                                                         <h3>Freelance Profile</h3>
                                                         <p>Hire freelancers and also find freelance work.</p>
@@ -126,7 +129,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="<?php echo base_url(); ?>img/business.png" alt="Business">
+                                                    <img src="<?php echo base_url('img/business.png?ver='.time()); ?>" alt="Business">
                                                     <div class="carousel-text">
                                                         <h3>Business Profile</h3>
                                                         <p>Grow your business network.</p>
@@ -135,7 +138,7 @@
                                             </div>
                                             <div class="item"> 
                                                 <div class="carousel-caption">
-                                                    <img src="<?php echo base_url(); ?>img/art.png" alt="Artistic">
+                                                    <img src="<?php echo base_url('img/art.png?ver='.time()); ?>" alt="Artistic">
                                                     <div class="carousel-text">
                                                         <h3>Artistic Profile</h3>
                                                         <p> Show your art & talent to the world.</p>
@@ -218,7 +221,7 @@
                                         </div>
                                         <p class="form-text">
                                             By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" target="_blank">Terms and Condition</a> and <a href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
+                                            <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" tabindex="14" target="_blank">Terms and Condition</a> and <a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
                                         </p>
                                         <p>
                                             <button tabindex="13" class="btn1">Create an account</button>
@@ -254,7 +257,7 @@
             </section>
             <?php echo $login_footer ?>
         </div>
-        <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
         <script type="text/javascript">
             var loader = document.getElementById('adsense-loader');
             document.getElementById("adsense").appendChild(loader);
@@ -276,7 +279,7 @@
             var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
             var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/main.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/main.js?ver='.time()); ?>"></script>
     </body>
 </html>
 

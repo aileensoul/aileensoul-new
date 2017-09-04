@@ -21,8 +21,33 @@ if ($this->uri->segment(1) == '' || $this->uri->segment(1) == 'main') {
                     </ul>
                 </div>
                 <div class="col-md-6 col-sm-4 col-xs-12">
-                    © 2017 | by Aileensoul
+                    <span>    &#9400; 2017 | by Aileensoul </span>
                 </div>
             </div>
         </div>
     </footer>
+
+   <!-- IMAGE PRELOADER SCRIPT -->
+<script type="text/javascript">
+//  function preload(arrayOfImages) {
+//     $(arrayOfImages).each(function () {
+//         $('<img />').attr('src',this).appendTo('body').css('display','none');
+//     });
+// }
+
+$.fn.preload = function (fn) {
+    var len = this.length, i = 0;
+    return this.each(function () {
+        var tmp = new Image, self = this;
+        if (fn) tmp.onload = function () {
+            fn.call(self, 100 * ++i / len, i === len);
+        };
+        tmp.src = this.src;
+    });
+};
+
+$('img').preload(function(perc, done) {
+    console.log(this, perc, done);
+});
+</script>
+<!-- IMAGE PRELOADER SCRIPT -->

@@ -14,11 +14,6 @@ class Job extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
 
-        // if (!$this->session->userdata('aileenuser')) {
-        //   echo "hi";die();
-        //     redirect('login', 'refresh');
-        // }
-
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
@@ -3558,11 +3553,9 @@ public function job_search() {
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
          if ($this->session->userdata('aileenuser')) {
-          echo "hi";die();
             $this->load->view('job/job_all_post1', $this->data);
         } else {
-          echo "hi1";die();
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+          
              $this->load->view('job/job_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
@@ -4764,6 +4757,8 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+   if ($this->session->userdata('aileenuser')) {
+
         //Insert Search Data into database start
         $data = array(
             'search_keyword' => $search_job,
@@ -4776,6 +4771,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         );
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 //Insert Search Data into database End
+    }
 
 //Total Search All Start
         // search keyword insert into database end
@@ -5169,7 +5165,17 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
           else
           {
               $return_html.='<li class="fr"> 
-                                <a href="javascript:void(0);"  class= "applypost' . $post['post_id'].'  button" onclick="applypopup('.$post['post_id'].','.$post['user_id'].')">Apply</a>
+                                <a href="javascript:void(0);"  class= "applypost' . $post['post_id'].'  button"';
+
+                          if($this->session->userdata('aileenuser'))
+                          {
+                                 $return_html.='onclick="applypopup('.$post['post_id'].','.$post['user_id'].')"';
+                          }
+                          else
+                          {
+                                  $return_html.='onClick="login_profile()"'; 
+                          }
+                                $return_html.='>Apply</a>
                               </li>
                               <li class="fr">';
                                     
@@ -5180,11 +5186,23 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
                                 if ($jobsave) 
                                 {
                                        
-                                    $return_html.='<a class="button saved save_saved_btn">Saved</a>';
+                                    $return_html.='<a href="javascript:void(0);" class="button saved save_saved_btn">Saved</a>';
                                 } 
                                 else 
                                 {        
-                                    $return_html.='<a id="'.$post['post_id'].'" onClick="savepopup('.$post['post_id'].')" href="javascript:void(0);" class="savedpost' . $post['post_id'].' button save_saved_btn">Save</a>';
+                                    $return_html.='<a id="'.$post['post_id'].'"';
+
+                                    if($this->session->userdata('aileenuser'))
+                                    {
+                                      $return_html.='onClick="savepopup('.$post['post_id'].')"'; 
+                                    }
+                                    else
+                                    {
+                                      $return_html.='onClick="login_profile()"'; 
+                                    }
+                                    
+
+                                    $return_html.='href="javascript:void(0);" class="savedpost' . $post['post_id'].' button save_saved_btn">Save</a>';
                                  } 
                               $return_html.='</li>';
           }
@@ -5207,5 +5225,6 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
 echo $return_html;
 }
 //GET SEARCH DATA WITH AJAX END
+
 
 }

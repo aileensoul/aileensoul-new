@@ -17,7 +17,7 @@
                     <div class="col-md-3 col-sm-4">
                         <div class="left-side-bar">
                            <ul>
-                                   <li><a href="<?php echo base_url('business_profile/business_resume'); ?>">Buisness Profile</a>
+                                   <li><a href="<?php echo base_url('business-profile/details'); ?>">Buisness Profile</a>
                                     </li>
                                     <li><a href="<?php echo base_url('business_profile/business_profile_post'); ?>">Home</a>
                                     </li>

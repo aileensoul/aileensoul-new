@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Search extends CI_Controller {
+class Search extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,6 +13,7 @@ class Search extends CI_Controller {
         $this->lang->load('message', 'english');
 
         $this->load->model('common');
+
 //        if (!$this->session->userdata('user_id')) {
 //            redirect('login', 'refresh');
 //        }
@@ -1740,22 +1741,10 @@ class Search extends CI_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->get('search_submit')) {
-            $searchkeyword = trim($this->input->get('skills'));
-            $searchplace = trim($this->input->get('searchplace'));
-        } else {
-            if ($this->uri->segment(3) == "0") {
-                $searchplace = urldecode($searchplace);
-                $searchkeyword = "";
-            } else if ($this->uri->segment(4) == "0") {
+        $searchkeyword = trim($this->input->get('skills'));
+        $searchplace = trim($this->input->get('searchplace'));
 
-                $searchkeyword = urldecode($searchkeyword);
-                $searchplace = "";
-            } else {
-                $searchkeyword = urldecode($searchkeyword);
-                $searchplace = urldecode($searchplace);
-            }
-        }
+
 
         if ($searchplace == "" && $searchkeyword == "") {
             redirect('freelancer/recommen_candidate', refresh);
@@ -1766,20 +1755,21 @@ class Search extends CI_Controller {
         $search_place = $searchplace;
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['city'] = $city = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $data = array(
-            'search_keyword' => $search_skill,
-            'search_location' => $search_place,
-            'user_location' => $city[0]['city'],
-            'user_id' => $userid,
-            'created_date' => date('Y-m-d h:i:s', time()),
-            'status' => 1,
-            'module' => '3'
-        );
+        if ($userid) {
+            $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+            $this->data['city'] = $city = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $data = array(
+                'search_keyword' => $search_skill,
+                'search_location' => $search_place,
+                'user_location' => $city[0]['city'],
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'status' => 1,
+                'module' => '3'
+            );
 
-        $insert_id = $this->common->insert_data_getid($data, 'search_info');
-
+            $insert_id = $this->common->insert_data_getid($data, 'search_info');
+        }
 
         $title = '';
         if ($searchkeyword) {
@@ -1794,15 +1784,25 @@ class Search extends CI_Controller {
         }
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+        if ($this->session->userdata('aileenuser')) {
+            $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
+        } else {
+            // $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+            $this->load->view('freelancer/freelancer_hire/hire_search', $this->data);
+        }
 
-        $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
+
+        // $this->load->view('freelancer/freelancer_hire/recommen_freelancer_hire', $this->data);
     }
 
 //freelancer hire  search end 
     //freelancer hire  ajax search start 
     public function ajax_freelancer_hire_search($searchkeyword = "", $searchplace = "") {
+        // echo "rrrrr";die();
 
         $userid = $this->session->userdata('aileenuser');
+
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -1812,7 +1812,7 @@ class Search extends CI_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        echo $this->input->get('skills');
+        // echo $this->input->get('skills');
 
         $searchkeyword = $_GET["skill"];
         $searchplace = $_GET["place"];
@@ -1833,16 +1833,20 @@ class Search extends CI_Controller {
             $skillid = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //            $values = array_map('array_pop', $skillid);
 //            $imploded = implode(',', $values);
-//            echo $imploded;
-           
-            foreach ($skillid as $key => $value){
-             $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
-            $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//            //echo $imploded;
+//             $search  = "freelancer_post_area IN (".$imploded.")";
+//    $this->db->where($search);
+//    $result = $this->db->get('freelancer_post_reg')->result_array();
+//    echo count($result);die();
+//        
+//echo '<pre>'; print_r($result); die();
+            foreach ($skillid as $key => $value) {
+                $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
+                $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
             $candidate = array_reduce($candidate, 'array_merge', array());
-            $candidate = array_unique($candidate,SORT_REGULAR);
-
-
+            $candidate = array_unique($candidate, SORT_REGULAR);
+            // echo count($candidate);die();
 //            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
 //            $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
 //            $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1899,19 +1903,35 @@ class Search extends CI_Controller {
                     $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title=" ' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
                     $return_html .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $row['freelancer_post_user_image']) . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '" > </a>';
                 } else {
-                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
-                    $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"> </a>';
+                    $return_html .= '<a href = "' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title = "' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+                    $post_fname = $row['freelancer_post_fullname'];
+                    $post_lname = $row['freelancer_post_username'];
+                    $sub_post_fname = substr($post_fname, 0, 1);
+                    $sub_post_lname = substr($post_lname, 0, 1);
+                    $return_html .= '<div class = "post-img-div">';
+                    $return_html .= ucfirst(strtolower($sub_post_fname)) . ucfirst(strtolower($sub_post_lname));
+                    $return_html .= '</div>
+                </a>';
+//                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '">';
+//                    $return_html .= '<img src="' . base_url(NOIMAGE) . '" alt="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"> </a>';
                 }
                 $return_html .= '</div></div>
                                                                     <div class="designation_rec" style="float: left;">
                                                                         <ul>
                                                                             <li>';
-                $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
-                $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
-                $return_html .= '</h6>
+                if ($userid) {
+                    $return_html .= '<a style="margin-right: 4px;" href="' . base_url('freelancer-work/freelancer-details/' . $row['freelancer_apply_slug'] . '?page=freelancer_hire') . '" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                    $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
+                    $return_html .= '</h6>
                                                                                 </a>
-                                                                            </li>
-                                                                            <li style="display: block;" ><a href="#">';
+                                                                            </li>';
+                } else {
+                    $return_html .= '<a style="margin-right: 4px;" onclick="login_profile();" href="javascript:void(0);" title="' . ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']) . '"><h6>';
+                    $return_html .= ucwords($row['freelancer_post_fullname']) . ' ' . ucwords($row['freelancer_post_username']);
+                    $return_html .= '</h6>
+                    </a>';
+                }
+                $return_html .= '<li style="display: block;" ><a href="#">';
                 if ($row['designation']) {
                     $return_html .= $row['designation'];
                 } else {
@@ -2021,17 +2041,22 @@ class Search extends CI_Controller {
                                                             </div>
                                                             <div class="profile-job-profile-button clearfix">
                                                                 <div class="apply-btn fr">';
-                $userid = $this->session->userdata('aileenuser');
-                $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
-                $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if ($userid != $row['user_id']) {
-                    $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $row['user_id']) . '">Message</a>';
-                    if (!$data) {
-                        $return_html .= '<input type="hidden" id="hideenuser' . $row['user_id'] . '" value= "' . $data[0]['save_id'] . '">';
-                        $return_html .= '<a id="' . $row['user_id'] . '" onClick="savepopup(' . $row['user_id'] . ')" href="javascript:void(0);" class="saveduser' . $row['user_id'] . '">Save</a>';
-                    } else {
-                        $return_html .= '<a class="saved">Saved </a>';
+                if ($userid) {
+                    $userid = $this->session->userdata('aileenuser');
+                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
+                    $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($userid != $row['user_id']) {
+                        $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $row['user_id']) . '">Message</a>';
+                        if (!$data) {
+                            $return_html .= '<input type="hidden" id="hideenuser' . $row['user_id'] . '" value= "' . $data[0]['save_id'] . '">';
+                            $return_html .= '<a id="' . $row['user_id'] . '" onClick="savepopup(' . $row['user_id'] . ')" href="javascript:void(0);" class="saveduser' . $row['user_id'] . '">Save</a>';
+                        } else {
+                            $return_html .= '<a class="saved">Saved </a>';
+                        }
                     }
+                } else {
+                    $return_html .= '<a href="javascript:void(0);" onclick="login_profile();"> Message </a>';
+                    $return_html .= '<a href="javascript:void(0);" onclick="login_profile();"> Save </a>';
                 }
                 $return_html .= '</div>
                                                             </div>
@@ -2070,22 +2095,22 @@ class Search extends CI_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        if ($userid) {
+            //echo "hi"; die();
+            $data = array(
+                'search_keyword' => $search_skill,
+                'search_location' => $search_place,
+                'user_location' => $city[0]['freelancer_post_city'],
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'status' => 1,
+                'module' => '4'
+            );
 
-        //echo "hi"; die();
-        $data = array(
-            'search_keyword' => $search_skill,
-            'search_location' => $search_place,
-            'user_location' => $city[0]['freelancer_post_city'],
-            'user_id' => $userid,
-            'created_date' => date('Y-m-d h:i:s', time()),
-            'status' => 1,
-            'module' => '4'
-        );
-
-        //   echo"<pre>"; print_r($data); die();
-        $insert_id = $this->common->insert_data_getid($data, 'search_info');
+            //   echo"<pre>"; print_r($data); die();
+            $insert_id = $this->common->insert_data_getid($data, 'search_info');
 // code for insert search keyword into database end
-
+        }
         $title = '';
         if ($search_skill) {
             $title .= $search_skill;
@@ -2099,7 +2124,15 @@ class Search extends CI_Controller {
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
-        $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+        if ($this->session->userdata('aileenuser')) {
+            $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
+        } else {
+            // $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+            $this->load->view('freelancer/freelancer_post/apply_search', $this->data);
+        }
+
+        //$this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
     }
 
 // freelancer post search end 
@@ -2223,9 +2256,16 @@ class Search extends CI_Controller {
                     $firstname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->fullname;
                     $lastname = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id']))->row()->username;
                     $hireslug = $this->db->get_where('freelancer_hire_reg', array('user_id' => $post['user_id'], 'status' => 1))->row()->freelancer_hire_slug;
-                    $return_html .= '<li><a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
-                    $return_html .= ucwords($firstname) . " " . ucwords($lastname);
-                    $return_html .= '</a>';
+                    $return_html .= '<li>';
+                    if ($userid) {
+                        $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="' . base_url('freelancer-hire/employer-details/' . $hireslug . '?page=freelancer_post') . '">';
+                        $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                        $return_html .= '</a>';
+                    } else {
+                        $return_html .= '<a class="display_inline" title="' . ucwords($firstname) . " " . ucwords($lastname) . '" href="javascript:void(0);" onclick="login_profile();"> ';
+                        $return_html .= ucwords($firstname) . " " . ucwords($lastname);
+                        $return_html .= '</a>';
+                    }
                     $cityname = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
                     $countryname = $this->db->get_where('countries', array('country_id' => $post['country']))->row()->country_name;
                     if ($cityname || $countryname) {
@@ -2372,36 +2412,46 @@ class Search extends CI_Controller {
                     $return_html .= ' <li class=fr>';
 
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-                    $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
-                    $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if ($freelancerapply1) {
+                    if ($userid) {
+                        $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                        $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        if ($freelancerapply1) {
 
-                        $return_html .= '<a href="javascript:void(0);" class="button applied">';
-                        $return_html .= $this->lang->line("applied");
-                        $return_html .= '</a>';
-                    } else {
+                            $return_html .= '<a href="javascript:void(0);" class="button applied">';
+                            $return_html .= $this->lang->line("applied");
+                            $return_html .= '</a>';
+                        } else {
 
 
-                        $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">';
-                        $return_html .= $this->lang->line("apply");
-                        $return_html .= ' </a>
+                            $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">';
+                            $return_html .= $this->lang->line("apply");
+                            $return_html .= ' </a>
                                                                                         </li> 
                                                                                         <li>';
 
-                        $userid = $this->session->userdata('aileenuser');
+                            $userid = $this->session->userdata('aileenuser');
 
-                        $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
-                        $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        if ($data) {
+                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                            if ($data) {
 
-                            $return_html .= '<a class="saved  button savedpost' . $post['post_id'] . '">';
-                            $return_html .= $this->lang->line("saved");
-                            $return_html .= '</a>';
-                        } else {
-                            $return_html .= ' <a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">';
-                            $return_html .= $this->lang->line("save");
-                            $return_html .= '</a>';
+                                $return_html .= '<a class="saved  button savedpost' . $post['post_id'] . '">';
+                                $return_html .= $this->lang->line("saved");
+                                $return_html .= '</a>';
+                            } else {
+                                $return_html .= ' <a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">';
+                                $return_html .= $this->lang->line("save");
+                                $return_html .= '</a>';
+                            }
                         }
+                    } else {
+                        $return_html .= '<a href="javascript:void(0);"  class= "applypost button" onclick="login_profile();">';
+                        $return_html .= $this->lang->line("apply");
+                        $return_html .= ' </a> </li> <li>';
+
+                        $return_html .= ' <a id="" onClick="login_profile();" class="savedpost button">';
+                        $return_html .= $this->lang->line("save");
+                        $return_html .= '</a>';
                     }
                     $return_html .= ' </li>                        
                                                                                 </ul>

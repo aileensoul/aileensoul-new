@@ -4,7 +4,16 @@
                <div class="profile-boxProfileCard-cover">
                   <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/dashboard'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>">
                      <?php if ($artisticdata[0]['profile_background']) { ?>
-                     <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" class="bgImage"  >
+                     <div class="data_img">
+                     <?php 
+
+if (!file_exists($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background'])) {
+  ?>
+            <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>"  >
+                     
+                     <?php }else{?>
+                     <img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucfirst(strtolower($artisticdata[0]['art_name'])) . ' ' . ucfirst(strtolower($artisticdata[0]['art_lastname'])); ?>" class="bgImage"  >
+                     <?php }?>
                      </div>
                      <?php } else { ?>
                      <div class="data_img">
