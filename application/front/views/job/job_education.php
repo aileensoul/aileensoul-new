@@ -6,13 +6,13 @@
 
 <title><?php echo $title; ?></title>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css?ver='.time()">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
 <!-- This Css is used for call popup -->
-<link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()); ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
 
 </head>
 <!-- END HEAD -->
@@ -956,18 +956,18 @@
 </footer>
 
 <!-- Calender JS Start-->
-<script src="<?php echo base_url('js/jquery.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js') ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
 <!-- This Js is used for call popup -->
-<script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
 <!-- This Js is used for call popup -->
  
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 <!--validation for edit email formate form-->
 
 <script>
@@ -979,6 +979,6 @@
    
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_education.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_education.js?ver='.time()); ?>"></script>
 </body>
 </html>

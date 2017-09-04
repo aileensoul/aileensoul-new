@@ -3,7 +3,7 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <?php echo $head; ?>
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <body>
       <?php echo $header; ?>

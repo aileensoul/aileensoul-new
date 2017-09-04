@@ -7,12 +7,12 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-      <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-      <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -283,18 +283,18 @@
 </footer>   
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/raphael-min.js
-'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/progressloader.js'); ?>"></script>
+?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/progressloader.js?ver='.time()); ?>"></script>
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
@@ -303,7 +303,7 @@
     var aileenuser_id='<?php echo $aileenuser_id; ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_save_post.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_save_post.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

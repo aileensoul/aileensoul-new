@@ -7,12 +7,12 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-      <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -145,12 +145,12 @@
 </footer>
 
 <!-- script for skill textbox automatic start-->
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.highlite.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
@@ -158,7 +158,7 @@
     var place = '<?php echo  $this->input->get('searchplace'); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_search.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_search.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

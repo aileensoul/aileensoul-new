@@ -5,14 +5,13 @@
       <?php echo $head; ?>
       <title><?php echo $title; ?></title>
       <!-- Calender Css Start-->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.datetimepicker.css?ver='.time()); ?>">
       <!-- Calender Css End-->
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- start header -->
@@ -171,12 +170,12 @@
 </footer>
 
 <!-- script for skill textbox automatic start -->
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
 <!-- script for skill textbox automatic end -->
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+<script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver='.time()); ?>"></script>
 
 <script>
 var base_url = '<?php echo base_url(); ?>';
@@ -186,7 +185,7 @@ var  date_picker_edit='<?php echo date('Y-m-d',strtotime($dob1));?>';
 </script>
 
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/index.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/index.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

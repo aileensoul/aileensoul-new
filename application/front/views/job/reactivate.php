@@ -6,11 +6,10 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>Reactivate</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+      <title>Reactivate</title>  
+      <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time());?>" />
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
+	   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!--header start-->
    <?php echo $header; ?>
@@ -35,7 +34,12 @@
             </center>
          </div>
       </div>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<footer>        
+<?php echo $footer;  ?>
+</footer>
+    
+     <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+
    </body>
 </html>
