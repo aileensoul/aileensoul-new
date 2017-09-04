@@ -504,6 +504,7 @@ padding: 5px 7px;}
 .mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 767px) {
+    .profile-job-post-location-name-rec .designation_rec{width: 78%!important;}
     .mySlides .post-design-commnet-box .cmy_2{width: 92%;}
     #notificationsmsgBody li a{width: 100%;}
     .cq_latest_left{width: 10%;}
@@ -1314,7 +1315,9 @@ padding: 5px 7px;}
     .designation_rec {
   width: 39% !important;
 }
+
   .edit_sd{width: 60%!important}
+}
 .profile-pho-bui{border: none;}
      .post-img-user {
     font-size: 16px;
@@ -1330,7 +1333,7 @@ padding: 5px 8px; font-size: 12px;}
     position: absolute;
     width: 19%;
     height: 28px;
-    margin-left: -117px;
+    margin-left: -156px;
     left: 68%;
     margin-top: -7%;
     transform: scale(0.3);
@@ -1709,6 +1712,9 @@ padding: 4px 7px;
     }
 }
 @media screen and (max-width: 360px) {
+    .profile-job-post-location-name-rec .designation_rec {
+    width: 71% !important;
+}
 .addcontact-left{width: 70%;}
     .addcontact-right{width: 30%;}
    .user_lst ul li button{
