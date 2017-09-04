@@ -51,9 +51,10 @@
         line-height: 30px;*/
     }
     .cmy_2 {
-        width: 74%;
+        width: 78%;
         float: left;
     }
+    .mySlides .post-design-commnet-box .cmy_2{width: 86%;}
     .editor-content {
         width: 86%;
     }
@@ -89,7 +90,7 @@ text-overflow: ellipsis;
 white-space: nowrap;
 overflow: hidden;
 }
-  .prev, .next{top: 260px;}
+  .prev, .next{top: 210px;}
     .common-form input[type="radio"], .common-form input[type="checkbox"]{margin: 6px 10px;}
     .comment-details{font-size: 15px;}
     .post-design-name_follow{width: 42%;    }
@@ -469,6 +470,9 @@ padding: 5px 7px;}
     .chat .chat-history{padding:25px 15px 20px;}
     .chat .chat-header{padding-left:15px;}
     .post-edit-popup .popup-textarea{width: 100%;}
+    .mySlides .post-design-commnet-box .cmy_2 {
+    width: 84%;
+}
 }
 @media screen and (max-width: 900px) {
     .custom-right {
@@ -477,6 +481,13 @@ padding: 5px 7px;}
       .ves_c{width: 100%; display: block; text-align: center;}
 }
 @media screen and (max-width: 800px) {
+    .mySlides .post-design-commnet-box .cmy_2 {
+    width: 82%;
+}
+.cmy_2 {
+    width: 82%;
+    float: left;
+}
     .custom-right {
         margin-left: 0%;
     }
@@ -493,6 +504,7 @@ padding: 5px 7px;}
 .mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 767px) {
+    .mySlides .post-design-commnet-box .cmy_2{width: 92%;}
     #notificationsmsgBody li a{width: 100%;}
     .cq_latest_left{width: 10%;}
     .cq_latest_right{width: 88%;}
