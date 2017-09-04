@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
        
     $segment2 = $this->uri->segment(2);
-    $segment2_names = array('search', 'dashboard', 'details' ,'ajax_user_search');
+    $segment2_names = array('search', 'dashboard', 'details' ,'execute_search','ajax_user_search');
 
     $segment1 = $this->uri->segment(1);
     $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic');

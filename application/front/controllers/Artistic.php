@@ -15841,12 +15841,9 @@ public function get_artistic_name($id=''){
                 echo $return_html;
     }
 
-public function ajax_user_search1() {
 
-    echo "hii"; die();
-}
 
-    public function ajax_user_search() { echo "hii"; die();
+    public function ajax_user_search() { //echo "hii"; die();
 
         //echo $_GET['skills']; die();
    //$this->data['userid'] = $userid = $this->session->userdata('aileenuser');
