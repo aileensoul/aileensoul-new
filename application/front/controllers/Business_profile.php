@@ -1344,8 +1344,8 @@ class Business_profile extends MY_Controller {
 
                         /* RESIZE */
 
-                        $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
-
+                        echo $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        echo '<br>';
                         $s3 = new S3(awsAccessKey, awsSecretKey);
                         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
                         $abc = $s3->putObjectFile($main_image, bucket, $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'], S3::ACL_PUBLIC_READ);
