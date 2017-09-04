@@ -58,7 +58,7 @@ $(document).ready(function () {
         var post_data = {
             'email_login': email_login,
             'password_login': password_login,
-            get_csrf_token_name: get_csrf_hash,
+            'aileensoulnewfrontcsrf': get_csrf_hash,
         }
 
         $.ajax({
@@ -120,7 +120,7 @@ $(document).ready(function () {
                         email_reg: function () {
                             return $("#email_reg").val();
                         },
-                        get_csrf_token_name: get_csrf_hash,
+                        'aileensoulnewfrontcsrf': get_csrf_hash,
                     },
                 },
             },
@@ -197,7 +197,7 @@ $(document).ready(function () {
             'selmonth': selmonth,
             'selyear': selyear,
             'selgen': selgen,
-            get_csrf_token_name: get_csrf_hash,
+            'aileensoulnewfrontcsrf': get_csrf_hash,
         }
 
 

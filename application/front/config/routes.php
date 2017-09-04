@@ -54,8 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /* product Login end */
 //$route['login'] = 'Login/index';
 
-//$route['default_controller'] = 'main';
-$route['default_controller'] = 'dashboard';
+$route['default_controller'] = 'main';
+//$route['default_controller'] = 'dashboard';
 $route['404_override'] = 'My404Page';
 //$route['translate_uri_dashes'] = FALSE;
 
