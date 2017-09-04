@@ -2035,7 +2035,41 @@ class Recruiter extends MY_Controller {
             $unique = $this->data['results'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
             // echo "<pre>"; print_r($unique);die();
         } elseif ($searchplace == "" || $this->uri->segment(4) == "0") {
-            // echo "Place Search";die();
+            
+            
+                        $contition_array = array('is_delete' => '0', 'status' => '1');
+            $search_condition = "(skill LIKE '%$rec_search%')";
+           $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+          
+           foreach($skilldata as $ski){
+                $sss[] = $ski[skill_id];
+       
+            }
+     $dattta = implode(',', $sss);
+     
+            $contition_array = array('FIND_IN_SET("' . $dattta . '", keyskill) != ' => '0');
+            $candidate = $this->common->select_data_by_condition('jjjob_reg', $contition_array, $data = 'job_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           
+            
+            $search  = "keyskill IN (".$dattta.")";
+    $this->db->where($search);
+    $result = $this->db->get('jo_reg')->result_array();
+        echo "121212"; die();
+echo '<pre>'; print_r($candidate); die();
+ //code start
+ $this->db->select('job_id');
+       $this->db->where('is_delete','0');
+       $this->db->where('status','1');
+        $result = $this->db->get('job_reg')->result_array();
+  echo '<pre>'; print_r($result); die();
+   
+    die();
+// code end
+    
+   die();
+
+            //echo "Place Search";die();
+           // echo "Place Search";die();
             // echo "<pre>"; print_r($rec_search);die();
 
             $contition_array = array('is_delete' => '0', 'status' => '1');
@@ -2044,22 +2078,23 @@ class Recruiter extends MY_Controller {
             $search_condition = "(skill LIKE '%$rec_search%')";
             // echo $search_condition;die();
 
-            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            
-//            $join_str = array(array(
-//                    'join_type' => 'left',
-//                    'table' => 'job_add_edu',
-//                    'join_table_id' => 'job_reg.user_id',
-//                    'from_table_id' => 'job_add_edu.user_id'),
-//                array(
-//                    'join_type' => 'left',
-//                    'table' => 'job_graduation',
-//                    'join_table_id' => 'job_reg.user_id',
-//                    'from_table_id' => 'job_graduation.user_id')
-//            );
+            $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            // echo "<pre>"; print_r($skilldata);  die();
+
+            $join_str = array(array(
+                    'join_type' => 'left',
+                    'table' => 'job_add_edu',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_add_edu.user_id'),
+                array(
+                    'join_type' => 'left',
+                    'table' => 'job_graduation',
+                    'join_table_id' => 'job_reg.user_id',
+                    'from_table_id' => 'job_graduation.user_id')
+            );
             $contition_array = array('job_reg.status' => '1', 'job_reg.user_id !=' => $userid, 'job_reg.job_step' => 10);
-            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'keyskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str='', $groupby = '');
-             echo "<pre>"; print_r($jobdata); die();
+            $jobdata = $userdata['data'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            //  echo "<pre>"; print_r($jobdata); die();
 
             foreach ($skilldata as $key) {
                 $id = $key['skill_id'];
@@ -2078,7 +2113,8 @@ class Recruiter extends MY_Controller {
             }
 
             // die();
-            //echo "<pre>"; print_r($jobskillpost); die();
+           /// echo count($jobskillpost);  die();
+           echo "<pre>"; print_r($jobskillpost); die();
             $this->data['rec_skill'] = $jobskillpost;
             // echo "<pre>"; print_r( $this->data['rec_skill']); die();
 
