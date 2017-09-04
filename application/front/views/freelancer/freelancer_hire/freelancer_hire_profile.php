@@ -3,10 +3,10 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
         <style type="text/css">
             #popup-form img{display: none;}
         </style>
@@ -98,10 +98,10 @@
                                 $sub_lname = substr($lname, 0, 1);
                                 ?>
                                 <div class="post-img-user">
-                                    <?php echo ucfirst(strtolower($sub_fname)) .  ucfirst(strtolower($sub_lname)); ?>
+                                    <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
                                 </div>
                             <?php } ?>
-                            <?php if ($returnpage == ''&& $freelancerhiredata[0]['user_id'] == $userid) { ?>
+                            <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
@@ -445,14 +445,14 @@
                         <span class="mes">
                             <div id="popup-form">
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="4">
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image"/>
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                                    <input type="hidden" name="hitext" id="hitext" value="4">
+                                    <div class="popup_previred">
+                                        <img id="preview" src="#" alt="your image"/>
 
-                                </div>
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                    </div>
+                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
                                 <?php //echo form_close(); ?>
                             </div>
@@ -462,20 +462,17 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>         
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>">
+        <!--<script src="<?php //echo base_url('js/jquery.js'); ?>"></script>-->         
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
-
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
     </body>
 </html>

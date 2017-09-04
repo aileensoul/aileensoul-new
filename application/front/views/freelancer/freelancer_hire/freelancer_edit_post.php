@@ -4,12 +4,12 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         
-        <link href="<?php echo base_url('css/jquery-ui.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url('css/jquery-ui.css?ver=' . time()) ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <!-- Calender Css Start-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
         <!-- Calender Css End-->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
 
     </head>
     <body class="page-container-bg-solid page-boxed">
@@ -287,22 +287,22 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script> 
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>">
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver=' . time()); ?>"></script> 
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver=' . time()); ?>">
         </script>
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
             
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
 
         <script type="text/javascript">
             //Leave Page on add and edit post page start

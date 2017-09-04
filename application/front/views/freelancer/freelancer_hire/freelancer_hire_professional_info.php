@@ -3,13 +3,13 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">-->
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver='.time()); ?>">
     </head>
-    <div class="js">
+<!--    <div class="js">-->
         <body>
-            <div id="preloader"></div>
+<!--            <div id="preloader"></div>-->
             <?php echo $header; ?>
             <?php
             if ($freehiredata[0]['free_hire_step'] == '3') {
@@ -89,19 +89,18 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-            <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-            <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+            <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+            <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
             <script type="text/javascript">
                 var base_url = '<?php echo base_url(); ?>';
-                 var data = <?php echo json_encode($demo); ?>;
-                 var data1 = <?php echo json_encode($city_data); ?>;                
+                            
             </script>
            
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_professional_info.js'); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_professional_info.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
           
         </body>
-    </div>
+    <!--</div>-->
 </html>

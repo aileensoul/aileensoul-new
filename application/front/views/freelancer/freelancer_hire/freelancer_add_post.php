@@ -6,14 +6,14 @@
             <?php echo $title; ?>
         </title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <!-- This Css is used for call popup start -->
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" /> 
+        <link rel="stylesheet" href=<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?> /> 
         <!--call popup end-->
         <!-- Calender Css Start-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
         <!-- Calender Css End-->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="pushmenu-push">
         <?php echo $header; ?>
@@ -94,7 +94,7 @@
                                 <label class="control-label"><?php echo $this->lang->line("other_skill"); ?>:</label>
                                         <input name="other_skill" class="keyskil"  type="text" id="other_skill" tabindex="5" placeholder="Enter Your Other Skill" />
                                         <span id="fullname-error"></span>
-                                        <?php echo form_error('other_skill'); ?>
+                                    <?php echo form_error('other_skill'); ?>
                                     </fieldset>-->
                                     <fieldset class="full-width two-select-box fullwidth_experience" <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
                                         <label><?php echo $this->lang->line("experiance"); ?>:</label>
@@ -258,28 +258,25 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery.js?ver=' . time()); ?>"></script>-->
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <!-- This Js is used for call popup -->
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <!-- Calender JS Start-->
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>">
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver=' . time()); ?>">
         </script> 
 
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            var data = <?php echo json_encode($demo); ?>;
-            var data1 = <?php echo json_encode($city_data); ?>;
 
             // LEAVE PAGE ON ADD AND EDIT POST PAGE START
             function leave_page(clicked_id)
             {
-                
+
                 var post_name = document.getElementById('post_name').value;
                 var post_desc = document.getElementById('post_desc').value;
                 var fields_req = document.getElementById('fields_req').value;
@@ -295,7 +292,7 @@
                 var searchkeyword = $.trim(document.getElementById('tags').value);
                 var searchplace = $.trim(document.getElementById('searchplace').value);
                 var page = document.getElementById('page').value;
-                if (post_name == "" && post_desc == "" && fields_req == "" && skills == ""  && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
+                if (post_name == "" && post_desc == "" && fields_req == "" && skills == "" && year == "" && month == "" && rate == "" && currency == "" && est_time == "" && datepicker == "" && country == "" && city == "")
                 {
                     if (clicked_id == 1)
                     {
@@ -356,44 +353,42 @@
 
                     }
 
-                } 
-                else
+                } else
                 {
-                    
-                        return home(clicked_id, searchkeyword, searchplace);
-                   
-                    
+
+                    return home(clicked_id, searchkeyword, searchplace);
+
+
                 }
             }
 
-            
+
             function home(clicked_id, searchkeyword, searchplace) {
 
-                if(clicked_id == 5)
+                if (clicked_id == 5)
                 {
-                     $('.header ul li #abody ul li a').click(function () {
+                    $('.header ul li #abody ul li a').click(function () {
 
-                            var all_clicked_href = $(this).attr('href');
+                        var all_clicked_href = $(this).attr('href');
                         $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ',' + '"' + all_clicked_href + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                         $('#bidmodal').modal('show');
                         return false;
 
-                         });
-                }
-                else
+                    });
+                } else
                 {
-                 $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                    $('.biderror .mes').html("<div class='pop_content'> Do you want to leave this page?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='home_profile(" + clicked_id + ',' + '"' + searchkeyword + '"' + ',' + '"' + searchplace + '"' + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                     $('#bidmodal').modal('show');
                     return false;
                 }
-                
-               
+
+
             }
 
-            function home_profile(clicked_id, searchkeyword, searchplace,all_clicked_href) {
+            function home_profile(clicked_id, searchkeyword, searchplace, all_clicked_href) {
                 var url, data;
                 if (clicked_id == 4) {
-                  
+
                     url = '<?php echo base_url() . "freelancer-hire/search" ?>';
                     data = 'id=' + clicked_id + '&skills=' + searchkeyword + '&searchplace=' + searchplace;
                 }
@@ -413,14 +408,14 @@
                             window.location = "<?php echo base_url('freelancer-hire/basic-information'); ?>";
                         } else if (clicked_id == 4)
                         {
-                            
+
                             if (searchkeyword == "")
                             {
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search/" + 0 + "/" + searchplace;
 
                             } else if (searchplace == "")
                             {
-                                
+
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search/" + searchkeyword + "/" + 0;
                             } else
                             {
@@ -428,7 +423,7 @@
                             }
                         } else if (clicked_id == 5)
                         {
-                           window.location = all_clicked_href;
+                            window.location = all_clicked_href;
                         } else if (clicked_id == 6)
                         {
                             window.location = "<?php echo base_url() . 'profile' ?>";
@@ -451,13 +446,13 @@
             }
             // LEAVE PAGE ON ADD AND EDIT POST PAGE END 
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_add_post.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_add_post.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
 
         <style type="text/css">
             #skills-error{margin-top: 42px;}
             #example2-error{margin-top: 41px;}
         </style>
-       
+
     </body>
 </html>
