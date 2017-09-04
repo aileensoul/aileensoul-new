@@ -820,7 +820,7 @@
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
                                                                     <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $artdata['image_id']; ?>"  id="<?php echo "post_commentimg" . $artdata['image_id']; ?>" placeholder="Add a Comment ..." onclick="entercommentimg(<?php echo $artdata['image_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
                                                                       <div class="mob-comment">       
-                            <button id="<?php echo $artdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('img/send.png')?>">
+                            <button id="<?php echo $artdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
                             </button>
                         </div>
                                                                 </div>
