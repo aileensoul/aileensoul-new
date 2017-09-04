@@ -1,3 +1,11 @@
+$('#file-1').on('click', function () {
+    var a = document.getElementById('test-upload-product').value;
+    var b = document.getElementById('test-upload-des').value;
+    document.getElementById("artpostform").reset();
+    document.getElementById('test-upload-product').value = a;
+    document.getElementById('test-upload-des').value = b;
+});
+
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -1678,11 +1686,4 @@ $(document).on('keydown', function (e) {
     }
 });
 
-$('#file-1').on('click', function (e) {
-    var a = document.getElementById('test-upload-product').value;
-    var b = document.getElementById('test-upload-des').value;
-    document.getElementById("artpostform").reset();
-    document.getElementById('test-upload-product').value = a;
-    document.getElementById('test-upload-des').value = b;
-});
 

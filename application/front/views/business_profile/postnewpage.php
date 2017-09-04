@@ -168,7 +168,7 @@
                                                     </li>
                                                 <?php } else { ?>
                                                     <li>
-                                                        <div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business_profile/business_resume/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucfirst(strtolower($companyname)); ?> </span> </a>
+                                                        <div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business-profile/details/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucfirst(strtolower($companyname)); ?> </span> </a>
                                                             <span role="presentation" aria-hidden="true"> · </span>
                                                             <span> 
                                                                 <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>      

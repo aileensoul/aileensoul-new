@@ -101,8 +101,8 @@
             </div>
             <div class="business-profile-right">
                 <div class="bui-menu-profile">
-                    <h4 class="profile-head-text"><a href="<?php echo base_url('business_profile/business_resume/' . $businessdata1[0]['business_slug'] . ''); ?>"> <?php echo ucwords($businessdata1[0]['company_name']); ?></a></h4>
-                    <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business_profile/business_resume/' . $businessdata1[0]['business_slug'] . ''); ?>"> 
+                    <h4 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug'] . ''); ?>"> <?php echo ucwords($businessdata1[0]['company_name']); ?></a></h4>
+                    <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug'] . ''); ?>"> 
                             <?php
                             if ($businessdata1[0]['industriyal']) {
                                 echo $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
