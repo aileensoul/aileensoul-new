@@ -9,12 +9,17 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         // echo $this->session->userdata('aileenuser');  echo "hello"; die();
 
-        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'job_search') && $this->uri->segment(1) != 'job') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'freelancer-hire')) {
-            if (!$this->session->userdata('aileenuser')) {
-                redirect('login', 'refresh');
-            } else {
-                $this->data['userid'] = $this->session->userdata('aileenuser');
-            }
+
+        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'job') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'freelancer-hire')) 
+            {
+               if (!$this->session->userdata('aileenuser')) 
+               {
+                    redirect('login', 'refresh');
+               } 
+               else 
+               {
+                    $this->data['userid'] = $this->session->userdata('aileenuser');
+               }
         }
 
         ini_set('gd.jpeg_ignore_warning', 1);

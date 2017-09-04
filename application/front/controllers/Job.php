@@ -3531,7 +3531,7 @@ public function job_search() {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('job/job_all_post',refresh);
+            redirect('job/home',refresh);
          
         }
        ;
@@ -3558,7 +3558,16 @@ public function job_search() {
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
 
-        $this->load->view('job/job_all_post1', $this->data);
+       
+
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+         if ($this->session->userdata('aileenuser')) {
+            $this->load->view('job/job_all_post1', $this->data);
+        } else {
+            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+            $this->load->view('business_profile/business_dashboard', $this->data);
+        }
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
     }
 
 // job search end     

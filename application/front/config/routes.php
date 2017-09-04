@@ -231,3 +231,4 @@ $route['job/project'] = "job/job_project_update";
 $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
 $route['job/profile'] = "job/job_reg";
+$route['job/search'] = "job/job_search";
