@@ -583,3 +583,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 .pad_right {
     padding-right: 9px;
 }
+.keyskill_border_active {
+    border: 1px solid red !important;
+    border-radius: 4px;
+}

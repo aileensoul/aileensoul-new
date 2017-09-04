@@ -958,4 +958,25 @@ padding-top: 14px;
     padding: 5px 9px !important;
     margin-right: 0px !important;
 }
+.true_progtree{
+    position: absolute;
+	top: 52px;
+	left: 48px;
+}
+.tr_text{padding: 10px 0px; color: #1b8ab9;}
+.butt_rec {
+    background: #1b8ab9 !important;
+    color: #fff !important;
+    padding: 10px 35px;
+    display: inline-block !important;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.butt_rec:hover {
+    background: #1b8ab9 !important;
+    color: #fff !important;
+}
+#jobseeker_regform #other_keyskill {
+    width: 90% !important;
+}
 
