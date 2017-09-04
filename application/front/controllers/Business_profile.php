@@ -1347,10 +1347,9 @@ class Business_profile extends MY_Controller {
 
                         /* RESIZE */
 
-                        $main_temp_image = $this->config->item('bus_post_main_upload_path') . $_FILES['postattach']['tmp_name'];
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
                         
-                        $abc = $s3->putObjectFile($main_temp_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+                        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
