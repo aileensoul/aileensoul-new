@@ -195,7 +195,7 @@ return false;
 
                   
 
-                    <h5 class="profile-head-text"><a href="<?php echo base_url('business_profile/business_resume/'.$businessdata[0]['user_id'].''); ?>"> <?php echo ucwords($businessdata[0]['company_name']); ?></a></h5>
+                    <h5 class="profile-head-text"><a href="<?php echo base_url('business-profile/details/'.$businessdata[0]['user_id'].''); ?>"> <?php echo ucwords($businessdata[0]['company_name']); ?></a></h5>
                     <div class="profile-text" >
                         <p>Jr. Owner</p>
                     </div>
