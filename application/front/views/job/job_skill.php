@@ -7,11 +7,11 @@
 
       <title><?php echo $title; ?></title>
 
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css'); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css'); ?>">
+    
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
+	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
    </head>
    <!-- END HEAD -->
    <!-- Start HEADER -->
@@ -94,15 +94,18 @@
 <?php echo $footer;  ?>
 </footer>
 
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
-      <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+       <!-- script for skill textbox automatic start -->
+      <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
+      <!-- script for skill textbox automatic end -->
+
+      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
+      <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
       <script>
          var base_url = '<?php echo base_url(); ?>';
       </script>
-      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_skill.js'); ?>"></script>
+      <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_skill.js?ver='.time()); ?>"></script>
    </body>
 </html>
