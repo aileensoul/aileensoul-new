@@ -3,16 +3,16 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">-->
         <!-- This Css is used for call popup -->
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/jquery.fancybox.css" />
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()) ?>" />
     </head>
-    <div class="js">
+<!--    <div class="js">-->
         <body>
-            <div id="preloader"></div>
+<!--            <div id="preloader"></div>-->
             <?php echo $header; ?>
             <?php
             if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -213,21 +213,19 @@
             <footer>
 <?php echo $footer; ?>
             </footer>
-            <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-            <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+            <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+            <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
             <!-- This Js is used for call popup -->
-            <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
+            <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
             <!-- This Js is used for call popup -->
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
-                var data = <?php echo json_encode($demo); ?>;
-                var data1 = <?php echo json_encode($city_data); ?>;
                 var html = '<div class="message"><h2>Add Degree</h2><input type="text" name="other_degree" id="other_degree"><h2>Add Stream</h2><select name="other_stream" id="other_stream" class="other_stream">  <option value="" Selected option disabled>Select your Stream</option><?php foreach ($stream_alldata as $stream){?><option value="<?php echo $stream['stream_id']; ?>"><?php echo $stream['stream_name']; ?></option><?php } ?>  <option value="<?php echo $stream_otherdata[0]['stream_id']; ?> "><?php echo $stream_otherdata[0]['stream_name']; ?></option> </select><a id="univer" class="btn">OK</a></div>';
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_education.js'); ?>"></script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_education.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
-    </div>
+    <!--</div>-->
 </html>

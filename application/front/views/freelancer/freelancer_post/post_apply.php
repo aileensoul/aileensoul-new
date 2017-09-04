@@ -3,10 +3,10 @@
     <head>
         <title> <?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
-        <script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <!--<script src="<?php //echo base_url('js/fb_login.js'); ?>"></script>-->
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
@@ -147,16 +147,15 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>">
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+        <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
         </script>
         <script type="text/javascript">
             var base_url = '<?php echo base_url(); ?>';
-            var data1 = <?php echo json_encode($city_data); ?>;
-            var data = <?php echo json_encode($demo); ?>;
+            
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/post_apply.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/post_apply.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
     </body>               
 </html>
