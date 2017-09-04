@@ -13,9 +13,11 @@ class Job extends MY_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('email_model');
-        if (!$this->session->userdata('aileenuser')) {
-            redirect('login', 'refresh');
-        }
+
+        // if (!$this->session->userdata('aileenuser')) {
+        //   echo "hi";die();
+        //     redirect('login', 'refresh');
+        // }
 
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
@@ -3530,12 +3532,6 @@ public function job_search() {
      
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
-        if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
-            redirect('job/home',refresh);
-         
-        }
-       ;
-
  // search keyword insert into database start
 
         $search_job = trim($this->input->get('skills'));
@@ -3562,10 +3558,12 @@ public function job_search() {
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
          if ($this->session->userdata('aileenuser')) {
+          echo "hi";die();
             $this->load->view('job/job_all_post1', $this->data);
         } else {
+          echo "hi1";die();
             $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
-            $this->load->view('business_profile/business_dashboard', $this->data);
+             $this->load->view('job/job_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
     }
