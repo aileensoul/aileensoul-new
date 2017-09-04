@@ -122,7 +122,17 @@
                                 if ($userdata[0]['profile_background']) {
                                     ?>
                                     <div class="bg-images">
-                                        <img src="<?php echo base_url($this->config->item('user_bg_main_upload_path') . $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" / ></div>
+
+                                        <?php 
+
+if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0]['profile_background'])) {
+  ?>
+  <img src="<?php echo WHITEIMAGE; ?>" name="image_src" id="image_src" alt="WHITE IMAGE" />
+                                        <?php }else{?>
+                                        <img src="<?php echo base_url($this->config->item('user_bg_main_upload_path') . $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                                        <?php }?>
+
+                                        </div>
                                     <?php
                                 } else {
                                     ?>
