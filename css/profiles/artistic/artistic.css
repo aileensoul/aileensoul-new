@@ -2752,6 +2752,10 @@ font-size: 32px;}
 .reactivate_btn_n a:hover {
     color: #fff;
 }
+.fa-2x {
+    font-size: 2em;
+}
+
 /*media zalak start*/
 
 @media screen and (max-width: 1280px){
