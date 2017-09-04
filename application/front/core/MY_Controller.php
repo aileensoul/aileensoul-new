@@ -10,9 +10,26 @@ class MY_Controller extends CI_Controller {
         // echo $this->session->userdata('aileenuser');  echo "hello"; die();
 
 
-        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'job') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'freelancer-hire') || (($this->uri->segment(2) != 'artistic') && $this->uri->segment(1) != 'execute_search')) 
-            {
-               if (!$this->session->userdata('aileenuser')) 
+        if ((($this->uri->segment(2) == 'dashboard' || $this->uri->segment(2) == 'details') && $this->uri->segment(1) == 'business-profile')) 
+        { 
+              
+        }
+        else if($this->uri->segment(2) == 'search' && $this->uri->segment(1) == 'job')
+        {
+               
+        }
+         else if($this->uri->segment(2) == 'search' && $this->uri->segment(1) == 'freelancer-hire')
+        {
+             
+        }
+         else if($this->uri->segment(2) == 'execute_search' && $this->uri->segment(1) == 'artistic')
+        {
+            
+        }
+        else
+        {
+           
+             if (!$this->session->userdata('aileenuser')) 
                {
                     redirect('login', 'refresh');
                } 
@@ -21,6 +38,7 @@ class MY_Controller extends CI_Controller {
                     $this->data['userid'] = $this->session->userdata('aileenuser');
                }
         }
+
 
         ini_set('gd.jpeg_ignore_warning', 1);
 
