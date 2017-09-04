@@ -1770,7 +1770,7 @@ class Business_profile extends MY_Controller {
                 }
             }
             $return_html .= '</div>
-<div class="post-design-name fl col-md-10">
+<div class="post-design-name fl col-xs-8 col-md-10">
     <ul>';
             $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->company_name;
             $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
@@ -9950,7 +9950,7 @@ No Contacts Available.
                         }
                     }
                     $return_html .= '</div>
-                        <div class = "post-design-name fl col-md-10">
+                        <div class = "post-design-name fl col-xs-8 col-md-10">
                     <ul>';
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->company_name;
                     $slugname = $this->db->get_where('business_profile', array('user_id' => $row['user_id'], 'status' => 1))->row()->business_slug;
