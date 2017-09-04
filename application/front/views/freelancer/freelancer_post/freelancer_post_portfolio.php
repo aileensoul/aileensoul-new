@@ -3,17 +3,17 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css'); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">-->
         <style type="text/css">
             /* img{display: none;}*/
         </style>
     </head>
-    <div class="js">
+    <!--<div class="js">-->
         <body>
-            <div id="preloader"></div>
+            <!--<div id="preloader"></div>-->
             <?php echo $header; ?>
             <?php
             if ($freepostdata[0]['user_id'] && $freepostdata[0]['free_post_step'] == '7') {
@@ -112,16 +112,15 @@
             <footer>
                 <?php echo $footer; ?>
             </footer>
-            <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-            <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+            <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+            <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
             </script>
             <script>
                 var base_url = '<?php echo base_url(); ?>';
-                var data = <?php echo json_encode($demo); ?>;
-                var data1 = <?php echo json_encode($city_data); ?>;
+               
             </script>
-            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js'); ?>"></script>
-             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js'); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_portfolio.js?ver='.time()); ?>"></script>
+             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
-    </div>
+    <!--</div>-->
 </html>
