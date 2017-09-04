@@ -4758,6 +4758,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $this->data['city'] = $city = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
    if ($this->session->userdata('aileenuser')) {
+
         //Insert Search Data into database start
         $data = array(
             'search_keyword' => $search_job,
@@ -5164,7 +5165,17 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
           else
           {
               $return_html.='<li class="fr"> 
-                                <a href="javascript:void(0);"  class= "applypost' . $post['post_id'].'  button" onclick="applypopup('.$post['post_id'].','.$post['user_id'].')">Apply</a>
+                                <a href="javascript:void(0);"  class= "applypost' . $post['post_id'].'  button"';
+
+                          if($this->session->userdata('aileenuser'))
+                          {
+                                 $return_html.='onclick="applypopup('.$post['post_id'].','.$post['user_id'].')"';
+                          }
+                          else
+                          {
+                                  $return_html.='onClick="login_profile()"'; 
+                          }
+                                $return_html.='>Apply</a>
                               </li>
                               <li class="fr">';
                                     
@@ -5175,11 +5186,23 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
                                 if ($jobsave) 
                                 {
                                        
-                                    $return_html.='<a class="button saved save_saved_btn">Saved</a>';
+                                    $return_html.='<a href="javascript:void(0);" class="button saved save_saved_btn">Saved</a>';
                                 } 
                                 else 
                                 {        
-                                    $return_html.='<a id="'.$post['post_id'].'" onClick="savepopup('.$post['post_id'].')" href="javascript:void(0);" class="savedpost' . $post['post_id'].' button save_saved_btn">Save</a>';
+                                    $return_html.='<a id="'.$post['post_id'].'"';
+
+                                    if($this->session->userdata('aileenuser'))
+                                    {
+                                      $return_html.='onClick="savepopup('.$post['post_id'].')"'; 
+                                    }
+                                    else
+                                    {
+                                      $return_html.='onClick="login_profile()"'; 
+                                    }
+                                    
+
+                                    $return_html.='href="javascript:void(0);" class="savedpost' . $post['post_id'].' button save_saved_btn">Save</a>';
                                  } 
                               $return_html.='</li>';
           }
@@ -5202,9 +5225,6 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
 echo $return_html;
 }
 //GET SEARCH DATA WITH AJAX END
-public function ajax_job_search1($searchkeyword="", $searchplace="") 
-{
-echo"hi";die();
-}
+
 
 }

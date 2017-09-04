@@ -379,80 +379,7 @@
       <div class="user-midd-section" id="paddingtop_fixed">
       <div class="container">
       <div class="row row4">
-      <div class="col-md-4 profile-box profile-box-left">
-         <div class="">
-            <div class="full-box-module">
-               <div class="profile-boxProfileCard  module">
-                  <div class="profile-boxProfileCard-cover">
-                     <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
-                        href="<?php echo base_url('job/resume'); ?>"
-                        tabindex="-1"
-                        aria-hidden="true"
-                        rel="noopener">
-                        <?php
-                           if ($jobdata[0]['profile_background'] != '') {
-                                                                            ?>
-                        <!-- box image start -->
-                        <img src="<?php echo base_url($this->config->item('job_bg_thumb_upload_path') . $jobdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>" >
-                        <!-- box image end -->
-                        <?php
-                           } else {
-                               ?>
-                        <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>">
-                        <?php
-                           }
-                           ?>
-                     </a>
-                  </div>
-                  <div class="profile-boxProfileCard-content clearfix">
-                     <div class="left_side_box_img buisness-profile-txext">
-                        <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('job/resume/' . $jobdata[0]['user_id']); ?>" title="<?php echo $jobdata[0]['fname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                        <?php
-                           if ($jobdata[0]['job_user_image']) {
-                               ?>
-                        <img src="<?php echo base_url($this->config->item('job_profile_thumb_upload_path') . $jobdata[0]['job_user_image']); ?>" alt="<?php echo $jobdata[0]['fname']; ?> " >
-                        <?php
-                           } else {
-                               ?>
-                        <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo $jobdata[0]['fname']; ?>">
-                        <?php
-                           }
-                           ?>
-                        </a>
-                     </div>
-                     <div class="right_left_box_design ">
-                        <span class="profile-company-name ">
-                        <span class="profile-company-name ">
-                        <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
-                        </span>
-                        </span>
-                        <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                        <div class="profile-boxProfile-name">
-                           <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['user_id']); ?>"><?php
-                              if (ucwords($jobdata[0]['designation'])) {
-                                  echo ucwords($jobdata[0]['designation']);
-                              } else {
-                                  echo "Current Work";
-                              }
-                              ?></a>
-                        </div>
-                        <ul class=" left_box_menubar">
-                           <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'resume') { ?> class="active" <?php } ?>>
-                              <a class="padding_less_left" title="Details" href="<?php echo base_url('job/resume'); ?>"> Details</a>
-                           </li>
-                           <?php if (($this->uri->segment(1) == 'job') && ($this->uri->segment(2) == 'home' || $this->uri->segment(2) == 'resume' || $this->uri->segment(2) == 'job_search' || $this->uri->segment(2) == 'saved-job' || $this->uri->segment(2) == 'applied-job') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
-                           <li <?php if ($this->uri->segment(1) == 'search' && $this->uri->segment(2) == 'saved-job') { ?> class="active" <?php } ?>><a title="Saved Job" href="<?php echo base_url('job/saved-job'); ?>">Saved </a>
-                           </li>
-                           <li <?php if ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'applied-job') { ?> class="active" <?php } ?>><a class="padding_less_right" title="Applied Job" href="<?php echo base_url('job/applied-job'); ?>">Applied </a>
-                           </li>
-                           <?php } ?>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+     
       <div class="col-md-7 col-sm-7 col-sm-push-4 col-md-push-4">
          <div class="common-form">
             <div class="job-saved-box">
@@ -719,16 +646,305 @@
 <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+ <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
     var skill = '<?php echo  $this->input->get('skills'); ?>';
     var place = '<?php echo  $this->input->get('searchplace'); ?>';
     var userid ='<?php echo $this->session->userdata('aileenuser') ?>';
+    var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_search.js?ver='.time()); ?>"></script>
-<script>
+  <!-- script for login  user valoidtaion start -->
+<!--         <script type="text/javascript">
+            function login()
+            {
+                document.getElementById('error1').style.display = 'none';
+            }
+            //validation for edit email formate form
+            $(document).ready(function () {
+                /* validation */
+                $("#login_form").validate({
+                    rules: {
+                        email_login: {
+                            required: true,
+                        },
+                        password_login: {
+                            required: true,
+                        }
+                    },
+                    messages:
+                            {
+                                email_login: {
+                                    required: "Please enter email address",
+                                },
+                                password_login: {
+                                    required: "Please enter password",
+                                }
+                            },
+                    submitHandler: submitForm
+                });
+                /* validation */
+                /* login submit */
+                function submitForm()
+                {
+
+                    var email_login = $("#email_login").val();
+                    var password_login = $("#password_login").val();
+                    var post_data = {
+                        'email_login': email_login,
+                        'password_login': password_login,
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() ?>registration/check_login',
+                        data: post_data,
+                        dataType: "json",
+                        beforeSend: function ()
+                        {
+                            $("#error").fadeOut();
+                            $("#btn1").html('Login ...');
+                        },
+                        success: function (response)
+                        {
+                            if (response.data == "ok") {
+                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                window.location = "<?php echo base_url() ?>job/search?skills=" + skill + '&searchplace=' + place;
+                            } else if (response.data == "password") {
+                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login").classList.add('error');
+                                document.getElementById("password_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            } else {
+                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login").classList.add('error');
+                                document.getElementById("email_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            }
+                        }
+                    });
+                    return false;
+                }
+                /* login submit */
+            });
+
+
+
+        </script>
+        <script>
+
+            $(document).ready(function () {
+
+                $.validator.addMethod("lowercase", function (value, element, regexpr) {
+                    return regexpr.test(value);
+                }, "Email Should be in Small Character");
+
+                $("#register_form").validate({
+                    rules: {
+                        first_name: {
+                            required: true,
+                        },
+                        last_name: {
+                            required: true,
+                        },
+                        email_reg: {
+                            required: true,
+                            email: true,
+                            lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                            remote: {
+                                url: "<?php echo site_url() . 'registration/check_email' ?>",
+                                type: "post",
+                                data: {
+                                    email_reg: function () {
+                                        // alert("hi");
+                                        return $("#email_reg").val();
+                                    },
+                                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                                },
+                            },
+                        },
+                        password_reg: {
+                            required: true,
+                        },
+                        selday: {
+                            required: true,
+                        },
+                        selmonth: {
+                            required: true,
+                        },
+                        selyear: {
+                            required: true,
+                        },
+                        selgen: {
+                            required: true,
+                        }
+                    },
+
+                    groups: {
+                        selyear: "selyear selmonth selday"
+                    },
+                    messages:
+                            {
+                                first_name: {
+                                    required: "Please enter first name",
+                                },
+                                last_name: {
+                                    required: "Please enter last name",
+                                },
+                                email_reg: {
+                                    required: "Please enter email address",
+                                    remote: "Email address already exists",
+                                },
+                                password_reg: {
+                                    required: "Please enter password",
+                                },
+
+                                selday: {
+                                    required: "Please enter your birthdate",
+                                },
+                                selmonth: {
+                                    required: "Please enter your birthdate",
+                                },
+                                selyear: {
+                                    required: "Please enter your birthdate",
+                                },
+                                selgen: {
+                                    required: "Please enter your gender",
+                                }
+
+                            },
+                    submitHandler: submitRegisterForm
+                });
+                /* register submit */
+                function submitRegisterForm()
+                {
+                    var first_name = $("#first_name").val();
+                    var last_name = $("#last_name").val();
+                    var email_reg = $("#email_reg").val();
+                    var password_reg = $("#password_reg").val();
+                    var selday = $("#selday").val();
+                    var selmonth = $("#selmonth").val();
+                    var selyear = $("#selyear").val();
+                    var selgen = $("#selgen").val();
+
+                    var post_data = {
+                        'first_name': first_name,
+                        'last_name': last_name,
+                        'email_reg': email_reg,
+                        'password_reg': password_reg,
+                        'selday': selday,
+                        'selmonth': selmonth,
+                        'selyear': selyear,
+                        'selgen': selgen,
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                    }
+
+
+                    var todaydate = new Date();
+                    var dd = todaydate.getDate();
+                    var mm = todaydate.getMonth() + 1; //January is 0!
+                    var yyyy = todaydate.getFullYear();
+
+                    if (dd < 10) {
+                        dd = '0' + dd
+                    }
+
+                    if (mm < 10) {
+                        mm = '0' + mm
+                    }
+
+                    var todaydate = yyyy + '/' + mm + '/' + dd;
+                    var value = selyear + '/' + selmonth + '/' + selday;
+
+
+                    var d1 = Date.parse(todaydate);
+                    var d2 = Date.parse(value);
+                    if (d1 < d2) {
+                        $(".dateerror").html("Date of birth always less than to today's date.");
+                        return false;
+                    } else {
+                        if ((0 == selyear % 4) && (0 != selyear % 100) || (0 == selyear % 400))
+                        {
+                            if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+                                if (selday == 31) {
+                                    $(".dateerror").html("This month has only 30 days.");
+                                    return false;
+                                }
+                            } else if (selmonth == 2) { //alert("hii");
+                                if (selday == 31 || selday == 30) {
+                                    $(".dateerror").html("This month has only 29 days.");
+                                    return false;
+                                }
+                            }
+                        } else {
+                            if (selmonth == 4 || selmonth == 6 || selmonth == 9 || selmonth == 11) {
+                                if (selday == 31) {
+                                    $(".dateerror").html("This month has only 30 days.");
+                                    return false;
+                                }
+                            } else if (selmonth == 2) {
+                                if (selday == 31 || selday == 30 || selday == 29) {
+                                    $(".dateerror").html("This month has only 28 days.");
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() ?>registration/reg_insert',
+                        data: post_data,
+                        beforeSend: function ()
+                        {
+                            $("#register_error").fadeOut();
+                            $("#btn1").html('Create an account ...');
+                        },
+                        success: function (response)
+                        {
+                            if (response == "ok") {
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+                                window.location = "<?php echo base_url() ?>job/search?skills=" + skill + '&searchplace=' + place;
+                            } else {
+                                $("#register_error").fadeIn(1000, function () {
+                                    $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
+                                    $("#btn1").html('Create an account');
+                                });
+                            }
+                        }
+                    });
+                    return false;
+                }
+            });
+
+        </script>
+        <!-- forgot password script end -->
+        <script type="text/javascript">
+            $(document).ready(function () { //aletr("hii");
+                /* validation */
+                $("#forgot_password").validate({
+                    rules: {
+                        forgot_email: {
+                            required: true,
+                            email: true,
+                        }
+
+                    },
+                    messages: {
+                        forgot_email: {
+                            required: "Email Address Is Required.",
+                        }
+                    },
+                });
+                /* validation */
+
+            });
+        </script>
+       
+        <script>
             function login_profile() {
                 $('#login').modal('show');
             }
@@ -740,5 +956,18 @@
                 $('#forgotPassword').modal('show');
             }
         </script>
+        <script>
+            $(document).on('click', '[data-toggle*=modal]', function () {
+                $('[role*=dialog]').each(function () {
+                    switch ($(this).css('display')) {
+                        case('block'):
+                        {
+                            $('#' + $(this).attr('id')).modal('hide');
+                            break;
+                        }
+                    }
+                });
+            });
+        </script> -->
 </body>
 </html>
