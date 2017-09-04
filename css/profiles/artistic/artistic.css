@@ -996,7 +996,7 @@ line-height: 1;}
     padding-bottom: 10px;
     width: 100%;
     float: left;
-    z-index: 999;
+    z-index: 9;
     position: relative;
 }
 .post-design-commnet-box .editable_text[contenteditable=true]:empty:before {
@@ -2755,6 +2755,13 @@ font-size: 32px;}
 .fa-2x {
     font-size: 2em;
 }
+.sory_image{margin: 15px;}
+.not_founde_head{
+	color: #1b8ab9;
+    font-size: 32px;
+    margin: 25px;
+}
+.not_founde_head2{font-size: 30px; color: #1B8AB9; margin: 10PX;}
 
 /*media zalak start*/
 
