@@ -983,3 +983,13 @@ padding-top: 14px;
     font-size: 2em;
 }
 
+@media screen and (max-width: 1024px){
+    .date-dropdowns .year{padding-left: 5px;}
+}
+
+@media screen and (max-width: 767px)
+{
+    .job_reg_page_fprm{width: 95%;}
+    .common-form1 h3{font-size: 15px;}
+    ..date-dropdowns .year{padding-left: 5px;}
+}

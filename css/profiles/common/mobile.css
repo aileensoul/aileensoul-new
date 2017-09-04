@@ -1355,7 +1355,7 @@ padding: 5px 8px; font-size: 12px;}
     .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
     .banner{padding-top: 21px;}
     .profile-detail h2{font-size: 13px;}
-    .custom-box .custom-width .right-box a{font-size: 12px; }
+    .custom-box .custom-width .right-box a{font-size: 12px!important; }
     .btn-1{padding: 7px 30px}
     .btns .btn-4{padding: 7px 30px;}
     .middle-section{padding-bottom: 10px;}
