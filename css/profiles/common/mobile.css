@@ -212,7 +212,7 @@ padding: 5px 7px;}
 }
 @media screen and (max-width: 991px) {
     .cq_latest_right{width: 68%:;}
-    .cq_latest_left{width: 27%;}
+    .cq_latest_left{width: 25%;}
     .header2 .job-search-box1 fieldset.sec_h2 {
     width: 145px;
 }
@@ -1091,7 +1091,7 @@ padding: 5px 7px;}
 @media screen and (max-width: 640px) {
     .cq_latest_left{width: 14%}
     .cq_latest_right {
-    width: 84%;}
+    width: 78%;}
        .user_lst ul li button{margin-right:10px;}
     
     .edit_sd{width: 70%!important}
@@ -1293,7 +1293,7 @@ padding: 5px 7px;}
 }
 @media screen and (max-width: 479px) {
     .cq_latest_right{width: 76%;}
-    .cq_latest_left{width: 16%;}
+    .cq_latest_left{width: 20%;}
     .addcontact-left{width: 75%;}
     .addcontact-right{width: 25%;}
 
