@@ -38,6 +38,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_new.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.time()); ?>">
         <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script> 
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>-->
