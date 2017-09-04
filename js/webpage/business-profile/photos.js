@@ -14,26 +14,6 @@ $(document).ready(function () {
     });
 });
 
-function checkvalue() {
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    if (searchkeyword == "" && searchplace == "") {
-        return false;
-    }
-}
-
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
-// for mobile view ssearch script end
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
-
 // UPLOAD COVER PIC START 
 function myFunction() {
     document.getElementById("upload-demo").style.visibility = "hidden";
@@ -55,7 +35,7 @@ $uploadCrop = $('#upload-demo').croppie({
         width: 1250,
         height: 350
     }
-})(jQuery);
+});
 $('.upload-result').on('click', function (ev) {
     $uploadCrop.croppie('result', {
         type: 'canvas',
@@ -74,12 +54,12 @@ $('.upload-result').on('click', function (ev) {
             }
         });
     });
-})(jQuery);
+});
 $('.cancel-result').on('click', function (ev) {
     document.getElementById('row2').style.display = "block";
     document.getElementById('row1').style.display = "none";
     document.getElementById('message1').style.display = "none";
-})(jQuery);
+});
 $('#upload').on('change', function () {
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -90,7 +70,7 @@ $('#upload').on('change', function () {
         });
     }
     reader.readAsDataURL(this.files[0]);
-})(jQuery);
+});
 $('#upload').on('change', function () {
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
@@ -122,8 +102,30 @@ $('#upload').on('change', function () {
         success: function (response) {
         }
     });
-})(jQuery);
+});
 // UPLOAD COVER PIC end
+
+
+function checkvalue() {
+    var searchkeyword = $.trim(document.getElementById('tags').value);
+    var searchplace = $.trim(document.getElementById('searchplace').value);
+    if (searchkeyword == "" && searchplace == "") {
+        return false;
+    }
+}
+
+function check() {
+    var keyword = $.trim(document.getElementById('tags1').value);
+    var place = $.trim(document.getElementById('searchplace1').value);
+    if (keyword == "" && place == "") {
+        return false;
+    }
+}
+// for mobile view ssearch script end
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
+}
+
 
 /* FOLLOW USER START */
 function followuser_two(clicked_id)
