@@ -149,6 +149,7 @@
 
             <script>
                 var site_url = '<?php echo site_url(); ?>';
+                var base_url = '<?php echo base_url(); ?>';
             </script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_basic_info.js?ver='.time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>

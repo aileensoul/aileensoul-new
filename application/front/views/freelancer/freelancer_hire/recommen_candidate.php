@@ -4,7 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver='.time()); ?>">
     </head>
     <body class="pushmenu-push">
@@ -161,11 +161,9 @@
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
 <!--        <script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-
    
     <script>
         var base_url = '<?php echo base_url(); ?>';
-   
     </script>
     <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/recommen_candidate.js?ver='.time()); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
