@@ -12,6 +12,101 @@ $("#userimage").validate({
     },
 });
 
+
+// cover image start 
+
+function myFunction() {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+}
+
+function showDiv() {
+    document.getElementById('row1').style.display = "block";
+    document.getElementById('row2').style.display = "none";
+}
+
+$uploadCrop = $('#upload-demo').croppie({
+    enableExif: true,
+    viewport: {
+        width: 1250,
+        height: 350,
+        type: 'square'
+    },
+    boundary: {
+        width: 1250,
+        height: 350
+    }
+});
+$('.upload-result').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+    }).then(function (resp) {
+        $.ajax({
+            url: base_url + "business_profile/ajaxpro",
+            type: "POST",
+            data: {"image": resp},
+            success: function (data) {
+                html = '<img src="' + resp + '" />';
+                if (html)
+                {
+                    window.location.reload();
+                }
+            }
+        });
+    });
+});
+$('.cancel-result').on('click', function (ev) {
+    document.getElementById('row2').style.display = "block";
+    document.getElementById('row1').style.display = "none";
+    document.getElementById('message1').style.display = "none";
+});
+$('#upload').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+$('#upload').on('change', function () {
+    var fd = new FormData();
+    fd.append("image", $("#upload")[0].files[0]);
+    files = this.files;
+    size = files[0].size;
+    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        picpopup();
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        $("#upload").val('');
+        return false;
+    }
+    // file type code end
+    if (size > 4194304)
+    {
+        //show an alert to the user
+        alert("Allowed file size exceeded. (Max. 4 MB)")
+        document.getElementById('row1').style.display = "none";
+        document.getElementById('row2').style.display = "block";
+        //reset file upload control
+        return false;
+    }
+    $.ajax({
+        url: base_url + "business_profile/imagedata",
+        type: "POST",
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+        }
+    });
+});
+// cover image end 
+
 $(document).ready(function () {
     business_dashboard_post(slug);
     GetBusPhotos();
@@ -1593,99 +1688,6 @@ function likeuserlist(post_id) {
 }
 
 
-// cover image start 
-
-function myFunction() {
-    document.getElementById("upload-demo").style.visibility = "hidden";
-    document.getElementById("upload-demo-i").style.visibility = "hidden";
-    document.getElementById('message1').style.display = "block";
-}
-
-function showDiv() {
-    document.getElementById('row1').style.display = "block";
-    document.getElementById('row2').style.display = "none";
-}
-
-$uploadCrop = $('#upload-demo').croppie({
-    enableExif: true,
-    viewport: {
-        width: 1250,
-        height: 350,
-        type: 'square'
-    },
-    boundary: {
-        width: 1250,
-        height: 350
-    }
-})(jQuery);
-$('.upload-result').on('click', function (ev) {
-    $uploadCrop.croppie('result', {
-        type: 'canvas',
-        size: 'viewport'
-    }).then(function (resp) {
-        $.ajax({
-            url: base_url + "business_profile/ajaxpro",
-            type: "POST",
-            data: {"image": resp},
-            success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html)
-                {
-                    window.location.reload();
-                }
-            }
-        });
-    });
-})(jQuery);
-$('.cancel-result').on('click', function (ev) {
-    document.getElementById('row2').style.display = "block";
-    document.getElementById('row1').style.display = "none";
-    document.getElementById('message1').style.display = "none";
-})(jQuery);
-$('#upload').on('change', function () {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $uploadCrop.croppie('bind', {
-            url: e.target.result
-        }).then(function () {
-            console.log('jQuery bind complete');
-        });
-    }
-    reader.readAsDataURL(this.files[0]);
-})(jQuery);
-$('#upload').on('change', function () {
-    var fd = new FormData();
-    fd.append("image", $("#upload")[0].files[0]);
-    files = this.files;
-    size = files[0].size;
-    if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        picpopup();
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('row2').style.display = "block";
-        $("#upload").val('');
-        return false;
-    }
-    // file type code end
-    if (size > 4194304)
-    {
-        //show an alert to the user
-        alert("Allowed file size exceeded. (Max. 4 MB)")
-        document.getElementById('row1').style.display = "none";
-        document.getElementById('row2').style.display = "block";
-        //reset file upload control
-        return false;
-    }
-    $.ajax({
-        url: base_url + "business_profile/imagedata",
-        type: "POST",
-        data: fd,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-        }
-    });
-})(jQuery);
-// cover image end 
 
 // post delete login user script start 
 
