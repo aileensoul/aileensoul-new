@@ -4728,7 +4728,7 @@ echo $return_html;
 //GET SEARCH DATA WITH AJAX START
 public function ajax_job_search($searchkeyword="", $searchplace="") 
 {
-echo "hi";die();
+
   $perpage = 5;
 $page = 1;
 
@@ -4757,6 +4757,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+   if ($this->session->userdata('aileenuser')) {
         //Insert Search Data into database start
         $data = array(
             'search_keyword' => $search_job,
@@ -4769,6 +4770,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         );
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
 //Insert Search Data into database End
+    }
 
 //Total Search All Start
         // search keyword insert into database end
@@ -5200,5 +5202,9 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
 echo $return_html;
 }
 //GET SEARCH DATA WITH AJAX END
+public function ajax_job_search1($searchkeyword="", $searchplace="") 
+{
+echo"hi";die();
+}
 
 }

@@ -73,7 +73,7 @@ function job_search(pagenum)
 
 if(userid != "")
 {
-  alert("hi");
+ 
 //new script for jobtitle,company and skill start
  $(function() {
        function split( val ) {
