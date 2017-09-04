@@ -40,6 +40,7 @@ function freelancerhire_search(pagenum)
     }
     // url = '<?php echo base_url() . "freelancer-hire/search?page=" ?>'+clicked_id+"&skill="  + encodeURIComponent(searchkeyword) + "&place=" + searchplace;
     isProcessing = true;
+    alert(skill);
     $.ajax({
         type: 'POST',
         url: base_url + "search/ajax_freelancer_hire_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
@@ -55,7 +56,7 @@ function freelancerhire_search(pagenum)
         complete: function () {
             $('#loader').hide();
         },
-        success: function (data) { 
+        success: function (data) { alert(data);
             $('.loader').remove();
             $('.job-contact-frnd').append(data);
             // second header class add for scroll

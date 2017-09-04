@@ -9,10 +9,10 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
        
     $segment2 = $this->uri->segment(2);
-    $segment2_names = array('search', 'dashboard', 'details' ,'execute_search','ajax_user_search','ajax_job_search');
+    $segment2_names = array('search', 'dashboard', 'details' ,'execute_search','ajax_user_search','ajax_job_search','ajax_freelancer_hire_search');
 
     $segment1 = $this->uri->segment(1);
-    $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic');
+    $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic','search');
 
          if( (!in_array($segment2,$segment2_names)) OR (!in_array($segment1,$segment1_names)) )
         {
