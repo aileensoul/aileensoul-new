@@ -14,11 +14,6 @@ class Job extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
 
-        // if (!$this->session->userdata('aileenuser')) {
-        //   echo "hi";die();
-        //     redirect('login', 'refresh');
-        // }
-
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
@@ -3558,11 +3553,9 @@ public function job_search() {
 
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
          if ($this->session->userdata('aileenuser')) {
-          echo "hi";die();
             $this->load->view('job/job_all_post1', $this->data);
         } else {
-          echo "hi1";die();
-            $this->data['business_common_profile'] = $this->load->view('business_profile/business_common_profile', $this->data, true);
+          
              $this->load->view('job/job_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
@@ -4735,7 +4728,7 @@ echo $return_html;
 //GET SEARCH DATA WITH AJAX START
 public function ajax_job_search($searchkeyword="", $searchplace="") 
 {
-
+echo "hi";die();
   $perpage = 5;
 $page = 1;
 

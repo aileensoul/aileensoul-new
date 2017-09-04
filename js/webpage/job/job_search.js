@@ -40,7 +40,6 @@ function job_search(pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-       // url: base_url + "job/ajax_recommen_job?page=" + pagenum,
          url: base_url + "job/ajax_job_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
         data: {total_record:$("#total_record").val()},
         dataType: "html",
@@ -55,6 +54,7 @@ function job_search(pagenum)
             $('#loader').hide();
         },
         success: function (data) {
+
             $('.loader').remove();
             $('.job-contact-frnd ').append(data);
             // second header class add for scroll
@@ -68,9 +68,12 @@ function job_search(pagenum)
         }
     });
 }
-
+   
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
+if(userid != "")
+{
+  alert("hi");
 //new script for jobtitle,company and skill start
  $(function() {
        function split( val ) {
@@ -235,3 +238,4 @@ window.onbeforeunload = function() {
    unset($_POST);
    };
 //Unload Function End
+}
