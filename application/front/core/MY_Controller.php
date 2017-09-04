@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller {
         // echo $this->session->userdata('aileenuser');  echo "hello"; die();
 
 
-        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'job') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'freelancer-hire')) 
+        if ((($this->uri->segment(2) != 'dashboard' || $this->uri->segment(2) != 'details') && $this->uri->segment(1) != 'business-profile') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'job') || (($this->uri->segment(2) != 'search') && $this->uri->segment(1) != 'freelancer-hire') || (($this->uri->segment(2) != 'artistic') && $this->uri->segment(1) != 'execute_search')) 
             {
                if (!$this->session->userdata('aileenuser')) 
                {
