@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="refresh" content="30">
    </head>
    <body>
    <?php echo $header; ?>
