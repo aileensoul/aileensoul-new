@@ -1772,7 +1772,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_id']).'">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
 
                                                 <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
