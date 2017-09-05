@@ -1381,7 +1381,8 @@ body.blog{height:auto;}
     padding-top: 6px;
     background: #eddfed;
     color: #003;
-	float:left
+	float:left;
+	word-break: break-all;
 }
 .chat .chat-history .other-message {
     padding-top: 6px;
@@ -1641,7 +1642,7 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .backdiv-mob a:hover{opacity:1;}
 .chat-header .chatdropdown-content a:hover{color:#fff;}
 .chat_nobcx .post-img-div{width:50px; height:50px; padding:16px 0;}
-
+.day-text2{font-size: 11px!important;}
 
 /*** end chat ***/
 /***  all profile  ***/
@@ -1740,12 +1741,25 @@ input:-moz-placeholder {
     .container {
         width: 1280px;
     }
-
 }
 @media screen and (min-width: 800px) {
     #floatBarsG {
        transform: scale(1);
     }
+}
+@media screen and (min-width: 768px) {
+	.modal-content{padding: 5px;}
+	#likeusermodal.message-box span.mes{padding:0px 15px 0;}
+	#likeusermodal .modal-close1 {
+		padding: 4px 6px;
+		float: right;
+		border-radius: 100%;
+		margin-right: -15px;
+		margin-top: -21px;
+		font-size: 27px;
+		background: #1b8ab9;
+		color: white;
+	}
 }
 @media screen and (max-width:1280px){
   .fixed_right_side{right: 0;}
@@ -1766,6 +1780,10 @@ input:-moz-placeholder {
 @media screen and (max-width: 991px){
     .fixed_right_side{display: none;}
     .fixed_middle_side{width: 100%; left: 0;}
+	.cls-ve{top: 12px; right: 10px;}
+}
+@media screen and (max-width: 800px){
+  .cover-pic {right: -4%;}
 }
 @media screen and (max-width: 700px) {
     .box {
@@ -1777,6 +1795,8 @@ input:-moz-placeholder {
 }
 
 @media screen and (max-width: 767px) {
+	#row2 img{height: 250px;}
+	#row1{height: 250px;}
     .search-mob-block{display:block;}
     .buisness-profile-pic-candidate{margin-left: 9px!important;}
 	.left-side-menu {
@@ -1789,8 +1809,51 @@ input:-moz-placeholder {
         float: left;
 		margin-left: 10px;
     }
+	.chat .chat-header .chat-with{font-size: 18px;}
+	.chat .chat-history{width: 100%;}
+	.change-password{padding: 0px 0px;}
 }
+@media screen and (max-width: 640px) {
 
-
+	.cover-pic {
+		right: -4%;
+	}
+	#floatBarsG {
+		margin-top: 2%;
+	}
+	.post-img-user {
+		line-height: 2;
+	}
+}
+@media screen and (max-width: 540px) {
+	.cls-ve {
+		top: 10px;
+		right: 3px;
+	}
+	label.cameraButton{opacity: 0.8;}
+	.cover-pic .btn{padding: 3px 8px;}
+}
+@media screen and (max-width: 479px) {
+	#row2 img{height: 200px;}
+	#row1{height: 200px;}
+	.post-edit-popup .popup-text textarea{padding-right: 15px;}
+	.mian_box_num {
+		right: -9px;
+	}
+	  .cover-pic {
+		right: -6%;
+		bottom: 61%;
+	}
+	.post-img-user {
+		line-height: 0;
+	}
+	
+}
+@media screen and (max-width: 360px) {
+	.chat .chat-header .chat-with{font-size: 14px;}
+}
+@media screen and (max-width: 320px){
+	
+}
 
 /*zalak start 28-8  media*/
