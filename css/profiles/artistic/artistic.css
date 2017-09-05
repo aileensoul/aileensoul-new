@@ -71,7 +71,6 @@ label.cameraButton:active {border-color: #CCC #EEE #EEE #CCC;}
 	padding:5px; opacity: 0.6; background-size:100%;
 }
 .cameraButton .fa-camera::before{display:none;}
-label.cameraButton input[accept*="camera"] {display: none;}
 #row1 {margin: 0 auto; border: 1px solid #d9d9d9; border-top: none; position: relative; height: 350px; overflow: hidden; border-bottom:none;}
 #upload-demo {width: 100%;}
 #upload-demo-i {background: #e1e1e1; width: 100%; padding: 30px; height: 3px; margin-top: 30px}
