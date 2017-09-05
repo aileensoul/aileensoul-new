@@ -38,7 +38,7 @@
 /* Generated for down aro */
  
 .down-arrow-hover, .down-arrow
-{ display: inline-block; background: url('../img/png.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
+{ display: inline-block; background: url('../img/dropdown_aro.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
  
 .down-arrow-hover { background-position: -0px -0px; width: 16px; height: 16px; }
 .down-arrow { background-position: -0px -16px; width: 16px; height: 16px; }
