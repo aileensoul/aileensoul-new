@@ -748,6 +748,147 @@ label.cameraButton input[accept*="camera"] {
 
 
 /***  media query  ***/
+@media screen and (max-width: 1199px){
+	#paddingtop_fixed {
+        padding-top: 81px !important;
+    }
+	.rec_check {
+        font-size: 14px;
+    }
+	.profile-boxProfilebuisness-avatarLink2 {
+        height: 75px !important;
+    }
+    .right_left_box_design {
+        padding: 17px 12px 12px 16px !important;
+    }
+	.experience_year{margin-right:34px;}
+	.right_left_box_design{padding:17px 12px 12px 25px !important;}
+}
+@media screen and (max-width: 1024px) {
+	.profile-boxProfilebuisness-avatarLink2 {
+        height: 70px !important;
+    }
+	.profile-main-rec-box-menu {
+        height: 41px;
+    }
+	.profile-main-rec-box-menu li a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+	.profile-main-rec-box-menu td a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+	.profile-pho {
+        height: 133px;
+        width: 123px;
+        margin-top: -55px;
+    }
+    .user-pic {
+        height: 125px;
+        width: 115px;
+    }
+    .buisness-profile-txext {
+        width: 28%;
+    }
+	.right_left_box_design {
+        width: 72% !important;
+        padding: 14px 12px 10px 16px !important;
+    }
+    .profile-boxProfile-name {
+        line-height: 1;
+    }
+    .profile-boxProfile-name a {
+        font-size: 14px;
+    }
+    .profile-company-name a {
+        font-size: 16px;
+    }
+    .left_box_menubar li a {
+        padding-bottom: 0 !important;
+    }
+    .common-form1{padding-top:20px; width:100%; float:left;}    
+    .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
+}
+@media screen and (max-width: 991px){
+	.common-form1{max-width:750px; float:none; margin:0 auto;}
+    .job-menu-profile{margin-top:20px; padding-bottom:10px;}
+    .right_left_box_design{padding:9px 12px 12px 12px !important;}
+    input, textarea, select{font-size: 12px!important;}
+    .cover-pic {position: absolute !important; top: inherit; right: -4%; bottom: 48%; z-index: 99;}
+    .profile-pho {
+        margin-top: -64px !important;
+    }
+    .fw .job-menu-profile {
+        width: 22.3%;
+    }
+    .right_left_box_design {
+        padding: 11px 12px 8px 16px !important;
+    }
+    .left_box_menubar li a {
+        font-size: 12px;
+    }
+    .left-side-bar ul li.active::after {
+        top: 6px;
+    }
+    #paddingtop_fixed.container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .container.tablate-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .custom-right {
+        margin-left: 8%;
+    }
+    .profile-boxProfilebuisness-avatarLink2 {
+        margin: 15px 0 0 5px;
+          height: 60px !important;
+    }
+    .profile-company-name a {
+        font-size: 13px;
+    }
+    .profile-boxProfile-name a {
+        font-size: 11px;
+    }
+    .profile-boxProfileCard-content::before {
+        top: 50px !important;
+    }
+    .right-side-menu {
+        float: none;
+        padding-left: 20%;
+    }
+	.art-side-menu .flw_msg_btn a {
+        margin-top: 0;
+    }
+    .art-side-menu {
+        padding-left: 160px !important;
+    }
+	.flw_msg_btn ul li {
+        padding-right: 0 !important;
+        margin-right: 0;
+    }
+	.job-menu-profile {
+        width: 100%;
+        padding-left: 15px;
+        margin-top: 10px;
+    }
+	.profile-job-details .job_companyname {
+        width: 300px;
+    }
+    .profile-job-details .post_title {
+        width: 50% !important;
+    }
+	ul.current-user {
+        float: none;
+    }
+	.flw_msg_btn ul li a{margin-top:0;}
+    .left_side_box_img{width:100%; text-align:center;}
+    .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
+    .right_left_box_design{width:100% !important; text-align:center; padding-top:5px !important;}
+    .profile-boxProfileCard-content::before{top:74px !important;}
+}
 @media screen and (max-width: 767px){
     .pro-fw4{border-bottom: none;}
     .right-side-menu{height: auto;}
@@ -755,6 +896,11 @@ label.cameraButton input[accept*="camera"] {
 	.profile-box-art ul li{margin-right: 0px!important;}
 	.profile-main-rec-box-menu.profile-box-art{border-top: 1px solid #d9d9d9;}
 	.pro-fw li {width: 25% !important;}
+	.middle-part.container {
+        padding: 40px 0 0px;
+    }
+	.profile-job-post-location-name-rec .designation_rec{width: 78%!important;}
+	.designation_rec{width: 50%!important;}
 }
 @media screen and (max-width: 640px) {
 	.user-pic {

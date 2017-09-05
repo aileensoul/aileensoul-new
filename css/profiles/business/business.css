@@ -3394,6 +3394,32 @@ overflow: hidden;
 		padding: 5px 7px;
 		margin-left: 0px;
 	}
+	.post-design-top{float: left;}
+	.comment-name {
+        width: 85%;
+    }
+	.cmy_2 {
+        width: 78%;
+        float: left;
+    }
+    .mySlides .post-design-commnet-box .cmy_2{width: 86%;}
+	.editor-content {
+        width: 86%;
+    }
+    .business-profile-right {
+        width: 78%;
+    }
+	#paddingtop_fixed {
+        padding-top: 81px !important;
+    }
+	.profile-main-box-buis-menu li a{font-size:13px; padding:17px 10px 12px;}
+	.profile-boxProfilebuisness-avatarLink2 {
+        height: 75px !important;
+    }
+    .right_left_box_design {
+        padding: 17px 12px 12px 16px !important;
+    }
+	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 }
 @media screen and (max-width: 1024px) {
 	.post-design-name_follow{width: 36%;}
@@ -3403,6 +3429,41 @@ overflow: hidden;
 	.post-design-pro-img_follow{padding: 5px 5px 3px 5px;}
 	.follow_left_box_main_btn{margin-top: 0px!important;}
 	.post-design-name ul li .post-design-product a{word-break:break-all;}
+	.prev, .next{top: 210px;}
+	.comment-details{font-size: 15px;}
+	.profile-boxProfilebuisness-avatarLink2 {
+        height: 70px !important;
+    }
+	.profile-pho {
+        height: 133px;
+        width: 123px;
+        margin-top: -55px;
+    }
+    .user-pic {
+        height: 125px;
+        width: 115px;
+    }
+    .buisness-profile-txext {
+        width: 28%;
+    }
+	.right_left_box_design {
+        width: 72% !important;
+        padding: 14px 12px 10px 16px !important;
+    }
+    .profile-boxProfile-name {
+        line-height: 1;
+    }
+    .profile-boxProfile-name a {
+        font-size: 14px;
+    }
+    .profile-company-name a {
+        font-size: 16px;
+    }
+    .left_box_menubar li a {
+        padding-bottom: 0 !important;
+    }
+    .common-form1{padding-top:20px; width:100%; float:left;}    
+    .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
     .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
@@ -3413,6 +3474,153 @@ overflow: hidden;
 		padding: 12px 22px 12px;
 		width: 100%;
 	}
+	.cq_latest_right{width: 68%:;}
+    .cq_latest_left{width: 25%;}
+	.all-list ul li .list-box{width: 172px;}
+	.pt120 {padding-top: 100px;}
+	.contact-list .list-title{font-size: 18px;}
+	.tab-block {
+        display: block;
+    }
+	.left_iner_img_profile {
+        height: 60px;
+        width: 60px;
+    }
+	.common-form1{max-width:750px; float:none; margin:0 auto;}
+    .job-menu-profile{margin-top:20px; padding-bottom:10px;}
+    .right_left_box_design{padding:9px 12px 12px 12px !important;}
+    input, textarea, select{font-size: 12px!important;}
+    .cover-pic {position: absolute !important; top: inherit; right: -4%; bottom: 48%; z-index: 99;}
+    .profile-pho {
+        margin-top: -64px !important;
+    }
+    .fw .job-menu-profile {
+        width: 22.3%;
+    }
+    .right_left_box_design {
+        padding: 11px 12px 8px 16px !important;
+    }
+    .left_box_menubar li a {
+        font-size: 12px;
+    }
+    .left-side-bar ul li.active::after {
+        top: 6px;
+    }
+    #paddingtop_fixed.container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .container.tablate-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .custom-right {
+        margin-left: 8%;
+    }
+    .profile-boxProfilebuisness-avatarLink2 {
+        margin: 15px 0 0 5px;
+          height: 60px !important;
+    }
+    .profile-company-name a {
+        font-size: 13px;
+    }
+    .profile-boxProfile-name a {
+        font-size: 11px;
+    }
+    .profile-boxProfileCard-content::before {
+        top: 50px !important;
+    }
+    .right-side-menu {
+        float: none;
+        padding-left: 20%;
+    }
+	.custom-right-business .popup-img img {
+        height: 40px;
+        width: 40px;
+    }
+	.profile-pho-bui {
+        height: 134px;
+        margin-top: 0;
+        width: 123px;
+        margin-left: 20px;
+    }
+	.business-profile-right {
+        width: 80%;
+        padding-left: 15px;
+    }
+	.profile-main-box-buis-menu li a {
+        font-size: 12px;
+        padding: 17px 10px 12px;
+    }
+	.profile-main-box-buis-menu li a {
+        padding-top: 7px;
+        height: 48px;
+    }
+	.msg_flw_btn_1 {
+        margin-bottom: 0;
+    }
+    .msg_flw_btn_1 button {
+        margin-top: 0 !important;
+    }
+    .business-profile-right .bui-menu-profile {
+        min-height: 100px;
+    }
+    .buisness-menu::before {
+        bottom: 49px;
+    }
+    .profile-main-box-buis-menu .flw_msg_btn {
+        margin-top: 7px !important;
+    }
+	.flw_msg_btn ul li {
+        padding-right: 0 !important;
+        margin-right: 0;
+    }
+	.job-menu-profile {
+        width: 100%;
+        padding-left: 15px;
+        margin-top: 10px;
+    }
+	.profile-job-details .job_companyname {
+        width: 300px;
+    }
+    .profile-job-details .post_title {
+        width: 50% !important;
+    }
+	.profile-box-custom {
+        position: relative;
+        display: none;
+    }
+    
+    
+    .post-design-menu ul {
+        width: 50%;
+        float: left;
+    }
+    .art-all-comment {
+        width: 100%;
+        float: left;
+    }
+    .editor-content {
+        width: 90%;
+    }
+    .custom-right-art {
+        margin-left: 0;
+    }
+	ul.current-user {
+        float: none;
+    }
+	.profile-main-box-buis-menu li a{font-size:12px; padding:12px 15px 12px;}
+	.post-edit-popup .popup-textarea{width: 100%;}
+    .mySlides .post-design-commnet-box .cmy_2 {width: 84%;}
+	.flw_msg_btn ul li a{margin-top:0;}
+    .left_side_box_img{width:100%; text-align:center;}
+    .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
+    .right_left_box_design{width:100% !important; text-align:center; padding-top:5px !important;}
+    .profile-boxProfileCard-content::before{top:74px !important;}
+}
+@media screen and (max-width: 800px){
+	.mySlides .post-design-commnet-box .cmy_2 {width: 82%;}
+	.cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
     .art_container{padding: 0px 15px;}
@@ -3427,6 +3635,12 @@ overflow: hidden;
 	.croppie-container .cr-viewport{width: 100%!important;}
 	.cr-overlay{width: 100%!important;}
 	.cr-boundary{width: 100%!important;}
+	.middle-part.container {
+        padding: 40px 0 0px;
+    }
+	.cq_latest_left{width: 10%;}
+    .cq_latest_right{width: 88%;}
+	.user_lst ul li button{margin-right: 0px;}
 }
 @media screen and (max-width: 640px){
 	.bui_bcon {width: 56%;}

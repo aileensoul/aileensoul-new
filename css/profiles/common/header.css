@@ -1307,20 +1307,42 @@ footer {
 
 
 
-
+@media screen and (min-width: 1200px) and (max-width: 1350px) {
+	#InboxContainer{right: -5px;}
+}
 @media screen and (max-width: 1279px) {
 	.header2{width:1140px;}
+	#InboxContainer:before {right:27px;}
 }
 @media screen and (max-width:1199px){
     .custom_footer_left ul li a{font-size: 12px;}
 	.header2 .job-search-box1 fieldset.sec_h2{width: 175px;}
 	.header2{width:940px;}
+	.header ul li a{padding: 0px!important}
+    .header ul li.dropdown-user a{padding:4px 0px 0px!important}
+	#InboxContainer{right: -7px;}
+	
 } 
 @media screen and (max-width: 1024px) {
 	.post-img-user{height: 100%; width: 100%;}
 	.header2 {
 		top: 44px;
 	}
+	#notificationLink span {
+        top: 3px;
+    }
+	.header2 ul {
+        padding-right: 0;
+    }
+	.header ul li.dropdown-user ul li a {
+        padding: 8px;
+    }
+	.header2{top:46px;}
+    #notificationContainer{top:22px;}
+    #InboxContainer{top:25px;}
+    #InboxContainer::before{right: 4%;}
+	#notificationLink span{top:5px;}
+	header .header2{margin:auto;}
 }
 @media screen and (max-width: 991px) {
 	.dropdown-menu {
@@ -1331,6 +1353,26 @@ footer {
 	.header2 ul.notification_data_in_h2 li{width: 100%; border-right: none!important;}
 	.header2 .job-search-box1 fieldset.sec_h2{width: 144px;}
 	.header2 ul.notification_data_in_h2 li a{width: 100%;}
+	.header2 .job-search-box1 fieldset.sec_h2 {width: 145px;}
+	#InboxContainer{right: -4px;}
+	.dropdown-menu::before{right: 3.5%;}
+	.bg-search .header2 {
+        width: 750px;
+        margin: 0 auto;
+    }
+    .header2 .dropdown_hover {
+        padding: 8px 10px 3px 8px;
+    }
+    .header2 .dropdown_hover .dropdown-content_hover {
+        left: -41px;
+    }
+	.header2 ul {
+        padding-right: 11px;
+    }
+    .header2 .dropdown_hover .dropdown-content_hover {
+        left: inherit;
+        right: -10px !important;
+    }
 }
 @media screen and (max-width: 767px) {
 	.search-mob-block{display:block;}
@@ -1357,6 +1399,17 @@ footer {
 	.bg-search .header2{padding: 0px 9px;}
 	#notificationContainer{right:2px; width: 98%;}
 	#InboxContainer::before {right: 179px;}
+	#notificationsmsgBody li a{width: 100%;}
+	.search-mob-block label{margin-top: 7px; margin-left: 7px;}
+    .search-mob-block label i{font-size: 20px;}
+    .header ul{margin: 4px 0px;}
+	#notificationLink span{top:10px !important;}
+	#add_contact #addcontactContainer::before {right: 219px;}
+	.action-button #message_count{right:168px;}
+	.search-mob-block {
+        display: block;
+    }
+	
 }
 @media screen and (max-width: 479px) {
 	.header ul li a{padding-top: 7px!important;}

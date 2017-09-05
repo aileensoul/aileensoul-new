@@ -1773,17 +1773,85 @@ input:-moz-placeholder {
 
 @media screen and (max-width: 1199px) {
 	.header2 {width: 940px;}
+	#people-list{width:30%;}
+    #chat{width:70%;}
 }
 @media screen and (max-width:1200px){ 
   .fixed_right_side{right: 0;}
 }
+@media screen and (max-width: 1024px) {
+	.common-form input[type="radio"], .common-form input[type="checkbox"]{margin: 6px 10px;}
+	.email-verify{ padding-left: 3%;}
+	.profile-text1 .as-p{font-size: 12px; letter-spacing: 0px;}
+    .profile-text1 .chng_email{font-size: 12px;}
+    .profile-text1 .vert_email{font-size: 12px; margin:5px;}
+	.middle-section {
+        padding-top: 24PX;
+    }
+	.chat .chat-history .other-message::after {
+        left: 96%;
+    }
+	.message-data-name {
+        margin-right: 1%;
+    }
+    .container_chat {
+        padding-right: 20px !important;
+    }
+	.people-list {
+        width: 24%;
+    }
+    .container_chat {
+        padding: 0 19px 13px;
+    }
+    .chat {
+        width: 76%;
+    }
+}
 @media screen and (max-width: 991px){
     .fixed_right_side{display: none;}
     .fixed_middle_side{width: 100%; left: 0;}
-	.cls-ve{top: 12px; right: 10px;}
+	.cls-ve{position: absolute; top: 12px; right: 10px; z-index: 10;}
+    .email-verify{padding-left: 0px;}
+	.profile-text1 .vert_email{font-size: 12px;}
+    .profile-text1 .chng_email{font-size: 11px;}
+    .profile-text1 .as-p{font-size: 12px; line-height: 0;}
+    .profile-text1{left: 0; margin: 0 auto; }
+	.people-list {
+        width: 32%;
+    }
+	#row2 {
+        width: 100%;
+    }
+	.message-data-name {
+        margin-right: 2%;
+        font-size: 14px;
+    }
+    .chat .chat-history .other-message::after {
+        left: 93%;
+    }
+    .chat {
+        width: 68%;
+    }
+	.user-section-free-up {
+        display: none;
+    }
+	.chat .chat-history .message-data.align-right .message-data-time {
+        font-size: 12px;
+    }
+	#people-list{width:35%;}
+    #chat{width:65%;}
+    .chat .chat-history{padding:25px 15px 20px;}
+    .chat .chat-header{padding-left:15px;}
+}
+@media screen and (max-width: 900px){
+	.custom-right {margin-left: 4%;}
+    .ves_c{width: 100%; display: block; text-align: center;}
 }
 @media screen and (max-width: 800px){
-  .cover-pic {right: -4%;}
+	.cover-pic {right: -4%;}
+	.custom-right {
+        margin-left: 0%;
+    }
 }
 @media screen and (max-width: 700px) {
     .box {
@@ -1812,6 +1880,10 @@ input:-moz-placeholder {
 	.chat .chat-header .chat-with{font-size: 18px;}
 	.chat .chat-history{width: 100%;}
 	.change-password{padding: 0px 0px;}
+	.backdiv-mob{display:block;}
+	.hidden-mob {
+        display: none;
+    }
 }
 @media screen and (max-width: 640px) {
 
