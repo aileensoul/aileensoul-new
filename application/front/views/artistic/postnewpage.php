@@ -334,9 +334,15 @@
                                                 ?>
 
                                                 <div class="one-image" >
-                                                    <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['image_name']) ?>"  onclick="openModal();
+
+                                                 <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+
+                                                  <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$data['image_name'];?>" onclick="openModal();
                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
 
+                                                    <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['image_name']) ?>"  onclick="openModal();
+                                                            currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
+ -->
                                                 </div>
 
                                             <?php } elseif (in_array($ext, $allowesvideo)) { ?>
@@ -389,7 +395,9 @@
                                                 <div class="mySlides">
                                                     <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                                      <div class="slider_img">
-                                                        <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>">
+
+                                                        <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>"> -->
+                                                         <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$artdata['image_name'];?>">
                                                     </div>
                                                     <!-- 9-5 like comment start -->
 

@@ -166,7 +166,7 @@ z-index: 2;
 display: none;
 float: left;
 width: 358px;
-right: -17px;
+right: -5px;
 }
 #InboxContainer:before {
     content: '';
@@ -539,8 +539,8 @@ ul.dropdown-menu li a i {
     margin: 0;
     position: relative;
     height:35px;
-	border-right: 0.2px solid #1985b3;
 	float: left;
+	border-right: 1px solid #1985b3;
 }
 .header2 ul li:last-child {
     border-right: none;
@@ -760,6 +760,7 @@ height: 25px; width: 25px; }
     line-height: 1;
     color: #999;
 }
+#inboxcontainer::before{right: 17px;}
 /*** business profile  ***/
 #addcontact_count {
     font-weight: 600;
@@ -1307,15 +1308,112 @@ footer {
 
 
 
-
-@media screen and (max-width:1200px)
-{
+@media screen and (max-width: 1279px) {
+	.header2{width:1140px;}
+}
+@media screen and (max-width:1199px){
     .custom_footer_left ul li a{font-size: 12px;}
+	.header2 .job-search-box1 fieldset.sec_h2{width: 175px;}
+	.header2{width:940px;}
 } 
-
-
+@media screen and (max-width: 1024px) {
+	.post-img-user{height: 100%; width: 100%;}
+	.header2 {
+		top: 44px;
+	}
+}
+@media screen and (max-width: 991px) {
+	.dropdown-menu {
+		right: -10px;
+	}
+	#floatBarsG{margin-top: -3%;}
+	.header2 ul.notification_data_in_h2{padding-right: 0px; width: 100%;}
+	.header2 ul.notification_data_in_h2 li{width: 100%; border-right: none!important;}
+	.header2 .job-search-box1 fieldset.sec_h2{width: 144px;}
+	.header2 ul.notification_data_in_h2 li a{width: 100%;}
+}
 @media screen and (max-width: 767px) {
 	.search-mob-block{display:block;}
+	.header2 {top: 42px;}
+	.padd_img {
+		padding-left: 3px !important;
+		padding-top: 3px !important;
+	}
+	.dropdown-menu {
+		left: inherit !important;
+		right: -11px !important;
+		top: 35px;
+	}
+	.cover .fancybox-slide > *{width: 90%;}
+	.por_content ul li .pro-text{width: 100%;}
+	#acon::before {
+		right: 24px;
+	}
+	#notificationContainer::before {
+		right: 97px;
+	}
+	#floatBarsG{margin-top: -3%;}
+	.post-img-user{line-height: 0;}
+	.bg-search .header2{padding: 0px 9px;}
+	#notificationContainer{right:2px; width: 98%;}
+	#InboxContainer::before {right: 179px;}
+}
+@media screen and (max-width: 479px) {
+	.header ul li a{padding-top: 7px!important;}
+	.header ul li.dropdown-user a{padding-top: 10px!important;}
+	#notificationContainer::before {
+		right: 90px;
+	}
+	.dropdown-menu {
+		left: inherit !important;
+		right: -10px !important;
+		top: 35px;
+	}
+	#floatBarsG {
+		margin-left: -167px;
+		margin-top: -1%;
+	}#acon::before {
+		right: 140px !important;
+	}
+	#add_contact #addcontactContainer{right: 0;}
+	#add_contact #addcontactContainer::before {
+		right: 225px;
+	}
+	#notificationLink span {
+		margin-top: 0.2px;
+		padding: 4px 5px!important;
+	}
+}
+@media screen and (max-width: 360px) {
+	.dropdown-menu {
+		left: inherit !important;
+		right: -6px !important;
+		top: 35px;
+	}
+	#notificationContainer::before {
+		right: 78px;
+	}
+	#floatBarsG {
+		margin-left: -145px;
+		margin-top: -3%;
+	}
+
+	#add_contact #addcontactContainer::before {
+		right: 207px;
+	}
+
+	#acon::before {
+		right: 127px !important;
+	}
+	.header2 ul li a#addcontactLink {
+		padding: 7px 6px !important;
+	}
+}
+@media screen and (max-width: 320px){
+	.header2 ul li.active a {
+		padding: 9px 9px 3px 0px;
+	}
+	.dropdown2 a{padding: 8px;}
 }
 
 

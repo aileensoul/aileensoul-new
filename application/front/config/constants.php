@@ -243,6 +243,16 @@ if (IMAGEPATHFROM == 's3bucket') {
 // ARTISTIC POST THUMBS
     define('ART_POST_THUMB_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/thumbs/');
 
+// ARTISTIC POST 335 X 320
+    define('ART_POST_RESIZE1_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/resize1/');
+
+// ARTISTIC POST 335 X 245
+    define('ART_POST_RESIZE2_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/resize2/');
+
+// ARTISTIC POST 210 X 210
+    define('ART_POST_RESIZE3_UPLOAD_URL',BUCKETLINK.'uploads/artistic_post/resize3/');
+
+
 // BLOG MAIN IMAGE
     define('BLOG_MAIN_UPLOAD_URL',BUCKETLINK.'uploads/blog/main/');
 

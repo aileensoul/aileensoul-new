@@ -859,6 +859,23 @@ $config['art_post_thumb_upload_path'] = 'uploads/artistic_post/thumbs/';
 $config['art_post_thumb_width'] = '350';
 $config['art_post_thumb_height'] = '200';
 
+
+// ARTISTIC POST 335 X 320
+$config['art_post_resize1_upload_path'] = 'uploads/artistic_post/resize1/';
+$config['art_post_resize1_width'] = '335';
+$config['art_post_resize1_height'] = '320';
+
+// ARTISTIC POST 335 X 245
+$config['art_post_resize2_upload_path'] = 'uploads/artistic_post/resize2/';
+$config['art_post_resize2_width'] = '335';
+$config['art_post_resize2_height'] = '245';
+
+// ARTISTIC POST 210 X 210
+$config['art_post_resize3_upload_path'] = 'uploads/artistic_post/resize3/';
+$config['art_post_resize3_width'] = '210';
+$config['art_post_resize3_height'] = '210';
+
+
 // BLOG MAIN IMAGE
 $config['blog_main_upload_path'] = 'uploads/blog/main/';
 $config['blog_main_allowed_types'] = '*';
