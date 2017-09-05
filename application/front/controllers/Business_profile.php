@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -1958,7 +1957,7 @@ class Business_profile extends MY_Controller {
 //        </div>';
                     $return_html .= '<div>
             <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '">
+                    <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
                 </div>
             </a>
         </div>';
@@ -4319,7 +4318,7 @@ class Business_profile extends MY_Controller {
             foreach ($businessprofiledata as $business_profile) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -4337,7 +4336,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
+                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '"" >';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -4472,7 +4471,7 @@ class Business_profile extends MY_Controller {
             foreach ($businessprofiledata as $business_profile) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -4876,6 +4875,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -4896,7 +4896,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -5035,6 +5035,7 @@ class Business_profile extends MY_Controller {
         $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -5057,7 +5058,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -5898,6 +5899,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($businesscomment as $bus_comment) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
 
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -5919,7 +5921,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6056,6 +6058,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($businesscomment as $bus_comment) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             if ($business_userimage != '') {
@@ -6074,7 +6077,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6214,6 +6217,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($businesscomment as $bus_comment) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
             $cmtinsert .= '<div class="all-comment-comment-box">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
@@ -6234,7 +6238,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "imgshowcommenttwo' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6385,6 +6389,7 @@ class Business_profile extends MY_Controller {
         foreach ($businesscomment as $bus_comment) {
 
             $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -6406,7 +6411,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "imgshowcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6918,6 +6923,7 @@ class Business_profile extends MY_Controller {
             foreach ($businesscomment as $bus_comment) {
 
                 $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+                $company_slug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -6938,7 +6944,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$company_slug.'"><b>' . $company_name . '</b></a>';
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-details" id= "imgshowcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -7074,6 +7080,7 @@ class Business_profile extends MY_Controller {
         if (count($businesscomment) > 0) {
             foreach ($businesscomment as $bus_comment) {
                 $company_name = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->company_name;
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id']))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $bus_comment['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -7094,7 +7101,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><b>' . $company_name . '</b>';
+                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-details" id= "imgshowcommenttwo' . $bus_comment['post_image_comment_id'] . '">';
@@ -7234,7 +7241,7 @@ class Business_profile extends MY_Controller {
             foreach ($busienssdata as $rowdata) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->business_slug;
                 $fourdata .= '<div class="all-comment-comment-box">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
 
@@ -7255,7 +7262,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucfirst($companyname) . '</br></b></div>';
+                $fourdata .= '<a href="'. base_url().'business-profile/dashboard/'.$companyslug.'">' . ucfirst($companyname) . '</br></b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['business_profile_post_comment_id'] . '"  style="display:block;">';
@@ -7366,7 +7373,7 @@ class Business_profile extends MY_Controller {
             foreach ($busmulimage1 as $rowdata) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->business_slug;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
 
@@ -7389,9 +7396,9 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $fourdata .= '</div>';
                 }
-                $fourdata .= '<div class="comment-name"><b>';
+                $fourdata .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
                 $fourdata .= '' . ucfirst($companyname) . '</br>';
-                $fourdata .= '</b></div>';
+                $fourdata .= '</b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comment']) . '</br> </div>';
 
@@ -7489,7 +7496,7 @@ class Business_profile extends MY_Controller {
             foreach ($busienssdata as $rowdata) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
                 $fourdata .= '<div class="all-comment-comment-box">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
 
@@ -7509,8 +7516,8 @@ class Business_profile extends MY_Controller {
 
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
-                $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '' . ucfirst($companyname) . '</br></b></div>';
+                $fourdata .= '</div><div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                $fourdata .= '' . ucfirst($companyname) . '</br></b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div>';
                 $fourdata .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
@@ -7631,7 +7638,7 @@ class Business_profile extends MY_Controller {
         foreach ($businessprofiledata as $business_profile) {
 
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
-
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
 // $cmtinsert = '<div class="all-comment-comment-box">';
@@ -7653,7 +7660,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7819,6 +7826,7 @@ class Business_profile extends MY_Controller {
         $cmtinsert = '<div class="insertcommenttwo' . $post_id . '">';
         foreach ($businessprofiledata as $business_profile) {
             $company_name = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
+            $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_slug;
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -7838,7 +7846,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst($company_name) . '</b>';
+            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7971,7 +7979,7 @@ class Business_profile extends MY_Controller {
             foreach ($businessprofiledata as $business_profile) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -7991,7 +7999,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
+                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '"" >';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8118,7 +8126,7 @@ class Business_profile extends MY_Controller {
             foreach ($businessprofiledata as $business_profile) {
 
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_slug;
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $business_profile['user_id'], 'status' => 1))->row()->business_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
@@ -8138,7 +8146,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><b>' . $companyname . '</b>';
+                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id="showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '">';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8262,7 +8270,7 @@ class Business_profile extends MY_Controller {
         if ($busmulimage1) {
             foreach ($busmulimage1 as $rowdata) {
                 $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
-
+                $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
 
                 $mulimgfour .= '<div class="all-comment-comment-box">';
 
@@ -8285,8 +8293,8 @@ class Business_profile extends MY_Controller {
                     $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $mulimgfour .= '</div>';
                 }
-                $mulimgfour .= '<div class="comment-name"><b>';
-                $mulimgfour .= '' . ucfirst($companyname) . '</br></b></div>';
+                $mulimgfour .= '<div class="comment-name"><a href="'.base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                $mulimgfour .= '' . ucfirst($companyname) . '</br></b></a></div>';
                 $mulimgfour .= '<div class="comment-details" id="imgshowcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
 
 
@@ -10496,12 +10504,12 @@ Your browser does not support the audio tag.
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
                             }
                             $return_html .= '</div>
-<div class = "comment-name">
+<div class = "comment-name"><a href="'. base_url().'business-profile/dashboard/'.$slugname1.'">
 <b title = "' . $companyname . '">';
                             $return_html .= $companyname;
                             $return_html .= '</br>';
 
-                            $return_html .= '</b>
+                            $return_html .= '</b></a>
 </div>
 <div class = "comment-details" id = "showcomment' . $rowdata['business_profile_post_comment_id'] . '">';
 
@@ -11455,7 +11463,7 @@ Your browser does not support the audio tag.
                 $fetch_pdf .= '<div class = "image_profile">';
 //                $fetch_pdf .= '<a href = "' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class = "pdf_img">';
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['image_name'] . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<iframe src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['image_name'] . '" style="width: 100%;height: 100%;border: none;"></iframe>';
+                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>';
 //                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -11473,7 +11481,7 @@ Your browser does not support the audio tag.
 
     public function business_dashboard_post($id = '') {
 // manage post start
-
+        
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -11722,7 +11730,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         
                          $return_html .= '<div>
             <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '">
+                <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+                    
                 </div>
             </a>
         </div>';
@@ -11989,6 +11998,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($businessprofiledata) {
                     foreach ($businessprofiledata as $rowdata) {
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
+                        $companyslug = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->business_slug;
                         $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
@@ -12009,11 +12019,11 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
-                    <b>';
-                        $return_html .= ucfirst(strtolower($companyname));
+                    <a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                        $return_html .= ''.ucfirst(strtolower($companyname)).'';
                         $return_html .= '</br>';
 
-                        $return_html .= '</b>
+                        $return_html .= '</b></a>
                 </div>
                 <div class="comment-details" id= "showcomment' . $rowdata['business_profile_post_comment_id'] . '">
                     <div id="lessmore' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">';

@@ -3117,8 +3117,8 @@ public function ajax_userlist() {
         $offset = $start;
 
         $contition_array = array('art_step' => 4, 'is_delete' => 0, 'status' => 1, 'user_id !=' => $userid);
-        $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str = array(), $groupby = '');
-        $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userlist = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+        $userlist1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = 'art_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $artisticdata1 = $artisticdata1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8113,7 +8113,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '</div>';
              }
 
-            $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
 
@@ -8511,6 +8511,7 @@ public function insert_comment_postnewpage() {
 
 
             $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
@@ -8518,7 +8519,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
-            $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
 
@@ -9132,7 +9133,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '</div>';
 
            }
-            $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lname)). '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
 
@@ -9330,7 +9331,7 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '</div>';
                }
 
-                $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
+                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
 
@@ -10090,7 +10091,7 @@ public function insert_comment_postnewpage() {
 
             $art_name = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
 
-            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_name;
+            $art_lastname = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id']))->row()->art_lastname;
 
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
@@ -10135,7 +10136,7 @@ public function insert_comment_postnewpage() {
 
             }
 
-            $cmtinsert .= '<div class="comment-name"><b>' . $art_name . '</b>';
+            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
 
@@ -13345,7 +13346,7 @@ public function art_home_post() {
                             }
                             $return_html .= '</div>
                                             <div class="comment-name">
-                                                <b title="' . $artname .' '.$artlastname.'">';
+                                                <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
                             $return_html .= $artname;
                             $return_html .= ' ';
                             $return_html .= $artlastname;

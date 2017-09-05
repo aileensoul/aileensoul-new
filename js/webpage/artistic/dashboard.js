@@ -687,6 +687,8 @@ function insert_comment(clicked_id)
                 post_comment = post_comment.replace(/&nbsp;/gi, " ");
                 post_comment = post_comment.replace(/<br>$/, '');
                 post_comment = post_comment.replace(/div>/gi, 'p>');
+                post_comment = post_comment.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
                // alert(post_comment);
                // return false;
@@ -764,6 +766,8 @@ function entercomment(clicked_id)
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
                         txt = txt.replace(/div>/gi, 'p>');
+                        txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                         //     txt = txt.replace(/^\s+|\s+$/g, "")
@@ -956,6 +960,8 @@ function entercomment(clicked_id)
                 txt = txt.replace(/<br>$/, '');
 
                 txt = txt.replace(/div>/gi, 'p>');
+                txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                 if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1030,6 +1036,8 @@ function edit_comment2(abc)
                         txt = txt.replace(/<br>$/, '');
 
                         txt = txt.replace(/div>/gi, 'p>');
+                        txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                         if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1086,6 +1094,8 @@ function edit_commenttwo(abc)
                 txt = txt.replace(/&nbsp;/gi, " ");
                 txt = txt.replace(/<br>$/, '');
                  txt = txt.replace(/div>/gi, 'p>');
+                txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                 if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1137,6 +1147,8 @@ function commentedittwo(abc)
                         txt = txt.replace(/&nbsp;/gi, " ");
                         txt = txt.replace(/<br>$/, '');
                          txt = txt.replace(/div>/gi, 'p>');
+                        txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                         if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1438,6 +1450,8 @@ function khdiv(abc) {
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
        editpostdetails = editpostdetails.replace(/div/gi, "p");
        //editpostdetails = editpostdetails.replace(/"<div>"/gi, "</p>");
+        editpostdetails = editpostdetails.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
 //alert(editpostdetails);

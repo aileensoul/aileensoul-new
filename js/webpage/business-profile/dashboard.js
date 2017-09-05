@@ -385,28 +385,29 @@ function openCity(evt, cityName) {
 // post like script start 
 function post_like(clicked_id)
 {
-    var is_valid_post = check_post_available(clicked_id);
-    alert(is_valid_post);
-    if (is_valid_post == true) {
-        $.ajax({
-            type: 'POST',
-            url: base_url + "business_profile/like_post",
-            data: 'post_id=' + clicked_id,
-            dataType: 'json',
-            success: function (data) {
-                $('.' + 'likepost' + clicked_id).html(data.like);
-                $('.likeusername' + clicked_id).html(data.likeuser);
-                $('.comment_like_count' + clicked_id).html(data.like_user_count);
-                $('.likeduserlist' + clicked_id).hide();
-                if (data.like_user_total_count == '0') {
-                    document.getElementById('likeusername' + clicked_id).style.display = "none";
-                } else {
-                    document.getElementById('likeusername' + clicked_id).style.display = "block";
-                }
-                $('#likeusername' + clicked_id).addClass('likeduserlist1');
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/like_post",
+        data: 'post_id=' + clicked_id,
+        dataType: 'json',
+        beforeSend: function (data) {
+            var is_valid_post = check_post_available(clicked_id);
+            alert(is_valid_post);
+        },
+        success: function (data) {
+            $('.' + 'likepost' + clicked_id).html(data.like);
+            $('.likeusername' + clicked_id).html(data.likeuser);
+            $('.comment_like_count' + clicked_id).html(data.like_user_count);
+            $('.likeduserlist' + clicked_id).hide();
+            if (data.like_user_total_count == '0') {
+                document.getElementById('likeusername' + clicked_id).style.display = "none";
+            } else {
+                document.getElementById('likeusername' + clicked_id).style.display = "block";
             }
-        });
-    }
+            $('#likeusername' + clicked_id).addClass('likeduserlist1');
+        }
+    });
+
 }
 //post like script end 
 
@@ -468,88 +469,94 @@ function insert_comment(clicked_id)
 // insert comment using enter 
 function entercomment(clicked_id)
 {
-    $("#post_comment" + clicked_id).click(function () {
-        $(this).prop("contentEditable", true);
-    });
-    $('#post_comment' + clicked_id).keypress(function (e) {
-        if (e.keyCode == 13 && !e.shiftKey) {
-            e.preventDefault();
-            var sel = $("#post_comment" + clicked_id);
-            var txt = sel.html();
-            txt = txt.replace(/&nbsp;/gi, " ");
-            txt = txt.replace(/<br>$/, '');
-            txt = txt.replace(/&gt;/gi, ">");
-            txt = txt.replace(/div/gi, 'p');
-            if (txt == '' || txt == '<br>') {
-                return false;
+    var is_valid_post = check_post_available(clicked_id);
+    if (is_valid_post == true) {
+        $("#post_comment" + clicked_id).click(function () {
+            $(this).prop("contentEditable", true);
+        });
+        $('#post_comment' + clicked_id).keypress(function (e) {
+            if (e.keyCode == 13 && !e.shiftKey) {
+                e.preventDefault();
+                var sel = $("#post_comment" + clicked_id);
+                var txt = sel.html();
+                txt = txt.replace(/&nbsp;/gi, " ");
+                txt = txt.replace(/<br>$/, '');
+                txt = txt.replace(/&gt;/gi, ">");
+                txt = txt.replace(/div/gi, 'p');
+                if (txt == '' || txt == '<br>') {
+                    return false;
+                }
+                if (/^\s+$/gi.test(txt))
+                {
+                    return false;
+                }
+                txt = txt.replace(/&/g, "%26");
+                $('#post_comment' + clicked_id).html("");
+                if (window.preventDuplicateKeyPresses)
+                    return;
+                window.preventDuplicateKeyPresses = true;
+                window.setTimeout(function () {
+                    window.preventDuplicateKeyPresses = false;
+                }, 500);
+                var x = document.getElementById('threecomment' + clicked_id);
+                var y = document.getElementById('fourcomment' + clicked_id);
+                if (x.style.display === 'block' && y.style.display === 'none') {
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + "business_profile/insert_commentthree",
+                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                        dataType: "json",
+                        success: function (data) {
+                            $('textarea').each(function () {
+                                $(this).val('');
+                            });
+                            $('.insertcomment' + clicked_id).html(data.comment);
+                            $('.comment_count' + clicked_id).html(data.comment_count);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + "business_profile/insert_comment",
+                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
+                        dataType: "json",
+                        success: function (data) {
+                            $('textarea').each(function () {
+                                $(this).val('');
+                            });
+                            $('#' + 'fourcomment' + clicked_id).html(data.comment);
+                            $('.comment_count' + clicked_id).html(data.comment_count);
+                        }
+                    });
+                }
             }
-            if (/^\s+$/gi.test(txt))
-            {
-                return false;
-            }
-            txt = txt.replace(/&/g, "%26");
-            $('#post_comment' + clicked_id).html("");
-            if (window.preventDuplicateKeyPresses)
-                return;
-            window.preventDuplicateKeyPresses = true;
-            window.setTimeout(function () {
-                window.preventDuplicateKeyPresses = false;
-            }, 500);
-            var x = document.getElementById('threecomment' + clicked_id);
-            var y = document.getElementById('fourcomment' + clicked_id);
-            if (x.style.display === 'block' && y.style.display === 'none') {
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + "business_profile/insert_commentthree",
-                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
-                    dataType: "json",
-                    success: function (data) {
-                        $('textarea').each(function () {
-                            $(this).val('');
-                        });
-                        $('.insertcomment' + clicked_id).html(data.comment);
-                        $('.comment_count' + clicked_id).html(data.comment_count);
-                    }
-                });
-            } else {
-                $.ajax({
-                    type: 'POST',
-                    url: base_url + "business_profile/insert_comment",
-                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
-                    dataType: "json",
-                    success: function (data) {
-                        $('textarea').each(function () {
-                            $(this).val('');
-                        });
-                        $('#' + 'fourcomment' + clicked_id).html(data.comment);
-                        $('.comment_count' + clicked_id).html(data.comment_count);
-                    }
-                });
-            }
-        }
-    });
-    $(".scroll").click(function (event) {
-        event.preventDefault();
-        $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
-    });
+        });
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    }
 }
 
 function insert_comment1(clicked_id)
 {
-    var post_comment = document.getElementById("post_comment1" + clicked_id);
-    $.ajax({
-        type: 'POST',
-        url: base_url + "business_profile/insert_comment1",
-        data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
-        dataType: "json",
-        success: function (data) {
-            $('textarea').each(function () {
-                $(this).val('');
-            });
-            $('.' + 'insertcomment1' + clicked_id).html(data.comment);
-            $('.comment_count' + clicked_id).html(data.comment_count);
-        }
-    });
+    var is_valid_post = check_post_available(clicked_id);
+    if (is_valid_post == true) {
+        var post_comment = document.getElementById("post_comment1" + clicked_id);
+        $.ajax({
+            type: 'POST',
+            url: base_url + "business_profile/insert_comment1",
+            data: 'post_id=' + clicked_id + '&comment=' + post_comment.value,
+            dataType: "json",
+            success: function (data) {
+                $('textarea').each(function () {
+                    $(this).val('');
+                });
+                $('.' + 'insertcomment1' + clicked_id).html(data.comment);
+                $('.comment_count' + clicked_id).html(data.comment_count);
+            }
+        });
+    }
 }
 
 // insert comment using enter 
@@ -1998,12 +2005,13 @@ function check_post_available(post_id) {
         dataType: "json",
         success: function (data) {
             alert(data);
+            return false;
             if (data == 0) {
                 $('.biderror .mes').html("<div class='pop_content'>this post deleted so you can no take any action</div>");
                 $('#bidmodal').modal('show');
-                return false;
+                return data;
             } else {
-                return true;
+                return data;
             }
         }
     });

@@ -653,7 +653,7 @@
                                                                                 </div>
                                                                                 <div class="comment-name">
                                                                                     <b>  <?php
-                                                                                        echo ucfirst(strtolower($companyname));
+                                                                                        echo ucfirst(strtolower($companyname)) . ' '.ucfirst(strtolower($lastname)) ;
                                                                                         echo '</br>';
                                                                                         ?>
                                                                                     </b>

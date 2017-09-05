@@ -277,6 +277,8 @@ function insert_comment(clicked_id)
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, 'p');
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                             if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -346,6 +348,8 @@ function insert_comment(clicked_id)
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
                                     txt = txt.replace(/div/gi, 'p');
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
                                     if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         return false;
@@ -682,6 +686,8 @@ $(function () {
         editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
         editpostdetails = editpostdetails.replace(/<br>$/, '');
          editpostdetails = editpostdetails.replace(/div/gi, "p");
+        editpostdetails = editpostdetails.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
        // end khyati code
    
@@ -876,6 +882,9 @@ function edit_comment(abc,clicked_id)
 
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
+
                             if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
@@ -919,6 +928,8 @@ function edit_comment(abc,clicked_id)
                                     var txt = sel.html();
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
                                     if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
@@ -969,6 +980,9 @@ function edit_commenttwo(abc,clicked_id)
                             var txt = sel.html();
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
+
                             if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                 $('#bidmodal').modal('show');
@@ -1015,6 +1029,9 @@ function edit_commenttwo(abc,clicked_id)
                                     var txt = sel.html();
                                     txt = txt.replace(/&nbsp;/gi, " ");
                                     txt = txt.replace(/<br>$/, '');
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
+
                                     if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
                                         $('#bidmodal').modal('show');
@@ -1190,6 +1207,8 @@ function entercommentimg(clicked_id)
                                     e.preventDefault();
                                     var sel = $("#post_commentimg" + clicked_id);
                                     var txt = sel.html();
+                                    txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
                                     if (txt == '' || check_perticular(txt) == true) {
                                         return false;
                                     }
@@ -1630,6 +1649,8 @@ function post_likeimg(clicked_id)
                              txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
                             if (txt == '' || check_perticular(txt) == true) {
                                 return false;
@@ -1690,6 +1711,8 @@ function post_likeimg(clicked_id)
                             txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
                             if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -1802,6 +1825,8 @@ function post_likeimg(clicked_id)
                              txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
                             if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                 $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deletetwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -1866,6 +1891,8 @@ function post_likeimg(clicked_id)
                                    txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                                     if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1922,6 +1949,8 @@ function post_likeimg(clicked_id)
                                     txt = txt.replace(/&nbsp;/gi, " ");
                             txt = txt.replace(/<br>$/, '');
                             txt = txt.replace(/div/gi, "p");
+                            txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+                            
 
                                     if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
                                         $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_deleteimgtwo(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
