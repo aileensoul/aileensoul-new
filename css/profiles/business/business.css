@@ -458,7 +458,7 @@ line-height: 1;}
     float: left;
     padding-top: 18px !important;
 }
-.follow_left_box_main_btn .bg_following{margin-bottom: 0px;}
+.follow_left_box_main_btn .bg_following{margin-bottom: 0px; margin-top: 6px;}
 .follow_left_box_main_btn button {
     letter-spacing: 1px;
     letter-spacing: 1px;
@@ -632,7 +632,7 @@ line-height: 1;}
 .post-design-name ul li .post_dot {
     max-width: 80%;
     width: auto;
-    font-size: 16px;
+    font-size: 15px;
     display: inline-block;
     font-weight: 600;
     color: #1b8ab9;
@@ -1420,7 +1420,7 @@ padding: 1px !important;}
     color: #ffffff;
 }
 .profile-left{float:left; width:80%;}
-.profile-head-text{font-family: 'robotoregular';
+.profile-head-text{font-family: arial;
     font-size: 20px;
     font-weight: 600;
     line-height: 25px;
@@ -1707,8 +1707,8 @@ max-width: inherit;
     width: 100%;
     height: 100%
 }
-.image_profile audio{width: 100%; height: 100%;
-background-image: url('../images/music-icon.png');
+.image_profile audio{width: 100%; height: 88%;
+background-image: url('../../../images/music-icon.png');
 background-size: 100%;
 }
 .profile-job-post-detail .buisness-profile-pic {
@@ -1729,7 +1729,7 @@ background-size: 100%;
     height: 165px;
     display: inline-block;
     float: left;
- 
+	overflow: hidden;
     padding-left: 10px;
 }
 .bui_res_i img {
@@ -2569,6 +2569,7 @@ line-height: 1;}
 .search_button {
     margin-top: 14px;
     margin-left: 23px;
+	margin-top: 8px;
 }
 .search_button button {
     margin-bottom: 10px;
@@ -2618,7 +2619,7 @@ line-height: 1;}
 .module_Ssearch {
     display: inline-block;
     float: left;
-    padding-top: 8px;
+    padding-top: 6px;
     padding-left: 16px;
 }
 .box_search_module:last-child{border-bottom: none ;}
@@ -3344,6 +3345,27 @@ div .comment {
     display: none;
 }
 .tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
+.else_post_d{padding-left: 7px;}
+.addcontact-text{width: 60%;}
+.posterror-modal-close{
+	float: right; border-radius: 100%;	
+	padding: 10px;
+	height: inherit;
+	line-height: 14px;
+	margin: -37px -35px 1px -20px;
+	font-size: 22px;
+}
+#addcontactContainer{margin-top: 0px; right: 8px;}
+.notifications li .notification-data-inside div{ font-size: 13px!important; max-height: 20px; line-height: 15px; padding-top: 0px!important}
+.buisness-profile-pic .bui_popup_img img{width: 100%; height: 100%; position: relative; }
+.buisness-profile-pic .slider_img img{ width: auto;}
+ #audio_bg {
+    height: 97px;
+    width: 122px;
+    background-image: url(../images/music-icon_play.png);
+    background-size: 100%;
+overflow: hidden;
+}
 
 
 @keyframes pulse1 {
@@ -3351,15 +3373,13 @@ div .comment {
   50%{ opacity: .4;}
   100%{transform: scale(1.6); opacity: 0;}
 }
-
-
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
     .fixed_right_display{display: none;}
     .fixed_right_display_none{display: block;}
 }
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1199px){
     .bui_art_left_box .profile-boxProfileCard-content::before {
 		top: 50px;
 	}
@@ -3369,23 +3389,62 @@ div .comment {
 	}
     .cq_latest_right{width: 70%;}
     .cq_latest_left{width: 25%;}
+	.follow_left_box_main_btn button {
+		width: 72px;
+		padding: 5px 7px;
+		margin-left: 0px;
+	}
+}
+@media screen and (max-width: 1024px) {
+	.post-design-name_follow{width: 36%;}
+	.follow_left_box_main{padding:3px 0 3px 0;}
+	.profile-boxProfileCard_follow{max-height: 198px;}
+	.post-design-pro-img_follow{width: 60px;height: 60px;}  
+	.post-design-pro-img_follow{padding: 5px 5px 3px 5px;}
+	.follow_left_box_main_btn{margin-top: 0px!important;}
+	.post-design-name ul li .post-design-product a{word-break:break-all;}
 }
 @media screen and (max-width: 991px){
     .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
     .right_side_posrt{width: 100%;}
     .art_container{padding: 0px;}
+	.profile-main-box-buis-menu li a {
+		font-size: 12px;
+		padding: 12px 22px 12px;
+		width: 100%;
+	}
 }
 @media screen and (max-width: 767px){
     .art_container{padding: 0px 15px;}
     .bui_bcon{width: 60%;}
     .editor-content{width: 86%;}
     .business-profile-right .profile-main-box-buis-menu .flw_msg_btn ul{float: none;}
+	.profile-main-box-buis-menu ul li a{width: 100%;}
+	.bpro-fw6 li { width: 19.66% !important;}
+	.pro-fw li {width: 25% !important;}
+	.modal-post{padding-top: 40px;}
+	.popup-textarea textarea{padding-right: 18px;}
+	.croppie-container .cr-viewport{width: 100%!important;}
+	.cr-overlay{width: 100%!important;}
+	.cr-boundary{width: 100%!important;}
 }
 @media screen and (max-width: 640px){
 	.bui_bcon {width: 56%;}
 	.user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
 	.profile-job-post-location-name ul li .follow-li-text{font-size: 14px;}
 	.bui_bcon {width: 50%;}
+	.post-img-user{width: 100%; height: 100%;}
+	.audio_source audio {
+		width: 229px;
+	}
+	.audio_img {
+		height: 230px !important;
+		width: 230px !important;
+		position: relative !important;
+	}
+}
+@media screen and (max-width: 540px) {
+	
 }
 @media screen and (max-width: 479px){
     .bui_bcon {width: 49%;}
@@ -3394,13 +3453,29 @@ div .comment {
     .editor-content {width: 81%;}
     .camer_h i{font-size: 22px;}
     .post-edit-popup .popup-text textarea{width: 85%;}
+	.audio_source audio {
+		width: 200px;
+	}
+	.audio_img {
+		height: 200px !important;
+		width: 200px !important;
+		position: relative !important;
+	}
 }
 @media screen and (max-width: 430px){ 
 	.bui_bcon {width: 35%;}
 }
-@media screen and (max-width: 320px){
-     .editor-content{width: 78%;}
+@media screen and (max-width: 360px) {
+	.audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
+	.audio_source audio {width: 150px;}
+	.post-design-name{width: 66%;}
 }
-/*media zalak end*/
-
-/*** ---------  end only bus  -----------  ***/
+@media screen and (max-width: 320px){
+    .editor-content{
+		width: 70%;
+		padding-left: 0;
+	}
+	.post-design-name {
+		width: 70%;
+	}
+}

@@ -1144,7 +1144,7 @@ label.cameraButton input[accept*="camera"] {
 .flw_msg_btn{margin-top: 8px;}
 .tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
 #work_certi input.delete_graduation {
-    background: url(../img/error.png) no-repeat;
+    background: url(../../../img/error.png) no-repeat;
     background-size: auto auto;
     background-size: 100%;
     height: 20px;
@@ -1156,6 +1156,9 @@ label.cameraButton input[accept*="camera"] {
     margin-left: -10px;
     margin-top: -48px;
 }
+.profile-box-left .edi_origde .progre_bar_text p{color: #8c8c8c;}
+.circle-1 strong{color: #8c8c8c;}
+.progre_bar_text p{color: #8c8c8c;}
 
 
 /***  media query  ***/
@@ -1166,4 +1169,23 @@ label.cameraButton input[accept*="camera"] {
     .job_reg_page_fprm{width: 95%;}
     .common-form1 h3{font-size: 15px;}
     .date-dropdowns .year{padding-left: 5px;}
+	.pro-fw li {width: 25% !important;}
+	.job_con #InboxContainer::before {right: 141px;}
+}
+@media screen and (max-width: 640px) {
+	.post-img-user{width: 100%; height: 100%;}
+}
+@media screen and (max-width: 540px) {
+	
+}
+@media screen and (max-width: 479px) {
+	
+}
+@media screen and (max-width: 360px) {
+	.job_con #InboxContainer::before {
+		right: 136px;
+	}
+}
+@media screen and (max-width: 320px){
+	
 }
