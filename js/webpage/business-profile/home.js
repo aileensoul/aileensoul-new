@@ -1558,8 +1558,8 @@ function editpost(abc)
     document.getElementById('khyatii' + abc).style.display = 'none';
     document.getElementById('khyati' + abc).style.display = 'none';
 
-    editposttitle = editposttitle.trim()
-    editpostdesc = editpostdesc.trim()
+    editposttitle = editposttitle.trim();
+    editpostdesc = editpostdesc.trim();
 
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(editpostdesc);
