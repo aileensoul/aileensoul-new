@@ -542,6 +542,8 @@ function insert_comment(clicked_id)
        txt = txt.replace(/<br>$/, '');
 
        txt = txt.replace(/div>/gi, 'p>');
+       txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -611,6 +613,8 @@ function insert_comment(clicked_id)
                txt = txt.replace(/<br>$/, '');
 
               txt = txt.replace(/div>/gi, 'p>');
+              txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
               //alert(txt); return false;
 
 
@@ -797,6 +801,8 @@ function insert_comment(clicked_id)
        txt = txt.replace(/&nbsp;/gi, " ");
        txt = txt.replace(/<br>$/, '');
         txt = txt.replace(/div>/gi, 'p>');
+        txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
            $('.biderror .mes').html("<div class='pop_content'>Do you want to delete this comment?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='comment_delete(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
@@ -847,6 +853,8 @@ function insert_comment(clicked_id)
                txt = txt.replace(/<br>$/, '');
 
                txt = txt.replace(/div>/gi, 'p>');
+              txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -905,6 +913,8 @@ function insert_comment(clicked_id)
        txt = txt.replace(/&nbsp;/gi, " ");
        txt = txt.replace(/<br>$/, '');
        txt = txt.replace(/div>/gi, 'p>');
+       txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
        if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -958,6 +968,8 @@ function insert_comment(clicked_id)
                txt = txt.replace(/&nbsp;/gi, " ");
                txt = txt.replace(/<br>$/, '');
                txt = txt.replace(/div>/gi, 'p>');
+              txt = txt.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
 
 
                if (txt == '' || txt == '<br>' || check_perticular(txt) == true) {
@@ -1664,6 +1676,8 @@ function insert_comment(clicked_id)
        editpostdetails = editpostdetails.replace(/&gt;/gi,">");
        editpostdetails = editpostdetails.replace(/&nbsp;/gi, " ");
         editpostdetails = editpostdetails.replace(/div>/gi, 'p>');
+        editpostdetails = editpostdetails.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
+
         //alert(editpostdetails);
 
       
