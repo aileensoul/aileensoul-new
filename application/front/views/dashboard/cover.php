@@ -811,7 +811,10 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 <div class="modal-footer">
                                     <?php if ($artdata[0]['art_step'] != 4) { ?>
                                         <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Register Now</a>
-                                    <?php } else { ?>
+                                    <?php } elseif ($artdata[0]['status'] == '0' && $artdata[0]['art_step'] == 4) { ?>
+                                        <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Active</a>
+
+                                        <?php }else { ?>
                                         <a class="btn-4" href="<?php echo base_url('artistic'); ?>">Take me in</a>
 
                                     <?php } ?>
