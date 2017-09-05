@@ -1817,7 +1817,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                            
+
                                                 <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
                                             </a>
                                         </div>
@@ -6871,7 +6871,6 @@ public function insert_comment_postnewpage() {
     public function ajaxpro() {
         $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to artistic/index untill active profile start
          $contition_array = array('user_id'=> $userid,'status' => '0','is_delete'=> '0');
 
         $artistic_deactive = $this->data['artistic_deactive'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -6880,9 +6879,8 @@ public function insert_comment_postnewpage() {
         {
              redirect('artistic/');
         }
-     //if user deactive profile then redirect to artistic/index untill active profile End
-        
-        // REMOVE OLD IMAGE FROM FOLDER
+
+// REMOVE OLD IMAGE FROM FOLDER
         $contition_array = array('user_id' => $userid);
         $user_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'profile_background,profile_background_main', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -6910,42 +6908,58 @@ public function insert_comment_postnewpage() {
             }
         }
 
-        // REMOVE OLD IMAGE FROM FOLDER
-        
         $data = $_POST['image'];
-
-/*        $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents('uploads/art_bg/' . $imageName, base64_decode(explode(',', $base64string)[1]));
- */
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
         $user_bg_path = $this->config->item('art_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
+
+        $main_image = $user_bg_path . $imageName;
+
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('art_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('art_bg_thumb_width');
         $user_thumb_height = $this->config->item('art_bg_thumb_height');
 
         $upload_image = $user_bg_path . $imageName;
-
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
             'profile_background' => $imageName
         );
 
         $update = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
-
         $this->data['artdata'] = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*', $join_str = array());
 
+//        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
+        $coverpic =  '<img id="image_src" name="image_src" src = "' . ART_BG_MAIN_UPLOAD_URL . $this->data['artdata'][0]['profile_background'] . '" />';
 
-        $coverpic='<img  src="'. base_url($this->config->item('art_bg_main_upload_path') . $this->data['artdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
-      echo $coverpic;
-
-
-        //echo '<img src="' . $this->data['artdata'][0]['profile_background'] . '" />';
+        echo $coverpic;
     }
 
     public function image() {
