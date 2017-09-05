@@ -3846,5 +3846,79 @@ class Recruiter extends MY_Controller {
         }
         echo $return_html;
     }
+//COVAER PIC START
 
+// cover pic controller
+
+    public function ajaxpro() {
+
+         $this->recruiter_apply_check(); 
+
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to recruiter/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if( $recruiter_deactive)
+        {
+             redirect('recruiter/');
+        }
+     //if user deactive profile then redirect to recruiter/index untill active profile End
+
+       
+        $contition_array = array('user_id' => $userid);
+        $rec_reg_data = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+ $rec_reg_prev_image = $rec_reg_data[0]['profile_background'];
+        $rec_reg_prev_main_image = $rec_reg_data[0]['profile_background_main'];
+
+        if ($rec_reg_prev_image != '') {
+            $rec_image_main_path = $this->config->item('rec_bg_main_upload_path');
+            $rec_bg_full_image = $rec_image_main_path . $rec_reg_prev_image;
+            if (isset($rec_bg_full_image)) {
+                unlink($rec_bg_full_image);
+            }
+            
+            $rec_image_thumb_path = $this->config->item('rec_bg_thumb_upload_path');
+            $rec_bg_thumb_image = $rec_image_thumb_path . $rec_reg_prev_image;
+            if (isset($rec_bg_thumb_image)) {
+                unlink($rec_bg_thumb_image);
+            }
+        }
+        if ($rec_reg_prev_main_image != '') {
+            $rec_image_original_path = $this->config->item('rec_bg_original_upload_path');
+            $rec_bg_origin_image = $rec_image_original_path . $rec_reg_prev_main_image;
+            if (isset($rec_bg_origin_image)) {
+                unlink($rec_bg_origin_image);
+            }
+        }
+        
+        $data = $_POST['image'];
+
+
+        $rec_bg_path = $this->config->item('rec_bg_main_upload_path');
+        $imageName = time() . '.png';
+        $base64string = $data;
+        file_put_contents($rec_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+
+        $rec_thumb_path = $this->config->item('rec_bg_thumb_upload_path');
+        $rec_thumb_width = $this->config->item('rec_bg_thumb_width');
+        $rec_thumb_height = $this->config->item('rec_bg_thumb_height');
+
+        $upload_image = $rec_bg_path . $imageName;
+
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $rec_thumb_path, $rec_thumb_width, $rec_thumb_height);
+
+        $data = array(
+            'profile_background' => $imageName
+        );
+
+        $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
+
+        $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
+
+        echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
+    }  
+//COVAER PIC END
 }
