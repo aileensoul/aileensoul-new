@@ -1084,6 +1084,9 @@ label.cameraButton {
     background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
 }
 .banner-box{border-bottom:1px solid #d9d9d9;}
+label.cameraButton input[accept*="camera"] {
+    display: none;
+}
 
 /***  end cover  ***/
 
