@@ -2153,7 +2153,8 @@ class Search extends MY_Controller {
         $search_skill = $_GET["skill"];
         $search_place = $_GET["place"];
 
-
+        //echo $search_skill;
+       // echo $search_place;die();
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
 

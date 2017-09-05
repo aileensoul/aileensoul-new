@@ -490,54 +490,8 @@
                 </div>
             </div>
         </div>
-         <!-- model for forgot password start -->
-        <div class="modal fade login" id="forgotPassword" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
-                    <div class="modal-body">
-                        <div class="col-sm-12 right-main">
-                            <div class="right-main-inner">
-                                <div class="login-frm">
-                                        <div class="title">
-                                            <h1 class="ttc">Forgot Password</h1>
-                                        </div>
-                                        <?php
-                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
-                                        ?>
-                                        <div class="form-group">
-                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                            <div id="error2" style="display:block;">
-                                                <?php
-                                                if ($this->session->flashdata('erroremail')) {
-                                                    echo $this->session->flashdata('erroremail');
-                                                }
-                                                ?>
-                                            </div>
-                                            <div id="errorlogin"></div> 
-                                        </div>
-                                        
-                                        <p class="pt-20 ">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
-                                        </p>
-
-
-                                        </form>
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- model for forgot password end -->
-                    <!-- Login  -->
+         <!-- Model Popup Close -->
+            <!-- Login  -->
         <div class="modal fade login" id="login" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -598,7 +552,53 @@
             </div>
         </div>
         <!-- Login -->
-                <!-- model for forgot password end -->
+          <!-- model for forgot password start -->
+        <div class="modal fade login" id="forgotPassword" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
+                    <div class="modal-body">
+                        <div class="col-sm-12 right-main">
+                            <div class="right-main-inner">
+                                <div class="login-frm">
+                                        <div class="title">
+                                            <h1 class="ttc">Forgot Password</h1>
+                                        </div>
+                                        <?php
+                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                        echo form_open('profile/forgot_password', $form_attribute);
+                                        ?>
+                                        <div class="form-group">
+                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                            <div id="error2" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorlogin"></div> 
+                                        </div>
+                                        
+                                        <p class="pt-20 ">
+                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                                        </p>
+
+
+                                        </form>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- model for forgot password end -->
                 <!-- register -->
 
         <div class="modal fade register-model login" id="register" role="dialog">
@@ -708,21 +708,12 @@
         </footer>
         <!-- script for skill textbox automatic start (option 2)-->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
-        </script>
-         <script>
-            function login_profile() {
-                $('#login').modal('show');
-            }
-            function register_profile() {
-                $('#login').modal('hide');
-                $('#register').modal('show');
-            }
-            function forgot_profile() {
-                $('#forgotPassword').modal('show');
-            }
-        </script>
-        <script type="text/javascript">
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+            <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+            
+            
+            
+            <script type="text/javascript">
             function login()
             {
                 document.getElementById('error1').style.display = 'none';
@@ -798,7 +789,20 @@
 
 
         </script>
-        <script>
+                 <script>
+            function login_profile() {
+                $('#login').modal('show');
+            }
+            function register_profile() {
+                $('#login').modal('hide');
+                $('#register').modal('show');
+            }
+            function forgot_profile() {
+                $('#forgotPassword').modal('show');
+            }
+        </script>
+
+<script>
 
             $(document).ready(function () {
 
@@ -1020,7 +1024,6 @@
                 });
             });
         </script>
-
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var skill = '<?php echo  $this->input->get('skills'); ?>';

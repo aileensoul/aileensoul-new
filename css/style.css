@@ -160,44 +160,16 @@
 }
 
 */
-@media screen and (min-width: 800px) {
-    #floatBarsG {
-       transform: scale(1);
-    }
-}
-@media (max-width: 768px) {
-    .left-side-menu {
-        width: 0;
-        float: left;
-        height: 7%;
-        border-right: none;
-    }
-    .right-side-menu {
-        float: left;
-        /*height: 6.5%;*/
-        
-        margin-left: 10px;
-    }
-}
 
 /*
-.post-design-name ul li .else_post_d a {
-    display: inline-block;
-}
+
 .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
 }
 */
 
-@media screen and (max-width: 700px) {
-    .box {
-        width: 70%;
-    }
-    .popup {
-        width: 70%;
-    }
-}
+
 /**
 .back {
     width: 50%;
@@ -208,12 +180,6 @@
     border-radius: 30px;
 }
 
-/**.profile-job-details .job_companyname {
-    width: 350px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}**/
 /**.user_lst li .follow-li-text a {
     color: #1b8ab9!important;
 }
@@ -375,272 +341,6 @@
 /***  eduction tabbing  ***/
 
 
-/***  freelance  ***/
-.free_attc img {
-    width: 100%;
-    height: 100%;
-}
-.free_attc {
-    width: 100px;
-    height: 100px;
-    display: block;
-}
-fieldset .add_post_btns:hover {
-    background-color: #156f95!important;
-}
-.job-profile-left-side-bar .left-side-bar ul li.active a:hover {
-    background-color: #156f95
-}
-.butt_rec {
-    background: #1b8ab9 !important;
-    color: #fff !important;
-    padding: 10px 35px;
-    display: inline-block !important;
-    border-radius: 4px;
-    pointer-events: none !important;
-}
-.butt_rec:hover {
-    background: #1b8ab9 !important;
-    color: #fff !important;
-}
-.fa-2x {
-    font-size: 2em;
-}
-.worktype_minheight {
-    min-height: 50px;
-}
-.profile-box-art .right-menu-jr .flw_msg_btn ul li a.butt_rec  {letter-spacing: 1px;
-width: 90px;
-padding: 9px 15px;
-background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
-border: none;}
-/***  end freelance post(apply) ***/
-/***  rec css  ***/
-.sory_image{margin: 15px;}
-.not_founde_head{
-	color: #1b8ab9;
-    font-size: 32px;
-    margin: 25px;
-}
-.not_founde_head2{font-size: 30px; color: #1B8AB9; margin: 10PX;}
-/*** end rec css  ***/
-
-
-
-
-
-
-
-
-
-
-
-
-.about-content{width: 80% !important;line-height: 28px !important;}
-
-
-/***  harshad  ***/
-.chat_nobcx .post-img-div{width:42px; height:42px; padding:11px 0;}
-
-.action-button #message_count{/*line-height: 10px;*/}
-.cancel_req_busi{margin:5px 4px;}
-/**.user_btn button{margin-top: 10px;}**/
-.select2-container--open .select2-dropdown--below{z-index: 900;}
-
-.left_iner_img_profile{
-  float: left;
-
-position: relative;
-overflow: hidden;
-
-}
-.left_iner_img_profile img{position: absolute !important;
-left: 50%;
-top: 50%;
-height: 100%;
-width: auto!important;
--webkit-transform: translate(-50%,-50%);
--ms-transform: translate(-50%,-50%);
-transform: translate(-50%,-50%);
-max-width: inherit;}
-
-.search_head{border:1px solid #d9d9d9; padding:5px 10px;}
-.cover .fancybox-slide > *{padding:0 !important; /*background:none;*/ border-radius: 5px;}
-.fancybox-close-small::after{background:none; font-size:30px; color:#777;}
-.fancybox-close-small:hover{background:none;}
-.fancybox-close-small:hover::after{background:none;}
-.cover .fancybox-slide .modal-content{padding:0;}
-
-.cover .fancybox-slide .modal-content{border:none; box-shadow: none;}
-
-
-.cover .modal-close{line-height:32px !important;}
-.custom-c .middle-section{background:#f3f3f3;}
-.job_work_experience_main_div input{height:35px; line-height:1;}
-.job_work_experience_main_div input::-webkit-input-placeholder {
-     line-height:20px !important;
-}
-
-.common-form fieldset.marital-status input, .common-form fieldset.gender-custom input {margin:0px 0 0 !important; height:35px; }
-.common-form fieldset .radio_check_text{padding-right:20px;}
-.certificate{border:none; padding:0; margin-top:15px;}
-.hs-submit .delete_btn{margin-top:5px;}
-
-.chat_nobcx{margin-top:10px; margin-bottom:5px;}
-
-#search .new-search-input{height:215px;}
-#search .new-search-input .btn.btn-primary{width:auto;}
-.ui-autocomplete{z-index:9999 !important;}
-.bg-images.no-cover-upload{
-    background:#fff;
-    border-bottom:1px solid #d9d9d9;
-    /* IE10+ */ 
-    background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Mozilla Firefox */ 
-    background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Opera */ 
-    background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Webkit (Safari/Chrome 10) */ 
-    background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
-    /* Webkit (Chrome 11+) */ 
-    background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* W3C Markup */ 
-    background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
-}
-.banner-box{border-bottom:1px solid #d9d9d9;}
-.custom-row .user-pic:hover a{width:100%;}
-
-.profile-company-name a{}
-
-.profile-job-details .job_companyname{font-family: 'arial'; font-weight:normal;}
-
-.post-design-desc a{font-size:15px;}
-
-.post-img-user{
-    color:#fff;
-    width:152px;
-    height:153px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
-    font-size: 40px;
-    padding: 64px 0;
-    text-align: center;
-}
-.post-img-userlist{
-    color:#fff;
-    width:58px;
-    height:58px;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
-    font-size: 20px;
-    padding: 20px 0;
-    text-align: center;
-}
-#userlist{cursor: pointer;}
-.post-editor .popup-img .post-img-div{margin-top:8px; margin-bottom: 7px;}
-.designation_rec_1{width:90%;}
-.required_field{display:none;}
-
-
-.file-preview-thumbnails .file-preview-frame .file-preview-video{width:110px !important; height:100px !important;}
-.custom-user{width:25px; height:25px;  
-    border: 2px solid #fff;
-    border-radius: 100%;
-    float: left;
-    font-size: 12px;
-    margin-right: 5px;
-    text-align: center;
-    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
-    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
-    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
-    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
-    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
-}
-
-.msg_left_data{/*width:100%;*/ float:left;}
-.recive-data .my-message{float:left;}
-.recive-data .message-data{width:100%; float:left;}
-#received li{width:100%; float:left;}
-.recive-data .msg_left_data::after{}
-.recive-data .messagedelete{padding-left:10px; position:absolute; right:-25px; bottom:0;}
-.recive-data .messagedelete a{font-size:18px;}
-.msg_right .messagedelete{position:absolute; left:-25px; bottom:0;}
-
-.backdiv-mob{padding:15px 0 0; width:100%; float:left; display:none;}
-.backdiv-mob .pull-right{float:right; display:none;}
-.backdiv-mob .pull-left{float:left;}
-.backdiv-mob a{opacity:0.8;}
-.backdiv-mob a:hover{opacity:1;}
-.chat-header .chatdropdown-content a:hover{color:#fff;}
-
-
-
-
-@keyframes pulse1 {
-  0%{transform:scale(.1);opacity: 0;}
-  50%{ opacity: .4;}
-  100%{transform: scale(1.6); opacity: 0;}
-}
-
-.fileContainer {
-    overflow: hidden;
-    position: relative;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 5px;
-}
-.fileContainer i{padding:0 !important; margin:0 !important;}
-
-.fileContainer [type=file] {
-    cursor: inherit;
-    display: block;
-    font-size: 999px;
-    filter: alpha(opacity=0);
-    min-height: 100%;
-    min-width: 100%;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    text-align: right;
-    top: 0;
-}
-
-
-
-/* Example stylistic flourishes */
-.fileContainer [type=file] {cursor: pointer;}
-.fileContainer:hover{background: #d9d9d9 none repeat scroll 0 0;}
-.edit_profile_progress{/*display:none;*/}
-
-
-.complete_profile .circle-1{height:214px;}
-.edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
-
-#notificationContainer .content.mCustomScrollbar{overflow: hidden; border-radius: 3px;}
-.chat_nobcx .post-img-div{width:50px; height:50px; padding:16px 0;}
-.mian_box_num{right: 0; top: 0; padding-top: 1px;}
-/*style_harshad close*/
-
-
-.bui_pop_rd{padding: 16px 0px 11px 16px;}
-.popup-img-bui{padding-left:3px !important;
-    padding-right: 0px;
-    padding-top: 0  px;
-    float: left;}
-
-
 /***  all keyframe css  ***/
 
 /***  keyfream css  ***/
@@ -742,7 +442,7 @@ max-width: inherit;}
     }
 }
 */
-/* ripple */
+/* ripple *
 
 @-webkit-keyframes ripple {
     0% {
@@ -796,65 +496,14 @@ max-width: inherit;}
 */
 
 /***  not use css  ***/
-.alignleft,
-img.alignleft {
-    margin: 0px 46px 46px 0;
-    display: inline;
-    float: left;
-}
-.alignright,
-img.alignright {
-    margin-left: 65px;
-    margin-bottom: 50px;
-    display: inline;
-    float: right;
-}
-.aligncenter,
-img.aligncenter {
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    clear: both;
-}
 
-.about_btm {
-    margin-top: 15%;
-}
 
 /***  extra ***/
-.user-profile {
-    padding: 20px 0;
-    border-bottom: 1px solid #f5f5f5;
-    margin-bottom: 40px;
-}
-.user-img .img-circle {
-    width: 100px !important;
-    height: 100px !important;
-    border-radius: 100%;
-}
-.user-detail {
-    padding-top: 22px;
-    padding-left: 15px;
-}
-.user-detail span {
-    font-size: 16px;
-    font-weight: 400;
-}
-.user-detail h6 {
-    font-weight: 700;
-}
+
+
 /*** \views\notification\freelancer_hire_post.php **/
-.freelancer_work_detail ul {
-    margin: 0;
-    padding: 0 0 0 28px;
-}
-.freelancer_work_detail ul li {
-    list-style: none;
-    display: inline-block;
-    margin: 0;
-    padding: 5px;
-}
-/** registration page **/
+
+/** registration page **
 .registration {
     padding: 60px 0;
 }
@@ -873,3 +522,141 @@ img.aligncenter {
 }
 
 /*-----------------------------*/
+
+/***  not sure use or not  ***
+.login {
+    width: 50%;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin: auto;
+    margin-top: -231px;
+    left: 0;
+    right: 0;
+    height: 462px;
+}
+.login input[type=text],
+.login input[type=password] {
+    background: #fff;
+    border: 0;
+    border: 1px solid #ddd;
+    margin: 8px 0;
+}
+.login input[type=submit]:hover {
+    background: #089de3;
+}
+.login .form-group input, .login .form-group select, .login .form-group textarea {
+    border: none;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 0px;
+    box-shadow: none;
+    font-size: 15px;
+    color: #848484;
+    height: 35px;
+    padding-left: 6px;
+}
+
+
+#popup {
+    display: none;
+}
+.not_txt{
+    bottom: 0;
+    columns: #1b8ab9;
+    color: #ebebeb;
+    font-size: 40px;
+    font-family:Roboto light;
+    left: 18px;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    width: 95%;
+	line-height: 40px;
+}
+.demo {
+    opacity: 0.6;
+}
+.box {
+    width: 40%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 35px;
+    border: 1px solid #fff;
+    border-radius: 20px/50px;
+    background-clip: padding-box;
+    text-align: center;
+}
+.popup .cnclbtn {
+    position: absolute;
+    transition: all 200ms;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 18px;
+    background-color: darkcyan;
+    right: 25px;
+    margin-top: 15px;
+    width: 100px;
+    border-radius: 8px;
+}
+
+.invite_border {
+    border: 1px solid #1b8ab9 !important;
+    margin-right: 10px!important;
+    float: none!important;
+    padding: 4px 20px !important;
+}
+
+
+.invited {
+    background-color: #1b8ab9!important;
+    margin-left: 0px!important;
+    font-weight: bold;
+   
+    
+    margin-right: 10px!important;
+    color: #fff!important;
+    float: none !important;
+}
+.but1 {
+    padding: 17px 20px 17px 2px;
+    overflow: hidden;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    margin-left: 16px;
+    text-align: center;
+}
+.but1:before {
+    font-family: FontAwesome;
+    content: "\f177";
+    font-size: 18px;
+    position: absolute;
+    top: 15px;
+    margin-left: 5px;
+    left: -3%;
+    visibility: hidden;
+    transition: all 200ms ease;
+}
+.but1:hover:before {
+    left: 7px;
+    visibility: visible;
+}
+.profile-boxProfileCard-bg img {
+    height: 95PX;
+    width: 100%;
+}
+
+.pdf_img {
+    height: 40%;
+    margin: 0 auto;
+    width: 40%;
+    padding: 5px;
+}
+
+
+/***  end use  ***/

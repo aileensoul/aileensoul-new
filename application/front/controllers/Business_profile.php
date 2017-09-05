@@ -1950,9 +1950,15 @@ class Business_profile extends MY_Controller {
             </a>
         </div>';
                 } elseif (in_array($ext, $allowespdf)) {
+//                    $return_html .= '<div>
+//            <a title="click to open" href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
+//                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+//                </div>
+//            </a>
+//        </div>';
                     $return_html .= '<div>
-            <a title="click to open" href="' . base_url('business_profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">
+            <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class="pdf_img">
+                    <img src="' . base_url('images/PDF.jpg') . '">
                 </div>
             </a>
         </div>';
@@ -5232,9 +5238,9 @@ class Business_profile extends MY_Controller {
             $businessdata = $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($this->data['businessdata'][0]['product_name']) {
-                $editpost = '<div><a style="margin-bottom: 0px; font-size: 17px ; color:black;">';
+                $editpost = '<a>';
                 $editpost .= $businessdata[0]['product_name'] . "";
-                $editpost .= '</a></div>';
+                $editpost .= '</a>';
             }
             if ($this->data['businessdata'][0]['product_description']) {
                 $small = substr($businessdata[0]['product_description'], 0, 180);
@@ -10067,7 +10073,7 @@ No Contacts Available.
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 
 
-<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" tabindex="'.$row['business_profile_post_id'].'" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 >';
@@ -10095,7 +10101,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyatii' . $row['business_profile_post_id'] . '" style = "display:none;">
 ' . $row['product_description'] . '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="'.($row['business_profile_post_id'] + 1).'" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
 </div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
@@ -10131,9 +10137,16 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 </a>
 </div>';
                         } elseif (in_array($ext, $allowespdf)) {
+//                            $return_html .= '<div>
+//<a title = "click to open" href = "' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class = "pdf_img">
+//<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">
+//</div>
+//</a>
+//</div>';
+                             
                             $return_html .= '<div>
-<a title = "click to open" href = "' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '"><div class = "pdf_img">
-<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class = "pdf_img">
+    <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
 </div>
 </a>
 </div>';
@@ -11440,8 +11453,10 @@ Your browser does not support the audio tag.
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class = "image_profile">';
-                $fetch_pdf .= '<a href = "' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
+//                $fetch_pdf .= '<a href = "' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class = "pdf_img">';
+                $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['image_name'] . '"><div class = "pdf_img">';
+                $fetch_pdf .= '<iframe src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['image_name'] . '" style="width: 100%;height: 100%;border: none;"></iframe>';
+//                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -11697,13 +11712,22 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
-                        $return_html .= '<div>
-            <a href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
-                                                     width: 100%;
-">
-                </div></a>
+//                        $return_html .= '<div>
+//            <a href="' . base_url('business-profile/creat-pdf/' . $businessmultiimage[0]['image_id']) . '"><div class="pdf_img">
+//                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
+//                                                     width: 100%;
+//">
+//                </div></a>
+//        </div>';
+                        
+                         $return_html .= '<div>
+            <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class="pdf_img">
+                    <img src="' . base_url('images/PDF.jpg') . '">
+                </div>
+            </a>
         </div>';
+                        
+                        
                     } elseif (in_array($ext, $allowesvideo)) {
 //                        $return_html .= '<div>
 //            <video class="video" width="100%" height="350" controls>
