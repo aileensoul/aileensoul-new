@@ -1626,12 +1626,16 @@ jQuery(document).ready(function ($) {
             percent.html(percentVal);
         },
         success: function () {
+//            var percentVal = '100%';
+//            bar.width(percentVal)
+//            percent.html(percentVal);
+        },
+        complete: function (response) {
+            
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);
-
-        },
-        complete: function (response) {
+            
             $('.art_no_post_avl').hide();
             // Output AJAX response to the div container
             document.getElementById('test-upload-product').value = '';
@@ -1639,10 +1643,8 @@ jQuery(document).ready(function ($) {
             document.getElementById('file-1').value = '';
             $("input[name='text_num']").val(50);
             $(".file-preview-frame").hide();
-
-//            $('#progress_div').fadeOut('5000').remove();
             document.getElementById("progress_div").style.display = "none";
-            $('.business-all-post div:first').remove();
+            $('.business-all-post').find('.post-design-box:first').parent().remove();
             $(".business-all-post").prepend(response.responseText);
             // second header class add for scroll
             var nb = $('.post-design-box').length;
