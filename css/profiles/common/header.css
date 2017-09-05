@@ -604,6 +604,29 @@ height: 25px; width: 25px; }
 .job-search-box1 label i {border-radius: 2px; padding:5px 10px 4px 9px; font-size: 19px; color: #999; cursor: pointer;
     background-color: white;
 }
+.action-button #message_count {
+    position: absolute;
+    right:2px;
+    top: 3px;
+    text-align: center;
+    border-radius: 50%;
+}
+.action-button .count_add{   
+    line-height: 9px!important;
+    background-color:#FF4500;
+    padding:4px 6px 4px 5.5px!important;
+    font-family: robotolight!important;
+	font-size: 10px!important;
+	font-weight: bold;
+	border-radius: 100% !important;
+}
+.action-button #notification_count {
+    border-radius: 50%;
+}
+.hew:hover{  transition-duration: 2s;}
+
+
+
 .job-search-box1 fieldset input{height:28px; line-height:1;}
 .job-search-box1 fieldset input::-webkit-input-placeholder {
     line-height:17px !important;
@@ -1071,6 +1094,202 @@ position: relative;}
 .but1:hover:before {
     left: 7px;
     visibility: visible;
+}
+.headerborder {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.notificationsmsg li {
+    border-bottom: 1px solid #efefef;
+}
+.notification-database:hover {
+   
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #e9f6fc;
+}
+.notification-database .active {
+    background-color: #f3f9fb;
+}
+#notificationTitle .see_link a:hover{text-decoration-line: underline; color: #1b8ab9;}
+#notificationTitle .see_link a{
+	color: black;
+	font-size: 14px;
+	float: right;
+	padding: 0px 4px !important;
+}
+
+#search {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transform: translate(0px, -100%) scale(0, 0);
+    -moz-transform: translate(0px, -100%) scale(0, 0);
+    -o-transform: translate(0px, -100%) scale(0, 0);
+    -ms-transform: translate(0px, -100%) scale(0, 0);
+    transform: translate(0px, -100%) scale(0, 0);
+    opacity: 0;
+}
+#search.open {
+    -webkit-transform: translate(0px, 0px) scale(1, 1);
+    -moz-transform: translate(0px, 0px) scale(1, 1);
+    -o-transform: translate(0px, 0px) scale(1, 1);
+    -ms-transform: translate(0px, 0px) scale(1, 1);
+    transform: translate(0px, 0px) scale(1, 1);
+    opacity: 1;
+    height:100vh;
+}
+#search .new-search-input {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0);
+    font-size: 60px;
+    font-weight: 300;
+    text-align: center;
+    border: 0px;
+    margin: 0px auto;
+    margin-top: -51px;
+    padding-left: 15px;
+    padding-right: 15px;
+    outline: none;
+}
+#search .new-search-input input {
+    border: medium none;
+    height: 35px;
+    line-height: 1;
+    margin: 10px auto;
+    padding: 10px;
+    width: 100%;
+}
+#search .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: 61px;
+    transform: translate(-50%, 0px);
+    background: #fff;
+    color: #1b8ab9;
+    border: none;
+}
+#search .btn:hover {
+    background: #1b8ab9;
+    color: #fff;
+}
+#search .close {
+    background-color: #1b8ab9;
+    border-color: #1b8ab9;
+    color: #fff;
+    font-size: 20px;
+    opacity: 1;
+    padding: 1px 5px 3px;
+    position: fixed;
+    right: 0px;
+    top: 50px;
+    z-index: 99;
+}
+.search-mob-block {
+    width: 30px;
+    float: left;
+}
+.search-mob-block label {
+    margin-bottom: 0;
+    margin-top: 4px;
+}
+.search-mob-block label i {
+    background-color: white;
+    border-radius: 3px;
+    color: #999;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 3px 4px;
+}
+header.animated {
+    z-index: 9;
+}
+.cover .fancybox-slide > *{padding:0 !important; /*background:none;*/ border-radius: 5px;}
+.fancybox-close-small::after{background:none; font-size:30px; color:#777;}
+.fancybox-close-small:hover{background:none;}
+.fancybox-close-small:hover::after{background:none;}
+.cover .fancybox-slide .modal-content{padding:0;}
+.cover .fancybox-slide .modal-content{border:none; box-shadow: none;}
+.cover .modal-close{line-height:32px !important;}
+#search .new-search-input{height:215px;}
+#search .new-search-input .btn.btn-primary{width:auto;}
+.custom-user{width:25px; height:25px;  
+    border: 2px solid #fff;
+    border-radius: 100%;
+    float: left;
+    font-size: 12px;
+    margin-right: 5px;
+    text-align: center;
+    background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3bb0ac), color-stop(56%, #1b8ab9), color-stop(100%, #1b8ab9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* ie10+ */
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
+}
+.edit_data{margin-top: -4px; display: inline-block; vertical-align: middle;}
+#notificationContainer .content.mCustomScrollbar{overflow: hidden; border-radius: 3px;}
+
+/*** footer ***/
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.footer-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.copyright {
+    background-color: #222222;
+    padding: 10px 0;
+}
+.copyright p {
+    color: #fff;
+    padding-top: 6px;
+    font-size: 14px;
+}
+.copyright ul {
+    float: right;
+    padding: 0;
+    margin: 0;
+}
+.copyright ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.copyright ul li a {
+    background: #000;
+    color: #1b8ab9;
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2.3;
+    font-size: 14px;
+    margin: 0 4px;
+}
+.copyright ul li a:hover {
+    background: #1b8ab9;
 }
 
 
