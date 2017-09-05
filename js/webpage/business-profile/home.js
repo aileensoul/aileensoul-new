@@ -1547,8 +1547,7 @@ function editpost(abc)
 //    document.getElementById('khyati' + abc).style.display = 'none';
 
     var editposttitle = $('#editpostdata' + abc + ' a').html();
-    var editpostdesc = $('#khyatii' + abc).html();
-
+    var editpostdesc = $('#khyati' + abc).html();
     $("#myDropdown" + abc).removeClass('show');
     document.getElementById('editpostdata' + abc).style.display = 'none';
     document.getElementById('editpostbox' + abc).style.display = 'block';
@@ -1560,7 +1559,6 @@ function editpost(abc)
 
     editposttitle = editposttitle.trim();
     editpostdesc = editpostdesc.trim();
-
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(editpostdesc);
 }
