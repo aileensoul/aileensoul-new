@@ -840,7 +840,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($followerdata as $fdata) {
 
-            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
+            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4,'business_profile.status' => '1');
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $business_userid = $this->data['business_data'][0]['user_id'];
@@ -3637,7 +3637,7 @@ class Business_profile extends MY_Controller {
         $slugid = $artdata[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
 
-            $contition_array = array('user_id' => $userid);
+            $contition_array = array('user_id' => $userid, 'status'=> 1);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -3648,11 +3648,11 @@ class Business_profile extends MY_Controller {
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
+            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4,'business_profile.status' => 1 );
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            $contition_array = array('business_slug' => $id, 'business_step' => 4);
+            $contition_array = array('business_slug' => $id, 'business_step' => 4, 'status' => 1);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -3663,7 +3663,7 @@ class Business_profile extends MY_Controller {
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4);
+            $contition_array = array('follow_from' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4, 'business_profile.status' => 1);
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -9824,7 +9824,7 @@ No Contacts Available.
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         foreach ($followerdata as $fdata) {
-            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
+            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => 1);
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $business_userid = $this->data['business_data'][0]['user_id'];
             $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');

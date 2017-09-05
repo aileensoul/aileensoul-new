@@ -139,7 +139,7 @@ class Search extends MY_Controller {
     }
 
     public function ajax_business_search() {
-
+        
         $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home/', refresh);
@@ -192,7 +192,7 @@ class Search extends MY_Controller {
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
+            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0',  'business_profile.status' => '1');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
