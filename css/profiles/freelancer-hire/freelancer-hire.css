@@ -234,6 +234,7 @@ line-height: 1;}
     border-top-left-radius: 4px;
     border: 1px solid #d9d9d9;
     border-top-right-radius: 3px;
+	border-bottom: none;
 }
 .job-contact-frnd {width: 100%; float: left;margin-bottom: 15px;}
 .job-contact-frnd .profile-job-post-detail { background-color: #ffffff; border: 1px solid #d9d9d9; border-radius: 4px;
@@ -449,12 +450,14 @@ border-bottom: 1px solid #d9d9d9;}
 .art_no_post_img {
     padding-top: 20px;
     padding-bottom: 20px;
+	text-align: center;
 }
 .art_no_post_text{
     line-height: 40px;
 	color: #cccccc;
 	font-size: 32px;
 	padding-top: 30px;
+	text-align: center;
 }
 .art_no_post_text1{color: #ccc;
 font-size: 32px;}
@@ -709,3 +712,7 @@ label.cameraButton input[accept*="camera"] {
     text-align: center;
 }
 .post-editor .popup-img .post-img-div{margin-top:8px; margin-bottom: 7px;}
+.flw_msg_btn{margin-top: 8px;}
+.tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
+#univer{background: #1b8ab9; color: white; margin-top: 10px;}
+

@@ -719,10 +719,12 @@ label.error {
     top: -15px !important;
     right: -15px !important;
     line-height: 22px !important;
-    padding: 0 !important;
     margin: 0 !important;
     text-align: center !important;
     z-index: 7 !important;
+	padding: 0px 6px;
+	float: right;
+	border-radius: 100%;
 }
 .modal.message-box .modal-body {
     text-align: center;
@@ -884,6 +886,8 @@ label.error {
 .cover-pic{z-index: 0 !important;}
 .banner-img .cover-pic .fr:hover{background-color: #156f95!important;border:1px solid #1b8ab9;}
 .banner-img .cover-pic .cancel-result:hover{background-color: #fff!important;color: #1b8ab9;border:1px solid #1b8ab9;}
+.btn-success:active{background-color: white; color: #1b8ab9; }
+.profile-text1 .alert.alert-warning{margin-bottom: 0px;}
 #row2 img {
     height: 350px;
     width: 100%;
@@ -1087,6 +1091,8 @@ label.cameraButton {
 label.cameraButton input[accept*="camera"] {
     display: none;
 }
+.banner-box .upload-camera{z-index: 3;}
+.upload-result:hover{background-color:#1b8ab9; color: white; border: 1px solid #1b8ab9;}
 
 /***  end cover  ***/
 
@@ -1125,11 +1131,13 @@ label.cameraButton input[accept*="camera"] {
     border-top-left-radius: 4px;
     border: 1px solid #d9d9d9;
     border-top-right-radius: 3px;
+	border-bottom: none;
 }
 .bg{
     background-color: white;
     border:1px solid #d9d9d9;
     padding-bottom: 10px;
+	border-top:none;
 }
 .job-saved-box .notification-box ul li{display: flex!important;}
 .job-saved-box .notification-box ul {
@@ -1236,7 +1244,7 @@ body.blog{height:auto;}
 }
 .people-list ul li {
     padding: 15px;
-    padding-top: 14px;
+    padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 0px!important;
     line-height: 17px!important;
@@ -1434,29 +1442,30 @@ body.blog{height:auto;}
 .bg-images {
     position: relative;
 }
-#msg_block .input-group .comment{line-height: 1.5; margin-top:10px; margin-bottom:10px;}
+#msg_block .input-group .comment{line-height: 1.2; cursor:text; margin-top:10px; margin-bottom:10px;}
 #mychat_dropdown a:hover .h4-img {      
     background: url('../../../img/icon_delete_white.png') no-repeat;      
     background-size: auto auto;     
     background-size: 100%;      
-}
-.chatdropbtn {      
-    color:#838383;      
-    font-size: 16px;       
-    border: none;       
-    cursor: pointer;        
-}       
+}     
 .chatdropbtn:hover, .chatdropbtn:focus {        
     background-color: #3e8e41;      
 }       
 .chatdropbtn {      
     position: relative;        
-    display: inline-block;      
-    padding-top: 12px;      
-    padding: 10px 10px;     
+    display: inline-block;     
     opacity: 0.8px;
-    right:-25px;
-}        
+	color:#838383;      
+    font-size: 16px;       
+    border: none;       
+    cursor: pointer;
+	background: url('../../../img/t_dot.png'); width: 7px;
+	height: 29px;
+	padding: 3px;
+	right: -8px;
+	background-size: 100%;
+	top: 9px;
+}    
 a.chatdropbtn:hover{background-color: #f1f1f1;} 
 .chatdropdown-content {     
     display: none;        
@@ -1723,7 +1732,9 @@ input:-moz-placeholder {
     color: #999;
    
 }
+#user_search:focus + #add_search{color: #1b8ab9;}
 
+.border_btm .fsearch{color: #1b8ab9;}
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
     .container {

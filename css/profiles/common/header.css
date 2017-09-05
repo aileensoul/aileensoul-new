@@ -41,17 +41,19 @@
     padding: 0;
     margin: 0;
     position: relative;
-    border-right: 2px solid #1985b3;
     padding: 1px 10px 0px;
+	height:inherit; 
+	border-right:none;
 }
 .header ul li a {
     font-size: 18px;
     color: #fff;
-   /* padding: 10px 14px 1px;*/
     font-weight: 400;
     display: block;
     letter-spacing: 0.5;
 	display: inline-block;
+	padding-top:5px!important; 
+	border-right: 1px solid #1985b3;
 
 }
 .header ul li a span{vertical-align: middle;}
@@ -59,7 +61,7 @@
 .header ul li a i {
     line-height: 18px!important;
 }
-.header ul li.dropdown-user a{border-right: none;  text-transform: capitalize;}
+.header ul li.dropdown-user a{border-right: none;  text-transform: capitalize; padding-top: 8px!important;}
 .header ul li li {height: auto;}
 .header ul li a:hover i{color:white;}
 .header ul li a:hover .dropdown .img-circle{border: 2px solid #d7ecf5;}
@@ -120,13 +122,13 @@
 .header ul li #acon a{border-right:none;}
 .header .mCSB_container ul{width:100%; float:left;}
 .header .mCSB_container ul li{width:100%; border-right:none;}
-.header .mCSB_container ul li a{padding-left:0; padding:0 10px 0 0 !important; width: 100%; letter-spacing:0;}
-.header .mCSB_container .day-text{padding-top:1px;}
+.header .mCSB_container ul li a{padding:0 !important; width: 100%; letter-spacing:0; border: none;}
+.header .mCSB_container .day-text{padding-top:1px; font-size: 11px!important;}
 .header ul .Setting a i{color: #787878;}
 .header ul .logout a i{color: #787878;}
 .header ul li #abody ul{ margin: 0; padding: 0; }
 .header ul li #abody ul li{ float: left; display: block; width: 100%; border-bottom: 1px solid #d9d9d9; border-right: none!important;}
-.header ul li #abody ul li a{color: black; padding: 5px 13px !important;}
+.header ul li #abody ul li a{color: black; padding: 5px 13px !important; width:100%; float:left; border: none;}
 .header ul li #abody ul li a .all-img{height: 50px;
     width: 50px;
     float: left;
@@ -140,9 +142,16 @@
 .header ul li #abody ul li a .text-all{width: 160px; float: left; padding: 16px 10px;}
 .header ul li #abody ul li:last-child{border:none;}
 .header ul li a .all:hover{ background-position: -0px -0px; width: 32px; height: 32px; }
-.header ul li #abody ul li a{width:100%; float:left;}
 .header #notification_li li a .notification-data-inside i{display:none;}
-
+.main-menu-right ul{
+    width: 100%;
+    float: left;
+    padding-bottom: 0px;
+    margin-top: 5px;
+  
+}
+.addcontact-text_full{width: 100%; text-align: left; font-size: 13px;}
+.main-menu-right ul.notification_data_in {margin-top: 0px;}
 
 #InboxContainer {
    border-radius: 5px;
@@ -225,7 +234,7 @@ right: 17px;
 }
 #notificationLink span {
     padding: 3px;
-    background: #1b8ab9;
+    background: none;
     color: #ffffff;
     font-weight: bold;
     margin-left: 13px;
@@ -235,7 +244,7 @@ right: 17px;
     position: absolute;
     margin-top: -3px;
     font-size: 10px;
-    top:0px;
+    top: 3px;
     line-height: 9px;
     left:2px;
 }
@@ -300,7 +309,7 @@ right: 17px;
     width: 100%;
     border-bottom: 1px solid #dddddd;
 }
-#atittle a{color: black; /*padding-top: 3px !important;*/ font-size: 17px;}
+#atittle a{color: black; border: none; font-size: 17px;}
 #atittle a:hover{color: #1b8ab9; text-decoration: underline;}
 #abody {
     padding: 0px 0px 0px 0px !important;
@@ -313,12 +322,12 @@ right: 17px;
     overflow: visible;
     position: absolute;
     top: 25px;
-    margin-top: 20px;
+    margin-top: 23px;
     z-index: 2;
     display: none;
     float: left;
     width: 358px;
-    right: 0px;
+    right: 1px;
     border-radius: 5px;
 }
 #notificationContainer:before {
@@ -432,8 +441,8 @@ right: 17px;
     padding-right: 10px;
 }
 .notification-data-inside h6 {
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 14px;
+    line-height: 14px;
     padding: 5px 0px 0;
     color: black;
     display: block;
@@ -458,11 +467,11 @@ right: 17px;
 }
 .noti-msg-y{font-size: 13px; color: #646464; line-height: 16px;}
 .dropdown-menu {
-    right: 0;
+    right: -1px;
     left: inherit !important;
     position: absolute;
     border: none;
-    top: 30px;
+    top: 37px;
 }
 ul.dropdown-menu li {
     display: block;
@@ -581,6 +590,7 @@ background-size: 100%;}
 .header2 #InboxFooter a:hover{color: #1b8ab9; text-decoration: underline;}
 .header2 #InboxFooter a {color: #000; font-weight: 500; font-size: 13px;}
 .header2 .mCSB_container li{border-right:0px !important;}
+.header2 ul.notification_data_in_h2 li{ border-right: none!important;}
 .header2 ul.notification_data_in_h2 li .data_noti_msg{margin-top:2px; width:100%; float:left;}
 header .mCSB_outside + .mCS-minimal.mCSB_scrollTools_vertical, header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {margin:0;}
 .header2 #InboxFooter a {color: #000; font-weight: 500; font-size: 13px;}
@@ -809,7 +819,7 @@ height: 25px; width: 25px; }
 #addcontactTitle a:hover{color: #1b8ab9; text-decoration: underline;}
     #addcontactBody {
         padding: 0px 0px 0px 0px !important;
-
+		overflow: hidden!important; border-radius: 3px;
     }
     #addcontactBody ul, #addcontactBody li {
         padding-right: 0px;
@@ -818,6 +828,7 @@ height: 25px; width: 25px; }
     #addcontactBody li{
         border-bottom: 1px solid #ddd;
         padding: 10px;
+		padding: 9px 10px;
     }
     #addcontactBody li a{
         padding-left: 0;
@@ -1117,6 +1128,7 @@ position: relative;}
 	font-size: 14px;
 	float: right;
 	padding: 0px 4px !important;
+	border: none;
 }
 
 #search {
