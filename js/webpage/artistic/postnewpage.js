@@ -1,43 +1,4 @@
- function openModal() {
-                            document.getElementById('myModal1').style.display = "block";
-                        }
-                        function closeModal() {
-                            document.getElementById('myModal1').style.display = "none";
-                        }
-                        var slideIndex = 1;
-                        showSlides(slideIndex);
-                        function plusSlides(n) {
-                            showSlides(slideIndex += n);
-                        }
-                        function currentSlide(n) {
-                            showSlides(slideIndex = n);
-                        }
-                        function showSlides(n) {
-                            var i;
-                            var slides = document.getElementsByClassName("mySlides");
-                            var dots = document.getElementsByClassName("demo");
-                            var captionText = document.getElementById("caption");
-                            if (n > slides.length) {
-                                slideIndex = 1
-                            }
-                            if (n < 1) {
-                                slideIndex = slides.length
-                            }
-                            for (i = 0; i < slides.length; i++) {
-                                slides[i].style.display = "none";
-                            }
-                            for (i = 0; i < dots.length; i++) {
-                                dots[i].className = dots[i].className.replace(" active", "");
-                            }
-                            slides[slideIndex - 1].style.display = "block";
-                            dots[slideIndex - 1].className += " active";
-                            captionText.innerHTML = dots[slideIndex - 1].alt;
-                        }
-
-
-
-
-$(document).ready(function ()
+ $(document).ready(function ()
             {
                 /* Uploading Profile BackGround Image */
                 $('body').on('change', '#bgphotoimg', function ()
@@ -105,6 +66,76 @@ $(document).ready(function ()
                     return false;
                 });
             });
+
+// three dot hide when click outside script
+$('body').on("click", "*", function (e) {
+                            var classNames = $(e.target).attr("class").toString().split(' ').pop();
+                            if (classNames != 'fa-ellipsis-v') {
+                                $('div[id^=myDropdown]').hide().removeClass('show');
+                            }
+
+                        });
+// close esc using silder
+    $( document ).on( 'keydown', function ( e ) { 
+        if ( e.keyCode === 27 ) { 
+           document.getElementById('myModal1').style.display = "none";
+                            }                          
+                        }); 
+
+ function openModal() {
+                            document.getElementById('myModal1').style.display = "block";
+                        }
+                        function closeModal() {
+                            document.getElementById('myModal1').style.display = "none";
+                        }
+                        var slideIndex = 1;
+                        showSlides(slideIndex);
+                        function plusSlides(n) {
+                            showSlides(slideIndex += n);
+                        }
+                        function currentSlide(n) {
+                            showSlides(slideIndex = n);
+                        }
+                        function showSlides(n) {
+                            var i;
+                            var slides = document.getElementsByClassName("mySlides");
+                            var dots = document.getElementsByClassName("demo");
+                            var captionText = document.getElementById("caption");
+                            if (n > slides.length) {
+                                slideIndex = 1
+                            }
+                            if (n < 1) {
+                                slideIndex = slides.length
+                            }
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].style.display = "none";
+                            }
+                            for (i = 0; i < dots.length; i++) {
+                                dots[i].className = dots[i].className.replace(" active", "");
+                            }
+                            slides[slideIndex - 1].style.display = "block";
+                            dots[slideIndex - 1].className += " active";
+                            captionText.innerHTML = dots[slideIndex - 1].alt;
+                        }
+
+
+function myFunctionone(clicked_id) {
+                            document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+
+
+
+                              $( document ).on( 'keydown', function ( e ) {
+                                        if ( e.keyCode === 27 ) { 
+
+                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+                                         $(".dropdown-content1").removeClass('show');
+
+                            }
+                           
+                        }); 
+
+                        }
+
 
 
         function check_perticular(input) {
@@ -499,22 +530,7 @@ var modal = document.getElementById('myModal');
                             }
                         }
 
- function myFunctionone(clicked_id) {
-                            document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-
-
-
-                              $( document ).on( 'keydown', function ( e ) {
-                                        if ( e.keyCode === 27 ) { 
-
-                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                                         $(".dropdown-content1").removeClass('show');
-
-                            }
-                           
-                        }); 
-
-                        }
+ 
                         // Close the dropdown if the user clicks outside of it
                         window.onclick = function (event) {
                             if (!event.target.matches('.dropbtn1')) {
@@ -1951,13 +1967,7 @@ function post_likeimg(clicked_id)
                             });
                         }
 
- $('body').on("click", "*", function (e) {
-                            var classNames = $(e.target).attr("class").toString().split(' ').pop();
-                            if (classNames != 'fa-ellipsis-v') {
-                                $('div[id^=myDropdown]').hide().removeClass('show');
-                            }
-
-                        });
+ 
 
 
                         $(document).on('keydown', function (e) {
@@ -2050,3 +2060,4 @@ $( document ).on( 'keydown', function ( e ) {
            document.getElementById("text_num").value = text_num;
        }
    }
+

@@ -1798,11 +1798,11 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
                                                     </audio>
-                                                </div>
-                                                <div class="audio_mp3" id="'."postname" . $row['art_post_id'].'">
-                                                    <p title="'.$row['art_post'].'">'.$row['art_post'].'</p>
-                                                </div>
-                                            </div>';
+                                                </div></div>';
+                                                // <div class="audio_mp3" id="'."postname" . $row['art_post_id'].'">
+                                                //     <p title="'.$row['art_post'].'">'.$row['art_post'].'</p>
+                                                // </div>
+                                            
                         }
                     } elseif (count($artmultiimage) == 2) {
 
@@ -13029,11 +13029,11 @@ public function art_home_post() {
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
                                                     </audio>
-                                                </div>
-                                                <div class="audio_mp3" id="'."postname" . $row['art_post_id'].'">
-                                                    <p title="'.$row['art_post'].'">'.$row['art_post'].'</p>
-                                                </div>
-                                            </div>';
+                                                </div></div>';
+                                                // <div class="audio_mp3" id="'."postname" . $row['art_post_id'].'">
+                                                //     <p title="'.$row['art_post'].'">'.$row['art_post'].'</p>
+                                                // </div>
+                                            
                         }
                     } elseif (count($artmultiimage) == 2) {
 
@@ -14229,11 +14229,11 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     <source src="movie.ogg" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio>
-            </div>
-            <div class="audio_mp3" id="postname' . $row['art_post_id'] . '">
-                <p title="' . $row['art_post'] . '">' . $row['art_post'] . '</p>
-            </div>
-        </div>';
+            </div> </div>';
+            // <div class="audio_mp3" id="postname' . $row['art_post_id'] . '">
+            //     <p title="' . $row['art_post'] . '">' . $row['art_post'] . '</p>
+            // </div>
+       
                     }
                 } elseif (count($artmultiimage) == 2) {
                     foreach ($artmultiimage as $multiimage) {
