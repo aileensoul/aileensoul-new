@@ -14,6 +14,8 @@ class Artistic extends MY_Controller {
         
          $this->load->helper('smiley');
           $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
+        $this->load->library('S3');
+
         // if (!$this->session->userdata('aileenuser')) {
         //     redirect('login', 'refresh');
         // }
@@ -1119,13 +1121,11 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         //echo $insert_id; die(); 
         $config = array(
             
-            //'image_library' => 'gd2',
+            'image_library' => 'gd2',
             'upload_path' => $this->config->item('art_post_main_upload_path'),
-            'max_size' => 2500000000000,
-            //'quality' => "60%",
+            'overwrite' => true,
+            'remove_spaces' => true,
             'allowed_types' => $this->config->item('art_post_main_allowed_types')
-                //'overwrite' => true,
-                //'remove_spaces' => true
         );
         //echo "<pre>"; print_r($config); die();
         $images = array();
@@ -1133,8 +1133,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
         $files = $_FILES;
         $count = count($_FILES['postattach']['name']);
-
         $title = time();
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
 
         for ($i = 0; $i < $count; $i++) {
 
@@ -1153,40 +1155,219 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
 
             $store = $_FILES['postattach']['name'];
-
             $store_ext = explode('.', $store);
             $store_ext = end($store_ext);
-
             $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
-
             $images[] = $fileName;
             $config['file_name'] = $fileName;
-
-
             $this->upload->initialize($config);
+            $imgdata = $this->upload->data();
+
             $this->upload->do_upload();
             if ($this->upload->do_upload('postattach')) {
                 
                 $response['result'][] = $this->upload->data();
-                $art_post_thumb[$i]['image_library'] = 'gd2';
-                $art_post_thumb[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                $art_post_thumb[$i]['new_image'] = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
-                $art_post_thumb[$i]['create_thumb'] = TRUE;
-                $art_post_thumb[$i]['maintain_ratio'] = TRUE;
-                $art_post_thumb[$i]['thumb_marker'] = '';
-                $art_post_thumb[$i]['width'] = $this->config->item('art_post_thumb_width');
-                //$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
-                $art_post_thumb[$i]['height'] = 2;
-                $art_post_thumb[$i]['master_dim'] = 'width';
-                $art_post_thumb[$i]['quality'] = "60%";
-                $art_post_thumb[$i]['x_axis'] = '0';
-                $art_post_thumb[$i]['y_axis'] = '0';
-                $instanse = "image_$i";
-                //Loading Image Library
-                $this->load->library('image_lib', $art_post_thumb[$i], $instanse);
-                $dataimage = $response['result'][$i]['file_name'];
-                //Creating Thumbnail
-                $this->$instanse->resize();
+                $main_image_size = $_FILES['postattach']['size'];
+
+                 if ($main_image_size > '1000000') {
+                            $quality = "50%";
+                        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                            $quality = "55%";
+                        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                            $quality = "60%";
+                        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                            $quality = "65%";
+                        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                            $quality = "70%";
+                        } else {
+                            $quality = "100%";
+                        }
+
+                        /* RESIZE */
+
+                        $artistic_post_main[$i]['image_library'] = 'gd2';
+                        $artistic_post_main[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        $artistic_post_main[$i]['new_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        $artistic_post_main[$i]['quality'] = $quality;
+                        $instanse10 = "image10_$i";
+                        $this->load->library('image_lib', $artistic_post_main[$i], $instanse10);
+                        $this->$instanse10->watermark();
+
+                        /* RESIZE */
+
+                        $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        
+                        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+                        $image_width = $response['result'][$i]['image_width'];
+                        $image_height = $response['result'][$i]['image_height'];
+
+                        $thumb_image_width = $this->config->item('art_post_thumb_width');
+                        $thumb_image_height = $this->config->item('art_post_thumb_height');
+
+
+                        if ($image_width > $image_height) {
+                            $n_h = $thumb_image_height;
+                            $image_ratio = $image_height / $n_h;
+                            $n_w = round($image_width / $image_ratio);
+                        } else if ($image_width < $image_height) {
+                            $n_w = $thumb_image_width;
+                            $image_ratio = $image_width / $n_w;
+                            $n_h = round($image_height / $image_ratio);
+                        } else {
+                            $n_w = $thumb_image_width;
+                            $n_h = $thumb_image_height;
+                        }
+
+                        $artistic_post_thumb[$i]['image_library'] = 'gd2';
+                        $artistic_post_thumb[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                        $artistic_post_thumb[$i]['new_image'] = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
+                        $artistic_post_thumb[$i]['create_thumb'] = TRUE;
+                        $artistic_post_thumb[$i]['maintain_ratio'] = FALSE;
+                        $artistic_post_thumb[$i]['thumb_marker'] = '';
+                        $artistic_post_thumb[$i]['width'] = $n_w;
+                        $artistic_post_thumb[$i]['height'] = $n_h;
+                        $artistic_post_thumb[$i]['quality'] = "100%";
+                        $artistic_post_thumb[$i]['x_axis'] = '0';
+                        $artistic_post_thumb[$i]['y_axis'] = '0';
+                        $instanse = "image_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $artistic_post_thumb[$i], $instanse);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse->resize();
+
+                        $thumb_image = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+                        /* CROP 335 X 320 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('art_post_resize1_width');
+                        $resized_image_height = $this->config->item('art_post_resize1_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+                        $conf_new[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $artistic_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new[$i]['new_image'] = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new[$i]['x_axis'] = $left;
+                        $conf_new[$i]['y_axis'] = $top;
+
+                        $instanse1 = "image1_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new[$i], $instanse1);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse1->crop();
+
+                        $resize_image = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+                        /* CROP 335 X 320 */
+
+
+                        /* CROP 335 X 245 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('art_post_resize2_width');
+                        $resized_image_height = $this->config->item('art_post_resize2_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+
+                        $conf_new1[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $artistic_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new1[$i]['new_image'] = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new1[$i]['x_axis'] = $left;
+                        $conf_new1[$i]['y_axis'] = $top;
+
+                        $instanse2 = "image2_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new1[$i], $instanse2);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse2->crop();
+
+                        $resize_image1 = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
+
+                        /* CROP 335 X 245 */
+
+                         /* CROP 210 X 210 */
+                        // reconfigure the image lib for cropping
+
+                        $resized_image_width = $this->config->item('art_post_resize3_width');
+                        $resized_image_height = $this->config->item('art_post_resize3_height');
+                        if ($thumb_image_width < $resized_image_width) {
+                            $resized_image_width = $thumb_image_width;
+                        }
+                        if ($thumb_image_height < $resized_image_height) {
+                            $resized_image_height = $thumb_image_height;
+                        }
+
+
+                        $conf_new2[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $artistic_post_thumb[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resized_image_width,
+                            'height' => $resized_image_height
+                        );
+
+                        $conf_new2[$i]['new_image'] = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w / 2) - ($resized_image_width / 2);
+                        $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                        $conf_new2[$i]['x_axis'] = $left;
+                        $conf_new2[$i]['y_axis'] = $top;
+
+                        $instanse3 = "image3_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new2[$i], $instanse3);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse3->crop();
+
+                        $resize_image2 = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
+                        $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
+
+                        /* CROP 210 X 210 */
+
                 $response['error'][] = $thumberror = $this->$instanse->display_errors();
                 
                 
@@ -1208,17 +1389,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
             //   redirect('artistic/art_post', refresh);
             // }
         }
-        if ($id == manage) {
-
-
-            if ($para == $userid || $para == '') {
-                //redirect('artistic/art_manage_post', refresh);
-            } else {
-                //redirect('artistic/art_manage_post/' . $para, refresh);
-            }
-        } else {
-           // redirect('artistic/art_post', refresh);
-        }
+       
         // new code end
 
         $userid = $this->session->userdata('aileenuser');
@@ -1597,7 +1768,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
@@ -1611,8 +1782,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         } elseif (in_array($ext, $allowesvideo)) {
                             $return_html .= '<div>
                                                 <video width="100%" height="350" controls>
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/ogg">
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                                                     <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>';
@@ -1623,7 +1794,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
-                                                        <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="audio/mp3">
+                                                        <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
                                                     </audio>
@@ -1639,25 +1810,27 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
                         $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
+                                            
+                                                <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+ 
                                             </a>
                                         </div>
                                         <div class="three-image" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '"> 
                                             </a>
                                         </div>';
                     } elseif (count($artmultiimage) == 4) {
@@ -1666,7 +1839,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+                                                     <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -1677,7 +1850,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
 
@@ -1688,7 +1861,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
+                                                <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '"> 
                                             </a>
                                             <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
@@ -12804,7 +12977,8 @@ public function art_home_post() {
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> 
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
@@ -12813,6 +12987,7 @@ public function art_home_post() {
                             <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
 
                                                <div class="pdf_img">
+
                                                         <img src="' . base_url('images/PDF.jpg') . '">
                                                     </div>
                                                 </a>
@@ -12820,8 +12995,11 @@ public function art_home_post() {
                         } elseif (in_array($ext, $allowesvideo)) {
                             $return_html .= '<div>
                                                 <video width="100%" height="350" controls>
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/ogg">
+
+                                                <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                                                <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
+
+                                                    
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>';
@@ -12832,7 +13010,8 @@ public function art_home_post() {
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
-                                                        <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="audio/mp3">
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
                                                     </audio>
@@ -12848,34 +13027,53 @@ public function art_home_post() {
 
                             $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+
+                                                <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
                         }
                     } elseif (count($artmultiimage) == 3) {
-                        $return_html .= '<div class="three-image-top" >
-                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
-                                            </a>
-                                        </div>
-                                        <div class="three-image" >
+                        // $return_html .= '<div class="three-image-top" >
+                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
-                                            </a>
-                                        </div>
-                                        <div class="three-image" >
-                                            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
-                                            </a>
-                                        </div>';
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
+                        //                     </a>
+                        //                 </div>
+                        //                 <div class="three-image" >
+
+                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
+                        //                     </a>
+                        //                 </div>
+                        //                 <div class="three-image" >
+                        //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
+                        //                     </a>
+                        //                 </div>';
+
+                                         $return_html .= '<div class = "three-image-top" >
+<a href = "' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+<img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+</a>
+</div>
+<div class = "three-image" >
+
+<a href = "' . base_url('artistic/post-detail/' . $row['business_profile_post_id']) . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+</a>
+</div>
+<div class = "three-image" >
+<a href = "' . base_url('artistic/post-detail/' . $row['business_profile_post_id']) . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+</a>
+</div>';
                     } elseif (count($artmultiimage) == 4) {
 
                         foreach ($artmultiimage as $multiimage) {
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+                                                    <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -12886,7 +13084,8 @@ public function art_home_post() {
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '"> 
+                                                   
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
                                                 </a>
                                             </div>';
 
@@ -12897,7 +13096,9 @@ public function art_home_post() {
 
                         $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '"> 
+                                                
+                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+
                                             </a>
                                             <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
@@ -13977,7 +14178,11 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
                         $return_html .= '<div class="one-image">
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+
+           <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+
+             </a>
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
@@ -13992,7 +14197,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     } elseif (in_array($ext, $allowesvideo)) {
                         $return_html .= '<div>
             <video class="video" width="100%" height="350" controls>
-                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
+
+                 <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+
                 <source src="movie.ogg" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
@@ -14004,7 +14211,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             </div>
             <div class="audio_source">
                 <audio  controls>
-                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="audio/mp3">
+                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
                     <source src="movie.ogg" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio>
@@ -14017,24 +14224,34 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 } elseif (count($artmultiimage) == 2) {
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+             <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+             </a>
         </div>';
                     }
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '" style="width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+            <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+            </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '" style="width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+           <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+            </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '" style="width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+            </a>
         </div>';
                 } elseif (count($artmultiimage) == 4) {
 
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+             </a>
         </div>';
                     }
                 } elseif (count($artmultiimage) > 4) {
@@ -14042,14 +14259,18 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $i = 0;
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+            </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '"><img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) . '" style=" width: 100%;"> </a>
+            <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
+           <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+             </a>
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($artmultiimage) - 4) . ')
@@ -15425,7 +15646,11 @@ public function get_artistic_name($id=''){
                           if (in_array($ext, $allowed)) {
                                                              
            $return_html .= '<div class="one-image" >
-             <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']).'"> </a>
+             <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
+
+             <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+
+              </a>
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
@@ -15436,7 +15661,7 @@ public function get_artistic_name($id=''){
                    } elseif (in_array($ext, $allowesvideo)) { 
                   $return_html .= '<div class="video_post">
                         <video width="100%" height="55%" controls>
-                        <source src="'.base_url($this->config->item('art_post_main_upload_path') .$artmultiimage[0]['image_name']).'" type="video/mp4">
+                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                          </video>
@@ -15444,7 +15669,8 @@ public function get_artistic_name($id=''){
                  } elseif (in_array($ext, $allowesaudio)) {                                          
                         $return_html .= '<div>
                         <audio width="120" height="100" controls>
-                    <source src="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'" type="audio/mp3">
+                   <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+
                     <source src="movie.ogg" type="audio/ogg">
                         Your browser does not support the audio tag.
                       </audio>
@@ -15455,25 +15681,35 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                   
                     $return_html .= '<div class="two-images">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'><img class="two-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']).'" > </a>
+                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'>
+                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                         </a>
                                                     </div>';                                                    
                                                  } 
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) .'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
+                                                   <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                     </a>
                                                 </div>
                                                <div class="three-image">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+                                                     </a>
                                                 </div>
                                               <div class="three-image">
-                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+                                                     </a>
                                                 </div>';
                                              } elseif (count($artmultiimage) == 4) { 
                                                
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                      
                     $return_html .= '<div class="four-image">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img class="breakpoint" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']).'" style="width: 100%; height: 100%;"> </a>
+                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
+                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                        </a>
                                                    </div>';                                                   
                                                 } 
                                             } elseif (count($artmultiimage) > 4) { 
@@ -15482,7 +15718,9 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                        
                 $return_html .= '<div class="four-image">
-                                                            <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) .'" style=""> </a>
+                                                            <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
+                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                             </a>
                                                         </div>';                                             
                                                    
                                                     $i++;
@@ -16322,7 +16560,9 @@ public function get_artistic_name($id=''){
                           if (in_array($ext, $allowed)) {
                                                              
            $return_html .= '<div class="one-image" >
-             <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']).'"> </a>
+             <a href="javascript:void(0);" onclick="login_profile();">
+            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+              </a>
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
@@ -16333,7 +16573,7 @@ public function get_artistic_name($id=''){
                    } elseif (in_array($ext, $allowesvideo)) { 
                   $return_html .= '<div class="video_post">
                         <video width="100%" height="55%" controls>
-                        <source src="'.base_url($this->config->item('art_post_main_upload_path') .$artmultiimage[0]['image_name']).'" type="video/mp4">
+                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                          </video>
@@ -16341,7 +16581,7 @@ public function get_artistic_name($id=''){
                  } elseif (in_array($ext, $allowesaudio)) {                                          
                         $return_html .= '<div>
                         <audio width="120" height="100" controls>
-                    <source src="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'" type="audio/mp3">
+                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
                     <source src="movie.ogg" type="audio/ogg">
                         Your browser does not support the audio tag.
                       </audio>
@@ -16352,25 +16592,35 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                   
                     $return_html .= '<div class="two-images">
-                                                        <a href="javascript:void(0);" onclick="login_profile();"><img class="two-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$multiimage['image_name']).'" > </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();">
+                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                         </a>
                                                     </div>';                                                    
                                                  } 
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
-                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[0]['image_name']) .'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();">
+                                                    <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                     </a>
                                                 </div>
                                                <div class="three-image">
-                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+                                                     </a>
                                                 </div>
                                               <div class="three-image">
-                                                    <a href="javascript:void(0);" onclick="login_profile();"><img class="three-columns" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']).'" style="width: 100%; height:100%; "> </a>
+                                                    <a href="javascript:void(0);" onclick="login_profile();">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+                                                    </a>
                                                 </div>';
                                              } elseif (count($artmultiimage) == 4) { 
                                                
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                      
                     $return_html .= '<div class="four-image">
-                                                        <a href="javascript:void(0);" onclick="login_profile();"><img class="breakpoint" src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']).'" style="width: 100%; height: 100%;"> </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();">
+                                                        <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                        </a>
                                                    </div>';                                                   
                                                 } 
                                             } elseif (count($artmultiimage) > 4) { 
@@ -16379,7 +16629,9 @@ public function get_artistic_name($id=''){
                                                 foreach ($artmultiimage as $multiimage) {
                                                                                                        
                 $return_html .= '<div class="four-image">
-                                                            <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) .'" style=""> </a>
+                                                            <a href="javascript:void(0);" onclick="login_profile();">
+                                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                             </a>
                                                         </div>';                                             
                                                    
                                                     $i++;
@@ -16388,7 +16640,9 @@ public function get_artistic_name($id=''){
                                                 }
                                                 
                 $return_html .= '<div class="four-image">
-                                                        <a href="javascript:void(0);" onclick="login_profile();"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name']).'" > </a>
+                                                        <a href="javascript:void(0);" onclick="login_profile();">
+                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+                                                        </a>
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'" >
                                                     <div class="more-image" >
                                                 <span>
