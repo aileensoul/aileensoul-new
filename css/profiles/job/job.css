@@ -1251,6 +1251,7 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+    .mob-progressbar .progress{display: block;}
 	.mob-progressbar{display:block;}
     .edit_profile_progress{display:none;}
 	.job_education_submitbox .hs-submit {
