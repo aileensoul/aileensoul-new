@@ -1546,7 +1546,7 @@ class Recruiter extends MY_Controller {
 
                 if (file_exists($imagee) && $row['job_user_image'] != '') {
 
-                    $postdata .= '<a href="' . base_url() . 'job/job_printpreview/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                     $postdata .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path')) . $row['job_user_image'] . '" alt="' . $row[0]['fname'] . ' ' . $row[0]['lname'] . '">';
                     $postdata .= '</a>';
                 } else {
@@ -1570,7 +1570,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '<div class="designation_rec fl">';
                 $postdata .= '<ul>';
                 $postdata .= '<li>';
-                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/job_printpreview/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/resume/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                 $postdata .= '' . ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])) . '</a>';
                 $postdata .= '</li>';
 
@@ -3243,7 +3243,7 @@ class Recruiter extends MY_Controller {
                     $imageee = $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'];
                     if (file_exists($imageee) && $rec['job_user_image'] != '') {
 
-                        $return_html .= '<a href="' . base_url() . 'job/job_printpreview/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
                         $return_html .= '<img src="' . base_url() . $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
                     } else {
 
@@ -3262,7 +3262,7 @@ class Recruiter extends MY_Controller {
                                                                 <div class="designation_rec_1 fl ">
                                                                     <ul>
                                                                         <li>';
-                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/job_printpreview/' . $rec['userid'] . '?page=recruiter" title="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '">';
+                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '">';
                     $return_html .= $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '</a>';
                     $return_html .= '</li><li style="display: block;">
                                                                             <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';
