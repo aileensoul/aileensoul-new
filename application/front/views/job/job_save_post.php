@@ -261,16 +261,19 @@
                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
                <div class="modal-body">
                   <span class="mes">
-                     <div id="popup-form">
-                        <?php echo form_open_multipart(base_url('job/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                  
+                    <div id="popup-form">
+
+                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+    
                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <div class="popup_previred">
-                           <img id="preview" src="#" alt="your image" />
-                        </div>
-                        <input type="hidden" name="hitext" id="hitext" value="4">
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
-                        <?php echo form_close(); ?>
+                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
+                      
+                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
+                        </form>
+                        
                      </div>
+
                   </span>
                </div>
             </div>

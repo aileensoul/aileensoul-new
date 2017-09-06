@@ -426,6 +426,7 @@ class Notification extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo '<pre>'; print_r($this->data['art_data']); die();
+        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
         $this->load->view('notification/art_post', $this->data);
     }
 
@@ -498,7 +499,8 @@ class Notification extends MY_Controller {
 
         $this->data['demo'] = array_values($result1);
 
-
+        $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
+        
         $this->load->view('notification/art_image', $this->data);
     }
 

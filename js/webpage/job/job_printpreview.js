@@ -205,20 +205,15 @@ function save_user(abc)
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-                    // html = '<img src="' + resp + '" />';
-                   if (data) {
+                   if (data) 
+                   {
                     $("#row2").html(data);
                     document.getElementById('row2').style.display = "block";
                     document.getElementById('row1').style.display = "none";
                     document.getElementById('message1').style.display = "none";
                     document.getElementById("upload-demo").style.visibility = "visible";
                     document.getElementById("upload-demo-i").style.visibility = "visible";
-
-                }
-                    // html = '<img src="' + resp + '" />';
-                    // if (html) {
-                    //     window.location.reload();
-                    // }
+                  }
                 }
             });
 
