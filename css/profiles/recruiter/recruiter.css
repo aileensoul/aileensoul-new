@@ -1171,6 +1171,7 @@ label.cameraButton input[accept*="camera"] {
         font-size: 12px;
         padding-left: 12px;
     }
+
 	.common-form1 h3{font-size: 15px;}
     select{padding: 5px}
 	.midd-section{padding: 85px 0;}
@@ -1208,7 +1209,8 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-post-location-name-rec .designation_rec {
 		width: 70% !important;
 	}
-	
+	   .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{width: 50%;}
+ .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span{width: 50%;}
 }
 @media screen and (max-width: 320px){
 	

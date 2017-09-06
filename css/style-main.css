@@ -1705,11 +1705,11 @@ height: 146px;}
 	.profile-detail h2{font-size:22px;}
 	.banner-box .banner-img{max-height:200px;}
 	.banner-box img{height:200px;}
-	.left-profile .profile-photo{width: 97px;
+	.left-profile .profile-photo{width: 97px;   
 height: 91px;}
 	.left-profile .profile-photo img.main-pic{height: 87px;
 width: 93px;}
-	.upload-profile{width: 75px; height: 75px; padding:8px 4px; font-size:9px; line-height:1.5;}
+	.upload-profile{width: 87px; height: 81px; padding:8px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
 	
