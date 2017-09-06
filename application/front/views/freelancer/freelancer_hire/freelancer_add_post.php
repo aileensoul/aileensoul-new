@@ -24,7 +24,7 @@
                     <div class="row"></div>
                     <div class="container">
                         <div class="col-md-3"></div>
-                        <div class="col-md-7 col-sm-7">
+                        <div class="col-md-7 col-sm-12">
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -137,7 +137,7 @@
                                         </select>
                                         <?php echo form_error('month'); ?>
                                     </fieldset>
-                                    <fieldset class="col-md-12">  
+                                    <fieldset class="col-md-12 " style="width: 100%;">  
                                         <b><h2 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?>:</h2></b>
                                     </fieldset>
                                     <fieldset  class="col-md-4 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
