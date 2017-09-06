@@ -28,8 +28,7 @@
          </li>
          <?php }?>
       </ul>
-      <div class="flw_msg_btn fr">
-         <ul>
+    
             <?php 
                if($this->uri->segment(3) != ""){ 
                    if($this->uri->segment(3) != $userid){
@@ -40,6 +39,8 @@
                                                                   
                 if ($data) {
                ?> 
+      <div class="flw_msg_btn fr">
+         <ul>
             <li> 
                <a class=" butt_rec  save_saved_btn">Saved</a>
             </li>
@@ -58,8 +59,10 @@
             <?php }
                else{ ?>
             <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a> </li>
-            <?php }?>                <?php } }?>
          </ul>
       </div>
+            <?php }?>                <?php } }?>
+        
+
    </div>
 </div>
