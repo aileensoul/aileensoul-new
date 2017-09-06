@@ -1525,6 +1525,9 @@ footer {
 	.header2 ul li.active a{padding:9px 10px 10px}
 }
 @media screen and (max-width: 479px) {
+	.logo h2 {
+        font-size: 20px;
+    }
 	.header ul li a{padding-top: 7px!important;}
 	.header ul li.dropdown-user a{padding-top: 10px!important;}
 	#notificationContainer::before {
@@ -1549,6 +1552,17 @@ footer {
 		margin-top: 0.2px;
 		padding: 4px 5px!important;
 	}
+	#notificationLink span{margin-left:6px;}
+    #add_contact #addcontactContainer::before {
+		right: 218px;
+	}
+	#a_li{position: inherit !important;}
+    #acon::before{right:115px !important;}
+    #acon{width: 100% !important; margin-top: 22px !important;}
+    #notificationContainer::before{right:55px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
+	.notification-data-inside h6 {
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 360px) {
 	.dropdown-menu {
@@ -1574,6 +1588,11 @@ footer {
 	.header2 ul li a#addcontactLink {
 		padding: 7px 6px !important;
 	}
+	.header ul {
+		margin: 12px 0px 1px;
+	}
+	#notificationContainer{top: 31px;}
+	.bg-search .header2{margin-top:-7px;}
 }
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
