@@ -61,7 +61,8 @@
                  ?>
                  <li>
                             <audio controls>
-                            <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['image_name'])?>" type="audio/ogg">
+                            <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $audiov['image_name']; ?>" type = "audio/mp3">
+                            <!-- <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['image_name'])?>" type="audio/ogg"> -->
                             <source src="movie.ogg" type="audio/mpeg">
                            Your browser does not support the audio tag.
                             </audio>
