@@ -15794,7 +15794,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                           <ul class="col-md-6 like_cmnt_count">
                                              <li>
-                                                <div class="like_count_ext'.$key['art_post_id'].'">
+                                                <div class="like_count_ext   comment_count'.$key['art_post_id'].'">
                                                    <span class="comment_count">';
                                                     
                                                       if (count($commnetcount) > 0) {
