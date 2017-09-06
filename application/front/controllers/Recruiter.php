@@ -3767,4 +3767,22 @@ class Recruiter extends MY_Controller {
         echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }  
 //COVAER PIC END
+    // RECRUITER AVAILABLE CHECK START
+public function rec_avail_check($userid = " ") 
+ {
+   $contition_array = array('user_id' => $userid, 'is_delete' => '1');
+   $availuser = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    
+        if (count($availuser) > 0) 
+        {
+       redirect('recruiter/noavailable');
+         } 
+    }
+ // RECRUITER AVAILABLE CHECK END
+   
+     public function noavailable() {
+         
+        $this->load->view('recruiter/notavalible', $this->data);  
+     }
+     
 }
