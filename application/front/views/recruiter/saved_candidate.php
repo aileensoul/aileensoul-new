@@ -256,20 +256,32 @@
             <!-- MIDDLE SECTION END-->
         </section>
         <!-- END CONTAINER -->
+        
+         <!-- Bid-modal-2  -->
+      <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+         <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+               <div class="modal-body">
+                  <span class="mes">
+                     <div id="popup-form">
 
-        <!-- BID MODAL START -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
-                    </div>
-                </div>
+                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+    
+                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
+                      
+                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
+                        </form>
+                        
+                     </div>
+                  </span>
+               </div>
             </div>
-        </div>
-        <!-- BID MODAL END -->
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+       
         <!-- BEGIN FOOTER -->
         <?php echo $footer; ?>
         <!-- END FOOTER -->
