@@ -15944,13 +15944,13 @@ public function get_artistic_name($id=''){
                                             $return_html .= '</div>';
                                                                }
                                             $return_html .= '</div>
-                                                        <div class="comment-name">
-                                                            <b title="'.ucfirst(strtolower($artname)).'&nbsp;'.ucfirst(strtolower($artlastname)).'>';
+                                                        <div class="comment-name">';
+                                                         $return_html .= '<b>';
                                                           
                                                           $return_html .= ucfirst(strtolower($artname));
                                                          $return_html .= '&nbsp;';
                                                           $return_html .= ucfirst(strtolower($artlastname));
-                                                          $return_html .= '</b></br>/div>
+                                                          $return_html .= '</b></br></div>
                                                           <div class="comment-details" id="showcomment'. $rowdata['artistic_post_comment_id'].'">'.$this->common->make_links($rowdata['comments']).'</div>';
 
                                 $return_html .= '<div class="edit-comment-box">
@@ -16863,7 +16863,7 @@ public function get_artistic_name($id=''){
                                                           $return_html .= ucfirst(strtolower($artname));
                                                          $return_html .= '&nbsp;';
                                                           $return_html .= ucfirst(strtolower($artlastname));
-                                                          $return_html .= '</b></br>/div>
+                                                          $return_html .= '</b></br></div>
                                                           <div class="comment-details" id="showcomment'. $rowdata['artistic_post_comment_id'].'">'.$this->common->make_links($rowdata['comments']).'</div>';
 
                                 $return_html .= '<div class="edit-comment-box">
