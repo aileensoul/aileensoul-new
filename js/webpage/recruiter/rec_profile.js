@@ -1,6 +1,4 @@
 
-
- 
 function checkvalue(){
   
   var searchkeyword=$.trim(document.getElementById('rec_search_title').value);
