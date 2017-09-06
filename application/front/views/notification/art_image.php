@@ -1,182 +1,27 @@
-
-<!-- start head -->
-<?php echo $head; ?>
-
-<style type="text/css">
-  /*  .imge_psot{width: 100%; text-align: center;}*/
-  .imge_psot img {height: 70%; width: 100%;}
-</style>
-
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
-<!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/select2-4.0.3.min.css');     ?>"> -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-
-<!-- END HEAD -->
-<!-- start header -->
-<?php echo $header; ?>
-<script src="<?php echo base_url('js/fb_login.js'); ?>"></script>
-<!-- END HEADER -->
-<?php echo $art_header2; ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            div.panel {
-                      display: none;
-                        }
-        </style>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script>
-            $(document).ready(function ()
-            {
-                /* Uploading Profile BackGround Image */
-                $('body').on('change', '#bgphotoimg', function ()
-                {
-                    $("#bgimageform").ajaxForm({target: '#timelineBackground',
-                        beforeSubmit: function () {},
-                        success: function () {
-                            $("#timelineShade").hide();
-                            $("#bgimageform").hide();
-                        },
-                        error: function () {
-                        }}).submit();
-                });
-                /* Banner position drag */
-                $("body").on('mouseover', '.headerimage', function ()
-                {
-                    var y1 = $('#timelineBackground').height();
-                    var y2 = $('.headerimage').height();
-                    $(this).draggable({
-                        scroll: false,
-                        axis: "y",
-                        drag: function (event, ui) {
-                            if (ui.position.top >= 0)
-                            {
-                                ui.position.top = 0;
-                            } else if (ui.position.top <= y1 - y2)
-                            {
-                                ui.position.top = y1 - y2;
-                            }
-                        },
-                        stop: function (event, ui)
-                        {
-                        }
-                    });
-                });
-                /* Bannert Position Save*/
-                $("body").on('click', '.bgSave', function ()
-                {
-                    var id = $(this).attr("id");
-                    var p = $("#timelineBGload").attr("style");
-                    var Y = p.split("top:");
-                    var Z = Y[1].split(";");
-                    var dataString = 'position=' + Z[0];
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo base_url('artistic/image_saveBG_ajax'); ?>",
-                        data: dataString,
-                        cache: false,
-                        beforeSend: function () { },
-                        success: function (html)
-                        {
-                            if (html)
-                            {
-                                window.location.reload();
-                                $(".bgImage").fadeOut('slow');
-                                $(".bgSave").fadeOut('slow');
-                                $("#timelineShade").fadeIn("slow");
-                                $("#timelineBGload").removeClass("headerimage");
-                                $("#timelineBGload").css({'margin-top': html});
-                                return false;
-                            }
-                        }
-                    });
-                    return false;
-                });
-            });
-        </script>
-    </head>
+<head>
+<title><?php echo $title; ?></title>
+<?php echo $head; ?>
+<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+
     <body>
+    <?php echo $header; ?>
+<?php echo $art_header2_border; ?>
         <div class="user-midd-section" id="paddingtop_fixed">
             <div class="container">
                 <div class="row">
 
                     <div class="profile-box profile-box-custom col-md-4 animated fadeInLeftBig">
+                         <?php ?>
+<?php echo $left_artistic; ?>
 
-                                  <div class="full-box-module">   
-      <div class="profile-boxProfileCard  module">
-                                    <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/art_manage_post'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
-                                        <?php if ($artisticdata[0]['profile_background']) { ?>
-                                            <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" class="bgImage"  >
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="data_img">
-                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>"  >
-
-                                            </div>                                             <?php } ?>
-                                    </a>
-                                    </div>
-                                    <div class="profile-boxProfileCard-content clearfix">
-                                    <div class="left_side_box_img buisness-profile-txext">
-                                        
-                                             <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/art_manage_post'); ?>" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                            <!-- box image start -->
-                                            <?php if ($artisticdata[0]['art_user_image']) { ?>
-                                                <div class="data_img_2">   
-                                                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" class="bgImage"  alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" >
-                                                </div>
-                                            <?php } else { ?> 
-                                                <div class="data_img_2">
-                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
-                                                </div>
-                                            <?php } ?>
-                                            <!-- box image end -->
-                                        </a>
-                                    </div>
-                                    <div class="right_left_box_design ">
-                                    <span class="profile-company-name ">
-                                            <a   href="<?php echo site_url('artistic/art_manage_post'); ?>"> <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></a>
-                                        </span>
-
-
-                                                  <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                          
-                                        <div class="profile-boxProfile-name">
-                                            <a  href="<?php echo site_url('artistic/art_manage_post'); ?>">
-                                                <?php
-                                                if ($artisticdata[0]['designation']) {
-                                                    echo ucwords($artisticdata[0]['designation']);
-                                                } else {
-                                                    echo "Designation";
-                                                }
-                                                ?>
-                                                  
-
-                                                </a>
-
-
-                                                </div>
-
-
-                                               <ul class=" left_box_menubar">
-                                                <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Dashboard" href="<?php echo base_url('artistic/art_manage_post'); ?>"> Dashboard</a>
-                                            </li>
-
-                                            <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artistic/followers'); ?>">Followers <br>(<?php echo (count($followerdata)); ?>)</a>
-                                            </li>
-
-                                            <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a class="padding_less_right"  title="Following" href="<?php echo base_url('artistic/following'); ?>">Following<br>(<?php echo (count($followingdata)); ?>)</a>
-                                            </li>
-                                          
-                                            </ul>
-                                    </div>
-                                    </div>
-       </div>                             
-    </div>
                     </div>
                     <!-- cover pic end -->
 
