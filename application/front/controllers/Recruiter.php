@@ -3426,7 +3426,7 @@ class Recruiter extends MY_Controller {
                         $return_html .= $rec['designation'];
                     } else {
 
-                        $return_html .= '"Designation"';
+                        $return_html .= 'Designation';
                     }
 
                     $return_html .= '</a>
