@@ -1161,7 +1161,15 @@ label.cameraButton input[accept*="camera"] {
 .circle-1 strong{color: #8c8c8c;}
 .progre_bar_text p{color: #8c8c8c;}
 
-
+.pagi_exp .tablinks1 {
+    padding: 2px 3px;
+    background-color: white;
+    color: black;
+}
+.pagi_exp .tablinks1:hover {
+    background-color: #d9d9d9;
+    border-radius: 3px;
+}
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 	.mob-progressbar.temp{display:none;}
