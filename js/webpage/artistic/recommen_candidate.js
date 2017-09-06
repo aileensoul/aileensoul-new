@@ -269,7 +269,7 @@ function post_like(clicked_id)
                                     //alert('.' + 'insertcomment' + clicked_id);
                                     $('.' + 'insertcomment' + post_delete.value).html(data.comment);
                                   //  $('#' + 'insertcount' + post_delete.value).html(data.count);
-                                     $('.like_count_ext' + post_delete.value).html(data.commentcount);
+                                     $('.comment_count' + post_delete.value).html(data.commentcount);
                                         $('.post-design-commnet-box').show();
                                 }
                             });
@@ -295,7 +295,7 @@ function comment_deletedtwo(clicked_id)
                                     // $('.' + 'insertcomment' + post_delete.value).html(data);
                                     $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
                                 //    $('#' + 'insertcount' + post_delete1.value).html(data.count);
-                                       $('.like_count_ext' + post_delete1.value).html(data.commentcount);
+                                       $('.comment_count' + post_delete1.value).html(data.commentcount);
                                       $('.post-design-commnet-box').show();
 
                                 }
