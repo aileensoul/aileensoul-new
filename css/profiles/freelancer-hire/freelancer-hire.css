@@ -830,10 +830,10 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0;
         padding-right: 0;
     }
-    .custom-right {
+/*    .custom-right {
         margin-left: 8%;
     }
-    .profile-boxProfilebuisness-avatarLink2 {
+*/    .profile-boxProfilebuisness-avatarLink2 {
         margin: 15px 0 0 5px;
           height: 60px !important;
     }
@@ -881,6 +881,9 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
+    .mob-block {
+    display: block;
+}
 	.pro-fw li {width: 25% !important;}
 	.middle-part.container {
         padding: 40px 0 0px;

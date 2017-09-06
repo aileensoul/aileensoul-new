@@ -170,16 +170,17 @@
 
 
                                     </ul>
-                                    <div class="flw_msg_btn fr">
-                                        <ul>
+                                   
                                             <?php
                                             $userid = $this->session->userdata('aileenuser');
                                             if ($userid != $freelancr_user_data[0]['user_id']) {
                                                 ?>
+                                                 <div class="flw_msg_btn fr">
+                                        <ul>
                                                 <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                                
                                             <?php } ?>
-                                        </ul>
-                                    </div>
+                                       
                             </div>
                         </div>
                     </div>
