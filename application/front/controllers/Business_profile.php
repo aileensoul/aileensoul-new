@@ -9393,15 +9393,10 @@ class Business_profile extends MY_Controller {
             $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2, 'business_profile.status' => 1);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
             
-            $join_str[0]['table'] = 'user';
-            $join_str[0]['join_table_id'] = 'user.user_id';
+            $join_str[0]['table'] = 'business_profile';
+            $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
             $join_str[0]['join_type'] = '';
-            
-            $join_str[1]['table'] = 'user';
-            $join_str[1]['join_table_id'] = 'user.user_id';
-            $join_str[1]['from_table_id'] = 'business_profile.user_id';
-            $join_str[1]['join_type'] = '';
             
             $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str, $groupby = '');
             $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -9413,10 +9408,16 @@ class Business_profile extends MY_Controller {
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
+            $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2, 'business_profile.status' => 1);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
-            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str = '', $groupby = '');
-            $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
+            
+            $join_str[0]['table'] = 'business_profile';
+            $join_str[0]['join_table_id'] = 'business_profile.user_id';
+            $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
+            $join_str[0]['join_type'] = '';
+            
+            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str, $groupby = '');
+            $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         $return_html = '';
         if (empty($_GET["total_record"])) {
