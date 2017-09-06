@@ -1865,6 +1865,9 @@ input:-moz-placeholder {
 @media screen and (max-width: 767px) {
 	#row2 img{height: 250px;}
 	#row1{height: 250px;}
+	#row2 img {
+        min-height: 180px;
+    }
     .search-mob-block{display:block;}
     .buisness-profile-pic-candidate{margin-left: 9px!important;}
 	.left-side-menu {
@@ -1879,11 +1882,36 @@ input:-moz-placeholder {
     }
 	.chat .chat-header .chat-with{font-size: 18px;}
 	.chat .chat-history{width: 100%;}
+	#people-list{width:100%;}
+    #chat{width:100%;}
+	.people-list .search input{width:96%;}
+    .people-list ul{height:auto;}
 	.change-password{padding: 0px 0px;}
 	.backdiv-mob{display:block;}
 	.hidden-mob {
         display: none;
     }
+	.banner{padding-top: 21px;}
+	.cover .middle-section{padding-bottom: 0px; margin-bottom: 0px;}
+	.middle-section {
+        padding-top: 17px;
+    }
+	/***  reg pages  ***/
+	.user-midd-section .padd_set {
+        padding: 50px 0px 25px;
+    }
+	.main_form {
+        padding-top: 0px;
+    }
+	.xs-p0{padding:0;}
+	.profile-text1{top:30px;}
+    .sticky-container{display: none;}
+    .email-verify{padding-left: 2px; padding-right: 2px;}
+    .vs-o{padding-left: 1px!important;}
+	.profile-text1 .as-p{font-size: 12px; padding-bottom: 0px;}
+	.profile-text1 .alert.alert-warning{width:100%; float:left;}
+    .email-img{float: left; width: 35px;}
+    .main-txt{float: left; width: 87%; text-align: justify;}
 }
 @media screen and (max-width: 640px) {
 
@@ -1896,6 +1924,8 @@ input:-moz-placeholder {
 	.post-img-user {
 		line-height: 2;
 	}
+	.profile-text1{width: 100%;}
+    .profile-text1 .as-p{margin-bottom: 0px;   font-size: 11px; }
 }
 @media screen and (max-width: 540px) {
 	.cls-ve {
@@ -1904,6 +1934,40 @@ input:-moz-placeholder {
 	}
 	label.cameraButton{opacity: 0.8;}
 	.cover-pic .btn{padding: 3px 8px;}
+	.cls-ve{top: 23px;}
+	.alert.alert-danger {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        color: #a94442;
+        left: 0;
+        margin: 0 auto;
+        margin-top: 0px;
+        margin-top: 0px;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 55%;
+        z-index: 9;
+        font-size: 12px;
+        margin-top: -19px;
+    }
+	::-webkit-input-placeholder {
+        font-size: 13px;
+    }
+    ::-moz-placeholder {
+        font-size: 13px;
+    }
+    :-ms-input-placeholder {
+        font-size: 13px;
+    }
+    :-moz-placeholder {
+        font-size: 13px;
+    }
+	#row2 img{height: 200px;}
+	.profile-photo .profile-pho {
+        margin-top: -41px !important;
+    }
+	.people-list .search input{width:95%;}
 }
 @media screen and (max-width: 479px) {
 	#row2 img{height: 200px;}
