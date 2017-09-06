@@ -375,6 +375,9 @@ function divClicked() {
 
 //Tabing In Education And Graduation Start
  function openCity(evt, cityName) {
+  alert("hi");
+  alert(evt);
+  alert(cityName);
         // Declare all variables
         var i, tabcontent, tablinks;
 
@@ -433,7 +436,7 @@ function divClicked() {
 //Disable progress bar when 100% complete End
 
 //Progress bar see start
- (function($) {9
+ (function($) {
    $('.second.circle-1').circleProgress({
    value: count_profile_value
    }).on('circle-animation-progress', function(event, progress) {

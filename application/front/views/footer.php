@@ -43,9 +43,6 @@ $.fn.preload = function (fn) {
     });
 };
 
-$('img').preload(function(perc, done) {
-    console.log(this, perc, done);
-});
 </script>
 <!-- IMAGE PRELOADER SCRIPT -->
 <!-- script for update all read notification start-->
