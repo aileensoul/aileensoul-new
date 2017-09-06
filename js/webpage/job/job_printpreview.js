@@ -49,7 +49,7 @@ $(document).ready(function () {
                 },
 
             },
-
+          submitHandler: profile_pic
         });
     });
 //validation End
@@ -205,10 +205,20 @@ function save_user(abc)
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-                    html = '<img src="' + resp + '" />';
-                    if (html) {
-                        window.location.reload();
-                    }
+                    // html = '<img src="' + resp + '" />';
+                   if (data) {
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+
+                }
+                    // html = '<img src="' + resp + '" />';
+                    // if (html) {
+                    //     window.location.reload();
+                    // }
                 }
             });
 
@@ -468,5 +478,33 @@ $( document ).ready(function() {
    
    })(jQuery);
    //Progress bar see End
+
+//UPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        
+        var formData = new FormData($("#userimage")[0]);
+        $.ajax({
+          
+            url: base_url + "job/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                $('#preview').prop('src', '#');
+                 $('#preview').hide();
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UPLOAD PROFILE PIC END
 
    $(".alert").delay(3200).fadeOut(300);
