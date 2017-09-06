@@ -1304,7 +1304,7 @@ footer {
 .copyright ul li a:hover {
     background: #1b8ab9;
 }
-
+#loader{margin: 10px;  margin-bottom: 20px;}
 
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
@@ -1593,6 +1593,18 @@ footer {
 	}
 	#notificationContainer{top: 31px;}
 	.bg-search .header2{margin-top:-7px;}
+	.action-button #message_count {
+		right: 163px;
+	}
+	.job-saved-box .notification-box ul li{padding: 0;}
+	#notification_inside h6{font-size: 12px !important;}
+    #notification_inside{
+		padding: 5px 5px 9px 1px !important;
+		margin-left: 7px !important;
+	}
+	.job_con #InboxContainer::before {
+		right: 131px;
+	}
 }
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
