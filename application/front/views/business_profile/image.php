@@ -23,9 +23,9 @@
         <?php if ($businessdata[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <div class="js">
+        <!--<div class="js">-->
             <body class="page-container-bg-solid page-boxed">
-                <div id="preloader"></div>
+                <!--<div id="preloader"></div>-->
                 <section>
                     <div class="user-midd-section" id="paddingtop_fixed">
                         <div class="common-form1">
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </section>
-        </div>
+        <!--</div>-->
         <footer>
             <?php echo $footer; ?>
         </footer>
