@@ -305,7 +305,7 @@ line-height: 1;}
     border-radius: 8px;
 }
 
-
+.rec_check label{display: inline-block!important; cursor: pointer;}
 
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
