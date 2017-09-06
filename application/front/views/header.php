@@ -7,7 +7,7 @@
         input[0].setSelectionRange(len, len);
     });
 </script>-->
-<script>
+<!--<script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -31,7 +31,7 @@
         google_ad_client: "ca-pub-6060111582812113",
         enable_page_level_ads: true
     });
-</script>
+</script>-->
 <!-- header -->
   <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_apply_post') || ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post')) { ?>
         <header class="">

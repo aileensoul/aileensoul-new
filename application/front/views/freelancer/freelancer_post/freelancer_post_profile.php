@@ -153,8 +153,7 @@
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a> </li>
                                     <?php } ?>
                                 </ul>
-                                <div class="flw_msg_btn fr">
-                                    <ul>
+                                
                                         <?php
                                         $userid = $this->session->userdata('aileenuser');
                                         $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 2, 'status' => '0');
@@ -163,6 +162,8 @@
                                             if ($this->uri->segment(3) != "") {
                                                 if (!$data) {
                                                     ?> 
+                                                    <div class="flw_msg_btn fr">
+                                    <ul>
                                                     <li>
                                                         <a id="<?php echo $this->uri->segment(3); ?>" onClick="savepopup(<?php echo $this->uri->segment(3); ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $this->uri->segment(3); ?>">
                                                             <?php echo $this->lang->line("save"); ?>
@@ -176,12 +177,13 @@
                                                 <li>
                                                     <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/4/3'); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                 </li>
+                                                 </ul>
+                                </div>
                                                 <?php
                                             }
                                         }
                                         ?>
-                                    </ul>
-                                </div>
+                                   
                         </div>
                     </div>
                 </div>

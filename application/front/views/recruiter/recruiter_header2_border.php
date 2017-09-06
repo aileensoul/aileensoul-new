@@ -122,7 +122,7 @@
                                         <div class="new-search-input">
                                             <input type="text" id="tags1" name="skills" placeholder="Job Title, Skills, Industries">
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
-                                            <input type="submit" name="search_submit" value="Search" class="btn btn-primary"></button>
+                                            <input type="submit" name="search_submit" value="Search" class="btn btn-primary" onclick="return check()"></button>
                                         </div>
                                     </form>
                                 </div>

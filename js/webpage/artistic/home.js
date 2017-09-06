@@ -1682,7 +1682,7 @@ function insert_comment(clicked_id)
         editpostdetails = editpostdetails.replace(/div>/gi, 'p>');
         editpostdetails = editpostdetails.replace(/^(\s*<br( \/)?>)*|(<br( \/)?>\s*)*$/gm, '');
 
-        alert(editpostdetails);
+        //alert(editpostdetails);
 
       
        if ((editpostname.value.trim() == '') && (editpostdetails.trim() == '' || editpostdetails == '<br>' || check_perticular(editpostdetails) == true)) {

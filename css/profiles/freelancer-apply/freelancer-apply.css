@@ -82,7 +82,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box-art ul li a {height: 50px; padding-top: 7px; padding-bottom: 7px;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
 .profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
-.profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px; height: auto;}
 .profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; border-top: none; z-index: -1; background-color: white;}
 .profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
 .profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
@@ -726,6 +726,70 @@ label.cameraButton input[accept*="camera"] {
 }
 
 
+.flw_msg_btn ul {
+    list-style-type: none;
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.flw_msg_btn ul li .fr {
+    padding-left: 10px;
+}
+.flw_msg_btn ul li a {
+    letter-spacing: 1px;
+    letter-spacing: 1px;
+    width: 90px;
+    padding: 8px 15px;
+    background: rgb(44, 83, 158);
+     background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -moz-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: -ms-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background: linear-gradient(to top, #e9e9e9 5%, #f9f9f9 100%);
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #9C9999;
+    font-size: 13px;
+    margin-top: 3px;
+    /* box-shadow: 2px -2px 8px #9C9999; */
+    /* -webkit-box-shadow: 0px 1px 7px #9c9999; */
+    
+    -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
+    font-weight: bold;
+    text-decoration: none;
+}
+.flw_msg_btn{margin-top: 4px;}
+.flw_msg_btn ul li a:hover {
+    border: 1px solid #d9d9d9;
+    -webkit-transform: none;
+    transform: none;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    background: -moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+    background: -webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+    background: -o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+    background: -ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+    background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+    color: #9C9999;
+    /*filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9', GradientType=0);
+    background-color: #e9e9e9;
+    color: #1b8ab9;*/
+}
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a.butt_rec {
+    letter-spacing: 1px;
+    width: 90px;
+    padding: 9px 15px;
+    background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
+    border: none;
+}
+
+
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
 	.common-form fieldset.mgrd input[type="radio"]{margin: 0px;}
@@ -820,9 +884,9 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0;
         padding-right: 0;
     }
-    .custom-right {
+    /*.custom-right {
         margin-left: 8%;
-    }
+    }*/
     .profile-boxProfilebuisness-avatarLink2 {
         margin: 15px 0 0 5px;
           height: 60px !important;
@@ -871,6 +935,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
+    .profile-box-art .right-menu-jr .flw_msg_btn ul li {margin-right: 34px;}
 	.pro-fw li {width: 25% !important;}
 	.middle-part.container {
         padding: 40px 0 0px;
@@ -1005,6 +1070,8 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
         float: left;
         margin-bottom: 15px;
+         margin-top: 15px;
+         border-top: 1px solid #d9d9d9;
     }
 	.profile-box-art .right-side-menu {
         margin-left: 0px;

@@ -806,7 +806,6 @@ label.error {
 
 /**---------- end model ---------------**/
 
-
 /*** freelance main page  ***/
 .main_frlancer{
     float: left;
@@ -1068,17 +1067,11 @@ label.cameraButton {
 .bg-images.no-cover-upload{
     background:#fff;
     border-bottom:1px solid #d9d9d9;
-    /* IE10+ */ 
     background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Mozilla Firefox */ 
     background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Opera */ 
     background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* Webkit (Safari/Chrome 10) */ 
     background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(30, #FCFCFF), color-stop(100, #d5ebfd));
-    /* Webkit (Chrome 11+) */ 
-    background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
-    /* W3C Markup */ 
+    background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%); 
     background-image: radial-gradient(ellipse farthest-corner at center, #FCFCFF 30%, #d5ebfd 100%);
 }
 .banner-box{border-bottom:1px solid #d9d9d9;}
@@ -1387,7 +1380,6 @@ body.blog{height:auto;}
 	word-wrap:break-word;
 }
 .msg_right{position: relative;}
-
 .chat .chat-header {
     background-color: white;
     padding-left: 14px;
@@ -1639,25 +1631,7 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .day-text2{font-size: 11px!important;}
 
 /*** end chat ***/
-/***  all profile  ***/
 
-
-/*** end all profile  ***/
-/***  business and art css  ***/
-
-
-/***  end business and art css  ***/
-/***  only business css  ***/
-
-
-
-/***  end only business css  ***/
-/***  only art css  ***/
-
-/***  end only art css  ***/
-/***  style main css  ***/
-
-/*** end style main css  ***/
 /***  Change Password  ***/
 .change-password {
     padding: 80px 0;
@@ -1713,19 +1687,14 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .user-section-free-up {
     height: 38%;
 }
-
 ::-webkit-input-placeholder {
-    color: #999;
-   
+    color: #999; 
 }
 :-ms-input-placeholder {
     color: #999;
-   
 }
-
 input:-moz-placeholder {
     color: #999;
-   
 }
 #user_search:focus + #add_search{color: #1b8ab9;}
 

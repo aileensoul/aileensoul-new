@@ -172,10 +172,7 @@ $( "#searchplace1" ).autocomplete({
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-//                    html = '<img src="' + resp + '" />';
-//                    if (html) {
-//                        window.location.reload();
-//                    }
+
                   if (data) {
                     $("#row2").html(data);
                     document.getElementById('row2').style.display = "block";
@@ -388,7 +385,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                         },
 
                 },
-
+                 submitHandler: profile_pic
                 });
                    });
  
@@ -494,3 +491,31 @@ function save_candidate(pagenum) {
     });
 }
 //AJAX DATA LOAD BY LAZZY LOADER END
+
+//UPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        
+        var formData = new FormData($("#userimage")[0]);
+        $.ajax({
+          
+            url: base_url + "recruiter/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                $('#preview').prop('src', '#');
+                 $('#preview').hide();
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UPLOAD PROFILE PIC END

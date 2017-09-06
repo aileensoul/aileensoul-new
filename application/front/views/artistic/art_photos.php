@@ -56,7 +56,11 @@
                                        <?php foreach ($databus as $data) {
                                           ?>
                                        <li>
-                                          <div class="pht_ph_dash">                                                      <img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor"/>
+                                          <div class="pht_ph_dash"> 
+
+                                           <!-- <img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor"/> -->
+
+                                            <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $data['image_name']; ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                           </div>
                                        </li>
                                        <?php
@@ -121,16 +125,15 @@
                                        <div class="mySlides">
                                           <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                           <div class="slider_img_p">
-                                             <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>">
+
+                                             <img src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $artdata['image_name']; ?>">
+
+                                             <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>"> -->
                                           </div>
-                                          
-                                                                                                     ?>
                                           <div class="likeduserlistimg<?php echo $artdata['image_id']; ?>">
                                             
                                           </div>
-                                          <?php
-                                            
-                                                 ?>
+                                         
                                           <div class="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" style="display:none">
                                              <?php
                                                 $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');

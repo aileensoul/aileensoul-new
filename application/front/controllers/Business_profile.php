@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -840,7 +841,7 @@ class Business_profile extends MY_Controller {
 
         foreach ($followerdata as $fdata) {
 
-            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4,'business_profile.status' => '1');
+            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => '1');
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $business_userid = $this->data['business_data'][0]['user_id'];
@@ -1347,7 +1348,7 @@ class Business_profile extends MY_Controller {
                         /* RESIZE */
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        
+
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
@@ -3635,8 +3636,8 @@ class Business_profile extends MY_Controller {
         $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $slugid = $artdata[0]['business_slug'];
         if ($id == $slug_id || $id == '') {
-            
-            $contition_array = array('user_id' => $userid, 'status'=> 1);
+
+            $contition_array = array('user_id' => $userid, 'status' => 1);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'follow';
@@ -3647,11 +3648,11 @@ class Business_profile extends MY_Controller {
             $limit = $perpage;
             $offset = $start;
 
-            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4,'business_profile.status' => 1 );
+            $contition_array = array('follow_to' => $businessdata1[0]['business_profile_id'], 'follow_status' => 1, 'follow_type' => 2, 'business_profile.business_step' => 4, 'business_profile.status' => 1);
             $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str, $groupby = '');
             $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-            
+
             $contition_array = array('business_slug' => $id, 'business_step' => 4, 'status' => 1);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3659,7 +3660,7 @@ class Business_profile extends MY_Controller {
             $join_str[0]['join_table_id'] = 'follow.follow_to';
             $join_str[0]['from_table_id'] = 'business_profile.business_profile_id';
             $join_str[0]['join_type'] = '';
-            
+
             $limit = $perpage;
             $offset = $start;
 
@@ -3675,7 +3676,7 @@ class Business_profile extends MY_Controller {
         $return_html .= '<input type="hidden" class="total_record" value="' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
         if (count($userlist1) > 0) {
-            
+
             foreach ($userlist as $user) {
                 $return_html .= '<div class = "job-contact-frnd" id = "removefollow' . $user['follow_to'] . '">
     <div class = "profile-job-post-detail clearfix">
@@ -4337,7 +4338,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
+                $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '"" >';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -4897,7 +4898,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -5059,7 +5060,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -5922,7 +5923,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6078,7 +6079,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6239,7 +6240,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "imgshowcommenttwo' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6412,7 +6413,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 $cmtinsert .= '</div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
             $cmtinsert .= '</div>';
 
             $cmtinsert .= '<div class="comment-details" id= "imgshowcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -6945,7 +6946,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$company_slug.'"><b>' . $company_name . '</b></a>';
+                $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $company_slug . '"><b>' . $company_name . '</b></a>';
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-details" id= "imgshowcomment' . $bus_comment['post_image_comment_id'] . '"" >';
@@ -7102,7 +7103,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $cmtinsert .= '</div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $company_name . '</b></a>';
+                $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $company_name . '</b></a>';
                 $cmtinsert .= '</div>';
 
                 $cmtinsert .= '<div class="comment-details" id= "imgshowcommenttwo' . $bus_comment['post_image_comment_id'] . '">';
@@ -7263,7 +7264,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
                 $fourdata .= '</div><div class="comment-name"><b>';
-                $fourdata .= '<a href="'. base_url().'business-profile/dashboard/'.$companyslug.'">' . ucfirst($companyname) . '</br></b></a></div>';
+                $fourdata .= '<a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '">' . ucfirst($companyname) . '</br></b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['business_profile_post_comment_id'] . '"  style="display:block;">';
@@ -7397,7 +7398,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $fourdata .= '</div>';
                 }
-                $fourdata .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                $fourdata .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>';
                 $fourdata .= '' . ucfirst($companyname) . '</br>';
                 $fourdata .= '</b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
@@ -7517,7 +7518,7 @@ class Business_profile extends MY_Controller {
 
                     $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 }
-                $fourdata .= '</div><div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                $fourdata .= '</div><div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>';
                 $fourdata .= '' . ucfirst($companyname) . '</br></b></a></div>';
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['business_profile_post_comment_id'] . '">';
                 $fourdata .= '' . $this->common->make_links($rowdata['comments']) . '</div>';
@@ -7661,7 +7662,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id="showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -7847,7 +7848,7 @@ class Business_profile extends MY_Controller {
 
                 $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
             }
-            $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . ucfirst($company_name) . '</b></a>';
+            $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . ucfirst($company_name) . '</b></a>';
             $cmtinsert .= '</div>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8000,7 +8001,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
+                $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '"" >';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8147,7 +8148,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt=""></div>';
                 }
-                $cmtinsert .= '<div class="comment-name"><a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>' . $companyname . '</b></a>';
+                $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id="showcommenttwo' . $business_profile['business_profile_post_comment_id'] . '">';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
@@ -8294,7 +8295,7 @@ class Business_profile extends MY_Controller {
                     $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     $mulimgfour .= '</div>';
                 }
-                $mulimgfour .= '<div class="comment-name"><a href="'.base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
+                $mulimgfour .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>';
                 $mulimgfour .= '' . ucfirst($companyname) . '</br></b></a></div>';
                 $mulimgfour .= '<div class="comment-details" id="imgshowcommenttwo' . $rowdata['post_image_comment_id'] . '" style="display: block;">';
 
@@ -9389,15 +9390,15 @@ class Business_profile extends MY_Controller {
 //            $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
 //            $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str = '', $groupby = '');
 //            $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
-            
+
             $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2, 'business_profile.status' => 1);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
-            
+
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
             $join_str[0]['join_type'] = '';
-            
+
             $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str, $groupby = '');
             $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
@@ -9410,12 +9411,12 @@ class Business_profile extends MY_Controller {
 
             $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2, 'business_profile.status' => 1);
             $search_condition = "(contact_to_id = '$busuid' OR contact_from_id = '$busuid')";
-            
+
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'contact_person.contact_from_id';
             $join_str[0]['join_type'] = '';
-            
+
             $unique_user = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit, $offset, $join_str, $groupby = '');
             $unique_user1 = $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
         }
@@ -10098,7 +10099,7 @@ No Contacts Available.
 <div id = "editpostbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 
 
-<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" tabindex="'.$row['business_profile_post_id'].'" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
+<input type = "text" class="productpostname" id = "editpostname' . $row['business_profile_post_id'] . '" name = "editpostname" placeholder = "Product Name" value = "' . $row['product_name'] . '" tabindex="' . $row['business_profile_post_id'] . '" onKeyDown = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onKeyup = check_lengthedit(' . $row['business_profile_post_id'] . ');
 onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 >';
@@ -10126,7 +10127,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyatii' . $row['business_profile_post_id'] . '" style = "display:none;">
 ' . $row['product_description'] . '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="'.($row['business_profile_post_id'] + 1).'" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($row['business_profile_post_id'] + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
 </div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
@@ -10168,7 +10169,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 //</div>
 //</a>
 //</div>';
-                             
+
                             $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class = "pdf_img">
     <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
@@ -10521,7 +10522,7 @@ Your browser does not support the audio tag.
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
                             }
                             $return_html .= '</div>
-<div class = "comment-name"><a href="'. base_url().'business-profile/dashboard/'.$slugname1.'">
+<div class = "comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $slugname1 . '">
 <b title = "' . $companyname . '">';
                             $return_html .= $companyname;
                             $return_html .= '</br>';
@@ -10693,359 +10694,394 @@ Your browser does not support the audio tag.
 // return html        
     }
 
+    /*    public function business_home_three_user_list() {
+
+      $userid = $this->session->userdata('aileenuser');
+      $user_name = $this->session->userdata('user_name');
+
+      // GET BUSINESS DATA
+      $contition_array = array('user_id' => $userid, 'status' => '1');
+      $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, profile_background, industriyal, city, state, other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      $business_profile_id = $businessdata[0]['business_profile_id'];
+
+      // GET USER LIST IN LEFT SIDE
+      $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+      $userlist = $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      // GET INDUSTRIAL WISE DATA
+      $industriyal = $businessdata[0]['industriyal'];
+      foreach ($userlist as $rowcategory) {
+
+      if ($industriyal == $rowcategory['industriyal']) {
+      $userlistcategory[] = $rowcategory;
+      }
+      }
+      $userlistview1 = $userlistcategory;
+      // GET INDUSTRIAL WISE DATA
+      // GET CITY WISE DATA
+      $businessregcity = $businessdata[0]['city'];
+
+      $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'business_step' => 4);
+      $userlist2 = $this->data['userlist2'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      foreach ($userlist2 as $rowcity) {
+      if ($businessregcity == $rowcity['city']) {
+      $userlistcity[] = $rowcity;
+      }
+      }
+      $userlistview2 = $userlistcity;
+      // GET CITY WISE DATA
+      // GET STATE WISE DATA
+      $businessregstate = $businessdata[0]['state'];
+      $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'city != ' => $businessregcity, 'business_step' => 4);
+      $userlist3 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      foreach ($userlist3 as $rowstate) {
+      if ($businessregstate == $rowstate['state']) {
+      $userliststate[] = $rowstate;
+      }
+      }
+      $userlistview3 = $userliststate;
+      // GET STATE WISE DATA
+      // GET 3 USER
+      $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'city != ' => $businessregcity, 'state != ' => $businessregstate, 'business_step' => 4);
+      $userlastview = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+      $userlistview4 = $userlastview;
+
+      $return_html = '';
+      $return_html .= '<ul>';
+      if ($userlistview1 > 0) {
+      foreach ($userlistview1 as $userlist) {
+      $userid = $this->session->userdata('aileenuser');
+      $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+      $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
+      $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      if (!$businessfollow) {
+
+      $return_html .= '<li class = "follow_box_ul_li" id = "fad' . $userlist['business_profile_id'] . '">
+      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
+      <div class = " col-md-12 follow_left_box_main">
+      <div class = "post-design-pro-img_follow">';
+      if ($userlist['business_user_image']) {
+
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+      if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+      } else {
+      $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+      }
+
+      $return_html .= '</a>';
+      } else {
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+      }
+      $return_html .= '</div>
+      <div class = "post-design-name_follow fl">
+      <ul>
+      <li>
+      <div class = "post-design-product_follow">';
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      </a>
+      </div>
+      </li>';
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $return_html .= '<li>
+      <div class = "post-design-product_follow_main" style = "display:block;">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <p>';
+      if ($category) {
+      $return_html .= $category;
+      } else {
+      $return_html .= $userlist['other_industrial'];
+      }
+
+      $return_html .= '</p>
+      </a>
+      </div>
+      </li>
+      </ul>
+      </div>
+      <div class = "follow_left_box_main_btn">';
+      $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      </button>
+      </div>
+      </div>
+      <span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      <i class = "fa fa-times" aria-hidden = "true">
+      </i>
+      </span>
+      </div>
+      </div></div></li>';
+      }
+      }
+      }
+      if ($userlistview2 > 0) {
+      foreach ($userlistview2 as $userlist) {
+      $userid = $this->session->userdata('aileenuser');
+      $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
+      $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+      if (!$businessfollow) {
+      $return_html .= '<li class = "follow_box_ul_li" id = "fad' . $userlist['business_profile_id'] . '">
+      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
+      <div class = "col-md-12 follow_left_box_main">
+      <div class = "post-design-pro-img_follow">';
+      if ($userlist['business_user_image']) {
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+      if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+      } else {
+
+      $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+      }
+
+      $return_html .= '</a>';
+      } else {
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+      }
+      $return_html .= '</div>';
+      $return_html .= '<div class = "post-design-name_follow fl">
+      <ul>
+      <li>
+      <div class = "post-design-product_follow">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      </a>
+      </div>
+      </li>';
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $return_html .= '<li>
+      <div class = "post-design-product_follow_main" style = "display:block;">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <p>';
+      if ($category) {
+      $return_html .= $category;
+      } else {
+      $return_html .= $userlist['other_industrial'];
+      }
+
+      $return_html .= '</p>
+      </a>
+      </div>
+      </li>
+      </ul>
+      </div>
+      <div class = "follow_left_box_main_btn">
+      <div class = "fr' . $userlist['business_profile_id'] . '">
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      </button>
+      </div>
+      </div>
+      <span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      <i class = "fa fa-times" aria-hidden = "true">
+      </i>
+      </span>
+      </div>
+      </div></div></li>';
+      }
+      }
+      }
+      if ($userlistview3 > 0) {
+      foreach ($userlistview3 as $userlist) {
+      $userid = $this->session->userdata('aileenuser');
+      $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
+      $buisnessfollow = $this->data['buisnessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+      if (!$buisnessfollow) {
+
+      $return_html .= '<li class = "follow_box_ul_li" id = "fad' . $userlist['business_profile_id'] . '">
+      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
+      <div class = "col-md-12 follow_left_box_main">
+      <div class = "post-design-pro-img_follow">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">';
+      if ($userlist['business_user_image'] != '') {
+
+      if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+      } else {
+
+      $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+      }
+      } else {
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+      }
+      $return_html .= '</a>
+      </div>
+      <div class = "post-design-name_follow fl">
+      <ul>
+      <li>
+      <div class = "post-design-product_follow">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
+      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      </a>
+      </div>
+      </li>';
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $return_html .= '<li>
+      <div class = "post-design-product_follow_main" style = "display:block;">
+      <a><p>';
+      if ($category) {
+      $return_html .= $category;
+      } else {
+      $return_html .= $userlist['other_industrial'];
+      }
+      $return_html .= '</p>
+      </a>
+      </div>
+      </li>
+      </ul>
+      </div>
+      <div class = "follow_left_box_main_btn">
+      <div class = "fr' . $userlist['business_profile_id'] . '">
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      </button>
+      </div>
+      </div>
+      <span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      <i class = "fa fa-times" aria-hidden = "true">
+      </i>
+      </span>
+      </div>
+      </div></div></li>';
+      }
+      }
+      }
+      if ($userlistview4 > 0) {
+      foreach ($userlistview4 as $userlist) {
+      $userid = $this->session->userdata('aileenuser');
+      $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $contition_array = array('follow_to' => $userlist['business_proifle_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
+      $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      if (!$businessfollow) {
+
+      $return_html .= '<li class = "follow_box_ul_li" id = "fad' . $userlist['business_profile_id'] . '">
+      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
+      <div class = " col-md-12 follow_left_box_main">
+      <div class = "post-design-pro-img_follow">';
+      if ($userlist['business_user_image']) {
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+      if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+      } else {
+      $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+      }
+
+      $return_html .= '</a>';
+      } else {
+      $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+
+
+      $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+      }
+      $return_html .= '</div>
+      <div class = "post-design-name_follow fl">
+      <ul>
+      <li>
+      <div class = "post-design-product_follow">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
+      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      </a>
+      </div>
+      </li>';
+      $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+      $return_html .= '<li>
+      <div class = "post-design-product_follow_main" style = "display:block;">
+      <a><p>';
+      if ($category) {
+      $return_html .= $category;
+      } else {
+      $return_html .= $userlist['other_industrial'];
+      }
+
+      $return_html .= '</p>
+      </a>
+      </div>
+      </li>
+      </ul>
+      </div>
+      <div class = "follow_left_box_main_btn">
+      <div class = "fr' . $userlist['business_profile_id'] . '">
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      </button>
+      </div>
+      </div>
+      <span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      <i class = "fa fa-times" aria-hidden = "true">
+      </i>
+      </span>
+      </div>
+      </div></div></li>';
+      }
+      }
+      }
+
+      $return_html .= '</ul>';
+
+
+      echo $return_html;
+      }
+     */
+
+// ajax function start 
+
     public function business_home_three_user_list() {
 
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
-
-// GET BUSINESS DATA
+        
+        // GET USER BUSINESS DATA START
         $contition_array = array('user_id' => $userid, 'status' => '1');
-        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, profile_background, industriyal, city, state, other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_profile_id = $businessdata[0]['business_profile_id'];
-
-// GET USER LIST IN LEFT SIDE
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
-        $userlist = $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-// GET INDUSTRIAL WISE DATA
         $industriyal = $businessdata[0]['industriyal'];
-        foreach ($userlist as $rowcategory) {
+        $city = $businessdata[0]['city'];
+        $state = $businessdata[0]['state'];
+        $other_industrial = $businessdata[0]['other_industrial'];
+        $business_type = $businessdata[0]['business_type'];
+        // GET USER BUSINESS DATA END
+        
+        // GET BUSINESS USER FOLLOWING LIST START
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_id) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
+        
+        $follow_list = $followdata[0]['follow_list'];
+        // GET BUSINESS USER FOLLOWING LIST END
+        
+        
+        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $search_condition = "((business_type = '$business_type') OR (industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list')";
 
-            if ($industriyal == $rowcategory['industriyal']) {
-                $userlistcategory[] = $rowcategory;
-            }
-        }
-        $userlistview1 = $userlistcategory;
-// GET INDUSTRIAL WISE DATA
-// GET CITY WISE DATA
-        $businessregcity = $businessdata[0]['city'];
+        $userlist = $this->common->select_data_by_search('business_profile1', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = '', $orderby = 'CASE WHEN (industriyal = 82) THEN 1 WHEN (city = 783) THEN 2 WHEN (state = 12) THEN 3 END', $limit = '3', $offset = '', $join_str_contact =array(), $groupby = '');
 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'business_step' => 4);
-        $userlist2 = $this->data['userlist2'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        foreach ($userlist2 as $rowcity) {
-            if ($businessregcity == $rowcity['city']) {
-                $userlistcity[] = $rowcity;
-            }
-        }
-        $userlistview2 = $userlistcity;
-// GET CITY WISE DATA
-// GET STATE WISE DATA
-        $businessregstate = $businessdata[0]['state'];
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'city != ' => $businessregcity, 'business_step' => 4);
-        $userlist3 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        foreach ($userlist3 as $rowstate) {
-            if ($businessregstate == $rowstate['state']) {
-                $userliststate[] = $rowstate;
-            }
-        }
-        $userlistview3 = $userliststate;
-// GET STATE WISE DATA
-// GET 3 USER
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'industriyal != ' => $industriyal, 'city != ' => $businessregcity, 'state != ' => $businessregstate, 'business_step' => 4);
-        $userlastview = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $userlistview4 = $userlastview;
-
-        $return_html = '';
-        $return_html .= '<ul>';
-        if ($userlistview1 > 0) {
-            foreach ($userlistview1 as $userlist) {
-                $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                if (!$businessfollow) {
-
-                    $return_html .= '<li class = "follow_box_ul_li">
-<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
-<div class = " col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
-<div class = "post-design-pro-img_follow">';
-                    if ($userlist['business_user_image']) {
-
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
-                        }
-
-                        $return_html .= '</a>';
-                    } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
-                    }
-                    $return_html .= '</div>
-<div class = "post-design-name_follow fl">
-<ul>
-<li>
-<div class = "post-design-product_follow">';
-                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-<h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
-</a>
-</div>
-</li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                    $return_html .= '<li>
-<div class = "post-design-product_follow_main" style = "display:block;">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-<p>';
-                    if ($category) {
-                        $return_html .= $category;
-                    } else {
-                        $return_html .= $userlist['other_industrial'];
-                    }
-
-                    $return_html .= '</p>
-</a>
-</div>
-</li>
-</ul>
-</div>
-<div class = "follow_left_box_main_btn">';
-                    $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-<button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
-</button>
-</div>
-</div>
-<span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
-<i class = "fa fa-times" aria-hidden = "true">
-</i>
-</span>
-</div>
-</div></div></li>';
-                }
-            }
-        }
-        if ($userlistview2 > 0) {
-            foreach ($userlistview2 as $userlist) {
-                $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                if (!$businessfollow) {
-                    $return_html .= '<li class = "follow_box_ul_li">
-<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
-<div class = "col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
-<div class = "post-design-pro-img_follow">';
-                    if ($userlist['business_user_image']) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
-                        }
-
-                        $return_html .= '</a>';
-                    } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
-                    }
-                    $return_html .= '</div>';
-                    $return_html .= '<div class = "post-design-name_follow fl">
-<ul>
-<li>
-<div class = "post-design-product_follow">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-<h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
-</a>
-</div>
-</li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                    $return_html .= '<li>
-<div class = "post-design-product_follow_main" style = "display:block;">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-<p>';
-                    if ($category) {
-                        $return_html .= $category;
-                    } else {
-                        $return_html .= $userlist['other_industrial'];
-                    }
-
-                    $return_html .= '</p>
-</a>
-</div>
-</li>
-</ul>
-</div>
-<div class = "follow_left_box_main_btn">
-<div class = "fr' . $userlist['business_profile_id'] . '">
-<button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
-</button>
-</div>
-</div>
-<span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
-<i class = "fa fa-times" aria-hidden = "true">
-</i>
-</span>
-</div>
-</div></div></li>';
-                }
-            }
-        }
-        if ($userlistview3 > 0) {
-            foreach ($userlistview3 as $userlist) {
-                $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                $buisnessfollow = $this->data['buisnessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                if (!$buisnessfollow) {
-
-                    $return_html .= '<li class = "follow_box_ul_li">
-<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
-<div class = "col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
-<div class = "post-design-pro-img_follow">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">';
-                    if ($userlist['business_user_image'] != '') {
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
-                        }
-                    } else {
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                    }
-                    $return_html .= '</a>
-</div>
-<div class = "post-design-name_follow fl">
-<ul>
-<li>
-<div class = "post-design-product_follow">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-<h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
-</a>
-</div>
-</li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                    $return_html .= '<li>
-<div class = "post-design-product_follow_main" style = "display:block;">
-<a><p>';
-                    if ($category) {
-                        $return_html .= $category;
-                    } else {
-                        $return_html .= $userlist['other_industrial'];
-                    }
-                    $return_html .= '</p>
-</a>
-</div>
-</li>
-</ul>
-</div>
-<div class = "follow_left_box_main_btn">
-<div class = "fr' . $userlist['business_profile_id'] . '">
-<button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
-</button>
-</div>
-</div>
-<span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
-<i class = "fa fa-times" aria-hidden = "true">
-</i>
-</span>
-</div>
-</div></div></li>';
-                }
-            }
-        }
-        if ($userlistview4 > 0) {
-            foreach ($userlistview4 as $userlist) {
-                $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                $contition_array = array('follow_to' => $userlist['business_proifle_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                if (!$businessfollow) {
-
-                    $return_html .= '<li class = "follow_box_ul_li">
-<div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
-<div class = " col-md-12 follow_left_box_main" id = "fad' . $userlist['business_profile_id'] . '">
-<div class = "post-design-pro-img_follow">';
-                    if ($userlist['business_user_image']) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-
-
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
-                        }
-
-                        $return_html .= '</a>';
-                    } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
-                    }
-                    $return_html .= '</div>
-<div class = "post-design-name_follow fl">
-<ul>
-<li>
-<div class = "post-design-product_follow">
-<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '">
-<h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
-</a>
-</div>
-</li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                    $return_html .= '<li>
-<div class = "post-design-product_follow_main" style = "display:block;">
-<a><p>';
-                    if ($category) {
-                        $return_html .= $category;
-                    } else {
-                        $return_html .= $userlist['other_industrial'];
-                    }
-
-                    $return_html .= '</p>
-</a>
-</div>
-</li>
-</ul>
-</div>
-<div class = "follow_left_box_main_btn">
-<div class = "fr' . $userlist['business_profile_id'] . '">
-<button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
-</button>
-</div>
-</div>
-<span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
-<i class = "fa fa-times" aria-hidden = "true">
-</i>
-</span>
-</div>
-</div></div></li>';
-                }
-            }
-        }
-
-        $return_html .= '</ul>';
-
-
-        echo $return_html;
+        echo '<pre>';
+        print_r($userlist);
+        exit;
     }
-
-// ajax function start 8-7 khyati change start
-
 
     public function bus_photos() {
         $id = $_POST['bus_slug'];
@@ -11498,7 +11534,7 @@ Your browser does not support the audio tag.
 
     public function business_dashboard_post($id = '') {
 // manage post start
-        
+
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -11744,16 +11780,14 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //">
 //                </div></a>
 //        </div>';
-                        
-                         $return_html .= '<div>
+
+                        $return_html .= '<div>
             <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"><div class="pdf_img">
                 <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
                     
                 </div>
             </a>
         </div>';
-                        
-                        
                     } elseif (in_array($ext, $allowesvideo)) {
 //                        $return_html .= '<div>
 //            <video class="video" width="100%" height="350" controls>
@@ -12036,8 +12070,8 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
-                    <a href="'. base_url().'business-profile/dashboard/'.$companyslug.'"><b>';
-                        $return_html .= ''.ucfirst(strtolower($companyname)).'';
+                    <a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>';
+                        $return_html .= '' . ucfirst(strtolower($companyname)) . '';
                         $return_html .= '</br>';
 
                         $return_html .= '</b></a>
