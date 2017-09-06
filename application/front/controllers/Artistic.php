@@ -15303,9 +15303,13 @@ public function get_artistic_name($id=''){
 
                 if (count($artposttwo) == 0) {
                     $uniquedata = $posttwo;
-                } else {
+                } else if(count($posttwo) == 0){
+                    $uniquedata = $artposttwo;
+
+                }else{
                     $uniquedata = array_merge($artposttwo, $posttwo);
                 }
+                
                 $artpost = array_unique($uniquedata, SORT_REGULAR);                
 //echo "<pre>"; print_r($artpost); die();
 
