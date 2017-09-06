@@ -1375,6 +1375,11 @@ footer {
     }
 }
 @media screen and (max-width: 767px) {
+	.logo h2 {
+		padding: 0px 0;
+		font-size: 24px;
+		line-height: 35px;
+	}
 	.header-left-menu ul{padding-bottom: 0px;}
 	.search-mob-block{display:block;}
 	.header2 {top: 42px;}
@@ -1424,6 +1429,9 @@ footer {
         right: 0px !important;
         top: 42px;
     }
+	.header ul {
+		margin: 8px 0px 1px;
+	}
 	.header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-noti{width:27px; height:27px; background-size:100%;}
@@ -1499,7 +1507,7 @@ footer {
         padding-right: 0;
     }
     .bg-search .header2 {
-        margin-top: -6px;
+        margin-top: 0px;
     }
 	.header2 ul li a {
         padding: 9px 10px 8px;
@@ -1529,7 +1537,6 @@ footer {
 	.logo h2 {
         font-size: 20px;
     }
-	.header ul li a{padding-top: 7px!important;}
 	.header ul li.dropdown-user a{padding-top: 10px!important;}
 	#notificationContainer::before {
 		right: 90px;
@@ -1566,6 +1573,7 @@ footer {
     }
 }
 @media screen and (max-width: 360px) {
+	
 	.dropdown-menu {
 		left: inherit !important;
 		right: -6px !important;
@@ -1613,8 +1621,11 @@ footer {
     .logo h2{padding:0; line-height:27px;}
     .alert{float: left;}
 	.logo {
-        padding: 7px 0 0px;
+        padding: 0px ;
     }
+	.header ul li.dropdown-user a {
+		padding-top: 4px !important;
+	}
 }
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
