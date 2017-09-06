@@ -3425,14 +3425,14 @@ public function job_avail_check($userid = " ")
        redirect('job/noavailable');
          } 
     }
+
+public function noavailable() 
+{
+         
+      $this->load->view('job/notavalible', $this->data);  
+}
 // recruiter available chek
    
-     public function noavailable() {
-         
-        $this->load->view('job/notavalible', $this->data);  
-     }
-
-
 //Retrive all data of dergree,stream and university start
       public function ajax_data() {
 
