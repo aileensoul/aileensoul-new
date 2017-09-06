@@ -16,7 +16,7 @@ class Api extends CI_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
-        $message = $directions['message'];
+       $message = $directions['message']; 
         //$this->input->post('message', null);
         //$message = $this->common->make_links($message);
         $message = str_replace('"', '', $message);
@@ -48,10 +48,12 @@ class Api extends CI_Controller {
         $messages = $this->Chat_model->get_messages($timestamp, $userid, $id, $message_from_profile, $message_to_profile, $message_from_profile_id, $message_to_profile_id);
         $i = 0;
         foreach ($messages as $mes) {
-            if (preg_match('/<img/', $mes['message'])) {
-                $messages[$i]['message'] = str_replace("\\", "", $mes['message']);
+            
+            $message = preg_replace( '[^(<br( \/)?>)*|(<br( \/)?>)*$]', '', $mes['message']);
+            if (preg_match('/<img/', $message)) {
+                $messages[$i]['message'] = str_replace("\\", "",$message);
             } else {
-                $messages_new = $this->common->make_links($mes['message']);
+                $messages_new = $this->common->make_links($message);
                 $messages[$i]['message'] = nl2br(htmlspecialchars_decode(htmlentities($messages_new, ENT_QUOTES, 'UTF-8')));
             }
             $i++;
