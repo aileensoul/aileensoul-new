@@ -3763,8 +3763,10 @@ class Recruiter extends MY_Controller {
         $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
 
         $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
-
-        echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
+        
+         $coverpic = '<img  src="' . base_url($this->config->item('rec_bg_main_upload_path') . $this->data['recdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        echo $coverpic;
+        //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }  
 //COVAER PIC END
     // RECRUITER AVAILABLE CHECK START
@@ -3785,4 +3787,81 @@ public function rec_avail_check($userid = " ")
         $this->load->view('recruiter/notavalible', $this->data);  
      }
      
+     // SAVE SEARCH USER START
+    public function save_search_user() { //echo $id; echo $save_id; die();
+         $this->recruiter_apply_check(); 
+
+        $id = $_POST['user_id'];
+
+       // echo $id; die();
+            $save_id = $_POST['save_id'];
+      
+     
+
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to recruiter/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if( $recruiter_deactive)
+        {
+             redirect('recruiter/');
+        }
+     //if user deactive profile then redirect to recruiter/index untill active profile End
+        //echo $id;die();
+        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
+        $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>";print_r($userdata);die();
+
+        if ($userdata) {
+            $data = array(
+                'status' => 0,
+                'modify_date' =>date('Y-m-d H:i:s')
+            );
+
+
+            $updatedata = $this->common->update_data($data, 'save', 'save_id', $save_id);
+
+            if ($updatedata) {
+
+                $saveuser = 'Saved';
+                echo $saveuser;
+            }
+        } else {
+
+
+        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => 0, 'save_type' => 1);
+        $user_data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        if($user_data){
+
+            if ($user_data) {
+
+                $saveuser = 'Saved';
+                echo $saveuser;
+            }
+        }else{
+
+            $data = array(
+                'from_id' => $userid,
+                'to_id' => $id,
+                'status' => 0,
+                'save_type' => 1,
+                'created_date'=>date('Y-m-d H:i:s'),
+                'modify_date' =>date('Y-m-d H:i:s')
+            );
+
+            $insert_id = $this->common->insert_data($data, 'save');
+
+
+            if ($insert_id) {
+
+                $saveuser = 'Saved';
+                echo $saveuser;
+            }
+          }
+        }
+    }
+   // SAVE SEARCH USER END  
 }
