@@ -1405,9 +1405,9 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-details .post_title {
         width: 50% !important;
     }
-	ul.current-user {
+	/*ul.current-user {
         float: none;
-    }
+    }*/
 	.flw_msg_btn ul li a{margin-top:0;}
     .left_side_box_img{width:100%; text-align:center;}
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
@@ -1603,7 +1603,7 @@ label.cameraButton input[accept*="camera"] {
 	.right-side-menu {
         padding-left: 20%;
     }
-	.profile-box-art .right-menu-jr .pro-fw{width: 100%;}
+	.profile-box-art .right-menu-jr .pro-fw{width: 30%;}
 	.profile-box-art .right-menu-jr .pro-fw li {
 		width: 33.3% !important;
 		padding-right: 0px !important;
@@ -1624,9 +1624,12 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0 !important;
     }
 	.art-side-menu .flw_msg_btn {
-        width: 100%;
+        width: 70%;
         text-align: center;
-        padding: 10px 0;
+        padding: 0px 0;
+    }
+    .art-side-menu .flw_msg_btn ul li{
+        width: 45% !important; margin-right: 10px;
     }
     .art-side-menu ul {
         display: inline-block;
