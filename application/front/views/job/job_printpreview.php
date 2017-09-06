@@ -774,7 +774,7 @@
                                           $i++;
                                           }//For loop end
                                           ?> 
-                                       <div class="tab pagi_exp" style="">
+                                       <div class="tab pagi_exp" onload="openCity(event, 'gra1')">
                                           <?php   if (count($job_graduation) > 1) 
                                              { 
                                              ?>
@@ -1286,7 +1286,7 @@
                                        
                                            foreach ($job_work as $work) {
                                                ?>
-                                    <div id="work<?php echo $i; ?>" class="tabcontent data_exp">
+                                    <div id="work<?php echo $i; ?>" class="tabcontent1 data_exp">
                                        <div class="profile-job-profile-menu" id="job_workexp">
                                           <ul class="clearfix job_paddtop">
                                              <?php
@@ -1416,17 +1416,17 @@
                                     <!--khyati chnages 22-5 start--> 
                                     <?php if ($job_work[0]['experience'] != "Fresher") {
                                        ?>                                  
-                                    <div class="tab pagi_exp">
+                                    <div class="tab pagi_exp" onload="opengrad(event, 'work6')">
                                        <?php if (count($job_work) > 1) { ?>   
-                                       <button class="tablinks" onclick="openCity(event, 'work6')">1</button>
+                                       <button class="tablinks1" onclick="opengrad(event, 'work6')">1</button>
                                        <?php } if (count($job_work) >= 2) { ?>
-                                       <button class="tablinks" onclick="openCity(event, 'work7')">2</button>
+                                       <button class="tablinks1" onclick="opengrad(event, 'work7')">2</button>
                                        <?php } if (count($job_work) >= 3) { ?>
-                                       <button class="tablinks" onclick="openCity(event, 'work8')">3</button>
+                                       <button class="tablinks1" onclick="opengrad(event, 'work8')">3</button>
                                        <?php } if (count($job_work) >= 4) { ?>
-                                       <button class="tablinks" onclick="openCity(event, 'work9')">4</button>
+                                       <button class="tablinks1" onclick="opengrad(event, 'work9')">4</button>
                                        <?php } if (count($job_work) >= 5) { ?>
-                                       <button class="tablinks" onclick="openCity(event, 'work10')">5</button>
+                                       <button class="tablinks1" onclick="opengrad(event, 'work10')">5</button>
                                        <?php } ?>
                                     </div>
                                     <?php } ?>
