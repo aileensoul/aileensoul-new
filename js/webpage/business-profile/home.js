@@ -848,7 +848,7 @@ function followuser_two(clicked_id)
 }
 function followclose(clicked_id)
 {
-    $("#fad" + clicked_id).fadeOut(4000)(jQuery);
+    $("#fad" + clicked_id).fadeOut(4000);
 }
 /* FOLLOW USER SCRIPT END */
 
