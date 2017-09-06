@@ -1713,6 +1713,9 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 479px) {
+    .profile-job-details .job_companyname {
+    width: 247px;
+}
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
     }
