@@ -17,6 +17,8 @@ class Blog extends CI_Controller {
         
         if($slug!=''){
 
+        $this->blog_check($slug);
+
         //FOR GETTING ALL DATA
         $condition_array = array('status' => 'publish');
         $this->data['blog_all']  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='id', $order_by='desc', $limit, $offset, $join_str = array());
@@ -190,5 +192,19 @@ public function tagsearch($tag='')
           $this->load->view('blog/index',$this->data);
 }
 //SEARCH BY TAG END
+
+// blog available check start
+public function blog_check($slug = " ") 
+ {
+ 
+   $condition_array = array('blog_slug'=>$slug);
+   $availblog  = $this->common->select_data_by_condition('blog', $condition_array, $data='*', $short_by='', $order_by='', $limit, $offset, $join_str = array(), $groupby = '');
+
+        if (count($availblog) == NULL) 
+        {
+            $this->load->view('blog/notavalible');
+        } 
+ }
+// blog available check start end
 
   }  
