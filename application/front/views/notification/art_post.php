@@ -1,112 +1,119 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title><?php echo $title; ?></title>
 <?php echo $head; ?>
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css'); ?>">
-<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css'); ?>" media="all" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css'); ?>">
-</head>
-    <body>
-    <?php echo $header; ?>
-    <?php echo $art_header2_border; ?>
-     <div class="user-midd-section" id="paddingtop_fixed">
-            <div class="container">
-                <div class="row">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>">
+<link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ;?>" />
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+   </head>
+   <body>
+   <?php echo $header; ?>
+   <?php echo $art_header2_border; ?>
+      <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
+      <div class="container art_container">
+      <div class="">
+      <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+      <div class="left_fixed"> 
+         <?php ?>
+<?php echo $left_artistic; ?>
+          <div class="full-box-module_follow fixed_right_display_none">
+          
+            <div class="common-form">
+               <h3 class="user_list_head">User List</h3>
+               <div class="seeall">
+                  <a href="<?php //echo base_url('artistic/userlist'); ?>">All User</a>
+               </div>
+               <div class="profile-boxProfileCard_follow_mobile  module">     
+               </div>
+             
+            </div>
+         </div>
 
-                    <div class="profile-art-box profile-box-custom col-md-4 animated fadeInLeftBig">
-                        <?php ?>
+         <div class="custom_footer_left fw">
+          <div class="fl">
+            <ul>
+              <li><a href="<?php echo base_url('about_us'); ?>"> About Us </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('blog'); ?>">Blogs</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Terms &amp; Condition </a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="">Privacy Policy</a></li>
+              <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+              <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
 
-                                 <div class="full-box-module">   
-      <div class="profile-boxProfileCard  module">
-                                    <div class="profile-boxProfileCard-cover"> 
-                                            <a class="profile-boxProfileCard-bg u-bgUserColor a-block" href="<?php echo site_url('artistic/art_manage_post'); ?>" tabindex="-1" aria-hidden="true" rel="noopener" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
-                                        <?php if ($artisticdata[0]['profile_background']) { ?>
-                                            <div class="data_img"><img src="<?php echo base_url($this->config->item('art_bg_thumb_upload_path') . $artisticdata[0]['profile_background']); ?>" alt ="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" class="bgImage"  >
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="data_img">
-                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>"  >
-
-                                            </div>                                             <?php } ?>
-                                    </a>
+        </div>
+      </div>
+     </div> 
+      <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
+             
+        <div class="right_side_posrt fl"> 
+         <div class="post-editor col-md-12">
+            <div class="main-text-area col-md-12">
+               <div class="popup-img">
+                  <?php
+                     $userimage = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
+                     $userimageposted = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
+                     ?>
+                     <?php if($artisticdata[0]['art_user_image']){?>
+                      <?php 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
+                                                                $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                <div class= "post-img-div">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+<img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
+                  <?php }?>
+                  <?php }else{
+                    $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+                    ?>
+                          <div class= "post-img-div">
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
+                            </div>
+                  <?php }?>
+               </div>
+               <div id="myBtn"  class="editor-content popup-text">
+                  <span > Post Your Art....</span> 
+                  <div class="padding-left padding_les_left camer_h">
+                     <i class=" fa fa-camera" >
+                     </i> 
+                  </div>
+               </div>
+            </div>
+         </div>
+          <div class="bs-example">
+                                <div class="progress progress-striped" id="progress_div">
+                                    <div class="progress-bar" style="width: 0%;">
+                                        <span class="sr-only">0%</span>
                                     </div>
-                                    <div class="profile-boxProfileCard-content clearfix">
-                                    <div class="left_side_box_img buisness-profile-txext">
-                                        
-                                             <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" href="<?php echo site_url('artistic/art_manage_post'); ?>" title="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" tabindex="-1" aria-hidden="true" rel="noopener">
-                                            <!-- box image start -->
-                                            <?php if ($artisticdata[0]['art_user_image']) { ?>
-                                                <div class="data_img_2">   
-                                                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" class="bgImage"  alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>" >
-                                                </div>
-                                            <?php } else { ?> 
-                                                <div class="data_img_2">
-                                                    <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
-                                                </div>
-                                            <?php } ?>
-                                            <!-- box image end -->
-                                        </a>
-                                    </div>
-                                    <div class="right_left_box_design ">
-                                    <span class="profile-company-name ">
-                                            <a   href="<?php echo site_url('artistic/art_manage_post'); ?>"> <?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?></a>
-                                        </span>
-
-
-                                                  <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
-                                          
-                                        <div class="profile-boxProfile-name">
-                                            <a  href="<?php echo site_url('artistic/art_manage_post'); ?>">
-                                                <?php
-                                                if ($artisticdata[0]['designation']) {
-                                                    echo ucwords($artisticdata[0]['designation']);
-                                                } else {
-                                                    echo "Designation";
-                                                }
-                                                ?>
-                                                  
-
-                                                </a>
-
-
-                                                </div>
-
-
-                                               <ul class=" left_box_menubar">
-                                                <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_savepost') { ?> class="active" <?php } ?>><a class="padding_less_left" title="Dashboard" href="<?php echo base_url('artistic/art_manage_post'); ?>"> Dashboard</a>
-                                            </li>
-
-                                            <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a title="Followers" href="<?php echo base_url('artistic/followers'); ?>">Followers <br>(<?php echo (count($followerdata)); ?>)</a>
-                                            </li>
-
-                                            <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a class="padding_less_right"  title="Following" href="<?php echo base_url('artistic/following'); ?>">Following<br>(<?php echo (count($followingdata)); ?>)</a>
-                                            </li>
-                                          
-                                            </ul>
-                                    </div>
-                                    </div>
-       </div>                             
-    </div>
-    
-                    </div>
-
-
-                    <!-- cover pic end -->
-
-                    <!-- popup start -->
-
-                    <!-- Trigger/Open The Modal -->
-
-
-                    <!-- popup end -->
-                </div>
-                <div class="col-md-7 col-sm-12 col-md-push-4  custom-right-art animated fadeInUp">
-                   
-
-                    <?php
+                                </div>
+         </div>
+                             <div class="art-all-post">
+                             <?php
                     if (count($art_data) > 0) {
                        
                             //  echo '<pre>'; print_r($finalsorting); die();
@@ -119,24 +126,20 @@
 
                             if (!in_array($userid, $likeuserarray) && $artdelete[0]['is_delete'] == '0') {
                                 ?>
+                <div id="<?php echo "removepost" . $art_data[0]['art_post_id']; ?>">
+                   <div class="col-md-12 col-sm-12 post-design-box">
+                         <div class="post_radius_box">
+                              <div class="post-design-top col-md-12" id= "showpost">  
+                                  <div class="post-design-pro-img "> 
+                                   <?php
+                                        $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
 
-
-         <div id="<?php echo "removepost" . $art_data[0]['art_post_id']; ?>">
-             <div class="col-md-12 col-sm-12 post-design-box">
-                 <div class="post_radius_box">
-
-
-                                                                <div class="post-design-top col-md-12" id= "showpost">  
-                                                <div class="post-design-pro-img "> 
-
-                                                    <?php
-                                                    $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id'], 'status' => 1))->row()->art_user_image;
-
-                                                    $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
+                                        $userimageposted = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['posted_user_id']))->row()->art_user_image;
                                                     ?>
 
-                                                    <?php if ($art_data[0]['posted_user_id']) { ?>
-                                                        <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
+                                        <?php if ($art_data[0]['posted_user_id']) { ?>
+
+                                        <a class="post_dot" title="<?php echo ucwords($firstnameposted) . ' ' . ucwords($lastnameposted); ?>" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['posted_user_id']); ?>">
 
                                                 <?php if($userimageposted){?>
                                                 <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
@@ -145,29 +148,25 @@
 <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($artisticdata[0]['art_name']) . ' ' . ucwords($artisticdata[0]['art_lastname']); ?>">
 
                                                 <?php }?>
-                                                        </a>
+                                            </a>
 
-                                                    <?php } else { ?>
-                                                        <a  class="post_dot" title="" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
+                                        <?php } else { ?>
+
+                                          <a  class="post_dot" title="" href="<?php echo base_url('artistic/art_manage_post/' . $art_data[0]['user_id']); ?>">
 
                <?php if($art_userimage){?>
                 <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
                 <?php }else{?>
 
-<img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
-
-                
+                 <img src="<?php echo base_url(NOIMAGE); ?>" alt="<?php echo ucwords($art_data[0]['art_name']) . ' ' . ucwords($art_data[0]['art_lastname']); ?>">
                 <?php }?>
+                 </a>
+         <?php } ?>
+        </div>
+                 <div class="post-design-name fl col-md-10">
+                    <ul>
 
-                                                             </a>
-
-                                                    <?php } ?>
-                                                </div>
-
-
-                                                <div class="post-design-name fl col-md-10">
-                                                    <ul>
-                                                        <?php
+                          <?php
                                                         $firstname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_name;
 
                                                         $lastname = $this->db->get_where('art_reg', array('user_id' => $art_data[0]['user_id']))->row()->art_lastname;
@@ -241,14 +240,11 @@
                                                                        }?> </a>
                                                                 
                                                             </div></li>
-                                                       
+                                                                                                              
+                    </ul>
+                    </div>
 
-                                                       
-
-                                                    </ul> 
-                                                </div>  
-
-                                                <div class="dropdown1">
+                            <div class="dropdown1">
                                                     <a onClick="myFunction(<?php echo $art_data[0]['art_post_id']; ?>)" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
                                                     <div id="<?php echo "myDropdown" . $art_data[0]['art_post_id']; ?>" class="dropdown-content1">
 
@@ -296,7 +292,8 @@
                                                         ?>
                                                     </div>
                                                 </div>
-                                                <div class="post-design-desc ">
+
+                                                   <div class="post-design-desc ">
                                                     <span> 
                                                          <div class="ft-15 t_artd">
                                                             <div id="<?php echo 'editpostdata' . $art_data[0]['art_post_id']; ?>" style="display:block;">
@@ -335,9 +332,9 @@
                                                         </div>      
                                                         <button id="<?php echo "editpostsubmit" . $art_data[0]['art_post_id']; ?>" style="display:none" onClick="edit_postinsert(<?php echo $art_data[0]['art_post_id']; ?>)" class="fr" style="margin-right: 176px; border-radius: 3px;" >Save</button>
                                                     </span></div> 
-                                            </div>
+                              </div>
 
-                         <!-- multiple image code  start-->
+                                                       <!-- multiple image code  start-->
                         <div class="post-design-mid col-md-12" > 
 
                              <div class="images_art_post">
@@ -514,7 +511,7 @@
 
                          <!-- multiple image code  end-->
 
-                         <!-- like comment symbol start -->
+                                                  <!-- like comment symbol start -->
 
                                                 <div class="post-design-like-box col-md-12">
                                                     <div class="post-design-menu">
@@ -598,10 +595,7 @@
                                                 </div>
                      <!-- like comment symbol end -->
 
-
-
-
-                                                                        <?php
+                                                                      <?php
                                                     if ($art_data[0]['art_likes_count'] > 0) {
                                                         ?>
                                                     <div class="likeduserlist<?php echo $art_data[0]['art_post_id'] ?>">
@@ -711,7 +705,9 @@
                                                 </div>
                                                 <!-- like user list end -->
 
-                         <!-- comment start -->
+
+
+                                                                         <!-- comment start -->
 
                          <div class="art-all-comment col-md-12">
 
@@ -913,17 +909,23 @@
 
                          <!-- comment enter box end  -->
 
-                 </div>
-             </div>
-      </div>
+                        </div>
+                    </div>
+                </div>
 
-                <?php }   else if($artdelete[0]['is_delete'] == '1'){?>
+
+
+
+                            <?php } 
+                            else if($artdelete[0]['is_delete'] == '1'){?>
 
                            <div class="text-center rio">
                                 <h4 class="page-heading  product-listing" >Sorry, this content isn't available at the moment.</h4>
                             </div>
 
-                   <?php }  }else {
+                   <?php } ?>
+
+                            <?php } else {
                             ?>
 
 
@@ -934,23 +936,34 @@
 
                         <?php } ?>
 
-         <div class="nofoundpost">
-          </div>
+                             </div>
+                              
+       </div>
+      
+        
 
-                        
-                           
-                    </div>
-                    </section>
-                    <footer>
-<?php echo $footer; ?>
-                    </footer>
-
-
-                    <!-- Bid-modal  -->
-                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
-                        <div class="modal-dialog modal-lm" >
+    </div> 
+    <div class="right_middle_side_posrt animated fadeInRightBig fixed_right_display" id="hideuserlist" style="display: none">
+     
+         <div class="full-box-module_follow" style="margin-top: 0px;">
+            <!-- follower list start  -->  
+            <div class="common-form">
+               <h3 class="user_list_head">User List</h3>
+               <div class="seeall">
+                  <a href="<?php echo base_url('artistic/userlist'); ?>">All User</a>
+               </div>
+               <div class="profile-boxProfileCard_follow  module">     
+               </div>
+               <!-- follower list end  -->
+            </div>
+         </div>
+     
+      </div>
+  <!-- Bid-modal  -->
+                    <div class="modal fade message-box biderror" id="bidmodal-limit" role="dialog">
+                        <div class="modal-dialog modal-lm deactive">
                             <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                                <button type="button" class="modal-close" data-dismiss="modal" id="common-limit">&times;</button>       
                                 <div class="modal-body">
                                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
                                     <span class="mes"></span>
@@ -959,40 +972,153 @@
                         </div>
                     </div>
                     <!-- Model Popup Close -->
-
-                    <!-- Bid-modal-2  -->
-                    <div class="modal fade message-box" id="likeusermodal" role="dialog" >
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                                <div class="modal-body">
-                                    <span class="mes">
-                                    </span>
-                                </div>
-                            </div>
+      <!-- Bid-modal  -->
+      <div class="modal fade message-box biderror" id="bidmodal" role="dialog"  >
+         <div class="modal-dialog modal-lm" >
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes"></span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+      <!-- Bid-modal-2  -->
+      <div class="modal fade message-box" id="likeusermodal" role="dialog" >
+         <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+               <div class="modal-body">
+                  <span class="mes">
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Model Popup Close -->
+       <!-- Bid-modal for this modal appear or not start -->
+            <div class="modal fade message-box" id="post" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" id="post" data-dismiss="modal">&times;</button>       
+                        <div class="modal-body">
+                            <span class="mes">
+                            </span>
                         </div>
                     </div>
-                    <!-- Model Popup Close -->             
-<script src="<?php echo base_url('js/mediaelement-and-player.min.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/fileinput.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/fr.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/js/locales/es.js'); ?>"></script>
-<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+                </div>
+            </div>
+            <div class="modal fade message-box" id="postedit" role="dialog">
+                <div class="modal-dialog modal-lm">
+                    <div class="modal-content">
+                        <button type="button" class="modal-close" id="postedit" data-dismiss="modal">&times;</button>       
+                        <div class="modal-body">
+                            <span class="mes">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bid-modal for this modal appear or not  Popup Close -->
+    <!-- The Modal -->
+         <div id="myModal" class="modal-post">
+            <!-- Modal content -->
+            <div class="modal-content-post">
+               <span class="close1">&times;</span>
+                  <div class="post-editor col-md-12 post-edit-popup" id="close">
+                  <?php echo form_open_multipart(base_url('artistic/art_post_insert/'), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix upload-image-form', 'onsubmit' => "return imgval(event)")); ?>
+                  <div class="main-text-area " >
+                     <div class="popup-img-in "> 
+                     <?php if($artisticdata[0]['art_user_image']){?>
+                   <?php 
+if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image'])) {
+                                                                $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+                                                                ?>
+                                                                <div class="post-img-div">
+                                                                    <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ?>
+                                                                </div> 
+                                                                <?php
+                                                            } else { ?>
+                     <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>"  alt="">
+                     <?php }?>
+                     <?php }else{?>
+                                  <?php 
+                         $a = $artisticdata[0]['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $artisticdata[0]['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);?>
+                            <div class="post-img-div">
+                            <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
+                            </div>
+                     <?php }?>
+                     </div>
+                     <div id="myBtn"  class="editor-content col-md-10 popup-text" >
+                        <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
+                        <div class="fifty_val">                       
+                           <input size=1 class="text_num" tabindex="-500" value=50 name=text_num readonly> 
+                        </div>
+                      <div class="padding-left padding_les_left camer_h">
+                        <i class=" fa fa-camera" >
+                        </i> 
+                     </div>
+                       </div>
+                  </div>
+                  <div class="row"></div>
+                  <div  id="text"  class="editor-content col-md-12 popup-textarea" >
+                     <textarea id="test-upload_des" name="product_desc" class="description" placeholder="Enter Description"></textarea>
+                     <output id="list"></output>
+                  </div>
+                  <div class="popup-social-icon">
+                     <ul class="editor-header">
+                        <li>
+                           <div class="col-md-12">
+                              <div class="form-group">
+                                 <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="visibility:hidden;">
+                              </div>
+                           </div>
+                           <label for="file-1">
+                           <i class=" fa fa-camera upload_icon"  > Photo</i>
+                           <i class=" fa fa-video-camera upload_icon"  > Video </i>
+                           <i class="fa fa-music upload_icon "  > Audio </i>
+                           <i class=" fa fa-file-pdf-o upload_icon"  > PDF </i>
+                           </label>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="fr">
+                     <button type="submit"  value="Submit">Post</button>    
+                  </div>
+                  <?php echo form_close(); ?>
+               </div>
+            </div>
+         </div>
+<footer>
+<?php echo $footer; ?>
+</footer>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script type="text/javascript">
-var base_url = '<?php echo base_url(); ?>';      
-var data = <?php echo json_encode($demo); ?>;
-var data1 = <?php echo json_encode($de); ?>;
+var base_url = '<?php echo base_url(); ?>';   
+var data= <?php echo json_encode($demo); ?>;
+var data1 = <?php echo json_encode($city_data); ?>;
+var complex = <?php echo json_encode($selectdata); ?>;
+var textarea = document.getElementById("textarea");
 </script>
-<script type="text/javascript" src="<?php echo base_url('js/webpage/notification/artistic_post.js'); ?>"></script>
+
+
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/notification-home.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/search.js?ver='.time()); ?>"></script>
+
 </body>
 </html>
-
-                    
