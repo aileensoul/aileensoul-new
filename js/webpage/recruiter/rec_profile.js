@@ -1,119 +1,26 @@
 
-$(function() {
-    // alert('hi');
-$( "#tags" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags").val(ui.item.label);
-    }
-});
-});
-   
-$(function() {
-    // alert('hi');
-$( "#searchplace" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace").val(ui.item.label);
-    }
-});
-});
- 
-$(function() {
-    // alert('hi');
-$( "#tags1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#tags1").val(ui.item.label);
-    }
-});
-});
- 
-$(function() {
-    // alert('hi');
-$( "#searchplace1" ).autocomplete({
-     source: function( request, response ) {
-         var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-         response( $.grep( data1, function( item ){
-             return matcher.test( item.label );
-         }) );
-   },
-    minLength: 1,
-    select: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-        $("#selected-tag").val(ui.item.label);
-        // window.location.href = ui.item.value;
-    }
-    ,
-    focus: function(event, ui) {
-        event.preventDefault();
-        $("#searchplace1").val(ui.item.label);
-    }
-});
-});
+
  
 function checkvalue(){
-   //alert("hi");
-  var searchkeyword=$.trim(document.getElementById('tags').value);
-  var searchplace=$.trim(document.getElementById('searchplace').value);
-  // alert(searchkeyword);
-  // alert(searchplace);
+  
+  var searchkeyword=$.trim(document.getElementById('rec_search_title').value);
+  var searchplace=$.trim(document.getElementById('rec_search_loc').value);
+ 
   if(searchkeyword == "" && searchplace == ""){
-     //alert('Please enter Keyword');
     return false;
   }
 }
  
-                        function check() {
-                            var keyword = $.trim(document.getElementById('tags1').value);
-                            var place = $.trim(document.getElementById('searchplace1').value);
-                            if (keyword == "" && place == "") {
+  function check() 
+  {
+        var keyword = $.trim(document.getElementById('tags1').value);
+        var place = $.trim(document.getElementById('searchplace1').value);
+                  if (keyword == "" && place == "") 
+                  {
                                 return false;
-                            }
-                        }
+                            
+                    }
+  }
                  
 
     function removepopup(id) {
@@ -124,45 +31,20 @@ function checkvalue(){
         $('#bidmodal-2').modal('show');
     }
 
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
 function myFunction() {
    document.getElementById("upload-demo").style.visibility = "hidden";
    document.getElementById("upload-demo-i").style.visibility = "hidden";
    document.getElementById('message1').style.display = "block";
 
-   //setTimeout(function () { location.reload(1); }, 5000);
+ 
    
    }
 
-  // <?php //echo "hi"; ?>
+ 
 
     function showDiv() {
-        //alert(hi);
+      
         document.getElementById('row1').style.display = "block";
         document.getElementById('row2').style.display = "none";
 
@@ -217,9 +99,7 @@ function myFunction() {
 
 //aarati code start
     $('#upload').on('change', function () {
-           //alert("hello");
-
-
+         
         var reader = new FileReader();
         reader.onload = function (e) {
             $uploadCrop.croppie('bind', {
