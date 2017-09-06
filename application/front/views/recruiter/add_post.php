@@ -171,7 +171,7 @@
                                     </fieldset>
 
                                     <fieldset class="rec_check form-group full-width">
-                                        <input  type="checkbox" tabindex="9" name="fresher" value="1"> Fresher can also apply..!
+                                        <input  type="checkbox" tabindex="9" id="fresher_nme" name="fresher" value="1"><label for="fresher_nme">Fresher can also apply..!</label> 
                                     </fieldset>
 
                                     <fieldset class="" <?php if ($industry) { ?> class="error-msg" <?php } ?> class="two-select-box"> 

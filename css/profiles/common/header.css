@@ -1409,7 +1409,120 @@ footer {
 	.search-mob-block {
         display: block;
     }
+	.mob-width {
+        width: 100%;
+        position: absolute;
+    }
+	.logo{padding:0;}
+	.logo h2{padding:2px 0;}
+	.main-menu-right {
+        padding-top: 0px;
+    }
+	.dropdown-menu {
+        left: inherit !important;
+        right: 0px !important;
+        top: 42px;
+    }
+	.header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
+    .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
+    .header ul li a .img-noti{width:27px; height:27px; background-size:100%;}
+	.mob-block {
+        display: block;
+    }
+    .mob-none {
+        display: none;
+    }
+	.pl0-xs {
+        padding-left: 0;
+    }
+	.mob-clear {
+        clear: both;
+    }
+	#notificationLink span {
+        top: 3px !important;
+    }
+	.header-left-menu {
+        position: relative;
+        width: 100%;
+        margin-top: -42px;
+    }
+    .main-menu-right ul li#notification_li {
+        position: inherit !important;
+    }
+    .main-menu-right ul li#Inbox_link {
+        position: inherit !important;
+    }
+    #notificationContainer {
+        width:98%;
+        margin-top: 20px;
+        top:27px;
+        right: 7px;
+    }
+    #InboxContainer {
+        width: 100%;
+        margin-top: 10px;
+        top: 26px;
+        right: 0;
+    }
+    #notificationContainer::before {
+    right: 54px;
+    }
+    #InboxContainer::before {
+        right: 166px;
+    }
+	.notifications li {
+        width: 100%;
+    }
+    .notification-database {
+        width: 100%;
+    }
+    .notificationsmsg li {
+        width: 100%;
+    }
+    .dropdown-menu {
+        left: inherit !important;
+        right: 0px !important;
+    }
+	.mob-zindex {
+        position: relative;
+        z-index: 11;
+    }
+	.bg-search .header2 {
+        width: 100%;
+    }
+    .header2 ul li {
+        float: left;
+    }
+    .header2 ul {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .bg-search .header2 {
+        margin-top: -6px;
+    }
+	.header2 ul li a {
+        padding: 9px 10px 8px;
+        line-height: 1;
+    }
+	.header2 ul li {
+        position: inherit;
+    }
+   
+    .header2 .hidden-mob {
+        position: relative;
+        z-index: 99;
+    }
+    #add_contact #addcontactContainer {
+        width: 100%;
+        top: 35px;
+    }
+	.job_con #InboxContainer::before{right: 134px;}
 	
+}
+@media screen and (max-width: 540px) {
+	.h2-smladd{margin-top: 0px;}
+	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
+	.header2 ul li.active a{padding:9px 10px 10px}
 }
 @media screen and (max-width: 479px) {
 	.header ul li a{padding-top: 7px!important;}

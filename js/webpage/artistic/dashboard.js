@@ -1,5 +1,12 @@
  
+ $('body').on("click", "*", function (e) {
+                var classNames = $(e.target).attr("class").toString().split(' ').pop();
+                if (classNames != 'fa-ellipsis-v') {
+                    $('div[id^=myDropdown]').hide().removeClass('show');
+                }
+            });
 
+ 
  function check_length(my_form)
             {
                 maxLen = 50;
@@ -1882,12 +1889,7 @@ function likeuserlist(post_id) {
 
  
 
-    $('body').on("click", "*", function (e) {
-                var classNames = $(e.target).attr("class").toString().split(' ').pop();
-                if (classNames != 'fa-ellipsis-v') {
-                    $('div[id^=myDropdown]').hide().removeClass('show');
-                }
-            });
+   
 
 
 
