@@ -709,7 +709,21 @@ label.cameraButton input[accept*="camera"] {
 .flw_msg_btn{margin-top: 8px;}
 .tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
 #univer{background: #1b8ab9; color: white; margin-top: 10px;}
-
+.editable_text {
+    min-height: 40px;
+    background: white;
+    border: 1px solid #cacaca;
+    outline: none;
+    padding: 6.5px 15px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+    resize: none;
+    word-wrap: break-word;
+    word-break: break-word;
+    cursor: text;
+}
 
 
 /***  media query  ***/
