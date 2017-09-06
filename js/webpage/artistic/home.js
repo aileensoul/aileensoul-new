@@ -1,3 +1,7 @@
+ $('#post').on('click', function(){
+        $('#myModal').modal('show');
+    });
+
  $(document).ready(function ()
          {
              /* Uploading Profile BackGround Image */
@@ -1719,9 +1723,7 @@ function insert_comment(clicked_id)
 
 // all popup close close using esc start
 
-$('#post').on('click', function(){
-        $('#myModal').modal('show');
-    });
+
 
     $( document ).on( 'keydown', function ( e ) {
        if ( e.keyCode === 27 ) {
