@@ -137,7 +137,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box {max-width: 430px; position: fixed;}
 .full-box-module {border: 1px solid #d9d9d9; border-radius: 3px; margin-bottom: 10px;}
 .profile-boxProfileCard {border: 11px solid #ffffff; background: #fff; border-radius: 3px;}
-.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none;}
+.profile-boxProfileCard-cover {border: 1px solid #efefef; border-bottom: none; height: 110px;} 
 .profile-boxProfileCard-bg {background-size: 100%; border-radius: 4px 4px 0 0; background-position: 0 50%; width: 100%;}
 .data_img {height: 95px; width: 100%;}
 .data_img img {height: 100%; width: 100%;}
@@ -566,14 +566,14 @@ label.cameraButton input[accept*="camera"] {display: none;}
 .tr_text{display:none;}
 .true_progtree img{display:none;}
 .edit_profile_progress{float:right;}
-.edit_profile_progress{width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin: 15px 0px; padding: 10px 0px 0px;}
+.edit_profile_progress{width: 100%; background-color: white; border:1px solid #d9d9d9; border-radius: 3px; margin:0px; padding: 10px 0px 0px;}
 .progre_bar_text p{color: #000;
 font-size: 13px;
 font-weight: 600;
 text-align: center;}
 .circle-1 {
   width: 175px;
-  margin: 6px 6px 20px;
+  margin: 0px 6px 6px;
   display: inline-block;
   position: relative;
   text-align: center;
@@ -585,11 +585,12 @@ text-align: center;}
     cursor: pointer;
 
 }
+.custom_footer_left{margin-top: 10px;}
 .progre_bar_text{padding: 0px 17px;}
   
 .edit_profile_job{
     position: absolute;
-bottom: 50px;
+bottom: 36px;
 left: 51px;
 
 }
@@ -600,8 +601,8 @@ padding-top: 14px;
 }
 .circle-1 canvas {
   vertical-align: middle;
-  width:175px;
-  height:175px;
+  width:152px;
+  height:152px;
   border:1px solid transparent;
   display:black;
 }
@@ -616,7 +617,7 @@ padding-top: 14px;
 }
 .job_edit_menu{width: 18.5% !important;}
 .profile-box-left .edi_origde .edit_profile_progress{width:100%; float:left;}
-.profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:39px 22px 0;}
+.profile-box-left .edi_origde .progre_bar_text{width:49%; float:left; padding:22px 22px 0;}
 .profile-box-left .edi_origde .count_main_progress{width:185px; float:left;}
 .profile-box-left .edi_origde .count_main_progress .circles{padding:0;}
 .profile-box-left .edi_origde .progre_bar_text p{text-align:left; color:#4c4c4c;}
@@ -1166,6 +1167,7 @@ label.cameraButton input[accept*="camera"] {
 	.mob-progressbar.temp{display:none;}
 }
 @media screen and (max-width: 1199px) {
+         .profile-boxProfileCard-cover{height: auto;}
 	.circle-1 strong{font-size: 27px; top: 31px;}
 	.edit_profile_job{bottom: 32px;}
     .edit_pr_bar .circles{padding-left: 0px;}
@@ -1184,17 +1186,27 @@ label.cameraButton input[accept*="camera"] {
     }
 	.experience_year{margin-right:34px;}
 	.circle-1 canvas{width:175px;}
-    .circle-1{height:175px;}
+    .circle-1{margin: 0px 6px 12px;}
 	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 70px !important;
     }
+    .custom-right{margin-left: 50px;}
+    .profile-box-left .edi_origde .progre_bar_text{ padding: 7px 7px 0;  }
+.profile-box-left .edi_origde .count_main_progress{width: 152px;}
+.circle-1 canvas{width: 118px; height: 118px;}
+.edit_profile_job{font-size: 12px;}
+}
+@media screen and (max-width: 1100px){
+.custom-right{margin-left: 10px;}
+
 }
 @media screen and (max-width: 1024px){
     .date-dropdowns .year{padding-left: 5px;}
 	.profile-main-rec-box-menu {
         height: 41px;
     }
+    .custom-right{margin-left: 0px;}
 	.profile-main-rec-box-menu li a {
         padding: 10px 15px;
         font-size: 13px;
@@ -1231,6 +1243,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-company-name a {
         font-size: 16px;
     }
+
     .left_box_menubar li a {
         padding-bottom: 0 !important;
     }
@@ -1251,6 +1264,7 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0;
         padding-right: 0;
     }
+
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
     .job-menu-profile{margin-top:20px; padding-bottom:10px;}
     .right_left_box_design{padding:9px 12px 12px 12px !important;}
@@ -1751,7 +1765,69 @@ label.cameraButton input[accept*="camera"] {
 	.job_con #InboxContainer::before {
 		right: 136px;
 	}
+    .padd_img { padding-left: 3px !important; padding-top: 4px !important;}
+ .profile-box-art .right-side-menu .pro-fw li a {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+        font-size: 11px;
+        text-align: center;
+    }
+ .profile-main-rec-box-menu li a {
+        padding: 10px 7px;
+    }
+ .profile-box-art .right-side-menu li a {
+        font-size: 14px;
+        font-weight: 500;
+    }
+ #industry option{width:100%;}
+ .hout_noti{font-size: 11px;}
+ .profile-job-details .display_inline{font-size: 10px;}
+    .profile-job-details .job_companyname {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 10px;}
+ .created_date{font-size: 10px;}
+ .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+  width: 42%;
+  font-size: 12px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 58%;
+        font-size: 12px;
+    }
+ .job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+ .profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 1px !important;
+    }
+ .profile-job-details .post_title {
+        width: 50%;
+        font-size: 11px;
+    }
+ .profile-job-details .job_companyname {
+        width: 140px;
+    }
+    .profile-job-details ul li p {
+        font-size: 13px;
+        font-weight: 600;
+        padding-right: 8px;
+        line-height: 10px;padding-left: 4px;
+    }
+ .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {
+        font-size: 12px;
+    }
+ .profile-job-post-detail .profile-job-post-title .button {
+        font-size: 12px;
+        padding: 3px 14px !important;
+    }
+ .right-side-menu {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 320px){
 	
+
+    .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
+ .profile-job-details .post_title{font-size: 9px;}
 }
