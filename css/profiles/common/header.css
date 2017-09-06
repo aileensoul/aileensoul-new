@@ -1305,7 +1305,7 @@ footer {
     background: #1b8ab9;
 }
 #loader{margin: 10px;  margin-bottom: 20px;}
-
+.header-left-menu ul{float: left; width: 100%; padding-bottom: 0px;}
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
@@ -1375,6 +1375,7 @@ footer {
     }
 }
 @media screen and (max-width: 767px) {
+	.header-left-menu ul{padding-bottom: 0px;}
 	.search-mob-block{display:block;}
 	.header2 {top: 42px;}
 	.padd_img {
@@ -1605,12 +1606,22 @@ footer {
 	.job_con #InboxContainer::before {
 		right: 131px;
 	}
+	#acon::before{right: 125px!important;}
+    .header2 ul li a#addcontactLink{padding: 6px 2px !important;}
+	.header2 ul li a#InboxLink{padding: 12px 8px 4px;}
+    #notificationContainer::before{right: 55px;} 
+    .logo h2{padding:0; line-height:27px;}
+    .alert{float: left;}
+	.logo {
+        padding: 7px 0 0px;
+    }
 }
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
 		padding: 9px 9px 3px 0px;
 	}
 	.dropdown2 a{padding: 8px;}
+	.header2 ul li.active a{padding: 9px 0px 9px;}
 }
 
 

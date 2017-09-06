@@ -3918,7 +3918,92 @@ overflow: hidden;
 	.audio_source audio {width: 150px;}
 	.mySlides .post-design-commnet-box .cmy_2 {width: 85%;}
     .post-design-name ul li .post_dot{max-width: 45%:;}
-	
+	.profile-job-post-location-name ul li .follow-li-text {
+        padding: 0px;
+    }
+	.post-design-box .post-design-desc .fr {
+		padding: 3px 6px;
+		font-size: 12px;
+	}
+	.cmy_2 {
+        width: 100%;
+    }
+    .two-images {
+        height: 120px;
+    }
+    .three-image {
+        height: 120px;
+    }
+    .four-image {
+        height: 120px;
+    }
+    .more-image {
+        height: 119px;
+    }
+    .three-image-top {
+        height: 15%;
+    }
+    .post-design-name {
+        padding-right: 0;
+    }
+    .editor-content {
+        width: 77%;
+        padding-left: 0;
+    }
+    .post-edit-popup .editor-content {
+        width: 76%;
+    }
+    .comment-name {
+        width: 78%;
+    }
+    .popup-text textarea::-webkit-input-placeholder {
+        font-size: 10px;
+    }
+	#industry option{width:100%;}
+	.hout_noti{font-size: 11px;}
+	.profile-job-details .display_inline{font-size: 10px;}
+    .profile-job-details .job_companyname {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 10px;}
+	.created_date{font-size: 10px;}
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+		width: 42%;
+		font-size: 12px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 58%;
+        font-size: 12px;
+    }
+	.job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+	.profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 1px !important;
+    }
+	.profile-job-details .post_title {
+        width: 50%;
+        font-size: 11px;
+    }
+	.profile-job-details .job_companyname {
+        width: 140px;
+    }
+    .profile-job-details ul li p {
+        font-size: 13px;
+        font-weight: 600;
+        padding-right: 8px;
+        line-height: 10px;padding-left: 4px;
+    }
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {
+        font-size: 12px;
+    }
+	.profile-job-post-detail .profile-job-post-title .button {
+        font-size: 12px;
+        padding: 3px 14px !important;
+    }
+	.right-side-menu {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 320px){
 	.post-design-name {
@@ -3928,5 +4013,6 @@ overflow: hidden;
 		width: 70%;
 		padding-left: 0;
 	}
+	.profile-job-details .post_title{font-size: 9px;}
 }
 /*media zalak end*/

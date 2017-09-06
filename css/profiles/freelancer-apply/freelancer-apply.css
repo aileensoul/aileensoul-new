@@ -1295,10 +1295,71 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 360px) {
-	
+	.padd_img { padding-left: 3px !important; padding-top: 4px !important;}
+	.profile-job-post-location-name ul li .follow-li-text {
+        padding: 0px;
+    }
+	.profile-box-art .right-side-menu .pro-fw li a {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+        font-size: 11px;
+        text-align: center;
+    }
+	.profile-main-rec-box-menu li a {
+        padding: 10px 7px;
+    }
+	.profile-box-art .right-side-menu li a {
+        font-size: 14px;
+        font-weight: 500;
+    }
+	#industry option{width:100%;}
+	.hout_noti{font-size: 11px;}
+	.profile-job-details .display_inline{font-size: 10px;}
+    .profile-job-details .job_companyname {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 10px;}
+	.created_date{font-size: 10px;}
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+		width: 42%;
+		font-size: 12px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 58%;
+        font-size: 12px;
+    }
+	.job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+	.profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 1px !important;
+    }
+	.profile-job-details .post_title {
+        width: 50%;
+        font-size: 11px;
+    }
+	.profile-job-details .job_companyname {
+        width: 140px;
+    }
+    .profile-job-details ul li p {
+        font-size: 13px;
+        font-weight: 600;
+        padding-right: 8px;
+        line-height: 10px;padding-left: 4px;
+    }
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {
+        font-size: 12px;
+    }
+	.profile-job-post-detail .profile-job-post-title .button {
+        font-size: 12px;
+        padding: 3px 14px !important;
+    }
+	.right-side-menu {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 320px){
-	
+	.profile-job-details .post_title{font-size: 9px;}
 }
 
 
