@@ -20,7 +20,7 @@
 .designation_rec { float: left; width: 60%; padding-top: 1px;}
 .profile-job-post-location-name-rec ul {padding: 0;}
 .profile-job-post-location-name-rec ul li { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    padding: 2px 3px 0 8px; margin: 0; list-style: none; display: inline-block;}
+    padding: 0px 3px 0 8px; margin: 0; list-style: none; display: inline-block;}
 .profile-job-post-location-name-rec ul li i { padding-right: 5px;}
 .profile-job-post-location-name-rec ul li a { color: #5b5b5b; display: inline-block; font-size: 13px; font-family: 'arial'; font-weight:normal;}
 
@@ -74,8 +74,8 @@ li.fr a {text-decoration: none !important;}
 .user-pic {height: 152px; width: 153px; overflow: hidden; border-radius: 4px; position: relative; z-index: 3;}
 .user-pic img {height: 100%; width: 100%; overflow: hidden;}
 .user-pic a {position: absolute; display: none;}
-.user-pic a i {padding-right: 7.1px;}
-.user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 4px 4px 6px;
+.user-pic a i {padding-right: 1.1px;}
+.user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 5px 4px 6px;
     font-size: 12px;
 }
 .profile-box-art {height: auto !important;}
@@ -748,6 +748,11 @@ label.cameraButton input[accept*="camera"] {
 
 
 /***  media query  ***/
+@media screen and (max-width: 1200px)
+{
+      .custom-right{margin-left: 50px;}
+}
+
 @media screen and (max-width: 1199px){
 	#paddingtop_fixed {
         padding-top: 81px !important;
@@ -755,6 +760,7 @@ label.cameraButton input[accept*="camera"] {
 	.rec_check {
         font-size: 14px;
     }
+  
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 75px !important;
     }
@@ -764,6 +770,10 @@ label.cameraButton input[accept*="camera"] {
 	.experience_year{margin-right:34px;}
 	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 }
+@media screen and (max-width: 1130px){
+ .custom-right{margin-left: 27px;}
+}
+
 @media screen and (max-width: 1024px) {
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 70px !important;
@@ -771,6 +781,7 @@ label.cameraButton input[accept*="camera"] {
 	.profile-main-rec-box-menu {
         height: 41px;
     }
+     .custom-right{margin-left: 0px;}
 	.profile-main-rec-box-menu li a {
         padding: 10px 15px;
         font-size: 13px;

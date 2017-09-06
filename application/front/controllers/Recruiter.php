@@ -3416,7 +3416,7 @@ class Recruiter extends MY_Controller {
                                                                 <div class="designation_rec_1 fl ">
                                                                     <ul>
                                                                         <li>';
-                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/job_printpreview/' . $rec['userid'] . '?page=recruiter" title="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '>';
+                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/job_printpreview/' . $rec['userid'] . '?page=recruiter" title="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '">';
                     $return_html .= $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '</a>';
                     $return_html .= '</li><li style="display: block;">
                                                                             <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';
