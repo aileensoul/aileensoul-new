@@ -335,7 +335,7 @@
 
                                                 <div class="one-image" >
 
-                                                 <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                 <!-- <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '"> -->
 
                                                   <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$data['image_name'];?>" onclick="openModal();
                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
