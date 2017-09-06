@@ -709,7 +709,21 @@ label.cameraButton input[accept*="camera"] {
 .flw_msg_btn{margin-top: 8px;}
 .tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
 #univer{background: #1b8ab9; color: white; margin-top: 10px;}
-
+.editable_text {
+    min-height: 40px;
+    background: white;
+    border: 1px solid #cacaca;
+    outline: none;
+    padding: 6.5px 15px;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+    resize: none;
+    word-wrap: break-word;
+    word-break: break-word;
+    cursor: text;
+}
 
 
 /***  media query  ***/
@@ -1151,13 +1165,215 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 479px) {
+	.designation_rec {
+	  width: 39% !important;
+	}
+	.profile-main-rec-box-menu li {
+        padding-left: 2px;
+    }
+	.profile-main-rec-box-menu.profile-box-art {
+        width: 100%;
+        float: left;
+        margin-top: 0;
+        text-align: center;
+    }
+	.profile-box-art .left-side-menu {
+        display: none;
+    }
+    .profile-box-art ul {
+        display: inline-block;
+    }
+	.profile-box-art .right-side-menu li a {
+        font-size: 12px;
+    }
+	.profile-main-rec-box-menu {
+        margin-top: 0px;
+    }
+	fieldset .add_post_btnc {
+        min-width: 83px;
+        padding: 10px 20px 10px;
+        font-size: 12px;
+    }
+	fieldset .add_post_btns {
+        min-width: 83px;
+        padding: 12px 5px 11px;
+        font-size: 12px !important;
+    }
+	.editable_text {
+        padding-right: 45px;
+    }
+	.designation_rec {
+	  width: 39% !important;
+	}
+	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
+	.post-img-user {
+		font-size: 16px;
+		height: 67px;
+		line-height: 0;
+		padding: 22px 0;
+		width: 48px;
+	}
+	.floatBarsG{width: 20px; height: 20px;}
+	#floatBarsG {
+		position: absolute;
+		width: 19%;
+		height: 28px;
+		margin-left: -156px;
+		left: 68%;
+		margin-top: -7%;
+		transform: scale(0.3);
+	}
+	.experience_year{width:100%; margin-right:0; margin-bottom:15px;}
+    .experience_month{width:100%;}
+	.banner{padding-top: 21px;}
+	.main-text-area{margin: 4px 3px 4px 0px;}
+	.profile-company-name a {
+        font-size: 16px;
+    }
+	.profile-box-user .profile-boxProfile-name a {
+        font-size: 12px;
+    }
+	.a-inlineBlock {
+        width: 60px;
+        height: 60px;
+    }
+	.profile-boxProfileCard-content .buisness-profile-txext a img {
+        height: 52px;
+        width: 52px;
+    }
+    .profile-boxProfilebuisness-avatarLink2 {
+        margin: 10px 0 0 5px;
+    }
+	.right-side-menu {
+        padding-left: 24%;
+    }
+    .profile-box-art .right-side-menu {
+        padding-left: 0%;
+        padding-right: 0;
+        margin-left: 0;
+    }
+	.profile-job-profile-menu ul li {
+        padding-left: 0;
+    }
+	.job-menu-profile.mob-block {
+        margin-top: 0px;
+        padding-bottom: 10px;
+    }
+	.job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+	.profile-text a {
+        font-size: 14px;
+        padding-top: 0;
+        line-height: 1;
+    }
+	.profile-job-details .job_companyname {
+       line-height: 1;
+     }
+    .profile-job-details .display_inline {
+        font-size: 12px;
+        line-height: 1;
+    }
+	.profile-job-post-location-name {
+        padding: 6px 0px;
+    }
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+        width: 32%;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 68%;
+    }
+	.circle {
+        top: 22%;
+    }
+	.pro-fw li a {} .remove_tab a::before {
+        height: 2px;
+    }
+    .right-side-menu {
+        padding-left: 25%;
+    }
+	.profile-job-details {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+	.cover-pic{bottom:60%;}
+    .cover-pic .btn{font-size:13px; padding:3px 10px;}
+	.designation_rec {
+	  width: 39% !important;
+	}
+	.details_all_tital{font-size:18px;}
+	.profile-job-post-location-name-rec .designation_rec {
+		width: 71% !important;
+	}
 	
 }
 @media screen and (max-width: 360px) {
-	
+	.padd_img { padding-left: 3px !important; padding-top: 4px !important;}
+	.profile-job-post-location-name ul li .follow-li-text {
+        padding: 0px;
+    }
+	.profile-box-art .right-side-menu .pro-fw li a {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+        font-size: 11px;
+        text-align: center;
+    }
+	.profile-main-rec-box-menu li a {
+        padding: 10px 7px;
+    }
+	.profile-box-art .right-side-menu li a {
+        font-size: 14px;
+        font-weight: 500;
+    }
+	#industry option{width:100%;}
+	.hout_noti{font-size: 11px;}
+	.profile-job-details .display_inline{font-size: 10px;}
+    .profile-job-details .job_companyname {font-size: 10px;}
+    .profile-job-details ul li .lction p {font-size: 10px;}
+	.created_date{font-size: 10px;}
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b {
+		width: 42%;
+		font-size: 12px;
+    }
+    .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {
+        width: 58%;
+        font-size: 12px;
+    }
+	.job-menu-profile h5 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+	.profile-job-details {
+        padding-left: 3px !important;
+        padding-right: 1px !important;
+    }
+	.profile-job-details .post_title {
+        width: 50%;
+        font-size: 11px;
+    }
+	.profile-job-details .job_companyname {
+        width: 140px;
+    }
+    .profile-job-details ul li p {
+        font-size: 13px;
+        font-weight: 600;
+        padding-right: 8px;
+        line-height: 10px;padding-left: 4px;
+    }
+	.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {
+        font-size: 12px;
+    }
+	.profile-job-post-detail .profile-job-post-title .button {
+        font-size: 12px;
+        padding: 3px 14px !important;
+    }
+	.right-side-menu {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 320px){
-	
+	.profile-job-details .post_title{font-size: 9px;}
 }
 
 

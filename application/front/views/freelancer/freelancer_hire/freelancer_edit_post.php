@@ -43,7 +43,7 @@
                                 </div> 
                                 <fieldset class="full-width">
                                     <label><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>
-                                    <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> "/>
+                                    <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> " onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/>
                                     <span id="fullname-error"></span>                        
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>

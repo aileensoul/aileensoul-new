@@ -1,3 +1,16 @@
+//CODE FOR ALL POPUP CLOSE USING ESC START
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal').modal('hide');
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal-2').modal('hide');
+    }
+});
+
+//CODE FOR ALL POPUP CLOSE USING ESC END
 // VALIDATION FOR PROFILE PIC START
 $(document).ready(function () {
     $("#userimage").validate({
@@ -386,19 +399,7 @@ function picpopup() {
     $('#bidmodal').modal('show');
 }
 //CODE FOR PROFILE PIC AND COVER PIC VALIDATION END
-//CODE FOR ALL POPUP CLOSE USING ESC START
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal').modal('hide');
-    }
-});
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal-2').modal('hide');
-    }
-});
 
-//CODE FOR ALL POPUP CLOSE USING ESC END
 //CODE FOR SCROLL PAGE AT PERTICULAR START
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 265}, 100);

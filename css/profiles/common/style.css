@@ -665,12 +665,6 @@ label.error {
 
 
 
-/***------- common css for freelance hire and recruiter  ----------***/ 
-
-
-/***---------  end common css for freelance hire and recruiter  ----------***/ 
-
-
 /***---------  model css  -------------***/
 .modal {
     display: none;
@@ -1970,8 +1964,42 @@ input:-moz-placeholder {
 	.people-list .search input{width:95%;}
 }
 @media screen and (max-width: 479px) {
+	ul li,
+    ol li {
+        font-size: 12px;
+    }
+	.mob-plr0 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .pl15-mob {
+        padding-left: 15px;
+    }
+	fieldset {
+        width: 100%;
+    }
+	.alert {
+		font-size: 16px;
+		font-size: 16px;
+		padding-left: 5px !important;
+		padding-right: 20px;
+    }
+	.modal.in .modal-dialog {
+        width: 90%;
+        margin: 20px auto;
+    }
 	#row2 img{height: 200px;}
 	#row1{height: 200px;}
+	.floatBarsG{width: 20px; height: 20px;}
+	#floatBarsG {
+		position: absolute;
+		width: 19%;
+		height: 28px;
+		margin-left: -156px;
+		left: 68%;
+		margin-top: -7%;
+		transform: scale(0.3);
+	}
 	.post-edit-popup .popup-text textarea{padding-right: 15px;}
 	.mian_box_num {
 		right: -9px;
@@ -1983,13 +2011,48 @@ input:-moz-placeholder {
 	.post-img-user {
 		line-height: 0;
 	}
-	
+	.padd_set .change-password{padding: 0;}
+	/** cover **/
+	.how-it-popup .modal-body h3{display: block;}
+    .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
+	.profile-detail h2{font-size: 13px;}
+	.custom-box .custom-width .right-box a{font-size: 12px!important; }
+	.btn-1{padding: 7px 30px}
+    .btns .btn-4{padding: 7px 30px;}
+	.middle-section{padding-bottom: 10px;}
+	.profile-text1{width: 100%;}
+    .profile-text1 .chng_email{font-size: 12px;}
+    .profile-text1 .vert_email{font-size: 12px; margin: 0px;}
+    .profile-text1{top:16px; padding-top: 25px;}
+    .profile-text1 .as-p{letter-spacing: 0px;}
+	.cover-pic{bottom:60%;}
+    .cover-pic .btn{font-size:13px; padding:3px 10px;}
+	.cls-ve{top:35px;}
+	/********/
+	.people-list .search input{width:93%;}
 }
 @media screen and (max-width: 360px) {
+	.nav > li > a {
+        padding: 10px 7px;
+    }
 	.chat .chat-header .chat-with{font-size: 14px;}
+	/*** cover ***/
+	.email-verify{float: left; width: 100%; }
+	.cls-ve{top:23px;}
+	/****/
+	.prev, .next{top: 215px;}
+	.job_all_post {
+        width: 100%;
+        margin-bottom: 10px!important;
+    }
+	.people-list .search input{width:92%;}
 }
 @media screen and (max-width: 320px){
-	
+	/** cover  **/
+	.main-txt{width: 82%;}
+	.how-it-popup{width: 97%;}
+	/****/
+	.created_date {font-size: 8px; letter-spacing: 0.5px;}
 }
 
 /*zalak start 28-8  media*/

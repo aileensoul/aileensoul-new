@@ -49,7 +49,7 @@ $(document).ready(function () {
                 },
 
             },
-
+          submitHandler: profile_pic
         });
     });
 //validation End
@@ -205,10 +205,20 @@ function save_user(abc)
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-                    html = '<img src="' + resp + '" />';
-                    if (html) {
-                        window.location.reload();
-                    }
+                    // html = '<img src="' + resp + '" />';
+                   if (data) {
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+
+                }
+                    // html = '<img src="' + resp + '" />';
+                    // if (html) {
+                    //     window.location.reload();
+                    // }
                 }
             });
 
@@ -374,7 +384,11 @@ function divClicked() {
 //all popup close close using esc End
 
 //Tabing In Education And Graduation Start
+$( document ).ready(function() {
+  $('div[onload]').trigger('onload');
+});
  function openCity(evt, cityName) {
+  
         // Declare all variables
         var i, tabcontent, tablinks;
 
@@ -386,6 +400,28 @@ function divClicked() {
 
         // Get all elements with class="tablinks" and remove the class "active"
         tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+  function opengrad(evt, cityName) {
+    
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent1");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks1");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
@@ -433,7 +469,7 @@ function divClicked() {
 //Disable progress bar when 100% complete End
 
 //Progress bar see start
- (function($) {9
+ (function($) {
    $('.second.circle-1').circleProgress({
    value: count_profile_value
    }).on('circle-animation-progress', function(event, progress) {
@@ -442,5 +478,33 @@ function divClicked() {
    
    })(jQuery);
    //Progress bar see End
+
+//UPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        
+        var formData = new FormData($("#userimage")[0]);
+        $.ajax({
+          
+            url: base_url + "job/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                $('#preview').prop('src', '#');
+                 $('#preview').hide();
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UPLOAD PROFILE PIC END
 
    $(".alert").delay(3200).fadeOut(300);

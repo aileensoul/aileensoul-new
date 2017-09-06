@@ -28,18 +28,20 @@
          </li>
          <?php }?>
       </ul>
-      <div class="flw_msg_btn fr">
-         <ul>
+    
             <?php 
                if($this->uri->segment(3) != ""){ 
                    if($this->uri->segment(3) != $userid){
                        ?>
+                          <div class="flw_msg_btn fr">
+         <ul>
             <?php
                $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 1, 'status' => '0');
                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                   
                 if ($data) {
                ?> 
+   
             <li> 
                <a class=" butt_rec  save_saved_btn">Saved</a>
             </li>
@@ -58,8 +60,10 @@
             <?php }
                else{ ?>
             <a href="<?php echo base_url('chat/abc/1/2/' . $this->uri->segment(3)); ?>">Message</a> </li>
-            <?php }?>                <?php } }?>
-         </ul>
-      </div>
+        
+            <?php }?>   </ul>
+      </div>              <?php } }?>
+        
+
    </div>
 </div>

@@ -2500,16 +2500,19 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
             $updatdata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
             if ($updatdata) {
-                if ($this->input->post('hitext') == 1) {
-                    redirect('job/home', refresh);
-                } elseif ($this->input->post('hitext') == 2) {
-                    redirect('job/resume', refresh);
-                } elseif ($this->input->post('hitext') == 3) {
-                    redirect('job/applied-job', refresh);
-                } elseif ($this->input->post('hitext') == 4) {
-                    redirect('job/saved-job', refresh);
-                }
-            } else {
+               
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+             
+            $userimage .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $job_reg_data[0]['job_user_image']) . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= 'Update Profile Picture';
+            $userimage .= '</a>';
+            echo $userimage;
+
+            } 
+            else 
+            {
                 $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/home', refresh);
             }
@@ -2612,7 +2615,8 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 
         $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = '*', $join_str = array());
 
-        echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
+        $coverpic = '<img  src="' . base_url($this->config->item('job_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        echo $coverpic;
     }
 
     public function image() {
@@ -3425,14 +3429,14 @@ public function job_avail_check($userid = " ")
        redirect('job/noavailable');
          } 
     }
+
+public function noavailable() 
+{
+         
+      $this->load->view('job/notavalible', $this->data);  
+}
 // recruiter available chek
    
-     public function noavailable() {
-         
-        $this->load->view('job/notavalible', $this->data);  
-     }
-
-
 //Retrive all data of dergree,stream and university start
       public function ajax_data() {
 

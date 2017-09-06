@@ -1,3 +1,15 @@
+//ALL POPUP CLOSE BY ESC START
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal').modal('hide');
+    }
+});
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal-2').modal('hide');
+    }
+});
+//ALL POPUP CLOSE BY ESC END
 //VALIDATION FOR PROFILE PIC START
 $(document).ready(function () {
     $("#userimage").validate({
@@ -311,7 +323,7 @@ function remove_user(abc)
             $('#' + 'removeapply' + abc).parent().removeClass();
             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
             if (numItems == '0') {
-                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">no_saved</div></div>';
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">No Saved Freelancer Found</div></div>';
                 $('.contact-frnd-post').html(nodataHtml);
             }
         }
@@ -331,18 +343,7 @@ function picpopup() {
 //CODE FOR PROFILE PIC AND COVERPIC IMG TYPE POPUP END
 
 
-//ALL POPUP CLOSE BY ESC START
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal').modal('hide');
-    }
-});
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal-2').modal('hide');
-    }
-});
-//ALL POPUP CLOSE BY ESC END
+
 
 //FOR SCROLL PAGE AT PERTICULAR POSITION JS START
 $(document).ready(function () {

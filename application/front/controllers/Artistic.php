@@ -15176,7 +15176,7 @@ public function get_artistic_name($id=''){
 
 
         $contition_array = array('user_id' => $userid, 'status' => '1', 'art_step' => '4');
-        $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+       $artdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         
         if ($this->input->get('searchplace') == "" && $this->input->get('skills') == "") {
@@ -15267,10 +15267,10 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
 
-            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
-            //echo "<pre>"; print_r($artpostone); die();
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+           
 
-            }
+            }//echo "<pre>"; print_r($artpostone); die();
             foreach ($artpostone as $keyone => $valueone) {
                
                foreach ($valueone as $keytwo => $valuetwo) {
@@ -15336,7 +15336,7 @@ public function get_artistic_name($id=''){
 
             $contition_array = array('art_post.is_delete' => '0', 'art_post.user_id' => $postdata['user_id']);
 
-            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
+            $artpostone[] = $this->data['artpostone'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = 'art_post.*, art_reg.art_id, art_reg.art_name, art_reg.art_lastname, art_reg.art_email, art_reg.art_user_image, art_reg.designation, art_reg.user_id', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str, $groupby = '');
             //echo "<pre>"; print_r($artpostone); die();
 
             }
@@ -15855,10 +15855,10 @@ public function get_artistic_name($id=''){
                                                         $return_html .= '&nbsp;';
                                                        
                                                         if (count($likelistarray) > 1) {
-                                                            echo "and ";
-                                                            echo $countlike;
-                                                            echo "&nbsp;";
-                                                            echo "others";
+                                                            $return_html .= 'and';
+                                                           $return_html .= $countlike;
+                                                            $return_html .= '&nbsp;';
+                                                            $return_html .= 'others';
                                                         }
                                                        
                                                         $return_html .= '</a>
@@ -16742,11 +16742,7 @@ public function get_artistic_name($id=''){
                                                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
                                                 $likelistarray = explode(',', $likeuser);
                                               
-                                                foreach ($likelistarray as $key1 => $value) {
-                                                    $art_fname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_name;
-                                                    $art_lname1 = $this->db->get_where('art_reg', array('user_id' => $value, 'status' => 1))->row()->art_lastname;
-                                                   
-                                                } 
+                
                                                                                                                 
                                                     $contition_array = array('art_post_id' => $key['art_post_id'], 'status' => '1', 'is_delete' => '0');
                                                     $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -16768,10 +16764,10 @@ public function get_artistic_name($id=''){
                                                         $return_html .= '&nbsp;';
                                                        
                                                         if (count($likelistarray) > 1) {
-                                                            echo "and ";
-                                                            echo $countlike;
-                                                            echo "&nbsp;";
-                                                            echo "others";
+                                                           $return_html .= 'and ';
+                                                            $return_html .= $countlike;
+                                                            $return_html .= '&nbsp;';
+                                                            $return_html .= 'others';
                                                         }
                                                        
                                                         $return_html .= '</a>

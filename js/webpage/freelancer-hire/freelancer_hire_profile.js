@@ -1,3 +1,11 @@
+//ALL POPUP CLOSE USING ESC START
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal-2').modal('hide');
+    }
+});
+//ALL POPUP CLOSE USING ESC END
 //PROFILE PIC VALIDATION START
 $(document).ready(function () {
     $("#userimage").validate({
@@ -237,14 +245,7 @@ function picpopup() {
 }
 //CODE FOR SHOW POPUP OF WHEN PROFILE PIC AND COVER PIC IMG TYPE NOT DUPPORTED END
 
-//ALL POPUP CLOSE USING ESC START
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        //$( "#bidmodal" ).hide();
-        $('#bidmodal-2').modal('hide');
-    }
-});
-//ALL POPUP CLOSE USING ESC END
+
 //FOR SCROLL PAGE AT PERTICULAR POSITION IS START
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 265}, 100);

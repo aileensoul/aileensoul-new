@@ -392,7 +392,7 @@ function post_like(clicked_id)
         dataType: 'json',
         beforeSend: function (data) {
             var is_valid_post = check_post_available(clicked_id);
-            alert(is_valid_post);
+//            alert(is_valid_post);
         },
         success: function (data) {
             $('.' + 'likepost' + clicked_id).html(data.like);
@@ -2004,7 +2004,7 @@ function check_post_available(post_id) {
         data: 'post_id=' + post_id,
         dataType: "json",
         success: function (data) {
-            alert(data);
+//            alert(data);
             return false;
             if (data == 0) {
                 $('.biderror .mes').html("<div class='pop_content'>this post deleted so you can no take any action</div>");
