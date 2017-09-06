@@ -2499,17 +2499,17 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
 
             $updatdata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
-            if ($updatdata) {
+            if ($updatdata) 
+            {
                
-            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-            $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+                $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+                $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
              
-            $userimage .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $job_reg_data[0]['job_user_image']) . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
-            $userimage .= 'Update Profile Picture';
-            $userimage .= '</a>';
-            echo $userimage;
-
+                $userimage .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $job_reg_data[0]['job_user_image']) . '" alt="" >';
+                $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+                $userimage .= 'Update Profile Picture';
+                $userimage .= '</a>';
+                echo $userimage;
             } 
             else 
             {
