@@ -3,11 +3,14 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?> 
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
+
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-3.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css'); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -639,40 +642,41 @@
         </section>
         <!-- END CONTAINER -->
 
-        <!-- BID MODAL START -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                     <!--<img class="icon" src="images/dollar-icon.png" alt="" />-->
-                        <span class="mes"></span>
-                    </div>
-                </div>
+        <!-- Bid-modal-2  -->
+      <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+         <div class="modal-dialog modal-lm">
+            <div class="modal-content">
+               <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
+               <div class="modal-body">
+                  <span class="mes">
+                     <div id="popup-form">
+
+                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+    
+                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
+                      
+                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
+                        </form>
+                        
+                     </div>
+                  </span>
+               </div>
             </div>
-        </div>
-        <!-- BID MODAL END -->
+         </div>
+      </div>
+      <!-- Model Popup Close -->
         <!-- BEGIN FOOTER -->
 <?php echo $footer; ?>
         <!-- END FOOTER -->
         <!-- FIELD VALIDATION JS START -->
-        <script src="<?php echo base_url('js/jquery.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js'); ?>"></script>
-
-        <script src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
-
-        <!-- THIS SCRIPT ALWAYS PUT UNDER FANCYBOX JS-->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
-
-        <!--SCRIPT FOR DATE START-->
-
-        <script src="<?php echo base_url('js/jquery.date-dropdowns.js'); ?>"></script>
-
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
                                     //var data1 = <?php// echo json_encode($de); ?>;

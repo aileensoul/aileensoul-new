@@ -22,7 +22,6 @@ function checkvalue(){
                     }
   }
                  
-
     function removepopup(id) {
         $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
         $('#bidmodal').modal('show');
@@ -32,16 +31,16 @@ function checkvalue(){
     }
 
 
-function myFunction() {
+// cover image start 
+
+function myFunction() 
+{
    document.getElementById("upload-demo").style.visibility = "hidden";
    document.getElementById("upload-demo-i").style.visibility = "hidden";
    document.getElementById('message1').style.display = "block";
+}
 
- 
-   
-   }
-
- 
+  
 
     function showDiv() {
       
@@ -50,7 +49,6 @@ function myFunction() {
 
          $("#upload").val('');
     }
-    
 
     $uploadCrop = $('#upload-demo').croppie({
         enableExif: true,
@@ -74,14 +72,20 @@ function myFunction() {
         }).then(function (resp) {
 
             $.ajax({
-                url: "<?php echo base_url() ?>recruiter/ajaxpro",
+                url: base_url + "recruiter/ajaxpro",
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-                    html = '<img src="' + resp + '" />';
-                    if (html) {
-                        window.location.reload();
-                    }
+                if (data) 
+                {
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+
+                }
                 }
             });
 
@@ -99,7 +103,9 @@ function myFunction() {
 
 //aarati code start
     $('#upload').on('change', function () {
-         
+           //alert("hello");
+
+
         var reader = new FileReader();
         reader.onload = function (e) {
             $uploadCrop.croppie('bind', {
@@ -148,7 +154,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
         $.ajax({
 
-            url: "<?php echo base_url(); ?>recruiter/image",
+            url: base_url +"recruiter/image",
             type: "POST",
             data: fd,
             processData: false,
@@ -159,6 +165,10 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         });
     });
 
+//aarati code end
+
+// cover image end
+  
                             function divClicked() {
                                 var divHtml = $(this).html();
                                 var editableText = $("<textarea/>");
@@ -181,7 +191,7 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                                 viewableText.click(divClicked);
 
                                 $.ajax({
-                                    url: "<?php echo base_url(); ?>recruiter/ajax_designation",
+                                    url: base_url +"recruiter/ajax_designation",
                                     type: "POST",
                                     data: {"designation": html},
                                     success: function (response) {
@@ -193,7 +203,11 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                             $(document).ready(function () {
                                 $("a.designation").click(divClicked);
                             });
-             
+                       
+    
+
+//script for profile pic strat
+
      function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -223,6 +237,10 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
           // end supported code 
     });
 
+// script for profile pic end  
+
+
+//validation for edit email formate form
 
             $(document).ready(function () { 
 
@@ -248,16 +266,16 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                         },
 
                 },
-
+                submitHandler: profile_pic
                 });
                    });
-                      function picpopup() {
-                            
+ 
+function picpopup() {
                       
             $('.biderror .mes').html("<div class='pop_content'>Only image Type is Supported");
             $('#bidmodal').modal('show');
                         }
-           
+       
    
  $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
@@ -276,4 +294,33 @@ $(document).ready(function(){
 
 });
 //For Scroll page at perticular position js End
-     
+
+// recruiter search header 2  start
+//UPLOAD PROFILE PIC START
+function profile_pic() {
+    if (typeof FormData !== 'undefined') {
+        
+        var formData = new FormData($("#userimage")[0]);
+        $.ajax({
+          
+            url: base_url + "recruiter/user_image_insert",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (data)
+            {
+                $('#bidmodal-2').modal('hide');
+                $(".user-pic").html(data);
+                document.getElementById('profilepic').value = null;
+                $('#preview').prop('src', '#');
+                 $('#preview').hide();
+                $('.popup_previred').hide();
+            },
+        });
+        return false;
+    }
+}
+//UPLOAD PROFILE PIC END
+  
