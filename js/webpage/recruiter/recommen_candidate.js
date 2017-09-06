@@ -166,11 +166,11 @@ function check() {
 //    modal.style.display = "none";
 //}
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
 
 
 $(document).ready(function ()
@@ -219,7 +219,7 @@ $(document).ready(function ()
         var dataString = 'position=' + Z[0];
         $.ajax({
             type: "POST",
-            url: "<?php echo base_url('recruiter/image_saveBG_ajax'); ?>",
+            url: base_url +"recruiter/image_saveBG_ajax",
             data: dataString,
             cache: false,
             beforeSend: function () { },
@@ -242,30 +242,30 @@ $(document).ready(function ()
 });
 
 
-function save_user(abc)
+function savepopup(abc)
 {
 
     var saveid = document.getElementById("hideenuser" + abc);
 
     $.ajax({
         type: 'POST',
-        url: '<?php echo base_url() . "recruiter/save_search_user" ?>',
+        url: base_url +'recruiter/save_search_user',
         data: 'user_id=' + abc + '&save_id=' + saveid.value,
         success: function (data) {
             $('.' + 'saveduser' + abc).html(data).addClass('saved');
+            $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
+            $('#bidmodal').modal('show');
         }
     });
 }
 
 
-function savepopup(id) {
+// function savepopup(id) {
 
+//     save_user(id);
 
-    save_user(id);
-
-    $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
-    $('#bidmodal').modal('show');
-}
+    
+// }
 
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {

@@ -1364,9 +1364,9 @@ label.cameraButton input[accept*="camera"] {
         padding-left: 0;
         padding-right: 0;
     }
-    .custom-right {
+/*    .custom-right {
         margin-left: 8%;
-    }
+    }*/
     .profile-boxProfilebuisness-avatarLink2 {
         margin: 15px 0 0 5px;
           height: 60px !important;
@@ -1713,6 +1713,9 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 479px) {
+    .profile-job-details .job_companyname {
+    width: 247px;
+}
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
     }
