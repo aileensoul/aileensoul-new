@@ -32,23 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             .msg_left_data .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
         </style>
 
-<!--         <script>
-            $(document).ready(function ($) {
-                if (screen.width <= 767) { alert("hi");
-                    document.getElementById('chat').style.display = 'block';
-                }
-            });
-        </script>
-         <script>
-            $(document).ready(function ($) {
-                if (screen.width <= 767) { 
-                    $("#userlist").click(function ()
-{ alert("hi000");
-  document.getElementById('chat').style.display = 'block';  
-});
-                }
-            });
-        </script>-->
     <body>
         <?php
         echo $header;
