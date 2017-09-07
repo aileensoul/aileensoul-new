@@ -847,9 +847,12 @@ function followuser_two(clicked_id)
         }
     });
 }
+
 function followclose(clicked_id)
-{
-    $("#fad" + clicked_id).fadeOut(4000);
+{   
+    $("#fad" + clicked_id).remove(4000);
+    business_home_three_user_list()
+    
 }
 /* FOLLOW USER SCRIPT END */
 
@@ -1531,9 +1534,7 @@ function khdiv(abc) {
 
         }
     });
-
 }
-
 
 // edit post start 
 

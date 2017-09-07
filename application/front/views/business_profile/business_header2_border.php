@@ -34,7 +34,7 @@
     $(document).ready(function ()
     {
         $("#addcontactLink").click(function ()
-        {
+        {   
             $("#InboxContainer").hide();
             $("#Inbox_count").hide();
             $(".dropdown-menu").hide();
@@ -119,7 +119,7 @@
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                                               <!--  <span class="badge bg-theme"><?php //echo $message_count;          ?></span> -->
+                                                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;           ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 

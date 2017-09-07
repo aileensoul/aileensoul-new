@@ -2448,6 +2448,7 @@ background-size: 100%;
     width: 100%; text-align: center;
     font-family: robotoregular;
 }
+.addcontact-right a{padding: 7px!important;}
 .connect-link a{
     font-weight: 500;
     font-size: 16px;
@@ -2455,7 +2456,7 @@ background-size: 100%;
     color: #1b8ab9;
 	width: 40px;
 	height: 40px;
-	padding: 11px 0px;
+	padding: 8px 0px;
 	display: inline-block;
 }
 .connect-link a span{line-height: 1px;}
