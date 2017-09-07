@@ -100,11 +100,11 @@ $(document).ready(function () {
 
         messages: {
             country: {
-                required: "Country Is Required.",
+                required: "Country is required.",
             },
 
             state: {
-                required: "State Is Required.",
+                required: "State is required.",
             },
            
         },

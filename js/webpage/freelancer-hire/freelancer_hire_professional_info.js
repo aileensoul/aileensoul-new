@@ -45,7 +45,7 @@ $(document).ready(function () {
         },
         messages: {
             professional_info: {
-                required: "Professional Information Is Required."
+                required: "Professional information is required."
             },
         },
 
