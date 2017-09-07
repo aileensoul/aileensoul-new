@@ -722,7 +722,7 @@ line-height: 1;}
 }
 .dropdown-content1 a:hover {
     background: #1b8ab9;
-    color: #fff;
+    color: #fff!important;
 }
 .show {
     display: block;
@@ -3188,7 +3188,12 @@ overflow: hidden;
     font-size: 14px;
 }
 .profile-job-post-location-name-rec .designation_rec ul li{margin-bottom: 0px;}
-
+.pdf_img {
+    height: 40%;
+    margin: 0 auto;
+    width: 40%;
+    padding: 5px;
+}
 
 /***  media query  ***/
 @media screen and (max-width: 1280px){
