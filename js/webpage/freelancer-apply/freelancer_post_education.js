@@ -94,7 +94,7 @@ $(".alert").delay(3200).fadeOut(300);
                         param = new RegExp("^(?:" + param + ")$");
                     }
                     return param.test(value);
-                }, "Please Enter Percentage like 89.96.");
+                }, "Please enter percentage like 89.96.");
 
                 //pattern validation at percentage end//
                 $(document).ready(function () {
