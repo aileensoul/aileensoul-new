@@ -353,7 +353,7 @@ line-height: 1;}
 } 
 .seeall {
     float: right;
-    margin-top: -30px;
+    margin-top: -32px;
     
     
     margin-right: 10px
@@ -1972,6 +1972,8 @@ background-size: 100%;
     list-style: none;
     display: inline-block;
 }
+.profile-job-post-location-name ul li.folle_text{padding-top: 5px;}
+.profile-job-post-location-name ul li .user_btn{padding-top: 10px;}
 .profile-job-post-location-name ul li i {
     padding-right: 5px;
 }

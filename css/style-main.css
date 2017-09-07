@@ -425,7 +425,7 @@ a:hover{
 	border-bottom:1px solid #d9d9d9;
 	border-radius:0px;
 	box-shadow:none;
-	font-size:15px;
+	font-size:16px;
 	color:#848484;
 	height:35px;
     padding-left: 6px;
@@ -683,7 +683,7 @@ textarea:focus::-webkit-input-placeholder
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 	position:relative;
-	margin-bottom:15px;
+	margin-bottom:20px;
 	text-transform:capitalize;
 }
 /*.title h1:after{
@@ -1144,10 +1144,22 @@ section { overflow: hidden; }
 .sign_in{width:100%; text-align:center;}
 .sign_in p a:hover{text-decoration:underline;}
 .login p a:hover{text-decoration:underline; color:#337ab7;}
-#forgot_password .modal-header label{color: #1b8ab9 !important;}
+#forgot_password .modal-header label{color: #1b8ab9 !important; margin-bottom: 0px;}
 #forgot_password .modal-body label{color: #5b5b5b !important;}
 #forgot_password .submit_btn{text-align:center;}
 
+
+.modal-header .close{
+	position: absolute;
+    right: -13px;
+    top: -10px;
+    background: #1b8ab9;
+    opacity: 1;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 100%;
+
+}
 /*** new hom page ***/
 .ml20{margin-left:20px;}
 .mr20{margin-right:20px;}
