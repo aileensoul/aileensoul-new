@@ -9,17 +9,18 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver=' . time()); ?>">-->
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/3.3.0/select2.css?ver=' . time()); ?>">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <!--<link rel="stylesheet" type="text/css" href="<?php // echo base_url('css/jquery-ui-1-12-1.css?ver=' . time()); ?>">-->  
+        <!--<link rel="stylesheet" type="text/css" href="<?php // echo base_url('css/jquery-ui-1-12-1.css?ver=' . time());  ?>">-->  
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
             }
         </style>
+        
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <!-- START HEADER -->
@@ -327,9 +328,9 @@
                         <?php echo $footer; ?>
                     </footer>
                     <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-<!--                    <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time());        ?>"></script>
-                    <script src="<?php  echo base_url('js/demo/jquery-1.9.1.js?ver='.time());        ?>"></script> 
-                    <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());        ?>"></script> -->
+<!--                    <script src="<?php echo base_url('js/jquery-ui.min.js?ver=' . time()); ?>"></script>
+                    <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver=' . time()); ?>"></script> 
+                    <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver=' . time()); ?>"></script> -->
                     <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
                     <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
                     <!-- POST BOX JAVASCRIPT START --> 
@@ -343,7 +344,7 @@
                     <script>
                                             var base_url = '<?php echo base_url(); ?>';
                     </script>
-                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/home.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js?ver=' . time()); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
                     </body>
                     </html>
