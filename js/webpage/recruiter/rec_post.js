@@ -249,8 +249,8 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
                         success: function (data) {
 
                             $('#' + 'removepost' + abc).html(data);
-                            $('#' + 'removepost' + abc).parent().removeClass();
-                            var numItems = $('.contact-frnd-post .job-contact-frnd').length;
+                            $('#' + 'removepost' + abc).removeClass();
+                            var numItems = $('.contact-frnd-post .job-contact-frnd .profile-job-post-detail').length;
 
                             if (numItems == '0') {
                               

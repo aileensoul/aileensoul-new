@@ -3613,8 +3613,6 @@ $contition_array = array(
 );
 $postdata = $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array() , $groupby = '');
 
-$date = date('Y-m-d', time());
-
 // for getting data from rec_post table for keyskill
 
 $work_job_skill = $jobdata[0]['keyskill'];
@@ -3623,7 +3621,6 @@ $work_skill = explode(',', $work_job_skill);
   {
   $contition_array = array(
     'FIND_IN_SET("' . $skill . '",post_skill)!=' => '0',
-    'post_last_date >=' => $date,
     'is_delete' => 0,
     'status' => 1
   );
@@ -3642,7 +3639,6 @@ foreach($work_city as $city)
   $data = '*';
   $contition_array = array(
     'FIND_IN_SET("' . $city . '",city)!=' => '0',
-    'post_last_date >=' => $date,
     'is_delete' => 0,
     'status' => 1
   );
@@ -3659,7 +3655,6 @@ foreach($postdata as $post)
   $data = '*';
   $contition_array = array(
     'industry_type' => $work_job_industry,
-    'post_last_date >=' => $date,
     'is_delete' => 0,
     'status' => 1
   );
@@ -3677,7 +3672,6 @@ foreach($postdata as $post)
   $data = '*';
   $contition_array = array(
     'post_name' => $work_job_title,
-    'post_last_date >=' => $date,
     'is_delete' => 0,
     'status' => 1
   );
@@ -4755,9 +4749,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
     
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
        
-        $date=date('Y-m-d', time());
-
-
+       
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $this->data['city'] = $city = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'city_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -4781,7 +4773,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         // search keyword insert into database end
         if ($search_job == "") 
         {
-            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'post_last_date >=' => $date,'rec_post.is_delete'=>0);
+            $contition_array = array('city' => $cache_time, 're_status' => '1', 'recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'rec_post.is_delete'=>0);
 
             $join_str[0]['table'] = 'recruiter';
             $join_str[0]['join_table_id'] = 'recruiter.user_id';
@@ -4796,7 +4788,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         {
             //Search FOr Skill Start
             $temp = $this->db->get_where('skill', array('skill' => $search_job, 'status' => 1))->row()->skill_id;
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid,'post_last_date >=' => $date ,'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid,'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $results_skill = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             //Search FOr Skill End
@@ -4809,7 +4801,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             $join_str[0]['join_type'] = '';
 
             
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'post_last_date >=' => $date,'rec_post.is_delete'=>0,'rec_post.status' => '1');
+            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'rec_post.is_delete'=>0,'rec_post.status' => '1');
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
 
@@ -4825,7 +4817,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             $join_str[0]['from_table_id'] = 'job_title.title_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('rec_post.user_id !=' => $userid ,'post_last_date >=' => $date,'rec_post.is_delete'=>0,'rec_post.status' => '1');
+            $contition_array = array('rec_post.user_id !=' => $userid ,'rec_post.is_delete'=>0,'rec_post.status' => '1');
            
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
 
@@ -4846,7 +4838,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
             //Search FOr Skill Start
             $temp = $this->db->get_where('skill', array('skill' => $search_job, 'status' => 1))->row()->skill_id;
-            $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid,'city' => $cache_time1,'post_last_date >=' => $date ,'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
+            $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id != ' => $userid,'city' => $cache_time1,'FIND_IN_SET("' . $temp . '", post_skill) != ' => '0');
             $results_skill = $this->common->select_data_by_condition('rec_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //Search FOr Skill End
            
@@ -4858,7 +4850,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             $join_str[0]['join_type'] = '';
 
             
-            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'post_last_date >=' => $date,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
+            $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
 
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
 
@@ -4874,7 +4866,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             $join_str[0]['from_table_id'] = 'job_title.title_id';
             $join_str[0]['join_type'] = '';
 
-            $contition_array = array('rec_post.user_id !=' => $userid ,'post_last_date >=' => $date,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
+            $contition_array = array('rec_post.user_id !=' => $userid,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
            
             $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
 
