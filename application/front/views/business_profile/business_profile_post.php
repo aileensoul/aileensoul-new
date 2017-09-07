@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
         <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver=' . time()); ?>">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css?ver=' . time()); ?>">  
+        <!--<link rel="stylesheet" type="text/css" href="<?php // echo base_url('css/jquery-ui-1-12-1.css?ver=' . time()); ?>">-->  
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />

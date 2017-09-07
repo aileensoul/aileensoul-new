@@ -25,8 +25,9 @@ function check() {
 $(document).ready(function () {
     business_home_post();
     business_home_three_user_list()
-
-    $(window).scroll(function () {
+    
+//    $(window).scroll(function () {
+    $(window).on('scroll', function(){
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
 
@@ -1671,7 +1672,8 @@ function seemorediv(abc) {
 }
 
 // 180 words more than script end
-$(window).load(function () {
+//$(window).load(function () {
+$(window).on('load', function(){
     var nb = $('.post-design-box').length;
     if (nb == 0) {
         $("#dropdownclass").addClass("no-post-h2");
