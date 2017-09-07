@@ -810,6 +810,11 @@ label.cameraButton input[accept*="camera"] {
 	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 }
 @media screen and (max-width: 1024px) {
+
+
+.common-form input[type="radio"], .common-form input[type="checkbox"] {
+    margin: 6px 5px;
+}
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 70px !important;
     }
