@@ -13,19 +13,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
    <meta charset="utf-8">
 	<title>Reactivate</title>
+<link rel="icon" href="<?php echo base_url('images/favicon.png?ver='.time()); ?>">
+<!-- CSS START -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver='.time()) ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.time()); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ?>" />
+<!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time()); ?>"></script>-->
+<!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>"></script>-->
+<script type="text/javascript" src="<?php  echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver='.time()); ?>"></script>  
+<!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time()); ?>"></script>-->
 
 
-   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
- 
-		
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
-	<!-- http://bootsnipp.com/snippets/4jXW -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css" />
-     
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
    
 </head>
 <body>
