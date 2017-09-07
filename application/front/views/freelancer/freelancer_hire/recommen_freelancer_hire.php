@@ -100,9 +100,9 @@
                                 <div class="job-saved-box">
                                     <h3>Search result of 
                                         <?php
-                                        if ($keyword != "" && $keyword1 == "") {
+                                        if ($keyword != "" && ($keyword1 == "" || $keyword1 == 0)) {
                                             echo '"' . $keyword . '"';
-                                        } elseif ($keyword == "" && $keyword1 != "") {
+                                        } elseif (($keyword == "" || $keyword == 0)  && $keyword1 != "") {
                                             echo '"' . $keyword1 . '"';
                                         } else {
                                             echo '"' . $keyword . '"';
