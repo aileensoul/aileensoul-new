@@ -1,3 +1,101 @@
+// script for profile pic strat 
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('preview').style.display = 'block';
+            $('#preview').attr('src', e.target.result);
+            $('.popup_previred').show();
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#profilepic").change(function () {
+    // pallavi code for not supported file type 15/06/2017
+    profile = this.files;
+    //alert(profile);
+    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        //alert('not an image');
+        $('#profilepic').val('');
+        picpopup();
+        return false;
+    } else {
+        readURL(this);
+    }
+
+    // end supported code 
+});
+
+function picpopup() {
+    $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
+    $('#bidmodal').modal('show');
+}
+//validation for edit email formate form
+
+$(document).ready(function () {
+
+    $("#userimage").validate({
+
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+         submitHandler: profile_pic
+    });
+});
+
+
+function profile_pic(event){
+
+
+
+        var fd = new FormData();
+                
+         fd.append("image", $("#profilepic")[0].files[0]);
+
+         files = this.files;
+
+       
+    $.ajax({
+      url: base_url + "dashboard/profilepic",
+      //url: "<?php echo base_url(); ?>artistic/profilepic",
+      type: "POST",
+      data: fd,
+      contentType: false,
+          cache: false,
+      processData:false,
+      success: function(data)
+        {
+
+        
+      $('#bidmodal-2').modal('hide');
+
+      $(".profile-photo").html(data);
+
+      document.getElementById('profilepic').value= null;
+
+      //document.getElementById('profilepic').value == '';
+
+      $('.popup_previred').hide();
+     $('#preview').prop('src', '#');
+
+        },          
+     });
+  return false;
+
+}
+
+
+
+
 // cover image start 
 
 function showDiv() {
@@ -269,101 +367,6 @@ $(document).ready(function () {
         } // End if
     });
 });
-// script for profile pic strat 
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('preview').style.display = 'block';
-            $('#preview').attr('src', e.target.result);
-            $('.popup_previred').show();
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#profilepic").change(function () {
-    // pallavi code for not supported file type 15/06/2017
-    profile = this.files;
-    //alert(profile);
-    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        //alert('not an image');
-        $('#profilepic').val('');
-        picpopup();
-        return false;
-    } else {
-        readURL(this);
-    }
-
-    // end supported code 
-});
-
-function picpopup() {
-    $('.biderror .mes').html("<div class='pop_content'>Only Image Type Supported");
-    $('#bidmodal').modal('show');
-}
-//validation for edit email formate form
-
-$(document).ready(function () {
-
-    $("#userimage").validate({
-
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo Required",
-            },
-        },
-         submitHandler: profile_pic
-    });
-});
-
-
-function profile_pic(event){
-
-
-
-        var fd = new FormData();
-                
-         fd.append("image", $("#profilepic")[0].files[0]);
-
-         files = this.files;
-
-       
-    $.ajax({
-      url: base_url + "dashboard/profilepic",
-      //url: "<?php echo base_url(); ?>artistic/profilepic",
-      type: "POST",
-      data: fd,
-      contentType: false,
-          cache: false,
-      processData:false,
-      success: function(data)
-        {
-
-        
-      $('#bidmodal-2').modal('hide');
-
-      $(".profile-photo").html(data);
-
-      document.getElementById('profilepic').value= null;
-
-      //document.getElementById('profilepic').value == '';
-
-      $('.popup_previred').hide();
-     $('#preview').prop('src', '#');
-
-        },          
-     });
-  return false;
-
-}
-
 
 function updateprofilepopup(id) {
     $('#bidmodal-2').modal('show');

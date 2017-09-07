@@ -291,8 +291,8 @@ label.cameraButton input[accept*="camera"] {display: none;}
     position: absolute;
     top: 0;
     background-color: #1b8ab9;
-    width: 10px;
-    height: 10px;
+ width: 65px;
+    height: 65px;
     animation-name: bounce_floatBarsG;
     -o-animation-name: bounce_floatBarsG;
     -ms-animation-name: bounce_floatBarsG;
@@ -795,7 +795,7 @@ label.cameraButton input[accept*="camera"] {
     background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
     border: none;
 }
-
+.indiavte_freelancer{margin: 10px 0px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
 	.common-form fieldset.mgrd input[type="radio"]{margin: 0px;}

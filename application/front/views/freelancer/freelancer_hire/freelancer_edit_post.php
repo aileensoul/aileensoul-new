@@ -37,7 +37,7 @@
                                 <div>
                                     <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4>
                                 </div>
-                                <div>
+                                <div class="indiavte_freelancer">
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
                                     <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
                                 </div> 
