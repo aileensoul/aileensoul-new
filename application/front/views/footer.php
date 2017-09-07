@@ -234,7 +234,7 @@ $.fn.preload = function (fn) {
         } else
         {
             $('#addcontact_count').html(msg);
-            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3px"});
+            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3.5px 5px"});
         }
     }
     function waitForMsg_contact()
