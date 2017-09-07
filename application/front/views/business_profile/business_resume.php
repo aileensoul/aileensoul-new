@@ -275,7 +275,7 @@
                                                                     }
                                                                 } else {
                                                                     ?>
-                                                                    <span><h7>No Image Available</h7> 
+                                                                <span class="images_add_bui"><h6>No Image Available</h6> 
 
                                                                         <?php
                                                                         $userid = $this->session->userdata('aileenuser');

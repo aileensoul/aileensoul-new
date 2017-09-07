@@ -11087,7 +11087,7 @@ Your browser does not support the audio tag.
                 $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                 if (!$businessfollow) {
 
-                    $return_html .= '<li class = "follow_box_ul_li" id = "fad' . $userlist['business_profile_id'] . '">
+                    $return_html .= '<li class = "follow_box_ul_li fad'.$userlist['business_profile_id'].'" id = "fad' . $userlist['business_profile_id'] . '">
       <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
       <div class = " col-md-12 follow_left_box_main">
       <div class = "post-design-pro-img_follow">';
