@@ -274,7 +274,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php } ?>
                     <!-- chat start -->
                 </div>
-
+<?php echo $footer; ?>
                 </body>
                 </html>
                 <!-- Bid-modal  -->
@@ -957,6 +957,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     });
                  
                  </script>
+                 
                      <script> 
                            var message_from_profile = <?php echo $message_from_profile ?>;
                           // alert(message_from_profile);
@@ -2072,7 +2073,7 @@ $(function () {
                     if (checked == 'checked') {
 
                         terms.push(ui.item.value);
-                        this.value = terms.split(", ");
+                        this.value = terms.split("");
                     }//if end
 
                     else {
@@ -2083,7 +2084,7 @@ $(function () {
                             terms.push(ui.item.value);
                             // add placeholder to get the comma-and-space at the end
                             terms.push("");
-                            this.value = terms.join(", ");
+                            this.value = terms.join("");
                             return false;
                         } else {
                             var last = terms.pop();
@@ -2133,7 +2134,7 @@ $(function () {
                     if (checked == 'checked') {
 
                         terms.push(ui.item.value);
-                        this.value = terms.split(", ");
+                        this.value = terms.split("");
                     }//if end
 
                     else {
@@ -2144,7 +2145,7 @@ $(function () {
                             terms.push(ui.item.value);
                             // add placeholder to get the comma-and-space at the end
                             terms.push("");
-                            this.value = terms.join(", ");
+                            this.value = terms.join("");
                             return false;
                         } else {
                             var last = terms.pop();
