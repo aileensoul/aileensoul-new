@@ -2038,7 +2038,7 @@ function artistic_dashboard_post(slug, pagenum) { //alert("hii"); alert(slug);
         },
         success: function (data) {
             $('.loader').remove();
-            $('.job-contact-frnd').append(data);
+            $('.art-all-post').append(data);
 
             // second header class add for scroll
             var nb = $('.post-design-box').length;
