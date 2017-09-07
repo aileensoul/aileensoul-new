@@ -2776,7 +2776,7 @@ class Recruiter extends MY_Controller {
                 
                 $join_str = array(array(
                     'join_type' => 'left',
-                    'table' => 'job_reg',
+                    'table' => 'job_add_edu',
                     'join_table_id' => 'job_reg.user_id',
                     'from_table_id' => 'job_add_edu.user_id'),
                 array(
@@ -2786,8 +2786,8 @@ class Recruiter extends MY_Controller {
                     'from_table_id' => 'job_graduation.user_id')
             );
                 
-                $contition_array = array('status' => '1', 'is_delete' => '0','user_id != ' => $userid, 'FIND_IN_SET("' . $value['title_id'] . '", work_job_title) != ' => '0');
-                $jobtiledata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0','job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['title_id'] . '", work_job_title) != ' => '0');
+                $jobtiledata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
             $rec_title = $jobtiledata;
