@@ -22,8 +22,8 @@
                                     <button type="button" class="close">×</button>
                                     <form  action=<?php echo base_url('recruiter/recruiter_search') ?> method="get">
                                         <div class="new-search-input">
-                                            <input type="text" id="tags1" name="skills" placeholder="Job Title, Skills, Industries">
-                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
+                                            <input type="text" id="rec_search_title" class="rec_search_title" name="skills" placeholder="Job Title, Skills, Industries">
+                                            <input type="text" id="rec_search_loc" class="rec_search_loc" name="searchplace" placeholder="Find Location">
                                             <input type="submit" name="search_submit" value="Search" onclick="return check()"  class="btn btn-primary"></button>
                                         </div>
                                     </form>
@@ -120,8 +120,8 @@
                                     <button type="button" class="close">×</button>
                                     <form  action=<?php echo base_url('recruiter/recruiter_search') ?> method="get">
                                         <div class="new-search-input">
-                                            <input type="text" id="tags1" name="skills" placeholder="Job Title, Skills, Industries">
-                                            <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">
+                                            <input type="text" id="rec_search_title" class="rec_search_title" name="skills" placeholder="Job Title, Skills, Industries">
+                                            <input type="text" id="rec_search_loc" class="rec_search_loc" name="searchplace" placeholder="Find Location">
                                             <input type="submit" name="search_submit" value="Search" class="btn btn-primary" onclick="return check()"></button>
                                         </div>
                                     </form>

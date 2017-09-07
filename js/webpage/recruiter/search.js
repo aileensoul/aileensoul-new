@@ -142,7 +142,7 @@ $(function () {
         return split(term).pop();
     }
 
-    $("#rec_search_loc").bind("keydown", function (event) { 
+    $(".rec_search_loc").bind("keydown", function (event) { 
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();
@@ -203,7 +203,7 @@ $(function () {
         return split(term).pop();
     }
 
-    $("#rec_search_title").bind("keydown", function (event) { 
+    $(".rec_search_title").bind("keydown", function (event) { 
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();

@@ -4,12 +4,12 @@
                             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
 
                               <!--<input type="text" id="tags" name="skills" placeholder="Job Title, Skills, Industries">-->
-        <input type="text" id="rec_search_title" name="skills"  placeholder="Job Title, Skills, Industries">
+        <input type="text" id="rec_search_title" class="rec_search_title" name="skills"  placeholder="Job Title, Skills, Industries">
                               
                             </fieldset>
                             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
                               
-                                <input type="text" id="rec_search_loc" name="searchplace"  placeholder="Find Location">
+                                <input type="text" id="rec_search_loc" class="rec_search_loc" name="searchplace"  placeholder="Find Location">
 
                                  <!--<input type="text" id="searchplace" name="searchplace" placeholder="Find Location">-->
                             </fieldset><!-- 

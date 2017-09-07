@@ -11,10 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title>Chat | Aileensoul</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- http://bootsnipp.com/snippets/4jXW -->
 
@@ -959,7 +959,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  </script>
                      <script> 
                            var message_from_profile = <?php echo $message_from_profile ?>;
-                           alert(message_from_profile);
+                          // alert(message_from_profile);
                   // business data start
                   if (message_from_profile == 1) {
            
