@@ -609,8 +609,8 @@ function check() {
 function checkvalue() {
 //alert("hi");
 
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
+    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
+    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
     // alert(searchkeyword);
     // alert(searchplace);
     if (searchkeyword == "" && searchplace == "") {
