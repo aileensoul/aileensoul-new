@@ -15935,7 +15935,9 @@ public function get_artistic_name($id=''){
                                                               $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
                                                        if ($art_userimage) { 
+                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                                                           $return_html .= '<img  src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'"  alt="">';
+                                                          $return_html .= '</a>';
                                                                  } else { 
                                                                 
                                                                 $a = $artname;
@@ -15944,17 +15946,21 @@ public function get_artistic_name($id=''){
                                                                 $bcr = substr($b, 0, 1);
                                                                 
                                             $return_html .= '<div class="post-img-profile">';
+                                                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
+
                                                                     $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
+                                                                    $return_html .= '</a>';
                                             $return_html .= '</div>';
                                                                }
                                             $return_html .= '</div>
                                                         <div class="comment-name">';
+                                                           $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                                                          $return_html .= '<b>';
-                                                          
+
                                                           $return_html .= ucfirst(strtolower($artname));
                                                          $return_html .= '&nbsp;';
                                                           $return_html .= ucfirst(strtolower($artlastname));
-                                                          $return_html .= '</b></br></div>
+                                                          $return_html .= '</b></a></br></div>
                                                           <div class="comment-details" id="showcomment'. $rowdata['artistic_post_comment_id'].'">'.$this->common->make_links($rowdata['comments']).'</div>';
 
                                 $return_html .= '<div class="edit-comment-box">
@@ -16000,7 +16006,7 @@ public function get_artistic_name($id=''){
                                         $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                                                                         <div class="comment-details-menu">
                                                                             <div id="editcommentbox'. $rowdata['artistic_post_comment_id'].'" style="display:block;">
-                                                                                <a id="'.$rowdata['artistic_post_comment_id'].' ?>" onClick="comment_editbox(this.id)" class="editbox">Edit
+                                                                                <a id="'.$rowdata['artistic_post_comment_id'].'" onClick="comment_editbox(this.id)" class="editbox">Edit
                                                                                 </a>
                                                                             </div>
                                                                             <div id="editcancle' . $rowdata['artistic_post_comment_id'].'" style="display:none;">
