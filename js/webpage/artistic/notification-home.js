@@ -1519,6 +1519,8 @@ function insert_comment(clicked_id)
            var msg = "You have reached your maximum limit of characters allowed";
 
             $("#editpostname" + abc).prop("readonly", true);
+             document.getElementById("editpostdesc" + abc).contentEditable = false;
+           document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
               
            $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
            $('#postedit').modal('show');
@@ -1689,7 +1691,9 @@ function insert_comment(clicked_id)
     $( document ).on( 'keydown', function ( e ) {
        if ( e.keyCode === 27 ) {
            $('#postedit').modal('hide');
-          $(".my_text").prop("readonly", false);
+           $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
        }
    });  
   
@@ -1751,7 +1755,9 @@ function seemorediv(abc) {
     });
 
      $('#postedit').on('click', function () {
-    $(".my_text").prop("readonly", false);
+    $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
     });
 
 

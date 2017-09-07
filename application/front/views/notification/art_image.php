@@ -199,7 +199,7 @@
                                                         </div>
 
                                                         <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none; margin-bottom: 10px;">
-                                                            <input type="text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Art name" value="<?php echo $art_data[0]['art_post']; ?>">
+                                                            <input type="text" class="my_text" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname" placeholder="Art name" value="<?php echo $art_data[0]['art_post']; ?>">
                                                         </div>
                                             
                                             <div class="margin_btm" id="<?php echo 'editpostdetails' . $art_data[0]['art_post_id']; ?>" style="display:block;"><span class="show">

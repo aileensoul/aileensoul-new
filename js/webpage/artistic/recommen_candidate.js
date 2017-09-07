@@ -68,7 +68,25 @@ function artistic_search_post(pagenum) {
 
 
 
+$( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
 
+       }
+   });  
+
+
+$('#postedit').on('click', function () {
+   // $('#myModal').modal('show');
+    $(".my_text").prop("readonly", false);
+     $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+    });
+  
 
 function check_lengthedit(abc)
    { //alert("hii");
@@ -86,6 +104,8 @@ function check_lengthedit(abc)
            var msg = "You have reached your maximum limit of characters allowed";
 
             $("#editpostname" + abc).prop("readonly", true);
+             document.getElementById("editpostdesc" + abc).contentEditable = false;
+           document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
               
            $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
            $('#postedit').modal('show');

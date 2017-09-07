@@ -301,7 +301,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                             </div>
 
                                                             <div id="<?php echo 'editpostbox' . $art_data[0]['art_post_id']; ?>" style="display:none;">
-                                                                <input type="text" placeholder="Title" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname"  value="<?php echo $art_data[0]['art_post']; ?>" style=" margin-bottom: 10px;">
+                                                                <input type="text" class="my_text" placeholder="Title" id="<?php echo 'editpostname' . $art_data[0]['art_post_id']; ?>" name="editpostname"  value="<?php echo $art_data[0]['art_post']; ?>" style=" margin-bottom: 10px;">
                                                             </div>
 
                                                         </div>

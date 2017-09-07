@@ -38,6 +38,9 @@ function check_lengthedit(abc)
            text_num = maxLen - product_name.length;
            var msg = "You have reached your maximum limit of characters allowed";
            $("#editpostname" + abc).prop("readonly", true);
+           document.getElementById("editpostdesc" + abc).contentEditable = false;
+           document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
+
            $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
            $('#postedit').modal('show');
            var substrval = product_name.substring(0, maxLen);
@@ -336,8 +339,8 @@ $( document ).on( 'keydown', function ( e ) {
            //$( "#bidmodal" ).hide();
            $('#postedit').modal('hide');
          $('.my_text').attr('readonly', false);
-
-            //$('.modal-post').show();
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
 
        }
    });  
@@ -351,6 +354,8 @@ $( document ).on( 'keydown', function ( e ) {
 $('#postedit').on('click', function () {
    // $('#myModal').modal('show');
     $(".my_text").prop("readonly", false);
+     $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
     });
   
 

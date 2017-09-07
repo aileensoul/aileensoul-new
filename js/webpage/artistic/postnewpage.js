@@ -1,3 +1,26 @@
+ $('#postedit').on('click', function(){
+        $(".my_text").prop("readonly", false);
+     $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+    });
+
+
+    $( document ).on( 'keydown', function ( e ) {
+       if ( e.keyCode === 27 ) {
+           //$( "#bidmodal" ).hide();
+           $('#postedit').modal('hide');
+         $('.my_text').attr('readonly', false);
+         $('.editable_text').attr('contentEditable', true);
+         $('.fr').attr('disabled', false);
+         // $('.my_text').attr('readonly', false);
+
+            //$('.modal-post').show();
+
+       }
+   });  
+  
+
+
  $(document).ready(function ()
             {
                 /* Uploading Profile BackGround Image */
@@ -2050,22 +2073,7 @@ $( document ).on( 'keydown', function ( e ) {
                 
    }
 
-    $('#postedit').on('click', function(){
-       // $('.my_text').attr('readonly', false);
-    });
-
-
-    $( document ).on( 'keydown', function ( e ) {
-       if ( e.keyCode === 27 ) {
-           //$( "#bidmodal" ).hide();
-           $('#postedit').modal('hide');
-         // $('.my_text').attr('readonly', false);
-
-            //$('.modal-post').show();
-
-       }
-   });  
-  
+    
 
   function check_lengthedit(abc)
    { //alert("hii");
@@ -2076,6 +2084,9 @@ $( document ).on( 'keydown', function ( e ) {
        if (product_name.length > maxLen) { 
            text_num = maxLen - product_name.length;
            var msg = "You have reached your maximum limit of characters allowed";
+           $("#editpostname" + abc).prop("readonly", true);
+           document.getElementById("editpostdesc" + abc).contentEditable = false;
+           document.getElementById("editpostsubmit"+abc).setAttribute("disabled","disabled");
            
            $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
            $('#postedit').modal('show');

@@ -15612,7 +15612,7 @@ public function get_artistic_name($id=''){
                                           <div>
 
                                              <div id="editpostbox'. $key['art_post_id'].'" style="display:none;">
-                                                        <input type="text" id="editpostname'. $key['art_post_id'].'" name="editpostname" placeholder="Title" value="'.$key['art_post'].'" onKeyDown=check_lengthedit('.$key['art_post_id'].'); onKeyup=check_lengthedit('.$key['art_post_id'].'); onblur=check_lengthedit('.$key['art_post_id'].'); >';
+                                                        <input type="text" class="my_text" id="editpostname'. $key['art_post_id'].'" name="editpostname" placeholder="Title" value="'.$key['art_post'].'" onKeyDown=check_lengthedit('.$key['art_post_id'].'); onKeyup=check_lengthedit('.$key['art_post_id'].'); onblur=check_lengthedit('.$key['art_post_id'].'); >';
                                                          
                                                               if ($key['art_post']) {
                                                                 $counter = $key['art_post'];
@@ -16532,7 +16532,7 @@ public function get_artistic_name($id=''){
                                           <div>
 
                                              <div id="editpostbox'. $key['art_post_id'].'" style="display:none;">
-                                                        <input type="text" id="editpostname'. $key['art_post_id'].'" name="editpostname" placeholder="Title" value="'.$key['art_post'].'" onKeyDown=check_lengthedit('.$key['art_post_id'].'); onKeyup=check_lengthedit('.$key['art_post_id'].'); onblur=check_lengthedit('.$key['art_post_id'].'); >';
+                                                        <input type="text" class="my_text" id="editpostname'. $key['art_post_id'].'" name="editpostname" placeholder="Title" value="'.$key['art_post'].'" onKeyDown=check_lengthedit('.$key['art_post_id'].'); onKeyup=check_lengthedit('.$key['art_post_id'].'); onblur=check_lengthedit('.$key['art_post_id'].'); >';
                                                          
                                                               if ($key['art_post']) {
                                                                 $counter = $key['art_post'];
