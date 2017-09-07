@@ -141,6 +141,7 @@ $("#profilepic").change(function () {
 function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
+    
 }
 $uploadCrop = $('#upload-demo').croppie({
     enableExif: true,

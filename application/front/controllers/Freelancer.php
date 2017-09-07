@@ -2215,9 +2215,10 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
-        $date = date('Y-m-d', time());
+       // $date = date('Y-m-d', time());
+       // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
-            $contition_array = array('is_delete' => 0, 'status' => '1', 'post_last_date >=' => $date, 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+            $contition_array = array('is_delete' => 0, 'status' => '1',  'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
             $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
