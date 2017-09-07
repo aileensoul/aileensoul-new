@@ -1701,7 +1701,44 @@ div .comment {
 /***  end change password  ***/
 /***  header  ***/
 
+/*left side menu bar*/
 
+.left-side-bar ul {
+    margin: 0;
+    padding: 0;
+}
+.left-side-bar ul li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.left-side-bar ul li a {
+    background: #1b8ab9;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-bottom: 2px;
+    color: #fff;
+    display: block;
+}
+.left-side-bar ul li a:hover {
+    background: #156f95;
+    text-decoration: none;
+}
+.left-side-bar ul li.active {
+    position: relative;
+    background: #000;
+}
+.left-side-bar ul li.active a {
+    background: #156f95!important;
+}
+.left-side-bar ul li.active:after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    position: absolute;
+    top: 11px;
+    right: 8px;
+    color: #fff;
+}
 /***  end header  ***/
 
 .panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
