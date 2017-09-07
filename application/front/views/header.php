@@ -231,17 +231,26 @@
 
                                         <!-- general notification start -->
                                         <li id="notification_li">
-                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em><i class="header-icon-notification "></i>
+                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
 
                                                 <span id="notification_count"></span>
 
                                             </a><div id="notificationContainer">
-                                                <div id="notificationTitle">Notifications</div>
 
-                                                <div id="notificationsBody" class="notifications">
+                                                <div id="InboxBody" class="Inbox">
+                                                    <div id="notificationTitle">Notifications <span class="see_link" id="seenot"></span></div>
 
 
+                                                    <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
+
+                                                        <div>
+                                                            <ul class="notification_data_in">
+
+                                                            </ul></div>
+                                                    </div>
                                                 </div>
+
+                                            </div>
                                         </li>
                                         <!-- general notification end -->
                                         <?php
@@ -529,18 +538,27 @@
         
                                     <!-- general notification start -->
                                     <li id="notification_li">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
+                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
 
-                                            <span id="notification_count"></span>
+                                                <span id="notification_count"></span>
 
-                                        </a><div id="notificationContainer">
-                                            <div id="notificationTitle">Notifications</div>
+                                            </a><div id="notificationContainer">
 
-                                            <div id="notificationsBody" class="notifications">
+                                                <div id="InboxBody" class="Inbox">
+                                                    <div id="notificationTitle">Notifications <span class="see_link" id="seenot"></span></div>
 
+
+                                                    <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
+
+                                                        <div>
+                                                            <ul class="notification_data_in">
+
+                                                            </ul></div>
+                                                    </div>
+                                                </div>
 
                                             </div>
-                                    </li>
+                                        </li>
                                     <!-- general notification end -->
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');

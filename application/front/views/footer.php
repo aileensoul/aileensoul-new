@@ -63,14 +63,25 @@ $.fn.preload = function (fn) {
     }
     function notheader()
     {
+
+        // $("#fad" + clicked_id).fadeOut(6000);
+
+
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/not_header" ?>',
+            dataType: 'json',
             data: '',
             success: function (data) {
-                $('#' + 'notificationsBody').html(data);
+                //    alert(data);
+                $('.' + 'notification_data_in').html(data.notification);
+                $('#seenot').html(data.seeall);
+
             }
+
+
         });
+
     }
 
     jQuery(document).ready(function ($) {

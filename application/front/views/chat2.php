@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
         <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
         <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/1.10.3.jquery-ui.css'); ?>">-->
         <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- http://bootsnipp.com/snippets/4jXW -->
@@ -155,25 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <ul  id="received" class="padding_less_right">
 
                                 </ul>
-                                <!--div for="smily"  class="smily_b" >
-                        <div id="notification_li1" >
-                            <a class="smil" href="#" id="notificationLink1" ">
-                                <i class="em em-blush"></i></a>
-                            <div id="notificationContainer1" style="display: none;">
-                                <div id="notificationsBody1" class="notifications1">
-                                <?php
-                                $i = 0;
-                                foreach ($smiley_table as $key => $value) {
-                                    ?>
-                                                                <img id="<?php echo $i; ?>" src="<?php echo base_url() . 'uploads/smileys/' . $value[0]; ?>" height="25" width="25"onClick="followclose(<?php echo $i; ?>)">
-                                    <?php
-                                    $i++;
-                                }
-                                ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div-->
+                                
                             </div>
 
                             <div class="panel-footer">
@@ -815,78 +797,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
 
                 </script>
-                <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-                <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
                 <script>
-                    jQuery.noConflict();
-
-                    (function ($) {
-
-                        var data = <?php echo json_encode($demo); ?>;
-                        //alert(data);
-
-
-                        $(function () {
-                            // alert('hi');
-                            $("#tags").autocomplete({
-                                source: function (request, response) {
-                                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                    response($.grep(data, function (item) {
-                                        return matcher.test(item.label);
-                                    }));
-                                },
-                                minLength: 1,
-                                select: function (event, ui) {
-                                    event.preventDefault();
-                                    $("#tags").val(ui.item.label);
-                                    $("#selected-tag").val(ui.item.label);
-                                    // window.location.href = ui.item.value;
-                                }
-                                ,
-                                focus: function (event, ui) {
-                                    event.preventDefault();
-                                    $("#tags").val(ui.item.label);
-                                }
-                            });
-                        });
-
-                    })(jQuery);
-
-                </script>
-                <script>
-                    jQuery.noConflict();
-
-                    (function ($) {
-
-                        var data1 = <?php echo json_encode($city_data); ?>;
-                        //alert(data);
-
-
-                        $(function () {
-                            // alert('hi');
-                            $("#searchplace").autocomplete({
-                                source: function (request, response) {
-                                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                                    response($.grep(data1, function (item) {
-                                        return matcher.test(item.label);
-                                    }));
-                                },
-                                minLength: 1,
-                                select: function (event, ui) {
-                                    event.preventDefault();
-                                    $("#searchplace").val(ui.item.label);
-                                    $("#selected-tag").val(ui.item.label);
-                                    // window.location.href = ui.item.value;
-                                }
-                                ,
-                                focus: function (event, ui) {
-                                    event.preventDefault();
-                                    $("#searchplace").val(ui.item.label);
-                                }
-                            });
-                        });
-
-                    })(jQuery);
 
                     $(document).on('keydown', function (e) {
                         if (e.keyCode === 27) {
@@ -982,7 +893,7 @@ $(function () {
                     if (checked == 'checked') {
 
                         terms.push(ui.item.value);
-                        this.value = terms.split(", ");
+                        this.value = terms.split("");
                     }//if end
 
                     else {

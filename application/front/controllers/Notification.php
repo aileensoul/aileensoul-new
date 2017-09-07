@@ -1650,6 +1650,9 @@ class Notification extends MY_Controller {
                                                 </div>
                              </div></div>';      
         }
+        
+       
+       
       echo json_encode(
                         array(
                             "notification" => $notification,
