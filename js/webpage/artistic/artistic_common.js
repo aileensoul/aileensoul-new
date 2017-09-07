@@ -422,3 +422,14 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
             }
         });
     });
+
+
+    
+
+
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        //$( "#bidmodal" ).hide();
+        $('#bidmodal-2').modal('hide');
+    }
+});
