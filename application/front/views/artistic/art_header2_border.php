@@ -16,7 +16,7 @@
                                  </div>
                                  <div id="search">
                                     <button type="button" class="close">×</button>
-                                  <form action=<?php echo base_url('artistic/execute_search')?> method="get">
+                                  <form action=<?php echo base_url('artistic/search')?> method="get">
                                         <div class="new-search-input">
 
                                              <input type="text" id="tags1" name="skills" placeholder=" Artists, Skills, Keywords">
@@ -105,7 +105,7 @@
                                  </div>
                                  <div id="search">
                                     <button type="button" class="close">×</button>
-                                   <form action=<?php echo base_url('artistic/execute_search')?> method="get">
+                                   <form action=<?php echo base_url('artistic/search')?> method="get">
                                         <div class="new-search-input">
                                               <input type="text" id="tags1" name="skills" placeholder=" Artists, Skills, Keywords">
                                             <input type="text" id="searchplace1" name="searchplace" placeholder="Find Location">

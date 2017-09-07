@@ -14937,7 +14937,7 @@ public function get_artistic_name($id=''){
 
     //for search code start
 
-    public function execute_search() {
+    public function search() {
         //echo "test sucessfull";
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
