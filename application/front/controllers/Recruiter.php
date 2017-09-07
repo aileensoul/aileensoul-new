@@ -3213,24 +3213,346 @@ class Recruiter extends MY_Controller {
                         $jobskil[] = $skilldata[0]['skill'];
                     } 
                     $return_html .= implode(',', $jobskil).'</span></li>'; 
-                } 
-    
+                }
+                if ($p['work_job_industry']) 
+                {
+                    $contition_array = array('industry_id' => $p['work_job_industry']);
+                    $industry = $this->common->select_data_by_condition('job_industry', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                 
-                                                                            
+                    $return_html .='<li> <b> Industry</b> <span>'.$industry[0]['industry_name'].'</span></li>';
+                }
+                if ($p['work_job_city']) 
+                {
+                    $work_city = explode(',', $p['work_job_city']);
+                    $cities2 = array();         
+                    foreach ($work_city as $city) 
+                    {
+                        $contition_array = array('city_id' => $city);
+                        $citydata1 = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                        if ($citydata1) 
+                        {
+                            $cities2[] = $citydata1[0]['city_name'];
 
+                        }
+                    }
+                    $return_html .='<li> <b> Preferred Cites</b> <span>'.implode(',', $cities2).'</span></li>';
+                }
 
+                $contition_array =array('user_id' => $p['iduser'], 'experience' => 'Experience', 'status' => '1');   
+                $experiance = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .='</ul></div></div>';
-                $return_html .='</div>';
+                if($experiance[0]['experience_year'] != '')
+                { 
+ 
+                    $total_work_year=0;
+                    $total_work_month=0;
+                    foreach ($experiance as $work1) 
+                    {
+                        $total_work_year+=$work1['experience_year'];
+                        $total_work_month+=$work1['experience_month'];
+                    }
+           
+                    $return_html .='<li> <b> Total Experience</b><span>';
+                  
+                    if($total_work_month == '12 month' && $total_work_year =='0 year')
+                    {
+                         $return_html .= "1 year";
+                    }
+                    else
+                    {
+                        $month = explode(' ', $total_work_year);
+                        $year=$month[0];
+                        $y=0;
+                        for($i=0;$i<=$y;$i++)
+                        {
+                            if($total_work_month >= 12)
+                            {
+                                $year=$year + 1;
+                                $total_work_month = $total_work_month - 12;
+                                $y++;
+                            }
+                            else
+                            {
+                                $y=0;
+                            }
+                    }
+                    if($year != 0)
+                    {  
+                        $return_html .= $year." Year";
+                    }
+                    $return_html .= "&nbsp";
+                    if($total_work_month != 0)
+                    {
+                        $return_html .= $total_work_month." Month";
+                    }
+                }
+              
+               $return_html .='</span></li>';
+                
+                } 
+                else
+                { 
+
+                    if($p['experience'] == 'Fresher')
+                    {
+                        $return_html .='<li> <b> Total Experience</b><span>'.$p['experience'].'</span></li>';
+                    } //if complete
+                }//else complete
+
+                if($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'] && $p['degree'])
+                { 
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .= $cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .= PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+              
+                    $return_html .='<li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .= $cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                                
+                    $return_html .='</span></li>';
+                }
+                elseif($p['board_secondary'] && $p['board_higher_secondary'] && $p['degree'])
+                {
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+
+                    $return_html .='<li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+                }
+                elseif($p['board_higher_secondary'] && $p['degree'])
+                {
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                         $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+
+                    $return_html .='<li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                         $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                         $return_html .=PROFILENA;
+                    }
+                     $return_html .='</span></li>';
+                }
+                else if($p['board_secondary'] && $p['degree'])
+                {
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li><li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+                } 
+                elseif($p['board_primary'] && $p['degree'])
+                {
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time; 
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+               
+                    $return_html .='<li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+                } 
+                elseif($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'])
+                {
+                    $return_html .='<li><b>Board of Higher Secondary</b>';
+                    $return_html .='<span>'.$p['board_higher_secondary'].'</span></li>';
+
+                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+
+                } 
+                elseif($p['board_secondary'] && $p['board_higher_secondary'])
+                { 
+                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+                } 
+                elseif($p['board_primary'] && $p['board_higher_secondary'])
+                { 
+
+                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+                }
+                elseif($p['board_primary'] && $p['board_secondary'])
+                {
+                    $return_html .='<li><b>Board of Secondary</b><span>'.$p['board_secondary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Secondary</b><span>'.$p['percentage_secondary'].'</span></li>';
+                } 
+                elseif($p['degree'])
+                {
+                    $return_html .='<li><b>Degree</b><span>';
+                    $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
+                    if ($cache_time)
+                    {
+                        $return_html .=$cache_time; 
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+
+                    $return_html .='<li><b>Stream</b><span>';
+                    $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
+                    if ($cache_time) 
+                    {
+                        $return_html .=$cache_time;
+                    } 
+                    else 
+                    {
+                        $return_html .=PROFILENA;
+                    }
+                    $return_html .='</span></li>';
+                }
+                elseif($p['board_higher_secondary'])
+                {
+                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+
+                }
+                elseif($p['board_secondary'])
+                {
+
+                    $return_html .='<li><b>Board of Secondary</b><span>'.$p['board_secondary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Secondary</b><span>'.$p['percentage_secondary'].'</span></li>';
+                } 
+                elseif($p['board_primary'])
+                {
+                    $return_html .='<li><b>Board of Primary</b><span>'.$p['board_primary'].'</span></li>';
+                    $return_html .='<li><b>Percentage of Primary</b><span>'.$p['percentage_primary'].'</span></li>';
+                }
+                                                                
+                $return_html .='<li><b>E-mail</b><span>';
+                if($p['email'])
+                {
+                    $return_html .=$p['email'];
+                }
+                else
+                {
+                    $return_html .=PROFILENA;
+                }
+                $return_html .='</span></li>';
+
+                if($p['phnno'])
+                {
+                    $return_html .='<li><b>Mobile Number</b><span>'.$p['phnno'].'</span></li>';
+                }
+                $return_html .='<input type="hidden" name="search" id="search" value="'.$keyword.'">
+                                    <input type="hidden" name="search" id="search1" value="'.$keyword1.'">';
+    
+                $return_html .='</ul></div>';
+
+                $return_html .='<div class="profile-job-profile-button clearfix">
+                                    <div class="apply-btn fr">';
+
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('from_id' => $userid, 'to_id' => $p['iduser'], 'save_type' => 1, 'status' => '0');
+                $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                                                
+                if($userid != $p['iduser'])
+                {       
+                    if (!$data) 
+                    {
+                        $return_html .='<a href="'.base_url('chat/abc/2/1/'  . $p['iduser']).'">Message</a>
+                                        <input type="hidden" id="hideenuser'.$p['job_id'].'" value= "'.$p['job_id'].'">
+                                        <a id="'.$p['iduser'].'" onClick="savepopup('.$p['iduser'].','.$p['job_id'].')" href="javascript:void(0);" class="saveduser'.$p['job_id'].'">Save</a>';
+                    } 
+                    else 
+                    {
+                        $return_html .='<a href="'.base_url('chat/abc/2/1/'  . $p['iduser']).'">Message</a> 
+                                        <a class="saved">Saved </a>';
+                    } 
+                }
+                $return_html .='</div></div>';
+
+                $return_html .='</div></div>';
             }//for loop end
         }//if end
         else
         {
-
-        } //else end
-
-
-                                              
+            $return_html .='<div class="text-center rio">
+                                <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
+                                    <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn'."'".'t find what you were looking for.</p>
+                                        <ul>
+                                            <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.
+                                            </li>
+                                        </ul>
+                            </div>';
+        } //else end                                     
        
         echo $return_html;
     }
