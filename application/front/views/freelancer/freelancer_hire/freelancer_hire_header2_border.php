@@ -1,85 +1,85 @@
 <!--post save success pop up style strat -->
 <div class="bg-search">
-    <?php if(($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate')){?>
-    <div class="header2 headerborder  animated fadeInDownBig">
-        <?php } else {?>
-        <div class="header2 headerborder">
-        <?php }?>
-        <div class="container">
-            <div class="row">
-                <?php echo $freelancer_hire_search; ?>
-                <div class="col-sm-5 col-md-5 col-xs-12 fw-479">
-                    <div class="search-mob-block">
-                        <div class="">
-                            <a href="#search">
-                                <label><i class="fa fa-search" aria-hidden="true"></i></label>
-                            </a>
-                        </div>
-                       
-                        <div id="search">
-                            <button type="button" class="close">×</button>
-                            <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
-                                <div class="new-search-input">
-                                    <input type="text" class="skill_keyword" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
-                                    <input type="text" class="skill_place" id="searchplace1" name="searchplace"  placeholder="Find Location" />
-                                    <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
-                                        <input type="submit" name="search_submit" value="Search" onclick="return leave_page(4)" class="btn btn-primary">
-                                    <?php } else { ?>
-                                        <input type="submit" name="search_submit" value="Search"  class="btn btn-primary">
-                                    <?php } ?>
-                                </div>
-                            </form>
-                        </div>
-                        
-                    </div>
-                    <div class="">
-                        <ul class="" id="dropdownclass">
-                            <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
-                            </li>
-                            <li id="Inbox_link">
-                                <?php if ($message_count) { ?>
-                                                             
-                                <?php } ?>
-                                <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
-
-                                    <span id="message_count"></span>
+    <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate')) { ?>
+        <div class="header2 headerborder  animated fadeInDownBig">
+        <?php } else { ?>
+            <div class="header2 headerborder">
+            <?php } ?>
+            <div class="container">
+                <div class="row">
+                    <?php echo $freelancer_hire_search; ?>
+                    <div class="col-sm-5 col-md-5 col-xs-12 fw-479">
+                        <div class="search-mob-block">
+                            <div class="">
+                                <a href="#search">
+                                    <label><i class="fa fa-search" aria-hidden="true"></i></label>
                                 </a>
+                            </div>
 
-                                <div id="InboxContainer">
-                                    <div id="InboxBody" class="Inbox">
-                                        <div id="notificationTitle">Messages</div>
+                            <div id="search">
+                                <button type="button" class="close">×</button>
+                                <form action=<?php echo base_url('freelancer-hire/search') ?> method="get">
+                                    <div class="new-search-input">
+                                        <input type="text" class="skill_keyword" id="tags1" name="skills"  placeholder="Designation, Skills, Field" />
+                                        <input type="text" class="skill_place" id="searchplace1" name="searchplace"  placeholder="Find Location" />
+                                        <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_add_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_edit_post')) { ?>
+                                            <input type="submit" name="search_submit" value="Search" onclick="return leave_page(4)" class="btn btn-primary">
+                                        <?php } else { ?>
+                                            <input type="submit" name="search_submit" value="Search"  class="btn btn-primary">
+                                        <?php } ?>
+                                    </div>
+                                </form>
+                            </div>
 
-                                        <div id="notificationsmsgBody" class="notificationsmsg">
+                        </div>
+                        <div class="">
+                            <ul class="" id="dropdownclass">
+                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
+                                </li>
+                                <li id="Inbox_link">
+                                    <?php if ($message_count) { ?>
+
+                                    <?php } ?>
+                                    <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
+
+                                        <span id="message_count"></span>
+                                    </a>
+
+                                    <div id="InboxContainer">
+                                        <div id="InboxBody" class="Inbox">
+                                            <div id="notificationTitle">Messages</div>
+
+                                            <div id="notificationsmsgBody" class="notificationsmsg">
+                                            </div>
+                                        </div>
+                                </li> 
+                                <!-- Friend Request Start-->
+                                <li>
+                                    <!-- Friend Request End-->
+                                    <div class="dropdown_hover">
+                                        <span id="art_profile">Employer Profile <i class="fa fa-caret-downfa fa-caret-down" aria-hidden="true"></i></span>
+                                        <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                            <span class="my_account">
+                                                <div class="my_S">Account</div>
+                                            </span>
+                                            <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
+                                            <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+                                            <?php
+                                            $userid = $this->session->userdata('aileenuser');
+                                            ?>
+                                            <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
                                         </div>
                                     </div>
-                            </li> 
-                            <!-- Friend Request Start-->
-                            <li>
+                                </li>
                                 <!-- Friend Request End-->
-                                <div class="dropdown_hover">
-                                    <span id="art_profile">Employer Profile <i class="fa fa-caret-downfa fa-caret-down" aria-hidden="true"></i></span>
-                                    <div class="dropdown-content_hover" id="dropdown-content_hover">
-                                        <span class="my_account">
-                                            <div class="my_S">Account</div>
-                                        </span>
-                                        <a href="<?php echo base_url('freelancer-hire/employer-details'); ?>" onclick="return leave_page(2)"><span class="h2-img h2-srrt"></span> View Profile</a>
-                                        <a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"  onclick="return leave_page(3)"><span class="h3-img h2-srrt"></span> Edit Profile</a>
-                                        <?php
-                                        $userid = $this->session->userdata('aileenuser');
-                                        ?>
-                                        <a onClick="deactivate(<?php echo $userid; ?>)"><span class="h4-img h2-srrt"></span> Deactive Profile</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Friend Request End-->
-                            <!-- END USER LOGIN DROPDOWN -->
-                        </ul>
-                    </div> 
+                                <!-- END USER LOGIN DROPDOWN -->
+                            </ul>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div> 
+    </div> 
 </header>
 
 <!-- Bid-modal  -->
@@ -95,24 +95,25 @@
     </div>
 </div>
 <!-- Model Popup Close -->
-
+<script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
 <script type="text/javascript">
-    function deactivate(clicked_id) {
-        $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-        $('#bidmodal').modal('show');
-    }
-    function deactivate_profile(clicked_id) {
+                                                function deactivate(clicked_id) {
+                                                   
+                                                    $('.biderror .mes').html("<div class='pop_content'> Are you sure you want to deactive your Freelancer Hire profile?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='deactivate_profile(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+                                                    $('#bidmodal').modal('show');
+                                                }
+                                                function deactivate_profile(clicked_id) {
 
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url() . "freelancer-hire/deactivate" ?>',
-            data: 'id=' + clicked_id,
-            success: function (data) {
-                window.location = "<?php echo base_url() ?>dashboard";
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '<?php echo base_url() . "freelancer-hire/deactivate" ?>',
+                                                        data: 'id=' + clicked_id,
+                                                        success: function (data) {
+                                                            window.location = "<?php echo base_url() ?>dashboard";
 
-            }
-        });
-    }
+                                                        }
+                                                    });
+                                                }
 </script>
 
 

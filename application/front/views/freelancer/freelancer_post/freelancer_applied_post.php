@@ -218,7 +218,6 @@
         </div>
         <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
         <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>">
         </script>
