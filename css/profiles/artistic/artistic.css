@@ -2423,7 +2423,7 @@ padding: 7px 5px 0px 5px;}
 }
 
 .search_img {
-    margin: 4px 3px 2px 7px;
+    margin: 4px 3px 9px 7px;
     height: 100px;
     width: 100px;
     display: inline-block;
@@ -2436,6 +2436,7 @@ padding: 7px 5px 0px 5px;}
 .search_button {
     margin-top: 14px;
     margin-left: 23px;
+    margin-bottom: 14px;
 }
 .search_button button {
     margin-bottom: 10px;
@@ -3174,7 +3175,19 @@ border-top-right-radius: 4px;
 overflow: hidden;
 }
 
-
+.text_num{position: absolute; right: 21%; top: 6px; background-color:transparent;  width: 24px !important; font-size: 20px;
+    border: none;
+    padding: 5px;
+    height: 30px;
+    color: #999;
+    padding-left: 0px!important;
+}
+.fifty_val .text_num{top: 0px;}
+.post-design-box .post-design-desc a {
+    color: black;
+    font-size: 14px;
+}
+.profile-job-post-location-name-rec .designation_rec ul li{margin-bottom: 0px;}
 
 
 /***  media query  ***/
