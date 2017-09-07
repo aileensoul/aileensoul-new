@@ -407,7 +407,7 @@ line-height: 1;}
     width: 70px;
     display: inline-block;
     float: left;
-    padding: 11px 5px 0px 5px;
+    padding: 7px 5px 6px 5px;
 }
 .post-design-pro-img_follow img {
     height: 100%;
@@ -1747,6 +1747,7 @@ background-size: 100%;
     float: left;
 	overflow: hidden;
     padding-left: 10px;
+    cursor: pointer;
 }
 .bui_res_i img {
     width: auto;
@@ -1870,13 +1871,14 @@ background-size: 100%;
     right: 45px;
     border: none;
 }
-.text_num{position: absolute; right: 21%; top: 0px; background-color:transparent;  width: 24px !important; font-size: 20px;
+.text_num{position: absolute; right: 21%; top: 6px; background-color:transparent;  width: 24px !important; font-size: 20px;
     border: none;
     padding: 5px;
     height: 30px;
     color: #999;
     padding-left: 0px!important;
 }
+.fifty_val .text_num{top: 0px;}
 .editor-content.popup-textarea{width: 100%;padding: 10px; padding-bottom: 0px; padding:0px 10px !important; margin: 3px!important}
 .popup-textarea textarea {
     border: none;
@@ -2561,7 +2563,7 @@ line-height: 1;}
 
 
 .designation_rec ul{padding-left: 0px;}
-.designation_rec ul li{line-height: 15px; list-style: none; margin: 0;}
+.designation_rec ul li{line-height: 20px; list-style: none; margin: 0;}
 .designation_rec {float: left; width: 50%!important;}
 
 .profile-job-post-title-inside .profile_search {
@@ -2573,7 +2575,7 @@ line-height: 1;}
 }
 
 .search_img {
-    margin: 4px 3px 2px 7px;
+    margin: 4px 3px 9px 7px;
     height: 100px;
     width: 100px;
     display: inline-block;
@@ -2586,7 +2588,7 @@ line-height: 1;}
 .search_button {
     margin-top: 14px;
     margin-left: 23px;
-	margin-top: 8px;
+	margin-bottom: 14px;
 }
 .search_button button {
     margin-bottom: 10px;
@@ -2650,6 +2652,16 @@ line-height: 1;}
 .color-search {
     color: #999!important;
 }
+
+.images_add_bui {
+    display: block;
+    text-align: center;
+    padding: 15px;
+}
+.images_add_bui h6 {
+    display: inline-block;
+}
+
 /*zalak end 29-8_mobile_mobile_mobile
 */
 /*zalak end 29-8_mobile_mobile_mobile
@@ -3221,6 +3233,7 @@ div .comment {
 .bui_res_i2{height: 166px;
 	width: 223px;
 	position: relative;
+    cursor: pointer;
 }
 .bui_res_i2 img{height: 100%; width: 100%;}
 .alert-danger1 {
@@ -3384,6 +3397,26 @@ div .comment {
 overflow: hidden;
 }
 
+.post-design-box .post-design-desc a {
+    color: black;
+    font-size: 14px;
+}
+
+.profile-job-post-location-name-rec .designation_rec ul li{margin-bottom: 0px;}
+.profile-job-post-title-inside .profile_search .search_head {
+    
+    border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+
+    background-color: #fff;
+    color: #1b8ab9;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 3px;
+    padding-left: 25px;
+    border: 1px solid #ccc;
+}
+.profile-job-post-location-name-rec .designation_rec ul li:first-child a{font-size: 19px;}
 
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}

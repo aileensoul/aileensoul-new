@@ -13,7 +13,6 @@ $(document).ready(function () {
         },
     });
 });
-
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -28,7 +27,6 @@ function check() {
         return false;
     }
 }
-
 
 // END OF BUSINESS SEARCH AUTO FILL 
 
@@ -59,6 +57,7 @@ $uploadCrop = $('#upload-demo').croppie({
         height: 350
     }
 });
+
 $('.upload-result').on('click', function (ev) {
     $uploadCrop.croppie('result', {
         type: 'canvas',
@@ -181,15 +180,16 @@ $("#profilepic").change(function () {
     }
 });
 // script for profile pic end 
-
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
 }
 function closeModal() {
     document.getElementById('myModal1').style.display = "none";
 }
-var slideIndex = 1;
-showSlides(slideIndex);
+
+var n = 1;
+//showSlides(slideIndex);
+
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }

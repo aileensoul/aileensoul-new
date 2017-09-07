@@ -1,5 +1,6 @@
  $('#post').on('click', function(){
         $('#myModal').modal('show');
+        //document.getElementById('modal-backdrop').style.display = 'none';
     });
 
  $(document).ready(function ()

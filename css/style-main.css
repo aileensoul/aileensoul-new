@@ -230,6 +230,7 @@ header h2{
 	line-height:1;
 	background:none;
 	color:#fff;
+	width: 90px;
 	border:1px solid #fff;
 }
 .header-login .btn1:hover{

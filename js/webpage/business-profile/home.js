@@ -843,15 +843,15 @@ function followuser_two(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
-            $("#fad" + clicked_id).fadeOut(6000);
+            $(".fad" + clicked_id).fadeOut(6000);
         }
     });
 }
 
 function followclose(clicked_id)
 {   
-    $("#fad" + clicked_id).remove(4000);
-    business_home_three_user_list()
+    $(".fad" + clicked_id).fadeOut(4000);
+//    business_home_three_user_list()
     
 }
 /* FOLLOW USER SCRIPT END */
