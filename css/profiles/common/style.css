@@ -556,7 +556,7 @@ fieldset.full-width {
 }
 .panel-body label,
 .common-form fieldset label {
-    margin: 0 0 3px;
+    margin: 0 4px 2px;
     padding: 0;
     display: block;
 }
@@ -1227,7 +1227,7 @@ body.blog{height:auto;}
     padding:0px;
     overflow-y: scroll;
     height: 492px;
-    overflow: auto;
+    overflow-x:hidden ;
 }
 .people-list ul li {
     padding: 15px;
@@ -1755,6 +1755,21 @@ input:-moz-placeholder {
     color: #999;
 }
 #user_search:focus + #add_search{color: #1b8ab9;}
+
+
+.kv-file-content{width:125px; height:115px !important; overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+}
+.kv-file-content img{left: 50%;
+    max-width: inherit;
+    position: absolute;
+    top: 50%;
+	height:100% !important;
+    transform: translate(-50%, -50%);
+    width: auto !important;
+}
+
 
 .border_btm .fsearch{color: #1b8ab9;}
 /*zalak start 28-8  media*/
