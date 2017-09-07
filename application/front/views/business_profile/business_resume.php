@@ -5,7 +5,7 @@
         <?php echo $head; ?>  
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
+        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
@@ -275,7 +275,7 @@
                                                                     }
                                                                 } else {
                                                                     ?>
-                                                                    <span style="padding: 8px;"><h7>No Image Available</h7> 
+                                                                    <span><h7>No Image Available</h7> 
 
                                                                         <?php
                                                                         $userid = $this->session->userdata('aileenuser');

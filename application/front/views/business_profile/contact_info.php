@@ -102,7 +102,7 @@
 
                                     <fieldset <?php if ($contactname) { ?> class="error-msg" <?php } ?>>
                                         <label>Contact Person:<span style="color:red">*</span></label>
-                                        <input name="contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter contact Name" value="<?php
+                                        <input name="contactname" tabindex="1" autofocus type="text" id="contactname" placeholder="Enter Contact Name" value="<?php
                                         if ($contactname1) {
                                             echo $contactname1;
                                         }
@@ -113,7 +113,7 @@
 
                                     <fieldset <?php if ($contactmobile) { ?> class="error-msg" <?php } ?>>
                                         <label>Contact Mobile:</label>
-                                        <input name="contactmobile" type="text" tabindex="2"  id="contactmobile" placeholder="Enter contact Mobile" value="<?php
+                                        <input name="contactmobile" type="text" tabindex="2"  id="contactmobile" placeholder="Enter Contact Mobile" value="<?php
                                         if ($contactmobile1) {
                                             echo $contactmobile1;
                                         }
