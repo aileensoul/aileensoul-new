@@ -25,9 +25,9 @@ function check() {
 $(document).ready(function () {
     business_home_post();
     business_home_three_user_list()
-    
+
 //    $(window).scroll(function () {
-    $(window).on('scroll', function(){
+    $(window).on('scroll', function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
         if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
 
@@ -104,6 +104,10 @@ function business_home_three_user_list() {
         success: function (data) {
             $('.loader').remove();
             $('.profile-boxProfileCard_follow').html(data);
+            var liCount = $(data).find("li.follow_box_ul_li").length;
+            if(liCount == 0){
+                $('.full-box-module_follow').hide();
+            }
         }
     });
 }
@@ -843,17 +847,37 @@ function followuser_two(clicked_id)
         data: 'follow_to=' + clicked_id,
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data);
-            $(".fad" + clicked_id).fadeOut(6000);
+            $.when($('.fad' + clicked_id).fadeOut(3000))
+                    .done(function () {
+                        business_home_three_user_list();
+                    });
         }
     });
 }
 
 function followclose(clicked_id)
-{   
-    $(".fad" + clicked_id).fadeOut(4000);
-//    business_home_three_user_list()
-    
+{
+    $.when($('.fad' + clicked_id).fadeOut(3000))
+            .done(function () {
+                business_home_follow_ignore(clicked_id);
+                business_home_three_user_list();
+            });
+//    $(".fad" + clicked_id).fadeOut(4000);
 }
+
+function business_home_follow_ignore(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/business_home_follow_ignore",
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+
+        }
+    });
+}
+
+
 /* FOLLOW USER SCRIPT END */
 
 // POPUP BOX FOR POST START 
@@ -1340,10 +1364,10 @@ function remove_post(abc)
             } else {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
-            
+
             var total_post = $('.post-design-box').length;
-            if (total_post == 0){
-            $('.art_no_post_avl').show();
+            if (total_post == 0) {
+                $('.art_no_post_avl').show();
             }
         }
     });
@@ -1633,11 +1657,11 @@ jQuery(document).ready(function ($) {
 //            percent.html(percentVal);
         },
         complete: function (response) {
-            
+
             var percentVal = '100%';
             bar.width(percentVal)
             percent.html(percentVal);
-            
+
             $('.art_no_post_avl').hide();
             // Output AJAX response to the div container
             document.getElementById('test-upload-product').value = '';
@@ -1674,7 +1698,7 @@ function seemorediv(abc) {
 
 // 180 words more than script end
 //$(window).load(function () {
-$(window).on('load', function(){
+$(window).on('load', function () {
     var nb = $('.post-design-box').length;
     if (nb == 0) {
         $("#dropdownclass").addClass("no-post-h2");
