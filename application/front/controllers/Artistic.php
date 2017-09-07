@@ -16026,8 +16026,8 @@ public function get_artistic_name($id=''){
                                         $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
                                                                     <div class="comment-details-menu">
                                                                         <p>'; 
-                                                                                                                       
-                                                                  $return_html .= date('d-M-Y', strtotime($rowdata['created_date']));
+                                                                                                                     
+                                                                  $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
                                                                             $return_html .= '</br>';
                                                                             
                                         $return_html .= '</p></div></div>
