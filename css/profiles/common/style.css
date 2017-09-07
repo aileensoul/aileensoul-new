@@ -635,15 +635,15 @@ fieldset .add_post_btns {
 }
 .error-msg p,
 label.error {
-    background: #737373;
-    color: #fff !important;
+    background:none;
+    color: red !important;
     padding: 4px 10px !important;
     position: absolute;
     right: 8px;
     z-index: 8;
-    font-size: 12px;
+    font-size: 12px!important;
 }
-#userimage label.error {color: #fff !important;}
+#userimage label.error {color: red !important; background: none!important;}
 .error-msg select {
     border: 1px solid #f00;
 }

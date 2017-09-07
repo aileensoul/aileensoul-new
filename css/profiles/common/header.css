@@ -1361,6 +1361,10 @@ footer {
 }
 
 
+#popup-form input[type="submit"]#profilepicsubmit{margin-top: 35px;}
+#userimage label.error{right: 33px;}
+
+
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }
