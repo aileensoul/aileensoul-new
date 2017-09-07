@@ -1429,6 +1429,7 @@ footer {
     }
 }
 @media screen and (max-width: 767px) {
+    .back{width: 27%;}
 	.logo h2 {
 		padding: 0px 0;
 		font-size: 24px;
@@ -1582,7 +1583,16 @@ footer {
 	.job_con #InboxContainer::before{right: 134px;}
 	
 }
+
+@media screen and (max-width: 640px) {
+    .back {
+    width: 40%;
+}
+}
 @media screen and (max-width: 540px) {
+    .back {
+    width: 40%;
+}
 	.h2-smladd{margin-top: 0px;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}
@@ -1625,6 +1635,9 @@ footer {
 	.notification-data-inside h6 {
         font-size: 12px;
     }
+        .back {
+    width: 50%;
+}
 }
 @media screen and (max-width: 360px) {
 	
