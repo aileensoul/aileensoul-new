@@ -20,7 +20,7 @@
                                     </fieldset>-->
         <fieldset class="col-md-2 col-sm-2 col-xs-2">
             <label for="search_btn" id="search_f"><i class="fa fa-search" aria-hidden="true"></i></label>
-            <input id="search_btn" style="display: none;" type="submit" name="search_submit" value="Search" onclick="return checkvalue()">
+            <input id="search_btn" style="display: none;" type="submit" name="search-submit" value="Search" onclick="return checkvalue()">
         </fieldset>
         <?php echo form_close(); ?>
     </div>
