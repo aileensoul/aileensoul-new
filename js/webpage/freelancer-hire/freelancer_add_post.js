@@ -105,7 +105,7 @@ $(document).ready(function () {
                 regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             last_date: {
-                required1: "Last Date of apply is required.",
+                required1: "Last date of apply is required.",
                 isValid: 'Last date should be grater than and equal to today date'
             },
             currency: {
@@ -125,18 +125,18 @@ $(document).ready(function () {
 
         messages: {
             post_name: {
-                required: "Post name Is Required.",
+                required: "Post name is required.",
             },
 
             skills: {
-                required: "Skill is Required"
+                required: "Skill is required"
             },
 
             fields_req: {
-                required: "Please Select Field of Requirement",
+                required: "Please select field of requirement",
             },
             post_desc: {
-                required: "Post Description  Is Required.",
+                required: "Post description  is required.",
             },
             last_date: {
                 //required: "Last Date of apply is required.",
@@ -145,13 +145,13 @@ $(document).ready(function () {
                 required: "Please select currency type",
             },
             rate: {
-                required: "Rate is Required",
+                required: "Rate is required",
             },
             country: {
-                required: "Please Select Country"
+                required: "Please select country"
             },
             state: {
-                required: "Please Select State"
+                required: "Please select state"
             }
 
         },

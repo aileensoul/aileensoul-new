@@ -73,10 +73,10 @@ $(document).ready(function () {
 
         messages: {
             fname: {
-                required: "First name Is Required.",
+                required: "First name is required.",
             },
             lname: {
-                required: "Last name Is Required.",
+                required: "Last name is required.",
             },
             email: {
                 required: "Email id is required",

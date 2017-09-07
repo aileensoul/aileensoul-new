@@ -420,11 +420,12 @@ label.cameraButton input[accept*="camera"] {display: none;}
 .red {color: red;}
 .experience_year{float: left; margin-right: 43px; width: 45%;}
 .experience_month{float: left; width: 45%;}
-.file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}
+.file_name_pdf{color:#8c8c8c; font-size:17px; padding-top:10px; visibility:show; float: left;}
 .post-design-menu ul li a .fa-thumbs-up:hover {
     background-color: #efefef;
     border-radius: 50%;
 }
+#pdffile{margin-top: 10px;}
 .post-design-menu ul li a .fa-comment-o:hover {
     background-color: #efefef;
     border-radius: 50%;

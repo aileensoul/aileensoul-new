@@ -33,7 +33,7 @@ $.validator.addMethod("regx", function(value, element, regexpr) {
             {
                   return regexpr.test(value);
             }  
-}, "Please Enter valid number");
+}, "Please enter valid number");
   $(document).ready(function () {
 
                     $("#freelancer_post_avability").validate({

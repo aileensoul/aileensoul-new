@@ -29,7 +29,7 @@ $(".alert").delay(3200).fadeOut(300);
                     {
                         return regexpr.test(value);
                     }
-                }, "upto 8 digit number allow");
+                }, "Upto 8 digit number allow");
 
                 $(document).ready(function () {
                     $("#freelancer_post_rate").validate({
