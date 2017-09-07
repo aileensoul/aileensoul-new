@@ -117,7 +117,8 @@ function check()
                    
                     document.getElementById('row1').style.display = "block";
                     document.getElementById('row2').style.display = "none";
-                     $("#upload").val('');
+                    $(".cr-image").attr("src","");
+                    $("#upload").val('');
                 }
            
 
@@ -167,7 +168,7 @@ function check()
                     document.getElementById('row2').style.display = "block";
                     document.getElementById('row1').style.display = "none";
                     document.getElementById('message1').style.display = "none";
-
+                    $(".cr-image").attr("src","");
                 });
 
                 //aarati code start
