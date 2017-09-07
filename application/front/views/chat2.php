@@ -952,7 +952,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  </script>
                      <script> 
                            var message_from_profile = <?php echo $message_from_profile ?>;
-                           alert(message_from_profile);
+                         
                   // business data start
                   if (message_from_profile == 1) {
            
