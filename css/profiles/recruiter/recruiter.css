@@ -76,7 +76,7 @@ li.fr a {text-decoration: none !important;}
 .user-pic a {position: absolute; display: none;}
 .user-pic a i {padding-right: 1.1px;}
 .user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 5px 4px 6px;
-    font-size: 12px;
+    font-size: 12px; width: 100%;
 }
 .profile-box-art {height: auto !important;}
 .profile-box-art ul li a {height: 50px; padding-top: 7px; padding-bottom: 7px;}
@@ -813,6 +813,10 @@ label.cameraButton input[accept*="camera"] {
 .rec_check{margin-top: -15px;}
 
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a{height: auto;}
+.date-dropdowns .day.error{ border: 1px solid red !important;}
+.date-dropdowns .month.error{ border: 1px solid red !important;}
+.date-dropdowns .year.error{ border: 1px solid red !important;}
+
 /***  media query  ***/
 @media screen and (max-width: 1200px)
 {
