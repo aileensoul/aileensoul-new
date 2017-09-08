@@ -1650,7 +1650,12 @@ div .comment {
 .chat-header .chatdropdown-content a:hover{color:#fff;}
 .chat_nobcx .post-img-div{width:50px; height:50px; padding:16px 0;}
 .day-text2{font-size: 11px!important;}
-
+.online {
+    color: #eddfed;
+}
+.me {
+    color: #d8eff6;
+}
 /*** end chat ***/
 
 /***  Change Password  ***/
