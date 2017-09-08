@@ -1375,7 +1375,7 @@ body.blog{height:auto;}
     padding-top: 6px;
     background: #d8eff6;
     color: #000033;
-    max-width:96%;
+    max-width:100%;
     float:right;
 	word-wrap:break-word;
 }
