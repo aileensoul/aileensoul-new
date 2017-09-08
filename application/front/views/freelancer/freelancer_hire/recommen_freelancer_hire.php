@@ -100,9 +100,9 @@
                                 <div class="job-saved-box">
                                     <h3>Search result of 
                                         <?php
-                                        if ($keyword != "" && $keyword1 == "") {
+                                        if ($keyword != "" && ($keyword1 == "" || $keyword1 == 0)) {
                                             echo '"' . $keyword . '"';
-                                        } elseif ($keyword == "" && $keyword1 != "") {
+                                        } elseif (($keyword == "" || $keyword == 0)  && $keyword1 != "") {
                                             echo '"' . $keyword1 . '"';
                                         } else {
                                             echo '"' . $keyword . '"';
@@ -145,7 +145,7 @@
         <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <!-- script for skill textbox automatic end (option 2)-->
         <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script> 
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
+        
         </script>
 
         <script>

@@ -7745,7 +7745,7 @@ public function insert_comment_postnewpage() {
                     }
                     if (count($commnetcount) > 1) {
                         $cmtlikeuser .= 'and ';
-                        $cmtlikeuser .= '' . count($commnetcount) - 1 . '';
+                        $cmtlikeuser .= ' ' . count($commnetcount) - 1 . '';
                         $cmtlikeuser .= '&nbsp;';
                         $cmtlikeuser .= 'others';
                     }
@@ -7834,7 +7834,7 @@ public function insert_comment_postnewpage() {
                     }
                     if (count($commnetcount) > 1) {
                         $cmtlikeuser .= 'and ';
-                        $cmtlikeuser .= '' . count($commnetcount) - 1 . '';
+                        $cmtlikeuser .= ' ' . count($commnetcount) - 1 . '';
                         $cmtlikeuser .= '&nbsp;';
                         $cmtlikeuser .= 'others';
                     }
@@ -7962,7 +7962,7 @@ public function insert_comment_postnewpage() {
                     }
                     if (count($commnetcount) > 1) {
                         $cmtlikeuser .= 'and ';
-                        $cmtlikeuser .= '' . count($commnetcount) - 1 . '';
+                        $cmtlikeuser .= ' ' . count($commnetcount) - 1 . '';
                         $cmtlikeuser .= '&nbsp;';
                         $cmtlikeuser .= 'others';
                     }
@@ -13237,7 +13237,7 @@ public function art_home_post() {
                         }
 
                         if (count($likelistarray) > 1) {
-                            $return_html .= " and";
+                            $return_html .= " and".' ';
 
                             $return_html .= $countlike;
                             $return_html .= "&nbsp;";
@@ -13283,7 +13283,7 @@ public function art_home_post() {
 
                     if (count($likelistarray) > 1) {
 
-                        $return_html .= "and";
+                        $return_html .= "and".' ';
 
                         $return_html .= $countlike;
                         $return_html .= "&nbsp;";
@@ -14393,7 +14393,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= "&nbsp;";
                     }
                     if (count($likelistarray) > 1) {
-                        $return_html .= "and";
+                        $return_html .= "and".' ';
                         $return_html .= $countlike;
                         $return_html .= "&nbsp;";
                         $return_html .= "others";
@@ -15859,7 +15859,7 @@ public function get_artistic_name($id=''){
                                                         $return_html .= '&nbsp;';
                                                        
                                                         if (count($likelistarray) > 1) {
-                                                            $return_html .= 'and';
+                                                            $return_html .= 'and'.' ';
                                                            $return_html .= $countlike;
                                                             $return_html .= '&nbsp;';
                                                             $return_html .= 'others';
@@ -15906,7 +15906,7 @@ public function get_artistic_name($id=''){
                                                     $return_html .= '&nbsp;';
                                                    
                                                     if (count($likelistarray) > 1) {
-                                                        $return_html .= 'and';
+                                                        $return_html .= 'and'.' ';
                                                        $return_html .= $countlike;
                                                         $return_html .= '&nbsp;';
                                                         $return_html .= 'others';
@@ -16774,7 +16774,7 @@ public function get_artistic_name($id=''){
                                                         $return_html .= '&nbsp;';
                                                        
                                                         if (count($likelistarray) > 1) {
-                                                           $return_html .= 'and ';
+                                                           $return_html .= 'and'.' ';
                                                             $return_html .= $countlike;
                                                             $return_html .= '&nbsp;';
                                                             $return_html .= 'others';
@@ -16821,7 +16821,7 @@ public function get_artistic_name($id=''){
                                                     $return_html .= '&nbsp;';
                                                    
                                                     if (count($likelistarray) > 1) {
-                                                        $return_html .= 'and';
+                                                        $return_html .= 'and'.' ';
                                                        $return_html .= $countlike;
                                                         $return_html .= '&nbsp;';
                                                         $return_html .= 'others';

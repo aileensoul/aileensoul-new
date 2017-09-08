@@ -3726,7 +3726,7 @@ class Recruiter extends MY_Controller {
 
                         $return_html .= '</div>';
                     }
-
+//$return_html .=$rec[0]['fname'];
                     $return_html .= '</div>
                                                                 </div>
                                                                 <div class="designation_rec_1 fl ">
@@ -3843,13 +3843,9 @@ class Recruiter extends MY_Controller {
                                 }
                             }
                             $return_html .= $year;
-                            $return_html .= '"&nbsp"
-                                                                        "Year"
-                                                                      "&nbsp"';
+                            $return_html .= ' Year ';
                             if ($total_work_month != 0) {
-                                $return_html .= $total_work_month;
-                                '"&nbsp"
-                                                                             "Month"';
+                                $return_html .= $total_work_month.' Month';
                             }
                         }
 

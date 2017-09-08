@@ -907,6 +907,40 @@ class Business_profile extends MY_Controller {
             $post[$key] = $row['business_profile_post_id'];
         }
         array_multisort($post, SORT_DESC, $new);
+        
+        /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
+        
+        // GET USER BUSINESS DATA START
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $business_profile_id = $businessdata[0]['business_profile_id'];
+        $industriyal = $businessdata[0]['industriyal'];
+        $city = $businessdata[0]['city'];
+        $state = $businessdata[0]['state'];
+        $other_industrial = $businessdata[0]['other_industrial'];
+        $business_type = $businessdata[0]['business_type'];
+        // GET USER BUSINESS DATA END
+        // GET BUSINESS USER FOLLOWING LIST START
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
+        $follow_list = $followdata[0]['follow_list'];
+        $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
+        // GET BUSINESS USER FOLLOWING LIST END
+        // GET BUSINESS USER IGNORE LIST START
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
+        $user_list = $followdata[0]['user_list'];
+        $user_list = str_replace(",", "','", $userdata[0]['user_list']);
+        // GET BUSINESS USER IGNORE LIST END
+        //GET BUSINESS USER SUGGESTED USER LIST 
+        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+        $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
+        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
+        
+        $this->data['follow_user_suggest_count'] = $userlistview[0]['total'];
+        
+        /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->data['businessprofiledatapost'] = $new;
@@ -1024,18 +1058,14 @@ class Business_profile extends MY_Controller {
 
     public function business_profile_deleteforpost() {
 
-
-
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $id = $_POST["business_profile_post_id"];
-//echo $id; die();
         $data = array(
             'is_delete' => 1,
             'modify_date' => date('Y-m-d', time())
         );
 
-//echo "<pre>"; print_r($data); die();
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $id);
 
         $dataimage = array(
@@ -1043,7 +1073,6 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-//echo "<pre>"; print_r($dataimage); die();
         $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
 
 // for post count start
@@ -1191,33 +1220,39 @@ class Business_profile extends MY_Controller {
             if (count($count) == count($otherdata)) {
 
                 $datacount = "count";
+                $notfound = "";
 
-
-                $notfound = ' <div class="art-img-nn">
-                                    <div class="art_no_post_img">
-
-                                        <img src="' . base_url('img/bui-no.png') . '">
-
-                                    </div>
-                                    <div class="art_no_post_text">
-                                        No Following Available.
-                                    </div>
-                                </div>';
+//                $notfound = '<div class=art_no_post_avl" id="art_no_post_avl" style="">
+//                                        <h3>Business Post</h3>
+//                                        <div class="art-img-nn">
+//                                            <div class="art_no_post_img">
+//
+//                                        <img src="' . base_url('img/bui-no.png') . '">
+//
+//                                    </div>
+//                                            <div class="art_no_post_text">
+//                                                No Post Available.
+//                                            </div>
+//                                        </div>
+//                                    </div>';
             }
         } else {
 
             $datacount = "count";
 
-            $notfound = ' <div class="art-img-nn">
-                                    <div class="art_no_post_img">
+            $notfound = '2<div class=art_no_post_avl" id="art_no_post_avl" style="">
+                                        <h3>Business Post</h3>
+                                        <div class="art-img-nn">
+                                            <div class="art_no_post_img">
 
                                         <img src="' . base_url('img/bui-no.png') . '">
 
                                     </div>
-                                    <div class="art_no_post_text">
-                                        No Following Available.
-                                    </div>
-                                </div>';
+                                            <div class="art_no_post_text">
+                                                No Post Available.
+                                            </div>
+                                        </div>
+                                    </div>';
         }
 
         echo json_encode(
@@ -2933,8 +2968,8 @@ class Business_profile extends MY_Controller {
         $offset = $start;
 
         $contition_array = array('business_step' => 4, 'is_deleted' => 0, 'status' => 1, 'user_id !=' => $userid);
-        $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit, $offset, $join_str = array(), $groupby = '');
-        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userlist = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit, $offset, $join_str = array(), $groupby = '');
+        $userlist1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = 'business_profile_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
         $businessdata1 = $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -11069,13 +11104,18 @@ Your browser does not support the audio tag.
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
         // GET BUSINESS USER FOLLOWING LIST END
-        
+        // GET BUSINESS USER IGNORE LIST START
+        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
+        $user_list = $followdata[0]['user_list'];
+        $user_list = str_replace(",", "','", $userdata[0]['user_list']);
+        // GET BUSINESS USER IGNORE LIST END
         //GET BUSINESS USER SUGGESTED USER LIST 
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
-        $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list')";
+        $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
-        
+
         $return_html = '';
         $return_html .= '<ul>';
         if (count($userlistview) > 0) {
@@ -11087,7 +11127,7 @@ Your browser does not support the audio tag.
                 $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
                 if (!$businessfollow) {
 
-                    $return_html .= '<li class = "follow_box_ul_li fad'.$userlist['business_profile_id'].'" id = "fad' . $userlist['business_profile_id'] . '">
+                    $return_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
       <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
       <div class = " col-md-12 follow_left_box_main">
       <div class = "post-design-pro-img_follow">';
@@ -12245,7 +12285,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
             }
         } else {
             $return_html .= '<div class="art_no_post_avl">
-                                <h3> Post</h3>
+                                <h3>Business Post</h3>
                                 <div class="art-img-nn">
                                     <div class="art_no_post_img">
 
@@ -12363,6 +12403,18 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
             }
             echo json_encode($city_data);
         }
+    }
+    
+    public function business_home_follow_ignore(){
+        $userid = $this->session->userdata('aileenuser');
+        $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        $follow_to = $_POST['follow_to'];
+       
+        $insert_data['profile'] = '2';
+        $insert_data['user_from'] = $business_profile_id;
+        $insert_data['user_to'] = $follow_to;
+        
+        $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
     }
 
 }

@@ -144,9 +144,12 @@
                                     </div>
                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 </div>
-
+                                
                                 <div class="animated fadeInRightBig ">
                                     <div class="right_middle_side_posrt fixed_right_display"> 
+                                        <?php
+                                        if($follow_user_suggest_count > 0){
+                                        ?>
                                         <div class="full-box-module_follow" style="margin-top: 0px;">
                                             <!-- follower list start  -->  
                                             <div class="common-form">
@@ -164,6 +167,9 @@
                                             <!-- GET USER FOLLOE SUGESSION LIST START -->
                                             <!-- follower list end  -->
                                         </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

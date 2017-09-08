@@ -299,7 +299,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <p>Hire freelancers and also find freelance work.</p>
                                                 <div class="btns">
 
-                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) { echo "123";?>
+                                                    <?php if ($hiredata[0]['free_hire_step'] != 3 && $workdata[0]['free_post_step'] != 7) {?>
                                                         <a class="btn-1" href="<?php echo base_url('freelancer'); ?>">Register</a>
                                                     <?php } elseif (($workdata[0]['status'] == '0' && $workdata[0]['free_post_step'] == 7) || ($hiredata[0]['free_hire_step'] == 3 && $hiredata[0]['status'] == '0')) {
                                                         ?>

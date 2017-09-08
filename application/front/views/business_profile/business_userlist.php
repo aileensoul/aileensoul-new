@@ -7,22 +7,25 @@
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
-    </head>
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />  </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <?php echo $business_header2_border; ?>
         <section>
             <div class="container" id="paddingtop_fixed">
             </div>
-            <div class="user-midd-section">
+            <div class="user-midd-section bui_art_left_box">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+                            <div class="left_fixed">
                             <?php echo $business_left ?>
+                            </div>
                         </div>
-                        <div class="col-md-7 col-sm-7">
+                        <div class=" custom-right-art animated fadeInUp">
+                            <div class="mian_middle_post_box">  
+                                <div class="right_side_posrt fl"> 
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3>User list</h3>
@@ -33,6 +36,8 @@
                                     <div class="col-md-1">
                                     </div>
                                 </div>
+                            </div>
+                            </div>
                             </div>
                         </div>
                     </div>

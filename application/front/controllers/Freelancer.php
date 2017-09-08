@@ -1942,7 +1942,7 @@ class Freelancer extends MY_Controller {
                 $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if ($userid != $row['user_id']) {
-                    $return_html .= '<a href = " ' . base_url('chat/abc/3/4' . $row['user_id']) . '">';
+                    $return_html .= '<a href = " ' . base_url('chat/abc/3/4/' . $row['user_id']) . '">';
                     $return_html .= $this->lang->line("message");
                     $return_html .= '</a>';
                     if (!$data) {
@@ -2961,7 +2961,7 @@ class Freelancer extends MY_Controller {
                 }
                 $return_html .= '</li>
                                                                         <li class=fr>';
-                $return_html .= '<a href="javascript:void(0);" class="button fr" onclick="removepopup(' . $post['app_id'] . ')">Remove ' . $this->lang->line("remove") . '</a>';
+                $return_html .= '<a href="javascript:void(0);" class="button fr" onclick="removepopup(' . $post['app_id'] . ')">' . $this->lang->line("remove") . '</a>';
                 $return_html .= '</li>
                                                                     </ul>
                                                                 </div>
@@ -3348,7 +3348,7 @@ class Freelancer extends MY_Controller {
                                     <div class="apply-btn fr">';
                 $userid = $this->session->userdata('aileenuser');
                 if ($userid != $rec['user_id']) {
-                    $return_html .= '<a href="' . base_url('chat/abc/3/4' . $rec['user_id']) . '">';
+                    $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $rec['user_id']) . '">';
                     $return_html .= $this->lang->line("message");
                     $return_html .= '</a>';
                     $return_html .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $rec['save_id'] . ')">';

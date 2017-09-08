@@ -488,13 +488,14 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .common-form_border {border: 1px solid #d9d9d9;}
 .red {color: red;}
-.experience_year{float: left; margin-right: 43px; width: 45%;}
-.experience_month{float: left; width: 45%;}
+.experience_year{float: left; margin-right: 43px; width: 45%!important;}
+.experience_month{float: left; width: 46%!important;}
 .file_name_pdf{color:#8c8c8c; font-size:17px; padding-left:10px; visibility:show;}
 .post-design-menu ul li a .fa-thumbs-up:hover {
     background-color: #efefef;
     border-radius: 50%;
 }
+.job_work_experience_main_div{width: 100%;}
 .post-design-menu ul li a .fa-comment-o:hover {
     background-color: #efefef;
     border-radius: 50%;
@@ -1231,7 +1232,17 @@ label.cameraButton input[accept*="camera"] {
     background-color: #d9d9d9;
     border-radius: 3px;
 }
+.message h2{font-size: 16px; text-align: left;}
+#univer{
+    background: #1b8ab9;
+    color: white;
+    margin: 22px 0px 0px;
+       padding: 8px 36px;
 
+}
+.btn:focus{ color: white; }
+.message{text-align: center;}
+#radio-error.error{    left: 45px;}
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 	.mob-progressbar.temp{display:none;}
