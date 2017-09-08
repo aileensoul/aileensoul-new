@@ -620,24 +620,4 @@ class Common extends CI_Model {
         return preg_replace('!((http:\:\/\/|ftp\:\/\/|https:\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism', '<a href="//$1$3" class="' . $class . '" target="' . $target . '">$1$3</a>', $text);
     }
 
-    function live_url_exists($url) {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        if ($code == 200) {
-            $status = true;
-        } else {
-            $status = false;
-        }
-        curl_close($ch);
-        return $status;
-    }
-
-//    function live_url_exists($url) {
-//        $headers = get_headers($url);
-//        return stripos($headers[0], "200 OK") ? true : false;
-//    }
-
 }

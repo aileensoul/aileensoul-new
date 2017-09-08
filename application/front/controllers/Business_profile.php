@@ -8865,23 +8865,25 @@ class Business_profile extends MY_Controller {
                     if ($busdata[0]['business_user_image']) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                            $a = $busdata[0]['company_name'];
+                          /*  $a = $busdata[0]['company_name'];
                             $acr = substr($a, 0, 1);
 
                             $contactdata .= '<div class="post-img-div">';
                             $contactdata .= ucfirst(strtolower($acr));
-                            $contactdata .= '</div>';
+                            $contactdata .= '</div>'; */
+                            $contactdata .= '<img src="'. base_url() . NOBUSIMAGE . '">';
                         } else {
 
                             $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                         }
                     } else {
-                        $a = $busdata[0]['company_name'];
+                    /*    $a = $busdata[0]['company_name'];
                         $acr = substr($a, 0, 1);
 
                         $contactdata .= '<div class="post-img-div">';
                         $contactdata .= ucfirst(strtolower($acr));
-                        $contactdata .= '</div>';
+                        $contactdata .= '</div>'; */
+                        $contactdata .= '<img src="'. base_url() . NOBUSIMAGE .  '">';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
@@ -9237,7 +9239,7 @@ class Business_profile extends MY_Controller {
                                                                 </a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
-                                                                    <img src="' . base_url(NOIMAGE) . '" />
+                                                                    <img src="' . base_url(NOBUSIMAGE) . '" />
                                                                 </a>';
                     }
                     $return_html .= '</div>
