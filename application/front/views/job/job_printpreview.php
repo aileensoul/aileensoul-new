@@ -10,7 +10,6 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
       <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>">
-      <link rel="stylesheet" href="<?php echo base_url('css/lightbox.min.css?ver='.time()); ?>">
       <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">

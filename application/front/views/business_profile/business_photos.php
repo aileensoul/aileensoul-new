@@ -5,10 +5,10 @@
         <?php echo $head; ?>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <!--<link rel="stylesheet" href="<?php // echo base_url('css/bootstrap.min.css?ver=' . time());   ?>" />-->
+        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -41,18 +41,13 @@
                                                             ?>
                                                             <div class="pictures">
                                                                 <ul>
-                                                                    <?php
-                                                                    foreach ($databus as $data) {
-                                                                        $image_url = BUS_POST_RESIZE3_UPLOAD_URL . $data['image_name'];
-                                                                        /* You can test a URL like this (sample) */
-                                                                        if ($this->common->live_url_exists($image_url)){
-                                                                            ?>
-                                                                            <li>
-                                                                                <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
-                                                                                <?php echo '<img src="' . $image_url . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
-                                                                            </li>
-                                                                            <?php
-                                                                        }
+                                                                    <?php foreach ($databus as $data) {
+                                                                        ?>
+                                                                        <li>
+                                                                            <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
+                                                                            <?php echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
+                                                                        </li>
+                                                                        <?php
                                                                         $i++;
                                                                     }
                                                                     ?>
@@ -274,9 +269,9 @@
             </div>
         </div>
         <?php echo $footer; ?>
-        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver=' . time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());    ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());    ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver=' . time()); ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>

@@ -795,12 +795,16 @@ function check_length(my_form)
         // Alert message if maximum limit is reached. 
         // If required Alert can be removed. 
         var msg = "You have reached your maximum limit of characters allowed";
+//        $("#test-upload-product").prop("readonly", true);
+        document.getElementById("test-upload-product").readOnly = true;
         $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#posterrormodal').modal('show');
 
         // Reached the Maximum length so trim the textarea
         my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
     } else {
+//        $("#test-upload-product").prop("readonly", false);
+        document.getElementById("test-upload-product").readOnly = false;
         // Maximum length not reached so update the value of my_text counter
         my_form.text_num.value = maxLen - my_form.my_text.value.length;
     }
