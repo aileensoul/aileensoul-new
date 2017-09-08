@@ -128,7 +128,7 @@ $(document).ready(function () {
 
                 required: "Email address is required.",
                 email: "Please enter valid email id.",
-                remote: "Email already exists"
+                remote: "Email already exists."
             },
 
             comp_num: {

@@ -336,15 +336,6 @@
 
                                     <fieldset  class="hs-submit col-md-12 col-sm-12 col-xs-12">
 
-                                        <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post')) { ?>
-
-
-                                            <a class="add_post_btnc" onclick="return leave_page(9)">Cancel</a>
-                                        <?php } else { ?>
-
-                                            <a class="add_post_btnc" href="javascript:history.back()">Cancel</a>
-                                        <?php } ?>
-
 
                                         <input type="submit" id="submit" class="add_post_btns" tabindex="20" name="submit" value="Post">
 

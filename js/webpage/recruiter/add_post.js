@@ -50,7 +50,7 @@ $.validator.addMethod("regx", function (value, element, regexpr) {
         return regexpr.test(value);
     }
     // return regexpr.test(value);
-}, "Only space, only number and only special characters are not allow");
+}, "Only space, only number and only special characters are not allow.");
 
 jQuery.validator.addMethod("noSpace", function (value, element) {
     return value == '' || value.trim().length != 0;
@@ -94,7 +94,7 @@ $.validator.addMethod("greaterThan1",
                 //return parseInt(value) > parseInt($min.val());
                 return (value) > ($min.val());
             }
-        }, "Max must be greater than min");
+        }, "Max must be greater than min.");
 
 
 
@@ -125,7 +125,7 @@ $.validator.addMethod("greaterThanmonth",
                 return true;
             }
 
-        }, "Max month must be greater than Min month");
+        }, "Max month must be greater than min month.");
 
 
 
@@ -162,7 +162,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 
 
     return lastdata_new_one >= todaydate_new_one;
-}, "Last date should be grater than and equal to today date");
+}, "Last date should be grater than and equal to today date.");
 
 //date validation end
 
@@ -175,7 +175,7 @@ $.validator.addMethod("pattern", function (value, element, param) {
         param = new RegExp("^(?:" + param + ")$");
     }
     return param.test(value);
-}, "Salary is not in correct format");
+}, "Salary is not in correct format.");
 
 //pattern validation at salary end//
 
@@ -262,7 +262,7 @@ $(document).ready(function () {
             last_date: {
 
                 required: true,
-                isValid: 'Last date should be grater than and equal to today date'
+                isValid: 'Last date should be grater than and equal to today date.'
 
             },
             minsal: {
@@ -295,16 +295,16 @@ $(document).ready(function () {
             },
 
             position_no: {
-                required: "You have to select minimum 1 candidate"
+                required: "You have to select minimum 1 candidate."
             },
             minyear: {
 
-                required: "Minimum experience is required"
+                required: "Minimum experience is required."
             },
 
             post_desc: {
 
-                required: "Post description is required"
+                required: "Post description is required."
 
             },
             country: {
@@ -319,37 +319,37 @@ $(document).ready(function () {
             },
             maxyear: {
 
-                required: "Maximum experience is required"
+                required: "Maximum experience is required."
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             industry: {
 
-                required: "Industry is required"
+                required: "Industry is required."
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             emp_type: {
 
-                required: "Employment type is required"
+                required: "Employment type is required."
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             last_date: {
 
-                required: "Last date for apply required"
+                required: "Last date for apply required."
             },
 
             maxsal: {
-                required: "Maximum salary is required",
-                greaterThan: "Maximum salary should be grater than minimum salary"
+                required: "Maximum salary is required.",
+                greaterThan: "Maximum salary should be grater than minimum salary."
             },
 
             minsal: {
-                required: "Minimum salary is required"
+                required: "Minimum salary is required."
             },
 
         }
@@ -363,155 +363,155 @@ $(document).ready(function () {
 
 // EDUCATION AUTOCOMPLETE DATA START
 
-$(function () {
-    function split(val) {
-        return val.split(/,\s*/);
-    }
-    function extractLast(term) {
-        return split(term).pop();
-    }
-
-    $("#education").bind("keydown", function (event) {
-        if (event.keyCode === $.ui.keyCode.TAB &&
-                $(this).autocomplete("instance").menu.active) {
-            event.preventDefault();
-        }
-    })
-            .autocomplete({
-                minLength: 0,
-                source: function (request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    $.getJSON(base_url + "general/get_degree", {term: extractLast(request.term)}, response);
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
-
-                    var terms = split(this.value);
-                    if (terms.length <= 20) {
-                        // remove the current input
-                        terms.pop();
-                        // add the selected item
-                        terms.push(ui.item.value);
-                        // add placeholder to get the comma-and-space at the end
-                        terms.push("");
-                        this.value = terms.join(", ");
-                        return false;
-                    } else {
-                        var last = terms.pop();
-                        $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                        $(this).effect("highlight", {}, 1000);
-                        $(this).attr("style", "border: solid 1px red;");
-                        return false;
-                    }
-                }
-
-
-
-            });
-});
+//$(function () {
+//    function split(val) {
+//        return val.split(/,\s*/);
+//    }
+//    function extractLast(term) {
+//        return split(term).pop();
+//    }
+//
+//    $("#education").bind("keydown", function (event) {
+//        if (event.keyCode === $.ui.keyCode.TAB &&
+//                $(this).autocomplete("instance").menu.active) {
+//            event.preventDefault();
+//        }
+//    })
+//            .autocomplete({
+//                minLength: 0,
+//                source: function (request, response) {
+//                    // delegate back to autocomplete, but extract the last term
+//                    $.getJSON(base_url + "general/get_degree", {term: extractLast(request.term)}, response);
+//                },
+//                focus: function () {
+//                    // prevent value inserted on focus
+//                    return false;
+//                },
+//                select: function (event, ui) {
+//
+//                    var terms = split(this.value);
+//                    if (terms.length <= 20) {
+//                        // remove the current input
+//                        terms.pop();
+//                        // add the selected item
+//                        terms.push(ui.item.value);
+//                        // add placeholder to get the comma-and-space at the end
+//                        terms.push("");
+//                        this.value = terms.join(", ");
+//                        return false;
+//                    } else {
+//                        var last = terms.pop();
+//                        $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+//                        $(this).effect("highlight", {}, 1000);
+//                        $(this).attr("style", "border: solid 1px red;");
+//                        return false;
+//                    }
+//                }
+//
+//
+//
+//            });
+//});
 
 // EDUCATION AUTOCOMPLETE DATA END
 
 
-$(function () {
-    // alert('hi');
-    $("#tags").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags").val(ui.item.label);
-        }
-    });
-});
+//$(function () {
+//    // alert('hi');
+//    $("#tags").autocomplete({
+//        source: function (request, response) {
+//            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//            response($.grep(data, function (item) {
+//                return matcher.test(item.label);
+//            }));
+//        },
+//        minLength: 1,
+//        select: function (event, ui) {
+//            event.preventDefault();
+//            $("#tags").val(ui.item.label);
+//            $("#selected-tag").val(ui.item.label);
+//            // window.location.href = ui.item.value;
+//        }
+//        ,
+//        focus: function (event, ui) {
+//            event.preventDefault();
+//            $("#tags").val(ui.item.label);
+//        }
+//    });
+//});
 
 
-$(function () {
-    // alert('hi');
-    $("#searchplace").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace").val(ui.item.label);
-        }
-    });
-});
+//$(function () {
+//    // alert('hi');
+//    $("#searchplace").autocomplete({
+//        source: function (request, response) {
+//            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//            response($.grep(data1, function (item) {
+//                return matcher.test(item.label);
+//            }));
+//        },
+//        minLength: 1,
+//        select: function (event, ui) {
+//            event.preventDefault();
+//            $("#searchplace").val(ui.item.label);
+//            $("#selected-tag").val(ui.item.label);
+//            // window.location.href = ui.item.value;
+//        }
+//        ,
+//        focus: function (event, ui) {
+//            event.preventDefault();
+//            $("#searchplace").val(ui.item.label);
+//        }
+//    });
+//});
 
-$(function () {
-    // alert('hi');
-    $("#tags1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#tags1").val(ui.item.label);
-        }
-    });
-});
+//$(function () {
+//    // alert('hi');
+//    $("#tags1").autocomplete({
+//        source: function (request, response) {
+//            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//            response($.grep(data, function (item) {
+//                return matcher.test(item.label);
+//            }));
+//        },
+//        minLength: 1,
+//        select: function (event, ui) {
+//            event.preventDefault();
+//            $("#tags1").val(ui.item.label);
+//            $("#selected-tag").val(ui.item.label);
+//            // window.location.href = ui.item.value;
+//        }
+//        ,
+//        focus: function (event, ui) {
+//            event.preventDefault();
+//            $("#tags1").val(ui.item.label);
+//        }
+//    });
+//});
 
-$(function () {
-    // alert('hi');
-    $("#searchplace1").autocomplete({
-        source: function (request, response) {
-            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
-            response($.grep(data1, function (item) {
-                return matcher.test(item.label);
-            }));
-        },
-        minLength: 1,
-        select: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-            $("#selected-tag").val(ui.item.label);
-            // window.location.href = ui.item.value;
-        }
-        ,
-        focus: function (event, ui) {
-            event.preventDefault();
-            $("#searchplace1").val(ui.item.label);
-        }
-    });
-});
+//$(function () {
+//    // alert('hi');
+//    $("#searchplace1").autocomplete({
+//        source: function (request, response) {
+//            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+//            response($.grep(data1, function (item) {
+//                return matcher.test(item.label);
+//            }));
+//        },
+//        minLength: 1,
+//        select: function (event, ui) {
+//            event.preventDefault();
+//            $("#searchplace1").val(ui.item.label);
+//            $("#selected-tag").val(ui.item.label);
+//            // window.location.href = ui.item.value;
+//        }
+//        ,
+//        focus: function (event, ui) {
+//            event.preventDefault();
+//            $("#searchplace1").val(ui.item.label);
+//        }
+//    });
+//});
 
 $(function () {
 
@@ -598,39 +598,39 @@ $(function () {
             });
 });
 
-function check() {
-    var keyword = $.trim(document.getElementById('tags1').value);
-    var place = $.trim(document.getElementById('searchplace1').value);
-    if (keyword == "" && place == "") {
-        return false;
-    }
-}
+//function check() {
+//    var keyword = $.trim(document.getElementById('tags1').value);
+//    var place = $.trim(document.getElementById('searchplace1').value);
+//    if (keyword == "" && place == "") {
+//        return false;
+//    }
+//}
 
-function checkvalue() {
+//function checkvalue() {
 //alert("hi");
 
-    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
-    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
+//    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
+//    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
     // alert(searchkeyword);
     // alert(searchplace);
-    if (searchkeyword == "" && searchplace == "") {
+//    if (searchkeyword == "" && searchplace == "") {
         //alert('Please enter Keyword');
-        return false;
-    }
-}
+//        return false;
+//    }
+//}
 
-function checkvalue_search() {
-
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
-    // alert(searchkeyword);
-
-    if (searchkeyword == "" && searchplace == "")
-    {
-        //  alert('Please enter Keyword');
-        return false;
-    }
-}
+//function checkvalue_search() {
+//
+//    var searchkeyword = $.trim(document.getElementById('tags').value);
+//    var searchplace = $.trim(document.getElementById('searchplace').value);
+//    // alert(searchkeyword);
+//
+//    if (searchkeyword == "" && searchplace == "")
+//    {
+//        //  alert('Please enter Keyword');
+//        return false;
+//    }
+//}
 //Leave Page on add and edit post page start
 
 function home(clicked_id, searchkeyword, searchplace) {
@@ -696,7 +696,7 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
 
             } else if (clicked_id == 5)
             {
-                alert(1);
+               
                 document.getElementById('acon').style.display = 'block';
 
             } else if (clicked_id == 6)
@@ -803,68 +803,68 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
+//$(document).ready(function () {
 
     //Transforms the listbox visually into a Select2.
-    $("#lstColors").select2({
-        placeholder: "Select a Color",
-        width: "200px"
-    });
+//    $("#lstColors").select2({
+//        placeholder: "Select a Color",
+//        width: "200px"
+//    });
 
     //Initialize the validation object which will be called on form submit.
-    var validobj = $("#frm").validate({
-        onkeyup: false,
-        errorClass: "myErrorClass",
-
-        //put error message behind each form element
-        errorPlacement: function (error, element) {
-            var elem = $(element);
-            error.insertAfter(element);
-        },
-
-        highlight: function (element, errorClass, validClass) {
-            var elem = $(element);
-            if (elem.hasClass("select2-offscreen")) {
-                $("#s2id_" + elem.attr("id") + " ul").addClass(errorClass);
-            } else {
-                elem.addClass(errorClass);
-            }
-        },
+//    var validobj = $("#frm").validate({
+//        onkeyup: false,
+//        errorClass: "myErrorClass",
+//
+//        //put error message behind each form element
+//        errorPlacement: function (error, element) {
+//            var elem = $(element);
+//            error.insertAfter(element);
+//        },
+//
+//        highlight: function (element, errorClass, validClass) {
+//            var elem = $(element);
+//            if (elem.hasClass("select2-offscreen")) {
+//                $("#s2id_" + elem.attr("id") + " ul").addClass(errorClass);
+//            } else {
+//                elem.addClass(errorClass);
+//            }
+//        },
 
         //When removing make the same adjustments as when adding
-        unhighlight: function (element, errorClass, validClass) {
-            var elem = $(element);
-            if (elem.hasClass("select2-offscreen")) {
-                $("#s2id_" + elem.attr("id") + " ul").removeClass(errorClass);
-            } else {
-                elem.removeClass(errorClass);
-            }
-        }
-    });
+//        unhighlight: function (element, errorClass, validClass) {
+//            var elem = $(element);
+//            if (elem.hasClass("select2-offscreen")) {
+//                $("#s2id_" + elem.attr("id") + " ul").removeClass(errorClass);
+//            } else {
+//                elem.removeClass(errorClass);
+//            }
+//        }
+//    });
 
     //If the change event fires we want to see if the form validates.
     //But we don't want to check before the form has been submitted by the user
     //initially.
-    $(document).on("change", ".select2-offscreen", function () {
-        if (!$.isEmptyObject(validobj.submitted)) {
-            validobj.form();
-        }
-    });
+//    $(document).on("change", ".select2-offscreen", function () {
+//        if (!$.isEmptyObject(validobj.submitted)) {
+//            validobj.form();
+//        }
+//    });
 
     //A select2 visually resembles a textbox and a dropdown.  A textbox when
     //unselected (or searching) and a dropdown when selecting. This code makes
     //the dropdown portion reflect an error if the textbox portion has the
     //error class. If no error then it cleans itself up.
-    $(document).on("select2-opening", function (arg) {
-        var elem = $(arg.target);
-        if ($("#s2id_" + elem.attr("id") + " ul").hasClass("myErrorClass")) {
-            //jquery checks if the class exists before adding.
-            $(".select2-drop ul").addClass("myErrorClass");
-        } else {
-            $(".select2-drop ul").removeClass("myErrorClass");
-        }
-    });
-});
+//    $(document).on("select2-opening", function (arg) {
+//        var elem = $(arg.target);
+//        if ($("#s2id_" + elem.attr("id") + " ul").hasClass("myErrorClass")) {
+//            //jquery checks if the class exists before adding.
+//            $(".select2-drop ul").addClass("myErrorClass");
+//        } else {
+//            $(".select2-drop ul").removeClass("myErrorClass");
+//        }
+//    });
+//});
 
 
 
@@ -921,7 +921,6 @@ function leave_page(clicked_id)
     var industry = document.getElementById('industry').value;
     var emp_type = document.getElementById('emp_type').value;
     var education = document.getElementById('education').value;
-    var other_education = document.getElementById('other_education').value;
     var post_desc = document.getElementById('post_desc').value;
     var interview = document.getElementById('interview').value;
     var country = document.getElementById('country').value;
@@ -933,11 +932,11 @@ function leave_page(clicked_id)
     var maxsal = document.getElementById('maxsal').value;
     var currency = document.getElementById('currency').value;
 
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
+    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
+    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
     //   alert(datepicker);
 
-    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" && other_education == "" && post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
+    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" &&  post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
     {
         //alert("hi");
         if (clicked_id == 1)
@@ -979,7 +978,7 @@ function leave_page(clicked_id)
         }
         if (clicked_id == 5)
         {
-            alert(2);
+            
 
 
 
@@ -1023,7 +1022,6 @@ $('.header ul li #abody ul li a').click(function () {
     var industry = document.getElementById('industry').value;
     var emp_type = document.getElementById('emp_type').value;
     var education = document.getElementById('education').value;
-    var other_education = document.getElementById('other_education').value;
     var post_desc = document.getElementById('post_desc').value;
     var interview = document.getElementById('interview').value;
     var country = document.getElementById('country').value;
@@ -1035,12 +1033,12 @@ $('.header ul li #abody ul li a').click(function () {
     var maxsal = document.getElementById('maxsal').value;
     var currency = document.getElementById('currency').value;
 
-    var searchkeyword = $.trim(document.getElementById('tags').value);
-    var searchplace = $.trim(document.getElementById('searchplace').value);
+    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
+    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
     //  alert(datepicker);
     var all_clicked_href = $(this).attr('href');
 
-    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" && other_education == "" && post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
+    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" && post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
     {
         location.href = all_clicked_href;
     } else

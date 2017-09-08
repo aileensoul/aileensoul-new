@@ -2067,7 +2067,7 @@ class Recruiter extends MY_Controller {
             $join_str[0]['from_table_id'] = 'rec_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $data = 'post_id,post_name,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_month,max_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile';
+            $data = 'post_id,post_name,post_last_date,post_description,post_skill,post_position,interview_process,min_sal,max_sal,max_month,max_year,fresher,degree_name,industry_type,emp_type,rec_post.created_date,rec_post.user_id,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile';
 
             $contition_array = array('rec_post.user_id' => $userid, 'rec_post.is_delete' => 0);
             $rec_postdata = $this->common->select_data_by_condition('rec_post', $contition_array, $data, $sortby = 'post_id', $orderby = 'desc', $limit, $offset, $join_str, $groupby = '');
@@ -2315,16 +2315,16 @@ class Recruiter extends MY_Controller {
                 } else {
 
 
-                    $rec_post .= '<div class="art-img-nn">
-                                            <div class="art_no_post_img">
-
-                                                <img src="' . base_url('img/job-no.png') . '">
-
-                                            </div>
-                                            <div class="art_no_post_text">
-                                                No  Post Available.
-                                            </div>
-                                        </div>';
+//                    $rec_post .= '<div class="art-img-nn">
+//                                            <div class="art_no_post_img">
+//
+//                                                <img src="' . base_url('img/job-no.png') . '">
+//
+//                                            </div>
+//                                            <div class="art_no_post_text">
+//                                                No  Post Available.
+//                                            </div>
+//                                        </div>';
                 }
             } else {
 
@@ -2461,7 +2461,7 @@ class Recruiter extends MY_Controller {
                             $rec_post .= PROFILENA;
                         }
                         $rec_post .= '</span> </li> <li><b>No of Position</b><span>';
-                        $rec_post .= $post['post_position'] . 'Position</span>
+                        $rec_post .= $post['post_position'] . ' ' . 'Position</span>
                                                                 </li>
                                                                 <li><b>Industry Type</b> <span>';
 
@@ -2583,6 +2583,21 @@ class Recruiter extends MY_Controller {
                                         </div>';
                 }
             }
+        }else{
+          
+
+
+                    $rec_post .= '<div class="art-img-nn">
+                                            <div class="art_no_post_img">
+
+                                                <img src="' . base_url('img/job-no.png') . '">
+
+                                            </div>
+                                            <div class="art_no_post_text">
+                                                No  Post Available.
+                                            </div>
+                                        </div>';
+               
         }
 
 

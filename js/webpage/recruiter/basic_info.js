@@ -7,7 +7,7 @@
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
     return regexpr.test(value);
-}, "Number, space and special character are not allowed");
+}, "Number, space and special character are not allowed.");
 
 $(document).ready(function () {
 
@@ -70,9 +70,9 @@ $(document).ready(function () {
             },
 
             email: {
-                required: "Email id is required",
-                email: "Please enter valid email id",
-                remote: "Email already exists"
+                required: "Email id is required.",
+                email: "Please enter valid email id.",
+                remote: "Email already exists."
             },
 
             phoneno: {

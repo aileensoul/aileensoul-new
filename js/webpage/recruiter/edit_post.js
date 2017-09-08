@@ -387,7 +387,7 @@ jQuery.noConflict();
                         last_date: {
                             
                              required1:"Last date of apply is required.",
-                            isValid: 'Last date should be grater than and equal to today date'
+                            isValid: 'Last date should be grater than and equal to today date.'
                             
                         },
                         minsal:{
@@ -426,24 +426,24 @@ jQuery.noConflict();
                         },
 
                         position:{
-                          required: "You have tO select minimum 1 candidate"
+                          required: "You have tO select minimum 1 candidate."
                         },
                         minyear: {
 
-                             required: "Minimum experience is required"
+                             required: "Minimum experience is required."
                         },
                         emp_type: {
 
-                             required: "Employment type is required"
+                             required: "Employment type is required."
                         },
                         industry: {
 
-                             required: "Industry is required"
+                             required: "Industry is required."
                         },
                          
                          post_desc: {
 
-                            required: "Post description is required"
+                            required: "Post description is required."
                            
                         },
                         country: {
@@ -458,7 +458,7 @@ jQuery.noConflict();
                         },
                         maxyear: {
 
-                            required: "Maximum experience is required"
+                            required: "Maximum experience is required."
                             // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
                         },
@@ -472,7 +472,7 @@ jQuery.noConflict();
                         //     le:"Minimum salary should be less than Maximum salary"
                         // },
                         maxsal:{
-                            greaterThan:"Maximum salary should be grater than minimum salary"
+                            greaterThan:"Maximum salary should be grater than minimum salary."
                         },
                         position_no:{
                             required:"Number of position required."
