@@ -440,7 +440,7 @@ class Search extends MY_Controller {
                                 </div>
                             </div>
                             <div id="editpostdetails5" style="display:block;">
-                                <span class="showmore"> ' . ucfirst(strtolower($p['product_description'])) . '
+                                <span class="showmore"> ' . $this->common->make_links(ucfirst(strtolower($p['product_description']))) . '
                                 </span>
                             </div>
                             <div id="editpostdetailbox5" style="display:none;">
