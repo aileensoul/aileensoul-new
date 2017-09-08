@@ -409,6 +409,15 @@ if (IMAGEPATHFROM == 's3bucket') {
 // ARTISTIC PROFILE IMAGE THUMBS
     define('ART_PROFILE_THUMB_UPLOAD_URL',BASEURL.'uploads/artistic_profile/thumbs/');
 
+    // ARTISTIC POST 335 X 320
+    define('ART_POST_RESIZE1_UPLOAD_URL',BASEURL.'uploads/artistic_post/resize1/');
+
+// ARTISTIC POST 335 X 245
+    define('ART_POST_RESIZE2_UPLOAD_URL',BASEURL.'uploads/artistic_post/resize2/');
+
+// ARTISTIC POST 210 X 210
+    define('ART_POST_RESIZE3_UPLOAD_URL',BASEURL.'uploads/artistic_post/resize3/');
+
 // ARTISTIC PROFILE BACKGROUND
     define('ART_BG_MAIN_UPLOAD_URL',BASEURL.'uploads/artistic_bg/main/');
 
