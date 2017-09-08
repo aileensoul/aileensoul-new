@@ -17,12 +17,12 @@ class Recruiter extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START    
-        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
-        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        // $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
+        // $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if ($recruiter_deactive) {
-            redirect('recruiter/');
-        }
+        // if ($recruiter_deactive) {
+        //     redirect('recruiter/');
+        // }
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END    
 // DEACTIVATE PROFILE END
 // CODE FOR SECOND HEADER SEARCH START
@@ -51,16 +51,19 @@ class Recruiter extends MY_Controller {
     public function index() {
         $userid = $this->session->userdata('aileenuser');
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE START  
-        $this->recruiter_apply_check();
+       // $this->recruiter_apply_check();
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE END  
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE START    
         $contition_array = array('user_id' => $userid, 're_status' => '0');
-        $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE END    
 
         if ($recdata) {
+        
             $this->load->view('recruiter/reactivate', $this->data);
         } else {
+
+
 // RECRUITER USER STEP DETAIL FETCH CODE START
             $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1198,6 +1201,55 @@ class Recruiter extends MY_Controller {
     }
 
 // RECRUITER EDIT POST INSERT END
+
+//deactivate user start
+    public function deactivate() {
+         $this->recruiter_apply_check(); 
+        //echo "hii";die();
+
+        $id = $_POST['id'];
+        $data = array(
+            're_status' => 0
+        );
+        //echo "<pre>"; print_r($data); die(); 
+        $update = $this->common->update_data($data, 'recruiter', 'user_id', $id);
+
+        if ($update) {
+            $this->session->set_flashdata('success', 'You are deactivate successfully.');
+            redirect('dashboard', 'refresh');
+        } else {
+            $this->session->flashdata('error', 'Sorry!! Your are not deactivate!!');
+            redirect('recruiter', 'refresh');
+        }
+    }
+
+// deactivate user end
+
+//reactivate account start
+
+    public function reactivate() {
+
+       
+
+        $userid = $this->session->userdata('aileenuser');
+
+       
+        $data = array(
+            're_status' => 1,
+            'modify_date' => date('y-m-d h:i:s')
+        );
+
+        $updatdata = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
+        if ($updatdata) {
+
+            redirect('recruiter/recommen_candidate', refresh);
+        } else {
+
+            redirect('recruiter/reactivate', refresh);
+        }
+    }
+//reactivate account End
+
 // RECRUITER POST CITY AJAX START
     public function ajax_data() {
 

@@ -262,7 +262,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                 <p>Hire quality employees here.</p>
                                                 <div class="btns">
                                                     <a data-fancybox data-src="#rec-popup" href="javascript:;" class="pr20 mr20 hew">How it works?</a>
-
+                                                    
 
                                                     <?php if ($recrdata[0]['re_step'] != 3) { ?>
 
