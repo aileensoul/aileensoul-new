@@ -166,7 +166,7 @@
 
                                                             </div>
                                                             <div class="art_no_post_text" style="font-size: 20px;">
-                                                                No Notifiaction Available.
+                                                                No Contact Request Notifiaction Available
                                                             </div>
                                                         </div></li>
                                                 <?php } ?>

@@ -1346,7 +1346,7 @@ display: inline-block;
 .buisness-menu:before {
     width: 100%;
     position: absolute;
-    bottom: 59px;
+    bottom: 58px;
     background: #ddd;
     height: 1px;
     content: "";
@@ -1371,7 +1371,7 @@ overflow: hidden;
 border-radius: 4px;
 position: relative;
 z-index: 3;
-padding: 1px !important;}
+padding: 0px !important;}
 .user-pic img {height: 100%; width: 100%; overflow: hidden;}
 .user-pic a {position: absolute; display: none;}
 .user-pic a i {padding-right: 7.1px;}
@@ -2367,6 +2367,13 @@ background-size: 100%;
     border: 1px solid #efefef;
     margin-bottom: 10px;
 }*/
+.profile-main-box-buis-menu li a:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+
+    background-color: #1b8ab9;
+    color: #ffffff;
+    border-bottom: 5px solid #1b8ab9;
+}
 /*** ---------  end only art  -----------  ***/
 
 .profile-boxProfileCard_follow_mobile {
@@ -3931,8 +3938,12 @@ overflow: hidden;
 	.profile-job-post-location-name-rec .designation_rec {
 		width: 71% !important;
 	}
+         .post-editor .popup-social-icon ul li i:hover {
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 360px){
+
     .audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
 	.audio_source audio {width: 150px;}
 	.mySlides .post-design-commnet-box .cmy_2 {width: 85%;}

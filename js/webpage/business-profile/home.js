@@ -105,7 +105,7 @@ function business_home_three_user_list() {
             $('.loader').remove();
             $('.profile-boxProfileCard_follow').html(data);
             var liCount = $(data).find("li.follow_box_ul_li").length;
-            if(liCount == 0){
+            if (liCount == 0) {
                 $('.full-box-module_follow').hide();
             }
         }
@@ -1716,5 +1716,11 @@ $(document).on('keydown', function (e) {
         $('#postedit').modal('hide');
     }
 });
-
+$(document).keydown(function (e) {
+    if (!e)
+        e = window.event;
+    if (e.keyCode == 27 || e.charCode == 27) {
+        $('.modal').modal('hide');
+    }
+});
 

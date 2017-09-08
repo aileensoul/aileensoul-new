@@ -2016,3 +2016,11 @@ function check_post_available(post_id) {
         }
     });
 }
+$(document).keydown(function (e) {
+    if (!e)
+        e = window.event;
+    if (e.keyCode == 27 || e.charCode == 27) {
+        $('.modal').modal('hide');
+    }
+});
+

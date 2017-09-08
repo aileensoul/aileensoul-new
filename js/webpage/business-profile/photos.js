@@ -183,10 +183,17 @@ function picpopup() {
     $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
     $('#bidmodal').modal('show');
 }
-
+$(document).keydown(function (e) {
+        if (!e)
+            e = window.event;
+        if (e.keyCode == 27 || e.charCode == 27) {
+            closeModal();
+        }
+    });
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#bidmodal-2').modal('hide');
+        
     }
 });
 // contact person script start 

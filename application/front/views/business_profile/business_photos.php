@@ -5,7 +5,7 @@
         <?php echo $head; ?>
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />-->
+        <!--<link rel="stylesheet" href="<?php // echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
@@ -45,7 +45,8 @@
                                                                         ?>
                                                                         <li>
                                                                             <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
-                                                                            <?php echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
+                                                                            <?php // echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
+                                                                            <?php echo '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
                                                                         </li>
                                                                         <?php
                                                                         $i++;
