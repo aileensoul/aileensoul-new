@@ -122,19 +122,19 @@ $(document).ready(function () {
 
             business_type: {
 
-                required: "Business type Is Required.",
+                required: "Business type is required.",
             },
             industriyal: {
 
-                required: "Industrial Is Required.",
+                required: "Industrial is required.",
             },
             subindustriyal: {
 
-                required: "Subindustrial Is Required.",
+                required: "Subindustrial is required.",
             },
             business_details: {
 
-                required: "Business details Is Required.",
+                required: "Business details is required.",
             },
         },
     });

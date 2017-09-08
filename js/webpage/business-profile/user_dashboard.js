@@ -1795,7 +1795,7 @@ $("#userimage").validate({
     },
     messages: {
         profilepic: {
-            required: "Image Required",
+            required: "Photo required.",
         },
     },
 });
