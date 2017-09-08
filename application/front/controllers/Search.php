@@ -1744,10 +1744,22 @@ class Search extends MY_Controller {
         $searchkeyword = trim($this->input->get('skills'));
         $searchplace = trim($this->input->get('searchplace'));
 
-
+        
 
         if ($searchplace == "" && $searchkeyword == "") {
+            $searchkeyword=$this->uri->segment(3);
+            $searchplace= $this->uri->segment(4);
+            if($searchkeyword == 0){
+                $searchkeyword == '';
+                
+            }
+            elseif($searchplace == 0){
+                $searchplace == '';
+                
+            }
+            if($searchplace == "" && $searchkeyword == ""){
             redirect('freelancer/recommen_candidate', refresh);
+            }
         }
         $search_skill = $searchkeyword;
         $this->data['keyword'] = $search_skill;

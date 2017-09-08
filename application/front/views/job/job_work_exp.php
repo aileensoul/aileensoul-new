@@ -170,7 +170,8 @@
                                                       </select>
                                                       <?php echo form_error('experience_year'); ?>
                                                       <?php echo form_error('experience_month'); ?>
-                                                      <label  style="    margin-top: 6px;">Job Title:<span class="red">*</span></label>
+                                                      <label  style="   margin-top: 25px;
+    display: inline-block;">Job Title:<span class="red">*</span></label>
                                                       <input type="text" name="jobtitle[]" tabindex="3"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
                                                          if ($jobtitle1) {
                                                              echo $jobtitle1;

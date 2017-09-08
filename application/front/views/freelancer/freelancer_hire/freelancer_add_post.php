@@ -260,8 +260,6 @@
         <!-- Model Popup Close -->
         <!--<script src="<?php //echo base_url('js/jquery.js?ver=' . time()); ?>"></script>-->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!-- This Js is used for call popup -->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <!-- Calender JS Start-->
         <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
         <!-- Calender Js End-->
