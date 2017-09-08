@@ -18,7 +18,7 @@
       
                   }
            
-      },"special character and space not allow in the beginning");
+      },"Special character and space not allow in the beginning");
       
       $.validator.addMethod("regx_digit", function(value, element, regexpr) {          
          
@@ -33,7 +33,7 @@
       
                   }
           
-      },"digit is not allow");
+      },"Digit is not allow");
       
       $.validator.addMethod("regx1", function(value, element, regexpr) {          
          
@@ -46,7 +46,7 @@
                         return regexpr.test(value);
                   }
            
-      }, "only space, only number and only special characters are not allow");
+      }, "Only space, only number and only special characters are not allow");
       
       
        $("#jobseeker_regform").validate({
@@ -126,50 +126,50 @@
       
                       first_name: {
       
-                          required: "first name Is Required.",
+                          required: "First name is required.",
       
                       },
       
                       last_name: {
       
-                          required: "last name Is Required.",
+                          required: "Last name is required.",
       
                       },
       
                       email: {
       
-                          required: "email Address Is Required.",
-                          email: "please Enter Valid Email Id.",
-                          remote: "email already exists"
+                          required: "Email address is required.",
+                          email: "Please enter valid email id.",
+                          remote: "Email already exists"
                       },
                      
                       fresher: {
       
-                          required: "fresher Is Required.",
+                          required: "Fresher is required.",
       
                       },
                       
                       industry: {
       
-                          required: "industry Is Required.",
+                          required: "Industry is required.",
       
                       },
                       
                       cities: {
       
-                          required: "city Is Required.",
+                          required: "City is required.",
       
                       },
                       
                       job_title: {
       
-                          required: "job title Is Required.",
+                          required: "Job title is required.",
       
                       },
                       
                        skills: {
       
-                           required: "skill Is Required.",
+                           required: "Skill is required.",
       
                       }
       
