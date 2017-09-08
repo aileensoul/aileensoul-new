@@ -109,6 +109,7 @@
 
       <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_skill.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+       <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_job_reg&skill.js?ver='.time()); ?>"></script>
       
    </body>
 </html>
