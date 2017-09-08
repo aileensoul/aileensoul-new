@@ -94,10 +94,12 @@
 
 
 
-
- <ul>
-
+                        <div class="contact-frnd-post">
+                            <ul class="notification_data">
+                              <!--AJAX DATA GET BY LAZZY LOADER START-->
                             </ul>
+                             <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                        </div>  
                         </div>  
 
                     </div>
@@ -147,7 +149,7 @@
 <!-- BEGIN FOOTER -->
 <!-- BEGIN INNER FOOTER -->
 <?php echo $footer; ?>
-
+   <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
 <script type="text/javascript">
    function not_active(not_id)
    { 
