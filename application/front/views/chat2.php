@@ -18,13 +18,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
         <!-- http://bootsnipp.com/snippets/4jXW -->
 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
+       <!--  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_new.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
-
+ -->
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
