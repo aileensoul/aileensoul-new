@@ -1785,7 +1785,7 @@ background-size: 100%;
 }
 .dropdown-content2 a{color: #787878!important;}
 .dropdown-content2 a:hover{color: white!important;}
-.dropdown-content2 a:hover .h4-img{background: url(../img/icon_delete_white.png) no-repeat;background-size:100%;}
+.dropdown-content2 a:hover .h4-img{background: url(../../../img/icon_delete_white.png) no-repeat;background-size:100%;}
 .dropdown-content2 a:hover .h3-img{background:url(../img/icon_edit_profile_white.png) no-repeat;background-size:100%;}
 .dropdown-content2 a:hover .h2-img{background: :url(../img/icon_view_profile_white.png) no-repeat,background-size:100%;}
 .dropdown-content2 a i {
