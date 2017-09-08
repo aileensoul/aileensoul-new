@@ -1003,7 +1003,8 @@ padding-top: 14px;
     margin-top: 0px;
     margin-left: 0px;
 	margin-left: -10px;
-	margin-top: -6px;
+	margin-top: 0px;
+    position: absolute;
 }
 .job_education_submitbox {
     width: 100%;
