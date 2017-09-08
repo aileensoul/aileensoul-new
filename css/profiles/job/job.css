@@ -1006,6 +1006,7 @@ padding-top: 14px;
 	margin-top: 0px;
     position: absolute;
 }
+.job_work_experience_main_div{border: none;}
 .job_education_submitbox {
     width: 100%;
     text-align: center;
