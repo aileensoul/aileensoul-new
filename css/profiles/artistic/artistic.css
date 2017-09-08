@@ -1953,6 +1953,7 @@ background-size: 100%;
     list-style: none;
     display: inline-block;
 }
+.profile-job-post-location-name ul li.folle_text {padding-top: 4px;}
 .profile-job-post-location-name ul li i {
     padding-right: 5px;
 }
@@ -2021,7 +2022,7 @@ background-size: 100%;
     color: #9C9999;
     font-family: Arial;
     font-size: 13px;
-    margin-top: 3px;
+    margin-top: 13px;
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     font-weight: bold;
     text-decoration: none;
