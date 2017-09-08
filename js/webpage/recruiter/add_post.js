@@ -287,69 +287,69 @@ $(document).ready(function () {
 
             post_name: {
 
-                required: "Job title  Is Required."
+                required: "Job title  is required."
             },
             skills: {
 
-                required: "Skill  Is Required."
+                required: "Skill  is required."
             },
 
             position_no: {
-                required: "You Have TO Select Minimum 1 Candidate"
+                required: "You have to select minimum 1 candidate"
             },
             minyear: {
 
-                required: "Minimum Experience is Required"
+                required: "Minimum experience is required"
             },
 
             post_desc: {
 
-                required: "Post Description Is Required"
+                required: "Post description is required"
 
             },
             country: {
 
-                required: "Country Is Required."
+                required: "Country is required."
 
             },
             state: {
 
-                required: "State Is Required."
+                required: "State is required."
 
             },
             maxyear: {
 
-                required: "Maximum Experience is Required"
+                required: "Maximum experience is required"
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             industry: {
 
-                required: "Industry is Required"
+                required: "Industry is required"
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             emp_type: {
 
-                required: "Employment Type is Required"
+                required: "Employment type is required"
                         // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
             },
 
             last_date: {
 
-                required: "Last Date for apply required"
+                required: "Last date for apply required"
             },
 
             maxsal: {
-                required: "Maximum salary is Required",
-                greaterThan: "Maximum salary should be grater than Minimum salary"
+                required: "Maximum salary is required",
+                greaterThan: "Maximum salary should be grater than minimum salary"
             },
 
             minsal: {
-                required: "Minimum salary is Required"
+                required: "Minimum salary is required"
             },
 
         }

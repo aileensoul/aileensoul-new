@@ -165,7 +165,7 @@ jQuery.validator.addMethod("noSpace", function(value, element) {
 
 $.validator.addMethod("reg_candidate", function(value, element, regexpr) {          
     return regexpr.test(value);
-}, "Float Number Is Not Allowed");
+}, "Float number is not allowed");
 
 
 $.validator.addMethod("greaterThan",
@@ -235,7 +235,7 @@ else
       return true;
 }
 
-}, "Max month must be greater than Min month");
+}, "Max month must be greater than min month");
 
 
 // for date validtaion start
@@ -304,7 +304,7 @@ $.validator.addMethod("required1", function(value, element, regexpr) {
             }
            
      // return regexpr.test(value);
-}, "Last Date of apply is required.");
+}, "Last date of apply is required.");
 
 
 //date validation end
@@ -386,7 +386,7 @@ jQuery.noConflict();
                        
                         last_date: {
                             
-                             required1:"Last Date of apply is required.",
+                             required1:"Last date of apply is required.",
                             isValid: 'Last date should be grater than and equal to today date'
                             
                         },
@@ -418,47 +418,47 @@ jQuery.noConflict();
 
                         post_name: {
 
-                            required: "Jobtitle  Is Required."
+                            required: "Jobtitle  is required."
                         },
                            skills: {
 
-                            required: "Skill  Is Required."
+                            required: "Skill  is required."
                         },
 
                         position:{
-                          required: "You Have TO Select Minimum 1 Candidate"
+                          required: "You have tO select minimum 1 candidate"
                         },
                         minyear: {
 
-                             required: "Minimum Experience is Required"
+                             required: "Minimum experience is required"
                         },
                         emp_type: {
 
-                             required: "Employment Type is Required"
+                             required: "Employment type is required"
                         },
                         industry: {
 
-                             required: "Industry is Required"
+                             required: "Industry is required"
                         },
                          
                          post_desc: {
 
-                            required: "Post Description Is Required"
+                            required: "Post description is required"
                            
                         },
                         country: {
 
-                            required: "Country Is Required."
+                            required: "Country is required."
                             
                         },
                         state: {
 
-                            required: "State Is Required."
+                            required: "State is required."
                             
                         },
                         maxyear: {
 
-                            required: "Maximum Experience is Required"
+                            required: "Maximum experience is required"
                             // greaterThan1:"Maximum Year Experience should be grater than Minimum Year"
 
                         },
@@ -472,7 +472,7 @@ jQuery.noConflict();
                         //     le:"Minimum salary should be less than Maximum salary"
                         // },
                         maxsal:{
-                            greaterThan:"Maximum salary should be grater than Minimum salary"
+                            greaterThan:"Maximum salary should be grater than minimum salary"
                         },
                         position_no:{
                             required:"Number of position required."

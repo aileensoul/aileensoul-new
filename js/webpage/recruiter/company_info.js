@@ -120,31 +120,31 @@ $(document).ready(function () {
 
             comp_name: {
 
-                required: "Company Name Is Required.",
+                required: "Company name is required.",
 
             },
 
             comp_email: {
 
-                required: "Email Address Is Required.",
-                email: "Please Enter Valid Email Id.",
+                required: "Email address is required.",
+                email: "Please enter valid email id.",
                 remote: "Email already exists"
             },
 
             comp_num: {
 
-                required: "Phone no Is Required.",
+                required: "Phone no is required.",
 
             },
             country: {
 
-                required: "Country Is Required.",
+                required: "Country is required.",
 
             },
 
             state: {
 
-                required: "State Is Required.",
+                required: "State is required.",
 
             },
 

@@ -61,12 +61,12 @@ $(document).ready(function () {
 
             first_name: {
 
-                required: "First name Is Required.",
+                required: "First name is required.",
             },
 
             last_name: {
 
-                required: "Last name Is Required.",
+                required: "Last name is required.",
             },
 
             email: {
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
             phoneno: {
 
-                required: "Phone Number Is Required.",
+                required: "Phone number is required.",
                 //phoneno: "Enter valid number.",
             },
 
