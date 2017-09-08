@@ -7709,7 +7709,7 @@ public function insert_comment_postnewpage() {
                 $imglike .= '</i>';
                 $imglike .= '<span id="popup"> ';
                 if (count($bdata1) > 0) {
-                    $imglike .= count($bdata1) . '';
+                   // $imglike .= count($bdata1) . '';
                 }
                 $imglike .= '</span>';
                 $imglike .= '</a>';
@@ -7796,7 +7796,7 @@ public function insert_comment_postnewpage() {
                     $imglike1 .= '</i>';
                     $imglike1 .= '<span id="popup">';
                     if (count($bdata2) > 0) {
-                        $imglike1 .= count($bdata2) . '';
+                        //$imglike1 .= count($bdata2) . '';
                     }
                     $imglike1 .= '</span>';
                     $imglike1 .= '</a>';
@@ -7926,7 +7926,7 @@ public function insert_comment_postnewpage() {
                     $imglike1 .= '</i>';
                     $imglike1 .= '<span  id="popup"> ';
                     if (count($bdata2) > 0) {
-                        $imglike1 .= count($bdata2) . '';
+                       // $imglike1 .= count($bdata2) . '';
                     }
                     $imglike1 .= '</span>';
                     $imglike1 .= '</a>';
@@ -8120,12 +8120,12 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
             $cmtinsert .= '</div>';
-            $cmtinsert .= '<div contenteditable="true" class="editable_text" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
+            $cmtinsert .= '<div contenteditable="true" class="editable_text" style="width:75%; display:none;" name="' . $art_comment['post_image_comment_id'] . '" id="editcommentimg' . $art_comment['post_image_comment_id'] . '"style="display:none;" onkeyup="commenteditimg(' . $art_comment['post_image_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">';
 
             $cmtinsert .= '' . $art_comment['comment'] . '';
             $cmtinsert .= '</div>';
 
-            $cmtinsert .= '<button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
+            $cmtinsert .= '<button id="editsubmitimg' . $art_comment['post_image_comment_id'] . '" style="display:none; margin-left:15px;" onClick="edit_commentimg(' . $art_comment['post_image_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecommentimg' . $art_comment['post_image_comment_id'] . '">';
 
             $cmtinsert .= '<a id="' . $art_comment['post_image_comment_id'] . '"';
             $cmtinsert .= 'onClick="comment_likeimg(this.id)">';
@@ -13011,13 +13011,18 @@ public function art_home_post() {
                             $return_html .= '<div>
                                                 <video width="100%" height="350" controls>
 
-                                                <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
-                                                <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
+                                             
+                                                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
+                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/ogg">
 
                                                     
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>';
+
+                                               // <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                                               //  <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
+
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
                                                 <div class="audio_img">
