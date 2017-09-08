@@ -149,7 +149,10 @@
 <!-- BEGIN FOOTER -->
 <!-- BEGIN INNER FOOTER -->
 <?php echo $footer; ?>
-   <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/recommen_candidate.js'); ?>"></script>
+ <script>
+                                                                                var base_url = '<?php echo base_url(); ?>';
+  </script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/notification/notification.js'); ?>"></script>
 <script type="text/javascript">
    function not_active(not_id)
    { 

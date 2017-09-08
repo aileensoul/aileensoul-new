@@ -2879,7 +2879,15 @@ class Notification extends MY_Controller {
     
     public function ajax_notification_data(){
         //NOTIFICATION CODE START
-                
+                $perpage = 8;
+        $page = 1;
+        if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
+            $page = $_GET["page"];
+        }
+
+        $start = ($page - 1) * $perpage;
+        if ($start < 0)
+            $start = 0;
             $userid = $this->session->userdata('aileenuser');
 // 1-5 notification start
 // recruiter notfication start 
@@ -3258,7 +3266,7 @@ class Notification extends MY_Controller {
                                     if ($total['not_from'] == 3 && $total['not_img'] == 0) {
                                        
                                         $return_html .= '<a href="' . base_url() . 'artistic/artistic_profile/' . $total['user_id'] . '">';
-                                        $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .=  'active2'; } '">'; 
+                                        $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .=  'active2'; } $return_html .= '">'; 
                                         
                                             $return_html .= '<div class="notification-pic" id="noti_pc">';
                                               $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3337,7 +3345,7 @@ class Notification extends MY_Controller {
                                         if ($total['not_img'] == 2) { 
                                             
                                             $return_html .= '<a href="' . base_url() . 'notification/art_post/' . $total['art_post_id'] . '">'; 
-                                            $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } '">';
+                                            $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } $return_html .= '">';
                                             
                                                 $return_html .= '<div class="notification-pic" id="noti_pc" >';
                                                   $filepath = FCPATH . $this->config->item('art_profile_thumb_upload_path') . $total['user_image'];
@@ -3541,7 +3549,7 @@ class Notification extends MY_Controller {
                                          $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
                                       
                                          $return_html .= '<a href="' . base_url() . 'notification/business_post/' . $total['business_profile_post_id'] . '"  onClick="not_active(' . $total['not_id'] . ')">
-                                        <li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } '">';
+                                        <li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } $return_html .= '">';
                                         
                                          $return_html .= '<div class="notification-pic" id="noti_pc" >';
                                                 
@@ -3661,7 +3669,7 @@ class Notification extends MY_Controller {
                                         if ($id) {
                                             
                                             $return_html .= '<a href="' . base_url() . 'business_profile/business_resume/' . $id . '">';
-                                            $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } '">';
+                                            $return_html .= '<li class="'; if ($total['not_active'] == 1){ $return_html .= 'active2'; } $return_html .='">';
                                              
                                                 $return_html .= '<div class="notification-pic" id="noti_pc" >';
    $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
