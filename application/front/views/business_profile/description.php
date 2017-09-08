@@ -10,6 +10,14 @@
         <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
            <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+    
+<style type="text/css">
+    [contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block;
+  font-size: 14px; /* For Firefox */
+}
+</style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -209,11 +217,11 @@
                                     </div>
                                     <fieldset <?php if ($business_details) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label>Details of your business:<span style="color:red">*</span></label>
-                                        <textarea name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter Business Detail" style="resize: none;"><?php
+                                        <div contenteditable="true" name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter Business Detail" style="resize: none;"><?php
                                             if ($business_details1) {
                                                 echo $business_details1;
                                             }
-                                            ?></textarea>
+                                            ?></div>
                                         <?php echo form_error('business_details'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">

@@ -2261,7 +2261,7 @@ background-size: 100%;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
-    top: 0;
+    top: -30px;
 }
 .slider_img_p {
     width: 100%;
@@ -3150,6 +3150,7 @@ div[class^="likeduserlist"] {
     padding-top: 10px;
     position: relative;
     padding-bottom: 10px;
+    margin: 16px 0; 
 }
 .slider_img img {
     top: 50%;
@@ -3424,6 +3425,15 @@ border-top-right-radius: 4px;
     margin: 0 auto;
     width: 40%;
     padding: 5px;
+}
+
+#business_details{
+    resize: inherit;
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+padding: 10px;
+font-size: 12px;
+height: 100px;
 }
 
 @keyframes pulse1 {
