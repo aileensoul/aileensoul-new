@@ -16,6 +16,7 @@
   content: attr(placeholder);
   display: block;
   font-size: 14px; /* For Firefox */
+  color:#616060;
 }
 </style>
     </head>
