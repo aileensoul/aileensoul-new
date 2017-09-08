@@ -24,7 +24,7 @@ class Dashboard extends MY_Controller {
        $contition_array = array('user_id' => $userid);
         $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('user_id' => $userid, 're_status' => '1');
+        $contition_array = array('user_id' => $userid);
         $recrdata = $this->data['recrdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid);

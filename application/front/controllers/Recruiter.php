@@ -17,12 +17,12 @@ class Recruiter extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START    
-        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
-        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        // $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
+        // $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if ($recruiter_deactive) {
-            redirect('recruiter/');
-        }
+        // if ($recruiter_deactive) {
+        //     redirect('recruiter/');
+        // }
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END    
 // DEACTIVATE PROFILE END
 // CODE FOR SECOND HEADER SEARCH START
@@ -51,16 +51,19 @@ class Recruiter extends MY_Controller {
     public function index() {
         $userid = $this->session->userdata('aileenuser');
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE START  
-        $this->recruiter_apply_check();
+       // $this->recruiter_apply_check();
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE END  
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE START    
         $contition_array = array('user_id' => $userid, 're_status' => '0');
-        $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE END    
 
         if ($recdata) {
+        
             $this->load->view('recruiter/reactivate', $this->data);
         } else {
+
+
 // RECRUITER USER STEP DETAIL FETCH CODE START
             $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1198,6 +1201,55 @@ class Recruiter extends MY_Controller {
     }
 
 // RECRUITER EDIT POST INSERT END
+
+//deactivate user start
+    public function deactivate() {
+         $this->recruiter_apply_check(); 
+        //echo "hii";die();
+
+        $id = $_POST['id'];
+        $data = array(
+            're_status' => 0
+        );
+        //echo "<pre>"; print_r($data); die(); 
+        $update = $this->common->update_data($data, 'recruiter', 'user_id', $id);
+
+        if ($update) {
+            $this->session->set_flashdata('success', 'You are deactivate successfully.');
+            redirect('dashboard', 'refresh');
+        } else {
+            $this->session->flashdata('error', 'Sorry!! Your are not deactivate!!');
+            redirect('recruiter', 'refresh');
+        }
+    }
+
+// deactivate user end
+
+//reactivate account start
+
+    public function reactivate() {
+
+       
+
+        $userid = $this->session->userdata('aileenuser');
+
+       
+        $data = array(
+            're_status' => 1,
+            'modify_date' => date('y-m-d h:i:s')
+        );
+
+        $updatdata = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
+        if ($updatdata) {
+
+            redirect('recruiter/recommen_candidate', refresh);
+        } else {
+
+            redirect('recruiter/reactivate', refresh);
+        }
+    }
+//reactivate account End
+
 // RECRUITER POST CITY AJAX START
     public function ajax_data() {
 
@@ -3670,7 +3722,7 @@ class Recruiter extends MY_Controller {
         );
         
          
-        $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
+        $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.designation,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
         $contition_array1 = array('save.from_id' => $userid, 'save.status' => 0, 'save.save_type' => 1);
         $recdata1 =  $this->common->select_data_by_condition('save', $contition_array1, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
         
@@ -3712,10 +3764,11 @@ class Recruiter extends MY_Controller {
 
                     $imageee = $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'];
                     if (file_exists($imageee) && $rec['job_user_image'] != '') {
-
                         $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
                         $return_html .= '<img src="' . base_url() . $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
                     } else {
+
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
 
                         $a = $rec['fname'];
                         $acr = substr($a, 0, 1);
@@ -3732,11 +3785,12 @@ class Recruiter extends MY_Controller {
                                                                 <div class="designation_rec_1 fl ">
                                                                     <ul>
                                                                         <li>';
-                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '">';
-                    $return_html .= $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '</a>';
-                    $return_html .= '</li><li style="display: block;">
-                                                                            <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';
+                                                                        // $return_html .=$rec['fname'].''.$rec['lname'];
 
+                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
+                    $return_html .= $rec['fname'] . ' ' . $rec['lname'] . '</a>';
+                    $return_html .= '</li><li style="display: block;">
+                                    <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';
                     if ($rec['designation']) {
 
                         $return_html .= $rec['designation'];
