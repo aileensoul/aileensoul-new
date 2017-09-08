@@ -106,3 +106,9 @@ $(document).ready(function () {
         }
     });
 });
+$(document).ready(function () {
+    var input = $("#companyname");
+    var len = input.val().length;
+    input[0].focus();
+    input[0].setSelectionRange(len, len);
+});

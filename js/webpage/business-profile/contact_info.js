@@ -38,6 +38,7 @@ $(document).ready(function () {
             },
             contactmobile: {
                 //regx1:/^\d+(\.\d+)?$/
+                required: true,
                 number: true,
                 minlength: 8,
                 maxlength: 15
@@ -59,10 +60,10 @@ $(document).ready(function () {
         },
         messages: {
             contactname: {
-                required: "Company name Is Required.",
+                required: "Person name is required.",
             },
             contactmobile: {
-                required: "Mobile number Is Required.",
+                required: "Mobile number is required.",
             },
             email: {
                 required: "Email id is required",
