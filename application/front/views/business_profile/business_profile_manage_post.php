@@ -108,7 +108,7 @@
                                         <?php } ?>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
-                                            <td class="business_data_td2"><span><?php echo $this->common->make_links($businessdata1[0]['details']); ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($businessdata1[0]['details'])); ?></span></td>
                                         </tr>
                                     </table>
                                 </div>

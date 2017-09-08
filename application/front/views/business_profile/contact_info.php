@@ -112,7 +112,7 @@
 
 
                                     <fieldset <?php if ($contactmobile) { ?> class="error-msg" <?php } ?>>
-                                        <label>Contact Mobile:</label>
+                                        <label>Contact Mobile:<span style="color:red">*</span></label>
                                         <input name="contactmobile" type="text" tabindex="2"  id="contactmobile" placeholder="Enter Contact Mobile" value="<?php
                                         if ($contactmobile1) {
                                             echo $contactmobile1;

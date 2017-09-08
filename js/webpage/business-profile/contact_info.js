@@ -24,10 +24,10 @@ function checkvalue() {
 
 $.validator.addMethod("regx1", function (value, element, regexpr) {
     return regexpr.test(value);
-}, "Only numbers are allowed");
+}, "Only numbers are allowed.");
 $.validator.addMethod("regx", function (value, element, regexpr) {
     return regexpr.test(value);
-}, "Only space and only number  are not allow");
+}, "Only space and only number are not allow.");
 $(document).ready(function () {
     $("#contactinfo").validate({
         rules: {
@@ -38,6 +38,7 @@ $(document).ready(function () {
             },
             contactmobile: {
                 //regx1:/^\d+(\.\d+)?$/
+                required: true,
                 number: true,
                 minlength: 8,
                 maxlength: 15
@@ -59,15 +60,15 @@ $(document).ready(function () {
         },
         messages: {
             contactname: {
-                required: "Company name Is Required.",
+                required: "Person name is required.",
             },
             contactmobile: {
-                required: "Mobile number Is Required.",
+                required: "Mobile number is required.",
             },
             email: {
-                required: "Email id is required",
-                email: "Please enter valid email id",
-                remote: "Email already exists"
+                required: "Email id is required.",
+                email: "Please enter valid email id.",
+                remote: "Email already exists."
             },
         },
     });

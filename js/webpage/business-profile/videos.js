@@ -170,7 +170,7 @@ $(document).ready(function () {
         },
         messages: {
             profilepic: {
-                required: "Photo Required",
+                required: "Photo required.",
             },
         },
     });

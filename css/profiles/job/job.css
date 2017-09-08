@@ -67,7 +67,7 @@ li.fr a {text-decoration: none !important;}
 .profile-job-details ul li a {padding-left: 0px; font-weight: bold; display: block; color: #5b5b5b;}
 .profile-job-details ul li a:hover { padding-left: 0px; display: block; text-decoration: none;}
 .profile-job-details ul li p {margin-bottom: 0;display: inline-block; font-size: 15px; font-weight: 600;}
-.profile-job-details ul li .lction p{font-weight: normal; font-size: 13px;}
+.profile-job-details ul li .lction p{font-weight: normal; font-size: 12px;}
 .profile-job-details .post_title { font-size: 17px; font-weight: 600; width: 60%; word-break: break-word;
     word-wrap: break-word !important; word-break: break-word !important; cursor: default; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 }
@@ -260,7 +260,7 @@ line-height: 1;}
     font-weight: bold;
     text-decoration: none;
 }
-.flw_msg_btn{margin-top: 4px;}
+.flw_msg_btn{margin-top: 4px; margin-right: 10px;}
 .flw_msg_btn ul li a:hover {
     border: 1px solid #d9d9d9;
     -webkit-transform: none;
@@ -1003,8 +1003,10 @@ padding-top: 14px;
     margin-top: 0px;
     margin-left: 0px;
 	margin-left: -10px;
-	margin-top: -6px;
+	margin-top: 0px;
+    position: absolute;
 }
+.job_work_experience_main_div{border: none;}
 .job_education_submitbox {
     width: 100%;
     text-align: center;
