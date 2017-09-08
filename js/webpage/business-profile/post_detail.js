@@ -1,3 +1,12 @@
+$(document).keydown(function (e) {
+    if (!e)
+        e = window.event;
+    if (e.keyCode == 27 || e.charCode == 27) {
+        closeModal();
+    }
+});
+
+
 function check() {
     var keyword = $.trim(document.getElementById('tags1').value);
     var place = $.trim(document.getElementById('searchplace1').value);
@@ -1464,3 +1473,4 @@ function check_post_available(post_id) {
         }
     });
 }
+

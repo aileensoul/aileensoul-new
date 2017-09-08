@@ -9126,7 +9126,7 @@ class Business_profile extends MY_Controller {
                                                     <img src="' . base_url() . 'img/No_Contact_Request.png">
                                                 </div>
                                                 <div class="art_no_post_text_c">
-                                                    No Contact request Available.
+                                                    No Contact Request Available
                                                 </div>
                              </div>';
         }
@@ -9278,7 +9278,7 @@ class Business_profile extends MY_Controller {
 
                                     </div>
         <div class="art_no_post_text">
-                                        No contacts available...
+                                        No Contact Request Available
                                     </div>
                                     </div></li>';
         }
@@ -9362,8 +9362,8 @@ class Business_profile extends MY_Controller {
                 $contactdata .= '<div class="main_data_cq"><span class="dc_cl_m" title="' . $inddata[0]['industry_name'] . '"> ' . $inddata[0]['industry_name'] . '</span></div>';
                 $contactdata .= '</a></div>';
                 $contactdata .= '<div class="fw"><p class="connect-link">';
-                $contactdata .= '<a href="javascript:void(0);" class="cr-accept acbutton  ani" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i></span></a>';
-                $contactdata .= '<a href="javascript:void(0);" class="cr-decline" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i></span></a>';
+                $contactdata .= '<a href="javascript:void(0);" class="cr-accept acbutton  ani" onclick = "return contactapprove1(' . $contact['contact_from_id'] . ',1);"><span class="cr-accept1"><i class="fa fa-check" aria-hidden="true"></i></span></a>';
+                $contactdata .= '<a href="javascript:void(0);" class="cr-decline" onclick = "return contactapprove1(' . $contact['contact_from_id'] . ',0);"><span class="cr-decline1"><i class="fa fa-times" aria-hidden="true"></i></span></a>';
                 $contactdata .= '</p>';
                 $contactdata .= '</div>';
                 $contactdata .= '</div>';
