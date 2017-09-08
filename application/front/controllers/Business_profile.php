@@ -9585,19 +9585,14 @@ class Business_profile extends MY_Controller {
 
 
         $contition_array = array('contact_type' => 2);
-
         $search_condition = "((contact_to_id = ' $to_id' AND contact_from_id = ' $userid') OR (contact_from_id = ' $to_id' AND contact_to_id = '$userid'))";
-
         $contactperson = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
         $contact_id = $contactperson[0]['contact_id'];
-
         $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
-
         $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-//echo $businessdata1[0]['business_slug']; die();
+        //echo $businessdata1[0]['business_slug']; die();
 
         $data = array(
             'modify_date' => date('Y-m-d H:i:s'),
@@ -9797,7 +9792,7 @@ No Contacts Available.
 
         if ($this->data['businessdata'][0]['product_description']) {
 
-            $editpostdes .= nl2br($this->data['businessdata'][0]['product_description']);
+            $editpostdes .= nl2br($this->common->make_links($this->data['businessdata'][0]['product_description']));
         }
         echo json_encode(
                 array(

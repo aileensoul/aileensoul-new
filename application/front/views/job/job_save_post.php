@@ -307,7 +307,9 @@
 </script>
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_save_post.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/cover_profile_common.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/progressbar_common.js?ver='.time()); ?>"></script>
 
 </body>
 </html>

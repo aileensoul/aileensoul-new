@@ -1,17 +1,18 @@
 <?php
 
 class Common extends CI_Model {
+
     function check_login($user_name, $user_password) {
         $this->db->select("user_id,first_name,last_name,user_email,user_password,status");
         $this->db->where("user_email", $user_name);
         $this->db->where("user_password", md5($user_password));
-        $this->db->where('is_delete','0');
+        $this->db->where('is_delete', '0');
         $this->db->from("user");
         $this->db->limit(1);
         $query = $this->db->get();
         //echo $this->db->last_query();die();
         if ($query->num_rows() == 1) {
-            $result = $query->result_array();        
+            $result = $query->result_array();
             return $result;
         } else {
             return array();
@@ -26,6 +27,7 @@ class Common extends CI_Model {
             return false;
         }
     }
+
     // insert database
     function insert_data_getid($data, $tablename) {
         if ($this->db->insert($tablename, $data)) {
@@ -34,6 +36,7 @@ class Common extends CI_Model {
             return false;
         }
     }
+
     // update database
 
     function update_data($data, $tablename, $columnname, $columnid) {
@@ -43,28 +46,20 @@ class Common extends CI_Model {
         if ($this->db->update($tablename, $data)) {
 
             return true;
-
         } else {
 
             return false;
-
         }
-
     }
-
-
 
     // select data using colum id
 
     function select_data_by_id($tablename, $columnname, $columnid, $data = '*') {
 
-       if($data!='*')
+        if ($data != '*')
+            $this->db->select($data);
 
-       
 
-        $this->db->select($data);
-
-               
 
         $this->db->where($columnname, $columnid);
 
@@ -73,26 +68,18 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-    
 
     function select_data_by_id_row($tablename, $columnname, $columnid, $data = '*', $join_str = array()) {
 
-       if($data!='*')
+        if ($data != '*')
+            $this->db->select($data);
 
-       
 
-        $this->db->select($data);
-
-       
 
         if (!empty($join_str)) {
 
@@ -101,15 +88,11 @@ class Common extends CI_Model {
                 if ($join['join_type'] == '') {
 
                     $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
-
                 } else {
 
                     $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id'], $join['join_type']);
-
                 }
-
             }
-
         }
 
         $this->db->where($columnname, $columnid);
@@ -119,57 +102,44 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->row_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     // select data using multiple conditions
 
     function select_data_by_condition($tablename, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '') {
 
         //print_r($join_str);
-
         //die();
 
         $this->db->select($data);
 
         if (!empty($join_str)) {
 
-           // pre($join_str);
+            // pre($join_str);
 
             foreach ($join_str as $join) {
 
                 if ($join['join_type'] == '') {
 
-                $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
-
-                }
-
-                else{
+                    $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
+                } else {
 
                     $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id'], $join['join_type']);
-
                 }
-
             }
-
         }
 
 
 
         $this->db->where($contition_array);
 
-        if(!empty($having)){
+        if (!empty($having)) {
 
             $this->db->having($having);
-
         }
 
         //Setting Limit for Paging
@@ -177,11 +147,9 @@ class Common extends CI_Model {
         if ($limit != '' && $offset == 0) {
 
             $this->db->limit($limit);
-
         } else if ($limit != '' && $offset != 0) {
 
             $this->db->limit($limit, $offset);
-
         }
 
         //order by query
@@ -189,7 +157,6 @@ class Common extends CI_Model {
         if ($sortby != '' && $orderby != '') {
 
             $this->db->order_by($sortby, $orderby);
-
         }
 
 
@@ -203,34 +170,27 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     // select data using multiple conditions and search keyword
 
-    function select_data_by_search($tablename, $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str=array(), $groupby = '') {
+    function select_data_by_search($tablename, $search_condition, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '') {
 
-        $this->db->select($data);        
+        $this->db->select($data);
 
         if (!empty($join_str)) {
 
-            foreach ($join_str as $join) {                
+            foreach ($join_str as $join) {
 
                 $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
-
             }
-
         }
 
-       
+
 
 
 
@@ -243,11 +203,9 @@ class Common extends CI_Model {
         if ($limit != '' && $offset == 0) {
 
             $this->db->limit($limit);
-
         } else if ($limit != '' && $offset != 0) {
 
             $this->db->limit($limit, $offset);
-
         }
 
         //order by query
@@ -255,7 +213,6 @@ class Common extends CI_Model {
         if ($sortby != '' && $orderby != '') {
 
             $this->db->order_by($sortby, $orderby);
-
         }
 
         $this->db->group_by($groupby);
@@ -265,16 +222,11 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     // delete data
 
@@ -285,16 +237,11 @@ class Common extends CI_Model {
         if ($this->db->delete($tablename)) {
 
             return true;
-
         } else {
 
             return false;
-
         }
-
     }
-
-
 
     // check unique avaliblity
 
@@ -306,8 +253,7 @@ class Common extends CI_Model {
 
         if ($columnid2_value != '') {
 
-            $this->db->where($columname2 . " !=", $columnid2_value);//in this line make space between " and !=
-
+            $this->db->where($columname2 . " !=", $columnid2_value); //in this line make space between " and !=
         }
 
 
@@ -315,7 +261,6 @@ class Common extends CI_Model {
         if (!empty($condition_array)) {
 
             $this->db->where($condition_array);
-
         }
 
 
@@ -327,16 +272,11 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return false;
-
         } else {
 
             return true;
-
         }
-
     }
-
-
 
     //get all record 
 
@@ -351,7 +291,6 @@ class Common extends CI_Model {
         if ($sortby != '' && $orderby != "") {
 
             $this->db->order_by($sortby, $orderby);
-
         }
 
         $query = $this->db->get();
@@ -359,16 +298,11 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     //table records count
 
@@ -377,10 +311,7 @@ class Common extends CI_Model {
         $query = $this->db->count_all($table);
 
         return $query;
-
     }
-
-
 
     //Function for getting all Settings
 
@@ -401,16 +332,11 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     //Getting setting value for editing By id
 
@@ -423,16 +349,11 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-
 
     //Getting setting value By id
 
@@ -445,16 +366,11 @@ class Common extends CI_Model {
             $result = $query->result_array();
 
             return nl2br(($result[0]['settingfieldvalue']));
-
         } else {
 
             return false;
-
         }
-
     }
-
-
 
     //Getting setting field name By id
 
@@ -469,46 +385,35 @@ class Common extends CI_Model {
             $result = $query->result_array();
 
             return ($result[0]['settingfieldname']);
-
         } else {
 
             return false;
-
         }
-
     }
 
-    
-
-    function get_data_csv($tablename='') {
+    function get_data_csv($tablename = '') {
 
         $query = $this->db->get($tablename);
 
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return FALSE;
-
         }
-
     }
 
-
-
-    function insert_csv($tablename,$data) {
+    function insert_csv($tablename, $data) {
 
         $this->db->insert($tablename, $data);
-
     }
 
-    function select_data_in($tablename, $in_field,$array1, $data = '*') {
+    function select_data_in($tablename, $in_field, $array1, $data = '*') {
 
         $this->db->select($data);
 
-        $this->db->where_in($in_field,$array1);
+        $this->db->where_in($in_field, $array1);
 
         $query = $this->db->get($tablename);
 
@@ -517,64 +422,50 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
 
-    
+    function twoDto1D($tarr) {
 
-    function twoDto1D($tarr){
+        $oned_arr = array();
 
-        $oned_arr=array();
+        foreach ($tarr as $arr) {
 
-        foreach($tarr as $arr){
+            foreach ($arr as $value1) {
 
-           foreach($arr as $value1){
-
-            array_push($oned_arr, $value1);
-
-           }
-
+                array_push($oned_arr, $value1);
+            }
         }
 
-       
 
-        if(!empty($oned_arr)){
+
+        if (!empty($oned_arr)) {
 
             return $oned_arr;
-
-        }else{
+        } else {
 
             return array();
-
         }
-
     }
 
-    
-
-    function candidate_all_data()
-
-    {
+    function candidate_all_data() {
 
         $this->db->select('*');
 
         $this->db->from('candidate c');
 
-        $this->db->join('candidate_detail cd', 'c.candidate_id = cd.candidate_id','left');
+        $this->db->join('candidate_detail cd', 'c.candidate_id = cd.candidate_id', 'left');
 
-        $this->db->join('candidate_qualification cq', 'c.candidate_id = cq.candidate_id','left');
+        $this->db->join('candidate_qualification cq', 'c.candidate_id = cq.candidate_id', 'left');
 
-        $this->db->join('candidate_speciality csp', 'c.candidate_id = csp.candidate_id','left');
+        $this->db->join('candidate_speciality csp', 'c.candidate_id = csp.candidate_id', 'left');
 
-        $this->db->join('candidate_subscription csu', 'c.candidate_id = csu.candidate_id','left');
+        $this->db->join('candidate_subscription csu', 'c.candidate_id = csu.candidate_id', 'left');
 
-        $this->db->join('candidate_work cw', 'c.candidate_id = cw.candidate_id','left');
+        $this->db->join('candidate_work cw', 'c.candidate_id = cw.candidate_id', 'left');
 
         $this->db->group_by('c.candidate_id');
 
@@ -585,26 +476,20 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
     }
-
-    
 
     function update_data_by_condition($tablename, $contition_array = array(), $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '') {
 
-        
+
 
         //print_r($join_str);
-
         //die();
 
-        
+
 
         $this->db->select($data);
 
@@ -612,34 +497,27 @@ class Common extends CI_Model {
 
         if (!empty($join_str)) {
 
-           // pre($join_str);
+            // pre($join_str);
 
             foreach ($join_str as $join) {
 
                 if ($join['join_type'] == '') {
 
-                $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
-
-                }
-
-                else{
+                    $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id']);
+                } else {
 
                     $this->db->join($join['table'], $join['join_table_id'] . '=' . $join['from_table_id'], $join['join_type']);
-
                 }
-
             }
-
         }
 
 
 
         $this->db->where($contition_array);
 
-        if(!empty($having)){
+        if (!empty($having)) {
 
             $this->db->having($having);
-
         }
 
         //Setting Limit for Paging
@@ -647,11 +525,9 @@ class Common extends CI_Model {
         if ($limit != '' && $offset == 0) {
 
             $this->db->limit($limit);
-
         } else if ($limit != '' && $offset != 0) {
 
             $this->db->limit($limit, $offset);
-
         }
 
         //order by query
@@ -659,7 +535,6 @@ class Common extends CI_Model {
         if ($sortby != '' && $orderby != '') {
 
             $this->db->order_by($sortby, $orderby);
-
         }
 
 
@@ -673,84 +548,96 @@ class Common extends CI_Model {
         if ($query->num_rows() > 0) {
 
             return $query->result_array();
-
         } else {
 
             return array();
-
         }
-
-    }  
-
-
+    }
 
 // select data using colum id
-   function select_database_id($tablename,$columnname,$columnid,$data='*',$condition_array=array())
-    {
+    function select_database_id($tablename, $columnname, $columnid, $data = '*', $condition_array = array()) {
         $this->db->select($data);
-        $this->db->where($columnname,$columnid);
-        if(!empty($condition_array)){
+        $this->db->where($columnname, $columnid);
+        if (!empty($condition_array)) {
             $this->db->where($condition_array);
         }
         $query = $this->db->get($tablename);
-        if($query->num_rows()>0)
-        {
+        if ($query->num_rows() > 0) {
             return $query->result_array();
-        }
-        else
-        {
+        } else {
             return array();
         }
     }
 
-     function getExtension($str) 
-{
-         $i = strrpos($str,".");
-         if (!$i) { return ""; } 
-
-         $l = strlen($str) - $i;
-         $ext = substr($str,$i+1,$l);
-         return $ext;
- }
- 
- public  function time_elapsed_string($datetime, $full = false) { 
-     $this->load->helper('date');
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
+    function getExtension($str) {
+        $i = strrpos($str, ".");
+        if (!$i) {
+            return "";
         }
+
+        $l = strlen($str) - $i;
+        $ext = substr($str, $i + 1, $l);
+        return $ext;
     }
 
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';  
-}
+    public function time_elapsed_string($datetime, $full = false) {
+        $this->load->helper('date');
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full)
+            $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
 
     // function make_links($text, $class='content_link', $target='_blank'){ 
     //     return preg_replace('!((http\:\/\/|ftp\:\/\/|https\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$1$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
     //         $text);
     // }
-    
-   function make_links($text, $class='content_link', $target='_blank'){ 
-        return preg_replace('!((http:\:\/\/|ftp\:\/\/|https:\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism','<a href="//$1$3" class="' . $class . '" target="'.$target.'">$1$3</a>', 
-            $text);
+
+    function make_links($text, $class = 'content_link', $target = '_blank') {
+        return preg_replace('!((http:\:\/\/|ftp\:\/\/|https:\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism', '<a href="//$1$3" class="' . $class . '" target="' . $target . '">$1$3</a>', $text);
     }
-    
+
+    function live_url_exists($url) {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        if ($code == 200) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+        curl_close($ch);
+        return $status;
+    }
+
+//    function live_url_exists($url) {
+//        $headers = get_headers($url);
+//        return stripos($headers[0], "200 OK") ? true : false;
+//    }
+
 }
