@@ -47,6 +47,12 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css?ver='.time()) ?>" />
+
+<!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
+<link rel="stylesheet" href="<?php echo base_url('js/scrollbar/style.css') ?>">
+<link rel="stylesheet" href="<?php echo base_url('js/scrollbar/jquery.mCustomScrollbar.css') ?>">
+<!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
+
 <!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time()); ?>"></script>-->
 <!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>"></script>-->
 <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
