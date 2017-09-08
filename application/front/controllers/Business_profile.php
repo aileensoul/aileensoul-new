@@ -11443,7 +11443,7 @@ Your browser does not support the audio tag.
         $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
         if ($business_deactive) {
-            redirect('business_profile/');
+            redirect('business-profile/');
         }
 //if user deactive profile then redirect to business_profile/index untill active profile End
 
@@ -11494,12 +11494,12 @@ Your browser does not support the audio tag.
 
             if ($singlearray2[0]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
-                $fetchaudio .= '<video controls>';
+                $fetchaudio .= '<audio controls>';
 
                 $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[0]['image_name']) . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
-                $fetchaudio .= '</video>';
+                $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
             }
 

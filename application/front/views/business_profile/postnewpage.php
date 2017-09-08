@@ -96,7 +96,7 @@
                         </div>
                         <!-- Trigger/Open The Modal -->
                         <!-- The Modal -->
-                        <div class=" col-md-7 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp" >
+                        <div class=" col-md-6 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp" >
                             <!-- body content start-->
                             <div class="col-md-12 col-sm-12 post-design-box">
                                 <!-- pop up box start-->
