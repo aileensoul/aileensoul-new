@@ -186,6 +186,7 @@ var  date_picker_edit='<?php echo date('Y-m-d',strtotime($dob1));?>';
 
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/job/index.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js?ver='.time()); ?>"></script>
 
 </body>
 </html>
