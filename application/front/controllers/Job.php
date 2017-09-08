@@ -4928,12 +4928,12 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
 
               if($cityname || $countryname)
               {
-                 $return_html.='<div class="fr lction"><p title="Location"><i class="fa fa-map-marker" aria-hidden="true">';
+                 $return_html.='<div class="fr lction"><p title="Location"><i class="fa fa-map-marker" aria-hidden="true"></i>';
                   if($cityname)
                   {
                     $return_html.=$cityname .', ';
                   }
-                  $return_html.=$countryname.'</i></p></div>';
+                  $return_html.=$countryname.'</p></div>';
               }
              
               $cache_time1= $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->re_comp_name;
