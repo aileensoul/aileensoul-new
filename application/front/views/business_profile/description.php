@@ -218,11 +218,11 @@
                                     </div>
                                     <fieldset <?php if ($business_details) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label>Details of your business:<span style="color:red">*</span></label>
-                                        <div contenteditable="true" name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter Business Detail" style="resize: none;"><?php
+                                        <textarea name="business_details" id="business_details" rows="4" tabindex="5"  cols="50" placeholder="Enter Business Detail" style="resize: none;"><?php
                                             if ($business_details1) {
                                                 echo $business_details1;
                                             }
-                                            ?></div>
+                                            ?></textarea>
                                         <?php echo form_error('business_details'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">

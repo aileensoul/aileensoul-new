@@ -142,7 +142,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
 
                                 <div class="chat_drop">
-                                    <a onclick="myFunction()" class="chatdropbtn fr"><!-- <img src="<?php echo base_url('img/t_dot.png') ?>"> --></a>
+                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('img/t_dot.png') ?>" onclick="myFunction()"></a>
                                     <div id="mychat_dropdown" class="chatdropdown-content">
                                         <a href="javascript:void(0);" onClick="delete_history()">
                                             <span class="h4-img h2-srrt"></span>  Delete All
@@ -727,6 +727,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             return false;
                         });
 
+                        $( ".chat_drop a" ).click(function() {
+                              $( "#mychat_dropdown" ).fadeToggle( "slow", function() {
+                                // Animation complete.
+                              });
+                            });
+
                     });
                 </script>
 
@@ -817,7 +823,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     /* When the user clicks on the button, 
                      toggle between hiding and showing the dropdown content */
                     function myFunction() {
-                        document.getElementById("mychat_dropdown").classList.toggle("show");
+                        //document.getElementById("mychat_dropdown").classList.toggle("show");
                     }
 
                     // Close the dropdown if the user clicks outs#submitide of it
