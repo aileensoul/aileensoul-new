@@ -85,7 +85,7 @@
                                     if ($compname) {
                                         echo $compname;
                                     }
-                                    ?>"/><span id="fullname-error"></span>
+                                    ?>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/><span id="fullname-error"></span>
                                 </fieldset>
                                 <?php echo form_error('comp_name'); ?>
 

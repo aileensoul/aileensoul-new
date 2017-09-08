@@ -107,6 +107,28 @@
                                         </div>
                                     </div>                             
                                 </div>
+                                
+                                 <div class="custom_footer_left fw">
+                                    <div class="fl">
+                                        <ul>
+                                            <li><a href=""> About Us </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Contact Us</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a  href="">Blogs</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Terms & Condition </a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Privacy Policy</a></li>
+                                            <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
+                                            <li><a href="">Send Us Feedback</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+
+                                    </div>
+
+                                </div>
                                 <?php if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
                                     <div  class="add-post-button">
                                         <a class="btn btn-3 btn-3b"  href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
@@ -139,6 +161,9 @@
             </div>
             <!-- MIDDLE SECTION END -->
         </section>
+        <footer>
+            <?php echo $footer; ?>
+        </footer>
         <!-- END CONTAINER -->
 
         <!-- BEGIN FOOTER -->

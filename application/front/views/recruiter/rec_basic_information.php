@@ -84,7 +84,7 @@
                                     } else {
                                         echo trim(ucfirst(strtolower($userdata[0]['first_name'])));
                                     }
-                                    ?>" /><span id="fullname-error "></span>
+                                    ?>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/><span id="fullname-error "></span>
                                            <?php echo form_error('first_name'); ?>
                                 </fieldset>
 

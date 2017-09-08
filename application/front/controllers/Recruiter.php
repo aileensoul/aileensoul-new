@@ -11,6 +11,7 @@ class Recruiter extends MY_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->lang->load('message', 'english');
 
         include ('include.php');
 // DEACTIVATE PROFILE START  
