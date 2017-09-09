@@ -6908,7 +6908,7 @@ public function insert_comment_postnewpage() {
             }
         }
 
-        
+
 
         $data = $_POST['image'];
         $data = str_replace('data:image/png;base64,', '', $data);
@@ -16999,6 +16999,11 @@ public function get_artistic_name($id=''){
                 echo $return_html;
     }
 
+public function test(){
 
+
+                $this->load->view('artistic/test');
+
+}
     
 }
