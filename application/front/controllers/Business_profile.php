@@ -2433,7 +2433,7 @@ class Business_profile extends MY_Controller {
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img">';
+    <div class="post-design-proo-img hidden-mob">';
 
             $userid = $this->session->userdata('aileenuser');
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -10649,7 +10649,7 @@ Your browser does not support the audio tag.
 </div>
 </div>
 <div class = "post-design-commnet-box col-md-12">
-<div class = "post-design-proo-img">';
+<div class = "post-design-proo-img hidden-mob">';
 
                     $userid = $this->session->userdata('aileenuser');
                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -12238,7 +12238,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
