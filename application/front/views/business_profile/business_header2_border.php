@@ -122,7 +122,7 @@
                                                                    <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-                                            <span id="message_count"></span>
+                                            <span id="message_count" class="message_count"></span>
                                         </a>
 
                                         <div id="InboxContainer">
@@ -224,7 +224,7 @@
                                                                    <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-                                            <span id="message_count"></span>
+                                            <span id="message_count" class="message_count"></span>
                                         </a>
 
                                         <div id="InboxContainer">
@@ -394,6 +394,7 @@
             //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
             $('#message_count').addClass('count_add');
+            document.getElementById('message_count').style.display = "block";
             //alert("welcome");
         }
     }
