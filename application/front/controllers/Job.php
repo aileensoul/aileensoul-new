@@ -13,6 +13,7 @@ class Job extends MY_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('email_model');
+        $this->load->library('S3');
 
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
@@ -2593,12 +2594,35 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         }
         
         $data = $_POST['image'];
-
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
 
         $job_bg_path = $this->config->item('job_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($job_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+
+        $data = base64_decode($data);
+        $file = $job_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
+        $main_image = $job_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $job_thumb_path = $this->config->item('job_bg_thumb_upload_path');
         $job_thumb_width = $this->config->item('job_bg_thumb_width');
@@ -2607,15 +2631,20 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         $upload_image = $job_bg_path . $imageName;
 
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $job_thumb_path, $job_thumb_width, $job_thumb_height);
+
+        $thumb_image = $job_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
         $data = array(
             'profile_background' => $imageName
         );
+
 
         $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
         $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . base_url($this->config->item('job_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        $coverpic =  '<img src = "' . JOB_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
     }
 
