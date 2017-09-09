@@ -258,7 +258,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                                 <textarea id= "test-upload_product" placeholder="Post Your Product...."  onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); 
                                                           name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;" tabindex="1"></textarea>
                                                 <div class="fifty_val">                   
-                                                    <input size=1 value=50 name=text_num class="text_num" readonly> 
+                                                    <input size=1 value=50 name=text_num class="text_num" disabled="disabled"> 
                                                 </div>
                                                 <div class="padding-left camera_in camer_h" ><i class=" fa fa-camera " ></i> </div>
                                             </div>
