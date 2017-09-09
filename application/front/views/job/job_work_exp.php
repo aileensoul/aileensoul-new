@@ -128,7 +128,7 @@
                                                 <div id="input<?php echo $y; ?>" style="margin-bottom:4px;" class="clonedInput job_work_edit_<?php echo $workdata[$x]['work_id']?>">
                                                    <div class="job_work_experience_main_div">
                                                       <label>Experience:<span class="red">*</span></label>
-                                                      <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" class="experience_year keyskil" onchange="expyear_change_edittime();">
+                                                      <select style="width: 45%; margin-right: 43px; float: left;" tabindex="1" autofocus name="experience_year[]" id="experience_year" tabindex="1" class="experience_year keyskil" onchange="expyear_change_edittime();">
                                                          <option value="" selected option disabled>Year</option>
                                                          <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 year</option>
                                                          <option value="1 year"  <?php if ($experience_year1 == "1 year") echo 'selected'; ?>>1 year</option>
@@ -180,27 +180,27 @@
                                                       <?php echo form_error('jobtitle'); ?>
                                                       </span>
                                                       <label style="   margin-top: 6px; ">Organization Name:<span class="red">*</span></label>
-                                                      <input type="text" name="companyname[]" id="companyname"  class="companyname" placeholder="Enter Organization Name" value="<?php
+                                                      <input type="text" name="companyname[]" id="companyname"  class="companyname" tabindex="4"placeholder="Enter Organization Name" value="<?php
                                                          if ($companyname1) {
                                                              echo $companyname1;
                                                          }
                                                          ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
                                                       <?php echo form_error('companyname'); ?>
                                                       <label style="  margin-top: 6px;  ">Organization Email:</label>
-                                                      <input type="text" name="companyemail[]" tabindex="4" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
+                                                      <input type="text" name="companyemail[]" tabindex="5" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                                          if ($companyemail1) {
                                                              echo $companyemail1;
                                                          }
                                                          ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
                                                       <label style="  margin-top: 6px;  ">Organization Phone:</label>
-                                                      <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" tabindex="5" value="<?php
+                                                      <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" tabindex="6" value="<?php
                                                          if ($companyphn1) {
                                                              echo $companyphn1;
                                                          }
                                                          ?>"  maxlength="15" />&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
                                                       <?php echo form_error('companyphn'); ?>
                                                       <label style="    margin-top: -14px; display: block;">Experience Certificate:</label>
-                                                      <input style="width:100%;  margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE" />
+                                                      <input style="width:100%;  margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE"  tabindex="7" />
                                                       <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                                       &nbsp;&nbsp;&nbsp; 
                                                       <?php

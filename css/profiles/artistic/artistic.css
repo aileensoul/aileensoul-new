@@ -47,11 +47,11 @@
 }
 
 
-  select:focus {
+  .common-form select:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }
-  textarea:focus {
+.common-form  textarea:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }
@@ -1384,7 +1384,7 @@ padding: 0px !important;}
 .user-pic a {position: absolute; display: none;}
 .user-pic a i {padding-right: 7.1px;}
 .user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 4px 4px 6px;
-    font-size: 12px;
+    font-size: 12px; width: 100%;
 }
 .business-profile-right {
     width: 82%;
