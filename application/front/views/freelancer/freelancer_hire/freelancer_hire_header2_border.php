@@ -37,22 +37,28 @@
                                 <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
                                 </li>
                                 <li id="Inbox_link">
-                                    <?php if ($message_count) { ?>
+                                        <?php if ($message_count) { ?>
+                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
+                                        <?php } ?>
+                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+                                            <span id="message_count" class="message_count"></span>
+                                        </a>
 
-                                    <?php } ?>
-                                    <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="img-msg"></span>
+                                        <div id="InboxContainer">
+                                            <div id="InboxBody" class="Inbox">
+                                                <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5'); ?>">See All</a></span></div>-->
+                                                <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
+<!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
 
-                                        <span id="message_count"></span>
-                                    </a>
+<div>
+    <ul class="notification_data_in_h2">
+        
+    </ul>
+    </div>
 
-                                    <div id="InboxContainer">
-                                        <div id="InboxBody" class="Inbox">
-                                            <div id="notificationTitle">Messages</div>
-
-                                            <div id="notificationsmsgBody" class="notificationsmsg">
+                                             <!--    </div> -->
                                             </div>
-                                        </div>
-                                </li> 
+                                    </li> 
                                 <!-- Friend Request Start-->
                                 <li>
                                     <!-- Friend Request End-->
@@ -133,3 +139,136 @@
 
 </script>
 <!-- all popup close close using esc end -->
+ <script type="text/javascript" charset="utf-8">
+
+    function addmsg1(type, msg)
+    {
+        if (msg == 0)
+        { //alert(1234);
+            $("#message_count").html('');
+            $("#message_count").removeAttr("style");
+            $('#InboxLink').removeClass('msg_notification_available');
+            document.getElementById('message_count').style.display = "none";
+        } else
+        {
+            $('#message_count').html(msg);
+            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+            $('#InboxLink').addClass('msg_notification_available');
+            $('#message_count').addClass('count_add');
+            document.getElementById('message_count').style.display = "block";
+            //alert("welcome");
+        }
+    }
+
+    function waitForMsg1()
+    {
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url(); ?>notification/select_msg_noti/4",
+
+            async: true,
+            cache: false,
+            timeout: 50000,
+
+            success: function (data) {
+                addmsg1("new", data);
+                setTimeout(
+                        waitForMsg1,
+                        10000
+                        );
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                addmsg1("error", textStatus + " (" + errorThrown + ")");
+//                setTimeout(
+//                        waitForMsg1,
+//                        15000);
+            }
+        });
+    }
+    ;
+
+    $(document).ready(function () {
+
+        waitForMsg1();
+
+    });
+    $(document).ready(function () {
+        $menuLeft = $('.pushmenu-left');
+        $nav_list = $('#nav_list');
+
+        $nav_list.click(function () {
+            $(this).toggleClass('active');
+            $('.pushmenu-push').toggleClass('pushmenu-push-toright');
+            $menuLeft.toggleClass('pushmenu-open');
+        });
+    });
+
+</script>
+<!-- script for fetch all unread message notification end-->
+<!-- script for update all read msg notification start-->
+<script type="text/javascript">
+    
+     $(document).ready(function () {
+      
+   var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
+   if(segment != "chat"){ chatmsg(); };
+           });  // khyati chnages  start
+ function chatmsg()
+    {             
+             // khyati chnages  start
+       
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url() . "chat/userajax/3/4" ?>',
+                dataType: 'json',
+                data: '',
+                success: function (data) { //alert(data);
+
+                    $('#userlist').html(data.leftbar);
+                    $('.notification_data_in_h2').html(data.headertwo);
+                    $('#seemsg').html(data.seeall);
+                 setTimeout(
+                        chatmsg,
+                       1000
+                        );
+                },
+             error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }           
+            });
+          
+            };
+
+    function getmsgNotification() {
+        msgNotification();
+        //msgheader();
+    }
+
+    function msgNotification() {
+        // first click alert('here'); 
+        $.ajax({
+            url: "<?php echo base_url(); ?>notification/update_msg_noti/4",
+            type: "POST",
+            //data: {uid: 12341234}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
+            success: function (data) {
+                data = JSON.parse(data);
+                //alert(data);
+                //update some fields with the updated data
+                //you can access the data like 'data["driver"]'
+            }
+        });
+    }
+    function msgheader()
+    {
+        // $("#fad" + clicked_id).fadeOut(6000);
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "notification/msg_header/" . $this->uri->segment(3) . "" ?>',
+            data: 'message_from_profile=3&message_to_profile=4',
+            success: function (data) {
+                $('.' + 'notification_data_in_h2').html(data);
+            }
+        });
+
+    }
+</script>
+ <!-- all message notification header end -->

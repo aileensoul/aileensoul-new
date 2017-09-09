@@ -35,21 +35,23 @@ $( document ).on( 'keydown', function ( e ) {
 
  //script for fetch all unread message notification Start
 function addmsg1(type, msg)
-   {
-       if (msg == 0)
-       {
-           $("#message_count").html('');
-           $("span#message_count").removeAttr("style");
-           $('#InboxLink').removeClass('msg_notification_available');
-           document.getElementById('message_count').style.display = "none";
-       } else
-       {
-           $('#message_count').html(msg);
-           $('#message_count').css({"background": "#FF4500" , "padding" : '4px 6px 4px 5.5px',"line-height" : '1',"border-radius":' 100%',"line-height": '9px' ,"font-size": '10px' });
-           $('#InboxLink').addClass('msg_notification_available');
-          
-       }
-   }
+    {
+        if (msg == 0)
+        { //alert(1234);
+            $("#message_count").html('');
+            $("#message_count").removeAttr("style");
+            $('#InboxLink').removeClass('msg_notification_available');
+            document.getElementById('message_count').style.display = "none";
+        } else
+        {
+            $('#message_count').html(msg);
+            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+            $('#InboxLink').addClass('msg_notification_available');
+            $('#message_count').addClass('count_add');
+            document.getElementById('message_count').style.display = "block";
+            //alert("welcome");
+        }
+    }
    
    function waitForMsg1()
    {
