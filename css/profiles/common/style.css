@@ -1836,7 +1836,15 @@ display: none !important;
 display: none !important;
 }
 .cover-pic .cancel-result:focus{ background: white; color: #1b8ab9; }
-
+#basicinfo .year {
+    width: 33%;
+}   
+#basicinfo .month {
+    width: 32%;
+}
+#basicinfo .day {
+    width: 32%;
+}
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
     .container {
