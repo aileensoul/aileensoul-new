@@ -218,7 +218,7 @@ function unfollowuser_list(clicked_id)
                 //url:'<?php echo base_url() . "artistic/unfollow_following" ?>',
                 dataType: 'json',
                  data:'follow_to='+clicked_id,
-                success:function(data){ //alert(data.notfound);
+                success:function(data){ //alert(data.unfollow);
                $('.' + 'frusercount').html(data.unfollow);
                if(data.notcount == 0){ 
                  $('.' + 'job-contact-frnd').html(data.notfound);
