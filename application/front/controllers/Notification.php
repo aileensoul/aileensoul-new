@@ -3929,6 +3929,15 @@ class Notification extends MY_Controller {
                                         </a>';
                 }
             }
+        }else{
+            $return_html .= '<div class="art-img-nn">
+                                                <div class="art_no_post_img">
+
+                                                    <img src="img/icon_notification_big.png">
+
+                                                </div>
+                                                <div class="art_no_post_text">No Notification Available. </div>
+                                            </div>';
         }
 
         echo $return_html;

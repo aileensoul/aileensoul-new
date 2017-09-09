@@ -73,7 +73,7 @@
                             <div class="common-form">
                            <div class="">
 
-<?php   if(count($totalnotification) == 0){?>
+<?php   //if(count($totalnotification) == 0){?>
 <!--                              <div class="all-box">
                                  <ul>
                                     <div class="main_pdf_box">
@@ -87,7 +87,7 @@
                                     </ul>
                               </div>
                              -->
-                              <?php }?>
+                              <?php// }?>
                              
                            </div>
                         </div>
