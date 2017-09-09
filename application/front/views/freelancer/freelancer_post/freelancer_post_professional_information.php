@@ -130,7 +130,7 @@
                                     </fieldset>
                                     <fieldset  <?php if ($area) { ?> class="error-msg" <?php } ?> class="full-width">
                                         <label> <?php echo $this->lang->line("your_skill"); ?>:<span class="red">*</span></label>
-                                        <input id="skills1" name="skills" tabindex="7"   placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
+                                        <input id="skills1" name="skills" tabindex="2"   placeholder="Enter SKills" value="<?php if($skill_2){ echo $skill_2; }?>">
                                         <?php echo form_error('area'); ?>
                                     </fieldset>
 <!--                                    <fieldset>
@@ -140,7 +140,7 @@
                                     <fieldset  class="full-width">
                                         <label><?php echo $this->lang->line("skill_brief"); ?> :<span class="red">*</span></label>
 
-                                        <textarea name ="skill_description" tabindex="4" id="skill_description" rows="4" cols="50" placeholder="Enter skill description" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                                        <textarea name ="skill_description" tabindex="3" id="skill_description" rows="4" cols="50" placeholder="Enter skill description" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                             if ($skill_description1) {
                                                 echo $skill_description1;
                                             }
@@ -149,7 +149,7 @@
                                         <?php echo form_error('skill_description'); ?>
                                     </fieldset>
                                     <fieldset  class="" <?php if ($experience_year) { ?> class="error-msg" <?php } ?>>
-                                        <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="5" id="experience_year" class="experience_year col-md-5 day" style="margin-right: 5px;">
+                                        <label><?php echo $this->lang->line("total_experiance"); ?> :<span class="red">*</span></label>  <select name="experience_year" placeholder="Year" tabindex="4" id="experience_year" class="experience_year col-md-5 day" style="margin-right: 5px;">
 
                                             <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                             <option value="0 year"  <?php if ($experience_year1 == "0 year") echo 'selected'; ?>>0 Year</option>
@@ -177,7 +177,7 @@
                                         </select>
 
 
-                                        <select name="experience_month" tabindex="6" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" style="margin-right: 5px;">
+                                        <select name="experience_month" tabindex="5" id="experience_month" placeholder="Month" class="experience_month col-md-5 day" style="margin-right: 5px;">
                                             <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                             <option value="0 month"  <?php if ($experience_month1 == "0 month") echo 'selected'; ?>>0 Month</option>
                                             <option value="1 month"  <?php if ($experience_month1 == "1 month") echo 'selected'; ?>>1 Month</option>
@@ -198,7 +198,7 @@
 
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
-                                        <input type="submit"  id="next" name="next" tabindex="7" value="Next">
+                                        <input type="submit"  id="next" name="next" tabindex="6" value="Next">
                                     </fieldset>
                                     <?php echo form_close(); ?>
                                 </div>

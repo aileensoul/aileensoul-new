@@ -1,5 +1,13 @@
 /***  freelance hire  ***/
 
+  select:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+  textarea:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
 /*** common css for job recrutor and freelancer  ***/
 .mob-block {display: none;}
 .saved,
