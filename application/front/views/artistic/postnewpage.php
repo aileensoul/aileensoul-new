@@ -323,7 +323,7 @@
                                         foreach ($artmultiimage as $data) {
 
 
-                                            $allowed = array('gif', 'png', 'jpg','jpeg');
+                                            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                             $allowespdf = array('pdf');
                                             $allowesvideo = array('mp4', '3gp');
                                             $allowesaudio = array('mp3');
@@ -382,7 +382,7 @@
                                             <!--  multiple image start -->
                                             <?php
                                             $i = 1;
-                                            $allowed = array('gif', 'png', 'jpg');
+                                            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                             foreach ($artmultiimage as $mke => $mval) {
                                                 $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
                                                 if (in_array($ext, $allowed)) {
