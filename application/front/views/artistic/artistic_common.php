@@ -199,10 +199,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                  <ul class="pro-fw4">
                    <?php } ?>  
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_manage_post') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>"> Dashboard</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>"> Dashboard</a>
                     </li>
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'artistic_profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/details/' . $artisticdata[0]['user_id']); ?>"> Details</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/details/' . $artisticdata[0]['user_id']); ?>"> Details</a>
                     </li>
 
 

@@ -2298,12 +2298,12 @@ class Search extends MY_Controller {
                     if ($cityname || $countryname) {
                         $return_html .= '<div class="fr lction">
                                                  <p><span title="Location">
-                                                     <i class="fa fa-map-marker" aria-hidden="true">';
+                                                     <i class="fa fa-map-marker" aria-hidden="true"></i>';
                         if ($cityname) {
                             $return_html .= $cityname . ",";
                         }
                         $return_html .= $countryname;
-                        $return_html .= '</i>';
+                        $return_html .= '';
                     }
                     $return_html .= '</span>
                                            </p>

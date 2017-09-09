@@ -10176,7 +10176,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 
                     if (count($businessmultiimage) == 1) {
 
-                        $allowed = array('gif', 'PNG', 'jpg', 'jpeg', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'gif', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
                         $allowesaudio = array('mp3');

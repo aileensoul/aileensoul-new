@@ -195,7 +195,7 @@
                                                                 </li>
                                                                 <li><b>Details Of Your buisness </b> 
                                                                     <span>
-                                                                        <p> <?php echo $this->common->make_links($businessdata1[0]['details']);
+                                                                        <p> <?php echo nl2br($this->common->make_links($businessdata1[0]['details']));
                                                                         ?></p>
                                                                     </span>
                                                                 </li>

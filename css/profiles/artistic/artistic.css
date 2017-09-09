@@ -1684,7 +1684,7 @@ height: 100%;}
  position: relative;
  margin-bottom: 10px;
  overflow:hidden;
-    height: 120px;
+    height: 110px;
     float: left;
     width: 120px;
     padding: 20px;
@@ -1708,7 +1708,7 @@ max-width: inherit;
     height: 100%
 }
 .image_profile audio{width: 100%; height: 100%;
-background-image: url('../images/music-icon.png');
+background-image: url('../../../images/music-icon_play.png');
 background-size: 100%;
 }
 .profile-job-post-detail .buisness-profile-pic {
@@ -1791,6 +1791,7 @@ background-size: 100%;
 .dropdown-content2 a i {
     padding-right: 13px;
 }
+
 
 /** popup **/
 .modal-post {
