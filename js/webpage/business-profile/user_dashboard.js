@@ -305,7 +305,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_commentthree",
-            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -319,7 +319,7 @@ function insert_comment(clicked_id)
         $.ajax({
             type: 'POST',
             url: base_url + "business_profile/insert_comment",
-            data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+            data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
             dataType: "json",
             success: function (data) {
                 $('textarea').each(function () {
@@ -368,7 +368,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_commentthree",
-                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -382,7 +382,7 @@ function entercomment(clicked_id)
                 $.ajax({
                     type: 'POST',
                     url: base_url + "business_profile/insert_comment",
-                    data: 'post_id=' + clicked_id + '&comment=' +  encodeURIComponent(txt),
+                    data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                     dataType: "json",
                     success: function (data) {
                         $('textarea').each(function () {
@@ -650,7 +650,7 @@ function edit_comment(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
         success: function (data) {
 
             document.getElementById('editcomment' + abc).style.display = 'none';
@@ -698,7 +698,7 @@ function commentedit(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                 success: function (data) {
                     document.getElementById('editcomment' + abc).style.display = 'none';
                     document.getElementById('showcomment' + abc).style.display = 'block';
@@ -739,7 +739,7 @@ function edit_commenttwo(abc)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/edit_comment_insert",
-        data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+        data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
         success: function (data) {
             document.getElementById('editcommenttwo' + abc).style.display = 'none';
             document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -787,7 +787,7 @@ function commentedittwo(abc)
             $.ajax({
                 type: 'POST',
                 url: base_url + "business_profile/edit_comment_insert",
-                data: 'post_id=' + abc + '&comment=' +  encodeURIComponent(txt),
+                data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                 success: function (data) {
                     document.getElementById('editcommenttwo' + abc).style.display = 'none';
                     document.getElementById('showcommenttwo' + abc).style.display = 'block';
@@ -1564,6 +1564,11 @@ jQuery.noConflict();
         }
     });
     $('.upload-result').on('click', function (ev) {
+
+        document.getElementById("upload-demo").style.visibility = "hidden";
+        document.getElementById("upload-demo-i").style.visibility = "hidden";
+        document.getElementById('message1').style.display = "block";
+
         $uploadCrop.croppie('result', {
             type: 'canvas',
             size: 'viewport'
@@ -1574,12 +1579,12 @@ jQuery.noConflict();
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
-                    html = '<img src="' + resp + '" />';
-                    if (html)
-                    {
-                        window.location.reload();
-                    }
-
+                    $("#row2").html(data);
+                    document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
                 }
             });
         });
