@@ -611,7 +611,10 @@
                                                                             $lastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
                                                                             ?>
                                                                             <div class="all-comment-comment-box">
-                                                                                <div class="post-design-pro-comment-img"> 
+                                                                                <div class="post-design-pro-comment-img">
+
+                                                                                <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $rowdata['user_id']); ?>"> 
+
                                                                                     <?php
                                                                                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                                     ?>
@@ -649,14 +652,14 @@
                             </div>
                        
 
-                                                                     <?php }?>            
+                                                                     <?php }?>   </a>         
                                                                                 </div>
                                                                                 <div class="comment-name">
-                                                                                    <b>  <?php
+                                                                                    <b>  <a  class="post_dot" title="<?php echo ucfirst(strtolower($companyname)) . ' ' . ucfirst(strtolower($lastname)); ?>" href="<?php echo base_url('artistic/dashboard/' . $rowdata['user_id']); ?>"> <?php
                                                                                         echo ucfirst(strtolower($companyname)) . ' '.ucfirst(strtolower($lastname)) ;
                                                                                         echo '</br>';
                                                                                         ?>
-                                                                                    </b>
+                                                                                    </a></b>
                                                                                 </div>
 
                                              <div class="comment-details" id= "<?php echo "showcommentimg" . $rowdata['post_image_comment_id']; ?>">
