@@ -150,7 +150,7 @@
                                                    ?>
                                                     <div class="dele_highrt">
                                                        
-                                                         <a title="open pdf" class="fl" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate_primary1) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
+                                                         <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL  . $edu_certificate_primary1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
 
                                                       <div style="float: left;" id="primary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
@@ -166,7 +166,8 @@
                                                       {
                                                     ?>
                                            <div class="dele_highrt">
-                                             <img class="fl" src="<?php echo base_url($this->config->item('job_edu_thumb_upload_path')  . $edu_certificate_primary1) ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
+        
+                                             <img class="fl" src="<?php echo JOB_EDU_MAIN_UPLOAD_URL  . $edu_certificate_primary1 ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
                                                <div style="float: left;" id="primary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
                                                   <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
@@ -281,7 +282,7 @@
                                                    ?>
                                                    <div class="dele_highrt">
                                                          
-                                                          <a title="open pdf" class="fl" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate_secondary1) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
+                                                          <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate_secondary1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
 
                                                 <div style="float: left;" id="secondary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
@@ -297,7 +298,7 @@
                                                       {
                                                     ?>
                                                      <div class="dele_highrt">
-                                              <img src="<?php echo base_url($this->config->item('job_edu_thumb_upload_path')  . $edu_certificate_secondary1) ?>" style="width:100px;height:100px;" class="job_education_certificate_img ">
+                                              <img src="<?php echo JOB_EDU_MAIN_UPLOAD_URL. $edu_certificate_secondary1 ?>" style="width:100px;height:100px;" class="job_education_certificate_img ">
 
                                                 <div style="float: left;" id="secondary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
@@ -425,7 +426,7 @@
                                                    ?>
                                                        <div class="dele_highrt">
                                                         
-                                                      <a title="open pdf" class="fl" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate_higher_secondary1) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
+                                                      <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL. $edu_certificate_higher_secondary1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
 
 
                                                           <div style="float: left;" id="higher_secondary_certi" class="tsecondary_certi">
@@ -670,7 +671,7 @@
                                                       { 
                                                    ?>
                                                        
-                                                         <a title="open pdf" class="fl" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate1) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                                         <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                       <?php
                                                       }
                                                       else
@@ -678,7 +679,7 @@
                                                     ?>
 
                                                     
-                                               <img class="fl" src="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate1) ?>" style="width:100px;height:100px;" class="job_education_certificate_img">
+                                               <img class="fl" src="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>" style="width:100px;height:100px;" class="job_education_certificate_img">
                                              <?php
                                                 }//else end
                                                 ?>
@@ -874,13 +875,13 @@
                                                    ?>
                                                         
 
-                                                          <a title="open pdf" class="fl" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate1) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                                          <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                       <?php
                                                       }
                                                       else
                                                       {
                                                     ?>
-                                                <img src="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $edu_certificate1) ?>" style="width:100px;height:100px;">
+                                                <img src="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $edu_certificate1 ?>" style="width:100px;height:100px;">
                                              <?php
                                                 }
                                              }

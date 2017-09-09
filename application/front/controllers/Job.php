@@ -343,7 +343,6 @@ class Job extends MY_Controller {
         $error = '';
         if($_FILES['edu_certificate_primary']['name'] != '' ){
           
-
         $job_certificate = '';
             $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
             $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
@@ -358,6 +357,35 @@ class Job extends MY_Controller {
             $imgdata = $this->upload->data();
             $imgerror = $this->upload->display_errors();
           
+            // if ($this->upload->do_upload('edu_certificate_primary')) {
+
+            //   $main_image_size = $_FILES['EDU_CERTIFICATE_PRIMARY']['size'];
+            //  // echo  $main_image_size;die();
+            //      if ($main_image_size > '1000000') {
+            //                 $quality = "50%";
+            //             } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            //                 $quality = "55%";
+            //             } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            //                 $quality = "60%";
+            //             } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            //                 $quality = "65%";
+            //             } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            //                 $quality = "70%";
+            //             } else {
+            //                 $quality = "100%";
+            //             }
+            // }
+            //  /* RESIZE */
+
+            //             $job_main['image_library'] = 'gd2';
+            //             $job_main['source_image'] = $this->config->item('job_edu_thumb_upload_path') .  $imgdata['file_name'];
+            //             $job_main['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $ $imgdata['file_name'];
+            //            $job_main['quality'] = $quality;
+            //            // $instanse = "image10_$i";
+            //             $this->load->library('image_lib', $job_main);
+            //             $this->image_lib->watermark();
+
+                /* RESIZE */
 
                 //Configuring Thumbnail 
                 $job_thumb['image_library'] = 'gd2';
@@ -377,13 +405,30 @@ class Job extends MY_Controller {
                 $dataimage = $imgdata['file_name'];
                 //Creating Thumbnail
                 $this->image_lib->resize();
+               //  $this->$instanse->resize();
                 $thumberror = $this->image_lib->display_errors();
-           
-            
-        }
-            
-             
 
+           
+ 
+
+   
+      //S3 BUCKET ACCESS START
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+      //S3 BUCKET ACCESS START
+
+      //S3 BUCKET STORE MAIN IMAGE START
+        $main_image=$this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+      //S3 BUCKET STORE MAIN IMAGE END
+
+     //S3 BUCKET STORE THUMB IMAGE START
+        $thumb_image=$this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+    //S3 BUCKET STORE THUMB IMAGE END
+
+        }
+         
         $contition_array = array('user_id' => $userid);
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_primary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -2413,7 +2458,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         } else {
           
            
-             $job_image = '';
+            $job_image = '';
             $job['upload_path'] = $this->config->item('job_profile_main_upload_path');
             $job['allowed_types'] = $this->config->item('job_profile_main_allowed_types');
             $job['max_size'] = $this->config->item('job_profile_main_max_size');
