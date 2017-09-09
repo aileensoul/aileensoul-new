@@ -6908,6 +6908,8 @@ public function insert_comment_postnewpage() {
             }
         }
 
+        
+
         $data = $_POST['image'];
         $data = str_replace('data:image/png;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
