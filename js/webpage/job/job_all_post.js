@@ -18,7 +18,7 @@
    
                designation: {
    
-                   required: "Designation Is Required.",
+                   required: "Designation is required.",
    
                },
    

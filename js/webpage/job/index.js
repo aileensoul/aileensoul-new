@@ -13,7 +13,7 @@
   
    $.validator.addMethod("lowercase", function(value, element, regexpr) {          
    return regexpr.test(value);
-   }, "Email Should be in Small Character");
+   }, "Email should be in small character");
    
    $.validator.addMethod("regx", function(value, element, regexpr) {          
    return regexpr.test(value);
@@ -31,7 +31,7 @@
    
               
            }
-   },"special character and space not allow in the beginning");
+   },"Special character and space not allow in the beginning");
    
    $.validator.addMethod("regx_digit", function(value, element, regexpr) {          
     if(!value) 
@@ -46,7 +46,7 @@
                
            }
     // return regexpr.test(value);
-   },"digit is not allow");
+   },"Digit is not allow");
    
  
    
@@ -87,7 +87,7 @@
      }
    
    
-   }, "Date Of Birth should be Less than Or equal to today date");
+   }, "Date Of birth should be less than Or equal to today date");
    
    $.validator.addMethod("required1", function(value, element, regexpr) {   
    //return value == '' || value.trim().length != 0; 
@@ -104,7 +104,7 @@
            }
           
     // return regexpr.test(value);
-   }, "Date of Birth Is Required.");
+   }, "Date of birth is required.");
    
    //date validation end
    
@@ -192,8 +192,8 @@
                },
                dob: {
    
-                  required1:"Date of Birth Is Required.",
-                   isValid: 'Last date should be Less than Or equal to today date',
+                  required1:"date of birth is required.",
+                   isValid: 'Last date should be less than Or equal to today date',
                },
                gender: {
    
@@ -206,52 +206,52 @@
    
                fname: {
    
-                   required: "First name Is Required.",
+                   required: "First name is required.",
    
                },
    
                lname: {
    
-                   required: "Last name Is Required.",
+                   required: "Last name is required.",
    
                },
    
                email: {
    
-                   required: "Email Address Is Required.",
-                   email: "Please Enter Valid Email Id.",
+                   required: "Email address is required.",
+                   email: "Please enter valid email id.",
                    remote: "Email already exists"
                },
                phnno:{
-                            required:"Phone Number Is Required.",
+                            required:"Phone number is required.",
                    },
    
              
               
                language: {
    
-                   required: "Language  Is Required.",
+                   required: "Language is required.",
    
                },
                 city: {
    
-                   required: "City  Is Required.",
+                   required: "City is required.",
    
                },
                 pincode: {
    
-                   required: "Pincode  Is Required.",
+                   required: "Pincode is required.",
    
                },
                 address: {
    
-                   required: "Address  Is Required.",
+                   required: "Address is required.",
    
                },
               
                gender: {
    
-                   required: "Gender Is Required.",
+                   required: "Gender is required.",
    
                },
    

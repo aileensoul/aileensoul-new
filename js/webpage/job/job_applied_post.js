@@ -17,7 +17,7 @@ $(document).ready(function () {
    
                designation: {
    
-                   required: "Designation Is Required.",
+                   required: "Designation is required.",
    
                },
    
@@ -45,7 +45,7 @@ $(document).ready(function () {
    
                profilepic: {
    
-                   required: "Photo Required",
+                   required: "Photo required",
                    
                },
    

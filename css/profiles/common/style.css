@@ -1815,7 +1815,12 @@ input:-moz-placeholder {
     width: auto !important;
 }
 
-
+.cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../../../img/cam.png') no-repeat; border:none; 
+    padding:5px; opacity: 0.6; background-size:100%;
+}
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; border: 1px solid #666;
+    border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
+}
 .border_btm .fsearch{color: #1b8ab9;}
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {

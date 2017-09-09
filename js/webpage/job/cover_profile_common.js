@@ -98,7 +98,7 @@ $('.cancel-result').on('click', function (ev) {
         }
         // file type code end
         function picpopup() {
-        $('.biderror .mes').html("<div class='pop_content'>Image Type is not Supported");
+        $('.biderror .mes').html("<div class='pop_content'>Image type is not supported");
         $('#bidmodal').modal('show');
     }
 

@@ -32,7 +32,7 @@
    {
       return regexpr.test(value);
    }
-   },"space are not allow in the begining");
+   },"Space are not allow in the begining");
    
    $.validator.addMethod("regdigit", function(value, element, regexpr) {          
    if(!value) 

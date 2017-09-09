@@ -10,18 +10,6 @@
 //Loader End
 
 //Validation Start
- $.validator.addMethod("regx", function(value, element, regexpr) {          
-     if(!value) 
-            {
-                return true;
-            }
-            else
-            {
-                  return regexpr.test(value);
-            }
-}, "only space, only number and only special characters are not allow");
-// validation js
-
 $.validator.addMethod("regx1", function(value, element, regexpr) {          
      if(!value) 
             {
@@ -31,7 +19,7 @@ $.validator.addMethod("regx1", function(value, element, regexpr) {
             {
                   return regexpr.test(value);
             }
-}, "only space, only number and only special characters are not allow");
+}, "Only space, only number and only special characters are not allow");
 
  $("#jobseeker_regform").validate({
 
@@ -66,25 +54,25 @@ $.validator.addMethod("regx1", function(value, element, regexpr) {
 
                 industry: {
 
-                    required: "industry Is Required.",
+                    required: "Industry is required.",
 
                 },
 
                 job_title: {
 
-                    required: "job title Is Required.",
+                    required: "Job title is required.",
 
                 },
 
                 skills: {
 
-                    required: "skill Is Required.",
+                    required: "Skill is required.",
                    
                 },
                
                 cities: {
 
-                    required: "city Is Required.",
+                    required: "City is required.",
 
                 },           
             },

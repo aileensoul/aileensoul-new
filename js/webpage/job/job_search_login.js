@@ -150,7 +150,7 @@ function job_search(pagenum)
 
                 $.validator.addMethod("lowercase", function (value, element, regexpr) {
                     return regexpr.test(value);
-                }, "Email Should be in Small Character");
+                }, "Email should be in small character");
 
                 $("#register_form").validate({
                     rules: {
@@ -341,7 +341,7 @@ function job_search(pagenum)
                     },
                     messages: {
                         forgot_email: {
-                            required: "Email Address Is Required.",
+                            required: "Email address is required.",
                         }
                     },
                 });

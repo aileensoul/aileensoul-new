@@ -78,23 +78,23 @@
    
                'jobtitle[]': {
    
-                   required: "Job title Is Required.",
+                   required: "Job title is required.",
                },
                'companyname[]': {
    
-                   required: "Company name Is Required.",
+                   required: "Company name is required.",
                },
                'experience_year[]': {
    
-                  required: "Experience Year Is Required.",
+                  required: "Experience year is required.",
                },
                 'experience_month[]': {
    
-                 required: "Experience Month Is Required.",
+                 required: "Experience month is required.",
                },
                'companyemail[]': {
    
-                   email: "Please Enter Valid Email Id.",
+                   email: "Please enter valid email id.",
                },
    
            }
@@ -123,7 +123,7 @@
    
                                    'radio': {
    
-                                       required: "Please Tick mark Fresher or Fill Experiance",
+                                       required: "Please tick mark fresher or fill experience",
                                    },
                                  
                                }
@@ -713,7 +713,7 @@ function expyear_change(){
   //DELETE JOB WORK EXP CLONE START
     function delete_job_work(work_id,certificate) {
    
-         $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this Work Experience?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+         $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this work experience?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
      
        $('.message #delete').on('click', function () {
    
@@ -778,7 +778,7 @@ function expyear_change(){
                 var foundPresentImage = $.inArray(image_ext, allowesimage) > -1;
                if(foundPresentImage == false)
                {
-                   $("#input1 .bestofmine_image_degree").html("Please select only Image file & Pdf File.");
+                   $("#input1 .bestofmine_image_degree").html("Please select only image file & pdf file.");
                    return false;  
                }
                else
@@ -791,7 +791,7 @@ function expyear_change(){
        });
        $("#jobseeker_regform1").submit(function(){
                var text = $('#input1 .bestofmine_image_degree').text();
-               if(text=="Please select only Image file & Pdf File.")
+               if(text=="Please select only image file & pdf file.")
                {     
                    return false;
                }
@@ -812,7 +812,7 @@ function expyear_change(){
                 var foundPresentImage = $.inArray(image_ext, allowesimage) > -1;
                if(foundPresentImage == false)
                {
-                   $("#input2 .bestofmine_image_degree").html("Please select only Image file & Pdf File.");
+                   $("#input2 .bestofmine_image_degree").html("Please select only image file & pdf file.");
                    return false;  
                }
                else
@@ -824,7 +824,7 @@ function expyear_change(){
        });
        $("#jobseeker_regform1").submit(function(){
                var text = $('#input2 .bestofmine_image_degree').text();
-               if(text=="Please select only Image file & Pdf File.")
+               if(text=="Please select only image file & pdf file.")
                {     
                    return false;
                }
@@ -848,7 +848,7 @@ function expyear_change(){
                 var foundPresentImage = $.inArray(image_ext, allowesimage) > -1;
                if(foundPresentImage == false)
                {
-                   $("#input3 .bestofmine_image_degree").html("Please select only Image file & Pdf File.");
+                   $("#input3 .bestofmine_image_degree").html("Please select only image file & pdf file.");
                    return false;  
                }
                else
@@ -860,7 +860,7 @@ function expyear_change(){
        });
        $("#jobseeker_regform1").submit(function(){
                var text = $('#input3 .bestofmine_image_degree').text();
-               if(text=="Please select only Image file & Pdf File.")
+               if(text=="Please select only image file & pdf file.")
                {     
                    return false;
                }
@@ -882,7 +882,7 @@ function expyear_change(){
                 var foundPresentImage = $.inArray(image_ext, allowesimage) > -1;
                if(foundPresentImage == false)
                {
-                   $("#input4 .bestofmine_image_degree").html("Please select only Image file & Pdf File.");
+                   $("#input4 .bestofmine_image_degree").html("Please select only image file & pdf file.");
                    return false;  
                }
                else
@@ -894,7 +894,7 @@ function expyear_change(){
        });
        $("#jobseeker_regform1").submit(function(){
                var text = $('#input4 .bestofmine_image_degree').text();
-               if(text=="Please select only Image file & Pdf File.")
+               if(text=="Please select only image file & pdf file.")
                {     
                    return false;
                }
@@ -916,7 +916,7 @@ function expyear_change(){
                 var foundPresentImage = $.inArray(image_ext, allowesimage) > -1;
                if(foundPresentImage == false)
                {
-                   $("#input5 .bestofmine_image_degree").html("Please select only Image file & Pdf File.");
+                   $("#input5 .bestofmine_image_degree").html("Please select only image file & pdf file.");
                    return false;  
                }
                else
@@ -928,7 +928,7 @@ function expyear_change(){
        });
        $("#jobseeker_regform1").submit(function(){
                var text = $('#input5 .bestofmine_image_degree').text();
-               if(text=="Please select only Image file & Pdf File.")
+               if(text=="Please select only image file & pdf file.")
                {     
                    return false;
                }
@@ -945,7 +945,7 @@ function expyear_change(){
    //DELETE WORK EXPERIENCE CERTIFICATE START
    function delete_workexp(work_id,certificate) {
     
-   $.fancybox.open('<div class="message"><h2>Are you sure you want to Delete this Experience Certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+   $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this experience certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
     
          $('.message #delete').on('click', function () {
             $.ajax({
