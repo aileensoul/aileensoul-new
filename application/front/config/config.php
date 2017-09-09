@@ -783,18 +783,18 @@ $config['bus_post_resize_upload_path'] = 'uploads/business_post/resize/';
 
 // BUSINESS POST THUMBS
 $config['bus_post_thumb_upload_path'] = 'uploads/business_post/thumbs/';
-$config['bus_post_thumb_width'] = '335';
-$config['bus_post_thumb_height'] = '250';
+$config['bus_post_thumb_width'] = '280'; //335
+$config['bus_post_thumb_height'] = '220'; //250
 
 // BUSINESS POST 335 X 320
 $config['bus_post_resize1_upload_path'] = 'uploads/business_post/resize1/';
-$config['bus_post_resize1_width'] = '335';
-$config['bus_post_resize1_height'] = '320';
+$config['bus_post_resize1_width'] = '280'; //335
+$config['bus_post_resize1_height'] = '210'; //320
 
 // BUSINESS POST 335 X 245
 $config['bus_post_resize2_upload_path'] = 'uploads/business_post/resize2/';
-$config['bus_post_resize2_width'] = '335';
-$config['bus_post_resize2_height'] = '245';
+$config['bus_post_resize2_width'] = '280'; //335
+$config['bus_post_resize2_height'] = '200'; //245
 
 // BUSINESS POST 210 X 210
 $config['bus_post_resize3_upload_path'] = 'uploads/business_post/resize3/';
