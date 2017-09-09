@@ -139,7 +139,7 @@
 .header ul li #abody ul li:hover{background-color: #1b8ab9;}
 .header ul li #abody ul li:hover .text-all{color: #fff;}
 .header ul li #abody ul li a .all-img img{width: 100%; height: 100%;}
-.header ul li #abody ul li a .text-all{width: 160px; float: left; padding: 16px 10px;}
+.header ul li #abody ul li a .text-all{width: 160px; float: left; padding: 16px 6px;}
 .header ul li #abody ul li:last-child{border:none;}
 .header ul li a .all:hover{ background-position: -0px -0px; width: 32px; height: 32px; }
 .header #notification_li li a .notification-data-inside i{display:none;}
