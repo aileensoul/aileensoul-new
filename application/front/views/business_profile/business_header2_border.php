@@ -119,21 +119,27 @@
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;           ?></span> -->
+                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
-
                                             <span id="message_count"></span>
                                         </a>
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages</div>
+                                                <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5'); ?>">See All</a></span></div>-->
+                                                <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
+<!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
 
-                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                                </div>
+<div>
+    <ul class="notification_data_in_h2">
+        
+    </ul>
+    </div>
+
+                                             <!--    </div> -->
                                             </div>
-                                    </li> 
+                                    </li>   
                                     <li>
                                         <div class="dropdown_hover">
                                             <span id="art_profile" >Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
@@ -213,15 +219,27 @@
                                             </div>
                                         </div>
                                     </li>   
-                                    <li id="Inbox_link">
+                                   <li id="Inbox_link">
+                                        <?php if ($message_count) { ?>
+                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
+                                        <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
                                         </a>
+
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages</div>
-                                                <div id="notificationsmsgBody" class="notificationsmsg">
-                                                </div>
+                                                <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5'); ?>">See All</a></span></div>-->
+                                                <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
+<!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
+
+<div>
+    <ul class="notification_data_in_h2">
+        
+    </ul>
+    </div>
+
+                                             <!--    </div> -->
                                             </div>
                                     </li>        
                                     <li>
@@ -421,7 +439,35 @@
 
 <!-- script for update all read notification start-->
 <script type="text/javascript">
-
+   $(document).ready(function () {
+      
+   var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
+   if(segment != "chat"){  chatmsg(); };
+           });  // khyati chnages  start
+ function chatmsg()
+    {             
+             // khyati chnages  start
+       
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
+                dataType: 'json',
+                data: '',
+                success: function (data) {
+       
+                    $('#userlist').html(data.leftbar);
+                    $('.notification_data_in_h2').html(data.headertwo);
+                   $('#seemsg').html(data.seeall);
+                setTimeout(
+                        chatmsg,
+                       1000
+                        );
+                },
+             error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }           
+            });
+          
+            };
     function getmsgNotification() {
         msgNotification();
         msgheader();
