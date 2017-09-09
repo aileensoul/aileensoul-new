@@ -4,12 +4,12 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery.jMosaic.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <script>
             $(document).ready(function ()
             {
@@ -128,7 +128,7 @@
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
-                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     </a>
                                                 <?php } ?>
                                             <?php } else { ?>
@@ -138,7 +138,7 @@
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
-                                                         <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     </a>
                                                     <?php
                                                 }
@@ -286,34 +286,34 @@
                                                     <?php if (count($businessmultiimage) == 1) { ?>
                                                         <!-- two image start -->
                                                         <div class="one-image" >
-                                                            <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $data['image_name']) ?>" onclick="openModal();
+                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                         </div>
                                                         <!-- two image end -->
                                                     <?php } elseif (count($businessmultiimage) == 2) { ?>
                                                         <!-- two image start -->
                                                         <div class="one-image" >
-                                                            <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $data['image_name']) ?>" onclick="openModal();
+                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                         </div>
                                                         <!-- two image end -->
                                                     <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                         <!-- two image start -->
                                                         <div class="one-image" >
-                                                            <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $data['image_name']) ?>"  onclick="openModal();
+                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>"  onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                         </div>
                                                         <!-- two image end -->
                                                     <?php } elseif (count($businessmultiimage) == 4) { ?>
                                                         <!-- two image start -->
                                                         <div class="one-image" >
-                                                            <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $data['image_name']) ?>" onclick="openModal();
+                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                         </div>
                                                         <!-- two image end -->
                                                     <?php } else { ?>
                                                         <div class="one-image" >
-                                                            <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $data['image_name']) ?>"  onclick="openModal();
+                                                            <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>"  onclick="openModal();
                                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                         </div>
                                                         <?php
@@ -545,7 +545,7 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -664,17 +664,17 @@
                                                 <?php
                                             } else {
                                                 ?>
-                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                 <?php
                                             }
                                             ?>
                                         </div>
                                         <div class="col-md-12 inputtype-comment cmy_2">
                                             <div contenteditable="true" class="editable_text" name="<?php echo $busienss_data[0]['business_profile_post_id']; ?>"  id="<?php echo "post_comment" . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Add a Comment ..." value= "" onClick="entercomment(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
-                                                <div class="mob-comment">       
-                            <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
-                            </button>
-                        </div>
+                                            <div class="mob-comment">       
+                                                <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="comment-edit-butn hidden-mob">        
                                             <button id="<?php echo $busienss_data[0]['business_profile_post_id']; ?>" onClick="insert_comment(this.id)">Comment</button>
@@ -735,6 +735,7 @@
                                                             $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => 0);
                                                             $likecount = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                             if ($likecount) {
+                                                                
                                                             }
                                                             ?>
                                                         </span>
@@ -821,7 +822,7 @@
                                                         echo "&nbsp;";
                                                         echo "others";
                                                         ?> 
-                                                    <?php } ?>
+            <?php } ?>
                                                 </div>
                                             </a>
                                         </div>
@@ -859,7 +860,7 @@
                                                     echo "&nbsp;";
                                                     echo "others";
                                                     ?> 
-                                                <?php } ?>
+        <?php } ?>
                                             </div>
                                         </a>
                                     </div>
@@ -884,7 +885,7 @@
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -925,7 +926,7 @@
                                                                         <?php } else {
                                                                             ?>
                                                                             <i class="fa fa-thumbs-up main_color" aria-hidden="true"></i>
-                                                                        <?php } ?>
+                                                                            <?php } ?>
                                                                         <span>
                                                                             <?php
                                                                             $contition_array = array('post_image_comment_id' => $rowdata['post_image_comment_id'], 'is_unlike' => '0');
@@ -952,7 +953,7 @@
                                                                             <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="imgcomment_editcancle(this.id)">Cancle</a>
                                                                         </div>
                                                                     </div>
-                                                                <?php } ?>
+                <?php } ?>
                                                                 <!-- comment edit end -->
                                                                 <!-- comment delete start -->
                                                                 <?php
@@ -966,7 +967,7 @@
                                                                         <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="imgcomment_delete(this.id)"> Delete<span class="<?php echo 'imginsertcomment' . $rowdata['post_image_comment_id']; ?>">
                                                                             </span> </a> 
                                                                     </div>
-                                                                <?php } ?>
+                <?php } ?>
                                                                 <!-- comment delete end -->
                                                                 <!-- created date start -->
                                                                 <span role="presentation" aria-hidden="true"> · </span>
@@ -1009,10 +1010,10 @@
                                         </div>
                                         <div class="col-md-12 inputtype-comment cmy_2">
                                             <div contenteditable="true" class="editable_text" name="<?php echo $busdata['image_id']; ?>" id="<?php echo "post_imgcomment" . $busdata['image_id']; ?>" placeholder="Add a Comment ..." onkeyup="entercommentimg(<?php echo $busdata['image_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
-    <div class="mob-comment">       
-                            <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php  echo base_url('img/send.png') ?> ;">
-                            </button>
-                        </div>
+                                            <div class="mob-comment">       
+                                                <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="comment-edit-butn hidden-mob">                                      
                                             <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button>
@@ -1072,20 +1073,20 @@
                 </div>
             </div>
         </div>
-        <?php echo $footer; ?>
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script> 
-<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.jMosaic.js?ver='.time()); ?>"></script>
+<?php echo $footer; ?>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script> 
+<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>
+        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>
+        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.jMosaic.js?ver=' . time()); ?>"></script>
         <!-- script for business autofill -->
         <script>
-                var base_url = '<?php echo base_url(); ?>';
-                var post_id = '<?php echo $post_id; ?>';
+                        var base_url = '<?php echo base_url(); ?>';
+                        var post_id = '<?php echo $post_id; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/post_detail.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/post_detail.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
