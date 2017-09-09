@@ -1835,7 +1835,7 @@ display: none !important;
 .image_profile audio::-webkit-media-controls-panel { 
 display: none !important;
 }
-
+.cover-pic .cancel-result:focus{ background: white; color: #1b8ab9; }
 
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
