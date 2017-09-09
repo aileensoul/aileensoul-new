@@ -1758,7 +1758,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                     if (count($artmultiimage) == 1) {
 
-                        $allowed = array('gif', 'PNG', 'jpg', 'jpeg','png');
+                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'MP4');
                         $allowesaudio = array('mp3');
@@ -4696,7 +4696,7 @@ public function followtwo() {
 
         include_once 'getExtension.php';
 
-        $valid_formats = array("jpg", "png", "gif", "bmp", "jpeg", "PNG", "JPG", "JPEG", "GIF", "BMP");
+        $valid_formats = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
         if (isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST" && isset($session_uid)) {
             $name = $_FILES['photoimg']['name'];
             $size = $_FILES['photoimg']['size'];
@@ -12996,7 +12996,7 @@ public function art_home_post() {
 
                     if (count($artmultiimage) == 1) {
 
-                        $allowed = array('gif', 'PNG', 'jpg', 'jpeg','png');
+                        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'MP4');
                         $allowesaudio = array('mp3');
@@ -13598,7 +13598,7 @@ public function art_home_post() {
 
             $multipleimage[] = $artmultiimage;
         }
-        $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
 
         foreach ($multipleimage as $mke => $mval) {
 
@@ -14204,7 +14204,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (count($artmultiimage) == 1) {
 
-                    $allowed = array('jpg', 'jpeg', 'PNG', 'gif', 'png', 'psd', 'bmp', 'tiff', 'iff', 'xbm', 'webp');
+                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm','MP4');
                     $allowesaudio = array('mp3');
@@ -15675,7 +15675,7 @@ public function get_artistic_name($id=''){
                                            
                                             if (count($artmultiimage) == 1) {
                                                 
-                                                $allowed = array('gif', 'png', 'jpg', 'jpeg');
+                                                $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                                 $allowespdf = array('pdf');
                                                 $allowesvideo = array('mp4', '3gp', 'avi','MP4');
                                                 $allowesaudio = array('mp3');
@@ -16595,7 +16595,7 @@ public function get_artistic_name($id=''){
                                            
                                             if (count($artmultiimage) == 1) {
                                                 
-                                                $allowed = array('gif', 'png', 'jpg', 'jpeg');
+                                                $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                                 $allowespdf = array('pdf');
                                                 $allowesvideo = array('mp4', '3gp', 'avi','MP4');
                                                 $allowesaudio = array('mp3');
