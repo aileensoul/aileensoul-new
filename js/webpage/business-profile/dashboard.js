@@ -39,6 +39,10 @@ $uploadCrop = $('#upload-demo').croppie({
     }
 });
 $('.upload-result').on('click', function (ev) {
+    document.getElementById("upload-demo").style.visibility = "hidden";
+    document.getElementById("upload-demo-i").style.visibility = "hidden";
+    document.getElementById('message1').style.display = "block";
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -48,11 +52,12 @@ $('.upload-result').on('click', function (ev) {
             type: "POST",
             data: {"image": resp},
             success: function (data) {
-                html = '<img src="' + resp + '" />';
-                if (html)
-                {
-                    window.location.reload();
-                }
+                $("#row2").html(data);
+                document.getElementById('row2').style.display = "block";
+                document.getElementById('row1').style.display = "none";
+                document.getElementById('message1').style.display = "none";
+                document.getElementById("upload-demo").style.visibility = "visible";
+                document.getElementById("upload-demo-i").style.visibility = "visible";
             }
         });
     });

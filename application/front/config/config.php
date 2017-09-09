@@ -762,8 +762,8 @@ $config['bus_bg_main_max_height'] = '3000';
 
 // BUSINESS PROFILE BACKGROUND THUMBS
 $config['bus_bg_thumb_upload_path'] = 'uploads/business_bg/thumbs/';
-$config['bus_bg_thumb_width'] = '400';
-$config['bus_bg_thumb_height'] = '150';
+$config['bus_bg_thumb_width'] = '295'; //400
+$config['bus_bg_thumb_height'] = '85'; //150
 
 // BUSINESS PROFILE BACKGROUND ORIGINAL
 $config['bus_bg_original_upload_path'] = 'uploads/business_bg/original/';
@@ -800,6 +800,12 @@ $config['bus_post_resize2_height'] = '200'; //245
 $config['bus_post_resize3_upload_path'] = 'uploads/business_post/resize3/';
 $config['bus_post_resize3_width'] = '210';
 $config['bus_post_resize3_height'] = '210';
+
+// BUSINESS POST 210 X 210
+$config['bus_post_resize4_upload_path'] = 'uploads/business_post/resize4/';
+$config['bus_post_resize4_width'] = '550';
+$config['bus_post_resize4_height'] = '220';
+
 
 
 // ARTISTIC PROFILE IMAGE

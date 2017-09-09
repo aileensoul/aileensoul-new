@@ -54,17 +54,17 @@
                                 <div class="custom_footer_left fw" style="margin-top: 15px;">
                                     <div class="fl">
                                         <ul>
-                                            <li><a href=""> About Us </a></li>
+                                            <li><a href="<?php echo base_url('about-us') ?>" target="_blank"> About Us </a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Contact Us</a></li>
+                                            <li><a href="<?php echo base_url('contact-us') ?>" target="_blank">Contact Us</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a  href="">Blogs</a></li>
+                                            <li><a  href="<?php echo base_url('blog') ?>" target="_blank">Blogs</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Terms & Condition </a></li>
+                                            <li><a href="<?php echo base_url('terms-and-condition') ?>" target="_blank">Terms & Condition </a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Privacy Policy</a></li>
+                                            <li><a href="<?php echo base_url('privacy-policy') ?>" target="_blank">Privacy Policy</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Send Us Feedback</a></li>
+                                            <li><a href="<?php echo base_url('feedback') ?>" target="_blank">Send Us Feedback</a></li>
                                         </ul>
                                     </div>
                                     <div>

@@ -319,17 +319,17 @@ var isProcessing = false;
   $('#file-fr').fileinput({
        language: 'fr',
        uploadUrl: '#',
-       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4','mp3','pdf','jpeg']
+       allowedFileExtensions: ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg' , 'mp4','mp3','pdf','jpeg']
    });
    $('#file-es').fileinput({
        language: 'es',
        uploadUrl: '#',
-       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4', 'mp3', 'pdf','jpeg']
+       allowedFileExtensions: ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg', 'mp4', 'mp3', 'pdf','jpeg']
    });
    
    $("#file-1").fileinput({
        uploadUrl: '#', // you must set a valid URL here else you will get an error
-       allowedFileExtensions: ['jpg', 'png', 'gif' , 'mp4' , 'mp3' ,'pdf','jpeg'],
+       allowedFileExtensions: ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg' , 'mp4' , 'mp3' ,'pdf','jpeg'],
        overwriteInitial: false,
        maxFileSize: 1000000,
        maxFilesNum: 10,
@@ -352,7 +352,7 @@ var isProcessing = false;
    $(document).ready(function () {
        $("#test-upload").fileinput({
            'showPreview': false,
-           'allowedFileExtensions': ['jpg', 'png', 'gif', 'mp4','mp3','pdf','jpeg'],
+           'allowedFileExtensions': ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg', 'mp4','mp3','pdf','jpeg'],
            'elErrorContainer': '#errorBlock'
        });
        $("#kv-explorer").fileinput({
@@ -1264,7 +1264,7 @@ function insert_comment(clicked_id)
                var vfirstname = fileInput[0].name;
                var ext = vfirstname.split('.').pop();
                var ext1 = vname.split('.').pop();
-               var allowedExtensions = ['jpg', 'jpeg', 'PNG', 'gif', 'png'];
+               var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
                var allowesvideo = ['mp4', 'webm', 'MP4'];
                var allowesaudio = ['mp3'];
                var allowespdf = ['pdf'];

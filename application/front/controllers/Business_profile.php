@@ -992,7 +992,8 @@ class Business_profile extends MY_Controller {
     public function business_profile_deletepost() {
 
         $id = $_POST["business_profile_post_id"];
-//echo $id; die();
+        
+
         $data = array(
             'is_delete' => 1,
             'modify_date' => date('Y-m-d', time())
@@ -1006,18 +1007,13 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-//echo "<pre>"; print_r($dataimage); die();
         $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
-
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
-
 
         $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
         $otherdata = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $datacount = count($otherdata);
-
-
 
         if ($datacount == 0) {
 //            $notfound = '<div class="contact-frnd-post bor_none">';
@@ -2078,7 +2074,7 @@ class Business_profile extends MY_Controller {
 //        </div>';
                 $return_html .= '<div class="three-image-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . BUS_POST_THUMB_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"> 
+                <img class="three-columns" src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['image_name'] . '"> 
             </a>
         </div>
         <div class="three-image" >
@@ -4009,9 +4005,8 @@ class Business_profile extends MY_Controller {
         } else {
             $quality = "100%";
         }
-
         /* RESIZE */
-
+        
 //        $business_profile_bg['image_library'] = 'gd2';
 //        $business_profile_bg['source_image'] = $main_image;
 //        $business_profile_bg['new_image'] = $main_image;
