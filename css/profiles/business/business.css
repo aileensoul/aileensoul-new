@@ -29,6 +29,15 @@
     width: 100%;
     float: left;
 }
+
+  select:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+  textarea:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
 .post-img-div{
     color:#fff;
     width:50px;
