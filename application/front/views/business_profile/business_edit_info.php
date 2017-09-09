@@ -75,13 +75,13 @@
                             
                                 <fieldset <?php if($companyname) {  ?> class="error-msg" <?php } ?>>
                                     <label>Company Name:<span style="color:red">*</span></label>
-                                    <input name="companyname" type="text" id="companyname" placeholder="company Name"  value="<?php echo $business_profile_data[0]['company_name'];?>"/>
+                                    <input name="companyname" type="text" id="companyname" tabindex="1" placeholder="company Name"  value="<?php echo $business_profile_data[0]['company_name'];?>"/>
                                 </fieldset>
                                 <?php echo form_error('companyname'); ?>
 
                                 <fieldset <?php if($country) {  ?> class="error-msg" <?php } ?>>
                                      <label>Country:<span style="color:red">*</span></label>
-                                    <select name="country" id="country">
+                                    <select name="country" id="country" tabindex="2">
                                     <option value="">Select Country</option>
                                     <?php
                                     if(count($countries) > 0){
@@ -98,7 +98,7 @@
 
                                 <fieldset <?php if($state) {  ?> class="error-msg" <?php } ?>>
                                     <label>State:<span style="color:red">*</span></label>
-                                    <select name="state" id="state">
+                                    <select name="state" id="state" tabindex="3">
                                     <option value="">Select country first</option>
                                     </select><span id="state-error"></span>
                                 
@@ -107,7 +107,7 @@
 
                                 <fieldset <?php if($city) {  ?> class="error-msg" <?php } ?>>
                                 <label> City:<span style="color:red">*</span></label>
-                                    <select name="city" id="city">
+                                    <select name="city" id="city" tabindex="4">
                                     <option value="">Select state first</option>
                                     </select><span id="city-error"></span>
                                     
@@ -116,13 +116,13 @@
 
                                 <fieldset class="full-width">
                                  <label>Pincode:<span style="color:red">*</span></label>
-                                    <input name="pincode"  type="text" id="pincode" placeholder="Pincode" value="<?php echo $business_profile_data[0]['pincode'];?>">
+                                    <input name="pincode"  type="text" id="pincode" tabindex="5" placeholder="Pincode" value="<?php echo $business_profile_data[0]['pincode'];?>">
                                 </fieldset>
                                 <?php echo form_error('pincode'); ?><br/>
                                 <fieldset class="full-width">
                                  <label>Postal Address:<span style="color:red">*</span></label>
 
-                                 <?php echo form_textarea(array('name' => 'interview', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($business_profile_data[0]['address']))); ?><br>  
+                                 <?php echo form_textarea(array('name' => 'interview', 'id' => 'varmailformat', 'tabindex '=> '6','class' => "ckeditor", 'value' => html_entity_decode($business_profile_data[0]['address']))); ?><br>  
                                 </fieldset>
                                 <?php echo form_error('business_address'); ?><br/>
 
