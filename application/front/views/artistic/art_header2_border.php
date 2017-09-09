@@ -245,20 +245,21 @@
 
 <script type="text/javascript" charset="utf-8">
 
-    function addmsg1(type, msg)
+   function addmsg1(type, msg)
     {
         if (msg == 0)
-        {
+        { //alert(1234);
             $("#message_count").html('');
-            $("span#message_count").removeAttr("style");
+            $("#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
             document.getElementById('message_count').style.display = "none";
         } else
         {
             $('#message_count').html(msg);
-       //     $('#message_count').css({"background-color": "#FF4500", "padding": "3px 6px"});
-             $('#message_count').addClass('count_add');
+            //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
+            $('#message_count').addClass('count_add');
+            document.getElementById('message_count').style.display = "block";
             //alert("welcome");
         }
     }
