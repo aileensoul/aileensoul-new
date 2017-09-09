@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/artistic/artistic.css?ver='.time()); ?>">
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
 <body   class="page-container-bg-solid page-boxed">
 <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
@@ -16,12 +17,14 @@
 
         <div class="container" id="paddingtop_fixed">
         </div>
-        <div class="user-midd-section art-inner">
+        <div class="user-midd-section art-inner bui_art_left_box">
             <div class="container">
-<div class="col-md-4">
+<div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
     <?php echo $left_artistic; ?>
 </div>
-    <div class="col-md-7 col-sm-12 col-xs-12 mob-plr0">
+       <div class=" custom-right-art animated fadeInUp">
+                            <div class="mian_middle_post_box">  
+                                <div class="right_side_posrt fl"> 
         <div>
             <?php
             if ($this->session->flashdata('error')) {
@@ -45,6 +48,8 @@
                  
             </div>
         </div>
+    </div>
+    </div>
     </div>
     </div>
             </div>
