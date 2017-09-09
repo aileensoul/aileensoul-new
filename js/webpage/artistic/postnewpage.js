@@ -107,6 +107,8 @@ $('body').on("click", "*", function (e) {
 
  function openModal() {
                             document.getElementById('myModal1').style.display = "block";
+
+                             $("body").addClass("model-open");
                         }
                         function closeModal() {
                             document.getElementById('myModal1').style.display = "none";
