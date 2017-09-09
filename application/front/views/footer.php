@@ -212,10 +212,11 @@ $.fn.preload = function (fn) {
             $("#notification_count").html('');
             $('#notificationLink').removeClass('notification_available');
         } else
-        {
+        { 
             $('#notification_count').html(msg);
             $('#notification_count').css({"background-color": "#FF4500", "padding": "5px 6px"});
             $('#notificationLink').addClass('notification_available');
+            document.getElementById('message_count').style.display = "none";
         }
     }
     function waitForMsg()

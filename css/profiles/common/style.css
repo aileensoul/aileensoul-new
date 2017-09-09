@@ -1824,19 +1824,27 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
 }
 .border_btm .fsearch{color: #1b8ab9;}
-.image_profile audio::-internal-media-controls-download-button { 
+.image_profile audio::-internal-media-controls-download-button ,.image_profile video::-webkit-media-controls-enclosure { 
 display:none !important; 
 } 
 
-.image_profile audio::-webkit-media-controls-enclosure { 
+.image_profile audio::-webkit-media-controls-enclosure ,.image_profile video::-webkit-media-controls-enclosure { 
 display: none !important; 
 } 
 
-.image_profile audio::-webkit-media-controls-panel { 
+.image_profile audio::-webkit-media-controls-panel , .image_profile video::-webkit-media-controls-panel { 
 display: none !important;
 }
 .cover-pic .cancel-result:focus{ background: white; color: #1b8ab9; }
-
+#basicinfo .year {
+    width: 33%;
+}   
+#basicinfo .month {
+    width: 32%;
+}
+#basicinfo .day {
+    width: 32%;
+}
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
     .container {

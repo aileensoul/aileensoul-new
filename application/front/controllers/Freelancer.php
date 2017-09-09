@@ -13,6 +13,7 @@ class Freelancer extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
+        $this->load->library('S3');
 
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
@@ -2215,10 +2216,10 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
-       // $date = date('Y-m-d', time());
-       // 'post_last_date >=' => $date,
+        // $date = date('Y-m-d', time());
+        // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
-            $contition_array = array('is_delete' => 0, 'status' => '1',  'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
+            $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
             $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
@@ -2481,6 +2482,7 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_apply_check() {
         $userid = $this->session->userdata('aileenuser');
+     //   echo $userid; die();
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
         $apply_step = $this->data['apply_step'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'free_post_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -3908,11 +3910,12 @@ class Freelancer extends MY_Controller {
             redirect('freelancer_hire/freelancer_hire/freelancer_hire_basic_info');
         }
 //if user deactive profile then redirect to freelancer_hire/freelancer_hire/freelancer_hire_basic_info  End
-// code for display page start
-        $this->freelancer_hire_check();
-        // code for display page end
+
         if ($id == $userid || $id == '') {
 
+            // code for display page start
+            $this->freelancer_hire_check();
+            // code for display page end
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
@@ -3958,10 +3961,11 @@ class Freelancer extends MY_Controller {
             redirect('freelancer/freelancer_post/freelancer_post_basic_information');
         }
         //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  End
-        // code for display page start
-        $this->freelancer_apply_check();
-        // code for display page end
+
         if ($id == $userid || $id == '') {
+            // code for display page start
+            $this->freelancer_apply_check();
+            // code for display page end
             $contition_array = array('user_id' => $userid);
             $apply_data = $this->data['freelancerpostdata'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_skypeid, freelancer_post_email, freelancer_post_phoneno, freelancer_post_country, freelancer_post_state, freelancer_post_city, freelancer_post_address, freelancer_post_pincode, freelancer_post_field, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_job_type, freelancer_post_work_hour, freelancer_post_degree, freelancer_post_stream, freelancer_post_univercity, freelancer_post_collage, freelancer_post_percentage, freelancer_post_passingyear, freelancer_post_portfolio_attachment, freelancer_post_portfolio, user_id, freelancer_post_user_image, profile_background, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
@@ -4252,6 +4256,8 @@ class Freelancer extends MY_Controller {
 
 
         $data = $_POST['image'];
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
 
 
         // $imageName = time() . '.png';
@@ -4261,8 +4267,31 @@ class Freelancer extends MY_Controller {
 
         $user_bg_path = $this->config->item('free_hire_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
+        // file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('free_hire_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('free_hire_bg_thumb_width');
@@ -4272,22 +4301,19 @@ class Freelancer extends MY_Controller {
 
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
-
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
             'profile_background' => $imageName
         );
 
         $update = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
-        //echo $userid;die();
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_hire_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
-        // echo "<pre>";print_r($this->data['jobdata']);die();
-        //echo $this->data['jobdata'][0]['profile_background'];
-        //  $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
-        $coverpic = '<img  src="' . base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        // $coverpic = '<img  src="' . base_url($this->config->item('free_hire_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        $coverpic = '<img id="image_src" name="image_src" src = "' . FREE_HIRE_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" />';
+
         echo $coverpic;
-        // echo "<pre>"; print_r($coverpic);die();
-        // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
 
     public function image_hire() {
@@ -4369,12 +4395,35 @@ class Freelancer extends MY_Controller {
 
 
         $data = $_POST['image'];
-
-
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
         $user_bg_path = $this->config->item('free_post_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
+
+        $main_image = $user_bg_path . $imageName;
+
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('free_post_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('free_post_bg_thumb_width');
@@ -4384,6 +4433,9 @@ class Freelancer extends MY_Controller {
 
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
         $data = array(
             'profile_background' => $imageName
         );
@@ -4392,7 +4444,7 @@ class Freelancer extends MY_Controller {
         $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
 
         $this->data['jobdata'] = $this->common->select_data_by_id('freelancer_post_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
-        $coverpic = '<img  src="' . base_url($this->config->item('free_post_bg_main_upload_path') . $this->data['jobdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . FREE_POST_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
         // echo '<img src="' . $this->data['jobdata'][0]['profile_background'] . '" />';
     }
