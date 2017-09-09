@@ -71,7 +71,7 @@
                         if ($image_ori) {
                             ?>
 
-                            <img  src="<?php echo base_url($this->config->item('free_hire_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />
+                            <img  src="<?php echo FREE_HIRE_BG_MAIN_UPLOAD_URL . $image[0]['profile_background']; ?>" name="image_src" id="image_src" />
                             <?php
                         } else {
                             ?>
