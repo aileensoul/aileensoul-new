@@ -1619,6 +1619,9 @@ background-color: white;}
         top: 35px;
     }
 	.job_con #InboxContainer::before{right: 134px;}
+	.content{height:200px !important;}
+	#InboxBody{min-height:auto;}
+	#addcontactBody{height:auto;}
 	
 }
 
