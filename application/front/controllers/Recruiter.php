@@ -1576,7 +1576,7 @@ class Recruiter extends MY_Controller {
         $postdata .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $postdata .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
-
+//echo '<pre>'; print_r($candidatejob1); die();
 
         if ($candidatejob) {
             foreach ($candidatejob1 as $row) {
@@ -1652,7 +1652,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '<ul class="clearfix">';
 
                 if ($row['work_job_title']) {
-                    $contition_array = array('status' => 'publish', 'title_id' => $row['work_job_title']);
+                    $contition_array = array('title_id' => $row['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                     $postdata .= '<li> <b> Job Title</b> <span>';
                     $postdata .= '' . $jobtitle[0]['name'] . '';
@@ -1723,13 +1723,13 @@ class Recruiter extends MY_Controller {
                             }
                         }
                         $postdata .= '' . $year . '';
-                        $postdata .= '"&nbsp"';
-                        $postdata .= '"Year"';
-                        $postdata .= '"&nbsp"';
+                        $postdata .= '&nbsp';
+                        $postdata .= 'Year';
+                        $postdata .= '&nbsp';
                         if ($total_work_month != 0) {
                             $postdata .= '' . $total_work_month . '';
-                            $postdata .= '"&nbsp"';
-                            $postdata .= '"Month"';
+                            $postdata .= '&nbsp';
+                            $postdata .= 'Month';
                         }
                     }
                     $postdata .= '</li>';
@@ -3324,7 +3324,7 @@ class Recruiter extends MY_Controller {
                   
                     if($total_work_month == '12 month' && $total_work_year =='0 year')
                     {
-                         $return_html .= "1 year";
+                         $return_html .= '1 year';
                     }
                     else
                     {
@@ -3346,12 +3346,12 @@ class Recruiter extends MY_Controller {
                     }
                     if($year != 0)
                     {  
-                        $return_html .= $year." Year";
+                        $return_html .= $year.' Year';
                     }
-                    $return_html .= "&nbsp";
+                    $return_html .= '&nbsp';
                     if($total_work_month != 0)
                     {
-                        $return_html .= $total_work_month." Month";
+                        $return_html .= $total_work_month.' Month';
                     }
                 }
               
