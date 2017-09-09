@@ -1398,6 +1398,7 @@ line-height: 1;}
 }
 .btn-success:hover{color: #1b8ab9;
 background-color: white;}
+.krajee-default.file-preview-frame .kv-file-content{height: 100%!important;}
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }

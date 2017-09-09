@@ -1804,8 +1804,8 @@ input:-moz-placeholder {
 #user_search:focus + #add_search{color: #1b8ab9;}
 
 
-.kv-file-content{width:125px; height:115px !important; overflow-x: hidden;
-    overflow-y: hidden;
+    .kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
+        overflow-y: hidden;*/
     position: relative;
 }
 .kv-file-content img{left: 50%;
