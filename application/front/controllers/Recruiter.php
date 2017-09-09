@@ -2727,7 +2727,7 @@ class Recruiter extends MY_Controller {
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "(skill LIKE '%$rec_search%')";
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+             
 
             //$values = array_map('array_pop', $skillid);
             //$imploded = implode(',', $values);
@@ -2753,9 +2753,10 @@ class Recruiter extends MY_Controller {
             $rec_skill = $jobskilldata;
             
             $rec_skill = array_reduce($rec_skill, 'array_merge', array());
+            
             $rec_skill = array_unique($rec_skill, SORT_REGULAR);
             
-          
+         
             //SKILL DATA FETCH END
             
             //DEGREE FETCH START
@@ -2768,7 +2769,7 @@ class Recruiter extends MY_Controller {
             //$imploded = implode(',', $values);
             //echo $imploded;
 
-            foreach ($skilldata as $key => $value) {
+            foreach ($degreedata as $key => $value) {
                 $value['degree_id'] = 6;
                 $join_str = array(array(
                     'join_type' => '',
@@ -2865,7 +2866,7 @@ class Recruiter extends MY_Controller {
             //JOB TITLE FETCH END
 
                 $unique = array_merge((array)$rec_skill,(array)$rec_degree,(array)$rec_title,(array)$rec_stream);
-          
+  
         } else {
 
             //echo "Skill & Place  Search";die();
@@ -3673,6 +3674,7 @@ class Recruiter extends MY_Controller {
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
 // SKILL DATA END
+
 //MERGE DATA START
             $uni = array_merge($designation, $degreedata, $streamdata, $skilldata);
 //MERGE DATA END
