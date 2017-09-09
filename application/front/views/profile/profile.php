@@ -4,6 +4,9 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
     </head>
+    <Style>
+    .profile_edit h3{text-align: center;}
+    </Style>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <section>
@@ -12,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-lg-3 col-md-4 col-sm-4">
-                                <div class="padd_set">
+                                <div class="">
                                     <div class="left-side-bar" id="bs-collapse" >
                                         <ul class="left-form-each">
                                             <li  <?php if ($this->uri->segment(1) == 'profile') { ?> class="active init" <?php } ?>>  <a href="<?php echo base_url() . 'profile' ?>" data-toggle="collapse" data-parent="#bs-collapse" id="toggle">Edit Profile</a></li>
@@ -22,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7 col-sm-8">
-                                <div class="common-form profile_edit main_form">
+                                <div class="common-form profile_edit main_form change-password-box">
                                     <h3>Edit Profile</h3>
                                     <?php echo form_open_multipart(base_url('profile/edit_profile'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => "clearfix common-form_border")); ?>
                                     <fieldset class="">
