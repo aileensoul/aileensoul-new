@@ -1747,7 +1747,7 @@ text-overflow: ellipsis;
 }
 /***  end change password  ***/
 /***  header  ***/
-
+.model-open {overflow-x: hidden; overflow-y: hidden;} 
 /*left side menu bar*/
 
 .left-side-bar ul {
