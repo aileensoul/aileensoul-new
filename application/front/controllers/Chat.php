@@ -3761,10 +3761,13 @@ class Chat extends MY_Controller {
                 $b = $msg['last_name'];
                 $acr = substr($a, 0, 1);
                 $bcr = substr($b, 0, 1);
-
+                if($message_from_profile != 5){ 
                 $notmsg .= '<div class="post-img-div">';
                 $notmsg .= '' . ucwords($acr) . ucwords($bcr) . '';
                 $notmsg .= '</div>';
+                }else{
+                $notmsg .= '<img src="'. base_url() . NOBUSIMAGE .  '">';
+                }
             }
 
             $notmsg .= '</div><div class="notification-data-inside">';
