@@ -3421,6 +3421,9 @@ overflow: hidden;
         padding: 0px 0 7px;
         font-size: 22px;
     }
+	.cmy_2 {
+        width: 100%;
+    }
     .modal.message-box span.mes{padding: 10px 0px 0;}
     .art_container{padding: 0px 15px;}
     #search .btn{margin-top: 30px;}
