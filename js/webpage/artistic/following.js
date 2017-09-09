@@ -222,7 +222,7 @@ function unfollowuser_list(clicked_id)
                $('.' + 'frusercount').html(data.unfollow);
                if(data.notcount == 0){ 
                  $('.' + 'job-contact-frnd').html(data.notfound);
-               $('#countfollow').html(data.notcount);
+               $('#countfollow').html(data.unfollow);
 
                }else{ 
               $('#' + 'removefollow' + clicked_id).fadeOut(4000);
