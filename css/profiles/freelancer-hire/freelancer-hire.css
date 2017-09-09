@@ -1,10 +1,10 @@
 /***  freelance hire  ***/
 
-  select:focus {
+  .common-form select:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }
-  textarea:focus {
+.common-form  textarea:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }

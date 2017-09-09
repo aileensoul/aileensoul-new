@@ -1,5 +1,14 @@
 /***  recruiter  ***/
 /*** common css for job recrutor and freelancer  ***/
+
+ .common-form  select:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+ .common-form  textarea:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
 .mob-block {display: none;}
 .saved,
 .applied {

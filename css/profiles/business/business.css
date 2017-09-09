@@ -30,11 +30,25 @@
     float: left;
 }
 
-  select:focus {
+ select.day:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }
-  textarea:focus {
+
+ select.month:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+ 
+ select.year:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+  .common-form select:focus {
+   border: 1px solid #1b8ab9 !important;
+    color: #1b8ab9!important;
+ }
+  .common-form textarea:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
  }
