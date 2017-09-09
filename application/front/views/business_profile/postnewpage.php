@@ -124,21 +124,21 @@
                                                 ?>
                                                 <?php if ($userimageposted) { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
-                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
+                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" alt="12" />
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="11">
                                                     </a>
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <?php if ($business_userimage) { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
-                                                        <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
+                                                        <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="10">
                                                     </a>
                                                 <?php } else { ?>
                                                     <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
-                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="9">
                                                     </a>
                                                     <?php
                                                 }
@@ -274,7 +274,7 @@
                                             <?php
                                             $i = 1;
                                             foreach ($businessmultiimage as $data) {
-                                                $allowed = array('gif', 'png', 'jpg', 'jpeg');
+                                                $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                                 $allowespdf = array('pdf');
                                                 $allowesvideo = array('mp4', '3gp');
                                                 $allowesaudio = array('mp3');
@@ -694,7 +694,7 @@
                     <!--  multiple image start -->
                     <?php
                     $i = 1;
-                    $allowed = array('gif', 'png', 'jpg');
+                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                     foreach ($businessmultiimage as $mke => $mval) {
                         $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
                         if (in_array($ext, $allowed)) {

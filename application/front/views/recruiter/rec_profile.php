@@ -421,7 +421,7 @@
                                                         if ($returnpage == 'job') {
 
                                                             if ($recdata[0]['re_comp_site']) {
-                                                             echo $this->common->make_links($recdata[0]['re_comp_site']); die();   ?>
+                                                                ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
                                                                     echo $this->common->make_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
@@ -432,7 +432,7 @@
                                                             }
                                                         } else {
                                                             if ($recdata[0]['re_comp_site']) {
-                                                               echo $this->common->make_links($recdata[0]['re_comp_site']); die();  ?>
+                                                                ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
                                                                     echo $this->common->make_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>

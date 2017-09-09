@@ -3,6 +3,7 @@ $(document).keydown(function (e) {
         e = window.event;
     if (e.keyCode == 27 || e.charCode == 27) {
         closeModal();
+        $('.modal').modal('hide');
     }
 });
 
@@ -1467,10 +1468,11 @@ function check_post_available(post_id) {
         dataType: "json",
         success: function (data) {
             if (data == 0) {
-                alert(111);
                 return false;
             }
         }
     });
 }
+
+
 
