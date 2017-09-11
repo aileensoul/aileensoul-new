@@ -1477,6 +1477,7 @@ background-color: white;}
     }
 }
 @media screen and (max-width: 767px) {
+    .cameraButton .tooltiptext{font-size: 14px; font-weight: normal!important;}
     .back{width: 27%;}
 	.logo h2 {
 		padding: 0px 0;
@@ -1571,16 +1572,16 @@ background-color: white;}
         right: 7px;
     }
     #InboxContainer {
-        width: 100%;
-        margin-top: 10px;
-        top: 26px;
-        right: 0;
+     width: 98%;
+    margin-top: 10px;
+    top: 28px;
+    right: 12px;
     }
     #notificationContainer::before {
-    right: 54px;
+    right: 79px;
     }
     #InboxContainer::before {
-        right: 166px;
+    right: 142px;
     }
 	.notifications li {
         width: 100%;
@@ -1658,6 +1659,7 @@ background-color: white;}
 	.header2 ul li.active a{padding:9px 10px 10px}
 }
 @media screen and (max-width: 479px) {
+ 
 	.logo h2 {
         font-size: 20px;
     }
@@ -1691,7 +1693,7 @@ background-color: white;}
 	#a_li{position: inherit !important;}
     #acon::before{right:115px !important;}
     #acon{width: 100% !important; margin-top: 22px !important;}
-    #notificationContainer::before{right:55px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
+    #notificationContainer::before{right:80px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
 	.notification-data-inside h6 {
         font-size: 12px;
     }
@@ -1699,7 +1701,9 @@ background-color: white;}
 	.search-mob-block label{margin-top:7px; margin-left: 0px;}
 }
 @media screen and (max-width: 360px) {
-	
+	#InboxContainer::before {
+    right: 139px;
+}
 	.dropdown-menu {
 		left: inherit !important;
 		right: -6px !important;
@@ -1743,7 +1747,7 @@ background-color: white;}
 	#acon::before{right: 125px!important;}
     .header2 ul li a#addcontactLink{padding: 6px 2px !important;}
 	.header2 ul li a#InboxLink{padding: 12px 8px 4px;}
-    #notificationContainer::before{right: 55px;} 
+    #notificationContainer::before{right: 80px;} 
     .logo h2{padding:0; line-height:27px;}
     .alert{float: left;}
 	.logo {

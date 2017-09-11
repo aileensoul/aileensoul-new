@@ -3222,6 +3222,7 @@ overflow: hidden;
     .mian_middle_post_box{width: 610px;}
     .fixed_right_display{display: none;}
     .fixed_right_display_none{display: block;}
+            .fixed_right_display{display: none!important;}
 }
 @media screen and (max-width: 1199px){
         .bui_art_left_box .profile-boxProfileCard-content::before {
@@ -3476,6 +3477,10 @@ overflow: hidden;
     .header2 {
     top: 46px;
 }
+.art-all-comment{
+    padding-left: 15px;
+    padding-right: 15px !important;
+}
 #paddingtop_fixed_art {
     padding-top: 75px !important;
 }
@@ -3486,7 +3491,7 @@ overflow: hidden;
         bottom: 0;
         display: block;
         position: absolute;
-        right: 18px;
+        right: 0px;
     }
     .mob-comment button {
         background: none;
@@ -3496,6 +3501,7 @@ overflow: hidden;
     }
     .cmy_2 {
         width: 100%;
+        padding: 0px!important;
     }
     .art_container{padding: 0px 15px;}
     .bui_bcon{width: 60%;}
@@ -3564,8 +3570,9 @@ overflow: hidden;
     .popup-text span {
         font-size: 15px;
     }
-    .cmy_2 {
-        width: 93%;
+    .post-design-commnet-box{
+        padding-left: 15px; 
+        padding-right: 15px;
     }
     .two-images {
         height: 250px;
@@ -4174,10 +4181,10 @@ overflow: hidden;
 }#paddingtop_fixed_art {
     padding-top: 70px !important;
 }
-.post-design-name ul li .post_dot{max-width: 60%;}
+.post-design-name ul li .post_dot{max-width: 66%;}
     .audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
     .audio_source audio {width: 150px;}
-    .post-design-name{width: 60%;}
+    .post-design-name{width: 70%;}
     .addcontact-left{width: 70%;}
     .addcontact-right{width: 30%;}
     .user_lst ul li button{
@@ -4207,6 +4214,7 @@ overflow: hidden;
     }
     .cmy_2 {
         width: 100%;
+        padding-left: 0px!important;
     }
     .two-images {
         height: 120px;
