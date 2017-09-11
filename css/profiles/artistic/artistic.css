@@ -3212,7 +3212,8 @@ overflow: hidden;
     width: 40%;
     padding: 5px;
 }
-
+.modal-content2 .prev,.modal-content2 .next{top:290px; }
+.slider_img .prev, .slider_img .next{top: 50%;}
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}

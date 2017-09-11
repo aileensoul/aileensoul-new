@@ -398,6 +398,8 @@
 
                                                         <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>"> -->
                                                          <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$artdata['image_name'];?>">
+                                                            <a class="prev" style="left: 0;" onclick="plusSlides(-1)">&#10094;</a>
+                                            <a class="next" style="right:  0;" onclick="plusSlides(1)">&#10095;</a>
                                                     </div>
                                                     <!-- 9-5 like comment start -->
 
@@ -852,8 +854,7 @@
                                             ?>
                                             <!-- slider image rotation end  -->
 
-                                            <a class="prev" style="left: 0;" onclick="plusSlides(-1)">&#10094;</a>
-                                            <a class="next" style="right:  0;" onclick="plusSlides(1)">&#10095;</a>
+                                         
                                             <div class="caption-container">
                                                 <p id="caption"></p>
                                             </div>
