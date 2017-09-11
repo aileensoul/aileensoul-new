@@ -1398,7 +1398,7 @@ line-height: 1;}
 }
 .btn-success:hover{color: #1b8ab9;
 background-color: white;}
-.krajee-default.file-preview-frame .kv-file-content{height: 100%!important;}
+.krajee-default.file-preview-frame .kv-file-content{height: 125px!important;}
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }
@@ -1622,6 +1622,15 @@ background-color: white;}
 	.content{height:200px !important;}
 	#InboxBody{min-height:auto;}
 	#addcontactBody{height:auto;}
+	.header ul li #abody ul li a .all-img{margin:0; width:35px; height:35px;}
+	.header ul li #abody ul li a .text-all{padding:7px 5px 6px;}
+	#atittle{padding-top:2px; padding-bottom:2px; font-size:15px;}
+	#atittle a{font-size:14px;}
+	#abody{min-height:230px;}
+	#acon{padding-bottom:0; width:220px;}
+	.header ul li #abody ul li a{font-size:15px;}
+	.header ul li #abody ul li a .text-all{width:135px;}
+	
 	
 }
 
@@ -1642,7 +1651,7 @@ background-color: white;}
 	.logo h2 {
         font-size: 20px;
     }
-	.header ul li.dropdown-user a{padding-top: 10px!important;}
+	/*.header ul li.dropdown-user a{padding-top: 10px!important;}*/
 	#notificationContainer::before {
 		right: 90px;
 	}
@@ -1676,9 +1685,8 @@ background-color: white;}
 	.notification-data-inside h6 {
         font-size: 12px;
     }
-        .back {
-    width: 50%;
-}
+    .back {width: 50%;}
+	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
 }
 @media screen and (max-width: 360px) {
 	
@@ -1706,7 +1714,7 @@ background-color: white;}
 		padding: 7px 6px !important;
 	}
 	.header ul {
-		margin: 12px 0px 1px;
+		margin: 15px 0px 1px;
 	}
 	#notificationContainer{top: 31px;}
 	.bg-search .header2{margin-top:-7px;}
