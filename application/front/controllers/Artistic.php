@@ -16999,11 +16999,5 @@ public function get_artistic_name($id=''){
                 echo $return_html;
     }
 
-public function test(){
 
-
-                $this->load->view('artistic/test');
-
-}
-    
 }
