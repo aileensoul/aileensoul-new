@@ -291,6 +291,7 @@ $(document).ready(function () {
 
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
+    $('body').addClass('modal-open');
 }
 
 function closeModal() {
@@ -377,5 +378,3 @@ function OnPaste_StripFormatting(elem, e) {
     }
 
 }
-
-

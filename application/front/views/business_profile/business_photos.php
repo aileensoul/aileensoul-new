@@ -91,7 +91,7 @@
                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                                                 <div class="slider_img_p">
                                                                     <!--<img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['image_name']) ?>" >-->
-                                                                    <?php echo '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $busdata['image_name'] . '" >'; ?>
+                                                                    <?php echo '<img src="' . BUS_POST_MAIN_UPLOAD_URL . $busdata['image_name'] . '" >'; ?>
                                                                 </div>
                                                                 <!-- like comment start -->
                                                                 <div>
