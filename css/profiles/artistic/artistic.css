@@ -3216,6 +3216,7 @@ overflow: hidden;
 }
 .modal-content2 .prev,.modal-content2 .next{top:290px; }
 .slider_img .prev, .slider_img .next{top: 50%;}
+.art_pdf .image_profile{width: 80px; height: 80px; margin: 22px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px){
     .mian_middle_post_box{width: 610px;}

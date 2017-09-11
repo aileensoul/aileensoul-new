@@ -1544,7 +1544,7 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selyear.error{ border-bottom: 1px solid red !important;}
 #selgen.error{ border-bottom: 1px solid red !important;}
 .about-content{width: 80% !important;line-height: 28px !important;}
-
+select:focus{ outline: none; }
 
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
