@@ -14437,7 +14437,8 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                         $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                        $return_html .= '<div class="all-comment-comment-box">
+                        $return_html .= '<div class="all-comment-comment-box">';
+                        $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">
                 <div class="post-design-pro-comment-img">';
                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
 
@@ -14449,15 +14450,15 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $acr = substr($a, 0, 1);
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> </a>';
+                                $return_html .= '</div>';
 
                             } else {
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                // $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
                                 $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
-                                $return_html .= '</a>';
+                                // $return_html .= '</a>';
                             }
                         } else {
 
@@ -14467,10 +14468,10 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
 
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                // $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> </a>';
+                                $return_html .= '</div> ';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
@@ -14479,7 +14480,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                         $return_html .= '</b>';
                          $return_html .= '</br>';
 
-                $return_html .= '</div>
+                $return_html .= '</div></a>
                 <div class="comment-details" id= "showcomment' . $rowdata['artistic_post_comment_id'] . '">
                     <div id="lessmore' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">';
                         $small = substr($rowdata['comments'], 0, 180);
@@ -14824,7 +14825,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 public function artistic_search_city($id = "") {
     $searchTerm = $_GET['term'];
      if (!empty($searchTerm)) {
-        $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1', 'state_id !=' => '0');
         $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
         $location_list = $this->common->select_data_by_search('cities', $search_condition,$contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
           foreach ($location_list as $key1 => $value) {
