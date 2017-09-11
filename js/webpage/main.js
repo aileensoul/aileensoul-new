@@ -69,7 +69,8 @@ $(document).ready(function () {
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                $(".btn1").html('Login');
+                
+                //$(".btn1").html('Login');
             },
             success: function (response)
             {
