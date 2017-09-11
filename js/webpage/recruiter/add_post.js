@@ -29,15 +29,15 @@ $(function () {
 
 
 function imgval() {
-
-    var skill_main = document.getElementById("skills").value;
-    var skill_other = document.getElementById("other_skill").value;
-
-
-    if (skill_main == '' && skill_other == '') {
-
-        $('#artpost .select2-selection').addClass("keyskill_border_active").style('border', '1px solid #f00');
-    }
+//
+//    var skill_main = document.getElementById("skills").value;
+//    var skill_other = document.getElementById("other_skill").value;
+//
+//
+//    if (skill_main == '' && skill_other == '') {
+//
+//        $('#artpost .select2-selection').addClass("keyskill_border_active").style('border', '1px solid #f00');
+//    }
 }
 
 $.validator.addMethod("regx", function (value, element, regexpr) {
@@ -160,12 +160,41 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new = todaydate[1] + "/" + todaydate[0] + "/" + todaydate[2];
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
+    if(lastdata_new_one >= todaydate_new_one){ 
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+     return true;
+    }else{
+          $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+     return false;
+    }
 
-    return lastdata_new_one >= todaydate_new_one;
-}, "Last date should be grater than and equal to today date.");
+    //return lastdata_new_one >= todaydate_new_one;
+}, "Last date should be grater than or equal to today date.");
 
 //date validation end
 
+//   validation border is not show in last date start
+$.validator.addMethod("required1", function (value, element, regexpr) {
+    //return value == '' || value.trim().length != 0; 
+   
+    if (!value)
+    {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return false;
+    } else
+    {
+        return true;
+    }
+
+    // return regexpr.test(value);
+}, "Last Date of apply is required.");
+//   validation border is not show in last date end  
 //pattern validation at salary start//
 $.validator.addMethod("pattern", function (value, element, param) {
     if (this.optional(element)) {
@@ -261,7 +290,7 @@ $(document).ready(function () {
 
             last_date: {
 
-                required: true,
+                required1: "Last date of apply is required.",
                 isValid: 'Last date should be grater than and equal to today date.'
 
             },
