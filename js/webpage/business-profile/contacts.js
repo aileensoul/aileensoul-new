@@ -153,11 +153,11 @@ $uploadCrop = $('#upload-demo').croppie({
 });
 
 $('.upload-result').on('click', function (ev) {
-    
+
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
     document.getElementById('message1').style.display = "block";
-    
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -349,14 +349,17 @@ function removecontactuser(clicked_id) {
         dataType: 'json',
         data: 'contact_id=' + clicked_id + '&showdata=' + showdata,
         success: function (data) {
-            $('#' + 'statuschange' + clicked_id).html(data.contactdata);
+            
+//          $('#' + 'statuschange' + clicked_id).html(data.contactdata);
+            $('#' + 'removecontact' + clicked_id).fadeOut(2000);
             if (data.notfound == 1) {
-                if (data.notcount == 0) {
-                    $('.' + 'contact-frnd-post').html(data.nomsg);
+                if (data.notcount == 0) { 
+                    $('.contact-frnd-post').html(data.nomsg);
                 } else {
-                    $('#' + 'removecontact' + clicked_id).fadeOut(4000);
+                    $('#' + 'removecontact' + clicked_id).fadeOut(2000);
                 }
             }
+            $('.contactcount').html(data.notcount);
         }
     });
 }
