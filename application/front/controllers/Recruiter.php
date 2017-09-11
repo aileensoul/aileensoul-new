@@ -14,39 +14,7 @@ class Recruiter extends MY_Controller {
         $this->lang->load('message', 'english');
 
         include ('include.php');
-// DEACTIVATE PROFILE START  
-        $userid = $this->session->userdata('aileenuser');
-
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START    
-        // $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
-        // $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        // if ($recruiter_deactive) {
-        //     redirect('recruiter/');
-        // }
-// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END    
-// DEACTIVATE PROFILE END
-// CODE FOR SECOND HEADER SEARCH START
-// CITY SEARCH DATA START
-//        $contition_array = array('status' => '1');
-//        $cty = $this->data['cty'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-//
-//                                                                        foreach ($cty as $key => $value) {
-//            foreach ($value as $ke => $val) {
-//                if ($val != "") {
-//                    $resu[] = $val;
-//                }
-//            }
-//        }
-//        $resul = array_unique($resu);
-//        foreach ($resul as $key => $value) {
-//            $res[$key]['label'] = $value;
-//            $res[$key]['value'] = $value;
-//        }
-//
-//        $this->data['de'] = array_values($res);
-// CITY SEARCH DATA END
-// CODE FOR SECOND HEADER SEARCH END    
+  
     }
 
     public function index() {
@@ -71,13 +39,13 @@ class Recruiter extends MY_Controller {
 // RECRUITER USER STEP DETAIL FETCH CODE END
 
             if ($recrdata[0]['re_step'] == 1) {
-                redirect('recruiter/company_info_form', refresh);
+                redirect('recruiter/company-information', refresh);
             } else if ($recrdata[0]['re_step'] == 3) {
-                redirect('recruiter/recommen_candidate', refresh);
+                redirect('recruiter/home', refresh);
             } else if ($recrdata[0]['re_step'] == 0) {
-                redirect('recruiter/rec_basic_information', refresh);
+                redirect('recruiter/basic-information', refresh);
             } else {
-                redirect('recruiter/rec_basic_information', refresh);
+                redirect('recruiter/basic-information', refresh);
             }
         }
     }
@@ -94,13 +62,13 @@ class Recruiter extends MY_Controller {
 
         if (count($apply_step) >= 0) {
             if ($apply_step[0]['re_step'] == 1) {
-                redirect('recruiter/company_info_form');
+                redirect('recruiter/company-information');
             }
             if ($apply_step[0]['re_step'] == 0) {
-                redirect('recruiter/rec_basic_information');
+                redirect('recruiter/basic-information');
             }
         } else {
-            redirect('recruiter/rec_basic_information');
+            redirect('recruiter/basic-information');
         }
     }
 
@@ -196,7 +164,7 @@ class Recruiter extends MY_Controller {
 
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('recruiter/company_info_form', refresh);
+                    redirect('recruiter/company-information', refresh);
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
@@ -219,7 +187,7 @@ class Recruiter extends MY_Controller {
                 if ($insert_id) {
 
                     $this->session->set_flashdata('success', 'Basic information inserted successfully');
-                    redirect('recruiter/company_info_form', refresh);
+                    redirect('recruiter/company-information', refresh);
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
@@ -491,7 +459,7 @@ class Recruiter extends MY_Controller {
 
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'company information updated successfully');
-                    redirect('recruiter/recommen_candidate', refresh);
+                    redirect('recruiter/home', refresh);
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
                     redirect('recruiter', refresh);
@@ -517,9 +485,9 @@ class Recruiter extends MY_Controller {
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'company information inserted successfully');
                     if ($userdata[0]['re_step'] == 3) {
-                        redirect('recruiter/recommen_candidate', refresh);
+                        redirect('recruiter/home', refresh);
                     } else {
-                        redirect('recruiter/company_info_form', refresh);
+                        redirect('recruiter/company-information', refresh);
                     }
                 } else {
                     $this->session->flashdata('error', 'Sorry!! Your data not inserted');
@@ -899,7 +867,7 @@ class Recruiter extends MY_Controller {
 
         if ($insert_id) {
             $this->session->set_flashdata('success', 'your post inserted successfully');
-            redirect('recruiter/rec_post', 'refresh');
+            redirect('recruiter/post', 'refresh');
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('recruiter', 'refresh');
@@ -1192,7 +1160,7 @@ class Recruiter extends MY_Controller {
 
         if ($update) {
             $this->session->set_flashdata('success', 'your post updated successfully');
-            redirect('recruiter/rec_post', 'refresh');
+            redirect('recruiter/post', 'refresh');
         } else {
             $this->session->flashdata('error', 'Sorry!! Your data not inserted');
             redirect('recruiter', 'refresh');
@@ -1243,7 +1211,7 @@ class Recruiter extends MY_Controller {
         $updatdata = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
         if ($updatdata) {
 
-            redirect('recruiter/recommen_candidate', refresh);
+            redirect('recruiter/home', refresh);
         } else {
 
             redirect('recruiter/reactivate', refresh);
@@ -2626,7 +2594,7 @@ class Recruiter extends MY_Controller {
         }
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         if ($searchkeyword == "" && $searchplace == "") {
-            redirect('recruiter/recommen_candidate', refresh);
+            redirect('recruiter/home', refresh);
         }
 
         $rec_search = trim($searchkeyword, ' ');
@@ -4478,13 +4446,13 @@ public function rec_avail_check($userid = " ")
 
 
         if ($this->input->post('cancel1')) {  //echo "hii"; die();
-            redirect('recruiter/rec_post', refresh);
+            redirect('recruiter/post', refresh);
         } elseif ($this->input->post('cancel2')) {
-            redirect('recruiter/rec_profile', refresh);
+            redirect('recruiter/profile', refresh);
         } elseif ($this->input->post('cancel3')) {
-            redirect('recruiter/save_candidate', refresh);
+            redirect('recruiter/save-candidate', refresh);
         } elseif ($this->input->post('cancel4')) {
-            redirect('recruiter/add_post', refresh);
+            redirect('recruiter/add-post', refresh);
         }
 
         if (empty($_FILES['profilepic']['name'])) { 
@@ -4594,7 +4562,7 @@ public function rec_avail_check($userid = " ")
                 echo $userimage;
             } else {
                 $this->session->flashdata('error', 'Your data not inserted');
-                redirect('recruiter/rec_post', refresh);
+                redirect('recruiter/post', refresh);
             }
         }
     }

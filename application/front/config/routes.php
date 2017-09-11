@@ -235,3 +235,20 @@ $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
 $route['job/profile'] = "job/job_reg";
 $route['job/search'] = "job/job_search";
+
+//RECRUITER ROUTES SETTINGS
+
+$route['recruiter/basic-information'] = "recruiter/rec_basic_information";
+$route['recruiter/company-information'] = "recruiter/company_info_form";
+
+$route['recruiter/home'] = "recruiter/recommen_candidate";
+$route['recruiter/profile'] = "recruiter/rec_profile";
+$route['recruiter/save-candidate'] = "recruiter/save_candidate";
+
+$route['recruiter/post'] = "recruiter/rec_post";
+$route['recruiter/add-post'] = "recruiter/add_post";
+$route['recruiter/post-insert'] = "recruiter/add_post";
+
+$route['recruiter/edit-post'] = "recruiter/edit_post";
+$route['recruiter/edit-post/(:any)'] = "recruiter/edit_post/$1";
+$route['recruiter/search'] = "recruiter/recruiter_search";
