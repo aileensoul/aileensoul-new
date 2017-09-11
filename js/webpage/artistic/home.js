@@ -1,3 +1,13 @@
+ // for cursor pointer starts script
+$(document).ready(function () {
+    var input = $(".editable_text");
+    var len = input.val().length;
+    input[0].focus();
+    input[0].setSelectionRange(len, len);
+});
+ 
+
+
  $('#post').on('click', function(){
         $('#myModal').modal('show');
         //document.getElementById('modal-backdrop').style.display = 'none';
@@ -1903,5 +1913,4 @@ if(document.getElementById('bidmodal-limit').style.display === "block"){
 });  
 
 
- 
 
