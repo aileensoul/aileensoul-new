@@ -480,15 +480,16 @@
         <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>">
-        </script>
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time()); ?>">-->
+        <!--</script>-->
+           <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
-        <script type="text/javascript">
-    $uploadCrop1 = $('#upload-demo-one').croppie({
+<!--        <script type="text/javascript">
+     $uploadCrop1 = $('#upload-demo-one').croppie({ 
         enableExif: true,
         viewport: {
             width: 200,
@@ -499,24 +500,44 @@
             width: 300,
             height: 300
         }
-    });
 
+    });
+//    
+//   cr-slider-wrap 
     $('#upload-one').on('change', function () {
-        alert(3);
         var reader = new FileReader();
         reader.onload = function (e) {
+
             $uploadCrop1.croppie('bind', {
                 url: e.target.result
             }).then(function () {
                 console.log('jQuery bind complete');
+                
+
             });
 
         }
         reader.readAsDataURL(this.files[0]);
     });
 
+    //PROFILE PIC VALIDATION START
+$(document).ready(function () {
+    $("#userimage").validate({ 
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+    
+    function profile_pic(){
     $('.upload-result-one').on('click', function (ev) {
-        alert(123);
         $uploadCrop1.croppie('result', {
             type: 'canvas',
             size: 'viewport'
@@ -524,8 +545,8 @@
 
             $.ajax({
                 //url: "/ajaxpro.php", user_image_insert
-               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
-               url: "<?php echo base_url(); ?>freelancer/user_image_insert1",
+               // url: "<?php //echo base_url(); ?>freelancer/ajaxpro_test",
+               url: "<?php //echo base_url(); ?>freelancer/user_image_insert1",
                 type: "POST",
                 data: {"image": resp},
                 success: function (data) {
@@ -537,8 +558,11 @@
             });
         });
     });
+    }
+});
+//PROFILE PIC VALIDATION END
 
-</script>
+</script>-->
 
     </body>
 </html>
