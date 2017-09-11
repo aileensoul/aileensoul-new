@@ -1592,11 +1592,11 @@ function editpost(abc)
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(editpostdesc);
     
-    var input = $("#editpostdesc" + abc);
-    alert(input[0]);
-    var len = input.text().length;
-    input.text().focus();
-    input.text().setSelectionRange(len, len);
+//    var input = $("#editpostdesc" + abc);
+//    alert(input[0]);
+//    var len = input.text().length;
+//    input.text().focus();
+//    input.text().setSelectionRange(len, len);
 }
 
 function edit_postinsert(abc)
