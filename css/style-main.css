@@ -1633,6 +1633,10 @@ height: 146px;}
 	
 }
 @media screen and (max-width: 767px) {
+	   .banner-box .upload-camera {
+    height: 34px;
+    width: 41px;
+}
     .t-r-l{text-align: right !important;}
 	.header-login .btn1{margin-left: 0px;}
 	.header-login .input{width: 46%; margin-right: 2%; margin-left: 2%;}
@@ -1739,7 +1743,7 @@ width: 93px;}
 	
 }
 @media screen and (max-width: 479px) {
-	
+	.custom-box .custom-width .right-box h1 a::after{left: 36% !important;width: 200px;}
     .pt-a{padding-top: 35px;}
     .main-login .middle-main{/*padding: 180px 0 30px;*/}
 	.mob-none{display:none;}
