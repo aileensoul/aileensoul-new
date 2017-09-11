@@ -49,7 +49,7 @@
                                     if ($recdata[0]['re_step'] < '1') {
                                         echo "khyati";
                                     }
-                                    ?>"><a href="<?php echo base_url('recruiter/company_info_form'); ?>">Company Information</a></li>
+                                    ?>"><a href="<?php echo base_url('recruiter/company-information'); ?>">Company Information</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <!--- middle section start -->
                             <div class="common-form common-form_border">
                                 <h3>Basic Information</h3>
-                                <?php echo form_open(base_url('recruiter/basic_information'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
+                                <?php echo form_open(base_url('recruiter/basic-information'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
 
 
 

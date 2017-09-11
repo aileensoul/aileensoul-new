@@ -1,6 +1,6 @@
 
                          <!-- <?php //echo form_open('search/recruiter_search');  ?> -->
-                         <form action=<?php echo base_url('recruiter/recruiter_search')?> method="get">
+                         <form action=<?php echo base_url('recruiter/search')?> method="get">
                             <fieldset class="col-md-3 col-sm-5 col-xs-5 sec_h2">
 
                               <!--<input type="text" id="tags" name="skills" placeholder="Job Title, Skills, Industries">-->

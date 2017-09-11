@@ -30,7 +30,7 @@
 
                             <div class="add-post-button">
 
-                                <a href="<?php echo base_url('recruiter/rec_post'); ?>"><div class="back">
+                                <a href="<?php echo base_url('recruiter/post'); ?>"><div class="back">
                                         <div class="but1">
                                             Back To Post
                                         </div>
@@ -86,7 +86,7 @@
                                                                         <ul>
                                                                             <li>
                                                                                 <a style="  font-size: 19px;
-                                                                                   font-weight: 600;" href="<?php echo base_url('job/job_printpreview/' . $row['userid'] . '?page=recruiter'); ?>">
+                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['userid'] . '?page=recruiter'); ?>">
                                                                                     <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">

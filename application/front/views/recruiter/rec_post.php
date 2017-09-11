@@ -141,22 +141,22 @@
                                         <?php } else { ?>
                                     <ul class="pro-fw">
                                         <?php } ?>  
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'rec_profile') { ?> class="active" <?php } ?>>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'job') { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/rec_profile/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Details</a>
+                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Details</a>
                                         <?php } else { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/rec_profile'); ?>">Details</a>
+                                            <a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
                                         <?php } ?>
                                     </li>
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'rec_post') { ?> class="active" <?php } ?>>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>>
                                         <?php if ($returnpage == 'job') { ?>
-                                            <a title="Post" href="<?php echo base_url('recruiter/rec_post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
+                                            <a title="Post" href="<?php echo base_url('recruiter/post/' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
                                     <?php } else { ?>
-                                            <a title="Post" href="<?php echo base_url('recruiter/rec_post'); ?>">Post</a>
+                                            <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
                                     <?php } ?>
                                     </li>
-<?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'rec_post' || $this->uri->segment(2) == 'rec_profile' || $this->uri->segment(2) == 'add_post' || $this->uri->segment(2) == 'save_candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
-                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save_candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" href="<?php echo base_url('recruiter/save_candidate'); ?>">Saved </a>
+<?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'post' || $this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'add-post' || $this->uri->segment(2) == 'save-candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" href="<?php echo base_url('recruiter/save-candidate'); ?>">Saved </a>
                                         </li> 
                                         <?php } ?>   
                                 </ul>
@@ -181,7 +181,7 @@
                 </div>                       
             </div> <div  class="add-post-button mob-block">
 <?php if ($returnpage == '') { ?>
-                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
             </div>
             <div class="middle-part container rec_res">
@@ -208,7 +208,7 @@
                     </div>
                     <div  class="add-post-button">
 <?php if ($returnpage == '') { ?>
-                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
                     </div>
                 </div>

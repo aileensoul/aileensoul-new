@@ -171,17 +171,17 @@
                                 <?php } else { ?>
                                     <ul class="pro-fw4">
                                     <?php } ?>  
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'rec_profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('recruiter/rec_profile'); ?>">Details</a>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'profile') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
                                     </li>
 
 
-                                    <?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'rec_post' || $this->uri->segment(2) == 'rec_profile' || $this->uri->segment(2) == 'add_post' || $this->uri->segment(2) == 'save_candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
+                                    <?php if (($this->uri->segment(1) == 'recruiter') && ($this->uri->segment(2) == 'post' || $this->uri->segment(2) == 'profile' || $this->uri->segment(2) == 'add-post' || $this->uri->segment(2) == 'save-candidate') && ($this->uri->segment(3) == $this->session->userdata('aileenuser') || $this->uri->segment(3) == '')) { ?>
 
-                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'rec_post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/rec_post'); ?>">Post</a>
+                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
                                         </li>
 
 
-                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save_candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" href="<?php echo base_url('recruiter/save_candidate'); ?>">Saved </a>
+                                        <li <?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'save-candidate') { ?> class="active" <?php } ?>><a title="Saved Candidate" href="<?php echo base_url('recruiter/save-candidate'); ?>">Saved </a>
                                         </li> 
                                         <fa>
                                             </li> 
@@ -199,13 +199,13 @@
             </div>
             <div  class="add-post-button mob-block">
                 <?php if ($returnpage == '') { ?>
-                    <a class="btn btn-3 btn-3b" style="background: -o-linear-gradient(top, rgba(248,48,125,1) 0%, rgba(27,138,185,1) 0%, rgba(190,199,202,1) 90%, rgba(204,204,204,1) 98%, rgba(242,230,235,1) 100%);" href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                    <a class="btn btn-3 btn-3b" style="background: -o-linear-gradient(top, rgba(248,48,125,1) 0%, rgba(27,138,185,1) 0%, rgba(190,199,202,1) 90%, rgba(204,204,204,1) 98%, rgba(242,230,235,1) 100%);" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                 <?php } ?>
             </div>
 
             <div class="middle-part container rec_res">    
                 <div class="job-menu-profile mob-none  pt20">
-                    <a href="<?php echo site_url('recruiter/rec_profile/' . $recruiterdata[0]['userid']); ?>"><h5><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h5></a>
+                    <a href="<?php echo site_url('recruiter/profile/' . $recruiterdata[0]['userid']); ?>"><h5><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h5></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
@@ -229,7 +229,7 @@
 
                     <div  class="add-post-button">
                         <?php if ($returnpage == '') { ?>
-                            <a class="btn btn-3 btn-3b" style="background: -o-linear-gradient(top, rgba(248,48,125,1) 0%, rgba(27,138,185,1) 0%, rgba(190,199,202,1) 90%, rgba(204,204,204,1) 98%, rgba(242,230,235,1) 100%);" href="<?php echo base_url('recruiter/add_post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a class="btn btn-3 btn-3b" style="background: -o-linear-gradient(top, rgba(248,48,125,1) 0%, rgba(27,138,185,1) 0%, rgba(190,199,202,1) 90%, rgba(204,204,204,1) 98%, rgba(242,230,235,1) 100%);" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
                         <?php } ?>
                     </div>
 
