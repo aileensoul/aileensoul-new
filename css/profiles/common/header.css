@@ -274,7 +274,7 @@ right: 17px;
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
     overflow: visible;
     position: absolute;
-    top: 21px;
+    top: 26px;
     margin-top: 22px;
     z-index: 2;
     display: none;
@@ -1396,6 +1396,16 @@ line-height: 1;}
     text-transform: uppercase;
     line-height: 3.3;
 }
+.btn-success:focus, .btn-success.focus {
+    color: #fff;
+    background-color: #1b8ab9;
+    border-color: #1b8ab9;
+    outline: none;
+}
+.btn-success:active:hover, .btn-success.active:hover, .open > .dropdown-toggle.btn-success:hover, .btn-success:active:focus, .btn-success.active:focus, .open > .dropdown-toggle.btn-success:focus, .btn-success:active.focus, .btn-success.active.focus, .open > .dropdown-toggle.btn-success.focus{color: #fff;
+    background-color: #1b8ab9;
+    border-color: #1b8ab9;
+    outline: none;}
 .btn-success:hover{color: #1b8ab9;
 background-color: white;}
 .krajee-default.file-preview-frame .kv-file-content{height: 125px!important;}
