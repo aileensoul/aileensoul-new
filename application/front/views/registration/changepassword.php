@@ -50,7 +50,7 @@
                                         <?php echo form_error('password2'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
-                                        <input type="reset"  value="Cancel" name="cancel">
+                                        <!-- <input type="reset"  value="Cancel" name="cancel"> -->
                                         <input type="submit"  value="Save" name="submit">
                                     </fieldset>
                                     </form>
@@ -62,5 +62,54 @@
             </div>
         </div>
         <?php echo $footer; ?>
+
+        <script type="text/javascript" src="<?php echo base_url() ?>js/jquery.validate.min.js"></script>
+<!-- validation for edit email formate form strat -->
+
+<script>
+                            $(document).ready(function () { 
+                                $("#regform").validate({ 
+                                    rules: {
+                                        oldpassword: {
+                                            required: true,
+                                            remote: {
+                                               url: "<?php echo site_url() . 'registration/check_password' ?>",
+                                             type: "post",
+                                              data: {
+                                               oldpassword: function () {
+                                                   return $("#oldpassword").val();
+                                                },
+                                            '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+                                              },
+                                        },
+
+                                        },
+                                        password1: {
+                                            required: true,
+                                        },
+                                        password2: {
+                                            required: true,
+                                            equalTo: "#password1"
+                                        }
+                                    },
+
+                                    messages:
+                                            {
+                                                oldpassword: {
+                                                    required: "Please enter old password",
+                                                    remote: "Old password does not match"
+                                                },
+                                                password1: {
+                                                    required: "Please enter new password",
+                                                },
+                                                password2: {
+                                                    required: "Please enter confirm password",
+                                                    equalTo: "Please enter the same password as above"
+                                                },
+                                        
+                                            },
+                                    
+                                }); });
+                                </script>
     </body>
 </html>
