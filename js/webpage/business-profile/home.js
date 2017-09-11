@@ -1591,8 +1591,12 @@ function editpost(abc)
     editpostdesc = editpostdesc.trim();
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(editpostdesc);
+    
+    var input = $("#editpostdesc" + abc);
+    var len = input.text().length;
+    input.text().focus();
+    input.text().setSelectionRange(len, len);
 }
-
 
 function edit_postinsert(abc)
 {
@@ -1723,4 +1727,3 @@ $(document).keydown(function (e) {
         $('.modal').modal('hide');
     }
 });
-

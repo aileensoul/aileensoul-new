@@ -46,13 +46,13 @@ class MY_Controller extends CI_Controller {
         $diff->d -= $diff->w * 7;
 
         $string = array(
-            'y' => 'year',
-            'm' => 'month',
-            'w' => 'week',
-            'd' => 'day',
-            'h' => 'hour',
-            'i' => 'minute',
-            's' => 'second',
+            'y' => 'y<span class="year_mobile">ear</span>',
+            'm' => 'm<span class="month_mobile">onth</span>',
+            'w' => 'w<span class="week_mobile">eek</span>',
+            'd' => 'd<span class="day_mobile">ay</span>',
+            'h' => 'h<span class="hour_mobile">our</span>',
+            'i' => 'm<span class="minute_mobile">inute</span>',
+            's' => 's<span class="second_mobile">econd</span>',
         );
         foreach ($string as $k => &$v) {
             if ($diff->$k) {

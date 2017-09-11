@@ -14824,7 +14824,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 public function artistic_search_city($id = "") {
     $searchTerm = $_GET['term'];
      if (!empty($searchTerm)) {
-        $contition_array = array('status' => '1');
+        $contition_array = array('status' => '1', 'state_id !=' => '0');
         $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
         $location_list = $this->common->select_data_by_search('cities', $search_condition,$contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
           foreach ($location_list as $key1 => $value) {
@@ -16999,11 +16999,5 @@ public function get_artistic_name($id=''){
                 echo $return_html;
     }
 
-public function test(){
 
-
-                $this->load->view('artistic/test');
-
-}
-    
 }
