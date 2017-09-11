@@ -8,8 +8,7 @@
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
         <style type="text/css">
-            #popup-form img{display: none;}
-           
+            #popup-form img{display: block;}
         </style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
@@ -447,13 +446,24 @@
                             <div id="popup-form">
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+<!--                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
                                     <input type="hidden" name="hitext" id="hitext" value="4">
                                     <div class="popup_previred">
                                         <img id="preview" src="#" alt="your image"/>
 
+                                    </div>-->
+                                    
+                                    <div class="col-md-5">
+                                          <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                
+                               
                                     </div>
-                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                     <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                    
+                                    <!--<input type="submit" name="profilepicsubmit" id="upload-result-one" value="Save" >-->
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
                                 <?php //echo form_close(); ?>
                             </div>
@@ -475,5 +485,58 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
+        <script type="text/javascript">
+    $uploadCrop1 = $('#upload-demo-one').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        }
+    });
+
+    $('#upload-one').on('change', function () {
+        alert(3);
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
+    $('.upload-result-one').on('click', function (ev) {
+        alert(123);
+        $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+               url: "<?php echo base_url(); ?>freelancer/user_image_insert1",
+                type: "POST",
+                data: {"image": resp},
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
+                }
+            });
+        });
+    });
+
+</script>
+
     </body>
 </html>
