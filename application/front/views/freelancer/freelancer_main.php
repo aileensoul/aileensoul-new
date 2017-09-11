@@ -16,11 +16,11 @@
                     <div class="main_frlancer">
                         <div class="col-md-6 col-sm-6">
                             <h2 class="font-white">I want to hire Freelancer</h2>
-                            <a href="<?php echo base_url('freelancer_hire/freelancer_hire'); ?>" class="button">Hire</a>
+                            <a href="<?php echo base_url('freelancer-hire'); ?>" class="button">Hire</a>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <h2 class="font-white">Apply as Freelancer</h2>
-                            <a href="<?php echo base_url('freelancer/freelancer_post'); ?>" class="button">Apply</a>
+                            <a href="<?php echo base_url('freelancer-work'); ?>" class="button">Apply</a>
                         </div>
                         </div>
                     </div>

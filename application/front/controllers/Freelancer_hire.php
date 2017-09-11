@@ -35,9 +35,9 @@ class Freelancer_hire extends MY_Controller {
             if (count($jobdata) > 0) {
 
                 if ($jobdata[0]['free_hire_step'] == 1) {
-                    redirect('freelancer_hire/freelancer_hire_address_info', refresh);
+                    redirect('freelancer-hire/address-information', refresh);
                 } else if ($jobdata[0]['free_hire_step'] == 2) {
-                    redirect('freelancer_hire/freelancer_hire_professional_info', refresh);
+                    redirect('freelancer-hire/professional-information', refresh);
                 } else if ($jobdata[0]['free_hire_step'] == 3) {
                     redirect('freelancer-hire/home', refresh);
                 }

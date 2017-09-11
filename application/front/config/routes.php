@@ -142,6 +142,8 @@ $route['freelancer-hire/edit-projects/(:any)'] = "freelancer/freelancer_edit_pos
 $route['freelancer-hire/reactivate'] = "freelancer_hire/reactivate";
 $route['freelancer-hire/deactivate'] = "freelancer/deactivate_hire";
 $route['freelancer-hire/freelancer-applied/(:any)'] = "freelancer/freelancer_apply_list/$1";
+$route['freelancer-hire'] = "freelancer_hire/freelancer_hire";
+
 
 //FREELANCER APPLY ROUTES SETTINGS
 $route['freelancer-work/home'] = "freelancer/freelancer_apply_post";
@@ -160,6 +162,7 @@ $route['freelancer-work/search'] = "search/freelancer_post_search";
 
 $route['freelancer-work/deactivate'] = "freelancer/deactivate";
 $route['freelancer-work/search'] = "search/freelancer_post_search";
+$route['freelancer-work'] = "freelancer/freelancer_post";
 
 /* Report Route end */
 
