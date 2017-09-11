@@ -26,6 +26,7 @@ $(window).resize(function () {
 });
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
+    $('body').addClass('modal-open');
 }
 
 function closeModal() {

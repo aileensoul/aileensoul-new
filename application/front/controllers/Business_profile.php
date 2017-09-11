@@ -2433,7 +2433,7 @@ class Business_profile extends MY_Controller {
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img">';
+    <div class="post-design-proo-img hidden-mob">';
 
             $userid = $this->session->userdata('aileenuser');
             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -8888,8 +8888,8 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '</a>';
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-right">';
-                    $contactdata .= '<a href="#" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
-                    $contactdata .= '<a href="#" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="javascript:void(0);" class="add-left-true" onclick = "return contactapprove(' . $contact['contact_from_id'] . ',1);"><i class="fa fa-check" aria-hidden="true"></i></a>';
+                    $contactdata .= '<a href="javascript:void(0);" class="add-right-true"  onclick = "return contactapprove(' . $contact['contact_from_id'] . ',0);"><i class="fa fa-times" aria-hidden="true"></i></a>';
                     $contactdata .= '</div>';
                     $contactdata .= '</li>';
                 }
@@ -8932,7 +8932,7 @@ class Business_profile extends MY_Controller {
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text_full">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request.</span>';
                     //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '<br><span class="data_noti_msg">';
                     $contactdata .= $this->time_elapsed_string($contact['action_date']);
@@ -9049,7 +9049,7 @@ class Business_profile extends MY_Controller {
                     if ($busdata[0]['business_user_image']) {
                         $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                     } else {
-                        $contactdata .= '<img src="' . base_url(WHITEIMAGE) . '">';
+                        $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '">';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
@@ -9092,7 +9092,7 @@ class Business_profile extends MY_Controller {
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
-                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request</span>';
+                    $contactdata .= '<span><b>' . ucfirst(strtolower($busdata[0]['company_name'])) . '</b> confirmed your contact request.</span>';
 //$contactdata .= '' . $inddata[0]['industry_name'] . '';
                     $contactdata .= '</div>';
                     $contactdata .= '</a>';
@@ -9574,12 +9574,10 @@ class Business_profile extends MY_Controller {
 
     public function removecontactuser() {
 
-
         $to_id = $_POST["contact_id"];
         $showdata = $_POST["showdata"];
 
         $userid = $this->session->userdata('aileenuser');
-
 
         $contition_array = array('contact_type' => 2);
         $search_condition = "((contact_to_id = ' $to_id' AND contact_from_id = ' $userid') OR (contact_from_id = ' $to_id' AND contact_to_id = '$userid'))";
@@ -9603,25 +9601,20 @@ class Business_profile extends MY_Controller {
 // for count list user start
 
         $contition_array = array('contact_person.status' => 'confirm', 'contact_type' => 2);
-
         $search_condition = "(contact_to_id = '$userid' OR contact_from_id = '$userid')";
-
         $unique_user = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = '*', $sortby = 'contact_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
         $datacount = count($unique_user);
-//for count list user end
-
-        $contactdata = '<button onClick = "contact_person_menu(' . $to_id . ')">';
-
-        $contactdata .= ' Add to contact';
-        $contactdata .= '</button>';
+//        $contactdata = '<button onClick = "contact_person_menu(' . $to_id . ')">';
+//        $contactdata .= ' Add to contact';
+//        $contactdata .= '</button>';
 
 
         if (count($unique_user) == 0) {
             $nomsg = ' <div class = "art-img-nn">
 <div class = "art_no_post_img">
 
-<img src = "' . base_url('img/bui-no.png') . '">
+<img src = "' . base_url('img/No_Contact_Request.png') . '">
 
 </div>
 <div class = "art_no_post_text">
@@ -10649,7 +10642,7 @@ Your browser does not support the audio tag.
 </div>
 </div>
 <div class = "post-design-commnet-box col-md-12">
-<div class = "post-design-proo-img">';
+<div class = "post-design-proo-img hidden-mob">';
 
                     $userid = $this->session->userdata('aileenuser');
                     $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -12238,7 +12231,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;

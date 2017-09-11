@@ -110,6 +110,7 @@
                                                         <div class="img_bui_data"> 
                                                             <div class="edit_bui_img">
                                                                 <img id="imageold" src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $image['image_name']) ?>" >
+                                                                <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['image_name']) ?>" >-->
                                                             </div>
 
                                                             <?php // if ($y != 1) {

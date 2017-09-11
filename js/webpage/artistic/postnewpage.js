@@ -1,3 +1,11 @@
+ // for cursor pointer starts script
+$(document).ready(function () {
+    var input = $(".editable_text");
+    var len = input.val().length;
+    input[0].focus();
+    input[0].setSelectionRange(len, len);
+});
+ 
  $('#postedit').on('click', function(){
         $(".my_text").prop("readonly", false);
      $('.editable_text').attr('contentEditable', true);
