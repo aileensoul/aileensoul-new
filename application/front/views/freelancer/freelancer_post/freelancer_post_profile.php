@@ -173,9 +173,10 @@
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $this->uri->segment(3); ?> "><?php echo $this->lang->line("saved"); ?></a>
                                                     </li> <?php }
+                                                     $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                                                         ?>
                                                 <li>
-                                                    <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/4/3'); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                 </li>
                                                  </ul>
                                 </div>

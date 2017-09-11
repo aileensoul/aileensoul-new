@@ -43,7 +43,7 @@
     position: relative;
     padding: 1px 10px 0px;
 	height:inherit; 
-	border-right:none;
+	border-right: 1px solid #1985b3;
 }
 .header ul li a {
     font-size: 18px;
@@ -53,7 +53,7 @@
     letter-spacing: 0.5;
 	display: inline-block;
 	padding-top:5px!important; 
-	border-right: 1px solid #1985b3;
+	
 
 }
 .header ul li a span{vertical-align: middle;}

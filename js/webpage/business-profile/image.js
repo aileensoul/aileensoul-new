@@ -23,7 +23,6 @@ function delete_job_exp(grade_id) {
         url: base_url + "business_profile/bus_img_delete",
         data: 'grade_id=' + grade_id,
         success: function (data) {
-
             if (data) {
 
                 $('.job_work_edit_' + grade_id).remove();

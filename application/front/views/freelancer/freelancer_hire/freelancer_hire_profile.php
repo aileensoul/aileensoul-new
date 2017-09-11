@@ -165,10 +165,12 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {
+                                        
+                                        $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
-                                                <li> <a href="<?php echo base_url('chat/abc/' . $this->uri->segment(3) . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                                <li> <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
                                             </ul>
                                         </div>
                                         <?php
