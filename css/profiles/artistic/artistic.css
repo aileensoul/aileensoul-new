@@ -4176,6 +4176,7 @@ overflow: hidden;
     .bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
+     .post-edit-popup .popup-text textarea{padding-right: 45px;}
     .header2 {
     top: 42px;
 }#paddingtop_fixed_art {
@@ -4292,6 +4293,7 @@ overflow: hidden;
     .right-side-menu {
         width: 100%;
     }
+    .popup-text textarea{line-height: 2.3; padding-left: 15px;}
 }
 @media screen and (max-width: 320px){
     .editor-content{
@@ -4302,6 +4304,7 @@ overflow: hidden;
         width: 70%;
     }
     .profile-job-details .post_title{font-size: 9px;}
+
 }
 
 /*media zalak end*/

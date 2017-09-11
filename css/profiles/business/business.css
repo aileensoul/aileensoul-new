@@ -4415,7 +4415,8 @@ height: 100px;
 	.bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
-    
+    .post-edit-popup .popup-text textarea{padding-right: 45px;}
+    .popup-text textarea{line-height: 2.3; padding-left: 15px;}
 	.audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
 	.audio_source audio {width: 150px;}
 	.post-design-name{width: 66%;}

@@ -1409,6 +1409,16 @@ line-height: 1;}
 .btn-success:hover{color: #1b8ab9;
 background-color: white;}
 .krajee-default.file-preview-frame .kv-file-content{height: 125px!important;}
+
+.krajee-default .file-preview-image {
+    vertical-align: middle;
+    width: 100% !important;
+    height: 100% !important;
+}
+.kv-file-content video{width: 100%;}
+.kv-file-content audio{width: 100%;}
+.krajee-default[data-template="audio"] .file-preview-audio{height: 100%;}
+
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }
@@ -1659,7 +1669,7 @@ background-color: white;}
 	.header2 ul li.active a{padding:9px 10px 10px}
 }
 @media screen and (max-width: 479px) {
- 
+
 	.logo h2 {
         font-size: 20px;
     }
