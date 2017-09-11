@@ -27,7 +27,8 @@ function busSelectCheck(nameSelect)
             document.getElementById("other-business").style.display = "block";
             $("#busDivCheck .half-width label").html('Other Business Type:<span style="color:red;" >*</span>');
         } else {
-            document.getElementById("bustype").style.display = "none";
+            document.getElementById("busDivCheck").style.display = "none";
+//            document.getElementById("bustype").style.display = "none";
             if (industriyal == 0 && business_type == 0) {
                 $("#busDivCheck .half-width label").text('');
                 $("#bustype-error").remove();
@@ -149,3 +150,9 @@ function check() {
         return false;
     }
 }
+$(document).ready(function () {
+    var input = $("#business_details");
+    var len = input.val().length;
+    input[0].focus();
+    input[0].setSelectionRange(len, len);
+});

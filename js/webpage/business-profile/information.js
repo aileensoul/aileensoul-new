@@ -113,7 +113,7 @@ $(document).ready(function () {
     input[0].setSelectionRange(len, len);
     
     var input1 = $("#business_address");
-    var len = input.val().length;
+    var len = input1.val().length;
     input1[0].focus();
     input1[0].setSelectionRange(len, len);
 });
