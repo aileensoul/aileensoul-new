@@ -3742,9 +3742,12 @@ height: 100px;
         color: #1b8ab9;
         padding: 0px 0 7px;
         font-size: 22px;
+        margin-right: 0px;
     }
 	.cmy_2 {
         width: 100%;
+        padding-left: 0px!important;
+        padding-right: 0px;
     }
     .art_container{padding: 0px 15px;}
     .bui_bcon{width: 60%;}
@@ -3813,9 +3816,6 @@ height: 100px;
 	.popup-text span {
         font-size: 15px;
     }
-    .cmy_2 {
-		width: 93%;
-	}
     .two-images {
         height: 250px;
     }
@@ -4121,6 +4121,7 @@ height: 100px;
     }
 }
 @media screen and (max-width: 479px){
+    
     .bui_bcon {width: 49%;}
     .folle_text {width: 42%;}
     .popup-text textarea{ font-size: 12px!important;  }
@@ -4168,6 +4169,7 @@ height: 100px;
         width: 100%;
         padding-right: 0;
 		position: relative;
+        padding-left: 0px!important;
     }
     .post-design-name ul li .post_dot {
         font-size: 14px;
