@@ -576,4 +576,26 @@ class Registration extends CI_Controller {
     }
 
 //login validation end
+
+    // for old password match start
+
+     public function check_password() { 
+
+        $oldpassword = md5($this->input->post('oldpassword'));
+
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('is_delete' => '0', 'status' => '1', 'user_id' => $userid);
+        $userdata = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        //echo "<pre>"; print_r($userdata); die();
+
+        if ($userdata[0]['user_password'] == $oldpassword) {
+            echo 'true';
+            die();
+        } else {
+            echo 'false';
+            die();
+        }
+    }
+
 }

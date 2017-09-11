@@ -69,7 +69,7 @@ $(document).ready(function () {
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                $(".btn1").html('Login...');
+                $(".btn1").html('Login');
             },
             success: function (response)
             {
@@ -258,7 +258,7 @@ $(document).ready(function () {
             beforeSend: function ()
             {
                 $("#register_error").fadeOut();
-                $("#btn-register").html('Sign Up ...');
+                $("#btn-register").html('Sign Up');
             },
             success: function (response)
             {
