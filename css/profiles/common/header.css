@@ -515,7 +515,7 @@ ul.dropdown-menu li a i {
     border-bottom: 1px solid #e6ecf0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: fixed;
-    top: 49px;
+    top: 52px;
     right: 0;
     height: 35px;
     left: 0;
@@ -1429,7 +1429,7 @@ background-color: white;}
 	.header ul li.dropdown-user ul li a {
         padding: 8px;
     }
-	.header2{top:46px;}
+	.header2{top:49px;}
     #notificationContainer{top:22px;}
     #InboxContainer{top:25px;}
     #InboxContainer::before{right: 4%;}
@@ -1686,7 +1686,7 @@ background-color: white;}
         font-size: 12px;
     }
     .back {width: 50%;}
-	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
+	.search-mob-block label{margin-top:7px; margin-left: 0px;}
 }
 @media screen and (max-width: 360px) {
 	
@@ -1742,6 +1742,7 @@ background-color: white;}
 	.header ul li.dropdown-user a {
 		padding-top: 4px !important;
 	}
+	.search-mob-block label{margin-top:4px;}
 }
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
