@@ -804,6 +804,10 @@ label.cameraButton input[accept*="camera"] {
     border: none;
 }
 .indiavte_freelancer{margin: 10px 0px;}
+  #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
+
+
+
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
 	.common-form fieldset.mgrd input[type="radio"]{margin: 0px;}

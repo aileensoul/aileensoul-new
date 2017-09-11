@@ -65,7 +65,7 @@
                                     </span>
                                     <span class="ves_c">
                                         <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify Email Address</a></span>
-                                        <span class="fw-50"> <a class="chng_email" href="">Change Email Address</a> </span>
+                                      <!--   <span class="fw-50"> <a class="chng_email" href="">Change Email Address</a> </span> -->
                                     </span>
                                     <span class="fr cls-ve" onclick="return closever();"><i class="fa fa-times" aria-hidden="true"></i> </span>
                                 </span>

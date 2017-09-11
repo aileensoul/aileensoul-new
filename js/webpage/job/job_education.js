@@ -1912,7 +1912,7 @@ function next_page()
     //DELETE GRADUATION CERTIFICATE START
    function delete_job_exp(grade_id,certificate) {
 
-      $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this graduation detail?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+      $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this graduation detail?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
 
   $('.message #delete').on('click', function () {
        $.ajax({
@@ -1933,7 +1933,7 @@ function next_page()
       //DELETE PRIMARY CERTIFICATE START
 function delete_primary(edu_id,certificate) {
   
-$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
@@ -1960,7 +1960,7 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this p
 //DELETE SECONDARY CERTIFICATE START
 function delete_secondary(edu_id,certificate) {
   
-$.fancybox.open('<div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
+$.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
          $.ajax({
