@@ -36,11 +36,11 @@
                                                             <div class="cq_post_img">
                                                                 <?php if ($friend['business_user_image'] != '') { ?>
                                                                     <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']); ?>">
+                                                                        <img src="<?php echo BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image']; ?>">
                                                                     </a>
                                                                 <?php } else { ?>
                                                                     <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                        <img src="<?php echo base_url(NOIMAGE); ?>" />
+                                                                        <img src="<?php echo base_url(NOBUSIMAGE); ?>" />
                                                                     </a>
                                                                 <?php } ?>
                                                             </div>
@@ -125,11 +125,11 @@
 
                                                                             <?php if ($friend['business_user_image'] != '') { ?>
                                                                                 <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                                    <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']); ?>">
+                                                                                    <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $friend['business_user_image']; ?>">
                                                                                 </a>
                                                                             <?php } else { ?>
                                                                                 <a  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']); ?>">
-                                                                                    <img src="<?php echo base_url(NOIMAGE); ?>" />
+                                                                                    <img src="<?php echo base_url(NOBUSIMAGE); ?>" />
                                                                                 </a>
                                                                             <?php } ?>
 
