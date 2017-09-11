@@ -47,12 +47,12 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages<span class="see_link"><a href="http://localhost/aileensoul/notification">See All</a></span></div>
+                                                <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
 <div>
-    <ul class="khyati2">
-        
+    <ul class="notification_data_in_h2">
+     <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>   
     </ul></div>
 
                                             </div>
@@ -133,12 +133,12 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <div id="notificationTitle">Messages<span class="see_link"><a href="http://localhost/aileensoul/notification">See All</a></span></div>
+                                                <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
 
 <div>
-    <ul class="khyati2">
-        
+    <ul class="notification_data_in_h2" >
+      <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>  
     </ul></div>
 
                                             </div>
@@ -304,6 +304,49 @@
  
 <!-- script for update all read notification start-->
 <script type="text/javascript">
+    
+       $(document).ready(function () {
+
+        var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
+        if (segment != "chat") {
+            chatmsg();
+        }
+        ;
+    });  // khyati chnages  start
+    function chatmsg()
+    {
+        // khyati chnages  start
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "chat/userajax/6/6" ?>',
+            dataType: 'json',
+            data: '',
+//            beforeSend: function () {
+//            
+//                $('#msg_not_loader').show();
+//           },
+//        
+//        complete: function () {
+//            $('#msg_not_loader').show();
+//        },
+            success: function (data) { //alert(data);
+
+                $('#userlist').html(data.leftbar);
+               $('.notification_data_in_h2').html(data.headertwo);
+                $('#seemsg').html(data.seeall);
+                setTimeout(
+                        chatmsg,
+                        1000
+                        );
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+
+    };
+
+   
 
     function getmsgNotification() {
         msgNotification();

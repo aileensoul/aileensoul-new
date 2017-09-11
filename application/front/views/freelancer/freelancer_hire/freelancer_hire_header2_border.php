@@ -51,8 +51,9 @@
 <!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
 
 <div>
+    <!--<ul class="notification_data_in_h2" style="text-align: center; width: 100%;">-->
     <ul class="notification_data_in_h2">
-        
+        <div class="fw" id="msg_not_loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
     </ul>
     </div>
 
@@ -222,6 +223,14 @@
                 url: '<?php echo base_url() . "chat/userajax/3/4" ?>',
                 dataType: 'json',
                 data: '',
+//                beforeSend: function () {
+//            
+//                $('#msg_not_loader').show();
+//           },
+//        
+//        complete: function () {
+//            $('#msg_not_loader').show();
+//        },
                 success: function (data) { //alert(data);
 
                     $('#userlist').html(data.leftbar);

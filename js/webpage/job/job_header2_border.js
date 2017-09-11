@@ -108,6 +108,14 @@ $(document).ready(function () {
                url: base_url +'chat/userajax/1/2',
                dataType: 'json',
                data: '',
+               beforeSend: function () {
+            
+                $('#msg_not_loader').show();
+           },
+        
+        complete: function () {
+            $('#msg_not_loader').show();
+        },
                success: function (data) { //alert(data);
    
                    $('#userlist').html(data.leftbar);

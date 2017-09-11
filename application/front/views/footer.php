@@ -72,6 +72,14 @@ $.fn.preload = function (fn) {
             url: '<?php echo base_url() . "notification/not_header" ?>',
             dataType: 'json',
             data: '',
+            beforeSend: function () {
+            
+                $('#gen_not_loader').show();
+           },
+        
+        complete: function () {
+            $('#gen_not_loader').hide();
+        },
             success: function (data) {
                 //    alert(data);
                 $('.' + 'notification_data_in').html(data.notification);
@@ -227,6 +235,7 @@ $.fn.preload = function (fn) {
             async: true,
             cache: false,
             timeout: 50000,
+            
             success: function (data) {
                 addmsg("new", data);
                 setTimeout(
