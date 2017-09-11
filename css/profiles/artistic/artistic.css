@@ -3312,9 +3312,10 @@ overflow: hidden;
         padding-bottom: 0 !important;
     }
     .common-form1{padding-top:20px; width:100%; float:left;}    
-    .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
+    .post-img-user{height: 100%; line-height: 0; font-size: 18px; padding: 40px 0; width: 100%;}
 }
 @media screen and (max-width: 991px){
+    #paddingtop_fixed_art.container{padding-left:0; padding-right:0;}
      .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
     .right_side_posrt{width: 100%;}
     .art_container{padding: 0px;}
@@ -3471,6 +3472,13 @@ overflow: hidden;
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+    .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
+    .header2 {
+    top: 46px;
+}
+#paddingtop_fixed_art {
+    padding-top: 75px !important;
+}
     .hidden-mob {
         display: none;
     }
@@ -3774,7 +3782,7 @@ overflow: hidden;
     .like_user_list_main_desc{max-width: 75%;}
     .pt_mn2{padding-top: 20px !important;}
     .post-design-box .post-design-desc .fr{right: 0; padding: 6px 16px;}
-    .post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+    .post-img-user{font-size: 20px;line-height: 2; padding: 24px 0; }
     .two-images {
         height: 200px;
     }
@@ -3864,6 +3872,9 @@ overflow: hidden;
     }
 }
 @media screen and (max-width: 479px){
+    .post-design-box .post-design-desc input.my_text {
+    padding-right: 35px;
+}
     .bui_bcon {width: 49%;}
     .folle_text {width: 42%;}
     .popup-text textarea{ font-size: 12px!important;  }
@@ -4158,10 +4169,15 @@ overflow: hidden;
     .bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
-    
+    .header2 {
+    top: 42px;
+}#paddingtop_fixed_art {
+    padding-top: 70px !important;
+}
+.post-design-name ul li .post_dot{max-width: 60%;}
     .audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
     .audio_source audio {width: 150px;}
-    .post-design-name{width: 66%;}
+    .post-design-name{width: 60%;}
     .addcontact-left{width: 70%;}
     .addcontact-right{width: 30%;}
     .user_lst ul li button{

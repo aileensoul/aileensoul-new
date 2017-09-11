@@ -14562,7 +14562,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
