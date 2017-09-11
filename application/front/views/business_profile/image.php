@@ -117,11 +117,12 @@
                                                             ?>
                                                             <div style="float: left;">
                                                                 <div class="hs-submit full-width fl">
-                                                                    <input id="bui_img_delete" type="button" value="" onclick="delete_job_exp(<?php echo $image['image_id']; ?>);" style="display: none;"> 
-
+<!--                                                                    <input id="bui_img_delete" type="button" onclick="delete_job_exp(<?php echo $image['image_id']; ?>);" style="display: none;"> -->
+                                                                    <a href="javascript:void(0);" class="click_close_icon" onclick="delete_job_exp(<?php echo $image['image_id']; ?>);">
                                                                     <div class="bui_close">
                                                                         <label for="bui_img_delete"><i class="fa fa-times" aria-hidden="true"></i></label>
                                                                     </div>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                             <?php // }  ?>
