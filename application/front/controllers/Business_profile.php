@@ -606,6 +606,9 @@ class Business_profile extends MY_Controller {
             $files = $_FILES;
             $count = count($_FILES['image1']['name']);
 
+            $s3 = new S3(awsAccessKey, awsSecretKey);
+            $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+
             for ($i = 0; $i < $count; $i++) {
                 $_FILES['image1']['name'] = $files['image1']['name'][$i];
                 $_FILES['image1']['type'] = $files['image1']['type'][$i];
@@ -626,6 +629,38 @@ class Business_profile extends MY_Controller {
                     // $uploadData[$i]['file_name'] = $fileData['file_name'];
                     $response['result'][] = $this->upload->data();
 
+
+                    $main_image_size = $_FILES['image1']['size'];
+
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
+                    } else {
+                        $quality = "100%";
+                    }
+
+                    /* RESIZE */
+
+                    $business_profile_detail_main[$i]['image_library'] = 'gd2';
+                    $business_profile_detail_main[$i]['source_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_main[$i]['new_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_main[$i]['quality'] = $quality;
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $business_profile_detail_main[$i], $instanse10);
+                    $this->$instanse10->watermark();
+
+                    /* RESIZE */
+
+                    $main_image = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
                     $image_width = $response['result'][$i]['image_width'];
                     $image_height = $response['result'][$i]['image_height'];
 
@@ -645,20 +680,20 @@ class Business_profile extends MY_Controller {
                         $n_h = $thumb_image_height;
                     }
 
-                    $business_profile_post_thumb[$i]['image_library'] = 'gd2';
-                    $business_profile_post_thumb[$i]['source_image'] = $this->config->item('bus_profile_main_upload_path') . $response['result'][$i]['file_name'];
-                    $business_profile_post_thumb[$i]['new_image'] = $this->config->item('bus_profile_thumb_upload_path') . $response['result'][$i]['file_name'];
-                    $business_profile_post_thumb[$i]['create_thumb'] = TRUE;
-                    $business_profile_post_thumb[$i]['maintain_ratio'] = FALSE;
-                    $business_profile_post_thumb[$i]['thumb_marker'] = '';
-                    $business_profile_post_thumb[$i]['width'] = $n_w;
-                    $business_profile_post_thumb[$i]['height'] = $n_h;
-                    $business_profile_post_thumb[$i]['quality'] = "100%";
-                    $business_profile_post_thumb[$i]['x_axis'] = '0';
-                    $business_profile_post_thumb[$i]['y_axis'] = '0';
+                    $business_profile_detail_thumb[$i]['image_library'] = 'gd2';
+                    $business_profile_detail_thumb[$i]['source_image'] = $this->config->item('bus_detail_main_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_thumb[$i]['new_image'] = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $business_profile_detail_thumb[$i]['create_thumb'] = TRUE;
+                    $business_profile_detail_thumb[$i]['maintain_ratio'] = FALSE;
+                    $business_profile_detail_thumb[$i]['thumb_marker'] = '';
+                    $business_profile_detail_thumb[$i]['width'] = $n_w;
+                    $business_profile_detail_thumb[$i]['height'] = $n_h;
+                    $business_profile_detail_thumb[$i]['quality'] = "100%";
+                    $business_profile_detail_thumb[$i]['x_axis'] = '0';
+                    $business_profile_detail_thumb[$i]['y_axis'] = '0';
                     $instanse = "image_$i";
                     //Loading Image Library
-                    $this->load->library('image_lib', $business_profile_post_thumb[$i], $instanse);
+                    $this->load->library('image_lib', $business_profile_detail_thumb[$i], $instanse);
                     $dataimage = $response['result'][$i]['file_name'];
                     //Creating Thumbnail
                     $this->$instanse->resize();
@@ -666,14 +701,14 @@ class Business_profile extends MY_Controller {
                     // reconfigure the image lib for cropping
                     $conf_new[$i] = array(
                         'image_library' => 'gd2',
-                        'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                        'source_image' => $business_profile_detail_thumb[$i]['new_image'],
                         'create_thumb' => FALSE,
                         'maintain_ratio' => FALSE,
                         'width' => $thumb_image_width,
                         'height' => $thumb_image_height
                     );
 
-                    $conf_new[$i]['new_image'] = $this->config->item('bus_profile_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $conf_new[$i]['new_image'] = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
 
                     $left = ($n_w / 2) - ($thumb_image_width / 2);
                     $top = ($n_h / 2) - ($thumb_image_height / 2);
@@ -687,6 +722,9 @@ class Business_profile extends MY_Controller {
                     $dataimage = $response['result'][$i]['file_name'];
                     //Creating Thumbnail
                     $this->$instanse1->crop();
+
+                    $resize_image = $this->config->item('bus_detail_thumb_upload_path') . $response['result'][$i]['file_name'];
+                    $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
 
                     /* CROP */
 
@@ -907,9 +945,9 @@ class Business_profile extends MY_Controller {
             $post[$key] = $row['business_profile_post_id'];
         }
         array_multisort($post, SORT_DESC, $new);
-        
+
         /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
-        
+
         // GET USER BUSINESS DATA START
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -937,9 +975,9 @@ class Business_profile extends MY_Controller {
         $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
         $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
-        
+
         $this->data['follow_user_suggest_count'] = $userlistview[0]['total'];
-        
+
         /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
@@ -992,7 +1030,7 @@ class Business_profile extends MY_Controller {
     public function business_profile_deletepost() {
 
         $id = $_POST["business_profile_post_id"];
-        
+
 
         $data = array(
             'is_delete' => 1,
@@ -4006,7 +4044,7 @@ class Business_profile extends MY_Controller {
             $quality = "100%";
         }
         /* RESIZE */
-        
+
 //        $business_profile_bg['image_library'] = 'gd2';
 //        $business_profile_bg['source_image'] = $main_image;
 //        $business_profile_bg['new_image'] = $main_image;
@@ -8860,25 +8898,25 @@ class Business_profile extends MY_Controller {
                     if ($busdata[0]['business_user_image']) {
 
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image'])) {
-                          /*  $a = $busdata[0]['company_name'];
-                            $acr = substr($a, 0, 1);
+                            /*  $a = $busdata[0]['company_name'];
+                              $acr = substr($a, 0, 1);
 
-                            $contactdata .= '<div class="post-img-div">';
-                            $contactdata .= ucfirst(strtolower($acr));
-                            $contactdata .= '</div>'; */
-                            $contactdata .= '<img src="'. base_url() . NOBUSIMAGE . '">';
+                              $contactdata .= '<div class="post-img-div">';
+                              $contactdata .= ucfirst(strtolower($acr));
+                              $contactdata .= '</div>'; */
+                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
                             $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
                         }
                     } else {
-                    /*    $a = $busdata[0]['company_name'];
-                        $acr = substr($a, 0, 1);
+                        /*    $a = $busdata[0]['company_name'];
+                          $acr = substr($a, 0, 1);
 
-                        $contactdata .= '<div class="post-img-div">';
-                        $contactdata .= ucfirst(strtolower($acr));
-                        $contactdata .= '</div>'; */
-                        $contactdata .= '<img src="'. base_url() . NOBUSIMAGE .  '">';
+                          $contactdata .= '<div class="post-img-div">';
+                          $contactdata .= ucfirst(strtolower($acr));
+                          $contactdata .= '</div>'; */
+                        $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text">';
@@ -12389,16 +12427,16 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
             echo json_encode($city_data);
         }
     }
-    
-    public function business_home_follow_ignore(){
+
+    public function business_home_follow_ignore() {
         $userid = $this->session->userdata('aileenuser');
         $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
         $follow_to = $_POST['follow_to'];
-       
+
         $insert_data['profile'] = '2';
         $insert_data['user_from'] = $business_profile_id;
         $insert_data['user_to'] = $follow_to;
-        
+
         $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
     }
 

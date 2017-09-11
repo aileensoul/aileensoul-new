@@ -223,13 +223,13 @@
                                                                                 ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i">          
-                                                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $image['image_name']); ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
                                                                                     </div>
                                                                                 </div>
                                                                             <?php } else { ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i2">  
-                                                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $image['image_name']); ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
                                                                                         <div class="view_bui"> 
                                                                                             <a   id="myBtn">view all</a>
                                                                                         </div>
@@ -249,16 +249,14 @@
                                                                             if ($i <= 2) {
                                                                                 ?>
                                                                                 <div class="column1">
-                                                                                    <div class="bui_res_i">          <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $image['image_name']); ?>"  onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
+                                                                                    <div class="bui_res_i"> <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
                                                                                     </div>
                                                                                 </div>
                                                                             <?php } else { ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i">  
-                                                                                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $image['image_name']); ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
-                                                                                        <!-- <div class="view_bui"> <a >view all</a></div> -->
-
-
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                       
                                                                                     </div>
 
                                                                                 </div>
@@ -282,7 +280,7 @@
 
                                                                         if ($businessdata1[0]['user_id'] == $userid) {
                                                                             ?>
-                                                                            <a href="<?php echo base_url('business_profile/image') ?>">Add Images</a>
+                                                                            <a href="<?php echo base_url('business-profile/image') ?>">Add Images</a>
 
                                                                         <?php } ?>
 
@@ -306,7 +304,7 @@
                                                                                     foreach ($busimagedata as $imagemul) {
                                                                                         ?>
                                                                                         <div class="bui_popup_img"> 
-                                                                                            <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $imagemul['image_name']); ?>"  onclick="openModal(); currentSlide(<?php echo $j; ?>)" class="hover-shadow cursor">   </div> 
+                                                                                            <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $imagemul['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $j; ?>)" class="hover-shadow cursor">   </div> 
                                                                                         <?php
                                                                                         $j++;
                                                                                     }
@@ -314,9 +312,9 @@
 
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="modal-footer">
+<!--                                                                            <div class="modal-footer">
                                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                            </div>
+                                                                            </div>-->
                                                                         </div>
 
                                                                     </div>
@@ -334,7 +332,7 @@
                                                                             <div class="mySlides">
                                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($busimagedata); ?></div>
                                                                                 <div class="slider_img">
-                                                                                    <img src="<?php echo base_url($this->config->item('bus_profile_main_upload_path') . $image['image_name']); ?> " >
+                                                                                    <img src="<?php echo BUS_DETAIL_MAIN_UPLOAD_URL . $image['image_name']; ?> " >
                                                                                 </div>
                                                                             </div>
 
