@@ -1,3 +1,74 @@
+<script type="text/javascript">
+
+    function addmsg_contact(type, msg)
+    {
+
+        if (msg == 0)
+        {
+            $("#addcontact_count").html('');
+            $('#addcontactLink').removeClass('contact_notification_available');
+
+        } else
+        {
+            $('#addcontact_count').html(msg);
+
+            $('#addcontact_count').css({"background-color": "#FF4500" , "height": "16px" ,"width": "16px" , "padding" : "3px 4px"});
+            document.getElementById('addcontact_count').style.display = 'block';
+
+            $('#addcontact_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
+
+            $('#addcontactLink').addClass('contact_notification_available');
+
+        }
+
+    }
+
+    function waitForMsg_contact()
+    {
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url(); ?>business_profile/contact_count",
+
+            async: true,
+            cache: false,
+            timeout: 50000,
+
+            success: function (data) {
+                addmsg_contact("new", data);
+                setTimeout(
+                        waitForMsg_contact,
+                        10000
+                        );
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                addmsg("error", textStatus + " (" + errorThrown + ")");
+//                setTimeout(
+//                        waitForMsg,
+//                        15000);
+            }
+        });
+    }
+    ;
+
+    $(document).ready(function () {
+
+        waitForMsg_contact();
+
+    });
+    $(document).ready(function () {
+        $menuLeft = $('.pushmenu-left');
+        $nav_list = $('#nav_list');
+
+        $nav_list.click(function () {
+            $(this).toggleClass('active');
+            $('.pushmenu-push').toggleClass('pushmenu-push-toright');
+            $menuLeft.toggleClass('pushmenu-open');
+        });
+    });
+
+</script>
+<!-- script for fetch all unread notification end-->
+
 <script>
     $(document).ready(function () {
         $("#addcontactBody").click(function (event) {
@@ -287,8 +358,6 @@
 </div>
 <!-- Model Popup Close -->
 
-
-
 <script type="text/javascript">
 
     function deactivate(clicked_id) {
@@ -471,7 +540,7 @@
             };
     function getmsgNotification() {
         msgNotification();
-        msgheader();
+//        msgheader();
     }
 
     function msgNotification() {
