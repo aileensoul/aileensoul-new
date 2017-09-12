@@ -130,7 +130,7 @@ $.fn.preload = function (fn) {
             $menuLeft.toggleClass('pushmenu-open');
         });
         // CONTACT PERSON COUNT
-        waitForMsg_contact();
+       // waitForMsg_contact();
         $menuLeft = $('.pushmenu-left');
         $nav_list = $('#nav_list');
         $nav_list.click(function () {
