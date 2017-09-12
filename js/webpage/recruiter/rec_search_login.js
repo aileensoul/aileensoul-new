@@ -1,5 +1,5 @@
  //AJAX DATA LOAD BY LAZZY LOADER START
-$(document).ready(function () { alert("hi");
+$(document).ready(function () { 
     recommen_candidate_post();
     
     $(window).scroll(function () {
