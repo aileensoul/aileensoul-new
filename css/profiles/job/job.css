@@ -1740,7 +1740,7 @@ label.cameraButton input[accept*="camera"] {
 }
 @media screen and (max-width: 479px) {
     .profile-job-details .job_companyname {
-    width: 247px;
+    width: 197px;
 }
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
@@ -1826,7 +1826,7 @@ label.cameraButton input[accept*="camera"] {
         line-height: 1;
     }
 	.profile-job-details .job_companyname {
-       line-height: 1;
+       line-height: 2;
      }
     .profile-job-details .display_inline {
         font-size: 12px;

@@ -3220,7 +3220,11 @@ overflow: hidden;
 .art_pdf .image_profile{width: 80px; height: 80px; margin: 22px;}
 .file-preview-thumbnails #outerContainer #mainContainer{min-width:100% !important; width:100% !important;}
 
-
+.bestofmine_image{color: #f00;
+display: block;
+font-size: 12px;
+padding-left: 11px;}
+#filename{font-size: 11px!important;}
 
 
 /***  media query  ***/

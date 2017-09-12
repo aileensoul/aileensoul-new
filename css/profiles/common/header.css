@@ -1423,6 +1423,7 @@ background-color: white;}
 	#InboxContainer{right: -5px;}
 }
 @media screen and (max-width: 1279px) {
+    .reactivate_header h2{font-size: 28px;}
 	.header2{width:1140px;}
 	#InboxContainer:before {right:27px;}
 }
@@ -1487,6 +1488,7 @@ background-color: white;}
     }
 }
 @media screen and (max-width: 767px) {
+    .reactivate_header h2{ font-size: 16px; }
     .cameraButton .tooltiptext{font-size: 14px; font-weight: normal!important;}
     .back{width: 27%;}
 	.logo h2 {
@@ -1698,8 +1700,7 @@ fieldset{padding: 9px 8px!important;}
 	#notificationLink span {
 		margin-top: 0.2px;
 		padding: 4px 5px!important;
-	}
-	#notificationLink span{margin-left:6px;}
+	}  
     #add_contact #addcontactContainer::before {
 		right: 218px;
 	}
