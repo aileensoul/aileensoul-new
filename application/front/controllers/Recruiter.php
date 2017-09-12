@@ -12,7 +12,7 @@ class Recruiter extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('email_model');
         $this->lang->load('message', 'english');
-
+        $this->load->library('S3');
         include ('include.php');
   
     }
@@ -4246,22 +4246,56 @@ class Recruiter extends MY_Controller {
             }
         }
         
+//        $data = $_POST['image'];
+//        $rec_bg_path = $this->config->item('rec_bg_main_upload_path');
+//        $imageName = time() . '.png';
+//        $base64string = $data;
+//        file_put_contents($rec_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+   
+        
         $data = $_POST['image'];
-
-
-        $rec_bg_path = $this->config->item('rec_bg_main_upload_path');
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
+        $user_bg_path = $this->config->item('rec_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($rec_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
 
-        $rec_thumb_path = $this->config->item('rec_bg_thumb_upload_path');
-        $rec_thumb_width = $this->config->item('rec_bg_thumb_width');
-        $rec_thumb_height = $this->config->item('rec_bg_thumb_height');
+        $main_image = $user_bg_path . $imageName;
 
-        $upload_image = $rec_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
 
-        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $rec_thumb_path, $rec_thumb_width, $rec_thumb_height);
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
 
+        
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+        $user_thumb_path = $this->config->item('rec_bg_thumb_upload_path');
+        $user_thumb_width = $this->config->item('rec_bg_thumb_width');
+        $user_thumb_height = $this->config->item('rec_bg_thumb_height');
+
+        $upload_image = $user_bg_path . $imageName;
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+        
         $data = array(
             'profile_background' => $imageName
         );

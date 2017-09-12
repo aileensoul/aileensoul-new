@@ -1603,6 +1603,7 @@ function check_length(my_form) {
         // Alert message if maximum limit is reached. 
         // If required Alert can be removed. 
         var msg = "You have reached your maximum limit of characters allowed";
+        $("#test-upload_product").prop("readonly", true);
         $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#bidmodal').modal('show');
         // Reached the Maximum length so trim the textarea
@@ -1620,6 +1621,7 @@ function check_lengthedit(abc)
     if (product_name.length > maxLen) {
         text_num = maxLen - product_name.length;
         var msg = "You have reached your maximum limit of characters allowed";
+        $("#test-upload_product").prop("readonly", true);
         $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#postedit').modal('show');
         var substrval = product_name.substring(0, maxLen);
@@ -1849,6 +1851,7 @@ $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         //$( "#bidmodal" ).hide();
         $('#query').modal('hide');
+        $("#test-upload_product").prop("readonly", false);
         //$('.modal-post').show();
     }
 });
@@ -1912,6 +1915,10 @@ $(document).ready(function () {
 
 $('.modal-close').on('click', function () {
     $('#myModal').modal('show');
+    $('#myModal3').modal('show');
+//    document.getElementById('myModal').style.display = 'block';
+//    document.getElementById('myModal3').style.display = 'block';
+    $("#test-upload_product").prop("readonly", false);
 });
 //<khyati chnages 24-4 start
 

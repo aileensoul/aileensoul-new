@@ -144,13 +144,16 @@ $.fn.preload = function (fn) {
             $("#InboxContainer").hide();
             $(".dropdown-menu").hide();
             $("#acon").hide();
+            $("#InboxContainer").fadeOut("slow");
+            $(".dropdown-menu").fadeOut("slow");
         });
         // EDIT PROFILE DROPDOWN 
         $('.dropdown-user').click(function (event) {
             event.stopPropagation();
             $(".dropdown-menu").fadeToggle("fast");
         });
-        $(".dropdown-menu").on("dropdown-user", function (event) {
+        $(".dropdown-menu").on("dropdown-user", function () {
+            $(".dropdown-menu").hide();
             // event.stopPropagation();
         });
 
@@ -218,6 +221,7 @@ $.fn.preload = function (fn) {
         if (msg == 0)
         {
             $("#notification_count").html('');
+            $('#notification_count').css({"background-color": " ", "padding": "5px 6px"});
             $('#notificationLink').removeClass('notification_available');
         } else
         { 
@@ -225,6 +229,7 @@ $.fn.preload = function (fn) {
             $('#notification_count').css({"background-color": "#FF4500", "padding": "5px 6px"});
             $('#notificationLink').addClass('notification_available');
             document.getElementById('message_count').style.display = "none";
+            document.getElementById('notification_count').style.display = 'block';
         }
     }
     function waitForMsg()
@@ -286,10 +291,12 @@ $.fn.preload = function (fn) {
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
             $("#notificationContainer").hide();
+            $("#InboxContainer").hide();
+            $("#acon").hide();
         }
     });
 
-
+/*
     $(document).on('keydown', function (e) {
         if (e.keyCode === 27) {
             $("#InboxContainer").hide();
@@ -301,6 +308,7 @@ $.fn.preload = function (fn) {
             $("#acon").hide();
         }
     });
+    */
     $(document).on("click", function (event) {
         var $trigger = $(".myDropdown");
         if ($trigger !== event.target && !$trigger.has(event.target).length) {
@@ -321,7 +329,7 @@ $.fn.preload = function (fn) {
             $("#dropdown-content_hover").hide();
             $("#addcontactContainer").hide();
             $("#notificationContainer").hide();
-            $("#notification_count").hide();
+//            $("#notification_count").hide();
 
 
             $("#Frnd_reqContainer").hide();

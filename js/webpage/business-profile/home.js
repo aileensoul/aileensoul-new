@@ -795,8 +795,8 @@ function check_length(my_form)
         // Alert message if maximum limit is reached. 
         // If required Alert can be removed. 
         var msg = "You have reached your maximum limit of characters allowed";
-//        $("#test-upload-product").prop("readonly", true);
-        document.getElementById("test-upload-product").readOnly = true;
+        $("#test-upload-product").prop("readonly", true);
+//        document.getElementById("test-upload-product").readOnly = true;
         $('.biderror .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#posterrormodal').modal('show');
 
@@ -804,7 +804,7 @@ function check_length(my_form)
         my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
     } else {
 //        $("#test-upload-product").prop("readonly", false);
-        document.getElementById("test-upload-product").readOnly = false;
+        //document.getElementById("test-upload-product").readOnly = false;
         // Maximum length not reached so update the value of my_text counter
         my_form.text_num.value = maxLen - my_form.my_text.value.length;
     }
@@ -818,6 +818,7 @@ function check_lengthedit(abc)
     if (product_name.length > maxLen) {
         text_num = maxLen - product_name.length;
         var msg = "You have reached your maximum limit of characters allowed";
+        $("#test-upload-product").prop("readonly", true);
         $('#postedit .mes').html("<div class='pop_content'>" + msg + "</div>");
         $('#postedit').modal('show');
         var substrval = product_name.substring(0, maxLen);
@@ -1532,12 +1533,15 @@ $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         //$( "#bidmodal" ).hide();
         $('#likeusermodal').modal('hide');
+        $("#test-upload-product").prop("readonly", false);
     }
 });
 
 $('.posterror-modal-close').on('click', function () {
 //    $('#myModal').modal('show');
     document.getElementById('myModal').style.display = 'block';
+        $("#test-upload-product").prop("readonly", false);
+
 });
 
 

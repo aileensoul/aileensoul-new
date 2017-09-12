@@ -242,13 +242,20 @@ $route['recruiter/basic-information'] = "recruiter/rec_basic_information";
 $route['recruiter/company-information'] = "recruiter/company_info_form";
 
 $route['recruiter/home'] = "recruiter/recommen_candidate";
+
 $route['recruiter/profile'] = "recruiter/rec_profile";
+$route['recruiter/profile/(:any)'] = "recruiter/rec_profile/$1";
+
 $route['recruiter/save-candidate'] = "recruiter/save_candidate";
 
 $route['recruiter/post'] = "recruiter/rec_post";
+$route['recruiter/post/(:any)'] = "recruiter/rec_post/$1";
+
 $route['recruiter/add-post'] = "recruiter/add_post";
+
 $route['recruiter/post-insert'] = "recruiter/add_post";
 
 $route['recruiter/edit-post'] = "recruiter/edit_post";
 $route['recruiter/edit-post/(:any)'] = "recruiter/edit_post/$1";
+
 $route['recruiter/search'] = "recruiter/recruiter_search";

@@ -14437,8 +14437,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                         $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
-                        $return_html .= '<div class="all-comment-comment-box">';
-                        $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">
+                        $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
 
@@ -14450,15 +14449,15 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $acr = substr($a, 0, 1);
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
-                                
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div>';
+                                $return_html .= '</div> </a>';
 
                             } else {
-                                // $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
                                 $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
-                                // $return_html .= '</a>';
+                                $return_html .= '</a>';
                             }
                         } else {
 
@@ -14468,10 +14467,10 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
 
-                                // $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> ';
+                                $return_html .= '</div> </a>';
                         }
                         $return_html .= '</div>
                 <div class="comment-name">
@@ -14480,7 +14479,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                         $return_html .= '</b>';
                          $return_html .= '</br>';
 
-                $return_html .= '</div></a>
+                $return_html .= '</div>
                 <div class="comment-details" id= "showcomment' . $rowdata['artistic_post_comment_id'] . '">
                     <div id="lessmore' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">';
                         $small = substr($rowdata['comments'], 0, 180);
@@ -14563,7 +14562,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img hidden-mob"> ';
+    <div class="post-design-proo-img"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
