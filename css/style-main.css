@@ -1700,7 +1700,7 @@ height: 146px;}
 	.right-profile .right-menu-box:hover{background-size:100%;}*/
 	footer .container{padding:20px 15px 0px;}
 	footer ul{padding-top:0;}
-	.banner{padding-top:21px;}
+	.banner{padding-top:16px;}
 	.cameraButton .fa.fa-camera{height:20px; width:24px; background-size:100%;}
 	.banner-box .upload-camera{height:34px; width:44px;}
 	.cameraButton .tooltiptext{padding:3px 0 !important; top:-9px !important;}
@@ -1775,6 +1775,9 @@ width: 93px;}
 @media screen and (max-width: 360px) {
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
+	.banner {
+    padding-top: 10px;
+}
 }
 @media screen and (max-width: 320px) {
 	.por_content ul li{padding: 10px;}

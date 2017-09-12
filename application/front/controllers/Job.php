@@ -16,6 +16,18 @@ class Job extends MY_Controller {
         $this->load->library('S3');
         $this->load->library('upload');
 
+      //This function is there only one time users slug created
+      function slug_script() 
+      {
+        $this->db->select('job_id,fname,lname');
+        $res = $this->db->get('job_reg')->result();
+        foreach ($res as $k => $v) {
+            $data = array('slug' => $this->setcategory_slug($v->fname."-". $v->lname, 'slug', 'job_reg'));
+            $this->db->where('job_id', $v->job_id);
+            $this->db->update('job_reg', $data);
+        }
+      }
+
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
     }
@@ -165,13 +177,6 @@ class Job extends MY_Controller {
                 $this->load->view('job/index', $this->data);
         
         } else {
-          
-            //get data by id only
-
-            $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-            $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if ($userdata) {
-               
                 $data = array(
                     'fname' => ucfirst($this->input->post('fname')),
                     'lname' => ucfirst($this->input->post('lname')),
@@ -183,7 +188,7 @@ class Job extends MY_Controller {
                     'city_id' =>  $citytitle,
                     'pincode' =>  $this->input->post('pincode'),
                     'address' =>   $this->input->post('address'),
-                    'user_id' => $userid,
+                    'slug'=> $this->setcategory_slug($this->input->post('fname').'-'.$this->input->post('lname'), 'slug', 'job_reg'),
                     'modified_date' => date('Y-m-d h:i:s', time())
                 );
                   
@@ -196,37 +201,8 @@ class Job extends MY_Controller {
                     $this->session->flashdata('error', 'Your data not inserted');
                     redirect('job/basic-information', refresh);
                 }
-            } else {
-
-                $data = array(
-                    'fname' => ucfirst($this->input->post('fname')),
-                    'lname' => ucfirst($this->input->post('lname')),
-                    'email' => $this->input->post('email'),
-                    'phnno' => $this->input->post('phnno'),
-                    'language' => $language1,
-                    'dob' => date('Y-m-d', strtotime($bod)),
-                    'gender' => $this->input->post('gender'),
-                    'city_id' =>  $citytitle,
-                    'pincode' => $this->input->post('pincode'),
-                    'address' =>  $this->input->post('address'),
-                    'status' => 1,
-                    'is_delete' => 0,
-                    'created_date' => date('Y-m-d h:i:s', time()),
-                    'user_id' => $userid,
-                );
-
-                $insert_id = $this->common->insert_data_getid($data, 'job_reg');
-                if ($insert_id) {
-                    $this->session->set_flashdata('success', 'Basic information updated successfully');
-                    redirect('job/qualification');
-                } else {
-                    $this->session->flashdata('error', 'Sorry!! Your data not inserted');
-                    redirect('job/basic-information', 'refresh');
-                }
-            }
-        }
-    }
-
+            } 
+        }   
 //job seeker basic info controller end
 //job seeker email already exist checking controller start
 
@@ -271,7 +247,7 @@ class Job extends MY_Controller {
        $this->job_deactive_profile(); 
 
         $this->data['postid'] = $postid;
-      
+
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
@@ -619,42 +595,6 @@ class Job extends MY_Controller {
             $thumb_image= $job_thumb['new_image'];
             $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
             //S3 BUCKET STORE THUMB IMAGE END
-
-          // $job_certificate = '';
-          //   $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
-          //   $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
-          //   $job['max_size'] = $this->config->item('job_edu_main_max_size');
-          //   $job['max_width'] = $this->config->item('job_edu_main_max_width');
-          //   $job['max_height'] = $this->config->item('job_edu_main_max_height');
-          //   $this->load->library('upload');
-          //   $this->upload->initialize($job);
-          //   //Uploading Image
-          //   $this->upload->do_upload('edu_certificate_secondary');
-          //   //Getting Uploaded Image File Data
-          //   $imgdata = $this->upload->data();
-          //   $imgerror = $this->upload->display_errors();
-           
-               
-          //       //Configuring Thumbnail 
-          //       $job_thumb['image_library'] = 'gd2';
-          //       $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
-          //       $job_thumb['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
-          //       $job_thumb['create_thumb'] = TRUE;
-          //       $job_thumb['maintain_ratio'] = TRUE;
-          //       $job_thumb['thumb_marker'] = '';
-          //       $job_thumb['width'] = $this->config->item('job_edu_thumb_width');
-          //       $job_thumb['height'] = 2;
-          //       $job_thumb['master_dim'] = 'width';
-          //       $job_thumb['quality'] = "100%";
-          //       $job_thumb['x_axis'] = '0';
-          //       $job_thumb['y_axis'] = '0';
-          //       //Loading Image Library
-          //       $this->load->library('image_lib', $job_thumb);
-          //       $dataimage = $imgdata['file_name'];
-          //       //Creating Thumbnail
-          //       $this->image_lib->resize();
-          //       $thumberror = $this->image_lib->display_errors();
-          //       $thumberror = '';
         }
 
 
@@ -1953,13 +1893,15 @@ $files[] = $_FILES;
 //job seeker WORK EXPERIENCE controller end
 
     //job seeker PRINTDATA controller Start
-    public function job_printpreview($id="") {
-
+    public function job_printpreview($slug="") {
+       
         $this->job_deactive_profile(); 
 
         $userid = $this->session->userdata('aileenuser');
 
-        if ($id == $userid || $id == '') {
+        $slug_user = $this->db->get_where('job_reg', array('slug' => $slug))->row()->slug;
+      
+        if ($slug == $slug_user || $slug == '') {
            $this->job_apply_check(); 
           
             //for getting data job_reg table
@@ -3708,7 +3650,8 @@ public function delete_workexp()
                     'is_delete' => 0,
                     'created_date' => date('Y-m-d h:i:s', time()),
                     'user_id' => $userid,
-                    'job_step' => 10
+                    'job_step' => 10,
+                    'slug'=> $this->setcategory_slug($this->input->post('first_name').'-'.$this->input->post('last_name'), 'slug', 'job_reg')
                 );
       
                 $insert_id = $this->common->insert_data_getid($data, 'job_reg');
@@ -5549,5 +5492,33 @@ echo $return_html;
 }
 //GET SEARCH DATA WITH AJAX END
 
+// CREATE SLUG START
+public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $slugname = $oldslugname = $this->create_slug($slugname);
+        $i = 1;
+        while ($this->comparecategory_slug($slugname, $filedname, $tablename, $notin_id) > 0) {
+            $slugname = $oldslugname . '-' . $i;
+            $i++;
+        }return $slugname;
+}
+
+public function comparecategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $this->db->where($filedname, $slugname);
+        if (isset($notin_id) && $notin_id != "" && count($notin_id) > 0 && !empty($notin_id)) {
+            $this->db->where($notin_id);
+        }
+        $num_rows = $this->db->count_all_results($tablename);
+        return $num_rows;
+}
+
+public function create_slug($string) {
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower(stripslashes($string)));
+        $slug = preg_replace('/[-]+/', '-', $slug);
+        $slug = trim($slug, '-');
+        return $slug;
+}
+
+
+  // CREATE SLUG END
 
 }

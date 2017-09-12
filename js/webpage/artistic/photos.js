@@ -42,6 +42,7 @@ function openModal() {
    } 
    function closeModal() {
        document.getElementById('myModal1').style.display = "none";
+       $("body").removeClass("model-open");
    } 
    var slideIndex = 1;
    showSlides(slideIndex); 
@@ -75,6 +76,7 @@ function openModal() {
    $(document).on('keydown', function (e) {
        if (e.keyCode === 27) {
            $("#myModal1").hide();
+           $("body").removeClass("model-open");
        }
    });
   

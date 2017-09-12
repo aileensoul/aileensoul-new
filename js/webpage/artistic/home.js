@@ -1654,14 +1654,30 @@ function insert_comment(clicked_id)
 
 function cursorpointer(abc){
 
-  
-var searchInput = document.getElementById('editpostdesc' + abc).innerHTML;
-var strLength = searchInput.length;
-//alert(strLength);
+   elem = document.getElementById('editpostdesc' + abc);
+   elem.focus();
+  setEndOfContenteditable(elem);
+}
 
-searchInput.focus();
-searchInput[0].setSelectionRange(strLength, strLength);
-//$('editpostdesc' + abc).focusTextToEnd();
+function setEndOfContenteditable(contentEditableElement)
+{
+    var range,selection;
+    if(document.createRange)
+    {
+        range = document.createRange();//Create a range (a range is a like the selection but invisible)
+        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        selection = window.getSelection();//get the selection object (allows you to change selection)
+        selection.removeAllRanges();//remove any selections already made
+        selection.addRange(range);//make the range you have just created the visible selection
+    }
+    else if(document.selection)
+    { 
+        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        range.select();//Select the range (make it the visible selection
+    }
 }
 
 
