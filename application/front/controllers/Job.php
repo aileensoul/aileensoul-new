@@ -323,7 +323,6 @@ class Job extends MY_Controller {
             }
         }
 
-       
         $this->data['title'] = 'Job Profile'.TITLEPOSTFIX;
         $this->load->view('job/job_education', $this->data);
     }
@@ -343,14 +342,14 @@ class Job extends MY_Controller {
 
 
       //S3 BUCKET ACCESS START
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+      $s3 = new S3(awsAccessKey, awsSecretKey);
+      $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
       //S3 BUCKET ACCESS START
 
       $error = '';
       if($_FILES['edu_certificate_primary']['name'] != '' ){
 
-         
+      //Configuring Main Image Start
         $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
         $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
         $this->upload->initialize($job);
@@ -385,45 +384,15 @@ class Job extends MY_Controller {
             $this->load->library('image_lib',  $job, $instanse10 );   
             $this->$instanse10->watermark();
             /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+            $main_image=$job['new_image'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
         }
+        //Configuring Main Image End
  
-
-//            $job_certificate = '';
-//             $job['image_library'] = 'gd2';
-//             $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
-//             $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
-//             $job['max_size'] = $this->config->item('job_edu_main_max_size');
-//             $job['max_width'] = $this->config->item('job_edu_main_max_width');
-//             $job['max_height'] = $this->config->item('job_edu_main_max_height');
-
-//             $main_image_size = $_FILES['edu_certificate_primary']['size'];
-
-//                  if ($main_image_size > '1000000') {
-//                             $quality = "50%";
-//                         } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-//                             $quality = "55%";
-//                         } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-//                             $quality = "60%";
-//                         } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-//                             $quality = "65%";
-//                         } elseif ($main_image_size > '1' && $main_image_size < '100') {
-//                             $quality = "70%";
-//                         } else {
-//                             $quality = "100%";
-//                         }
-//             $job['quality'] = $quality;
-
-//           echo "<pre>";print_r($job);die();
-//             $this->load->library('upload');
-//             $this->upload->initialize($job);
-//             //Uploading Image
-//             $this->upload->do_upload('edu_certificate_primary');
-//             //Getting Uploaded Image File Data
-//             $imgdata = $this->upload->data();
-//             $imgerror = $this->upload->display_errors();
-           
-             
-                //Configuring Thumbnail 
+              //Configuring Thumbnail Start
                 $job_thumb['image_library'] = 'gd2';
                 $job_thumb['source_image'] =  $this->config->item('job_edu_main_upload_path') .$imgdata['file_name'];
                 $job_thumb['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
@@ -447,6 +416,12 @@ class Job extends MY_Controller {
                 $thumberror = $this->$instanse->display_errors();
                 //echo "<pre>";print_r($thumberror);die();
                 $thumberror = '';
+              //Configuring Thumbnail End
+
+            //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_thumb['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET STORE THUMB IMAGE END
                
         }
          
