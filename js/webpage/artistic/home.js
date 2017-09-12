@@ -1,10 +1,3 @@
- // for cursor pointer starts script
-// $(document).ready(function () {
-//     var input = $(".textbuis");
-//     var len = input.val().length;
-//     input[0].focus();
-//     input[0].setSelectionRange(len, len);
-// });
  
  $('#post').on('click', function(){
         $('#myModal').modal('show');
@@ -1659,12 +1652,14 @@ function insert_comment(clicked_id)
    
    }
 
-function cursorpointer(){
-var MyDiv1 = document.getElementsByClassName('textbuis');
-var searchInput = MyDiv1.innerHTML
-var strLength = searchInput.val().length * 2;
-searchInput.focus();
-searchInput[0].setSelectionRange(strLength, strLength);
+function cursorpointer(abc){
+var searchInp = document.getElementById('editpostdesc' + abc);
+var searchInput = searchInp.innerHTML
+var strLength = searchInput.length;
+//alert(strLength);
+$(this).setCursorPosition(strLength);
+//searchInput.focus();
+//searchInput[0].setSelectionRange(strLength, strLength);
 }
 
 
