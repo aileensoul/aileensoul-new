@@ -2057,10 +2057,11 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
+                                
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
@@ -2075,7 +2076,6 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                                 $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
                                   } 
-                                $return_html .= '</a>';
 
                             } else {
                                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
@@ -2089,10 +2089,13 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                                     $return_html .=  '</div>'; 
 
-                                  $return_html .= '</a>';
+                                  
                             }
+                                $return_html .= '</a>';
+                            
                             $return_html .= '</div>
-                                            <div class="comment-name">
+                                            <div class="comment-name">';
+                                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">
                                                 <b title="' . $artname .' '.$artlastname.'">';
                             $return_html .= $artname;
                             $return_html .= ' ';
@@ -2100,7 +2103,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '</br>';
 
-                            $return_html .= '</b>
+                            $return_html .= '</b></a>
                                             </div>
                                             <div class="comment-details" id="showcomment' . $rowdata['artistic_post_comment_id'] . '">';
 
@@ -5172,8 +5175,9 @@ public function followtwo() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+
 
                 if($art_userimage){
 
@@ -5211,13 +5215,18 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     $cmtinsert .=  '</div>';
 
 
-                    $cmtinsert .= '</div>';
-
+                    
                   }
+                   $cmtinsert .= '</a>';
+                   $cmtinsert .= '</div>';
 
-                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+
+                $cmtinsert .= '<div class="comment-name">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+
+                <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
                 $cmtinsert .= '</div>';
-                $cmtinsert .= '</a>';
+               
                 $cmtinsert .= '<div class="comment-details" id="showcomment' . $art['artistic_post_comment_id'] . '" >';
                 $cmtinsert .= $this->common->make_links($art['comments']);
                 $cmtinsert .= '</div>';
@@ -5352,14 +5361,10 @@ public function delete_comment_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
                 if($art_userimage){
-
-
-
-
 
 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                             $a = $artname;
@@ -5378,7 +5383,6 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     }
 
-                  $cmtinsert .= '</div>';
                   }else{
 
                           $a = $artname;
@@ -5391,13 +5395,17 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                     $cmtinsert .=  '</div>';
 
 
-                    $cmtinsert .= '</div>';
+                    
 
                   }
-
-                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
-                $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
+                  $cmtinsert .= '</div>';
+
+
+                $cmtinsert .= '<div class="comment-name">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+                <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
+                $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="comment-details" id="showcomment' . $art['artistic_post_comment_id'] . '" >';
                 $cmtinsert .= $this->common->make_links($art['comments']);
                 $cmtinsert .= '</div>';
@@ -5531,8 +5539,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
                 if($art_userimage){
 
@@ -5554,7 +5562,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     }
 
-                  $cmtinsert .= '</div>';
+                  
                 }else{
 
 
@@ -5565,16 +5573,17 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-
-
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .=  '</div>';  
 
                 }
-
-                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
-                $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
+                $cmtinsert .= '</div>';
+                $cmtinsert .= '<div class="comment-name">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+
+                <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
+                $cmtinsert .= '</div>';
+                
                 $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
                 $cmtinsert .= $this->common->make_links($art['comments']);
                 $cmtinsert .= '</div>';
@@ -5718,8 +5727,8 @@ public function delete_commenttwo_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
                 if($art_userimage){
 
@@ -5741,7 +5750,7 @@ public function delete_commenttwo_postnewpage() {
 
                     }
 
-                  $cmtinsert .= '</div>';
+                  
                 }else{
 
 
@@ -5753,15 +5762,18 @@ public function delete_commenttwo_postnewpage() {
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-
-
-                    $cmtinsert .= '</div>';
-
+                   
                 }
+                  $cmtinsert .= '</a>';
 
-                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
                 $cmtinsert .= '</div>';
-                $cmtinsert .= '</a>';
+
+                $cmtinsert .= '<div class="comment-name">';
+                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+
+                <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
+                $cmtinsert .= '</div>';
+              
                 $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
                 $cmtinsert .= $this->common->make_links($art['comments']);
                 $cmtinsert .= '</div>';
@@ -6250,8 +6262,8 @@ public function delete_commenttwo_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
             if($art_userimage){
 
@@ -6272,7 +6284,6 @@ public function delete_commenttwo_postnewpage() {
 
                 }
 
-              $cmtinsert .=  '</div>';
             }else{
 
 
@@ -6287,13 +6298,17 @@ public function delete_commenttwo_postnewpage() {
                     $cmtinsert .=  '</div>';
 
 
-                    $cmtinsert .= '</div>';
+                   
 
             }
+              $cmtinsert .= '</a>';
+              $cmtinsert .=  '</div>';
 
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+            <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
@@ -6470,8 +6485,9 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
+
 
             if($art_userimage){
 
@@ -6492,7 +6508,7 @@ public function insert_comment_postnewpage() {
 
                 }
 
-              $cmtinsert .=  '</div>';
+             
             }else{
 
 
@@ -6504,16 +6520,17 @@ public function insert_comment_postnewpage() {
 
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-
-
-                    $cmtinsert .= '</div>';
+                    $cmtinsert .=  '</div>';    
 
             }
+              $cmtinsert .= '</a>';
+             $cmtinsert .=  '</div>';
 
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+            <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
+           
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art['artistic_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
@@ -6692,8 +6709,8 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
             if($art_userimage){
 
@@ -6714,7 +6731,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
 
                   }
-              $cmtinsert .= '</div>';
+              
 
 
             }else{
@@ -6726,15 +6743,16 @@ public function insert_comment_postnewpage() {
                             $bcr = substr($b, 0, 1);
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
-                    $cmtinsert .=  '</div>';
-
-
-                    $cmtinsert .= '</div>'; 
+                    $cmtinsert .=  '</div>';      
             }
-
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+             $cmtinsert .= '</a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
+            $cmtinsert .= '</div>';
+           
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $art['artistic_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
@@ -8074,8 +8092,8 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert = '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
 
             if($art_userimage){
 
@@ -8096,7 +8114,7 @@ public function insert_comment_postnewpage() {
 
                 }
 
-              $cmtinsert .=  '</div>';
+             
              }else{
 
                //$cmtinsert .= '<img  src="' . base_url(NOIMAGE) . '" alt="">  </div>';  
@@ -8112,12 +8130,17 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .=  '</div>';
 
 
-                    $cmtinsert .= '</div>';
+                   
              }
+              $cmtinsert .= '</a>';
+              $cmtinsert .=  '</div>';
 
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
+            
 
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
@@ -8312,8 +8335,8 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">';
 
             if($art_userimage){
 
@@ -8334,8 +8357,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
 
                   }
-              $cmtinsert .= '</div>';
-
+             
 
             }else{
 
@@ -8348,14 +8370,18 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-
-
-                    $cmtinsert .= '</div>'; 
+                    
             }
 
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b>';
+              $cmtinsert .= '</a>';
+             $cmtinsert .= '</div>';
+
+
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($artname)) . '&nbsp;' . ucfirst(strtolower($artlastname)) . '</b></a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
             $cmtinsert .= '<div class="comment-details" id= "showcomment' . $art['artistic_post_comment_id'] . '" >';
             $cmtinsert .= $this->common->make_links($art['comments']);
             $cmtinsert .= '</div>';
@@ -8518,12 +8544,16 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">  </div>';
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
+
+            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt=""> </a> </div>';
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
             $cmtinsert .= '</div>';
-            $cmtinsert .= '</a>';
+            
 
             $cmtinsert .= '<div class="comment-details" id= "showcommenttwo' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
@@ -9098,8 +9128,9 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
+
 
             if($art_userimage){
 
@@ -9118,7 +9149,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
 
                    }
-            $cmtinsert .= '</div>';
+            
 
            }else{
 
@@ -9132,12 +9163,17 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .= ucfirst(strtolower($acr)) .ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-                    $cmtinsert .= '</div>';
-
+                    
            }
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lname)). '</b>';
-            $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
+           $cmtinsert .= '</div>';
+
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lname)). '</b></a>';
+            $cmtinsert .= '</div>';
+           
 
             $cmtinsert .= '<div class="comment-details" id= "showcommentimg' . $art_comment['post_image_comment_id'] . '">';
             $cmtinsert .= $art_comment['comment'];
@@ -9298,8 +9334,9 @@ public function insert_comment_postnewpage() {
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
                 $cmtinsert .= '<div class="all-comment-comment-box">';
-                $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
+               
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
+                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
 
                 if($art_userimage){
 
@@ -9319,7 +9356,7 @@ public function insert_comment_postnewpage() {
                 $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
 
                      }
-                $cmtinsert .= '</div>';
+               
 
                }else{
 
@@ -9333,13 +9370,17 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-                    $cmtinsert .= '</div>';
+                   
                }
-
-                $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
-                $cmtinsert .= '</div>';
                 $cmtinsert .= '</a>';
+                $cmtinsert .= '</div>';
 
+                $cmtinsert .= '<div class="comment-name">';
+                 $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
+
+                <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
+                $cmtinsert .= '</div>';
+                
                 $cmtinsert .= '<div class="comment-details" id= "showcommentimgtwo' . $art_comment['post_image_comment_id'] . '">';
                 $cmtinsert .= $this->common->make_links($art_comment['comment']);
                 $cmtinsert .= '</div>';
@@ -9495,8 +9536,8 @@ public function insert_comment_postnewpage() {
                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
-                $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                 $fourdata .= '<div class="post-design-pro-comment-img">';
+                $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                 
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                 if ($art_userimage) {
@@ -9517,7 +9558,7 @@ public function insert_comment_postnewpage() {
                     $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
                     }
 
-                    $fourdata .= '</div>';
+                    
                 } else {
 
 
@@ -9532,13 +9573,18 @@ public function insert_comment_postnewpage() {
                     $fourdata .=  '</div>';
 
 
-                    $fourdata .= '</div>';
+                    
                     //$fourdata .= '<img src="' . base_url(NOIMAGE) . '" alt=""></div>';
 
                 }
-                $fourdata .= '<div class="comment-name">';
-                $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </div>';
                 $fourdata .= '</a>';
+                $fourdata .= '</div>';
+
+                $fourdata .= '<div class="comment-name">';
+                $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
+
+                $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br></a> </div>';
+                
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['artistic_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['artistic_post_comment_id'] . '"  style="display:block;">';
@@ -9662,8 +9708,8 @@ public function insert_comment_postnewpage() {
 
 
             $fourdata .= '<div class="all-comment-comment-box">';
-            $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
             $fourdata .= '<div class="post-design-pro-comment-img">';
+            $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
 
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
@@ -9686,7 +9732,7 @@ public function insert_comment_postnewpage() {
 
                 }
 
-            $fourdata .=  '</div>';
+          
             }else{
 
              
@@ -9699,12 +9745,16 @@ public function insert_comment_postnewpage() {
                     $fourdata .= '<div class="post-img-div">';
                     $fourdata .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $fourdata .=  '</div>';
-                    $fourdata .= '</div>';
+                    
             }
+              $fourdata .= '</a>';  
+              $fourdata .=  '</div>';
 
             $fourdata .= '<div class="comment-name">';
-            $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </div>';
-            $fourdata .= '</a>';  
+            $fourdata .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
+
+            $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </a></div>';
+            
             $fourdata .= '<div class="comment-details" id= "showcommentimgtwo' . $rowdata['post_image_comment_id'] . '">';
             $fourdata .= '' . $this->common->make_links($rowdata['comment']) . '</br></div>';
 
@@ -10108,8 +10158,8 @@ public function insert_comment_postnewpage() {
             $art_userimage = $this->db->get_where('art_reg', array('user_id' => $art_comment['user_id'], 'status' => 1))->row()->art_user_image;
 
             $cmtinsert .= '<div class="all-comment-comment-box">';
-            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
 
             if($art_userimage){
 
@@ -10128,7 +10178,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
 
                     }
-             $cmtinsert .= '</div>';
+             
             }else{
 
 
@@ -10143,13 +10193,18 @@ public function insert_comment_postnewpage() {
                     $cmtinsert .= '<div class="post-img-div">';
                     $cmtinsert .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); 
                     $cmtinsert .=  '</div>';
-                    $cmtinsert .= '</div>';
+                    
 
             }
-
-            $cmtinsert .= '<div class="comment-name"><b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b>';
-            $cmtinsert .= '</div>';
             $cmtinsert .= '</a>';
+            $cmtinsert .= '</div>';
+
+            $cmtinsert .= '<div class="comment-name">';
+            $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
+
+            <b>' . ucfirst(strtolower($art_name)) .' '.ucfirst(strtolower($art_lastname)). '</b></a>';
+            $cmtinsert .= '</div>';
+            
 
             $cmtinsert .= '<div class="comment-details" id= "showcommentimgtwo' . $art_comment['post_image_comment_id'] . '"" >';
             $cmtinsert .= $this->common->make_links($art_comment['comment']);
@@ -13328,10 +13383,11 @@ public function art_home_post() {
 
                             $return_html .= '<div class="all-comment-comment-box">
                                             <div class="post-design-pro-comment-img">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
                           $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
 
                             if ($art_userimage) {
-                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
+                                
 
                                 if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
                                                                 $a = $artname;
@@ -13348,9 +13404,9 @@ public function art_home_post() {
                                 $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
                                         }
 
-                                $return_html .= '</a>';
+                                
                             } else {
-                                $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">';
+                                
                                                                 $a = $artname;
                                                                 $acr = substr($a, 0, 1);
                                                                 $b = $artlastname;
@@ -13361,10 +13417,14 @@ public function art_home_post() {
                                  $return_html .= '</div>'; 
                                                                 
                                                            
-                                $return_html .= '</a>';
+                                
                             }
+
+                            $return_html .= '</a>';
                             $return_html .= '</div>
-                                            <div class="comment-name">
+                                            <div class="comment-name">';
+                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id']) . '">
+
                                                 <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
                             $return_html .= $artname;
                             $return_html .= ' ';
@@ -13372,7 +13432,7 @@ public function art_home_post() {
 
                             $return_html .= '</br>';
 
-                            $return_html .= '</b>
+                            $return_html .= '</b></a>
                                             </div>
                                             <div class="comment-details" id="showcomment' . $rowdata['artistic_post_comment_id'] . '">';
 
@@ -14439,6 +14499,8 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                         $return_html .= '<div class="all-comment-comment-box">
                 <div class="post-design-pro-comment-img">';
+                 $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+
                         $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image; 
 
                         if ($art_userimage) {
@@ -14449,15 +14511,14 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $acr = substr($a, 0, 1);
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                               
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> </a>';
+                                $return_html .= '</div> ';
 
                             } else {
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                
                                 $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
-                                $return_html .= '</a>';
                             }
                         } else {
 
@@ -14467,19 +14528,23 @@ $return_html .= '<div class="art-all-comment col-md-12">
                                 $b = $artlastname;
                                 $bcr = substr($b, 0, 1);
 
-                                $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">';
+                                
                                 $return_html .= ' <div class="post-img-div">';
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
-                                $return_html .= '</div> </a>';
+                                $return_html .= '</div> ';
                         }
+
+                        $return_html .= '</a>';
                         $return_html .= '</div>
-                <div class="comment-name">
+                <div class="comment-name">';
+                 $return_html .= '<a href="'.base_url('artistic/dashboard/' . $rowdata['user_id'] . '').'">
+
                     <b>';
                         $return_html .= ucfirst(strtolower($artname)).' '.ucfirst(strtolower($artlastname));
                         $return_html .= '</b>';
                          $return_html .= '</br>';
 
-                $return_html .= '</div>
+                $return_html .= '</a></div>
                 <div class="comment-details" id= "showcomment' . $rowdata['artistic_post_comment_id'] . '">
                     <div id="lessmore' . $rowdata['artistic_post_comment_id'] . '" style="display:block;">';
                         $small = substr($rowdata['comments'], 0, 180);
@@ -14664,9 +14729,9 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 $artlastname = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id']))->row()->art_lastname;
 
                 $fourdata .= '<div class="all-comment-comment-box">';
-                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
-                $fourdata .= '<div class="post-design-pro-comment-img">';
                 
+                $fourdata .= '<div class="post-design-pro-comment-img">';
+                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                 if ($art_userimage) {
 
@@ -14686,7 +14751,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
                     }
 
-                    $fourdata .= '</div>';
+                    
                 } else {
 
 
@@ -14701,13 +14766,18 @@ $return_html .= '<div class="art-all-comment col-md-12">
                     $fourdata .=  '</div>';
 
 
-                    $fourdata .= '</div>';
+                    
                     //$fourdata .= '<img src="' . base_url(NOIMAGE) . '" alt=""></div>';
 
                 }
+                 $fourdata .= '</a>';
+                $fourdata .= '</div>';
+
                 $fourdata .= '<div class="comment-name">';
-                $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br> </div>';
-                $fourdata .= '</a>';
+                $fourdata .= '<a href="' . base_url('artistic/art_manage_post/' . $rowdata['user_id'] . '') . '">';
+
+                $fourdata .= '<b>' . ucfirst(strtolower($artname)) . '&nbsp' . ucfirst(strtolower($artlastname)) . '</b></br></a> </div>';
+               
                 $fourdata .= '<div class="comment-details" id= "showcommenttwo' . $rowdata['artistic_post_comment_id'] . '">';
 
                 $fourdata .= '<div id= "lessmore' . $rowdata['artistic_post_comment_id'] . '"  style="display:block;">';
@@ -15950,13 +16020,13 @@ public function get_artistic_name($id=''){
                                                             
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
+                                                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                                                           
                                                               $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
                                                        if ($art_userimage) { 
-                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
+                                                         
                                                           $return_html .= '<img  src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'"  alt="">';
-                                                          $return_html .= '</a>';
                                                                  } else { 
                                                                 
                                                                 $a = $artname;
@@ -15965,12 +16035,12 @@ public function get_artistic_name($id=''){
                                                                 $bcr = substr($b, 0, 1);
                                                                 
                                             $return_html .= '<div class="post-img-profile">';
-                                                 $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
-
+                                                
                                                                     $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
-                                                                    $return_html .= '</a>';
+                                                                    
                                             $return_html .= '</div>';
                                                                }
+                                            $return_html .= '</a>';
                                             $return_html .= '</div>
                                                         <div class="comment-name">';
                                                            $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
@@ -15979,7 +16049,7 @@ public function get_artistic_name($id=''){
                                                           $return_html .= ucfirst(strtolower($artname));
                                                          $return_html .= '&nbsp;';
                                                           $return_html .= ucfirst(strtolower($artlastname));
-                                                          $return_html .= '</b></a></br></div>
+                                                          $return_html .= '</b></br></a></div>
                                                           <div class="comment-details" id="showcomment'. $rowdata['artistic_post_comment_id'].'">'.$this->common->make_links($rowdata['comments']).'</div>';
 
                                 $return_html .= '<div class="edit-comment-box">
@@ -16865,6 +16935,7 @@ public function get_artistic_name($id=''){
                                                             
                                                 $return_html .= '<div class="all-comment-comment-box">
                                                         <div class="post-design-pro-comment-img">';
+                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">';
                                                           
                                                               $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
@@ -16881,14 +16952,15 @@ public function get_artistic_name($id=''){
                                                                     $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)) ;
                                             $return_html .= '</div>';
                                                                }
-                                            $return_html .= '</div>
-                                                        <div class="comment-name">
+                                            $return_html .= '</a></div>
+                                                        <div class="comment-name">';
+                                                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $rowdata['user_id'] . '') . '">
                                                             <b title="'.ucfirst(strtolower($artname)).'&nbsp;'.ucfirst(strtolower($artlastname)).'>';
                                                           
                                                           $return_html .= ucfirst(strtolower($artname));
                                                          $return_html .= '&nbsp;';
                                                           $return_html .= ucfirst(strtolower($artlastname));
-                                                          $return_html .= '</b></br></div>
+                                                          $return_html .= '</b></br></a></div>
                                                           <div class="comment-details" id="showcomment'. $rowdata['artistic_post_comment_id'].'">'.$this->common->make_links($rowdata['comments']).'</div>';
 
                                 $return_html .= '<div class="edit-comment-box">
