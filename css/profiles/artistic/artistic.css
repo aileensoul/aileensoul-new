@@ -3219,20 +3219,20 @@ overflow: hidden;
 .slider_img .prev, .slider_img .next{top: 50%;}
 .art_pdf .image_profile{width: 80px; height: 80px; margin: 22px;}
 .file-preview-thumbnails #outerContainer #mainContainer{min-width:100% !important; width:100% !important;}
-<<<<<<< HEAD
+
 #popup-form #upload-demo-one img {
     display: block;
 }
  #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 
-=======
+
 
 .bestofmine_image{color: #f00;
 display: block;
 font-size: 12px;
 padding-left: 11px;}
 #filename{font-size: 11px!important;}
->>>>>>> 68f61850e962839e441f2112395ce7614df8727d
+
 
 
 /***  media query  ***/
