@@ -729,6 +729,10 @@ label.cameraButton input[accept*="camera"] {
 #popup-form img {
     display: none;
 }
+#popup-form #upload-demo-one img {
+    display: block;
+}
+ #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
     display: block;
@@ -942,7 +946,7 @@ label.cameraButton input[accept*="camera"] {
         padding-right: 0;
     }
     .custom-right {
-        margin-left: 8%;
+        margin-left: 0%;
     }
     .profile-boxProfilebuisness-avatarLink2 {
         margin: 15px 0 0 5px;
