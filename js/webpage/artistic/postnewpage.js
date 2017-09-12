@@ -110,6 +110,7 @@ $('body').on("click", "*", function (e) {
     $( document ).on( 'keydown', function ( e ) { 
         if ( e.keyCode === 27 ) { 
            document.getElementById('myModal1').style.display = "none";
+           $("body").removeClass("model-open");
                             }                          
                         }); 
 
@@ -120,6 +121,7 @@ $('body').on("click", "*", function (e) {
                         }
                         function closeModal() {
                             document.getElementById('myModal1').style.display = "none";
+                            $("body").removeClass("model-open");
                         }
                         var slideIndex = 1;
                         showSlides(slideIndex);
