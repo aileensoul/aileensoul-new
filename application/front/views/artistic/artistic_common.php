@@ -108,8 +108,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                                 </div> 
                                                                 <?php
                                                             } else { ?>
-                    <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $artisticdata[0]['art_user_image']); ?>" alt="" >
 
+                    
+
+                    <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $artisticdata[0]['art_user_image']; ?>" alt="" >
                        <?php }?>
 
                 <?php } else { ?>
