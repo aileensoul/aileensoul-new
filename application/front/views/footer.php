@@ -252,37 +252,7 @@ $.fn.preload = function (fn) {
     }
     
     
-    function addmsg_contact(type, msg)
-    {
-        if (msg == 0)
-        {
-            $("#addcontact_count").html('');
-        } else
-        {
-            $('#addcontact_count').html(msg);
-            $('#addcontact_count').css({"background-color": "#FF4500", "padding": "3.5px 5px"});
-        }
-    }
-    function waitForMsg_contact()
-    {
-        $.ajax({
-            type: "GET",
-            url: "<?php echo base_url(); ?>business_profile/contact_count",
-            async: true,
-            cache: false,
-            timeout: 50000,
-            success: function (data) {
-                addmsg_contact("new", data);
-                setTimeout(
-                        waitForMsg_contact,
-                        10000
-                        );
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-            }
-        });
-    }
-    
+
     // USER PROFILE DROPDOWN IN HEADER
     $(document).on("dropdown-user", function () {
         $(".dropdown-menu").hide();
