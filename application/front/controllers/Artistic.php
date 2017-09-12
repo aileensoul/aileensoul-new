@@ -2266,12 +2266,13 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
                             <div contenteditable="true" class="edt_2 editable_text" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
-                        </div>
+                      
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
                             <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
                             </button>
                         </div>
+                          </div>
                         <div class=" comment-edit-butn hidden-mob" >   
                            <button  id="'.$row['art_post_id'].'" onClick="insert_comment(this.id)">Comment</button> 
                         </div>
@@ -14657,7 +14658,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
@@ -14943,7 +14944,7 @@ public function artistic_search_city($id = "") {
 
  // profile image uplaod usingajax start
 
-   public function profilepic(){
+   public function profilepic1(){
 
 
          $userid = $this->session->userdata('aileenuser');
@@ -15041,6 +15042,102 @@ public function artistic_search_city($id = "") {
     }
 
 
+
+    public function profilepic() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete'=> '0');
+        $user_reg_data = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $user_reg_prev_image = $user_reg_data[0]['art_user_image'];
+
+        if ($user_reg_prev_image != '') {
+            $user_image_main_path = $this->config->item('art_profile_main_upload_path');
+            $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+            if (isset($user_bg_full_image)) {
+                unlink($user_bg_full_image);
+            }
+
+            $user_image_thumb_path = $this->config->item('art_profile_thumb_upload_path');
+            $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+            if (isset($user_bg_thumb_image)) {
+                unlink($user_bg_thumb_image);
+            }
+        }
+
+
+        $data = $_POST['image'];
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $user_bg_path = $this->config->item('art_profile_main_upload_path');
+        $imageName = time() . '.png';
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($file, $data);
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+
+        /* RESIZE */
+        $artistic_profile['image_library'] = 'gd2';
+        $artistic_profile['source_image'] =  $main_image;
+        $artistic_profile['new_image'] =  $main_image;
+        $artistic_profile['quality'] = $quality;
+        $instanse10 = "image10";
+        $this->load->library('image_lib', $artistic_profile, $instanse10);
+        $this->$instanse10->watermark();
+        /* RESIZE */
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+        $user_thumb_path = $this->config->item('art_profile_thumb_upload_path');
+        $user_thumb_width = $this->config->item('art_profile_thumb_width');
+        $user_thumb_height = $this->config->item('art_profile_thumb_height');
+
+        $upload_image = $user_bg_path . $imageName;
+
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+        $data = array(
+            'art_user_image' => $imageName,
+            'modified_date' => date('Y-m-d', time())
+        );
+
+        $update = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
+        //  echo "11111";die();
+
+        if ($update) {
+
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $artistic_user = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $artistic_user[0]['art_user_image'] . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= $this->lang->line("update_profile_picture");
+            $userimage .= '</a>';
+
+            echo $userimage;
+        }
+    }
 //Get artistic Name for title Start
 public function get_artistic_name($id=''){
 
@@ -16169,7 +16266,7 @@ public function get_artistic_name($id=''){
                                             $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                                             $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                            
-                                      $return_html .= '<div class="post-design-proo-img">';
+                                      $return_html .= '<div class="post-design-proo-img hidden-mob">';
                                            if ($art_userimage) { 
                                     $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'" name="image_src" id="image_src" />';
                                                    

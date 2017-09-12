@@ -3220,11 +3220,19 @@ overflow: hidden;
 .art_pdf .image_profile{width: 80px; height: 80px; margin: 22px;}
 .file-preview-thumbnails #outerContainer #mainContainer{min-width:100% !important; width:100% !important;}
 
+#popup-form #upload-demo-one img {
+    display: block;
+}
+ #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
+
+
+
 .bestofmine_image{color: #f00;
 display: block;
 font-size: 12px;
 padding-left: 11px;}
 #filename{font-size: 11px!important;}
+
 
 
 /***  media query  ***/

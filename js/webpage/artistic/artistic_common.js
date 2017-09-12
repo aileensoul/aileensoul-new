@@ -6,6 +6,107 @@ $(window).load(function(){
 });
 });
 
+// profile iamge uplaod START
+
+// validation for profile pic upload
+
+$uploadCrop1 = $('#upload-demo-one').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        }
+    });
+
+    $('#upload-one').on('change', function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
+            $(document).ready(function () { 
+
+                $("#userimage").validate({ 
+
+                    rules: {
+
+                        profilepic: {
+
+                            required: true,
+
+                        },
+
+                    },
+
+                    messages: {
+
+                        profilepic: {
+
+                            required: "Image Required",
+
+                        },
+
+                    },
+
+                     submitHandler: profile_pic
+
+                });
+
+                function profile_pic(){
+
+
+    $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+               url: base_url + "artistic/profilepic",
+                type: "POST",
+                data: {"image": resp},
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').value = '';
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
+                }
+            });
+        });
+
+    }
+
+            });
+
+
+    // script for profile pic strat
+
+            $("#profilepic").change(function () {
+                profile = this.files;
+                   //alert(profile);
+                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+                       //alert('not an image');
+                  $('#profilepic').val('');
+                   picpopup();
+                     return false;
+                   }else{
+                      readURL(this);}
+            });
+
 
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
     $(function() {
@@ -108,128 +209,6 @@ $(window).load(function(){
     });
 
 //SCRIPT FOR CITY AUTOFILL OF SEARCH END
-
-// validation for profile pic upload
-
-$uploadCrop1 = $('#upload-demo-one').croppie({
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-    });
-
-    $('#upload-one').on('change', function () {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $uploadCrop1.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-            });
-
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-
-            $(document).ready(function () { 
-
-                $("#userimage").validate({ 
-
-                    rules: {
-
-                        profilepic: {
-
-                            required: true,
-
-                        },
-
-                    },
-
-                    messages: {
-
-                        profilepic: {
-
-                            required: "Image Required",
-
-                        },
-
-                    },
-
-                     submitHandler: profile_pic
-
-                });
-
-                function profile_pic(){
-
-
-    $uploadCrop1.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-            $.ajax({
-                //url: "/ajaxpro.php", user_image_insert
-               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
-               url: base_url + "artistic/profilepic",
-                type: "POST",
-                data: {"image": resp},
-                success: function (data) {
-                  $('#bidmodal-2').modal('hide');
-                    $(".user-pic").html(data);
-                    document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').value = '';
-//                    html = '<img src="' + resp + '" />';
-//                    $("#upload-demo-i").html(html);
-                }
-            });
-        });
-
-    }
-
-            });
-
-
-    // script for profile pic strat
-
-    function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-
-                        document.getElementById('preview').style.display = 'block';
-                        $('#preview').attr('src', e.target.result);
-                        $('.popup_previred').show();
-
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            $("#profilepic").change(function () {
-                profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
-                  $('#profilepic').val('');
-                   picpopup();
-                     return false;
-                   }else{
-                      readURL(this);}
-            });
-
-
-
-
-
-
-
 
 
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START

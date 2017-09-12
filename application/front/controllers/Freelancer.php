@@ -3680,9 +3680,42 @@ class Freelancer extends MY_Controller {
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
         $user_bg_path = $this->config->item('free_hire_profile_main_upload_path');
-        $data = base64_decode($data);
         $imageName = time() . '.png';
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
         file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($file, $data);
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+
+        /* RESIZE */
+        $freelancer_hire_profile['image_library'] = 'gd2';
+        $freelancer_hire_profile['source_image'] =  $main_image;
+        $freelancer_hire_profile['new_image'] =  $main_image;
+        $freelancer_hire_profile['quality'] = $quality;
+        $instanse10 = "image10";
+        $this->load->library('image_lib', $freelancer_hire_profile, $instanse10);
+        $this->$instanse10->watermark();
+        /* RESIZE */
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('free_hire_profile_thumb_upload_path');
         $user_thumb_width = $this->config->item('free_hire_profile_thumb_width');
@@ -3691,6 +3724,9 @@ class Freelancer extends MY_Controller {
         $upload_image = $user_bg_path . $imageName;
 
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
             'freelancer_hire_user_image' => $imageName
@@ -3703,7 +3739,7 @@ class Freelancer extends MY_Controller {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . base_url($this->config->item('free_hire_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_hire_user_image']) . '" alt="" >';
+            $userimage .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="" >';
             $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
@@ -3853,7 +3889,8 @@ class Freelancer extends MY_Controller {
             redirect('freelancer-hire/projects', refresh);
         }
     }
-public function user_image_add1() {
+
+    public function user_image_add1() {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -4766,7 +4803,7 @@ public function user_image_add1() {
     public function freelancer_search_city($id = "") {
         $searchTerm = $_GET['term'];
         if (!empty($searchTerm)) {
-            $contition_array = array('status' => '1','state_id !=' => '0');
+            $contition_array = array('status' => '1', 'state_id !=' => '0');
             $search_condition = "(city_name LIKE '" . trim($searchTerm) . "%')";
             $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
             foreach ($location_list as $key1 => $value) {
