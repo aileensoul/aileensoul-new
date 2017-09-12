@@ -531,34 +531,67 @@ class Job extends MY_Controller {
 
 //Insert Secondary Education Data start
     public function job_education_secondary_insert() {
-         $this->job_deactive_profile(); 
+        $this->job_deactive_profile(); 
 
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
         $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-         $error = '';
+
+        //S3 BUCKET ACCESS START
+      $s3 = new S3(awsAccessKey, awsSecretKey);
+      $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+      //S3 BUCKET ACCESS START
+
+        $error = '';
         if($_FILES['edu_certificate_secondary']['name'] != '' ){
 
+        //Configuring Main Image Start
+        $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
+        $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
+        $this->upload->initialize($job);
 
-          $job_certificate = '';
-            $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
-            $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
-            $job['max_size'] = $this->config->item('job_edu_main_max_size');
-            $job['max_width'] = $this->config->item('job_edu_main_max_width');
-            $job['max_height'] = $this->config->item('job_edu_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($job);
-            //Uploading Image
-            $this->upload->do_upload('edu_certificate_secondary');
-            //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-            $imgerror = $this->upload->display_errors();
+        if ($this->upload->do_upload('edu_certificate_secondary')) 
+        {
+
+            $imgdata = $this->upload->data();              
+            $main_image_size = $_FILES['edu_certificate_secondary']['size'];
+
+            if ($main_image_size > '1000000') {
+                  $quality = "50%";
+            } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                  $quality = "55%";
+            } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                  $quality = "60%";
+            } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                    $quality = "65%";
+            } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                    $quality = "70%";
+            } else {
+                    $quality = "100%";
+            }
            
-               
-                //Configuring Thumbnail 
+             /* RESIZE */
+
+            $job['image_library'] = 'gd2';
+            $job['source_image'] = $this->config->item('job_edu_main_upload_path') .$imgdata['file_name'];
+            $job['new_image'] = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
+            $job['quality'] = $quality;
+            $instanse10 = "image10";
+            $this->load->library('image_lib',  $job, $instanse10 );   
+            $this->$instanse10->watermark();
+            /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+            $main_image=$job['new_image'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
+        }
+        //Configuring Main Image End
+ 
+              //Configuring Thumbnail Start
                 $job_thumb['image_library'] = 'gd2';
-                $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
+                $job_thumb['source_image'] =  $this->config->item('job_edu_main_upload_path') .$imgdata['file_name'];
                 $job_thumb['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
                 $job_thumb['create_thumb'] = TRUE;
                 $job_thumb['maintain_ratio'] = TRUE;
@@ -570,12 +603,58 @@ class Job extends MY_Controller {
                 $job_thumb['x_axis'] = '0';
                 $job_thumb['y_axis'] = '0';
                 //Loading Image Library
-                $this->load->library('image_lib', $job_thumb);
+
+                $instanse = "image";
+                $this->load->library('image_lib', $job_thumb,$instanse);
                 $dataimage = $imgdata['file_name'];
+
                 //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
+                $this->$instanse->resize();
+                $thumberror = $this->$instanse->display_errors();
+                //echo "<pre>";print_r($thumberror);die();
                 $thumberror = '';
+              //Configuring Thumbnail End
+
+            //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_thumb['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET STORE THUMB IMAGE END
+
+          // $job_certificate = '';
+          //   $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
+          //   $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
+          //   $job['max_size'] = $this->config->item('job_edu_main_max_size');
+          //   $job['max_width'] = $this->config->item('job_edu_main_max_width');
+          //   $job['max_height'] = $this->config->item('job_edu_main_max_height');
+          //   $this->load->library('upload');
+          //   $this->upload->initialize($job);
+          //   //Uploading Image
+          //   $this->upload->do_upload('edu_certificate_secondary');
+          //   //Getting Uploaded Image File Data
+          //   $imgdata = $this->upload->data();
+          //   $imgerror = $this->upload->display_errors();
+           
+               
+          //       //Configuring Thumbnail 
+          //       $job_thumb['image_library'] = 'gd2';
+          //       $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
+          //       $job_thumb['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
+          //       $job_thumb['create_thumb'] = TRUE;
+          //       $job_thumb['maintain_ratio'] = TRUE;
+          //       $job_thumb['thumb_marker'] = '';
+          //       $job_thumb['width'] = $this->config->item('job_edu_thumb_width');
+          //       $job_thumb['height'] = 2;
+          //       $job_thumb['master_dim'] = 'width';
+          //       $job_thumb['quality'] = "100%";
+          //       $job_thumb['x_axis'] = '0';
+          //       $job_thumb['y_axis'] = '0';
+          //       //Loading Image Library
+          //       $this->load->library('image_lib', $job_thumb);
+          //       $dataimage = $imgdata['file_name'];
+          //       //Creating Thumbnail
+          //       $this->image_lib->resize();
+          //       $thumberror = $this->image_lib->display_errors();
+          //       $thumberror = '';
         }
 
 
@@ -691,27 +770,61 @@ class Job extends MY_Controller {
         $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
        
-          $error = '';
-        if($_FILES['edu_certificate_higher_secondary']['name'] != '' ){
+      $error = '';
 
-  $job_certificate = '';
-            $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
-            $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
-            $job['max_size'] = $this->config->item('job_edu_main_max_size');
-            $job['max_width'] = $this->config->item('job_edu_main_max_width');
-            $job['max_height'] = $this->config->item('job_edu_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($job);
-            //Uploading Image
-            $this->upload->do_upload('edu_certificate_higher_secondary');
-            //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-            $imgerror = $this->upload->display_errors();
-         
-               
-                //Configuring Thumbnail 
+      //S3 BUCKET ACCESS START
+      $s3 = new S3(awsAccessKey, awsSecretKey);
+      $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+      //S3 BUCKET ACCESS START
+
+    if($_FILES['edu_certificate_higher_secondary']['name'] != '' ){
+
+    //Configuring Main Image Start
+        $job['upload_path'] = $this->config->item('job_edu_main_upload_path');
+        $job['allowed_types'] = $this->config->item('job_edu_main_allowed_types');
+        $this->upload->initialize($job);
+
+        if ($this->upload->do_upload('edu_certificate_higher_secondary')) 
+        {
+
+            $imgdata = $this->upload->data();              
+            $main_image_size = $_FILES['edu_certificate_higher_secondary']['size'];
+
+            if ($main_image_size > '1000000') {
+                  $quality = "50%";
+            } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                  $quality = "55%";
+            } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                  $quality = "60%";
+            } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                    $quality = "65%";
+            } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                    $quality = "70%";
+            } else {
+                    $quality = "100%";
+            }
+           
+             /* RESIZE */
+
+            $job['image_library'] = 'gd2';
+            $job['source_image'] = $this->config->item('job_edu_main_upload_path') .$imgdata['file_name'];
+            $job['new_image'] = $this->config->item('job_edu_main_upload_path') . $imgdata['file_name'];
+            $job['quality'] = $quality;
+               $instanse10 = "image10";
+            $this->load->library('image_lib',  $job, $instanse10 );   
+            $this->$instanse10->watermark();
+            /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+            $main_image=$job['new_image'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
+        }
+        //Configuring Main Image End
+ 
+              //Configuring Thumbnail Start
                 $job_thumb['image_library'] = 'gd2';
-                $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
+                $job_thumb['source_image'] =  $this->config->item('job_edu_main_upload_path') .$imgdata['file_name'];
                 $job_thumb['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $imgdata['file_name'];
                 $job_thumb['create_thumb'] = TRUE;
                 $job_thumb['maintain_ratio'] = TRUE;
@@ -723,11 +836,22 @@ class Job extends MY_Controller {
                 $job_thumb['x_axis'] = '0';
                 $job_thumb['y_axis'] = '0';
                 //Loading Image Library
-                $this->load->library('image_lib', $job_thumb);
+
+                $instanse = "image";
+                $this->load->library('image_lib', $job_thumb,$instanse);
                 $dataimage = $imgdata['file_name'];
+
                 //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
+                $this->$instanse->resize();
+                $thumberror = $this->$instanse->display_errors();
+                //echo "<pre>";print_r($thumberror);die();
+                $thumberror = '';
+              //Configuring Thumbnail End
+
+            //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_thumb['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET STORE THUMB IMAGE END
           
         }
             
