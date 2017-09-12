@@ -1653,13 +1653,15 @@ function insert_comment(clicked_id)
    }
 
 function cursorpointer(abc){
-var searchInp = document.getElementById('editpostdesc' + abc);
-var searchInput = searchInp.innerHTML
+
+  
+var searchInput = document.getElementById('editpostdesc' + abc).innerHTML;
 var strLength = searchInput.length;
 //alert(strLength);
 
-//searchInput.focus();
-//searchInput[0].setSelectionRange(strLength, strLength);
+searchInput.focus();
+searchInput[0].setSelectionRange(strLength, strLength);
+//$('editpostdesc' + abc).focusTextToEnd();
 }
 
 

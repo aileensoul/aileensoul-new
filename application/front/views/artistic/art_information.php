@@ -18,8 +18,8 @@
             <?php echo $art_header2_border; ?>
         <?php } ?>
 
-<div class="js">
-<div id="preloader"></div>
+<!-- <div class="js">
+<div id="preloader"></div> -->
 
       <section>    
         <div class="user-midd-section" id="paddingtop_fixed">
