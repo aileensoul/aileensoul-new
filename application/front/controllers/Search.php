@@ -714,7 +714,7 @@ class Search extends MY_Controller {
                                 $return_html .= '<div class="all-comment-comment-box">
                                                 <div class="post-design-pro-comment-img">';
                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id'], 'status' => 1))->row()->business_user_image;
-                                if ($business_userimage) {
+                                if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
                                     $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                                 } else {
                                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
@@ -812,7 +812,7 @@ class Search extends MY_Controller {
                         $userid = $this->session->userdata('aileenuser');
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                         $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
-                        if ($business_userimage) {
+                        if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
                             $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';

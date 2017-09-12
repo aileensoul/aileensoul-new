@@ -2621,8 +2621,16 @@ class Recruiter extends MY_Controller {
         }
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
-
-        $this->load->view('recruiter/recommen_candidate1', $this->data);
+          
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+         if ($this->session->userdata('aileenuser')) {
+            $this->load->view('recruiter/recommen_candidate1', $this->data);
+        } else {
+          
+             $this->load->view('recruiter/rec_search_login', $this->data);
+        }
+        //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
+       
     }
 
 //recrutier search end
