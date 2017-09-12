@@ -1411,7 +1411,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     'insert_profile' => 1,
                     'post_id' => $insert_id,
                     'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => 1
+                    'is_deleted' => '1'
                 );
 
                 $insert = $this->common->insert_data_getid($data, 'post_files');
