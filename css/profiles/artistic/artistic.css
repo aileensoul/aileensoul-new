@@ -3217,6 +3217,11 @@ overflow: hidden;
 .modal-content2 .prev,.modal-content2 .next{top:290px; }
 .slider_img .prev, .slider_img .next{top: 50%;}
 .art_pdf .image_profile{width: 80px; height: 80px; margin: 22px;}
+.file-preview-thumbnails #outerContainer #mainContainer{min-width:100% !important; width:100% !important;}
+
+
+
+
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
@@ -3466,7 +3471,7 @@ overflow: hidden;
     .flw_msg_btn ul li a{margin-top:0;}
     .left_side_box_img{width:100%; text-align:center;}
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
-    .right_left_box_design{width:100% !important; text-align:center; pa
+    .right_left_box_design{width:100% !important; text-align:center;}
 }
 @media screen and (max-width: 800px){
     .mySlides .post-design-commnet-box .cmy_2 {width: 82%;}
