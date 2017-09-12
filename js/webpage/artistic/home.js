@@ -1657,7 +1657,7 @@ var searchInp = document.getElementById('editpostdesc' + abc);
 var searchInput = searchInp.innerHTML
 var strLength = searchInput.length;
 //alert(strLength);
-$(this).setCursorPosition(strLength);
+
 //searchInput.focus();
 //searchInput[0].setSelectionRange(strLength, strLength);
 }
