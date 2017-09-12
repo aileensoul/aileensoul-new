@@ -228,7 +228,7 @@ $.fn.preload = function (fn) {
             $('#notification_count').html(msg);
             $('#notification_count').css({"background-color": "#FF4500", "padding": "5px 6px"});
             $('#notificationLink').addClass('notification_available');
-            document.getElementById('message_count').style.display = "none";
+         //   document.getElementById('message_count').style.display = "none";
             document.getElementById('notification_count').style.display = 'block';
         }
     }
