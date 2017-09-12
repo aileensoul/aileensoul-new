@@ -3472,7 +3472,7 @@ height: 100px;
 .img_bui_data .hs-submit a .bui_close label{width:25px; height:25px; padding:1px 1px 1px 3px !important; text-align:center; }
 .img_bui_data .hs-submit a .bui_close label .fa{color:#fff;}
 .img_bui_data .hs-submit a:hover .bui_close label{opacity:0.8;}
-
+.inputtype-edit-comment .editable_text{width: 60%!important;}
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}
   50%{ opacity: .4;}
@@ -4012,6 +4012,7 @@ height: 100px;
     }
 }
 @media screen and (max-width: 640px){
+    #row2 img{height: 200px;}
 	.bui_bcon {width: 56%;}
 	.user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
 	.profile-job-post-location-name ul li .follow-li-text{font-size: 14px;}
@@ -4417,6 +4418,10 @@ height: 100px;
 	.bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
+    .folle_text {
+    width: 37%;
+}
+    .inputtype-edit-comment .editable_text{width: 60%!important;}
     .post-edit-popup .popup-text textarea{padding-right: 45px;}
     .popup-text textarea{line-height: 2.3; padding-left: 15px;}
 	.audio_img{height: 150px !important; width: 150px !important; position: relative !important;}
@@ -4439,6 +4444,7 @@ height: 100px;
 	.follow-img {
         height: 40px;
         width: 40px;
+        margin-top: 9px;
     }
 	.post-design-box .post-design-desc .fr {
 		padding: 3px 6px;
