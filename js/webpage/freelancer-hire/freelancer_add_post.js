@@ -85,7 +85,21 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
 
     // return regexpr.test(value);
 }, "Last Date of apply is required.");
-//   validation border is not show in last date end            
+//   validation border is not show in last date end 
+//VALIDATION FOR ESTIMATE TIME NOT ACCEPT ONLY NUMBER START
+$.validator.addMethod("regx_num_space", function(value, element, regexpr) {          
+    //return value == '' || value.trim().length != 0; 
+     if(!value) 
+            {
+                return true;
+            }
+            else
+            {
+                  return regexpr.test(value);
+            }
+     // return regexpr.test(value);
+}, "Please add proper Estimated time. Eg: '3 month' or '3 Year' ");
+//VALIDATION FOR ESTIMATE TIME NOT ACCEPT ONLY NUMBER END
 $(document).ready(function () {
     $("#postinfo").validate({
         ignore: '*:not([name])',
@@ -119,6 +133,9 @@ $(document).ready(function () {
             },
             state: {
                 required: true,
+            },
+            est_time: {
+                regx_num_space: /^[0-9][a-zA-Z\s]+$/
             }
 
         },
@@ -262,64 +279,64 @@ $(function () {
 //SCRIPT FOR DATEPICKER END 
 //NEW SCRIPT FOR SKILL START
 
-$(function() {
-        function split( val ) {
-            return val.split( /,\s*/ );
-        }
-        function extractLast( term ) { 
-            return split( term ).pop();
-        }
-        
-        $( "#skills2" ).bind( "keydown", function( event ) {
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url +"general/get_skill", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-            select: function( event, ui ) {
-               
-                var text =this.value;
-                var terms = split( this.value );
-                 
-                text = text == null || text == undefined ? "" : text;
-                var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
-               if (checked == 'checked') {
-      
-                    terms.push( ui.item.value );
-                    this.value = terms.split( ", " );
-               }//if end
+$(function () {
+    function split(val) {
+        return val.split(/,\s*/);
+    }
+    function extractLast(term) {
+        return split(term).pop();
+    }
 
-              else {
-                if(terms.length <= 10) {
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( ", " );
+    $("#skills2").bind("keydown", function (event) {
+        if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).autocomplete("instance").menu.active) {
+            event.preventDefault();
+        }
+    })
+            .autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    // delegate back to autocomplete, but extract the last term
+                    $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
+                },
+                focus: function () {
+                    // prevent value inserted on focus
                     return false;
-                }else{
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                    $(this).effect("highlight", {}, 1000);
-                    $(this).attr("style","border: solid 1px red;");
-                    return false;
+                },
+                select: function (event, ui) {
+
+                    var text = this.value;
+                    var terms = split(this.value);
+
+                    text = text == null || text == undefined ? "" : text;
+                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+                    if (checked == 'checked') {
+
+                        terms.push(ui.item.value);
+                        this.value = terms.split(", ");
+                    }//if end
+
+                    else {
+                        if (terms.length <= 10) {
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push(ui.item.value);
+                            // add placeholder to get the comma-and-space at the end
+                            terms.push("");
+                            this.value = terms.join(", ");
+                            return false;
+                        } else {
+                            var last = terms.pop();
+                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                            $(this).effect("highlight", {}, 1000);
+                            $(this).attr("style", "border: solid 1px red;");
+                            return false;
+                        }
+                    }//else end
                 }
-                }//else end
-            }
- 
-        });
-    });
+
+            });
+});
 
 //NEW SCRIPT FOR SKILL END
