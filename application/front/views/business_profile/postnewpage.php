@@ -323,7 +323,7 @@
                                                         ?>
                                                         <!-- one pdf start -->
                                                         <div>
-                                                            <a href="<?php echo base_url('business_profile/creat_pdf/' . $data['image_id']) ?>">
+                                                            <a href="<?php echo base_url('business_profile/creat_pdf/' . $data['post_files_id']) ?>">
                                                                 <div class="pdf_img">
                                                                     <img src="<?php echo base_url('images/PDF.jpg') ?>" style="height: 100%; width: 100%;">
                                                                 </div>
@@ -733,11 +733,11 @@
                                         <div class="post-design-like-box col-md-12">
                                             <div class="post-design-menu">
                                                 <ul class="col-md-6">
-                                                    <li class="<?php echo 'likepostimg' . $busdata['image_id']; ?>">
-                                                        <a id="<?php echo $busdata['image_id']; ?>" onClick="mulimg_like(this.id)">
+                                                    <li class="<?php echo 'likepostimg' . $busdata['post_files_id']; ?>">
+                                                        <a id="<?php echo $busdata['post_files_id']; ?>" onClick="mulimg_like(this.id)">
                                                             <?php
                                                             $userid = $this->session->userdata('aileenuser');
-                                                            $contition_array = array('post_image_id' => $busdata['image_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => 0);
 
                                                             $activedata = $this->data['activedata'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -747,8 +747,8 @@
                                                             <?php } else { ?>
                                                                 <i class="fa fa-thumbs-up fa-1x " aria-hidden="true"></i>
                                                             <?php } ?>
-                                                            <span class="<?php echo 'likeimage' . $busdata['image_id']; ?>"> <?php
-                                                                $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => 0);
+                                                            <span class="<?php echo 'likeimage' . $busdata['post_files_id']; ?>"> <?php
+                                                                $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => 0);
                                                                 $likecount = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                 if ($likecount) {
                                                                     
@@ -757,19 +757,19 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                    <li id="<?php echo 'insertcountimg' . $busdata['image_id']; ?>">
+                                                    <li id="<?php echo 'insertcountimg' . $busdata['post_files_id']; ?>">
                                                         <?php
-                                                        $contition_array = array('post_image_id' => $busdata['image_id'], 'is_delete' => '0');
+                                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_delete' => '0');
                                                         $commnetcount = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         ?>
-                                                        <a onClick="imgcommentall(this.id)" id="<?php echo $busdata['image_id']; ?>">
+                                                        <a onClick="imgcommentall(this.id)" id="<?php echo $busdata['post_files_id']; ?>">
                                                             <i class="fa fa-comment-o" aria-hidden="true"></i> 
                                                         </a>
                                                     </li>
                                                 </ul>
                                                 <ul class="col-md-6 like_cmnt_count">
                                                     <li>
-                                                        <div class="like_cmmt_space comnt_count_ext like_count_ext_img<?php echo $busdata['image_id']; ?>">
+                                                        <div class="like_cmmt_space comnt_count_ext like_count_ext_img<?php echo $busdata['post_files_id']; ?>">
                                                             <span class="comment_count" > 
                                                                 <?php
                                                                 if (count($commnetcount) > 0) {
@@ -782,7 +782,7 @@
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <div class=" comnt_count_ext <?php echo 'comnt_count_ext_img' . $busdata['image_id']; ?>">
+                                                        <div class=" comnt_count_ext <?php echo 'comnt_count_ext_img' . $busdata['post_files_id']; ?>">
                                                             <span class="comment_like_count"> 
                                                                 <?php
                                                                 if (count($likecount) > 0) {
@@ -798,13 +798,13 @@
                                             </div>
                                         </div>
                                         <?php
-                                        $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                         if (count($commneteduser) > 0) {
                                             ?>
-                                            <div class="likeduserlist1 likeduserlistimg<?php echo $busdata['image_id'] ?>">
+                                            <div class="likeduserlist1 likeduserlistimg<?php echo $busdata['post_files_id'] ?>">
                                                 <?php
-                                                $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 $countlike = count($commneteduser) - 1;
                                                 foreach ($commneteduser as $userdata) {
@@ -812,9 +812,9 @@
                                                 }
                                                 ?>
                                                 <!-- pop up box end-->
-                                                <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['image_id'] ?>);">
+                                                <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                     <?php
-                                                    $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                    $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     $countlike = count($commneteduser) - 1;
                                                     $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
@@ -845,9 +845,9 @@
                                             <?php
                                         }
                                         ?>
-                                        <div class="<?php echo "likeusernameimg" . $busdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $busdata['image_id']; ?>" style="display:none">
+                                        <div class="<?php echo "likeusernameimg" . $busdata['post_files_id']; ?>" id="<?php echo "likeusernameimg" . $busdata['post_files_id']; ?>" style="display:none">
                                             <?php
-                                            $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                             $countlike = count($commneteduser) - 1;
                                             foreach ($commneteduser as $userdata) {
@@ -855,9 +855,9 @@
                                             }
                                             ?>
                                             <!-- pop up box end-->
-                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['image_id'] ?>);">
+                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                 <?php
-                                                $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 $countlike = count($commneteduser) - 1;
                                                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
@@ -882,10 +882,10 @@
                                         </div>
                                         <!-- show comment div start -->
                                         <div class="art-all-comment">
-                                            <div  id="<?php echo "threeimgcomment" . $busdata['image_id']; ?>" style="display:block">
-                                                <div class="<?php echo 'insertimgcomment' . $busdata['image_id']; ?>">
+                                            <div  id="<?php echo "threeimgcomment" . $busdata['post_files_id']; ?>" style="display:block">
+                                                <div class="<?php echo 'insertimgcomment' . $busdata['post_files_id']; ?>">
                                                     <?php
-                                                    $contition_array = array('post_image_id' => $busdata['image_id'], 'is_delete' => '0');
+                                                    $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_delete' => '0');
                                                     $busmulimage = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                                                     if ($busmulimage) {
                                                         foreach ($busmulimage as $rowdata) {
@@ -1003,7 +1003,7 @@
                                                     ?>
                                                 </div>
                                             </div>
-                                            <div id="<?php echo "fourimgcomment" . $busdata['image_id']; ?>" style="display:none;"></div>
+                                            <div id="<?php echo "fourimgcomment" . $busdata['post_files_id']; ?>" style="display:none;"></div>
                                         </div>
                                         <!-- show comment div end -->
                                         <!-- insert comment code start -->
@@ -1025,14 +1025,14 @@
                                                 ?>
                                             </div>
                                             <div class="col-md-12 inputtype-comment cmy_2">
-                                                <div contenteditable="true" class="editable_text" name="<?php echo $busdata['image_id']; ?>" id="<?php echo "post_imgcomment" . $busdata['image_id']; ?>" placeholder="Add a Comment ..." onkeyup="entercommentimg(<?php echo $busdata['image_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
+                                                <div contenteditable="true" class="editable_text" name="<?php echo $busdata['post_files_id']; ?>" id="<?php echo "post_imgcomment" . $busdata['post_files_id']; ?>" placeholder="Add a Comment ..." onkeyup="entercommentimg(<?php echo $busdata['post_files_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);"></div>
                                                 <div class="mob-comment">       
-                                                    <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
+                                                    <button id="<?php echo $busdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)"><img src=<?php echo base_url('img/send.png') ?> ;">
                                                     </button>
                                                 </div>
                                             </div>
                                             <div class="comment-edit-butn hidden-mob">                                      
-                                                <button id="<?php echo $busdata['image_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button>
+                                                <button id="<?php echo $busdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button>
                                             </div>
                                         </div>
                                     </div>

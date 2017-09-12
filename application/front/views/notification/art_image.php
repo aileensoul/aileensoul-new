@@ -307,12 +307,12 @@
                                                                 <!-- like comment div start -->
                                                                 <ul class="col-md-6">
 
-                                                                    <li class="<?php echo 'likepostimg' . $artdata['image_id']; ?>">
-                                                                        <a id="<?php echo $artdata['image_id']; ?>" class="ripple like_h_w" onClick="post_likeimg(this.id)">
+                                                                    <li class="<?php echo 'likepostimg' . $artdata['post_files_id']; ?>">
+                                                                        <a id="<?php echo $artdata['post_files_id']; ?>" class="ripple like_h_w" onClick="post_likeimg(this.id)">
 
                                                                             <?php
                                                                             $userid = $this->session->userdata('aileenuser');
-                                                                            $contition_array = array('post_image_id' => $artdata['image_id'], 'user_id' => $userid, 'is_unlike' => 0);
+                                                                            $contition_array = array('post_image_id' => $artdata['post_files_id'], 'user_id' => $userid, 'is_unlike' => 0);
 
                                                                             $activedata = $this->data['activedata'] = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -324,8 +324,8 @@
                                                                             <?php } ?>
 
 
-                                                                            <span class="<?php echo 'likeimage' . $artdata['image_id']; ?>"> <?php
-                                                                                $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => 0);
+                                                                            <span class="<?php echo 'likeimage' . $artdata['post_files_id']; ?>"> <?php
+                                                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => 0);
                                                                                 $likecount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 //                                                                                if ($likecount) {
@@ -336,14 +336,14 @@
                                                                             </span>
                                                                         </a>
                                                                     </li>
-                                                                    <li id="<?php echo "insertcountimg" . $artdata['image_id']; ?>" style="visibility:show">
+                                                                    <li id="<?php echo "insertcountimg" . $artdata['post_files_id']; ?>" style="visibility:show">
 
                                                                         <?php
-                                                                        $contition_array = array('post_image_id' => $artdata['image_id'], 'is_delete' => '0');
+                                                                        $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_delete' => '0');
                                                                         $commnetcount = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         ?>
 
-                                                                        <a class="ripple like_h_w" onClick="commentallimg(this.id)" id="<?php echo $artdata['image_id']; ?>">
+                                                                        <a class="ripple like_h_w" onClick="commentallimg(this.id)" id="<?php echo $artdata['post_files_id']; ?>">
                                                                             <i class="fa fa-comment-o" aria-hidden="true">
                                                                                 <?php
 //                                                                                if (count($commnetcount) > 0) {
@@ -357,7 +357,7 @@
                                                                  <ul class="col-md-6 like_cmnt_count">
 
  <li>
-                                                                <div class="like_cmmt_space comnt_count_ext like_count_ext_img<?php echo $artdata['image_id']; ?>">
+                                                                <div class="like_cmmt_space comnt_count_ext like_count_ext_img<?php echo $artdata['post_files_id']; ?>">
                                                                     <span class="comment_count" > 
                                                                         <?php
                                                                         if (count($commnetcount) > 0) {
@@ -371,7 +371,7 @@
                                                             </li>
 
                                                             <li>
-                                                                <div class=" comnt_count_ext <?php echo 'comnt_count_ext_img' . $artdata['image_id']; ?>">
+                                                                <div class=" comnt_count_ext <?php echo 'comnt_count_ext_img' . $artdata['post_files_id']; ?>">
                                                                     <span class="comment_like_count"> 
                                                                        <?php
                                                                         if (count($likecount) > 0) { 
@@ -393,13 +393,13 @@
 
                                                         <!-- pop up box start-->
                                                         <?php
-                                                        $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                        $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                         $commnetlike = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         if (count($commnetlike) > 0) {
                                                             ?>
-                                                            <div class="likeduserlistimg<?php echo $artdata['image_id']; ?>">
+                                                            <div class="likeduserlistimg<?php echo $artdata['post_files_id']; ?>">
                                                                 <?php
-                                                                $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                 // echo '<pre>'; print_r($commnetcount);
                                                                 foreach ($commnetcount as $comment) {
@@ -408,9 +408,9 @@
                                                                     ?>
                                                                 <?php } ?>
                                                                 <!-- pop up box end-->
-                                                                <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['image_id']; ?>);">
+                                                                <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
                                                                     <?php
-                                                                    $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                                    $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                                     $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -442,9 +442,9 @@
                                                             <?php
                                                         }
                                                         ?>
-                                                        <div class="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" style="display:none">
+                                                        <div class="<?php echo "likeusernameimg" . $artdata['post_files_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['post_files_id']; ?>" style="display:none">
                                                             <?php
-                                                            $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                            $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                             $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                             // echo '<pre>'; print_r($commnetcount);
                                                             foreach ($commnetcount as $comment) {
@@ -453,9 +453,9 @@
                                                                 ?>
                                                             <?php } ?>
                                                             <!-- pop up box end-->
-                                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['image_id']; ?>);">
+                                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
                                                                 <?php
-                                                                $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -490,15 +490,15 @@
 
                                                         <div class="art-all-comment col-md-12">
                                                             <!-- 18-4 all comment start-->
-                                                            <div id="<?php echo "fourcommentimg" . $artdata['image_id']; ?>" style="display:none">
+                                                            <div id="<?php echo "fourcommentimg" . $artdata['post_files_id']; ?>" style="display:none">
                                                             </div>
 
                                                             <!-- khyati changes start -->
 
-                                                            <div  id="<?php echo "threecommentimg" . $artdata['image_id']; ?>" style="display:block">
-                                                                <div class="<?php echo 'insertcommentimg' . $artdata['image_id']; ?>">
+                                                            <div  id="<?php echo "threecommentimg" . $artdata['post_files_id']; ?>" style="display:block">
+                                                                <div class="<?php echo 'insertcommentimg' . $artdata['post_files_id']; ?>">
                                                                     <?php
-                                                                    $contition_array = array('post_image_id' => $artdata['image_id'], 'is_delete' => '0');
+                                                                    $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_delete' => '0');
                                                                     $artmulimage = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = 'post_image_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                                                                     if ($artmulimage) {
                                                                         foreach ($artmulimage as $rowdata) {
@@ -651,11 +651,11 @@
                                                             </div>
                                                             <div class="">
                                                                 <div id="content" class="col-md-12 inputtype-comment cmy_2" >
-                                                                    <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $artdata['image_id']; ?>"  id="<?php echo "post_commentimg" . $artdata['image_id']; ?>" placeholder="Add a Comment ..." onclick="entercommentimg(<?php echo $artdata['image_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
+                                                                    <div contenteditable="true"  class="editable_text edt_2" name="<?php echo $artdata['post_files_id']; ?>"  id="<?php echo "post_commentimg" . $artdata['post_files_id']; ?>" placeholder="Add a Comment ..." onclick="entercommentimg(<?php echo $artdata['post_files_id']; ?>)" onpaste="OnPaste_StripFormatting(this, event);" ></div>
                                                                 </div>
                                                                 <?php echo form_error('post_commentimg'); ?>
                                                                 <div class="comment-edit-butn">   
-                                                                    <button id="<?php echo $artdata['image_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button> 
+                                                                    <button id="<?php echo $artdata['post_files_id']; ?>" onClick="insert_commentimg(this.id)">Comment</button> 
                                                                 </div>
                                                             </div>
                                                         </div>

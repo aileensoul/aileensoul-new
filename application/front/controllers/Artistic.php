@@ -4834,7 +4834,7 @@ public function followtwo() {
 
     public function creat_pdf($id) {
 
-        $contition_array = array('image_id' => $id, 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $id, 'is_deleted' => '1');
         $this->data['artdata'] = $this->common->select_data_by_condition('post_files', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('artistic/art_pdfdispaly', $this->data);
@@ -7677,7 +7677,7 @@ public function insert_comment_postnewpage() {
 
         $likeuser = $this->data['likeuser'] = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo '<pre>'; print_r($likeuser); die();
-        $contition_array = array('image_id' => $post_image);
+        $contition_array = array('post_files_id' => $post_image);
 
         $likeuserid = $this->data['likeuserid'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $contition_array = array('art_post_id' => $likeuserid[0]['post_id']);
@@ -8033,7 +8033,7 @@ public function insert_comment_postnewpage() {
 
 
         //$contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $artimg = $this->data['artimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
@@ -8494,7 +8494,7 @@ public function insert_comment_postnewpage() {
         $post_comment = $_POST["comment"];
 
 
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $artimg = $this->data['artimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
@@ -8671,7 +8671,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('image_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
+        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
         $artlikeimg = $this->data['artlikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
@@ -8870,7 +8870,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('image_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
+        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
         $artlikeimg = $this->data['artlikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
@@ -10100,7 +10100,7 @@ public function insert_comment_postnewpage() {
 
 
         //$contition_array = array('post_image_id' => $_POST["post_image_id"], 'is_unlike' => '0');
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $artimg = $this->data['artimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artimg[0]["post_id"], 'is_delete' => 0);
@@ -13653,7 +13653,7 @@ public function art_home_post() {
 
 
             $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-            $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
             $multipleimage[] = $artmultiimage;
@@ -13718,7 +13718,7 @@ public function art_home_post() {
 
 
            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-           $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+           $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multiplevideo[] = $artmultivideo;
         }
@@ -13837,7 +13837,7 @@ public function art_home_post() {
 
 
             $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-            $artmultiaudio = $this->data['artmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $artmultiaudio = $this->data['artmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
             $multipleaudio[] = $artmultiaudio;
@@ -13949,7 +13949,7 @@ public function art_home_post() {
         foreach ($artimage as $val) {
 
                                 $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
-                                $artmultipdf = $this->data['artmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'image_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                $artmultipdf = $this->data['artmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                                 $multiplepdf[] = $artmultipdf;
                             }
@@ -13972,7 +13972,7 @@ public function art_home_post() {
             foreach ($singlearray3 as $mi) {
 
                 $fetch_pdf .= '<div class="image_profile">';
-                // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['image_id']) . '"><div class="pdf_img">';
+                // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['post_files_id']) . '"><div class="pdf_img">';
                 $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['image_name']).'">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
@@ -15762,7 +15762,7 @@ public function get_artistic_name($id=''){
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
-            <a href="'.base_url('artistic/creat-pdf/' . $artmultiimage[0]['image_id']).'"><div class="pdf_img">
+            <a href="'.base_url('artistic/creat-pdf/' . $artmultiimage[0]['post_files_id']).'"><div class="pdf_img">
                 <img src="'.base_url('images/PDF.jpg').'" style="height: 100%; width: 100%;">
                     </div></a>
                     </div>';

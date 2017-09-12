@@ -96,13 +96,13 @@
                                                                 <!-- like comment start -->
                                                                 <div>
                                                                     <?php
-                                                                    $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                                    $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                                     $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                     if (count($commneteduser) > 0) {
                                                                         ?>
-                                                                        <div class="likeduserlistimg<?php echo $busdata['image_id'] ?>">
+                                                                        <div class="likeduserlistimg<?php echo $busdata['post_files_id'] ?>">
                                                                             <?php
-                                                                            $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                             $countlike = count($commneteduser) - 1;
                                                                             foreach ($commneteduser as $userdata) {
@@ -110,9 +110,9 @@
                                                                             }
                                                                             ?>
                                                                             <!-- pop up box end-->
-                                                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['image_id'] ?>);">
+                                                                            <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                                                 <?php
-                                                                                $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                                                $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                                                 $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                                 $countlike = count($commneteduser) - 1;
                                                                                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;
@@ -143,9 +143,9 @@
                                                                         <?php
                                                                     }
                                                                     ?>
-                                                                    <div class="<?php echo "likeusernameimg" . $busdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $busdata['image_id']; ?>" style="display:none">
+                                                                    <div class="<?php echo "likeusernameimg" . $busdata['post_files_id']; ?>" id="<?php echo "likeusernameimg" . $busdata['post_files_id']; ?>" style="display:none">
                                                                         <?php
-                                                                        $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                                        $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                                         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                         $countlike = count($commneteduser) - 1;
                                                                         foreach ($commneteduser as $userdata) {
@@ -153,9 +153,9 @@
                                                                         }
                                                                         ?>
                                                                         <!-- pop up box end-->
-                                                                        <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['image_id'] ?>);">
+                                                                        <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $busdata['post_files_id'] ?>);">
                                                                             <?php
-                                                                            $contition_array = array('post_image_id' => $busdata['image_id'], 'is_unlike' => '0');
+                                                                            $contition_array = array('post_image_id' => $busdata['post_files_id'], 'is_unlike' => '0');
                                                                             $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'post_image_like_id,post_image_id,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                                             $countlike = count($commneteduser) - 1;
                                                                             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $commneteduser[0]['user_id'], 'status' => 1))->row()->company_name;

@@ -367,7 +367,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                             <!-- one pdf start -->
                                                             <div>
-                                                                <a href="<?php echo base_url('artistic/creat_pdf/' . $artmultiimage[0]['image_id']) ?>"><div class="pdf_img">
+                                                                <a href="<?php echo base_url('artistic/creat_pdf/' . $artmultiimage[0]['post_files_id']) ?>"><div class="pdf_img">
                                                                         <img src="<?php echo base_url('images/PDF.jpg') ?>">
                                                                     </div></a>
                                                             </div>

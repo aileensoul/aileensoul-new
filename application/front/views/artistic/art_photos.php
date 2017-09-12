@@ -130,13 +130,13 @@
 
                                              <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>"> -->
                                           </div>
-                                          <div class="likeduserlistimg<?php echo $artdata['image_id']; ?>">
+                                          <div class="likeduserlistimg<?php echo $artdata['post_files_id']; ?>">
                                             
                                           </div>
                                          
-                                          <div class="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['image_id']; ?>" style="display:none">
+                                          <div class="<?php echo "likeusernameimg" . $artdata['post_files_id']; ?>" id="<?php echo "likeusernameimg" . $artdata['post_files_id']; ?>" style="display:none">
                                              <?php
-                                                $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                 $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = 'post_image_like_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 // echo '<pre>'; print_r($commnetcount);
                                                 foreach ($commnetcount as $comment) {
@@ -145,9 +145,9 @@
                                                     ?>
                                              <?php } ?>
                                              <!-- pop up box end-->
-                                             <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['image_id']; ?>);">
+                                             <a href="javascript:void(0);"  onclick="likeuserlistimg(<?php echo $artdata['post_files_id']; ?>);">
                                                 <?php
-                                                   $contition_array = array('post_image_id' => $artdata['image_id'], 'is_unlike' => '0');
+                                                   $contition_array = array('post_image_id' => $artdata['post_files_id'], 'is_unlike' => '0');
                                                    $commnetcount = $this->common->select_data_by_condition('art_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                    
                                                    

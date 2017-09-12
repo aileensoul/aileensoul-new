@@ -571,7 +571,7 @@ class Business_profile extends MY_Controller {
                 $data = array(
                     'image_name' => $_POST['filename'][$x],
                 );
-                $updatdata = $this->common->update_data($data, 'bus_image', 'image_id', $_POST['imageid'][$x]);
+                $updatdata = $this->common->update_data($data, 'bus_image', 'post_files_id', $_POST['imageid'][$x]);
             }
 
             if ($_POST['filedata'][$x]) {
@@ -3970,7 +3970,7 @@ class Business_profile extends MY_Controller {
 
     public function creat_pdf($id) {
 
-        $contition_array = array('image_id' => $id, 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $id, 'is_deleted' => '1');
         $this->data['busdata'] = $this->common->select_data_by_condition('post_files', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
@@ -5641,7 +5641,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('post_image_id' => $post_image, 'user_id' => $userid);
         $likeuser = $this->data['likeuser'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('image_id' => $post_image);
+        $contition_array = array('post_files_id' => $post_image);
         $likeuserid = $this->data['likeuserid'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $likeuserid[0]['post_id']);
@@ -5927,7 +5927,7 @@ class Business_profile extends MY_Controller {
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
@@ -6085,7 +6085,7 @@ class Business_profile extends MY_Controller {
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
@@ -6241,7 +6241,7 @@ class Business_profile extends MY_Controller {
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
@@ -6415,7 +6415,7 @@ class Business_profile extends MY_Controller {
         $post_image_id = $_POST["post_image_id"];
         $post_comment = $_POST["comment"];
 
-        $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
+        $contition_array = array('post_files_id' => $_POST["post_image_id"], 'is_deleted' => '1');
         $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
@@ -6602,7 +6602,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('image_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
+        $contition_array = array('post_files_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
         $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $buslikeimg[0]["post_id"]);
@@ -6772,7 +6772,7 @@ class Business_profile extends MY_Controller {
 //echo "<pre>"; print_r($busimglike); die();
 
 
-        $contition_array = array('image_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
+        $contition_array = array('post_files_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
         $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $buslikeimg[0]["post_id"]);

@@ -111,7 +111,7 @@
              $artistictitle = $this->data['artistictitle'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
               ?>
 
-        <!-- <a href="<?php //echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>"> -->
+        <!-- <a href="<?php //echo base_url('artistic/creat_pdf/'.$pdfv['post_files_id']) ?>"> -->
         <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['image_name']) ?>">
 
         <div class="margin_less" >
@@ -126,7 +126,7 @@
         </a> </div>
 </div>
 </li>
-        <!-- <a href="<?php echo base_url('artistic/creat_pdf/'.$pdfv['image_id']) ?>">
+        <!-- <a href="<?php echo base_url('artistic/creat_pdf/'.$pdfv['post_files_id']) ?>">
         <div class="pdf_name"><a title="Zalak infotech .in pdf" href="">Zalak infotech .in pdf</a> </div></a> -->
 
         <?php } } else{?>

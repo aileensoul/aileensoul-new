@@ -471,7 +471,7 @@ class Search extends MY_Controller {
                                         </div>';
                             } elseif (in_array($ext, $allowespdf)) {
                                 $return_html .= '<div>
-                                            <a title="click to open" href="' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['image_id']) . '">
+                                            <a title="click to open" href="' . base_url('business_profile/creat_pdf/' . $businessmultiimage[0]['post_files_id']) . '">
                                                 <div class="pdf_img">
                                                     <img src="' . base_url('images/PDF.jpg') . '"">
                                                 </div>
