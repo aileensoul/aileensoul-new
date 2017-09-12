@@ -883,7 +883,7 @@ label.error {
 .banner-img .cover-pic .fr:hover{background-color: #156f95!important;border:1px solid #1b8ab9;}
 .banner-img .cover-pic .cancel-result:hover{background-color: #fff!important;color: #1b8ab9;border:1px solid #1b8ab9;}
 .btn-success:active{background-color: white; color: #1b8ab9; }
-.profile-text1 .alert.alert-warning{margin-bottom: 0px;}
+.profile-text1 .alert.alert-warning{margin-bottom: 0px; cursor:default;}
 #row2 img {
     height: 350px;
     width: 100%;
