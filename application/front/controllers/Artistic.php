@@ -2122,7 +2122,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2 custom-edit" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -13451,7 +13451,7 @@ public function art_home_post() {
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2 custom-edit" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -14563,7 +14563,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 <div class="edit-comment-box">
                     <div class="inputtype-edit-comment">
 
-                         <div contenteditable="true"  style="display:none" class="editable_text editav_2" name="'. $rowdata['artistic_post_comment_id'] .'"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                         <div contenteditable="true"  style="display:none" class="editable_text editav_2 custom-edit" name="'. $rowdata['artistic_post_comment_id'] .'"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
 
                         <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                     </div>
