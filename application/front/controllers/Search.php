@@ -386,8 +386,8 @@ class Search extends MY_Controller {
                                     <img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                             }
                             $return_html .= '</a>';
-                        } else {
-                            if ($business_userimage) {
+                        } else { 
+                            if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) { 
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
                                     <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
                             } else {
