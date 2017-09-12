@@ -85,7 +85,7 @@
                <div class="profile-pho">
                   <div class="user-pic padd_img">
                      <?php if ($jobdata[0]['job_user_image'] != '') { ?>
-                     <img src="<?php echo base_url($this->config->item('job_profile_thumb_upload_path') . $jobdata[0]['job_user_image']); ?>" alt="" >
+                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $jobdata[0]['job_user_image']; ?>" alt="" >
                      <?php } else { ?>
                      <?php
                         $a = $jobdata[0]['fname'];
@@ -103,7 +103,7 @@
                         <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                      </div>
                      <?php } ?>
-                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>Update Profile Picture</a>
                   </div>
                </div>
                <div class="job-menu-profile mob-block">
