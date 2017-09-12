@@ -16,7 +16,7 @@ class Job extends MY_Controller {
         $this->load->library('S3');
         $this->load->library('upload');
 
-      //This function is there only one time users slug created
+      //This function is there only one time users slug created after remove it
       function slug_script() 
       {
         $this->db->select('job_id,fname,lname');
@@ -964,13 +964,11 @@ class Job extends MY_Controller {
             $config['file_name'] = $fileName;
            
             $this->upload->initialize($config);
-            $this->upload->do_upload();
-        
-
+          
              if ($this->upload->do_upload('certificate')) {
 
                 $response['result'][] = $this->upload->data();
-
+               // echo "<pre>";print_r( $response);
                 $main_image_size = $_FILES['certificate']['size'];
 
                     if ($main_image_size > '1000000') {
@@ -996,6 +994,8 @@ class Job extends MY_Controller {
                     $instanse10 = "image10_$i";
                     $this->load->library('image_lib', $job[$i], $instanse10);
                     $this->$instanse10->watermark();
+
+                  //  echo "<pre>";print_r($job);
 
                     /* RESIZE */
 
@@ -1077,7 +1077,7 @@ class Job extends MY_Controller {
             }
 
         }
-       
+     
         // Multiple Image insert code End
           
         $contition_array = array('user_id' => $userid);
@@ -1613,9 +1613,7 @@ class Job extends MY_Controller {
                     $config['file_name'] = $fileName;
               
                     $this->upload->initialize($config);
-                    $this->upload->do_upload();
-
-
+                   
                    if ($this->upload->do_upload('certificate')) {
                 $response['result'][] = $this->upload->data();
 
