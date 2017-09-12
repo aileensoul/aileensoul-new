@@ -1045,7 +1045,7 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-        $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
+        $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => 1, 'is_delete' => '0');
@@ -1107,7 +1107,7 @@ class Business_profile extends MY_Controller {
             'modify_date' => date('Y-m-d', time())
         );
 
-        $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
+        $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
 
 // for post count start
 
@@ -1604,7 +1604,7 @@ class Business_profile extends MY_Controller {
                         );
 
                         //echo "<pre>"; print_r($data1);
-                        $insert_id1 = $this->common->insert_data_getid($data1, 'post_image');
+                        $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
                         /* THIS CODE UNCOMMENTED AFTER SUCCESSFULLY WORKING : REMOVE IMAGE FROM UPLOAD FOLDER */
 
 //                        if (isset($main_image)) {
@@ -1995,7 +1995,7 @@ class Business_profile extends MY_Controller {
     <div>';
 
             $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if (count($businessmultiimage) == 1) {
 
@@ -3971,7 +3971,7 @@ class Business_profile extends MY_Controller {
     public function creat_pdf($id) {
 
         $contition_array = array('image_id' => $id, 'is_deleted' => '1');
-        $this->data['busdata'] = $this->common->select_data_by_condition('post_image', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['busdata'] = $this->common->select_data_by_condition('post_files', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 //echo "<pre>"; print_r($this->data['artdata']); die();
         $this->load->view('business_profile/business_pdfdispaly', $this->data);
     }
@@ -5500,7 +5500,7 @@ class Business_profile extends MY_Controller {
             $contition_array = array('business_slug' => $slug_id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'post_image';
+            $join_str[0]['table'] = 'post_files';
             $join_str[0]['join_table_id'] = 'post_image.post_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
@@ -5514,7 +5514,7 @@ class Business_profile extends MY_Controller {
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $join_str[0]['table'] = 'post_image';
+            $join_str[0]['table'] = 'post_files';
             $join_str[0]['join_table_id'] = 'post_image.post_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
@@ -5642,7 +5642,7 @@ class Business_profile extends MY_Controller {
         $likeuser = $this->data['likeuser'] = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('image_id' => $post_image);
-        $likeuserid = $this->data['likeuserid'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $likeuserid = $this->data['likeuserid'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $likeuserid[0]['post_id']);
         $likepostid = $this->data['likepostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5928,7 +5928,7 @@ class Business_profile extends MY_Controller {
         $post_comment = $_POST["comment"];
 
         $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6086,7 +6086,7 @@ class Business_profile extends MY_Controller {
         $post_comment = $_POST["comment"];
 
         $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6242,7 +6242,7 @@ class Business_profile extends MY_Controller {
         $post_comment = $_POST["comment"];
 
         $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6416,7 +6416,7 @@ class Business_profile extends MY_Controller {
         $post_comment = $_POST["comment"];
 
         $contition_array = array('image_id' => $_POST["post_image_id"], 'is_deleted' => '1');
-        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busimg = $this->data['busimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $busimg[0]["post_id"], 'is_delete' => 0);
         $buspostid = $this->data['buspostid'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6603,7 +6603,7 @@ class Business_profile extends MY_Controller {
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('bus_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('image_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
-        $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $buslikeimg[0]["post_id"]);
         $busimglikepost = $this->data['busimglikepost'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6773,7 +6773,7 @@ class Business_profile extends MY_Controller {
 
 
         $contition_array = array('image_id' => $busimglike[0]['post_image_id'], 'image_type' => '2');
-        $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $buslikeimg = $this->data['buslikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('business_profile_post_id' => $buslikeimg[0]["post_id"]);
         $busimglikepost = $this->data['busimglikepost'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9853,7 +9853,7 @@ No Contacts Available.
         $user_name = $this->session->userdata('user_name');
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if ($business_deactive) {
             redirect('business-profile/');
@@ -10206,7 +10206,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div>';
 
                     $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                    $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     if (count($businessmultiimage) == 1) {
 
@@ -11213,7 +11213,7 @@ Your browser does not support the audio tag.
 //if user deactive profile then redirect to business_profile/index untill active profile start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
 
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
 
         if ($business_deactive) {
             redirect('business-profile/');
@@ -11243,7 +11243,7 @@ Your browser does not support the audio tag.
 
         foreach ($businessimage as $val) {
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multipleimage[] = $busmultiimage;
         }
@@ -11281,54 +11281,6 @@ Your browser does not support the audio tag.
         echo $fetch_result;
     }
 
-    public function bus_user_photos() {
-
-        $id = $_POST['bus_slug'];
-
-        $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
-        $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $businessdata1[0]['user_id']);
-        $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post1', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($businessimage as $val) {
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $multipleimage[] = $busmultiimage;
-        }
-        $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-
-        foreach ($multipleimage as $mke => $mval) {
-
-            foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
-
-                if (in_array($ext, $allowed)) {
-                    $singlearray[] = $mval1;
-                }
-            }
-        }
-        if ($singlearray) {
-            $i = 0;
-            foreach ($singlearray as $mi) {
-                $fetch_result .= '<div class = "image_profile">';
-                $fetch_result .= '<img src = "' . base_url($this->config->item('bus_post_thumb_upload_path') . $mi['image_name']) . '" alt = "img1">';
-                $fetch_result .= '</div>';
-
-                $i++;
-                if ($i == 6)
-                    break;
-            }
-        } else {
-
-            $fetch_result .= '<div class = "not_available"> <p> Photos Not Available </p></div>';
-        }
-
-        $fetch_result .= '<div class = "dataconphoto"></div>';
-
-        echo $fetch_result;
-    }
 
     public function bus_videos() {
 
@@ -11372,7 +11324,7 @@ Your browser does not support the audio tag.
 
 
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multiplevideo[] = $busmultivideo;
         }
@@ -11406,7 +11358,7 @@ Your browser does not support the audio tag.
             if ($singlearray1[1]['image_name']) {
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[1]['image_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[1]['image_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11415,7 +11367,7 @@ Your browser does not support the audio tag.
             if ($singlearray1[2]['image_name']) {
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[2]['image_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[2]['image_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11427,7 +11379,7 @@ Your browser does not support the audio tag.
             if ($singlearray1[3]['image_name']) {
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[3]['image_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[3]['image_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11436,7 +11388,7 @@ Your browser does not support the audio tag.
             if ($singlearray1[4]['image_name']) {
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[4]['image_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[4]['image_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11445,7 +11397,7 @@ Your browser does not support the audio tag.
             if ($singlearray1[5]['image_name']) {
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[5]['image_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[5]['image_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11506,7 +11458,7 @@ Your browser does not support the audio tag.
 
 
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $busmultiaudio = $this->data['busmultiaudio'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busmultiaudio = $this->data['busmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multipleaudio[] = $busmultiaudio;
         }
@@ -11530,7 +11482,7 @@ Your browser does not support the audio tag.
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<audio controls>';
 
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[0]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[0]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -11540,7 +11492,7 @@ Your browser does not support the audio tag.
             if ($singlearray2[1]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[1]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[1]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -11549,7 +11501,7 @@ Your browser does not support the audio tag.
             if ($singlearray2[2]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[2]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[2]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -11561,7 +11513,7 @@ Your browser does not support the audio tag.
             if ($singlearray2[3]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[3]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[3]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -11570,7 +11522,7 @@ Your browser does not support the audio tag.
             if ($singlearray2[4]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[4]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[4]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -11579,7 +11531,7 @@ Your browser does not support the audio tag.
             if ($singlearray2[5]['image_name']) {
                 $fetchaudio .= '<td class = "image_profile">';
                 $fetchaudio .= '<video controls>';
-                $fetchaudio .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray2[5]['image_name']) . '" type = "audio/mp3">';
+                $fetchaudio .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[5]['image_name'] . '" type = "audio/mp3">';
                 $fetchaudio .= '<source src = "movie.ogg" type = "audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -11614,7 +11566,7 @@ Your browser does not support the audio tag.
         $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         foreach ($businessimage as $val) {
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-            $busmultipdf = $this->data['busmultipdf'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busmultipdf = $this->data['busmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $multiplepdf[] = $busmultipdf;
         }
         $allowed = array('pdf');
@@ -11873,7 +11825,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     <div class="mange_post_image">';
 
                 $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
-                $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (count($businessmultiimage) == 1) {
 
                     $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');

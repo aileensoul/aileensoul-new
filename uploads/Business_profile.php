@@ -1146,7 +1146,7 @@ class Business_profile extends MY_Controller {
         );
 
         //echo "<pre>"; print_r($dataimage); die();
-        $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
+        $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -1212,7 +1212,7 @@ class Business_profile extends MY_Controller {
         );
 
         //echo "<pre>"; print_r($dataimage); die();
-        $updatdata = $this->common->update_data($dataimage, 'post_image', 'post_id', $id);
+        $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
 
 // for post count start
 

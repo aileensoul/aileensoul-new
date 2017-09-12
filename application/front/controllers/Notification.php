@@ -150,7 +150,7 @@ class Notification extends MY_Controller {
 //        $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
 //        $join_str = array(array(
 //                'join_type' => '',
-//                'table' => 'post_image',
+//                'table' => 'post_files',
 //                'join_table_id' => 'notification.not_product_id',
 //                'from_table_id' => 'post_image.image_id'),
 //            array(
@@ -296,7 +296,7 @@ class Notification extends MY_Controller {
 //        $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
 //        $join_str = array(array(
 //                'join_type' => '',
-//                'table' => 'post_image',
+//                'table' => 'post_files',
 //                'join_table_id' => 'notification.not_product_id',
 //                'from_table_id' => 'post_image.image_id'),
 //            array(
@@ -425,7 +425,7 @@ class Notification extends MY_Controller {
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'image_type' => '1');
-        $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $i = 1;
         foreach ($artmultiimage as $artimg) {
@@ -511,7 +511,7 @@ class Notification extends MY_Controller {
         $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'image_type' => '2');
-        $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_image', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $i = 1;
         foreach ($busmultiimage as $artimg) {
@@ -833,7 +833,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -985,7 +985,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -1246,7 +1246,7 @@ class Notification extends MY_Controller {
             //7
             if ($total['not_from'] == 3) {
                 if ($total['not_img'] == 4) {
-                    $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                    $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                     $notification .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $notification .= 'active2';
@@ -1280,7 +1280,7 @@ class Notification extends MY_Controller {
             //8
             if ($total['not_from'] == 3) {
                 if ($total['not_img'] == 6) {
-                    $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                    $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                     $notification .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $notification .= 'active2';
@@ -1470,7 +1470,7 @@ class Notification extends MY_Controller {
             if ($total['not_from'] == 6) {
                 if ($total['not_img'] == 4) {
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                    $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                    $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                     $notification .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $notification .= 'active2';
@@ -1503,7 +1503,7 @@ class Notification extends MY_Controller {
             if ($total['not_from'] == 6) {
                 if ($total['not_img'] == 6) {
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
-                    $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                    $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                     $notification .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $notification .= 'active2';
@@ -2528,7 +2528,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -2680,7 +2680,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -3008,7 +3008,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 3, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -3159,7 +3159,7 @@ class Notification extends MY_Controller {
         $contition_array = array('notification.not_type' => 5, 'not_img' => 5, 'notification.not_from' => 6, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'post_image',
+                'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
                 'from_table_id' => 'post_image.image_id'),
             array(
@@ -3450,7 +3450,7 @@ class Notification extends MY_Controller {
 //7
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 4) {
-                        $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                        $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                         $return_html .= '<a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
                                             <li class="';
                         if ($total['not_active'] == 1) {
@@ -3492,7 +3492,7 @@ class Notification extends MY_Controller {
                 //   8
                 if ($total['not_from'] == 3) {
                     if ($total['not_img'] == 6) {
-                        $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                        $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                         $return_html .= '<a href="' . base_url() . 'notification/art_post_img/' . $postid . '/' . $total['post_image_id'] . '">
                                             <li class="';
                         if ($total['not_active'] == 1) {
@@ -3571,7 +3571,7 @@ class Notification extends MY_Controller {
                 //10
                 if ($total['not_from'] == 6) {
                     if ($total['not_img'] == 4) {
-                        $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                        $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
                         $return_html .= '<a href="' . base_url() . 'notification/bus_post_img/' . $postid . '/' . $total['post_image_id'] . '">
                                             <li class="';
@@ -3611,7 +3611,7 @@ class Notification extends MY_Controller {
                 //11
                 if ($total['not_from'] == 6) {
                     if ($total['not_img'] == 6) {
-                        $postid = $this->db->get_where('post_image', array('image_id' => $total['post_image_id']))->row()->post_id;
+                        $postid = $this->db->get_where('post_files', array('image_id' => $total['post_image_id']))->row()->post_id;
                         $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
                         $return_html .= '<a href="' . base_url() . 'notification/bus_post_img/' . $postid . '/' . $total['post_image_id'] . '">';
                         $return_html .= '<li class="';
