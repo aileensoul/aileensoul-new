@@ -554,11 +554,11 @@
                                              $ext = explode('.', $job_edu[0]['edu_certificate_primary']);
                                              if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $job_edu[0]['edu_certificate_primary']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_primary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo base_url($this->config->item('job_edu_thumb_upload_path') . $job_edu[0]['edu_certificate_primary']) ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_primary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }//else complete
                                              }//if ($job_edu[0]['edu_certificate_primary']) complete
@@ -600,11 +600,11 @@
                                               $ext = explode('.', $job_edu[0]['edu_certificate_secondary']);
                                               if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $job_edu[0]['edu_certificate_secondary']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo base_url($this->config->item('job_edu_thumb_upload_path') . $job_edu[0]['edu_certificate_secondary']) ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_secondary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }
                                              }
@@ -647,11 +647,11 @@
                                                  $ext = explode('.', $job_edu[0]['edu_certificate_higher_secondary']);
                                                  if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $job_edu[0]['edu_certificate_higher_secondary']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_higher_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo base_url($this->config->item('job_edu_thumb_upload_path') . $job_edu[0]['edu_certificate_higher_secondary']) ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_higher_secondary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }
                                              }
@@ -759,11 +759,11 @@
                                                 $ext = explode('.', $graduation['edu_certificate']);
                                                                                           if ($ext[1] == 'pdf') {
                                                                                       ?>
-                                             <a title="open pdf" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $graduation['edu_certificate']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                             <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                              <?php
                                                 } else {
                                                 ?>
-                                             <a class="example-image-link" href="<?php echo base_url($this->config->item('job_edu_main_upload_path') . $graduation['edu_certificate']) ?>" data-lightbox="example-1">certificate <?php echo $new; ?></a>
+                                             <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>" data-lightbox="example-1">certificate <?php echo $new; ?></a>
                                              <?php
                                                 }
                                                 ?>
@@ -1393,11 +1393,11 @@
                                                    $ext = explode('.', $work['work_certificate']);
                                                    if ($ext[1] == 'pdf') {
                                                        ?>
-                                                <a title="open pdf" href="<?php echo base_url($this->config->item('job_work_main_upload_path') . $work['work_certificate']) ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                                <a title="open pdf" href="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work['work_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                                 <?php
                                                    } else {
                                                        ?>
-                                                <a class="example-image-link" href="<?php echo base_url($this->config->item('job_work_main_upload_path') . $work['work_certificate']) ?>" data-lightbox="example-1">certificate</a>
+                                                <a class="example-image-link" href="<?php echo JOB_WORK_MAIN_UPLOAD_URL . $work['work_certificate'] ?>" data-lightbox="example-1">certificate</a>
                                                 <?php
                                                    }
                                                    ?>
