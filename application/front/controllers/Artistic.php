@@ -2266,12 +2266,13 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
                             <div contenteditable="true" class="edt_2 editable_text" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
-                        </div>
+                      
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
                             <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
                             </button>
                         </div>
+                          </div>
                         <div class=" comment-edit-butn hidden-mob" >   
                            <button  id="'.$row['art_post_id'].'" onClick="insert_comment(this.id)">Comment</button> 
                         </div>
@@ -14657,7 +14658,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
@@ -16169,7 +16170,7 @@ public function get_artistic_name($id=''){
                                             $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                                             $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                            
-                                      $return_html .= '<div class="post-design-proo-img">';
+                                      $return_html .= '<div class="post-design-proo-img hidden-mob">';
                                            if ($art_userimage) { 
                                     $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'" name="image_src" id="image_src" />';
                                                    
