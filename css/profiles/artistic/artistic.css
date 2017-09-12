@@ -3488,7 +3488,7 @@ overflow: hidden;
     padding-right: 15px !important;
 }
 #paddingtop_fixed_art {
-    padding-top: 75px !important;
+    padding-top: 74px !important;
 }
     .hidden-mob {
         display: none;
@@ -3776,6 +3776,7 @@ overflow: hidden;
     }
 }
 @media screen and (max-width: 640px){
+    #row2 img{height: 200px;}
     .bui_bcon {width: 56%;}
     .user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
     .profile-job-post-location-name ul li .follow-li-text{font-size: 14px;}
@@ -4184,12 +4185,17 @@ overflow: hidden;
        .post-editor .popup-social-icon ul li i:hover {
         font-size: 12px;
     }
+        .inputtype-edit-comment .editable_text{width: 66%!important;}
 }
 @media screen and (max-width: 430px){ 
     .bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
+    .folle_text {
+    width: 37%;
+}
      .post-edit-popup .popup-text textarea{padding-right: 45px;}
+         .inputtype-edit-comment .editable_text{width: 60%!important;}
     .header2 {
     top: 42px;
 }#paddingtop_fixed_art {
@@ -4216,6 +4222,7 @@ overflow: hidden;
     .follow-img {
         height: 40px;
         width: 40px;
+        margin-top: 9px;
     }
     .post-design-box .post-design-desc .fr {
         padding: 3px 6px;

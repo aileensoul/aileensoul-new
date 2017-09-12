@@ -1743,7 +1743,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
                                         ' . $row['art_description'] . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
-                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);">' . $row['art_description'] . '</div>
+                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer();">' . $row['art_description'] . '</div>
                                     </div>
                                     
                                     <button class="fr" id="editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin-right: 4px; border-radius: 3px;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save
@@ -2122,7 +2122,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2 custom-edit" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -13036,7 +13036,7 @@ public function art_home_post() {
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
                                         ' . $row['art_description'] . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
-                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);">' . $row['art_description'] . '</div>
+                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer();">' . $row['art_description'] . '</div>
                                     </div>
                                     
                                     <button class="fr" id="editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin-right: 5px; border-radius: 3px;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save
@@ -13451,7 +13451,7 @@ public function art_home_post() {
                             $return_html .= '</div>
                                             <div class="edit-comment-box">
                                                 <div class="inputtype-edit-comment">
-                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                                                    <div contenteditable="true" style="display:none" class="editable_text editav_2 custom-edit" name="' . $rowdata['artistic_post_comment_id'] . '"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Enter Your Comment " value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
                                                     <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                                                 </div>
                                             </div>
@@ -14251,7 +14251,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return_html .= $row['art_description'];
                 $return_html .= '</div>
 <div id = "editpostdetailbox' . $row['art_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['art_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer();">' . $row['art_description'] . '</div>
 </div><button class = "fr" id = "editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save</button>
 </div> ';
                 if ($row['art_post'] || $row['art_description']) {
@@ -14563,7 +14563,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 <div class="edit-comment-box">
                     <div class="inputtype-edit-comment">
 
-                         <div contenteditable="true"  style="display:none" class="editable_text editav_2" name="'. $rowdata['artistic_post_comment_id'] .'"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
+                         <div contenteditable="true"  style="display:none" class="editable_text editav_2 custom-edit" name="'. $rowdata['artistic_post_comment_id'] .'"  id="editcomment' . $rowdata['artistic_post_comment_id'] . '" placeholder="Add a Comment" value= ""  onkeyup="commentedit(' . $rowdata['artistic_post_comment_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
 
                         <span class="comment-edit-button"><button id="editsubmit' . $rowdata['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $rowdata['artistic_post_comment_id'] . ')">Save</button></span>
                     </div>
@@ -15728,7 +15728,7 @@ public function get_artistic_name($id=''){
                                         $return_html .= '</div>
 
                                           <div id="editpostdetailbox'. $key['art_post_id'].'" style="display:none;">      
-                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc">'.$key['art_description'].'</div>                  
+                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="cursorpointer();">'.$key['art_description'].'</div>                  
                                           </div>
                                           <button class="fr" id="editpostsubmit'. $key['art_post_id'].'" style="display:none;margin: 5px 0; border-radius: 3px;" onclick="edit_postinsert('.$key['art_post_id'].')">Save
                                           </button>
@@ -16648,7 +16648,7 @@ public function get_artistic_name($id=''){
                                         $return_html .= '</div>
 
                                           <div id="editpostdetailbox'. $key['art_post_id'].'" style="display:none;">      
-                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc">'.$key['art_description'].'</div>                  
+                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="cursorpointer();">'.$key['art_description'].'</div>                  
                                           </div>
                                           <button class="fr" id="editpostsubmit'. $key['art_post_id'].'" style="display:none;margin: 5px 0; border-radius: 3px;" onclick="edit_postinsert('.$key['art_post_id'].')">Save
                                           </button>

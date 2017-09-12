@@ -247,10 +247,7 @@
      }*/
      .details_all_tital { font-size: 15px; }
   
-      .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b 
-        { font-size: 11px; font-weight: 600; line-height: 14px; }
-       .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span
-        { font-size: 11px; line-height: 14px; }
+
        .profile-job-profile-menu h5 { font-size: 18px; }
        .but1 { padding: 5px 15px 6px 2px; font-size: 14px; }
        .but1:before { font-size: 15px; top: 6px; margin-left: -2px; left: 0%; }

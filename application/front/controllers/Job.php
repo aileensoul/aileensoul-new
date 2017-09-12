@@ -1006,6 +1006,10 @@ class Job extends MY_Controller {
         $files = $_FILES;
         $count = count($_FILES['certificate']['name']);
 
+        //S3 BUCKET ACCESS START
+         $s3 = new S3(awsAccessKey, awsSecretKey);
+         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+         //S3 BUCKET ACCESS START
 
         for ($i = 0; $i < $count; $i++) {
 
@@ -1024,7 +1028,42 @@ class Job extends MY_Controller {
         
 
              if ($this->upload->do_upload('certificate')) {
+
                 $response['result'][] = $this->upload->data();
+
+                $main_image_size = $_FILES['certificate']['size'];
+
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
+                    } else {
+                        $quality = "100%";
+                    }
+
+                    /* RESIZE */
+
+                    $job[$i]['image_library'] = 'gd2';
+                    $job[$i]['source_image'] = $this->config->item('job_edu_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['new_image'] = $this->config->item('job_edu_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['quality'] = $quality;
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $job[$i], $instanse10);
+                    $this->$instanse10->watermark();
+
+                    /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+            $main_image=$job[$i]['new_image'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
+
                 $job_profile_post_thumb[$i]['image_library'] = 'gd2';
                 $job_profile_post_thumb[$i]['source_image'] = $this->config->item('job_edu_main_upload_path') . $response['result'][$i]['file_name'];
                 $job_profile_post_thumb[$i]['new_image'] = $this->config->item('job_edu_thumb_upload_path') . $response['result'][$i]['file_name'];
@@ -1048,7 +1087,10 @@ class Job extends MY_Controller {
                 $return['status'] = "success";
                 $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
 
-
+             //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_profile_post_thumb[$i]['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET STORE THUMB IMAGE END
 
          $contition_array = array('user_id' => $userid);
         $job_reg_data = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -1612,6 +1654,11 @@ class Job extends MY_Controller {
                 $files = $_FILES;
                 $count = count($_FILES['certificate']['name']);
 
+        //S3 BUCKET ACCESS START
+         $s3 = new S3(awsAccessKey, awsSecretKey);
+         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+         //S3 BUCKET ACCESS START
+
 
                 for ($i = 0; $i < $count; $i++) {
 
@@ -1631,6 +1678,41 @@ class Job extends MY_Controller {
 
                    if ($this->upload->do_upload('certificate')) {
                 $response['result'][] = $this->upload->data();
+
+
+                $main_image_size = $_FILES['certificate']['size'];
+
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
+                    } else {
+                        $quality = "100%";
+                    }
+
+                    /* RESIZE */
+
+                    $job[$i]['image_library'] = 'gd2';
+                    $job[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['new_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['quality'] = $quality;
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $job[$i], $instanse10);
+                    $this->$instanse10->watermark();
+
+                    /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+            $main_image=$job[$i]['new_image'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
+
                 $job_profile_post_thumb[$i]['image_library'] = 'gd2';
                 $job_profile_post_thumb[$i]['source_image'] = $this->config->item('job_work_main_upload_path') . $response['result'][$i]['file_name'];
                 $job_profile_post_thumb[$i]['new_image'] = $this->config->item('job_work_thumb_upload_path') . $response['result'][$i]['file_name'];
@@ -1653,6 +1735,11 @@ class Job extends MY_Controller {
                 $return['data'][] = $imgdata;
                 $return['status'] = "success";
                 $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+          //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_profile_post_thumb[$i]['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE THUMB IMAGE END
 
 
          $contition_array = array('user_id' => $userid);
@@ -2576,23 +2663,60 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         if (empty($_FILES['profilepic']['name'])) {
             $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
         } else {
-          
+
+        //S3 BUCKET ACCESS START
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        //S3 BUCKET ACCESS START
+
+        //Configuring Main Image Start
+        $job['upload_path'] = $this->config->item('job_profile_main_upload_path');
+        $job['allowed_types'] = $this->config->item('job_profile_main_allowed_types');
+        $this->upload->initialize($job);
+
+        if ($this->upload->do_upload('profilepic')) 
+        {
+
+            $imgdata = $this->upload->data();              
+            $main_image_size = $_FILES['profilepic']['size'];
+
+            if ($main_image_size > '1000000') {
+                  $quality = "50%";
+            } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                  $quality = "55%";
+            } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                  $quality = "60%";
+            } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                    $quality = "65%";
+            } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                    $quality = "70%";
+            } else {
+                    $quality = "100%";
+            }
            
-            $job_image = '';
-            $job['upload_path'] = $this->config->item('job_profile_main_upload_path');
-            $job['allowed_types'] = $this->config->item('job_profile_main_allowed_types');
-            $job['max_size'] = $this->config->item('job_profile_main_max_size');
-            $job['max_width'] = $this->config->item('job_profile_main_max_width');
-            $job['max_height'] = $this->config->item('job_profile_main_max_height');
-            $this->load->library('upload');
-            $this->upload->initialize($job);
-            //Uploading Image
-            $this->upload->do_upload('profilepic');
-            //Getting Uploaded Image File Data
-            $imgdata = $this->upload->data();
-            $imgerror = $this->upload->display_errors();
+             /* RESIZE */
+
+            $job['image_library'] = 'gd2';
+            $job['source_image'] = $this->config->item('job_profile_main_upload_path') .$imgdata['file_name'];
+            $job['new_image'] = $this->config->item('job_profile_main_upload_path') . $imgdata['file_name'];
+            $job['quality'] = $quality;
+               $instanse10 = "image10";
+
+            $imgerror = $this->upload->display_errors(); 
+            $this->load->library('image_lib',  $job, $instanse10 );
+            $this->$instanse10->watermark();
+            /* RESIZE */
+
+          //S3 BUCKET STORE MAIN IMAGE START
+          $main_image=$job['new_image'];
+          $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+          //S3 BUCKET STORE MAIN IMAGE END
+        }
+        //Configuring Main Image End
+          
             if ($imgerror == '') {
-                //Configuring Thumbnail 
+
+                //Configuring Thumbnail Start
                 $job_thumb['image_library'] = 'gd2';
                 $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
                 $job_thumb['new_image'] = $this->config->item('job_profile_thumb_upload_path') . $imgdata['file_name'];
@@ -2606,11 +2730,20 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
                 $job_thumb['x_axis'] = '0';
                 $job_thumb['y_axis'] = '0';
                 //Loading Image Library
-                $this->load->library('image_lib', $job_thumb);
+                $instanse = "image";
+                $this->load->library('image_lib', $job_thumb,$instanse);
                 $dataimage = $imgdata['file_name'];
                 //Creating Thumbnail
-                $this->image_lib->resize();
-                $thumberror = $this->image_lib->display_errors();
+                $this->$instanse->resize();
+                $thumberror = $this->$instanse->display_errors();
+                $thumberror = '';
+                //Configuring Thumbnail Start
+
+            //S3 BUCKET STORE THUMB IMAGE START
+            $thumb_image= $job_thumb['new_image'];
+            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+            //S3 BUCKET STORE THUMB IMAGE END
+
             } else {
 
                 $thumberror = '';
@@ -2671,7 +2804,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
                 $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
                 $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
              
-                $userimage .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $job_reg_data[0]['job_user_image']) . '" alt="" >';
+                $userimage .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $job_reg_data[0]['job_user_image'] . '" alt="" >';
                 $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
                 $userimage .= 'Update Profile Picture';
                 $userimage .= '</a>';
