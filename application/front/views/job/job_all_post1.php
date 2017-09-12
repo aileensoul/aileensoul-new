@@ -39,7 +39,7 @@
                            if ($jobdata[0]['profile_background'] != '') {
                                                                             ?>
                         <!-- box image start -->
-                        <img src="<?php echo base_url($this->config->item('job_bg_thumb_upload_path') . $jobdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>" >
+                        <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>" >
                         <!-- box image end -->
                         <?php
                            } else {

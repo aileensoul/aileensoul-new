@@ -89,7 +89,6 @@ $('.cancel-result').on('click', function (ev) {
 
         // pallavi code start for file type support
         if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            //alert('not an image');
             picpopup();
 
             document.getElementById('row1').style.display = "none";
@@ -107,17 +106,6 @@ $('.cancel-result').on('click', function (ev) {
 
             document.getElementById('row1').style.display = "none";
             document.getElementById('row2').style.display = "block";
-            return false;
-        }
-
-        if (size > 4194304)
-        {
-            //show an alert to the user
-            alert("Allowed file size exceeded. (Max. 4 MB)")
-
-            document.getElementById('row1').style.display = "none";
-            document.getElementById('row2').style.display = "block";
-
             return false;
         }
 
