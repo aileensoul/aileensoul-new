@@ -88,7 +88,7 @@
                     <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php if ($freelancerpostdata[0]['freelancer_post_user_image'] != '') { ?>
-                                <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']); ?>" alt="" >
+                                <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freelancerpostdata[0]['freelancer_post_user_image']; ?>" alt="" >
                                 <?php
                             } else {
                                 $fname = $freelancerpostdata[0]['freelancer_post_fullname'];

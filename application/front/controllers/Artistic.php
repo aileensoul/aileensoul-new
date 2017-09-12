@@ -1562,7 +1562,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     $return_html .=  '</div>'; 
 
                                 }else{
-                            $return_html .=  '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                            $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />';
 
                                 }
 
@@ -1597,7 +1597,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                                 }else{
 
-                            $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                            $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
 
                                 }
                             $return_html .= '</a>';
@@ -2104,7 +2104,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                                 }else{
 
-                                $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                                   } 
 
                             } else {
@@ -2249,7 +2249,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     $return_html .=  '</div>'; 
 
                                 }else{
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
 
                            }
                     } else {
@@ -3207,7 +3207,7 @@ public function ajax_userlist() {
 
                 } else {
 
-                    $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $user['art_user_image']) . '" height="50px" width="50px" alt="" >';
+                    $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $user['art_user_image'] . '" height="50px" width="50px" alt="" >';
                 }
                 $return_html .= '</a>';
             } else {
@@ -4199,7 +4199,7 @@ public function followtwo() {
                         $return_html .= '</div>';
 
                     } else {
-                        $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $followerimage) . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4439,7 +4439,7 @@ public function followtwo() {
                         $return_html .= '</div> ';
 
                     } else {
-                        $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $this->db->get_where('art_reg', array('art_id' => $user['follow_to']))->row()->art_user_image) . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('art_reg', array('art_id' => $user['follow_to']))->row()->art_user_image . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -5229,7 +5229,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                         } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+                $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                     }
 
@@ -5410,7 +5410,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                         } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+                $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                     }
 
@@ -5589,7 +5589,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                         } else {
 
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+                $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage . '" alt="">';
 
                     }
 
@@ -5777,7 +5777,7 @@ public function delete_commenttwo_postnewpage() {
                         } else {
 
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+                $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                     }
 
@@ -6311,7 +6311,7 @@ public function delete_commenttwo_postnewpage() {
 
                         } else {
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                 }
 
@@ -6535,7 +6535,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                 }
 
@@ -6759,7 +6759,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                   }
               
@@ -8141,7 +8141,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">'; 
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">'; 
 
                 }
 
@@ -8385,7 +8385,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                   }
              
@@ -8578,7 +8578,7 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<div class="post-design-pro-comment-img">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">';
 
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt=""> </a> </div>';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt=""> </a> </div>';
             $cmtinsert .= '<div class="comment-name">';
             $cmtinsert .= '<a href="' . base_url('artistic/dashboard/' . $art_comment['user_id'] . '') . '">
 
@@ -9177,7 +9177,7 @@ public function insert_comment_postnewpage() {
 
 
                         } else {
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL. $art_userimage . '" alt="">';
 
                    }
             
@@ -9384,7 +9384,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-                $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+                $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                      }
                
@@ -9586,7 +9586,7 @@ public function insert_comment_postnewpage() {
 
 
                         } else {
-                    $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                    $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
 
                     
@@ -9759,7 +9759,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-            $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+            $fourdata .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
 
                 }
 
@@ -9942,7 +9942,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-                    $modal .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_image) . '"  alt="">';
+                    $modal .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="">';
                        }
 
                 } else {
@@ -10050,7 +10050,7 @@ public function insert_comment_postnewpage() {
 
                         } else {
 
-                    $modal .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_image) . '"  alt="">';
+                    $modal .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_image . '"  alt="">';
 
                      }
                 } else {
@@ -10206,7 +10206,7 @@ public function insert_comment_postnewpage() {
 
 
                         } else {
-            $cmtinsert .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '" alt="">';
+            $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                     }
              
@@ -11909,7 +11909,7 @@ public function insert_comment_postnewpage() {
 
                                     }else{
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
 
                         }
                         $return_html .= '</a>';
@@ -12002,7 +12002,7 @@ public function insert_comment_postnewpage() {
 
                             }else{                          
 
-                        $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
                         }
 
                         $return_html .= '</a>';
@@ -12092,7 +12092,7 @@ public function insert_comment_postnewpage() {
                                     $return_html .= '</div>';
 
                             }else{
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
 
                             }
 
@@ -12171,7 +12171,7 @@ public function insert_comment_postnewpage() {
                                     $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                                     $return_html .= '</div>';
                                 }else{
-                          $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                          $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
                               }
 
                             $return_html .= '</a>';
@@ -12345,7 +12345,7 @@ public function insert_comment_postnewpage() {
 
                                     }else{
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
 
                         }
                         $return_html .= '</a>';
@@ -12438,7 +12438,7 @@ public function insert_comment_postnewpage() {
 
                             }else{                          
 
-                        $return_html .= '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
                         }
 
                         $return_html .= '</a>';
@@ -12528,7 +12528,7 @@ public function insert_comment_postnewpage() {
                                     $return_html .= '</div>';
 
                             }else{
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
 
                             }
 
@@ -12607,7 +12607,7 @@ public function insert_comment_postnewpage() {
                                     $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                                     $return_html .= '</div>';
                                 }else{
-                          $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image']) . '"  alt="">';
+                          $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
                               }
 
                             $return_html .= '</a>';
@@ -12853,7 +12853,7 @@ public function art_home_post() {
 
                                                             } else { 
 
-                            $return_html .=  '<img src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
+                            $return_html .=  '<img src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />';
                             }
                             $return_html .=  '</a>';
 
@@ -12888,7 +12888,7 @@ public function art_home_post() {
                                                                 
                                                             } else { 
 
-                           $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                           $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
 
                             }
                             $return_html .= '</a>';
@@ -13432,7 +13432,7 @@ public function art_home_post() {
                                                                 
                                                             } else { 
 
-                                $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                                         }
 
                                 
@@ -13581,7 +13581,7 @@ public function art_home_post() {
                                                                 
                                                             } else { 
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                             }
 
                     } else {
@@ -14116,7 +14116,7 @@ public function art_home_post() {
 
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted) . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -14152,7 +14152,7 @@ public function art_home_post() {
                             $return_html .= '</a>';
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('art_profile_thumb_upload_path') . $userimage) . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -14549,7 +14549,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                             } else {
                                 
-                                $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                                $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                             }
                         } else {
 
@@ -14678,7 +14678,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                     } else {
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -14779,7 +14779,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
 
                         } else {
-                    $fourdata .= '<img  src="' . base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage) . '"  alt="">';
+                    $fourdata .= '<img  src="' .ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '"  alt="">';
                     }
 
                     
@@ -15032,7 +15032,7 @@ public function artistic_search_city($id = "") {
 
 
         //echo "<pre>"; print_r($artistic_user); die();
-            $userimage .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $artistic_user[0]['art_user_image']).'" alt="" >';
+            $userimage .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $artistic_user[0]['art_user_image'].'" alt="" >';
 
             $userimage.= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>';
 
@@ -15627,7 +15627,7 @@ public function get_artistic_name($id=''){
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
                                           if($key['art_user_image']){
-                           $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image']).'" alt=" ">';
+                           $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
                                  }else{
                            
                                              $a = $key['art_name'];
@@ -15758,7 +15758,7 @@ public function get_artistic_name($id=''){
                                           <a class="post_dot" href="'.base_url('artistic/dashboard/' . $key['user_id'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
                                            if($key['art_user_image']){
 
-                                            $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image']).'" alt="">';
+                                            $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
                                                    }else{
                                                    
                                                     $a = $key['art_name'];
@@ -16153,7 +16153,7 @@ public function get_artistic_name($id=''){
                                                                  
                                                        if ($art_userimage) { 
                                                          
-                                                          $return_html .= '<img  src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'"  alt="">';
+                                                          $return_html .= '<img  src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
                                                                  } else { 
                                                                 
                                                                 $a = $artname;
@@ -16268,7 +16268,7 @@ public function get_artistic_name($id=''){
                                            
                                       $return_html .= '<div class="post-design-proo-img hidden-mob">';
                                            if ($art_userimage) { 
-                                    $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'" name="image_src" id="image_src" />';
+                                    $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" name="image_src" id="image_src" />';
                                                    
                                                 } else {
                                                     
@@ -16547,7 +16547,7 @@ public function get_artistic_name($id=''){
                                     <div class="module_Ssearch" style="display: inline-block; float: left;">
                                        <div class="search_img" style="height: 110px; width: 108px;">';
                                           if($key['art_user_image']){
-                           $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image']).'" alt=" ">';
+                           $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt=" ">';
                                  }else{
                            
                                              $a = $key['art_name'];
@@ -16678,7 +16678,7 @@ public function get_artistic_name($id=''){
                                           <a class="post_dot" href="'.base_url('artistic/dashboard/' . $key['user_id'] . '').'" title="'.$key['art_name'].' '.$key['art_lastname'].'">';
                                            if($key['art_user_image']){
 
-                                            $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $key['art_user_image']).'" alt="">';
+                                            $return_html .= '<img src="'. ART_PROFILE_THUMB_UPLOAD_URL . $key['art_user_image'].'" alt="">';
                                                    }else{
                                                    
                                                     $a = $key['art_name'];
@@ -17067,7 +17067,7 @@ public function get_artistic_name($id=''){
                                                               $art_userimage = $this->db->get_where('art_reg', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->art_user_image;
                                                                  
                                                        if ($art_userimage) { 
-                                                          $return_html .= '<img  src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'"  alt="">';
+                                                          $return_html .= '<img  src="'. ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'"  alt="">';
                                                                  } else { 
                                                                 
                                                                 $a = $artname;

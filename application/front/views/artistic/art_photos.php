@@ -191,26 +191,27 @@
    </section>
 <!-- Bid-modal-2  -->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-   <div class="modal-dialog modal-lm">
-      <div class="modal-content">
-         <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-         <div class="modal-body">
-            <span class="mes">
-               <div id="popup-form">
-                  <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                  <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                  <input type="hidden" name="hitext" id="hitext" value="9">
-                  <div class="popup_previred">
-                     <img id="preview" src="#" alt="your image" />
-                  </div>
-                  <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                  </form>
-               </div>
-            </span>
-         </div>
-      </div>
-   </div>
-</div>
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div id="popup-form">
+                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                               <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                    </div>
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                <input type="submit"  class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                </form>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 <!-- Model Popup Close -->
 <!-- Bid-modal  -->
 <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -245,7 +246,7 @@
 <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
 <script>
 var base_url = '<?php echo base_url(); ?>';   
    var data = <?php echo json_encode($demo); ?>;
