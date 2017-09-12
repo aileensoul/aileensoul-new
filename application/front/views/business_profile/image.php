@@ -100,16 +100,16 @@
                                                 foreach ($busimage as $image) {
                                                     $y = $y + 1;
 
-                                                    //echo $image['post_files_id']; 
+                                                    //echo $image['bus_image_id']; 
                                                     ?>
-                                                    <div class="job_work_edit_<?php echo $image['post_files_id'] ?>" id="image_main">
+                                                    <div class="job_work_edit_<?php echo $image['bus_image_id'] ?>" id="image_main">
                                                         <input type="hidden" name="filedata[]" id="filename" value="old">
-                                                        <input type="hidden" name="filename[]" id="filename" value="<?php echo $image['file_name']; ?>">
-                                                        <input type="hidden" name="imageid[]" id="filename" value="<?php echo $image['post_files_id']; ?>">
+                                                        <input type="hidden" name="filename[]" id="filename" value="<?php echo $image['image_name']; ?>">
+                                                        <input type="hidden" name="imageid[]" id="filename" value="<?php echo $image['bus_image_id']; ?>">
 
                                                         <div class="img_bui_data"> 
                                                             <div class="edit_bui_img">
-                                                                <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name'] ?>" >
+                                                                <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] ?>" >
                                                                 <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name']) ?>" >-->
                                                             </div>
 
@@ -117,8 +117,8 @@
                                                             ?>
                                                             <div style="float: left;">
                                                                 <div class="hs-submit full-width fl">
-<!--                                                                    <input id="bui_img_delete" type="button" onclick="delete_job_exp(<?php echo $image['post_files_id']; ?>);" style="display: none;"> -->
-                                                                    <a href="javascript:void(0);" class="click_close_icon" onclick="delete_job_exp(<?php echo $image['post_files_id']; ?>);">
+<!--                                                                    <input id="bui_img_delete" type="button" onclick="delete_job_exp(<?php echo $image['bus_image_id']; ?>);" style="display: none;"> -->
+                                                                    <a href="javascript:void(0);" class="click_close_icon" onclick="delete_job_exp(<?php echo $image['bus_image_id']; ?>);">
                                                                     <div class="bui_close">
                                                                         <label for="bui_img_delete"><i class="fa fa-times" aria-hidden="true"></i></label>
                                                                     </div>

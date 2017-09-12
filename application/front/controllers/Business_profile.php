@@ -455,7 +455,7 @@ class Business_profile extends MY_Controller {
 // GET BUSINESS PROFILE DATA
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
         $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_type,industriyal,subindustriyal,details,other_business_type,other_industrial,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
 // GET INDUSTRIAL TYPE DATA
         $contition_array = array('status' => 1);
         $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -465,7 +465,7 @@ class Business_profile extends MY_Controller {
 
         if ($userdata) {
             $step = $userdata[0]['business_step'];
-            
+
             if ($step == 3 || ($step >= 1 && $step <= 3) || $step > 3) {
                 $this->data['business_type1'] = $userdata[0]['business_type'];
                 $this->data['industriyal1'] = $userdata[0]['industriyal'];
@@ -538,16 +538,18 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($userdata) {
             $step = $userdata[0]['business_step'];
 
             if ($step == 4 || ($step >= 1 && $step <= 4) || $step > 4) {
                 $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-                $this->data['busimage'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'image_id,image_name,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $this->data['busimage'] = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id,image_name,user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
         }
+
+
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
         $this->load->view('business_profile/image', $this->data);
     }
@@ -1369,7 +1371,19 @@ class Business_profile extends MY_Controller {
                 $_FILES['postattach']['error'] = $files['postattach']['error'][$i];
                 $_FILES['postattach']['size'] = $files['postattach']['size'][$i];
 
-
+                $file_type = $_FILES['postattach']['type'];
+                $file_type = explode('/', $file_type);
+                $file_type = $file_type[0];
+                if ($file_type == 'image') {
+                    $file_type = 'image';
+                } elseif ($file_type == 'audio') {
+                    $file_type = 'audio';
+                } elseif ($file_type == 'video') {
+                    $file_type = 'video';
+                } else {
+                    $file_type = 'pdf';
+                }
+                
                 if ($_FILES['postattach']['error'] == 0) {
 
                     $store = $_FILES['postattach']['name'];
@@ -1598,9 +1612,10 @@ class Business_profile extends MY_Controller {
 
                         $data1 = array(
                             'file_name' => $fileName,
-                            'insert_profile' => 2,
+                            'insert_profile' => '2',
                             'post_id' => $insert_id,
-                            'is_deleted' => 1
+                            'is_deleted' => '1',
+                            'post_format' => $file_type
                         );
 
                         //echo "<pre>"; print_r($data1);
@@ -4405,8 +4420,8 @@ class Business_profile extends MY_Controller {
 //                    $cmtinsert .= '</div>';
 //
 //                    $cmtinsert .= '</div>';
-                    
-                    $cmtinsert .= '<img src="' .base_url(). NOBUSIMAGE . '">';
+
+                    $cmtinsert .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                 }
                 $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
@@ -5284,7 +5299,6 @@ class Business_profile extends MY_Controller {
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('business_profile/postnewpage', $this->data);
-         
     }
 
 // click on post after post open on new page end 
@@ -5501,27 +5515,27 @@ class Business_profile extends MY_Controller {
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'post_files';
-            $join_str[0]['join_table_id'] = 'post_image.post_id';
+            $join_str[0]['join_table_id'] = 'post_files.post_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => 2, 'status' => 1, 'is_delete' => '0');
-            $data = 'business_profile_post_id, image_id, image_name';
+            $data = 'business_profile_post_id, post_files_id, file_name';
 
-            $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
 
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->data['businessdata1'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'post_files';
-            $join_str[0]['join_table_id'] = 'post_image.post_id';
+            $join_str[0]['join_table_id'] = 'post_files.post_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
             $join_str[0]['join_type'] = '';
 
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'insert_profile' => 2, 'status' => 1, 'is_delete' => '0');
-            $data = 'business_profile_post_id, image_id, image_name';
-            $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $data = 'business_profile_post_id, post_files_id, file_name';
+            $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'post_files.created_date', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         $company_name = $this->get_company_name($slug_id);
         $this->data['title'] = $company_name . TITLEPOSTFIX;
@@ -8626,7 +8640,7 @@ class Business_profile extends MY_Controller {
 
     public function bus_img_delete() {
         $grade_id = $_POST['grade_id'];
-        $delete_data = $this->common->delete_data('bus_image', 'image_id', $grade_id);
+        $delete_data = $this->common->delete_data('bus_image', 'bus_image_id', $grade_id);
         if ($delete_data) {
             echo 'ok';
         }
@@ -8957,8 +8971,8 @@ class Business_profile extends MY_Controller {
 //                            $contactdata .= '<div class="post-img-div">';
 //                            $contactdata .= ucfirst(strtolower($acr));
 //                            $contactdata .= '</div>';
-                            
-                            $contactdata .= '<img src="' .base_url(). NOBUSIMAGE . '">';
+
+                            $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
                             $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
@@ -8970,8 +8984,7 @@ class Business_profile extends MY_Controller {
 //                        $contactdata .= '<div class="post-img-div">';
 //                        $contactdata .= ucfirst(strtolower($acr));
 //                        $contactdata .= '</div>';
-                        $contactdata .= '<img src="' .base_url(). NOBUSIMAGE . '">';
-                        
+                        $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     }
                     $contactdata .= '</div>';
                     $contactdata .= '<div class="addcontact-text_full">';
@@ -9380,8 +9393,8 @@ class Business_profile extends MY_Controller {
 //                        $contactdata .= '<div class="post-img-div">';
 //                        $contactdata .= ucfirst(strtolower($acr));
 //                        $contactdata .= '</div>';
-                        
-                        $contactdata .= '<img src="' .base_url(). NOBUSIMAGE . '">';
+
+                        $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     } else {
 
                         $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
@@ -9393,7 +9406,7 @@ class Business_profile extends MY_Controller {
 //                    $contactdata .= '<div class="post-img-div">';
 //                    $contactdata .= ucfirst(strtolower($acr));
 //                    $contactdata .= '</div>';
-                    $contactdata .= '<img src="' .base_url(). NOBUSIMAGE . '">';
+                    $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                 }
 
                 $contactdata .= '</div>';
@@ -11240,10 +11253,9 @@ Your browser does not support the audio tag.
         $contition_array = array('user_id' => $businessdata1[0]['user_id']);
         $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
         foreach ($businessimage as $val) {
             $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
-            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = 'created_date', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multipleimage[] = $busmultiimage;
         }
@@ -11280,7 +11292,6 @@ Your browser does not support the audio tag.
 
         echo $fetch_result;
     }
-
 
     public function bus_videos() {
 
@@ -12373,7 +12384,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     public function ajax_location_data() {
         $term = $_GET['term'];
         if (!empty($term)) {
-            $contition_array = array('status' => '1','state_id !=' => '0');
+            $contition_array = array('status' => '1', 'state_id !=' => '0');
             $search_condition = "(city_name LIKE '" . trim($term) . "%')";
             $location_list = $this->common->select_data_by_search('cities', $search_condition, $contition_array, $data = 'city_name', $sortby = 'city_name', $orderby = 'desc', $limit = '', $offset = '', $join_str5 = '', $groupby = 'city_name');
             foreach ($location_list as $key1 => $value) {
