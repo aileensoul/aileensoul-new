@@ -3270,7 +3270,7 @@ overflow: hidden;
     .right_left_box_design {
         padding: 17px 12px 12px 16px !important;
     }
-    .right_left_box_design{padding:17px 12px 12px 25px !important;}
+    .right_left_box_design{padding:10px 7px 8px 7px !important;}
     .header2 {
     top: 49px;
 }
@@ -3479,6 +3479,7 @@ overflow: hidden;
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+       .tabs-left > li > a{font-size: 14px;}
     .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
     .header2 {
     top: 46px;
@@ -4191,6 +4192,9 @@ overflow: hidden;
     .bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
+    .tabs-left > li > a {
+    font-size: 12px;
+}
     .folle_text {
     width: 37%;
 }

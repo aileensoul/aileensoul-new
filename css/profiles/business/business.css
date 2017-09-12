@@ -3521,10 +3521,7 @@ height: 100px;
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 75px !important;
     }
-    .right_left_box_design {
-        padding: 17px 12px 12px 16px !important;
-    }
-	.right_left_box_design{padding:17px 12px 12px 25px !important;}
+	   .right_left_box_design{padding:10px 7px 8px 7px !important;}
 }
 @media screen and (max-width: 1024px) {
 	.post-design-name_follow{width: 36%;}
