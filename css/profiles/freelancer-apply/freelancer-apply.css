@@ -798,6 +798,7 @@ label.cameraButton input[accept*="camera"] {
     background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%) !important;
     border: none;
 }
+#upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 
 
 /***  media query  ***/

@@ -165,7 +165,7 @@
                                 $userid = $this->session->userdata('aileenuser');
                                 if ($userid != $this->uri->segment(3)) {
                                     if ($this->uri->segment(3) != "") {
-                                        
+
                                         $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                                         ?>
                                         <div class="flw_msg_btn fr">
@@ -447,27 +447,15 @@
                         <span class="mes">
                             <div id="popup-form">
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-<!--                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                    <input type="hidden" name="hitext" id="hitext" value="4">
-                                    <div class="popup_previred">
-                                        <img id="preview" src="#" alt="your image"/>
-
-                                    </div>-->
-                                    
                                     <div class="col-md-5">
-                                          <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
-                                
-                               
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
-                                     <div class="col-md-7 text-center">
+                                    <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="width:350px"></div>
                                     </div>
-                                    
-                                    <!--<input type="submit" name="profilepicsubmit" id="upload-result-one" value="Save" >-->
+<!--<input type="submit" name="profilepicsubmit" id="upload-result-one" value="Save" >-->
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close(); ?>
                             </div>
                         </span>
                     </div>
@@ -475,94 +463,18 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <!--<script src="<?php //echo base_url('js/jquery.js'); ?>"></script>-->         
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time()); ?>">-->
+        <!--<script src="<?php //echo base_url('js/jquery.js');    ?>"></script>-->         
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js');    ?>"></script>-->
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time());    ?>">-->
         <!--</script>-->
-           <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver='.time()); ?>"></script>
-<!--        <script type="text/javascript">
-     $uploadCrop1 = $('#upload-demo-one').croppie({ 
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-
-    });
-//    
-//   cr-slider-wrap 
-    $('#upload-one').on('change', function () {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-
-            $uploadCrop1.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-                
-
-            });
-
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-
-    //PROFILE PIC VALIDATION START
-$(document).ready(function () {
-    $("#userimage").validate({ 
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo Required",
-            },
-        },
-        submitHandler: profile_pic
-    });
-    
-    function profile_pic(){
-    $('.upload-result-one').on('click', function (ev) {
-        $uploadCrop1.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-
-            $.ajax({
-                //url: "/ajaxpro.php", user_image_insert
-               // url: "<?php //echo base_url(); ?>freelancer/ajaxpro_test",
-               url: "<?php //echo base_url(); ?>freelancer/user_image_insert1",
-                type: "POST",
-                data: {"image": resp},
-                success: function (data) {
-                  $('#bidmodal-2').modal('hide');
-                    $(".user-pic").html(data);
-//                    html = '<img src="' + resp + '" />';
-//                    $("#upload-demo-i").html(html);
-                }
-            });
-        });
-    });
-    }
-});
-//PROFILE PIC VALIDATION END
-
-</script>-->
-
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
