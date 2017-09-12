@@ -1894,14 +1894,15 @@ $files[] = $_FILES;
 
     //job seeker PRINTDATA controller Start
     public function job_printpreview($slug="") {
-       
+     
         $this->job_deactive_profile(); 
 
         $userid = $this->session->userdata('aileenuser');
 
-        $slug_user = $this->db->get_where('job_reg', array('slug' => $slug))->row()->slug;
-      
-        if ($slug == $slug_user || $slug == '') {
+        $id=$this->db->get_where('job_reg', array('slug' => $slug, 'is_delete' => 0, 'status' => 1))->row()->user_id;
+        $slug_user = $this->db->get_where('job_reg', array('slug' => $slug,'user_id !=' =>$userid, 'is_delete' => 0, 'status' => 1))->row()->slug;
+  
+        if ($slug != $slug_user || $slug == '') {
            $this->job_apply_check(); 
           
             //for getting data job_reg table
@@ -1938,6 +1939,7 @@ $files[] = $_FILES;
             $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
      
         } else {
+        
              $this->job_avail_check($id);
 
             //for getting data job_reg table
