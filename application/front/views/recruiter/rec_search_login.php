@@ -648,13 +648,21 @@
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
  <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 
-<script>
-    var base_url = '<?php echo base_url(); ?>';
-    var skill = '<?php echo  $this->input->get('skills'); ?>';
-    var place = '<?php echo  $this->input->get('searchplace'); ?>';
-    var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
-    var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
+<script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
+   <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
+    <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
+    <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
+<script src="<?php echo base_url('js/jquery.highlite.js'); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
+
+
+ <script>
+          var base_url = '<?php echo base_url(); ?>';
+          var skill = '<?php echo  $this->input->get('skills'); ?>';
+          var place = '<?php echo  $this->input->get('searchplace'); ?>';
+                                              
 </script>
+
 
 <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/rec_search_login.js?ver='.time()); ?>"></script>
 </body>

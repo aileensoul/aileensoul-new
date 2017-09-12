@@ -14,13 +14,12 @@ class Recruiter extends MY_Controller {
         $this->lang->load('message', 'english');
         $this->load->library('S3');
         include ('include.php');
-  
     }
 
     public function index() {
         $userid = $this->session->userdata('aileenuser');
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE START  
-       // $this->recruiter_apply_check();
+        // $this->recruiter_apply_check();
 //  CHECK HOW MUCH STEP FILL UP BY USE IN RECRUITER PROFILE END  
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE START    
         $contition_array = array('user_id' => $userid, 're_status' => '0');
@@ -28,7 +27,7 @@ class Recruiter extends MY_Controller {
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE END    
 
         if ($recdata) {
-        
+
             $this->load->view('recruiter/reactivate', $this->data);
         } else {
 
@@ -194,7 +193,6 @@ class Recruiter extends MY_Controller {
                 }
             }
         }
-
     }
 
 // RECRUITER BASIC INFORMATION INSERT STEP END  
@@ -1170,10 +1168,9 @@ class Recruiter extends MY_Controller {
     }
 
 // RECRUITER EDIT POST INSERT END
-
 //deactivate user start
     public function deactivate() {
-         $this->recruiter_apply_check(); 
+        $this->recruiter_apply_check();
         //echo "hii";die();
 
         $id = $_POST['id'];
@@ -1193,16 +1190,15 @@ class Recruiter extends MY_Controller {
     }
 
 // deactivate user end
-
 //reactivate account start
 
     public function reactivate() {
 
-       
+
 
         $userid = $this->session->userdata('aileenuser');
 
-       
+
         $data = array(
             're_status' => 1,
             'modify_date' => date('y-m-d h:i:s')
@@ -1217,8 +1213,8 @@ class Recruiter extends MY_Controller {
             redirect('recruiter/reactivate', refresh);
         }
     }
-//reactivate account End
 
+//reactivate account End
 // RECRUITER POST CITY AJAX START
     public function ajax_data() {
 
@@ -2551,11 +2547,11 @@ class Recruiter extends MY_Controller {
                                         </div>';
                 }
             }
-        }else{
-          
+        } else {
 
 
-                    $rec_post .= '<div class="art-img-nn">
+
+            $rec_post .= '<div class="art-img-nn">
                                             <div class="art_no_post_img">
 
                                                 <img src="' . base_url('img/job-no.png') . '">
@@ -2565,7 +2561,6 @@ class Recruiter extends MY_Controller {
                                                 No  Post Available.
                                             </div>
                                         </div>';
-               
         }
 
 
@@ -2604,7 +2599,7 @@ class Recruiter extends MY_Controller {
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
         $this->data['keyword1'] = $search_place;
 
-        
+
 
         //RECRUITER SEARCH END 1-9
 
@@ -2621,23 +2616,22 @@ class Recruiter extends MY_Controller {
         }
         $this->data['title'] = "$title | Aileensoul";
         $this->data['head'] = $this->load->view('head', $this->data, TRUE);
-          
+
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
-         if ($this->session->userdata('aileenuser')) {
+        if ($this->session->userdata('aileenuser')) {
             $this->load->view('recruiter/recommen_candidate1', $this->data);
         } else {
-          
-             $this->load->view('recruiter/rec_search_login', $this->data);
+
+            $this->load->view('recruiter/rec_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
-       
     }
 
 //recrutier search end
 // RECRUITER SEARCH END
 //RECRUITER SEARCH AJAX START
- public function recruiter_search_candidate() {
-        
+    public function recruiter_search_candidate() {
+
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -2647,18 +2641,18 @@ class Recruiter extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        
-         $this->recruiter_apply_check();
-
+        if ($this->session->userdata('aileenuser')) {
+            $this->recruiter_apply_check();
+        }
         $userid = $this->session->userdata('aileenuser');
 
-        $searchkeyword =  trim($_GET["skill"]);
+        $searchkeyword = trim($_GET["skill"]);
         $searchplace = trim($_GET["place"]);
 
         $rec_search = trim($searchkeyword, ' ');
         $search_place = $searchplace;
-       
-        
+
+
 //if user deactive profile then redirect to recruiter/index untill active profile start
         $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
@@ -2703,38 +2697,37 @@ class Recruiter extends MY_Controller {
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "(skill LIKE '%$rec_search%')";
             $skilldata = $artdata['data'] = $this->common->select_data_by_search('skill', $search_condition, $contition_array = array(), $data = 'skill_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-             
+
 
             //$values = array_map('array_pop', $skillid);
             //$imploded = implode(',', $values);
             //echo $imploded;
 
             foreach ($skilldata as $key => $value) {
-                
+
                 $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
+                        'join_type' => 'left',
+                        'table' => 'job_add_edu',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_add_edu.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
                 $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_step' => 10, 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", keyskill) != ' => '0');
                 $jobskilldata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
             $rec_skill = $jobskilldata;
-            
+
             $rec_skill = array_reduce($rec_skill, 'array_merge', array());
-            
+
             $rec_skill = array_unique($rec_skill, SORT_REGULAR);
-            
-         
+
+
             //SKILL DATA FETCH END
-            
             //DEGREE FETCH START
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "(degree_name LIKE '%$rec_search%')";
@@ -2748,32 +2741,31 @@ class Recruiter extends MY_Controller {
             foreach ($degreedata as $key => $value) {
                 $value['degree_id'] = 6;
                 $join_str = array(array(
-                    'join_type' => '',
-                    'table' => 'job_reg',
-                    'join_table_id' => 'job_add_edu.user_id',
-                    'from_table_id' => 'job_reg.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_add_edu.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0','job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['degree_id'] . '",ailee_job_add_edu.degree) != ' => '0');
+                        'join_type' => '',
+                        'table' => 'job_reg',
+                        'join_table_id' => 'job_add_edu.user_id',
+                        'from_table_id' => 'job_reg.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_add_edu.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
+                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['degree_id'] . '",ailee_job_add_edu.degree) != ' => '0');
                 $jobdegreedata[] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
             $rec_degree = $jobdegreedata;
-            
+
             $rec_degree = array_reduce($rec_degree, 'array_merge', array());
             $rec_degree = array_unique($rec_degree, SORT_REGULAR);
-            
-          
+
+
             //DEGREE DATA FETCH END
-            
-             //STREAM FETCH START
+            //STREAM FETCH START
             $contition_array = array('is_delete' => '0', 'status' => '1');
             $search_condition = "(stream_name LIKE '%$rec_search%')";
-            $streamdata = $this->common->select_data_by_search('stream', $search_condition, $contition_array = array(), $data = 'stream_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str='', $groupby = '');
+            $streamdata = $this->common->select_data_by_search('stream', $search_condition, $contition_array = array(), $data = 'stream_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = '', $groupby = '');
 
 
             //$values = array_map('array_pop', $skillid);
@@ -2781,36 +2773,35 @@ class Recruiter extends MY_Controller {
             //echo $imploded;
 
             foreach ($streamdata as $key => $value) {
-              //  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", keyskill) != ' => '0');
-                 
+                //  $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", keyskill) != ' => '0');
+
                 $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_reg',
-                    'join_table_id' => 'job_add_edu.user_id',
-                    'from_table_id' => 'job_reg.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_add_edu.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-                
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0','job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['stream_id'] . '", ailee_job_add_edu.stream) != ' => '0');
+                        'join_type' => 'left',
+                        'table' => 'job_reg',
+                        'join_table_id' => 'job_add_edu.user_id',
+                        'from_table_id' => 'job_reg.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_add_edu.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
+
+                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['stream_id'] . '", ailee_job_add_edu.stream) != ' => '0');
                 $jobstreamdata[] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
             $rec_stream = $jobstreamdata;
-            
+
             $rec_stream = array_reduce($rec_stream, 'array_merge', array());
             $rec_stream = array_unique($rec_stream, SORT_REGULAR);
-            
-          
+
+
             //STREAM DATA FETCH END
-            
             //JOB TITLE FETCH START
             $contition_array = array('status' => 'publish');
             $search_condition = "(name LIKE '%$rec_search%')";
-            $jobtitledata =  $this->common->select_data_by_search('job_title', $search_condition, $contition_array = array(), $data = 'title_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $jobtitledata = $this->common->select_data_by_search('job_title', $search_condition, $contition_array = array(), $data = 'title_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
             //$values = array_map('array_pop', $skillid);
@@ -2818,31 +2809,30 @@ class Recruiter extends MY_Controller {
             //echo $imploded;
 
             foreach ($jobtitledata as $key => $value) {
-                
+
                 $join_str = array(array(
-                    'join_type' => 'left',
-                    'table' => 'job_add_edu',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_add_edu.user_id'),
-                array(
-                    'join_type' => 'left',
-                    'table' => 'job_graduation',
-                    'join_table_id' => 'job_reg.user_id',
-                    'from_table_id' => 'job_graduation.user_id')
-            );
-                
-                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0','job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['title_id'] . '", work_job_title) != ' => '0');
+                        'join_type' => 'left',
+                        'table' => 'job_add_edu',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_add_edu.user_id'),
+                    array(
+                        'join_type' => 'left',
+                        'table' => 'job_graduation',
+                        'join_table_id' => 'job_reg.user_id',
+                        'from_table_id' => 'job_graduation.user_id')
+                );
+
+                $contition_array = array('job_reg.status' => '1', 'job_reg.is_delete' => '0', 'job_reg.user_id != ' => $userid, 'FIND_IN_SET("' . $value['title_id'] . '", work_job_title) != ' => '0');
                 $jobtiledata[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_reg.*,job_reg.user_id as iduser,job_add_edu.*,job_graduation.*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
             }
 
             $rec_title = $jobtiledata;
-            
+
             $rec_title = array_reduce($rec_title, 'array_merge', array());
             $rec_title = array_unique($rec_title, SORT_REGULAR);
             //JOB TITLE FETCH END
 
-                $unique = array_merge((array)$rec_skill,(array)$rec_degree,(array)$rec_title,(array)$rec_stream);
-  
+            $unique = array_merge((array) $rec_skill, (array) $rec_degree, (array) $rec_title, (array) $rec_stream);
         } else {
 
             //echo "Skill & Place  Search";die();
@@ -3167,442 +3157,356 @@ class Recruiter extends MY_Controller {
             $new11[$value['user_id']] = $value;
         }
 
-        $postdetail=$this->data['postdetail'] = $new11;
-       $searchdata1 = array_slice($postdetail, $start, $perpage);
+        $postdetail = $this->data['postdetail'] = $new11;
+        $searchdata1 = array_slice($postdetail, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($searchdata1);
         }
-        
-         
+
+
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 //$return_html .= "hi";
-        if ($postdetail) 
-        {
-                        
-            foreach ($searchdata1 as $p) 
-            {
+
+
+        if ($postdetail) {
+
+            foreach ($searchdata1 as $p) {
                 $return_html .= '<div class="profile-job-post-detail clearfix ">             
                                     <div class="profile-job-post-title-inside clearfix">
                                         <div class="profile-job-profile-button clearfix">
                                             <div class="profile-job-post-location-name-rec">
                                                 <div style="display: inline-block; float: left;">
-                                                    <div  class="buisness-profile-pic-candidate ">';                           
+                                                    <div  class="buisness-profile-pic-candidate ">';
 
-                $imageee= $this->config->item('job_profile_thumb_upload_path').$p['job_user_image'];
-                if(file_exists($imageee) && $p['job_user_image'] != '') 
-                { 
-              
-               
-                    $return_html .='<a href="'.base_url('job/resume/' . $p['slug'].'?page=recruiter').'" title="'.$p['fname'] . ' ' . $p['lname'].'"> 
-                                    <img src="'.base_url($this->config->item('job_profile_thumb_upload_path')  . $p['job_user_image']).'" alt="'.$p[0]['fname'] . ' ' . $p[0]['lname'].'">
+                $imageee = $this->config->item('job_profile_thumb_upload_path') . $p['job_user_image'];
+                if (file_exists($imageee) && $p['job_user_image'] != '') {
+
+
+                    $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
+                                    <img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $p['job_user_image']) . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
-             
-                } 
-                else 
-                {
+                } else {
 
-                            $a = $p['fname'];
-                            $acr = substr($a, 0, 1);
-                            $b = $p['lname'];
-                            $acr1 = substr($b, 0, 1);
-             
-                            $return_html .='<div class="post-img-profile">'.ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)).'</div>';
+                    $a = $p['fname'];
+                    $acr = substr($a, 0, 1);
+                    $b = $p['lname'];
+                    $acr1 = substr($b, 0, 1);
+
+                    $return_html .= '<div class="post-img-profile">' . ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)) . '</div>';
                 }
-                $return_html .='</div></div>';
+                $return_html .= '</div></div>';
 
-                $return_html .='<div class="designation_rec" style="float: left;">
+                $return_html .= '<div class="designation_rec" style="float: left;">
                                     <ul>
-                                        <li>
-                                            <a style=" font-size: 19px;font-weight: 600;" href="'.base_url('job/resume/' . $p['slug'].'?page=recruiter').'">'.ucfirst(strtolower($p['fname'])) . ' ' . ucfirst(strtolower($p['lname'])).
-                                            '</a></li>';
-
-                $return_html .=' <li style="display: block;"><a href="javascript:void(0)">';
-                                             
-                if ($p['designation']) 
-                {
-                    $return_html .= $p['designation']; 
-                                                        
-                } 
-                else 
-                {   
-                    $return_html .= "Designation"; 
-                 
+                                        <li>';
+                if ($this->session->userdata('aileenuser')) {
+                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '">';
+                } else {
+                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="#" onClick="login_profile()">';
                 }
-                $return_html .='</a></li>';   
-                $return_html .='</ul></div>';
-                $return_html .='</div></div></div>';
 
-                $return_html .='<div class="profile-job-post-title clearfix search1">
+
+                $return_html .= ucfirst(strtolower($p['fname'])) . ' ' . ucfirst(strtolower($p['lname'])) .
+                        '</a></li>';
+
+                $return_html .= ' <li style="display: block;"><a href="javascript:void(0)">';
+
+                if ($p['designation']) {
+                    $return_html .= $p['designation'];
+                } else {
+                    $return_html .= "Designation";
+                }
+                $return_html .= '</a></li>';
+                $return_html .= '</ul></div>';
+                $return_html .= '</div></div></div>';
+
+                $return_html .= '<div class="profile-job-post-title clearfix search1">
                                     <div class="profile-job-profile-menu  search ">
                                         <ul class="clearfix">';
 
-                if ($p['work_job_title']) 
-                {
+                if ($p['work_job_title']) {
                     $contition_array = array('status' => 'publish', 'title_id' => $p['work_job_title']);
                     $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                               
-                    $return_html .='<li><b>Job Title</b><span>'.$jobtitle[0]['name'].'</span></li>';
+
+                    $return_html .= '<li><b>Job Title</b><span>' . $jobtitle[0]['name'] . '</span></li>';
                 }
-                if ($p['keyskill']) 
-                {  
-                    $jobskil = array(); 
-                    $return_html .='<li><b>Skills</b><span>';
+                if ($p['keyskill']) {
+                    $jobskil = array();
+                    $return_html .= '<li><b>Skills</b><span>';
 
                     $work_skill = explode(',', $p['keyskill']);
-                    foreach ($work_skill as $skill) 
-                    {
+                    foreach ($work_skill as $skill) {
                         $contition_array = array('skill_id' => $skill);
                         $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                         $jobskil[] = $skilldata[0]['skill'];
-                    } 
-                    $return_html .= implode(',', $jobskil).'</span></li>'; 
+                    }
+                    $return_html .= implode(',', $jobskil) . '</span></li>';
                 }
-                if ($p['work_job_industry']) 
-                {
+                if ($p['work_job_industry']) {
                     $contition_array = array('industry_id' => $p['work_job_industry']);
                     $industry = $this->common->select_data_by_condition('job_industry', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                                
-                    $return_html .='<li> <b> Industry</b> <span>'.$industry[0]['industry_name'].'</span></li>';
+
+                    $return_html .= '<li> <b> Industry</b> <span>' . $industry[0]['industry_name'] . '</span></li>';
                 }
-                if ($p['work_job_city']) 
-                {
+                if ($p['work_job_city']) {
                     $work_city = explode(',', $p['work_job_city']);
-                    $cities2 = array();         
-                    foreach ($work_city as $city) 
-                    {
+                    $cities2 = array();
+                    foreach ($work_city as $city) {
                         $contition_array = array('city_id' => $city);
                         $citydata1 = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                        if ($citydata1) 
-                        {
+                        if ($citydata1) {
                             $cities2[] = $citydata1[0]['city_name'];
-
                         }
                     }
-                    $return_html .='<li> <b> Preferred Cites</b> <span>'.implode(',', $cities2).'</span></li>';
+                    $return_html .= '<li> <b> Preferred Cites</b> <span>' . implode(',', $cities2) . '</span></li>';
                 }
 
-                $contition_array =array('user_id' => $p['iduser'], 'experience' => 'Experience', 'status' => '1');   
+                $contition_array = array('user_id' => $p['iduser'], 'experience' => 'Experience', 'status' => '1');
                 $experiance = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                if($experiance[0]['experience_year'] != '')
-                { 
- 
-                    $total_work_year=0;
-                    $total_work_month=0;
-                    foreach ($experiance as $work1) 
-                    {
-                        $total_work_year+=$work1['experience_year'];
-                        $total_work_month+=$work1['experience_month'];
+                if ($experiance[0]['experience_year'] != '') {
+
+                    $total_work_year = 0;
+                    $total_work_month = 0;
+                    foreach ($experiance as $work1) {
+                        $total_work_year += $work1['experience_year'];
+                        $total_work_month += $work1['experience_month'];
                     }
-           
-                    $return_html .='<li> <b> Total Experience</b><span>';
-                  
-                    if($total_work_month == '12 month' && $total_work_year =='0 year')
-                    {
-                         $return_html .= '1 year';
-                    }
-                    else
-                    {
+
+                    $return_html .= '<li> <b> Total Experience</b><span>';
+
+                    if ($total_work_month == '12 month' && $total_work_year == '0 year') {
+                        $return_html .= '1 year';
+                    } else {
                         $month = explode(' ', $total_work_year);
-                        $year=$month[0];
-                        $y=0;
-                        for($i=0;$i<=$y;$i++)
-                        {
-                            if($total_work_month >= 12)
-                            {
-                                $year=$year + 1;
+                        $year = $month[0];
+                        $y = 0;
+                        for ($i = 0; $i <= $y; $i++) {
+                            if ($total_work_month >= 12) {
+                                $year = $year + 1;
                                 $total_work_month = $total_work_month - 12;
                                 $y++;
+                            } else {
+                                $y = 0;
                             }
-                            else
-                            {
-                                $y=0;
-                            }
+                        }
+                        if ($year != 0) {
+                            $return_html .= $year . ' Year';
+                        }
+                        $return_html .= '&nbsp';
+                        if ($total_work_month != 0) {
+                            $return_html .= $total_work_month . ' Month';
+                        }
                     }
-                    if($year != 0)
-                    {  
-                        $return_html .= $year.' Year';
-                    }
-                    $return_html .= '&nbsp';
-                    if($total_work_month != 0)
-                    {
-                        $return_html .= $total_work_month.' Month';
-                    }
-                }
-              
-               $return_html .='</span></li>';
-                
-                } 
-                else
-                { 
 
-                    if($p['experience'] == 'Fresher')
-                    {
-                        $return_html .='<li> <b> Total Experience</b><span>'.$p['experience'].'</span></li>';
+                    $return_html .= '</span></li>';
+                } else {
+
+                    if ($p['experience'] == 'Fresher') {
+                        $return_html .= '<li> <b> Total Experience</b><span>' . $p['experience'] . '</span></li>';
                     } //if complete
                 }//else complete
 
-                if($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'] && $p['degree'])
-                { 
-                    $return_html .='<li><b>Degree</b><span>';
+                if ($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'] && $p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time) 
-                    {
+                    if ($cache_time) {
                         $return_html .= $cache_time;
-                    } 
-                    else 
-                    {
+                    } else {
                         $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-              
-                    $return_html .='<li><b>Stream</b><span>';
+                    $return_html .= '</span></li>';
+
+                    $return_html .= '<li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
+                    if ($cache_time) {
                         $return_html .= $cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                                
-                    $return_html .='</span></li>';
-                }
-                elseif($p['board_secondary'] && $p['board_higher_secondary'] && $p['degree'])
-                {
-                    $return_html .='<li><b>Degree</b><span>';
+
+                    $return_html .= '</span></li>';
+                } elseif ($p['board_secondary'] && $p['board_higher_secondary'] && $p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
+                    $return_html .= '</span></li>';
 
-                    $return_html .='<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-                }
-                elseif($p['board_higher_secondary'] && $p['degree'])
-                {
-                    $return_html .='<li><b>Degree</b><span>';
+                    $return_html .= '</span></li>';
+                } elseif ($p['board_higher_secondary'] && $p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                         $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
+                    $return_html .= '</span></li>';
 
-                    $return_html .='<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
-                         $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                         $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                     $return_html .='</span></li>';
-                }
-                else if($p['board_secondary'] && $p['degree'])
-                {
-                    $return_html .='<li><b>Degree</b><span>';
+                    $return_html .= '</span></li>';
+                } else if ($p['board_secondary'] && $p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li><li><b>Stream</b><span>';
+                    $return_html .= '</span></li><li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-                } 
-                elseif($p['board_primary'] && $p['degree'])
-                {
-                    $return_html .='<li><b>Degree</b><span>';
+                    $return_html .= '</span></li>';
+                } elseif ($p['board_primary'] && $p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time; 
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-               
-                    $return_html .='<li><b>Stream</b><span>';
+                    $return_html .= '</span></li>';
+
+                    $return_html .= '<li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-                } 
-                elseif($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary'])
-                {
-                    $return_html .='<li><b>Board of Higher Secondary</b>';
-                    $return_html .='<span>'.$p['board_higher_secondary'].'</span></li>';
+                    $return_html .= '</span></li>';
+                } elseif ($p['board_primary'] && $p['board_secondary'] && $p['board_higher_secondary']) {
+                    $return_html .= '<li><b>Board of Higher Secondary</b>';
+                    $return_html .= '<span>' . $p['board_higher_secondary'] . '</span></li>';
 
-                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                } elseif ($p['board_secondary'] && $p['board_higher_secondary']) {
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                } elseif ($p['board_primary'] && $p['board_higher_secondary']) {
 
-                } 
-                elseif($p['board_secondary'] && $p['board_higher_secondary'])
-                { 
-                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
-                } 
-                elseif($p['board_primary'] && $p['board_higher_secondary'])
-                { 
-
-                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
-                }
-                elseif($p['board_primary'] && $p['board_secondary'])
-                {
-                    $return_html .='<li><b>Board of Secondary</b><span>'.$p['board_secondary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Secondary</b><span>'.$p['percentage_secondary'].'</span></li>';
-                } 
-                elseif($p['degree'])
-                {
-                    $return_html .='<li><b>Degree</b><span>';
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                } elseif ($p['board_primary'] && $p['board_secondary']) {
+                    $return_html .= '<li><b>Board of Secondary</b><span>' . $p['board_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Secondary</b><span>' . $p['percentage_secondary'] . '</span></li>';
+                } elseif ($p['degree']) {
+                    $return_html .= '<li><b>Degree</b><span>';
                     $cache_time = $this->db->get_where('degree', array('degree_id' => $p['degree']))->row()->degree_name;
-                    if ($cache_time)
-                    {
-                        $return_html .=$cache_time; 
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
+                    $return_html .= '</span></li>';
 
-                    $return_html .='<li><b>Stream</b><span>';
+                    $return_html .= '<li><b>Stream</b><span>';
                     $cache_time = $this->db->get_where('stream', array('stream_id' => $p['stream']))->row()->stream_name;
-                    if ($cache_time) 
-                    {
-                        $return_html .=$cache_time;
-                    } 
-                    else 
-                    {
-                        $return_html .=PROFILENA;
+                    if ($cache_time) {
+                        $return_html .= $cache_time;
+                    } else {
+                        $return_html .= PROFILENA;
                     }
-                    $return_html .='</span></li>';
-                }
-                elseif($p['board_higher_secondary'])
-                {
-                    $return_html .='<li><b>Board of Higher Secondary</b><span>'.$p['board_higher_secondary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Higher Secondary</b><span>'.$p['percentage_higher_secondary'].'</span></li>';
+                    $return_html .= '</span></li>';
+                } elseif ($p['board_higher_secondary']) {
+                    $return_html .= '<li><b>Board of Higher Secondary</b><span>' . $p['board_higher_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Higher Secondary</b><span>' . $p['percentage_higher_secondary'] . '</span></li>';
+                } elseif ($p['board_secondary']) {
 
+                    $return_html .= '<li><b>Board of Secondary</b><span>' . $p['board_secondary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Secondary</b><span>' . $p['percentage_secondary'] . '</span></li>';
+                } elseif ($p['board_primary']) {
+                    $return_html .= '<li><b>Board of Primary</b><span>' . $p['board_primary'] . '</span></li>';
+                    $return_html .= '<li><b>Percentage of Primary</b><span>' . $p['percentage_primary'] . '</span></li>';
                 }
-                elseif($p['board_secondary'])
-                {
 
-                    $return_html .='<li><b>Board of Secondary</b><span>'.$p['board_secondary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Secondary</b><span>'.$p['percentage_secondary'].'</span></li>';
-                } 
-                elseif($p['board_primary'])
-                {
-                    $return_html .='<li><b>Board of Primary</b><span>'.$p['board_primary'].'</span></li>';
-                    $return_html .='<li><b>Percentage of Primary</b><span>'.$p['percentage_primary'].'</span></li>';
+                $return_html .= '<li><b>E-mail</b><span>';
+                if ($p['email']) {
+                    $return_html .= $p['email'];
+                } else {
+                    $return_html .= PROFILENA;
                 }
-                                                                
-                $return_html .='<li><b>E-mail</b><span>';
-                if($p['email'])
-                {
-                    $return_html .=$p['email'];
-                }
-                else
-                {
-                    $return_html .=PROFILENA;
-                }
-                $return_html .='</span></li>';
+                $return_html .= '</span></li>';
 
-                if($p['phnno'])
-                {
-                    $return_html .='<li><b>Mobile Number</b><span>'.$p['phnno'].'</span></li>';
+                if ($p['phnno']) {
+                    $return_html .= '<li><b>Mobile Number</b><span>' . $p['phnno'] . '</span></li>';
                 }
-                $return_html .='<input type="hidden" name="search" id="search" value="'.$keyword.'">
-                                    <input type="hidden" name="search" id="search1" value="'.$keyword1.'">';
-    
-                $return_html .='</ul></div>';
+                $return_html .= '<input type="hidden" name="search" id="search" value="' . $keyword . '">
+                                    <input type="hidden" name="search" id="search1" value="' . $keyword1 . '">';
 
-                $return_html .='<div class="profile-job-profile-button clearfix">
+                $return_html .= '</ul></div>';
+
+                $return_html .= '<div class="profile-job-profile-button clearfix">
                                     <div class="apply-btn fr">';
 
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('from_id' => $userid, 'to_id' => $p['iduser'], 'save_type' => 1, 'status' => '0');
                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                                                
-                if($userid != $p['iduser'])
-                {       
-                    if (!$data) 
-                    {
-                        $return_html .='<a href="'.base_url('chat/abc/2/1/'  . $p['iduser']).'">Message</a>
-                                        <input type="hidden" id="hideenuser'.$p['job_id'].'" value= "'.$p['job_id'].'">
-                                        <a id="'.$p['iduser'].'" onClick="savepopup('.$p['iduser'].','.$p['job_id'].')" href="javascript:void(0);" class="saveduser'.$p['job_id'].'">Save</a>';
-                    } 
-                    else 
-                    {
-                        $return_html .='<a href="'.base_url('chat/abc/2/1/'  . $p['iduser']).'">Message</a> 
-                                        <a class="saved">Saved </a>';
-                    } 
-                }
-                $return_html .='</div></div>';
 
-                $return_html .='</div></div>';
+                if ($userid != $p['iduser']) {
+                    if (!$data) {
+                        if ($this->session->userdata('aileenuser')) {
+                            $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">';
+                        } else {
+                            $return_html .= '<a href="#" onClick="login_profile()">';
+                        }
+                        $return_html .= 'Message</a>';
+                        $return_html .= '<input type="hidden" id="hideenuser' . $p['job_id'] . '" value= "' . $p['job_id'] . '">';
+                        $return_html .= '<a id="' . $p['iduser'] . '"';
+                        if ($this->session->userdata('aileenuser')) {
+                            $return_html .= 'onClick="savepopup(' . $p['iduser'] . ',' . $p['job_id'] . ')"';
+                        } else {
+                            $return_html .= 'onClick="login_profile()"';
+                        }
+                        $return_html .= 'href="javascript:void(0);" class="saveduser' . $p['job_id'] . '">Save</a>';
+                    } else {
+                        $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">Message</a> 
+                                        <a class="saved">Saved </a>';
+                    }
+                }
+                $return_html .= '</div></div>';
+
+                $return_html .= '</div></div>';
             }//for loop end
         }//if end
-        else
-        {
-            $return_html .='<div class="text-center rio">
+        else {
+            $return_html .= '<div class="text-center rio">
                                 <h1 class="page-heading  product-listing" style="border:0px;margin-bottom: 11px;">Oops No Data Found.</h1>
-                                    <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn'."'".'t find what you were looking for.</p>
+                                    <p style="margin-left:4%;text-transform:none !important;border:0px;">We couldn' . "'" . 't find what you were looking for.</p>
                                         <ul>
                                             <li style="text-transform:none !important; list-style: none;">Make sure you used the right keywords.
                                             </li>
                                         </ul>
                             </div>';
         } //else end                                     
-       
+
         echo $return_html;
     }
-//RECRUITER SEARCH AJAX END
 
+//RECRUITER SEARCH AJAX END
 // RECRUITER GET LOCATION START
     public function get_location($id = "") {
 
@@ -3650,7 +3554,6 @@ class Recruiter extends MY_Controller {
             $search_condition = "(skill LIKE '" . trim($searchTerm) . "%')";
             $skilldata = $this->common->select_data_by_search('skill', $search_condition, $contition_array, $data = 'skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = 'skill');
 // SKILL DATA END
-
 //MERGE DATA START
             $uni = array_merge($designation, $degreedata, $streamdata, $skilldata);
 //MERGE DATA END
@@ -3672,7 +3575,7 @@ class Recruiter extends MY_Controller {
     }
 
     public function ajax_saved_candidate() {
-        
+
         $perpage = 5;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
@@ -3682,8 +3585,8 @@ class Recruiter extends MY_Controller {
         $start = ($page - 1) * $perpage;
         if ($start < 0)
             $start = 0;
-        
-         $this->recruiter_apply_check();
+
+        $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
@@ -3714,12 +3617,12 @@ class Recruiter extends MY_Controller {
                 'join_table_id' => 'save.to_id',
                 'from_table_id' => 'job_graduation.user_id')
         );
-        
-         
+
+
         $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.slug,job_reg.designation,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
         $contition_array1 = array('save.from_id' => $userid, 'save.status' => 0, 'save.save_type' => 1);
-        $recdata1 =  $this->common->select_data_by_condition('save', $contition_array1, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
-        
+        $recdata1 = $this->common->select_data_by_condition('save', $contition_array1, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
+
         foreach ($recdata1 as $ke => $arr) {
             $recdata2[] = $arr;
         }
@@ -3728,15 +3631,15 @@ class Recruiter extends MY_Controller {
             $new[$value['user_id']] = $value;
         }
         $savedata = $new;
-        
-        
+
+
         $return_html = " ";
-       $savedata1 = array_slice($savedata, $start, $perpage);
+        $savedata1 = array_slice($savedata, $start, $perpage);
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($savedata1);
         }
-        
-         
+
+
         $return_html .= '<input type = "hidden" class = "page_number" value = "' . $page . '" />';
         $return_html .= '<input type = "hidden" class = "total_record" value = "' . $_GET["total_record"] . '" />';
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
@@ -3779,7 +3682,7 @@ class Recruiter extends MY_Controller {
                                                                 <div class="designation_rec_1 fl ">
                                                                     <ul>
                                                                         <li>';
-                                                                        // $return_html .=$rec['fname'].''.$rec['lname'];
+                    // $return_html .=$rec['fname'].''.$rec['lname'];
 
                     $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
                     $return_html .= $rec['fname'] . ' ' . $rec['lname'] . '</a>';
@@ -3893,7 +3796,7 @@ class Recruiter extends MY_Controller {
                             $return_html .= $year;
                             $return_html .= ' Year ';
                             if ($total_work_month != 0) {
-                                $return_html .= $total_work_month.' Month';
+                                $return_html .= $total_work_month . ' Month';
                             }
                         }
 
@@ -4206,31 +4109,30 @@ class Recruiter extends MY_Controller {
         }
         echo $return_html;
     }
-//COVAER PIC START
 
+//COVAER PIC START
 // cover pic controller
 
     public function ajaxpro() {
 
-         $this->recruiter_apply_check(); 
+        $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to recruiter/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+        //if user deactive profile then redirect to recruiter/index untill active profile start
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
 
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if( $recruiter_deactive)
-        {
-             redirect('recruiter/');
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
         }
-     //if user deactive profile then redirect to recruiter/index untill active profile End
+        //if user deactive profile then redirect to recruiter/index untill active profile End
 
-       
+
         $contition_array = array('user_id' => $userid);
         $rec_reg_data = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
- $rec_reg_prev_image = $rec_reg_data[0]['profile_background'];
+        $rec_reg_prev_image = $rec_reg_data[0]['profile_background'];
         $rec_reg_prev_main_image = $rec_reg_data[0]['profile_background_main'];
 
         if ($rec_reg_prev_image != '') {
@@ -4239,7 +4141,7 @@ class Recruiter extends MY_Controller {
             if (isset($rec_bg_full_image)) {
                 unlink($rec_bg_full_image);
             }
-            
+
             $rec_image_thumb_path = $this->config->item('rec_bg_thumb_upload_path');
             $rec_bg_thumb_image = $rec_image_thumb_path . $rec_reg_prev_image;
             if (isset($rec_bg_thumb_image)) {
@@ -4253,14 +4155,14 @@ class Recruiter extends MY_Controller {
                 unlink($rec_bg_origin_image);
             }
         }
-        
+
 //        $data = $_POST['image'];
 //        $rec_bg_path = $this->config->item('rec_bg_main_upload_path');
 //        $imageName = time() . '.png';
 //        $base64string = $data;
 //        file_put_contents($rec_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
-   
-        
+
+
         $data = $_POST['image'];
         $data = str_replace('data:image/png;base64,', '', $data);
         $data = str_replace(' ', '+', $data);
@@ -4288,7 +4190,7 @@ class Recruiter extends MY_Controller {
             $quality = "100%";
         }
 
-        
+
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
@@ -4303,7 +4205,7 @@ class Recruiter extends MY_Controller {
         $thumb_image = $user_thumb_path . $imageName;
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
-        
+
         $data = array(
             'profile_background' => $imageName
         );
@@ -4311,29 +4213,29 @@ class Recruiter extends MY_Controller {
         $update = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
 
         $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
-        
-         $coverpic = '<img  src="' . base_url($this->config->item('rec_bg_main_upload_path') . $this->data['recdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+
+        $coverpic = '<img  src="' . base_url($this->config->item('rec_bg_main_upload_path') . $this->data['recdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
-    }  
-     public function image() {
+    }
 
-         $this->recruiter_apply_check(); 
+    public function image() {
+
+        $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to recruiter/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+        //if user deactive profile then redirect to recruiter/index untill active profile start
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
 
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if( $recruiter_deactive)
-        {
-             redirect('recruiter/');
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
         }
-     //if user deactive profile then redirect to recruiter/index untill active profile End
+        //if user deactive profile then redirect to recruiter/index untill active profile End
 
-       
+
         $config['upload_path'] = $this->config->item('rec_bg_original_upload_path');
         $config['allowed_types'] = $this->config->item('rec_bg_allowed_types');
         $config['file_name'] = $_FILES['image']['name'];
@@ -4363,56 +4265,52 @@ class Recruiter extends MY_Controller {
 
         if ($updatedata) {
             echo $userid;
-
         } else {
             echo "welcome";
         }
-        
     }
 
 //COVAER PIC END
     // RECRUITER AVAILABLE CHECK START
-public function rec_avail_check($userid = " ") 
- {
-   $contition_array = array('user_id' => $userid, 'is_delete' => '1');
-   $availuser = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-    
-        if (count($availuser) > 0) 
-        {
-       redirect('recruiter/noavailable');
-         } 
+    public function rec_avail_check($userid = " ") {
+        $contition_array = array('user_id' => $userid, 'is_delete' => '1');
+        $availuser = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if (count($availuser) > 0) {
+            redirect('recruiter/noavailable');
+        }
     }
- // RECRUITER AVAILABLE CHECK END
-   
-     public function noavailable() {
-         
-        $this->load->view('recruiter/notavalible', $this->data);  
-     }
-     
-     // SAVE SEARCH USER START
+
+    // RECRUITER AVAILABLE CHECK END
+
+    public function noavailable() {
+
+        $this->load->view('recruiter/notavalible', $this->data);
+    }
+
+    // SAVE SEARCH USER START
     public function save_search_user() {
 
-         $this->recruiter_apply_check(); 
+        $this->recruiter_apply_check();
 
         $id = $_POST['user_id'];
 
-       
+
         $save_id = $_POST['save_id'];
-      
-     
+
+
 
         $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to recruiter/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+        //if user deactive profile then redirect to recruiter/index untill active profile start
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
 
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if( $recruiter_deactive)
-        {
-             redirect('recruiter/');
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
         }
-     //if user deactive profile then redirect to recruiter/index untill active profile End
+        //if user deactive profile then redirect to recruiter/index untill active profile End
         //echo $id;die();
         $contition_array = array('from_id' => $userid, 'to_id' => $id, 'save_id' => $save_id);
         $userdata = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -4421,7 +4319,7 @@ public function rec_avail_check($userid = " ")
         if ($userdata) {
             $data = array(
                 'status' => 0,
-                'modify_date' =>date('Y-m-d H:i:s')
+                'modify_date' => date('Y-m-d H:i:s')
             );
 
 
@@ -4435,56 +4333,55 @@ public function rec_avail_check($userid = " ")
         } else {
 
 
-        $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => 0, 'save_type' => 1);
-        $user_data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if($user_data){
-
+            $contition_array = array('from_id' => $userid, 'to_id' => $id, 'status' => 0, 'save_type' => 1);
+            $user_data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($user_data) {
 
-                $saveuser = 'Saved';
-                echo $saveuser;
+                if ($user_data) {
+
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
+            } else {
+
+                $data = array(
+                    'from_id' => $userid,
+                    'to_id' => $id,
+                    'status' => 0,
+                    'save_type' => 1,
+                    'created_date' => date('Y-m-d H:i:s'),
+                    'modify_date' => date('Y-m-d H:i:s')
+                );
+
+                $insert_id = $this->common->insert_data($data, 'save');
+
+
+                if ($insert_id) {
+
+                    $saveuser = 'Saved';
+                    echo $saveuser;
+                }
             }
-        }else{
-
-            $data = array(
-                'from_id' => $userid,
-                'to_id' => $id,
-                'status' => 0,
-                'save_type' => 1,
-                'created_date'=>date('Y-m-d H:i:s'),
-                'modify_date' =>date('Y-m-d H:i:s')
-            );
-
-            $insert_id = $this->common->insert_data($data, 'save');
-
-
-            if ($insert_id) {
-
-                $saveuser = 'Saved';
-                echo $saveuser;
-            }
-          }
         }
     }
-   // SAVE SEARCH USER END
 
-   //PROFILE PIC INSERT START
-     public function user_image_insert() {
-   
-         $this->recruiter_apply_check(); 
+    // SAVE SEARCH USER END
+    //PROFILE PIC INSERT START
+    public function user_image_insert() {
+
+        $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
-         //if user deactive profile then redirect to recruiter/index untill active profile start
-         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+        //if user deactive profile then redirect to recruiter/index untill active profile start
+        $contition_array = array('user_id' => $userid, 're_status' => '0', 'is_delete' => '0');
 
         $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if( $recruiter_deactive)
-        {
-             redirect('recruiter/');
+        if ($recruiter_deactive) {
+            redirect('recruiter/');
         }
-     //if user deactive profile then redirect to recruiter/index untill active profile End
+        //if user deactive profile then redirect to recruiter/index untill active profile End
 
 
         if ($this->input->post('cancel1')) {  //echo "hii"; die();
@@ -4497,14 +4394,14 @@ public function rec_avail_check($userid = " ")
             redirect('recruiter/add-post', refresh);
         }
 
-        if (empty($_FILES['profilepic']['name'])) { 
+        if (empty($_FILES['profilepic']['name'])) {
             //echo"hello"; die();
             $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
             //$picture = '';
         } else {
-     
 
-             $recruiter_image = '';
+
+            $recruiter_image = '';
             $recruiter['upload_path'] = $this->config->item('rec_profile_main_upload_path');
             $recruiter['allowed_types'] = $this->config->item('rec_profile_main_allowed_types');
             $recruiter['max_size'] = $this->config->item('rec_profile_main_max_size');
@@ -4543,42 +4440,40 @@ public function rec_avail_check($userid = " ")
                 $thumberror = '';
             }
             if ($imgerror != '' || $thumberror != '') {
-                 
+
 
                 $error[0] = $imgerror;
                 $error[1] = $thumberror;
             } else {
-                 
+
 
                 $error = array();
             }
             if ($error) {
-    
+
                 $this->session->set_flashdata('error', $error[0]);
                 $redirect_url = site_url('job');
                 redirect($redirect_url, 'refresh');
             } else {
-               $contition_array = array('user_id' => $userid);
-        $recruiter_reg_data = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'recruiter_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $contition_array = array('user_id' => $userid);
+                $recruiter_reg_data = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'recruiter_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $recruiter_reg_prev_image = $recruiter_reg_data[0]['recruiter_user_image'];
-        
-
-            if ($recruiter_reg_prev_image != '') {
-            $recruiter_image_main_path = $this->config->item('rec_profile_main_upload_path');
-            $recruiter_bg_full_image = $recruiter_image_main_path . $recruiter_reg_prev_image;
-            if (isset($recruiter_bg_full_image)) {
-                unlink($recruiter_bg_full_image);
-            }
-            
-            $recruiter_image_thumb_path = $this->config->item('rec_profile_thumb_upload_path');
-            $recruiter_bg_thumb_image = $recruiter_image_thumb_path . $recruiter_reg_prev_image;
-            if (isset($recruiter_bg_thumb_image)) {
-                unlink($recruiter_bg_thumb_image);
-            }
+                $recruiter_reg_prev_image = $recruiter_reg_data[0]['recruiter_user_image'];
 
 
-        }
+                if ($recruiter_reg_prev_image != '') {
+                    $recruiter_image_main_path = $this->config->item('rec_profile_main_upload_path');
+                    $recruiter_bg_full_image = $recruiter_image_main_path . $recruiter_reg_prev_image;
+                    if (isset($recruiter_bg_full_image)) {
+                        unlink($recruiter_bg_full_image);
+                    }
+
+                    $recruiter_image_thumb_path = $this->config->item('rec_profile_thumb_upload_path');
+                    $recruiter_bg_thumb_image = $recruiter_image_thumb_path . $recruiter_reg_prev_image;
+                    if (isset($recruiter_bg_thumb_image)) {
+                        unlink($recruiter_bg_thumb_image);
+                    }
+                }
 
                 $recruiter_image = $imgdata['file_name'];
             }
@@ -4588,15 +4483,15 @@ public function rec_avail_check($userid = " ")
                 'recruiter_user_image' => $recruiter_image,
                 'modify_date' => date('Y-m-d', time())
             );
-          
+
 
             $updatdata = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
 
             if ($updatdata) {
-              
-                $contition_array = array('user_id'=> $userid,'re_status' => '1','is_delete'=> '0');
+
+                $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
                 $recruiter_reg_data = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'recruiter_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-             
+
                 $userimage .= '<img src="' . base_url($this->config->item('rec_profile_thumb_upload_path') . $recruiter_reg_data[0]['recruiter_user_image']) . '" alt="" >';
                 $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
                 $userimage .= 'Update Profile Picture';
@@ -4608,6 +4503,6 @@ public function rec_avail_check($userid = " ")
             }
         }
     }
-   //PROFILE PIC INSERT END  
 
+    //PROFILE PIC INSERT END  
 }
