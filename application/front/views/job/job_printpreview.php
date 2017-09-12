@@ -97,7 +97,7 @@
                <div class="profile-pho">
                   <div class="user-pic padd_img">
                      <?php if ($job[0]['job_user_image'] != '') { ?>
-                     <img src="<?php echo base_url($this->config->item('job_profile_thumb_upload_path') . $job[0]['job_user_image']); ?>" alt="" >
+                     <img src="<?php echo JOB_PROFILE_THUMB_UPLOAD_URL . $job[0]['job_user_image']; ?>" alt="" >
                      <?php } else { ?>
                      <?php
                         $a = trim($job[0]['fname']);

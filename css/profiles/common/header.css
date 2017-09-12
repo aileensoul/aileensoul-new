@@ -1416,7 +1416,7 @@ background-color: white;}
     height: 100% !important;
 }
 .kv-file-content video{width: 100%;}
-.kv-file-content audio{width: 100%;}
+.kv-file-content audio{max-width: 100%;}
 .krajee-default[data-template="audio"] .file-preview-audio{height: 100%;}
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
@@ -1562,7 +1562,7 @@ background-color: white;}
         clear: both;
     }
 	#notificationLink span {
-        top: 3px !important;
+        top: 0px !important;
     }
 	.header-left-menu {
         position: relative;
@@ -1659,6 +1659,9 @@ background-color: white;}
     .back {
     width: 40%;
 }
+
+
+
 }
 @media screen and (max-width: 540px) {
     .back {
