@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
         <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">-->
     </head>
-    <div class="js">
+  
         <body>
             <div id="preloader"></div>
             <?php echo $header; ?>
@@ -88,7 +88,7 @@
                                     ?>
                                     <fieldset <?php if ($hourly) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("hourly"); ?>:</label>
-                                        <input type="text" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
+                                        <input type="number" name="hourly" min="1" id="hourly" tabindex="1" autofocus placeholder="Enter hourly Rate"  value="<?php
                                         if ($hourly1) {
                                             echo $hourly1;
                                         }
@@ -157,5 +157,4 @@
            <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_rate.js?ver='.time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
         </body>
-    </div>
 </html>

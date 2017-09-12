@@ -88,6 +88,36 @@ class Artistic extends MY_Controller {
         $this->load->view('artistic/abc', $this->data);
     }
 
+
+    // ARTISTICS PROFILE SLUG START
+
+    public function setcategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $slugname = $oldslugname = $this->create_slug($slugname);
+        $i = 1;
+        while ($this->comparecategory_slug($slugname, $filedname, $tablename, $notin_id) > 0) {
+            $slugname = $oldslugname . '-' . $i;
+            $i++;
+        }return $slugname;
+    }
+
+    public function comparecategory_slug($slugname, $filedname, $tablename, $notin_id = array()) {
+        $this->db->where($filedname, $slugname);
+        if (isset($notin_id) && $notin_id != "" && count($notin_id) > 0 && !empty($notin_id)) {
+            $this->db->where($notin_id);
+        }
+        $num_rows = $this->db->count_all_results($tablename);
+        return $num_rows;
+    }
+
+    public function create_slug($string) {
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower(stripslashes($string)));
+        $slug = preg_replace('/[-]+/', '-', $slug);
+        $slug = trim($slug, '-');
+        return $slug;
+    }
+
+// ARTISTICS PROFILE SLUG END
+
     public function art_basic_information_update() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -1381,7 +1411,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     'insert_profile' => 1,
                     'post_id' => $insert_id,
                     'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => 1
+                    'is_deleted' => '1'
                 );
 
                 $insert = $this->common->insert_data_getid($data, 'post_files');
@@ -1743,7 +1773,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
                                         ' . $row['art_description'] . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
-                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer('.$row['art_post_id'].');">' . $row['art_description'] . '</div>
+                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer('.$row['art_post_id'].');">' . $row['art_description'] . '</div>
                                     </div>
                                     
                                     <button class="fr" id="editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin-right: 4px; border-radius: 3px;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save
@@ -2236,12 +2266,13 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
                             <div contenteditable="true" class="edt_2 editable_text" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
-                        </div>
+                      
                       ' . form_error('post_comment') . ' 
                         <div class="mob-comment">       
                             <button id="' . $row['art_post_id'] . '" onClick="insert_comment(this.id)"><img src="../img/send.png">
                             </button>
                         </div>
+                          </div>
                         <div class=" comment-edit-butn hidden-mob" >   
                            <button  id="'.$row['art_post_id'].'" onClick="insert_comment(this.id)">Comment</button> 
                         </div>
@@ -13036,7 +13067,7 @@ public function art_home_post() {
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
                                         ' . $row['art_description'] . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
-                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
+                                        <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
                                     </div>
                                     
                                     <button class="fr" id="editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin-right: 5px; border-radius: 3px;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save
@@ -14251,7 +14282,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return_html .= $row['art_description'];
                 $return_html .= '</div>
 <div id = "editpostdetailbox' . $row['art_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
 </div><button class = "fr" id = "editpostsubmit' . $row['art_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['art_post_id'] . ')">Save</button>
 </div> ';
                 if ($row['art_post'] || $row['art_description']) {
@@ -14627,7 +14658,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
     </div>
 </div>
 <div class="post-design-commnet-box col-md-12">
-    <div class="post-design-proo-img"> ';
+    <div class="post-design-proo-img hidden-mob"> ';
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
@@ -15728,7 +15759,7 @@ public function get_artistic_name($id=''){
                                         $return_html .= '</div>
 
                                           <div id="editpostdetailbox'. $key['art_post_id'].'" style="display:none;">      
-                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="cursorpointer('.$key['art_post_id'].');">'.$key['art_description'].'</div>                  
+                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="return cursorpointer('.$key['art_post_id'].');">'.$key['art_description'].'</div>                  
                                           </div>
                                           <button class="fr" id="editpostsubmit'. $key['art_post_id'].'" style="display:none;margin: 5px 0; border-radius: 3px;" onclick="edit_postinsert('.$key['art_post_id'].')">Save
                                           </button>
@@ -16139,7 +16170,7 @@ public function get_artistic_name($id=''){
                                             $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
                                             $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                            
-                                      $return_html .= '<div class="post-design-proo-img">';
+                                      $return_html .= '<div class="post-design-proo-img hidden-mob">';
                                            if ($art_userimage) { 
                                     $return_html .= '<img src="'.base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage).'" name="image_src" id="image_src" />';
                                                    
@@ -16648,7 +16679,7 @@ public function get_artistic_name($id=''){
                                         $return_html .= '</div>
 
                                           <div id="editpostdetailbox'. $key['art_post_id'].'" style="display:none;">      
-                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="cursorpointer('.$key['art_post_id'].');">'.$key['art_description'].'</div>                  
+                                                   <div contenteditable="true" id="editpostdesc'. $key['art_post_id'].'" placeholder="Product Description" class="textbuis  editable_text" name="editpostdesc" onfocus="return cursorpointer('.$key['art_post_id'].');">'.$key['art_description'].'</div>                  
                                           </div>
                                           <button class="fr" id="editpostsubmit'. $key['art_post_id'].'" style="display:none;margin: 5px 0; border-radius: 3px;" onclick="edit_postinsert('.$key['art_post_id'].')">Save
                                           </button>

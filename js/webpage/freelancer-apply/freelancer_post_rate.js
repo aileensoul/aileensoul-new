@@ -45,12 +45,4 @@ $(".alert").delay(3200).fadeOut(300);
                     });
                 });
 //FORM FILL UP VALIDATION END
-//FOR PREELOADER START
- jQuery(document).ready(function ($) {
-                    $(window).load(function () {
-                        $('#preloader').fadeOut('slow', function () {
-                            $(this).remove();
-                        });
-                    });
-                });
-//FOR PREELOADER END
+

@@ -4013,6 +4013,7 @@ height: 100px;
     }
 }
 @media screen and (max-width: 640px){
+    .modal.in .modal-dialog{width: 80%;}
     #row2 img{height: 200px;}
 	.bui_bcon {width: 56%;}
 	.user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}

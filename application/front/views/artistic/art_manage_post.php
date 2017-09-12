@@ -305,12 +305,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                         <span class="mes">
                             <div id="popup-form">
                              <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                <input type="hidden" name="hitext" id="hitext" value="5">
-                                <div class="popup_previred">
-                                    <img id="preview" src="#" alt="your image" />
-                                </div>
-                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                               <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                    </div>
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                <input type="submit"  class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save">
                                 </form>
                             </div>
                         </span>
@@ -394,7 +395,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
 
 <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';   

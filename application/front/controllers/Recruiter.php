@@ -1568,7 +1568,7 @@ class Recruiter extends MY_Controller {
 
                 if (file_exists($imagee) && $row['job_user_image'] != '') {
 
-                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                    $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                     $postdata .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path')) . $row['job_user_image'] . '" alt="' . $row[0]['fname'] . ' ' . $row[0]['lname'] . '">';
                     $postdata .= '</a>';
                 } else {
@@ -1592,7 +1592,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '<div class="designation_rec fl">';
                 $postdata .= '<ul>';
                 $postdata .= '<li>';
-                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/resume/' . $row['iduser'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
+                $postdata .= '<a  class="post_name" href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
                 $postdata .= '' . ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])) . '</a>';
                 $postdata .= '</li>';
 
@@ -3187,7 +3187,7 @@ class Recruiter extends MY_Controller {
                 { 
               
                
-                    $return_html .='<a href="'.base_url('job/job_printpreview/' . $p['iduser'].'?page=recruiter').'" title="'.$p['fname'] . ' ' . $p['lname'].'"> 
+                    $return_html .='<a href="'.base_url('job/resume/' . $p['slug'].'?page=recruiter').'" title="'.$p['fname'] . ' ' . $p['lname'].'"> 
                                     <img src="'.base_url($this->config->item('job_profile_thumb_upload_path')  . $p['job_user_image']).'" alt="'.$p[0]['fname'] . ' ' . $p[0]['lname'].'">
                                     </a>';
              
@@ -3207,7 +3207,7 @@ class Recruiter extends MY_Controller {
                 $return_html .='<div class="designation_rec" style="float: left;">
                                     <ul>
                                         <li>
-                                            <a style=" font-size: 19px;font-weight: 600;" href="'.base_url('job/job_printpreview/' . $p['iduser'].'?page=recruiter').'">'.ucfirst(strtolower($p['fname'])) . ' ' . ucfirst(strtolower($p['lname'])).
+                                            <a style=" font-size: 19px;font-weight: 600;" href="'.base_url('job/resume/' . $p['slug'].'?page=recruiter').'">'.ucfirst(strtolower($p['fname'])) . ' ' . ucfirst(strtolower($p['lname'])).
                                             '</a></li>';
 
                 $return_html .=' <li style="display: block;"><a href="javascript:void(0)">';
@@ -3708,7 +3708,7 @@ class Recruiter extends MY_Controller {
         );
         
          
-        $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.designation,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
+        $data = "job_reg.user_id as userid,job_reg.fname,job_reg.lname,job_reg.email,job_reg.slug,job_reg.designation,job_reg.phnno,job_reg.keyskill,job_reg.work_job_title,job_reg.work_job_industry,job_reg.work_job_city,job_reg.job_user_image,job_add_edu.*,job_graduation.*,save.status,save.save_id";
         $contition_array1 = array('save.from_id' => $userid, 'save.status' => 0, 'save.save_type' => 1);
         $recdata1 =  $this->common->select_data_by_condition('save', $contition_array1, $data, $sortby = 'save_id', $orderby = 'desc', $limit = '', $offset = '', $join_str1, $groupby = '');
         
@@ -3750,11 +3750,11 @@ class Recruiter extends MY_Controller {
 
                     $imageee = $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'];
                     if (file_exists($imageee) && $rec['job_user_image'] != '') {
-                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
                         $return_html .= '<img src="' . base_url() . $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
                     } else {
 
-                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
 
                         $a = $rec['fname'];
                         $acr = substr($a, 0, 1);
@@ -3773,7 +3773,7 @@ class Recruiter extends MY_Controller {
                                                                         <li>';
                                                                         // $return_html .=$rec['fname'].''.$rec['lname'];
 
-                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['userid'] . '?page=recruiter" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
+                    $return_html .= '<a class="post_name"  href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $rec['fname'] . ' ' . $rec['lname'] . '">';
                     $return_html .= $rec['fname'] . ' ' . $rec['lname'] . '</a>';
                     $return_html .= '</li><li style="display: block;">
                                     <a class="post_designation"  href="javascript:void(0)" title="' . $rec['designation'] . '">';

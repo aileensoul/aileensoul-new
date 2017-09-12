@@ -159,7 +159,7 @@ class Notification extends MY_Controller {
 //                'join_table_id' => 'notification.not_from_id',
 //                'from_table_id' => 'art_reg.user_id')
 //        );
-//        $data = array('notification.*', 'post_image.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+//       $data = array('notification.*', 'post_image.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
 //        $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 //
 //
@@ -835,14 +835,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'art_reg',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', ' post_image.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+        $data = array('notification.*', ' post_files.*', ' art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -987,14 +987,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'business_profile',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'business_profile.user_id')
         );
-        $data = array('notification.*', 'post_image.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
+        $data = array('notification.*', 'post_files.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
 
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -2530,14 +2530,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'user',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'user.user_id')
         );
-        $data = array('notification.*', 'post_image.*', ' user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
+        $data = array('notification.*', 'post_files.*', ' user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -2682,14 +2682,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'user',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'user.user_id')
         );
-        $data = array('notification.*', 'post_image.*', 'user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
+        $data = array('notification.*', 'post_files.*', 'user.user_id', 'user.first_name', 'user.user_image', 'user.last_name');
 
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -3010,14 +3010,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'art_reg',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'art_reg.user_id')
         );
-        $data = array('notification.*', 'post_image.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
+        $data = array('notification.*', 'post_files.*', 'art_reg.user_id as user_id', 'art_reg.art_name as first_name', 'art_reg.art_user_image as user_image', 'art_reg.art_lastname as last_name');
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 
@@ -3161,14 +3161,14 @@ class Notification extends MY_Controller {
                 'join_type' => '',
                 'table' => 'post_files',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'post_image.image_id'),
+                'from_table_id' => 'post_files.post_files_id'),
             array(
                 'join_type' => '',
                 'table' => 'business_profile',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'business_profile.user_id')
         );
-        $data = array('notification.*', 'post_image.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
+        $data = array('notification.*', 'post_files.*', 'business_profile.user_id as user_id', 'business_profile.company_name as first_name', 'business_profile.business_user_image as user_image');
 
         $busimglike = $this->data['busimglike'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'post_files_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
