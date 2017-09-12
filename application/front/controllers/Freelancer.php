@@ -3853,6 +3853,68 @@ class Freelancer extends MY_Controller {
             redirect('freelancer-hire/projects', refresh);
         }
     }
+public function user_image_add1() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('user_id' => $userid);
+        $user_reg_data = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $user_reg_prev_image = $user_reg_data[0]['freelancer_post_user_image'];
+
+        if ($user_reg_prev_image != '') {
+            $user_image_main_path = $this->config->item('free_post_profile_main_upload_path');
+            $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+            if (isset($user_bg_full_image)) {
+                unlink($user_bg_full_image);
+            }
+
+            $user_image_thumb_path = $this->config->item('free_post_profile_thumb_upload_path');
+            $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+            if (isset($user_bg_thumb_image)) {
+                unlink($user_bg_thumb_image);
+            }
+        }
+
+
+        $data = $_POST['image'];
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $user_bg_path = $this->config->item('free_post_profile_main_upload_path');
+        $data = base64_decode($data);
+        $imageName = time() . '.png';
+        file_put_contents($user_bg_path . $imageName, $data);
+
+        $user_thumb_path = $this->config->item('free_post_profile_thumb_upload_path');
+        $user_thumb_width = $this->config->item('free_post_profile_thumb_width');
+        $user_thumb_height = $this->config->item('free_post_profile_thumb_height');
+
+        $upload_image = $user_bg_path . $imageName;
+
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $data = array(
+            'freelancer_post_user_image' => $imageName
+        );
+
+        $update = $this->common->update_data($data, 'freelancer_post_reg', 'user_id', $userid);
+        //  echo "11111";die();
+
+        if ($update) {
+
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $freelancerpostdata = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<img src="' . base_url($this->config->item('free_post_profile_thumb_upload_path') . $freelancerpostdata[0]['freelancer_post_user_image']) . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= $this->lang->line("update_profile_picture");
+            $userimage .= '</a>';
+
+            echo $userimage;
+        } else {
+
+            $this->session->flashdata('error', 'Your data not inserted');
+            redirect('freelancer-work/home', refresh);
+        }
+    }
 
     public function user_image_add() {
 

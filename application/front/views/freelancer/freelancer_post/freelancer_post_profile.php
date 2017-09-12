@@ -3,9 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <style type="text/css">
-            #popup-form img{display: none;}
-        </style>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
@@ -153,17 +150,17 @@
                                         <li <?php if (($this->uri->segment(1) == 'freelancer-work') && ($this->uri->segment(2) == 'applied-projects')) { ?> class="active" <?php } ?>><a title="Applied  Post" href="<?php echo base_url('freelancer-work/applied-projects'); ?>"><?php echo $this->lang->line("applied_projects"); ?></a> </li>
                                     <?php } ?>
                                 </ul>
-                                
-                                        <?php
-                                        $userid = $this->session->userdata('aileenuser');
-                                        $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 2, 'status' => '0');
-                                        $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                                        if ($userid != $this->uri->segment(3)) {
-                                            if ($this->uri->segment(3) != "") {
-                                                if (!$data) {
-                                                    ?> 
-                                                    <div class="flw_msg_btn fr">
-                                    <ul>
+
+                                <?php
+                                $userid = $this->session->userdata('aileenuser');
+                                $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 2, 'status' => '0');
+                                $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                if ($userid != $this->uri->segment(3)) {
+                                    if ($this->uri->segment(3) != "") {
+                                        if (!$data) {
+                                            ?> 
+                                            <div class="flw_msg_btn fr">
+                                                <ul>
                                                     <li>
                                                         <a id="<?php echo $this->uri->segment(3); ?>" onClick="savepopup(<?php echo $this->uri->segment(3); ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $this->uri->segment(3); ?>">
                                                             <?php echo $this->lang->line("save"); ?>
@@ -172,19 +169,20 @@
                                                     </li> <?php } else { ?>
                                                     <li> 
                                                         <a class="saved butt_rec <?php echo 'saveduser' . $this->uri->segment(3); ?> "><?php echo $this->lang->line("saved"); ?></a>
-                                                    </li> <?php }
-                                                     $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                                        ?>
+                                                    </li> <?php
+                                                }
+                                                $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                                ?>
                                                 <li>
                                                     <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                 </li>
-                                                 </ul>
-                                </div>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                   
+                                            </ul>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>
+
                         </div>
                     </div>
                 </div>
@@ -937,15 +935,16 @@
                         <span class="mes">
                             <div id="popup-form">
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));  ?>
-                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
-                                    <input type="hidden" name="hitext" id="hitext" value="2">
-                                    <div class="popup_previred">
-                                        <img id="preview" src="#" alt="your image" />
+                                    <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
+                                    <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
-                                    <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                 </form>
-                                <?php //echo form_close();  ?>
+                                <?php //echo form_close();   ?>
                             </div>
                         </span>
                     </div>
@@ -953,17 +952,16 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>">
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>">
+        </script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-//           
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_profile.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_post_profile.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
 
     </body>
 </html>

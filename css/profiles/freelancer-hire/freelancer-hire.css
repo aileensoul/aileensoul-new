@@ -637,6 +637,9 @@ label.cameraButton input[accept*="camera"] {
 #popup-form img {
     display: none;
 }
+#popup-form #upload-demo-one img {
+    display: block;
+}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
     display: block;
@@ -805,8 +808,6 @@ label.cameraButton input[accept*="camera"] {
 }
 .indiavte_freelancer{margin: 10px 0px;}
   #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
-
-
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {

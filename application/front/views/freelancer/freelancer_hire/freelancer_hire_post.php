@@ -3,15 +3,9 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-<!--        <script src="<?php //echo base_url('js/jquery.min.js');   ?>"></script>-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
-        <!--<link rel="stylesheet" href="<?php //echo base_url('css/bootstrap.min.css');   ?>" />-->
-
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
-        <style type="text/css">
-            #popup-form img{display: none;}
-        </style>
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
@@ -176,7 +170,7 @@
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
-                                                <li> <a href="<?php echo base_url('chat/abc/3/4/' .$id); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                                <li> <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
 
                                             <?php } ?>
 
@@ -271,12 +265,13 @@
                                         <div id="popup-form">
                                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                                 <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));  ?>
-                                                <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
-                                                <input type="hidden" name="hitext" id="hitext" value="2">
-                                                <div class="popup_previred">
-                                                    <img id="preview" src="#" alt="your image" />
+                                                <div class="col-md-5">
+                                                    <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                                 </div>
-                                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                                <div class="col-md-7 text-center">
+                                                    <div id="upload-demo-one" style="width:350px"></div>
+                                                </div>
+                                                <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                             </form>
                                             <?php //echo form_close();  ?>
                                         </div>
@@ -299,11 +294,9 @@
                     </div>
                     <!-- Model Popup Close -->
                     <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-            <!--        <script src="<?php // echo base_url('js/jquery-ui.min.js');   ?>"></script>-->
                     <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>">
+                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
                     </script>
-
                     <script>
                         var base_url = '<?php echo base_url(); ?>';
                         var returnpage = '<?php echo $returnpage; ?>';
