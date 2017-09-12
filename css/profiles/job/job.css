@@ -1889,6 +1889,8 @@ padding-top: 2px !important;}
     .header2 {
     top: 42px;
 }
+
+.profile-job-details ul li.date_re {font-size: 10px;}
 	.job_con #InboxContainer::before {
 		right: 136px;
 	}
