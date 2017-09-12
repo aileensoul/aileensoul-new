@@ -25,7 +25,6 @@
     });
 
 
-
     $('.upload-result').on('click', function (ev) {
         $uploadCrop.croppie('result', {
             type: 'canvas',
