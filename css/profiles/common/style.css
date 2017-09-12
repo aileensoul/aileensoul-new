@@ -1807,6 +1807,7 @@ input:-moz-placeholder {
 
     .kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
         overflow-y: hidden;*/
+		pointer-events:none;
     position: relative;
 }
 .kv-file-content img{left: 50%;
@@ -1846,6 +1847,13 @@ display: none !important;
 #basicinfo .day {
     width: 32%;
 }
+/*** header ***/
+.krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
+
+/*** bus and art ***/
+.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+#mainContainer{min-width:108% !important;}
+
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
     .container {

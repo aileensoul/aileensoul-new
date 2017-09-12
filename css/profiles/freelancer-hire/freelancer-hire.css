@@ -47,15 +47,15 @@ li.fr a {text-decoration: none !important;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a:hover {text-decoration-line: underline;
     color: #1b8ab9;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;
-    width: 30%; float: left;}
+    width: 25%; float: left; position:relative; padding-right:7px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {text-align: justify;
     word-break: break-word; display: flex; margin-bottom: 0px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: " :";
-    margin-left: -15px; float: left;}
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: " :";
+     float: left; position:absolute; right:0;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
-    word-break: break-word; float: left; padding-right: 10px; width: 65%;}
+    word-break: break-word; float: left; padding-right: 10px; width: 70%;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
     font-weight: 600; width: 30%; float: left;}
 .profile-job-details ul li {list-style: none;}
