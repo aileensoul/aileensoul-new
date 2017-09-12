@@ -26,7 +26,7 @@
                                                 if ($freepostdata[0]['profile_background'] != '') {
                                                     ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                        <img src="<?php echo FREE_HIRE_BG_ORIGINAL_UPLOAD_URL . $freepostdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
                                                     </div>
                                                     <?php
                                                 } else {
@@ -47,7 +47,7 @@
                                                        if ($freelancerdata[0]['freelancer_post_user_image']) {
                                                            ?>
                                                         <div class="data_img_2">
-                                                            <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
                                                         </div>
                                                         <?php
                                                     } else {
