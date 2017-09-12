@@ -3497,8 +3497,8 @@ padding-left: 11px;}
     top: 46px;
 }
 .art-all-comment{
-    padding-left: 15px;
-    padding-right: 15px !important;
+    padding-left: 10px;
+    padding-right: 10px !important;
 }
 #paddingtop_fixed_art {
     padding-top: 74px !important;
@@ -4021,7 +4021,7 @@ padding-left: 11px;}
         padding-right: 10px;
     }
     .post-design-commnet-box {
-        padding: 10px 14px;
+        padding: 10px;
     }
     
     .post-edit-popup .editor-content {
