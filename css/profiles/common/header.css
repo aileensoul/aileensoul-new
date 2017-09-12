@@ -1526,7 +1526,7 @@ background-color: white;}
     .search-mob-block label i{font-size: 20px;}
     .header ul{margin: 4px 0px;}
 	#notificationLink span{top:10px !important;}
-	#add_contact #addcontactContainer::before {right: 219px;}
+	#add_contact #addcontactContainer::before {right: 219px; margin-top: -16px;}
 	.action-button #message_count{right:168px;}
 	.search-mob-block {
         display: block;
@@ -1593,7 +1593,7 @@ background-color: white;}
     right: 79px;
     }
     #InboxContainer::before {
-    right: 142px;
+    right: 155px;
     }
 	.notifications li {
         width: 100%;
@@ -1705,7 +1705,7 @@ fieldset{padding: 9px 8px!important;}
 		right: 218px;
 	}
 	#a_li{position: inherit !important;}
-    #acon::before{right:115px !important;}
+    #acon::before{right:140px !important;}
     #acon{width: 100% !important; margin-top: 22px !important;}
     #notificationContainer::before{right:80px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
 	.notification-data-inside h6 {
