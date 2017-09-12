@@ -633,6 +633,9 @@ label.cameraButton input[accept*="camera"] {
 #popup-form img {
     display: none;
 }
+#popup-form #upload-demo-one img {
+    display: block;
+}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
     display: block;

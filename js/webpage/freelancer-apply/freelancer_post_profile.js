@@ -13,6 +13,7 @@
     });
 
     $('#upload-one').on('change', function () {
+        alert(123);
         var reader = new FileReader();
         reader.onload = function (e) {
             $uploadCrop1.croppie('bind', {

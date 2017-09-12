@@ -3,9 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
-        <style type="text/css">
-            #popup-form img{display: none;}
-        </style>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
@@ -206,16 +203,12 @@
         </div>
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>">
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';
-
             var no_saved = '<?php echo $this->lang->line("no_saved_freelancer"); ?>';
-
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_save_post.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-apply/freelancer_apply_common.js?ver=' . time()); ?>"></script>
