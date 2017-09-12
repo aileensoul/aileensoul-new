@@ -314,7 +314,7 @@
 
                                     <div>
                                         <?php
-                                        $contition_array = array('post_id' => $art_data[0]['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                        $contition_array = array('post_id' => $art_data[0]['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                                         $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                         ?>
 
@@ -327,7 +327,7 @@
                                             $allowespdf = array('pdf');
                                             $allowesvideo = array('mp4', '3gp');
                                             $allowesaudio = array('mp3');
-                                            $filename = $data['image_name'];
+                                            $filename = $data['file_name'];
                                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                                             if (in_array($ext, $allowed)) {
@@ -335,12 +335,12 @@
 
                                                 <div class="one-image" >
 
-                                                 <!-- <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '"> -->
+                                                 <!-- <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '"> -->
 
-                                                  <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$data['image_name'];?>" onclick="openModal();
+                                                  <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$data['file_name'];?>" onclick="openModal();
                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
 
-                                                    <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['image_name']) ?>"  onclick="openModal();
+                                                    <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['file_name']) ?>"  onclick="openModal();
                                                             currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
  -->
                                                 </div>
@@ -349,7 +349,7 @@
                                                 <!-- one video start -->
                                                 <div>
                                                     <video style="height: 50%; width: 100%; margin-bottom: 10px;"controls>
-                                                        <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['image_name']); ?>" type="video/mp4">
+                                                        <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $data['file_name']); ?>" type="video/mp4">
                                                         <source src="movie.ogg" type="video/ogg">
                                                         Your browser does not support the video tag.
                                                     </video>
@@ -359,7 +359,7 @@
                                                 <!-- one audio start -->
                                                 <div>
                                                     <audio style="height: 50%; width: 100%; margin-bottom: 10px;" controls>
-                                                        <source src="<?php echo base_url($this->config->item('art_profile_main_upload_path') . $data['image_name']); ?>" type="audio/mp3">
+                                                        <source src="<?php echo base_url($this->config->item('art_profile_main_upload_path') . $data['file_name']); ?>" type="audio/mp3">
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
 
@@ -384,7 +384,7 @@
                                             $i = 1;
                                             $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                                             foreach ($artmultiimage as $mke => $mval) {
-                                                $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
+                                                $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
                                                 if (in_array($ext, $allowed)) {
                                                     $databus1[] = $mval;
                                                 }
@@ -396,8 +396,8 @@
                                                     <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                                      <div class="slider_img">
 
-                                                        <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['image_name']) ?>"> -->
-                                                         <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$artdata['image_name'];?>">
+                                                        <!-- <img src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artdata['file_name']) ?>"> -->
+                                                         <img src = "<?php echo  ART_POST_MAIN_UPLOAD_URL.$artdata['file_name'];?>">
                                                             <a class="prev" style="left: 0;" onclick="plusSlides(-1)">&#10094;</a>
                                             <a class="next" style="right:  0;" onclick="plusSlides(1)">&#10095;</a>
                                                     </div>

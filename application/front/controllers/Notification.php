@@ -424,7 +424,7 @@ class Notification extends MY_Controller {
         $contition_array = array('art_post_id' => $id, 'status' => '1');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'image_type' => '1');
+        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'insert_profile' => '1');
         $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $i = 1;
@@ -510,7 +510,7 @@ class Notification extends MY_Controller {
         $contition_array = array('business_profile_post_id' => $id, 'status' => '1');
         $this->data['busienss_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'image_type' => '2');
+        $contition_array = array('post_id' => $id, 'is_deleted' => '1', 'insert_profile' => '2');
         $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $i = 1;

@@ -32,7 +32,7 @@
                                                         $i = 1;
                                                         $allowed = array('gif', 'png', 'jpg');
                                                         foreach ($business_profile_data as $mke => $mval) {
-                                                            $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
+                                                            $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
                                                             if (in_array($ext, $allowed)) {
                                                                 $databus[] = $mval;
                                                             }
@@ -44,9 +44,9 @@
                                                                     <?php foreach ($databus as $data) {
                                                                         ?>
                                                                         <li>
-                                                                            <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['image_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
-                                                                            <?php // echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
-                                                                            <?php echo '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $data['image_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
+                                                                            <!--<img src="<?php echo base_url($this->config->item('bus_post_210_210_upload_path') . $data['file_name']) ?>" onclick="openModal();currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor" width="550" height="669"/>-->
+                                                                            <?php // echo '<img src="https://' . bucket . '.s3.amazonaws.com/' . $this->config->item('bus_post_210_210_upload_path') . $data['file_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
+                                                                            <?php echo '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $data['file_name'] . '" onclick="openModal(); currentSlide(' . $i . ')" class="hover-shadow cursor"/>'; ?>
                                                                         </li>
                                                                         <?php
                                                                         $i++;
@@ -78,7 +78,7 @@
                                                         $allowed = array('gif', 'png', 'jpg');
                                                         foreach ($business_profile_data as $mke => $mval) {
 
-                                                            $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
+                                                            $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
 
                                                             if (in_array($ext, $allowed)) {
                                                                 $databus1[] = $mval;
@@ -90,8 +90,8 @@
                                                             <div class="mySlides">
                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                                                 <div class="slider_img_p">
-                                                                    <!--<img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['image_name']) ?>" >-->
-                                                                    <?php echo '<img src="' . BUS_POST_MAIN_UPLOAD_URL . $busdata['image_name'] . '" >'; ?>
+                                                                    <!--<img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" >-->
+                                                                    <?php echo '<img src="' . BUS_POST_MAIN_UPLOAD_URL . $busdata['file_name'] . '" >'; ?>
                                                                 </div>
                                                                 <!-- like comment start -->
                                                                 <div>

@@ -1377,8 +1377,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
 
                 $data = array(
-                    'image_name' => $fileName,
-                    'image_type' => 1,
+                    'file_name' => $fileName,
+                    'insert_profile' => 1,
                     'post_id' => $insert_id,
                     'created_date' => date('Y-m-d H:i:s', time()),
                     'is_deleted' => 1
@@ -1753,7 +1753,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             <div class="post-design-mid col-md-12" >
                                 <div>';
 
-                    $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                    $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                     $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     if (count($artmultiimage) == 1) {
@@ -1762,17 +1762,17 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'MP4');
                         $allowesaudio = array('mp3');
-                        $filename = $artmultiimage[0]['image_name'];
+                        $filename = $artmultiimage[0]['file_name'];
                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
                                                 <div class="pdf_img">
                                                         <img src="' . base_url('images/PDF.jpg') . '">
@@ -1782,8 +1782,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         } elseif (in_array($ext, $allowesvideo)) {
                             $return_html .= '<div>
                                                 <video width="100%" height="350" controls>
-                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
-                                                     <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
+                                                     <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>';
@@ -1794,7 +1794,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
-                                                        <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+                                                        <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
                                                     </audio>
@@ -1810,7 +1810,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                     <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -1818,19 +1818,19 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                             </a>
                                         </div>
                                         <div class="three-image" >
 
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
  
                                             </a>
                                         </div>
                                         <div class="three-image" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '"> 
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '"> 
                                             </a>
                                         </div>';
                     } elseif (count($artmultiimage) == 4) {
@@ -1839,7 +1839,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                     <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                     <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -1850,7 +1850,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
 
@@ -1861,7 +1861,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '"> 
+                                                <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '"> 
                                             </a>
                                             <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
                                                 <div class="more-image" >
@@ -7402,7 +7402,7 @@ public function insert_comment_postnewpage() {
              foreach ($artisticpost as $value) {
                 
             
-            $contition_array = array('image_type' => 1, 'is_deleted' => '1', 'post_id' => $value['art_post_id']);
+            $contition_array = array('insert_profile' => 1, 'is_deleted' => '1', 'post_id' => $value['art_post_id']);
 
             $art_data = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $a_d[] =  $art_data;
@@ -7446,7 +7446,7 @@ public function insert_comment_postnewpage() {
              foreach ($artisticpost as $value) {
                 
             
-            $contition_array = array('image_type' => 1, 'is_deleted' => '1', 'post_id' => $value['art_post_id']);
+            $contition_array = array('insert_profile' => 1, 'is_deleted' => '1', 'post_id' => $value['art_post_id']);
 
             $art_data = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $a_d[] =  $art_data;
@@ -8671,7 +8671,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
+        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'insert_profile' => '1');
         $artlikeimg = $this->data['artlikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
@@ -8870,7 +8870,7 @@ public function insert_comment_postnewpage() {
         $contition_array = array('post_image_comment_id' => $post_image_comment_id);
         $artimglike = $this->data['artimglike'] = $this->common->select_data_by_condition('art_post_image_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'image_type' => '1');
+        $contition_array = array('post_files_id' => $artimglike[0]['post_image_id'], 'insert_profile' => '1');
         $artlikeimg = $this->data['artlikeimg'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('art_post_id' => $artlikeimg[0]["post_id"]);
@@ -13046,7 +13046,7 @@ public function art_home_post() {
                             <div class="post-design-mid col-md-12" >
                                 <div>';
 
-                    $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                    $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                     $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                     if (count($artmultiimage) == 1) {
@@ -13055,20 +13055,20 @@ public function art_home_post() {
                         $allowespdf = array('pdf');
                         $allowesvideo = array('mp4', 'webm', 'MP4');
                         $allowesaudio = array('mp3');
-                        $filename = $artmultiimage[0]['image_name'];
+                        $filename = $artmultiimage[0]['file_name'];
                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class="one-image">';
                             $return_html .= '<a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                    <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
 
                                                 </a>
                                             </div>';
                         } elseif (in_array($ext, $allowespdf)) {
-                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+                            $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
-                            <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'">
+                            <a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
                                                <div class="pdf_img">
 
@@ -13081,16 +13081,16 @@ public function art_home_post() {
                                                 <video width="100%" height="350" controls>
 
                                              
-                                                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/mp4">
-                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) . '" type="video/ogg">
+                                                <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/mp4">
+                                                    <source src="' . base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) . '" type="video/ogg">
 
                                                     
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>';
 
-                                               // <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
-                                               //  <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/ogg">
+                                               // <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
+                                               //  <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/ogg">
 
                         } elseif (in_array($ext, $allowesaudio)) {
                             $return_html .= '<div class="audio_main_div">
@@ -13099,7 +13099,7 @@ public function art_home_post() {
                                                 </div>
                                                 <div class="audio_source">
                                                     <audio controls>
-                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+                                                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
 
                                                         <source src="movie.ogg" type="audio/ogg">
                                                         Your browser does not support the audio tag.
@@ -13117,7 +13117,7 @@ public function art_home_post() {
                             $return_html .= '<div  class="two-images">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -13125,35 +13125,35 @@ public function art_home_post() {
                         // $return_html .= '<div class="three-image-top" >
                         //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) . '"> 
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) . '"> 
                         //                     </a>
                         //                 </div>
                         //                 <div class="three-image" >
 
                         //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) . '"> 
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) . '"> 
                         //                     </a>
                         //                 </div>
                         //                 <div class="three-image" >
                         //                     <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) . '"> 
+                        //                         <img class="three-columns" src="' . base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) . '"> 
                         //                     </a>
                         //                 </div>';
 
                                          $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
 <a href = "' . base_url('artistic/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 <a href = "' . base_url('artistic/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
 </a>
 </div>';
                     } elseif (count($artmultiimage) == 4) {
@@ -13162,7 +13162,7 @@ public function art_home_post() {
 
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-                                                    <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                    <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
                         }
@@ -13174,7 +13174,7 @@ public function art_home_post() {
                             $return_html .= '<div class="four-image">
                                                 <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                    
-                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                    <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                 </a>
                                             </div>';
 
@@ -13186,7 +13186,7 @@ public function art_home_post() {
                         $return_html .= '<div class="four-image">
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                                                 
-                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
 
                                             </a>
                                             <a class="text-center" href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '" >
@@ -13652,7 +13652,7 @@ public function art_home_post() {
 
 
 
-            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
             $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -13663,7 +13663,7 @@ public function art_home_post() {
         foreach ($multipleimage as $mke => $mval) {
 
                             foreach ($mval as $mke1 => $mval1) {
-                                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                                 if (in_array($ext, $allowed)) {
                                     $singlearray[] = $mval1;
@@ -13675,7 +13675,7 @@ public function art_home_post() {
             $i = 0;
             foreach ($singlearray as $mi) {
                 $fetch_result .= '<div class="image_profile">';
-                $fetch_result .= '<img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $mi['image_name']) . '" alt="img1">';
+                $fetch_result .= '<img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $mi['file_name']) . '" alt="img1">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -13717,7 +13717,7 @@ public function art_home_post() {
 
 
 
-           $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+           $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
            $artmultivideo = $this->data['artmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multiplevideo[] = $artmultivideo;
@@ -13729,7 +13729,7 @@ public function art_home_post() {
         foreach ($multiplevideo as $mke => $mval) {
 
                                 foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                    $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                                     if (in_array($ext, $allowesvideo)) {
                                         $singlearray1[] = $mval1;
@@ -13740,30 +13740,30 @@ public function art_home_post() {
         if ($singlearray1) {
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[0]['image_name']) {
+            if ($singlearray1[0]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[0]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[0]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
 
-            if ($singlearray1[1]['image_name']) {
+            if ($singlearray1[1]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[1]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[1]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[2]['image_name']) {
+            if ($singlearray1[2]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[2]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[2]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13772,28 +13772,28 @@ public function art_home_post() {
             $fetch_video .= '</tr>';
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[3]['image_name']) {
+            if ($singlearray1[3]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[3]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[3]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[4]['image_name']) {
+            if ($singlearray1[4]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[4]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[4]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[5]['image_name']) {
+            if ($singlearray1[5]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[5]['image_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[5]['file_name']) . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13836,7 +13836,7 @@ public function art_home_post() {
 
 
 
-            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
             $artmultiaudio = $this->data['artmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -13848,7 +13848,7 @@ public function art_home_post() {
         foreach ($multipleaudio as $mke => $mval) {
 
                                 foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                    $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                                     if (in_array($ext, $allowesaudio)) {
                                         $singlearray2[] = $mval1;
@@ -13859,30 +13859,30 @@ public function art_home_post() {
         if ($singlearray2) {
             $fetchaudio .= '<tr>';
 
-            if ($singlearray2[0]['image_name']) {
+            if ($singlearray2[0]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
 
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
             }
 
-            if ($singlearray2[1]['image_name']) {
+            if ($singlearray2[1]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[2]['image_name']) {
+            if ($singlearray2[2]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13891,28 +13891,28 @@ public function art_home_post() {
             $fetchaudio .= '</tr>';
             $fetchaudio .= '<tr>';
 
-            if ($singlearray2[3]['image_name']) {
+            if ($singlearray2[3]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[4]['image_name']) {
+            if ($singlearray2[4]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[5]['image_name']) {
+            if ($singlearray2[5]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['image_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['file_name']) . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13948,7 +13948,7 @@ public function art_home_post() {
 
         foreach ($artimage as $val) {
 
-                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                                 $artmultipdf = $this->data['artmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_files_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                                 $multiplepdf[] = $artmultipdf;
@@ -13958,7 +13958,7 @@ public function art_home_post() {
          foreach ($multiplepdf as $mke => $mval) {
 
                                 foreach ($mval as $mke1 => $mval1) {
-                                    $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                    $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                                     if (in_array($ext, $allowespdf)) {
                                         $singlearray3[] = $mval1;
@@ -13973,7 +13973,7 @@ public function art_home_post() {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['post_files_id']) . '"><div class="pdf_img">';
-                $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['image_name']).'">';
+                $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['file_name']).'">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -14260,7 +14260,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return_html .= '<div class="post-design-mid col-md-12" >  
     <div class="mange_post_image">';
 
-                $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                $contition_array = array('post_id' => $row['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                 $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (count($artmultiimage) == 1) {
 
@@ -14268,19 +14268,19 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm','MP4');
                     $allowesaudio = array('mp3');
-                    $filename = $artmultiimage[0]['image_name'];
+                    $filename = $artmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
                         $return_html .= '<div class="one-image">
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-           <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+           <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
 
              </a>
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
-                        $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']).'"> 
+                        $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'"> 
 
            <div class="pdf_img">
                     <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
@@ -14292,7 +14292,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '<div>
             <video class="video" width="100%" height="350" controls>
 
-                 <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                 <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
 
                 <source src="movie.ogg" type="video/ogg">
                 Your browser does not support the video tag.
@@ -14305,7 +14305,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
             </div>
             <div class="audio_source">
                 <audio  controls>
-                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
                     <source src="movie.ogg" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio>
@@ -14319,24 +14319,24 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-             <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+             <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
              </a>
         </div>';
                     }
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-            <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+            <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-           <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+           <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
             </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+            <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
             </a>
         </div>';
                 } elseif (count($artmultiimage) == 4) {
@@ -14344,7 +14344,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
              </a>
         </div>';
                     }
@@ -14354,7 +14354,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     foreach ($artmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+            <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
             </a>
         </div>';
                         $i++;
@@ -14363,7 +14363,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                     }
                     $return_html .= '<div class="four-image">
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-           <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+           <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
              </a>
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
                 <div class="more-image" >
@@ -15740,7 +15740,7 @@ public function get_artistic_name($id=''){
                                         <div>                                               
                                         <div class="mange_post_image">';
                                             
-                                            $contition_array = array('post_id' => $key['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                            $contition_array = array('post_id' => $key['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                                             $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                            
                                             if (count($artmultiimage) == 1) {
@@ -15749,14 +15749,14 @@ public function get_artistic_name($id=''){
                                                 $allowespdf = array('pdf');
                                                 $allowesvideo = array('mp4', '3gp', 'avi','MP4');
                                                 $allowesaudio = array('mp3');
-                                                $filename = $artmultiimage[0]['image_name'];
+                                                $filename = $artmultiimage[0]['file_name'];
                                                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                           if (in_array($ext, $allowed)) {
                                                              
            $return_html .= '<div class="one-image" >
              <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
 
-             <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+             <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
 
               </a>
           </div>';
@@ -15769,7 +15769,7 @@ public function get_artistic_name($id=''){
                    } elseif (in_array($ext, $allowesvideo)) { 
                   $return_html .= '<div class="video_post">
                         <video width="100%" height="55%" controls>
-                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                          </video>
@@ -15777,7 +15777,7 @@ public function get_artistic_name($id=''){
                  } elseif (in_array($ext, $allowesaudio)) {                                          
                         $return_html .= '<div>
                         <audio width="120" height="100" controls>
-                   <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+                   <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
 
                     <source src="movie.ogg" type="audio/ogg">
                         Your browser does not support the audio tag.
@@ -15790,24 +15790,24 @@ public function get_artistic_name($id=''){
                                                                                                   
                     $return_html .= '<div class="two-images">
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'>
-                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                        <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                          </a>
                                                     </div>';                                                    
                                                  } 
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
                                                     <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
-                                                   <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                                      </a>
                                                 </div>
                                                <div class="three-image">
                                                     <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'">
-                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
                                                      </a>
                                                 </div>
                                               <div class="three-image">
                                                     <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']) .'">
-                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
                                                      </a>
                                                 </div>';
                                              } elseif (count($artmultiimage) == 4) { 
@@ -15816,7 +15816,7 @@ public function get_artistic_name($id=''){
                                                                                                      
                     $return_html .= '<div class="four-image">
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
-                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                         <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                         </a>
                                                    </div>';                                                   
                                                 } 
@@ -15827,7 +15827,7 @@ public function get_artistic_name($id=''){
                                                                                                        
                 $return_html .= '<div class="four-image">
                                                             <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
-                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                             <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                              </a>
                                                         </div>';                                             
                                                    
@@ -15837,7 +15837,7 @@ public function get_artistic_name($id=''){
                                                 }
                                                 
                 $return_html .= '<div class="four-image">
-                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['image_name']).'" > </a>
+                                                        <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'"><img src="'.base_url($this->config->item('art_post_thumb_upload_path') .$artmultiimage[3]['file_name']).'" > </a>
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'" >
                                                     <div class="more-image" >
                                                 <span>
@@ -16660,7 +16660,7 @@ public function get_artistic_name($id=''){
                                         <div>                                               
                                         <div class="mange_post_image">';
                                             
-                                            $contition_array = array('post_id' => $key['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                            $contition_array = array('post_id' => $key['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                                             $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                            
                                             if (count($artmultiimage) == 1) {
@@ -16669,13 +16669,13 @@ public function get_artistic_name($id=''){
                                                 $allowespdf = array('pdf');
                                                 $allowesvideo = array('mp4', '3gp', 'avi','MP4');
                                                 $allowesaudio = array('mp3');
-                                                $filename = $artmultiimage[0]['image_name'];
+                                                $filename = $artmultiimage[0]['file_name'];
                                                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
                           if (in_array($ext, $allowed)) {
                                                              
            $return_html .= '<div class="one-image" >
              <a href="javascript:void(0);" onclick="login_profile();">
-            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+            <img src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
               </a>
           </div>';
            } elseif (in_array($ext, $allowespdf)) {                                                
@@ -16687,7 +16687,7 @@ public function get_artistic_name($id=''){
                    } elseif (in_array($ext, $allowesvideo)) { 
                   $return_html .= '<div class="video_post">
                         <video width="100%" height="55%" controls>
-                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "video/mp4">
+                         <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "video/mp4">
                         <source src="movie.ogg" type="video/ogg">
                         Your browser does not support the video tag.
                          </video>
@@ -16695,7 +16695,7 @@ public function get_artistic_name($id=''){
                  } elseif (in_array($ext, $allowesaudio)) {                                          
                         $return_html .= '<div>
                         <audio width="120" height="100" controls>
-                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '" type = "audio/mp3">
+                    <source src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" type = "audio/mp3">
                     <source src="movie.ogg" type="audio/ogg">
                         Your browser does not support the audio tag.
                       </audio>
@@ -16707,24 +16707,24 @@ public function get_artistic_name($id=''){
                                                                                                   
                     $return_html .= '<div class="two-images">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                       <img class = "two-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
                                                          </a>
                                                     </div>';                                                    
                                                  } 
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['image_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                                      </a>
                                                 </div>
                                                <div class="three-image">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['image_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[1]['file_name'] . '">
                                                      </a>
                                                 </div>
                                               <div class="three-image">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['image_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE1_UPLOAD_URL . $artmultiimage[2]['file_name'] . '">
                                                     </a>
                                                 </div>';
                                              } elseif (count($artmultiimage) == 4) { 
@@ -16733,7 +16733,7 @@ public function get_artistic_name($id=''){
                                                                                                      
                     $return_html .= '<div class="four-image">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                        <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                        <img class = "breakpoint" src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                         </a>
                                                    </div>';                                                   
                                                 } 
@@ -16744,7 +16744,7 @@ public function get_artistic_name($id=''){
                                                                                                        
                 $return_html .= '<div class="four-image">
                                                             <a href="javascript:void(0);" onclick="login_profile();">
-                                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['image_name'] . '">
+                                                            <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
                                                              </a>
                                                         </div>';                                             
                                                    
@@ -16755,7 +16755,7 @@ public function get_artistic_name($id=''){
                                                 
                 $return_html .= '<div class="four-image">
                                                         <a href="javascript:void(0);" onclick="login_profile();">
-                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['image_name'] . '">
+                                                        <img src = "' . ART_POST_RESIZE2_UPLOAD_URL . $artmultiimage[3]['file_name'] . '">
                                                         </a>
                                                         <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'" >
                                                     <div class="more-image" >

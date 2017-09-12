@@ -340,7 +340,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                              <div class="images_art_post">
 
                                 <?php
-                                                    $contition_array = array('post_id' => $art_data[0]['art_post_id'], 'is_deleted' => '1', 'image_type' => '1');
+                                                    $contition_array = array('post_id' => $art_data[0]['art_post_id'], 'is_deleted' => '1', 'insert_profile' => '1');
                                                     $artmultiimage = $this->data['artmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     ?>
 
@@ -351,7 +351,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                         $allowespdf = array('pdf');
                                                         $allowesvideo = array('mp4', '3gp', 'avi', 'ogg', '3gp', 'webm');
                                                         $allowesaudio = array('mp3');
-                                                        $filename = $artmultiimage[0]['image_name'];
+                                                        $filename = $artmultiimage[0]['file_name'];
                                                         $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                                                         if (in_array($ext, $allowed)) {
@@ -359,7 +359,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                             <!-- one image start -->
                                                             <div class="one-image">
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img  src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>" > </a>
                                                             </div>
                                                             <!-- one image end -->
 
@@ -380,7 +380,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
 
                                                                 <video width="100%" height="370" >
-                                                                    <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) ?>" type="video/mp4">
+                                                                    <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) ?>" type="video/mp4">
                                                                     <source src="movie.ogg" type="video/ogg">
                                                                 </video>
 
@@ -398,7 +398,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                                                                     <div class="audio_source">
                                                                         <audio  controls>
 
-                                                                            <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['image_name']) ?>" type="audio/mp3">
+                                                                            <source src="<?php echo base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']) ?>" type="audio/mp3">
                                                                             <source src="movie.ogg" type="audio/ogg">
                                                                             Your browser does not support the audio tag.
                                                                         </audio>
@@ -419,7 +419,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                             <!-- two image start -->
                                               <div class="two-images" >
-                                            <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) ?>" > </a>
+                                            <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="two-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
                                             </div>
 
                                             <!-- two image end -->
@@ -431,13 +431,13 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                             <!-- three image start -->
                                                             <div class="three-image-top" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['image_name']) ?>"> </a>
+                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[0]['file_name']) ?>"> </a>
                                                             </div>
                                                               <div class="three-image" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['image_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[1]['file_name']) ?>" > </a>
                                                             </div>
                                                             <div class="three-image" >
-                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['image_name']) ?>" > </a>
+                                                                <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="three-columns" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[2]['file_name']) ?>" > </a>
                                                             </div>
 
                                                             <!-- three image end -->
@@ -450,7 +450,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                                 <!-- four image start -->
                                                               <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) ?>" > </a>
+                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img class="breakpoint" src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
 
                                                                 </div>
 
@@ -470,7 +470,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                             <!-- five image start -->
                             <div>
                              <div class="four-image" >
-                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['image_name']) ?>" > </a>
+                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $multiimage['file_name']) ?>" > </a>
                                 </div>
                                  </div>
 
@@ -486,7 +486,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                                                                                         <div>
                                                                  <div class="four-image" >
-                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['image_name']) ?>"> </a></div>
+                                                                    <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>"><img src="<?php echo base_url($this->config->item('art_post_thumb_upload_path') . $artmultiimage[3]['file_name']) ?>"> </a></div>
 
                                                                     <a href="<?php echo base_url('artistic/postnewpage/' . $art_data[0]['art_post_id']) ?>" >
 

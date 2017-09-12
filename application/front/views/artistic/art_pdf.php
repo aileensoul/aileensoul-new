@@ -71,7 +71,7 @@
              
             
 
-              $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'image_type' => '1');
+              $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'insert_profile' => '1');
             $artmultipdf = $this->data['artmultipdf'] =  $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
               $multiplepdf[] = $artmultipdf;
@@ -85,7 +85,7 @@
                 foreach ($multiplepdf as $mke => $mval) {
                   
                   foreach ($mval as $mke1 => $mval1) {
-                      $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                      $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                      if(in_array($ext,$allowed)){
                    $singlearray3[] = $mval1;
@@ -112,7 +112,7 @@
               ?>
 
         <!-- <a href="<?php //echo base_url('artistic/creat_pdf/'.$pdfv['post_files_id']) ?>"> -->
-        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['image_name']) ?>">
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>">
 
         <div class="margin_less" >
               <img src="<?php echo base_url('images/PDF.jpg')?>" style="height: 100%; width: 100%;">
@@ -121,7 +121,7 @@
 
               
         <div class="pdf_name">
-        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['image_name']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>
+        <a title="<?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>" href="<?php echo base_url($this->config->item('art_post_main_upload_path') . $pdfv['file_name']) ?>"><?php echo ucfirst(strtolower($artistictitle[0]['art_post'])); ?>
           
         </a> </div>
 </div>

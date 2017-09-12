@@ -370,7 +370,7 @@
                                                     <!-- multiple image code  start-->
                                                     <div>
                                                         <?php
-                                                        $contition_array = array('post_id' => $busienss_data[0]['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                                                        $contition_array = array('post_id' => $busienss_data[0]['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                                                         $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         ?>
                                                         <?php if (count($businessmultiimage) == 1) { ?>
@@ -379,14 +379,14 @@
                                                             $allowespdf = array('pdf');
                                                             $allowesvideo = array('mp4', 'webm');
                                                             $allowesaudio = array('mp3');
-                                                            $filename = $businessmultiimage[0]['image_name'];
+                                                            $filename = $businessmultiimage[0]['file_name'];
                                                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
                                                             if (in_array($ext, $allowed)) {
                                                                 ?>
                                                                 <!-- one image start -->
                                                                 <div class="one-image">
                                                                     <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img src="<?php echo base_url($this->config->item('bus_post_image_upload_path') . $businessmultiimage[0]['image_name']) ?>"> 
+                                                                        <img src="<?php echo base_url($this->config->item('bus_post_image_upload_path') . $businessmultiimage[0]['file_name']) ?>"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- one image end -->
@@ -403,7 +403,7 @@
                                                                 <!-- one video start -->
                                                                 <div>
                                                                     <video width="100%" height="350" controls>
-                                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="video/mp4">
+                                                                        <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']); ?>" type="video/mp4">
                                                                         <source src="movie.ogg" type="video/ogg">
                                                                         Your browser does not support the video tag.
                                                                     </video>
@@ -417,7 +417,7 @@
                                                                     </div>
                                                                     <div class="audio_source">
                                                                         <audio id="audio_player" width="100%" height="100" controls>
-                                                                            <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']); ?>" type="audio/mp3">
+                                                                            <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']); ?>" type="audio/mp3">
                                                                             <source src="movie.ogg" type="audio/ogg">
                                                                             Your browser does not support the audio tag.
                                                                         </audio>
@@ -435,7 +435,7 @@
                                                                 <!-- two image start -->
                                                                 <div class="two-images">
                                                                     <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img class="two-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                        <img class="two-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- two image end -->
@@ -444,17 +444,17 @@
                                                             <!-- three image start -->
                                                             <div class="three-image-top" >
                                                                 <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['file_name']) ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <div class="three-image" >
                                                                 <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['file_name']) ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <div class="three-image" >
                                                                 <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['file_name']) ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <!-- three image end -->
@@ -465,7 +465,7 @@
                                                                 <!-- four image start -->
                                                                 <div class="four-image" >
                                                                     <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img class="breakpoint" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                        <img class="breakpoint" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- four image end -->
@@ -479,7 +479,7 @@
                                                                 <div>
                                                                     <div class="four-image" >
                                                                         <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                            <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                            <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -494,7 +494,7 @@
                                                             <div>
                                                                 <div class="four-image" >
                                                                     <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                        <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['file_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
                                                                     <a class="text-center" href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>" >
                                                                         <div class="more-image" >

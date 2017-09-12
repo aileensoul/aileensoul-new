@@ -40,7 +40,7 @@
           $contition_array = array('user_id' => $artisticdata[0]['user_id']);
          $artaudio = $this->data['artaudio'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');         
             foreach ($artaudio as $val) {
-            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'image_type' => '1');
+            $contition_array = array('post_id' => $val['art_post_id'], 'is_deleted' =>'1', 'insert_profile' => '1');
             $artmultiaudio = $this->data['artmultiaudio'] =  $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
               $multipleaudio[] = $artmultiaudio;
              }  
@@ -49,7 +49,7 @@
                 $allowesaudio = array('mp3');             
                 foreach ($multipleaudio as $mke => $mval) {                
                   foreach ($mval as $mke1 => $mval1) {
-                      $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);                   
+                      $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);                   
                      if(in_array($ext,$allowesaudio)){ 
                    $singlearray2[] = $mval1;
                      }
@@ -61,8 +61,8 @@
                  ?>
                  <li>
                             <audio controls>
-                            <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $audiov['image_name']; ?>" type = "audio/mp3">
-                            <!-- <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['image_name'])?>" type="audio/ogg"> -->
+                            <source src = "<?php echo ART_POST_MAIN_UPLOAD_URL . $audiov['file_name']; ?>" type = "audio/mp3">
+                            <!-- <source src="<?php echo base_url($this->config->item('art_post_main_upload_path').$audiov['file_name'])?>" type="audio/ogg"> -->
                             <source src="movie.ogg" type="audio/mpeg">
                            Your browser does not support the audio tag.
                             </audio>

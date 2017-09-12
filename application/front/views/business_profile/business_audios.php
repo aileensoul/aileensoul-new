@@ -39,7 +39,7 @@
                                                     $contition_array = array('user_id' => $businessdata1[0]['user_id']);
                                                     $busaudio = $this->data['busaudio'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     foreach ($busaudio as $val) {
-                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                                                         $busmultiaudio = $this->data['busmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         $multipleaudio[] = $busmultiaudio;
                                                     }
@@ -50,7 +50,7 @@
                                                     foreach ($multipleaudio as $mke => $mval) {
 
                                                         foreach ($mval as $mke1 => $mval1) {
-                                                            $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                                            $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                                                             if (in_array($ext, $allowesaudio)) {
                                                                 $singlearray2[] = $mval1;
@@ -64,7 +64,7 @@
                                                             ?>
                                                             <li>
                                                                 <audio controls>
-                                                                    <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $audiov['image_name']); ?>" type="audio/ogg">
+                                                                    <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $audiov['file_name']); ?>" type="audio/ogg">
                                                                     <source src="movie.ogg" type="audio/mpeg">
                                                                     Your browser does not support the audio tag.
                                                                 </audio>

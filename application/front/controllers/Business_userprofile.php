@@ -145,7 +145,7 @@ class Business_userprofile extends CI_Controller {
         exit;
 
         foreach ($businessimage as $val) {
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
             $busmultiimage = $this->data['busmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multipleimage[] = $busmultiimage;
@@ -155,7 +155,7 @@ class Business_userprofile extends CI_Controller {
         foreach ($multipleimage as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                 if (in_array($ext, $allowed)) {
                     $singlearray[] = $mval1;
@@ -166,7 +166,7 @@ class Business_userprofile extends CI_Controller {
             $i = 0;
             foreach ($singlearray as $mi) {
                 $fetch_result .= '<div class="image_profile">';
-                $fetch_result .= '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $mi['image_name'] . '" alt="' . $mi['image_name'] . '">';
+                $fetch_result .= '<img src="' . BUS_POST_RESIZE3_UPLOAD_URL . $mi['file_name'] . '" alt="' . $mi['file_name'] . '">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -224,7 +224,7 @@ class Business_userprofile extends CI_Controller {
 
 
 
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
             $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multiplevideo[] = $busmultivideo;
@@ -235,7 +235,7 @@ class Business_userprofile extends CI_Controller {
         foreach ($multiplevideo as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                 if (in_array($ext, $allowesvideo)) {
                     $singlearray1[] = $mval1;
@@ -245,30 +245,30 @@ class Business_userprofile extends CI_Controller {
         if ($singlearray1) {
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[0]['image_name']) {
+            if ($singlearray1[0]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[0]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
 
-            if ($singlearray1[1]['image_name']) {
+            if ($singlearray1[1]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[1]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[2]['image_name']) {
+            if ($singlearray1[2]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[2]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -277,28 +277,28 @@ class Business_userprofile extends CI_Controller {
             $fetch_video .= '</tr>';
             $fetch_video .= '<tr>';
 
-            if ($singlearray1[3]['image_name']) {
+            if ($singlearray1[3]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[3]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[4]['image_name']) {
+            if ($singlearray1[4]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[4]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
                 $fetch_video .= '</td>';
             }
-            if ($singlearray1[5]['image_name']) {
+            if ($singlearray1[5]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[5]['image_name'] . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -343,7 +343,7 @@ class Business_userprofile extends CI_Controller {
 
         foreach ($busaudio as $val) {
 
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
             $busmultiaudio = $this->data['busmultiaudio'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $multipleaudio[] = $busmultiaudio;
@@ -354,7 +354,7 @@ class Business_userprofile extends CI_Controller {
         foreach ($multipleaudio as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                 if (in_array($ext, $allowesaudio)) {
                     $singlearray2[] = $mval1;
@@ -364,30 +364,30 @@ class Business_userprofile extends CI_Controller {
         if ($singlearray2) {
             $fetchaudio .= '<tr>';
 
-            if ($singlearray2[0]['image_name']) {
+            if ($singlearray2[0]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
 
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[0]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
             }
 
-            if ($singlearray2[1]['image_name']) {
+            if ($singlearray2[1]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[1]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[1]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[2]['image_name']) {
+            if ($singlearray2[2]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[2]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[2]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -396,28 +396,28 @@ class Business_userprofile extends CI_Controller {
             $fetchaudio .= '</tr>';
             $fetchaudio .= '<tr>';
 
-            if ($singlearray2[3]['image_name']) {
+            if ($singlearray2[3]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[3]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[3]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[4]['image_name']) {
+            if ($singlearray2[4]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[4]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
                 $fetchaudio .= '</td>';
             }
-            if ($singlearray2[5]['image_name']) {
+            if ($singlearray2[5]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<video  controls>';
-                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[5]['image_name'] . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray2[5]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</video>';
@@ -451,7 +451,7 @@ class Business_userprofile extends CI_Controller {
         $contition_array = array('user_id' => $businessdata1[0]['user_id']);
         $businessimage = $this->data['businessimage'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         foreach ($businessimage as $val) {
-            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+            $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
             $busmultipdf = $this->data['busmultipdf'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $multiplepdf[] = $busmultipdf;
         }
@@ -459,7 +459,7 @@ class Business_userprofile extends CI_Controller {
         foreach ($multiplepdf as $mke => $mval) {
 
             foreach ($mval as $mke1 => $mval1) {
-                $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
 
                 if (in_array($ext, $allowed)) {
                     $singlearray3[] = $mval1;
@@ -670,7 +670,7 @@ class Business_userprofile extends CI_Controller {
                 $return_html .= '<div class="post-design-mid col-md-12" >  
     <div class="mange_post_image">';
 
-                $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                $contition_array = array('post_id' => $row['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                 $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 if (count($businessmultiimage) == 1) {
 
@@ -678,11 +678,11 @@ class Business_userprofile extends CI_Controller {
                     $allowespdf = array('pdf');
                     $allowesvideo = array('mp4', 'webm');
                     $allowesaudio = array('mp3');
-                    $filename = $businessmultiimage[0]['image_name'];
+                    $filename = $businessmultiimage[0]['file_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
                         $return_html .= '<div class="one-image">
-            <a onclick="login_profile();" href="javascript:void(0);"><img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '"> </a>
+            <a onclick="login_profile();" href="javascript:void(0);"><img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '"> </a>
         </div>';
                     } elseif (in_array($ext, $allowespdf)) {
 
@@ -694,7 +694,7 @@ class Business_userprofile extends CI_Controller {
                     } elseif (in_array($ext, $allowesvideo)) {
                         $return_html .= '<div>
             <video class="video" width="100%" height="350" controls>
-                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="video/mp4">
+                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" type="video/mp4">
                 <source src="movie.ogg" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
@@ -706,7 +706,7 @@ class Business_userprofile extends CI_Controller {
             </div>
             <div class="audio_source">
                 <audio  controls>
-                    <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="audio/mp3">
+                    <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" type="audio/mp3">
                     <source src="movie.ogg" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio>
@@ -719,24 +719,24 @@ class Business_userprofile extends CI_Controller {
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div  class="two-images" >
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" style="width: 100%; height: 100%;"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>
         <div class="three-image" >
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['file_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>
         <div class="three-image" >
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" style="width: 100%; height:100%; "> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['file_name']) . '" style="width: 100%; height:100%; "> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" style="width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" style="width: 100%; height: 100%;"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -744,14 +744,14 @@ class Business_userprofile extends CI_Controller {
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
                         $return_html .= '<div class="four-image">
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
                     $return_html .= '<div class="four-image">
-            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '" style=" width: 100%; height: 100%;"> </a>
+            <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['file_name']) . '" style=" width: 100%; height: 100%;"> </a>
             <a onclick="login_profile();" href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')

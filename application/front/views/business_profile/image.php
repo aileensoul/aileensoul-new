@@ -104,13 +104,13 @@
                                                     ?>
                                                     <div class="job_work_edit_<?php echo $image['post_files_id'] ?>" id="image_main">
                                                         <input type="hidden" name="filedata[]" id="filename" value="old">
-                                                        <input type="hidden" name="filename[]" id="filename" value="<?php echo $image['image_name']; ?>">
+                                                        <input type="hidden" name="filename[]" id="filename" value="<?php echo $image['file_name']; ?>">
                                                         <input type="hidden" name="imageid[]" id="filename" value="<?php echo $image['post_files_id']; ?>">
 
                                                         <div class="img_bui_data"> 
                                                             <div class="edit_bui_img">
-                                                                <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name'] ?>" >
-                                                                <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['image_name']) ?>" >-->
+                                                                <img id="imageold" src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name'] ?>" >
+                                                                <!--<img id="imageold" src="<?php // echo base_url($this->config->item('bus_profile_main_upload_path') . $image['file_name']) ?>" >-->
                                                             </div>
 
                                                             <?php // if ($y != 1) {

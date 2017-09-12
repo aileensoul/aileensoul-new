@@ -32,7 +32,7 @@
                                                     $contition_array = array('user_id' => $businessdata1[0]['user_id']);
                                                     $busvideo = $this->data['busvideo'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                     foreach ($busvideo as $val) {
-                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                                                        $contition_array = array('post_id' => $val['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                                                         $busmultivideo = $this->data['busmultivideo'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                         $multiplevideo[] = $busmultivideo;
                                                     }
@@ -41,7 +41,7 @@
                                                     $allowesvideo = array('mp4', '3gp', 'webm');
                                                     foreach ($multiplevideo as $mke => $mval) {
                                                         foreach ($mval as $mke1 => $mval1) {
-                                                            $ext = pathinfo($mval1['image_name'], PATHINFO_EXTENSION);
+                                                            $ext = pathinfo($mval1['file_name'], PATHINFO_EXTENSION);
                                                             if (in_array($ext, $allowesvideo)) {
                                                                 $singlearray1[] = $mval1;
                                                             }
@@ -55,7 +55,7 @@
                                                             <li>
                                                             <td class="vidoe_tag">
                                                                 <video controls>
-                                                                    <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['image_name']); ?>" type="video/mp4">
+                                                                    <source src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $videov['file_name']); ?>" type="video/mp4">
                                                                     <source src="movie.ogg" type="video/ogg">
                                                                     Your browser does not support the video tag.
                                                                 </video>

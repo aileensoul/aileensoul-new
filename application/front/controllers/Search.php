@@ -453,7 +453,7 @@ class Search extends MY_Controller {
                         <div class="post-design-mid col-md-12" style="border: none;">
                             <div>';
 
-                        $contition_array = array('post_id' => $p['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                        $contition_array = array('post_id' => $p['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                         $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                         if (count($businessmultiimage) == 1) {
 
@@ -461,12 +461,12 @@ class Search extends MY_Controller {
                             $allowespdf = array('pdf');
                             $allowesvideo = array('mp4', 'webm');
                             $allowesaudio = array('mp3');
-                            $filename = $businessmultiimage[0]['image_name'];
+                            $filename = $businessmultiimage[0]['file_name'];
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
                             if (in_array($ext, $allowed)) {
                                 $return_html .= '<div class="one-image" >
                                             <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                                <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" > 
+                                                <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" > 
                                             </a>
                                         </div>';
                             } elseif (in_array($ext, $allowespdf)) {
@@ -480,7 +480,7 @@ class Search extends MY_Controller {
                             } elseif (in_array($ext, $allowesvideo)) {
                                 $return_html .= '<div>
                                             <video width="320" height="240" controls>
-                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="video/mp4">
+                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" type="video/mp4">
                                                 <source src="movie.ogg" type="video/ogg">
                                                 Your browser does not support the video tag.
                                             </video>
@@ -488,7 +488,7 @@ class Search extends MY_Controller {
                             } elseif (in_array($ext, $allowesaudio)) {
                                 $return_html .= '<div>
                                             <audio width="120" height="100" controls>
-                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['image_name']) . '" type="audio/mp3">
+                                                <source src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '" type="audio/mp3">
                                                 <source src="movie.ogg" type="audio/ogg">
                                                 Your browser does not support the audio tag.
                                             </audio>
@@ -498,31 +498,31 @@ class Search extends MY_Controller {
                             foreach ($businessmultiimage as $multiimage) {
                                 $return_html .= '<div class="two-images" >
                                             <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                                <img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                                <img class="two-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" > 
                                             </a>
                                         </div>';
                             }
                         } elseif (count($businessmultiimage) == 3) {
                             $return_html .= '<div class="three-image-top">
                                         <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['image_name']) . '"> 
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['file_name']) . '"> 
                                         </a>
                                     </div>
                                     <div class="three-image" >
                                         <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['image_name']) . '" > 
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['file_name']) . '" > 
                                         </a>
                                     </div>
                                     <div class="three-image" >
                                         <a href="' . base_url('business_profile/postnewpage/' . $p['business_post_id']) . '">
-                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['image_name']) . '" > 
+                                            <img class="three-columns" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['file_name']) . '" > 
                                         </a>
                                     </div>';
                         } elseif (count($businessmultiimage) == 4) {
                             foreach ($businessmultiimage as $multiimage) {
                                 $return_html .= '<div class="four-image" >
                                             <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                                <img class="breakpoint" src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" > 
                                             </a>
                                         </div>';
                             }
@@ -532,7 +532,7 @@ class Search extends MY_Controller {
                                 $return_html .= '<div>
                                             <div class="four-image" >
                                                 <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                                    <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['image_name']) . '" > 
+                                                    <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) . '" > 
                                                 </a>
                                             </div>
                                         </div>';
@@ -545,7 +545,7 @@ class Search extends MY_Controller {
                             $return_html .= '<div>
                                         <div class="four-image" >
                                             <a href="' . base_url('business_profile/postnewpage/' . $p['business_profile_post_id']) . '">
-                                                <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['image_name']) . '"> 
+                                                <img src="' . base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['file_name']) . '"> 
                                             </a>
                                         </div>
                                         <div class="four-image" >

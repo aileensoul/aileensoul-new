@@ -223,13 +223,13 @@
                                                                                 ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i">          
-                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
                                                                                     </div>
                                                                                 </div>
                                                                             <?php } else { ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i2">  
-                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
                                                                                         <div class="view_bui"> 
                                                                                             <a   id="myBtn">view all</a>
                                                                                         </div>
@@ -249,13 +249,13 @@
                                                                             if ($i <= 2) {
                                                                                 ?>
                                                                                 <div class="column1">
-                                                                                    <div class="bui_res_i"> <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
+                                                                                    <div class="bui_res_i"> <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name']; ?>"  onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
                                                                                     </div>
                                                                                 </div>
                                                                             <?php } else { ?>
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i">  
-                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
+                                                                                        <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['file_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
                                                                                        
                                                                                     </div>
 
@@ -304,7 +304,7 @@
                                                                                     foreach ($busimagedata as $imagemul) {
                                                                                         ?>
                                                                                         <div class="bui_popup_img"> 
-                                                                                            <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $imagemul['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $j; ?>)" class="hover-shadow cursor">   </div> 
+                                                                                            <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $imagemul['file_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $j; ?>)" class="hover-shadow cursor">   </div> 
                                                                                         <?php
                                                                                         $j++;
                                                                                     }
@@ -332,7 +332,7 @@
                                                                             <div class="mySlides">
                                                                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($busimagedata); ?></div>
                                                                                 <div class="slider_img">
-                                                                                    <img src="<?php echo BUS_DETAIL_MAIN_UPLOAD_URL . $image['image_name']; ?> " >
+                                                                                    <img src="<?php echo BUS_DETAIL_MAIN_UPLOAD_URL . $image['file_name']; ?> " >
                                                                                 </div>
                                                                             </div>
 

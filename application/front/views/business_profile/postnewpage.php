@@ -269,7 +269,7 @@
                                             <!-- multiple image code  start-->
                                             <div>
                                                 <?php
-                                                $contition_array = array('post_id' => $busienss_data[0]['business_profile_post_id'], 'is_deleted' => '1', 'image_type' => '2');
+                                                $contition_array = array('post_id' => $busienss_data[0]['business_profile_post_id'], 'is_deleted' => '1', 'insert_profile' => '2');
                                                 $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                                 ?>
                                                 <?php
@@ -279,7 +279,7 @@
                                                     $allowespdf = array('pdf');
                                                     $allowesvideo = array('mp4', '3gp');
                                                     $allowesaudio = array('mp3');
-                                                    $filename = $data['image_name'];
+                                                    $filename = $data['file_name'];
                                                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                                                     if (in_array($ext, $allowed)) {
@@ -287,34 +287,34 @@
                                                         <?php if (count($businessmultiimage) == 1) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
-                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
+                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
                                                                                 currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 2) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
-                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
+                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
                                                                                 currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
-                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>"  onclick="openModal();
+                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
                                                                                 currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } elseif (count($businessmultiimage) == 4) { ?>
                                                             <!-- two image start -->
                                                             <div class="one-image" >
-                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>" onclick="openModal();
+                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>" onclick="openModal();
                                                                                 currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <!-- two image end -->
                                                         <?php } else { ?>
                                                             <div class="one-image" >
-                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['image_name'] ?>"  onclick="openModal();
+                                                                <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $data['file_name'] ?>"  onclick="openModal();
                                                                                 currentSlide(<?php echo $i; ?>)" class="hover-shadow cursor">
                                                             </div>
                                                             <?php
@@ -334,7 +334,7 @@
                                                         <!-- one video start -->
                                                         <div>
                                                             <video width="320" height="240" controls>
-                                                                <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['image_name']); ?>" type="video/mp4">
+                                                                <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['file_name']); ?>" type="video/mp4">
                                                                 <source src="movie.ogg" type="video/ogg">
                                                                 Your browser does not support the video tag.
                                                             </video>
@@ -344,7 +344,7 @@
                                                         <!-- one audio start -->
                                                         <div>
                                                             <audio width="120" height="100" controls>
-                                                                <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['image_name']); ?>" type="audio/mp3">
+                                                                <source src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $data['file_name']); ?>" type="audio/mp3">
                                                                 <source src="movie.ogg" type="audio/ogg">
                                                                 Your browser does not support the audio tag.
                                                             </audio>
@@ -710,7 +710,7 @@
                         $i = 1;
                         $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
                         foreach ($businessmultiimage as $mke => $mval) {
-                            $ext = pathinfo($mval['image_name'], PATHINFO_EXTENSION);
+                            $ext = pathinfo($mval['file_name'], PATHINFO_EXTENSION);
                             if (in_array($ext, $allowed)) {
                                 $databus1[] = $mval;
                             }
@@ -721,7 +721,7 @@
                             <div class="mySlides">
                                 <div class="numbertext"><?php echo $i ?> / <?php echo count($databus1) ?></div>
                                 <div class="slider_img">
-                                    <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['image_name']) ?>" >
+                                    <img src="<?php echo base_url($this->config->item('bus_post_main_upload_path') . $busdata['file_name']) ?>" >
                                     <a class="prev" style="left: 0px" onclick="plusSlides( - 1)">&#10094;</a>
                                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                                 </div>
