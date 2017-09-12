@@ -1552,7 +1552,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '<div class = "popup">';
                 $postdata .= '<div class = "pop_content">';
                 $postdata .= 'Your User is Successfully Saved.';
-                $postdata .= '<p class = "okk"><a class = "okbtn" href = "#">Ok</a></p>';
+                $postdata .= '<p class = "okk"><a class = "okbtn" href = "javascript:void(0)">Ok</a></p>';
                 $postdata .= '</div>';
                 $postdata .= '</div>';
                 $postdata .= '</div>';
@@ -3204,7 +3204,7 @@ class Recruiter extends MY_Controller {
                 if ($this->session->userdata('aileenuser')) {
                     $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '">';
                 } else {
-                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="#" onClick="login_profile()">';
+                    $return_html .= '<a style=" font-size: 19px;font-weight: 600;" href="javascript:void(0)" onClick="login_profile()">';
                 }
 
 
@@ -3471,7 +3471,7 @@ class Recruiter extends MY_Controller {
                         if ($this->session->userdata('aileenuser')) {
                             $return_html .= '<a href="' . base_url('chat/abc/2/1/' . $p['iduser']) . '">';
                         } else {
-                            $return_html .= '<a href="#" onClick="login_profile()">';
+                            $return_html .= '<a href="javascript:void(0)" onClick="login_profile()">';
                         }
                         $return_html .= 'Message</a>';
                         $return_html .= '<input type="hidden" id="hideenuser' . $p['job_id'] . '" value= "' . $p['job_id'] . '">';
