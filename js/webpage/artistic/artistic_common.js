@@ -111,6 +111,32 @@ $(window).load(function(){
 
 // validation for profile pic upload
 
+$uploadCrop1 = $('#upload-demo-one').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        }
+    });
+
+    $('#upload-one').on('change', function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
             $(document).ready(function () { 
 
                 $("#userimage").validate({ 
@@ -138,6 +164,33 @@ $(window).load(function(){
                      submitHandler: profile_pic
 
                 });
+
+                function profile_pic(){
+
+
+    $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+               url: base_url + "artistic/profilepic",
+                type: "POST",
+                data: {"image": resp},
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').value = '';
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
+                }
+            });
+        });
+
+    }
+
             });
 
 
@@ -173,45 +226,6 @@ $(window).load(function(){
 
 
 
-function profile_pic(event){
-
-
-
-        var fd = new FormData();
-                
-         fd.append("image", $("#profilepic")[0].files[0]);
-
-         files = this.files;
-
-       
-    $.ajax({
-      url: base_url + "artistic/profilepic",
-      //url: "<?php echo base_url(); ?>artistic/profilepic",
-      type: "POST",
-      data: fd,
-      contentType: false,
-          cache: false,
-      processData:false,
-      success: function(data)
-        {
-
-        
-      $('#bidmodal-2').modal('hide');
-
-      $(".user-pic").html(data);
-
-      document.getElementById('profilepic').value= null;
-
-      //document.getElementById('profilepic').value == '';
-
-      $('.popup_previred').hide();
-     $('#preview').prop('src', '#');
-
-        },          
-     });
-  return false;
-
-}
 
 
 
