@@ -16,9 +16,8 @@ class Job extends MY_Controller {
         $this->load->library('S3');
         $this->load->library('upload');
 
-      //This function is there only one time users slug created after remove it
-      function slug_script() 
-      {
+      //This function is there only one time users slug created after remove it start
+     
         $this->db->select('job_id,fname,lname');
         $res = $this->db->get('job_reg')->result();
         foreach ($res as $k => $v) {
@@ -26,7 +25,7 @@ class Job extends MY_Controller {
             $this->db->where('job_id', $v->job_id);
             $this->db->update('job_reg', $data);
         }
-      }
+       //This function is there only one time users slug created after remove it End
 
         include ('include.php');
         $this->data['aileenuser_id'] = $this->session->userdata('aileenuser');
