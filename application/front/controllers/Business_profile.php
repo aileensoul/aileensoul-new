@@ -1383,7 +1383,7 @@ class Business_profile extends MY_Controller {
                 } else {
                     $file_type = 'pdf';
                 }
-                
+
                 if ($_FILES['postattach']['error'] == 0) {
 
                     $store = $_FILES['postattach']['name'];
@@ -1431,11 +1431,50 @@ class Business_profile extends MY_Controller {
                         /* RESIZE */
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
-
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
+
+                        /* RESIZE4 */
+
+                        $resize4_image_width = $this->config->item('bus_post_resize4_width');
+                        $resize4_image_height = $this->config->item('bus_post_resize4_height');
+
+                        $n_w1 = $image_width;
+                        $n_h1 = $image_height;
+
+
+                        $conf_new4[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $business_profile_post_main[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resize4_image_width,
+                            'height' => $resize4_image_height
+                        );
+
+                        $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                        $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+
+                        $conf_new4[$i]['x_axis'] = $left;
+                        $conf_new4[$i]['y_axis'] = $top;
+
+                        $instanse4 = "image4_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new4[$i], $instanse4);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse4->crop();
+
+                        $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+
+                        /* RESIZE4 */
+
 
                         $thumb_image_width = $this->config->item('bus_post_thumb_width');
                         $thumb_image_height = $this->config->item('bus_post_thumb_height');
@@ -2127,7 +2166,7 @@ class Business_profile extends MY_Controller {
 //        </div>';
                 $return_html .= '<div class="three-image-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-                <img class="three-columns" src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> 
+                <img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> 
             </a>
         </div>
         <div class="three-image" >
@@ -2865,7 +2904,7 @@ class Business_profile extends MY_Controller {
             }
         }
     }
-    
+
     public function user_image_insert() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -2964,7 +3003,6 @@ class Business_profile extends MY_Controller {
             redirect('business-profile', refresh);
         }
     }
-
 
     public function business_resume($id = "") {
         $userid = $this->session->userdata('aileenuser');
@@ -4124,6 +4162,9 @@ class Business_profile extends MY_Controller {
                 unlink($user_bg_origin_image);
             }
         }
+        
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
 
 // REMOVE OLD IMAGE FROM FOLDER
 //        $data = $_POST['image'];
@@ -4144,34 +4185,34 @@ class Business_profile extends MY_Controller {
         $main_image = $user_bg_path . $imageName;
 
         $main_image_size = filesize($main_image);
-
+        
         if ($main_image_size > '1000000') {
-            $quality = "50%";
+            $quality = "15%";
         } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-            $quality = "55%";
+            $quality = "30%";
         } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-            $quality = "60%";
+            $quality = "40%";
         } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-            $quality = "65%";
+            $quality = "45%";
         } elseif ($main_image_size > '1' && $main_image_size < '100') {
-            $quality = "70%";
+            $quality = "50%";
         } else {
             $quality = "100%";
         }
         /* RESIZE */
 
-//        $business_profile_bg['image_library'] = 'gd2';
-//        $business_profile_bg['source_image'] = $main_image;
-//        $business_profile_bg['new_image'] = $main_image;
-//        $business_profile_bg['quality'] = $quality;
-//        $this->load->library('image_lib', $business_profile_bg);
-//        $this->image_lib->watermark();
-
+        $business_profile_bg['image_library'] = 'gd2';
+        $business_profile_bg['source_image'] = $main_image;
+        $business_profile_bg['new_image'] = $main_image;
+        $business_profile_bg['quality'] = $quality;
+        $instanse_cover = "imagecover";
+        $this->load->library('image_lib', $business_profile_bg, $instanse_cover);
+        $this->$instanse_cover->watermark();
+       
         /* RESIZE */
 
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+        $cover_image = $this->config->item('bus_bg_main_upload_path') . $imageName;
+        $abc = $s3->putObjectFile($cover_image, bucket, $cover_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('bus_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('bus_bg_thumb_width');
@@ -4190,7 +4231,7 @@ class Business_profile extends MY_Controller {
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
         $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
 
-//        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
+//      echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
         echo '<img id="image_src" name="image_src" src = "' . BUS_BG_MAIN_UPLOAD_URL . $this->data['busdata'][0]['profile_background'] . '" />';
     }
 
@@ -10436,7 +10477,7 @@ Your browser does not support the audio tag.
 //</div>';
                         $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
-<img class = "three-columns" src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
+<img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
@@ -12035,7 +12076,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['file_name']) . '"> </a>
 //        </div>';
                     $return_html .= '<div class="three-imag-top" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '"> </a>

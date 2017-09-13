@@ -1539,10 +1539,16 @@
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
     
-                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <img id="preview" src="javascript:void(0);" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
-                      
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
+                        <div class="col-md-5">
+                                 <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                        </div>
+
+                        <div class="col-md-7 text-center">
+                              <div id="upload-demo-one" style="width:350px"></div>
+                        </div>
+
+                        <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+
                         </form>
                         
                      </div>
@@ -1577,7 +1583,6 @@
       <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script> 
       <!-- script for skill textbox automatic end (option 2)-->
       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-      <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
       <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
       <script type="text/javascript" src="<?php echo base_url('js/raphael-min.js
          ?ver='.time()); ?>"></script>

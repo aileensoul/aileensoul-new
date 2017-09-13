@@ -126,60 +126,53 @@ $('#upload').click(function(){
 
 
 //Update Profile Pic Start
-function updateprofilepopup(id) {
-        $('#bidmodal-2').modal('show');
-    }
- function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-
-                document.getElementById('preview').style.display = 'block';
-                $('#preview').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
+$uploadCrop1 = $('#upload-demo-one').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
         }
-    }
-
-    $("#profilepic").change(function () {
-
-        profile = this.files;
-        if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            $('#profilepic').val('');
-            picpopup();
-            return false;
-        } else {
-            readURL(this);
-        }
-
     });
 
-function profile_pic() {
-    if (typeof FormData !== 'undefined') {
-        
-        var formData = new FormData($("#userimage")[0]);
-        $.ajax({
-          
-            url: base_url + "job/user_image_insert",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (data)
-            {
-                $('#bidmodal-2').modal('hide');
-                $(".user-pic").html(data);
-                document.getElementById('profilepic').value = null;
-                $('#preview').prop('src', '#');
-                 $('#preview').hide();
-                $('.popup_previred').hide();
-            },
+    $('#upload-one').on('change', function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+ function profile_pic() {
+        $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+               url: base_url + "job/user_image_insert",
+                type: "POST",
+                data: {"image": resp},
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').value = '';
+                }
+            });
         });
-        return false;
-    }
+}
+function updateprofilepopup(id) {
+    $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END
 

@@ -3231,7 +3231,7 @@ overflow: hidden;
 display: block;
 font-size: 12px;
 padding-left: 11px;}
-#filename{font-size: 11px!important;}
+#filename{font-size: 18px!important;}
 
 
 
@@ -4224,7 +4224,7 @@ padding-left: 11px;}
 }
      .post-edit-popup .popup-text textarea{padding-right: 45px;}
          .inputtype-edit-comment .editable_text{width: 60%!important;}
-}#paddingtop_fixed_art {
+ #paddingtop_fixed_art {
     padding-top: 70px !important;
 }
 .post-design-name ul li .post_dot{max-width: 66%;}
@@ -4260,8 +4260,8 @@ padding-left: 11px;}
         padding: 5px 2px !important;
     }
     .cmy_2 {
-        width: 100%;
-        padding-left: 0px!important;
+        width: 80%;
+        padding-left: 6px !important;
     }
     .two-images {
         height: 120px;

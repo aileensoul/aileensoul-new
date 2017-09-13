@@ -1,73 +1,3 @@
-
-//CODE FOR PROFILE PIC UPLOAD WITH CROP START
-$uploadCrop1 = $('#upload-demo-one').croppie({
-    enableExif: true,
-    viewport: {
-        width: 200,
-        height: 200,
-        type: 'square'
-    },
-    boundary: {
-        width: 300,
-        height: 300
-    }
-});
-
-$('#upload-one').on('change', function () {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $uploadCrop1.croppie('bind', {
-            url: e.target.result
-        }).then(function () {
-            console.log('jQuery bind complete');
-        });
-
-    }
-    reader.readAsDataURL(this.files[0]);
-});
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Image required.",
-            },
-        },
-        submitHandler: profile_pic
-    });
-    function profile_pic() {
-        alert(232323);
-        exit;
-//    $('.upload-result-one').on('click', function (ev) {
-        $uploadCrop1.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-            $.ajax({
-                //url: "/ajaxpro.php", user_image_insert
-                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
-                url: base_url + "business_profile/user_image_insert",
-                type: "POST",
-                data: {"image": resp},
-                success: function (data) {
-                    $('#bidmodal-2').modal('hide');
-                    $(".user-pic").html(data);
-                    document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').value = '';
-//                    html = '<img src="' + resp + '" />';
-//                    $("#upload-demo-i").html(html);
-                }
-            });
-        });
-//    });
-    }
-});
-//CODE FOR PROFILE PIC UPLOAD WITH CROP END
-
 $(function () {
     function split(val) {
         return val.split(/,\s*/);
@@ -101,7 +31,7 @@ $(function () {
                         terms.push(ui.item.value);
                         // add placeholder to get the comma-and-space at the end
                         terms.push("");
-                        this.value = terms.join(", ");
+                        this.value = terms.join("");
                         return false;
                     } else {
                         var last = terms.pop();
@@ -139,7 +69,7 @@ $(function () {
                         terms.push(ui.item.value);
                         // add placeholder to get the comma-and-space at the end
                         terms.push("");
-                        this.value = terms.join(", ");
+                        this.value = terms.join("");
                         return false;
                     } else {
                         var last = terms.pop();
@@ -152,4 +82,3 @@ $(function () {
             });
     /* location box*/
 });
-

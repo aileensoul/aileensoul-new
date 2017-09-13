@@ -1663,6 +1663,7 @@ background-color: white;}
 	#acon{
 		margin-top: 14px;
 	}
+	.dropdown_hover span i{margin-right:0;}
 }
 
 @media screen and (max-width: 640px) {
@@ -1675,11 +1676,11 @@ background-color: white;}
 }
 @media screen and (max-width: 540px) {
     .back {
-    width: 40%;
-}
-.reactivate_header {
-    padding: 7px;
-}
+		width: 40%;
+	}
+	.reactivate_header {
+		padding: 7px;
+	}
 	.h2-smladd{margin-top: 0px;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}

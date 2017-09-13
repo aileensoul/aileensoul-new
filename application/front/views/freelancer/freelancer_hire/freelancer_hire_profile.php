@@ -103,6 +103,7 @@
                             <?php } ?>
                         </div>
                     </div>
+                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);">
                             <h3> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
