@@ -60,7 +60,8 @@ $(document).ready(function () {
             'password_login': password_login,
             'aileensoulnewfrontcsrf': get_csrf_hash,
         }
-
+        
+        $(".btn1").addClass("btn1active");
         $.ajax({
             type: 'POST',
             url: base_url + 'registration/check_login',
@@ -69,7 +70,6 @@ $(document).ready(function () {
             beforeSend: function ()
             {
                 $("#error").fadeOut();
-                
                 //$(".btn1").html('Login');
             },
             success: function (response)
