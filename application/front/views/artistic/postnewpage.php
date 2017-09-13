@@ -15,17 +15,21 @@
     <?php echo $header; ?>
 <?php echo $art_header2_border; ?>
         <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
-            <div class="container">
+            <div class="container art_container">
                 <div class="row">
 
-                    <div class="profile-box profile-box-custom fixed_art fixed_left_side col-md-4">
+              <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+      <div class="left_fixed"> 
                         <?php ?>
 <?php echo $left_artistic; ?>
                       </div>
-                     <div class="col-md-7 col-sm-12  fixed_middle_side custom-right-art">
+                      </div>
+                  <div class=" custom-right-art post_detailbox mian_middle_post_box animated fadeInUp">
+         
+    <div class="right_side_posrt fl"> 
 
  <?php if($art_data[0]){ ?>
-    <div class="col-md-12 col-sm-12 post-design-box">
+    <div class=" post-design-box">
            
                             <div class=" ">
                                 <div class="post-design-top col-md-12" >  

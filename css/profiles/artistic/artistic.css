@@ -3333,7 +3333,10 @@ padding-left: 11px;}
 }
 @media screen and (max-width: 991px){
     #paddingtop_fixed_art.container{padding-left:0; padding-right:0;}
-     .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
+     .mian_middle_post_box{width: 100%; margin-left: 0px; left: 0; }
+     .post_detailbox{
+        padding: 0px 15px;
+     }
     .right_side_posrt{width: 100%;}
     .art_container{padding: 0px;}
     .profile-main-box-buis-menu li a {
