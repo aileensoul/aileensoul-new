@@ -18,13 +18,15 @@
 <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
    <div class="container">
       <div class="row">
-        <div class="col-md-4 fixed_art profile-box profile-box-custom fixed_left_side animated fadeInDownBig">
-            <div class="">
+      <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
+      <div class="left_fixed"> 
+
                      <?php echo $left_artistic; ?> 
             </div>
          </div>
-         <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp">
-            <div class="common-form">
+       <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
+         
+    <div class="right_side_posrt fl"> 
                <div class="job-saved-box">
                   <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
                      Search result of 
