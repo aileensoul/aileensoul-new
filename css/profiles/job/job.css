@@ -1806,7 +1806,7 @@ padding-top: 2px !important;}
     }
 	.profile-head-text{margin-top: 8px;}
     .profile-head-text_dg{line-height: 18px;}
-	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
+	.search-mob-block label{/*margin-top: 7px; margin-left: 0px*/}
 	.post-img-user {
 		font-size: 16px;
 		height: 100%;

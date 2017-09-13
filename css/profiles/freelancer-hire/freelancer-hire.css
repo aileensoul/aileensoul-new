@@ -964,8 +964,6 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
-	
-	
 	.profile-box-art .right-side-menu ul.pro-fw4 li{width: 50% !important;}
 		.mob-block {
 		display: block;
@@ -1262,6 +1260,14 @@ label.cameraButton input[accept*="camera"] {
 	.art-side-menu .flw_msg_btn a {
         width: 88px;
         padding: 7px 5px 7px 5px !important;
+    }
+	.reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
     }
 }
 @media screen and (max-width: 479px) {

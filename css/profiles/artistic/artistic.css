@@ -3283,9 +3283,7 @@ padding-left: 11px;}
         padding: 17px 12px 12px 16px !important;
     }
     .right_left_box_design{padding:10px 7px 8px 7px !important;}
-    .header2 {
-    top: 49px;
-}
+ 
 }
 @media screen and (max-width: 1024px) {
 	.prev, .next{top: 210px;}
@@ -3494,9 +3492,7 @@ padding-left: 11px;}
        .main-text-area{padding-right: 0px;}
        .tabs-left > li > a{font-size: 14px;}
     .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
-    .header2 {
-    top: 46px;
-}
+
 .art-all-comment{
     padding-left: 10px;
     padding-right: 10px !important;
@@ -4225,8 +4221,6 @@ padding-left: 11px;}
 }
      .post-edit-popup .popup-text textarea{padding-right: 45px;}
          .inputtype-edit-comment .editable_text{width: 60%!important;}
-    .header2 {
-    top: 42px;
 }#paddingtop_fixed_art {
     padding-top: 70px !important;
 }
