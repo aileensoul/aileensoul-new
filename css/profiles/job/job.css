@@ -1697,6 +1697,8 @@ font-size: 18px;
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
 }
 @media screen and (max-width: 640px) {
+    .panel-heading a::before {top: 9px;
+font-size: 18px;}
     .panel-group.wrap .panel-title a{font-size: 14px;}
 	.post-img-user{width: 100%; height: 100%;}
 	.job_reg_page_fprm{width: 90%;}
