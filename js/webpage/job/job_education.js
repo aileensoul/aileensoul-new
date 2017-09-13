@@ -2384,4 +2384,12 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this d
 
    
    //script for only jpg png image upload END
+
+//all popup close close using esc start
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $( ".fancybox-container" ).hide();
+    }
+   });  
+//all popup close close using esc End
 $(".alert").delay(3200).fadeOut(300);
