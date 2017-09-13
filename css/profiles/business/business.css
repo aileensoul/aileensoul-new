@@ -4420,9 +4420,10 @@ height: 100px;
 	.bui_bcon {width: 35%;}
 }
 @media screen and (max-width: 360px) {
+	#paddingtop_fixed{padding-top:70px !important;}
     .folle_text {
-    width: 37%;
-}
+		width: 37%;
+	}
     .inputtype-edit-comment .editable_text{width: 60%!important;}
     .post-edit-popup .popup-text textarea{padding-right: 45px;}
     .popup-text textarea{line-height: 2.3; padding-left: 15px;}

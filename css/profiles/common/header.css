@@ -1536,7 +1536,7 @@ background-color: white;}
         position: absolute;
     }
 	.logo{padding:0;}
-	.logo h2{padding:2px 0;}
+	.logo h2{padding: 0px 0; font-size: 24px;line-height: 35px;}
 	.main-menu-right {
         padding-top: 0px;
     }
@@ -1546,7 +1546,7 @@ background-color: white;}
         top: 42px;
     }
 	.header ul {
-		margin: 8px 0px 1px;
+		margin: 8px 0px 4px;
 	}
 	.header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
@@ -1730,9 +1730,10 @@ background-color: white;}
         font-size: 12px;
     }
     .back {width: 50%;}
-	.search-mob-block label{margin-top:7px; margin-left: 0px;}
+	.search-mob-block label{/*margin-top:7px; margin-left: 0px;*/}
 }
 @media screen and (max-width: 360px) {
+	#paddingtop_fixed{padding-top:70px !important;}
 	#InboxContainer::before {
     right: 139px;
 }
@@ -1796,6 +1797,7 @@ background-color: white;}
 	}
 	.dropdown2 a{padding: 8px;}
 	.header2 ul li.active a{padding: 9px 0px 9px;}
+	.bg-search .header2{padding-left:0;}
 }
 
 
