@@ -65,6 +65,7 @@
     <!-- coer image end-->
     <div class="profile-photo">
         <div class="buisness-menu">
+           <!--PROFILE PIC START-->
             <div class="profile-pho-bui">
                 <div class="user-pic">
                     <?php if ($businessdata1[0]['business_user_image'] != '') { ?>
@@ -89,6 +90,7 @@
                     <?php } ?>
                 </div>
             </div>
+           <!--PROFILE PIC START-->
             <div class="business-profile-right">
                 <div class="bui-menu-profile">
                     <div class="profile-left">
