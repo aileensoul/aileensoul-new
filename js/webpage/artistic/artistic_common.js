@@ -81,9 +81,8 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                   $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').value = '';
-//                    html = '<img src="' + resp + '" />';
-//                    $("#upload-demo-i").html(html);
+                   $('.cr-image').attr('src', '#');
+                   
                 }
             });
         });
@@ -416,7 +415,10 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         });
     });
 
-
+$('#upload').click(function(){
+   var input = document.getElementsByTagName('#upload')[0];
+    this.value = null;
+});
     
 
 
