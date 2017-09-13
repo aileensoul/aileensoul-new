@@ -7017,6 +7017,17 @@ public function insert_comment_postnewpage() {
             $quality = "100%";
         }
 
+        //  /* RESIZE */
+        // $artistic_bg['image_library'] = 'gd2';
+        // $artistic_bg['source_image'] = $main_image;
+        // $artistic_bg['new_image'] = $main_image;
+        // $artistic_bg['quality'] = $quality;
+        // $instanse10 = "image10";
+        // $this->load->library('image_lib', $artistic_bg, $instanse10);
+        // $this->$instanse10->watermark();
+        // /* RESIZE */
+
+
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
@@ -13737,7 +13748,7 @@ public function art_home_post() {
             $i = 0;
             foreach ($singlearray as $mi) {
                 $fetch_result .= '<div class="image_profile">';
-                $fetch_result .= '<img src="' . base_url($this->config->item('art_post_thumb_upload_path') . $mi['file_name']) . '" alt="img1">';
+                $fetch_result .= '<img src="' . ART_POST_THUMB_UPLOAD_URL . $mi['file_name'] . '" alt="img1">';
                 $fetch_result .= '</div>';
 
                 $i++;
@@ -13806,7 +13817,7 @@ public function art_home_post() {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[0]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13816,7 +13827,7 @@ public function art_home_post() {
             if ($singlearray1[1]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[1]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[1]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13825,7 +13836,7 @@ public function art_home_post() {
             if ($singlearray1[2]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[2]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[2]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13837,7 +13848,7 @@ public function art_home_post() {
             if ($singlearray1[3]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[3]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[3]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13846,7 +13857,7 @@ public function art_home_post() {
             if ($singlearray1[4]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[4]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[4]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13855,7 +13866,7 @@ public function art_home_post() {
             if ($singlearray1[5]['file_name']) {
                 $fetch_video .= '<td class="image_profile">';
                 $fetch_video .= '<video  controls>';
-                $fetch_video .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray1[5]['file_name']) . '" type="video/mp4">';
+                $fetch_video .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray1[5]['file_name'] . '" type="video/mp4">';
                 $fetch_video .= '<source src="movie.ogg" type="video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -13925,7 +13936,7 @@ public function art_home_post() {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
 
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[0]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[0]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13935,7 +13946,7 @@ public function art_home_post() {
             if ($singlearray2[1]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[1]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[1]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13944,7 +13955,7 @@ public function art_home_post() {
             if ($singlearray2[2]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[2]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[2]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13956,7 +13967,7 @@ public function art_home_post() {
             if ($singlearray2[3]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[3]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[3]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13965,7 +13976,7 @@ public function art_home_post() {
             if ($singlearray2[4]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[4]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[4]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -13974,7 +13985,7 @@ public function art_home_post() {
             if ($singlearray2[5]['file_name']) {
                 $fetchaudio .= '<td class="image_profile">';
                 $fetchaudio .= '<audio  controls>';
-                $fetchaudio .= '<source src="' . base_url($this->config->item('art_post_main_upload_path') . $singlearray2[5]['file_name']) . '" type="audio/mp3">';
+                $fetchaudio .= '<source src="' . ART_POST_MAIN_UPLOAD_URL . $singlearray2[5]['file_name'] . '" type="audio/mp3">';
                 $fetchaudio .= '<source src="movie.ogg" type="audio/mp3">';
                 $fetchaudio .= 'Your browser does not support the audio tag.';
                 $fetchaudio .= '</audio>';
@@ -14035,7 +14046,7 @@ public function art_home_post() {
 
                 $fetch_pdf .= '<div class="image_profile">';
                 // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['post_files_id']) . '"><div class="pdf_img">';
-                $fetch_pdf .= '<a href="'.base_url($this->config->item('art_post_main_upload_path') . $mi['file_name']).'">';
+                $fetch_pdf .= '<a href="'.ART_POST_MAIN_UPLOAD_URL . $mi['file_name'].'">';
                 $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';

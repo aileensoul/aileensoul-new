@@ -3,7 +3,7 @@
    $returnpage= $_GET['page'];
    $userid = $this->session->userdata('aileenuser');?>
 <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
-   <div class=" right-side-menu art-side-menu padding_less_right job_edit_pr right-menu-jr">
+   <div class=" right-side-menu art-side-menu padding_less_right job_edit_pr right-menu-jr <?php if($returnpage == 'recruiter'){echo "job_data_left_menubar";}?>">
       <?php 
          $userid = $this->session->userdata('aileenuser');
          if($jobdata[0]['user_id'] == $userid){

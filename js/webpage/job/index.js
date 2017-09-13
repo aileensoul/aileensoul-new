@@ -11,9 +11,9 @@
    $(document).ready(function () {
    
   
-   $.validator.addMethod("lowercase", function(value, element, regexpr) {          
-   return regexpr.test(value);
-   }, "Email should be in small character");
+   // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
+   // return regexpr.test(value);
+   // }, "Email should be in small character");
    
    $.validator.addMethod("regx", function(value, element, regexpr) {          
    return regexpr.test(value);
@@ -154,7 +154,7 @@
                   
                    required: true,
                    email: true,
-                   lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                  // lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                    remote: {
                        url: base_url + "job/check_email",
                        type: "post",

@@ -957,8 +957,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
-    .logo h2{padding: 0px 0;
-font-size: 24px;line-height: 35px;}
+    
     .profile-box-art .right-menu-jr .flw_msg_btn ul li {margin-right: 34px;}
 	.pro-fw li {width: 25% !important;}
 	.middle-part.container {
