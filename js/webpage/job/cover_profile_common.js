@@ -61,7 +61,9 @@ $('.cancel-result').on('click', function (ev) {
 
     //aarati code start
     $('#upload').on('change', function () {
-
+       // alert($(this).attr("value"));
+        // $(this).attr("value", "");
+//alert("hi");
         var reader = new FileReader();
 
         reader.onload = function (e) {

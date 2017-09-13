@@ -18,13 +18,13 @@ class Job extends MY_Controller {
 
       //This function is there only one time users slug created after remove it start
      
-        $this->db->select('job_id,fname,lname');
-        $res = $this->db->get('job_reg')->result();
-        foreach ($res as $k => $v) {
-            $data = array('slug' => $this->setcategory_slug($v->fname."-". $v->lname, 'slug', 'job_reg'));
-            $this->db->where('job_id', $v->job_id);
-            $this->db->update('job_reg', $data);
-        }
+        // $this->db->select('job_id,fname,lname');
+        // $res = $this->db->get('job_reg')->result();
+        // foreach ($res as $k => $v) {
+        //     $data = array('slug' => $this->setcategory_slug($v->fname."-". $v->lname, 'slug', 'job_reg'));
+        //     $this->db->where('job_id', $v->job_id);
+        //     $this->db->update('job_reg', $data);
+        // }
        //This function is there only one time users slug created after remove it End
 
         include ('include.php');
