@@ -3491,6 +3491,7 @@ padding-left: 11px;}
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+       .main-text-area{padding-right: 0px;}
        .tabs-left > li > a{font-size: 14px;}
     .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
     .header2 {
@@ -3857,6 +3858,14 @@ padding-left: 11px;}
     .editor-content {
     width: 84%;
 }
+.reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
+    }
     .post-edit-popup .editor-content {
         width: 86%;
     }
@@ -3905,6 +3914,9 @@ padding-left: 11px;}
 @media screen and (max-width: 479px){
     .post-design-box .post-design-desc input.my_text {
     padding-right: 35px;
+}
+.fifty_val {
+    right: 28px;
 }
 
   .editor-content {

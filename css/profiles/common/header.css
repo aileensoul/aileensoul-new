@@ -1677,6 +1677,9 @@ background-color: white;}
     .back {
     width: 40%;
 }
+.reactivate_header {
+    padding: 7px;
+}
 	.h2-smladd{margin-top: 0px;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}
@@ -1692,6 +1695,14 @@ background-color: white;}
 		padding-left: 0px;
 		padding-right: 0px;
 	}
+    .reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
+    }
 
 }
 @media screen and (max-width: 479px) {
