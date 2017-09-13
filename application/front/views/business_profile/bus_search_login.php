@@ -8,11 +8,47 @@
       <title><?php echo $title; ?></title>
 
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-      <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()); ?>" />
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-job-style.css?ver='.time()); ?>">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/job/job.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">-->
+        <link href="<?php echo base_url('css/fileinput.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <!--<script src="<?php // echo base_url('js/jquery-2.0.3.min.js?ver='.time()) ?>" type="text/javascript"></script>-->
+        <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/fileinput.js?ver='.time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()) ?>" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
+           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+       
+            <script>
+            $(function () {
+                var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
+                $('.showmore').each(function () {
+                    var content = $(this).html();
+                    if (content.length > showTotalChar) {
+                        var con = content.substr(0, showTotalChar);
+                        var hcon = content.substr(showTotalChar, content.length - showTotalChar);
+                        var txt = con + '<span class="dots">...</span><span class="morectnt"><span>' + hcon + '</span>&nbsp;&nbsp;<a href="" class="showmoretxt">' + showChar + '</a></span>';
+                        $(this).html(txt);
+                    }
+                });
+                $(".showmoretxt").click(function () {
+                    if ($(this).hasClass("sample")) {
+                        $(this).removeClass("sample");
+                        $(this).text(showChar);
+                    } else {
+                        $(this).addClass("sample");
+                        $(this).text(hideChar);
+                    }
+                    $(this).parent().prev().toggle();
+                    $(this).prev().toggle();
+                    return false;
+                });
+            });
+        </script>   
+       
    </head>
    <!-- END HEAD -->
    <style>
@@ -639,31 +675,24 @@
         </div>
         <!-- register -->
 
-<!-- script for skill textbox automatic start-->
 <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
- <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
-
-<!--<script src="<?php// echo base_url('js/jquery.wallform.js'); ?>"></script>
-   <script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>
-    <script src="<?php //echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-    <script src="<?php //echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-<script src="<?php //echo base_url('js/jquery.highlite.js'); ?>"></script>
-<script src="<?php //echo base_url('js/bootstrap.min.js'); ?>"></script>-->
+ <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+        <!-- POST BOX JAVASCRIPT END --> 
 
 
- <script>
-          var base_url = '<?php echo base_url(); ?>';
-          var skill = '<?php echo  $this->input->get('skills'); ?>';
-          var place = '<?php echo  $this->input->get('searchplace'); ?>';
+ 
+          <script>
+            var base_url = '<?php echo base_url(); ?>';
+            var keyword = '<?php echo $keyword; ?>';
+            var keyword1 = '<?php echo $keyword1; ?>';
+            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+            var csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+        </script>
                                               
-</script>
 
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/rec_search_login.js?ver='.time()); ?>"></script>
+
+<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/bus_search_login.js?ver='.time()); ?>"></script>
 </body>
 </html>
