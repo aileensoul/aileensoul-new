@@ -957,7 +957,14 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
-    
+    .art_no_post_img {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	.art_no_post_text {
+		padding-top: 10px;
+		font-size: 23px;
+	}
     .profile-box-art .right-menu-jr .flw_msg_btn ul li {margin-right: 34px;}
 	.pro-fw li {width: 25% !important;}
 	.middle-part.container {

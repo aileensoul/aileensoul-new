@@ -3493,8 +3493,16 @@ padding-left: 11px;}
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
-       .main-text-area{padding-right: 0px;}
-       .tabs-left > li > a{font-size: 14px;}
+	.art_no_post_img {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	.art_no_post_text {
+		padding-top: 10px;
+		font-size: 23px;
+	}
+    .main-text-area{padding-right: 0px;}
+    .tabs-left > li > a{font-size: 14px;}
     .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
 
 .art-all-comment{
