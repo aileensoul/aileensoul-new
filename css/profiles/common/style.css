@@ -2184,3 +2184,54 @@ display: none !important;
 }
 
 /*zalak start 28-8  media*/
+
+@keyframes bounce_floatBarsG {
+    0% {
+        transform: scale(1);
+        background-color: #1b8ab9;
+    }
+    100% {
+        transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+@-o-keyframes bounce_floatBarsG {
+    0% {
+        -o-transform: scale(1);
+        background-color: #1b8ab9;
+    }
+    100% {
+        -o-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+@-ms-keyframes bounce_floatBarsG {
+    0% {
+        -ms-transform: scale(1);
+        background-color: #1b8ab9;
+    }
+    100% {
+        -ms-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+@-webkit-keyframes bounce_floatBarsG {
+    0% {
+        -webkit-transform: scale(1);
+        background-color: #1b8ab9;
+    }
+    100% {
+        -webkit-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
+@-moz-keyframes bounce_floatBarsG {
+    0% {
+        -moz-transform: scale(1);
+        background-color: #1b8ab9;
+    }
+    100% {
+        -moz-transform: scale(.3);
+        background-color: rgb(255, 255, 255);
+    }
+}
