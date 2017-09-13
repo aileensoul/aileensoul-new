@@ -515,7 +515,7 @@ ul.dropdown-menu li a i {
     border-bottom: 1px solid #e6ecf0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: fixed;
-    top: 49px;
+    top: 52px;
     right: 0;
     height: 35px;
     left: 0;
@@ -1430,7 +1430,7 @@ background-color: white;}
 @media screen and (max-width:1199px){
     .custom_footer_left ul li a{font-size: 12px;}
 	.header2 .job-search-box1 fieldset.sec_h2{width: 175px;}
-	.header2{width:940px;}
+	.header2{width:940px; top:49px;}
 	.header ul li a{padding: 0px!important}
     .header ul li.dropdown-user a{padding:4px 0px 0px!important}
 	#InboxContainer{right: -7px;}
@@ -1522,7 +1522,7 @@ background-color: white;}
 	#notificationContainer{right:2px; width: 98%;}
 	#InboxContainer::before {right: 179px;}
 	#notificationsmsgBody li a{width: 100%;}
-	.search-mob-block label{margin-top: 7px; margin-left: 7px;}
+	.search-mob-block label{/*margin-top: 7px; margin-left: 7px;*/}
     .search-mob-block label i{font-size: 20px;}
     .header ul{margin: 4px 0px;}
 	#notificationLink span{top:10px !important;}
@@ -1656,18 +1656,18 @@ background-color: white;}
 	
 	#acon::before {
     right: 16px;
-}
-#acon{
-    margin-top: 14px;
-}
+	}
+	#acon{
+		margin-top: 14px;
+	}
 }
 
 @media screen and (max-width: 640px) {
-    .back {
-    width: 40%;
-}
+		.back {
+		width: 40%;
+	}
 
-fieldset{padding: 9px 8px!important;}
+	fieldset{padding: 9px 8px!important;}
 
 }
 @media screen and (max-width: 540px) {
@@ -1678,17 +1678,17 @@ fieldset{padding: 9px 8px!important;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}
     #basicinfo .day{width: 30% !important;
-padding-left: 4px;}
-#basicinfo .month {
-    width: 31% !important;
-    padding-right: 0px;
-    padding-left: 0px;
-}
-#basicinfo .year {
-    width: 32% !important;
-    padding-left: 0px;
-    padding-right: 0px;
-}
+	padding-left: 4px;}
+	#basicinfo .month {
+		width: 31% !important;
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	#basicinfo .year {
+		width: 32% !important;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
 
 }
 @media screen and (max-width: 479px) {
