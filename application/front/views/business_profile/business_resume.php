@@ -392,7 +392,7 @@
                         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
                         <!-- Bid-modal-2  -->
-                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+<!--                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
                             <div class="modal-dialog modal-lm">
                                 <div class="modal-content">
                                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
@@ -412,21 +412,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
                         <!-- script for skill textbox automatic start (option 2)-->
 <!--                        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>
                         <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>
                         <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
-                        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-                        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
-                        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
+                        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
                         <!-- script for business autofill -->
                         <script>
                                                                             var base_url = '<?php echo base_url(); ?>';
                         </script>
-                        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/details.js?ver=' . time()); ?>"></script>
+                        <!--<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/details.js?ver=' . time()); ?>"></script>-->
                         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
                         </body>
                         </html>

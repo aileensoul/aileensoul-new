@@ -363,24 +363,27 @@
         </div>
     </div>
 </div>
+ <!--PROFILE PIC MODEL START-->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
             <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
                 <span class="mes">
-                    <div id="popup-form">
-                        <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <input type="hidden" name="hitext" id="hitext" value="5">
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                        <div class="popup_previred">
-                            <img id="preview" src="#" alt="your image" />
-                        </div>
-                        <?php echo form_close(); ?>
-                    </div>
+                     <div class="fw" id="loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                                    <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                                    </div>
+                                    
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                </form>
                 </span>
             </div>
         </div>
     </div>
 </div>
+  <!--PROFILE PIC MODEL END-->

@@ -85,18 +85,18 @@ $(function () {
 
 
 //validation for edit email formate form
-$("#userimage").validate({
-    rules: {
-        profilepic: {
-            required: true,
-        },
-    },
-    messages: {
-        profilepic: {
-            required: "Photo required.",
-        },
-    },
-});
+//$("#userimage").validate({
+//    rules: {
+//        profilepic: {
+//            required: true,
+//        },
+//    },
+//    messages: {
+//        profilepic: {
+//            required: "Photo required.",
+//        },
+//    },
+//});
 
 
 //CODE FOR PROFILE PIC UPLOAD WITH CROP START
@@ -114,6 +114,9 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
 });
 
 $('#upload-one').on('change', function () {
+    document.getElementById('upload-demo-one').style.display = 'block';
+    $('#upload-demo-one').find('.cr-boundary:first').hide();
+    $('#upload-demo-one').find('.cr-slider-wrap:first').hide();
     var reader = new FileReader();
     reader.onload = function (e) {
         $uploadCrop1.croppie('bind', {
@@ -140,22 +143,44 @@ $(document).ready(function () {
         submitHandler: profile_pic
     });
     function profile_pic() {
+//    $('.upload-result-one').on('click', function (ev) {
         $uploadCrop1.croppie('result', {
             type: 'canvas',
             size: 'viewport'
         }).then(function (resp) {
             $.ajax({
-                url: base_url + "freelancer/user_image_add1",
+                //url: "/ajaxpro.php", user_image_insert
+                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+                url: base_url + "business_profile/user_image_insert_new",
                 type: "POST",
                 data: {"image": resp},
+                beforeSend: function () {
+                    // $('.loader').show();
+                    document.getElementById('loader').style.display = 'block';
+                },
+                complete: function () {
+                    document.getElementById('loader').style.display = 'none';
+                },
                 success: function (data) {
+                    $('#loader').remove();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                    $('.cr-image').attr('src', '#');
+                    document.getElementById('upload-demo-one').value = '';
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
                 }
             });
         });
+//    });
     }
 });
+
+
+function updateprofilepopup(id) {
+    document.getElementById('upload-demo-one').style.display = 'none';
+    //document.getElementById('loader').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+    $('#bidmodal-2').modal('show');
+}
 //CODE FOR PROFILE PIC UPLOAD WITH CROP END

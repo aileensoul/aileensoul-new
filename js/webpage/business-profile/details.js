@@ -1,18 +1,18 @@
 //validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo required.",
-            },
-        },
-    });
-});
+//$(document).ready(function () {
+//    $("#userimage").validate({
+//        rules: {
+//            profilepic: {
+//                required: true,
+//            },
+//        },
+//        messages: {
+//            profilepic: {
+//                required: "Photo required.",
+//            },
+//        },
+//    });
+//});
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -30,9 +30,6 @@ function check() {
 
 // END OF BUSINESS SEARCH AUTO FILL 
 
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
 
 // COVER IMAGE START 
 function myFunction() {
