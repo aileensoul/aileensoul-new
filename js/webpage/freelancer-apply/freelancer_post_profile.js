@@ -1,32 +1,32 @@
 //CODE FOR PROFILE PIC UPLOAD WITH CROP START
-     $uploadCrop1 = $('#upload-demo-one').croppie({
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-    });
+$uploadCrop1 = $('#upload-demo-one').croppie({
+    enableExif: true,
+    viewport: {
+        width: 200,
+        height: 200,
+        type: 'square'
+    },
+    boundary: {
+        width: 300,
+        height: 300
+    }
+});
 
-    $('#upload-one').on('change', function () {
-        alert(123);
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $uploadCrop1.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-            });
+$('#upload-one').on('change', function () {
+document.getElementById('upload-demo-one').style.display = 'block';
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop1.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
 
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-    $(document).ready(function () {
-    $("#userimage").validate({ 
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+$(document).ready(function () {
+    $("#userimage").validate({
         rules: {
             profilepic: {
                 required: true,
@@ -47,24 +47,34 @@
         }).then(function (resp) {
             $.ajax({
                 //url: "/ajaxpro.php", user_image_insert
-               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
-               url: base_url + "freelancer/user_image_add1",
+                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+                url: base_url + "freelancer/user_image_add1",
                 type: "POST",
                 data: {"image": resp},
+                 beforeSend: function () {
+                    // $('.loader').show();
+                    document.getElementById('loader').style.display = 'block';
+                },
+                complete: function () {
+                    $document.getElementById('loader').style.display = 'none';
+                },
                 success: function (data) {
-                  $('#bidmodal-2').modal('hide');
+                    $('#loader').remove();
+                    $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                   $('.cr-image').attr('src', '#');
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').style.display = 'none';
+                    $('.cr-image').attr('src', '#');
 //                    html = '<img src="' + resp + '" />';
 //                    $("#upload-demo-i").html(html);
                 }
             });
         });
 //    });
-}
-   });
-   //CODE FOR PROFILE PIC UPLOAD WITH CROP END
+    }
+});
+//CODE FOR PROFILE PIC UPLOAD WITH CROP END
 
 function profile_pic() {
     if (typeof FormData !== 'undefined') {
@@ -131,6 +141,8 @@ $(document).ready(function () {
 //DESIGNATION END
 //UPLOAD PROFILE PIC START
 function updateprofilepopup(id) {
+    document.getElementById('upload-one').value = null;
+    document.getElementById('upload-demo-one').style.display = 'none';
     $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END
@@ -140,7 +152,7 @@ function updateprofilepopup(id) {
 function showDiv() {
     document.getElementById('row1').style.display = "block";
     document.getElementById('row2').style.display = "none";
-    
+
 }
 $uploadCrop = $('#upload-demo').croppie({
     enableExif: true,
@@ -155,7 +167,7 @@ $uploadCrop = $('#upload-demo').croppie({
     }
 });
 $('.upload-result').off('click').on('click', function (ev) {
-   
+
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
     document.getElementById('message1').style.display = "block";
@@ -185,10 +197,10 @@ $('.cancel-result').on('click', function (ev) {
     document.getElementById('row2').style.display = "block";
     document.getElementById('row1').style.display = "none";
     document.getElementById('message1').style.display = "none";
-    $(".cr-image").attr("src","");
+    $(".cr-image").attr("src", "");
 });
 $('#upload').on('change', function () {
-   
+
     var reader = new FileReader();
     reader.onload = function (e) {
         $uploadCrop.croppie('bind', {
@@ -201,7 +213,7 @@ $('#upload').on('change', function () {
 });
 
 $('#upload').on('change', function () {
-   
+
     var fd = new FormData();
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
