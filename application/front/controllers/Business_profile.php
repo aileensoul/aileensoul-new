@@ -1856,11 +1856,8 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
 
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
-
-
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-
                         $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />';
                     }
 
@@ -1876,23 +1873,15 @@ class Business_profile extends MY_Controller {
             } else {
                 if ($business_userimage) {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">';
-
-
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
                         $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
                     }
-
                     $return_html .= '</a>';
                 } else {
                     $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $slugname) . '">';
-
-
                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
-
                     $return_html .= '</a>';
                 }
             }
@@ -2042,7 +2031,7 @@ class Business_profile extends MY_Controller {
         <div  contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" >' . $row['product_description'] . '</div>
     </div>
     <div id="editpostdetailbox' . $row['business_profile_post_id'] . '" style="display:none;">
-        <div contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '" placeholder="Product Description" class="textbuis  editable_text"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>                  
+        <div contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '" placeholder="Product Description" class="textbuis  editable_text"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer('. $row['business_profile_post_id'] .')">' . $row['product_description'] . '</div>                  
     </div>
     <button class="fr" id="editpostsubmit' . $row['business_profile_post_id'] . '" style="display:none;margin: 5px 0; border-radius: 3px;" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save
     </button>
@@ -10347,9 +10336,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                         $counter = $row['product_name'];
                         $a = strlen($counter);
 
-                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled>';
                     } else {
-                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
+                        $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num disabled>';
                     }
                     $return_html .= '</div>
 
@@ -10366,7 +10355,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyatii' . $row['business_profile_post_id'] . '" style = "display:none;">
 ' . $row['product_description'] . '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($row['business_profile_post_id'] + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($row['business_profile_post_id'] + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer('.$row['business_profile_post_id'].')">' . $row['product_description'] . '</div>
 </div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
@@ -11969,9 +11958,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 if ($row['product_name']) {
                     $counter = $row['product_name'];
                     $a = strlen($counter);
-                    $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['business_profile_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled>';
                 } else {
-                    $return_html .= '<input size = 1 id = "text_num' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num' . $row['business_profile_post_id'] . '" class = "text_num" value = 50 name = text_num disabled>';
                 }
                 $return_html .= '</div>
 </div>
@@ -11986,7 +11975,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 $return_html .= $row['product_description'];
                 $return_html .= '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis editable_text" placeholder = "Description of Your Product" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis editable_text" placeholder = "Description of Your Product" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $row['business_profile_post_id'] . ')">' . $row['product_description'] . '</div>
 </div><button class = "fr" id = "editpostsubmit' . $row['business_profile_post_id'] . '" style="display:none; margin: 5px 0;" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save</button>
 </div> ';
                 if ($row['product_name'] || $row['product_description']) {
