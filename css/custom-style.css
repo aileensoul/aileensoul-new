@@ -171,8 +171,8 @@
 /* CONTACT CONTAINER END */
 
 /* DETAILS PAGE CSS */
-
-#popup-form img{display: none;}
+/*
+#popup-form img{display: none;}*/
 
 /* DETAILS PAGE CSS */
 
@@ -435,7 +435,7 @@
         width:45px;
         height: 20px;
     }
-	#popup-form img{display: none;}
+	/*#popup-form img{display: none;}*/
     .paddingtop_fixed_art{padding-top: 62px!important;}
     div.panel {
         display: none;
