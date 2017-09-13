@@ -52,13 +52,14 @@
                 type: "POST",
                 data: {"image": resp},
                 beforeSend: function () {
-                $('.loader').show();
+               // $('.loader').show();
+                document.getElementById('loader').style.display = 'block';
         },
         complete: function () {
-            $('.loader').hide();
+            $document.getElementById('loader').style.display = 'none';
         },
                 success: function (data) {
-                    $('.loader').remove();
+                    $('#loader').remove();
                   $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
@@ -99,6 +100,9 @@ function checkvalue(){
         $('#bidmodal').modal('show');
     }
     function updateprofilepopup(id) {
+        document.getElementById('upload-demo-one').style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('upload-one').value = null;
         $('#bidmodal-2').modal('show');
     }
 
