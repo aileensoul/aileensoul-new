@@ -1430,7 +1430,7 @@ background-color: white;}
 @media screen and (max-width:1199px){
     .custom_footer_left ul li a{font-size: 12px;}
 	.header2 .job-search-box1 fieldset.sec_h2{width: 175px;}
-	.header2{width:940px;}
+	.header2{width:940px; top:49px;}
 	.header ul li a{padding: 0px!important}
     .header ul li.dropdown-user a{padding:4px 0px 0px!important}
 	#InboxContainer{right: -7px;}
@@ -1522,7 +1522,7 @@ background-color: white;}
 	#notificationContainer{right:2px; width: 98%;}
 	#InboxContainer::before {right: 179px;}
 	#notificationsmsgBody li a{width: 100%;}
-	.search-mob-block label{margin-top: 7px; margin-left: 7px;}
+	.search-mob-block label{/*margin-top: 7px; margin-left: 7px;*/}
     .search-mob-block label i{font-size: 20px;}
     .header ul{margin: 4px 0px;}
 	#notificationLink span{top:10px !important;}
@@ -1536,7 +1536,7 @@ background-color: white;}
         position: absolute;
     }
 	.logo{padding:0;}
-	.logo h2{padding:2px 0;}
+	.logo h2{padding: 0px 0; font-size: 24px;line-height: 35px;}
 	.main-menu-right {
         padding-top: 0px;
     }
@@ -1546,7 +1546,7 @@ background-color: white;}
         top: 42px;
     }
 	.header ul {
-		margin: 8px 0px 1px;
+		margin: 8px 0px 4px;
 	}
 	.header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
@@ -1654,15 +1654,20 @@ background-color: white;}
 	.header ul li #abody ul li a{font-size:15px;}
 	.header ul li #abody ul li a .text-all{width:135px;}
 	
-	
+	#acon::before {
+    right: 16px;
+	}
+	#acon{
+		margin-top: 14px;
+	}
 }
 
 @media screen and (max-width: 640px) {
-    .back {
-    width: 40%;
-}
+		.back {
+		width: 40%;
+	}
 
-fieldset{padding: 9px 8px!important;}
+	fieldset{padding: 9px 8px!important;}
 
 }
 @media screen and (max-width: 540px) {
@@ -1672,6 +1677,19 @@ fieldset{padding: 9px 8px!important;}
 	.h2-smladd{margin-top: 0px;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}
+    #basicinfo .day{width: 30% !important;
+	padding-left: 4px;}
+	#basicinfo .month {
+		width: 31% !important;
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	#basicinfo .year {
+		width: 32% !important;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
 }
 @media screen and (max-width: 479px) {
 
@@ -1712,9 +1730,10 @@ fieldset{padding: 9px 8px!important;}
         font-size: 12px;
     }
     .back {width: 50%;}
-	.search-mob-block label{margin-top:7px; margin-left: 0px;}
+	.search-mob-block label{/*margin-top:7px; margin-left: 0px;*/}
 }
 @media screen and (max-width: 360px) {
+	#paddingtop_fixed{padding-top:70px !important;}
 	#InboxContainer::before {
     right: 139px;
 }
@@ -1778,6 +1797,7 @@ fieldset{padding: 9px 8px!important;}
 	}
 	.dropdown2 a{padding: 8px;}
 	.header2 ul li.active a{padding: 9px 0px 9px;}
+	.bg-search .header2{padding-left:0;}
 }
 
 

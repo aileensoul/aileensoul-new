@@ -53,7 +53,7 @@ li.fr a {text-decoration: none !important;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: " :";
-     float: left; position:absolute; right:0;}
+     float: left; position:absolute; right:2px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
     word-break: break-word; float: left; padding-right: 10px; width: 70%;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
@@ -804,6 +804,8 @@ label.cameraButton input[accept*="camera"] {
 }
 #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 
+.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
+
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
@@ -1019,7 +1021,7 @@ font-size: 24px;line-height: 35px;}
         margin-top: 21px;
     }
 	#paddingtop_fixed{
-        padding-top:74px !important;
+        padding-top:71px !important;
     }
 	.profile-box {
         display: none;
@@ -1294,7 +1296,7 @@ font-size: 24px;line-height: 35px;}
 	.designation_rec {
 	  width: 39% !important;
 	}
-	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
+	.search-mob-block label{/*margin-top: 7px; margin-left: 0px;*/}
 	.post-img-user {
 		font-size: 16px;
 		height: 67px;
@@ -1398,6 +1400,7 @@ font-size: 24px;line-height: 35px;}
 	
 }
 @media screen and (max-width: 360px) {
+	#paddingtop_fixed{padding-top:70px !important;}
 	.padd_img { padding-left: 3px !important; padding-top: 4px !important;}
 	.profile-job-post-location-name ul li .follow-li-text {
         padding: 0px;

@@ -63,7 +63,7 @@
                                                                                 $sub_post_lname = substr($post_lname, 0, 1);
                                                                                 ?>
                                                                                 <div class="post-img-div">
-                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) . " " . ucfirst(strtolower($sub_post_lname)); ?>
+                                                                                    <?php echo ucfirst(strtolower($sub_post_fname)) .  ucfirst(strtolower($sub_post_lname)); ?>
                                                                                 </div>
                                                                                 <?php
                                                                             }
@@ -217,13 +217,13 @@
                                                                             ?>
                                                                             <a href="javascript:void(0);" class="button invited" id="<?php echo 'invited' . $row['user_id']; ?>" style="cursor: default;"><?php echo $this->lang->line("selected"); ?></a>       
                                                                         <?php } else { ?>
-                                                                            <a class=""  href="#" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
+                                                                            <a class=""  href="javascript:void(0);" class="button invite_border" id="<?php echo 'invited' . $row['user_id']; ?>" onClick="inviteuserpopup(<?php echo $row['user_id']; ?>)"><?php echo $this->lang->line("select"); ?></a>
                                                                         <?php } ?>
 
                                                                         <?php
                                                                         if ($savedata) {
                                                                             ?> 
-                                                                            <a class="saved"><?php echo $this->lang->line("saved"); ?> </a>
+                                                                            <a class="saved" href="javascript:void(0);"><?php echo $this->lang->line("saved"); ?> </a>
 
                                                                             <?php
                                                                         } else {

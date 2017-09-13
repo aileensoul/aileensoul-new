@@ -15,9 +15,9 @@ class Main extends CI_Controller {
         $this->load->helper('cookie');
         $this->load->model('logins');
 
-        if ($this->session->userdata('aileenuser')) {
-            redirect('dashboard', 'refresh');
-        }
+        // if ($this->session->userdata('aileenuser')) {
+        //     redirect('dashboard', 'refresh');
+        // }
         include ('include.php');
     }
 
@@ -25,6 +25,10 @@ class Main extends CI_Controller {
     public function index() {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
         $this->load->view('main',$this->data);
+        
+        if ($this->session->userdata('aileenuser')) {
+            redirect('dashboard', 'refresh');
+        }
     }
 
     //job user end

@@ -842,6 +842,9 @@ label.cameraButton input[accept*="camera"] {
     border: 1px solid #bfbfbf;
     border-top-right-radius: 3px;
 }
+.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
+
+
 /***  media query  ***/
 @media screen and (max-width: 1200px)
 {
@@ -1069,7 +1072,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 21px;
     }
 	#paddingtop_fixed{
-        padding-top:74px !important;
+        padding-top:71px !important;
     }
 	.profile-box {
         display: none;
@@ -1441,6 +1444,7 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 360px) {
+	#paddingtop_fixed{padding-top:70px !important;}
     .profile-job-post-location-name-rec .designation_rec {
 		width: 70% !important;
 	}

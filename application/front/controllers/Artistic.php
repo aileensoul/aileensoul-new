@@ -1405,14 +1405,45 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                 $return['status'] = "success";
                 $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
 
-
+                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+                //echo $ext; die();
+                if($ext == 'mp4' || $ext == 'MP4'){
                 $data = array(
-                    'file_name' => $fileName,
+                    'file_name' => $fileName, 
+                    'post_format' => 'video',
                     'insert_profile' => 1,
                     'post_id' => $insert_id,
                     'created_date' => date('Y-m-d H:i:s', time()),
                     'is_deleted' => '1'
                 );
+             }else if($ext == 'mp3' || $ext == 'MP3'){
+                $data = array(
+                    'file_name' => $fileName, 
+                    'post_format' => 'audio',
+                    'insert_profile' => 1,
+                    'post_id' => $insert_id,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'is_deleted' => '1'
+                );
+             }else if($ext == 'pdf'){
+                $data = array(
+                    'file_name' => $fileName, 
+                    'post_format' => 'pdf',
+                    'insert_profile' => 1,
+                    'post_id' => $insert_id,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'is_deleted' => '1'
+                );
+             }else if($ext == 'JPEG' || $ext == 'jpeg' || $ext == 'jpg' || $ext == 'png'){
+                $data = array(
+                    'file_name' => $fileName, 
+                    'post_format' => 'image',
+                    'insert_profile' => 1,
+                    'post_id' => $insert_id,
+                    'created_date' => date('Y-m-d H:i:s', time()),
+                    'is_deleted' => '1'
+                );
+             }
 
                 $insert = $this->common->insert_data_getid($data, 'post_files');
             }  // } else { 

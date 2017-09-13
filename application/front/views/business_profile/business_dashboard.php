@@ -1001,13 +1001,13 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/check_login',
+                        url: '<?php echo base_url() ?>registration/user_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
                         {
                             $("#error").fadeOut();
-                            $("#btn1").html('Login ...');
+                            $("#btn1").html('Login');
                         },
                         success: function (response)
                         {
@@ -1201,13 +1201,14 @@
                         beforeSend: function ()
                         {
                             $("#register_error").fadeOut();
-                            $("#btn1").html('Create an account ...');
+                            $("#btn1").html('Create an account');
                         },
                         success: function (response)
                         {
                             if (response == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+                                window.location = "<?php echo base_url() ?>business-profile/";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
