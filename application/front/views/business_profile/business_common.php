@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12" style="visibility: hidden; ">
+        <div class="col-md-12" style="visibility: hidden;">
             <div id="upload-demo-i"></div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
-                        <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
+                            <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
                 <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
                 <?php
             } else {
@@ -358,6 +358,27 @@
                 </div>
             </div>
             <!-- pickup -->
+        </div>
+    </div>
+</div>
+<div class="modal fade message-box" id="bidmodal-2" role="dialog">
+    <div class="modal-dialog modal-lm">
+        <div class="modal-content">
+            <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
+            <div class="modal-body">
+                <span class="mes">
+                    <div id="popup-form">
+                        <?php echo form_open_multipart(base_url('business_profile/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                        <input type="hidden" name="hitext" id="hitext" value="5">
+                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                        <div class="popup_previred">
+                            <img id="preview" src="#" alt="your image" />
+                        </div>
+                        <?php echo form_close(); ?>
+                    </div>
+                </span>
+            </div>
         </div>
     </div>
 </div>
