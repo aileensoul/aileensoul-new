@@ -1476,7 +1476,6 @@ display: inline-block;
     .common-form1 h3{font-size: 15px;}
     .date-dropdowns .year{padding-left: 2px;}
 	.pro-fw li {width: 25% !important;}
-	.job_con #InboxContainer::before {right: 141px;}
 	.middle-part.container {
         padding: 40px 0 0px;
     }
@@ -1779,6 +1778,9 @@ font-size: 18px;}
         font-size: 16px;
         padding: 7px 29px;
     }
+    .profile-job-details .job_companyname {
+    width: 270px;
+}
 }
 @media screen and (max-width: 479px) {
 .edu_tab .panel-body{padding: 0px;}
@@ -1913,7 +1915,7 @@ padding-top: 2px !important;}
 
 .profile-job-details ul li.date_re {font-size: 10px;}
 	.job_con #InboxContainer::before {
-		right: 136px;
+		right: 124px;
 	}
     .padd_img { padding-left: 3px !important; padding-top: 4px !important;}
  .profile-box-art .right-side-menu .pro-fw li a {

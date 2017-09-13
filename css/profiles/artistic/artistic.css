@@ -3208,6 +3208,7 @@ overflow: hidden;
 .post-design-box .post-design-desc a {
     color: black;
     font-size: 14px;
+    word-break: break-all;
 }
 .profile-job-post-location-name-rec .designation_rec ul li{margin-bottom: 0px;}
 .pdf_img {
