@@ -13100,14 +13100,14 @@ public function art_home_post() {
                                     <div id="khyati' . $row['art_post_id'] . '" style="display:block;">';
 
                     $small = substr($row['art_description'], 0, 180);
-                    $return_html .= $small;
+                    $return_html .= $this->common->make_links($small);
                     if (strlen($row['art_description']) > 180) {
                         $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
                     }
 
                     $return_html .= '</div>
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
-                                        ' . $row['art_description'] . '</div>
+                                        ' . $this->common->make_links($row['art_description']) . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
                                         <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
                                     </div>
