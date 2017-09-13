@@ -5178,9 +5178,20 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
 
            $return_html.='<li class="fr">Created Date: '.date('d-M-Y',strtotime($post['created_date'])).'</li>';
 
-            $return_html.='<li class="text_overflow"><a href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'" class="post_title" >';
+           $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
 
-            $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
+            $return_html.='<li class="text_overflow">';
+
+            if($this->session->userdata('aileenuser'))
+            {
+              $return_html.='<a href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'" class="post_title" >';
+            }
+            else
+            {
+              $return_html.='<a  href="javascript:void(0);" onClick="login_profile()" class="post_title" >';
+            }
+
+            
             if($cache_time)
             {
               $return_html.=$cache_time;
@@ -5189,6 +5200,7 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
             {
               $return_html.=$post['post_name'];
             }
+
             $return_html.='</a></li>';                        
                                       
             $return_html.='<li>';
@@ -5208,13 +5220,29 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
              
               $cache_time1= $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->re_comp_name;
 
+            if($this->session->userdata('aileenuser'))
+            {
               $return_html.='<a href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'"  title="'.$cache_time1.'">';
+            }
+            else
+            {
+              $return_html.='<a  href="javascript:void(0);" onClick="login_profile()" title="'.$cache_time1.'" >';
+            }
 
               $out = strlen($cache_time1) > 40 ? substr($cache_time1,0,40)."..." : $cache_time1;
               $return_html.= $out.'</a></li>';                                           
                                  
 
-              $return_html.='<li><a href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'">';
+              $return_html.='<li>';
+
+              if($this->session->userdata('aileenuser'))
+              {
+                $return_html.='<a href="'.base_url('recruiter/rec_profile/' . $post['user_id'].'?page=job').'">';
+              }
+              else
+              {
+                $return_html.='<a href="javascript:void(0);" onClick="login_profile()">';
+              }
 
               $cache_time = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->rec_firstname;
               $cache_time1 = $this->db->get_where('recruiter', array('user_id' => $post['user_id']))->row()->rec_lastname;
