@@ -4397,7 +4397,7 @@ $return_html.= '<input type = "hidden" class = "perpage_record" value = "' . $pe
             $return_html.= '<li class="fr date_re">
                                 Created Date : '.date('d-M-Y',strtotime($post['created_date'])).'
                             </li>';
-            $return_html.='<li><a  class=" post_title" href="#" title="Post Title" >';
+            $return_html.='<li><a  class=" post_title" href="javascript:void(0);" title="Post Title" >';
 
                 $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;
                   if($cache_time)
@@ -4735,7 +4735,7 @@ if (count($postdetail) != '0')
 
       $return_html.='<li class="fr date_re"> Created Date :'.date('d-M-Y',strtotime($post['created_date'])).'</li>';
 
-      $return_html.='<li><a title="Post Title" class=" post_title" href="#">';
+      $return_html.='<li><a title="Post Title" class=" post_title" href="javascript:void(0);">';
       $cache_time = $this->db->get_where('job_title', array('title_id' => $post['post_name']))->row()->name;                               
       if($cache_time)
       {

@@ -260,7 +260,7 @@
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
     
                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
+                        <img id="preview"  src="javascript:void(0);" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
                       
                         <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
                         </form>
