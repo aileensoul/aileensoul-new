@@ -1,17 +1,3 @@
-//validation for edit email formate form
-$("#userimage").validate({
-    rules: {
-        profilepic: {
-            required: true,
-        },
-    },
-    messages: {
-        profilepic: {
-            required: "Photo required.",
-        },
-    },
-});
-
 
 // cover image start 
 
@@ -1305,8 +1291,6 @@ window.onclick = function (event) {
     }
 }
 
-
-
 // Get the modal
 var modal = document.getElementById('myModal3');
 // Get the button that opens the modal
@@ -1564,7 +1548,6 @@ function imgval(event) {
 //This script is used for "This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post." comment click close then post add popup open start
 $(document).ready(function () {
     $('#post').on('click', function () {
-
         $('.modal-post').show();
         //  location.reload(false);
     });

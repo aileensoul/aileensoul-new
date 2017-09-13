@@ -82,3 +82,80 @@ $(function () {
             });
     /* location box*/
 });
+
+
+//validation for edit email formate form
+$("#userimage").validate({
+    rules: {
+        profilepic: {
+            required: true,
+        },
+    },
+    messages: {
+        profilepic: {
+            required: "Photo required.",
+        },
+    },
+});
+
+
+//CODE FOR PROFILE PIC UPLOAD WITH CROP START
+$uploadCrop1 = $('#upload-demo-one').croppie({
+    enableExif: true,
+    viewport: {
+        width: 200,
+        height: 200,
+        type: 'square'
+    },
+    boundary: {
+        width: 300,
+        height: 300
+    }
+});
+
+$('#upload-one').on('change', function () {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop1.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+    function profile_pic() {
+        $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                url: base_url + "freelancer/user_image_add1",
+                type: "POST",
+                data: {"image": resp},
+                success: function (data) {
+                    $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    $('.cr-image').attr('src', '#');
+                }
+            });
+        });
+    }
+});
+//CODE FOR PROFILE PIC UPLOAD WITH CROP END
