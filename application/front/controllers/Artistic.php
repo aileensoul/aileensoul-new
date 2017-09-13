@@ -1795,14 +1795,14 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     <div id="khyati' . $row['art_post_id'] . '" style="display:block;">';
 
                     $small = substr($row['art_description'], 0, 180);
-                    $return_html .= $small;
+                    $return_html .= $this->common->make_links($small);
                     if (strlen($row['art_description']) > 180) {
                         $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
                     }
 
                     $return_html .= '</div>
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
-                                        ' . $row['art_description'] . '</div>
+                                        ' . $this->common->make_links($row['art_description']) . '</div>
                                     <div id="editpostdetailbox' . $row['art_post_id'] . '" style="display:none;">
                                         <div  contenteditable="true" id="editpostdesc' . $row['art_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer('.$row['art_post_id'].');">' . $row['art_description'] . '</div>
                                     </div>
@@ -14321,7 +14321,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 }
                 $return_html .= '</div>
 <div id = "khyatii' . $row['art_post_id'] . '" style = "display:none;">';
-                $return_html .= $row['art_description'];
+                $return_html .= $this->common->make_links($row['art_description']);
                 $return_html .= '</div>
 <div id = "editpostdetailbox' . $row['art_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['art_post_id'] . '" class = "textbuis editable_text" placeholder = "Description" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="return cursorpointer(' . $row['art_post_id'] . ');">' . $row['art_description'] . '</div>
@@ -15885,14 +15885,14 @@ public function get_artistic_name($id=''){
                                           <div id="khyati'. $key['art_post_id'].'" style="display:block;">';
                                             
                                               $small = substr($key['art_description'], 0, 180);
-                                              $return_html .= $small;
+                                              $return_html .= $this->common->make_links($small);
                                             if (strlen($key['art_description']) > 180) {
                                             $return_html .= '... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
                                              }
                                           $return_html .= '</div>
                                           <div id="khyatii'. $key['art_post_id'].'" style="display:none;">';
                                           
-                                         $return_html .= $key['art_description'];
+                                         $return_html .= $this->common->make_links($key['art_description']);
                                            
                                         $return_html .= '</div>
 
@@ -16805,14 +16805,14 @@ public function get_artistic_name($id=''){
                                           <div id="khyati'. $key['art_post_id'].'" style="display:block;">';
                                             
                                               $small = substr($key['art_description'], 0, 180);
-                                              $return_html .= $small;
+                                              $return_html .= $this->common->make_links($small);
                                             if (strlen($key['art_description']) > 180) {
                                             $return_html .= '... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
                                              }
                                           $return_html .= '</div>
                                           <div id="khyatii'. $key['art_post_id'].'" style="display:none;">';
                                           
-                                         $return_html .= $key['art_description'];
+                                         $return_html .= $this->common->make_links($key['art_description']);
                                            
                                         $return_html .= '</div>
 
