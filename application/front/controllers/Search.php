@@ -2704,7 +2704,7 @@ if ($this->session->userdata('aileenuser')) {
         $keyword1 = $search_place;
         $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
         $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+if($this->session->userdata('aileenuser')){
         $data = array(
             'search_keyword' => $search_business,
             'search_location' => $search_place,
@@ -2716,7 +2716,7 @@ if ($this->session->userdata('aileenuser')) {
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         // code for insert search keyword in database end
-
+}
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
             $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');

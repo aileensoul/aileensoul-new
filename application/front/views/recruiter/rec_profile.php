@@ -638,12 +638,14 @@
                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      
                <div class="modal-body">
                   <span class="mes">
+                       <div class="fw" class="loader" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
                      <div id="popup-form">
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
+                                    
                                     <div class="col-md-7 text-center">
                                         <div id="upload-demo-one" style="width:350px"></div>
                                     </div>
