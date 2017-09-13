@@ -144,7 +144,7 @@
                            </fieldset>
                            <fieldset class="full-width">
                               <label>Postal Address: <span class="red">*</span> </label>
-                              <textarea name ="address" tabindex="11" id="address" rows="4" cols="50" placeholder="Enter Address" maxlength="4000" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                              <textarea name ="address" tabindex="11" id="address" rows="4" cols="50" placeholder="Enter Address" maxlength="4000" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                  if ($address1) {
                                      echo $address1;
                                  }
