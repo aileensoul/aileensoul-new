@@ -103,7 +103,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                    
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);">
                             <h3> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
@@ -444,12 +444,13 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
+                                 <div class="fw" id="loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                     </div>
                                     <div class="col-md-7 text-center">
-                                        <div id="upload-demo-one" style="width:350px"></div>
+                                        <div id="upload-demo-one" style="width:350px; display: none"></div>
                                     </div>
 <!--<input type="submit" name="profilepicsubmit" id="upload-result-one" value="Save" >-->
                                     <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
