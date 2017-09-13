@@ -1468,7 +1468,7 @@ line-height: 0;
 }
 
 #job_education ul .text-center h5{
-    padding: 10px;
+    padding:0px 10px 10px;
 font-size: 18px;
 display: inline-block;
 }
