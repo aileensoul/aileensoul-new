@@ -43,7 +43,7 @@
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/basic-information'); ?>"><?php echo $this->lang->line("basic_info"); ?></a></li>
 
                                         <li class="custom-none"><a href="<?php echo base_url('freelancer-hire/address-information'); ?>"><?php echo $this->lang->line("address_info"); ?></a></li>
-                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("professional_info"); ?></a></li>
+                                        <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("professional_info"); ?></a></li>
                                     </ul>
                                 </div>
                             </div>

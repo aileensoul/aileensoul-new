@@ -85,17 +85,17 @@
                                 <div class="custom_footer_left fw">
                                     <div class="fl">
                                         <ul>
-                                            <li><a href=""> About Us </a></li>
+                                            <li><a href="javascript:void(0);"> About Us </a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Contact Us</a></li>
+                                            <li><a href="javascript:void(0);">Contact Us</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a  href="">Blogs</a></li>
+                                            <li><a  href="javascript:void(0);">Blogs</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Terms & Condition </a></li>
+                                            <li><a href="javascript:void(0);">Terms & Condition </a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Privacy Policy</a></li>
+                                            <li><a href="javascript:void(0);">Privacy Policy</a></li>
                                             <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                            <li><a href="">Send Us Feedback</a></li>
+                                            <li><a href="javascript:void(0);">Send Us Feedback</a></li>
                                         </ul>
                                     </div>
                                     <div>

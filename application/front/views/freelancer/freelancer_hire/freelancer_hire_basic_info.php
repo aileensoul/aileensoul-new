@@ -40,7 +40,7 @@
                         <div class="col-md-3 col-sm-3">
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
-                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("basic_info"); ?></a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'freelancer-hire') { ?> class="active init" <?php } ?>><a href="javascript:void(0);"><?php echo $this->lang->line("basic_info"); ?></a></li>
                                     <li class="custom-none <?php
                                     if ($freehiredata[0]['free_hire_step'] < '1') {
                                         echo "khyati";
