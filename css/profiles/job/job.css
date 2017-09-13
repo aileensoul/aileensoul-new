@@ -1131,12 +1131,12 @@ label.cameraButton input[accept*="camera"] {
 }
 .alert-danger{color: black!important;font-size: 22px !important;}
 .notificationsmsg #notificationTitle{display: none !important;}
-/*#popup-form img {
+#popup-form img {
     display: none;
 }
 #popup-form #upload-demo-one img {
     display: block;
-}*/
+}
  #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
@@ -1448,12 +1448,13 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
-
-.panel-body label, .common-form fieldset label{
-    margin: 0 0px 0px;
-padding: 2px 2px 6px;
-display: block;
-line-height: 0;
+.art_no_post_img {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.art_no_post_text {
+    padding-top: 10px;
+    font-size: 23px;
 }
 .job_work_experience_main_div h6 {
     margin-bottom: 5px;
@@ -1496,7 +1497,7 @@ display: inline-block;
 	.common-form.job_reg_main h3 {
         font-size: 22px;
     }
-	.common-form1 h3{margin:20px 0 0px;}
+	.common-form1 h3{margin:20px 0px;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
 	.job-menu-profile{margin-top:0;}
