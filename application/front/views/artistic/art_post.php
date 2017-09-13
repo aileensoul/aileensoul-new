@@ -40,15 +40,15 @@
          <div class="custom_footer_left fw">
           <div class="fl">
             <ul>
-              <li><a href="<?php echo base_url('about_us'); ?>"> About Us </a></li>
+              <li><a href="<?php echo base_url('about-us'); ?>"> About Us </a></li>
               <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a></li>
+              <li><a href="<?php echo base_url('contact-us'); ?>">Contact Us</a></li>
               <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
               <li><a href="<?php echo base_url('blog'); ?>">Blogs</a></li>
               <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Terms &amp; Condition </a></li>
+              <li><a href="<?php echo base_url('terms-and-condition'); ?>">Terms &amp; Condition </a></li>
               <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-              <li><a href="">Privacy Policy</a></li>
+              <li><a href="<?php echo base_url('privacy-policy'); ?>">Privacy Policy</a></li>
               <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
               <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
             </ul>
