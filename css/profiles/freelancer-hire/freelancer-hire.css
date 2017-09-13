@@ -812,7 +812,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .indiavte_freelancer{margin: 10px 0px;}
 #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
-.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9;}
+.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
   
   
 /***  media query  ***/
