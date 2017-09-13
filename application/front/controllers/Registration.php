@@ -592,26 +592,26 @@ class Registration extends CI_Controller {
                 echo 'Sorry, user is Inactive.';
             } else {
                 $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
-                $data = 'ok';
+                $is_data = 'ok';
             }
         } else if ($email_login == $result[0]['user_email']) {
-            $data = 'password';
+            $is_data = 'password';
             $id = $result[0]['user_id'];
         } else {
-            $data = 'email';
+            $is_data = 'email';
         }
         
         $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
-        $result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
+        $business_result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
         $business = 0;
-        if($result[0]['total'] > 0){
+        if($business_result[0]['total'] > 0){
             $business = 1;
         }
-
+        
         echo json_encode(
                 array(
-                    "data" => $data,
+                    "data" => $is_data,
                     "id" => $id,
                     "is_bussiness" => $business
         ));

@@ -2718,7 +2718,7 @@ class Business_profile extends MY_Controller {
         $this->load->view('business_profile/business_profile_save_post', $this->data);
     }
 
-    public function user_image_insert() {
+    public function user_image_insert_old() {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -2865,6 +2865,106 @@ class Business_profile extends MY_Controller {
             }
         }
     }
+    
+    public function user_image_insert() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('user_id' => $userid);
+        $user_reg_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $user_reg_prev_image = $user_reg_data[0]['business_profile_image'];
+
+        if ($user_reg_prev_image != '') {
+            $user_image_main_path = $this->config->item('bus_profile_main_upload_path');
+            $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+            if (isset($user_bg_full_image)) {
+                unlink($user_bg_full_image);
+            }
+
+            $user_image_thumb_path = $this->config->item('bus_profile_thumb_upload_path');
+            $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+            if (isset($user_bg_thumb_image)) {
+                unlink($user_bg_thumb_image);
+            }
+        }
+
+
+        $data = $_POST['image'];
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $user_bg_path = $this->config->item('bus_profile_main_upload_path');
+        $imageName = time() . '.png';
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($file, $data);
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+
+        /* RESIZE */
+        $business_profile['image_library'] = 'gd2';
+        $business_profile['source_image'] = $main_image;
+        $business_profile['new_image'] = $main_image;
+        $business_profile['quality'] = $quality;
+        $instanse10 = "image10";
+        $this->load->library('image_lib', $business_profile, $instanse10);
+        $this->$instanse10->watermark();
+        /* RESIZE */
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+        $user_thumb_path = $this->config->item('bus_profile_thumb_upload_path');
+        $user_thumb_width = $this->config->item('bus_profile_thumb_width');
+        $user_thumb_height = $this->config->item('bus_profile_thumb_height');
+
+        $upload_image = $user_bg_path . $imageName;
+
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+        $data = array(
+            'business_profile_image' => $imageName
+        );
+
+        $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
+        //  echo "11111";die();
+
+        if ($update) {
+
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
+            $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_profile_image'] . '" alt="" >';
+            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= $this->lang->line("update_profile_picture");
+            $userimage .= '</a>';
+
+            echo $userimage;
+        } else {
+
+            $this->session->flashdata('error', 'Your data not inserted');
+            redirect('business-profile', refresh);
+        }
+    }
+
 
     public function business_resume($id = "") {
         $userid = $this->session->userdata('aileenuser');

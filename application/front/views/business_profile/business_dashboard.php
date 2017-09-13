@@ -3,16 +3,16 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>" />
-        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver=' . time()); ?>" />
+        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>" /> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>" /> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -728,49 +728,49 @@
                         <div class="col-sm-12 right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
-                                        <div class="title">
-                                            <h1 class="ttc">Welcome To Aileensoul</h1>
+                                    <div class="title">
+                                        <h1 class="ttc">Welcome To Aileensoul</h1>
+                                    </div>
+
+                                    <form role="form" name="login_form" id="login_form" method="post">
+
+                                        <div class="form-group">
+                                            <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
+                                            <div id="error2" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('erroremail')) {
+                                                    echo $this->session->flashdata('erroremail');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorlogin"></div> 
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
+                                            <div id="error1" style="display:block;">
+                                                <?php
+                                                if ($this->session->flashdata('errorpass')) {
+                                                    echo $this->session->flashdata('errorpass');
+                                                }
+                                                ?>
+                                            </div>
+                                            <div id="errorpass"></div> 
                                         </div>
 
-                                        <form role="form" name="login_form" id="login_form" method="post">
+                                        <p class="pt-20 ">
+                                            <button class="btn1" onclick="login()">Login</button>
+                                        </p>
 
-                                            <div class="form-group">
-                                                <input type="email" value="<?php echo $email; ?>" name="email_login" id="email_login" class="form-control input-sm" placeholder="Email Address*">
-                                                <div id="error2" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('erroremail')) {
-                                                        echo $this->session->flashdata('erroremail');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorlogin"></div> 
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password*">
-                                                <div id="error1" style="display:block;">
-                                                    <?php
-                                                    if ($this->session->flashdata('errorpass')) {
-                                                        echo $this->session->flashdata('errorpass');
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <div id="errorpass"></div> 
-                                            </div>
+                                        <p class=" text-center">
+                                            <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
+                                        </p>
 
-                                            <p class="pt-20 ">
-                                                <button class="btn1" onclick="login()">Login</button>
-                                            </p>
+                                        <p class="pt15 text-center">
+                                            Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
+                                        </p>
+                                    </form>
 
-                                            <p class=" text-center">
-                                                <a href="javascript:void(0)" data-toggle="modal" onclick="forgot_profile();" id="myBtn">Forgot Password ?</a>
-                                            </p>
 
-                                            <p class="pt15 text-center">
-                                                Don't have an account? <a href="javascript:void(0);" data-toggle="modal" onclick="register_profile();">Create an account</a>
-                                            </p>
-                                        </form>
-
-                                   
                                 </div>
                             </div>
                         </div>
@@ -790,33 +790,33 @@
                         <div class="col-sm-12 right-main">
                             <div class="right-main-inner">
                                 <div class="login-frm">
-                                        <div class="title">
-                                            <h1 class="ttc">Forgot Password</h1>
+                                    <div class="title">
+                                        <h1 class="ttc">Forgot Password</h1>
+                                    </div>
+                                    <?php
+                                    $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
+                                    echo form_open('profile/forgot_password', $form_attribute);
+                                    ?>
+                                    <div class="form-group">
+                                        <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
+                                        <div id="error2" style="display:block;">
+                                            <?php
+                                            if ($this->session->flashdata('erroremail')) {
+                                                echo $this->session->flashdata('erroremail');
+                                            }
+                                            ?>
                                         </div>
-                                        <?php
-                                        $form_attribute = array('name' => 'forgot', 'method' => 'post', 'class' => 'forgot_password', 'id' => 'forgot_password');
-                                        echo form_open('profile/forgot_password', $form_attribute);
-                                        ?>
-                                        <div class="form-group">
-                                            <input type="email" value="" name="forgot_email" id="forgot_email" class="form-control input-sm" placeholder="Email Address*">
-                                            <div id="error2" style="display:block;">
-                                                <?php
-                                                if ($this->session->flashdata('erroremail')) {
-                                                    echo $this->session->flashdata('erroremail');
-                                                }
-                                                ?>
-                                            </div>
-                                            <div id="errorlogin"></div> 
-                                        </div>
-                                        
-                                        <p class="pt-20 ">
-                                            <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
-                                        </p>
+                                        <div id="errorlogin"></div> 
+                                    </div>
+
+                                    <p class="pt-20 ">
+                                        <input class="btn btn-theme btn1" type="submit" name="submit" value="Submit" style="width:200px; margin-top:15px;" /> 
+                                    </p>
 
 
-                                        </form>
+                                    </form>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -838,93 +838,93 @@
                     <div class="modal-body">
                         <div class="clearfix">
                             <div class="col-md-12 col-sm-12">
-                                    <h4>Join Aileensoul - It's Free</h4>
-                                    <form role="form" name="register_form" id="register_form" method="post">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-6">
-                                                <div class="form-group">
-                                                    <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                                                </div>
+                                <h4>Join Aileensoul - It's Free</h4>
+                                <form role="form" name="register_form" id="register_form" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="5" type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
                                             </div>
                                         </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-group">
+                                                <input tabindex="6" type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
-                                        </div>
-                                        <div class="form-group">
-                                            <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
-                                        </div>
-                                        <div class="form-group dob">
-                                            <label class="d_o_b"> Date Of Birth :</label>
-                                            <select tabindex="9" class="day" name="selday" id="selday">
-                                                <option value="" disabled selected value>Day</option>
-                                                <?php
-                                                for ($i = 1; $i <= 31; $i++) {
-                                                    ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
+                                    <div class="form-group">
+                                        <input tabindex="7" type="text" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address" autocomplete="off">
+                                    </div>
+                                    <div class="form-group">
+                                        <input tabindex="8" type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password">
+                                    </div>
+                                    <div class="form-group dob">
+                                        <label class="d_o_b"> Date Of Birth :</label>
+                                        <select tabindex="9" class="day" name="selday" id="selday">
+                                            <option value="" disabled selected value>Day</option>
+                                            <?php
+                                            for ($i = 1; $i <= 31; $i++) {
                                                 ?>
-                                            </select>
-                                            <select tabindex="10" class="month" name="selmonth" id="selmonth">
-                                                <option value="" disabled selected value>Month</option>
-                                                //<?php
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                            <option value="" disabled selected value>Month</option>
+                                            //<?php
 //                  for($i = 1; $i <= 12; $i++){
 //                  
-                                                ?>
-                                                <option value="1">Jan</option>
-                                                <option value="2">Feb</option>
-                                                <option value="3">Mar</option>
-                                                <option value="4">Apr</option>
-                                                <option value="5">May</option>
-                                                <option value="6">Jun</option>
-                                                <option value="7">Jul</option>
-                                                <option value="8">Aug</option>
-                                                <option value="9">Sep</option>
-                                                <option value="10">Oct</option>
-                                                <option value="11">Nov</option>
-                                                <option value="12">Dec</option>
-                                                //<?php
+                                            ?>
+                                            <option value="1">Jan</option>
+                                            <option value="2">Feb</option>
+                                            <option value="3">Mar</option>
+                                            <option value="4">Apr</option>
+                                            <option value="5">May</option>
+                                            <option value="6">Jun</option>
+                                            <option value="7">Jul</option>
+                                            <option value="8">Aug</option>
+                                            <option value="9">Sep</option>
+                                            <option value="10">Oct</option>
+                                            <option value="11">Nov</option>
+                                            <option value="12">Dec</option>
+                                            //<?php
 //                  }
 //                  
+                                            ?>
+                                        </select>
+                                        <select tabindex="11" class="year" name="selyear" id="selyear">
+                                            <option value="" disabled selected value>Year</option>
+                                            <?php
+                                            for ($i = date('Y'); $i >= 1900; $i--) {
                                                 ?>
-                                            </select>
-                                            <select tabindex="11" class="year" name="selyear" id="selyear">
-                                                <option value="" disabled selected value>Year</option>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                                 <?php
-                                                for ($i = date('Y'); $i >= 1900; $i--) {
-                                                    ?>
-                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
+                                            }
+                                            ?>
 
-                                            </select>
+                                        </select>
 
-                                        </div>
-                                        <div class="dateerror" style="color:#f00; display: block;"></div>
+                                    </div>
+                                    <div class="dateerror" style="color:#f00; display: block;"></div>
 
-                                        <div class="form-group gender-custom">
-                                            <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
-                                                <option value="" disabled selected value>Gender</option>
-                                                <option value="M">Male</option>
-                                                <option value="F">Female</option>
-                                            </select>
-                                        </div>
+                                    <div class="form-group gender-custom">
+                                        <select tabindex="12" class="gender"  onchange="changeMe(this)" name="selgen" id="selgen">
+                                            <option value="" disabled selected value>Gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </div>
 
-                                        <p class="form-text">
-                                            By Clicking on create an account button you agree our<br class="mob-none">
-                                            <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
-                                        </p>
-                                        <p>
-                                            <button tabindex="13" class="btn1">Create an account</button>
-                                        </p>
-                                    </form>
+                                    <p class="form-text">
+                                        By Clicking on create an account button you agree our<br class="mob-none">
+                                        <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                    </p>
+                                    <p>
+                                        <button tabindex="13" class="btn1">Create an account</button>
+                                    </p>
+                                </form>
 
                             </div>
                         </div>
@@ -936,22 +936,22 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
 
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>--> 
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>--> 
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
+        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>--> 
+        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>--> 
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
 
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
-        <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
 
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
@@ -1012,8 +1012,13 @@
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                if (response.is_bussiness == '1') {
+                                    window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+                                }
+                                else{
+                                    window.location = "<?php echo base_url() ?>business-profile";
+                                }
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -1244,7 +1249,7 @@
 
             });
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
         <script>
             function login_profile() {
