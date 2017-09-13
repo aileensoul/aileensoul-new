@@ -55,7 +55,7 @@ body{
 .pt0{padding-top: 0;} .pt5{padding-top: 5px;} .pt10{padding-top: 10px;} .pt15{padding-top: 15px;} .pt20{padding-top: 20px;}
 .pb0{padding-bottom: 0;} .pb5{padding-bottom: 5px;} .pb10{padding-bottom: 10px;} .pb15{padding-bottom: 15px;} .pb20{padding-bottom: 20px;}
 .main-inner .btn-right .btn3:hover{text-decoration: none;}
-
+.btn-right .btn1.btn1active {background: #fff; color: #1b8ab9;}
 .fs12{font-size:12px;}
 
 .pb0{padding-bottom: 0;} .pb5{padding-bottom: 5px;} .pb10{padding-bottom: 10px;} .pb15{padding-bottom: 15px;} 

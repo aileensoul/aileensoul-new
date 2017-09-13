@@ -1456,6 +1456,9 @@ class Business_profile extends MY_Controller {
 
                         $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
 
+                        $white = imagecolorallocate($conf_new4[$i]['new_image'], 255, 255, 255);
+                        imagefill($conf_new4[$i]['new_image'], 0, 0, $white);
+
                         $left = ($n_w1 / 2) - ($resize4_image_width / 2);
                         $top = ($n_h1 / 2) - ($resize4_image_height / 2);
 
@@ -2757,7 +2760,7 @@ class Business_profile extends MY_Controller {
         $this->load->view('business_profile/business_profile_save_post', $this->data);
     }
 
-    public function user_image_insert_old() {
+    public function user_image_insert() {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -2783,6 +2786,9 @@ class Business_profile extends MY_Controller {
             redirect('business-profile/following', refresh);
         }
 
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+
         if (empty($_FILES['profilepic']['name'])) {
             $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
         } else {
@@ -2798,6 +2804,10 @@ class Business_profile extends MY_Controller {
             $this->upload->do_upload('profilepic');
 //Getting Uploaded Image File Data
             $imgdata = $this->upload->data();
+
+            $main_image = $this->config->item('bus_profile_main_upload_path') . $imgdata['file_name'];
+            $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
             $imgerror = $this->upload->display_errors();
             if ($imgerror == '') {
 //Configuring Thumbnail 
@@ -2819,6 +2829,9 @@ class Business_profile extends MY_Controller {
                 $dataimage = $imgdata['file_name'];
 //Creating Thumbnail
                 $this->image_lib->resize();
+
+                $thumb_image = $this->config->item('bus_profile_thumb_upload_path') . $imgdata['file_name'];
+                $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
                 $thumberror = $this->image_lib->display_errors();
             } else {
                 $thumberror = '';
@@ -2905,7 +2918,7 @@ class Business_profile extends MY_Controller {
         }
     }
 
-    public function user_image_insert() {
+    public function user_image_insert_new() {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -4162,7 +4175,7 @@ class Business_profile extends MY_Controller {
                 unlink($user_bg_origin_image);
             }
         }
-        
+
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
 
@@ -4173,19 +4186,28 @@ class Business_profile extends MY_Controller {
 //        $base64string = $data;
 //        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
 
+        /*    $data = $_POST['image'];
+          $data = str_replace('data:image/png;base64,', '', $data);
+          $data = str_replace(' ', '+', $data);
+          $user_bg_path = $this->config->item('bus_bg_main_upload_path');
+          $imageName = time() . '.png';
+          $data = base64_decode($data);
+          $file = $user_bg_path . $imageName;
+          $success = file_put_contents($file, $data);
+         */
+
         $data = $_POST['image'];
-        $data = str_replace('data:image/png;base64,', '', $data);
-        $data = str_replace(' ', '+', $data);
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
         $user_bg_path = $this->config->item('bus_bg_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
         $file = $user_bg_path . $imageName;
+        file_put_contents($user_bg_path . $imageName, $data);
         $success = file_put_contents($file, $data);
-
         $main_image = $user_bg_path . $imageName;
-
         $main_image_size = filesize($main_image);
-        
+
         if ($main_image_size > '1000000') {
             $quality = "15%";
         } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
@@ -4201,18 +4223,18 @@ class Business_profile extends MY_Controller {
         }
         /* RESIZE */
 
-        $business_profile_bg['image_library'] = 'gd2';
-        $business_profile_bg['source_image'] = $main_image;
-        $business_profile_bg['new_image'] = $main_image;
-        $business_profile_bg['quality'] = $quality;
-        $instanse_cover = "imagecover";
-        $this->load->library('image_lib', $business_profile_bg, $instanse_cover);
-        $this->$instanse_cover->watermark();
-       
+//        $business_profile_bg['image_library'] = 'gd2';
+//        $business_profile_bg['source_image'] = $main_image;
+//        $business_profile_bg['new_image'] = $main_image;
+//        $business_profile_bg['quality'] = $quality;
+//        $instanse_cover = "imagecover";
+//        $this->load->library('image_lib', $business_profile_bg, $instanse_cover);
+//        $this->$instanse_cover->watermark();
+
         /* RESIZE */
 
         $cover_image = $this->config->item('bus_bg_main_upload_path') . $imageName;
-        $abc = $s3->putObjectFile($cover_image, bucket, $cover_image, S3::ACL_PUBLIC_READ);
+        $abc1 = $s3->putObjectFile($cover_image, bucket, $cover_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('bus_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('bus_bg_thumb_width');
@@ -4222,6 +4244,7 @@ class Business_profile extends MY_Controller {
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
         $thumb_image = $user_thumb_path . $imageName;
+//        $abc = $s3->putObjectFile($cover_image, bucket, $cover_image, S3::ACL_PUBLIC_READ);
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
