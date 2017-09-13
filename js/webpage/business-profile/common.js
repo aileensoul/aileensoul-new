@@ -159,7 +159,7 @@ $(document).ready(function () {
                     document.getElementById('loader').style.display = 'block';
                 },
                 complete: function () {
-                    document.getElementById('loader').style.display = 'none';
+                 //   document.getElementById('loader').style.display = 'none';
                 },
                 success: function (data) {
                     $('#loader').remove();
