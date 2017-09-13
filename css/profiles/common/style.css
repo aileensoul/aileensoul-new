@@ -703,7 +703,7 @@ label.error {
     width: 100%;
     float: left;
 }
-.modal-close, .posterror-modal-close
+.profile-modal-close, .modal-close, .posterror-modal-close
 .modal-close1 {
     height: 30px !important;
     width: 30px !important;
@@ -1065,7 +1065,7 @@ label.cameraButton {
     margin:0;
     float:left;
 }
-.cover .modal-close, .posterror-modal-close{line-height:30px;}
+.cover .profile-modal-close, .cover .modal-close, .posterror-modal-close{line-height:30px;}
 .custom-c .middle-section{background:#f3f3f3;}
 .bg-images.no-cover-upload{
     background:#fff;
