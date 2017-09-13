@@ -11,6 +11,7 @@ class Dashboard extends MY_Controller {
 
         parent::__construct();
         $this->load->model('email_model');
+        $this->load->library('S3');
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
         include('include.php');
     }
@@ -377,9 +378,8 @@ class Dashboard extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
-            $userimage .= 'Update Profile Picture';
-            $userimage .= '</a>';
+            $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
+                                                <img src="'.base_url().'img/cam.png">Update Profile Picture</a>';
 
             echo $userimage;
         }

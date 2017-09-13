@@ -172,7 +172,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                 </div> 
                                                                 <?php
                                                             } else { ?>
-                                            <img src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" class="main-pic">
+                                            <img src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image']; ?>" alt="" class="main-pic">
                                             <?php } ?>
 
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
