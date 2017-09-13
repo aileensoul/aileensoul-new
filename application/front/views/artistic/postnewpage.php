@@ -63,7 +63,7 @@
                                 </div>
                                 <?php }else{?>
 
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted; ?>" name="image_src" id="image_src" />
 
                                                 <?php }?>
 
@@ -102,7 +102,7 @@
                                 <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?> 
                                 </div>
                                 <?php }else{?>
-                                                <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
+                                                <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
 
                                                 <?php } ?>
 
@@ -636,7 +636,7 @@
                                 </div>
                                 <?php }else{?>
 
-                             <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
+                             <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
 
                              <?php }?>
 
@@ -808,7 +808,7 @@
                                 </div>
                                 <?php }else{?>
 
-                            <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
+                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
 
                             <?php }?>
 
@@ -1087,7 +1087,7 @@
                                 </div>
                                 <?php }else{?>
 
-                            <img  src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>"  alt="">
+                            <img  src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>"  alt="">
 
                             <?php }?>
 
@@ -1274,7 +1274,7 @@
                                 </div>
                                 <?php }else{?>
 
-                                            <img src="<?php echo base_url($this->config->item('art_profile_thumb_upload_path') . $art_userimage); ?>" name="image_src" id="image_src" />
+                                            <img src="<?php echo ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage; ?>" name="image_src" id="image_src" />
 
                                             <?php }?>
                                             <?php
