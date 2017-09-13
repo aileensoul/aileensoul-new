@@ -1672,6 +1672,19 @@ fieldset{padding: 9px 8px!important;}
 	.h2-smladd{margin-top: 0px;}
 	#notificationsmsgBody #InboxFooter a{font-size: 14px; padding: 3px 21px !important;}
 	.header2 ul li.active a{padding:9px 10px 10px}
+    #basicinfo .day{width: 30% !important;
+padding-left: 4px;}
+#basicinfo .month {
+    width: 31% !important;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+#basicinfo .year {
+    width: 32% !important;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 }
 @media screen and (max-width: 479px) {
 
