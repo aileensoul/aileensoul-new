@@ -3729,6 +3729,7 @@ height: 100px;
 	.cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+    .main-text-area{padding-right: 0px;}
 	.hidden-mob {
         display: none;
     }
@@ -4078,6 +4079,14 @@ height: 100px;
     }
 }
 @media screen and (max-width: 540px) {
+    .reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
+    }
 	.post-edit-popup .editor-content {
         width: 86%;
     }
@@ -4099,7 +4108,8 @@ height: 100px;
 	.popup-textarea textarea {
         min-height: 35px;
     }
-	.main-text-area{margin:4px 3px 4px 5px;}
+    .fifty_val{right: 34px;}
+	
 	.text_num{width: 23px;}
     .post-editor .camer_h{padding-top: 2px;}
     .popup-img{padding-right: 8px;}
@@ -4124,7 +4134,9 @@ height: 100px;
     }
 }
 @media screen and (max-width: 479px){
-    
+    .fifty_val {
+    right: 28px;
+}
     .bui_bcon {width: 49%;}
     .folle_text {width: 42%;}
     .popup-text textarea{ font-size: 12px!important;  }
@@ -4241,7 +4253,7 @@ height: 100px;
     }
     
     .post-edit-popup .editor-content {
-        width: 80%;
+        width: 81%;
     }
 	.profile-main-box-buis-menu li a {
         padding: 10px 5px 12px !important;

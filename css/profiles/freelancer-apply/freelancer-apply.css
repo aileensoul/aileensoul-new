@@ -1253,6 +1253,14 @@ label.cameraButton input[accept*="camera"] {
         width: 88px;
         padding: 7px 5px 7px 5px !important;
     }
+	.reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
+    }
 }
 @media screen and (max-width: 479px) {
 	.designation_rec {

@@ -1299,8 +1299,7 @@ label.cameraButton input[accept*="camera"] {
 .profile-box-left .edi_origde .count_main_progress{width: 152px;}
 .circle-1 canvas{width: 118px; height: 118px;}
 .edit_profile_job{font-size: 12px;}
-.header2 {top: 49px;}
-}
+
 @media screen and (max-width: 1100px){
 .custom-right{margin-left: 10px;}
 
@@ -1449,9 +1448,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
-    .header2 {
-    top: 46px;
-}
+
 .panel-body label, .common-form fieldset label{
     margin: 0 0px 0px;
 padding: 2px 2px 6px;
@@ -1773,13 +1770,17 @@ font-size: 18px;}
     }
 }
 @media screen and (max-width: 540px) {
-	
+	.reactivate_btn_n , .reactivate_btn_y{
+        margin-top: 0px;
+
+    }
+    .reactivate_btn_n a , .reactivate_btn_y a{
+        font-size: 16px;
+        padding: 7px 29px;
+    }
 }
 @media screen and (max-width: 479px) {
 .edu_tab .panel-body{padding: 0px;}
-    .header2 {
-    top: 46px;
-}
 .padd_img{padding-left: 2px !important;
 padding-top: 2px !important;}
     .profile-job-details .job_companyname {
@@ -1805,7 +1806,7 @@ padding-top: 2px !important;}
     }
 	.profile-head-text{margin-top: 8px;}
     .profile-head-text_dg{line-height: 18px;}
-	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
+	.search-mob-block label{/*margin-top: 7px; margin-left: 0px*/}
 	.post-img-user {
 		font-size: 16px;
 		height: 100%;
@@ -1907,9 +1908,7 @@ padding-top: 2px !important;}
     .profile-job-profile-menu ul .text-center a{font-size: 12px;}
 }
 @media screen and (max-width: 360px) {
-    .header2 {
-    top: 42px;
-}
+ 
 
 .profile-job-details ul li.date_re {font-size: 10px;}
 	.job_con #InboxContainer::before {
