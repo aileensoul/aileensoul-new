@@ -801,7 +801,7 @@ $config['bus_post_resize3_upload_path'] = 'uploads/business_post/resize3/';
 $config['bus_post_resize3_width'] = '210';
 $config['bus_post_resize3_height'] = '210';
 
-// BUSINESS POST 210 X 210
+// BUSINESS POST 550 X 220
 $config['bus_post_resize4_upload_path'] = 'uploads/business_post/resize4/';
 $config['bus_post_resize4_width'] = '550';
 $config['bus_post_resize4_height'] = '220';

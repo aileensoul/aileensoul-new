@@ -41,7 +41,7 @@
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
-                                <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
+                        <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
                 <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
                 <?php
             } else {
@@ -361,30 +361,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- Bid-modal-2  -->
-<div class="modal fade message-box" id="bidmodal-2" role="dialog">
-    <div class="modal-dialog modal-lm">
-        <div class="modal-content">
-            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-            <div class="modal-body">
-                <span class="mes">
-                    <div id="popup-form">
-                        <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                            <div class="col-md-5">
-                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
-                            </div>
-                            <div class="col-md-7 text-center">
-                                <div id="upload-demo-one" style="width:350px"></div>
-                            </div>
-                            <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                        </form>
-                    </div>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Model Popup Close -->
