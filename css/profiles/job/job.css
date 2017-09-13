@@ -1452,6 +1452,16 @@ label.cameraButton input[accept*="camera"] {
     .header2 {
     top: 46px;
 }
+.panel-body label, .common-form fieldset label{
+    margin: 0 0px 0px;
+padding: 2px 2px 6px;
+display: block;
+line-height: 0;
+}
+.job_work_experience_main_div h6 {
+    margin-bottom: 5px;
+    padding: 12px 0px 4px;
+}
 .edu_tab fieldset h6{ margin-bottom: 5px; }
 .common-form fieldset .radio_check_text {
     padding-right: 0px;
