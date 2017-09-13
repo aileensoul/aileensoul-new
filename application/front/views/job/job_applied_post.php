@@ -257,6 +257,8 @@
                   <span class="mes">
                      <div id="popup-form">
 
+                     <div class="fw" id="loader" class="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
     
                         <div class="col-md-5">
@@ -264,7 +266,7 @@
                         </div>
 
                         <div class="col-md-7 text-center">
-                              <div id="upload-demo-one" style="width:350px"></div>
+                              <div id="upload-demo-one" style="width:350px; display:none;"></div>
                         </div>
 
                         <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >

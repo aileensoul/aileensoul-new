@@ -271,7 +271,7 @@
                         </div>
 
                         <div class="col-md-7 text-center">
-                              <div id="upload-demo-one" style="width:350px"></div>
+                              <div id="upload-demo-one" style="width:350px; display:none;"></div>
                         </div>
 
                         <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >

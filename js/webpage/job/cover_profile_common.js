@@ -126,6 +126,7 @@ $('#upload').click(function(){
 
 
 //Update Profile Pic Start
+
 $uploadCrop1 = $('#upload-demo-one').croppie({
         enableExif: true,
         viewport: {
@@ -140,6 +141,7 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
     });
 
     $('#upload-one').on('change', function () {
+        document.getElementById('upload-demo-one').style.display = 'block';
         var reader = new FileReader();
         reader.onload = function (e) {
             $uploadCrop1.croppie('bind', {
@@ -162,16 +164,30 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                url: base_url + "job/user_image_insert",
                 type: "POST",
                 data: {"image": resp},
+
+                beforeSend: function () 
+                {
+                    $('#loader').show();
+                },
+                complete: function () 
+                {
+                    $('#loader').hide();
+                },
                 success: function (data) {
-                  $('#bidmodal-2').modal('hide');
+                     $('#loader').remove();
+                    $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').value = '';
+                    document.getElementById('upload-demo-one').style.display = 'none';
                 }
             });
         });
 }
-function updateprofilepopup(id) {
+
+function updateprofilepopup(id) 
+{
+    document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('upload-one').value = null;
     $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END
