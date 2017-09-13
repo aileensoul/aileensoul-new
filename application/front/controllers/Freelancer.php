@@ -4489,15 +4489,15 @@ class Freelancer extends MY_Controller {
         }
 
 
-        /* RESIZE */
-        $freelancer_hire_bg['image_library'] = 'gd2';
-        $freelancer_hire_bg['source_image'] = $main_image;
-        $freelancer_hire_bg['new_image'] = $main_image;
-        $freelancer_hire_bg['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $freelancer_hire_bg, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+//        /* RESIZE */
+//        $freelancer_hire_bg['image_library'] = 'gd2';
+//        $freelancer_hire_bg['source_image'] = $main_image;
+//        $freelancer_hire_bg['new_image'] = $main_image;
+//        $freelancer_hire_bg['quality'] = $quality;
+//        $instanse_aa = "image1";
+//        $this->load->library('image_lib', $freelancer_hire_bg, $instanse_aa);
+//        $this->$instanse_aa->watermark();
+//        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);

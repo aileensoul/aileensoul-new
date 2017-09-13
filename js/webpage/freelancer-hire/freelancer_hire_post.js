@@ -67,7 +67,7 @@ $(document).on('keydown', function (e) {
                   $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').value = '';
+                    $('.cr-image').attr('src', '#');
 //                    html = '<img src="' + resp + '" />';
 //                    $("#upload-demo-i").html(html);
                 }
