@@ -2590,159 +2590,92 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         
         $userid = $this->session->userdata('aileenuser');
  
+        $contition_array = array('user_id' => $userid,'is_delete'=>0,'status'=>1);
+        $user_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($this->input->post('cancel1')) {
-            redirect('job/home', refresh);
-        } elseif ($this->input->post('cancel2')) {
-            redirect('job/resume', refresh);
-        } elseif ($this->input->post('cancel3')) {
-            redirect('job/applied-job', refresh);
-        } elseif ($this->input->post('cancel4')) {
-            redirect('job/saved-job', refresh);
+        $user_reg_prev_image = $user_reg_data[0]['job_user_image'];
+
+        if ($user_reg_prev_image != '') {
+            $user_image_main_path = $this->config->item('job_profile_main_upload_path');
+            $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+            if (isset($user_bg_full_image)) {
+                unlink($user_bg_full_image);
+            }
+
+            $user_image_thumb_path = $this->config->item('job_profile_thumb_upload_path');
+            $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+            if (isset($user_bg_thumb_image)) {
+                unlink($user_bg_thumb_image);
+            }
         }
 
-        if (empty($_FILES['profilepic']['name'])) {
-            $this->form_validation->set_rules('profilepic', 'Upload profilepic', 'required');
+        $data = $_POST['image'];
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $user_bg_path = $this->config->item('job_profile_main_upload_path');
+        $imageName = time() . '.png';
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($file, $data);
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
         } else {
+            $quality = "100%";
+        }
+
+        /* RESIZE */
+        $job['image_library'] = 'gd2';
+        $job['source_image'] = $main_image;
+        $job['new_image'] = $main_image;
+        $job['quality'] = $quality;
+        $instanse10 = "image10";
+        $this->load->library('image_lib', $job, $instanse10);
+        $this->$instanse10->watermark();
+        /* RESIZE */
 
         //S3 BUCKET ACCESS START
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-        //S3 BUCKET ACCESS START
+        //S3 BUCKET ACCESS END
 
-        //Configuring Main Image Start
-        $job['upload_path'] = $this->config->item('job_profile_main_upload_path');
-        $job['allowed_types'] = $this->config->item('job_profile_main_allowed_types');
-        $this->upload->initialize($job);
+        //S3 BUCKET STORE MAIN IMAGE START
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+         //S3 BUCKET STORE MAIN IMAGE END
 
-        if ($this->upload->do_upload('profilepic')) 
-        {
+        $user_thumb_path = $this->config->item('job_profile_thumb_upload_path');
+        $user_thumb_width = $this->config->item('job_profile_thumb_width');
+        $user_thumb_height = $this->config->item('job_profile_thumb_height');
 
-            $imgdata = $this->upload->data();              
-            $main_image_size = $_FILES['profilepic']['size'];
+        $upload_image = $user_bg_path . $imageName;
 
-            if ($main_image_size > '1000000') {
-                  $quality = "50%";
-            } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-                  $quality = "55%";
-            } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-                  $quality = "60%";
-            } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-                    $quality = "65%";
-            } elseif ($main_image_size > '1' && $main_image_size < '100') {
-                    $quality = "70%";
-            } else {
-                    $quality = "100%";
-            }
-           
-             /* RESIZE */
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
 
-            $job['image_library'] = 'gd2';
-            $job['source_image'] = $this->config->item('job_profile_main_upload_path') .$imgdata['file_name'];
-            $job['new_image'] = $this->config->item('job_profile_main_upload_path') . $imgdata['file_name'];
-            $job['quality'] = $quality;
-               $instanse10 = "image10";
+        //S3 BUCKET STORE THUMB IMAGE START
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+        //S3 BUCKET STORE THUMB IMAGE END
 
-            $imgerror = $this->upload->display_errors(); 
-            $this->load->library('image_lib',  $job, $instanse10 );
-            $this->$instanse10->watermark();
-            /* RESIZE */
+        $data = array(
+            'job_user_image' => $imageName,
+            'modified_date' => date('Y-m-d', time())
+        );
 
-          //S3 BUCKET STORE MAIN IMAGE START
-          $main_image=$job['new_image'];
-          $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
-          //S3 BUCKET STORE MAIN IMAGE END
-        }
-        //Configuring Main Image End
-          
-            if ($imgerror == '') {
-
-                //Configuring Thumbnail Start
-                $job_thumb['image_library'] = 'gd2';
-                $job_thumb['source_image'] = $job['upload_path'] . $imgdata['file_name'];
-                $job_thumb['new_image'] = $this->config->item('job_profile_thumb_upload_path') . $imgdata['file_name'];
-                $job_thumb['create_thumb'] = TRUE;
-                $job_thumb['maintain_ratio'] = TRUE;
-                $job_thumb['thumb_marker'] = '';
-                $job_thumb['width'] = $this->config->item('job_profile_thumb_width');
-                $job_thumb['height'] = 2;
-                $job_thumb['master_dim'] = 'width';
-                $job_thumb['quality'] = "100%";
-                $job_thumb['x_axis'] = '0';
-                $job_thumb['y_axis'] = '0';
-                //Loading Image Library
-                $instanse = "image";
-                $this->load->library('image_lib', $job_thumb,$instanse);
-                $dataimage = $imgdata['file_name'];
-                //Creating Thumbnail
-                $this->$instanse->resize();
-                $thumberror = $this->$instanse->display_errors();
-                $thumberror = '';
-                //Configuring Thumbnail Start
-
-            //S3 BUCKET STORE THUMB IMAGE START
-            $thumb_image= $job_thumb['new_image'];
-            $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
-            //S3 BUCKET STORE THUMB IMAGE END
-
-            } else {
-
-                $thumberror = '';
-            }
-            if ($imgerror != '' || $thumberror != '') {
-                 
-
-                $error[0] = $imgerror;
-                $error[1] = $thumberror;
-            } else {
-                 
-
-                $error = array();
-            }
-            if ($error) {
-               
-                $this->session->set_flashdata('error', $error[0]);
-                $redirect_url = site_url('job');
-                redirect($redirect_url, 'refresh');
-            } else {
-               $contition_array = array('user_id' => $userid);
-        $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $job_reg_prev_image = $job_reg_data[0]['job_user_image'];
-        
-
-            if ($job_reg_prev_image != '') {
-            $job_image_main_path = $this->config->item('job_profile_main_upload_path');
-            $job_bg_full_image = $job_image_main_path . $job_reg_prev_image;
-            if (isset($job_bg_full_image)) {
-                unlink($job_bg_full_image);
-            }
-            
-            $job_image_thumb_path = $this->config->item('job_profile_thumb_upload_path');
-            $job_bg_thumb_image = $job_image_thumb_path . $job_reg_prev_image;
-            if (isset($job_bg_thumb_image)) {
-                unlink($job_bg_thumb_image);
-            }
-
-
-        }
-
-                $job_image = $imgdata['file_name'];
-            }
-
-
-
-            $data = array(
-                'job_user_image' => $job_image,
-                'modified_date' => date('Y-m-d', time())
-            );
-
-            $updatdata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-
-            if ($updatdata) 
-            {
-               
-                $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+       
+        if ($update) {
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
                 $job_reg_data = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
              
                 $userimage .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $job_reg_data[0]['job_user_image'] . '" alt="" >';
@@ -2750,13 +2683,11 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
                 $userimage .= 'Update Profile Picture';
                 $userimage .= '</a>';
                 echo $userimage;
-            } 
-            else 
-            {
-                $this->session->flashdata('error', 'Your data not inserted');
+        } else {
+
+             $this->session->flashdata('error', 'Your data not inserted');
                 redirect('job/home', refresh);
-            }
-        }
+        } 
     }
 
 // pop image end
