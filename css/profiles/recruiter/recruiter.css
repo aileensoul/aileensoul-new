@@ -842,6 +842,9 @@ label.cameraButton input[accept*="camera"] {
     border: 1px solid #bfbfbf;
     border-top-right-radius: 3px;
 }
+.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9;}
+
+
 /***  media query  ***/
 @media screen and (max-width: 1200px)
 {

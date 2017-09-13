@@ -804,6 +804,8 @@ label.cameraButton input[accept*="camera"] {
 }
 #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 
+.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9;}
+
 
 /***  media query  ***/
 @media screen and (max-width: 1279px) {
