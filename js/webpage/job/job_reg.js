@@ -1,9 +1,9 @@
 
 //validation start
  $(document).ready(function () {
- $.validator.addMethod("lowercase", function(value, element, regexpr) {          
-          return regexpr.test(value);
-      }, "email Should be in Small Character");
+ // $.validator.addMethod("lowercase", function(value, element, regexpr) {          
+ //          return regexpr.test(value);
+ //      }, "email Should be in Small Character");
       
       
        $.validator.addMethod("regx2", function(value, element, regexpr) {          
@@ -79,7 +79,7 @@
       
                           required: true,
                           email: true,
-                          lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                         // lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                          remote: {
                              url: base_url +"job/check_email",
                              //async is used for double click on submit avoid

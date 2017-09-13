@@ -59,11 +59,15 @@ $('.cancel-result').on('click', function (ev) {
 
     });
 
+//THIS IS USED FOR WHILE SAME IMAGE UPLOAD THEN NOT GIVE NULL IMAGE START
+$('#upload').click(function(){
+   var input = document.getElementsByTagName('#upload')[0];
+    this.value = null;
+});
+//THIS IS USED FOR WHILE SAME IMAGE UPLOAD THEN NOT GIVE NULL IMAGE END
+
     //aarati code start
     $('#upload').on('change', function () {
-       // alert($(this).attr("value"));
-        // $(this).attr("value", "");
-//alert("hi");
         var reader = new FileReader();
 
         reader.onload = function (e) {
@@ -75,9 +79,6 @@ $('.cancel-result').on('click', function (ev) {
 
         }
         reader.readAsDataURL(this.files[0]);
-
-
-
     });
 
     $('#upload').on('change', function () {

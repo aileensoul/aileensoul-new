@@ -42,7 +42,7 @@
                         </fieldset>
                         <fieldset class="full-width">
                            <label >Email Address <font  color="red">*</font> :</label>
-                           <input type="text" name="email" id="email" tabindex="3" placeholder="Enter your Email Address" value="<?php echo $job[0]['user_email'];?>" maxlength="255">
+                           <input type="email" name="email" id="email" tabindex="3" placeholder="Enter your Email Address" value="<?php echo $job[0]['user_email'];?>" maxlength="255">
                         </fieldset>
                         <fieldset class="fresher_radio col-xs-12" >
                            <label>Fresher <font  color="red">*</font> : </label>
