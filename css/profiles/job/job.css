@@ -1470,6 +1470,7 @@ line-height: 0;
 #job_education ul .text-center h5{
     padding: 10px;
 font-size: 18px;
+display: inline-block;
 }
 
     .mob-block{display: block;}
@@ -1705,6 +1706,7 @@ font-size: 18px;
     }
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
+    .mob-progressbar .progress .skill{line-height: 26px;}
 }
 @media screen and (max-width: 640px) {
     .panel-heading a::before {top: 8px;
@@ -1901,7 +1903,7 @@ padding-top: 2px !important;}
 	  width: 39% !important;
 	}
 	.details_all_tital{font-size:18px;}
-    .profile-job-profile-menu ul .text-center{padding: 10px;}
+    .profile-job-profile-menu ul .text-center{padding: 10px; padding-left: 0px;}
     .profile-job-profile-menu ul .text-center a{font-size: 12px;}
 }
 @media screen and (max-width: 360px) {
