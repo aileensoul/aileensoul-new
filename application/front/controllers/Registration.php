@@ -576,6 +576,48 @@ class Registration extends CI_Controller {
     }
 
 //login validation end
+    
+    // login check and email validation start for live link
+    public function user_check_login() {
+        $email_login = $this->input->post('email_login');
+        $password_login = $this->input->post('password_login');
+
+        $contition_array = array('user_email' => $email_login, 'is_delete' => '0');
+        $result = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $userinfo = $this->common->check_login($email_login, $password_login);
+
+        if (count($userinfo) > 0) {
+            if ($userinfo[0]['status'] == "2") {
+                echo 'Sorry, user is Inactive.';
+            } else {
+                $this->session->set_userdata('aileenuser', $userinfo[0]['user_id']);
+                $data = 'ok';
+            }
+        } else if ($email_login == $result[0]['user_email']) {
+            $data = 'password';
+            $id = $result[0]['user_id'];
+        } else {
+            $data = 'email';
+        }
+        
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
+        $result = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $business = 0;
+        if($result[0]['total'] > 0){
+            $business = 1;
+        }
+
+        echo json_encode(
+                array(
+                    "data" => $data,
+                    "id" => $id,
+                    "is_bussiness" => $business
+        ));
+    }
+
+//login validation end
 
     // for old password match start
 

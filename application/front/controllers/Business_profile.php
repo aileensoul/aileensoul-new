@@ -2385,7 +2385,7 @@ class Business_profile extends MY_Controller {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         } else {
 
-                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                            $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -2497,7 +2497,7 @@ class Business_profile extends MY_Controller {
 
                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                    $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                 }
             } else {
 
@@ -3066,7 +3066,7 @@ class Business_profile extends MY_Controller {
                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $user['business_user_image']) . '" height="50px" width="50px" alt="" >';
+                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
                 }
                 $return_html .= '</a>';
             } else {
@@ -3624,7 +3624,7 @@ class Business_profile extends MY_Controller {
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
                     } else {
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $followerimage) . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -3780,7 +3780,7 @@ class Business_profile extends MY_Controller {
 
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image) . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4410,7 +4410,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if ($business_userimage != '') {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">  </div>';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">  </div>';
                 } else {
 //                    $a = $companyname;
 //                    $acr = substr($a, 0, 1);
@@ -4570,7 +4570,7 @@ class Business_profile extends MY_Controller {
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
 
                     $cmtinsert .= '</div>';
@@ -4973,7 +4973,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -5135,7 +5135,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -5996,7 +5996,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6154,7 +6154,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -6314,7 +6314,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6487,7 +6487,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -7021,7 +7021,7 @@ class Business_profile extends MY_Controller {
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7177,7 +7177,7 @@ class Business_profile extends MY_Controller {
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7339,7 +7339,7 @@ class Business_profile extends MY_Controller {
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -7472,7 +7472,7 @@ class Business_profile extends MY_Controller {
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                     $fourdata .= '</div>';
                 } else {
@@ -7594,7 +7594,7 @@ class Business_profile extends MY_Controller {
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busienss_userimage) . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -7737,7 +7737,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -7923,7 +7923,7 @@ class Business_profile extends MY_Controller {
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -8076,7 +8076,7 @@ class Business_profile extends MY_Controller {
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8223,7 +8223,7 @@ class Business_profile extends MY_Controller {
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8369,7 +8369,7 @@ class Business_profile extends MY_Controller {
                         $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $mulimgfour .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
 
                     $mulimgfour .= '</div>';
@@ -8511,7 +8511,7 @@ class Business_profile extends MY_Controller {
 
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -8587,14 +8587,10 @@ class Business_profile extends MY_Controller {
             $modal .= '<a href="' . base_url('business_profile/business_resume/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
             $modal .= '<div class="like_user_list_img">';
             if ($bus_image) {
-
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
-
-
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-
-                    $modal .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $bus_image) . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -8922,7 +8918,7 @@ class Business_profile extends MY_Controller {
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
                         /*    $a = $busdata[0]['company_name'];
@@ -8975,7 +8971,7 @@ class Business_profile extends MY_Controller {
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 //                        $a = $busdata[0]['company_name'];
@@ -9103,7 +9099,7 @@ class Business_profile extends MY_Controller {
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     } else {
                         $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '">';
                     }
@@ -9139,7 +9135,7 @@ class Business_profile extends MY_Controller {
                             $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         } else {
 
-                            $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 
@@ -9286,7 +9282,7 @@ class Business_profile extends MY_Controller {
                                                         <div class="profile-img">';
                     if ($friend['business_user_image'] != '') {
                         $return_html .= '<a  href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
-                                                                    <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $friend['business_user_image']) . '">
+                                                                    <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '">
                                                                 </a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
@@ -9397,7 +9393,7 @@ class Business_profile extends MY_Controller {
                         $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     } else {
 
-                        $contactdata .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $busdata[0]['business_user_image']) . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     }
                 } else {
 //                    $a = $busdata[0]['company_name'];
@@ -9546,7 +9542,7 @@ class Business_profile extends MY_Controller {
                         $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $cdata[0]['business_user_image']) . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -10038,7 +10034,7 @@ No Contacts Available.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name = "image_src" id = "image_src" />';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -10052,7 +10048,7 @@ No Contacts Available.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt = "">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -10592,7 +10588,7 @@ Your browser does not support the audio tag.
 
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                                 } else {
-                                    $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt = "">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                                 }
                                 $return_html .= '</a>';
                             } else {
@@ -10712,7 +10708,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
                         }
                     } else {
 
@@ -10851,7 +10847,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -10924,7 +10920,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -10998,7 +10994,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                     } else {
 
@@ -11066,7 +11062,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -11180,7 +11176,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image']) . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -11359,7 +11355,7 @@ Your browser does not support the audio tag.
                 $fetch_video .= '<td class = "image_profile">';
                 $fetch_video .= '<video controls>';
 
-                $fetch_video .= '<source src = "' . base_url($this->config->item('bus_post_main_upload_path') . $singlearray1[0]['file_name']) . '" type = "video/mp4">';
+                $fetch_video .= '<source src = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray1[0]['file_name'] . '" type = "video/mp4">';
                 $fetch_video .= '<source src = "movie.ogg" type = "video/ogg">';
                 $fetch_video .= 'Your browser does not support the video tag.';
                 $fetch_video .= '</video>';
@@ -11696,7 +11692,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -11712,7 +11708,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimage) . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -12145,7 +12141,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                                 $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                             } else {
 
-                                $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                             }
                         } else {
 
@@ -12255,7 +12251,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                        $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                 } else {
 
