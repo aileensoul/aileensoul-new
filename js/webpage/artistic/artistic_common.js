@@ -1,4 +1,20 @@
 
+
+ $('.modal-close').on('click', function () {
+   document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+   $('.cr-image').attr('src', '#');
+    });
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $( "#bidmodal-2" ).hide();
+        document.getElementById('upload-demo-one').style.display = 'none';
+        document.getElementById('upload-one').value = null;
+    }
+});
+
 jQuery(document).ready(function($) {  
 // site preloader -- also uncomment the div in the header and the css style for #preloader
 $(window).load(function(){
@@ -24,6 +40,7 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
     });
 
     $('#upload-one').on('change', function () {
+        document.getElementById('upload-demo-one').style.display = 'block';
         var reader = new FileReader();
         reader.onload = function (e) {
             $uploadCrop1.croppie('bind', {
@@ -64,8 +81,7 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
 
                 });
 
-                function profile_pic(){
-
+ function profile_pic(){
 
     $uploadCrop1.croppie('result', {
             type: 'canvas',
@@ -77,11 +93,18 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                url: base_url + "artistic/profilepic",
                 type: "POST",
                 data: {"image": resp},
+
+                 beforeSend: function () {
+                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
+                        $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    },
                 success: function (data) {
                   $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
-                   $('.cr-image').attr('src', '#');
+                    document.getElementById('upload-demo-one').style.display = 'none';
+                     $('.loader').remove();
+                   //$('.cr-image').attr('src', '#');
                    
                 }
             });
