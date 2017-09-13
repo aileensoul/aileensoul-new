@@ -69,16 +69,16 @@ function business_search_post(pagenum) {
 // LAZZY LOADER WITHOUT LOGIN START
 
 //AJAX DATA LOAD BY LAZZY LOADER END
- function login()
-    {
-          document.getElementById('error1').style.display = 'none';
-    }
-    //validation for edit email formate form
+
+      
+            function login()
+            {
+                document.getElementById('error1').style.display = 'none';
+            }
+            //validation for edit email formate form
             $(document).ready(function () {
                 /* validation */
-
                 $("#login_form").validate({
-
                     rules: {
                         email_login: {
                             required: true,
@@ -112,19 +112,24 @@ function business_search_post(pagenum) {
                     }
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'registration/check_login',
+                        url: base_url + 'registration/user_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
                         {
                             $("#error").fadeOut();
-                            $("#btn1").html('Login ...');
+                            $("#btn1").html('Login');
                         },
                         success: function (response)
                         {
                             if (response.data == "ok") {
-                                $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = base_url +"job/search?skills=" + skill + '&searchplace=' + place;
+                                $("#btn1").html('<img src="' + base_url + 'images/btn-ajax-loader.gif" /> &nbsp; Login');
+                                if (response.is_bussiness == '1') {
+                                    window.location = base_url + "search/ajax_business_user_login_search?page=" + pagenum + "&skills=" + keyword + "&searchplace=" + keyword1;
+                                }
+                                else{
+                                    window.location = base_url +"business-profile";
+                                }
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -143,11 +148,13 @@ function business_search_post(pagenum) {
                 /* login submit */
             });
 
+
+
             $(document).ready(function () {
 
                 $.validator.addMethod("lowercase", function (value, element, regexpr) {
                     return regexpr.test(value);
-                }, "Email should be in small character");
+                }, "Email Should be in Small Character");
 
                 $("#register_form").validate({
                     rules: {
@@ -162,14 +169,14 @@ function business_search_post(pagenum) {
                             email: true,
                             lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                             remote: {
-                                url: base_url +"registration/check_email",
+                                url: base_url +'registration/check_email',
                                 type: "post",
                                 data: {
                                     email_reg: function () {
                                         // alert("hi");
                                         return $("#email_reg").val();
                                     },
-                                    csrf_token_name: csrf_hash,
+                                    csrf_token_name : csrf_hash,
                                 },
                             },
                         },
@@ -246,7 +253,7 @@ function business_search_post(pagenum) {
                         'selmonth': selmonth,
                         'selyear': selyear,
                         'selgen': selgen,
-                        csrf_token_name : csrf_hash
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
                     }
 
 
@@ -302,18 +309,19 @@ function business_search_post(pagenum) {
                     }
                     $.ajax({
                         type: 'POST',
-                        url: base_url + 'registration/reg_insert',
+                        url: '<?php echo base_url() ?>registration/reg_insert',
                         data: post_data,
                         beforeSend: function ()
                         {
                             $("#register_error").fadeOut();
-                            $("#btn1").html('Create an account ...');
+                            $("#btn1").html('Create an account');
                         },
                         success: function (response)
                         {
                             if (response == "ok") {
-                                $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                                window.location = base_url + "job/search?skills=" + skill + '&searchplace=' + place;
+                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
+//                                window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
+                                window.location = "<?php echo base_url() ?>business-profile/";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
@@ -326,7 +334,10 @@ function business_search_post(pagenum) {
                 }
             });
 
-       $(document).ready(function () { //aletr("hii");
+        
+      
+       
+            $(document).ready(function () { //aletr("hii");
                 /* validation */
                 $("#forgot_password").validate({
                     rules: {
@@ -338,15 +349,16 @@ function business_search_post(pagenum) {
                     },
                     messages: {
                         forgot_email: {
-                            required: "Email address is required.",
+                            required: "Email Address Is Required.",
                         }
                     },
                 });
                 /* validation */
 
             });
-
-        function login_profile() {
+        
+       
+            function login_profile() {
                 $('#login').modal('show');
             }
             function register_profile() {
@@ -356,8 +368,8 @@ function business_search_post(pagenum) {
             function forgot_profile() {
                 $('#forgotPassword').modal('show');
             }
-
-      $(document).on('click', '[data-toggle*=modal]', function () {
+       
+            $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
                     switch ($(this).css('display')) {
                         case('block'):
@@ -368,3 +380,4 @@ function business_search_post(pagenum) {
                     }
                 });
             });
+        

@@ -98,11 +98,9 @@
                 <?php } ?>
 
                 <div class="profile-photo">
+                    <!--PROFILE PIC CODE START-->
                     <div class="profile-pho">
-
                         <div class="user-pic padd_img">
-
-
                             <?php
                             $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
                             if (file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') {
@@ -110,8 +108,6 @@
                                 <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="" >
                                 <?php
                             } else {
-
-
                                 $a = $recdata[0]['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
@@ -122,20 +118,13 @@
                                     <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
                                 </div>
-
                             <?php } ?>
-                             <!-- <img alt="" class="img-circle" src="<?php //echo base_url(NOIMAGE);  alt="" /> -->
-                            ?>
-                            <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
-                            -->
                             <?php if ($returnpage == '') { ?>
                                 <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                             <?php } ?>
                         </div>
-
-
-
                     </div>
+                    <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
@@ -642,7 +631,7 @@
         </section>
         <!-- END CONTAINER -->
 
-        <!-- Bid-modal-2  -->
+        <!--PROFILE PIC MODEL START-->
       <div class="modal fade message-box" id="bidmodal-2" role="dialog">
          <div class="modal-dialog modal-lm">
             <div class="modal-content">
@@ -652,12 +641,14 @@
                      <div id="popup-form">
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-    
-                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
-                      
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
-                        </form>
+                                    <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                    </div>
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                </form>
                         
                      </div>
                   </span>
@@ -665,7 +656,7 @@
             </div>
          </div>
       </div>
-      <!-- Model Popup Close -->
+     <!--PROFILE PIC MODEL END-->
         <!-- BEGIN FOOTER -->
 <?php echo $footer; ?>
         <!-- END FOOTER -->
@@ -675,7 +666,8 @@
         <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
         <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <!--<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>-->
+       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
         <script>
                                     var base_url = '<?php echo base_url(); ?>';
