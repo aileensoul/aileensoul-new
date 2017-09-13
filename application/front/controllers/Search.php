@@ -49,7 +49,7 @@ class Search extends MY_Controller {
         $this->data['city'] = $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-
+if ($this->session->userdata('aileenuser')) {
         $data = array(
             'search_keyword' => $search_business,
             'search_location' => $search_place,
@@ -62,7 +62,7 @@ class Search extends MY_Controller {
 
         $insert_id = $this->common->insert_data_getid($data, 'search_info');
         // code for insert search keyword in database end
-
+}
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
             $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
