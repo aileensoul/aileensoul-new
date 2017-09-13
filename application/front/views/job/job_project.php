@@ -67,7 +67,7 @@
                            </fieldset>
                            <fieldset class="full-width">
                               <label>Project Description</label>
-                              <textarea name="project_description"  id="project_description" tabindex="3" onpaste="OnPaste_StripFormatting(this, event);" style="resize: none;" placeholder="Enter Project Description" maxlength="4000"><?php if($project_description1){ echo $project_description1; } else { echo $job[0]['project_description']; }?></textarea>
+                              <textarea name="project_description"  onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" id="project_description" tabindex="3" onpaste="OnPaste_StripFormatting(this, event);" style="resize: none;" placeholder="Enter Project Description" maxlength="4000"><?php if($project_description1){ echo $project_description1; } else { echo $job[0]['project_description']; }?></textarea>
                            </fieldset>
                            <div class="text-center">
                               <h5 class="head_title">Training / Internship</h5>

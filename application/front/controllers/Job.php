@@ -1222,12 +1222,12 @@ class Job extends MY_Controller {
         if ($this->input->post('next')) {
 
             $data = array(
-                'project_name' => $this->input->post('project_name'),
+                'project_name' => trim($this->input->post('project_name')),
                 'project_duration' => $this->input->post('project_duration'),
-                'project_description' => $this->input->post('project_description'),
-                'training_as' => $this->input->post('training_as'),
+                'project_description' => trim($this->input->post('project_description')),
+                'training_as' => trim($this->input->post('training_as')),
                 'training_duration' => $this->input->post('training_duration'),
-                'training_organization' => $this->input->post('training_organization'),
+                'training_organization' => trim($this->input->post('training_organization')),
                 'modified_date' => date('Y-m-d h:i:s', time())
             );
 

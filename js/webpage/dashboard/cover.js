@@ -1,3 +1,18 @@
+$('.modal-close').on('click', function () {
+   document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+   $('.cr-image').attr('src', '#');
+    });
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $( "#bidmodal-2" ).hide();
+        document.getElementById('upload-demo-one').style.display = 'none';
+        document.getElementById('upload-one').value = null;
+    }
+});
+
 // script for profile pic strat 
 
 function readURL(input) {
@@ -33,6 +48,32 @@ function picpopup() {
     $('#bidmodal').modal('show');
 }
 //validation for edit email formate form
+$uploadCrop1 = $('#upload-demo-one').croppie({
+        enableExif: true,
+        viewport: {
+            width: 200,
+            height: 200,
+            type: 'square'
+        },
+        boundary: {
+            width: 300,
+            height: 300
+        }
+    });
+
+    $('#upload-one').on('change', function () {
+        document.getElementById('upload-demo-one').style.display = 'block';
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
 
 $(document).ready(function () {
 
@@ -50,48 +91,41 @@ $(document).ready(function () {
         },
          submitHandler: profile_pic
     });
-});
-
 
 function profile_pic(event){
 
+  $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+               url: base_url + "dashboard/profilepic",
+                type: "POST",
+                data: {"image": resp},
 
-
-        var fd = new FormData();
-                
-         fd.append("image", $("#profilepic")[0].files[0]);
-
-         files = this.files;
-
-       
-    $.ajax({
-      url: base_url + "dashboard/profilepic",
-      //url: "<?php echo base_url(); ?>artistic/profilepic",
-      type: "POST",
-      data: fd,
-      contentType: false,
-          cache: false,
-      processData:false,
-      success: function(data)
-        {
-
-        
-      $('#bidmodal-2').modal('hide');
-
-      $(".profile-photo").html(data);
-
-      document.getElementById('profilepic').value= null;
-
-      //document.getElementById('profilepic').value == '';
-
-      $('.popup_previred').hide();
-     $('#preview').prop('src', '#');
-
-        },          
-     });
-  return false;
+                 beforeSend: function () {
+                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
+                        $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    },
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".profile-photo").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').style.display = 'none';
+                     $('.loader').remove();
+                   //$('.cr-image').attr('src', '#');
+                   
+                }
+            });
+        });
 
 }
+});
+
+
+
 
 
 

@@ -1581,19 +1581,21 @@ background-color: white;}
         position: inherit !important;
     }
     #notificationContainer {
-        width:98%;
+        width:94%;
         margin-top: 20px;
         top:27px;
-        right: 7px;
+        right:3%!important;
     }
     #InboxContainer {
-     width: 98%;
+    width: 94% !important;
+
+right: 5% !important;
     margin-top: 10px;
     top: 28px;
-    right: 12px;
+    
     }
     #notificationContainer::before {
-    right: 79px;
+    right: 64px;
     }
     #InboxContainer::before {
     right: 155px;
@@ -1644,7 +1646,7 @@ background-color: white;}
         width: 100%;
         top: 35px;
     }
-	.job_con #InboxContainer::before{right: 134px;}
+	.job_con #InboxContainer::before{right: 100px;}
 	.content{height:200px !important;}
 	#InboxBody{min-height:auto;}
 	#addcontactBody{height:auto;}
@@ -1661,7 +1663,9 @@ background-color: white;}
     right: 16px;
 	}
 	#acon{
-		margin-top: 14px;
+		width:222px;
+margin-top: 15px !important;
+right: 3%!important;
 	}
 	.dropdown_hover span i{margin-right:0;}
 }
@@ -1670,11 +1674,19 @@ background-color: white;}
 		.back {
 		width: 40%;
 	}
-
+    .job_con #InboxContainer::before {
+    right: 107px;
+        }
 	fieldset{padding: 9px 8px!important;}
+    #notificationContainer::before {
+    right: 67px;
+}
 
 }
 @media screen and (max-width: 540px) {
+    #notificationContainer::before {
+    right: 70px;
+}
     .back {
 		width: 40%;
 	}
@@ -1707,7 +1719,15 @@ background-color: white;}
 
 }
 @media screen and (max-width: 479px) {
-
+    #InboxContainer{right: 5% !important;}
+           .job_con #InboxContainer::before {
+    right: 118px;
+        }
+            #acon{
+        width: 94% !important;
+margin-top: 28px !important;
+right: 3%!important;
+    }
 	.logo h2 {
         font-size: 20px;
     }
@@ -1738,9 +1758,9 @@ background-color: white;}
 		right: 218px;
 	}
 	#a_li{position: inherit !important;}
-    #acon::before{right:140px !important;}
-    #acon{width: 100% !important; margin-top: 22px !important;}
-    #notificationContainer::before{right:80px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
+    #acon::before{right:125px !important;}
+    #acon{margin-top: 21px!important;}
+    #notificationContainer::before{right:76px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
 	.notification-data-inside h6 {
         font-size: 12px;
     }
@@ -1748,10 +1768,14 @@ background-color: white;}
 	.search-mob-block label{/*margin-top:7px; margin-left: 0px;*/}
 }
 @media screen and (max-width: 360px) {
-	.header ul{margin-top:16px;}
+       .header ul{margin-top:16px;}
 	#paddingtop_fixed{padding-top:70px !important;}
 	#InboxContainer::before {
-    right: 139px;
+    right: 155px;
+}
+
+#acon {
+    margin-top: 30px !important;
 }
 	.dropdown-menu {
 		left: inherit !important;
@@ -1793,10 +1817,10 @@ background-color: white;}
 	.job_con #InboxContainer::before {
 		right: 131px;
 	}
-	#acon::before{right: 125px!important;}
+	#acon::before{right: 129px!important;}
     .header2 ul li a#addcontactLink{padding: 6px 2px !important;}
 	.header2 ul li a#InboxLink{padding: 12px 8px 4px;}
-    #notificationContainer::before{right: 80px;} 
+    #notificationContainer::before{right: 77px;} 
     .logo h2{padding:0; line-height:27px;}
     .alert{float: left;}
 	.logo {

@@ -165,16 +165,14 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                 type: "POST",
                 data: {"image": resp},
 
-                beforeSend: function () 
-                {
-                    $('#loader').show();
+                beforeSend: function () {
+                    document.getElementById('loader_popup').style.display = 'block';
                 },
-                complete: function () 
-                {
-                    $('#loader').hide();
+                complete: function () {
+                    $document.getElementById('loader_popup').style.display = 'none';
                 },
                 success: function (data) {
-                     $('#loader').remove();
+                     $('#loader_popup').remove();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
@@ -185,13 +183,13 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
 }
 
 function updateprofilepopup(id) 
-{
+{ 
     document.getElementById('upload-demo-one').style.display = 'none';
     document.getElementById('upload-one').value = null;
+    document.getElementById('loader_popup').style.display = 'none';
     $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END
-
 
 //Designation Update Start
 function divClicked() {

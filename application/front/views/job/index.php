@@ -82,7 +82,7 @@
                            </fieldset>
                            <fieldset <?php if ($lname) { ?> class="error-msg" <?php } ?>>  
                               <label>Last Name :<span class="red">*</span> </label>
-                              <input type="text" name="lname" tabindex="2"  id="lname" placeholder="Enter Last name" style="text-transform: capitalize;" value="<?php if ($lname1) {
+                              <input type="text" name="lname" tabindex="2"  id="lname" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" placeholder="Enter Last name" style="text-transform: capitalize;" value="<?php if ($lname1) {
                                  echo $lname1;
                                  } else {
                                  echo $job[0]['last_name'];
@@ -91,7 +91,7 @@
                            </fieldset>
                            <fieldset <?php if ($email) { ?> class="error-msg" <?php } ?>>
                               <label>Email Address :<span class="red">*</span> </label>
-                              <input type="email" name="email" id="email" tabindex="3" placeholder="Enter Email Address"  value="<?php if ($email1) {
+                              <input type="email" name="email" id="email" tabindex="3" placeholder="Enter Email Address" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" value="<?php if ($email1) {
                                  echo $email1;
                                  } else {
                                  echo $job[0]['user_email'];
@@ -100,23 +100,23 @@
                            </fieldset>
                            <fieldset <?php if ($phnno) { ?> class="error-msg" <?php } ?>>
                               <label>Phone Number :</label>
-                              <input type="text" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php if ($phnno1) {
+                              <input type="text" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" name="phnno" id="phnno" tabindex="4" placeholder="Enter Phone Number" value="<?php if ($phnno1) {
                                  echo $phnno1;
                                  } ?>" maxlength="15" tabindex="4"/> <span id="phnno-error"> </span>
                               <?php echo form_error('phnno'); ?>
                            </fieldset>
                            <fieldset <?php if ($dob) { ?> class="error-msg" <?php } ?>>
                               <label>Date of Birth:<span class="red">*</span></label>
-                              <input type="hidden" id="datepicker" tabindex="5">
+                              <input type="hidden" id="datepicker" tabindex="5" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                               <?php echo form_error('dob'); ?>
                            </fieldset>
                            <fieldset class="gender-custom" <?php if ($gender) { ?> class="error-msg" <?php } ?>>
                               <label>Gender:<span class="red">*</span></label>
-                              <input type="radio" name="gender" value="male" id="gender" tabindex="6" <?php if($gender1){if($gender1 == 'male') { echo 'checked' ; }}
+                              <input type="radio" name="gender" value="male" id="gender" tabindex="6" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" <?php if($gender1){if($gender1 == 'male') { echo 'checked' ; }}
                                  else { if($job[0]['user_gender'] == 'M'){ echo 'checked' ; }}
                                     
                                  ?>><span class="radio_check_text pl5">Male</span>
-                              <input type="radio" name="gender" value="female" id="gender" tabindex="7" <?php  if($gender1){if($gender1 == 'female') { echo 'checked' ; }}
+                              <input type="radio" name="gender" value="female" id="gender" tabindex="7" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" <?php  if($gender1){if($gender1 == 'female') { echo 'checked' ; }}
                                  else { if($job[0]['user_gender'] == 'F'){echo 'checked' ; }}
                                     
                                  ?> ><span class="radio_check_text pl5">Female</span>
@@ -125,12 +125,12 @@
                            </fieldset>
                            <fieldset id="erroe_nn" <?php if ($language) { ?> class="error-msg" <?php } ?>>
                               <label>Languages Known:<span class="red">*</span></label> 
-                              <input id="lan" name="language"  value="<?php if($language2){echo $language2.',';} ?>" placeholder="Select a Language" style="width: 100%"  tabindex="8">
+                              <input id="lan" name="language"  value="<?php if($language2){echo $language2.',';} ?>" placeholder="Select a Language" style="width: 100%"  tabindex="8" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                               <?php echo form_error('lan'); ?>
                            </fieldset>
                            <fieldset id="erroe_nn" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                               <label>City:<span class="red">*</span></label> 
-                              <input id="city" name="city" value="<?php if($city_title){echo $city_title;} ?>" placeholder="Select City" style="width: 100%"  tabindex="9" maxlength="255">
+                              <input id="city" name="city" value="<?php if($city_title){echo $city_title;} ?>" placeholder="Select City" style="width: 100%"  tabindex="9" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                               <?php echo form_error('city1'); ?>
                            </fieldset>
                            <fieldset <?php if ($pincode_error) { ?> class="error-msg" <?php } ?>>
@@ -139,12 +139,12 @@
                                  if ($pincode1) {
                                      echo $pincode1;
                                  }
-                                 ?>" maxlength="15"/> <span id="pincode-error"> </span>
+                                 ?>" maxlength="15" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/> <span id="pincode-error"> </span>
                               <?php echo form_error('pincode_error'); ?>
                            </fieldset>
                            <fieldset class="full-width">
                               <label>Postal Address: <span class="red">*</span> </label>
-                              <textarea name ="address" tabindex="11" id="address" rows="4" cols="50" placeholder="Enter Address" maxlength="4000" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
+                              <textarea name ="address" tabindex="11" id="address" rows="4" cols="50" placeholder="Enter Address" maxlength="4000" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" style="resize: none;" onpaste="OnPaste_StripFormatting(this, event);"><?php
                                  if ($address1) {
                                      echo $address1;
                                  }

@@ -23,17 +23,6 @@
    }, "Only space, only number and only special characters are not allow");
    
    
-   $.validator.addMethod("regx2", function(value, element, regexpr) {          
-   if(!value) 
-   {
-    return true;
-   }
-   else
-   {
-      return regexpr.test(value);
-   }
-   },"Space are not allow in the begining");
-   
    $.validator.addMethod("regdigit", function(value, element, regexpr) {          
    if(!value) 
    {
@@ -52,7 +41,6 @@
    
                         project_name:{
                             regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                            regx2:/^[^-\s][a-zA-Z0-9_\s-]+$/
                         },
    
                         project_description:{
@@ -64,14 +52,12 @@
                         },
                         training_as:{
                            regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                            regx2:/^[^-\s][a-zA-Z0-9_\s-]+$/
                         },
                         training_duration:{
                           regdigit:/^[0-9]*$/,
                         },
                         training_organization:{
                           regx1:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/,
-                           regx2:/^[^-\s][a-zA-Z0-9_\s-]+$/
                         },
    
                     },

@@ -172,7 +172,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                 </div> 
                                                                 <?php
                                                             } else { ?>
-                                            <img src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" alt="" class="main-pic">
+                                            <img src="<?php echo USER_THUMB_UPLOAD_URL . $userdata[0]['user_image']; ?>" alt="" class="main-pic">
                                             <?php } ?>
 
                                             <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
@@ -831,27 +831,30 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
                     <!-- Bid-modal-2  -->
                     <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-                        <div class="modal-dialog modal-lm">
-                            <div class="modal-content">
-                                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>     	
-                                <div class="modal-body">
-                                    <span class="mes">
-                                        <div id="popup-form">
-                                           <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                            <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                            <div class="popup_previred">
-                                                <img id="preview" src="#" alt="your image"/>
-                                            </div>
-                                                                    <!--<input type="hidden" name="hitext" id="hitext" value="3">-->
-                                                                    <!--<input type="submit" name="cancel3" id="cancel3" value="Cancel">-->
-                                            <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                           </form>
-                                        </div>
-                                    </span>
-                                </div>
+            <div class="modal-dialog modal-lm">
+                <div class="modal-content">
+                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
+                    <div class="modal-body">
+                        <span class="mes">
+                            <div id="popup-form">
+                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                               <div class="col-md-5">
+
+                                <div class="user_profile"></div>
+
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
+                                    </div>
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="width:350px; display: none"></div>
+                                    </div>
+                                <input type="submit"  class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save">
+                                </form>
                             </div>
-                        </div>
+                        </span>
                     </div>
+                </div>
+            </div>
+        </div>
                     <!-- Bid-modal-2  -->
 
                     <!-- model for popup start -->

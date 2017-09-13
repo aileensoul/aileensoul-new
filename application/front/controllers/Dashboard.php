@@ -11,6 +11,7 @@ class Dashboard extends MY_Controller {
 
         parent::__construct();
         $this->load->model('email_model');
+        $this->load->library('S3');
         $this->data['title'] = "Grow Business Network | Hiring | Search Jobs | Freelance Work | Artistic | It's Free";
         include('include.php');
     }
@@ -289,101 +290,99 @@ class Dashboard extends MY_Controller {
 
     // profile image uplaod usingajax start
 
-   public function profilepic(){
+    public function profilepic() {
+        $userid = $this->session->userdata('aileenuser');
+
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete'=> '0');
+        $user_reg_data = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $user_reg_prev_image = $user_reg_data[0]['user_image'];
+
+        if ($user_reg_prev_image != '') {
+            $user_image_main_path = $this->config->item('user_main_upload_path');
+            $user_bg_full_image = $user_image_main_path . $user_reg_prev_image;
+            if (isset($user_bg_full_image)) {
+                unlink($user_bg_full_image);
+            }
+
+            $user_image_thumb_path = $this->config->item('user_thumb_upload_path');
+            $user_bg_thumb_image = $user_image_thumb_path . $user_reg_prev_image;
+            if (isset($user_bg_thumb_image)) {
+                unlink($user_bg_thumb_image);
+            }
+        }
 
 
-         $userid = $this->session->userdata('aileenuser');
+        $data = $_POST['image'];
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+        $user_bg_path = $this->config->item('user_main_upload_path');
+        $imageName = time() . '.png';
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($file, $data);
+        $main_image = $user_bg_path . $imageName;
+        $main_image_size = filesize($main_image);
 
-        $config = array(
-            'upload_path' => $this->config->item('user_main_upload_path'),
-            'max_size' => $this->config->item('user_main_max_size'),
-            'allowed_types' => $this->config->item('user_main_allowed_types'),
-            'file_name' => $_FILES['profilepic']['name']
-               
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+
+        /* RESIZE */
+        $user_profile['image_library'] = 'gd2';
+        $user_profile['source_image'] =  $main_image;
+        $user_profile['new_image'] =  $main_image;
+        $user_profile['quality'] = $quality;
+        $instanse10 = "image10";
+        $this->load->library('image_lib', $user_profile, $instanse10);
+        $this->$instanse10->watermark();
+        /* RESIZE */
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+        $user_thumb_path = $this->config->item('user_thumb_upload_path');
+        $user_thumb_width = $this->config->item('user_thumb_width');
+        $user_thumb_height = $this->config->item('user_thumb_height');
+
+        $upload_image = $user_bg_path . $imageName;
+
+        $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+        $data = array(
+            'user_image' => $imageName,
+            'modified_date' => date('Y-m-d', time())
         );
 
+        $update = $this->common->update_data($data, 'user', 'user_id', $userid);
+        //  echo "11111";die();
 
-        $images = array();
-        
+        if ($update) {
 
-        $files = $_FILES;
-       
-        $this->load->library('upload');
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $main_user = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<img src="' . USER_THUMB_UPLOAD_URL . $main_user[0]['user_image'] . '" alt="" >';
+            $userimage .= ' <a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();">
+                                                <img src="'.base_url().'img/cam.png">Update Profile Picture</a>';
 
-            $fileName = $_FILES['image']['name'];
-            $images[] = $fileName;
-            $config['file_name'] = $fileName;
-
-         $this->upload->initialize($config);
-        $this->upload->do_upload();
-
-            
-        if ($this->upload->do_upload('image')) {
-           // echo "hi"; die();
-
-            // $uploadData = $this->upload->data();
-
-            // $picture = $uploadData['file_name'];
-
-             $response['result']= $this->upload->data();
-            // echo "<pre>"; print_r($response['result']); die();
-                $user_thumb['image_library'] = 'gd2';
-                $user_thumb['source_image'] = $this->config->item('user_main_upload_path') . $response['result']['file_name'];
-                $user_thumb['new_image'] = $this->config->item('user_thumb_upload_path') . $response['result']['file_name'];
-                $user_thumb['create_thumb'] = TRUE;
-                $user_thumb['maintain_ratio'] = TRUE;
-                $user_thumb['thumb_marker'] = '';
-                $user_thumb['width'] = $this->config->item('user_thumb_width');
-                //$product_thumb[$i]['height'] = $this->config->item('product_thumb_height');
-                $user_thumb['height'] = 2;
-                $user_thumb['master_dim'] = 'width';
-                $user_thumb['quality'] = "100%";
-                $user_thumb['x_axis'] = '0';
-                $user_thumb['y_axis'] = '0';
-                $instanse = "image_$i";
-                //Loading Image Library
-                $this->load->library('image_lib', $user_thumb, $instanse);
-                $dataimage = $response['result']['file_name'];
-
-                                //Creating Thumbnail
-                $this->$instanse->resize();
-                $response['error'][] = $thumberror = $this->$instanse->display_errors();
-                
-                
-                $return['data'][] = $this->upload->data();
-                $return['status'] = "success";
-                $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
-
-      
-        } 
-
-       
-
-  //      //echo "<pre>"; print_r($dataimage); die();
-
-        //if ($dataimage) {
-            $data = array(
-                'user_image' => $dataimage,
-                'modified_date' => date('Y-m-d', time())
-               
-            );
-
-            $updatdata = $this->common->update_data($data, 'user', 'user_id', $userid);
-
-
-      $contition_array = array('user_id'=> $userid,'status' => '1','is_delete'=> '0');
-
-        $user = $this->data['user'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
-
-
-        //echo "<pre>"; print_r($artistic_user); die();
-            $userimage .= '<img src="'.base_url($this->config->item('user_thumb_upload_path') . $user[0]['user_image']).'" alt="" class="main-pic">';
-
-            $userimage.= '<a class="upload-profile" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="'.base_url().'img/u1.png">Update Profile Picture</a>';
-
-            echo  $userimage;
-           
-
+            echo $userimage;
+        }
     }
 
 }
