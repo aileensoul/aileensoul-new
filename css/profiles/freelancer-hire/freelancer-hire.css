@@ -634,15 +634,13 @@ label.cameraButton input[accept*="camera"] {
 }
 .alert-danger{color: black!important;font-size: 22px !important;}
 .notificationsmsg #notificationTitle{display: none !important;}
-#popup-form img {
+/*#popup-form img {
     display: none;
 }
 #popup-form #upload-demo-one img {
     display: block;
 }
-#popup-form #upload-demo-one img {
-    display: block;
-}
+*/
  #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;

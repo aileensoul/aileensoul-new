@@ -2840,9 +2840,9 @@ label.cameraButton input[accept*="camera"] {
 }
 .alert-danger{color: black!important;font-size: 22px !important;}
 .notificationsmsg #notificationTitle{display: none !important;}
-#popup-form img {
+/*#popup-form img {
     display: none;
-}
+}*/
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
     display: block;
