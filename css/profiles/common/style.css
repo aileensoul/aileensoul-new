@@ -561,7 +561,7 @@ fieldset.full-width {
     display: block;
 }
 .common-form{width:100%; float:left;}
-.common-form fieldset input[type="file"]{height: auto;}
+.common-form fieldset input[type="file"]{height: auto; border:none;}
 .common-form fieldset input{height:35px; line-height:1;}
 .common-form fieldset.hs-submit input{height:auto; line-height:1;}
 .common-form fieldset.hs-submit input:focus{color: white!important;}
