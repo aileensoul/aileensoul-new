@@ -1488,6 +1488,7 @@ background-color: white;}
     }
 }
 @media screen and (max-width: 767px) {
+	#InboxContainer::before{/*display:none;*/}
     .reactivate_header h2{ font-size: 16px; }
     .cameraButton .tooltiptext{font-size: 14px; font-weight: normal!important;}
     .back{width: 27%;}
@@ -1546,8 +1547,10 @@ background-color: white;}
         top: 42px;
     }
 	.header ul {
-		margin: 8px 0px 4px;
+		margin: 8px 0px 1px;
 	}
+	
+	.header ul li{padding-top:0;}
 	.header ul li a .img-msg{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-all{width:27px; height:27px; background-size:100%;}
     .header ul li a .img-noti{width:27px; height:27px; background-size:100%;}
@@ -1733,6 +1736,7 @@ background-color: white;}
 	.search-mob-block label{/*margin-top:7px; margin-left: 0px;*/}
 }
 @media screen and (max-width: 360px) {
+	.header ul{margin-top:16px;}
 	#paddingtop_fixed{padding-top:70px !important;}
 	#InboxContainer::before {
     right: 139px;
@@ -1761,7 +1765,7 @@ background-color: white;}
 		padding: 7px 6px !important;
 	}
 	.header ul {
-		margin: 15px 0px 1px;
+		margin: 16px 0px 1px;
 	}
 	#notificationContainer{top: 31px;}
 	.bg-search .header2{margin-top:-7px;}
