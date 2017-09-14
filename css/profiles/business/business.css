@@ -1339,7 +1339,7 @@ display: inline-block;
     position: absolute;
     cursor: pointer;
     width: 100%;
-    height: 274px;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
 }
 .more-image span {
@@ -4054,9 +4054,7 @@ height: 100px;
     .four-image {
         height: 200px;
     }
-    .more-image {
-        height: 199px;
-    }
+    
     .three-image-top {
         height: 30%;
     }
@@ -4207,9 +4205,7 @@ height: 100px;
     .four-image {
         height: 150px;
     }
-    .more-image {
-        height: 149px;
-    }
+
 	.comment-name {
         width: 79%;
     }
@@ -4491,9 +4487,7 @@ height: 100px;
     .four-image {
         height: 120px;
     }
-    .more-image {
-        height: 119px;
-    }
+
     .three-image-top {
         height: 15%;
     }
