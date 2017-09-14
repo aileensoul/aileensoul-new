@@ -2958,13 +2958,13 @@ class Business_profile extends MY_Controller {
 
 
         /* RESIZE */
-        $business_profile['image_library'] = 'gd2';
-        $business_profile['source_image'] = $main_image;
-        $business_profile['new_image'] = $main_image;
-        $business_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $business_profile, $instanse10);
-        $this->$instanse10->watermark();
+//        $business_profile['image_library'] = 'gd2';
+//        $business_profile['source_image'] = $main_image;
+//        $business_profile['new_image'] = $main_image;
+//        $business_profile['quality'] = $quality;
+//        $instanse10 = "image10";
+//        $this->load->library('image_lib', $business_profile, $instanse10);
+//        $this->$instanse10->watermark();
         /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);

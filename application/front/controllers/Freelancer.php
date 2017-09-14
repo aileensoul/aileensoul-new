@@ -3703,15 +3703,15 @@ class Freelancer extends MY_Controller {
         }
 
 
-        /* RESIZE */
-        $freelancer_hire_profile['image_library'] = 'gd2';
-        $freelancer_hire_profile['source_image'] = $main_image;
-        $freelancer_hire_profile['new_image'] = $main_image;
-        $freelancer_hire_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $freelancer_hire_profile, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+//        /* RESIZE */
+//        $freelancer_hire_profile['image_library'] = 'gd2';
+//        $freelancer_hire_profile['source_image'] = $main_image;
+//        $freelancer_hire_profile['new_image'] = $main_image;
+//        $freelancer_hire_profile['quality'] = $quality;
+//        $instanse10 = "image10";
+//        $this->load->library('image_lib', $freelancer_hire_profile, $instanse10);
+//        $this->$instanse10->watermark();
+//        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
@@ -3740,7 +3740,7 @@ class Freelancer extends MY_Controller {
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $freelancerpostdata = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'freelancer_hire_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
             $userimage .= '<img src="' . FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $freelancerpostdata[0]['freelancer_hire_user_image'] . '" alt="" >';
-            $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
+            $userimage .= '<a href="#" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
 
@@ -3939,15 +3939,15 @@ class Freelancer extends MY_Controller {
             $quality = "100%";
         }
 
-        /* RESIZE */
-        $freelancer_post_profile['image_library'] = 'gd2';
-        $freelancer_post_profile['source_image'] = $main_image;
-        $freelancer_post_profile['new_image'] = $main_image;
-        $freelancer_post_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $freelancer_post_profile, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+//        /* RESIZE */
+//        $freelancer_post_profile['image_library'] = 'gd2';
+//        $freelancer_post_profile['source_image'] = $main_image;
+//        $freelancer_post_profile['new_image'] = $main_image;
+//        $freelancer_post_profile['quality'] = $quality;
+//        $instanse10 = "image10";
+//        $this->load->library('image_lib', $freelancer_post_profile, $instanse10);
+//        $this->$instanse10->watermark();
+//        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
@@ -4634,15 +4634,15 @@ class Freelancer extends MY_Controller {
         }
 
 
-        /* RESIZE */
-        $freelancer_work_bg['image_library'] = 'gd2';
-        $freelancer_work_bg['source_image'] = $main_image;
-        $freelancer_work_bg['new_image'] = $main_image;
-        $freelancer_work_bg['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $freelancer_work_bg, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+//        /* RESIZE */
+//        $freelancer_work_bg['image_library'] = 'gd2';
+//        $freelancer_work_bg['source_image'] = $main_image;
+//        $freelancer_work_bg['new_image'] = $main_image;
+//        $freelancer_work_bg['quality'] = $quality;
+//        $instanse10 = "image10";
+//        $this->load->library('image_lib', $freelancer_work_bg, $instanse10);
+//        $this->$instanse10->watermark();
+//        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);

@@ -1836,8 +1836,9 @@ right: 3%!important;
 		padding: 9px 9px 3px 0px;
 	}
 	.dropdown2 a{padding: 8px;}
-	.header2 ul li.active a{padding: 9px 0px 9px;}
+	.header2 ul li.active a{padding: 9px 9px 9px 0;}
 	.bg-search .header2{padding-left:0;}
+	.header2 .dropdown_hover{padding-right:0;}
 }
 
 

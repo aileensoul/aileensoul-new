@@ -1261,7 +1261,7 @@ label.cameraButton input[accept*="camera"] {
 #radio-error.error{    left: 45px;}
 .mesg_link {background: #1b8ab9; color: white; margin-right: 10px;}
 .fancybox-close-small:after{background: #1b8ab9; color: white;}
-.fancybox-slide > *{background-color:transparent;  }
+/*.fancybox-slide > *{background-color:transparent;  }*/
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
 
 
@@ -1300,9 +1300,10 @@ label.cameraButton input[accept*="camera"] {
 .circle-1 canvas{width: 118px; height: 118px;}
 .edit_profile_job{font-size: 12px;}
 
-@media screen and (max-width: 1100px){
-.custom-right{margin-left: 10px;}
 
+}
+@media screen and (max-width: 1130px){
+ .custom-right{margin-left: 27px;}
 }
 @media screen and (max-width: 1024px){
     .date-dropdowns .year{padding-left: 5px;}
@@ -1354,6 +1355,8 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+	 .custom-right{margin-left: 5%;}
+	 .profile-box{width:300px;}
     .mob-progressbar .progress{display: block;}
 	.mob-progressbar{display:block;}
     .edit_profile_progress{display:none;}
@@ -1433,7 +1436,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 20px;
     }
 	.profile-job-details .job_companyname {
-        width: 300px;
+        width: 50%;
     }
     .profile-job-details .post_title {
         width: 50% !important;
@@ -1448,6 +1451,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
+	.custom-right{margin-left:0;}
 .art_no_post_img {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -1483,9 +1487,10 @@ display: inline-block;
         padding-top: 0px !important;
     }
 	.profile-head-text {
-        line-height: 8px;
+        line-height: 1.5;
         font-size: 18px !important;
-          padding-top: 0px;
+        padding-top: 0px;
+		display:inline-block;
     }
 	.res-job-print {
         padding-top: 0px !important;
@@ -1955,7 +1960,7 @@ padding-top: 2px !important;}
     }
  .profile-job-details .post_title {
         width: 50%;
-        font-size: 11px;
+        font-size: 12px;
     }
  .profile-job-details .job_companyname {
         width: 140px;
@@ -1981,5 +1986,5 @@ padding-top: 2px !important;}
 	
 
     .main_raio [type="radio"]:checked + .point_radio, .main_raio [type="radio"]:not(:checked) + .point_radio{padding-left: 20px;}
- .profile-job-details .post_title{font-size: 9px;}
+ .profile-job-details .post_title{font-size: 11px;}
 }

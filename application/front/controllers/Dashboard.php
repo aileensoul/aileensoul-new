@@ -151,8 +151,8 @@ class Dashboard extends MY_Controller {
     }
 
 // cover pic controller
-
-    public function ajaxpro() {
+   public function ajaxpro() {
+    
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
@@ -182,20 +182,48 @@ class Dashboard extends MY_Controller {
             }
         }
 
-        $data = $_POST['image'];
 
+
+        $data = $_POST['image'];
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
         $user_bg_path = $this->config->item('user_bg_main_upload_path');
         $imageName = time() . '.png';
-        $base64string = $data;
-        file_put_contents($user_bg_path . $imageName, base64_decode(explode(',', $base64string)[1]));
+        $data = base64_decode($data);
+        $file = $user_bg_path . $imageName;
+        $success = file_put_contents($file, $data);
+
+        $main_image = $user_bg_path . $imageName;
+
+        $main_image_size = filesize($main_image);
+
+        if ($main_image_size > '1000000') {
+            $quality = "50%";
+        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+            $quality = "55%";
+        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+            $quality = "60%";
+        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+            $quality = "65%";
+        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+            $quality = "70%";
+        } else {
+            $quality = "100%";
+        }
+
+        $s3 = new S3(awsAccessKey, awsSecretKey);
+        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
         $user_thumb_path = $this->config->item('user_bg_thumb_upload_path');
         $user_thumb_width = $this->config->item('user_bg_thumb_width');
         $user_thumb_height = $this->config->item('user_bg_thumb_height');
 
         $upload_image = $user_bg_path . $imageName;
-
         $thumb_image_uplode = $this->thumb_img_uplode($upload_image, $imageName, $user_thumb_path, $user_thumb_width, $user_thumb_height);
+
+        $thumb_image = $user_thumb_path . $imageName;
+        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
             'profile_background' => $imageName
@@ -204,10 +232,10 @@ class Dashboard extends MY_Controller {
         $update = $this->common->update_data($data, 'user', 'user_id', $userid);
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
-        //echo '<img src="' . $this->data['userdata'][0]['profile_background'] . '" />';
-        $coverpic='<img  src="'. base_url($this->config->item('user_bg_main_upload_path') . $this->data['userdata'][0]['profile_background']).'" name="image_src" id="image_src" />';
-      echo $coverpic;
+//        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
+        $coverpic =  '<img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" />';
 
+        echo $coverpic;
     }
 
     public function image() {
@@ -340,15 +368,15 @@ class Dashboard extends MY_Controller {
         }
 
 
-        /* RESIZE */
-        $user_profile['image_library'] = 'gd2';
-        $user_profile['source_image'] =  $main_image;
-        $user_profile['new_image'] =  $main_image;
-        $user_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $user_profile, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+        // /* RESIZE */
+        // $user_profile['image_library'] = 'gd2';
+        // $user_profile['source_image'] =  $main_image;
+        // $user_profile['new_image'] =  $main_image;
+        // $user_profile['quality'] = $quality;
+        // $instanse10 = "image10";
+        // $this->load->library('image_lib', $user_profile, $instanse10);
+        // $this->$instanse10->watermark();
+        // /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
