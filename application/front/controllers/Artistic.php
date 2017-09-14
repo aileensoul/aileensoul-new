@@ -1180,7 +1180,8 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
 
             /** convert video to flash * */
-            exec("ffmpeg -i {input}.mov -vcodec h264 -acodec aac -strict -2 {output}.mp4");
+            //exec("ffmpeg -i {input}.mov -vcodec h264 -acodec aac -strict -2 {output}.mp4");
+   
 
 
 
@@ -1222,6 +1223,18 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $instanse10 = "image10_$i";
                         $this->load->library('image_lib', $artistic_post_main[$i], $instanse10);
                         $this->$instanse10->watermark();
+
+                         $command = "ffmpeg -i ".$store." -an -ss 00:00:03 -an -r 1 -vframes 1 -y -vf scale='-1:min(200\, iw*3/2)' ".$artistic_post_main.' 2>&1 >> /opt/lampp/logs/ffmpeg_log.log';
+    exec($command);
+    // Let's make a larger thumbnail too
+    $command = "ffmpeg -i ".$store." -an -ss 00:00:03 -an -r 1 -vframes 1 -y -vf scale='-1:min(800\, iw*3/2)' ".$artistic_post_main.' 2>&1 >> /opt/lampp/logs/ffmpeg_log.log';
+    exec($command);
+    // ffmpeg command to convert video
+    // MP4 
+    $command = "ffmpeg -i ".$store." -y -vf scale='min(900\, iw*3/2)':-1 -vcodec libx264 -coder 1 -bf 16 -refs 1 -flags2 +dct8x8 -acodec libfaac -ac 2 -ar 48000 ".$artistic_post_main." 2>&1 >> /opt/lampp/logs/ffmpeg_log.log";
+    
+    exec($command); // 2>&1 redirect STDERR to STDOUT and send to log.
+
 
                         /* RESIZE */
 

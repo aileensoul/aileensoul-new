@@ -368,15 +368,15 @@ class Dashboard extends MY_Controller {
         }
 
 
-        /* RESIZE */
-        $user_profile['image_library'] = 'gd2';
-        $user_profile['source_image'] =  $main_image;
-        $user_profile['new_image'] =  $main_image;
-        $user_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $user_profile, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+        // /* RESIZE */
+        // $user_profile['image_library'] = 'gd2';
+        // $user_profile['source_image'] =  $main_image;
+        // $user_profile['new_image'] =  $main_image;
+        // $user_profile['quality'] = $quality;
+        // $instanse10 = "image10";
+        // $this->load->library('image_lib', $user_profile, $instanse10);
+        // $this->$instanse10->watermark();
+        // /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
