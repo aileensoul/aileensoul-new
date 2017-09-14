@@ -1695,6 +1695,7 @@ height: 100%;}
     word-wrap: break-word;
     font-size: 14px;
 }
+.business_data_td2 a:hover{color: #1b8ab9; text-decoration: underline;}
 .detaile_map {
     position: relative;
 }
