@@ -765,7 +765,7 @@ line-height: 1;}
 }
 .audio_img {
     height: 300px!important;
-    width: 350px!important;
+    width: 300px!important;
     position: relative!important;
 }
 .audio_img img {
@@ -781,7 +781,7 @@ line-height: 1;}
     bottom: 0;
 }
 .audio_source audio {
-    width: 350px;
+    width: 300px;
 }
 .audio_mp3 {
     width: 46.5%;
