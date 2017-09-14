@@ -3803,7 +3803,13 @@ padding-left: 11px;}
     }
 }
 @media screen and (max-width: 640px){
+    .user_lst li a .post-img-userlist { line-height: 4px ; font-size: 13px;}
         .modal.in .modal-dialog{width: 80%;}
+    .profile-job-post-location-name ul li.folle_text {
+    padding-top: 10px;
+    line-height: 17px;
+        }
+        .user_lst ul li button{margin-top: 14px;    }
     #row2 img{height: 200px;}
     .bui_bcon {width: 56%;}
     .user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
@@ -4078,6 +4084,9 @@ padding-left: 11px;}
     .profile-pho-bui .user-pic {
     height: 49px;
     width: 49px;
+    padding-left: 1px !important;
+padding-top: 1px !important;
+border-radius: 0; 
     }
     .bui-menu-profile {
         width: 70%;
