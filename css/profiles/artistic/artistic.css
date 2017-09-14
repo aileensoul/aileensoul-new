@@ -1866,6 +1866,7 @@ background-size: 100%;
     right: 45px;
     border: none;
 }
+.upload_span_icon{font-family: 'arial';}
 .text_num{position: absolute; right: 21%; top: 7px; background-color:transparent;  width: 24px !important; font-size: 20px;
     border: none;
     padding: 5px;
