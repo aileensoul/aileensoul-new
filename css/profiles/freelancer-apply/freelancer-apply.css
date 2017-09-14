@@ -1201,18 +1201,19 @@ label.cameraButton input[accept*="camera"] {
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
 }
 @media screen and (max-width: 640px) {
-	.post-img-user{width: 100%; height: 100%;}
-	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+
+	.post-img-user{font-size: 26px; height: 88px; line-height: 1; padding: 33px 0; width: 88px;}
 	.cover-pic{bottom: 62%; right: -10%;}
 	.profile-photo .profile-pho {
-        height: 80px;
-        width: 80px;
+        height: 100px;
+        width: 100px;
         margin-top: -40px !important;
     }
 	.user-pic {
-        width: 75px;
-        height: 75px;
+        width: 98px;
+        height: 98px;
     }
+	.padd_img{padding:5px !important;}
 	.right-side-menu {
         padding-left: 18%;
     }
@@ -1311,13 +1312,7 @@ label.cameraButton input[accept*="camera"] {
 	  width: 39% !important;
 	}
 	.search-mob-block label{/*margin-top: 7px; margin-left: 0px;*/}
-	.post-img-user {
-		font-size: 16px;
-		height: 67px;
-		line-height: 0;
-		padding: 22px 0;
-		width: 48px;
-	}
+	
 	.floatBarsG{width: 20px; height: 20px;}
 	#floatBarsG {
 		position: absolute;
@@ -1415,7 +1410,7 @@ label.cameraButton input[accept*="camera"] {
 }
 @media screen and (max-width: 360px) {
 	#paddingtop_fixed{padding-top:70px !important;}
-	.padd_img { padding-left: 3px !important; padding-top: 4px !important;}
+	
 	.profile-job-post-location-name ul li .follow-li-text {
         padding: 0px;
     }
