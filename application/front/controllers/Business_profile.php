@@ -1426,8 +1426,8 @@ class Business_profile extends MY_Controller {
                         $business_profile_post_main[$i]['quality'] = $quality;
                         $instanse10 = "image10_$i";
                         $this->load->library('image_lib', $business_profile_post_main[$i], $instanse10);
-                        $this->$instanse10->watermark();
-
+                        $this->$instanse10->resize();
+                        
                         /* RESIZE */
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -1455,9 +1455,6 @@ class Business_profile extends MY_Controller {
                         );
 
                         $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                        $white = imagecolorallocate($conf_new4[$i]['new_image'], 255, 255, 255);
-                        imagefill($conf_new4[$i]['new_image'], 0, 0, $white);
 
                         $left = ($n_w1 / 2) - ($resize4_image_width / 2);
                         $top = ($n_h1 / 2) - ($resize4_image_height / 2);
