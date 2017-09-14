@@ -60,8 +60,7 @@ $(document).ready(function () {
     job_apply();
  
     $(window).scroll(function () {
-        //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7) {
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -72,7 +71,6 @@ $(document).ready(function () {
                 if (mod_page > 0) {
                     available_page = available_page + 1;
                 }
-                //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
                     
