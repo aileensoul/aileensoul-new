@@ -510,7 +510,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function image_insert() {
-
+        
         $userdata = $this->session->userdata();
         $userid = $this->session->userdata('aileenuser');
 
@@ -526,9 +526,9 @@ class Business_profile extends MY_Controller {
             if ($_POST['filedata'][$x] == 'old') {
 
                 $data = array(
-                    'file_name' => $_POST['filename'][$x],
+                    'image_name' => $_POST['filename'][$x],
                 );
-                $updatdata = $this->common->update_data($data, 'bus_image', 'post_files_id', $_POST['imageid'][$x]);
+                $updatdata = $this->common->update_data($data, 'bus_image', 'bus_image_id', $_POST['imageid'][$x]);
             }
 
             if ($_POST['filedata'][$x]) {
@@ -548,10 +548,10 @@ class Business_profile extends MY_Controller {
             }
         }
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-        $userdatacon = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'image_id, image_name, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdatacon = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id, image_name, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($this->input->post('next') || $this->input->post('submit')) {
-
+            
             $config = array(
                 'upload_path' => $this->config->item('bus_profile_main_upload_path'),
                 'max_size' => 1024 * 100,
@@ -697,7 +697,7 @@ class Business_profile extends MY_Controller {
 
                 if ($dataimage) {
                     $data = array(
-                        'file_name' => $dataimage,
+                        'image_name' => $dataimage,
                         'user_id' => $userid,
                         'created_date' => date('Y-m-d H:i:s'),
                         'is_delete' => 0
