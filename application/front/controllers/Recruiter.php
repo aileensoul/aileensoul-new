@@ -633,13 +633,9 @@ class Recruiter extends MY_Controller {
                 }
             }
         }
-        if (count($jobr11) == 0) {
-            $unique = $jobr;
-        } elseif (count($jobr) == 0) {
-            $unique = $jobr11;
-        } else {
-            $unique = array_merge($jobr11, $jobr);
-        }
+        
+            $unique = array_merge((array)$jobr11,(array)$jobr);
+        
         foreach ($unique as $ke => $arr) {
             foreach ($arr as $va) {
                 $skildataa[] = $va;
@@ -650,6 +646,9 @@ class Recruiter extends MY_Controller {
         foreach ($skildataa as $value) {
             $new[$value['user_id']] = $value;
         }
+        
+       
+        $new = $this->aasort($new, "user_id");
         $this->data['candidatejob'] = $new;
 
 
@@ -4603,5 +4602,26 @@ class Recruiter extends MY_Controller {
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('recruiter/profile', refresh);
         }
+    }
+    
+     // khyati changes start 7-4
+    public function aasort(&$array, $key) {
+        $sorter = array();
+        $ret = array();
+        reset($array);
+
+        foreach ($array as $ii => $va) {
+
+            $sorter[$ii] = $va[$key];
+        }
+
+        arsort($sorter);
+
+        foreach ($sorter as $ii => $va) {
+
+            $ret[$ii] = $array[$ii];
+        }
+
+        return $array = $ret;
     }
 }

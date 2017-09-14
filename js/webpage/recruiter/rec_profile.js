@@ -52,14 +52,14 @@ $(document).ready(function () {
                 type: "POST",
                 data: {"image": resp},
                 beforeSend: function () {
-                    // $('.loader').show();
-                    document.getElementById('loader').style.display = 'block';
+                    $('#profi_loader').show();
+                  //  document.getElementById('loader').style.display = 'block';
                 },
                 complete: function () {
-                    $document.getElementById('loader').style.display = 'none';
+                    //$document.getElementById('loader').style.display = 'none';
                 },
                 success: function (data) {
-                    $('#loader').remove();
+                    $('#profi_loader').hide();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
 function updateprofilepopup(id) {
     document.getElementById('upload-demo-one').style.display = 'none';
-    document.getElementById('loader').style.display = 'none';
+    document.getElementById('profi_loader').style.display = 'none';
     document.getElementById('upload-one').value = null;
     $('#bidmodal-2').modal('show');
 }

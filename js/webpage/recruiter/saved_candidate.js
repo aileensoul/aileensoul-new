@@ -491,15 +491,15 @@ $(document).ready(function () {
                 url: base_url + "recruiter/user_image_insert1",
                 type: "POST",
                 data: {"image": resp},
-                beforeSend: function () {  alert(123);
-                    // $('.loader').show();
-                    document.getElementById('profi_loader').style.display = 'block';
+                beforeSend: function () {  
+                    $('#profi_loader').show();
+                   // document.getElementById('profi_loader').style.display = 'block';
                 },
                 complete: function () {
                 //    document.getElementById('profi_loader').style.display = 'none';
                 },
                 success: function (data) {
-                  //  $('#profi_loader').remove();
+                  $('#profi_loader').hide();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;

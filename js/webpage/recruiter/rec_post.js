@@ -521,14 +521,14 @@ $(document).ready(function () {
                 type: "POST",
                 data: {"image": resp},
                 beforeSend: function () {
-                    // $('.loader').show();
-                    document.getElementById('profi_loader').style.display = 'block';
+                     $('#profi_loader').show();
+                   // document.getElementById('profi_loader').style.display = 'block';
                 },
                 complete: function () {
-                    $document.getElementById('profi_loader').style.display = 'none';
+                //    $document.getElementById('profi_loader').style.display = 'none';
                 },
                 success: function (data) {
-                    $('#profi_loader').remove();
+                    $('#profi_loader').hide();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
