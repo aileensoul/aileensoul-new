@@ -1,4 +1,3 @@
-
 // cover image start 
 
 function myFunction() {
