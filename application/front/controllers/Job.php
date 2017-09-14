@@ -2642,7 +2642,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
         $job['quality'] = $quality;
         $instanse10 = "image10";
         $this->load->library('image_lib', $job, $instanse10);
-        $this->$instanse10->watermark();
+      //  $this->$instanse10->watermark();
         /* RESIZE */
 
         //S3 BUCKET ACCESS START
@@ -5003,7 +5003,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             
             $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'rec_post.is_delete'=>0,'rec_post.status' => '1');
 
-            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
+            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,recruiter.re_comp_profile,rec_post.post_currency';
 
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
@@ -5019,7 +5019,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
             $contition_array = array('rec_post.user_id !=' => $userid ,'rec_post.is_delete'=>0,'rec_post.status' => '1');
            
-            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
+            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,rec_post.post_currency';
 
             $search_condition = "(job_title.name LIKE '%$search_job%')";
              $results_posttitleid= $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -5052,7 +5052,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
             
             $contition_array = array('recruiter.user_id !=' => $userid , 'recruiter.re_step' => 3,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
 
-            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
+            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,recruiter.re_comp_profile,rec_post.post_currency';
 
             $search_condition = "(rec_post.post_name LIKE '%$search_job%' or recruiter.re_comp_name LIKE '%$search_job%' or recruiter.rec_firstname LIKE '%$search_job%' or recruiter.rec_lastname LIKE '%$search_job%' or rec_post.other_skill LIKE '%$search_job%' or concat(
                     rec_firstname,' ',rec_lastname) LIKE '%$search_job%')";
@@ -5068,7 +5068,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
             $contition_array = array('rec_post.user_id !=' => $userid,'rec_post.is_delete'=>0,'rec_post.status' => '1','rec_post.city' => $cache_time1);
            
-            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name';
+            $data = 'rec_post.post_name,rec_post.post_description,rec_post.post_skill,rec_post.post_position,rec_post.post_last_date,rec_post.min_month,rec_post.min_year,rec_post.min_sal,rec_post.max_sal,rec_post.other_skill,rec_post.user_id,rec_post.post_id,rec_post.country,rec_post.city,rec_post.interview_process,rec_post.max_month,rec_post.max_year,rec_post.created_date,rec_post.industry_type,rec_post.emp_type,rec_post.salary_type,rec_post.degree_name,rec_post.fresher,rec_post.post_currency';
 
             $search_condition = "(job_title.name LIKE '%$search_job%')";
              $results_posttitleid= $recpostdata['data'] = $this->common->select_data_by_search('job_title', $search_condition, $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
@@ -5083,6 +5083,7 @@ $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                
         }
         $postdetail=$this->data['postdetail'] = $unique;
+      //  echo "<pre>";print_r($postdetail);die();
 //Total Search All End
 
 
