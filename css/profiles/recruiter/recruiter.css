@@ -357,9 +357,9 @@ label.cameraButton input[accept*="camera"] {display: none;}
     width: 180px;
     background-color: black;
     color: #fff;
-    opacity:0.6;
+    opacity:1.8;
     text-align: center;
-    padding: 13px 0px;
+    padding: 10px 0px;
     position: absolute;
     z-index: 1;
     font-weight: 600;
@@ -853,8 +853,9 @@ label.cameraButton input[accept*="camera"] {
     border-top-right-radius: 3px;
 }
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
+.job-contact-frnd .add-post-button .btn-3{margin: 10px;
+}
 
-  
 /***  media query  ***/
 @media screen and (max-width: 1279px)
 {
@@ -942,7 +943,8 @@ label.cameraButton input[accept*="camera"] {
     .back {
     width: 100%;
     }
-
+    .custom_footer_dot{ padding: 0px 1px 0px; }
+    .custom_footer_left ul li{padding: 0 6px;}
     .art_no_post_text{font-size: 23px;}
     .but1{font-size: 16px; padding: 7px 4px 7px 0px; margin-left: 29px;}
 	.custom-right{margin-left: 5%;}
@@ -1297,7 +1299,7 @@ label.cameraButton input[accept*="camera"] {
 		padding: 4px 0px 0px 3px !important;
 	}
 	.post-img-user{width: 100%; height: 100%;}
-	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+	.post-img-user{font-size: 20px; height:100%; line-height: 1; padding: 24px 0; width: 100%;}
 	.cover-pic{bottom: 62%; right: -10%;}
 	.profile-photo .profile-pho {
         height: 80px;
@@ -1361,16 +1363,19 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 479px) {
+    .product-listing {font-size: 18px;
+    }
+  
     .back {
     width: 50%;
     }
 	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
 	.post-img-user {
 		font-size: 16px;
-		height: 67px;
+		height: 100%;
 		line-height: 0;
 		padding: 22px 0;
-		width: 48px;
+		width: 100%;
 	}
 	.floatBarsG{width: 20px; height: 20px;}
 	#floatBarsG {
@@ -1569,7 +1574,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-post-detail .profile-job-post-title .button {
         font-size: 12px;
-        padding: 3px 14px !important;
+        padding: 3px 8px !important;
     }
 	.right-side-menu {
         width: 100%;
