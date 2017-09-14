@@ -87,13 +87,13 @@ $(function () {
 $uploadCrop1 = $('#upload-demo-one').croppie({
     enableExif: true,
     viewport: {
-        width: 200,
-        height: 200,
+        width: 157,
+        height: 157,
         type: 'square'
     },
     boundary: {
-        width: 300,
-        height: 300
+        width: 257,
+        height: 257
     }
 });
 

@@ -2608,7 +2608,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $id, 'status' => '1', 'business_step' => 4);
         $this->data['contactperson'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $this->load->view('business-profile/business_profile_contactperson', $this->data);
+        $this->load->view('business_profile/business_profile_contactperson', $this->data);
     }
 
 //business_profile_contactperson _query
@@ -10232,7 +10232,7 @@ No Contacts Available.
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
-<a href = "' . base_url('business_profile/business_profile_contactperson/' . $row['posted_user_id']) . '">
+<a href = "' . base_url('business-profile/contact-person/' . $row['posted_user_id']) . '">
 <i class = "fa fa-user" aria-hidden = "true">
 </i> Contact Person </a>';
                         }
@@ -10252,7 +10252,7 @@ No Contacts Available.
 </i> Delete Post
 </a>
 
-<a href = "' . base_url('business_profile/business_profile_contactperson/' . $row['user_id']) . '">
+<a href = "' . base_url('business-profile/contact-person/' . $row['user_id']) . '">
 <i class = "fa fa-user" aria-hidden = "true">
 </i> Contact Person
 </a>';
