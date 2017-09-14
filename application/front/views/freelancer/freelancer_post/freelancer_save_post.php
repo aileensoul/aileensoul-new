@@ -57,7 +57,9 @@
                             <?php
                         } else {
                             ?>
-                            <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                            <div class="bg-images no-cover-upload">
+                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                            </div>
                         <?php }
                         ?>
                     </div>
@@ -178,7 +180,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
 <!--                                    <input type="file" id="profilepic" name="profilepic" accept="image/gif, image/jpeg, image/png">
@@ -205,7 +207,7 @@
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
         </script>
         <script>
             var base_url = '<?php echo base_url(); ?>';

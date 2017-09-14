@@ -64,9 +64,11 @@
                             <?php
                         } else {
                             ?>
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
-                             <?php }
-                             ?>
+                                 <div class="bg-images no-cover-upload">
+                                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                            </div>
+                        <?php }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -103,7 +105,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                    
+
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);">
                             <h3> <?php echo ucwords($freehiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
@@ -444,7 +446,7 @@
                     <div class="modal-body">
                         <span class="mes">
                             <div id="popup-form">
-                                 <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
                                     <div class="col-md-5">
                                         <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
@@ -462,16 +464,16 @@
             </div>
         </div>
         <!-- Model Popup Close -->
-        <!--<script src="<?php //echo base_url('js/jquery.js');    ?>"></script>-->         
+        <!--<script src="<?php //echo base_url('js/jquery.js');      ?>"></script>-->         
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js');    ?>"></script>-->
+        <!--<script src="<?php //echo base_url('js/jquery-ui.min.js');      ?>"></script>-->
         <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time());    ?>">-->
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.js?ver='.time());      ?>">-->
         <!--</script>-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
         <script>
-            var base_url = '<?php echo base_url(); ?>';
+                                    var base_url = '<?php echo base_url(); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_profile.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
