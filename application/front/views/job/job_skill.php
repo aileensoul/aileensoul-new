@@ -57,11 +57,11 @@
                            <?php echo form_open(base_url('job/job_skill_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix', 'onsubmit' => "imgval()")); ?>
                            <fieldset class="full-width">
                               <label >Job Title<font  color="red">*</font>:</label>
-                              <input type="search" tabindex="1" id="job_title" name="job_title" value="<?php echo $work_title; ?>" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+                              <input type="search" style="text-transform: capitalize;" tabindex="1" id="job_title" name="job_title" value="<?php echo $work_title; ?>" placeholder="Ex:- Sr. Engineer, Jr. Engineer, Software Developer, Account Manager" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                            </fieldset>
                            <fieldset class="full-width fresher_select main_select_data" >
                               <label for="skills"> Skills<font  color="red">*</font>: </label>
-                              <input id="skills2" value="<?php echo $work_skill; ?>" name="skills"  size="90" tabindex="2">
+                              <input id="skills2" style="text-transform: capitalize;" value="<?php echo $work_skill; ?>" name="skills"  size="90" tabindex="2">
                            </fieldset>
                            <fieldset class="full-width main_select_data">
                               <label>Industry <font  color="red">*</font>:</label>
@@ -74,7 +74,7 @@
                            </fieldset>
                            <fieldset class="full-width fresher_select main_select_data" >
                               <label for="cities">Preffered loation for job<font  color="red">*</font>: </label>
-                              <input id="cities2"  value="<?php echo $work_city; ?>" name="cities"  size="90" tabindex="4">
+                              <input id="cities2"  style="text-transform: capitalize;" value="<?php echo $work_city; ?>" name="cities"  size="90" tabindex="4">
                            </fieldset>
                            <fieldset class="hs-submit full-width">
                               <input type="submit"  id="next" name="next" tabindex="5" value="Save">
