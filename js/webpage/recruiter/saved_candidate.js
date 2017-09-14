@@ -246,49 +246,49 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
         }
     }
     
-    $("#profilepic").change(function(){
-       // pallavi code for not supported file type 10/06/2017
-      profile = this.files;
-      //alert(profile);
-      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-       //alert('not an image');
-        $('#profilepic').val('');
-         picpopup();
-         return false;
-          }else{
-          readURL(this);}
-
-          // end supported code 
-    });
+//    $("#profilepic").change(function(){
+//       // pallavi code for not supported file type 10/06/2017
+//      profile = this.files;
+//      //alert(profile);
+//      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+//       //alert('not an image');
+//        $('#profilepic').val('');
+//         picpopup();
+//         return false;
+//          }else{
+//          readURL(this);}
+//
+//          // end supported code 
+//    });
           //validation for edit email formate form
 
-            $(document).ready(function () { 
-
-                $("#userimage").validate({
-
-                    rules: {
-
-                        profilepic: {
-
-                            required: true,
-                         
-                        },
-  
-
-                    },
-
-                    messages: {
-
-                        profilepic: {
-
-                            required: "Photo Required",
-                            
-                        },
-
-                },
-                 submitHandler: profile_pic
-                });
-                   });
+//            $(document).ready(function () { 
+//
+//                $("#userimage").validate({
+//
+//                    rules: {
+//
+//                        profilepic: {
+//
+//                            required: true,
+//                         
+//                        },
+//  
+//
+//                    },
+//
+//                    messages: {
+//
+//                        profilepic: {
+//
+//                            required: "Photo Required",
+//                            
+//                        },
+//
+//                },
+//                 submitHandler: profile_pic
+//                });
+//                   });
  
                         function picpopup() {
                             
@@ -413,29 +413,112 @@ function checkvalue(){
                     }
   }
 //UPLOAD PROFILE PIC START
-function profile_pic() {
-    if (typeof FormData !== 'undefined') {
-        
-        var formData = new FormData($("#userimage")[0]);
-        $.ajax({
-          
-            url: base_url + "recruiter/user_image_insert",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (data)
-            {
-                $('#bidmodal-2').modal('hide');
-                $(".user-pic").html(data);
-                document.getElementById('profilepic').value = null;
-                $('#preview').prop('src', '#');
-                 $('#preview').hide();
-                $('.popup_previred').hide();
-            },
-        });
-        return false;
-    }
-}
+//function profile_pic() {
+//    if (typeof FormData !== 'undefined') {
+//        
+//        var formData = new FormData($("#userimage")[0]);
+//        $.ajax({
+//          
+//            url: base_url + "recruiter/user_image_insert",
+//            type: "POST",
+//            data: formData,
+//            contentType: false,
+//            cache: false,
+//            processData: false,
+//            success: function (data)
+//            {
+//                $('#bidmodal-2').modal('hide');
+//                $(".user-pic").html(data);
+//                document.getElementById('profilepic').value = null;
+//                $('#preview').prop('src', '#');
+//                 $('#preview').hide();
+//                $('.popup_previred').hide();
+//            },
+//        });
+//        return false;
+//    }
+//}
 //UPLOAD PROFILE PIC END
+//CODE FOR PROFILE PIC UPLOAD WITH CROP START
+$uploadCrop1 = $('#upload-demo-one').croppie({
+    enableExif: true,
+    viewport: {
+        width: 200,
+        height: 200,
+        type: 'square'
+    },
+    boundary: {
+        width: 300,
+        height: 300
+    }
+});
+
+$('#upload-one').on('change', function () {
+    document.getElementById('upload-demo-one').style.display = 'block';
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $uploadCrop1.croppie('bind', {
+            url: e.target.result
+        }).then(function () {
+            console.log('jQuery bind complete');
+        });
+
+    }
+    reader.readAsDataURL(this.files[0]);
+});
+$(document).ready(function () {
+    $("#userimage").validate({
+        rules: {
+            profilepic: {
+                required: true,
+            },
+        },
+        messages: {
+            profilepic: {
+                required: "Photo Required",
+            },
+        },
+        submitHandler: profile_pic
+    });
+    function profile_pic() {
+//    $('.upload-result-one').on('click', function (ev) {
+        $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+                url: base_url + "recruiter/user_image_insert1",
+                type: "POST",
+                data: {"image": resp},
+                beforeSend: function () {  alert(123);
+                    // $('.loader').show();
+                    document.getElementById('profi_loader').style.display = 'block';
+                },
+                complete: function () {
+                //    document.getElementById('profi_loader').style.display = 'none';
+                },
+                success: function (data) {
+                  //  $('#profi_loader').remove();
+                    $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').value = '';
+//                    html = '<img src="' + resp + '" />';
+//                    $("#upload-demo-i").html(html);
+                }
+            });
+        });
+//    });
+    }
+});
+
+function updateprofilepopup(id) {
+    document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('profi_loader').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+    $('#bidmodal-2').modal('show');
+}
+
+//CODE FOR PROFILE PIC UPLOAD WITH CROP END
