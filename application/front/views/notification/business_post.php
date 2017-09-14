@@ -295,7 +295,7 @@
                                                                         <i class="fa fa-trash-o" aria-hidden="true">
                                                                         </i> Delete Post
                                                                     </a>
-                                                                    <a href="<?php echo base_url('business_profile/business_profile_contactperson/' . $busienss_data[0]['posted_user_id'] . ''); ?>">
+                                                                    <a href="<?php echo base_url('business-profile/contact-person/' . $busienss_data[0]['posted_user_id'] . ''); ?>">
                                                                         <i class="fa fa-user" aria-hidden="true">
                                                                         </i> Contact Person
                                                                     </a>
@@ -319,7 +319,7 @@
                                                                         </i> Delete Post
                                                                     </a>
 
-                                                                    <a href="<?php echo base_url('business_profile/business_profile_contactperson/' . $busienss_data[0]['user_id'] . ''); ?>">
+                                                                    <a href="<?php echo base_url('business-profile/contact-person/' . $busienss_data[0]['user_id'] . ''); ?>">
                                                                         <i class="fa fa-user" aria-hidden="true">
                                                                         </i> Contact Person
                                                                     </a>
