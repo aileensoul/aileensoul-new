@@ -98,11 +98,12 @@
                         <h4 class="profile-head-text_dg"><a href="<?php echo base_url('business-profile/details/' . $businessdata1[0]['business_slug'] . ''); ?>"> 
                                 <?php
                                 if ($businessdata1[0]['industriyal']) {
-                                    echo
-                                    $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
+                                    echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
                                 }
                                 if ($businessdata1[0]['other_industrial']) {
-                                    //echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
+                                    if($industry_type == ''){
+                                    echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
+                                    }
                                 }
                                 ?>
 

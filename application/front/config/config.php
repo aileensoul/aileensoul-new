@@ -774,8 +774,8 @@ $config['bus_post_main_upload_path'] = 'uploads/business_post/main/';
 $config['bus_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
 $config['bus_post_main_allowed_types'] = '*';
 $config['bus_post_main_max_size'] = '100000000'; //in KB 
-$config['bus_post_main_max_width'] = '6000';
-$config['bus_post_main_max_height'] = '4000';
+$config['bus_post_main_max_width'] = '4500';
+$config['bus_post_main_max_height'] = '3000';
 
 // BUSINESS POST RESIZED
 $config['bus_post_resize_upload_path'] = 'uploads/business_post/resize/';
