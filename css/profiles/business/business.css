@@ -77,7 +77,7 @@
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
+#row2 img {height: 350px; width: 100%; /*border:1px solid #d9d9d9*/; border-bottom: none;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -2798,12 +2798,13 @@ font-size: 32px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a:hover {text-decoration-line: underline;
     color: #1b8ab9;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;
-    width: 30%; float: left;}
+    width: 30%; float: left; padding-right: 7px; position: relative;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {text-align: justify;
     word-break: break-word; display: flex; margin-bottom: 0px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: ":";
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: ":"; position: absolute;
+right: 0;
     margin-left: -15px; float: left;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
     word-break: break-word; float: left; padding-right: 10px; width: 65%;}
