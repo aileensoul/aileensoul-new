@@ -1714,9 +1714,9 @@ display: inline-block;
     .panel-heading a::before {top: 8px;
 font-size: 18px;}
     .panel-group.wrap .panel-title a{font-size: 14px;}
-	.post-img-user{width: 100%; height: 100%;}
+	
 	.job_reg_page_fprm{width: 90%;}
-	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+	.post-img-user{font-size: 26px; height: 88px; line-height: 1; padding: 33px 0; width: 88px;}
 	.profile-head-text a {
         font-size: 18px;
     }
@@ -1725,16 +1725,18 @@ font-size: 18px;}
         line-height: 8px;
         padding-top: 0px;
     }
+	.custom-row .user-pic:hover a{width:88px; bottom:5px;}
 	.cover-pic{bottom: 62%; right: -10%;}
 	.profile-photo .profile-pho {
-        height: 80px;
-        width: 80px;
+        height: 100px;
+        width: 100px;
         margin-top: -40px !important;
     }
 	.user-pic {
-        width: 75px;
-        height: 75px;
+        width: 98px;
+        height: 98px;
     }
+	.padd_img{padding:5px !important;}
 	.right-side-menu {
         padding-left: 18%;
     }
@@ -1788,12 +1790,11 @@ font-size: 18px;}
 }
 }
 @media screen and (max-width: 479px) {
-.edu_tab .panel-body{padding: 0px;}
-.padd_img{padding-left: 2px !important;
-padding-top: 2px !important;}
-    .profile-job-details .job_companyname {
-    width: 197px;
-}
+	.edu_tab .panel-body{padding: 0px;}
+
+		.profile-job-details .job_companyname {
+		width: 197px;
+	}
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
     }
@@ -1815,13 +1816,7 @@ padding-top: 2px !important;}
 	.profile-head-text{margin-top: 8px;}
     .profile-head-text_dg{line-height: 18px;}
 	.search-mob-block label{/*margin-top: 7px; margin-left: 0px*/}
-	.post-img-user {
-		font-size: 16px;
-		height: 100%;
-		line-height: 22px;
-		padding: 22px 0;
-		width: 100%;
-	}
+	
 	.floatBarsG{width: 20px; height: 20px;}
 	#floatBarsG {
 		position: absolute;
@@ -1922,7 +1917,7 @@ padding-top: 2px !important;}
 	.job_con #InboxContainer::before {
 		right: 124px;
 	}
-    .padd_img { padding-left: 3px !important; padding-top: 4px !important;}
+    
  .profile-box-art .right-side-menu .pro-fw li a {
         padding-left: 1px !important;
         padding-right: 1px !important;

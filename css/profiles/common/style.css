@@ -2057,6 +2057,9 @@ display: none !important;
     /*all profile*/
     .art_no_post_text{padding-top: 10px; font-size: 23px;}
     .art_no_post_img{padding-top: 0px; padding-bottom: 0px; }
+	
+	/* cover page */
+	.por_content ul li .pro-text{width:85% !important;}
 }
 @media screen and (max-width: 640px) {
 
