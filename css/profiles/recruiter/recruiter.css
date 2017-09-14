@@ -23,10 +23,12 @@
     width: 22.5%;
     margin-top: 0px;
 }
+.add-post-button .btn:focus{color: white; background: #156f95;}
+.profile-job-post-detail .profile-job-post-title .button:hover{background: #1b8ab9; color: #fff;}
 .buisness-profile-pic-candidate {border: 1px solid #d9d9d9; margin-left: 6px!important;  width: 50px; margin-top: 5px;
     height: 50px;  margin-bottom: 6px; display: inline-block;} 
 .buisness-profile-pic-candidate img { width: 100%; height: 100%;}
-.designation_rec { float: left; width: 60%; padding-top: 1px;}
+.designation_rec { float: left; width: 60%; padding-top:5px; line-height: 17px;}
 .profile-job-post-location-name-rec ul {padding: 0;}
 .profile-job-post-location-name-rec ul li { width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     padding: 0px 3px 0 8px; margin: 0; list-style: none; display: inline-block;}
@@ -121,9 +123,10 @@ li.fr a {text-decoration: none !important;}
     font-size: 18px;
     font-weight: 600;
     margin-left: 0px;
-    width: 93%;
+    max-width: 93%;
 	overflow: hidden;
 	text-overflow: ellipsis;
+    line-height: 24px;
 }
 .profile-job-profile-button ul li a{font-family: 'arial'; font-weight:normal;}
 .dot_free{
@@ -354,9 +357,9 @@ label.cameraButton input[accept*="camera"] {display: none;}
     width: 180px;
     background-color: black;
     color: #fff;
-    opacity:0.6;
+    opacity:1.8;
     text-align: center;
-    padding: 13px 0px;
+    padding: 10px 0px;
     position: absolute;
     z-index: 1;
     font-weight: 600;
@@ -583,7 +586,6 @@ label.cameraButton input[accept*="camera"] {display: none;}
 
 /***---------- end  common css for all profile  -------------***/
 
-.add-post-button {margin: 30px 10px 10px;}
 
 .designation_rec_1 ul {
     padding-left: 0px;
@@ -675,7 +677,9 @@ fieldset .add_post_btns{padding: 10px 30px 12px!important;}
 }
 .not_founde_head2{font-size: 30px; color: #1B8AB9; margin: 10PX;}
 .certificate{border:none; padding:0; margin-top:15px;}
-.designation_rec_1{width:90%;}
+.designation_rec_1 {
+    width: 87%;
+}
 .required_field{display:none;}
 .alert{cursor: default;}
 .profile-text a {
@@ -721,6 +725,9 @@ fieldset .add_post_btns{padding: 10px 30px 12px!important;}
 .add-post-button a:hover {
     color: #ffffff;
 }
+.back {
+    width: 62%;
+    }
 label.cameraButton input[accept*="camera"] {
     display: none;
 }
@@ -732,6 +739,9 @@ label.cameraButton input[accept*="camera"] {
 #popup-form #upload-demo-one img {
     display: block;
 }*/
+.date-dropdowns label {
+    margin-top: 36px !important;
+}
  #upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul .clearfix {
     list-style: none;
@@ -843,9 +853,16 @@ label.cameraButton input[accept*="camera"] {
     border-top-right-radius: 3px;
 }
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
-
+.job-contact-frnd .add-post-button .btn-3{margin: 10px;
+}
 
 /***  media query  ***/
+@media screen and (max-width: 1279px)
+{
+.custom-right {
+    margin-left: 10px
+    }
+   } 
 @media screen and (max-width: 1200px)
 {
       .custom-right{margin-left: 50px;}
@@ -873,6 +890,9 @@ label.cameraButton input[accept*="camera"] {
 }
 
 @media screen and (max-width: 1024px) {
+    .back {
+    width: 65%;
+    }
 	.profile-boxProfilebuisness-avatarLink2 {
         height: 70px !important;
     }
@@ -920,6 +940,13 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+    .back {
+    width: 100%;
+    }
+    .custom_footer_dot{ padding: 0px 1px 0px; }
+    .custom_footer_left ul li{padding: 0 6px;}
+    .art_no_post_text{font-size: 23px;}
+    .but1{font-size: 16px; padding: 7px 4px 7px 0px; margin-left: 29px;}
 	.custom-right{margin-left: 5%;}
 	 .profile-box{width:300px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -999,17 +1026,28 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
     .right_left_box_design{width:100% !important; text-align:center; padding-top:5px !important;}
     .profile-boxProfileCard-content::before{top:74px !important;}
+    .custom-right {
+    margin-left: 5%;
+    }
 }
 @media screen and (max-width: 767px){
+    .art-img-nn{margin: 7px 0px 23px;}
+    
+    .back {
+    width: 32%;
+    }
+    .designation_rec_1 {
+    width: 82%;
+    }
 	.custom-right{margin-left:0;}
     .art_no_post_img {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+   .art_no_post_text {
     padding-top: 0px;
-    padding-bottom: 0px;
-}
-.art_no_post_text {
-    padding-top: 10px;
-    font-size: 23px;
-}
+    font-size: 18px;
+    }
     .pro-fw4{border-bottom: none;}
     .right-side-menu{height: auto;}
     .mob-block {display: block;}
@@ -1261,7 +1299,7 @@ label.cameraButton input[accept*="camera"] {
 		padding: 4px 0px 0px 3px !important;
 	}
 	.post-img-user{width: 100%; height: 100%;}
-	.post-img-user{font-size: 20px; height: 67px; line-height: 1; padding: 24px 0; width: 69px;}
+	.post-img-user{font-size: 20px; height:100%; line-height: 1; padding: 24px 0; width: 100%;}
 	.cover-pic{bottom: 62%; right: -10%;}
 	.profile-photo .profile-pho {
         height: 80px;
@@ -1291,7 +1329,9 @@ label.cameraButton input[accept*="camera"] {
         font-size: 12px;
         padding-left: 12px;
     }
-
+    .back {
+        width: 36%;
+    }
 	.common-form1 h3{font-size: 15px;}
     select{padding: 5px}
 	.midd-section{padding: 85px 0;}
@@ -1323,13 +1363,19 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 479px) {
+    .product-listing {font-size: 18px;
+    }
+  
+    .back {
+    width: 50%;
+    }
 	.search-mob-block label{margin-top: 7px; margin-left: 0px;}
 	.post-img-user {
 		font-size: 16px;
-		height: 67px;
+		height: 100%;
 		line-height: 0;
 		padding: 22px 0;
-		width: 48px;
+		width: 100%;
 	}
 	.floatBarsG{width: 20px; height: 20px;}
 	#floatBarsG {
@@ -1455,6 +1501,9 @@ label.cameraButton input[accept*="camera"] {
 	
 }
 @media screen and (max-width: 360px) {
+    .back {
+    width: 73%;
+    }
 	#paddingtop_fixed{padding-top:70px !important;}
     .profile-job-post-location-name-rec .designation_rec {
 		width: 70% !important;
@@ -1525,7 +1574,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-post-detail .profile-job-post-title .button {
         font-size: 12px;
-        padding: 3px 14px !important;
+        padding: 3px 8px !important;
     }
 	.right-side-menu {
         width: 100%;

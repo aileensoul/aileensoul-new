@@ -862,24 +862,29 @@ $config['art_post_main_max_height'] = '3000';
 
 // ARTISTIC POST THUMBS
 $config['art_post_thumb_upload_path'] = 'uploads/artistic_post/thumbs/';
-$config['art_post_thumb_width'] = '350';
-$config['art_post_thumb_height'] = '200';
+$config['art_post_thumb_width'] = '280'; //350
+$config['art_post_thumb_height'] = '220'; //200
 
 
 // ARTISTIC POST 335 X 320
 $config['art_post_resize1_upload_path'] = 'uploads/artistic_post/resize1/';
-$config['art_post_resize1_width'] = '335';
-$config['art_post_resize1_height'] = '320';
+$config['art_post_resize1_width'] = '280';
+$config['art_post_resize1_height'] = '220';
 
 // ARTISTIC POST 335 X 245
 $config['art_post_resize2_upload_path'] = 'uploads/artistic_post/resize2/';
-$config['art_post_resize2_width'] = '335';
-$config['art_post_resize2_height'] = '245';
+$config['art_post_resize2_width'] = '280';
+$config['art_post_resize2_height'] = '220';
 
 // ARTISTIC POST 210 X 210
 $config['art_post_resize3_upload_path'] = 'uploads/artistic_post/resize3/';
 $config['art_post_resize3_width'] = '210';
 $config['art_post_resize3_height'] = '210';
+
+// ARTISTIC POST 550 X 220
+$config['art_post_resize4_upload_path'] = 'uploads/artistic_post/resize4/';
+$config['art_post_resize4_width'] = '550';
+$config['art_post_resize4_height'] = '220';
 
 
 // BLOG MAIN IMAGE

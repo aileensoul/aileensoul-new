@@ -3,7 +3,8 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+//        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
@@ -23,7 +24,7 @@ $(document).ready(function () {
             }
         }
     });
-    
+
 });
 var isProcessing = false;
 function business_following(slug_id, pagenum)
@@ -40,7 +41,7 @@ function business_following(slug_id, pagenum)
     $.ajax({
         type: 'POST',
         url: base_url + "business_profile/ajax_following/" + slug_id + '?page=' + pagenum,
-        data: {total_record:$("#total_record").val()},
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
@@ -114,11 +115,11 @@ $uploadCrop = $('#upload-demo').croppie({
 
 
 $('.upload-result').on('click', function (ev) {
-    
+
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
     document.getElementById('message1').style.display = "block";
-    
+
     $uploadCrop.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -280,80 +281,80 @@ $(document).ready(function () {
     $('html,body').animate({scrollTop: 330}, 500);
 });
 //contact person script start 
-function contact_person_query(clicked_id, status) { 
+function contact_person_query(clicked_id, status) {
 
-   
-                        $.ajax({
-                            type: 'POST',
-                            //url: '<?php echo base_url() . "business_profile/contact_person_query" ?>',
-                            url: base_url + "business_profile/contact_person_query",
 
-                            data: 'toid=' + clicked_id + '&status=' + status,
-                            success: function (data) { //alert(data);
-                              // return data;
-                               contact_person_model(clicked_id, status, data);
-                            }
-                        });
-                    }
+    $.ajax({
+        type: 'POST',
+        //url: '<?php echo base_url() . "business_profile/contact_person_query" ?>',
+        url: base_url + "business_profile/contact_person_query",
 
-                    
+        data: 'toid=' + clicked_id + '&status=' + status,
+        success: function (data) { //alert(data);
+            // return data;
+            contact_person_model(clicked_id, status, data);
+        }
+    });
+}
 
 
 
 
 
-                    function contact_person_model(clicked_id, status, data) {
 
-                        if(data == 1){
 
-                            if (status == 'pending') {
+function contact_person_model(clicked_id, status, data) {
 
-                            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
+    if (data == 1) {
 
-                        } else if (status == 'confirm') {
+        if (status == 'pending') {
 
-                            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
-                            $('#bidmodal').modal('show');
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to cancel  contact request?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
 
-                        }else{ 
-                           contact_person(clicked_id); 
-                        }
+        } else if (status == 'confirm') {
 
-                }else{
+            $('.biderror .mes').html("<div class='pop_content'> Do you want to remove this user from your contact list?<div class='model_ok_cancel'><a class='okbtn' id=" + clicked_id + " onClick='contact_person(" + clicked_id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+            $('#bidmodal').modal('show');
 
-                      $('#query .mes').html("<div class='pop_content'>Sorry, we can't process this request at this time.");
-                      $('#query').modal('show');
-                            
-                }
-                        
-                       
+        } else {
+            contact_person(clicked_id);
+        }
 
-                    }
-  
+    } else {
+
+        $('#query .mes').html("<div class='pop_content'>Sorry, we can't process this request at this time.");
+        $('#query').modal('show');
+
+    }
 
 
 
-                    function contact_person(clicked_id) {
-                        
-                        $.ajax({
-                            type: 'POST',
-                            //url: '<?php echo base_url() . "business_profile/contact_person" ?>',
-                            url: base_url + "business_profile/contact_person",
+}
 
-                            data: 'toid=' + clicked_id,
-                            success: function (data) {
-                                //   alert(data);
-                                $('#contact_per').html(data);
 
-                            }
-                        });
-                    }
+
+
+function contact_person(clicked_id) {
+
+    $.ajax({
+        type: 'POST',
+        //url: '<?php echo base_url() . "business_profile/contact_person" ?>',
+        url: base_url + "business_profile/contact_person",
+
+        data: 'toid=' + clicked_id,
+        success: function (data) {
+            //   alert(data);
+            $('#contact_per').html(data);
+
+        }
+    });
+}
 
 $(document).on('keydown', function (e) {
-                if (e.keyCode === 27) {
-                //$( "#bidmodal" ).hide();
-                $('#query').modal('hide');
-                //$('.modal-post').show();
-                }
-                });
+    if (e.keyCode === 27) {
+        //$( "#bidmodal" ).hide();
+        $('#query').modal('hide');
+        //$('.modal-post').show();
+    }
+});

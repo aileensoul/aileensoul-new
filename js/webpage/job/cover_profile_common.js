@@ -169,7 +169,7 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                     document.getElementById('loader_popup').style.display = 'block';
                 },
                 complete: function () {
-                    $document.getElementById('loader_popup').style.display = 'none';
+                    document.getElementById('loader_popup').style.display = 'none';
                 },
                 success: function (data) {
                      $('#loader_popup').remove();
@@ -177,6 +177,7 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
                     document.getElementById('upload-demo-one').style.display = 'none';
+                    document.getElementById('loader_popup').style.display = 'none';
                 }
             });
         });
@@ -186,7 +187,7 @@ function updateprofilepopup(id)
 { 
     document.getElementById('upload-demo-one').style.display = 'none';
     document.getElementById('upload-one').value = null;
-    document.getElementById('loader_popup').style.display = 'none';
+   // document.getElementById('loader_popup').style.display = 'none';
     $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END

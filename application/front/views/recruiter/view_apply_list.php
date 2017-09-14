@@ -25,7 +25,7 @@
                     <div class="row">
 
 
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-3">
 
 
                             <div class="add-post-button">
@@ -39,7 +39,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-7 col-sm-7 all-form-content">
+                        <div class="col-md-7 col-sm-8 all-form-content">
                             <div class="common-form">
                                 <div class="job-saved-box">
 

@@ -140,13 +140,14 @@ $(document).ready(function () {
                 data: {"image": resp},
                 beforeSend: function () {
                     // $('.loader').show();
-                    document.getElementById('profile_loader').style.display = 'block';
+//                    document.getElementById('profile_loader').style.display = 'block';
+                    $('#profile_loader').show();
                 },
                 complete: function () {
                  //   document.getElementById('loader').style.display = 'none';
                 },
                 success: function (data) {
-                    $('#profile_loader').remove();
+                    $('#profile_loader').hide();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;

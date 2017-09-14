@@ -1350,7 +1350,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 #fre-popup .card ul.nav-tabs li a{font-size:18px; border:none; text-align:center; width:100%; padding:5px 15px; color:#777;}
 #fre-popup .card ul.nav-tabs li a:hover{background:none;; color:#1b8ab9;}
 #fre-popup .card ul.nav-tabs li.active a{color:#1b8ab9;}
-#fre-popup.how-it-popup .pro_img{padding-bottom:50px;}
+
 /*.header-login label.error{position:absolute;}*/
 /*.main-inner{min-height: 100%; position:relative}*/
 .cover .fancybox-slide .modal-dialog{margin:0; border-radius: 5px;}
@@ -1583,7 +1583,6 @@ height: 146px;}
 
 @media screen and (max-width: 991px) {
 	.error{font-size: 14px;}
-
     .main-inner .pd-low{/*padding-top: 100px;*/}
 	/*.banner-box .left-profile{left: 0px!important;}*/
 	.m-h-a{max-height: 215px;}
@@ -1594,7 +1593,7 @@ height: 146px;}
 	.profile-detail h2{font-size: 20px;}
 	.left-profile .profile-photo{top:-84px;	}
 	.upload-profile img{width:25px; margin-bottom:2px;}
-	.upload-profile{font-size:13px; padding-top:30px;}
+	.upload-profile{font-size:13px; padding-top:15px;}
 	.header-login .input{width:25%;}
 	.top-middle h3{font-size:20px;}
 	.bottom-middle{padding:0;}
@@ -1634,9 +1633,9 @@ height: 146px;}
 }
 @media screen and (max-width: 767px) {
 	   .banner-box .upload-camera {
-    height: 34px;
-    width: 41px;
-}
+		height: 34px;
+		width: 41px;
+	}
     .t-r-l{text-align: right !important;}
 	.header-login .btn1{margin-left: 0px;}
 	.header-login .input{width: 46%; margin-right: 2%; margin-left: 2%;}
@@ -1735,11 +1734,9 @@ height: 146px;}
 	.profile-detail h2{font-size:22px;}
 	.banner-box .banner-img{max-height:200px;}
 	.banner-box img{height:200px;}
-	.left-profile .profile-photo{width: 97px;   
-height: 91px;}
-	.left-profile .profile-photo img.main-pic{height: 87px;
-width: 93px;}
-	.upload-profile{width: 87px; height: 81px; padding:8px 4px; font-size:9px; line-height:1.5;}
+	.left-profile .profile-photo{width: 97px; height: 91px;}
+	.left-profile .profile-photo img.main-pic{height: 87px; width: 93px;}
+	.upload-profile{width: 87px; height: 81px; padding:15px 4px; font-size:9px; line-height:1.5;}
 	.upload-profile img{width:25px !important; height:25px !important;}
 	.banner-box #row2 img{height:200px;}
 	
@@ -1780,8 +1777,9 @@ margin-left: -75px;}
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
 	.banner {
-    padding-top: 10px;
-}
+		padding-top: 10px;
+	}
+	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
 }
 @media screen and (max-width: 320px) {
 	.por_content ul li{padding: 10px;}

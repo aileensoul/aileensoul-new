@@ -21,12 +21,12 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-2 col-sm-2"> 
+                        <div class="col-md-2 col-sm-1"> 
                             <div  class="add-post-button">
 
 
                             </div></div>
-                        <div class="col-md-8 col-sm-8">
+                        <div class="col-md-8 col-sm-10">
 
                             <div>
                                 <?php

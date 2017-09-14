@@ -1149,15 +1149,21 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
         $insert_id = $this->common->insert_data_getid($data, 'art_post');
         //echo $insert_id; die(); 
+        if ($_FILES['postattach']['name'][0] != '') {
+// CHECK FILE IS PROPER 
+// if ($data['product_name'] != '' && $data['product_description'] != '') {
+            if ($_FILES['postattach']['error'][0] != '1') {
+                $insert_id = $this->common->insert_data_getid($data, 'art_post');
+            }
+        } else {
+            $insert_id = $this->common->insert_data_getid($data, 'art_post');
+        }
         $config = array(
-            
-            'image_library' => 'gd2',
+            'image_library' => 'gd',
             'upload_path' => $this->config->item('art_post_main_upload_path'),
+            'allowed_types' => $this->config->item('art_post_main_allowed_types'),
             'overwrite' => true,
-            'remove_spaces' => true,
-            'allowed_types' => $this->config->item('art_post_main_allowed_types')
-        );
-        //echo "<pre>"; print_r($config); die();
+            'remove_spaces' => true);
         $images = array();
         $this->load->library('upload');
 
@@ -1168,39 +1174,50 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
 
-        for ($i = 0; $i < $count; $i++) {
+        if ($_FILES['postattach']['name'][0] != '') {
 
-            $_FILES['postattach']['name'] = $files['postattach']['name'][$i];
-            $_FILES['postattach']['type'] = $files['postattach']['type'][$i];
-            $_FILES['postattach']['tmp_name'] = $files['postattach']['tmp_name'][$i];
-            $_FILES['postattach']['error'] = $files['postattach']['error'][$i];
-            $_FILES['postattach']['size'] = $files['postattach']['size'][$i];
+            for ($i = 0; $i < $count; $i++) {
 
+                $_FILES['postattach']['name'] = $files['postattach']['name'][$i];
+                $_FILES['postattach']['type'] = $files['postattach']['type'][$i];
+                $_FILES['postattach']['tmp_name'] = $files['postattach']['tmp_name'][$i];
+                $_FILES['postattach']['error'] = $files['postattach']['error'][$i];
+                $_FILES['postattach']['size'] = $files['postattach']['size'][$i];
 
+                $file_type = $_FILES['postattach']['type'];
+                $file_type = explode('/', $file_type);
+                $file_type = $file_type[0];
+                if ($file_type == 'image') {
+                    $file_type = 'image';
+                } elseif ($file_type == 'audio') {
+                    $file_type = 'audio';
+                } elseif ($file_type == 'video') {
+                    $file_type = 'video';
+                } else {
+                    $file_type = 'pdf';
+                }
 
+                if ($_FILES['postattach']['error'] == 0) {
 
-            /** convert video to flash * */
-            //exec("ffmpeg -i {input}.mov -vcodec h264 -acodec aac -strict -2 {output}.mp4");
-   
+                    $store = $_FILES['postattach']['name'];
 
+                    $store_ext = explode('.', $store);
+                    $store_ext = end($store_ext);
 
+                    $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
 
-            $store = $_FILES['postattach']['name'];
-            $store_ext = explode('.', $store);
-            $store_ext = end($store_ext);
-            $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
-            $images[] = $fileName;
-            $config['file_name'] = $fileName;
-            $this->upload->initialize($config);
-            $imgdata = $this->upload->data();
+                    $images[] = $fileName;
+                    $config['file_name'] = $fileName;
 
-            $this->upload->do_upload();
-            if ($this->upload->do_upload('postattach')) {
-                
-                $response['result'][] = $this->upload->data();
-                $main_image_size = $_FILES['postattach']['size'];
+                    $this->upload->initialize($config);
+//                  $this->upload->do_upload();
 
-                 if ($main_image_size > '1000000') {
+                    $imgdata = $this->upload->data();
+                    if ($this->upload->do_upload('postattach')) {
+                        $response['result'][] = $this->upload->data();
+                        $main_image_size = $_FILES['postattach']['size'];
+
+                        if ($main_image_size > '1000000') {
                             $quality = "50%";
                         } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
                             $quality = "55%";
@@ -1223,27 +1240,54 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $instanse10 = "image10_$i";
                         $this->load->library('image_lib', $artistic_post_main[$i], $instanse10);
                         $this->$instanse10->watermark();
-
-                         $command = "ffmpeg -i ".$store." -an -ss 00:00:03 -an -r 1 -vframes 1 -y -vf scale='-1:min(200\, iw*3/2)' ".$artistic_post_main.' 2>&1 >> /opt/lampp/logs/ffmpeg_log.log';
-    exec($command);
-    // Let's make a larger thumbnail too
-    $command = "ffmpeg -i ".$store." -an -ss 00:00:03 -an -r 1 -vframes 1 -y -vf scale='-1:min(800\, iw*3/2)' ".$artistic_post_main.' 2>&1 >> /opt/lampp/logs/ffmpeg_log.log';
-    exec($command);
-    // ffmpeg command to convert video
-    // MP4 
-    $command = "ffmpeg -i ".$store." -y -vf scale='min(900\, iw*3/2)':-1 -vcodec libx264 -coder 1 -bf 16 -refs 1 -flags2 +dct8x8 -acodec libfaac -ac 2 -ar 48000 ".$artistic_post_main." 2>&1 >> /opt/lampp/logs/ffmpeg_log.log";
-    
-    exec($command); // 2>&1 redirect STDERR to STDOUT and send to log.
-
-
+                        
                         /* RESIZE */
 
                         $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
                         $image_width = $response['result'][$i]['image_width'];
                         $image_height = $response['result'][$i]['image_height'];
+
+                        /* RESIZE4 */
+
+                        $resize4_image_width = $this->config->item('art_post_resize4_width');
+                        $resize4_image_height = $this->config->item('art_post_resize4_height');
+
+                        $n_w1 = $image_width;
+                        $n_h1 = $image_height;
+
+
+                        $conf_new4[$i] = array(
+                            'image_library' => 'gd2',
+                            'source_image' => $artistic_post_main[$i]['new_image'],
+                            'create_thumb' => FALSE,
+                            'maintain_ratio' => FALSE,
+                            'width' => $resize4_image_width,
+                            'height' => $resize4_image_height
+                        );
+
+                        $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                        $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                        $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+
+                        $conf_new4[$i]['x_axis'] = $left;
+                        $conf_new4[$i]['y_axis'] = $top;
+
+                        $instanse4 = "image4_$i";
+                        //Loading Image Library
+                        $this->load->library('image_lib', $conf_new4[$i], $instanse4);
+                        $dataimage = $response['result'][$i]['file_name'];
+                        //Creating Thumbnail
+                        $this->$instanse4->crop();
+
+                        $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                        $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+
+                        /* RESIZE4 */
+
 
                         $thumb_image_width = $this->config->item('art_post_thumb_width');
                         $thumb_image_height = $this->config->item('art_post_thumb_height');
@@ -1270,6 +1314,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $artistic_post_thumb[$i]['thumb_marker'] = '';
                         $artistic_post_thumb[$i]['width'] = $n_w;
                         $artistic_post_thumb[$i]['height'] = $n_h;
+//                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
                         $artistic_post_thumb[$i]['quality'] = "100%";
                         $artistic_post_thumb[$i]['x_axis'] = '0';
                         $artistic_post_thumb[$i]['y_axis'] = '0';
@@ -1369,7 +1414,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         /* CROP 335 X 245 */
 
-                         /* CROP 210 X 210 */
+                        /* CROP 210 X 210 */
                         // reconfigure the image lib for cropping
 
                         $resized_image_width = $this->config->item('art_post_resize3_width');
@@ -1411,60 +1456,36 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         /* CROP 210 X 210 */
 
-                $response['error'][] = $thumberror = $this->$instanse->display_errors();
-                
-                
-                $return['data'][] = $this->upload->data();
-                $return['status'] = "success";
-                $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+                        $response['error'][] = $thumberror = $this->$instanse->display_errors();
 
-                $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-                //echo $ext; die();
-                if($ext == 'mp4' || $ext == 'MP4'){
-                $data = array(
-                    'file_name' => $fileName, 
-                    'post_format' => 'video',
-                    'insert_profile' => 1,
-                    'post_id' => $insert_id,
-                    'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => '1'
-                );
-             }else if($ext == 'mp3' || $ext == 'MP3'){
-                $data = array(
-                    'file_name' => $fileName, 
-                    'post_format' => 'audio',
-                    'insert_profile' => 1,
-                    'post_id' => $insert_id,
-                    'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => '1'
-                );
-             }else if($ext == 'pdf'){
-                $data = array(
-                    'file_name' => $fileName, 
-                    'post_format' => 'pdf',
-                    'insert_profile' => 1,
-                    'post_id' => $insert_id,
-                    'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => '1'
-                );
-             }else if($ext == 'JPEG' || $ext == 'jpeg' || $ext == 'jpg' || $ext == 'png'){
-                $data = array(
-                    'file_name' => $fileName, 
-                    'post_format' => 'image',
-                    'insert_profile' => 1,
-                    'post_id' => $insert_id,
-                    'created_date' => date('Y-m-d H:i:s', time()),
-                    'is_deleted' => '1'
-                );
-             }
+                        $return['data'][] = $imgdata;
+                        $return['status'] = "success";
+                        $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
 
-                $insert = $this->common->insert_data_getid($data, 'post_files');
-            }  // } else { 
-            //   redirect('artistic/art_post', refresh);
-            // }
+                        $data1 = array(
+                            'file_name' => $fileName,
+                            'insert_profile' => '1',
+                            'post_id' => $insert_id,
+                            'is_deleted' => '1',
+                            'post_format' => $file_type,
+                            'created_date' => date('Y-m-d H:i:s', time())
+                        );
+
+                        //echo "<pre>"; print_r($data1);
+                        $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
+                       
+                    } else {
+                        echo $this->upload->display_errors();
+                        exit;
+                    }
+                } else {
+                    $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
+                    exit;
+                }
+            } //die();
         }
-       
-        // new code end
+
+// new code end
 
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');

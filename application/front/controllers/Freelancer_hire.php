@@ -317,15 +317,15 @@ class Freelancer_hire extends MY_Controller {
 
         if (count($hire_step) > 0) {
             if ($hire_step[0]['free_hire_step'] == '1') {
-                if ($this->uri->segment(2) == 'freelancer_hire_address_info') {
+                if ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer_hire/freelancer_hire/freelancer_hire_address_info');
                 }
             } elseif ($hire_step[0]['free_hire_step'] == '2') {
-                if ($this->uri->segment(2) == 'freelancer_hire_professional_info') {
+                if ($this->uri->segment(2) == 'professional-information') {
                     
-                } elseif ($this->uri->segment(2) == 'freelancer_hire_address_info') {
+                } elseif ($this->uri->segment(2) == 'address-information') {
                     
                 } else {
                     redirect('freelancer_hire/freelancer_hire/freelancer_hire_professional_info');

@@ -29,7 +29,7 @@
     width: 100%;
     float: left;
 }
-
+input[type="file"]{border: none;}
  select.day:focus {
    border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
@@ -4027,6 +4027,7 @@ height: 100px;
     }
 }
 @media screen and (max-width: 640px){
+    
     .modal.in .modal-dialog{width: 80%;}
     #row2 img{height: 200px;}
 	.bui_bcon {width: 56%;}
@@ -4094,6 +4095,7 @@ height: 100px;
         margin-top: 0px;
 
     }
+    #upload-demo-one{width: 100%!important;}
     .reactivate_btn_n a , .reactivate_btn_y a{
         font-size: 16px;
         padding: 7px 29px;
@@ -4291,9 +4293,12 @@ height: 100px;
         width: 50px;
         margin-top: 12px;
     }
-	.profile-pho-bui .user-pic {
+	  .profile-pho-bui .user-pic {
     height: 49px;
     width: 49px;
+    padding-left: 1px !important;
+    padding-top: 1px !important;
+    border-radius: 0; 
     }
     .bui-menu-profile {
         width: 70%;

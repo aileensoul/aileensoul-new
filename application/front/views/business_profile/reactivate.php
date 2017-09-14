@@ -33,11 +33,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <a href="<?php echo base_url('dashboard'); ?>">No</a>
                         </div>
                         <script src="<?php echo base_url('js/fb_login.js?ver=' . time()); ?>"></script>
-                        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
                     </div>
                 </center>
             </div>
         </div>
+        <?php  echo $footer; ?>
     </body>
 </html>
 

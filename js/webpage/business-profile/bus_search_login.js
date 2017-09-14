@@ -4,7 +4,8 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+//        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
+            if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();

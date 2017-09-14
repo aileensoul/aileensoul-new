@@ -21,7 +21,6 @@ class Business_profile extends MY_Controller {
 
 
         include ('include.php');
-
 // DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
@@ -29,61 +28,17 @@ class Business_profile extends MY_Controller {
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
-        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+        
         if ($business_deactive) {
-            redirect('business-profile/');
+//            redirect('business-profile/reactivate');
+            $this->load->view('business_profile/reactivate', $this->data);
         }
+        
+        
 // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
 // DEACTIVATE PROFILE END
-// CODE FOR SECOND HEADER SEARCH START
-
-        $contition_array = array('status' => '1', 'is_deleted' => '0', 'business_step' => 4);
-        $businessdata = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,other_industrial,other_business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-// GET BUSINESS TYPE
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $businesstype = $this->data['results'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = 'business_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-// GET INDUSTRIAL TYPE
-        $contition_array = array('status' => '1', 'is_delete' => '0');
-        $industrytype = $this->data['results'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = 'industry_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        $unique = array_merge($businessdata, $businesstype, $industrytype);
-        foreach ($unique as $key => $value) {
-            foreach ($value as $ke => $val) {
-                if ($val != "") {
-                    $result[] = $val;
-                }
-            }
-        }
-
-        $results = array_unique($result);
-        foreach ($results as $key => $value) {
-            $result1[$key]['label'] = $value;
-            $result1[$key]['value'] = $value;
-        }
-
-// GET LOCATION DATA
-        $contition_array = array('status' => '1');
-        $location_list = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-
-        foreach ($location_list as $key1 => $value1) {
-            foreach ($value1 as $ke1 => $val1) {
-                $location[] = $val1;
-            }
-        }
-
-        foreach ($location as $key => $value) {
-            $loc[$key]['label'] = $value;
-            $loc[$key]['value'] = $value;
-        }
-
-        $this->data['city_data'] = array_values($loc);
-
-        $this->data['demo'] = array_values($result1);
-
-// CODE FOR SECOND HEADER SEARCH END
+        
     }
 
     public function index() {
@@ -93,7 +48,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'status' => '0');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($businessdata) {
-            $this->load->view('business_profile/reactivate', $this->data);
+//            $this->load->view('business_profile/reactivate', $this->data);
         } else {
             $userid = $this->session->userdata('aileenuser');
 // GET BUSINESS PROFILE DATA
@@ -555,7 +510,7 @@ class Business_profile extends MY_Controller {
     }
 
     public function image_insert() {
-
+        
         $userdata = $this->session->userdata();
         $userid = $this->session->userdata('aileenuser');
 
@@ -571,9 +526,9 @@ class Business_profile extends MY_Controller {
             if ($_POST['filedata'][$x] == 'old') {
 
                 $data = array(
-                    'file_name' => $_POST['filename'][$x],
+                    'image_name' => $_POST['filename'][$x],
                 );
-                $updatdata = $this->common->update_data($data, 'bus_image', 'post_files_id', $_POST['imageid'][$x]);
+                $updatdata = $this->common->update_data($data, 'bus_image', 'bus_image_id', $_POST['imageid'][$x]);
             }
 
             if ($_POST['filedata'][$x]) {
@@ -593,10 +548,10 @@ class Business_profile extends MY_Controller {
             }
         }
         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
-        $userdatacon = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'image_id, image_name, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdatacon = $this->common->select_data_by_condition('bus_image', $contition_array, $data = 'bus_image_id, image_name, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         if ($this->input->post('next') || $this->input->post('submit')) {
-
+            
             $config = array(
                 'upload_path' => $this->config->item('bus_profile_main_upload_path'),
                 'max_size' => 1024 * 100,
@@ -742,7 +697,7 @@ class Business_profile extends MY_Controller {
 
                 if ($dataimage) {
                     $data = array(
-                        'file_name' => $dataimage,
+                        'image_name' => $dataimage,
                         'user_id' => $userid,
                         'created_date' => date('Y-m-d H:i:s'),
                         'is_delete' => 0
@@ -1427,7 +1382,7 @@ class Business_profile extends MY_Controller {
                         $instanse10 = "image10_$i";
                         $this->load->library('image_lib', $business_profile_post_main[$i], $instanse10);
                         $this->$instanse10->watermark();
-
+                        
                         /* RESIZE */
 
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
@@ -1455,9 +1410,6 @@ class Business_profile extends MY_Controller {
                         );
 
                         $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                        $white = imagecolorallocate($conf_new4[$i]['new_image'], 255, 255, 255);
-                        imagefill($conf_new4[$i]['new_image'], 0, 0, $white);
 
                         $left = ($n_w1 / 2) - ($resize4_image_width / 2);
                         $top = ($n_h1 / 2) - ($resize4_image_height / 2);

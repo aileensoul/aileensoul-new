@@ -239,9 +239,9 @@
                                                             $counter = $busienss_data[0]['product_name'];
                                                             $a = strlen($counter);
                                                             ?>
-                                                            <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a); ?>" name=text_num readonly>
+                                                        <input size=1 id="text_num" class="text_num" value="<?php echo (50 - $a); ?>" name=text_num disabled="">
                                                         <?php } else { ?>
-                                                            <input size=1 id="text_num" class="text_num" value=50 name=text_num readonly> 
+                                                            <input size=1 id="text_num" class="text_num" value=50 name=text_num disabled=""> 
                                                         <?php } ?>
                                                     </div>
                                                 </div>
@@ -260,7 +260,7 @@
                                                     ?>
                                                 </div>
                                                 <div id="<?php echo 'editpostdetailbox' . $busienss_data[0]['business_profile_post_id']; ?>" style="display:none;">
-                                                    <div  contenteditable="true" id="<?php echo 'editpostdesc' . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Product Description" class="textbuis  editable_text" placeholder="Description of Your Product"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);"><?php echo $busienss_data[0]['product_description']; ?></div>
+                                                    <div  contenteditable="true" id="<?php echo 'editpostdesc' . $busienss_data[0]['business_profile_post_id']; ?>" placeholder="Product Description" class="textbuis  editable_text" placeholder="Description of Your Product"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)"><?php echo $busienss_data[0]['product_description']; ?></div>
                                                 </div>
                                                 <button class="fr" id="<?php echo "editpostsubmit" . $busienss_data[0]['business_profile_post_id']; ?>" style="display:none;margin: 5px 0;" onClick="edit_postinsert(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)">Save</button>
                                             </div>
