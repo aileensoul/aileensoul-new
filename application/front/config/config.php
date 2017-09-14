@@ -774,8 +774,8 @@ $config['bus_post_main_upload_path'] = 'uploads/business_post/main/';
 $config['bus_post_main_allowed_types'] = 'gif|jpeg|jpg|PNG|png|pdf|mp4|mp3|avi|ogg|3gp|webm';
 $config['bus_post_main_allowed_types'] = '*';
 $config['bus_post_main_max_size'] = '100000000'; //in KB 
-$config['bus_post_main_max_width'] = '4500';
-$config['bus_post_main_max_height'] = '3000';
+$config['bus_post_main_max_width'] = '6000';
+$config['bus_post_main_max_height'] = '4000';
 
 // BUSINESS POST RESIZED
 $config['bus_post_resize_upload_path'] = 'uploads/business_post/resize/';
@@ -880,6 +880,11 @@ $config['art_post_resize2_height'] = '245';
 $config['art_post_resize3_upload_path'] = 'uploads/artistic_post/resize3/';
 $config['art_post_resize3_width'] = '210';
 $config['art_post_resize3_height'] = '210';
+
+// ARTISTIC POST 550 X 220
+$config['art_post_resize4_upload_path'] = 'uploads/artistic_post/resize4/';
+$config['art_post_resize4_width'] = '550';
+$config['art_post_resize4_height'] = '220';
 
 
 // BLOG MAIN IMAGE

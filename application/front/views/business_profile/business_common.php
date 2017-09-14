@@ -102,7 +102,7 @@
                                     $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
                                 }
                                 if ($businessdata1[0]['other_industrial']) {
-                                    echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
+                                    //echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
                                 }
                                 ?>
 

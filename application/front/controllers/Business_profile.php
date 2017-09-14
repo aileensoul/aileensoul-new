@@ -1426,7 +1426,7 @@ class Business_profile extends MY_Controller {
                         $business_profile_post_main[$i]['quality'] = $quality;
                         $instanse10 = "image10_$i";
                         $this->load->library('image_lib', $business_profile_post_main[$i], $instanse10);
-                        $this->$instanse10->resize();
+                        $this->$instanse10->watermark();
                         
                         /* RESIZE */
 
