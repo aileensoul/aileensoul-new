@@ -920,6 +920,8 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+	.custom-right{margin-left: 5%;}
+	 .profile-box{width:300px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
     .job-menu-profile{margin-top:20px; padding-bottom:10px;}
     .right_left_box_design{padding:9px 12px 12px 12px !important;}
@@ -984,7 +986,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 10px;
     }
 	.profile-job-details .job_companyname {
-        width: 300px;
+        width: 50%;
     }
     .profile-job-details .post_title {
         width: 50% !important;
@@ -999,6 +1001,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:74px !important;}
 }
 @media screen and (max-width: 767px){
+	.custom-right{margin-left:0;}
     .art_no_post_img {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -1506,7 +1509,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-details .post_title {
         width: 50%;
-        font-size: 11px;
+        font-size: 12px;
     }
 	.profile-job-details .job_companyname {
         width: 140px;
@@ -1529,5 +1532,5 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 320px){
-	.profile-job-details .post_title{font-size: 9px;}
+	.profile-job-details .post_title{font-size: 11px;}
 }
