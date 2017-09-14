@@ -2060,6 +2060,7 @@ display: none !important;
 	
 	/* cover page */
 	.por_content ul li .pro-text{width:85% !important;}
+	.common-form h3{display:none;}
 }
 @media screen and (max-width: 640px) {
 

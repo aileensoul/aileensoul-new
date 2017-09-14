@@ -128,17 +128,17 @@ $('#upload').click(function(){
 //Update Profile Pic Start
 
 $uploadCrop1 = $('#upload-demo-one').croppie({
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-    });
+    enableExif: true,
+    viewport: {
+        width: 157,
+        height: 157,
+        type: 'square'
+    },
+    boundary: {
+        width: 257,
+        height: 257,
+    }
+});
 
     $('#upload-one').on('change', function () {
         document.getElementById('upload-demo-one').style.display = 'block';
@@ -166,18 +166,14 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
                 data: {"image": resp},
 
                 beforeSend: function () {
-                    document.getElementById('loader_popup').style.display = 'block';
-                },
-                complete: function () {
-                    document.getElementById('loader_popup').style.display = 'none';
+                     $('#loader_popup').show();
                 },
                 success: function (data) {
-                     $('#loader_popup').remove();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
                     document.getElementById('upload-demo-one').style.display = 'none';
-                    document.getElementById('loader_popup').style.display = 'none';
+                     document.getElementById('loader_popup').style.display = 'none';
                 }
             });
         });
@@ -187,7 +183,6 @@ function updateprofilepopup(id)
 { 
     document.getElementById('upload-demo-one').style.display = 'none';
     document.getElementById('upload-one').value = null;
-   // document.getElementById('loader_popup').style.display = 'none';
     $('#bidmodal-2').modal('show');
 }
 //UPLOAD PROFILE PIC END

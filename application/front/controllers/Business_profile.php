@@ -1914,13 +1914,17 @@ class Business_profile extends MY_Controller {
         </a>';
                 } else {
 
-                    $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+                 /*   $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
             <i class="fa fa-trash-o" aria-hidden="true">
             </i> Delete Post
         </a>
         <a href="' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id']) . '">
             <i class="fa fa-user" aria-hidden="true">
-            </i> Contact Person </a>';
+            </i> Contact Person </a>'; */
+                    $return_html .= '<a onclick="user_postdelete(' . $row['business_profile_post_id'] . ')">
+            <i class="fa fa-trash-o" aria-hidden="true">
+            </i> Delete Post
+        </a>';
                 }
             } else {
                 if ($this->session->userdata('aileenuser') == $row['user_id']) {
@@ -1933,7 +1937,7 @@ class Business_profile extends MY_Controller {
             </i>Edit
         </a>';
                 } else {
-                    $return_html .= '<a onclick="user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
+                   /* $return_html .= '<a onclick="user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
             <i class="fa fa-trash-o" aria-hidden="true">
             </i> Delete Post
         </a>
@@ -1941,7 +1945,12 @@ class Business_profile extends MY_Controller {
         <a href="' . base_url('business-profile/business-profile-contactperson/' . $row['user_id']) . '">
             <i class="fa fa-user" aria-hidden="true">
             </i> Contact Person
-        </a>';
+        </a>'; */
+                    
+                    $return_html .= '<a onclick="user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
+            <i class="fa fa-trash-o" aria-hidden="true">
+            </i> Delete Post
+        </a>'; 
                 }
             }
 
@@ -2608,7 +2617,7 @@ class Business_profile extends MY_Controller {
         $contition_array = array('user_id' => $id, 'status' => '1', 'business_step' => 4);
         $this->data['contactperson'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $this->load->view('business-profile/business_profile_contactperson', $this->data);
+        $this->load->view('business_profile/business_profile_contactperson', $this->data);
     }
 
 //business_profile_contactperson _query
@@ -5577,14 +5586,14 @@ class Business_profile extends MY_Controller {
                 $datacount = "count";
                 $notfound = '<div class="contact-frnd-post bor_none">';
                 $notfound .= '<div class="text-center rio">';
-                $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
+                $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
                 $notfound .= '</div></div>';
             }
         } else {
             $datacount = "count";
             $notfound = '<div class="contact-frnd-post bor_none">';
             $notfound .= '<div class="text-center rio">';
-            $notfound .= '<h4 class="page-heading  product-listing">No Following Found.</h4>';
+            $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
             $notfound .= '</div></div>';
         }
         echo json_encode(
@@ -10228,13 +10237,19 @@ No Contacts Available.
 </a>';
                         } else {
 
-                            $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+                          /*  $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
-<a href = "' . base_url('business_profile/business_profile_contactperson/' . $row['posted_user_id']) . '">
+<a href = "' . base_url('business-profile/contact-person/' . $row['posted_user_id']) . '">
 <i class = "fa fa-user" aria-hidden = "true">
-</i> Contact Person </a>';
+</i> Contact Person </a>'; */
+                            
+                     $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
+</a>';        
+                            
                         }
                     } else {
                         if ($this->session->userdata('aileenuser') == $row['user_id']) {
@@ -10247,14 +10262,19 @@ No Contacts Available.
 </i>Edit
 </a>';
                         } else {
-                            $return_html .= '<a onclick = "user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
+                        /*    $return_html .= '<a onclick = "user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
 
-<a href = "' . base_url('business_profile/business_profile_contactperson/' . $row['user_id']) . '">
+<a href = "' . base_url('business-profile/contact-person/' . $row['user_id']) . '">
 <i class = "fa fa-user" aria-hidden = "true">
 </i> Contact Person
+</a>'; */
+                            
+                             $return_html .= '<a onclick = "user_postdeleteparticular(' . $row['business_profile_post_id'] . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
 </a>';
                         }
                     }
@@ -11868,13 +11888,17 @@ Your browser does not support the audio tag.
 </i>Edit
 </a>';
                     } else {
-                        $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+                     /*   $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
 <a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
 <i class = "fa fa-user" aria-hidden = "true">
 </i> Contact Person
+</a>'; */
+                        $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+<i class = "fa fa-trash-o" aria-hidden = "true">
+</i> Delete Post
 </a>';
                     }
                 } else {
@@ -11882,7 +11906,7 @@ Your browser does not support the audio tag.
                         $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')"><i class = "fa fa-trash-o" aria-hidden = "true"></i> Delete Post</a>
 <a id = "' . $row['business_profile_post_id'] . '" onClick = "editpost(this.id)"><i class = "fa fa-pencil-square-o" aria-hidden = "true"></i>Edit</a>';
                     } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class = "fa fa-user" aria-hidden = "true"></i> Contact Person</a>';
+//                        $return_html .= '<a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class = "fa fa-user" aria-hidden = "true"></i> Contact Person</a>';
                     }
                 }
                 $return_html .= '</div>
