@@ -43,9 +43,6 @@
                         <div class="col-md-6 col-sm-8"><h3>You are making your Business Profile.</h3></div>
                     <?php } ?>
                 </div>
-                <br>
-                <br>
-                <br>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3 col-sm-4">
