@@ -2031,7 +2031,7 @@ class Business_profile extends MY_Controller {
         <div  contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '"  class="textbuis editable_text margin_btm" name="editpostdesc" placeholder="Description" onpaste="OnPaste_StripFormatting(this, event);" >' . $row['product_description'] . '</div>
     </div>
     <div id="editpostdetailbox' . $row['business_profile_post_id'] . '" style="display:none;">
-        <div contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '" placeholder="Product Description" class="textbuis  editable_text"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer('. $row['business_profile_post_id'] .')">' . $row['product_description'] . '</div>                  
+        <div contenteditable="true" id="editpostdesc' . $row['business_profile_post_id'] . '" placeholder="Product Description" class="textbuis  editable_text"  name="editpostdesc" onpaste="OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $row['business_profile_post_id'] . ')">' . $row['product_description'] . '</div>                  
     </div>
     <button class="fr" id="editpostsubmit' . $row['business_profile_post_id'] . '" style="display:none;margin: 5px 0; border-radius: 3px;" onClick="edit_postinsert(' . $row['business_profile_post_id'] . ')">Save
     </button>
@@ -2911,9 +2911,9 @@ class Business_profile extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid);
-        $user_reg_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $user_reg_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $user_reg_prev_image = $user_reg_data[0]['business_profile_image'];
+        $user_reg_prev_image = $user_reg_data[0]['business_user_image'];
 
         if ($user_reg_prev_image != '') {
             $user_image_main_path = $this->config->item('bus_profile_main_upload_path');
@@ -2983,7 +2983,7 @@ class Business_profile extends MY_Controller {
         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
         $data = array(
-            'business_profile_image' => $imageName
+            'business_user_image' => $imageName
         );
 
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
@@ -2992,8 +2992,8 @@ class Business_profile extends MY_Controller {
         if ($update) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
-            $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_profile_image'] . '" alt="" >';
+            $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
             $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
@@ -4175,25 +4175,15 @@ class Business_profile extends MY_Controller {
 //        $base64string = $data;
 //        file_put_contents($user_bg_path . $imageName, base64_decode(explode(', ', $base64string)[1]));
 
-        /*    $data = $_POST['image'];
-          $data = str_replace('data:image/png;base64,', '', $data);
-          $data = str_replace(' ', '+', $data);
-          $user_bg_path = $this->config->item('bus_bg_main_upload_path');
-          $imageName = time() . '.png';
-          $data = base64_decode($data);
-          $file = $user_bg_path . $imageName;
-          $success = file_put_contents($file, $data);
-         */
-
         $data = $_POST['image'];
-        list($type, $data) = explode(';', $data);
-        list(, $data) = explode(',', $data);
+        $data = str_replace('data:image/png;base64,', '', $data);
+        $data = str_replace(' ', '+', $data);
         $user_bg_path = $this->config->item('bus_bg_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
         $file = $user_bg_path . $imageName;
-        file_put_contents($user_bg_path . $imageName, $data);
         $success = file_put_contents($file, $data);
+
         $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
@@ -4241,7 +4231,7 @@ class Business_profile extends MY_Controller {
         );
 
         $update = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
-        $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = '*', $join_str = array());
+        $this->data['busdata'] = $this->common->select_data_by_id('business_profile', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
 //      echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
         echo '<img id="image_src" name="image_src" src = "' . BUS_BG_MAIN_UPLOAD_URL . $this->data['busdata'][0]['profile_background'] . '" />';
@@ -10355,7 +10345,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyatii' . $row['business_profile_post_id'] . '" style = "display:none;">
 ' . $row['product_description'] . '</div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
-<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($row['business_profile_post_id'] + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer('.$row['business_profile_post_id'].')">' . $row['product_description'] . '</div>
+<div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" class = "textbuis editable_text margin_btm" name = "editpostdesc" placeholder = "Description" tabindex="' . ($row['business_profile_post_id'] + 1) . '" onpaste = "OnPaste_StripFormatting(this, event);" onfocus="cursorpointer(' . $row['business_profile_post_id'] . ')">' . $row['product_description'] . '</div>
 </div>
 <div id = "editpostdetailbox' . $row['business_profile_post_id'] . '" style = "display:none;">
 <div contenteditable = "true" id = "editpostdesc' . $row['business_profile_post_id'] . '" placeholder = "Product Description" class = "textbuis  editable_text" name = "editpostdesc" onpaste = "OnPaste_StripFormatting(this, event);">' . $row['product_description'] . '</div>

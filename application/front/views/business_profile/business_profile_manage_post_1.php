@@ -1074,7 +1074,7 @@
         <!-- tabing script start -->
         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
         <!--<script src="<?php // echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js'); ?>"></script>
         <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>--> 
         <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>--> 
         <!-- script for skill textbox automatic start-->
@@ -2925,7 +2925,7 @@
             });
         </script>
         <!-- all popup close close using esc end-->
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js'); ?>"></script>
         <script type="text/javascript">
             //validation for edit email formate form
             $("#userimage").validate({

@@ -1,18 +1,3 @@
-//validation for edit email formate form
-//$(document).ready(function () {
-//    $("#userimage").validate({
-//        rules: {
-//            profilepic: {
-//                required: true,
-//            },
-//        },
-//        messages: {
-//            profilepic: {
-//                required: "Photo required.",
-//            },
-//        },
-//    });
-//});
 function checkvalue() {
     var searchkeyword = $.trim(document.getElementById('tags').value);
     var searchplace = $.trim(document.getElementById('searchplace').value);
@@ -160,29 +145,7 @@ function unfollowuser_two(clicked_id)
     });
 }
 // Unfollow user script end 
-// script for profile pic strat 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('preview').style.display = 'block';
-            $('#preview').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
 
-$("#profilepic").change(function () {
-    profile = this.files;
-    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        $('#profilepic').val('');
-        picpopup();
-        return false;
-    } else {
-        readURL(this);
-    }
-});
-// script for profile pic end 
 function openModal() {
     document.getElementById('myModal1').style.display = "block";
 }
@@ -223,23 +186,12 @@ function showSlides(n) {
     captionText.innerHTML = dots[slideIndex - 1].alt;
 }
 
-
-
-function picpopup() {
-    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
-    $('#bidmodal').modal('show');
-}
-
 $(document).ready(function () {
     $("#myBtn").click(function () {
         $("#myModal").modal();
     });
 });
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal-2').modal('hide');
-    }
-});
+
 // scroll page script start 
 //For Scroll page at perticular position js Start
 $(document).ready(function () {

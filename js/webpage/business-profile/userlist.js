@@ -83,10 +83,6 @@ function business_userlist(pagenum) {
 }
 
 
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
-
 /* COVER PIC SCRIPT START */
 function myFunction() {
     document.getElementById("upload-demo").style.visibility = "hidden";
@@ -184,56 +180,6 @@ $('#upload').on('change', function () {
 });
 /* COVER PIC SCRIPT END */
 
-
-/* SCRIPT FOR PROFILE PIC START */
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('preview').style.display = 'block';
-            $('#preview').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$("#profilepic").change(function () {
-    profile = this.files;
-    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        $('#profilepic').val('');
-        picpopup();
-        return false;
-    } else {
-        readURL(this);
-    }
-});
-/* SCRIPT FOR PROFILE PIC END */
-
-//validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo required.",
-            },
-        },
-    });
-});
-
-function picpopup() {
-    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
-    $('#bidmodal').modal('show');
-}
-
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal-2').modal('hide');
-    }
-});
 $(document).ready(function () {
     $('html,body').animate({scrollTop: 330}, 500);
 });

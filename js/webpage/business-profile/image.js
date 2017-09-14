@@ -32,18 +32,6 @@ function delete_job_exp(grade_id) {
 }
 
 // footer end 
-// script for profile pic strat 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('preview').style.display = 'none';
-            $('#preview').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
 $("#image1").change(function () {
     readURL(this);
 });

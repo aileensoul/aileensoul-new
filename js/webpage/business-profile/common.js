@@ -83,22 +83,6 @@ $(function () {
     /* location box*/
 });
 
-
-//validation for edit email formate form
-//$("#userimage").validate({
-//    rules: {
-//        profilepic: {
-//            required: true,
-//        },
-//    },
-//    messages: {
-//        profilepic: {
-//            required: "Photo required.",
-//        },
-//    },
-//});
-
-
 //CODE FOR PROFILE PIC UPLOAD WITH CROP START
 $uploadCrop1 = $('#upload-demo-one').croppie({
     enableExif: true,
@@ -137,7 +121,7 @@ $(document).ready(function () {
         },
         messages: {
             profilepic: {
-                required: "Photo Required",
+                required: "Photo required",
             },
         },
         submitHandler: profile_pic
@@ -156,13 +140,13 @@ $(document).ready(function () {
                 data: {"image": resp},
                 beforeSend: function () {
                     // $('.loader').show();
-                    document.getElementById('loader').style.display = 'block';
+                    document.getElementById('profile_loader').style.display = 'block';
                 },
                 complete: function () {
                  //   document.getElementById('loader').style.display = 'none';
                 },
                 success: function (data) {
-                    $('#loader').remove();
+                    $('#profile_loader').remove();
                     $('#bidmodal-2').modal('hide');
                     $(".user-pic").html(data);
                     document.getElementById('upload-one').value = null;
@@ -184,3 +168,39 @@ function updateprofilepopup(id) {
     $('#bidmodal-2').modal('show');
 }
 //CODE FOR PROFILE PIC UPLOAD WITH CROP END
+
+
+// script for profile pic strat 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('preview').style.display = 'block';
+            $('#preview').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#profilepic").change(function () {
+    profile = this.files;
+    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
+        //alert('not an image');
+        $('#profilepic').val('');
+        picpopup();
+        return false;
+    } else {
+        readURL(this);
+    }
+});
+// script for profile pic end 
+
+function picpopup() {
+    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
+    $('#bidmodal').modal('show');
+}
+
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) {
+        $('#bidmodal-2').modal('hide');
+    }
+});

@@ -1,19 +1,3 @@
-//validation for edit email formate form
-$(document).ready(function () {
-    $("#userimage").validate({
-        rules: {
-            profilepic: {
-                required: true,
-            },
-        },
-        messages: {
-            profilepic: {
-                required: "Photo required.",
-            },
-        },
-    });
-});
-
 // UPLOAD COVER PIC START 
 function myFunction() {
     document.getElementById("upload-demo").style.visibility = "hidden";
@@ -127,10 +111,6 @@ function check() {
         return false;
     }
 }
-// for mobile view ssearch script end
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
 
 
 /* FOLLOW USER START */
@@ -161,34 +141,6 @@ function unfollowuser_two(clicked_id)
 }
 /* UNFOLLOW USER END */
 
-/* SCRIPT FOR PROFILE PIC START */
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            document.getElementById('preview').style.display = 'block';
-            $('#preview').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-$("#profilepic").change(function () {
-    profile = this.files;
-    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        $('#profilepic').val('');
-        picpopup();
-        return false;
-    } else {
-        readURL(this);
-    }
-});
-/* SCRIPT FOR PROFILE PIC END */
-
-
-function picpopup() {
-    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
-    $('#bidmodal').modal('show');
-}
 $(document).keydown(function (e) {
         if (!e)
             e = window.event;
@@ -196,12 +148,6 @@ $(document).keydown(function (e) {
             closeModal();
         }
     });
-$(document).on('keydown', function (e) {
-    if (e.keyCode === 27) {
-        $('#bidmodal-2').modal('hide');
-        
-    }
-});
 // contact person script start 
 function contact_person_query(clicked_id, status) { 
 //alert("hii");
