@@ -3479,6 +3479,7 @@ height: 100px;
 .img_bui_data .hs-submit a:hover .bui_close label{opacity:0.8;}
 .inputtype-edit-comment .editable_text{width: 60%!important;}
 .upload_span_icon{font-family: 'arial';}
+#popup-form input[type="submit"]{width: auto; float: right;}
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}
   50%{ opacity: .4;}
