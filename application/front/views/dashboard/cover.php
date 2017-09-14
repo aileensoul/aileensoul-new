@@ -830,7 +830,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
 
                     <!-- Bid-modal-2  -->
-                    <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+                    <div class="modal message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
                     <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
@@ -858,7 +858,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <!-- Bid-modal-2  -->
 
                     <!-- model for popup start -->
-                    <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+                    <div class="modal message-box biderror" id="bidmodal" role="dialog">
                         <div class="modal-dialog modal-lm">
                             <div class="modal-content">
                                 <button type="button" class="modal-close" data-dismiss="modal">&times;</button>         
@@ -870,6 +870,28 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                         </div>
                     </div>
                     <!-- model for popup -->
+					<!--a class="initialism fadeandscale_open btn btn-success" href="#fadeandscale">Fade &amp; scale</a-->
+					<div id="fadeandscale" class="well">
+						<h4>Fade &amp; scale example</h4>
+						<pre class="prettyprint">
+						<code>$('#fadeandscale').popup({
+						  transition: 'all 0.3s'
+						});</code>
+						</pre>
+						<pre class="prettyprint">
+						<code>#fadeandscale {
+						  transform: scale(0.8);
+						}
+						.popup_visible #fadeandscale {
+						  transform: scale(1);
+						}</code>
+						</pre>
+						<button class="fadeandscale_close slide_open btn btn-default">Next example</button>
+						<button class="fadeandscale_close btn btn-default">Close</button>
+					</div>
+					
+					
+					
                     <?php
                     echo $footer;
                     ?>
@@ -882,6 +904,17 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                         var base_url = '<?php echo base_url(); ?>';
                     </script>
                     <script type="text/javascript" src="<?php echo base_url('js/webpage/dashboard/cover.js'); ?>"></script>
+					<script type="text/javascript" src="<?php echo base_url('js/webpage/jquery.popupoverlay.js'); ?>"></script>
+					<script>document.body.className += ' fade-out';</script>
+					<script>
+						$(document).ready(function () {
 
+							$('#fadeandscale').popup({
+								pagecontainer: '.container',
+								transition: 'all 0.3s'
+							});
+
+						});
+					</script>
                     </body>
                     </html>
