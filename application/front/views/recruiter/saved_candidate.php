@@ -97,38 +97,33 @@
                 <!-- </div>
                 -->   
                 <div class="profile-photo">
+                    <!--PROFILE PIC CODE START-->
                     <div class="profile-pho">
-
                         <div class="user-pic padd_img">
-
-
                             <?php
-                            $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recruiterdata[0]['recruiter_user_image'];
-                            if (file_exists($imageee) && $recruiterdata[0]['recruiter_user_image'] != '') {
+                            $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
+                            if (file_exists($imageee) && $recdata[0]['recruiter_user_image'] != '') {
                                 ?>
-                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recruiterdata[0]['recruiter_user_image']); ?>" alt="" >
+                                <img src="<?php echo base_url($this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image']); ?>" alt="" >
                                 <?php
                             } else {
-
-
-                                $a = $recruiterdata[0]['rec_firstname'];
+                                $a = $recdata[0]['rec_firstname'];
                                 $acr = substr($a, 0, 1);
 
-                                $b = $recruiterdata[0]['rec_lastname'];
+                                $b = $recdata[0]['rec_lastname'];
                                 $acr1 = substr($b, 0, 1);
                                 ?>
                                 <div class="post-img-user">
                                     <?php echo ucfirst(strtolower($acr)) . ucfirst(strtolower($acr1)); ?>
 
                                 </div>
-
                             <?php } ?>
-
-                            <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                            <?php if ($returnpage == '') { ?>
+                                <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                            <?php } ?>
                         </div>
-
-
                     </div>
+                    <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
                         <a href="<?php echo site_url('recruiter/rec_profile/' . $recruiterdata[0]['userid']); ?>"><h3><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h3></a>
                         <!-- text head start -->
@@ -257,7 +252,7 @@
         </section>
         <!-- END CONTAINER -->
         
-         <!-- Bid-modal-2  -->
+         <!--PROFILE PIC MODEL START-->
       <div class="modal fade message-box" id="bidmodal-2" role="dialog">
          <div class="modal-dialog modal-lm">
             <div class="modal-content">
@@ -266,13 +261,17 @@
                   <span class="mes">
                      <div id="popup-form">
 
+                        <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-    
-                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                        <img id="preview" src="#" alt="your image" style="border: 2px solid rgb(204, 204, 204); display: none; margin: 0 auto; margin-top: 5px;padding: 5px;"/>
-                      
-                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" style="margin-top:32px!important;">
-                        </form>
+                                    <div class="col-md-5">
+                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                                    </div>
+                                    
+                                    <div class="col-md-7 text-center">
+                                        <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                                    </div>
+                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                                </form>
                         
                      </div>
                   </span>
@@ -280,8 +279,7 @@
             </div>
          </div>
       </div>
-      <!-- Model Popup Close -->
-       
+     <!--PROFILE PIC MODEL END-->
         <!-- BEGIN FOOTER -->
         <?php echo $footer; ?>
         <!-- END FOOTER -->

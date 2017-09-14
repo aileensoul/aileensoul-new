@@ -4563,7 +4563,7 @@ class Recruiter extends MY_Controller {
         $freelancer_hire_profile['quality'] = $quality;
         $instanse10 = "image10";
         $this->load->library('image_lib', $freelancer_hire_profile, $instanse10);
-        $this->$instanse10->watermark();
+      //  $this->$instanse10->watermark();
         /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);

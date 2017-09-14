@@ -696,7 +696,7 @@ padding-top: 14px;
 .edit_pr_bar{width: 23%!important; display: inline-block; margin: 0px !important;}
 
 /*** mobile progress bar  ***/
-.mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff;}
+.mob-progressbar{display:none; padding:15px; border:1px solid #d9d9d9; border-radius:4px; margin-bottom:15px; background:#fff; text-align: justify; }
 .mob-progressbar .progress { height: 30px; margin-top:5px; background:#e5e5e5; margin-bottom:6px;}
 .mob-progressbar p{font-size:12px;}
 .mob-progressbar .progress .skill { line-height: 28px; padding: 0; margin: 0 0 0 20px; text-transform: uppercase;}
@@ -1503,7 +1503,7 @@ display: inline-block;
     }
 	.common-form1 h3{margin:20px 0px;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
-	.experience_year{margin-right:33px;}
+	.experience_year{margin-right:33px!important;}
 	.job-menu-profile{margin-top:0;}
 	.fw .job-menu-profile {
         width: 27.3%;

@@ -72,6 +72,14 @@ $(document).ready(function () {
 //    });
     }
 });
+
+function updateprofilepopup(id) {
+    document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+    $('#bidmodal-2').modal('show');
+}
+
 //CODE FOR PROFILE PIC UPLOAD WITH CROP END
 
 function checkvalue() {
@@ -98,12 +106,6 @@ function check()
 function removepopup(id) {
     $('.biderror .mes').html("<div class='pop_content'>Are you sure want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
-}
-function updateprofilepopup(id) {
-    document.getElementById('upload-demo-one').style.display = 'none';
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('upload-one').value = null;
-    $('#bidmodal-2').modal('show');
 }
 
 
