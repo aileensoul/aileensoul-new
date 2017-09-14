@@ -1,53 +1,6 @@
 <script type="text/javascript">
 
-//    function addmsg_contact(type, msg)
-//    {
-//
-//        if (msg == 0)
-//        {
-//            $("#addcontact_count").html('');
-//            $('#addcontactLink').removeClass('contact_notification_available');
-//
-//        } else
-//        {   alert(1234567890);
-//            $('#addcontact_count').html(msg);
-//            $('#addcontact_count').css({"background-color": "#FF4500" , "height": "16px" ,"width": "16px" , "padding" : "3px 4px"});
-//            document.getElementById('addcontact_count').style.display = 'block';
-//            $('#addcontact_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
-//            $('#addcontactLink').addClass('contact_notification_available');
-//
-//        }
-//
-//    }
-//
-//    function waitForMsg_contact()
-//    { alert(1313);
-//        $.ajax({
-//            type: "GET",
-//            url: "<?php //echo base_url(); ?>business_profile/contact_count",
-//            async: true,
-//            cache: false,
-//            timeout: 50000,
-//
-//            success: function (data) {
-//                addmsg_contact("new", data);
-//                setTimeout(
-//                        waitForMsg_contact,
-//                        10000
-//                        );
-//            },
-//            error: function (XMLHttpRequest, textStatus, errorThrown) {
-////                addmsg("error", textStatus + " (" + errorThrown + ")");
-////                setTimeout(
-////                        waitForMsg,
-////                        15000);
-//            }
-//        });
-//    };
-    
-    
-    
-        function addmsg_contact(type, msg)
+    function addmsg_contact(type, msg)
     {
         if (msg == 0)
         {
@@ -79,7 +32,7 @@
             }
         });
     }
-    
+
 
     $(document).ready(function () {
 
@@ -136,7 +89,7 @@
     $(document).ready(function ()
     {
         $("#addcontactLink").click(function ()
-        {   
+        {
             $("#InboxContainer").hide();
             $("#Inbox_count").hide();
             $(".dropdown-menu").hide();
@@ -150,6 +103,7 @@
     });
 //Document Click
 </script>
+
 <?php if (($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home')) { ?>
     <header>
         <div class="bg-search">
@@ -179,7 +133,6 @@
                                 <ul class="" id="dropdownclass">
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
-                                    <!-- Friend Request Start-->
                                     <li id="add_contact">
                                         <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
@@ -221,7 +174,6 @@
                                     </li>  
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count" class="message_count"></span>
@@ -229,17 +181,11 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5'); ?>">See All</a></span></div>-->
                                                 <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
-<!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
-
-<div>
-    <ul class="notification_data_in_h2">
-        
-    </ul>
-    </div>
-
-                                             <!--    </div> -->
+                                                <div>
+                                                    <ul class="notification_data_in_h2">
+                                                    </ul>
+                                                </div>
                                             </div>
                                     </li>   
                                     <li>
@@ -262,8 +208,6 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <!-- Friend Request End-->
-                                    <!-- END USER LOGIN DROPDOWN -->
                                 </ul>
                             </div> 
                         </div>
@@ -304,7 +248,6 @@
                                 <ul class="" id="dropdownclass">
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
-                                    <!-- Friend Request Start-->
                                     <li id="add_contact">
                                         <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
@@ -321,9 +264,8 @@
                                             </div>
                                         </div>
                                     </li>   
-                                   <li id="Inbox_link">
+                                    <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
-                                                                   <!--  <span class="badge bg-theme"><?php //echo $message_count;    ?></span> -->
                                         <?php } ?>
                                         <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count" class="message_count"></span>
@@ -331,17 +273,12 @@
 
                                         <div id="InboxContainer">
                                             <div id="InboxBody" class="Inbox">
-                                                <!--<div id="notificationTitle">Messages   <span class="see_link"> <a href="<?php //echo base_url('chat/abc/5/5'); ?>">See All</a></span></div>-->
                                                 <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
-<!-- <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark"> -->
+                                                <div>
+                                                    <ul class="notification_data_in_h2">
 
-<div>
-    <ul class="notification_data_in_h2">
-        
-    </ul>
-    </div>
-
-                                             <!--    </div> -->
+                                                    </ul>
+                                                </div>
                                             </div>
                                     </li>        
                                     <li>
@@ -364,8 +301,6 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <!-- Friend Request End-->
-                                    <!-- END USER LOGIN DROPDOWN -->
                                 </ul>
                             </div> 
                         </div>
@@ -483,13 +418,13 @@
     function addmsg1(type, msg)
     {
         if (msg == 0)
-        { 
+        {
             $("#message_count").html('');
             $("#message_count").removeAttr("style");
             $('#InboxLink').removeClass('msg_notification_available');
             document.getElementById('message_count').style.display = "none";
         } else
-        { 
+        {
             $('#message_count').html(msg);
             //     $('#message_count').css({"background-color": "#FF4500", "height": "16px", "width": "16px", "padding": "3px 4px"});
             $('#InboxLink').addClass('msg_notification_available');
@@ -540,35 +475,39 @@
 
 <!-- script for update all read notification start-->
 <script type="text/javascript">
-   $(document).ready(function () {
-      
-   var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
-   if(segment != "chat"){  chatmsg(); };
-           });  // khyati chnages  start
- function chatmsg()
-    {             
-             // khyati chnages  start
-       
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
-                dataType: 'json',
-                data: '',
-                success: function (data) {
-       
-                    $('#userlist').html(data.leftbar);
-                    $('.notification_data_in_h2').html(data.headertwo);
-                   $('#seemsg').html(data.seeall);
+    $(document).ready(function () {
+
+        var segment = '<?php echo "" . $this->uri->segment(1) . "" ?>';
+        if (segment != "chat") {
+            chatmsg();
+        }
+        ;
+    });  // khyati chnages  start
+    function chatmsg()
+    {
+        // khyati chnages  start
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "chat/userajax/5/5" ?>',
+            dataType: 'json',
+            data: '',
+            success: function (data) {
+
+                $('#userlist').html(data.leftbar);
+                $('.notification_data_in_h2').html(data.headertwo);
+                $('#seemsg').html(data.seeall);
                 setTimeout(
                         chatmsg,
-                       1000
+                        1000
                         );
-                },
-             error: function (XMLHttpRequest, textStatus, errorThrown) {
-            }           
-            });
-          
-            };
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
+
+    }
+    ;
     function getmsgNotification() {
         msgNotification();
 //        msgheader();

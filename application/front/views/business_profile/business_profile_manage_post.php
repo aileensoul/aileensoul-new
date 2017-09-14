@@ -21,7 +21,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php echo $business_header2_border; ?>
+        <?php  echo $business_header2_border; ?>
         <section>
             <?php echo $business_common; ?>
             <div class="text-center tab-block">

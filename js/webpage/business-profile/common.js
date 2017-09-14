@@ -99,8 +99,8 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
 
 $('#upload-one').on('change', function () {
     document.getElementById('upload-demo-one').style.display = 'block';
-    $('#upload-demo-one').find('.cr-boundary:first').hide();
-    $('#upload-demo-one').find('.cr-slider-wrap:first').hide();
+//    $('#upload-demo-one').find('.cr-boundary:first').hide();
+//    $('#upload-demo-one').find('.cr-slider-wrap:first').hide();
     var reader = new FileReader();
     reader.onload = function (e) {
         $uploadCrop1.croppie('bind', {
