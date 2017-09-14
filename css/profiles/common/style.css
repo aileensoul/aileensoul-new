@@ -1854,7 +1854,21 @@ display: none !important;
 #userimage .col-md-7{width:100%; float:left; padding-bottom:20px;}
 #popup-form input[type="submit"]#profilepicsubmit{margin-top: 0px;}
 /*** end image crop  ***/
+/*** new popup css  ***/
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
+}
 
+.cover .modal .modal-dialog{
+	transform: scale(0.8);
+
+}
+.cover .modal.in .modal-dialog {
+	transform: scale(1);
+}
+/*** end new popup  ***/
 
 /*** header ***/
 .krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
