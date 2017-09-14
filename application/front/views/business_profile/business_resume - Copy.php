@@ -896,7 +896,7 @@
                         captionText.innerHTML = dots[slideIndex - 1].alt;
                     }
                 </script>
-                <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js'); ?>"></script>
+                <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js'); ?>"></script>
                 <script type="text/javascript">
                     //validation for edit email formate form
                     $(document).ready(function () {

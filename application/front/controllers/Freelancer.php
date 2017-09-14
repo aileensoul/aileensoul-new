@@ -3682,25 +3682,26 @@ class Freelancer extends MY_Controller {
         $user_bg_path = $this->config->item('free_hire_profile_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
-        $file = $user_bg_path . $imageName;
-        file_put_contents($user_bg_path . $imageName, $data);
-        $success = file_put_contents($file, $data);
-        $main_image = $user_bg_path . $imageName;
+         $main_image = $user_bg_path . $imageName;
+      //  $file = $user_bg_path . $imageName;
+       //file_put_contents($user_bg_path . $imageName, $data);
+        $success = file_put_contents($main_image, $data);
+       // $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
-        if ($main_image_size > '1000000') {
-            $quality = "50%";
-        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-            $quality = "55%";
-        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-            $quality = "60%";
-        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-            $quality = "65%";
-        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-            $quality = "70%";
-        } else {
-            $quality = "100%";
-        }
+//        if ($main_image_size > '1000000') {
+//            $quality = "50%";
+//        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+//            $quality = "55%";
+//        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+//            $quality = "60%";
+//        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+//            $quality = "65%";
+//        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+//            $quality = "70%";
+//        } else {
+//            $quality = "100%";
+//        }
 
 
 //        /* RESIZE */
@@ -3710,7 +3711,7 @@ class Freelancer extends MY_Controller {
 //        $freelancer_hire_profile['quality'] = $quality;
 //        $instanse10 = "image10";
 //        $this->load->library('image_lib', $freelancer_hire_profile, $instanse10);
-//        $this->$instanse10->watermark();
+//        $this->$instanse10->crop();
 //        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -3925,19 +3926,19 @@ class Freelancer extends MY_Controller {
         $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
-        if ($main_image_size > '1000000') {
-            $quality = "50%";
-        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-            $quality = "55%";
-        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-            $quality = "60%";
-        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-            $quality = "65%";
-        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-            $quality = "70%";
-        } else {
-            $quality = "100%";
-        }
+//        if ($main_image_size > '1000000') {
+//            $quality = "50%";
+//        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+//            $quality = "55%";
+//        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+//            $quality = "60%";
+//        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+//            $quality = "65%";
+//        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+//            $quality = "70%";
+//        } else {
+//            $quality = "100%";
+//        }
 
 //        /* RESIZE */
 //        $freelancer_post_profile['image_library'] = 'gd2';
@@ -4474,19 +4475,19 @@ class Freelancer extends MY_Controller {
         $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
-        if ($main_image_size > '1000000') {
-            $quality = "50%";
-        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-            $quality = "55%";
-        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-            $quality = "60%";
-        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-            $quality = "65%";
-        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-            $quality = "70%";
-        } else {
-            $quality = "100%";
-        }
+//        if ($main_image_size > '1000000') {
+//            $quality = "10%";
+//        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+//            $quality = "15%";
+//        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+//            $quality = "20%";
+//        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+//            $quality = "25%";
+//        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+//            $quality = "30%";
+//        } else {
+//            $quality = "40%";
+//        }
 
 
 //        /* RESIZE */
@@ -4496,7 +4497,7 @@ class Freelancer extends MY_Controller {
 //        $freelancer_hire_bg['quality'] = $quality;
 //        $instanse_aa = "image1";
 //        $this->load->library('image_lib', $freelancer_hire_bg, $instanse_aa);
-//        $this->$instanse_aa->watermark();
+//        $this->$instanse_aa->crop();
 //        /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -4619,19 +4620,19 @@ class Freelancer extends MY_Controller {
 
         $main_image_size = filesize($main_image);
 
-        if ($main_image_size > '1000000') {
-            $quality = "50%";
-        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-            $quality = "55%";
-        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-            $quality = "60%";
-        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-            $quality = "65%";
-        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-            $quality = "70%";
-        } else {
-            $quality = "100%";
-        }
+//        if ($main_image_size > '1000000') {
+//            $quality = "50%";
+//        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+//            $quality = "55%";
+//        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+//            $quality = "60%";
+//        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+//            $quality = "65%";
+//        } elseif ($main_image_size > '1' && $main_image_size < '100') {
+//            $quality = "70%";
+//        } else {
+//            $quality = "100%";
+//        }
 
 
 //        /* RESIZE */

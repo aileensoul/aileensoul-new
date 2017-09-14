@@ -54,7 +54,7 @@ li.fr a {text-decoration: none !important;}
     text-decoration-line: underline;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: " :";
      float: left; position:absolute; right:2px;}
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word; padding-left: 7px;
     word-break: break-word; float: left; padding-right: 10px; width: 70%;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
     font-weight: 600; width: 30%; float: left;}

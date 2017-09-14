@@ -77,7 +77,7 @@
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
+#row2 img {height: 350px; width: 100%; /*border:1px solid #d9d9d9*/; border-bottom: none;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -779,7 +779,7 @@ line-height: 1;}
 }
 .audio_img {
     height: 300px!important;
-    width: 350px!important;
+    width: 300px!important;
     position: relative!important;
 }
 .audio_img img {
@@ -795,7 +795,7 @@ line-height: 1;}
     bottom: 0;
 }
 .audio_source audio {
-    width: 350px;
+    width: 300px;
 }
 .audio_mp3 {
     width: 46.5%;
@@ -1339,7 +1339,7 @@ display: inline-block;
     position: absolute;
     cursor: pointer;
     width: 100%;
-    height: 274px;
+    height: 100%;
     background: rgba(0, 0, 0, 0.5);
 }
 .more-image span {
@@ -1695,6 +1695,7 @@ height: 100%;}
     word-wrap: break-word;
     font-size: 14px;
 }
+.business_data_td2 a:hover{color: #1b8ab9; text-decoration: underline;}
 .detaile_map {
     position: relative;
 }
@@ -1894,7 +1895,7 @@ background-size: 100%;
     right: 45px;
     border: none;
 }
-.text_num{position: absolute; right: 21%; top: 6px; background-color:transparent;  width: 24px !important; font-size: 20px;
+.text_num{position: absolute; right: 21%; top: 7px; background-color:transparent;  width: 24px !important; font-size: 20px;
     border: none;
     padding: 5px;
     height: 30px;
@@ -2797,12 +2798,13 @@ font-size: 32px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu li a:hover {text-decoration-line: underline;
     color: #1b8ab9;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b{font-weight:normal;
-    width: 30%; float: left;}
+    width: 30%; float: left; padding-right: 7px; position: relative;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p {text-align: justify;
     word-break: break-word; display: flex; margin-bottom: 0px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
-.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span::before {content: ":";
+.profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: ":"; position: absolute;
+right: 0;
     margin-left: -15px; float: left;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
     word-break: break-word; float: left; padding-right: 10px; width: 65%;}
@@ -3477,6 +3479,9 @@ height: 100px;
 .img_bui_data .hs-submit a .bui_close label .fa{color:#fff;}
 .img_bui_data .hs-submit a:hover .bui_close label{opacity:0.8;}
 .inputtype-edit-comment .editable_text{width: 60%!important;}
+.upload_span_icon{font-family: 'arial';}
+#popup-form input[type="submit"]{width: auto; float: right;}
+.upload-result-one{width: auto; float: right;}
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}
   50%{ opacity: .4;}
@@ -4053,9 +4058,7 @@ height: 100px;
     .four-image {
         height: 200px;
     }
-    .more-image {
-        height: 199px;
-    }
+    
     .three-image-top {
         height: 30%;
     }
@@ -4206,9 +4209,7 @@ height: 100px;
     .four-image {
         height: 150px;
     }
-    .more-image {
-        height: 149px;
-    }
+
 	.comment-name {
         width: 79%;
     }
@@ -4444,6 +4445,7 @@ height: 100px;
     .folle_text {
 		width: 37%;
 	}
+    .edit-comment-box .comment-edit-button button{padding: 6px 13px;}
     .inputtype-edit-comment .editable_text{width: 60%!important;}
     .post-edit-popup .popup-text textarea{padding-right: 45px;}
     .popup-text textarea{line-height: 2.3; padding-left: 15px;}
@@ -4490,9 +4492,7 @@ height: 100px;
     .four-image {
         height: 120px;
     }
-    .more-image {
-        height: 119px;
-    }
+
     .three-image-top {
         height: 15%;
     }

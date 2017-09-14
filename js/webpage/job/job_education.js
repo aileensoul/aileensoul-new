@@ -513,6 +513,16 @@
        $('#input' + newNum + ' .exp_data').val(''); 
        $('#input' + newNum + ' .hs-submit').remove();    
        $("#input" + newNum + ' img').remove();
+
+       //for remove error message and label start
+       $('#input' + newNum + ' .degree').removeClass('error'); 
+       $('#input' + newNum + ' .stream').removeClass('error');
+       $('#input' + newNum + ' .university').removeClass('error');
+       $('#input' + newNum + ' .college').removeClass('error');
+       $('#input' + newNum + ' .percentage').removeClass('error');
+       $('#input' + newNum + ' .pass_year').removeClass('error');
+       $('#input' + newNum + ' .error').remove(); 
+       //for remove error message and label start
         });
    
    
@@ -635,6 +645,7 @@
       var uni=(item.val());
       if(uni == 463)
       {
+            item.val('');
             $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');   
 
    $('.message #univer').on('click', function () {
@@ -675,6 +686,7 @@
       var uni=(item.val());
       if(uni == 463)
       {
+            item.val('');
             $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
@@ -714,6 +726,7 @@
       var uni=(item.val());
       if(uni == 463)
       {
+            item.val('');
             $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
@@ -753,6 +766,7 @@
       var uni=(item.val());
       if(uni == 463)
       {
+            item.val('');
             $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
@@ -792,6 +806,7 @@
       var uni=(item.val());
       if(uni == 463)
       {
+            item.val('');
             $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
    
              $('.message #univer').on('click', function () {
@@ -828,14 +843,13 @@
 //Click on University other option process End 
 
 //Click on Degree other option process Start 
-   $(document).on('change', '#input1 .degree', function (event) {
-  
+ $(document).on('change', '#input1 .degree', function (event) {
       var item=$(this);
       var degree=(item.val());
       
       if(degree == 54)
       {
-          
+             item.val('');
              $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
@@ -897,6 +911,7 @@
       
       if(degree == 54)
       {
+            item.val('');
             $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
@@ -958,6 +973,7 @@
       
       if(degree == 54)
       {
+            item.val('');
             $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
@@ -1019,6 +1035,7 @@
       
       if(degree == 54)
       {
+            item.val('');
             $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
@@ -1080,6 +1097,7 @@
       
       if(degree == 54)
       {
+            item.val('');
             $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
@@ -1141,6 +1159,7 @@ var other_stream=(item1.val());
  
  if(other_stream == 61)
 {
+
     $.fancybox.open('<div class="message1"><h2>Add Stream</h2><input type="text" name="other_degree1" id="other_degree1"><a id="univer1" class="btn">OK</a></div>');
 
       $('.message1 #univer1').on('click', function () {

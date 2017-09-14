@@ -61,7 +61,7 @@
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="skills"> Skills<font  color="red">*</font> : </label>
-                           <input id="skills2" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
+                           <input id="skills2" style="text-transform: capitalize;" name="skills" tabindex="7"  size="90" placeholder="Enter SKills">
                         </fieldset>
                         <fieldset class="full-width main_select_data">
                            <label>Industry <font  color="red">*</font> :</label>
@@ -74,7 +74,7 @@
                         </fieldset>
                         <fieldset class="full-width fresher_select main_select_data" >
                            <label for="cities">Preffered location for job<font  color="red">*</font> : </label>
-                           <input id="cities2" name="cities"  size="90" tabindex="9" placeholder="Enter Preferred Cites">
+                           <input id="cities2" name="cities"  style="text-transform: capitalize;" size="90" tabindex="9" placeholder="Enter Preferred Cites">
                         </fieldset>
                         <fieldset class=" full-width">
                            <div class="job_reg">

@@ -739,6 +739,7 @@ label.error {
 .modal.message-box span.mes{padding:10px 34px 0;}
 #popup-form input[type=file] {
     width: 100%;
+	border:none;
 }
 #popup-form input[type=submit] {
     float: right;
@@ -1847,6 +1848,14 @@ display: none !important;
 #basicinfo .day {
     width: 32%;
 }
+/***  image crop for profile picture  ***/
+#upload-demo-one .cr-boundary .cr-viewport{margin: 50px auto;}
+#userimage .col-md-5{width:100%; float:left; padding-bottom:20px;}
+#userimage .col-md-7{width:100%; float:left; padding-bottom:20px;}
+#popup-form input[type="submit"]#profilepicsubmit{margin-top: 0px;}
+/*** end image crop  ***/
+
+
 /*** header ***/
 .krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
 

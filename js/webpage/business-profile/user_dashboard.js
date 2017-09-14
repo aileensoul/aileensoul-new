@@ -231,10 +231,6 @@ $(document).ready(function () {
     });
 });
 
-function updateprofilepopup(id) {
-    $('#bidmodal-2').modal('show');
-}
-
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -1675,36 +1671,6 @@ $('body').on("click", "*", function (e) {
 
 // script for profile pic strat 
 
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-
-            document.getElementById('preview').style.display = 'block';
-            $('#preview').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#profilepic").change(function () {
-    profile = this.files;
-    //alert(profile);
-    if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
-        //alert('not an image');
-        $('#profilepic').val('');
-        picpopup();
-        return false;
-    } else {
-        readURL(this);
-    }
-});
-// script for profile pic end 
-
-
 $(document).ready(function () {
     $('.video').mediaelementplayer({
         alwaysShowControls: false,
@@ -1763,19 +1729,10 @@ jQuery(document).mouseup(function (e) {
 });
 // pop up open & close aarati code end
 
-// popup open when profile pic and cover pic formate wrong 
-
-function picpopup() {
-
-    $('.biderror .mes').html("<div class='pop_content'>This is not valid file. Please Uplode valid Image File.");
-    $('#bidmodal').modal('show');
-}
-// popup end 
 // all popup close close using esc start 
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) {
         $('#bidmodal').modal('hide');
-        $('#bidmodal-2').modal('hide');
         $('#likeusermodal').modal('hide');
     }
 });
@@ -1790,19 +1747,6 @@ $(document).on('keydown', function (e) {
         }
         document.getElementById('myModal3').style.display = "none";
     }
-});
-//validation for edit email formate form
-$("#userimage").validate({
-    rules: {
-        profilepic: {
-            required: true,
-        },
-    },
-    messages: {
-        profilepic: {
-            required: "Photo required.",
-        },
-    },
 });
 // contact person script start 
 
