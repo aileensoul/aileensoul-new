@@ -1304,7 +1304,7 @@ footer {
 .copyright ul li a:hover {
     background: #1b8ab9;
 }
-#loader{margin: 10px;  margin-bottom: 20px;}
+#loader{margin: 10px;  margin-bottom: 20px; text-align:center;}
 .header-left-menu ul{float: left; width: 100%; padding-bottom: 0px;}
 
 .reactivatebox {
@@ -1361,7 +1361,7 @@ footer {
 }
 
 
-#popup-form input[type="submit"]#profilepicsubmit{margin-top: 35px;}
+
 #userimage label.error{right: 33px;}
 
 .user_lst li a .post-img-userlist{color: #fff;
