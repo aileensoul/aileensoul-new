@@ -132,7 +132,7 @@ if (!file_exists($this->config->item('user_bg_main_upload_path') . $userdata[0][
 
                           </div>              <?php }else{?>
                                         <div class="bg-images">
-                                        <img src="<?php echo base_url($this->config->item('user_bg_main_upload_path') . $userdata[0]['profile_background']); ?>" name="image_src" id="image_src" / >
+                                        <img src="<?php echo USER_BG_MAIN_UPLOAD_URL . $userdata[0]['profile_background']; ?>" name="image_src" id="image_src" / >
                                           </div>
                                         <?php }?>
 
