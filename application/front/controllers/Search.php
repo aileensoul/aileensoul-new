@@ -1865,8 +1865,11 @@ if ($this->session->userdata('aileenuser')) {
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
                 $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
-            $candidate = array_reduce($candidate, 'array_merge', array());
-            $candidate = array_unique($candidate, SORT_REGULAR);
+          //  echo "<pre>"; print_r($candidate); die();
+            //$candidate = array_reduce($candidate, 'array_merge', array());
+         //   echo "<pre>"; print_r($candidate); die();
+//            $candidate = array_unique($candidate, SORT_REGULAR);
+//             echo "<pre>"; print_r($candidate); die();
             // echo count($candidate);die();
 //            $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
 //            $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
@@ -1881,14 +1884,16 @@ if ($this->session->userdata('aileenuser')) {
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-//            $unique = array_merge($candidate, $fieldfound, $otherdata);
-            $new1 = array_merge($candidate, $fieldfound, $otherdata);
-           
+            $new1 = array_merge(array($candidate), array($fieldfound), array($otherdata));
+
              $unique = array();
-            foreach ($new1 as $value) {
-                $unique[$value['freelancer_post_reg_id']] = $value;
+            foreach ($new1 as $key => $value) {
+                foreach ($value as $key) {
+                $unique[$value['freelancer_post_reg_id']] = $key;
+                }
+             
             }
-            
+
         } else {
             //   echo "Both";
 

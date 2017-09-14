@@ -105,7 +105,7 @@ class Freelancer extends MY_Controller {
             'designation' => trim($this->input->post('designation')),
             'modified_date' => date('Y-m-d', time())
         );
-
+        //   echo "<pre>"; print_r($data);die();
         $updatdata = $this->common->update_data($data, 'freelancer_hire_reg', 'user_id', $userid);
 
         if ($updatdata) {
@@ -118,6 +118,7 @@ class Freelancer extends MY_Controller {
                 redirect('freelancer-hire/freelancer-save', refresh);
             }
         } else {
+
             $this->session->flashdata('error', 'Your data not inserted');
             redirect('freelancer-hire/home', refresh);
         }
@@ -1757,22 +1758,15 @@ class Freelancer extends MY_Controller {
         }
         $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'freelancer_post_field' => $frdata['post_field_req']);
         $freelancerpostfield = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        // $field_post[]=$freelancerpostfield;
-        //  echo "<pre>";print_r($freelancerpostfield);
-        // echo "<pre>";print_r($field_post);die();
-        foreach ($all_candidate as $child) {
-            foreach ($child as $value) {
-                $final_candidate[] = $value;
-            }
-        }
-
-        // echo "<pre>";print_r($final_candidate);die();
+//        TO CHANGE ARRAY OF ARRAY TO ARRAY START
+        $final_candidate = array_reduce($all_candidate, 'array_merge', array());
+//        TO CHANGE ARRAY OF ARRAY TO ARRAY END
         $applyuser_merge = array_merge($final_candidate, $freelancerpostfield);
-
-        $final_candidate = array_unique($applyuser_merge, SORT_REGULAR);
-        $candidatefreelancer = $final_candidate;
+        foreach ($applyuser_merge as $value) {
+            $unique[$value['freelancer_post_reg_id']] = $value;
+        }
+        $candidatefreelancer = $unique;
         $candidatefreelancer1 = array_slice($candidatefreelancer, $start, $perpage);
-
 
         if (empty($_GET["total_record"])) {
             $_GET["total_record"] = count($candidatefreelancer);
@@ -3682,11 +3676,11 @@ class Freelancer extends MY_Controller {
         $user_bg_path = $this->config->item('free_hire_profile_main_upload_path');
         $imageName = time() . '.png';
         $data = base64_decode($data);
-         $main_image = $user_bg_path . $imageName;
-      //  $file = $user_bg_path . $imageName;
-       //file_put_contents($user_bg_path . $imageName, $data);
+        $main_image = $user_bg_path . $imageName;
+        //  $file = $user_bg_path . $imageName;
+        //file_put_contents($user_bg_path . $imageName, $data);
         $success = file_put_contents($main_image, $data);
-       // $main_image = $user_bg_path . $imageName;
+        // $main_image = $user_bg_path . $imageName;
         $main_image_size = filesize($main_image);
 
 //        if ($main_image_size > '1000000') {
@@ -3702,8 +3696,6 @@ class Freelancer extends MY_Controller {
 //        } else {
 //            $quality = "100%";
 //        }
-
-
 //        /* RESIZE */
 //        $freelancer_hire_profile['image_library'] = 'gd2';
 //        $freelancer_hire_profile['source_image'] = $main_image;
@@ -3939,7 +3931,6 @@ class Freelancer extends MY_Controller {
 //        } else {
 //            $quality = "100%";
 //        }
-
 //        /* RESIZE */
 //        $freelancer_post_profile['image_library'] = 'gd2';
 //        $freelancer_post_profile['source_image'] = $main_image;
@@ -4117,10 +4108,10 @@ class Freelancer extends MY_Controller {
             $this->freelancer_hire_check();
             // code for display page end
             $contition_array = array('user_id' => $userid, 'status' => '1');
-            $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('user_id' => $id, 'status' => '1', 'free_hire_step' => 3);
-            $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $hire_data = $this->data['freelancerhiredata'] = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'username, fullname, email, skyupid, phone, country, state, city, pincode, address, professional_info, freelancer_hire_user_image, profile_background, user_id,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
         $this->data['title'] = $hire_data[0]['fullname'] . " " . $hire_data[0]['username'] . TITLEPOSTFIX;
@@ -4488,8 +4479,6 @@ class Freelancer extends MY_Controller {
 //        } else {
 //            $quality = "40%";
 //        }
-
-
 //        /* RESIZE */
 //        $freelancer_hire_bg['image_library'] = 'gd2';
 //        $freelancer_hire_bg['source_image'] = $main_image;
@@ -4633,8 +4622,6 @@ class Freelancer extends MY_Controller {
 //        } else {
 //            $quality = "100%";
 //        }
-
-
 //        /* RESIZE */
 //        $freelancer_work_bg['image_library'] = 'gd2';
 //        $freelancer_work_bg['source_image'] = $main_image;
