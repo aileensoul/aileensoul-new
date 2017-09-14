@@ -1261,7 +1261,7 @@ label.cameraButton input[accept*="camera"] {
 #radio-error.error{    left: 45px;}
 .mesg_link {background: #1b8ab9; color: white; margin-right: 10px;}
 .fancybox-close-small:after{background: #1b8ab9; color: white;}
-.fancybox-slide > *{background-color:transparent;  }
+/*.fancybox-slide > *{background-color:transparent;  }*/
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
 
 
