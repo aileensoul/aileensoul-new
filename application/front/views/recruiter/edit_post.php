@@ -21,8 +21,8 @@
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-2"> </div>
-                        <div class="col-md-8 col-sm-8 animated fadeInLeftBig">
+                        <div class="col-md-2 col-sm-1"> </div>
+                        <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
                             <div class="common-form">
                                 <h3 class="h3_edit">Edit Post</h3>
