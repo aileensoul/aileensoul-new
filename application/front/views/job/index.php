@@ -33,7 +33,7 @@
                </div>
               
             </div>
-            <br>
+           
             <div class="container">
                <div class="row row4">
 
@@ -175,6 +175,11 @@
 <!-- script for skill textbox automatic end -->
 
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
+
+<!-- js for modal start-->
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<!-- js for modal end-->
+
 <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver='.time()); ?>"></script>
 
 <script>

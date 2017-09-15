@@ -2408,6 +2408,7 @@ $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this d
 $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         $( ".fancybox-container" ).hide();
+     // return false;
     }
    });  
 //all popup close close using esc End

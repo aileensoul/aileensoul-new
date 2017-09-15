@@ -31,8 +31,7 @@
             <div class="col-md-6 col-sm-8">
                <h3>You are updating your Job Profile.</h3>
             </div>
-            <br>
-            <br>
+            
          </div>
          <br>
          <div class="container">

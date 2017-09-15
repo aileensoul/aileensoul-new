@@ -36,7 +36,7 @@
          </div>
        
       </div>
-      <br>
+     
       <div class="container">
       <div class="row row4">
 
@@ -955,7 +955,6 @@
 
 <!-- Calender JS Start-->
 <script src="<?php echo base_url('js/jquery.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.js?ver='.time()) ?>"></script>
 <script src="<?php echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
@@ -967,6 +966,10 @@
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
 <!--validation for edit email formate form-->
+
+<!-- js for modal start-->
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<!-- js for modal end-->
 
 <script>
     var base_url = '<?php echo base_url(); ?>';

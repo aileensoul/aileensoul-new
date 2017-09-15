@@ -18,17 +18,12 @@
    }
 //Deactivate Job Profile End
 
-//all popup close close using esc start
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        $( "#dropdown-content_hover" ).hide();
-    }
-   });  
-   
-   
+//all popup close close using esc start 
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         $('#bidmodal').modal('hide');
+        //$( ".fancybox-container" ).hide();
+        $( "#dropdown-content_hover" ).hide();
     }
    });  
  //all popup close close using esc End

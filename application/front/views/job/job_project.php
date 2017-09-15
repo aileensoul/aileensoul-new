@@ -30,9 +30,7 @@
                   <h3>You are updating your Job Profile.</h3>
                </div>
             </div>
-            <br>
-            <br>
-            <br>
+            
             <div class="container">
                <div class="row row4">
                   <!-- Job leftbar start-->
@@ -110,7 +108,10 @@
 <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver='.time()); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
 
-  
+<!-- js for modal start-->
+<script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
+<!-- js for modal end-->
+
 <script>
     var base_url = '<?php echo base_url(); ?>';
 </script>
