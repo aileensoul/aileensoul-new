@@ -30,7 +30,7 @@
                                        
                                 ?>
 
-<?php echo form_open(base_url('profile/code_check'), array('id' => 'codecheck','name' => 'codecheck', 'class' => 'clearfix')); ?>
+<?php echo form_open(base_url('profile/code_checkredirect/'. $user_changeid), array('id' => 'codecheck','name' => 'codecheck', 'class' => 'clearfix')); ?>
  <div class="inner-form login-frm otp_lform">
           <div class="login fw">
 <!-- main box -->
@@ -51,7 +51,7 @@
  <div class="main_otp_box_middle_submit">
    
  <input type="text" name="code" id="code" value="" placeholder="Enter Code">
-<input type="hidden" name="userid" id="userid" value="<?php echo $user_changeid; ?>">
+<!-- <input type="hidden" name="userid" id="userid" value="<?php echo $user_changeid; ?>"> -->
  </div>
 </div>
 
@@ -99,7 +99,7 @@ $(document).ready(function () { //alert("hii");
                       minlength: 6,
                       maxlength: 6,
                       remote: {
-                                      url: "<?php echo site_url() . 'profile/code_check' ?>",
+                                      url: "<?php echo site_url() . 'profile/code_check/' . $user_changeid ?>",
                                       type: "post",
                                       data: {
                                      email_reg: function () {
@@ -115,8 +115,8 @@ $(document).ready(function () { //alert("hii");
             messages:  {
                     code: {
                     required: "Code Is Required.",
-                  	minlength: "Your code is 6 character long",
-                  	maxlength: "Your code is 6 character long",
+                    minlength: "Your code is 6 character long",
+                    maxlength: "Your code is 6 character long",
                     remote: "You enter some text doesn't match your code.Please try right code.",
                       }
 

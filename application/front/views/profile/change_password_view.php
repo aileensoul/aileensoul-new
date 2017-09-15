@@ -22,7 +22,7 @@
           <section class="middle-main">
     <div class="container">
       <div class="form-pd row">
-<?php echo form_open(base_url('profile/new_forgetpassword'), array('id' => 'newpassword','name' => 'newpassword', 'class' => 'clearfix')); ?>
+<?php echo form_open(base_url('profile/new_forgetpassword/' . $userid), array('id' => 'newpassword','name' => 'newpassword', 'class' => 'clearfix')); ?>
 
  <div class="inner-form login-frm otp_lform">
           <div class="login fw">
@@ -43,7 +43,7 @@
  <div class="main_otp_box_middle_submit">
    <label>New Password</label>
  <input type="password" name="new_password" id="new_password" value="" placeholder="Enter new password">
-<input type="hidden" name="usercon" id="usercon" value="<?php echo $userid; ?>">
+<!-- <input type="hidden" name="usercon" id="usercon" value="<?php echo $userid; ?>"> -->
 
 <span>
 <a href="#" onclick="toggle_password('new_password');" id="showhide">Show</a>

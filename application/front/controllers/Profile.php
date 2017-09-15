@@ -232,18 +232,18 @@ class Profile extends CI_Controller {
       $this->load->view('profile/change_password', $this->data);
 
   }
-  public function code_check(){
-
+  public function code_check($abc){
+//echo $abc; die();
      $code = $this->input->post('code');
      $this->data['userid'] = $userid = $this->input->post('userid');
 
 
         $this->data['forgetpassword_header'] = $this->load->view('forgetpassword_header', $this->data,TRUE);
 
-      $checkdata = $this->common->select_data_by_id('user', 'user_id', $userid, '*', '');
+      $checkdata = $this->common->select_data_by_id('user', 'user_id', $abc, '*', '');
 
-
-      if ($checkdata[0]['code'] == $code) {
+     
+      if ($checkdata[0]['password_code'] == $code) {
         echo 'true';
         die();
         } else {
@@ -251,29 +251,29 @@ class Profile extends CI_Controller {
         die();
         }
 
+  }
 
-    //   if($checkdata[0]['code'] == $code){ 
+  public function code_checkredirect($abc){
 
-    // $this->load->view('profile/change_password_view', $this->data);
-    //  }else{
-    //   $this->session->set_flashdata('error', "<div class='alert alert-danger'>You enter some text doesn't match your code.Please try right code.</div>");
-    //             redirect('profile/change_password', 'refresh');
-    //  }
+    $this->data['userid'] = $abc;
+
+    $this->load->view('profile/change_password_view', $this->data);
+
 
   }
-  public function new_forgetpassword(){
+  public function new_forgetpassword($abc){
 
-    $code_userid = $this->input->post('usercon');
+   //$code_userid = $this->input->post('usercon');
     $new_password = $this->input->post('new_password');
 
      $data = array(
                 'user_password' => md5($new_password),
-                'code' => ''
+                'password_code' => ''
                  );
 
      
-    $updatdata =   $this->common->update_data($data,'user','user_id',$code_userid);
-    $this->session->set_userdata('aileenuser', $code_userid);
+    $updatdata =   $this->common->update_data($data,'user','user_id',$abc);
+    $this->session->set_userdata('aileenuser', $abc);
     redirect('dashboard', refresh); 
   }
 
