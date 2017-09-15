@@ -1030,6 +1030,7 @@ max-width: 100%;}
 .ui-state-active{border: none!important; background: #f3f9fb!important;}
 .ui-menu .ui-menu-item .ui-menu-item-wrapper{padding: 2px!important;}
 
+input:focus, button:focus , select:focus , textarea:focus{background: transparent;}
 
 /*no post foun design start*/
 .art_no_post_avl{    background: white;
@@ -1523,7 +1524,7 @@ background-color: white;}
 	#notificationContainer::before {
 		right: 97px;
 	}
-    
+
 	#floatBarsG{margin-top: -3%;}
 	.post-img-user{line-height: 0;}
 	.bg-search .header2{padding: 0px;}
