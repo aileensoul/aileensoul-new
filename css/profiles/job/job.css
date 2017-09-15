@@ -1455,6 +1455,10 @@ label.cameraButton input[accept*="camera"] {
     .header2 ul#dropdownclass {
     padding-right: 0;
     }
+    #InboxContainer{width: 96%!important;}
+    .job_con #InboxContainer::before {
+        right: 118px;
+    }
 	.custom-right{margin-left:0;}
     .art_no_post_img {
         padding-top: 0px;
@@ -1719,11 +1723,14 @@ label.cameraButton input[accept*="camera"] {
     .mob-progressbar .progress .skill{line-height: 26px;}
 }
 @media screen and (max-width: 640px) {
+    .job_con #InboxContainer::before {
+        right: 120px;
+    }
     .panel-heading a::before {top: 8px;
         font-size: 18px;}
     .panel-group.wrap .panel-title a{font-size: 14px;}
-	.job_con #InboxContainer::before {
-        right: 104px;
+    #InboxContainer {
+    width: 96% !important;
     }
 	.job_reg_page_fprm{width: 90%;}
 	.post-img-user{font-size: 26px; height: 88px; line-height: 1; padding: 33px 0; width: 88px;}
@@ -1800,6 +1807,9 @@ label.cameraButton input[accept*="camera"] {
 }
 }
 @media screen and (max-width: 479px) {
+    #InboxContainer::before {
+        right: 122px;
+    }
 	.edu_tab .panel-body{padding: 0px;}
 
 		.profile-job-details .job_companyname {
@@ -1925,7 +1935,7 @@ label.cameraButton input[accept*="camera"] {
 
 .profile-job-details ul li.date_re {font-size: 10px;}
 	.job_con #InboxContainer::before {
-		right: 124px;
+		right: 118px;
 	}
     
  .profile-box-art .right-side-menu .pro-fw li a {
