@@ -1707,6 +1707,9 @@ label.cameraButton input[accept*="camera"] {
         font-size: 16px;
         padding: 7px;
     }
+    .common-form1 h3 {
+        margin:28px 0 52px;
+    }
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
     .mob-progressbar .progress .skill{line-height: 26px;}
