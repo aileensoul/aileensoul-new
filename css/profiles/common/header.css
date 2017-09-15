@@ -467,7 +467,7 @@ right: 17px;
 }
 .noti-msg-y{font-size: 13px; color: #646464; line-height: 16px;}
 .dropdown-menu {
-    right: -1px;
+    right: -11px;
     left: inherit !important;
     position: absolute;
     border: none;
@@ -1434,6 +1434,7 @@ background-color: white;}
 	.header ul li a{padding: 0px!important}
     .header ul li.dropdown-user a{padding:4px 0px 0px!important}
 	#InboxContainer{right: -7px;}
+	.main-menu-right{padding-right:11px;}
 	
 } 
 @media screen and (max-width: 1024px) {
@@ -1458,6 +1459,7 @@ background-color: white;}
 	header .header2{margin:auto;}
 }
 @media screen and (max-width: 991px) {
+	.main-menu-right{padding-right:2px;}
 	.dropdown-menu {
 		right: -10px;
 	}
@@ -1488,6 +1490,8 @@ background-color: white;}
     }
 }
 @media screen and (max-width: 767px) {
+	.header2 .mob-width{padding-left:5px;}
+	.header2 .dropdown_hover .dropdown-content_hover{right:-3px !important;}
 	#InboxContainer::before{/*display:none;*/}
     .reactivate_header h2{ font-size: 16px; }
     .cameraButton .tooltiptext{font-size: 14px; font-weight: normal!important;}
@@ -1520,7 +1524,8 @@ background-color: white;}
 	#floatBarsG{margin-top: -3%;}
 	.post-img-user{line-height: 0;}
 	.bg-search .header2{padding: 0px 9px;}
-	#notificationContainer{right:2px; width: 98%;}
+	#notificationContainer{left:2%; width: 96%;}
+	#notificationContainer::before {right: 74px; top:3px;}
 	#InboxContainer::before {right: 179px;}
 	#notificationsmsgBody li a{width: 100%;}
 	.search-mob-block label{/*margin-top: 7px; margin-left: 7px;*/}
@@ -1543,8 +1548,8 @@ background-color: white;}
     }
 	.dropdown-menu {
         left: inherit !important;
-        right: 0px !important;
-        top: 42px;
+        right: -11px !important;
+        top: 28px;
     }
 	.header ul {
 		margin: 8px 0px 1px;
@@ -1580,12 +1585,7 @@ background-color: white;}
     .main-menu-right ul li#Inbox_link {
         position: inherit !important;
     }
-    #notificationContainer {
-        width:94%;
-        margin-top: 20px;
-        top:27px;
-        right:3%!important;
-    }
+    
     #InboxContainer {
     width: 94% !important;
 
@@ -1594,9 +1594,7 @@ right: 5% !important;
     top: 28px;
     
     }
-    #notificationContainer::before {
-    right: 64px;
-    }
+    
     #InboxContainer::before {
     right: 155px;
     }
@@ -1609,10 +1607,7 @@ right: 5% !important;
     .notificationsmsg li {
         width: 100%;
     }
-    .dropdown-menu {
-        left: inherit !important;
-        right: 0px !important;
-    }
+    
 	.mob-zindex {
         position: relative;
         z-index: 11;
@@ -1679,7 +1674,7 @@ right: 3%!important;
         }
 	fieldset{padding: 9px 8px!important;}
     #notificationContainer::before {
-    right: 67px;
+    right: 75px;
 }
 
 }
@@ -1735,11 +1730,7 @@ right: 3%!important;
 	#notificationContainer::before {
 		right: 90px;
 	}
-	.dropdown-menu {
-		left: inherit !important;
-		right: -10px !important;
-		top: 35px;
-	}
+	
 	#floatBarsG {
 		margin-left: -167px;
 		margin-top: -1%;
@@ -1778,9 +1769,7 @@ right: 3%!important;
     margin-top: 30px !important;
 }
 	.dropdown-menu {
-		left: inherit !important;
-		right: -6px !important;
-		top: 35px;
+		top: 17px;
 	}
 	#notificationContainer::before {
 		right: 78px;
@@ -1818,7 +1807,7 @@ right: 3%!important;
 		right: 131px;
 	}
 	#acon::before{right: 129px!important;}
-    .header2 ul li a#addcontactLink{padding: 6px 2px !important;}
+    .header2 ul li a#addcontactLink{padding-top: 6px !important;}
 	.header2 ul li a#InboxLink{padding: 12px 8px 4px;}
     #notificationContainer::before{right: 77px;} 
     .logo h2{padding:0; line-height:27px;}
@@ -1839,6 +1828,7 @@ right: 3%!important;
 	.header2 ul li.active a{padding: 9px 9px 9px 0;}
 	.bg-search .header2{padding-left:0;}
 	.header2 .dropdown_hover{padding-right:0;}
+	.header2 .mob-width{padding-left:15px;}
 }
 
 

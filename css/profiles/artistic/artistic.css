@@ -1270,6 +1270,7 @@ display: inline-block;
     max-width: 100%;
     height: auto;
 	border: 1px solid #d9d9d9;
+	cursor:pointer;
 }
 .two-images {
     float: left;

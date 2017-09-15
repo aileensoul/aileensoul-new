@@ -225,7 +225,7 @@ input[type=button]:hover,
 button:hover {
     background: #156f95;
     border-color: #000;
-    border-radius: 3px;
+
 }
 input[type="text"],
 input[type="password"],
@@ -1877,14 +1877,16 @@ display: none !important;
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
 
-/*** all page  ***/
+/*** all profile  ***/
 .profile-job-profile-menu{}
-/*** end all page  ***/
+#regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
+/*** end all profile  ***/
 
 
-/* zalak start 28-8  media */
 
 
+
+/***  media query  ***/
 
 @media screen and (min-width: 1280px) {
     .container {
