@@ -1451,30 +1451,34 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfileCard-content::before{top:84px !important;}
 }
 @media screen and (max-width: 767px){
+    .header2 .mob-width{padding-right: 8px;}
+    .header2 ul#dropdownclass {
+    padding-right: 0;
+    }
 	.custom-right{margin-left:0;}
-.art_no_post_img {
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-.art_no_post_text {
-    padding-top: 10px;
-    font-size: 23px;
-}
-.job_work_experience_main_div h6 {
-    margin-bottom: 5px;
-    padding: 12px 0px 4px;
-}
-.edu_tab fieldset h6{ margin-bottom: 5px; }
-.common-form fieldset .radio_check_text {
-    padding-right: 0px;
-}
-
-#job_education ul .text-center h5{
-    padding:0px;
-	font-size: 18px;
-	display: inline-block;
-	line-height:1;
-}
+    .art_no_post_img {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .art_no_post_text {
+        padding-top: 10px;
+        font-size: 23px;
+    }
+    .job_work_experience_main_div h6 {
+        margin-bottom: 5px;
+        padding: 12px 0px 4px;
+    }
+    .edu_tab fieldset h6{ margin-bottom: 5px; }
+    .common-form fieldset .radio_check_text {
+        padding-right: 0px;
+    }
+    
+    #job_education ul .text-center h5{
+        padding:0px;
+    	font-size: 18px;
+    	display: inline-block;
+    	line-height:1;
+    }
 
     .mob-block{display: block;}
     .job_reg_page_fprm{width: 95%;}
@@ -1716,9 +1720,11 @@ label.cameraButton input[accept*="camera"] {
 }
 @media screen and (max-width: 640px) {
     .panel-heading a::before {top: 8px;
-font-size: 18px;}
+        font-size: 18px;}
     .panel-group.wrap .panel-title a{font-size: 14px;}
-	
+	.job_con #InboxContainer::before {
+        right: 104px;
+    }
 	.job_reg_page_fprm{width: 90%;}
 	.post-img-user{font-size: 26px; height: 88px; line-height: 1; padding: 33px 0; width: 88px;}
 	.profile-head-text a {

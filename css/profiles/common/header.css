@@ -467,7 +467,7 @@ right: 17px;
 }
 .noti-msg-y{font-size: 13px; color: #646464; line-height: 16px;}
 .dropdown-menu {
-    right: -11px;
+    right: 0px;
     left: inherit !important;
     position: absolute;
     border: none;
