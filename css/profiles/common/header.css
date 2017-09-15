@@ -1685,6 +1685,7 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 540px) {
+    #InboxContainer{width: 93%!important;}
     #notificationContainer::before {right: 77px;}
     .back {
 		width: 40%;
@@ -1718,14 +1719,16 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 479px) {
-
-           .job_con #InboxContainer::before {
-    right: 118px;
-        }
-            #acon{
+    #InboxContainer {
+    width: 92% !important;
+    }
+    .job_con #InboxContainer::before {
+        right: 118px;
+    }
+    #acon{
         width: 94% !important;
-margin-top: 28px !important;
-right: 3%!important;
+        margin-top: 28px !important;
+        right: 3%!important;
     }
 	.logo h2 {
         font-size: 20px;
