@@ -181,8 +181,8 @@ class Artistic extends MY_Controller {
 
         if ($userdata) {
             $data = array(
-                'art_name' => $this->input->post('firstname'),
-                'art_lastname' => $this->input->post('lastname'),
+                'art_name' => strtolower($this->input->post('firstname')),
+                'art_lastname' => strtolower($this->input->post('lastname')),
                 'art_email' => $this->input->post('email'),
                 'art_phnno' => $this->input->post('phoneno'),
                 'modified_date' => date('Y-m-d', time())
@@ -199,8 +199,8 @@ class Artistic extends MY_Controller {
             }
         } else {
             $data = array(
-                'art_name' => $this->input->post('firstname'),
-                'art_lastname' => $this->input->post('lastname'),
+                'art_name' => strtolower($this->input->post('firstname')),
+                'art_lastname' => strtolower($this->input->post('lastname')),
                 'art_email' => $this->input->post('email'),
                 'art_phnno' => $this->input->post('phoneno'),
                 'user_id' => $userid,
