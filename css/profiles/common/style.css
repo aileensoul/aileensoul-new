@@ -575,7 +575,7 @@ fieldset.full-width {
     vertical-align: middle;
     display: inline-block;
 }
-.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
+.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 1%;}
 .date-dropdowns .year{margin-right: 0;}
 .hs-submit {
     float: right;
@@ -1876,6 +1876,11 @@ display: none !important;
 /*** bus and art ***/
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
+
+/*** all page  ***/
+.profile-job-profile-menu
+/*** end all page  ***/
+
 
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {

@@ -53,7 +53,7 @@ li.fr a {text-decoration: none !important;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span p a {color: #3b5283;
     text-decoration-line: underline;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li b::after {content: " :";
-     float: left; position:absolute; right:2px;}
+     float: left; position:absolute; right:2px; top:-1px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word; padding-left: 7px;
     word-break: break-word; float: left; padding-right: 10px; width: 70%;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
@@ -878,6 +878,8 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+	.custom_footer_dot{ padding: 0px 1px 0px; }
+    .custom_footer_left ul li{padding: 0 6px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
     .job-menu-profile{margin-top:20px; padding-bottom:10px;}
     .right_left_box_design{padding:9px 12px 12px 12px !important;}
