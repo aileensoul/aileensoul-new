@@ -240,7 +240,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                      <div id="myBtn"  class="editor-content col-md-10 popup-text" >
                         <textarea id= "test-upload_product" placeholder="Post Your Art...."   onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); onKeyup=check_length(this.form); onblur="check_length(this.form)" name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;"></textarea>
                         <div class="fifty_val">                       
-                           <input size=1 class="text_num" tabindex="-500" value=50 name=text_num readonly> 
+                           <input size=1 class="text_num" tabindex="-500" value=50 name=text_num disabled="disabled"> 
                         </div>
                       <div class="padding-left padding_les_left camer_h">
                         <i class=" fa fa-camera" >

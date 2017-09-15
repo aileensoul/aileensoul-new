@@ -992,7 +992,9 @@ label.cameraButton input[accept*="camera"] {
 		padding:3px 10px 3px;
 		font-size: 12px;
     }
-	.common-form1 h3{margin:20px 0;}
+	.common-form1 h3 {
+        margin: 0px 0 51px;
+    }
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
 	.job-menu-profile{margin-top:0;}

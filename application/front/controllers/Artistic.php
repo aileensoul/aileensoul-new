@@ -1808,10 +1808,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                                                             $counter = $row['art_post'];
                                                                             $a = strlen($counter);
 
-                                      $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num readonly>';
+                                      $return_html .= '<input size=1 id="text_num" class="text_num" value="'.(50 - $a).'" name=text_num disabled="disabled">';
 
                                       } else {
-                                       $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num readonly>';
+                                       $return_html .= '<input size=1 id="text_num" class="text_num" value=50 name=text_num disabled="disabled">';
 
                                          } 
                                        $return_html .= '</div>
@@ -13113,10 +13113,10 @@ public function art_home_post() {
                                                                             $counter = $row['art_post'];
                                                                             $a = strlen($counter);
 
-                                      $return_html .= '<input size=1 id="text_num" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num readonly>';
+                                      $return_html .= '<input size=1 id="text_num" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num disabled="disabled">';
 
                                       } else {
-                                       $return_html .= '<input size=1 id="text_num" class="text_num" tabindex="-501" value=50 name=text_num readonly>';
+                                       $return_html .= '<input size=1 id="text_num" class="text_num" tabindex="-501" value=50 name=text_num disabled="disabled">';
 
                                          } 
                                        $return_html .= '</div>
@@ -14332,9 +14332,9 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 if ($row['art_post']) {
                     $counter = $row['art_post'];
                     $a = strlen($counter);
-                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled="disabled">';
                 } else {
-                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = 50 name = text_num readonly>';
+                    $return_html .= '<input size = 1 id = "text_num_' . $row['art_post_id'] . '" class = "text_num" value = 50 name = text_num disabled="disabled">';
                 }
                 $return_html .= '</div>
 </div>
@@ -15160,15 +15160,15 @@ public function artistic_search_city($id = "") {
         }
 
 
-        /* RESIZE */
-        $artistic_profile['image_library'] = 'gd2';
-        $artistic_profile['source_image'] =  $main_image;
-        $artistic_profile['new_image'] =  $main_image;
-        $artistic_profile['quality'] = $quality;
-        $instanse10 = "image10";
-        $this->load->library('image_lib', $artistic_profile, $instanse10);
-        $this->$instanse10->watermark();
-        /* RESIZE */
+        // /* RESIZE */
+        // $artistic_profile['image_library'] = 'gd2';
+        // $artistic_profile['source_image'] =  $main_image;
+        // $artistic_profile['new_image'] =  $main_image;
+        // $artistic_profile['quality'] = $quality;
+        // $instanse10 = "image10";
+        // $this->load->library('image_lib', $artistic_profile, $instanse10);
+        // $this->$instanse10->watermark();
+        // /* RESIZE */
 
         $s3 = new S3(awsAccessKey, awsSecretKey);
         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
@@ -15511,12 +15511,7 @@ public function get_artistic_name($id=''){
         } elseif ($search_place == "") {
 
 
-            //  $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1, 'type' => '2'))->row()->skill_id;
-            // $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", art_skill) != ' => '0');
-            // $artskillpost = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-             $contition_array = array('status' => 1, 'type' => '2');
+            $contition_array = array('status' => 1, 'type' => '2');
 
             $search_condition = "(skill LIKE '%$searchskill%')";
             // echo $search_condition;
@@ -15532,17 +15527,30 @@ public function get_artistic_name($id=''){
             //echo "<pre>"; print_r($artskillpost); die();
             $artskillpost = array_reduce($artskill, 'array_merge', array());
             
-            
-            //  $contition_array = array('status' => '1', 'is_delete' => '0', 'art_step' => 4,  'FIND_IN_SET("' . $searchskill . '", art_name) != ' => '0');
-            // $artskill1 = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+        
             $contition_array = array('art_reg.is_delete' => '0', 'art_reg.status' => '1', 'art_step' => 4);
 
             $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
             // echo $search_condition;
-            $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //echo "<pre>"; print_r($otherdata); die();
+
+            foreach ($othercom as $keydata => $valuedata) {
+
+                $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
+                //echo $concatedata; 
+
+               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill)
+               {
+                $varfoune[] = $valuedata; 
+               }else{
+                $varfoune2[] = $valuedata; 
+               }
+            }
+            $otherdata = array_merge($varfoune, $varfoune2);
+
+            
+
 
             foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
                
@@ -15614,8 +15622,24 @@ public function get_artistic_name($id=''){
 
             $search_condition = "(designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%'or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
 
-            $otherdata = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
              //echo "<pre>"; print_r($otherdata); die();
+
+
+            foreach ($othercom as $keydata => $valuedata) {
+
+                $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
+                //echo $concatedata; 
+
+               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill)
+               {
+                $varfoune[] = $valuedata; 
+               }else{
+                $varfoune2[] = $valuedata; 
+               }
+            }
+            $otherdata = array_merge($varfoune, $varfoune2);
+
 
             foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
                
@@ -15902,9 +15926,9 @@ public function get_artistic_name($id=''){
                                                                 $counter = $key['art_post'];
                                                                 $a = strlen($counter);
                                                                   
-                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num readonly>';
+                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num disabled="disabled">';
                                                                 } else { 
-                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-501" value=50 name=text_num readonly>'; 
+                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-501" value=50 name=text_num disabled="disabled">'; 
                                                               } 
                                             $return_html .= '</div>
                                           </div>
@@ -16822,9 +16846,9 @@ public function get_artistic_name($id=''){
                                                                 $counter = $key['art_post'];
                                                                 $a = strlen($counter);
                                                                   
-                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num readonly>';
+                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-500" value="'.(50 - $a).'" name=text_num disabled="disabled">';
                                                                 } else { 
-                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-501" value=50 name=text_num readonly>'; 
+                                            $return_html .= '<input size=1 id="text_num_'.$key['art_post_id'].'" class="text_num" tabindex="-501" value=50 name=text_num disabled="disabled">'; 
                                                               } 
                                             $return_html .= '</div>
                                           </div>

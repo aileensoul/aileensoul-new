@@ -22,7 +22,7 @@
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         $('#bidmodal').modal('hide');
-        //$( ".fancybox-container" ).hide();
+        $.fancybox.close();
         $( "#dropdown-content_hover" ).hide();
     }
    });  

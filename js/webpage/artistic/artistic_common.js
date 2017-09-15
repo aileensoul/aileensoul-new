@@ -27,17 +27,17 @@ $(window).load(function(){
 // validation for profile pic upload
 
 $uploadCrop1 = $('#upload-demo-one').croppie({
-        enableExif: true,
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'square'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-    });
+    enableExif: true,
+    viewport: {
+        width: 157,
+        height: 157,
+        type: 'square'
+    },
+    boundary: {
+        width: 257,
+        height: 257,
+    }
+});
 
     $('#upload-one').on('change', function () {
         document.getElementById('upload-demo-one').style.display = 'block';

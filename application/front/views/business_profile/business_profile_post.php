@@ -30,7 +30,7 @@
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container art_container">
-                    <div class="">
+                    
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
                             <div class="left_fixed">
                                 <?php echo $business_left; ?>
@@ -86,8 +86,8 @@
                         }
                         ?>
 
-                        <div class=" custom-right-art animated fadeInUp">
-                            <div class="mian_middle_post_box">  
+                        <div class=" custom-right-art mian_middle_post_box animated fadeInUp">
+                            
                                 <div class="right_side_posrt fl"> 
                                     <div class="post-editor col-md-12">
                                         <div class="main-text-area col-md-12">
@@ -144,9 +144,10 @@
                                     </div>
                                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 </div>
+                        </div>
+						
                                 
-                                <div class="animated fadeInRightBig ">
-                                    <div class="right_middle_side_posrt fixed_right_display"> 
+                                    <div id="hideuserlist" class="right_middle_side_posrt fixed_right_display animated fadeInRightBig"> 
                                         <?php
                                         if($follow_user_suggest_count > 0){
                                         ?>
@@ -171,8 +172,8 @@
                                         }
                                         ?>
                                     </div>
-                                </div>
-                            </div>
+                             
+                            
                         </div>
                     </div>
 

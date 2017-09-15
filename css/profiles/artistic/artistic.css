@@ -1116,6 +1116,7 @@ line-height: 1;}
     word-wrap: break-word;
     color: black;
 	font-size: 13px;
+	margin-top:-10px;
 }
 .inputtype-edit-comment {
     position: relative;
@@ -3245,9 +3246,8 @@ padding-left: 11px;}
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
-    .fixed_right_display{display: none;}
     .fixed_right_display_none{display: block;}
-            .fixed_right_display{display: none!important;}
+    .fixed_right_display{display: none!important;}
 }
 @media screen and (max-width: 1199px){
         .bui_art_left_box .profile-boxProfileCard-content::before {
@@ -3512,13 +3512,13 @@ padding-left: 11px;}
     .tabs-left > li > a{font-size: 14px;}
     .post-design-box .post-design-desc input.my_text{padding-right: 20px;}
 
-.art-all-comment{
-    padding-left: 10px;
-    padding-right: 10px !important;
-}
-#paddingtop_fixed_art {
-    padding-top: 71px !important;
-}
+	.art-all-comment{
+		padding-left: 10px;
+		padding-right: 10px !important;
+	}
+	#paddingtop_fixed_art {
+		padding-top: 71px !important;
+	}
     .hidden-mob {
         display: none;
     }
@@ -3680,7 +3680,7 @@ padding-left: 11px;}
         margin-top: 0;
         padding: 9px !important;
     }
-    .common-form1 h3{margin:20px 0;}
+    .common-form1 h3{margin:20px 0; width: 96%; text-align: center; margin: 10px auto 20px;}
     .job-search-box1 fieldset{padding-left:0; padding-right:5px;}
     .experience_year{margin-right:33px;}
     .job-menu-profile{margin-top:0;}
