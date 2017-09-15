@@ -30,7 +30,7 @@ $(document).ready(function () {
     $(window).on('scroll', function () {
         //if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 //        if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.7) {
 
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
@@ -89,6 +89,8 @@ function business_home_post(pagenum) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             isProcessing = false;
+
+            check_no_post_data();
         }
     });
 }
@@ -1541,7 +1543,7 @@ $(document).on('keydown', function (e) {
 $('.posterror-modal-close').on('click', function () {
 //    $('#myModal').modal('show');
     document.getElementById('myModal').style.display = 'block';
-        $("#test-upload-product").prop("readonly", false);
+    $("#test-upload-product").prop("readonly", false);
 
 });
 
@@ -1596,7 +1598,7 @@ function editpost(abc)
     editpostdesc = editpostdesc.trim();
     $('#editpostname' + abc).val(editposttitle);
     $('#editpostdesc' + abc).html(editpostdesc);
-    
+
     var input = $("#editpostdesc" + abc);
     var len = input.text().length;
     input.text().focus();
@@ -1734,17 +1736,17 @@ $(document).keydown(function (e) {
 });
 
 
-function cursorpointer(abc){
+function cursorpointer(abc) {
 
-   elem = document.getElementById('editpostdesc' + abc);
-   elem.focus();
-  setEndOfContenteditable(elem);
+    elem = document.getElementById('editpostdesc' + abc);
+    elem.focus();
+    setEndOfContenteditable(elem);
 }
 
 function setEndOfContenteditable(contentEditableElement)
 {
-    var range,selection;
-    if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
+    var range, selection;
+    if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
     {
         range = document.createRange();//Create a range (a range is a like the selection but invisible)
         range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
@@ -1752,12 +1754,18 @@ function setEndOfContenteditable(contentEditableElement)
         selection = window.getSelection();//get the selection object (allows you to change selection)
         selection.removeAllRanges();//remove any selections already made
         selection.addRange(range);//make the range you have just created the visible selection
-    }
-    else if(document.selection)//IE 8 and lower
-    { 
+    } else if (document.selection)//IE 8 and lower
+    {
         range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
         range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
         range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
         range.select();//Select the range (make it the visible selection
+    }
+}
+
+function check_no_post_data() {
+    numberPost = $('[id^="removepost"]').length;
+    if (numberPost) {
+        var no_data_html = '';
     }
 }
