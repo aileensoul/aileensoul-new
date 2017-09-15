@@ -2024,6 +2024,8 @@ display: none !important;
 }
 
 @media screen and (max-width: 767px) {
+	.midd-section h2{font-size:24px;}
+	.main_frlancer .col-md-6{padding-top:15px; padding-bottom:15px;}
 	#row2 img{height: 250px;}
 	#row1{height: 250px;}
 	#row2 img {
