@@ -1679,9 +1679,7 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 540px) {
-    #notificationContainer::before {
-    right: 70px;
-}
+    #notificationContainer::before {right: 77px;}
     .back {
 		width: 40%;
 	}
@@ -1751,7 +1749,7 @@ right: 3%!important;
 	#a_li{position: inherit !important;}
     #acon::before{right:125px !important;}
     #acon{margin-top: 21px!important;}
-    #notificationContainer::before{right:76px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
+    #notificationContainer::before{right:80px;   border: 9px solid black; margin-top: -18px; border-color: transparent transparent #fff;}
 	.notification-data-inside h6 {
         font-size: 12px;
     }
@@ -1809,7 +1807,7 @@ right: 3%!important;
 	#acon::before{right: 129px!important;}
     .header2 ul li a#addcontactLink{padding-top: 6px !important;}
 	.header2 ul li a#InboxLink{padding: 12px 8px 4px;}
-    #notificationContainer::before{right: 77px;} 
+    #notificationContainer::before{right: 83px;} 
     .logo h2{padding:0; line-height:27px;}
     .alert{float: left;}
 	.logo {
@@ -1829,6 +1827,7 @@ right: 3%!important;
 	.bg-search .header2{padding-left:0;}
 	.header2 .dropdown_hover{padding-right:0;}
 	.header2 .mob-width{padding-left:15px;}
+	ul#dropdownclass{padding-right:2px;}
 }
 
 
