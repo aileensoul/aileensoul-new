@@ -3250,6 +3250,14 @@ padding-left: 11px;}
     .fixed_right_display_none{display: block;}
     .fixed_right_display{display: none!important;}
 }
+
+
+@media screen and (min-width: 1200px) and (max-width: 1350px) {
+    #InboxContainer{right: -14px;}
+}
+@media screen and (max-width: 1279px) {
+    #InboxContainer:before {right:19px;}
+}
 @media screen and (max-width: 1199px){
         .bui_art_left_box .profile-boxProfileCard-content::before {
         top: 50px;
@@ -3345,6 +3353,9 @@ padding-left: 11px;}
      .post_detailbox{
         padding: 0px 15px;
      }
+     #InboxContainer::before {
+        right: 15px;
+    }
     .right_side_posrt{width: 100%;}
     .art_container{padding: 0px;}
     .profile-main-box-buis-menu li a {
@@ -3501,6 +3512,7 @@ padding-left: 11px;}
 }
 @media screen and (max-width: 767px){
 	.slider_img{height:215px;}
+    .header2 .container{padding-right: 0px;}
 	.art_no_post_img {
 		padding-top: 0px;
 		padding-bottom: 0px;
