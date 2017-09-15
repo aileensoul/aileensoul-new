@@ -350,6 +350,8 @@
                     <!-- POST BOX JAVASCRIPT END --> 
                     <script>
                                             var base_url = '<?php echo base_url(); ?>';
+                                           // var no_business_post_html = '<?php echo $no_business_post_html ?>';
+                                           // alert(no_business_post_html);
                     </script>
                     <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/home.js?ver=' . time()); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
