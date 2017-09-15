@@ -57,7 +57,7 @@ class Freelancer extends MY_Controller {
             } else if ($jobdata[0]['free_post_step'] == 7) {
                 redirect('freelancer-work/home', refresh);
             } else {
-                redirect('freelancer/freelancer_post_basic_information', refresh);
+                redirect('freelancer-work/basic-information', refresh);
                 // $this->load->view('freelancer/freelancer_post/freelancer_post_basic_information',$this->data);
             }
         }
