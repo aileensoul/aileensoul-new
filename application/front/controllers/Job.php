@@ -400,7 +400,7 @@ class Job extends MY_Controller {
                
         }
          
-        $contition_array = array('user_id' => $userid);
+        $contition_array = array('user_id' => $userid,'is_delete' => '0','status' => '1');
         $job_reg_data = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'edu_certificate_primary', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $job_reg_prev_image = $job_reg_data[0]['edu_certificate_primary'];
