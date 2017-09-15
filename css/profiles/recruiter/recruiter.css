@@ -1032,7 +1032,12 @@ label.cameraButton input[accept*="camera"] {
 }
 @media screen and (max-width: 767px){
     .art-img-nn{margin: 7px 0px 23px;}
-    
+    #InboxContainer::before {
+        right: 158px;
+    }
+    #InboxContainer{
+        width: 95%!important;
+    }
     .back {
     width: 32%;
     }
@@ -1300,6 +1305,9 @@ label.cameraButton input[accept*="camera"] {
 		height: 75px;
 		padding: 4px 0px 0px 3px !important;
 	}
+    #InboxContainer::before {
+        right: 162px;
+    }
 	.post-img-user{width: 100%; height: 100%;}
 	.post-img-user{font-size: 20px; height:100%; line-height: 1; padding: 24px 0; width: 100%;}
 	.cover-pic{bottom: 62%; right: -10%;}
