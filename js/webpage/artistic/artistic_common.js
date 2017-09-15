@@ -1,135 +1,4 @@
 
-
- $('.modal-close').on('click', function () {
-   document.getElementById('upload-demo-one').style.display = 'none';
-    document.getElementById('upload-one').value = null;
-   $('.cr-image').attr('src', '#');
-    });
-
-
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) {
-        $( "#bidmodal-2" ).hide();
-        document.getElementById('upload-demo-one').style.display = 'none';
-        document.getElementById('upload-one').value = null;
-    }
-});
-
-jQuery(document).ready(function($) {  
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-$(window).load(function(){
-  $('#preloader').fadeOut('slow',function(){$(this).remove();});
-});
-});
-
-// profile iamge uplaod START
-
-// validation for profile pic upload
-
-$uploadCrop1 = $('#upload-demo-one').croppie({
-    enableExif: true,
-    viewport: {
-        width: 157,
-        height: 157,
-        type: 'square'
-    },
-    boundary: {
-        width: 257,
-        height: 257,
-    }
-});
-
-    $('#upload-one').on('change', function () {
-        document.getElementById('upload-demo-one').style.display = 'block';
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $uploadCrop1.croppie('bind', {
-                url: e.target.result
-            }).then(function () {
-                console.log('jQuery bind complete');
-            });
-
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-
-            $(document).ready(function () { 
-
-                $("#userimage").validate({ 
-
-                    rules: {
-
-                        profilepic: {
-
-                            required: true,
-
-                        },
-
-                    },
-
-                    messages: {
-
-                        profilepic: {
-
-                            required: "Image Required",
-
-                        },
-
-                    },
-
-                     submitHandler: profile_pic
-
-                });
-
- function profile_pic(){
-
-    $uploadCrop1.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-        }).then(function (resp) {
-            $.ajax({
-                //url: "/ajaxpro.php", user_image_insert
-               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
-               url: base_url + "artistic/profilepic",
-                type: "POST",
-                data: {"image": resp},
-
-                 beforeSend: function () {
-                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
-                        $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
-                    },
-                success: function (data) {
-                  $('#bidmodal-2').modal('hide');
-                    $(".user-pic").html(data);
-                    document.getElementById('upload-one').value = null;
-                    document.getElementById('upload-demo-one').style.display = 'none';
-                     $('.loader').remove();
-                   //$('.cr-image').attr('src', '#');
-                   
-                }
-            });
-        });
-
-    }
-
-            });
-
-
-    // script for profile pic strat
-
-            $("#profilepic").change(function () {
-                profile = this.files;
-                   //alert(profile);
-                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
-                       //alert('not an image');
-                  $('#profilepic').val('');
-                   picpopup();
-                     return false;
-                   }else{
-                      readURL(this);}
-            });
-
-
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
     $(function() {
         function split( val ) {
@@ -334,6 +203,138 @@ $uploadCrop1 = $('#upload-demo-one').croppie({
     });
 
 //SCRIPT FOR CITY AUTOFILL OF SEARCH END
+
+ $('.modal-close').on('click', function () {
+   document.getElementById('upload-demo-one').style.display = 'none';
+    document.getElementById('upload-one').value = null;
+   $('.cr-image').attr('src', '#');
+    });
+
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) {
+        $( "#bidmodal-2" ).hide();
+        document.getElementById('upload-demo-one').style.display = 'none';
+        document.getElementById('upload-one').value = null;
+    }
+});
+
+jQuery(document).ready(function($) {  
+// site preloader -- also uncomment the div in the header and the css style for #preloader
+$(window).load(function(){
+  $('#preloader').fadeOut('slow',function(){$(this).remove();});
+});
+});
+
+// profile iamge uplaod START
+
+// validation for profile pic upload
+
+$uploadCrop1 = $('#upload-demo-one').croppie({
+    enableExif: true,
+    viewport: {
+        width: 157,
+        height: 157,
+        type: 'square'
+    },
+    boundary: {
+        width: 257,
+        height: 257,
+    }
+});
+
+    $('#upload-one').on('change', function () {
+        document.getElementById('upload-demo-one').style.display = 'block';
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $uploadCrop1.croppie('bind', {
+                url: e.target.result
+            }).then(function () {
+                console.log('jQuery bind complete');
+            });
+
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
+            $(document).ready(function () { 
+
+                $("#userimage").validate({ 
+
+                    rules: {
+
+                        profilepic: {
+
+                            required: true,
+
+                        },
+
+                    },
+
+                    messages: {
+
+                        profilepic: {
+
+                            required: "Image Required",
+
+                        },
+
+                    },
+
+                     submitHandler: profile_pic
+
+                });
+
+ function profile_pic(){
+
+    $uploadCrop1.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (resp) {
+            $.ajax({
+                //url: "/ajaxpro.php", user_image_insert
+               // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
+               url: base_url + "artistic/profilepic",
+                type: "POST",
+                data: {"image": resp},
+
+                 beforeSend: function () {
+                        //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
+                        $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
+                    },
+                success: function (data) {
+                  $('#bidmodal-2').modal('hide');
+                    $(".user-pic").html(data);
+                    document.getElementById('upload-one').value = null;
+                    document.getElementById('upload-demo-one').style.display = 'none';
+                     $('.loader').remove();
+                   //$('.cr-image').attr('src', '#');
+                   
+                }
+            });
+        });
+
+    }
+
+            });
+
+
+    // script for profile pic strat
+
+            $("#profilepic").change(function () {
+                profile = this.files;
+                   //alert(profile);
+                      if (!profile[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
+                       //alert('not an image');
+                  $('#profilepic').val('');
+                   picpopup();
+                     return false;
+                   }else{
+                      readURL(this);}
+            });
+
+
+
 
 function showDiv() {
         document.getElementById('row1').style.display = "block";
