@@ -21,15 +21,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
-<<<<<<< HEAD
+
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
-=======
+
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
 
->>>>>>> c3c55164e87f1c969fea09545e9c20aae2361da3
+
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
             .msg_right .messagedelete{ visibility: hidden;  cursor: pointer; width:25px; float:left;}
