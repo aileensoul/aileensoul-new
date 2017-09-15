@@ -1148,342 +1148,320 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
         }
 
         $insert_id = $this->common->insert_data_getid($data, 'art_post');
-        //echo $insert_id; die(); 
-        if ($_FILES['postattach']['name'][0] != '') {
-// CHECK FILE IS PROPER 
-// if ($data['product_name'] != '' && $data['product_description'] != '') {
-            if ($_FILES['postattach']['error'][0] != '1') {
-                $insert_id = $this->common->insert_data_getid($data, 'art_post');
-            }
-        } else {
-            $insert_id = $this->common->insert_data_getid($data, 'art_post');
-        }
-        $config = array(
-            'image_library' => 'gd',
+    
+
+       $config = array(
             'upload_path' => $this->config->item('art_post_main_upload_path'),
             'allowed_types' => $this->config->item('art_post_main_allowed_types'),
-            'overwrite' => true,
-            'remove_spaces' => true);
+            'max_size' => $this->config->item('art_post_main_max_size')
+        );
         $images = array();
         $this->load->library('upload');
 
         $files = $_FILES;
         $count = count($_FILES['postattach']['name']);
-        $title = time();
 
-        $s3 = new S3(awsAccessKey, awsSecretKey);
-        $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
-
-        if ($_FILES['postattach']['name'][0] != '') {
-
-            for ($i = 0; $i < $count; $i++) {
-
-                $_FILES['postattach']['name'] = $files['postattach']['name'][$i];
-                $_FILES['postattach']['type'] = $files['postattach']['type'][$i];
-                $_FILES['postattach']['tmp_name'] = $files['postattach']['tmp_name'][$i];
-                $_FILES['postattach']['error'] = $files['postattach']['error'][$i];
-                $_FILES['postattach']['size'] = $files['postattach']['size'][$i];
-
-                $file_type = $_FILES['postattach']['type'];
-                $file_type = explode('/', $file_type);
-                $file_type = $file_type[0];
-                if ($file_type == 'image') {
-                    $file_type = 'image';
-                } elseif ($file_type == 'audio') {
-                    $file_type = 'audio';
-                } elseif ($file_type == 'video') {
-                    $file_type = 'video';
-                } else {
-                    $file_type = 'pdf';
-                }
-
-                if ($_FILES['postattach']['error'] == 0) {
-
-                    $store = $_FILES['postattach']['name'];
-
-                    $store_ext = explode('.', $store);
-                    $store_ext = end($store_ext);
-
-                    $fileName = 'file_' . $title . '_' . $this->random_string() . '.' . $store_ext;
-
-                    $images[] = $fileName;
-                    $config['file_name'] = $fileName;
-
-                    $this->upload->initialize($config);
-//                  $this->upload->do_upload();
-
-                    $imgdata = $this->upload->data();
-                    if ($this->upload->do_upload('postattach')) {
-                        $response['result'][] = $this->upload->data();
-                        $main_image_size = $_FILES['postattach']['size'];
-
-                        if ($main_image_size > '1000000') {
-                            $quality = "50%";
-                        } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
-                            $quality = "55%";
-                        } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
-                            $quality = "60%";
-                        } elseif ($main_image_size > '100' && $main_image_size < '5000') {
-                            $quality = "65%";
-                        } elseif ($main_image_size > '1' && $main_image_size < '100') {
-                            $quality = "70%";
-                        } else {
-                            $quality = "100%";
-                        }
-
-                        /* RESIZE */
-
-                        $artistic_post_main[$i]['image_library'] = 'gd2';
-                        $artistic_post_main[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        $artistic_post_main[$i]['new_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        $artistic_post_main[$i]['quality'] = $quality;
-                        $instanse10 = "image10_$i";
-                        $this->load->library('image_lib', $artistic_post_main[$i], $instanse10);
-                        $this->$instanse10->watermark();
-                        
-                        /* RESIZE */
-
-                        $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
-
-                        $image_width = $response['result'][$i]['image_width'];
-                        $image_height = $response['result'][$i]['image_height'];
-
-                        /* RESIZE4 */
-
-                        $resize4_image_width = $this->config->item('art_post_resize4_width');
-                        $resize4_image_height = $this->config->item('art_post_resize4_height');
-
-                        $n_w1 = $image_width;
-                        $n_h1 = $image_height;
-
-
-                        $conf_new4[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $artistic_post_main[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resize4_image_width,
-                            'height' => $resize4_image_height
-                        );
-
-                        $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w1 / 2) - ($resize4_image_width / 2);
-                        $top = ($n_h1 / 2) - ($resize4_image_height / 2);
-
-                        $conf_new4[$i]['x_axis'] = $left;
-                        $conf_new4[$i]['y_axis'] = $top;
-
-                        $instanse4 = "image4_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new4[$i], $instanse4);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse4->crop();
-
-                        $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
-
-                        /* RESIZE4 */
-
-
-                        $thumb_image_width = $this->config->item('art_post_thumb_width');
-                        $thumb_image_height = $this->config->item('art_post_thumb_height');
-
-
-                        if ($image_width > $image_height) {
-                            $n_h = $thumb_image_height;
-                            $image_ratio = $image_height / $n_h;
-                            $n_w = round($image_width / $image_ratio);
-                        } else if ($image_width < $image_height) {
-                            $n_w = $thumb_image_width;
-                            $image_ratio = $image_width / $n_w;
-                            $n_h = round($image_height / $image_ratio);
-                        } else {
-                            $n_w = $thumb_image_width;
-                            $n_h = $thumb_image_height;
-                        }
-
-                        $artistic_post_thumb[$i]['image_library'] = 'gd2';
-                        $artistic_post_thumb[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
-                        $artistic_post_thumb[$i]['new_image'] = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
-                        $artistic_post_thumb[$i]['create_thumb'] = TRUE;
-                        $artistic_post_thumb[$i]['maintain_ratio'] = FALSE;
-                        $artistic_post_thumb[$i]['thumb_marker'] = '';
-                        $artistic_post_thumb[$i]['width'] = $n_w;
-                        $artistic_post_thumb[$i]['height'] = $n_h;
-//                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
-                        $artistic_post_thumb[$i]['quality'] = "100%";
-                        $artistic_post_thumb[$i]['x_axis'] = '0';
-                        $artistic_post_thumb[$i]['y_axis'] = '0';
-                        $instanse = "image_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $artistic_post_thumb[$i], $instanse);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse->resize();
-
-                        $thumb_image = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
-
-                        /* CROP 335 X 320 */
-                        // reconfigure the image lib for cropping
-
-                        $resized_image_width = $this->config->item('art_post_resize1_width');
-                        $resized_image_height = $this->config->item('art_post_resize1_height');
-                        if ($thumb_image_width < $resized_image_width) {
-                            $resized_image_width = $thumb_image_width;
-                        }
-                        if ($thumb_image_height < $resized_image_height) {
-                            $resized_image_height = $thumb_image_height;
-                        }
-
-                        $conf_new[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $artistic_post_thumb[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resized_image_width,
-                            'height' => $resized_image_height
-                        );
-
-                        $conf_new[$i]['new_image'] = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w / 2) - ($resized_image_width / 2);
-                        $top = ($n_h / 2) - ($resized_image_height / 2);
-
-                        $conf_new[$i]['x_axis'] = $left;
-                        $conf_new[$i]['y_axis'] = $top;
-
-                        $instanse1 = "image1_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new[$i], $instanse1);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse1->crop();
-
-                        $resize_image = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
-                        /* CROP 335 X 320 */
-
-
-                        /* CROP 335 X 245 */
-                        // reconfigure the image lib for cropping
-
-                        $resized_image_width = $this->config->item('art_post_resize2_width');
-                        $resized_image_height = $this->config->item('art_post_resize2_height');
-                        if ($thumb_image_width < $resized_image_width) {
-                            $resized_image_width = $thumb_image_width;
-                        }
-                        if ($thumb_image_height < $resized_image_height) {
-                            $resized_image_height = $thumb_image_height;
-                        }
-
-
-                        $conf_new1[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $artistic_post_thumb[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resized_image_width,
-                            'height' => $resized_image_height
-                        );
-
-                        $conf_new1[$i]['new_image'] = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w / 2) - ($resized_image_width / 2);
-                        $top = ($n_h / 2) - ($resized_image_height / 2);
-
-                        $conf_new1[$i]['x_axis'] = $left;
-                        $conf_new1[$i]['y_axis'] = $top;
-
-                        $instanse2 = "image2_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new1[$i], $instanse2);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse2->crop();
-
-                        $resize_image1 = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
-
-                        /* CROP 335 X 245 */
-
-                        /* CROP 210 X 210 */
-                        // reconfigure the image lib for cropping
-
-                        $resized_image_width = $this->config->item('art_post_resize3_width');
-                        $resized_image_height = $this->config->item('art_post_resize3_height');
-                        if ($thumb_image_width < $resized_image_width) {
-                            $resized_image_width = $thumb_image_width;
-                        }
-                        if ($thumb_image_height < $resized_image_height) {
-                            $resized_image_height = $thumb_image_height;
-                        }
-
-
-                        $conf_new2[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $artistic_post_thumb[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resized_image_width,
-                            'height' => $resized_image_height
-                        );
-
-                        $conf_new2[$i]['new_image'] = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w / 2) - ($resized_image_width / 2);
-                        $top = ($n_h / 2) - ($resized_image_height / 2);
-
-                        $conf_new2[$i]['x_axis'] = $left;
-                        $conf_new2[$i]['y_axis'] = $top;
-
-                        $instanse3 = "image3_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new2[$i], $instanse3);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse3->crop();
-
-                        $resize_image2 = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
-                        $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
-
-                        /* CROP 210 X 210 */
-
-                        $response['error'][] = $thumberror = $this->$instanse->display_errors();
-
-                        $return['data'][] = $imgdata;
-                        $return['status'] = "success";
-                        $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
-
-                        $data1 = array(
-                            'file_name' => $fileName,
-                            'insert_profile' => '1',
-                            'post_id' => $insert_id,
-                            'is_deleted' => '1',
-                            'post_format' => $file_type,
-                            'created_date' => date('Y-m-d H:i:s', time())
-                        );
-
-                        //echo "<pre>"; print_r($data1);
-                        $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
-                       
+        //S3 BUCKET ACCESS START
+         $s3 = new S3(awsAccessKey, awsSecretKey);
+         $s3->putBucket(bucket, S3::ACL_PUBLIC_READ);
+         //S3 BUCKET ACCESS START
+
+        for ($i = 0; $i < $count; $i++) {
+
+            $_FILES['postattach']['name'] = $files['postattach']['name'][$i];
+            $_FILES['postattach']['type'] = $files['postattach']['type'][$i];
+            $_FILES['postattach']['tmp_name'] = $files['postattach']['tmp_name'][$i];
+            $_FILES['postattach']['error'] = $files['postattach']['error'][$i];
+            $_FILES['postattach']['size'] = $files['postattach']['size'][$i];
+
+            $fileName = $_FILES['postattach']['name'];
+            $images[] = $fileName;
+            $config['file_name'] = $fileName;
+           
+            $this->upload->initialize($config);
+          
+             if ($this->upload->do_upload('postattach')) {
+
+                $response['result'][] = $this->upload->data();
+                
+                $main_image_size = $_FILES['postattach']['size'];
+
+                    if ($main_image_size > '1000000') {
+                        $quality = "50%";
+                    } elseif ($main_image_size > '50000' && $main_image_size < '1000000') {
+                        $quality = "55%";
+                    } elseif ($main_image_size > '5000' && $main_image_size < '50000') {
+                        $quality = "60%";
+                    } elseif ($main_image_size > '100' && $main_image_size < '5000') {
+                        $quality = "65%";
+                    } elseif ($main_image_size > '1' && $main_image_size < '100') {
+                        $quality = "70%";
                     } else {
-                        echo $this->upload->display_errors();
-                        exit;
+                        $quality = "100%";
                     }
-                } else {
-                    $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
-                    exit;
-                }
-            } //die();
-        }
+                    
+                    /* RESIZE */
+
+                    $job[$i]['image_library'] = 'gd2';
+                    $job[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['new_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                    $job[$i]['quality'] = $quality;
+                  
+                    $instanse10 = "image10_$i";
+                    $this->load->library('image_lib', $job[$i], $instanse10);
+
+
+                  $this->$instanse10->watermark();
+                  
+                  $this->image_lib->clear();
+                     //$this->$instanse10->clear();
+                 
+               }
+}
+                    /* RESIZE */
+
+//                         $main_image = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+//                        // $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
+
+//                         $image_width = $response['result'][$i]['image_width'];
+//                         $image_height = $response['result'][$i]['image_height'];
+
+//                         /* RESIZE4 */
+
+//                         $resize4_image_width = $this->config->item('art_post_resize4_width');
+//                         $resize4_image_height = $this->config->item('art_post_resize4_height');
+
+//                         $n_w1 = $image_width;
+//                         $n_h1 = $image_height;
+
+
+//                         $conf_new4[$i] = array(
+//                             'image_library' => 'gd2',
+//                             'source_image' => $artistic_post_main[$i]['new_image'],
+//                             'create_thumb' => FALSE,
+//                             'maintain_ratio' => FALSE,
+//                             'width' => $resize4_image_width,
+//                             'height' => $resize4_image_height
+//                         );
+
+//                         $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+//                         $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+
+//                         $conf_new4[$i]['x_axis'] = $left;
+//                         $conf_new4[$i]['y_axis'] = $top;
+
+//                         $instanse4 = "image4_$i";
+//                         //Loading Image Library
+//                         $this->load->library('image_lib', $conf_new4[$i], $instanse4);
+//                         $dataimage = $response['result'][$i]['file_name'];
+//                         //Creating Thumbnail
+//                         $this->$instanse4->crop();
+
+//                         $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+
+//                         /* RESIZE4 */
+
+
+//                         $thumb_image_width = $this->config->item('art_post_thumb_width');
+//                         $thumb_image_height = $this->config->item('art_post_thumb_height');
+
+
+//                         if ($image_width > $image_height) {
+//                             $n_h = $thumb_image_height;
+//                             $image_ratio = $image_height / $n_h;
+//                             $n_w = round($image_width / $image_ratio);
+//                         } else if ($image_width < $image_height) {
+//                             $n_w = $thumb_image_width;
+//                             $image_ratio = $image_width / $n_w;
+//                             $n_h = round($image_height / $image_ratio);
+//                         } else {
+//                             $n_w = $thumb_image_width;
+//                             $n_h = $thumb_image_height;
+//                         }
+
+//                         $artistic_post_thumb[$i]['image_library'] = 'gd2';
+//                         $artistic_post_thumb[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+//                         $artistic_post_thumb[$i]['new_image'] = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
+//                         $artistic_post_thumb[$i]['create_thumb'] = TRUE;
+//                         $artistic_post_thumb[$i]['maintain_ratio'] = FALSE;
+//                         $artistic_post_thumb[$i]['thumb_marker'] = '';
+//                         $artistic_post_thumb[$i]['width'] = 150;
+//                         $artistic_post_thumb[$i]['height'] = 150;
+// //                        $business_profile_post_thumb[$i]['master_dim'] = 'width';
+//                         $artistic_post_thumb[$i]['quality'] = "100%";
+//                         $artistic_post_thumb[$i]['x_axis'] = '0';
+//                         $artistic_post_thumb[$i]['y_axis'] = '0';
+//                         $instanse = "image_$i";
+//                         //Loading Image Library
+//                         $this->load->library('image_lib', $artistic_post_thumb[$i], $instanse);
+//                         $dataimage = $response['result'][$i]['file_name'];
+//                         //Creating Thumbnail
+//                         $this->$instanse->resize();
+
+//                         $thumb_image = $this->config->item('art_post_thumb_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
+
+//                         /* CROP 335 X 320 */
+//                         // reconfigure the image lib for cropping
+
+//                         $resized_image_width = $this->config->item('art_post_resize1_width');
+//                         $resized_image_height = $this->config->item('art_post_resize1_height');
+//                         if ($thumb_image_width < $resized_image_width) {
+//                             $resized_image_width = $thumb_image_width;
+//                         }
+//                         if ($thumb_image_height < $resized_image_height) {
+//                             $resized_image_height = $thumb_image_height;
+//                         }
+
+//                         $conf_new[$i] = array(
+//                             'image_library' => 'gd2',
+//                             'source_image' => $artistic_post_thumb[$i]['new_image'],
+//                             'create_thumb' => FALSE,
+//                             'maintain_ratio' => FALSE,
+//                             'width' => $resized_image_width,
+//                             'height' => $resized_image_height
+//                         );
+
+//                         $conf_new[$i]['new_image'] = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $left = ($n_w / 2) - ($resized_image_width / 2);
+//                         $top = ($n_h / 2) - ($resized_image_height / 2);
+
+//                         $conf_new[$i]['x_axis'] = $left;
+//                         $conf_new[$i]['y_axis'] = $top;
+
+//                         $instanse1 = "image1_$i";
+//                         //Loading Image Library
+//                         $this->load->library('image_lib', $conf_new[$i], $instanse1);
+//                         $dataimage = $response['result'][$i]['file_name'];
+//                         //Creating Thumbnail
+//                         $this->$instanse1->crop();
+
+//                         $resize_image = $this->config->item('art_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+//                         /* CROP 335 X 320 */
+
+
+//                         /* CROP 335 X 245 */
+//                         // reconfigure the image lib for cropping
+
+//                         $resized_image_width = $this->config->item('art_post_resize2_width');
+//                         $resized_image_height = $this->config->item('art_post_resize2_height');
+//                         if ($thumb_image_width < $resized_image_width) {
+//                             $resized_image_width = $thumb_image_width;
+//                         }
+//                         if ($thumb_image_height < $resized_image_height) {
+//                             $resized_image_height = $thumb_image_height;
+//                         }
+
+
+//                         $conf_new1[$i] = array(
+//                             'image_library' => 'gd2',
+//                             'source_image' => $artistic_post_thumb[$i]['new_image'],
+//                             'create_thumb' => FALSE,
+//                             'maintain_ratio' => FALSE,
+//                             'width' => $resized_image_width,
+//                             'height' => $resized_image_height
+//                         );
+
+//                         $conf_new1[$i]['new_image'] = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $left = ($n_w / 2) - ($resized_image_width / 2);
+//                         $top = ($n_h / 2) - ($resized_image_height / 2);
+
+//                         $conf_new1[$i]['x_axis'] = $left;
+//                         $conf_new1[$i]['y_axis'] = $top;
+
+//                         $instanse2 = "image2_$i";
+//                         //Loading Image Library
+//                         $this->load->library('image_lib', $conf_new1[$i], $instanse2);
+//                         $dataimage = $response['result'][$i]['file_name'];
+//                         //Creating Thumbnail
+//                         $this->$instanse2->crop();
+
+//                         $resize_image1 = $this->config->item('art_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
+
+//                         /* CROP 335 X 245 */
+
+//                         /* CROP 210 X 210 */
+//                         // reconfigure the image lib for cropping
+
+//                         $resized_image_width = $this->config->item('art_post_resize3_width');
+//                         $resized_image_height = $this->config->item('art_post_resize3_height');
+//                         if ($thumb_image_width < $resized_image_width) {
+//                             $resized_image_width = $thumb_image_width;
+//                         }
+//                         if ($thumb_image_height < $resized_image_height) {
+//                             $resized_image_height = $thumb_image_height;
+//                         }
+
+
+//                         $conf_new2[$i] = array(
+//                             'image_library' => 'gd2',
+//                             'source_image' => $artistic_post_thumb[$i]['new_image'],
+//                             'create_thumb' => FALSE,
+//                             'maintain_ratio' => FALSE,
+//                             'width' => $resized_image_width,
+//                             'height' => $resized_image_height
+//                         );
+
+//                         $conf_new2[$i]['new_image'] = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
+
+//                         $left = ($n_w / 2) - ($resized_image_width / 2);
+//                         $top = ($n_h / 2) - ($resized_image_height / 2);
+
+//                         $conf_new2[$i]['x_axis'] = $left;
+//                         $conf_new2[$i]['y_axis'] = $top;
+
+//                         $instanse3 = "image3_$i";
+//                         //Loading Image Library
+//                         $this->load->library('image_lib', $conf_new2[$i], $instanse3);
+//                         $dataimage = $response['result'][$i]['file_name'];
+//                         //Creating Thumbnail
+//                         $this->$instanse3->crop();
+
+//                         $resize_image2 = $this->config->item('art_post_resize3_upload_path') . $response['result'][$i]['file_name'];
+//                         $abc = $s3->putObjectFile($resize_image2, bucket, $resize_image2, S3::ACL_PUBLIC_READ);
+
+//                         /* CROP 210 X 210 */
+
+//                         $response['error'][] = $thumberror = $this->$instanse->display_errors();
+
+//                         $return['data'][] = $imgdata;
+//                         $return['status'] = "success";
+//                         $return['msg'] = sprintf($this->lang->line('success_item_added'), "Image", "uploaded");
+
+//                         $data1 = array(
+//                             'file_name' => $fileName,
+//                             'insert_profile' => '1',
+//                             'post_id' => $insert_id,
+//                             'is_deleted' => '1',
+//                             'post_format' => $file_type,
+//                             'created_date' => date('Y-m-d H:i:s', time())
+//                         );
+
+//                         //echo "<pre>"; print_r($data1);
+//                         $insert_id1 = $this->common->insert_data_getid($data1, 'post_files');
+                       
+//                     } else {
+//                         echo $this->upload->display_errors();
+//                         exit;
+//                     }
+                //}
+                //  else {
+                //     $this->session->set_flashdata('error', '<div class="col-md-7 col-sm-7 alert alert-danger1">Something went to wrong in uploded file.</div>');
+                //     exit;
+                // }
+           // } //die();
+        //}
 
 // new code end
 
@@ -1913,7 +1891,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                         $return_html .= '<div class="three-image-top" >
                                             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
 
-                                                <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                             </a>
                                         </div>
                                         <div class="three-image" >
@@ -13249,7 +13227,7 @@ public function art_home_post() {
 
                                          $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-<img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+<img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
@@ -14433,7 +14411,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 } elseif (count($artmultiimage) == 3) {
                     $return_html .= '<div class="three-imag-top" >
             <a href="' . base_url('artistic/post-detail/' . $row['art_post_id']) . '">
-            <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+            <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
             </a>
         </div>
         <div class="three-image" >
@@ -16001,7 +15979,7 @@ public function get_artistic_name($id=''){
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
                                                     <a href="'.base_url('artistic/post-detail/' . $key['art_post_id']).'">
-                                                   <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                   <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                                      </a>
                                                 </div>
                                                <div class="three-image">
@@ -16918,7 +16896,7 @@ public function get_artistic_name($id=''){
                                              } elseif (count($artmultiimage) == 3) { 
             $return_html .= '<div class="three-image-top">
                                                     <a href="javascript:void(0);" onclick="login_profile();">
-                                                    <img class = "three-columns" src = "' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
+                                                    <img class = "three-columns" src = "' . ART_POST_RESIZE4_UPLOAD_URL . $artmultiimage[0]['file_name'] . '">
                                                      </a>
                                                 </div>
                                                <div class="three-image">

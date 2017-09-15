@@ -3238,6 +3238,7 @@ display: block;
 font-size: 12px;
 padding-left: 11px;}
 #filename{font-size: 18px!important;}
+#artbasicinfo label.error{position:relative; right:0; margin-right:0; text-align:right; margin-bottom:0; margin-top:5px;}
 
 
 
@@ -3319,8 +3320,8 @@ padding-left: 11px;}
         width: 28%;
     }
     .right_left_box_design {
-        width: 72% !important;
-        padding: 14px 12px 10px 16px !important;
+        /*width: 72% !important;
+        padding: 14px 12px 10px 16px !important;*/
     }
     .profile-boxProfile-name {
         line-height: 1;
@@ -3498,6 +3499,7 @@ padding-left: 11px;}
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+	.slider_img{height:215px;}
 	.art_no_post_img {
 		padding-top: 0px;
 		padding-bottom: 0px;
@@ -3644,12 +3646,12 @@ padding-left: 11px;}
         height: 90px;
         margin-left: 15px;
         margin-top: 0;
-        width: 80px;
+        width: 90px;
         top: 15px;
     }
     .profile-pho-bui .user-pic {
         height: 82px;
-        width: 72px;
+        width: 82px;
     }
     .bui-menu-profile {
         padding-left: 110px !important;
@@ -4076,18 +4078,7 @@ padding-left: 11px;}
         width: 50px;
     }
     .profile-left{margin-left: 5px;}
-    .profile-pho-bui {
-        height: 50px;
-        width: 50px;
-        margin-top: 12px;
-    }
-    .profile-pho-bui .user-pic {
-    height: 49px;
-    width: 49px;
-    padding-left: 1px !important;
-padding-top: 1px !important;
-border-radius: 0; 
-    }
+	.profile-pho-bui{padding:4px;}
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
@@ -4113,7 +4104,7 @@ border-radius: 0;
         font-size: 12px;
     }
     .bui-menu-profile {
-        padding-left: 71px!important;
+        padding-left: 115px!important;
     }
     .user_btn button {
         font-size: 12px;
@@ -4128,14 +4119,7 @@ border-radius: 0;
     #contact_per .addtocont{top:30px;}
     #contact_per{width:40%;}
     .text-center.tab-block a{margin:0 10px;}
-    
-    .post-img-user {
-        font-size: 16px;
-        height: 67px;
-        line-height: 0;
-        padding: 22px 0;
-        width: 49px;
-    }
+
     .floatBarsG{width: 20px; height: 20px;}
     #floatBarsG {
         position: absolute;

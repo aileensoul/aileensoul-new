@@ -1241,7 +1241,7 @@ box-shadow: 2px 2px 17px 0.8px rgba(217,217,217,1);}
 .custom-box.even .custom-width .left-box{text-align:right;}
 
 .custom-box .custom-width .right-box h1{position:relative; padding-top:25px;}
-.custom-box .custom-width .right-box h1 a{font-size:65px; position:relative; font-family: 'robotomedium';}
+.custom-box .custom-width .right-box h1 a{font-size:65px; position:relative; font-family: 'arial';}
 .custom-box .custom-width .right-box h1 a:after{width:140px; height:1px; background:#1b8ab9; position:absolute; left:0;bottom:0; content:"";}
 .custom-box.even .custom-width .right-box h1 a:after{right:0; left:inherit;}
 .custom-box .custom-width .right-box p{font-size:20px; padding-top:20px; font-family:'arial';}
@@ -1713,7 +1713,8 @@ height: 146px;}
 }
 @media screen and (max-width: 640px) {
 	.btns .btn-4{font-size: 14px!important;}
-	.custom-box .custom-width .right-box a.hew{font-size: 14px!important;}
+	.custom-box .custom-width .right-box a.hew{font-size: 16px!important;}
+	.custom-box .custom-width .right-box a{font-size:16px;}
 	.left-profile .profile-photo{top: -48px;}
     .main-inner .middle-main{padding-bottom: 0px !important; padding: 125px 0;}
 	.registeration .main-inner .middle-main{padding-top:70px;}

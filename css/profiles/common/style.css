@@ -575,7 +575,7 @@ fieldset.full-width {
     vertical-align: middle;
     display: inline-block;
 }
-.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 5%;}
+.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year{width: 30%; float: left; margin-right: 1%;}
 .date-dropdowns .year{margin-right: 0;}
 .hs-submit {
     float: right;
@@ -1877,6 +1877,11 @@ display: none !important;
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
 
+/*** all page  ***/
+.profile-job-profile-menu
+/*** end all page  ***/
+
+
 /*zalak start 28-8  media*/
 @media (min-width: 1280px) {
     .container {
@@ -2060,6 +2065,7 @@ display: none !important;
 	
 	/* cover page */
 	.por_content ul li .pro-text{width:85% !important;}
+	.common-form h3{display:none;}
 }
 @media screen and (max-width: 640px) {
 
