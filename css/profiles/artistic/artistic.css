@@ -3246,9 +3246,8 @@ padding-left: 11px;}
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
-    .fixed_right_display{display: none;}
     .fixed_right_display_none{display: block;}
-            .fixed_right_display{display: none!important;}
+    .fixed_right_display{display: none!important;}
 }
 @media screen and (max-width: 1199px){
         .bui_art_left_box .profile-boxProfileCard-content::before {
