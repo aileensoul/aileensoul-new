@@ -84,3 +84,10 @@ function check() {
     }
 }
 
+$(document).ready(function () {
+    var input1 = $("#contactname");
+    var len = input1.val().length;
+    input1[0].focus();
+    input1[0].setSelectionRange(len, len);
+    
+});

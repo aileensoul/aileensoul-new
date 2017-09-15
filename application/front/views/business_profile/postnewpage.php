@@ -618,7 +618,7 @@
                                                                                 </a>
                                                                             </div>
                                                                             <div id="<?php echo 'editcancle' . $rowdata['business_profile_post_comment_id']; ?>" style="display:none;">
-                                                                                <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>" onClick="comment_editcancle(this.id)">Cancle
+                                                                                <a id="<?php echo $rowdata['business_profile_post_comment_id']; ?>" onClick="comment_editcancle(this.id)">Cancel
                                                                                 </a>
                                                                             </div>
                                                                         </div>
@@ -966,7 +966,7 @@
                                                                                 <a id="<?php echo $rowdata['post_image_comment_id']; ?>"   onClick="imgcomment_editbox(this.id)" class="editbox">Edit</a>
                                                                             </div>
                                                                             <div id="<?php echo 'imgeditcancle' . $rowdata['post_image_comment_id']; ?>" style="display:none;">
-                                                                                <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="imgcomment_editcancle(this.id)">Cancle</a>
+                                                                                <a id="<?php echo $rowdata['post_image_comment_id']; ?>" onClick="imgcomment_editcancle(this.id)">Cancel</a>
                                                                             </div>
                                                                         </div>
                                                                     <?php } ?>

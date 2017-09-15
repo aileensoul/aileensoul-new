@@ -37,8 +37,6 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="icon" href="<?php echo base_url('images/favicon.png?ver='.time()); ?>">
 <!-- CSS START -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style.css?ver='.time()); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/media.css?ver='.time()); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/animate.css?ver='.time()) ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver='.time()); ?>">

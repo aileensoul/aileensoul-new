@@ -1363,9 +1363,9 @@ function remove_post(abc)
         data: 'business_profile_post_id=' + abc,
         success: function (data) {
             $('#' + 'removepost' + abc).remove();
-            if (data.notcount == 'count') {
-                $('.' + 'nofoundpost').html(data.notfound);
-            }
+//            if (data.notcount == 'count') {
+//                $('.' + 'nofoundpost').html(data.notfound);
+//            }
             var nb = $('.post-design-box').length;
             if (nb == 0) {
                 $("#dropdownclass").addClass("no-post-h2");
@@ -1373,10 +1373,12 @@ function remove_post(abc)
                 $("#dropdownclass").removeClass("no-post-h2");
             }
 
-            var total_post = $('.post-design-box').length;
-            if (total_post == 0) {
-                $('.art_no_post_avl').show();
-            }
+//            var total_post = $('.post-design-box').length;
+//            if (total_post == 0) {
+//                $('.art_no_post_avl').show();
+//            }
+            
+            check_no_post_data();
         }
     });
 }
@@ -1392,9 +1394,10 @@ function del_particular_userpost(abc)
         data: 'business_profile_post_id=' + abc,
         success: function (data) {
             $('#' + 'removepost' + abc).remove();
-            if (data.notcount == 'count') {
+            /*if (data.notcount == 'count') {
                 $('.' + 'nofoundpost').html(data.notfound);
-            }
+            }*/
+            check_no_post_data();
         }
     });
 }
@@ -1696,6 +1699,7 @@ jQuery(document).ready(function ($) {
                 $("#dropdownclass").removeClass("no-post-h2");
             }
             $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top - 100}, 150);
+            check_no_post_data();
         }
     };
     // Submit the form
@@ -1764,8 +1768,9 @@ function setEndOfContenteditable(contentEditableElement)
 }
 
 function check_no_post_data() {
-    numberPost = $('[id^="removepost"]').length;
-    if (numberPost) {
-        var no_data_html = '';
+    var numberPost = $('[id^="removepost"]').length;
+    if (numberPost == 0) {
+        $('.business-all-post').html(no_business_post_html);
     }
+    
 }

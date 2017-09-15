@@ -41,13 +41,13 @@
             $image_ori = $image[0]['profile_background'];
             if ($image_ori) {
                 ?>
-                            <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
+                                <!--<img src="<?php echo base_url($this->config->item('bus_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" />-->
                 <img src="<?php echo BUS_BG_MAIN_UPLOAD_URL . $image[0]['profile_background'] ?>" name="image_src" id="image_src" />
                 <?php
             } else {
                 ?>
                 <div class="bg-images no-cover-upload">
-                <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
+                    <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" />
                 </div>
             <?php }
             ?>
@@ -67,10 +67,10 @@
     <!-- coer image end-->
     <div class="profile-photo">
         <div class="buisness-menu">
-           <!--PROFILE PIC START-->
+            <!--PROFILE PIC START-->
             <div class="profile-pho-bui">
                 <div class="user-pic">
-                    <?php   if ($businessdata1[0]['business_user_image'] != '') { ?>
+                    <?php if ($businessdata1[0]['business_user_image'] != '') { ?>
 
                         <?php if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata1[0]['business_user_image'])) { ?>
                             <img src="<?php echo base_url(NOBUSIMAGE); ?>" alt="" >
@@ -92,7 +92,7 @@
                     <?php } ?>
                 </div>
             </div>
-           <!--PROFILE PIC START-->
+            <!--PROFILE PIC START-->
             <div class="business-profile-right">
                 <div class="bui-menu-profile">
                     <div class="profile-left">
@@ -103,8 +103,8 @@
                                     echo $industry_type = $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
                                 }
                                 if ($businessdata1[0]['other_industrial']) {
-                                    if($industry_type == ''){
-                                    echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
+                                    if ($industry_type == '') {
+                                        echo ucfirst(strtolower($businessdata1[0]['other_industrial']));
                                     }
                                 }
                                 ?>
@@ -366,27 +366,27 @@
         </div>
     </div>
 </div>
- <!--PROFILE PIC MODEL START-->
+<!--PROFILE PIC MODEL START-->
 <div class="modal fade message-box" id="bidmodal-2" role="dialog">
     <div class="modal-dialog modal-lm">
         <div class="modal-content">
             <button type="button" class="profile-modal-close" data-dismiss="modal">&times;</button>       
             <div class="modal-body">
                 <span class="mes">
-                     <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
-                     <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                    <div class="col-md-5">
-                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
-                                    </div>
-                                    
-                                    <div class="col-md-7 text-center">
-                                        <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
-                                    </div>
-                                    <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                </form>
+                    <div class="fw" id="profile_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                    <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
+                        <div class="col-md-5">
+                            <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one" >
+                        </div>
+
+                        <div class="col-md-7 text-center">
+                            <div id="upload-demo-one" style="display:none;" style="width:350px"></div>
+                        </div>
+                        <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                    </form>
                 </span>
             </div>
         </div>
     </div>
 </div>
-  <!--PROFILE PIC MODEL END-->
+<!--PROFILE PIC MODEL END-->

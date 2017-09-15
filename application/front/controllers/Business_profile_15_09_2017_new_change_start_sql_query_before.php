@@ -808,7 +808,7 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         foreach ($followerdata as $fdata) {
 
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => '1');
@@ -1042,49 +1042,86 @@ class Business_profile extends MY_Controller {
         );
         $updatdata = $this->common->update_data($dataimage, 'post_files', 'post_id', $id);
 
+// for post count start
+
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+//echo "<pre>"; print_r($this->data['businessdata']); die(); 
+
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
 
+
+
+
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
+
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+//echo "<pre>" ; print_r($this->data['followerdata']); die();
 
         foreach ($followerdata as $fdata) {
 
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
+
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+// echo "<pre>" ; print_r($this->data['business_data']); die();
+
             $business_userid = $this->data['business_data'][0]['user_id'];
+//echo $business_userid; die();
             $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');
 
             $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+//echo "<pre>"; print_r($this->data['business_profile_data']) ; die();
+
             $followerabc[] = $this->data['business_profile_data'];
         }
+//echo "<pre>" ; print_r($followerabc); die();
+//data fatch using follower end
+//data fatch using industriyal start
+
         $userselectindustriyal = $this->data['businessdata'][0]['industriyal'];
 
         $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+// echo "<pre>"; print_r( $businessprofiledata); die();
+
+
 
         foreach ($businessprofiledata as $fdata) {
+
+
             $contition_array = array('business_profile_post.user_id' => $fdata['user_id'], 'business_profile_post.status' => '1', 'business_profile_post.user_id !=' => $userid, 'is_delete' => '0');
 
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $industriyalabc[] = $this->data['business_data'];
         }
+//data fatch using industriyal end
+//data fatch using login user last post start
+
         $condition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
         $business_datauser = $this->data['business_datauser'] = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         $userabc[][] = $this->data['business_datauser'][0];
 
+
+
+//data fatch using login user last post end
+//array merge and get unique value  
+
+
         if (count($industriyalabc) == 0 && count($business_datauser) != 0) {
+
             $unique = $userabc;
         } elseif (count($business_datauser) == 0 && count($industriyalabc) != 0) {
             $unique = $industriyalabc;
         } elseif (count($business_datauser) != 0 && count($industriyalabc) != 0) {
             $unique = array_merge($industriyalabc, $userabc);
         }
+
+//echo "<pre>"; print_r($unique); die();
 
         if (count($followerabc) == 0 && count($unique) != 0) {
             $unique_user = $unique;
@@ -1093,6 +1130,8 @@ class Business_profile extends MY_Controller {
         } else {
             $unique_user = array_merge($unique, $followerabc);
         }
+
+
 
         foreach ($unique_user as $ke => $arr) {
             foreach ($arr as $k => $v) {
@@ -1103,12 +1142,14 @@ class Business_profile extends MY_Controller {
 
         $postdata = array_unique($postdata, SORT_REGULAR);
 
+
         $new = array();
         foreach ($postdata as $value) {
             $new[$value['business_profile_post_id']] = $value;
         }
 
         $post = array();
+
         foreach ($new as $key => $row) {
 
             $post[$key] = $row['business_profile_post_id'];
@@ -1117,7 +1158,12 @@ class Business_profile extends MY_Controller {
 
         $otherdata = $new;
 
+
+// for count end
+
+
         if (count($otherdata) > 0) {
+
             foreach ($otherdata as $row) {
                 $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $row['business_profile_post_id'], 'status' => '1');
@@ -1791,7 +1837,7 @@ class Business_profile extends MY_Controller {
                 <div class="post-design-product">
                     <a class="post_dot_2" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst($companynameposted) . '</a>
                     <p class="posted_with" > Posted With</p> <a class="other_name name_business post_dot_2"  href="' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
-                    <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date">
+                    <span role="presentation" aria-hidden="true"> Â· </span> <span class="ctre_date">
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '  
                     </span> </div></div>
         </li>';
@@ -1801,7 +1847,7 @@ class Business_profile extends MY_Controller {
             <div class="post-design-product">
                 <a class="post_dot"  href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="' . ucfirst($companyname) . '">
                     ' . ucfirst($companyname) . '</a>
-                <span role="presentation" aria-hidden="true"> · </span>
+                <span role="presentation" aria-hidden="true"> Â· </span>
                 <div class="datespan"> <span class="ctre_date" > 
                         ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 
@@ -2368,7 +2414,7 @@ class Business_profile extends MY_Controller {
                     $userid = $this->session->userdata('aileenuser');
                     if ($rowdata['user_id'] == $userid) {
 
-                        $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                        $return_html .= '<span role="presentation" aria-hidden="true"> Â· 
                     </span>
                     <div class="comment-details-menu">
                         <div id="editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">
@@ -2385,7 +2431,7 @@ class Business_profile extends MY_Controller {
                     $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
                     if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                        $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                        $return_html .= '<span role="presentation" aria-hidden="true"> Â· 
                     </span>
                     <div class="comment-details-menu">
                         <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['business_profile_post_comment_id'] . '" value= "' . $rowdata['business_profile_post_id'] . '">
@@ -2395,7 +2441,7 @@ class Business_profile extends MY_Controller {
                         </a>
                     </div>';
                     }
-                    $return_html .= '<span role="presentation" aria-hidden="true"> · 
+                    $return_html .= '<span role="presentation" aria-hidden="true"> Â· 
                     </span>
                     <div class="comment-details-menu">
                         <p>';
@@ -4530,7 +4576,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($business_profile['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -4561,7 +4607,7 @@ class Business_profile extends MY_Controller {
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -4574,7 +4620,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -4690,7 +4736,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($business_profile['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
                     $cmtinsert .= '<div id="editcommentboxtwo' . $business_profile['business_profile_post_comment_id'] . '"style="display:block;
                                                     ">';
@@ -4711,7 +4757,7 @@ class Business_profile extends MY_Controller {
                 $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
                     $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
                     $cmtinsert .= 'id="post_deletetwo' . $business_profile['business_profile_post_comment_id'] . '"';
@@ -4722,7 +4768,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 // comment aount variable start
@@ -5088,7 +5134,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($business_profile['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<div id="editcommentbox' . $business_profile['business_profile_post_comment_id'] . '"style="display:block;">';
                 $cmtinsert .= '<a id="' . $business_profile['business_profile_post_comment_id'] . '"';
@@ -5106,7 +5152,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $business_profile['business_profile_post_id'], 'status' => 1))->row()->user_id;
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<input type="hidden" name="post_delete"';
                 $cmtinsert .= 'id="post_delete' . $business_profile['business_profile_post_comment_id'] . '"';
@@ -5117,7 +5163,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -5247,7 +5293,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($business_profile['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -5278,7 +5324,7 @@ class Business_profile extends MY_Controller {
 
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -5291,7 +5337,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -5441,17 +5487,11 @@ class Business_profile extends MY_Controller {
 //reactivate accont end    
 //delete post particular user start
     public function del_particular_userpost() {
-        $userid = $this->session->userdata('aileenuser');
 
+        $userid = $this->session->userdata('aileenuser');
         $post_id = $_POST['business_profile_post_id'];
-        $contition_array = array('business_profile_post.business_profile_post_id' => $post_id, 'business_profile_post.status' => '1');
-        
-        $join_str[0]['table'] = 'business_profile';
-        $join_str[0]['join_table_id'] = 'business_profile.user_id';
-        $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
-        $join_str[0]['join_type'] = '';
-        
-        $businessdata = $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'business_profile_post.delete_post,business_profile.business_profile_id,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        $contition_array = array('business_profile_post_id' => $post_id, 'status' => '1');
+        $businessdata = $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $likeuserarray = explode(',', $businessdata[0]['delete_post']);
         $user_array = array_push($likeuserarray, $userid);
@@ -5468,15 +5508,12 @@ class Business_profile extends MY_Controller {
         );
 
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
-        
-        
-        $business_profile_id = $businessdata[0]['business_profile_id'];
-        
+        $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
 
 // for post count start
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         foreach ($followerdata as $fdata) {
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5488,7 +5525,7 @@ class Business_profile extends MY_Controller {
 //data fatch using follower end
 //data fatch using industriyal start
 
-        $userselectindustriyal = $businessdata[0]['industriyal'];
+        $userselectindustriyal = $this->data['businessdata'][0]['industriyal'];
         $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
         $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         foreach ($businessprofiledata as $fdata) {
@@ -5558,21 +5595,21 @@ class Business_profile extends MY_Controller {
             }
         }
 
-//        if (count($otherdata) > 0) {
-//            if (count($count) == count($otherdata)) {
-//                $datacount = "count";
-//                $notfound = '<div class="contact-frnd-post bor_none">';
-//                $notfound .= '<div class="text-center rio">';
-//                $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
-//                $notfound .= '</div></div>';
-//            }
-//        } else {
-//            $datacount = "count";
-//            $notfound = '<div class="contact-frnd-post bor_none">';
-//            $notfound .= '<div class="text-center rio">';
-//            $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
-//            $notfound .= '</div></div>';
-//        }
+        if (count($otherdata) > 0) {
+            if (count($count) == count($otherdata)) {
+                $datacount = "count";
+                $notfound = '<div class="contact-frnd-post bor_none">';
+                $notfound .= '<div class="text-center rio">';
+                $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
+                $notfound .= '</div></div>';
+            }
+        } else {
+            $datacount = "count";
+            $notfound = '<div class="contact-frnd-post bor_none">';
+            $notfound .= '<div class="text-center rio">';
+            $notfound .= '<h4 class="page-heading  product-listing">No Data Found.</h4>';
+            $notfound .= '</div></div>';
+        }
         echo json_encode(
                 array(
                     "notfound" => $notfound,
@@ -6132,7 +6169,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($bus_comment['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<div id="editcommentbox' . $bus_comment['post_image_comment_id'] . '"style="display:block;">';
                 $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
@@ -6152,7 +6189,7 @@ class Business_profile extends MY_Controller {
 
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<input type="hidden" name="post_delete"';
                 $cmtinsert .= 'id="post_delete' . $bus_comment['post_image_comment_id'] . '"';
@@ -6163,7 +6200,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
 
@@ -6291,7 +6328,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($bus_comment['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<div id="editcommentbox' . $bus_comment['post_image_comment_id'] . '"style="display:block;">';
                 $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
@@ -6309,7 +6346,7 @@ class Business_profile extends MY_Controller {
             $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<input type="hidden" name="post_deletetwo"';
                 $cmtinsert .= 'id="post_deletetwo' . $bus_comment['post_image_comment_id'] . '"';
@@ -6320,7 +6357,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
 
@@ -6456,7 +6493,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($bus_comment['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<div id="imgeditcommentboxtwo' . $bus_comment['post_image_comment_id'] . '"style="display:block;">';
                 $cmtinsert .= '<a id="' . $bus_comment['post_image_comment_id'] . '"';
@@ -6475,7 +6512,7 @@ class Business_profile extends MY_Controller {
 
             $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $bus_comment['post_image_id'], 'status' => 1))->row()->user_id;
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<input type="hidden" name="imgpost_deletetwo"';
                 $cmtinsert .= 'id="imgpost_deletetwo_' . $bus_comment['post_image_comment_id'] . '"';
@@ -6486,7 +6523,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div></div>';
 
@@ -6630,7 +6667,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($bus_comment['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -6658,7 +6695,7 @@ class Business_profile extends MY_Controller {
             if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<input type="hidden" name="imgpost_delete"';
                 $cmtinsert .= 'id="imgpost_delete_' . $bus_comment['post_image_comment_id'] . '"';
@@ -6669,7 +6706,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div></div>';
 
@@ -7163,7 +7200,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($bus_comment['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7191,7 +7228,7 @@ class Business_profile extends MY_Controller {
                 if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7205,7 +7242,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div>';
 
@@ -7323,7 +7360,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($bus_comment['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7351,7 +7388,7 @@ class Business_profile extends MY_Controller {
                 if ($bus_comment['user_id'] == $userid || $business_userid == $userid) {
 
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7366,7 +7403,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($bus_comment['created_date']))) . '</p></div></div></div>';
 
@@ -7495,7 +7532,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($rowdata['user_id'] == $userid) {
 
-                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $fourdata .= '<div class="comment-details-menu">';
 
                     $fourdata .= '<div id="editcommentboxtwo' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">';
@@ -7511,13 +7548,13 @@ class Business_profile extends MY_Controller {
                 $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $fourdata .= '<div class="comment-details-menu">';
                     $fourdata .= '<input type="hidden" name="post_delete"';
                     $fourdata .= 'id="post_deletetwo' . $rowdata['business_profile_post_comment_id'] . '"; value= "' . $rowdata['business_profile_post_id'] . '">';
                     $fourdata .= '<a id="' . $rowdata['business_profile_post_comment_id'] . '"onClick="comment_deletetwo(this.id)"> Delete<span class="insertcommenttwo' . $rowdata['business_profile_post_comment_id'] . '"></span></a></div>';
                 }
-                $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $fourdata .= '<div class="comment-details-menu">';
 //$fourdata .= '<p>' .  $bus_comment['created_date'] . '</br>';
 //$fourdata .= '<p>' . date('Y-m-d H:i:s', strtotime($bus_comment['created_date'])) . '</br>';
@@ -7633,7 +7670,7 @@ class Business_profile extends MY_Controller {
 
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $fourdata .= '<div class="comment-details-menu">';
 
 
@@ -7644,7 +7681,7 @@ class Business_profile extends MY_Controller {
                     $fourdata .= '</span></a></div>';
                 }
 
-                $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $fourdata .= '<div class="comment-details-menu">';
                 $fourdata .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date']))) . '</br></p></div>';
 
@@ -7725,7 +7762,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($rowdata['user_id'] == $userid) {
 
-                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $fourdata .= '<div class="comment-details-menu">';
 
                     $fourdata .= '<div id="editcommentboxtwo' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">';
@@ -7742,13 +7779,13 @@ class Business_profile extends MY_Controller {
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
 
-                    $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $fourdata .= '<div class="comment-details-menu">';
                     $fourdata .= '<input type="hidden" name="post_delete"';
                     $fourdata .= 'id="post_deletetwo' . $rowdata['business_profile_post_comment_id'] . '"; value= "' . $rowdata['business_profile_post_id'] . '">';
                     $fourdata .= '<a id="' . $rowdata['business_profile_post_comment_id'] . '"onClick="comment_deletetwo(this.id)"> Delete<span class="insertcommenttwo' . $rowdata['business_profile_post_comment_id'] . '"></span></a></div>';
                 }
-                $fourdata .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $fourdata .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $fourdata .= '<div class="comment-details-menu">';
                 $fourdata .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date']))) . '</br>';
 
@@ -7876,7 +7913,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($business_profile['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7907,7 +7944,7 @@ class Business_profile extends MY_Controller {
 
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -7920,7 +7957,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -8058,7 +8095,7 @@ class Business_profile extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             if ($business_profile['user_id'] == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8089,7 +8126,7 @@ class Business_profile extends MY_Controller {
 
             if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8102,7 +8139,7 @@ class Business_profile extends MY_Controller {
                 $cmtinsert .= '</a></div>';
             }
 
-            $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+            $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
             $cmtinsert .= '<div class="comment-details-menu">';
             $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -8210,7 +8247,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($business_profile['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8241,7 +8278,7 @@ class Business_profile extends MY_Controller {
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8254,7 +8291,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 
@@ -8364,7 +8401,7 @@ class Business_profile extends MY_Controller {
                 $userid = $this->session->userdata('aileenuser');
                 if ($business_profile['user_id'] == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8395,7 +8432,7 @@ class Business_profile extends MY_Controller {
 
                 if ($business_profile['user_id'] == $userid || $business_userid == $userid) {
 
-                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $cmtinsert .= '<div class="comment-details-menu">';
 
 
@@ -8408,7 +8445,7 @@ class Business_profile extends MY_Controller {
                     $cmtinsert .= '</a></div>';
                 }
 
-                $cmtinsert .= '<span role="presentation" aria-hidden="true"> · </span>';
+                $cmtinsert .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                 $cmtinsert .= '<div class="comment-details-menu">';
                 $cmtinsert .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($business_profile['created_date']))) . '</p></div></div></div>';
 // comment aount variable start
@@ -8518,7 +8555,7 @@ class Business_profile extends MY_Controller {
 
                 $userid = $this->session->userdata('aileenuser');
                 if ($rowdata['user_id'] == $userid) {
-                    $mulimgfour .= '<span role="presentation" aria-hidden="true"> · </span>';
+                    $mulimgfour .= '<span role="presentation" aria-hidden="true"> Â· </span>';
                     $mulimgfour .= '<div class="comment-details-menu">';
 
                     $mulimgfour .= '<div id="imgeditcommentboxtwo' . $rowdata['post_image_comment_id'] . '" style="display:block;">';
@@ -8537,14 +8574,14 @@ class Business_profile extends MY_Controller {
 
                 if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                    $mulimgfour .= '<span role="presentation" aria-hidden="true"> · </span>
+                    $mulimgfour .= '<span role="presentation" aria-hidden="true"> Â· </span>
                                     <div class="comment-details-menu">';
                     $mulimgfour .= '<input type="hidden" name="imgpost_delete1"  id="imgpost_deletetwo_' . $rowdata['post_image_comment_id'] . '" value= "' . $rowdata['post_image_id'] . '">';
                     $mulimgfour .= '<a id="' . $rowdata['post_image_comment_id'] . '"   onClick="imgcomment_deletetwo(this.id)"> Delete<span class="imginsertcomment1' . $rowdata['post_image_comment_id'] . '"></span></a></div>';
                 }
 
 
-                $mulimgfour .= '<span role="presentation" aria-hidden="true"> · </span>
+                $mulimgfour .= '<span role="presentation" aria-hidden="true"> Â· </span>
  <div class="comment-details-menu">';
                 $mulimgfour .= '<p>' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date']))) . '</br></p></div></div></div>';
             }
@@ -9956,11 +9993,15 @@ No Contacts Available.
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted'=> '0', 'business_step' => '4');
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business-profile/');
+        }
+        $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
-        
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -10124,7 +10165,7 @@ No Contacts Available.
                                 <div class = "post-design-product">
                                     <a class = "post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
 <p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
+<span role = "presentation" aria-hidden = "true"> Â· </span> <span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 </span> </div></div>
 </li>';
@@ -10134,7 +10175,7 @@ No Contacts Available.
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $slugname) . '" title = "' . ucfirst(strtolower($companyname)) . '">
 ' . ucfirst(strtolower($companyname)) . '</a>
-                    <span role = "presentation" aria-hidden = "true"> · </span>
+                    <span role = "presentation" aria-hidden = "true"> Â· </span>
 <div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '
 
@@ -10710,7 +10751,7 @@ Your browser does not support the audio tag.
                             $userid = $this->session->userdata('aileenuser');
                             if ($rowdata['user_id'] == $userid) {
 
-                                $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                                $return_html .= '<span role = "presentation" aria-hidden = "true"> Â·
 </span>
 <div class = "comment-details-menu">
 <div id = "editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">
@@ -10727,7 +10768,7 @@ Your browser does not support the audio tag.
                             $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
                             if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                                $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                                $return_html .= '<span role = "presentation" aria-hidden = "true"> Â·
 </span>
 <div class = "comment-details-menu">
 <input type = "hidden" name = "post_delete" id = "post_delete' . $rowdata['business_profile_post_comment_id'] . '" value = "' . $rowdata['business_profile_post_id'] . '">
@@ -10737,7 +10778,7 @@ Your browser does not support the audio tag.
 </a>
 </div>';
                             }
-                            $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                            $return_html .= '<span role = "presentation" aria-hidden = "true"> Â·
 </span>
 <div class = "comment-details-menu">
 <p>';
@@ -11790,12 +11831,12 @@ Your browser does not support the audio tag.
 <a style = "max-width: 40%;" class = "post_dot" title = "' . ucfirst(strtolower($companynameposted)) . '" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
 <p class = "posted_with" > Posted With</p>
 <a class = "other_name post_dot" href = "' . base_url('business-profile/details/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
+<span role = "presentation" aria-hidden = "true"> Â· </span> <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
 </div></div>
 </li>';
                 } else {
                     $return_html .= '<li><div class = "post-design-product"><a class = "post_dot" title = "' . ucfirst(strtolower($companyname)) . '" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
-<span role = "presentation" aria-hidden = "true"> · </span>
+<span role = "presentation" aria-hidden = "true"> Â· </span>
 <div class = "datespan">
 <span class = "ctre_date">' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))) . '</span>
 </div>
@@ -12261,7 +12302,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 
                         $userid = $this->session->userdata('aileenuser');
                         if ($rowdata['user_id'] == $userid) {
-                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                            $return_html .= '<span role="presentation" aria-hidden="true"> Â· </span>
                     <div class="comment-details-menu">
                         <div id="editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style="display:block;">
                             <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_editbox(this.id)" class="editbox">Edit
@@ -12276,7 +12317,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         $userid = $this->session->userdata('aileenuser');
                         $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
                         if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
-                            $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                            $return_html .= '<span role="presentation" aria-hidden="true"> Â· </span>
                     <div class="comment-details-menu">
                         <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['business_profile_post_comment_id'] . '" value= "' . $rowdata['business_profile_post_id'] . '">
                         <a id="' . $rowdata['business_profile_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete<span class="insertcomment' . $rowdata['business_profile_post_comment_id'] . '">
@@ -12284,7 +12325,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         </a>
                     </div>';
                         }
-                        $return_html .= '<span role="presentation" aria-hidden="true"> · </span>
+                        $return_html .= '<span role="presentation" aria-hidden="true"> Â· </span>
                     <div class="comment-details-menu">
                         <p>';
 
