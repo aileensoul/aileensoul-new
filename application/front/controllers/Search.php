@@ -2102,8 +2102,17 @@ if ($this->session->userdata('aileenuser')) {
             }
         } else {
             $return_html .= '<div class="text-center rio">
-                                                    <h4 class="page-heading  product-listing" >No Recommended Freelancer Found.</h4>
-                                                </div>';
+                                                <h1 class="page-heading  product-listing" >';
+            $return_html .= $this->lang->line("oops_no_data");
+            $return_html .= '</h1><p>';
+            $return_html .= $this->lang->line("couldn_find");
+            $return_html .= '</p>
+                                                <ul>
+                                                    <li style="text-transform:none !important; list-style: none;">';
+            $return_html .= $this->lang->line("right_keyword");
+            $return_html .= '</li>
+                                                </ul>
+                                            </div>';
         }
         $return_html .= '<div class="col-md-1">
                                             </div>';
