@@ -193,7 +193,7 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
     }
 
     // return regexpr.test(value);
-}, "Last Date of apply is required.");
+}, "Last date of apply is required.");
 //   validation border is not show in last date end  
 //pattern validation at salary start//
 $.validator.addMethod("pattern", function (value, element, param) {
