@@ -1109,7 +1109,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 // khyati changes start
     //public function art_post_insert($id,$para) {
     public function art_post_insert($id = '', $para = '') {
-        //echo $para; die();
+        //echo'<pre>'; print_r($_FILES); die();
         $userid = $this->session->userdata('aileenuser');
 
          //if user deactive profile then redirect to artistic/index untill active profile start

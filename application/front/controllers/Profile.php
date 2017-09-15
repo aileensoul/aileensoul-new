@@ -201,7 +201,7 @@ class Profile extends CI_Controller {
    $mail = $this->email_model->sendEmail($app_name = '', $app_email = '', $toemail , $subject, $msg);
 //die();
    $data = array(
-                'code' => $rand_password
+                'password_code' => $rand_password
                  );
 
      

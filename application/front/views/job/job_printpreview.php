@@ -127,7 +127,7 @@
                   </div>
                </div>
                <div class="job-menu-profile  mob-block">
-                  <a  href="<?php echo site_url('job/resume/' . $job[0]['user_id']); ?>">
+                  <a  href="javascript: void(0);">
                      <h5 class="profile-head-text"> <?php echo $job[0]['fname'] . ' ' . $job[0]['lname']; ?></h5>
                   </a>
                   <!-- text head start -->
@@ -187,7 +187,11 @@
                   ?>
             </div>
          </div>
+        
          <div class="col-md-7 col-sm-12 mob-clear">
+          <?php if(!($returnpage))
+                {
+          ?>
             <div class="mob-progressbar <?php if($count_profile == 100){?>temp<?php } ?>">
                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                <p class="mob-edit-pro">
@@ -211,6 +215,10 @@
                   </div>
                </div>
             </div>
+
+            <?php
+          }
+          ?>
             <div class="">
                <div class="common-form">
                   <div class="job-saved-box">

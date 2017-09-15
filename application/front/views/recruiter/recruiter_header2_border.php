@@ -34,7 +34,7 @@
 
 
 
-                                    <li<?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('recruiter/home'); ?>"><span class="home-22x22-h"></span></span></a>
+                                    <li<?php if ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'post') { ?> class="active" <?php } ?>><a href="<?php echo base_url('recruiter/home'); ?>"><span class="home-22x22-h"></span></a>
 
                                         <!-- Friend Request Start-->
 

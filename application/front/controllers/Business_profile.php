@@ -24,6 +24,18 @@ class Business_profile extends MY_Controller {
 // DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
+
+        // FIX BUSINESS PROFILE NO POST DATA
+
+
+        $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3>
+                                <div class="art-img-nn"><div class="art_no_post_img">
+                                        <img src="' . base_url('img/bui-no.png') . '">
+                                    </div><div class="art_no_post_text">
+                                        No Post Available.
+                                    </div>
+                                </div>
+                            </div> ';
     }
 
     public function index() {
@@ -11234,7 +11246,7 @@ Your browser does not support the audio tag.
         // GET USER BUSINESS DATA START
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         $business_profile_id = $businessdata[0]['business_profile_id'];
         $industriyal = $businessdata[0]['industriyal'];
         $city = $businessdata[0]['city'];

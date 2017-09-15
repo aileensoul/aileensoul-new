@@ -34,7 +34,7 @@
                         </div>
                         <div class="">
                             <ul class="" id="dropdownclass">
-                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="bu_home"></span></a>
+                                <li <?php if (($this->uri->segment(1) == 'freelancer-hire') && ($this->uri->segment(2) == 'projects')) { ?> class="active" <?php } ?>><a href="<?php echo base_url('freelancer-hire/home'); ?>" onclick="return leave_page(1)"><span class="home-22x22-h"></span></a>
                                 </li>
                                 <li id="Inbox_link">
                                         <?php if ($message_count) { ?>

@@ -467,7 +467,7 @@ right: 17px;
 }
 .noti-msg-y{font-size: 13px; color: #646464; line-height: 16px;}
 .dropdown-menu {
-    right: -11px;
+    right: 0px;
     left: inherit !important;
     position: absolute;
     border: none;
@@ -1593,8 +1593,8 @@ background-color: white;}
     
     #InboxContainer {
     width: 94% !important;
-
-right: 5% !important;
+    right: inherit!important;
+    left:2% !important;
     margin-top: 10px;
     top: 28px;
     
@@ -1627,6 +1627,7 @@ right: 5% !important;
         padding-left: 0;
         padding-right: 0;
     }
+    .header2 ul#dropdownclass {padding-right: 8px;}
     .bg-search .header2 {
         margin-top: -6px;
     }
@@ -1684,6 +1685,7 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 540px) {
+    #InboxContainer{width: 93%!important;}
     #notificationContainer::before {right: 77px;}
     .back {
 		width: 40%;
@@ -1717,14 +1719,16 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 479px) {
-    #InboxContainer{right: 5% !important;}
-           .job_con #InboxContainer::before {
-    right: 118px;
-        }
-            #acon{
+    #InboxContainer {
+    width: 92% !important;
+    }
+    .job_con #InboxContainer::before {
+        right: 118px;
+    }
+    #acon{
         width: 94% !important;
-margin-top: 28px !important;
-right: 3%!important;
+        margin-top: 28px !important;
+        right: 3%!important;
     }
 	.logo h2 {
         font-size: 20px;

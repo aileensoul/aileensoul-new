@@ -3511,6 +3511,9 @@ padding-left: 11px;}
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+    #InboxContainer::before {
+    right: 139px;
+    }
 	.slider_img{height:215px;}
     .header2 .container{padding-right: 0px;}
 	.art_no_post_img {
@@ -3823,8 +3826,11 @@ padding-left: 11px;}
     .profile-job-post-location-name ul li.folle_text {
     padding-top: 10px;
     line-height: 17px;
-        }
-        .user_lst ul li button{margin-top: 14px;    }
+    }
+    #InboxContainer::before {
+        right: 143px;
+    }
+    .user_lst ul li button{margin-top: 14px;    }
     #row2 img{height: 200px;}
     .bui_bcon {width: 56%;}
     .user_btn button{padding: 3px 7px; width: 89px; font-size: 12px!important;}
@@ -3887,10 +3893,13 @@ padding-left: 11px;}
     }
 }
 @media screen and (max-width: 540px) {
+    #InboxContainer::before {
+        right: 143px;
+    }
     .editor-content {
-    width: 84%;
-}
-.reactivate_btn_n , .reactivate_btn_y{
+        width: 84%;
+    }
+    .reactivate_btn_n , .reactivate_btn_y{
         margin-top: 0px;
 
     }
@@ -4365,6 +4374,9 @@ padding-left: 11px;}
         width: 70%;
     }
     .profile-job-details .post_title{font-size: 9px;}
+    #InboxContainer::before {
+    right: 134px;
+    }
 
 }
 
