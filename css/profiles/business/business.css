@@ -1131,6 +1131,7 @@ line-height: 1;}
     word-wrap: break-word;
     color: black;
 	font-size: 13px;
+	margin-top:-10px;
 }
 .inputtype-edit-comment {
     position: relative;
@@ -3902,7 +3903,8 @@ height: 100px;
         margin-top: 0;
         padding: 9px !important;
     }
-	.common-form1 h3{margin:20px 0;}
+	.common-form1 h3{margin:0px 0 51px;}
+	.common-form1{padding-top:0;}
 	.job-search-box1 fieldset{padding-left:0; padding-right:5px;}
 	.experience_year{margin-right:33px;}
 	.job-menu-profile{margin-top:0;}
