@@ -68,7 +68,8 @@
                            <div class="panel">
                               <div <?php if($this->uri->segment(3) =="primary"){ ?> class="panel-heading active" <?php }else{ ?> class="panel-heading" <?php } ?> id="panel-heading">
                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle">  Primary
+                                    <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle">
+                                    Primary
                                     </a>
                                  </h4>
                               </div>
