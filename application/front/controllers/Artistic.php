@@ -15533,14 +15533,14 @@ public function get_artistic_name($id=''){
             $search_condition = "(art_name LIKE '%$searchskill%' or art_lastname LIKE '%$searchskill%' or designation LIKE '%$searchskill%' or other_skill LIKE '%$searchskill%' or  art_yourart LIKE '%$searchskill%' or concat(art_name,' ',art_lastname) LIKE '%$searchskill%')";
             // echo $search_condition;
             $othercom = $other['data'] = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            //echo "<pre>"; print_r($otherdata); die();
+           // echo "<pre>"; print_r($othercom); die();
 
             foreach ($othercom as $keydata => $valuedata) {
 
                 $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
                 //echo $concatedata; 
 
-               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill)
+               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
                {
                 $varfoune[] = $valuedata; 
                }else{
@@ -15631,7 +15631,7 @@ public function get_artistic_name($id=''){
                 $concatedata = $valuedata['art_name']. ' '.$valuedata['art_lastname'];
                 //echo $concatedata; 
 
-               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill)
+               if($valuedata['art_name'] == $searchskill || $valuedata['art_lastname'] == $searchskill || $concatedata == $searchskill || $valuedata['art_yourart'] == $searchskill)
                {
                 $varfoune[] = $valuedata; 
                }else{

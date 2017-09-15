@@ -5,6 +5,20 @@
         document.getElementById('myModal').style.display = 'block';
     });
 
+  $( document ).on( 'keydown', function ( e ) { 
+    if ( e.keyCode === 27 ) {
+       
+if(document.getElementById('post').style.display === "block"){ alert("hii1");
+        $('#post').modal('hide');       
+        $('#myModal').model('show');
+ }else if(document.getElementById('myModal').style.display === "block"){ alert("hgi1");
+
+        document.getElementById('myModal').style.display = 'none';
+      }$('#myModal').model('hide');
+
+    }
+});  
+
  $(document).ready(function ()
          {
              /* Uploading Profile BackGround Image */
