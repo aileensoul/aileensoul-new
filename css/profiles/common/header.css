@@ -1593,8 +1593,8 @@ background-color: white;}
     
     #InboxContainer {
     width: 94% !important;
-
-right: 5% !important;
+    right: inherit!important;
+    left:2% !important;
     margin-top: 10px;
     top: 28px;
     
@@ -1627,6 +1627,7 @@ right: 5% !important;
         padding-left: 0;
         padding-right: 0;
     }
+    .header2 ul#dropdownclass {padding-right: 8px;}
     .bg-search .header2 {
         margin-top: -6px;
     }
@@ -1717,7 +1718,7 @@ right: 3%!important;
 
 }
 @media screen and (max-width: 479px) {
-    #InboxContainer{right: 5% !important;}
+
            .job_con #InboxContainer::before {
     right: 118px;
         }
