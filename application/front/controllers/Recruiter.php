@@ -58,7 +58,7 @@ class Recruiter extends MY_Controller {
         $contition_array = array('user_id' => $userid, 're_status' => '1', 'is_delete' => '0');
         $apply_step = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // REDIRECT USER TO REMAIN PROFILE END
-
+ 
         if (count($apply_step) >= 0) {
             if ($apply_step[0]['re_step'] == 1) {
                 redirect('recruiter/company-information');
@@ -1564,7 +1564,7 @@ class Recruiter extends MY_Controller {
                 if (file_exists($imagee) && $row['job_user_image'] != '') {
 
                     $postdata .= '<a href="' . base_url() . 'job/resume/' . $row['slug'] . '?page=recruiter" title="' . $row['fname'] . ' ' . $row['lname'] . '">';
-                    $postdata .= '<img src="' . base_url($this->config->item('job_profile_thumb_upload_path')) . $row['job_user_image'] . '" alt="' . $row[0]['fname'] . ' ' . $row[0]['lname'] . '">';
+                    $postdata .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $row['job_user_image'] . '" alt="' . $row[0]['fname'] . ' ' . $row[0]['lname'] . '">';
                     $postdata .= '</a>';
                 } else {
 
@@ -3184,7 +3184,7 @@ class Recruiter extends MY_Controller {
 
 
                     $return_html .= '<a href="' . base_url('job/resume/' . $p['slug'] . '?page=recruiter') . '" title="' . $p['fname'] . ' ' . $p['lname'] . '"> 
-                                    <img src="' . base_url($this->config->item('job_profile_thumb_upload_path') . $p['job_user_image']) . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
+                                    <img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $p['job_user_image'] . '" alt="' . $p[0]['fname'] . ' ' . $p[0]['lname'] . '">
                                     </a>';
                 } else {
 
@@ -3661,7 +3661,7 @@ class Recruiter extends MY_Controller {
                     $imageee = $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'];
                     if (file_exists($imageee) && $rec['job_user_image'] != '') {
                         $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
-                        $return_html .= '<img src="' . base_url() . $this->config->item('job_profile_thumb_upload_path') . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
+                        $return_html .= '<img src="' . JOB_PROFILE_THUMB_UPLOAD_URL . $rec['job_user_image'] . '" alt="' . $rec[0]['fname'] . ' ' . $rec[0]['lname'] . '"></a>';
                     } else {
 
                         $return_html .= '<a href="' . base_url() . 'job/resume/' . $rec['slug'] . '?page=recruiter" title="' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->fname . ' ' . $this->db->get_where('job_reg', array('user_id' => $rec['to_id']))->row()->lname . '">';
@@ -4213,7 +4213,7 @@ class Recruiter extends MY_Controller {
 
         $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . base_url($this->config->item('rec_bg_main_upload_path') . $this->data['recdata'][0]['profile_background']) . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . REC_PROFILE_THUMB_UPLOAD_URL . $this->data['recdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }
