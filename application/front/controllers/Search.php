@@ -1866,8 +1866,8 @@ if ($this->session->userdata('aileenuser')) {
                 $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
           //  echo "<pre>"; print_r($candidate); die();
-            //$candidate = array_reduce($candidate, 'array_merge', array());
-         //   echo "<pre>"; print_r($candidate); die();
+            $candidate = array_reduce($candidate, 'array_merge', array());
+           // echo "<pre>"; print_r($candidate); die();
 //            $candidate = array_unique($candidate, SORT_REGULAR);
 //             echo "<pre>"; print_r($candidate); die();
             // echo count($candidate);die();
@@ -1885,13 +1885,11 @@ if ($this->session->userdata('aileenuser')) {
             $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $new1 = array_merge(array($candidate), array($fieldfound), array($otherdata));
-
-             $unique = array();
-            foreach ($new1 as $key => $value) {
-                foreach ($value as $key) {
-                $unique[$value['freelancer_post_reg_id']] = $key;
-                }
+             $candidate_11 = array_reduce($new1, 'array_merge', array());
              
+             $unique = array();
+            foreach ($candidate_11 as $value) {
+                $unique[$value['freelancer_post_reg_id']] = $value;
             }
 
         } else {
