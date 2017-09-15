@@ -1878,12 +1878,15 @@ display: none !important;
 #mainContainer{min-width:108% !important;}
 
 /*** all page  ***/
-.profile-job-profile-menu
+.profile-job-profile-menu{}
 /*** end all page  ***/
 
 
-/*zalak start 28-8  media*/
-@media (min-width: 1280px) {
+/* zalak start 28-8  media */
+
+
+
+@media screen and (min-width: 1280px) {
     .container {
         width: 1280px;
     }
