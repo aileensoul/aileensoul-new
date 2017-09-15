@@ -2809,7 +2809,7 @@ font-size: 32px;}
 right: 0;
     margin-left: -15px; float: left;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span {word-wrap: break-word;
-    word-break: break-word; float: left; padding-right: 10px; width: 65%;}
+    word-break: break-word; float: left; padding-left: 10px; width: 65%;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li label {
     font-weight: 600; width: 30%; float: left;}
 .profile-job-details ul li {list-style: none;}
