@@ -32,7 +32,8 @@
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
