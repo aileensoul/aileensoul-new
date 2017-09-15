@@ -818,8 +818,8 @@ $config['art_profile_main_max_height'] = '3000';
 
 // ARTISTIC PROFILE IMAGE THUMBS
 $config['art_profile_thumb_upload_path'] = 'uploads/artistic_profile/thumbs/';
-$config['art_profile_thumb_width'] = '160';
-$config['art_profile_thumb_height'] = '160';
+$config['art_profile_thumb_width'] = '280';
+$config['art_profile_thumb_height'] = '220';
 
 
 // ARTISTIC PROFILE BACKGROUND
