@@ -1824,6 +1824,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
         text-align: center;
     }
+     
 	.profile-box-art .left-side-menu {
         display: none;
     }
@@ -1932,7 +1933,10 @@ label.cameraButton input[accept*="camera"] {
 }
 @media screen and (max-width: 360px) {
  
-
+#InboxContainer {
+    width: 92% !important;
+    left: 4% !important;
+    }
 .profile-job-details ul li.date_re {font-size: 10px;}
 	.job_con #InboxContainer::before {
 		right: 118px;
