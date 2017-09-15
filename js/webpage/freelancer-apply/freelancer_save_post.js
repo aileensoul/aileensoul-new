@@ -120,7 +120,7 @@ function remove_post(abc)
             $('#' + 'postdata' + abc).parent().removeClass();
             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
             if (numItems == '0') {
-                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text"> no_saved </div></div>';
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text"> No Saved Projects Found.</div></div>';
                 $('.contact-frnd-post').html(nodataHtml);
             }
         }
