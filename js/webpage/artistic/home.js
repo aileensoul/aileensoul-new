@@ -8,10 +8,10 @@
   $( document ).on( 'keydown', function ( e ) { 
     if ( e.keyCode === 27 ) {
        
-if(document.getElementById('post').style.display === "block"){ alert("hii1");
+if(document.getElementById('post').style.display === "block"){ 
         $('#post').modal('hide');       
         $('#myModal').model('show');
- }else if(document.getElementById('myModal').style.display === "block"){ alert("hgi1");
+ }else if(document.getElementById('myModal').style.display === "block"){ 
 
         document.getElementById('myModal').style.display = 'none';
       }$('#myModal').model('hide');
@@ -1250,8 +1250,9 @@ function insert_comment(clicked_id)
        var product_description = document.getElementById("test-upload_des").value;
         var des_trim = product_description.trim();
        var product_fileInput = document.getElementById("file-1").value;
+       var divs = $('div .file-preview-frame').length
    
-       if (product_fileInput == '' && product_trim == '' && des_trim == '')
+       if (divs == 0 && product_trim == '' && des_trim == '')
        {
    
            $('#post .mes').html("<div class='pop_content'>This post appears to be blank. Please write or attach (photos, videos, audios, pdf) to post.");
