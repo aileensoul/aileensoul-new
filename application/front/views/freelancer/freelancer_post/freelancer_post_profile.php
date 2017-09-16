@@ -157,11 +157,12 @@
                                 $contition_array = array('from_id' => $userid, 'to_id' => $this->uri->segment(3), 'save_type' => 2, 'status' => '0');
                                 $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                 if ($userid != $this->uri->segment(3)) {
-                                    if ($this->uri->segment(3) != "") {
-                                        if (!$data) {
-                                            ?> 
-                                            <div class="flw_msg_btn fr">
+                                    if ($this->uri->segment(3) != "") { ?>
+                                        <div class="flw_msg_btn fr">
                                                 <ul>
+                                       <?php if (!$data) {
+                                            ?> 
+                                            
                                                     <li>
                                                         <a id="<?php echo $this->uri->segment(3); ?>" onClick="savepopup(<?php echo $this->uri->segment(3); ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $this->uri->segment(3); ?>">
                                                             <?php echo $this->lang->line("save"); ?>

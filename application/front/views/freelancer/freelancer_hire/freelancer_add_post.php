@@ -344,7 +344,7 @@
                     if (clicked_id == 9)
                     {
                         if (page == 'professional') {
-                            location.href = '<?php echo base_url('freelancer/recommen_candidate'); ?>';
+                            location.href = '<?php echo base_url('freelancer-hire/home'); ?>';
                         } else {
                             location.href = 'javascript:history.back()';
                         }
