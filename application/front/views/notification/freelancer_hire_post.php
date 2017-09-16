@@ -1,5 +1,6 @@
 <!-- start head -->
 <?php echo $head; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
 <script src="<?php echo base_url('js/jquery.min.js'); ?>"></script>
 
 
@@ -159,7 +160,7 @@ label.cameraButton input[accept*="camera"] {
 
 <!-- END HEADER -->
 
-<body   class="page-container-bg-solid page-boxed">
+<body   class="page-container-bg-solid page-boxed ">
 
     <section>
         <div class="container">
