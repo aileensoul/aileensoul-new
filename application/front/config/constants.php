@@ -425,6 +425,8 @@ if (IMAGEPATHFROM == 's3bucket') {
 // ARTISTIC POST 210 X 210
     define('ART_POST_RESIZE3_UPLOAD_URL', BASEURL . 'uploads/artistic_post/resize3/');
 
+// ARTISTIC POST 550 X 220
+    define('ART_POST_RESIZE4_UPLOAD_URL', BASEURL . 'uploads/artistic_post/resize4/');
 // ARTISTIC PROFILE BACKGROUND
     define('ART_BG_MAIN_UPLOAD_URL', BASEURL . 'uploads/artistic_bg/main/');
 
