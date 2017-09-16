@@ -1077,6 +1077,7 @@ function del_particular_userpost(abc)
                                 type: 'POST',
                                 url: base_url + "artistic/del_particular_userpost",
                                 //url: '<?php echo base_url() . "artistic/del_particular_userpost" ?>',
+                                dataType: 'json',
                                 data: 'art_post_id=' + abc,
                                 //alert(data);
                                 success: function (data) {
