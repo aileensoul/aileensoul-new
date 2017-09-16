@@ -176,7 +176,7 @@ $route['freelancer-work'] = "freelancer/freelancer_post";
 
 
 $route['artistic'] = "artistic/index";
-$route['artistic/artistic-information-insert'] = "artistic/art_basic_information_insert";
+$route['artistic/artistic-basic-information-insert'] = "artistic/art_basic_information_insert";
 $route['artistic/artistic-information-update'] = "artistic/art_basic_information_update";
 
 $route['artistic/artistic-address'] = "artistic/art_address";

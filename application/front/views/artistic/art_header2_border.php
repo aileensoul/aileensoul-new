@@ -153,7 +153,7 @@
                                             
       </span>
       <a href="<?php echo site_url('artistic/artistic_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
-     <a href="<?php echo base_url('artistic/art_basic_information_update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
+     <a href="<?php echo base_url('artistic/artistic-information-update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
      <?php
       $userid = $this->session->userdata('aileenuser');
