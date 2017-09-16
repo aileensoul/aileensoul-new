@@ -55,8 +55,10 @@
                </div>
                <div class="col-md-8 col-sm-9 pt10">
                   <div class="btn-right pull-right">
+                     <?php if(!$this->session->userdata('aileenuser')) {?>
                      <a href="<?php echo base_url('login'); ?>" class="btn2">Login</a>
                      <a href="<?php echo base_url('registration'); ?>" class="btn3">Create an account</a>
+                     <?php }?>
                   </div>
                </div>
             </div>
