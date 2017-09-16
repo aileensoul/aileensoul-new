@@ -600,7 +600,6 @@ fieldset.full-width {
     color: #fff;
 }
 .hs-submit input[type=submit]:hover {
-    opacity: 0.8;
     background-color: #156f95!important;
 }
 .hs-submit a {
@@ -843,6 +842,8 @@ label.error {
     margin-bottom: 30px;
     
 }
+.freelancer_editpost_title{font-size:20px;}
+#postinfo .date-dropdowns .day, #postinfo .date-dropdowns .month {margin-right:5%;}
 
 /***  only cover page  ***/
 #row1 {
@@ -2003,6 +2004,10 @@ display: none !important;
     #chat{width:65%;}
     .chat .chat-history{padding:25px 15px 20px;}
     .chat .chat-header{padding-left:15px;}
+	
+	/** freelance add project  **/
+	.work_type_custom label{display:inline-block !important; }
+	.common-form .work_type_custom input[type="radio"], .common-form .work_type_custom input[type="checkbox"] {height:15px !important; margin:0;}
 }
 @media screen and (max-width: 900px){
 	.custom-right {margin-left: 4%;}
@@ -2083,6 +2088,7 @@ display: none !important;
 	/* cover page */
 	.por_content ul li .pro-text{width:85% !important;}
 	.common-form_border h3{display:none;}
+	.modal.in .modal-dialog{width:80%;}
 }
 @media screen and (max-width: 640px) {
 
@@ -2207,6 +2213,9 @@ display: none !important;
 	.cls-ve{top:35px;}
 	/********/
 	.people-list .search input{width:93%;}
+	.modal.message-box span.mes{padding:0;}
+	.modal.in .modal-dialog{font-size:88%;}
+	.modal.in .modal-dialog .mes .pop_content{font-size:18px;}
 }
 @media screen and (max-width: 360px) {
 	.nav > li > a {

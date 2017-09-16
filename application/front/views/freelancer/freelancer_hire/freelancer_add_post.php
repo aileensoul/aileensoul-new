@@ -23,8 +23,8 @@
                 <div class="user-midd-section" id="paddingtop_fixed">
                     <div class="row"></div>
                     <div class="container">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-7 col-sm-12">
+                        <div class="col-lg-2 col-md-1"></div>
+                        <div class="col-lg-8 col-md-10 col-sm-12">
                             <div>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -156,8 +156,8 @@
                                         </select>
                                         <?php echo form_error('currency'); ?>
                                     </fieldset>
-                                    <fieldset class="col-md-4">
-                                        <label><?php echo $this->lang->line("work_type"); ?>:</label><input type="radio" tabindex="10" class="worktype_minheight" name="rating" value="0" checked> Hourly
+                                    <fieldset class="col-md-4 work_type_custom">
+                                        <label class=""><?php echo $this->lang->line("work_type"); ?>:</label><input type="radio" tabindex="10" class="worktype_minheight" name="rating" value="0" checked> Hourly
                                         <input type="radio"  name="rating" value="1"> Fixed
                                         <?php echo form_error('rating'); ?>
                                     </fieldset>

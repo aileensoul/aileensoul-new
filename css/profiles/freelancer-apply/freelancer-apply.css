@@ -1251,7 +1251,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-post-detail .profile-job-post-title .button {
         font-size: 13px;
-        padding: 2px 12px !important;
+        padding: 2px 8px !important;
     }
 	.profile-box-art .right-menu-jr ul li a {
         padding-top: 8px;
@@ -1275,6 +1275,7 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 479px) {
+	.job_all_post.last_date{width:100%; float:left;}
 	.designation_rec {
 	  width: 39% !important;
 	}
@@ -1455,7 +1456,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-details .post_title {
         width: 50%;
-        font-size: 11px;
+        font-size: 12px;
     }
 	.profile-job-details .job_companyname {
         width: 140px;
@@ -1471,11 +1472,12 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-post-detail .profile-job-post-title .button {
         font-size: 12px;
-        padding: 3px 14px !important;
+        padding: 3px 8px !important;
     }
 	.right-side-menu {
         width: 100%;
     }
+	.profile-job-details ul li{font-size:11px;}
 }
 @media screen and (max-width: 320px){
 	.profile-job-details .post_title{font-size: 9px;}
