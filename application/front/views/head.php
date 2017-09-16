@@ -3,8 +3,8 @@
 <meta http-equiv="Expires" content="0">
 <meta charset="utf-8" />
 <!-- SEO CHANGES START -->
-<!--<meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
-<meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />-->
+<meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+<meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, 
 minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- SEO CHANGES END -->
@@ -14,7 +14,6 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content=" " />
 <meta name="keywords" content=" " />
 <!-- Add following GoogleAnalytics tracking code in Header.-->
-<!-- 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,8 +29,6 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     enable_page_level_ads: true
   });
 </script>
--->
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <link rel="icon" href="<?php echo base_url('images/favicon.png?ver='.time()); ?>">
