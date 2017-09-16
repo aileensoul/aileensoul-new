@@ -4213,7 +4213,7 @@ class Recruiter extends MY_Controller {
 
         $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data = '*', $join_str = array());
 
-        $coverpic = '<img  src="' . REC_PROFILE_THUMB_UPLOAD_URL . $this->data['recdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
+        $coverpic = '<img  src="' . REC_BG_THUMB_UPLOAD_URL . $this->data['recdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
         //echo '<img src="' . $this->data['recdata'][0]['profile_background'] . '" />';
     }
@@ -4624,4 +4624,9 @@ class Recruiter extends MY_Controller {
 
         return $array = $ret;
     }
+ // 16-9 start   
+    public function recruiter_data(){
+    $this->load->view('recruiter/recruiter_data', $this->data);
+    }
+ // 16-9 end    
 }
