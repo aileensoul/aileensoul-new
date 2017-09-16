@@ -1850,7 +1850,7 @@ background-size: 100%;
     line-height: 1.3;
     resize: none;
     border: none;
-
+    white-space: nowrap;
 }
 .post-editor .popup-textarea p {
     color: #999999;
