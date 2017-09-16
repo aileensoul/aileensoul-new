@@ -888,7 +888,7 @@ label.cameraButton input[accept*="camera"] {
    .custom-right {
             margin-left: 9%;
     }   
-     
+     .art_no_post_text{font-size: 21px;}
 	.custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -1299,6 +1299,10 @@ label.cameraButton input[accept*="camera"] {
 	.designation_rec {
 	  width: 39% !important;
 	}
+    .art_no_post_text {
+        padding-top: 10px;
+        font-size: 18px;
+    }
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
     }

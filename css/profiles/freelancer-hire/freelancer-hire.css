@@ -889,6 +889,7 @@ label.cameraButton input[accept*="camera"] {
 }
 }
 @media screen and (max-width: 991px){
+        .art_no_post_text{font-size: 21px;}
 	.custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -1294,6 +1295,10 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 479px) {
+    .art_no_post_text {
+        padding-top: 10px;
+        font-size: 18px;
+    }
 	.job_all_post.last_date{width:100%; float:left;}
 	.designation_rec {
 	  width: 39% !important;
