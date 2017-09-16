@@ -1036,6 +1036,7 @@ label.cameraButton input[accept*="camera"] {
     #InboxContainer::before {
         right: 158px;
     }
+    #row2 img {border: none;}
     #InboxContainer{
         width: 95%!important;
         left: 1.7%!important;
