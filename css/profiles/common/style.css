@@ -202,10 +202,11 @@ select {
     height:35px;
     cursor: pointer;
 }
+.comment-edit-butn button:focus{background-color: #1b8ab9;}
 input[type=submit],
 input[type=button],
 button {
-    background: #1b8ab9;
+    background-color: #1b8ab9;
     border: 1px solid #1b8ab9;
     color: #fff;
     font-size: 14px;

@@ -900,6 +900,107 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <script type="text/javascript" src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
                     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
+					<script>
+						// scroll top
+						$(document).ready(function(){
+						  // Add smooth scrolling to all links
+						  $(".right-profile ul li a").on('click', function(event) {
+
+							// Make sure this.hash has a value before overriding default behavior
+							if (this.hash !== "") {
+							  // Prevent default anchor click behavior
+							  event.preventDefault();
+
+							  // Store hash
+							  var hash = this.hash;
+
+							  // Using jQuery's animate() method to add smooth page scroll
+							  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+							  $('html, body').animate({
+								scrollTop: $(hash).offset().top
+							  }, 800, function(){
+						   
+								// Add hash (#) to URL when done scrolling (default click behavior)
+								window.location.hash = hash;
+							  });
+							} // End if
+						  });
+						});
+					</script>
+					<script type="text/javascript">
+	
+						function tabindexjob(){
+
+
+							 $("#job-scroll").addClass("tabindex");
+
+
+							 $("#rec-scroll").removeClass("tabindex");
+							 $("#free-scroll").removeClass("tabindex");
+							 $("#bus-scroll").removeClass("tabindex");
+							 $("#art-scroll").removeClass("tabindex");
+							
+						}
+						function tabindexrec(){
+
+
+							 $("#rec-scroll").addClass("tabindex");
+
+
+							 $("#job-scroll").removeClass("tabindex");
+							 $("#free-scroll").removeClass("tabindex");
+							 $("#bus-scroll").removeClass("tabindex");
+							 $("#art-scroll").removeClass("tabindex");
+							
+						}
+						function tabindexfree(){
+
+
+							 $("#free-scroll").addClass("tabindex");
+
+
+							 $("#rec-scroll").removeClass("tabindex");
+							 $("#job-scroll").removeClass("tabindex");
+							 $("#bus-scroll").removeClass("tabindex");
+							 $("#art-scroll").removeClass("tabindex");
+							 
+						}
+						function tabindexbus(){
+
+
+							 $("#bus-scroll").addClass("tabindex");
+
+
+							 $("#rec-scroll").removeClass("tabindex");
+							 $("#free-scroll").removeClass("tabindex");
+							 $("#job-scroll").removeClass("tabindex");
+							 $("#art-scroll").removeClass("tabindex");
+							 
+						}
+						function tabindexart(){
+
+
+							 $("#art-scroll").addClass("tabindex");
+
+
+							 $("#rec-scroll").removeClass("tabindex");
+							 $("#free-scroll").removeClass("tabindex");
+							 $("#bus-scroll").removeClass("tabindex");
+							 $("#job-scroll").removeClass("tabindex");
+							 
+						}
+					</script>
+					<script type="text/javascript">
+						//on hover click class add and class remove start
+						$(".odd").hover(function() {
+							$('.even').addClass("even-custom");
+						}, function() {
+							$('.even').removeClass("even-custom");
+						});
+						//on hover click class add and class remove End
+
+
+					</script>
                     <script>
                                         var base_url = '<?php echo base_url(); ?>';
                     </script>
