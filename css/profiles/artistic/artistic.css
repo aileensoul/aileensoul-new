@@ -560,18 +560,18 @@ line-height: 1;}
 }
 .popup-text span {
     color: #999999;
-	line-height: 1.6;
+	line-height: 1.3;
     font-size: 21px;
 }
 .post-editor .camer_h {
-    margin-top: 3px;   
+ 
     float: right;
 }
 .camer_h i {
     margin: 0px;
     font-size: 27px;
     cursor: default;
-    padding-top: 1px;
+
     color: #1b8ab9
 }
 .post-design-box {
@@ -1849,7 +1849,7 @@ background-size: 100%;
     font-size: 15px!important;
     line-height: 1.3;
     resize: none;
-    border: none;
+
 }
 .post-editor .popup-textarea p {
     color: #999999;
