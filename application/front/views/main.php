@@ -3,7 +3,7 @@
     <head>
         <title>Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com</title>
         <meta name="description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field.">
-<!--        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -20,15 +20,14 @@
             ga('create', 'UA-91486853-1', 'auto');
             ga('send', 'pageview');
 
-        </script>-->
-        <!--
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        </script>
+             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
           (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-6060111582812113",
             enable_page_level_ads: true
           });
-        </script>-->
+        </script>
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
         <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">

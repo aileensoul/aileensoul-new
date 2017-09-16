@@ -825,9 +825,16 @@ label.cameraButton input[accept*="camera"] {
     }
 	.experience_year{margin-right:34px;}
 	.right_left_box_design{padding:17px 12px 12px 25px !important;}
+      .custom-right{margin-left: 50px;}
 }
-@media screen and (max-width: 1024px) {
 
+@media screen and (max-width: 1130px){
+ .custom-right{margin-left: 27px;}
+}
+
+@media screen and (max-width: 1024px) {
+       .custom-right{margin-left: 0px;}
+        
 
 .common-form input[type="radio"], .common-form input[type="checkbox"] {
     margin: 6px 5px;
@@ -878,6 +885,10 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+   .custom-right {
+            margin-left: 9%;
+    }   
+     .art_no_post_text{font-size: 21px;}
 	.custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
 	.common-form1{max-width:750px; float:none; margin:0 auto;}
@@ -957,6 +968,15 @@ label.cameraButton input[accept*="camera"] {
     .profile-boxProfilebuisness-avatarLink2{margin:-30px auto 0;}
     .right_left_box_design{width:100% !important; text-align:center; padding-top:5px !important;}
     .profile-boxProfileCard-content::before{top:74px !important;}
+}
+
+@media screen and (max-width: 840px){
+    .custom-right {
+    margin-left: 1%;
+}
+
+
+
 }
 @media screen and (max-width: 767px){
     .art_no_post_img {
@@ -1279,6 +1299,10 @@ label.cameraButton input[accept*="camera"] {
 	.designation_rec {
 	  width: 39% !important;
 	}
+    .art_no_post_text {
+        padding-top: 10px;
+        font-size: 18px;
+    }
 	.profile-main-rec-box-menu li {
         padding-left: 2px;
     }

@@ -1703,6 +1703,17 @@ $('body').on("click", "*", function (e) {
         }
     }
 });
+
+$('body').on('touchstart', function(e) {
+    var classNames = $(e.target).attr("class");
+    if (classNames != '' && classNames != 'undefined') {
+        classNames = classNames.toString().split(' ').pop();
+        if (classNames != 'fa-ellipsis-v') {
+            $('div[id^=myDropdown]').hide().removeClass('show');
+        }
+    }
+});
+
 // This  script use for close dropdown in every post 
 
 $(document).ready(function () {

@@ -1353,6 +1353,7 @@ label.cameraButton input[accept*="camera"] {
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
 @media screen and (max-width: 991px){
+          .art_no_post_text{font-size: 21px;}
 	 .custom-right{margin-left: 5%;}
 	 .custom_footer_dot{ padding: 0px 1px 0px; }
     .custom_footer_left ul li{padding: 0 6px;}
