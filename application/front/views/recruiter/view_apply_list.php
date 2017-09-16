@@ -664,7 +664,48 @@
         </script>
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/saved_candidate.js'); ?>"></script>
+          <script type="text/javascript">
+   
+
+   function inviteusermodel(abc){
+    //alert(abc);
+
+
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to invite this candidate for interview?<div class='model_ok_cancel'><a class='okbtn' id=" + abc + " onClick='inviteuser(" + abc + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+
+   } 
+
+   function inviteuser(clicked_id)
+    {  
+
+      var post_id = "<?php echo $postid; ?>";
+       // alert(post_id);
+
+     //alert(clicked_id);
+      var post_id = "<?php echo $postid; ?>";
+        //alert(post_id);
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url() . "recruiter/invite_user" ?>',
+            data: 'post_id=' + post_id + '&invited_user=' + clicked_id,
+            success: function (data) { //alert(data);
+                $('#' + 'invited' + clicked_id).html(data).addClass('invited').removeClass('invite_border').removeAttr("onclick");
+
+               $('#' + 'invited' + clicked_id).css('cursor', 'default');
+
+
+              //    $('.biderror .mes').html("<div class='pop_content'>Candidate invite successfully.");
+              // $('#bidmodal').modal('show');
+          }
+           
+        });
+    }
+
+   
+</script>
+        <!--<script type="text/javascript" src="<?php //echo base_url('js/webpage/recruiter/saved_candidate.js'); ?>"></script>-->
 
 
         <style type="text/css">

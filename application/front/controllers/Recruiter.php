@@ -4624,6 +4624,56 @@ class Recruiter extends MY_Controller {
 
         return $array = $ret;
     }
+    
+      public function invite_user() {
+
+         $this->recruiter_apply_check(); 
+        
+         $postid = $_POST['post_id'];
+         $invite_user = $_POST['invited_user']; 
+         
+        $userid = $this->session->userdata('aileenuser');
+
+         //if user deactive profile then redirect to recruiter/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if( $recruiter_deactive)
+        {
+             redirect('recruiter/');
+        }
+     //if user deactive profile then redirect to recruiter/index untill active profile End
+      
+        $data = array(
+            'user_id' => $userid,
+            'post_id' => $postid,
+            'invite_user_id' => $invite_user,
+            'profile' => "recruiter"
+            );
+        $insert_id = $this->common->insert_data_getid($data, 'user_invite');
+       
+        if ($insert_id) {
+            $data = array(
+            'not_type' => 4,
+            'not_from_id' => $userid,
+            'not_to_id' => $invite_user,
+            'not_read' => 2,
+            'not_status' => 0,
+            'not_product_id' => $insert_id,
+            'not_from' => 1,
+            "not_active" => 1, 
+            'not_created_date' => date('y-m-d h:i:s'),
+            );
+        $insert_id = $this->common->insert_data_getid($data, 'notification');
+
+
+        echo'invited';
+        } else {
+            echo 'error';
+        }
+    }
+//reactivate accont end 
  // 16-9 start   
     public function recruiter_data(){
     $this->load->view('recruiter/recruiter_data', $this->data);
