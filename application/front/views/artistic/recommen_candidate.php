@@ -117,7 +117,5 @@ var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/recommen_candidate.js?ver='.time()); ?>"></script>
-
-<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 </body>
 </html>
