@@ -1534,13 +1534,13 @@ class Notification extends MY_Controller {
             }
             //16
             if ($total['not_from'] == 2) {
-
+        $job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
                 $notification .= '<li class="';
                 if ($total['not_active'] == 1) {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('job/job_printpreview/' . $total['not_from_id'] . '?page=recruiter') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('job/resume/' . $job_slug . '?page=recruiter') . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
                 $filepath = FCPATH . $this->config->item('job_profile_thumb_upload_path') . $total['user_image'];
                 if ($total['user_image'] && (file_exists($filepath)) == 1) {
@@ -2286,11 +2286,11 @@ class Notification extends MY_Controller {
         // $user_message = array_merge($return_arraysel, $userlist);
 
         foreach ($user_message as $msg) {
-
+$job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slug;
             if ($message_from_profile == 2) {
                 $image_path = FCPATH . 'uploads/job_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/job_profile/thumbs/' . $msg['user_image'];
-                $profile_url = base_url() . 'job/job_printpreview/' . $id . '?page=recruiter';
+                $profile_url = base_url() . 'job/resume/' . $job_slug . '?page=recruiter';
             }
 
             if ($message_from_profile == 1) {
@@ -3817,8 +3817,8 @@ class Notification extends MY_Controller {
 
                     $id = $this->db->get_where('job_reg', array('user_id' => $total['not_to_id']))->row()->job_id;
                     if ($id) {
-
-                        $return_html .= '<a href="' . base_url() . 'job/job_printpreview/' . $total['not_from_id'] . '?page=recruiter">';
+$job_slug = $this->db->get_where('job_reg', array('user_id' => $total['not_from_id']))->row()->slug;
+                        $return_html .= '<a href="' . base_url() . 'job/resume/' . $job_slug . '?page=recruiter">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
