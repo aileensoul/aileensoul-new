@@ -4143,7 +4143,11 @@ class Freelancer extends MY_Controller {
 
     public function freelancer_post_profile($id) {
         // echo $id;die();
+        if(is_numeric($id)){
+            
+        }else{
         $id = $this->db->get_where('freelancer_post_reg', array('freelancer_apply_slug' => $id, 'status' => 1))->row()->user_id;
+        }
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to freelancer/freelancer_post/freelancer_post_basic_information  start
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
