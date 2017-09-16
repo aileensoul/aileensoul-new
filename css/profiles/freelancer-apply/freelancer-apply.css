@@ -983,6 +983,7 @@ label.cameraButton input[accept*="camera"] {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
+    #row2 img {border: none;}
 	.art_no_post_text {
 		padding-top: 10px;
 		font-size: 23px;

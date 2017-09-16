@@ -35,17 +35,15 @@ class Job extends MY_Controller {
 
    public function index() {
 
-       $this->job_apply_check(); 
-
         $userid = $this->session->userdata('aileenuser');
 
-        $contition_array = array('user_id' => $userid, 'status' => '0');
+        $contition_array = array('user_id' => $userid, 'status' => '0','is_delete'=>'0');
         $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if ($jobdata) {
-
+          
             $this->load->view('job/reactivate', $this->data);
         } else {
-
+          $this->job_apply_check(); 
          $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
           $job= $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -1898,9 +1896,12 @@ $files[] = $_FILES;
 
         $id=$this->db->get_where('job_reg', array('slug' => $slug, 'is_delete' => 0, 'status' => 1))->row()->user_id;
         $slug_user = $this->db->get_where('job_reg', array('slug' => $slug,'user_id !=' =>$userid, 'is_delete' => 0, 'status' => 1))->row()->slug;
-  
+    
+         
+
         if ($slug != $slug_user || $slug == '') {
-          // $this->job_apply_check(); 
+
+           $this->job_apply_check(); 
           
             //for getting data job_reg table
             $contition_array = array('job_reg.user_id' => $userid, 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
@@ -2067,7 +2068,18 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
       $jobseeker_name = $this->get_jobseeker_name($id);
       $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
-        $this->load->view('job/job_printpreview', $this->data);
+$id_deactiveuser=$this->db->get_where('job_reg', array('slug' => $slug, 'is_delete' => 0, 'status' => 0))->row()->user_id;
+  $contition_array = array('user_id' => $id_deactiveuser, 'is_delete' => '0','status'=> '0');
+   $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+   
+        if (count($availuser) > 0) 
+        {
+            $this->load->view('job/notfound'); 
+         } 
+         else
+         {
+            $this->load->view('job/job_printpreview', $this->data);
+         }
        
     }
 
@@ -2185,6 +2197,7 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
     //job seeker Job All Post controller end
     //job seeker Apply post at all post page & save post page controller Start
     public function job_apply_post() {  
+
        $this->job_apply_check(); 
        $this->job_deactive_profile(); 
 
@@ -3600,21 +3613,26 @@ public function delete_workexp()
 //THIS FUNCTION IS USED TO CHECK IF USER NOT REGISTER AND OPEN DIRECT URL THEN GO TO REGISTRATION PAGE START
  public function job_apply_check() 
  {
-
-
         $userid = $this->session->userdata('aileenuser');
- 
-         $contition_array = array('user_id' => $userid, 'is_delete' => '0','status' =>1);
-         $apply_step  = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+  
+        $contition_array = array('user_id' => $userid, 'is_delete' => '0','status' =>'0');
+        $apply_step  = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      
 
-     
-            if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0") 
+        if(count($apply_step) == 0)
+        {
+        
+         $contition_array = array('user_id' => $userid, 'is_delete' => '0','status' =>'1');
+         $apply_step  = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+            if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0" ) 
             {
-               
+              
                   redirect('job/profile');
-                
+              
             } 
-            
+          }
+           
     }
 //THIS FUNCTION IS USED TO CHECK IF USER NOT REGISTER AND OPEN DIRECT URL THEN GO TO REGISTRATION PAGE END
 
@@ -3626,17 +3644,11 @@ public function job_avail_check($userid = " ")
     
         if (count($availuser) > 0) 
         {
-       redirect('job/noavailable');
+            $this->load->view('job/notavalible', $this->data); 
          } 
     }
-
-public function noavailable() 
-{
-         
-      $this->load->view('job/notavalible', $this->data);  
-}
 // recruiter available chek
-   
+ 
 //Retrive all data of dergree,stream and university start
       public function ajax_data() {
 

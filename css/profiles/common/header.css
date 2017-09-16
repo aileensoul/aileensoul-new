@@ -411,6 +411,7 @@ right: 17px;
 .notifications li {
     border-bottom: 1px solid #efefef;
 }
+#notification_main_in{border-radius:3px;}
 .notifications li .notification-data-inside div {
     font-size: 11px;
     color: #999;
