@@ -1421,7 +1421,7 @@ background-color: white;}
 .kv-file-content video{width: 100%;}
 .kv-file-content audio{max-width: 100%;}
 .krajee-default[data-template="audio"] .file-preview-audio{height: 100%;}
-
+.text_center{text-align: center;}
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }
