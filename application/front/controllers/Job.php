@@ -1900,7 +1900,7 @@ $files[] = $_FILES;
         $slug_user = $this->db->get_where('job_reg', array('slug' => $slug,'user_id !=' =>$userid, 'is_delete' => 0, 'status' => 1))->row()->slug;
   
         if ($slug != $slug_user || $slug == '') {
-           $this->job_apply_check(); 
+          // $this->job_apply_check(); 
           
             //for getting data job_reg table
             $contition_array = array('job_reg.user_id' => $userid, 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
@@ -3603,8 +3603,8 @@ public function delete_workexp()
 
 
         $userid = $this->session->userdata('aileenuser');
-
-         $contition_array = array('user_id' => $userid, 'is_delete' => '0');
+ 
+         $contition_array = array('user_id' => $userid, 'is_delete' => '0','status' =>1);
          $apply_step  = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
      
