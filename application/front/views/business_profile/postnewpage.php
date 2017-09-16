@@ -89,14 +89,14 @@
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 profile-box profile-box-custom fixed_art fixed_left_side  animated fadeInLeftBig">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
                             </div>
                         </div>
                         <!-- Trigger/Open The Modal -->
                         <!-- The Modal -->
-                        <div class=" col-md-6 col-sm-12 col-md-push-4 custom-right-business fixed_middle_side animated fadeInUp" >
+                        <div class=" custom-right-art post_detailbox mian_middle_post_box animated fadeInUp" >
                             <!-- body content start-->
                             <?php if (count($busienss_data) > 0) { ?>
                                 <div class="col-md-12 col-sm-12 post-design-box">
