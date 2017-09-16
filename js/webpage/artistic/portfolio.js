@@ -49,9 +49,9 @@ function portfolio_form_submit(event){
             success: function (response) {
               if(art_step == 4){ 
                  //window.location= "<?php echo base_url() ?>artistic/artistic_profile";
-                 window.location= base_url + "artistic/artistic_profile"; 
+                 window.location= base_url + "artistic/details"; 
                  }else{ 
-                 window.location= base_url + "artistic/art_post"; 
+                 window.location= base_url + "artistic/home"; 
                 // window.location= "<?php echo base_url() ?>artistic/art_post"; 
                   } 
             }

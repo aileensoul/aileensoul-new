@@ -66,7 +66,7 @@
                                         <div class="my_S">Account</div>
                                             
       </span>
-      <a href="<?php echo site_url('artistic/artistic_profile'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
+      <a href="<?php echo site_url('artistic/details'); ?>"><span class="h2-img h2-srrt"></span> View Profile</a>
      <a href="<?php echo base_url('artistic/artistic-information-update'); ?>"><span class="h3-img h2-srrt"></span> Edit Profile</a>
 
      <?php
