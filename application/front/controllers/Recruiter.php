@@ -4675,7 +4675,8 @@ class Recruiter extends MY_Controller {
     }
 //reactivate accont end 
  // 16-9 start   
-    public function recruiter_data(){
+    public function recruiter_data($data = ""){
+       
     $this->load->view('recruiter/recruiter_data', $this->data);
     }
  // 16-9 end    

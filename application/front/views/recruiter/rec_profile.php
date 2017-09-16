@@ -213,10 +213,11 @@
 <?php } ?>               
                                 </ul>
 
-                                <div class="flw_msg_btn fr">
-                                    <ul>
+                              
                                             <?php if ($this->uri->segment(3) != "" && $this->uri->segment(3) != $userid) { ?>
-                                            <li>
+                                      <div class="flw_msg_btn fr">
+                                    <ul>      
+                                    <li>
                                                 <?php
                                                 $returnpage = $_GET['page'];
 
@@ -232,9 +233,10 @@
 
 
 
-                                            </li>  <?php } ?>     </ul>
+                                            </li> 
+   </ul>
                                 </div>
-
+ <?php } ?>  
                         </div>
 
                     </div>  
