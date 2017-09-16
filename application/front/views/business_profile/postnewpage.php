@@ -88,7 +88,7 @@
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
-                    <div class="row">
+                    <div class="">
                         <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
                                 <?php echo $business_left; ?>
