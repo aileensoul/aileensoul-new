@@ -255,7 +255,8 @@ if (IMAGEPATHFROM == 's3bucket') {
 
 // ARTISTIC POST 210 X 210
     define('ART_POST_RESIZE3_UPLOAD_URL', BUCKETLINK . 'uploads/artistic_post/resize3/');
-
+// ARTISTIC POST 550 X 220
+    define('ART_POST_RESIZE4_UPLOAD_URL', BUCKETLINK . 'uploads/artistic_post/resize4/');
 
 // BLOG MAIN IMAGE
     define('BLOG_MAIN_UPLOAD_URL', BUCKETLINK . 'uploads/blog/main/');
