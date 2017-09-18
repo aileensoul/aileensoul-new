@@ -493,46 +493,6 @@ $('#file-fr').fileinput({
                
 
 
-// curreent work upload div script
-
-function divClicked() {
-                var divHtml = $(this).html();
-                 divHtml = divHtml.trim();
-                var editableText = $("<textarea />");
-                editableText.val(divHtml);
-                $(this).replaceWith(editableText);
-                editableText.focus();
-                // setup the blur event for this new textarea
-                editableText.blur(editableTextBlurred);
-            }
-
-            function editableTextBlurred() {
-                var html = $(this).val();
-                 html = html.trim();
-                var viewableText = $("<a>");
-                if (html.match(/^\s*$/) || html == '') {
-                    html = "Current Work";
-                }
-                viewableText.html(html);
-                $(this).replaceWith(viewableText);
-                // setup the click event for this new div
-                viewableText.click(divClicked);
-
-                $.ajax({
-                    url: base_url + "artistic/art_designation",
-                    //url: "<?php echo base_url(); ?>artistic/art_designation",
-                    type: "POST",
-                    data: {"designation": html},
-                    success: function (response) {
-
-                    }
-                });
-            }
-
-            $(document).ready(function () {
-                // alert("hi");
-                $("a.designation").click(divClicked);
-            });
 
 
 function checkvalue() {
@@ -597,7 +557,7 @@ function checkvalue() {
                     //url: '<?php echo base_url() . "artistic/like_post" ?>',
                     dataType: 'json',
                     data: 'post_id=' + clicked_id,
-                    success: function (data) {
+                    success: function (data) { alert(data.likeuser);
                         $('.' + 'likepost' + clicked_id).html(data.like);
                         $('.likeusername' + clicked_id).html(data.likeuser);
                         

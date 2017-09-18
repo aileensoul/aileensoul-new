@@ -87,7 +87,14 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
     <?php } ?>
 
             <div class="profile-photo">
-   <div class="buisness-menu">
+           <?php
+                                $userid = $this->session->userdata('aileenuser');
+                                if ($userid != $artisticdata[0]['user_id']) {
+                                    ?>      
+   <div class="buisness-menu other-profile-menu">
+    <?php }else{?>
+<div class="buisness-menu">
+    <?php }?>
 
                     <div class="profile-pho-bui">
 

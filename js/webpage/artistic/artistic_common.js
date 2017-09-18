@@ -1,3 +1,45 @@
+// curreent work upload div script
+
+function divClicked() {
+                var divHtml = $(this).html();
+                 divHtml = divHtml.trim();
+                var editableText = $("<textarea />");
+                editableText.val(divHtml);
+                $(this).replaceWith(editableText);
+                editableText.focus();
+                // setup the blur event for this new textarea
+                editableText.blur(editableTextBlurred);
+            }
+
+            function editableTextBlurred() {
+                var html = $(this).val();
+                 html = html.trim();
+                var viewableText = $("<a>");
+                if (html.match(/^\s*$/) || html == '') {
+                    html = "Current Work";
+                }
+                viewableText.html(html);
+                $(this).replaceWith(viewableText);
+                // setup the click event for this new div
+                viewableText.click(divClicked);
+
+                $.ajax({
+                    url: base_url + "artistic/art_designation",
+                    //url: "<?php echo base_url(); ?>artistic/art_designation",
+                    type: "POST",
+                    data: {"designation": html},
+                    success: function (response) {
+                        
+                    }
+                });
+            }
+
+            $(document).ready(function () {
+                // alert("hi");
+                $("a.designation").click(divClicked);
+            });
+
+
 
 //SCRIPT FOR AUTOFILL OF SEARCH KEYWORD START
     $(function() {
@@ -452,3 +494,5 @@ $('#upload').click(function(){
         $('#bidmodal-2').modal('hide');
     }
 });
+
+ 

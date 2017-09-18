@@ -290,13 +290,25 @@
 
 
                                             <div id="<?php echo "khyati" . $art_data[0]['art_post_id']; ?>" style="display:block;">
-                      <?php
+                      <!-- <?php
                      $small = substr($art_data[0]['art_description'], 0, 180);
                      echo $this->common->make_links($small);
 
                      if (strlen($art_data[0]['art_description']) > 180) {
                           echo '... <span id="kkkk" onClick="khdiv(' . $art_data[0]['art_post_id'] . ')">View More</span>';
-                        }?>
+                        }?> -->
+
+                        <?php          $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $art_data[0]['art_description'], $num_words);
+                                       $shown_string = "";
+                                        if(count($words) == 29){
+                                          $words[28] ='... <span id="kkkk" onClick="khdiv(' . $art_data[0]['art_post_id'] . ')">View More</span>';
+                                        }
+                                         $shown_string = implode(" ", $words); 
+                                         echo $this->common->make_links($shown_string);
+
+                                       ?>
                    </div>
                     <div id="<?php echo "khyatii" . $art_data[0]['art_post_id']; ?>" style="display:none;">
                       <?php

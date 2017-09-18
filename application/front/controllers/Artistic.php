@@ -1819,11 +1819,17 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     </div>                    
                                     <div id="khyati' . $row['art_post_id'] . '" style="display:block;">';
 
-                    $small = substr($row['art_description'], 0, 180);
-                    $return_html .= $this->common->make_links($small);
-                    if (strlen($row['art_description']) > 180) {
-                        $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
-                    }
+                    $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $row['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $return_html .= $this->common->make_links($shown_string);
 
                     $return_html .= '</div>
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
@@ -6076,9 +6082,10 @@ public function delete_commenttwo_postnewpage() {
                 $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $likeuser = $commnetcount[0]['art_like_user'];
+                //echo "<pre>"; print_r($likeuser); die();
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
-                $likelistarray = explode(',', $likeuser);
+                //$likelistarray = explode(',', $likeuser);
                 //   $likelistarray = array_reverse($likelistarray);
 
                 foreach ($likelistarray as $key => $value) {
@@ -6106,7 +6113,11 @@ public function delete_commenttwo_postnewpage() {
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
                 $likelistarray = explode(',', $likeuser);
+                //echo '<pre>'; print_r($likelistarray); die();
+
                 $likelistarray = array_reverse($likelistarray);
+                //echo '<pre>'; print_r($likelistarray); die();
+
               $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
 
               $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
@@ -6114,9 +6125,9 @@ public function delete_commenttwo_postnewpage() {
                 //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
              
 
-                if (in_array($userid, $likelistarray)) {
+                if (in_array($userid, $likelistarray)) { 
                     $cmtlikeuser .= 'You &nbsp';
-                } else {
+                } else { 
                     $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
                 }
              
@@ -6202,7 +6213,7 @@ public function delete_commenttwo_postnewpage() {
                 $likeuser = $commnetcount[0]['art_like_user'];
                 $countlike = $commnetcount[0]['art_likes_count'] - 1;
 
-                $likelistarray = explode(',', $likeuser);
+               // $likelistarray = explode(',', $likeuser);
                 //  $likelistarray = array_reverse($likelistarray);
 //        echo '<pre>';
 //        print_r($likelistarray);
@@ -6237,24 +6248,34 @@ public function delete_commenttwo_postnewpage() {
 
                 $likelistarray = explode(',', $likeuser);
                 $likelistarray = array_reverse($likelistarray);
-                $art_fname12 = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
-                $art_lname12 = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
+               // echo '<pre>'; print_r($likelistarray); die();
+                //echo "<pre>"; print_r( $likelistarray); die();
+                $art_fname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_name;
+                $art_lname = $this->db->get_where('art_reg', array('user_id' => $likelistarray[0], 'status' => 1))->row()->art_lastname;
 
                 //$cmtlikeuser .= '<div class="fl" style=" padding-left: 22px;" >';
-              
-                $cmtlikeuser .= '' . ucfirst(strtolower($art_fname12)) . '&nbsp;' . ucfirst(strtolower($art_lname12)) . '&nbsp;';
-           
+                 if (in_array($userid, $likelistarray)) { //echo "123"; die();
+                    $cmtlikeuser .= 'You &nbsp';
+                } else { //echo "12f3"; die();
+                    $cmtlikeuser .= '' . ucfirst(strtolower($art_fname)) . '&nbsp;' . ucfirst(strtolower($art_lname)) . '&nbsp;';
+                }
+             
+
                 if (count($likelistarray) > 1) {
 
-                    //    $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
+                    // $cmtlikeuser .= '<div class="fl" style="padding-right: 5px;">';
                     $cmtlikeuser .= 'and';
-                    //    $cmtlikeuser .= '</div>';
-                    //    $cmtlikeuser .= '<div style="padding-left: 5px;">';
+                    // $cmtlikeuser .= '</div>';
+                    // $cmtlikeuser .= '<div style="padding-left: 5px;">';
                     $cmtlikeuser .= ' ' . $countlike . ' others';
-                    //   $cmtlikeuser .= '</div>';
+                    // $cmtlikeuser .= '</div>';
                 }
+
                 $cmtlikeuser .= '</a>';
-     $cmtlikeuser .= '</div>';
+                   $cmtlikeuser .= '</div>';
+
+              
+               
              $like_count = $commnetcount[0]['art_likes_count'];
              $like_user_count =  '<span class="comment_like_count">'; 
                if ($commnetcount[0]['art_likes_count'] > 0) { 
@@ -7215,12 +7236,23 @@ public function insert_comment_postnewpage() {
 //                $editpostdes .= '<span class="show">';
 //                $editpostdes .= $com_link;
 //                $editpostdes .= '<span class="dots">...</span><span class="morectnt"><span></span>&nbsp;&nbsp;<a href="javascript:void(0);" class="showmoretxt">More</a></span></span>';
+                                       $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $artdata[0]['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $_POST["art_post_id"] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $editpostdes .= $this->common->make_links($shown_string);
             
-                $small = substr($artdata[0]['art_description'], 0, 180);
-                    $editpostdes .= $this->common->make_links($small);
-                    if(strlen($artdata[0]['art_description']) >180){
-                        $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["art_post_id"] . ')">View More</div>'; 
-                    }
+                // $small = substr($artdata[0]['art_description'], 0, 180);
+                //     $editpostdes .= $this->common->make_links($small);
+                //     if(strlen($artdata[0]['art_description']) >180){
+                //         $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["art_post_id"] . ')">View More</div>'; 
+                //     }
 
                 
                 }
@@ -13124,11 +13156,24 @@ public function art_home_post() {
                                     </div>                    
                                     <div id="khyati' . $row['art_post_id'] . '" style="display:block;">';
 
-                    $small = substr($row['art_description'], 0, 180);
-                    $return_html .= $this->common->make_links($small);
-                    if (strlen($row['art_description']) > 180) {
-                        $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
-                    }
+                                       $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $row['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $return_html .= $this->common->make_links($shown_string);
+
+
+                    // $small = substr($row['art_description'], 0, 180);
+                    // $return_html .= $this->common->make_links($small);
+                    // if (strlen($row['art_description']) > 180) {
+                    //     $return_html .= '... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                    // }
 
                     $return_html .= '</div>
                                     <div id="khyatii' . $row['art_post_id'] . '" style="display:none;">
@@ -13420,7 +13465,7 @@ public function art_home_post() {
                         </div>';
                     }
 
-                    $return_html .= '<div class="likeusername' . $row['art_post_id'] . '" id="likeusername' . $row['art_post_id'] . '" style="display:none">';
+                    $return_html .= '<div class="likeusername' .$row['art_post_id']. '" id="likeusername' . $row['art_post_id'] . '" style="display:none">';
                     $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -14339,11 +14384,25 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                 $return_html .= '</div>
 </div>
 <div id = "khyati' . $row['art_post_id'] . '" style = "display:block;">';
-                $small = substr($row['art_description'], 0, 180);
-                $return_html .= $this->common->make_links($small);
-                if (strlen($row['art_description']) > 180) {
-                    $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['art_post_id'] . ')">View More</span>';
-                }
+
+                                       $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $row['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $return_html .= $this->common->make_links($shown_string);
+                // $small = substr($row['art_description'], 0, 180);
+                // $return_html .= $this->common->make_links($small);
+                // if (strlen($row['art_description']) > 180) {
+                //     $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['art_post_id'] . ')">View More</span>';
+                // }
+
+
                 $return_html .= '</div>
 <div id = "khyatii' . $row['art_post_id'] . '" style = "display:none;">';
                 $return_html .= $this->common->make_links($row['art_description']);
@@ -14539,7 +14598,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
 </div>';
                 // if ($row['business_likes_count'] > 0) {
                 //     $return_html .= '<div class="likeduserlist1 likeduserlist' . $row['business_profile_post_id'] . '">';
-                $return_html .= '<div class="likeduserlist1 likeusername '. $row['art_post_id'].'" id="likeusername'. $row['art_post_id'].'" style="display:block">';
+                $return_html .= '<div class="likeduserlist1 likeusername'. $row['art_post_id'].'" id="likeusername'. $row['art_post_id'].'" style="display:block">';
     
                     $contition_array = array('art_post_id' => $row['art_post_id'], 'status' => '1', 'is_delete' => '0');
                     $commnetcount = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -15934,11 +15993,18 @@ public function get_artistic_name($id=''){
                                           </div>
                                           <div id="khyati'. $key['art_post_id'].'" style="display:block;">';
                                             
-                                              $small = substr($key['art_description'], 0, 180);
-                                              $return_html .= $this->common->make_links($small);
-                                            if (strlen($key['art_description']) > 180) {
-                                            $return_html .= '... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
-                                             }
+                                              $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $key['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $return_html .= $this->common->make_links($shown_string);
+
                                           $return_html .= '</div>
                                           <div id="khyatii'. $key['art_post_id'].'" style="display:none;">';
                                           
@@ -16854,11 +16920,17 @@ public function get_artistic_name($id=''){
                                           </div>
                                           <div id="khyati'. $key['art_post_id'].'" style="display:block;">';
                                             
-                                              $small = substr($key['art_description'], 0, 180);
-                                              $return_html .= $this->common->make_links($small);
-                                            if (strlen($key['art_description']) > 180) {
-                                            $return_html .= '... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
-                                             }
+                                              $num_words = 29;
+                                       $words = array();
+                                       $words = explode(" ",  $key['art_description'], $num_words);
+                                       $shown_string = "";
+                                       
+                                       if(count($words) == 29){
+                                       $words[28] ='... <span id="kkkk" onClick="khdiv(' . $key['art_post_id'] . ')">View More</span>';
+                                       }
+                                       
+                                       $shown_string = implode(" ", $words);
+                                       $return_html .= $this->common->make_links($shown_string);
                                           $return_html .= '</div>
                                           <div id="khyatii'. $key['art_post_id'].'" style="display:none;">';
                                           

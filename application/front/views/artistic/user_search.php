@@ -738,7 +738,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
                         {
                             if (response.data == "ok") {
                                 $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = "<?php echo base_url() ?>artistic/execute_search" +"?skills=" + keyword + "&searchplace=" + keyword1;
+                                window.location = "<?php echo base_url() ?>artistic/search" +"&skills=" + keyword + "&searchplace=" + keyword1;
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
