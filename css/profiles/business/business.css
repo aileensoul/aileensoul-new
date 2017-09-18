@@ -3739,6 +3739,7 @@ height: 100px;
 	.cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+    input[type="radio"], input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
     .close2{right: 12px;}
     #row2 img {border: none;}
     .art_no_post_img {

@@ -1033,9 +1033,15 @@ label.cameraButton input[accept*="camera"] {
     }
 }
 @media screen and (max-width: 767px){
+     .common-form input[type="radio"], .common-form input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
     .art-img-nn{margin: 7px 0px 23px;}
     #InboxContainer::before {
         right: 158px;
+    }
+        .modal.in .modal-dialog .mes .pop_content{ font-size: 18px; }
+    .modal.message-box span.mes {
+         padding: 0px 0px 0;
+         margin: 0px;
     }
     #row2 img {border: none;}
     #InboxContainer{

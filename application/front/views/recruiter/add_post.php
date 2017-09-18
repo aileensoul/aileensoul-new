@@ -203,11 +203,8 @@
                                             <option value="Full Time">Full Time</option>
                                             <option value="Internship">Internship</option>
                                         </select>
-
-
-                                        <span id="fullname-error"></span>
-                                        <?php echo form_error('emp_type'); ?> &nbsp;&nbsp; <?php echo form_error('emp_type'); ?>
-
+                                       <span id="fullname-error"></span>
+                                        <?php echo form_error('emp_type'); ?>  <?php echo form_error('emp_type'); ?>
                                     </fieldset>
 
 
@@ -217,14 +214,11 @@
                                         <input type="search" tabindex="1" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('education'); ?>
-
-                                    </fieldset>
+                                     </fieldset>
 
                                     <fieldset class="form-group full-width">
                                         <label class="control-label">Job description:<span style="color:red">*</span></label>
-
-
-                                        <textarea name="post_desc" id="post_desc" tabindex="10" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"></textarea>
+                                         <textarea name="post_desc" id="post_desc" tabindex="10" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"></textarea>
 
                                         <?php echo form_error('post_desc'); ?>
                                     </fieldset>
