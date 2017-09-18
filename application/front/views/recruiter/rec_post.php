@@ -17,9 +17,18 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
-            <?php echo $recruiter_header2_border; ?>
-        <?php } ?>
+        <?php
+ $returnpage= $_GET['page'];
+ if($returnpage == 'job'){
+     echo $job_header2_border; 
+ }
+ elseif($recdata[0]['re_step'] == 3){
+  echo $recruiter_header2_border; 
+ }
+ elseif($returnpage == 'notification'){
+
+ }
+?>
         <div id="preloader"></div>
         <!-- START CONTAINER -->
         <section>
@@ -53,7 +62,7 @@
                 </div>
                 <div class="">
                     <div class="" id="row2">
-                        <?php
+                        <?php echo "122"; 
                         $userid = $this->session->userdata('aileenuser');
                         if ($this->uri->segment(3) == $userid) {
                             $user_id = $userid;
@@ -62,17 +71,25 @@
                         } else {
                             $user_id = $this->uri->segment(3);
                         }
+                       
                         $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 're_status' => '1');
                         $image = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
                         $image_ori = $this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background'];
                         if (file_exists($image_ori) && $image[0]['profile_background'] != '') {
                             ?>
+
                             <img src="<?php echo base_url($this->config->item('rec_bg_main_upload_path') . $image[0]['profile_background']); ?>" name="image_src" id="image_src" / >
-                             <?php } else { ?>
-                               <div class="bg-images no-cover-upload">
+                            <?php
+                        } else {
+                            ?>
+
+                             <div class="bg-images no-cover-upload">
                                  <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
                              </div>
-<?php } ?>
+                             <?php }
+                             ?>
+
                     </div>
                 </div>
             </div>
@@ -86,7 +103,8 @@
 <?php } ?>
                 <div class="profile-photo">
                  <!--PROFILE PIC CODE START-->
-                    <div class="profile-pho">
+                   
+                       <div class="profile-pho">
                         <div class="user-pic padd_img">
                             <?php
                             $imageee = $this->config->item('rec_profile_thumb_upload_path') . $recdata[0]['recruiter_user_image'];
@@ -111,6 +129,7 @@
                             <?php } ?>
                         </div>
                     </div>
+                    
                     <!--PROFILE PIC CODE END-->
                     <div class="job-menu-profile mob-block">
                         <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
@@ -290,6 +309,7 @@
                                                                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
                     var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
                     var id = '<?php echo $this->uri->segment(3);?>';
+                    var return_page = '<?php echo $_GET['page']; ?>';
         </script>
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
