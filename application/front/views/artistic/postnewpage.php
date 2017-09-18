@@ -864,9 +864,9 @@
                     
                                     <!-- silder start -->
                                     <div id="myModal1" class="modal2">
-                                     
+                                         <span class="close2 cursor" onclick="closeModal()">&times;</span>
                                         <div class="modal-content2">
-                                           <span class="close2 cursor" onclick="closeModal()">&times;</span>
+                                       
                                             <!--  multiple image start -->
                                             <?php
                                             $i = 1;
