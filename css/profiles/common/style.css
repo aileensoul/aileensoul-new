@@ -1878,7 +1878,7 @@ display: none !important;
 /*** bus and art ***/
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
-.file-preview-frame.krajee-default{width:120px; height:110px;}
+
 
 /*** all profile  ***/
 .profile-job-profile-menu{}
@@ -2091,6 +2091,10 @@ display: none !important;
 	.por_content ul li .pro-text{width:85% !important;}
 	.common-form_border h3{display:none;}
 	.modal.in .modal-dialog{width:80%;}
+	
+	
+	.padd_set .change-password{padding: 0;}
+	.padd_set{padding:35px 0;}
 }
 @media screen and (max-width: 640px) {
 
@@ -2196,7 +2200,7 @@ display: none !important;
 	.post-img-user {
 		line-height: 0;
 	}
-	.padd_set .change-password{padding: 0;}
+	
 	/** cover **/
 	.how-it-popup .modal-body h3{display: block;}
     .how-it-popup .pro_img img{margin-left: 0px ; text-align: center;}
