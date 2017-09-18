@@ -2271,8 +2271,8 @@ background-size: 100%;
 .close2 {
     color: #fff;
     position: absolute;
-    top: 5px;
-    right: 5px;
+     top: 12px;
+    right: 64px;
     font-size: 35px;
     font-weight: bold;
     z-index: 9;
@@ -4034,7 +4034,11 @@ height: 100px;
     }
 }
 @media screen and (max-width: 640px){
-    
+    .modal.in .modal-dialog .mes .pop_content{ font-size: 18px; }
+    .modal.message-box span.mes {
+         padding: 0px 0px 0;
+         margin: 0px;
+    }
     .modal.in .modal-dialog{width: 80%;}
     #row2 img{height: 200px;}
 	.bui_bcon {width: 56%;}

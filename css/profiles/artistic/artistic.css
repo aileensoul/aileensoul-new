@@ -3823,6 +3823,11 @@ padding-left: 11px;}
     }
 }
 @media screen and (max-width: 640px){
+    .modal.in .modal-dialog .mes .pop_content{ font-size: 18px; }
+    .modal.message-box span.mes {
+         padding: 0px 0px 0;
+         margin: 0px;
+    }
     .user_lst li a .post-img-userlist { line-height: 4px ; font-size: 13px;}
         .modal.in .modal-dialog{width: 80%;}
     .profile-job-post-location-name ul li.folle_text {
