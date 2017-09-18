@@ -124,21 +124,21 @@
                                                 <?php if ($busienss_data[0]['posted_user_id']) {
                                                     ?>
                                                     <?php if ($userimageposted) { ?>
-                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                             <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" alt="12" />
                                                         </a>
                                                     <?php } else { ?>
-                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="11">
                                                         </a>
                                                     <?php } ?>
                                                 <?php } else { ?>
                                                     <?php if ($business_userimage) { ?>
-                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                             <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="10">
                                                         </a>
                                                     <?php } else { ?>
-                                                        <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                        <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="9">
                                                         </a>
                                                         <?php
@@ -158,9 +158,9 @@
                                                         <li>
                                                             <div class="else_post_d">
                                                                 <div class="post-design-product">
-                                                                    <a  class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucfirst(strtolower($companynameposted)); ?></a>
+                                                                    <a  class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucfirst(strtolower($companynameposted)); ?></a>
                                                                     <p class="posted_with" > Posted With </p>
-                                                                    <a  class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucfirst(strtolower($companyname)); ?></a>
+                                                                    <a  class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucfirst(strtolower($companyname)); ?></a>
                                                                     <span role="presentation" aria-hidden="true"> · </span><span class="ctre_date"  >
                                                                         <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>                     
                                                                     </span> 
@@ -703,8 +703,9 @@
                 </div>
                 <!-- silder start -->
                 <div id="myModal1" class="modal2">
-                    <div class="modal-content2">
                         <span class="close2 cursor" onclick="closeModal()">&times;</span>
+                    <div class="modal-content2">
+                    
                         <!--  multiple image start -->
                         <?php
                         $i = 1;

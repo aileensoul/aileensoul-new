@@ -456,8 +456,8 @@ function insert_comment(clicked_id)
 // insert comment using enter 
 function entercomment(clicked_id)
 {
-    var is_valid_post = check_post_available(clicked_id);
-    if (is_valid_post == true) {
+//    var is_valid_post = check_post_available(clicked_id);
+//    if (is_valid_post == true) {
         $("#post_comment" + clicked_id).click(function () {
             $(this).prop("contentEditable", true);
         });
@@ -522,13 +522,14 @@ function entercomment(clicked_id)
             event.preventDefault();
             $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
         });
-    }
+//    }
+    
 }
 
 function insert_comment1(clicked_id)
 {
-    var is_valid_post = check_post_available(clicked_id);
-    if (is_valid_post == true) {
+//    var is_valid_post = check_post_available(clicked_id);
+//    if (is_valid_post == true) {
         var post_comment = document.getElementById("post_comment1" + clicked_id);
         $.ajax({
             type: 'POST',
@@ -543,7 +544,7 @@ function insert_comment1(clicked_id)
                 $('.comment_count' + clicked_id).html(data.comment_count);
             }
         });
-    }
+//    }
 }
 
 // insert comment using enter 

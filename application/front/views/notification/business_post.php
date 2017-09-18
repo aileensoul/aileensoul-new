@@ -12,6 +12,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/jquery-ui-1-12-1.css'); ?>"> <!-- DOWNLOAD FROM : href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <!-- further and less -->
         <script>
             $(function () {
@@ -144,7 +146,7 @@
                             echo $this->session->flashdata('error');
                         }
                         ?>
-                        <div class="col-md-7 col-sm-12 col-md-push-4 custom-right-business animated fadeInUp">
+                        <div class="col-md-7 col-sm-12 custom-right-business animated fadeInUp">
                             <!-- body content start-->
                             <?php
                             if (count($busienss_data) > 0) {
@@ -188,22 +190,22 @@
                                                             ?>
 
                                                             <?php if ($userimageposted) { ?>
-                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                                     <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                                     <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                                                                 </a>
                                                             <?php } ?>
 
                                                         <?php } else { ?>
                                                             <?php if ($business_userimage) { ?>
-                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                                 </a>
                                                             <?php } else { ?>
-                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                 </a>
                                                                 <?php
@@ -231,8 +233,8 @@
                                                                 <li>
                                                                     <div class="else_post_d">
                                                                         <div class="post-design-product">
-                                                                            <a class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
-                                                                            <p class="posted_with" > Posted With </p> <a class="other_name name_business"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
+                                                                            <a class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
+                                                                            <p class="posted_with" > Posted With </p> <a class="other_name name_business"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
                                                                             <span role="presentation" aria-hidden="true"> · </span> <span class="ctre_date"  >
                                                                                 <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>  
 
@@ -241,7 +243,7 @@
                                                             <?php } else { ?>
                                                                 <li>
                                                                     <div class="post-design-product">
-                                                                        <a class="post_dot"  href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
+                                                                        <a class="post_dot"  href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>" title="<?php echo ucwords($companyname); ?>";>
                                                                             <?php echo ucwords($companyname); ?>  </a>
                                                                         <span role="presentation" aria-hidden="true"> · </span>
                                                                         <div class="datespan"> <span class="ctre_date" > 
@@ -704,11 +706,11 @@
                                                                             $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
                                                                             ?>
                                                                             <?php if ($business_userimage) { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
 
                                                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt=""> </a>
                                                                             <?php } else { ?>
-                                                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname1); ?>">
+                                                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname1); ?>">
 
                                                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                                                 </a>
@@ -917,8 +919,8 @@
 <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script> 
 <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script>
 <script>
-                                                    var base_url = '<?php echo base_url(); ?>';
-                                                    var data = <?php echo json_encode($demo); ?>;
-                                                    var data1 = <?php echo json_encode($city_data); ?>;
+                                                            var base_url = '<?php echo base_url(); ?>';
+                                                            var data = <?php echo json_encode($demo); ?>;
+                                                            var data1 = <?php echo json_encode($city_data); ?>;
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/notification/business_post.js'); ?>"></script>

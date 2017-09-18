@@ -1,4 +1,5 @@
-<!-- start head  -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" /><!-- start head  -->
 <?php echo $head; ?>
 <!-- END HEAD -->
 <!-- start header -->
@@ -152,13 +153,13 @@
                                         </div>
                                         <div class="profile-box-user  profile-text-bui-user  fr col-md-9">
                                             <span class="profile-company-name ">
-                                                <a class="ml-4" href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
+                                                <a class="ml-4" href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
                                                     <?php echo ucwords($businessdata[0]['company_name']); ?>
                                                 </a> 
                                             </span>
                                             <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
-                                                <a style="padding-left:3px;" href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
+                                                <a style="padding-left:3px;" href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                                                     <?php
                                                     if ($category) {
                                                         echo $category;
@@ -237,14 +238,14 @@
                                     </div>
                                     <div class="right_left_box_design ">
                                       <span class="profile-company-name ">
-                                                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
+                                                <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>"> 
                                                     <?php echo ucwords($businessdata[0]['company_name']); ?>
                                                 </a> 
                                             </span>
 
                                                  <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                             <div class="profile-boxProfile-name">
-                                                <a  href="<?php echo base_url('business_profile/business_profile_manage_post/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
+                                                <a  href="<?php echo base_url('business-profile/dashboard/'); ?> " title="<?php echo ucwords($businessdata[0]['company_name']); ?>" >
                                                     <?php
                                                     if ($category) {
                                                         echo $category;
@@ -331,22 +332,22 @@
                                             ?>
 
                                             <?php if ($userimageposted) { ?>
-                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                     <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted); ?>" name="image_src" id="image_src" />
                                                 </a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>">
+                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>">
                                                     <img alt="" src="<?php echo base_url(NOIMAGE); ?>" alt="" />
                                                 </a>
                                             <?php } ?>
 
                                         <?php } else { ?>
                                             <?php if ($business_userimage) { ?>
-                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                     <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage); ?>"  alt="">
                                                 </a>
                                             <?php } else { ?>
-                                                <a href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>">
+                                                <a href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>">
                                                     <img src="<?php echo base_url(NOIMAGE); ?>" alt="">
                                                 </a>
                                                 <?php
@@ -379,15 +380,15 @@
                                                 <li>
                                                     <div class="else_post_d">
                                                         <div class="post-design-product">
-                                                            <a  class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
+                                                            <a  class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugnameposted); ?>"><?php echo ucwords($companynameposted); ?></a>
                                                                <p class="posted_with" > Posted With </p>
-                                                               <a  class="post_dot_2" href="<?php echo base_url('business_profile/business_profile_manage_post/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
+                                                               <a  class="post_dot_2" href="<?php echo base_url('business-profile/dashboard/' . $slugname); ?>"><?php echo ucwords($companyname); ?></a>
                                                                 <span role="presentation" aria-hidden="true"> · </span><span class="ctre_date"  >
                                                <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($row['created_date']))); ?>                     
                                                       </span> </div></div>
                                                 </li>
                                             <?php } else { ?>
-                                                <li><div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business_profile/business_resume/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucwords($companyname); ?> </span> </a>
+                                                <li><div class="post-design-product"><a class="post_dot" href="<?php echo base_url('business-profile/details/' . $slugname); ?>"> <span class="span_main_name">  <?php echo ucwords($companyname); ?> </span> </a>
                                                      <span role="presentation" aria-hidden="true"> · </span>
                                                         <span> 
                                                             <?php echo $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($busienss_data[0]['created_date']))); ?>      
@@ -1278,7 +1279,7 @@
                                   $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
                                   ?>
 
-                                  <a href="<?php echo base_url('business_profile/business_resume/' . $value); ?>">
+                                  <a href="<?php echo base_url('business-profile/details/' . $value); ?>">
                                   <?php echo ucwords($business_fname1); ?>
 
                                   </a>

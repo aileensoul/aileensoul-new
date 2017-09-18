@@ -33,7 +33,7 @@
     });
 </script>-->
 <!-- header -->
-  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_apply_post') || ($this->uri->segment(1) == 'business_profile' && $this->uri->segment(2) == 'business_profile_post') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post')) { ?>
+  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_apply_post') || ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post')) { ?>
         <header class="">
             <div class="header animated fadeInDownBig">
                 <div class="container">
@@ -106,7 +106,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="all-down">
-                                                                    <a href="<?php echo base_url('business_profile'); ?>">
+                                                                    <a href="<?php echo base_url('business-profile'); ?>">
 
                                                                         <div class="all-img">
                                                                             <img src="<?php echo base_url('img/i4.jpg') ?>">
@@ -193,7 +193,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="all-down">
-                                                                    <a href="<?php echo base_url('business_profile'); ?>">
+                                                                    <a href="<?php echo base_url('business-profile'); ?>">
 
                                                                         <div class="all-img">
                                                                             <img src="<?php echo base_url('img/i4.jpg') ?>">
@@ -412,7 +412,7 @@
                                                         </li>
                                                         <li>
                                                             <div class="all-down">
-                                                                <a href="<?php echo base_url('business_profile'); ?>">
+                                                                <a href="<?php echo base_url('business-profile'); ?>">
 
                                                                     <div class="all-img">
                                                                         <img src="<?php echo base_url('img/i4.jpg') ?>">
@@ -498,7 +498,7 @@
                                                         </li>
                                                         <li>
                                                             <div class="all-down">
-                                                                <a href="<?php echo base_url('business_profile'); ?>">
+                                                                <a href="<?php echo base_url('business-profile'); ?>">
 
                                                                     <div class="all-img">
                                                                         <img src="<?php echo base_url('img/i4.jpg') ?>">

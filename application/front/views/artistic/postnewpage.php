@@ -16,7 +16,7 @@
 <?php echo $art_header2_border; ?>
         <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
             <div class="container art_container">
-                <div class="row">
+                <div class="">
 
               <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt" >
       <div class="left_fixed"> 
@@ -864,9 +864,9 @@
                     
                                     <!-- silder start -->
                                     <div id="myModal1" class="modal2">
-                                     
+                                         <span class="close2 cursor" onclick="closeModal()">&times;</span>
                                         <div class="modal-content2">
-                                           <span class="close2 cursor" onclick="closeModal()">&times;</span>
+                                       
                                             <!--  multiple image start -->
                                             <?php
                                             $i = 1;

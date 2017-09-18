@@ -188,19 +188,18 @@
 
                                     <?php echo form_error('industriyal'); ?>
                                 </fieldset>
-                                <div id="busDivCheck" <?php if ($business_type1 != 0) { ?>style="display:none" <?php } ?>>
+                                <div id="busDivCheck" <?php if ($business_type1 != 0 || $business_type1 == '') { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-business">
-                                        <?php if ($business_type1 == 0) { ?>        <!-- <label id="bustype">Add Here Your Other Business type:<span style="color:red;" >*</span></label> --> <?php } ?>
                                         <label> Other Business Type: <span style="color:red;" >*</span></label>
                                         <input type="text" name="bustype"  tabindex="3"  id="bustype" value="<?php echo $other_business; ?>" style="<?php
-                                        if ($business_type1 != 0) {
+                                        if ($business_type1 != 0 && $business_type1 == '') {
                                             echo 'display: none';
                                         }
                                         ?>" required="">
                                                <?php echo form_error('subindustriyal'); ?>
                                     </fieldset>
                                 </div>
-                                <div id="indDivCheck" <?php if ($industriyal1 != 0) { ?>style="display:none" <?php } ?>>
+                                <div id="indDivCheck" <?php if ($industriyal1 != 0 || $industriyal1 == '' ) { ?>style="display:none" <?php } ?>>
                                     <fieldset <?php if ($subindustrial) { ?> class="error-msg" <?php } ?> class="half-width" id="other-category">
                                         <?php if ($industriyal1 == 0) { ?>    <!--  <label id="indtype">Add Here Your Other Category type:<span style="color:red">*</span></label> --> <?php } ?>
                                         <label> Other Category:<span style="color:red;" >*</span></label>

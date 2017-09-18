@@ -8593,7 +8593,7 @@ class Business_profile extends MY_Controller {
             }
             $modal .= '<li>';
             $modal .= '<div class="like_user_listq">';
-            $modal .= '<a href="' . base_url('business_profile/business_resume/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
+            $modal .= '<a href="' . base_url('business-profile/details/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
             $modal .= '<div class="like_user_list_img">';
             if ($bus_image) {
 
@@ -8635,7 +8635,7 @@ class Business_profile extends MY_Controller {
 //            $bus_slug = $this->db->get_where('business_profile', array('user_id' => $value))->row()->business_slug;
 //
 //            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-//            echo '<div class="likeuser_list"><a href="' . base_url('business_profile/business_resume/' . $bus_slug) . '">';
+//            echo '<div class="likeuser_list"><a href="' . base_url('business-profile/details/' . $bus_slug) . '">';
 //            echo ucwords($business_fname1);
 //            echo '</a></div>';
 //        }
@@ -8675,7 +8675,7 @@ class Business_profile extends MY_Controller {
             }
             $modal .= '<li>';
             $modal .= '<div class="like_user_listq">';
-            $modal .= '<a href="' . base_url('business_profile/business_resume/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
+            $modal .= '<a href="' . base_url('business-profile/details/' . $bus_slug) . '" title="' . $business_fname1 . '" class="head_main_name" >';
             $modal .= '<div class="like_user_list_img">';
             if ($bus_image) {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
@@ -8718,7 +8718,7 @@ class Business_profile extends MY_Controller {
 //            $bus_slug = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id']))->row()->business_slug;
 //
 //            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $userlist['user_id'], 'status' => 1))->row()->company_name;
-//            echo '<div class="likeuser_list"><a href="' . base_url('business_profile/business_resume/' . $bus_slug) . '">';
+//            echo '<div class="likeuser_list"><a href="' . base_url('business-profile/details/' . $bus_slug) . '">';
 //            echo ucwords($business_fname1);
 //            echo '</a></div>';
 //        }
@@ -9376,17 +9376,17 @@ class Business_profile extends MY_Controller {
                                                     <div class="list-box">
                                                         <div class="profile-img">';
                     if ($friend['business_user_image'] != '') {
-                        $return_html .= '<a  href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
                                                                     <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '">
                                                                 </a>';
                     } else {
-                        $return_html .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                        $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
                                                                     <img src="' . base_url(NOBUSIMAGE) . '" />
                                                                 </a>';
                     }
                     $return_html .= '</div>
                                                         <div class="profile-content">
-                                                            <a  href="' . base_url('business_profile/business_profile_manage_post/' . $friend['business_slug']) . '">
+                                                            <a  href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
                                                                 <div class="main_data_cq">   <span title="' . $friend['company_name'] . '" class="main_compny_name">' . $friend['company_name'] . '</span></div>
                                                                 <div class="main_data_cq">';
                     if ($inddata[0]['industry_name']) {
@@ -9502,7 +9502,7 @@ class Business_profile extends MY_Controller {
 
                 $contactdata .= '</div>';
                 $contactdata .= '<div class="profile-content">';
-                $contactdata .= '<a href="' . base_url('business_profile/business_profile_manage_post/' . $busdata[0]['business_slug']) . '">';
+                $contactdata .= '<a href="' . base_url('business-profile/dashboard/' . $busdata[0]['business_slug']) . '">';
                 $contactdata .= '<div class="main_data_cq">   <span title="' . $busdata[0]['company_name'] . '" class="main_compny_name">' . $busdata[0]['company_name'] . '</span></div>';
                 $contactdata .= '<div class="main_data_cq"><span class="dc_cl_m" title="' . $inddata[0]['industry_name'] . '"> ' . $inddata[0]['industry_name'] . '</span></div>';
                 $contactdata .= '</a></div>';
