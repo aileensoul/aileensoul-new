@@ -3754,6 +3754,7 @@ height: 100px;
     .content {
         height: 207px !important;
     }
+    .four-image img{height: 190px;}
     #InboxContainer{width: 96%!important;}
     input[type="radio"], input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
     .close2{right: 12px;}
@@ -4190,6 +4191,10 @@ height: 100px;
     .profile-left {
         width: 52%;
     }
+    .four-image img {
+    width: 280px;
+    height: 150px;
+    }
     .bui_bcon {width: 49%;}
     .folle_text {width: 42%;}
     .popup-text textarea{ font-size: 12px!important;  }
@@ -4480,6 +4485,7 @@ height: 100px;
     .folle_text {
         width: 37%;
     }
+    .four-image img{height: 120px;}
     #addcontactContainer::before {
         right: 192px !important;
     }

@@ -3522,6 +3522,7 @@ padding-left: 11px;}
     #InboxContainer::before {
     right: 139px;
     }
+    .four-image img{height: 190px;}
 	.slider_img{height:215px;}
     .header2 .container{padding-right: 0px;}
 	.art_no_post_img {
@@ -3961,7 +3962,10 @@ padding-left: 11px;}
 .fifty_val {
     right: 28px;
 }
-
+    .four-image img {
+    width: 280px;
+    height: 150px;
+    }
   .editor-content {
         width: 80%;
     }
