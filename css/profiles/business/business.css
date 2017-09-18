@@ -276,7 +276,7 @@ label.cameraButton:active {border-color: #CCC #EEE #EEE #CCC;}
 .bui_art_left_box .profile-boxProfilebuisness-avatarLink2 {background-color: transparent; border-radius: 6px; margin: 9px 0 8px 4px; border: none; height: 60px; width: 60px; padding: 1px; vertical-align: bottom; }
 
 .bui_art_left_box .a-inlineBlock {display: inline-block!important; width: 75px; z-index: 3; position: relative; height: 75px;}
-.bui_art_left_box .profile-boxProfileCard-content .buisness-profile-txext a img {height: 100%; width: 100%; z-index: 3; .position: relative;}
+.bui_art_left_box .profile-boxProfileCard-content .buisness-profile-txext a img {height: 100%; width: 100%; z-index: 3; position: relative;}
 .bui_art_left_box .right_left_box_design {padding: 7px 9px 0px 5px; width: 76%; display: inline-block; float: left;}
 .bui_art_left_box .right_left_box_design .profile-company-name {display: block; max-width: 100%; overflow: hidden; 
     text-overflow: ellipsis; white-space: nowrap; width: auto; color: #1b8ab9; line-height: 18px;
@@ -3470,7 +3470,7 @@ height: 100px;
 }
 .modal-content2 .prev,.modal-content2 .next{top:290px; }
 .slider_img .prev, .slider_img .next{top: 50%;}
-.img_bui_data{position:relative; width:90px; height:90px; float:left; position:relativ; margin-right:15px; margin-bottom:15px;}
+.img_bui_data{position:relative; width:90px; height:90px; float:left; margin-right:15px; margin-bottom:15px;}
 .img_bui_data .hs-submit a{padding:0; position:absolute; background:none; margin:0; right:-15px; top:-10px;}
 .img_bui_data .hs-submit a .bui_close label{width:25px; height:25px; padding:1px 1px 1px 3px !important; text-align:center; }
 .img_bui_data .hs-submit a .bui_close label .fa{color:#fff;}
@@ -3587,7 +3587,7 @@ height: 100px;
         padding: 12px 22px 12px;
         width: 100%;
     }
-    .cq_latest_right{width: 68%:;}
+    .cq_latest_right{width: 68%;    }
     .cq_latest_left{width: 25%;}
     .all-list ul li .list-box{width: 172px;}
     .pt120 {padding-top: 100px;}
@@ -3740,6 +3740,14 @@ height: 100px;
     .cmy_2 {width: 82%; float: left;}
 }
 @media screen and (max-width: 767px){
+    #add_contact #addcontactContainer{left: 2%!important; width: 96%!important;}
+    #addcontactContainer::before {
+    right: 204px!important;   
+    }
+    .content {
+        height: 207px !important;
+    }
+    #InboxContainer{width: 96%!important;}
     input[type="radio"], input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
     .close2{right: 12px;}
     #row2 img {border: none;}
@@ -4110,6 +4118,12 @@ height: 100px;
         margin-top: 0px;
 
     }
+    #InboxContainer {
+        width: 95% !important;
+    }
+    #addcontactContainer::before {
+        right: 209px !important;
+    }
     #upload-demo-one{width: 100%!important;}
     .reactivate_btn_n a , .reactivate_btn_y a{
         font-size: 16px;
@@ -4458,6 +4472,9 @@ height: 100px;
     #paddingtop_fixed{padding-top:70px !important;}
     .folle_text {
         width: 37%;
+    }
+    #addcontactContainer::before {
+        right: 192px !important;
     }
     .edit-comment-box .comment-edit-button button{padding: 6px 13px;}
     .inputtype-edit-comment .editable_text{width: 60%!important;}
