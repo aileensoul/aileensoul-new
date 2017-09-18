@@ -105,19 +105,19 @@ $(document).ready(function () {
             'feedback_email': feedback_email,
             'feedback_subject': feedback_subject,
             'feedback_message': feedback_message,
-            get_csrf_token_name : get_csrf_hash,
+            //get_csrf_token_name : get_csrf_hash,
         }
         $.ajax({
             type: 'POST',
             url: base_url + 'feedback/feedback_insert',
             data: post_data,
-            beforeSend: function ()
-            {
-                $("#register_error").fadeOut();
-                $("#btn-register").html('Sign Up ...');
-            },
+            // beforeSend: function ()
+            // {
+            //     $("#register_error").fadeOut();
+            //     $("#btn-register").html('Sign Up ...');
+            // },
             success: function (response)
-            {
+            { //alert("hii");
                 if (response == "ok") {
 
                     $("#feedback_firstname").val('');
