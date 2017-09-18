@@ -393,7 +393,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             <!-- Modal content-->
                         </section>
                     </div>
-                    <?php if ($userdata[0]['user_slider'] == 1) { ?>
+                    <?php //if ($userdata[0]['user_slider'] == 1) { ?>
                         <div id="onload-Modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="main_sl">
@@ -609,7 +609,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php //} ?>
                     <!--  how it work popup  -->
                     <div style="display:none;" class="how-it-popup" id="jop-popup">
                         <div class="modal-dialog">
@@ -900,6 +900,29 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <script type="text/javascript" src="<?php echo base_url('js/jquery.fancybox.js'); ?>"></script>
                     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        if (screen.width > 767) {
+            $(window).load(function(){        
+                $('#onload-Modal').modal('show').fadeIn("slow");
+                //$('#onload-Modal').fancybox().trigger('click'); 
+            }); 
+        }
+    }); 
+	$(document).ready(function () {
+        $("body").click(function (event) {
+            //$("#onload-Modal").modal('hide').fadeOut("slow");
+            //$(".modal").css('display','none');
+            //$("#onload-Modal").fadeOut("slow");
+
+           // event.stopPropagation();
+			//$("#onload-Modal").fadeOut('slow');
+			//$("#onload-Modal").removeClass("in").fadeOut('slow');
+        });
+
+    });
+	  
+</script>
 					<script>
 						// scroll top
 						$(document).ready(function(){
@@ -1017,5 +1040,5 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
 
 						});
 					</script>
-                    </body>
-                    </html>
+</body>
+</html>
