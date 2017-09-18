@@ -1278,7 +1278,7 @@
                                                             $art_lastuser = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
 
                                                             ?>
-                                                            <div class="post-design-proo-img">
+                                                            <div class="post-design-proo-img hidden-mob">
                                                                 <?php if ($art_userimage) { ?>
 
 
