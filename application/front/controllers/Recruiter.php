@@ -2072,7 +2072,7 @@ class Recruiter extends MY_Controller {
 
 // LAZY LOADER CODE END
         // code start
-       $returnpage = $_GET['page']; 
+       $returnpage = $_GET['returnpage']; 
         if (count($rec_postdata1) > 0) {
             if ($returnpage == 'job') {
                 if (count($rec_postdata) != '') {
@@ -2247,7 +2247,7 @@ class Recruiter extends MY_Controller {
 
                         $rec_post .= '</span></li></ul></div>
                              <div class="profile-job-profile-button clearfix">
-                    <div class="profile-job-details col-md-12">';
+                    <div class="apply-btn fr">';
 
                         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
@@ -2259,9 +2259,9 @@ class Recruiter extends MY_Controller {
 
                             $rec_post .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
                         } else {
-                            $rec_post .= '<li class="fr">';
-                            $rec_post .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . 'button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a>';
-                            $rec_post .= '</li><li class="fr">';
+                            //$rec_post .= '<li class="fr">';
+                            $rec_post .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . ' button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">Apply</a>';
+                            //$rec_post .= '</li><li class="fr">';
                             $userid = $this->session->userdata('aileenuser');
                             $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
                             $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2270,9 +2270,9 @@ class Recruiter extends MY_Controller {
 
                                 $rec_post .= '<a class="button saved">Saved</a>';
                             } else {
-                                $rec_post .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . 'button">Save</a>';
+                                $rec_post .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">Save</a>';
                             }
-                            $rec_post .= '</li>';
+                            //$rec_post .= '</li>';
                         }
                         $rec_post .= '</div>
                                                         </div>

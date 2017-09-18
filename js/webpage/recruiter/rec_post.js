@@ -37,7 +37,7 @@ function rec_post(pagenum) {
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "recruiter/ajax_rec_post?page=" + pagenum+ "&id=" + id,
+        url: base_url + "recruiter/ajax_rec_post?page=" + pagenum + "&id=" + id + "&returnpage=" + return_page,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
