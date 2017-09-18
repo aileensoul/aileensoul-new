@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
         <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-apply/freelancer-apply.css?ver='.time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()) ?>" />
         <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">-->
         
     </head>
@@ -103,11 +104,11 @@
                                     <fieldset class="full-width" <?php if ($field) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("your_field"); ?>:<span class="red">*</span></label> 
 
-                                        <select tabindex="1" autofocus name="field" id="field">
+                                        <select tabindex="1" autofocus name="field" id="field" class="field_other">
                                             <option value=""><?php echo $this->lang->line("select_filed"); ?></option>
                                             <?php
-                                            if (count($category) > 0) {
-                                                foreach ($category as $cnt) {
+                                            if (count($category_data) > 0) {
+                                                foreach ($category_data as $cnt) {
                                                     if ($fields_req1) {
                                                         ?>
                                                         <option value="<?php echo $cnt['category_id']; ?>" <?php if ($cnt['category_id'] == $fields_req1) echo 'selected'; ?>><?php echo $cnt['category_name']; ?></option>
@@ -121,7 +122,9 @@
                                                     }
                                                 }
                                             }
+                                            
                                             ?>
+                                           <option value="<?php echo $category_otherdata[0]['category_id']; ?> "><?php echo $category_otherdata[0]['category_name']; ?></option>
                                         </select> 
                                         <?php echo form_error('field'); ?>
                                     </fieldset>
@@ -209,6 +212,7 @@
             </footer>
             <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
             <!--<script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+            <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver='.time()); ?>"></script>
             <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver='.time()); ?>"></script>
             <script>

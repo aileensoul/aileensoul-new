@@ -52,6 +52,7 @@ $(".alert").delay(3200).fadeOut(300);
                     var uni = (item.val());
                     if (uni == 463)
                     {
+                        item.val('');
                         $.fancybox.open('<div class="message"><h2>Add University</h2><input type="text" name="other_uni" id="other_uni"><a id="univer" class="btn">OK</a></div>');
 
                         $('.message #univer').on('click', function () {
