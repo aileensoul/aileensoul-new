@@ -1351,7 +1351,7 @@ class Notification extends MY_Controller {
                     $notification .= 'active2';
                 }
                 $notification .= '"';
-                $notification .= '><a href="' . base_url('business_profile/business_resume/' . $busslug) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
+                $notification .= '><a href="' . base_url('business-profile/details/' . $busslug) . '" onClick="not_active(' . $total['not_id'] . ')"><div class="notification-database">';
                 $notification .= '<div class="notification-pic">';
 
                 $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
@@ -2727,7 +2727,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         $data = '<ul class="">
         <li class=""><a href="http://localhost/aileensoul/chat/abc/93/6/6/184" class="clearfix msg_dot" style="padding:0px!important;"><div class="notification-database"><div class="notification-pic"><div class="post-img-div">ZP</div></div><div class="notification-data-inside"><h6>Zalak</h6><div class="msg_desc_a">z4</div><div class="data_noti_msg"><span class="day-text2">1 hour ago</span></div></div></div></a></li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/business_profile/business_resume/zalak-infotech-pvt-ltd" onclick="not_active(1422)">
+        <a href="http://localhost/aileensoul/business-profile/details/zalak-infotech-pvt-ltd" onclick="not_active(1422)">
             <div class="notification-database">
                 <div class="notification-pic">
                     <div class="post-img-div">Z</div>
@@ -2741,7 +2741,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/business_profile/business_resume/zalak-infotech-pvt-ltd" onclick="not_active(1387)">
+        <a href="http://localhost/aileensoul/business-profile/details/zalak-infotech-pvt-ltd" onclick="not_active(1387)">
             <div class="notification-database">
                 <div class="notification-pic">
                     <div class="post-img-div">Z</div>
@@ -2768,7 +2768,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/business_profile/business_resume/hemstechnosys-pvt-ltd" onclick="not_active(1270)">
+        <a href="http://localhost/aileensoul/business-profile/details/hemstechnosys-pvt-ltd" onclick="not_active(1270)">
             <div class="notification-database">
                 <div class="notification-pic">
                     <div class="post-img-div">H</div>
@@ -2782,7 +2782,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/business_profile/business_resume/rout-digital-duniya" onclick="not_active(1195)">
+        <a href="http://localhost/aileensoul/business-profile/details/rout-digital-duniya" onclick="not_active(1195)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/index3.jpg">
                 </div>
@@ -2795,7 +2795,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
         </a>
     </li>
     <li class="active2">
-        <a href="http://localhost/aileensoul/business_profile/business_resume/abhinandan-hosiery" onclick="not_active(1154)">
+        <a href="http://localhost/aileensoul/business-profile/details/abhinandan-hosiery" onclick="not_active(1154)">
             <div class="notification-database">
                 <div class="notification-pic"><img src="http://localhost/aileensoul/uploads/business_profile/thumbs/images.png">
                 </div>
@@ -3656,7 +3656,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     $companyname = $this->db->get_where('business_profile', array('user_id' => $total['not_from_id']))->row()->company_name;
                     if ($id) {
 
-                        $return_html .= '<a href="' . base_url() . 'business_profile/business_resume/' . $id . '">';
+                        $return_html .= '<a href="' . base_url() . 'business-profile/details/' . $id . '">';
                         $return_html .= '<li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';

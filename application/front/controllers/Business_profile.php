@@ -4489,11 +4489,11 @@ class Business_profile extends MY_Controller {
 //
 //                    $cmtinsert .= '</div>';
 
-                    $cmtinsert .= '<img src="' . base_url() . NOBUSIMAGE . '">';
+                    $cmtinsert .= '<img src="' . base_url() . NOBUSIMAGE . '"> </div>';
                 }
                 $cmtinsert .= '<div class="comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $companyslug . '"><b>' . $companyname . '</b></a>';
                 $cmtinsert .= '</div>';
-                $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '"" >';
+                $cmtinsert .= '<div class="comment-details" id= "showcomment' . $business_profile['business_profile_post_comment_id'] . '">';
                 $cmtinsert .= $this->common->make_links($business_profile['comments']);
                 $cmtinsert .= '</div>';
                 $cmtinsert .= '<div class="edit-comment-box"><div class="inputtype-edit-comment">';
