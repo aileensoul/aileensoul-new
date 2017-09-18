@@ -1385,7 +1385,7 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
     border-radius: 4px;
     height: 150px;
     margin: 0px auto 0;
-    padding: 2px;
+    padding: 4px;
     width: 150px;
     position: absolute;
     left: 0;
@@ -1393,8 +1393,8 @@ input.form-control{box-shadow:none !important; -webkit-appearance: none;}
     top: -110px;
 }
 .left-profile .profile-photo img.main-pic{
-	width:144px;
-	height:144px;
+	width:141px;
+	height:141px;
 	border-radius:4px;
 }
 .left-profile .profile-detail{text-align:center; padding-top: 40px;}
