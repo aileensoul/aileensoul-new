@@ -2012,6 +2012,7 @@ label.cameraButton input[accept*="camera"] {
  .right-side-menu {
         width: 100%;
     }
+    .profile-job-details ul li{font-size: 11px;}
 }
 @media screen and (max-width: 320px){
 	

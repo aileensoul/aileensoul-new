@@ -209,7 +209,7 @@
                                                                     ?>
 
                                                                     <?php if ($userid != $row['user_id']) { ?>
-                                                                        <a class="msg_btn" href="<?php echo base_url('chat/abc/' . $row['user_id'] . '/3/4'); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                                        <a class="msg_btn" href="<?php echo base_url('chat/abc/3/4/' . $row['user_id']); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                                         <?php
                                                                         $contition_array = array('invite_user_id' => $row['user_id'], 'post_id' => $postid, 'profile' => 'freelancer');
                                                                         $userdata = $this->common->select_data_by_condition('user_invite', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
