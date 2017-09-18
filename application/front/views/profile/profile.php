@@ -6,7 +6,10 @@
     </head>
     <Style>
     .profile_edit h3{text-align: center;}
-    </Style>
+    .common-form fieldset select:focus{ border: 1px solid #1b8ab9 !important;
+color: #1b8ab9 !important;}
+     </Style>
+    }
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
         <section>
@@ -30,20 +33,20 @@
                                     <?php echo form_open_multipart(base_url('profile/edit_profile'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => "clearfix common-form_border")); ?>
                                     <fieldset class="">
                                         <label >First Name </label>
-                                        <input name="first_name" type="text" placeholder="Firstname..." id="first_name" value="<?php echo $userdata[0]['first_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span><?php echo form_error('first_name'); ?>
+                                        <input tabindex="1" name="first_name" type="text" placeholder="Firstname..." id="first_name" value="<?php echo $userdata[0]['first_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span><?php echo form_error('first_name'); ?>
                                     </fieldset>
                                     <fieldset class="">
                                         <label>Last Name</label>
-                                        <input name="last_name" placeholder="Lastname...." type="text" id="last_name" value="<?php echo $userdata[0]['last_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span>
+                                        <input tabindex="2" name="last_name" placeholder="Lastname...." type="text" id="last_name" value="<?php echo $userdata[0]['last_name'] ?>" onblur="return full_name();"/><span id="fullname-error"></span>
                                         <?php echo form_error('last_name'); ?>
                                     </fieldset>
                                     <fieldset>           
                                         <label >E-mail Address:</label>
-                                        <input name="email"  type="text" id="email" placeholder="EmailAddress..."  value="<?php echo $userdata[0]['user_email'] ?>"   onblur="return email_id();"/><span id="email-error"></span> <?php echo form_error('email'); ?>
+                                        <input name="email" tabindex="4"  type="text" id="email" placeholder="EmailAddress..."  value="<?php echo $userdata[0]['user_email'] ?>"   onblur="return email_id();"/><span id="email-error"></span> <?php echo form_error('email'); ?>
                                     </fieldset>
                                     <fieldset>        
                                         <label>Birthday:</label>
-                                        <select tabindex="9" class="day" name="selday" id="selday">
+                                        <select tabindex="5" class="day" name="selday" id="selday">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
@@ -57,7 +60,7 @@
                                                     }
                                                     ?>
                                         </select>
-                                        <select tabindex="10" class="month" name="selmonth" id="selmonth">
+                                        <select tabindex="6" class="month" name="selmonth" id="selmonth">
                                             <option value="" disabled selected value>Month</option>
                                             <option value="1" <?php
                                             if ($usrm == 1) {
@@ -121,7 +124,7 @@
                                             ?>>Dec</option>
                                             ?>
                                         </select>
-                                        <select tabindex="11" class="year" name="selyear" id="selyear">
+                                        <select tabindex="7" class="year" name="selyear" id="selyear">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
                                             for ($i = date('Y'); $i >= 1900; $i--) {
@@ -141,7 +144,7 @@
 
                                     <fieldset>
                                         <label>Gender</label>
-                                        <input type="radio" id="gen" name="gender" value="M" <?php
+                                        <input tabindex="8" type="radio" id="gen" name="gender" value="M" <?php
                                         if ($userdata[0]['user_gender'] == M) {
                                             echo 'checked';
                                         }
@@ -155,7 +158,7 @@
                                         <?php echo form_error('gender'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
-                                        <input type="submit" value="submit" name="submit" id="submit">
+                                        <input type="submit" tabindex="9" value="submit" name="submit" id="submit">
                                     </fieldset>
                                 </div>
                             </div>

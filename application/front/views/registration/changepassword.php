@@ -6,6 +6,10 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">
     </head>
+    <style type="text/css">
+          .common-form fieldset select:focus{ border: 1px solid #1b8ab9 !important;
+color: #1b8ab9 !important;}
+    </style>
     <!-- start header -->
     <?php echo $header; ?>
     <!-- END HEADER -->
@@ -25,13 +29,14 @@
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-8">
+                              <div class="common-form">
                             <div class="change-password">
                                 <div class="change-password-box">
                                     <h4>Change Password</h4>
                                     <?php echo form_open(base_url('registration/changepassword_insert'), array('id' => 'regform', 'name' => 'regform', 'class' => 'clearfix')); ?>
                                     <fieldset class="full-width">
                                         <label>Old Password <span style="color:red">*</span></label>
-                                        <input type="password" name="oldpassword"  id="oldpassword" placeholder="Old Password" /> <span id="password1-error"> </span>
+                                        <input tabindex="1" type="password" name="oldpassword"  id="oldpassword" placeholder="Old Password" /> <span id="password1-error"> </span>
                                         <?php
                                         if (isset($error_message1)) {
                                             echo $error_message1;
@@ -41,22 +46,23 @@
                                     </fieldset>
                                     <fieldset class="full-width">
                                         <label>New Password <span style="color:red">*</span></label>
-                                        <input type="password" name="password1"  id="password1" placeholder="New Password" /> <span id="password1-error"> </span>
+                                        <input type="password" tabindex="2" name="password1"  id="password1" placeholder="New Password" /> <span id="password1-error"> </span>
                                         <?php echo form_error('password1'); ?>
                                     </fieldset>
                                     <fieldset class="full-width">
                                         <label>Confirm Password<span style="color:red">*</span></label>
-                                        <input type="password" name="password2"  id="password2" placeholder="Confirm Password" /> <span id="password2-error"> </span>
+                                        <input type="password" tabindex="3" name="password2"  id="password2" placeholder="Confirm Password" /> <span id="password2-error"> </span>
                                         <?php echo form_error('password2'); ?>
                                     </fieldset>
                                     <fieldset class="hs-submit full-width">
                                         <!-- <input type="reset"  value="Cancel" name="cancel"> -->
-                                        <input type="submit"  value="Save" name="submit">
+                                        <input type="submit" tabindex="4"  value="Save" name="submit">
                                     </fieldset>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
