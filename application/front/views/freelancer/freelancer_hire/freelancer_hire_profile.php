@@ -172,8 +172,16 @@
                                          }
                                         ?>
                                         <div class="flw_msg_btn fr">
-                                            <ul>
-                                                <li> <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                            <ul> <li>
+                                                  <?php
+        $returnpage = $_GET['page'];
+        if ($returnpage == 'freelancer_post') { ?>
+             <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+   <?php     } else { ?>
+            <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+ <?php       }
+        ?>
+                                                </li>
                                             </ul>
                                         </div>
                                         <?php

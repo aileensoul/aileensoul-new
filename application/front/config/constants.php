@@ -58,8 +58,8 @@ define('PROFILENA', '--');
 define('FNOIMAGE', 'uploads/Email_Verification_female.png');
 define('MNOIMAGE', 'uploads/Email_Verification_male.png');
 
-define('IMAGEPATHFROM', 's3bucket'); //upload,s3bucket 
-//define('IMAGEPATHFROM', 'upload'); //upload,s3bucket 
+//define('IMAGEPATHFROM', 's3bucket'); //upload,s3bucket 
+define('IMAGEPATHFROM', 'upload'); //upload,s3bucket 
 // S3BUCKET START
 // Bucket Name
 define('bucket', 'aileensoulimages');

@@ -180,7 +180,15 @@
                                                 }
                                                 ?>
                                                 <li>
-                                                    <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php
+        $returnpage = $_GET['page'];
+        if ($returnpage == 'freelancer_hire') { ?>
+             <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+   <?php     } else { ?>
+            <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+ <?php       }
+        ?>
+                                                   
                                                 </li>
                                             </ul>
                                         </div>

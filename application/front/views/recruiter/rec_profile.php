@@ -14,9 +14,21 @@
     </head> <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
-            <?php echo $recruiter_header2_border; ?>
-        <?php } ?>
+        <?php //if ($recdata[0]['re_step'] == 3) { ?>
+            <?php //echo $recruiter_header2_border; ?>
+        <?php //} ?>
+        <?php
+ $returnpage= $_GET['page'];
+ if($returnpage == 'job'){
+     echo $job_header2_border; 
+ }
+ elseif($recdata[0]['re_step'] == 3){
+  echo $recruiter_header2_border; 
+ }
+ elseif($returnpage == 'notification'){
+
+ }
+?>
         <div id="preloader"></div>
         <!-- START CONTAINER -->
         <section>

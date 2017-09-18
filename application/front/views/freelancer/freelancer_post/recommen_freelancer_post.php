@@ -26,7 +26,7 @@
                                                 if ($freepostdata[0]['profile_background'] != '') {
                                                     ?>
                                                     <div class="data_img">
-                                                        <img src="<?php echo FREE_HIRE_BG_ORIGINAL_UPLOAD_URL . $freepostdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                        <img src="<?php echo FREE_POST_BG_MAIN_UPLOAD_URL  . $freepostdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
                                                     </div>
                                                     <?php
                                                 } else {
@@ -44,7 +44,7 @@
                                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock" 
                                                    href="<?php echo base_url('freelancer-work/freelancer-details/' . $freepostdata[0]['user_id']); ?>" title="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                                        <?php
-                                                       if ($freelancerdata[0]['freelancer_post_user_image']) {
+                                                       if ($freepostdata[0]['freelancer_post_user_image']) {
                                                            ?>
                                                         <div class="data_img_2">
                                                             <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
