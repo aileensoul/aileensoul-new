@@ -123,7 +123,7 @@ $(document).on('change', '#degree', function (event) {
       
       if(degree == 54)
       {
-          
+            item.val('');
              $.fancybox.open(html);
              $('.message #univer').on('click', function () {
                  var degree = document.querySelector(".message #other_degree").value;
