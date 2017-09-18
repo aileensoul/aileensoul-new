@@ -2070,16 +2070,19 @@ $jobgrad  = $this->common->select_data_by_condition('job_graduation', $contition
       $this->data['title'] = $jobseeker_name.TITLEPOSTFIX;
 
 //for deactive profile and slug not found then see page start
+
 $id_deactiveuser=$this->db->get_where('job_reg', array('slug' => $slug, 'is_delete' => 0, 'status' => 0))->row()->user_id;
   $contition_array = array('user_id' => $id_deactiveuser, 'is_delete' => '0','status'=> '0');
    $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
   
-        if (count($availuser) > 0 || count($id) == 0) 
+        if ((count($availuser) > 0 || count($id) == 0) && $slug != '') 
         {
             $this->load->view('job/notfound'); 
          } 
+   
          else
          {
+        
             $this->load->view('job/job_printpreview', $this->data);
          }
 //for deactive profile and slug not found then see page end 
