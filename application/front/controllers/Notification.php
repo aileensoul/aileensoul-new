@@ -719,21 +719,21 @@ class Notification extends MY_Controller {
 // recruiter notification end
 // job notfication start 
 
-        $contition_array = array('notification.not_type' => 4, 'notification.not_to_id' => $userid, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
+        $contition_array = array('notification.not_type' => 4, 'notification.not_to_id' => $userid,'notification.not_from' => 1, 'created_date BETWEEN DATE_SUB(NOW(), INTERVAL 2 MONTH) AND NOW()');
         $join_str = array(array(
                 'join_type' => '',
-                'table' => 'job_apply',
+                'table' => 'user_invite',
                 'join_table_id' => 'notification.not_product_id',
-                'from_table_id' => 'job_apply.app_id'),
+                'from_table_id' => 'user_invite.invite_id'),
             array(
                 'join_type' => '',
                 'table' => 'recruiter',
                 'join_table_id' => 'notification.not_from_id',
                 'from_table_id' => 'recruiter.user_id')
         );
-        $data = array('notification.*', ' job_apply.*', ' recruiter.user_id as user_id', 'recruiter.rec_firstname as first_name', 'recruiter.recruiter_user_image as user_image', 'recruiter.rec_lastname as last_name');
+        $data = array('notification.*', ' user_invite.*', ' recruiter.user_id as user_id', 'recruiter.rec_firstname as first_name', 'recruiter.recruiter_user_image as user_image', 'recruiter.rec_lastname as last_name');
 
-        $job_not = $this->data['job_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'app_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
+        $job_not = $this->data['job_not'] = $this->common->select_data_by_condition('notification', $contition_array, $data, $sortby = 'invite_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
 
 // job notification end
 // freelancer hire  notification start
