@@ -393,7 +393,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                             <!-- Modal content-->
                         </section>
                     </div>
-                    <?php //if ($userdata[0]['user_slider'] == 1) { ?>
+                    <?php if ($userdata[0]['user_slider'] == 1) { ?>
                         <div id="onload-Modal" class="modal fade" role="dialog">
                             <div class="modal-dialog">
                                 <div class="main_sl">
@@ -609,7 +609,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                 </div>
                             </div>
                         </div>
-                    <?php //} ?>
+                    <?php } ?>
                     <!--  how it work popup  -->
                     <div style="display:none;" class="how-it-popup" id="jop-popup">
                         <div class="modal-dialog">
