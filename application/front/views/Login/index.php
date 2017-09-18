@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <link rel="stylesheet" href="css/common-style.css">
   <link rel="stylesheet" href="css/style-main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  
   <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
 </head>
 
@@ -172,6 +172,8 @@
     </div>
   </footer>
 </div>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver='.time()); ?>"></script>  
 <script>
   $( document ).ready(function() {
     

@@ -97,18 +97,13 @@
         </footer>
 
 
-<script src="<?php echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>" type="text/javascript"></script>
+
 <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()); ?>" type="text/javascript"></script>
-<script src="<?php echo base_url('js/fileinput.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>"></script>
-<script src="<?php echo base_url('assets/js/jquery.js?ver='.time()); ?>"></script>
+<script src="<?php //echo base_url('assets/js/jquery.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
 <script src="<?php echo base_url('js/fb_login.js?ver='.time()); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()) ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver='.time()); ?>"></script>
  <script type="text/javascript">
 var base_url = '<?php echo base_url(); ?>';      
 var data = <?php echo json_encode($demo); ?>;
@@ -117,5 +112,6 @@ var keyword = '<?php echo $keyword; ?>';
 var keyword1 = '<?php echo $keyword1; ?>';
 </script>
 <script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/recommen_candidate.js?ver='.time()); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/artistic/artistic_common.js?ver='.time()); ?>"></script>
 </body>
 </html>
