@@ -700,13 +700,13 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
             {
                 // alert("hsjdh");
 
-                window.location = base_url + "recruiter/recommen_candidate";
+                window.location = base_url + "recruiter/home";
             } else if (clicked_id == 2)
             {
-                window.location = base_url + "recruiter/rec_profile";
+                window.location = base_url + "recruiter/profile";
             } else if (clicked_id == 3)
             {
-                window.location = base_url + "recruiter/rec_basic_information";
+                window.location = base_url + "recruiter/basic-information";
             } else if (clicked_id == 4)
             {
                 if (searchkeyword == "")
@@ -970,15 +970,15 @@ function leave_page(clicked_id)
         //alert("hi");
         if (clicked_id == 1)
         {
-            location.href = base_url + "recruiter/recommen_candidate";
+            location.href = base_url + "recruiter/home";
         }
         if (clicked_id == 2)
         {
-            location.href = base_url + "recruiter/rec_profile";
+            location.href = base_url + "recruiter/profile";
         }
         if (clicked_id == 3)
         {
-            location.href = base_url + "recruiter/rec_basic_information";
+            location.href = base_url + "recruiter/basic-information";
         }
         if (clicked_id == 4)
 

@@ -4667,7 +4667,6 @@ class Recruiter extends MY_Controller {
             );
         $insert_id = $this->common->insert_data_getid($data, 'notification');
 
-
         echo'invited';
         } else {
             echo 'error';
@@ -4676,8 +4675,7 @@ class Recruiter extends MY_Controller {
 //reactivate accont end 
  // 16-9 start   
     public function recruiter_data($data = ""){
-       
     $this->load->view('recruiter/recruiter_data', $this->data);
     }
- // 16-9 end    
+
 }

@@ -263,3 +263,7 @@ $route['recruiter/edit-post'] = "recruiter/edit_post";
 $route['recruiter/edit-post/(:any)'] = "recruiter/edit_post/$1";
 
 $route['recruiter/search'] = "recruiter/recruiter_search";
+
+// NOTIFICATION ROUTES SETTINGS
+$route['notification/details/(:any)'] = "business_profile/business_resume/$1";
+$route['notification/business-post/(:any)'] = "business_profile/edit_post/$1";

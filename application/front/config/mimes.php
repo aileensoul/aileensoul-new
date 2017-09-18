@@ -138,14 +138,14 @@ return array(
 	'mp4'   =>	'video/mp4',
 	'm4a'   =>	'audio/x-m4a',
 	'f4v'   =>	array('video/mp4', 'video/x-f4v'),
-	'flv'	=>	'video/x-flv',
+	//'flv'	=>	'video/x-flv',
 	'webm'	=>	'video/webm',
 	'aac'   =>	'audio/x-acc',
 	'm4u'   =>	'application/vnd.mpegurl',
 	'm3u'   =>	'text/plain',
 	'xspf'  =>	'application/xspf+xml',
 	'vlc'   =>	'application/videolan',
-	'wmv'   =>	array('video/x-ms-wmv', 'video/x-ms-asf'),
+	//'wmv'   =>	array('video/x-ms-wmv', 'video/x-ms-asf'),
 	'au'    =>	'audio/x-au',
 	'ac3'   =>	'audio/ac3',
 	'flac'  =>	'audio/x-flac',
@@ -179,5 +179,7 @@ return array(
 	'odt'	=>	'application/vnd.oasis.opendocument.text',
 	'odm'	=>	'application/vnd.oasis.opendocument.text-master',
 	'ott'	=>	'application/vnd.oasis.opendocument.text-template',
-	'oth'	=>	'application/vnd.oasis.opendocument.text-web'
+	'oth'	=>	'application/vnd.oasis.opendocument.text-web',
+    'wmv'   =>     array('video/wmv', 'video/x-ms-wmv', 'flv-application/octet-stream', 'application/octet-stream'),
+'flv'   =>     array('video/flv', 'video/x-flv','flv-application/octet-stream', 'application/octet-stream')
 );
