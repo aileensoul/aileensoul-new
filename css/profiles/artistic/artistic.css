@@ -268,11 +268,11 @@ label.cameraButton:active {border-color: #CCC #EEE #EEE #CCC;}
 .bui_art_left_box .profile-company-name a {font-size: 15px; margin-left: 0px; font-weight: 600; color: #1b8ab9;}
 .bui_art_left_box .profile-boxProfile-name{max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; line-height: 18px;}
 .bui_art_left_box .left_box_menubar {width: 100%; padding: 0px; margin: 0px; float: left;}
-.bui_art_left_box .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 32.33%;}
+.bui_art_left_box .left_box_menubar li {list-style: none; float: left; text-align: center; padding: 0px; margin: 0px; width: 33.33%;}
 .bui_art_left_box .left_box_menubar li a {font-size: 12px; padding: 4px; display: inline-block;}
-.bui_art_left_box .left_box_menubar li:last-child a {text-align: center;}
+.bui_art_left_box .left_box_menubar li:last-child a {text-align: center; padding-left:0;}
 .bui_art_left_box .left_box_menubar li:first-child { text-align: left;}
-.bui_art_left_box .left_box_menubar li:last-child {text-align: right;}
+.bui_art_left_box .left_box_menubar li:last-child {/*text-align: right;*/}
 .bui_art_left_box .left_iner_img_profile {
     height: 60px;
     width: 60px;
