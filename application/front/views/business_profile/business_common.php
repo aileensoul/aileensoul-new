@@ -66,7 +66,18 @@
     <?php } ?>
     <!-- coer image end-->
     <div class="profile-photo">
+        <?php
+                    $userid = $this->session->userdata('aileenuser');
+                    if ($businessdata1[0]['user_id'] == $userid) {
+                        ?>  
         <div class="buisness-menu">
+            <?php
+                    }else{
+            ?>
+            <div class="buisness-menu other-profile-menu">
+            <?php
+                    }
+            ?>
             <!--PROFILE PIC START-->
             <div class="profile-pho-bui">
                 <div class="user-pic">
