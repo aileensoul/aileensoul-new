@@ -238,9 +238,9 @@ if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)){
 
 
 
-$(window).load(function () {
-    $('#onload-Modal').modal('show').fadeIn("slow");
-});
+//$(window).load(function () {
+//    $('#onload-Modal').modal('show').fadeIn("slow");
+//});
 $(document).ready(function () {
     $("body").click(function (event) {
     });

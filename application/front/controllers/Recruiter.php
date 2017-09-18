@@ -887,7 +887,9 @@ class Recruiter extends MY_Controller {
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
 
         if ($id == $userid || $id == '') {
-           
+            $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
+        $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             $this->recruiter_apply_check();
 
             $contition_array = array('user_id' => $userid, 'is_delete' => 0);
@@ -903,7 +905,9 @@ class Recruiter extends MY_Controller {
 //            $contition_array = array('rec_post.user_id' => $userid, 'rec_post.is_delete' => 0);
 //            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'rec_post.*,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-             
+             $contition_array = array('user_id' => $id, 'is_delete' => 0, 're_status' => 1);
+        $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             $this->rec_avail_check($id);
 
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 're_step' => 3);
@@ -1433,7 +1437,6 @@ class Recruiter extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 're_status' => 1);
         $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 //FETCH SKILL DATA
 
         $contition_array = array('user_id' => $userid, 'type' => '4', 'status' => 1);
@@ -2069,7 +2072,7 @@ class Recruiter extends MY_Controller {
 
 // LAZY LOADER CODE END
         // code start
-        $returnpage = $_GET['page'];
+       $returnpage = $_GET['page']; 
         if (count($rec_postdata1) > 0) {
             if ($returnpage == 'job') {
                 if (count($rec_postdata) != '') {

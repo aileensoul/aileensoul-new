@@ -901,7 +901,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                     <script src="<?php echo base_url('assets/js/croppie.js'); ?>"></script>
                     <!-- POST BOX JAVASCRIPT END --> 
 <script type="text/javascript">
-    jQuery(document).ready(function ($) {
+    $(document).ready(function ($) {
         if (screen.width > 767) {
             $(window).load(function(){        
                 $('#onload-Modal').modal('show').fadeIn("slow");
