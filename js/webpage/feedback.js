@@ -117,7 +117,7 @@ $(document).ready(function () {
             //     $("#btn-register").html('Sign Up ...');
             // },
             success: function (response)
-            { //alert("hii");
+            {
                 if (response == "ok") {
 
                     $("#feedback_firstname").val('');
