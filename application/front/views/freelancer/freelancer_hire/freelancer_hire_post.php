@@ -167,18 +167,29 @@
                                     <?php
                                     $userid = $this->session->userdata('aileenuser');
                                     if ($userid != $freelancr_user_data[0]['user_id']) {
-                                        if(is_numeric($this->uri->segment(3))){
-                                         $id=$this->uri->segment(3);
-                                         }else{
-                                        $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
-                                         }
-                                       // $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                        if (is_numeric($this->uri->segment(3))) {
+                                            $id = $this->uri->segment(3);
+                                        } else {
+                                            $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                                        }
+                                        // $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
                                         ?>
                                         <div class="flw_msg_btn fr">
                                             <ul>
-                                                <li> <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a> </li>
+                                                <li> 
+                                                    <?php
+                                                    $returnpage = $_GET['page'];
+                                                    if ($returnpage == 'freelancer_post') {
+                                                        ?>
+                                                        <a href="<?php echo base_url('chat/abc/4/3/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php } else { ?>
+                                                        <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
+                                                    <?php }
+                                                    ?>
+<!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id); ?>"><?php //echo $this->lang->line("message"); ?></a>-->
+                                                </li>
 
-                                            <?php } ?>
+<?php } ?>
 
                                     </div>
                             </div>
@@ -187,7 +198,7 @@
                     <div  class="add-post-button mob-block">
                         <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                             <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                        <?php } ?>
+<?php } ?>
                     </div> 
                     <div class="middle-part container">
                         <div class="job-menu-profile mob-none pt20">
@@ -218,7 +229,7 @@
                             <div  class="add-post-button">
                                 <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                                <?php } ?>
+<?php } ?>
                             </div> 
                         </div>
                         <div class="col-md-7 col-sm-12 mob-clear">
@@ -246,7 +257,7 @@
                     </div>
                     </section>
                     <footer>
-                        <?php echo $footer; ?>
+<?php echo $footer; ?>
                     </footer>
                     <!-- model for popup start -->
                     <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -271,7 +282,7 @@
                                         <div id="popup-form">
                                             <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-                                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));  ?>
+<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
                                                 <div class="col-md-5">
                                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                                 </div>
@@ -280,7 +291,7 @@
                                                 </div>
                                                 <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                             </form>
-                                            <?php //echo form_close();  ?>
+<?php //echo form_close();   ?>
                                         </div>
                                     </span>
                                 </div>
