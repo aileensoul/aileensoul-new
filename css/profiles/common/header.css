@@ -1496,7 +1496,8 @@ background-color: white;}
     }
 }
 @media screen and (max-width: 767px) {
-    .header2 ul li#add_contact {position: relative;}
+    .header2 ul li#add_contact , .header2 ul li#Inbox_link {position: relative;}
+
 	.header2 .mob-width{padding-left:5px;}
 	.header2 .dropdown_hover .dropdown-content_hover{right:-3px !important;}
 	#InboxContainer::before{/*display:none;*/}
@@ -1541,7 +1542,7 @@ background-color: white;}
     .header ul{margin: 4px 0px;}
 	#notificationLink span{top:10px !important;}
 	#add_contact #addcontactContainer::before {right: 219px; margin-top: -16px;}
-	.action-button #message_count{right:168px;}
+/*	.action-button #message_count{right:168px;}*/
 	.search-mob-block {
         display: block;
     }
@@ -1805,9 +1806,9 @@ right: 3%!important;
 	}
 	#notificationContainer{top: 31px;}
 	.bg-search .header2{margin-top:-7px;}
-	.action-button #message_count {
+	/*.action-button #message_count {
 		right: 163px;
-	}
+	}*/
 	.job-saved-box .notification-box ul li{padding: 0;}
 	#notification_inside h6{font-size: 12px !important;}
     #notification_inside{
