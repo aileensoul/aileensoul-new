@@ -3483,6 +3483,13 @@ height: 100px;
 
 .business-profile-right .flw_msg_btn ul li a:hover{border-bottom: none;}
 
+/*img fixed*/
+.two-images img{ width: 280px; height: 210px; }
+.four-image img{ width: 280px; height: 200px; }
+.three-image img{
+ width: 280px; height: 210px; 
+}
+.three-image-top img{width:550px; height: 220px;}
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}
   50%{ opacity: .4;}

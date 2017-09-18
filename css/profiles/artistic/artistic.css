@@ -1274,7 +1274,7 @@ display: inline-block;
 }
 .two-images {
     float: left;
-    height: 324px;
+  
     width: 50%;
     padding: 1px;
 }
@@ -1285,7 +1285,7 @@ display: inline-block;
 }
 .three-image {
     float: left;
-    height: 324px;
+  
     width: 50%;
     padding: 1px;
 }
@@ -1308,8 +1308,7 @@ display: inline-block;
 .four-image {
     float: left;
     text-align: center;
-    height: 250px;
-    width: 50%;
+      width: 50%;
     padding-right: 1px;
     padding-bottom: 1px;
     display: inline-block;
@@ -3243,7 +3242,12 @@ padding-left: 11px;}
 #filename{font-size: 18px!important;}
 #artbasicinfo label.error{position:relative; right:0; margin-right:0; text-align:right; margin-bottom:0; margin-top:5px;}
 
-
+.two-images img{ width: 280px; height: 210px; }
+.four-image img{ width: 280px; height: 200px; }
+.three-image img{
+ width: 280px; height: 210px; 
+}
+.three-image-top img{width:550px; height: 220px;}
 
 /***  media query  ***/
 @media screen and (max-width: 1280px){
@@ -3861,19 +3865,8 @@ padding-left: 11px;}
     .pt_mn2{padding-top: 20px !important;}
     .post-design-box .post-design-desc .fr{right: 0; padding: 6px 16px;}
     .post-img-user{font-size: 20px;line-height: 2; padding: 24px 0; }
-    .two-images {
-        height: 200px;
-    }
-    .three-image {
-        height: 200px;
-    }
-    .four-image {
-        height: 200px;
-    }
-  
-    .three-image-top {
-        height: 30%;
-    }
+ 
+
     .editor-content {
         width: 87%;
     }
@@ -4023,15 +4016,7 @@ padding-left: 11px;}
     .post-design-name ul li .post_dot {
         font-size: 14px;
     }
-    .two-images {
-        height: 150px;
-    }
-    .three-image {
-        height: 150px;
-    }
-    .four-image {
-        height: 150px;
-    }
+
    
     .comment-name {
         width: 79%;
@@ -4298,19 +4283,7 @@ padding-left: 11px;}
         width: 80%;
         padding-left: 6px !important;
     }
-    .two-images {
-        height: 120px;
-    }
-    .three-image {
-        height: 120px;
-    }
-    .four-image {
-        height: 120px;
-    }
-
-    .three-image-top {
-        height: 15%;
-    }
+ 
     .post-design-name {
         padding-right: 0;
     }
