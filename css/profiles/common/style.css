@@ -1878,6 +1878,7 @@ display: none !important;
 /*** bus and art ***/
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
+.file-preview-frame.krajee-default{width:120px; height:110px;}
 
 /*** all profile  ***/
 .profile-job-profile-menu{}
