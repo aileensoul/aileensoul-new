@@ -11816,8 +11816,9 @@ Your browser does not support the audio tag.
 <li>
 </li>
 </ul>
-</div>
-<div class = "dropdown1">
+</div>';
+                if($userid == $row['posted_user_id'] || $row['user_id'] == $userid){
+$return_html .= '<div class = "dropdown1">
 <a onClick = "myFunction1(' . $row['business_profile_post_id'] . ')" class = "dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
 <div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content2">';
                 if ($row['posted_user_id'] != 0) {
@@ -11854,6 +11855,8 @@ Your browser does not support the audio tag.
                 }
                 $return_html .= '</div>
 </div>';
+                }
+                
                 if ($row['product_name'] || $row['product_description']) {
                     $return_html .= '<div class = "post-design-desc ">';
                 }

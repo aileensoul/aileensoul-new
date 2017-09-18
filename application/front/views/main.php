@@ -7,7 +7,6 @@
         <meta property="og:title" content="Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com" />
         <meta property="og:description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field."/>
         <meta property="og:image" content="<?php echo base_url('images/meta-icon.png'); ?>" />
-        <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -33,7 +32,6 @@
           });
         </script>
         <meta name="p:domain_verify" content="d0a13cf7576745459dc0ca6027df5513"/>
-        <meta property="og:image" content="Link" />
         <link rel="icon" href="<?php echo base_url('images/favicon.png?ver=' . time()); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, 
@@ -41,8 +39,8 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_new.css?ver=' . time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style_harshad.css?ver=' . time()); ?>">
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/style_new.css?ver=' . time()); ?>">-->
+        <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/style_harshad.css?ver=' . time()); ?>">-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css?ver='.time()); ?>">
         <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script> 

@@ -6,7 +6,7 @@ $(function () {
         return split(term).pop();
     }
     /* first box */
-    $("#tags").bind("keydown", function (event) {
+    $(".tags").bind("keydown", function (event) {
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();
@@ -44,7 +44,7 @@ $(function () {
             });
     /* first box*/
     /* location box*/
-    $("#searchplace").bind("keydown", function (event) {
+    $(".searchplace").bind("keydown", function (event) {
         if (event.keyCode === $.ui.keyCode.TAB &&
                 $(this).autocomplete("instance").menu.active) {
             event.preventDefault();
