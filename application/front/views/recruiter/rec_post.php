@@ -288,7 +288,8 @@
                                                                 var data1 = <?php echo json_encode($de); ?>;
                                                                 var data = <?php echo json_encode($demo); ?>;
                                                                 var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-                                                                var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                    var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
+                    var id = '<?php echo $this->uri->segment(3);?>';
         </script>
 
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css'); ?>">

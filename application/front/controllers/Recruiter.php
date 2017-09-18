@@ -874,7 +874,7 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER ADD POST INSERT END
 // RECRUITER POST START
-    public function rec_post() {
+    public function rec_post($id="") {
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 
@@ -886,9 +886,8 @@ class Recruiter extends MY_Controller {
         }
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE END
 
-
-
         if ($id == $userid || $id == '') {
+           
             $this->recruiter_apply_check();
 
             $contition_array = array('user_id' => $userid, 'is_delete' => 0);
@@ -904,11 +903,12 @@ class Recruiter extends MY_Controller {
 //            $contition_array = array('rec_post.user_id' => $userid, 'rec_post.is_delete' => 0);
 //            $this->data['postdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'rec_post.*,recruiter.rec_firstname,recruiter.re_comp_name,recruiter.rec_lastname,recruiter.recruiter_user_image,recruiter.profile_background,recruiter.re_comp_profile', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
+             
             $this->rec_avail_check($id);
 
             $contition_array = array('user_id' => $id, 'is_delete' => 0, 're_step' => 3);
             $this->data['postdataone'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,rec_firstname,rec_lastname,recruiter_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-
+         //   echo "<pre>";print_r( $this->data['postdataone']);die();
 //            $join_str[0]['table'] = 'recruiter';
 //            $join_str[0]['join_table_id'] = 'recruiter.user_id';
 //            $join_str[0]['from_table_id'] = 'rec_post.user_id';
@@ -1992,6 +1992,8 @@ class Recruiter extends MY_Controller {
 // RECOMMANDED CANDIDATE AJAX LAZZY LOADER DATA START
 // RECRUITER POST AJAX LAZZY LOADER DATA START
     public function ajax_rec_post() {
+
+        $id = $_GET["id"];
 
 // LAZY LOADER CODE START
         $perpage = 5;
