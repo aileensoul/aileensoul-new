@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
+			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
               
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}

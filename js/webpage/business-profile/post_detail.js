@@ -28,6 +28,7 @@ function openModal() {
 
 function closeModal() {
     document.getElementById('myModal1').style.display = "none";
+    $('body').removeClass('modal-open');
 }
 
 var slideIndex = 1;

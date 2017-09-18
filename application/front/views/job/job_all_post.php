@@ -51,7 +51,7 @@
                            </div>
                            <div class="profile-boxProfileCard-content clearfix">
                               <div class="left_side_box_img buisness-profile-txext">
-                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('job/resume/' . $jobdata[0]['user_id']); ?>" title="<?php echo $jobdata[0]['fname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
+                                 <a class="profile-boxProfilebuisness-avatarLink2 a-inlineBlock"  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>" title="<?php echo $jobdata[0]['fname']; ?>" tabindex="-1" aria-hidden="true" rel="noopener">
                                     <?php
                                        if ($jobdata[0]['job_user_image']) {
                                            ?>
@@ -85,12 +85,12 @@
                               <div class="right_left_box_design ">
                                  <span class="profile-company-name ">
                                  <span class="profile-company-name ">
-                                 <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['user_id']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
+                                 <a   href="<?php echo site_url('job/resume/' . $jobdata[0]['slug']); ?>">  <?php echo ucfirst($jobdata[0]['fname']) . ' ' . ucfirst($jobdata[0]['lname']); ?></a>
                                  </span>
                                  </span>
                                  <?php $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name; ?>
                                  <div class="profile-boxProfile-name">
-                                    <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['user_id']); ?>"><?php
+                                    <a  href="<?php echo base_url('job/resume/' . $jobdata[0]['slug']); ?>"><?php
                                        if (ucwords($jobdata[0]['designation'])) {
                                            echo ucwords($jobdata[0]['designation']);
                                        } else {
