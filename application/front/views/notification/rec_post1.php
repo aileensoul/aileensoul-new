@@ -19,8 +19,9 @@
         
 
         
-        <div class="user-midd-section">
+        <div id="paddingtop_fixed">
             <div class="container">
+				
                 <div class="row">
                     <div class="col-md-2 col-sm-2" ></div>
                     <div class="col-md-7 col-sm-7">
@@ -134,10 +135,14 @@
             </div>
                         </div>
                     </div>
-    </section>
-    <footer>
+ 
+				</div>
+			</div>
+		</div>
+	<footer>
 
        <?php echo $footer; ?>
+	</footer>
 
 
 </body>
