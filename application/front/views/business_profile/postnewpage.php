@@ -117,6 +117,8 @@
                                                 $companyname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->company_name;
                                                 $companynameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->company_name;
                                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_user_image;
+                                                $business_slug = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
+                                                
                                                 $userimageposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id']))->row()->business_user_image;
                                                 $slugname = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['user_id'], 'status' => 1))->row()->business_slug;
                                                 $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $busienss_data[0]['posted_user_id'], 'status' => 1))->row()->business_slug;
@@ -552,10 +554,12 @@
                                                                     ?>
                                                                 </div>
                                                                 <div class="comment-name">
-                                                                    <b>  <?php
+                                                                    <b> <a href="<?php echo base_url('business-profile/details/'.$business_slug) ?>">
+ <?php
                                                                         echo $companyname;
                                                                         echo '</br>';
                                                                         ?>
+                                                                        </a>
                                                                     </b>
                                                                 </div>
                                                                 <div class="comment-details" id= "<?php echo "showcomment" . $rowdata['business_profile_post_comment_id']; ?>">
@@ -908,10 +912,12 @@
                                                                     ?>
                                                                 </div>
                                                                 <div class="comment-name">
-                                                                    <b>  <?php
+                                                                    <b> <a href="<?php echo base_url('business-profile/details/'.$business_slug) ?>"> 
+                                                                        <?php
                                                                         echo ucfirst(strtolower($companyname));
                                                                         echo '</br>';
                                                                         ?>
+                                                                        </a>
                                                                     </b>
                                                                 </div>
                                                                 <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
