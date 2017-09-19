@@ -3,11 +3,11 @@
     <head>
         <title>Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com</title>
         <meta name="description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field.">
-        <meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />
+        <!--<meta name="google-site-verification" content="BKzvAcFYwru8LXadU4sFBBoqd0Z_zEVPOtF0dSxVyQ4" />-->
         <meta property="og:title" content="Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com" />
         <meta property="og:description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field."/>
         <meta property="og:image" content="<?php echo base_url('images/meta-icon.png'); ?>" />
-        <script>
+<!--        <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
                 i[r] = i[r] || function () {
@@ -23,7 +23,7 @@
             ga('create', 'UA-91486853-1', 'auto');
             ga('send', 'pageview');
 
-        </script>
+        </script>-->
              <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
           (adsbygoogle = window.adsbygoogle || []).push({

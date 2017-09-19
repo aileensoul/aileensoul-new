@@ -808,7 +808,7 @@ class Business_profile extends MY_Controller {
 
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         foreach ($followerdata as $fdata) {
 
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => '1');
@@ -1323,31 +1323,47 @@ class Business_profile extends MY_Controller {
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
-                        echo $image_width = $response['result'][$i]['image_width'];
-                        echo '<br>';
-                        echo $image_height = $response['result'][$i]['image_height'];
-                        exit;
+                        $image_width = $response['result'][$i]['image_width'];
+                        $image_height = $response['result'][$i]['image_height'];
 
                         /* RESIZE4 */
-                        
+
                         $resize4_image_width = $this->config->item('bus_post_resize4_width');
                         $resize4_image_height = $this->config->item('bus_post_resize4_height');
-                        
+
                         $main_image_differ = $image_width - $resize4_image_width;
-                        
-                        if($main_image_differ)
-                        if ($image_width > $image_height) {
-                            $n_h1 = $resize4_image_height;
-                            $image_ratio = $image_height / $n_h1;
-                            $n_w1 = round($image_width / $image_ratio);
-                        } else if ($image_width < $image_height) {
-                            $n_w1 = $resize4_image_width;
-                            $image_ratio = $image_width / $n_w1;
-                            $n_h1 = round($image_height / $image_ratio);
-                        } else {
-                            $n_w1 = $resize4_image_width;
-                            $n_h1 = $resize4_image_height;
+
+                        if ($main_image_differ < 250) {
+                            if ($image_width > $image_height) {
+                                $n_h1 = $resize4_image_height;
+                                $image_ratio = $image_height / $n_h1;
+                                $n_w1 = round($image_width / $image_ratio);
+                            } else if ($image_width < $image_height) {
+                                $n_w1 = $resize4_image_width;
+                                $image_ratio = $image_width / $n_w1;
+                                $n_h1 = round($image_height / $image_ratio);
+                            } else {
+                                $n_w1 = $resize4_image_width;
+                                $n_h1 = $resize4_image_height;
+                            }
+                        } elseif ($main_image_differ > 250) {
+                            if ($image_width > $image_height) {
+                                $n_h1 = $resize4_image_height;
+                                $image_ratio = $image_height / $n_h1;
+                                $n_w1 = round($image_width / $image_ratio);
+                            } else if ($image_width < $image_height) {
+                                $n_w1 = $resize4_image_width;
+                                $image_ratio = $image_width / $n_w1;
+                                $n_h1 = round($image_height / $image_ratio);
+                            } else {
+                                $n_w1 = $resize4_image_width;
+                                $n_h1 = $resize4_image_height;
+                            }
+                        } elseif ($main_image_differ < 0) {
+                            $resize4_image_width = $n_w1 = $image_width;
+                            $resize4_image_height = $n_h1 = $image_height;
                         }
+
                         
                         $conf_new4[$i] = array(
                             'image_library' => 'gd2',
@@ -1357,7 +1373,7 @@ class Business_profile extends MY_Controller {
                             'width' => $resize4_image_width,
                             'height' => $resize4_image_height
                         );
-
+                        
                         $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
 
                         $left = ($n_w1 / 2) - ($resize4_image_width / 2);
@@ -5459,12 +5475,12 @@ class Business_profile extends MY_Controller {
 
         $post_id = $_POST['business_profile_post_id'];
         $contition_array = array('business_profile_post.business_profile_post_id' => $post_id, 'business_profile_post.status' => '1');
-        
+
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        
+
         $businessdata = $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = 'business_profile_post.delete_post,business_profile.business_profile_id,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
 
         $likeuserarray = explode(',', $businessdata[0]['delete_post']);
@@ -5482,15 +5498,15 @@ class Business_profile extends MY_Controller {
         );
 
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
-        
-        
+
+
         $business_profile_id = $businessdata[0]['business_profile_id'];
-        
+
 
 // for post count start
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        
+
         foreach ($followerdata as $fdata) {
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4);
             $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9970,11 +9986,11 @@ No Contacts Available.
         $userid = $this->session->userdata('aileenuser');
         $user_name = $this->session->userdata('user_name');
 
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted'=> '0', 'business_step' => '4');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0', 'business_step' => '4');
         $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
-        
+
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -11831,13 +11847,13 @@ Your browser does not support the audio tag.
 </li>
 </ul>
 </div>';
-                if($userid == $row['posted_user_id'] || $row['user_id'] == $userid){
-$return_html .= '<div class = "dropdown1">
+                if ($userid == $row['posted_user_id'] || $row['user_id'] == $userid) {
+                    $return_html .= '<div class = "dropdown1">
 <a onClick = "myFunction1(' . $row['business_profile_post_id'] . ')" class = "dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
 <div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content2">';
-                if ($row['posted_user_id'] != 0) {
-                    if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
-                        $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+                    if ($row['posted_user_id'] != 0) {
+                        if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
+                            $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
@@ -11845,32 +11861,32 @@ $return_html .= '<div class = "dropdown1">
 <i class = "fa fa-pencil-square-o" aria-hidden = "true">
 </i>Edit
 </a>';
-                    } else {
-                        /*   $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
-                          <i class = "fa fa-trash-o" aria-hidden = "true">
-                          </i> Delete Post
-                          </a>
-                          <a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
-                          <i class = "fa fa-user" aria-hidden = "true">
-                          </i> Contact Person
-                          </a>'; */
-                        $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+                        } else {
+                            /*   $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
+                              <i class = "fa fa-trash-o" aria-hidden = "true">
+                              </i> Delete Post
+                              </a>
+                              <a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['posted_user_id'] . '') . '">
+                              <i class = "fa fa-user" aria-hidden = "true">
+                              </i> Contact Person
+                              </a>'; */
+                            $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>';
-                    }
-                } else {
-                    if ($this->session->userdata('aileenuser') == $row['user_id']) {
-                        $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')"><i class = "fa fa-trash-o" aria-hidden = "true"></i> Delete Post</a>
-<a id = "' . $row['business_profile_post_id'] . '" onClick = "editpost(this.id)"><i class = "fa fa-pencil-square-o" aria-hidden = "true"></i>Edit</a>';
+                        }
                     } else {
+                        if ($this->session->userdata('aileenuser') == $row['user_id']) {
+                            $return_html .= '<a onclick = "user_postdelete(' . $row['business_profile_post_id'] . ')"><i class = "fa fa-trash-o" aria-hidden = "true"></i> Delete Post</a>
+<a id = "' . $row['business_profile_post_id'] . '" onClick = "editpost(this.id)"><i class = "fa fa-pencil-square-o" aria-hidden = "true"></i>Edit</a>';
+                        } else {
 //                        $return_html .= '<a href = "' . base_url('business-profile/business-profile-contactperson/' . $row['user_id'] . '') . '"><i class = "fa fa-user" aria-hidden = "true"></i> Contact Person</a>';
+                        }
                     }
-                }
-                $return_html .= '</div>
+                    $return_html .= '</div>
 </div>';
                 }
-                
+
                 if ($row['product_name'] || $row['product_description']) {
                     $return_html .= '<div class = "post-design-desc ">';
                 }
