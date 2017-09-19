@@ -86,7 +86,7 @@
                                                                         <ul>
                                                                             <li>
                                                                                 <a style="  font-size: 19px;
-                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['userid'] . '?page=recruiter'); ?>">
+                                                                                   font-weight: 600;" href="<?php echo base_url('job/resume/' . $row['slug'] . '?page=recruiter'); ?>">
                                                                                     <?php echo ucfirst(strtolower($row['fname'])) . ' ' . ucfirst(strtolower($row['lname'])); ?></a>
                                                                             </li>
                                                                             <li class="show">
