@@ -241,7 +241,7 @@ class Dashboard extends MY_Controller {
         $this->data['userdata'] = $this->common->select_data_by_id('user', 'user_id', $userid, $data = '*', $join_str = array());
 
 //        echo '<img src = "' . $this->data['busdata'][0]['profile_background'] . '" />';
-        $coverpic =  '<img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" />';
+        $coverpic =  '  <div class="bg-images"><img id="image_src" name="image_src" src = "' . USER_BG_MAIN_UPLOAD_URL . $this->data['userdata'][0]['profile_background'] . '" /></div>';
 
         echo $coverpic;
     }
