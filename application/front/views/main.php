@@ -36,7 +36,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, 
 minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />
+        <!--<meta name="msvalidate.01" content="41CAD663DA32C530223EE3B5338EC79E" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/common-style.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/style-main.css?ver=' . time()); ?>">
         <!--<link rel="stylesheet" type="text/css" href="<?php //echo base_url('css/style_new.css?ver=' . time()); ?>">-->
