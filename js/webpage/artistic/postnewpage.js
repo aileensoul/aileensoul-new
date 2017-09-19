@@ -100,7 +100,7 @@ $(document).ready(function () {
 
 // three dot hide when click outside script
 $('body').on("click", "*", function (e) {
-                            var classNames = $(e.target).attr("class").toString().split(' ').pop();
+                            var classNames = $(e.target).prop("class").toString().split(' ').pop();
                             if (classNames != 'fa-ellipsis-v') {
                                 $('div[id^=myDropdown]').hide().removeClass('show');
                             }
