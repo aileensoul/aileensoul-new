@@ -1298,6 +1298,7 @@ label.cameraButton input[accept*="camera"] {
 .circle-1 canvas{width: 118px; height: 118px;}
 .edit_profile_job{font-size: 12px;}
 .right_left_box_design{padding-left:20px;}
+	#experience_year{margin-right:30px !important;}
 
 
 }
@@ -1939,6 +1940,7 @@ label.cameraButton input[accept*="camera"] {
 	.details_all_tital{font-size:18px;}
     .profile-job-profile-menu ul .text-center{padding: 10px; padding-left: 0px;}
     .profile-job-profile-menu ul .text-center a{font-size: 12px;}
+	#experience_year{margin-right:9% !important; margin-bottom:0 !important;}
 }
 @media screen and (max-width: 360px) {
  .art_no_post_text {
