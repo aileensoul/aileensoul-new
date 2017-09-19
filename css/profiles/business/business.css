@@ -3578,7 +3578,10 @@ height: 100px;
 }
 @media screen and (max-width: 991px){
 	.mian_middle_post_box{width: 100%; margin-left: 0px; left: 0;}
-    .right_side_posrt{width: 100%;}
+    .right_side_posrt{width: 600px;
+margin: 0 auto;
+float: none;}
+   .pdf_img{width: 100%;}
     .art_container{padding: 0px;}
     .profile-main-box-buis-menu li a {
         font-size: 12px;
@@ -3710,7 +3713,7 @@ height: 100px;
         float: left;
     }
     .editor-content {
-        width: 90%;
+        width: 88%;
     }
     .custom-right-art {
         margin-left: 0;
@@ -3907,7 +3910,7 @@ height: 100px;
         height: 250px;
     }
     .editor-content {
-        width: 90%;
+        width: 87%;
     }
     .modal-content-post {
         width: 100%;
@@ -4107,6 +4110,8 @@ height: 100px;
          padding: 0px 0px 0;
          margin: 0px;
     }
+
+    .right_side_posrt{width: 100%;}
     .modal.in .modal-dialog{width: 80%;}
     #row2 img{height: 200px;}
     .bui_bcon {width: 56%;}
@@ -4259,6 +4264,9 @@ height: 100px;
         width: 200px !important;
         position: relative !important;
     }
+    .two-images img{height: 175px;}
+    .three-image img{height: 180px; }
+    .three-image-top img{height: 175px;}
     .cq_latest_right{width: 76%;}
     .cq_latest_left{width: 20%;}
     .addcontact-left{width: 75%;}
