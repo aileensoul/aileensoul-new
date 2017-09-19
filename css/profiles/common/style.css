@@ -1072,7 +1072,7 @@ label.cameraButton {
 .custom-c .middle-section{background:#f3f3f3;}
 .bg-images.no-cover-upload{
     background:#fff;
-    /*border-bottom:1px solid #d9d9d9;*/
+    border-bottom:1px solid #d9d9d9;
     background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
     background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
     background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);

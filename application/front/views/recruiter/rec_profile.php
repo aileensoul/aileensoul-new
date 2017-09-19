@@ -179,7 +179,7 @@
                     <!-- menubar -->
                     <div class="profile-main-rec-box-menu profile-box-art col-md-12 padding_les">
 
-                        <div class=" right-side-menu art-side-menu padding_less_right right-menu-jr">  
+                        <div class=" right-side-menu art-side-menu padding_less_right job_edit_pr right-menu-jr">  
 
                             <?php
                             $userid = $this->session->userdata('aileenuser');
@@ -263,7 +263,7 @@
             </div>
             <!-- menubar --> 
             <div class="middle-part container rec_res">
-                <div class="job-menu-profile mob-none pt20">
+                <div class="job-menu-profile job_edit_menu mob-none pt5">
                     <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
                     <!-- text head start -->
                     <div class="profile-text" >

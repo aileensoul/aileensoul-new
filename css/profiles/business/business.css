@@ -4154,7 +4154,7 @@ div .comment {
 .pdf_img {
     height: 40%;
     margin: 0 auto;
-    width: 40%;
+    width: 100%;
     padding: 5px;
 }
 #business_details {
@@ -4326,6 +4326,7 @@ div .comment {
     .right_left_box_design {
         padding: 10px 7px 8px 7px !important;
     }
+	
 }
 @media screen and (max-width: 1024px) {
     .post-design-name_follow {
