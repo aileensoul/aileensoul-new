@@ -28,7 +28,7 @@
                   <div class="">
                      <div class="full-box-module">
                         <div class="profile-boxProfileCard  module">
-                           <div class="profile-boxProfileCard-cover">
+                           <div class="profile-boxProfileCard-cover bg-images no-cover-upload">
                               <a class="profile-boxProfileCard-bg u-bgUserColor a-block"
                                  href="<?php echo base_url('job/resume'); ?>"
                                  tabindex="-1"

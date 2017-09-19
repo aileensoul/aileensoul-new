@@ -58,6 +58,8 @@
             <div class="">
                <div class="">
                   <div class="" id="row2">
+                    <div class="bg-images no-cover-upload">
+
                      <?php
                         $userid = $this->session->userdata('aileenuser');
 
@@ -85,6 +87,7 @@
                      <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
                      <?php }
                         ?>
+                      </div>
                   </div>
                </div>
             </div>
