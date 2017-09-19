@@ -1323,18 +1323,32 @@ class Business_profile extends MY_Controller {
                         $main_image = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
                         $abc = $s3->putObjectFile($main_image, bucket, $main_image, S3::ACL_PUBLIC_READ);
 
-                        $image_width = $response['result'][$i]['image_width'];
-                        $image_height = $response['result'][$i]['image_height'];
+                        echo $image_width = $response['result'][$i]['image_width'];
+                        echo '<br>';
+                        echo $image_height = $response['result'][$i]['image_height'];
+                        exit;
 
                         /* RESIZE4 */
-
+                        
                         $resize4_image_width = $this->config->item('bus_post_resize4_width');
                         $resize4_image_height = $this->config->item('bus_post_resize4_height');
-
-                        $n_w1 = $image_width;
-                        $n_h1 = $image_height;
-
-
+                        
+                        $main_image_differ = $image_width - $resize4_image_width;
+                        
+                        if($main_image_differ)
+                        if ($image_width > $image_height) {
+                            $n_h1 = $resize4_image_height;
+                            $image_ratio = $image_height / $n_h1;
+                            $n_w1 = round($image_width / $image_ratio);
+                        } else if ($image_width < $image_height) {
+                            $n_w1 = $resize4_image_width;
+                            $image_ratio = $image_width / $n_w1;
+                            $n_h1 = round($image_height / $image_ratio);
+                        } else {
+                            $n_w1 = $resize4_image_width;
+                            $n_h1 = $resize4_image_height;
+                        }
+                        
                         $conf_new4[$i] = array(
                             'image_library' => 'gd2',
                             'source_image' => $business_profile_post_main[$i]['new_image'],
