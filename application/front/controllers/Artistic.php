@@ -2518,7 +2518,15 @@ $datacount = count($otherdata);
 
          $userid = $this->session->userdata('aileenuser');
 
+         if(check_post_available($id) == 0){
+            echo "23";die();
 
+         }else{
+            echo"2589";die();
+
+         }
+
+die();
         $data = array(
             'is_delete' => 1,
             'modifiled_date' => date('Y-m-d', time())
@@ -15530,7 +15538,7 @@ public function get_artistic_name($id=''){
 
 //         // Retrieve the posted search term.
 //        //echo "<pre>";print_r($_POST);die();
-        $searchskill = trim($this->input->get('skills'));
+        $searchskill = strtolower(trim($this->input->get('skills')));
         $this->data['keyword'] = $searchskill;
 
 
@@ -17362,5 +17370,41 @@ public function get_artistic_name($id=''){
                 echo $return_html;
     }
 
+
+
+ public function check_post_available() {
+        $post_id = $_POST['post_id'];
+
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else {
+            $return = 0;
+        }
+
+
+        echo $return;
+    }
 
 }

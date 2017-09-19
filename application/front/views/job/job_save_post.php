@@ -69,7 +69,9 @@
                   <?php
                      } else {
                          ?>
+               <div class="bg-images no-cover-upload">
                   <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+               </div>
                   <?php }
                      ?>
                </div>

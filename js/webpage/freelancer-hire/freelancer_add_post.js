@@ -340,3 +340,44 @@ $(function () {
 });
 
 //NEW SCRIPT FOR SKILL END
+
+// SCRIPT FOR ADD OTHER FIELD  START
+$(document).on('change', '.field_other', function (event) {
+  
+    var item = $(this);
+     var other_field = (item.val());
+     
+     if(other_field == 15){
+         item.val('');
+         $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
+                        $('.message #field').on('click', function () {
+                            var $textbox = $('.message').find('input[type="text"]'),
+                                    textVal = $textbox.val();
+                            $.ajax({
+                                type: 'POST',
+                                url:  base_url + "freelancer/freelancer_hire_other_field" ,
+                                dataType: 'json',
+                                data: 'other_field=' + textVal,
+                                success: function (response) {
+
+                                    if (response.select == 0)
+                                    {
+                                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                    } else if (response.select == 1)
+                                    {
+                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                    } else
+                                    {
+                                        $.fancybox.close();
+
+                                        $('.field_other').html(response.select);
+                                    }
+                                }
+                            });
+
+                        });
+     }
+    
+ });
+//SCRIPT FOR ADD OTHER FILED END
+
