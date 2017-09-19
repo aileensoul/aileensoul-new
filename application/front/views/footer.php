@@ -176,6 +176,7 @@ $.fn.preload = function (fn) {
         $("#InboxLink").click(function ()
         {
             $("#Frnd_reqContainer").hide();
+            $("#acon").hide();
             $("#Frnd_req_count").hide();
             $(".dropdown-menu").hide();
             $("#addcontactContainer").hide();
@@ -208,11 +209,15 @@ $.fn.preload = function (fn) {
             $("#notification_count").hide();
             $("#InboxContainer").hide();
             $("#Inbox_count").hide();
+            $("#acon").hide();
+            
+
             return true;
         });
+
         // SHOW HIDE POPOVER
-        $("myDropdown").click(function () {
-            $(this).find(".dropdown-menu").fadeToggle("slow");
+        $('#menu1').click(function(){
+            $("#acon").hide();
         });
     });
 
