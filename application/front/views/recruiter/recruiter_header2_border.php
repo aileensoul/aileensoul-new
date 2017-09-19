@@ -43,12 +43,12 @@
                                         <?php if ($message_count) { ?>
                                                                    <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
 
                                             <span id="message_count"></span>
                                         </a>
 
-                                        <div id="InboxContainer">
+                                        <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
@@ -64,8 +64,8 @@
                                     <li>
 
                                         <div class="dropdown_hover">
-                                            <span id="art_profile">Recruiter Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                            <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                            <span id="art_profile" class="dropbtn_common">Recruiter Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                            <div class="dropdown-content_hover dropdown2_content" id="dropdown-content_hover">
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
 
@@ -157,11 +157,11 @@
                                         <?php if ($message_count) { ?>
                                                                  <!--  <span class="badge bg-theme"><?php //echo $message_count;   ?></span> -->
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="message3-24x24-h"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em><span class="message3-24x24-h"></span>
                                             <span id="message_count"></span>
                                         </a>
 
-                                        <div id="InboxContainer">
+                                        <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages<span class="see_link" id="seemsg"> </span></div>
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
@@ -178,8 +178,8 @@
                                     <li>
 
                                         <div class="dropdown_hover">
-                                            <span id="art_profile">Recruiter Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                            <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                            <span id="art_profile" class="dropbtn_common">Recruiter Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                            <div class="dropdown-content_hover dropdown2_content" id="dropdown-content_hover">
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
 

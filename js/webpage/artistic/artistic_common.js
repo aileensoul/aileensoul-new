@@ -263,7 +263,7 @@ $( document ).on( 'keydown', function ( e ) {
 
 jQuery(document).ready(function($) {  
 // site preloader -- also uncomment the div in the header and the css style for #preloader
-$(window).load(function(){
+ $(window).on('load', function(){
   $('#preloader').fadeOut('slow',function(){$(this).remove();});
 });
 });

@@ -1,39 +1,36 @@
-
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-    $(document).on('click','.dropbtn_common',function(){
-        $('.dropbtn_common').not(this).next().removeClass('show');
-        $(this).next().toggleClass('show');
-    });
-    $(document).on('click',function(e){
-        if(!$(e.target).closest('.dropbtn_common').length)
-            $('.dropbtn_common').next().removeClass('show');
-    });    
-});
-</script>
-
- -->
-
- <script type="text/javascript">
-$(document).ready(function(){
-    $('.dropbtn_common').on('click',function(){
-        $('.dropbtn_common').not(this).next().removeClass('show');
-        $(this).next().toggleClass('show');
-    });
-    $(document).on('click',function(e){
-        if(!$(e.target).closest('.dropbtn_common').length)
-            $('.dropbtn_common').next().removeClass('show');
-    });  
-    $(document).on('keydown', function (e) {
-        if (e.keyCode === 27) {
-            if(!$(e.target).closest('.dropbtn_common').length)
-            $('.dropbtn_common').next().removeClass('show');
-        }
-    });  
-});
-</script>
-
+<!-- Dropdown CLose while outside body click Start -->
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('.dropdown_hover').click(function (event) {
+            event.stopPropagation();
+            $(".dropdown-content_hover").fadeToggle("fast");
+        });
+        $(".dropdown-content_hover").on("dropdown_hover", function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    $(document).on("dropdown_hover", function () {
+        $(".dropdown-content_hover").hide();
+    });
+
+    $(document).ready(function () {
+        $("body").click(function (event) {
+            $(".dropdown-content_hover").hide();
+          //  event.stopPropagation();
+        });
+
+    });
+</script>
+<!-- Dropdown CLose while outside body click End -->
+
+<!-- IMAGE PRELOADER SCRIPT -->
+<script type="text/javascript">
+//  function preload(arrayOfImages) {
+//     $(arrayOfImages).each(function () {
+//         $('<img />').attr('src',this).appendTo('body').css('display','none');
+//     });
+// }
 
 $.fn.preload = function (fn) {
     var len = this.length, i = 0;
@@ -141,7 +138,15 @@ $.fn.preload = function (fn) {
             $('.pushmenu-push').toggleClass('pushmenu-push-toright');
             $menuLeft.toggleClass('pushmenu-open');
         });
-     
+        // CONTAINER HIDE : NOTIFICATION, PROFILEBOX, MESSAGEBOX
+        $("body").click(function (event) {
+            $("#notificationContainer").hide();
+            $("#InboxContainer").hide();
+            $(".dropdown-menu").hide();
+            $("#acon").hide();
+            $("#InboxContainer").fadeOut("slow");
+            $(".dropdown-menu").fadeOut("slow");
+        });
         // EDIT PROFILE DROPDOWN 
         $('.dropdown-user').click(function (event) {
             event.stopPropagation();
@@ -152,11 +157,68 @@ $.fn.preload = function (fn) {
             // event.stopPropagation();
         });
 
-        
-    
-   
+        //ON CLICK GENERAL NOTIFICATION ICON EVENT IN HEADER
+        $("#notificationLink").click(function ()
+        {
+              $("#acon").hide();
+            $("#InboxContainer").hide();
+            $("#Inbox_count").hide();
+            $(".dropdown-menu").hide();
+            $("#dropdown-content_hover").hide();
+            $("#addcontactContainer").hide();
+            $("#Frnd_reqContainer").hide();
+            $("#Frnd_req_count").hide();
+            $("#notificationContainer").fadeToggle(300);
+            $("#notification_count").fadeOut("slow");
+            return false;
+        });
+        //ON CLICK MESSAGE NOTIFICATION ICON EVENT IN HEADER
+        $("#InboxLink").click(function ()
+        {
+            $("#Frnd_reqContainer").hide();
+            $("#acon").hide();
+            $("#Frnd_req_count").hide();
+            $(".dropdown-menu").hide();
+            $("#addcontactContainer").hide();
+            $("#notificationContainer").hide();
+            $("#notification_count").hide();
+            $("#dropdown-content_hover").hide();
+            $("#InboxContainer").fadeToggle(300);
+            $("#Inbox_count").fadeOut("slow");
+            return false;
+        });
+        //ON CLICK USER PROFILE NOTIFICATION ICON EVENT IN HEADER
+        $(".dropdown-user").click(function ()
+        {
+            $("#Frnd_reqContainer").hide();
+            $("#Frnd_req_count").hide();
+            $("#addcontactContainer").hide();
+            $("#notificationContainer").hide();
+            $("#notification_count").hide();
+            $("#InboxContainer").hide();
+            $("#Inbox_count").hide();
+            $("#dropdown-content_hover").hide();
+            return true;
+        });
+        //ON CLICK USER PROFILE NOTIFICATION DROPDOWN HOVER ICON EVENT IN HEADER 
+        $(".dropdown_hover").click(function ()
+        {
+            $("#Frnd_reqContainer").hide();
+            $("#Frnd_req_count").hide();
+            $("#notificationContainer").hide();
+            $("#notification_count").hide();
+            $("#InboxContainer").hide();
+            $("#Inbox_count").hide();
+            $("#acon").hide();
+            
 
-      
+            return true;
+        });
+
+        // SHOW HIDE POPOVER
+        $('#menu1').click(function(){
+            $("#acon").hide();
+        });
     });
 
     function addmsg(type, msg)
@@ -194,12 +256,68 @@ $.fn.preload = function (fn) {
         });
     }
     
+    
 
+    // USER PROFILE DROPDOWN IN HEADER
+    $(document).on("dropdown-user", function () {
+        $(".dropdown-menu").hide();
+    });
+    // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE START
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $("#notificationContainer").hide();
+            $("#InboxContainer").hide();
+            $("#acon").hide();
+        }
+    });
 
- 
+/*
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $("#InboxContainer").hide();
+            $("#acon").hide();
+        }
+    });
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $("#acon").hide();
+        }
+    });
+    */
+    $(document).on("click", function (event) {
+        var $trigger = $(".myDropdown");
+        if ($trigger !== event.target && !$trigger.has(event.target).length) {
+            $(".myDropdown").slideUp("slow");
+        }
+    });
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 
- 
+    $(document).ready(function ()
+    {
+        $("#alink").click(function ()
+        {
+      
+
+            $("#InboxContainer").hide();
+            $("#Inbox_count").hide();
+            $(".dropdown-menu").hide();
+            $("#dropdown-content_hover").hide();
+            $("#addcontactContainer").hide();
+            $("#notificationContainer").hide();
+//            $("#notification_count").hide();
+
+
+            $("#Frnd_reqContainer").hide();
+            $("#Frnd_req_count").hide();
+
+            $("#acon").fadeToggle(300);
+            $("#acont").fadeOut("slow");
+
+            return false;
+        });
+
+    });
+
 </script>
 
 <script type="text/javascript">
@@ -207,8 +325,6 @@ $.fn.preload = function (fn) {
         document.getElementById('message_count').style.display = "none";
     });
 </script>
-
-
 
 <!-- footer end -->
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->

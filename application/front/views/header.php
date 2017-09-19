@@ -56,9 +56,9 @@
 
 
         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                            <li id="a_li"><a id="alink" class="action-button shadow animate" onclick="return leave_page(5)"> <span class="all"></span></a>
+                                            <li id="a_li"><a id="alink" class="action-button shadow animate dropbtn_common" onclick="return leave_page(5)"> <span class="all"></span></a>
 
-                                                <div id="acon">
+                                                <div id="acon"  class="dropdown2_content">
                                                     <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
                                                     <div id="abody" class="as">
                                                         <ul>
@@ -142,10 +142,10 @@
         <?php } else { ?>
 
                                             <li id="a_li">
-                                                <a id="alink" class=" action-button shadow animate" href="javascript:void(0)"><span class="all"></span>
+                                                <a id="alink" class=" action-button shadow animate dropbtn_common" href="javascript:void(0)"><span class="all"></span>
                                                 </a>
 
-                                                <div id="acon">
+                                                <div id="acon" class="dropdown2_content">
                                                     <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
                                                     <div id="abody" class="as">
                                                         <ul>
@@ -231,11 +231,11 @@
 
                                         <!-- general notification start -->
                                         <li id="notification_li">
-                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
+                                            <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
 
                                                 <span id="notification_count"></span>
 
-                                            </a><div id="notificationContainer">
+                                            </a><div id="notificationContainer"  class="dropdown2_content">
 
                                                 <div id="InboxBody" class="Inbox">
                                                     <div id="notificationTitle">Notifications <span class="see_link" id="seenot"></span></div>
@@ -262,7 +262,7 @@
                                         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                                         <li class="dropdown dropdown-user">
 
-                                            <a class="dropbtn action-button shadow animate" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
+                                            <a class="dropbtn action-button shadow animate dropbtn_common" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
                                                 <!-- <div id="hi" class="notifications"> -->
                                                 <?php if ($userdata[0]['user_image'] != '') { ?>
                                                     <img alt="" class="img-circle" src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" height="50" width="50" alt="Smiley face" />
@@ -289,7 +289,7 @@
                                             </a>
 
 
-                                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="myDropdown">
+                                            <ul class="dropdown-menu dropdown2_content" role="menu" aria-labelledby="menu1" id="myDropdown">
 
                                               
                                                 <li class="my_account">
@@ -362,9 +362,9 @@
 
 
         <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'add_post') || ($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'edit_post') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
-                                        <li id="a_li"><a id="alink" class=" action-button shadow animate" onclick="return leave_page(5)"><span class="all"></span></a>
+                                        <li id="a_li"><a id="alink" class=" action-button shadow animate dropbtn_common" onclick="return leave_page(5)"><span class="all"></span></a>
 
-                                            <div id="acon">
+                                            <div id="acon"  class="dropdown2_content">
                                                 <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
                                                 <div id="abody" class="as">
                                                     <ul>
@@ -447,10 +447,10 @@
         <?php } else { ?>
 
                                         <li id="a_li">
-                                            <a id="alink" class=" action-button shadow animate" href="javascript:void(0)">  <span class="all"></span>
+                                            <a id="alink" class=" action-button shadow animate dropbtn_common" href="javascript:void(0)">  <span class="all"></span>
                                             </a>
 
-                                            <div id="acon">
+                                            <div id="acon"  class="dropdown2_content">
                                                 <div id="atittle">Profiles <a href="<?php echo base_url('dashboard') ?>" class="fr">All</a></div>
                                                 <div id="abody" class="as">
                                                     <ul>
@@ -538,11 +538,11 @@
         
                                     <!-- general notification start -->
                                     <li id="notification_li">
-                                            <a class="action-button shadow animate" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
+                                            <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="notificationLink" onclick = "return Notificationheader();"><em class="hidden-xs"></em> <i class="header-icon-notification "></i>
 
                                                 <span id="notification_count"></span>
 
-                                            </a><div id="notificationContainer">
+                                            </a><div id="notificationContainer"  class="dropdown2_content">
 
                                                 <div id="InboxBody" class="Inbox">
                                                     <div id="notificationTitle">Notifications <span class="see_link" id="seenot"></span></div>
@@ -568,7 +568,7 @@
                                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                                     <li class="dropdown dropdown-user">
 
-                                        <a class="dropbtn action-button shadow animate" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
+                                        <a class="dropbtn action-button shadow animate dropbtn_common" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
                                             <!-- <div id="hi" class="notifications"> -->
                                             <?php if ($userdata[0]['user_image'] != '') { ?>
                                                 <img alt="" class="img-circle" src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" height="50" width="50" alt="Smiley face" />
@@ -597,7 +597,7 @@
                                         </a>
 
 
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" id="myDropdown">
+                                        <ul class="dropdown-menu dropdown2_content" role="menu" aria-labelledby="menu1" id="myDropdown">
 
                                             <li class="my_account">
                                                 <div class="my_S">Account</div>

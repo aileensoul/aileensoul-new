@@ -134,11 +134,11 @@
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <li id="add_contact">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
+                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
                                             <span id="addcontact_count"></span>
                                         </a>
-                                        <div id="addcontactContainer">
+                                        <div id="addcontactContainer" class="dropdown2_content">
                                             <div id="addcontactBody" class="notifications">
                                                 <?php
                                                 $contition_array = array('contact_to_id' => $userid, 'status' => 'pending');
@@ -175,11 +175,11 @@
                                     <li id="Inbox_link">
                                         <?php if ($message_count) { ?>
                                         <?php } ?>
-                                        <a class="action-button shadow animate" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
+                                        <a class="action-button shadow animate dropbtn_common" href="#" id="InboxLink" onclick = "return getmsgNotification()"><em class="hidden-xs"> </em> <span class="message3-24x24-h"></span>
                                             <span id="message_count" class="message_count"></span>
                                         </a>
 
-                                        <div id="InboxContainer">
+                                        <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
                                                 <div>
@@ -190,8 +190,8 @@
                                     </li>   
                                     <li>
                                         <div class="dropdown_hover">
-                                            <span id="art_profile" >Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                            <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                            <span id="art_profile" class="dropbtn_common" >Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                            <div class="dropdown-content_hover dropdown2_content" id="dropdown-content_hover">
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
@@ -253,7 +253,7 @@
                                             <span class="bu_req"></span>
                                             <span id="addcontact_count"></span>
                                         </a>
-                                        <div id="addcontactContainer">
+                                        <div id="addcontactContainer" class="dropdown2_content">
                                             <div id="addcontactBody" class="notifications">
                                                 <div id="addcontactTitle">Contact Request <span class="see_link" id="seecontact"></span></div>
                                                 <div class="content mCustomScrollbar light notifications" id="notification_main_in" data-mcs-theme="minimal-dark">
@@ -271,7 +271,7 @@
                                             <span id="message_count" class="message_count"></span>
                                         </a>
 
-                                        <div id="InboxContainer">
+                                        <div id="InboxContainer" class="dropdown2_content">
                                             <div id="InboxBody" class="Inbox">
                                                 <div id="notificationTitle">Messages   <span class="see_link" id="seemsg"> </span></div>
                                                 <div>
@@ -283,8 +283,8 @@
                                     </li>        
                                     <li>
                                         <div class="dropdown_hover">
-                                            <span id="art_profile" >Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                            <div class="dropdown-content_hover" id="dropdown-content_hover">
+                                            <span id="art_profile" class="dropbtn_common">Business Profile <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                            <div class="dropdown-content_hover dropdown2_content" id="dropdown-content_hover">
                                                 <span class="my_account">
                                                     <div class="my_S">Account</div>
                                                 </span>
