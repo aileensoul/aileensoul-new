@@ -1783,7 +1783,20 @@ class Freelancer extends MY_Controller {
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $freelancerhiredata = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        //echo "</pre>";print_r($freelancerhiredata);die();
+        
+        if(count($freelancerhiredata)<=0){
+             $return_html .= '<div class="text-center rio" style="border: none;">';
+            $return_html .= '<div class="no-post-title">';
+            $return_html .= '<h4 class="page-heading  product-listing" style="border:0px;">Lets create your project.</h4>';
+            $return_html .= '<h4 class="page-heading  product-listing" style="border:0px;"> It will takes only few minutes.</h4>';
+            $return_html .= '</div>';
+            $return_html .= '<div  class="add-post-button add-post-custom">';
+            $return_html .= '<a class="btn btn-3 btn-3b"  href="' . base_url() . 'freelancer-hire/add-projects"><i class="fa fa-plus" aria-hidden="true"></i>  Post Project</a>';
+            $return_html .= '</div>';
+            $return_html .= '</div>';
+            echo $return_html;
+       }
+        else{
         foreach ($freelancerhiredata as $frdata) {
             $post_skill_data = $frdata['post_skill'];
             $postuserarray = explode(',', $frdata['post_skill']);
@@ -2012,6 +2025,7 @@ class Freelancer extends MY_Controller {
         }
 
         echo $return_html;
+    }
     }
 
     public function freelancer_hire_check() {
