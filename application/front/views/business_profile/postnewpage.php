@@ -922,8 +922,8 @@
                                                                 </div>
                                                                 <div class="comment-details" id= "<?php echo "imgshowcomment" . $rowdata['post_image_comment_id']; ?>">
                                                                     <?php
-                                                                    echo $this->common->make_links($rowdata['comment']);
-                                                                    echo $new_product_comment = $this->common->make_links($rowdata['comment']);
+//                                                                    echo $this->common->make_links($rowdata['comment']);
+                                                                    $new_product_comment = $this->common->make_links($rowdata['comment']);
                                                                     echo nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
                                                                     ?>
                                                                 </div>

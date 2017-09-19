@@ -1327,74 +1327,144 @@ class Business_profile extends MY_Controller {
                         $image_height = $response['result'][$i]['image_height'];
 
                         /* RESIZE4 */
+                        /*
+                          $resize4_image_width = $this->config->item('bus_post_resize4_width');
+                          $resize4_image_height = $this->config->item('bus_post_resize4_height');
 
-                        $resize4_image_width = $this->config->item('bus_post_resize4_width');
-                        $resize4_image_height = $this->config->item('bus_post_resize4_height');
+                          $main_image_differ = $image_width - $resize4_image_width;
 
-                        $main_image_differ = $image_width - $resize4_image_width;
+                          if ($main_image_differ < 250 && $main_image_differ > 0 ) {
+                          if ($image_width > $image_height) {
+                          $n_h1 = $resize4_image_height;
+                          $image_ratio = $image_height / $n_h1;
+                          $n_w1 = round($image_width / $image_ratio);
+                          } else if ($image_width < $image_height) {
+                          $n_w1 = $resize4_image_width;
+                          $image_ratio = $image_width / $n_w1;
+                          $n_h1 = round($image_height / $image_ratio);
+                          } else {
+                          $n_w1 = $resize4_image_width;
+                          $n_h1 = $resize4_image_height;
+                          }
 
-                        if ($main_image_differ < 250) {
-                            if ($image_width > $image_height) {
-                                $n_h1 = $resize4_image_height;
-                                $image_ratio = $image_height / $n_h1;
-                                $n_w1 = round($image_width / $image_ratio);
-                            } else if ($image_width < $image_height) {
-                                $n_w1 = $resize4_image_width;
-                                $image_ratio = $image_width / $n_w1;
-                                $n_h1 = round($image_height / $image_ratio);
-                            } else {
-                                $n_w1 = $resize4_image_width;
-                                $n_h1 = $resize4_image_height;
-                            }
-                        } elseif ($main_image_differ > 250) {
-                            if ($image_width > $image_height) {
-                                $n_h1 = $resize4_image_height;
-                                $image_ratio = $image_height / $n_h1;
-                                $n_w1 = round($image_width / $image_ratio);
-                            } else if ($image_width < $image_height) {
-                                $n_w1 = $resize4_image_width;
-                                $image_ratio = $image_width / $n_w1;
-                                $n_h1 = round($image_height / $image_ratio);
-                            } else {
-                                $n_w1 = $resize4_image_width;
-                                $n_h1 = $resize4_image_height;
-                            }
-                        } elseif ($main_image_differ < 0) {
-                            $resize4_image_width = $n_w1 = $image_width;
-                            $resize4_image_height = $n_h1 = $image_height;
-                        }
+                          $conf_new4[$i] = array(
+                          'image_library' => 'gd2',
+                          'source_image' => $business_profile_post_main[$i]['new_image'],
+                          'create_thumb' => FALSE,
+                          'maintain_ratio' => FALSE,
+                          'width' => $resize4_image_width,
+                          'height' => $resize4_image_height
+                          );
 
-                        
-                        $conf_new4[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $business_profile_post_main[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resize4_image_width,
-                            'height' => $resize4_image_height
-                        );
-                        
-                        $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                          $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                          $top = ($n_h1 / 2) - ($resize4_image_height / 2);
 
-                        $left = ($n_w1 / 2) - ($resize4_image_width / 2);
-                        $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+                          $conf_new4[$i]['x_axis'] = $left;
+                          $conf_new4[$i]['y_axis'] = $top;
 
-                        $conf_new4[$i]['x_axis'] = $left;
-                        $conf_new4[$i]['y_axis'] = $top;
+                          } elseif ($main_image_differ > 250) {
+                          if ($image_width > $image_height) {
+                          $n_h1 = $resize4_image_height;
+                          $image_ratio = $image_height / $n_h1;
+                          $n_w1 = round($image_width / $image_ratio);
+                          } else if ($image_width < $image_height) {
+                          $n_w1 = $resize4_image_width;
+                          $image_ratio = $image_width / $n_w1;
+                          $n_h1 = round($image_height / $image_ratio);
+                          } else {
+                          $n_w1 = $resize4_image_width;
+                          $n_h1 = $resize4_image_height;
+                          }
 
-                        $instanse4 = "image4_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new4[$i], $instanse4);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse4->crop();
+                          $conf_new4[$i] = array(
+                          'image_library' => 'gd2',
+                          'source_image' => $business_profile_post_main[$i]['new_image'],
+                          'create_thumb' => FALSE,
+                          'maintain_ratio' => FALSE,
+                          'width' => $resize4_image_width,
+                          'height' => $resize4_image_height
+                          );
 
-                        $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                          $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                          $top = ($n_h1 / 2) - ($resize4_image_height / 2);
 
-                        $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+                          $conf_new4[$i]['x_axis'] = $left;
+                          $conf_new4[$i]['y_axis'] = $top;
 
+
+                          } elseif ($main_image_differ < 0) {
+                          $resize4_image_width  = $image_width;
+                          $resize4_image_height = $image_height;
+
+                          $conf_new4[$i] = array(
+                          'image_library' => 'gd2',
+                          'source_image' => $business_profile_post_main[$i]['new_image'],
+                          'create_thumb' => TRUE,
+                          'maintain_ratio' => FALSE,
+                          'width' => $resize4_image_width,
+                          'height' => $resize4_image_height
+                          );
+                          }
+
+
+                          $conf_new4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                          $instanse4 = "image4_$i";
+                          //Loading Image Library
+                          $this->load->library('image_lib', $conf_new4[$i], $instanse4);
+                          $dataimage = $response['result'][$i]['file_name'];
+                          //Creating Thumbnail
+                          $this->$instanse4->crop();
+                          $this->$instanse4->clear();
+
+                          $resize_image4 = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+
+                          $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+                         */
                         /* RESIZE4 */
+                        if ($count == '3') {
+                            /* RESIZE 4 */
 
+                            $resize4_image_width = $this->config->item('bus_post_resize4_width');
+                            $resize4_image_height = $this->config->item('bus_post_resize4_height');
+
+
+                            if ($image_width > $image_height) {
+                                $n_h1 = $resize4_image_height;
+                                $image_ratio = $image_height / $n_h1;
+                                $n_w1 = round($image_width / $image_ratio);
+                            } else if ($image_width < $image_height) {
+                                $n_w1 = $resize4_image_width;
+                                $image_ratio = $image_width / $n_w1;
+                                $n_h1 = round($image_height / $image_ratio);
+                            } else {
+                                $n_w1 = $resize4_image_width;
+                                $n_h1 = $resize4_image_height;
+                            }
+
+                            $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                            $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+
+                            $business_profile_post_resize4[$i]['image_library'] = 'gd2';
+                            $business_profile_post_resize4[$i]['source_image'] = $this->config->item('bus_post_main_upload_path') . $response['result'][$i]['file_name'];
+                            $business_profile_post_resize4[$i]['new_image'] = $this->config->item('bus_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                            $business_profile_post_resize4[$i]['create_thumb'] = TRUE;
+                            $business_profile_post_resize4[$i]['maintain_ratio'] = TRUE;
+                            $business_profile_post_resize4[$i]['thumb_marker'] = '';
+                            $business_profile_post_resize4[$i]['width'] = $n_w1;
+                            $business_profile_post_resize4[$i]['height'] = $n_h1;
+                            $business_profile_post_resize4[$i]['quality'] = "100%";
+//                        $business_profile_post_resize4[$i]['x_axis'] = $left;
+//                        $business_profile_post_resize4[$i]['y_axis'] = $top;
+                            $instanse4 = "image4_$i";
+                            //Loading Image Library
+                            $this->load->library('image_lib', $business_profile_post_resize4[$i], $instanse4);
+                            //Creating Thumbnail
+                            $this->$instanse4->resize();
+                            $this->$instanse4->clear();
+
+                            /* RESIZE 4 */
+                        }
 
                         $thumb_image_width = $this->config->item('bus_post_thumb_width');
                         $thumb_image_height = $this->config->item('bus_post_thumb_height');
@@ -1436,91 +1506,92 @@ class Business_profile extends MY_Controller {
 
                         $abc = $s3->putObjectFile($thumb_image, bucket, $thumb_image, S3::ACL_PUBLIC_READ);
 
-                        /* CROP 335 X 320 */
-                        // reconfigure the image lib for cropping
+                        if ($count == '2' || $count == '3') {
+                            /* CROP 335 X 320 */
+                            // reconfigure the image lib for cropping
 
-                        $resized_image_width = $this->config->item('bus_post_resize1_width');
-                        $resized_image_height = $this->config->item('bus_post_resize1_height');
-                        if ($thumb_image_width < $resized_image_width) {
-                            $resized_image_width = $thumb_image_width;
+                            $resized_image_width = $this->config->item('bus_post_resize1_width');
+                            $resized_image_height = $this->config->item('bus_post_resize1_height');
+                            if ($thumb_image_width < $resized_image_width) {
+                                $resized_image_width = $thumb_image_width;
+                            }
+                            if ($thumb_image_height < $resized_image_height) {
+                                $resized_image_height = $thumb_image_height;
+                            }
+
+                            $conf_new[$i] = array(
+                                'image_library' => 'gd2',
+                                'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                                'create_thumb' => FALSE,
+                                'maintain_ratio' => FALSE,
+                                'width' => $resized_image_width,
+                                'height' => $resized_image_height
+                            );
+
+                            $conf_new[$i]['new_image'] = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+                            $left = ($n_w / 2) - ($resized_image_width / 2);
+                            $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                            $conf_new[$i]['x_axis'] = $left;
+                            $conf_new[$i]['y_axis'] = $top;
+
+                            $instanse1 = "image1_$i";
+                            //Loading Image Library
+                            $this->load->library('image_lib', $conf_new[$i], $instanse1);
+                            $dataimage = $response['result'][$i]['file_name'];
+                            //Creating Thumbnail
+                            $this->$instanse1->crop();
+
+                            $resize_image = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
+
+                            $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
+                            /* CROP 335 X 320 */
                         }
-                        if ($thumb_image_height < $resized_image_height) {
-                            $resized_image_height = $thumb_image_height;
+                        if ($count == '4') {
+                            /* CROP 335 X 245 */
+                            // reconfigure the image lib for cropping
+
+                            $resized_image_width = $this->config->item('bus_post_resize2_width');
+                            $resized_image_height = $this->config->item('bus_post_resize2_height');
+                            if ($thumb_image_width < $resized_image_width) {
+                                $resized_image_width = $thumb_image_width;
+                            }
+                            if ($thumb_image_height < $resized_image_height) {
+                                $resized_image_height = $thumb_image_height;
+                            }
+
+
+                            $conf_new1[$i] = array(
+                                'image_library' => 'gd2',
+                                'source_image' => $business_profile_post_thumb[$i]['new_image'],
+                                'create_thumb' => FALSE,
+                                'maintain_ratio' => FALSE,
+                                'width' => $resized_image_width,
+                                'height' => $resized_image_height
+                            );
+
+                            $conf_new1[$i]['new_image'] = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+                            $left = ($n_w / 2) - ($resized_image_width / 2);
+                            $top = ($n_h / 2) - ($resized_image_height / 2);
+
+                            $conf_new1[$i]['x_axis'] = $left;
+                            $conf_new1[$i]['y_axis'] = $top;
+
+                            $instanse2 = "image2_$i";
+                            //Loading Image Library
+                            $this->load->library('image_lib', $conf_new1[$i], $instanse2);
+                            $dataimage = $response['result'][$i]['file_name'];
+                            //Creating Thumbnail
+                            $this->$instanse2->crop();
+
+                            $resize_image1 = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
+
+                            $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
+
+                            /* CROP 335 X 245 */
                         }
-
-                        $conf_new[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $business_profile_post_thumb[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resized_image_width,
-                            'height' => $resized_image_height
-                        );
-
-                        $conf_new[$i]['new_image'] = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w / 2) - ($resized_image_width / 2);
-                        $top = ($n_h / 2) - ($resized_image_height / 2);
-
-                        $conf_new[$i]['x_axis'] = $left;
-                        $conf_new[$i]['y_axis'] = $top;
-
-                        $instanse1 = "image1_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new[$i], $instanse1);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse1->crop();
-
-                        $resize_image = $this->config->item('bus_post_resize1_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($resize_image, bucket, $resize_image, S3::ACL_PUBLIC_READ);
-                        /* CROP 335 X 320 */
-
-
-                        /* CROP 335 X 245 */
-                        // reconfigure the image lib for cropping
-
-                        $resized_image_width = $this->config->item('bus_post_resize2_width');
-                        $resized_image_height = $this->config->item('bus_post_resize2_height');
-                        if ($thumb_image_width < $resized_image_width) {
-                            $resized_image_width = $thumb_image_width;
-                        }
-                        if ($thumb_image_height < $resized_image_height) {
-                            $resized_image_height = $thumb_image_height;
-                        }
-
-
-                        $conf_new1[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $business_profile_post_thumb[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resized_image_width,
-                            'height' => $resized_image_height
-                        );
-
-                        $conf_new1[$i]['new_image'] = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
-
-                        $left = ($n_w / 2) - ($resized_image_width / 2);
-                        $top = ($n_h / 2) - ($resized_image_height / 2);
-
-                        $conf_new1[$i]['x_axis'] = $left;
-                        $conf_new1[$i]['y_axis'] = $top;
-
-                        $instanse2 = "image2_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new1[$i], $instanse2);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse2->crop();
-
-                        $resize_image1 = $this->config->item('bus_post_resize2_upload_path') . $response['result'][$i]['file_name'];
-
-                        $abc = $s3->putObjectFile($resize_image1, bucket, $resize_image1, S3::ACL_PUBLIC_READ);
-
-                        /* CROP 335 X 245 */
-
                         /* CROP 210 X 210 */
                         // reconfigure the image lib for cropping
 
@@ -1997,12 +2068,20 @@ class Business_profile extends MY_Controller {
 //                </div>
 //            </a>
 //        </div>';
+                    /* $return_html .= '<div>
+                      <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class="pdf_img">
+                      <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+                      </div>
+                      </a>
+                      </div>';
+                     * 
+                     */
                     $return_html .= '<div>
-            <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class="pdf_img">
-                    <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
-                </div>
-            </a>
-        </div>';
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+</div>
+</a>
+</div>';
                 } elseif (in_array($ext, $allowesvideo)) {
 //                    $return_html .= '<div>
 //            <video width="100%" height="350" controls>
@@ -10332,10 +10411,16 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 //</div>
 //</a>
 //</div>';
+//                            $return_html .= '<div>
+//<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+//    <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+//</div>
+//</a>
+//</div>';
 
                             $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
-    <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
 </div>
 </a>
 </div>';
@@ -11684,7 +11769,8 @@ Your browser does not support the audio tag.
                 $fetch_pdf .= '<div class = "image_profile">';
 //                $fetch_pdf .= '<a href = "' . base_url('business_profile/creat_pdf/' . $singlearray3[0]['image_id']) . '"><div class = "pdf_img">';
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>';
+//                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>';
+                $fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $singlearray3[0]['file_name'] . '" width="100%" height="450px" />';
 //                $fetch_pdf .= '<img src = "' . base_url('images/PDF.jpg') . '" style = "height: 100%; width: 100%;">';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
@@ -11956,13 +12042,21 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //                </div></a>
 //        </div>';
 
+                        /*  $return_html .= '<div>
+                          <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class="pdf_img">
+                          <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
+
+                          </div>
+                          </a>
+                          </div>';
+                         */
+
                         $return_html .= '<div>
-            <a title="click to open" href="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class="pdf_img">
-                <iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '&embedded=true" style="width:100%; height:500px;" frameborder="0"></iframe>
-                    
-                </div>
-            </a>
-        </div>';
+<a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
+    <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
+</div>
+</a>
+</div>';
                     } elseif (in_array($ext, $allowesvideo)) {
 //                        $return_html .= '<div>
 //            <video class="video" width="100%" height="350" controls>
