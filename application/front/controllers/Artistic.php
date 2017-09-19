@@ -15530,7 +15530,7 @@ public function get_artistic_name($id=''){
 
 //         // Retrieve the posted search term.
 //        //echo "<pre>";print_r($_POST);die();
-        $searchskill = trim($this->input->get('skills'));
+        $searchskill = strtolower(trim($this->input->get('skills')));
         $this->data['keyword'] = $searchskill;
 
 
