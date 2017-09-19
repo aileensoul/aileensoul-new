@@ -23,6 +23,13 @@ $(document).ready(function () {
     $("#freelancer_post_professional").validate({
         ignore: '*:not([name])',
         //  ignore: ":hidden",
+         groups: {
+            tin: "experience_year experience_month"
+        },
+        errorPlacement: function (error, element) {
+        if (element.attr('name') == 'experience_year' || element.attr('name') == 'experience_month')
+            error.insertAfter('#experience_month');
+    },
         rules: {
 
             field: {
@@ -47,8 +54,8 @@ $(document).ready(function () {
 
             experience_month: {
                 require_from_group: [1, ".day"],
-                noSpace: true
-            },
+               
+            }
 
         },
 
@@ -74,7 +81,7 @@ $(document).ready(function () {
                 required: "Skill description is required.",
             },
             experience_year: {
-                require_from_group: "You must either fill out 'experience year' or 'experience month'"
+              require_from_group: "You must either fill out 'experience year' or 'experience month'"
             },
             experience_month: {
                 require_from_group: "You must either fill out 'experience year' or 'experience month'"
