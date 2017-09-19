@@ -1939,7 +1939,7 @@ $files[] = $_FILES;
      
         } else {
         
-             $this->job_avail_check($id);
+            // $this->job_avail_check($id);
 
             //for getting data job_reg table
             $contition_array = array('job_reg.user_id' => $id, 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
