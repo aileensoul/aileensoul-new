@@ -147,7 +147,7 @@
 
 
 
-                            <?php
+                            <?php 
                             if ($returnpage == '') {
                                 if ($recdata[0]['designation'] == '') {
                                     ?>
@@ -168,7 +168,7 @@
                                     <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
                                     <a id="designation" class="designation" title="Designation">Designation</a>
 
-                                <?php } else { ?>
+                                <?php } else {  ?>
                                     <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
                                 }
                             }
@@ -282,7 +282,14 @@
                             <?php
                             }
                         } else {
-                            echo ucfirst(strtolower($recdata[0]['designation']));
+                           if ($recdata[0]['designation'] == '') {
+                                    ?>
+                                    <!--<center><a id="myBtn" title="Designation">Designation</a></center>-->
+                                    <a id="designation" class="designation" title="Designation">Designation</a>
+
+                                <?php } else {  ?>
+                                    <a id="designation" class="designation" title="<?php echo ucfirst(strtolower($recdata[0]['designation'])); ?>"> <?php echo ucfirst(strtolower($recdata[0]['designation'])); ?></a> <?php
+                                }
                         }
                         ?>
 

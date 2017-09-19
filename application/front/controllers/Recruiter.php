@@ -779,14 +779,14 @@ class Recruiter extends MY_Controller {
                 $contition_array = array('skill' => trim($ski), 'type' => 1);
                 $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-                if (count($skilldata) < 0) {
+                if (count($skilldata) == 0) {
                     $contition_array = array('skill' => trim($ski), 'type' => 4);
 
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                 }
-                if ($skilldata) {
+                if ($skilldata) { 
                     $skill1[] = $skilldata[0]['skill_id'];
-                } else {
+                } else { 
                     $data = array(
                         'skill' => trim($ski),
                         'status' => '1',
@@ -810,7 +810,7 @@ class Recruiter extends MY_Controller {
                     $contition_array = array('degree_name' => trim($educat), 'status' => 1, 'is_other' => '0');
                     $edudata = $this->common->select_data_by_condition('degree', $contition_array, $data = 'degree_id,degree_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
-                    if (count($edudata) < 0) {
+                    if (count($edudata) == 0) {
                         $contition_array = array('degree_name' => trim($educat), 'status' => 2, 'is_other' => 1, 'user_id' => $userid);
                         $edudata = $this->common->select_data_by_condition('degree', $contition_array, $data = 'degree_id,degree_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
                     }
@@ -1320,7 +1320,7 @@ class Recruiter extends MY_Controller {
             redirect('recruiter/');
         }
 //if user deactive profile then redirect to recruiter/index untill active profile End
-        $data = "rec_id,user_id,rec_firstname,rec_lastname,rec_email,rec_phone,re_comp_name,re_comp_email,re_comp_phone,re_comp_site,re_comp_country,re_comp_state,re_comp_city,re_comp_profile,re_comp_sector,re_comp_activities,comp_logo,recruiter_user_image,profile_background,re_step";
+        $data = "rec_id,user_id,rec_firstname,rec_lastname,rec_email,rec_phone,re_comp_name,re_comp_email,re_comp_phone,re_comp_site,re_comp_country,re_comp_state,re_comp_city,re_comp_profile,re_comp_sector,re_comp_activities,comp_logo,recruiter_user_image,profile_background,re_step,designation";
         if ($id == $userid || $id == '') {
             $this->recruiter_apply_check();
             $this->data['recdata'] = $this->common->select_data_by_id('recruiter', 'user_id', $userid, $data, $join_str = array());
@@ -4682,5 +4682,31 @@ class Recruiter extends MY_Controller {
     public function recruiter_data($data = ""){
     $this->load->view('recruiter/recruiter_data', $this->data);
     }
+//AJAX DESIGNATION START
+public function ajax_designation() {
 
+         $this->recruiter_apply_check(); 
+
+        $userid = $this->session->userdata('aileenuser');
+         //if user deactive profile then redirect to recruiter/index untill active profile start
+         $contition_array = array('user_id'=> $userid,'re_status' => '0','is_delete'=> '0');
+
+        $recruiter_deactive = $this->data['recruiter_deactive'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if( $recruiter_deactive)
+        {
+             redirect('recruiter/');
+        }
+     //if user deactive profile then redirect to recruiter/index untill active profile End
+        $data = array(
+            'designation' => $_POST['designation']
+        );
+        $updatedata = $this->common->update_data($data, 'recruiter', 'user_id', $userid);
+        if ($updatedata) {
+            echo 'ok';
+        } else {
+            echo 'error';
+        }
+    }
+//AJAX DESIGNATION END
 }
