@@ -10360,7 +10360,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
 <div id = "khyati' . $row['business_profile_post_id'] . '" style = "display:block;">';
 
                     $small = substr($row['product_description'], 0, 180);
-                    $return_html .= nl2br($small);
+                    $return_html .= nl2br($this->common->make_links($small));
                     if (strlen($row['product_description']) > 180) {
                         $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $row['business_profile_post_id'] . ')">View More</span>';
                     }
@@ -12114,7 +12114,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
-//                    $return_html .= '<div class="three-imag-top" >
+//                    $return_html .= '<div class="three-image-top" >
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '"> </a>
 //        </div>
 //        <div class="three-image" >
@@ -12123,7 +12123,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
 //        <div class="three-image" >
 //            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['file_name']) . '"> </a>
 //        </div>';
-                    $return_html .= '<div class="three-imag-top" >
+                    $return_html .= '<div class="three-image-top" >
             <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
