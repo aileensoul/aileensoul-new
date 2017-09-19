@@ -708,7 +708,8 @@
         </footer>
         <!-- script for skill textbox automatic start (option 2)-->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
+<!--        <script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
 
 
 
@@ -973,7 +974,8 @@
                         {
                             if (response == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-                                window.location = "<?php echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
+                                window.location = "<?php echo base_url()?>freelancer-work/basic-information";
+//                                window.location = "<?php //echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
