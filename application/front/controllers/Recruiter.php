@@ -2540,15 +2540,15 @@ class Recruiter extends MY_Controller {
                     }
                 } else {
 
-                    $rec_post .= '<div class="art-img-nn">
-                                            <div class="art_no_post_img">
-                                                <img src="' . base_url() . 'img/job-no.png">
-
-                                            </div>
-                                            <div class="art_no_post_text">
-                                                No  Post Available.
-                                            </div>
-                                        </div>';
+//                    $rec_post .= '<div class="art-img-nn">
+//                                            <div class="art_no_post_img">
+//                                                <img src="' . base_url() . 'img/job-no.png">
+//
+//                                            </div>
+//                                            <div class="art_no_post_text">
+//                                                No  Post Available.
+//                                            </div>
+//                                        </div>';
                 }
             }
         } else {
