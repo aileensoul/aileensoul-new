@@ -1394,7 +1394,7 @@ line-height: 1;}
     background: linear-gradient(354deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3bb0ac', endColorstr='#1b8ab9',GradientType=0 );
     font-size: 32px;
-    padding: 16px 0;
+    padding: 19px 0;
     text-align: center;
     text-transform: uppercase;
     line-height: 3.3;
@@ -1494,6 +1494,7 @@ background-color: white;}
         left: inherit;
         right: -10px !important;
     }
+	.post-img-mainuser{padding:4px 0;}
 }
 @media screen and (max-width: 767px) {
 	.header2 .mob-width{padding-left:5px;}
@@ -1683,8 +1684,9 @@ right: 3%!important;
         }
 	fieldset{padding: 9px 8px!important;}
     #notificationContainer::before {
-    right: 75px;
-}
+		right: 75px;
+	}
+	.post-img-mainuser{padding:5px 0; line-height:2.3;}
 
 }
 @media screen and (max-width: 540px) {
