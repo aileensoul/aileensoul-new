@@ -3484,7 +3484,8 @@ height: 100px;
 .four-image img{ width: 280px; height: 200px; }
 .three-image img{width: 280px; height: 210px;}
 .three-image-top img{width:550px; height: 220px;}
-
+.flw_msg_btn ul li button.bg_following{ padding: 9px 0px; }
+.mob-comment button:focus {outline: none;}
 
 @keyframes pulse1 {
   0%{transform:scale(.1);opacity: 0;}

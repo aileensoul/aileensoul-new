@@ -1222,6 +1222,7 @@ label.cameraButton input[accept*="camera"] {
 	.alert {
         font-size: 16px;
         padding: 7px;
+        margin-top: 20px;
     }
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}

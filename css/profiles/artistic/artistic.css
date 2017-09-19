@@ -3265,7 +3265,8 @@ padding-left: 11px;}
  width: 280px; height: 210px; 
 }
 .three-image-top img{width:550px; height: 220px;}
-
+.flw_msg_btn ul li button.bg_following{ padding: 9px 0px; }
+.mob-comment button:focus {outline: none;}
 /***  media query  ***/
 @media screen and (max-width: 1280px){
     .mian_middle_post_box{width: 610px;}
@@ -4334,6 +4335,7 @@ padding-left: 11px;}
     .folle_text {
 		width: 37%;
 	}
+
 	.edit-comment-box .comment-edit-button button{padding: 6px 13px}
 		 .post-edit-popup .popup-text textarea{padding-right: 45px;}
 			 .inputtype-edit-comment .editable_text{width: 60%!important;}
@@ -4373,7 +4375,7 @@ padding-left: 11px;}
         padding: 5px 2px !important;*/
     }
     .cmy_2 {
-        width: 80%;
+        width: 100%;
         padding-left: 6px !important;
     }
  
