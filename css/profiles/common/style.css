@@ -1986,6 +1986,7 @@ display: none !important;
 	#row2 {
         width: 100%;
     }
+    .midd-section h2{font-size: 32px;}
 	.message-data-name {
         margin-right: 2%;
         font-size: 14px;
