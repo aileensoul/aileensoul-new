@@ -65,8 +65,10 @@ define('IMAGEPATHFROM', 'upload'); //upload,s3bucket
 define('bucket', 'aileensoulimages');
 
 //AWS access info 
-define('awsAccessKey', 'AKIAI2ZIGZWVAZWQJOPA');
-define('awsSecretKey', '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');
+//define('awsAccessKey', 'AKIAI2ZIGZWVAZWQJOPA'); 
+//define('awsSecretKey', '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');
+define('awsAccessKey', 'ANKIT_ACCESS_KEY');
+define('awsSecretKey', 'ANKIT_SECRET_KEY');
 
 define('BUCKETLINK', 'https://' . bucket . '.s3.amazonaws.com/');
 
