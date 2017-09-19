@@ -49,7 +49,6 @@
             </div>
             <div class="">
                <div class="" id="row2">
-                  <div class="bg-images no-cover-upload">
                   <?php
                      $userid = $this->session->userdata('aileenuser');
                       if($this->uri->segment(3) == $userid){
@@ -69,10 +68,11 @@
                   <?php
                      } else {
                          ?>
+                <div class="bg-images no-cover-upload">
                   <img src="<?php echo base_url(WHITEIMAGE); ?>" name="image_src" id="image_src" / >
+               </div>
                   <?php }
                      ?>
-                  </div>
                </div>
             </div>
          </div>
