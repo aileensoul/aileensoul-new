@@ -73,7 +73,7 @@
 
                                 <div> <span class="required_field" >( <span class="red">*</span> ) Indicates required field</span></div>
 
-
+							<div class="fw">
                                 <fieldset>
                                     <label>First Name<span class="red">*</span>:</label>
                                     <input name="first_name" tabindex="1" autofocus type="text" id="first_name"  placeholder="Enter First Name" value="<?php
@@ -99,7 +99,8 @@
                                            ?>" id="last_name" /><span id="fullname-error" ></span>
                                            <?php echo form_error('last_name'); ?>
                                 </fieldset>
-
+							</div>
+							<div class="fw">
 
                                 <fieldset>
                                     <label>Email address:<span class="red">*</span></label>
@@ -123,7 +124,7 @@
                                            <?php echo form_error('phoneno'); ?>
                                 </fieldset>
 
-
+							</div>
                                 <fieldset class="hs-submit full-width">
 
 
