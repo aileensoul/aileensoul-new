@@ -866,6 +866,7 @@ label.cameraButton input[accept*="camera"] {
 .job_edit_pr {
     padding-left: 245px;
 }
+.common-form fieldset.rec_check input{height:auto;}
 
 
 /***  media query  ***/
