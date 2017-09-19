@@ -383,15 +383,15 @@
                                 <?php
                                 if ($freepostdata[0]['profile_background'] != '') {
                                     ?>
-                                                                                        <div class="data_img">
-                                                                                            <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                        </div>
+                                                                                            <div class="data_img">
+                                                                                                <img src="<?php echo base_url($this->config->item('free_post_bg_thumb_upload_path') . $freepostdata[0]['profile_background']); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                                            </div>
                                     <?php
                                 } else {
                                     ?>
-                                                                                        <div class="data_img">
-                                                                                            <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
-                                                                                        </div>
+                                                                                            <div class="data_img">
+                                                                                                <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>"  >
+                                                                                            </div>
                                     <?php
                                 }
                                 ?>
@@ -404,9 +404,9 @@
                                 <?php
                                 if ($freelancerdata[0]['freelancer_post_user_image']) {
                                     ?>
-                                                                                            <div class="data_img_2">
-                                                                                                <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
-                                                                                            </div>
+                                                                                                <div class="data_img_2">
+                                                                                                    <img src="<?php echo base_url($this->config->item('free_post_profile_thumb_upload_path') . $freepostdata[0]['freelancer_post_user_image']); ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                                                                </div>
                                     <?php
                                 } else {
                                     $fname = $freepostdata[0]['freelancer_post_fullname'];
@@ -414,9 +414,9 @@
                                     $sub_fname = substr($fname, 0, 1);
                                     $sub_lname = substr($lname, 0, 1);
                                     ?>
-                                                                                            <div class="post-img-profile">
+                                                                                                <div class="post-img-profile">
                                     <?php echo ucfirst(strtolower($sub_fname)) . ucfirst(strtolower($sub_lname)); ?>
-                                                                                            </div> 
+                                                                                                </div> 
                                     <?php
                                 }
                                 ?>
@@ -708,83 +708,89 @@
         </footer>
         <!-- script for skill textbox automatic start (option 2)-->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>">
-<!--        <script type="text/javascript" src="<?php //echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>-->
-
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
 
 
         <script type="text/javascript">
-                                            function login()
-                                            {
-                                                document.getElementById('error1').style.display = 'none';
-                                            }
-                                            //validation for edit email formate form
-                                            $(document).ready(function () {
-                                                /* validation */
-                                                $("#login_form").validate({
-                                                    rules: {
-                                                        email_login: {
-                                                            required: true,
-                                                        },
-                                                        password_login: {
-                                                            required: true,
-                                                        }
-                                                    },
-                                                    messages:
-                                                            {
-                                                                email_login: {
-                                                                    required: "Please enter email address",
-                                                                },
-                                                                password_login: {
-                                                                    required: "Please enter password",
-                                                                }
-                                                            },
-                                                    submitHandler: submitForm
-                                                });
-                                                /* validation */
-                                                /* login submit */
-                                                function submitForm()
-                                                {
+            function login()
+            {
+                document.getElementById('error1').style.display = 'none';
+            }
+            //validation for edit email formate form
+            $(document).ready(function () {
+                /* validation */
+                $("#login_form").validate({
+                    rules: {
+                        email_login: {
+                            required: true,
+                        },
+                        password_login: {
+                            required: true,
+                        }
+                    },
+                    messages:
+                            {
+                                email_login: {
+                                    required: "Please enter email address",
+                                },
+                                password_login: {
+                                    required: "Please enter password",
+                                }
+                            },
+                    submitHandler: submitForm
+                });
+                /* validation */
+                /* login submit */
+                function submitForm()
+                {
 
-                                                    var email_login = $("#email_login").val();
-                                                    var password_login = $("#password_login").val();
-                                                    var post_data = {
-                                                        'email_login': email_login,
-                                                        'password_login': password_login,
-                                                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-                                                    }
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '<?php echo base_url() ?>registration/check_login',
-                                                        data: post_data,
-                                                        dataType: "json",
-                                                        beforeSend: function ()
-                                                        {
-                                                            $("#error").fadeOut();
-                                                            $("#btn1").html('Login ...');
-                                                        },
-                                                        success: function (response)
-                                                        {
-                                                            if (response.data == "ok") {
-                                                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                                                window.location = "<?php echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
-                                                            } else if (response.data == "password") {
-                                                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                document.getElementById("password_login").classList.add('error');
-                                                                $("#btn1").html('Login');
-                                                            } else {
-                                                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                document.getElementById("email_login").classList.add('error');
-                                                                $("#btn1").html('Login');
-                                                            }
-                                                        }
-                                                    });
-                                                    return false;
-                                                }
-                                                /* login submit */
-                                            });
+                    var email_login = $("#email_login").val();
+                    var password_login = $("#password_login").val();
+                    var post_data = {
+                        'email_login': email_login,
+                        'password_login': password_login,
+                        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo base_url() ?>registration/user_check_login',
+                        data: post_data,
+                        dataType: "json",
+                        beforeSend: function ()
+                        {
+                            $("#error").fadeOut();
+                            $("#btn1").html('Login ...');
+                        },
+                        success: function (response)
+                        {
+                            
+                            if (response.data == "ok") {
+                                $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                if(response.is_freelancer_work == 1){
+                                  
+                                window.location = "<?php echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
+                            }else{
+                               
+                                window.location = "<?php echo base_url()?>freelancer-work/basic-information";
+                            }
+                            } else if (response.data == "password") {
+                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login").classList.add('error');
+                                document.getElementById("password_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            } else {
+                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login").classList.add('error');
+                                document.getElementById("email_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            }
+                        }
+                    });
+                    return false;
+                }
+                /* login submit */
+            });
 
 
 
@@ -975,7 +981,7 @@
                             if (response == "ok") {
                                 $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
                                 window.location = "<?php echo base_url()?>freelancer-work/basic-information";
-//                                window.location = "<?php //echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
+                                //window.location = "<?php echo base_url() ?>freelancer-work/search?skills=" + skill + '&searchplace' + place;
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');

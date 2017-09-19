@@ -586,7 +586,7 @@ class Registration extends CI_Controller {
         $result = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $userinfo = $this->common->check_login($email_login, $password_login);
-
+      
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -609,11 +609,29 @@ class Registration extends CI_Controller {
             $business = 1;
         }
         
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
+        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $free_work = 0;
+        if($free_work_result[0]['total'] > 0){
+            $free_work = 1;
+        }
+        
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'free_hire_step' => 3);
+        $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $free_hire = 0;
+        if($free_hire_result[0]['total'] > 0){
+            $free_hire = 1;
+        }
+        
         echo json_encode(
                 array(
                     "data" => $is_data,
                     "id" => $id,
-                    "is_bussiness" => $business
+                    "is_bussiness" => $business,
+                    "is_freelancer_work"=>$free_work,
+                    "is_freelancer_hire"=>$free_hire
         ));
     }
 

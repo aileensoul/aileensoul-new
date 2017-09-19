@@ -774,7 +774,7 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/check_login',
+                        url: '<?php echo base_url() ?>registration/user_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
@@ -786,7 +786,12 @@
                         {
                             if (response.data == "ok") {
                                 $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                if(response.is_freelancer_hire == 1){
                                 window.location = "<?php echo base_url() ?>freelancer-hire/search?skills=" + skill + '&searchplace' + place;
+                            }
+                            else{
+                                window.location = "<?php echo base_url()?>freelancer-hire/basic-information";
+                            }
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
