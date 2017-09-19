@@ -858,16 +858,19 @@ label.cameraButton input[accept*="camera"] {
 .job-contact-frnd .add-post-button .btn-3{margin: 10px;
 }
 #basicinfo  label.error{position: relative; margin-top: 5px; right: 0; margin-bottom: 0px; margin-right: 0; text-align: right;    }
+#indus{border:1px solid #1b8ab9; margin-top:10px; }
+#indus:hover{background:#1b8ab9; color:#fff;}
+
+
 /***  media query  ***/
-@media screen and (max-width: 1279px)
-{
+@media screen and (max-width: 1279px){
 .custom-right {
     margin-left: 10px
     }
     
-   } 
-@media screen and (max-width: 1200px)
-{
+} 
+
+@media screen and (max-width: 1200px){
       .custom-right{margin-left: 50px;}
 }
 
@@ -888,6 +891,7 @@ label.cameraButton input[accept*="camera"] {
 	.experience_year{margin-right:34px;}
 	.right_left_box_design{padding:17px 12px 12px 25px !important;}
 }
+
 @media screen and (max-width: 1130px){
  .custom-right{margin-left: 27px;}
 }
@@ -942,6 +946,7 @@ label.cameraButton input[accept*="camera"] {
     .common-form1{padding-top:20px; width:100%; float:left;}    
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
+
 @media screen and (max-width: 991px){
           .art_no_post_text{font-size: 21px;}
     .back {
@@ -1034,6 +1039,7 @@ label.cameraButton input[accept*="camera"] {
     margin-left: 5%;
     }
 }
+
 @media screen and (max-width: 767px){
      .common-form input[type="radio"], .common-form input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
     .art-img-nn{margin: 7px 0px 23px;}
@@ -1312,6 +1318,7 @@ label.cameraButton input[accept*="camera"] {
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
 }
+
 @media screen and (max-width: 640px) {
 	.user-pic {
 		width: 75px;
@@ -1348,6 +1355,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	.profile-job-post-location-name-rec .post_designation{font-size: 12px;}
 }
+
 @media screen and (max-width: 540px) {
 	.profile-job-post-location-name-rec .post_name {
         font-size: 14px;
@@ -1390,6 +1398,7 @@ label.cameraButton input[accept*="camera"] {
         padding: 7px 5px 7px 5px !important;
     }
 }
+
 @media screen and (max-width: 479px) {
     .product-listing {font-size: 18px;
     }
@@ -1532,6 +1541,7 @@ label.cameraButton input[accept*="camera"] {
     }
 	
 }
+
 @media screen and (max-width: 360px) {
     .back {
     width: 73%;
@@ -1612,6 +1622,7 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
     }
 }
+
 @media screen and (max-width: 320px){
 	.profile-job-details .post_title{font-size: 11px;}
 }
