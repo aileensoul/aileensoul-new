@@ -2444,6 +2444,47 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
         $id = $_POST['art_post_id'];
 
+         $condition_array = array('art_post_id' => $id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+
         $data = array(
             'is_delete' => 1,
             'modifiled_date' => date('Y-m-d', time())
@@ -2508,6 +2549,8 @@ $datacount = count($otherdata);
                             "notpdf" => $notpdf,
                             "notphoto" => $notphoto,
                 ));
+
+             }   
 
     }
 
