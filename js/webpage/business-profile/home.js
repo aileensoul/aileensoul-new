@@ -854,10 +854,11 @@ function followuser_two(clicked_id)
         url: base_url + "business_profile/follow_two",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-            $('.' + 'fr' + clicked_id).html(data);
+            $('.' + 'fr' + clicked_id).html(data.follow);
+            $('.follow_box_ul_li:last').append(data.third_user);
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
-                        business_home_three_user_list();
+//                        business_home_three_user_list();
                     });
         }
     });
@@ -884,8 +885,6 @@ function business_home_follow_ignore(clicked_id)
         }
     });
 }
-
-
 /* FOLLOW USER SCRIPT END */
 
 // POPUP BOX FOR POST START 
@@ -1377,7 +1376,7 @@ function remove_post(abc)
 //            if (total_post == 0) {
 //                $('.art_no_post_avl').show();
 //            }
-            
+
             check_no_post_data();
         }
     });
@@ -1395,8 +1394,8 @@ function del_particular_userpost(abc)
         success: function (data) {
             $('#' + 'removepost' + abc).remove();
             /*if (data.notcount == 'count') {
-                $('.' + 'nofoundpost').html(data.notfound);
-            }*/
+             $('.' + 'nofoundpost').html(data.notfound);
+             }*/
             check_no_post_data();
         }
     });
@@ -1431,7 +1430,7 @@ $('body').on("click", "*", function (e) {
     }
 });
 
-$('body').on('touchstart', function(e) {
+$('body').on('touchstart', function (e) {
     //var classNames = $(e.target).attr("class").toString().split(' ').pop();
     var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
@@ -1781,5 +1780,5 @@ function check_no_post_data() {
     if (numberPost == 0) {
         $('.business-all-post').html(no_business_post_html);
     }
-    
+
 }
