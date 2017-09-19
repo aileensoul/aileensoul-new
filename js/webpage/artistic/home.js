@@ -472,6 +472,11 @@ function post_like(clicked_id)
            dataType: 'json',
            data: 'post_id=' + clicked_id,
            success: function (data) {
+
+            if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
                $('.' + 'likepost' + clicked_id).html(data.like);
                $('.likeusername' + clicked_id).html(data.likeuser);
                $('.comnt_count_ext' + clicked_id).html(data.like_user_count);
@@ -484,6 +489,7 @@ function post_like(clicked_id)
                }
                $('#likeusername' + clicked_id).addClass('likeduserlist1');
            }
+         }
        });
    }
 
@@ -499,8 +505,14 @@ function post_like(clicked_id)
            //url: '<?php echo base_url() . "artistic/like_comment" ?>',
            data: 'post_id=' + clicked_id,
            success: function (data) {
+
+            if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                $('#' + 'likecomment' + clicked_id).html(data);
-   
+              }
            }
        });
    }
@@ -515,8 +527,13 @@ function post_like(clicked_id)
            //url: '<?php echo base_url() . "artistic/like_comment1" ?>',
            data: 'post_id=' + clicked_id,
            success: function (data) {
+
+            if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
                $('#' + 'likecomment1' + clicked_id).html(data);
-   
+              }
            }
        });
    }
@@ -539,10 +556,17 @@ function post_like(clicked_id)
            //url: '<?php echo base_url() . "artistic/delete_comment" ?>',
            data: 'post_id=' + clicked_id + '&post_delete=' + post_delete.value,
            dataType: "json",
-           success: function (data) {  
+           success: function (data) { 
+
+           if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                $('.' + 'insertcomment' + post_delete.value).html(data.comment);
                 $('.like_count_ext' + post_delete.value).html(data.commentcount);
                $('.post-design-commnet-box').show();
+             }
            }
        });
    }
@@ -563,10 +587,16 @@ function post_like(clicked_id)
            data: 'post_id=' + clicked_id + '&post_delete=' + post_delete1.value,
            dataType: "json",
            success: function (data) {
+
+            if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                $('.' + 'insertcommenttwo' + post_delete1.value).html(data.comment);
              $('.like_count_ext' + post_delete1.value).html(data.commentcount);
                $('.post-design-commnet-box').show();
-   
+              }
            }
        });
    }
@@ -622,12 +652,17 @@ function insert_comment(clicked_id)
                data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                dataType: "json",
                success: function (data) {
+
+                if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
                    $('textarea').each(function () {
                        $(this).val('');
                    });
                    $('.insertcomment' + clicked_id).html(data.comment);
                    $('.like_count_ext' + clicked_id).html(data.commentcount);
-   
+                }
                }
            });
    
@@ -640,11 +675,16 @@ function insert_comment(clicked_id)
                data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                dataType: "json",
                success: function (data) {
+                  if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
                    $('textarea').each(function () {
                        $(this).val('');
                    });
                    $('#' + 'fourcomment' + clicked_id).html(data.comment);
                    $('.like_count_ext' + clicked_id).html(data.commentcount);
+                 }
                }
            });
        }
@@ -704,12 +744,18 @@ function insert_comment(clicked_id)
                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                        dataType: "json",
                        success: function (data) { //alert(123); alert(data.commentcount);
+                      if(data.notavlpost == 'notavl'){
+                      $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+                       $('#bidmodal').modal('show');
+                      }else{
+
                            $('textarea').each(function () {
                                $(this).val('');
                            });
                            $('.insertcomment' + clicked_id).html(data.comment);
                            $('.like_count_ext' + clicked_id).html(data.commentcount);
                        }
+                     }
                    });
                } else {
                    $.ajax({
@@ -719,12 +765,19 @@ function insert_comment(clicked_id)
                        data: 'post_id=' + clicked_id + '&comment=' + encodeURIComponent(txt),
                        dataType: "json",
                        success: function (data) {
+
+                          if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
                            $('textarea').each(function () {
                                $(this).val('');
                            });
                            $('#' + 'fourcomment' + clicked_id).html(data.comment);
                            $('.like_count_ext' + clicked_id).html(data.commentcount);
-                          }
+                          
+                        }
+                      }
                    });
                }
            }
@@ -875,6 +928,12 @@ function insert_comment(clicked_id)
            //url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
            data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
            success: function (data) {
+
+            if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                document.getElementById('editcomment' + abc).style.display = 'none';
                document.getElementById('showcomment' + abc).style.display = 'block';
                document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -884,7 +943,7 @@ function insert_comment(clicked_id)
                $('.post-design-commnet-box').show();
               
                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
-
+             }
            }
        });
        $(".scroll").click(function (event) {
@@ -935,6 +994,12 @@ function insert_comment(clicked_id)
                    //url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
                    data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                    success: function (data) {
+
+                     if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                        document.getElementById('editcomment' + abc).style.display = 'none';
                        document.getElementById('showcomment' + abc).style.display = 'block';
                        document.getElementById('editsubmit' + abc).style.display = 'none';
@@ -943,7 +1008,7 @@ function insert_comment(clicked_id)
                        $('#' + 'showcomment' + abc).html(data);
                        $('.post-design-commnet-box').show();
                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
-                         
+                    }  
 
                    }
                });
@@ -989,6 +1054,12 @@ function insert_comment(clicked_id)
            //url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
            data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
            success: function (data) {
+
+             if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                document.getElementById('editcommenttwo' + abc).style.display = 'none';
                document.getElementById('showcommenttwo' + abc).style.display = 'block';
                document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -998,7 +1069,7 @@ function insert_comment(clicked_id)
                $('.post-design-commnet-box').show();
                $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
-
+             }
            }
        });
        $(".scroll").click(function (event) {
@@ -1051,6 +1122,12 @@ function insert_comment(clicked_id)
                    //url: '<?php echo base_url() . "artistic/edit_comment_insert" ?>',
                    data: 'post_id=' + abc + '&comment=' + encodeURIComponent(txt),
                    success: function (data) {
+
+                     if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
                        document.getElementById('editcommenttwo' + abc).style.display = 'none';
                        document.getElementById('showcommenttwo' + abc).style.display = 'block';
                        document.getElementById('editsubmittwo' + abc).style.display = 'none';
@@ -1062,7 +1139,7 @@ function insert_comment(clicked_id)
                        $('.post-design-commnet-box').show();
                        $('.hidebottomborder').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
                        $('.hidebottombordertwo').find('.all-comment-comment-box:last').css('border-bottom','1px solid #d9d9d9');
-
+                    }
    
                    }
                });
@@ -1083,9 +1160,7 @@ function insert_comment(clicked_id)
        var z = document.getElementById('insertcount' + clicked_id);
    
        if (x.style.display === 'block' && y.style.display === 'none') {
-           x.style.display = 'none';
-           y.style.display = 'block';
-           z.style.visibility = 'show';
+          
            $.ajax({
                type: 'POST',
                url: base_url + "artistic/fourcomment",
@@ -1093,8 +1168,18 @@ function insert_comment(clicked_id)
                data: 'art_post_id=' + clicked_id,
                //alert(data);
                success: function (data) {
+
+                if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+                  
+                   x.style.display = 'none';
+                   y.style.display = 'block';
+                   z.style.visibility = 'show';
                    $('#' + 'fourcomment' + clicked_id).html(data);
                }
+             }
            });
        }
        
@@ -1228,14 +1313,18 @@ function insert_comment(clicked_id)
            dataType: 'json',
            data: 'art_post_id=' + abc,
            //alert(data);
-           success: function (data) { 
+           success: function (data) {
+            if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
    
                $('#' + 'removepost' + abc).remove();
                if(data.notcount == 'count'){
                     $('.' + 'nofoundpost').html(data.notfound);
                    }
 
-   
+              }
    
            }
        });
@@ -1600,7 +1689,7 @@ function insert_comment(clicked_id)
    }
 
     $('body').on("click", "*", function (e) {
-       var classNames = $(e.target).attr("class").toString().split(' ').pop();
+         var classNames = $(e.target).prop("class").toString().split(' ').pop();
        if (classNames != 'fa-ellipsis-v') {
            $('div[id^=myDropdown]').hide().removeClass('show');
        }
@@ -1786,7 +1875,11 @@ function setEndOfContenteditable(contentEditableElement)
                data: 'art_post_id=' + abc + '&art_post=' + editpostname.value + '&art_description=' + encodeURIComponent(editpostdetails),
                dataType: "json",
                success: function (data) { //alert("hii");
-   
+        
+            if(data.notavlpost == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+               $('#bidmodal').modal('show');
+            }else{
                    document.getElementById('editpostdata' + abc).style.display = 'block';
                    document.getElementById('editpostbox' + abc).style.display = 'none';
                    document.getElementById('editpostdetailbox' + abc).style.display = 'none';
@@ -1795,7 +1888,7 @@ function setEndOfContenteditable(contentEditableElement)
                    $('#' + 'editpostdata' + abc).html(data.title);
                    $('#' + 'khyati' + abc).html(data.description);
                    $('#' + 'postname' + abc).html(data.postname);
-                 
+                 }
                }
            });
        }

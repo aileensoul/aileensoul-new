@@ -2514,19 +2514,51 @@ $datacount = count($otherdata);
 
     public function art_delete_post() {
 
-        $id = $_POST['art_post_id'];
+         $id = $_POST['art_post_id'];
 
          $userid = $this->session->userdata('aileenuser');
+        $condition_array = array('art_post_id' => $id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-         if(check_post_available($id) == 0){
-            echo "23";die();
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
 
          }else{
-            echo"2589";die();
+        
 
-         }
-
-die();
         $data = array(
             'is_delete' => 1,
             'modifiled_date' => date('Y-m-d', time())
@@ -2723,7 +2755,7 @@ die();
                 ));
 
 
-
+   }
 
     }
 
@@ -4972,6 +5004,44 @@ public function followtwo() {
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
 
+
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+
+            $cmtlike1 .= 'notavl';
+            echo $cmtlike1;
+         }else{
+        
+
         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -5093,6 +5163,7 @@ public function followtwo() {
                 
             }
         }
+       }
     }
 
     public function like_comment1() {
@@ -5110,6 +5181,44 @@ public function followtwo() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
+
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo  $datavl;
+
+         }else{
+        
 
         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5233,6 +5342,8 @@ public function followtwo() {
                 
             }
         }
+
+      }
     }
 
 // Artistic comment like end 
@@ -5251,6 +5362,49 @@ public function followtwo() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
+
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
+
         $post_delete = $_POST["post_delete"];
 
         $data = array(
@@ -5419,6 +5573,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
                     "commentcount" => $cntinsert));
+
+      }
     }
 
 
@@ -5615,6 +5771,47 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
         $post_delete = $_POST["post_delete"];
 
         $data = array(
@@ -5786,6 +5983,8 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
                 array("comment" => $cmtinsert,
                     "count" => $cmtcount,
                     "commentcount" => $cntinsert));
+
+       }
     }
 
 
@@ -5996,6 +6195,49 @@ public function delete_commenttwo_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
+
+
+         $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -6300,6 +6542,8 @@ public function delete_commenttwo_postnewpage() {
                             "like_user_count" => $like_user_count));
             }
         }
+
+       }
     }
 
 // artistics post  like end
@@ -6321,6 +6565,48 @@ public function delete_commenttwo_postnewpage() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
         $post_id = $_POST["post_id"];
+
+        $condition_array = array('art_post_id' => $id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
         $post_comment = $_POST["comment"];
 
         $contition_array = array('art_post_id' => $_POST["post_id"], 'status' => '1');
@@ -6522,6 +6808,7 @@ public function delete_commenttwo_postnewpage() {
                 array("comment" => $cmtinsert,
                     "comment" => $cmtinsert,
                     "commentcount" => $cntinsert));
+      }
         // khyati chande 
     }
 
@@ -6762,6 +7049,49 @@ public function insert_comment_postnewpage() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
     $post_id = $_POST["post_id"];
+
+
+    $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
       $post_comment = $_POST["comment"];
 //die();
 
@@ -6847,12 +7177,9 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage . '" alt="">';
 
                   }
-              
-
 
             }else{
-
-             
+ 
                            $a = $artname;
                             $acr = substr($a, 0, 1);
                             $b = $artlastname;
@@ -6878,7 +7205,6 @@ public function insert_comment_postnewpage() {
             $cmtinsert .= '</div>';
             $cmtinsert .= '<span class="comment-edit-button"><button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] . ')">Save</button></span>';
             $cmtinsert .= '</div></div>';
-            //$cmtinsert .= '<button id="editsubmit' . $art['artistic_post_comment_id'] . '" style="display:none" onClick="edit_comment(' . $art['artistic_post_comment_id'] . ')">Comment</button><div class="art-comment-menu-design"> <div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
 
             $cmtinsert .= '<div class="art-comment-menu-design"><div class="comment-details-menu" id="likecomment1' . $art['artistic_post_comment_id'] . '">';
             $cmtinsert .= '<a id="' . $art['artistic_post_comment_id'] . '"';
@@ -6959,6 +7285,7 @@ public function insert_comment_postnewpage() {
                     "commentcount" => $cntinsert));
 
         // khyati chande 
+       }
     }
 
 //artistic comment insert end  
@@ -6979,6 +7306,44 @@ public function insert_comment_postnewpage() {
      //if user deactive profile then redirect to artistic/index untill active profile End
 
         $post_id = $_POST["post_id"];
+
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+             $cmtlike = 'notavl';
+            echo $cmtlike;
+
+         }else{
+        
+
         $post_comment = $_POST["comment"];
 
         $data = array(
@@ -6997,6 +7362,7 @@ public function insert_comment_postnewpage() {
             //   $cmtlike .= '</div>';
             echo $cmtlike;
         }
+      }
     }
 
 //artistic comment edit end 
@@ -7220,6 +7586,49 @@ public function insert_comment_postnewpage() {
         $art_post = $_POST["art_post"];
        $art_description = $_POST["art_description"]; 
 
+
+               $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+            
+           $datavl = "notavl";
+            echo json_encode(
+                        array(
+                            "notavlpost" => $datavl,
+                           
+                ));
+
+         }else{
+        
+
         $data = array(
             'art_post' => $art_post,
             'art_description' => $art_description,
@@ -7239,11 +7648,7 @@ public function insert_comment_postnewpage() {
                 $editpost .= '</a></div>';
             }
             if ($this->data['artdata'][0]['art_description']) {
-//                $com_link = $this->common->make_links($artdata[0]['art_description']);
-//                $com_link = substr($com_link, 0, 200);
-//                $editpostdes .= '<span class="show">';
-//                $editpostdes .= $com_link;
-//                $editpostdes .= '<span class="dots">...</span><span class="morectnt"><span></span>&nbsp;&nbsp;<a href="javascript:void(0);" class="showmoretxt">More</a></span></span>';
+
                                        $num_words = 29;
                                        $words = array();
                                        $words = explode(" ",  $artdata[0]['art_description'], $num_words);
@@ -7256,13 +7661,7 @@ public function insert_comment_postnewpage() {
                                        $shown_string = implode(" ", $words);
                                        $editpostdes .= $this->common->make_links($shown_string);
             
-                // $small = substr($artdata[0]['art_description'], 0, 180);
-                //     $editpostdes .= $this->common->make_links($small);
-                //     if(strlen($artdata[0]['art_description']) >180){
-                //         $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["art_post_id"] . ')">View More</div>'; 
-                //     }
-
-                
+              
                 }
 
                 $postname = '<p title="'.$artdata[0]['art_post'].'">'.$artdata[0]['art_post'].'</p>';
@@ -7272,6 +7671,7 @@ public function insert_comment_postnewpage() {
                         "description" => $editpostdes,
                         "postname" => $postname));
         }
+      }
     }
 
 //edit post end
@@ -9661,6 +10061,45 @@ public function insert_comment_postnewpage() {
         $post_id = $_POST['art_post_id'];
 
         // html start
+        $condition_array = array('art_post_id' => $post_id);
+        $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
+            $return = 1;
+
+            $condition_array = array('user_id' => $profile_data[0]['user_id']);
+            $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                $return = 1;
+            } else {
+                $return = 0;
+            }
+            if ($profile_data[0]['posted_user_id'] != '0') {
+                $condition_array = array('user_id' => $profile_data[0]['posted_user_id']);
+                $user_data = $this->common->select_data_by_condition('user', $condition_array, $data = 'status,is_delete', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($user_data[0]['status'] == '1' && $user_data[0]['is_delete'] == '0') {
+                    $return = 1;
+                } else {
+                    $return = 0;
+                }
+            }
+        } else { 
+            $return = 0;
+        }
+
+        // echo  $dataavl; die();
+         if($return == 0){
+        
+           $fourdata = 'notavl';
+      
+        echo $fourdata;
+
+
+         }else{
+        
 
         $contition_array = array('art_post_id' => $post_id, 'status' => '1');
         $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = 'artistic_post_comment_id', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -9803,6 +10242,8 @@ public function insert_comment_postnewpage() {
             $fourdata = 'No comments Available!!!</div>';
         }
         echo $fourdata;
+
+       }
     }
 
     // khyati 9-5 changes end 
@@ -17372,13 +17813,14 @@ public function get_artistic_name($id=''){
 
 
 
- public function check_post_available() {
-        $post_id = $_POST['post_id'];
+ public function check_post_available($id) {
+       
 
-        $condition_array = array('art_post_id' => $post_id);
+        $condition_array = array('art_post_id' => $id);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') {
+        //echo "<pre>"; print_r($profile_data); die();
+        if ($profile_data[0]['status'] == '1' && $profile_data[0]['is_delete'] == '0') { 
             $return = 1;
 
             $condition_array = array('user_id' => $profile_data[0]['user_id']);
@@ -17399,7 +17841,7 @@ public function get_artistic_name($id=''){
                     $return = 0;
                 }
             }
-        } else {
+        } else { 
             $return = 0;
         }
 
