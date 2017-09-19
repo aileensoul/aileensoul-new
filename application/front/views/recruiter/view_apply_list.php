@@ -578,7 +578,7 @@
 
                                                                         <?php } else { ?>
                                                                             <input type="hidden" id="<?php echo 'hideenuser' . $row['userid']; ?>" value= "<?php echo $data[0]['save_id']; ?>"> 
-                                                                            <a class="button invite_border"  id="<?php echo $row['userid']; ?>" onClick="savepopup(<?php echo $row['userid']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['userid']; ?>">Save</a>
+                                                                            <a class="button invite_border saveduser<?php echo $row['userid']; ?>"  id="<?php echo $row['userid']; ?>" onClick="savepopup(<?php echo $row['userid']; ?>)" href="javascript:void(0);" class="<?php echo 'saveduser' . $row['userid']; ?>">Save</a>
                                                                             <?php
                                                                         }
                                                                     }
@@ -705,6 +705,37 @@
 
    
 </script>
+ <script>
+    function savepopup(id) { 
+      //alert(id);
+                        
+      save_user(id);
+//                       
+    $('.biderror .mes').html("<div class='pop_content'>Candidate successfully saved.");
+        $('#bidmodal').modal('show');
+          }
+        </script>
+        <script type="text/javascript">
+   function save_user(abc)
+   {  
+      
+ var saveid = document.getElementById("hideenuser" + abc);
+
+      $.ajax({ 
+                type:'POST',
+                url:'<?php echo base_url() . "recruiter/save_search_user" ?>',
+                data:'user_id='+abc + '&save_id='+saveid.value,
+                success:function(data){ 
+                
+                 $('#' + abc).html(data).addClass('saved');
+                 
+
+                }
+            }); 
+        
+}
+</script>
+                    
         <!--<script type="text/javascript" src="<?php //echo base_url('js/webpage/recruiter/saved_candidate.js'); ?>"></script>-->
 
 
