@@ -1965,7 +1965,7 @@ class Recruiter extends MY_Controller {
                 $postdata .= '</div>';
                 $postdata .= '</div>';
             }
-        } elseif ($recruiterdata == NULL) {
+        } elseif ($recpostdata == NULL) {
             $postdata .= '<div class="text-center rio" style="border: none;">';
             $postdata .= '<div class="no-post-title">';
             $postdata .= '<h4 class="page-heading  product-listing" style="border:0px;">Lets create your job post.</h4>';
