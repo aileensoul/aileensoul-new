@@ -1634,66 +1634,7 @@ label.cameraButton:active {
 }
 /** one two and three img upload css **/
 
-.one-image {
-    height: auto;
-    width: auto;
-    max-width: 100%;
-    text-align: center;
-    margin-bottom: 5px;
-}
-.one-image img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #d9d9d9;
-    cursor: pointer;
-}
-.two-images {
-    float: left;
-    height: 324px;
-    width: 50%;
-    padding: 1px;
-}
-.two-images img {
-    height: 100%;
-    width: 100%;
-}
-.three-image {
-    float: left;
-    height: 324px;
-    width: 50%;
-    padding: 1px;
-}
-.three-image img {
-    height: 100%;
-    width: 100%;
-}
-.three-image-top {
-    float: left;
-    /*height: 50%;
-    width: 100%;*/
-    
-    padding: 1px;
-}
-.three-image-top img {
-    /*height: 100%;
-    width: 100%;*/
-}
-.four-image {
-    float: left;
-    text-align: center;
-    height: 250px;
-    width: 50%;
-    padding-right: 1px;
-    padding-bottom: 1px;
-    display: inline-block;
-    position: relative;
-}
-.four-image img {
-    height: 100%;
-    width: 100%;
-    /*border: 1px solid #d9d9d9;*/
-}
+
 .more-image {
     right: 0px;
     bottom: 1px;
@@ -4241,7 +4182,7 @@ div .comment {
 }
 .three-image-top img {
     width: 550px;
-    height: 315px;
+    height: auto;
 }
 .flw_msg_btn ul li button.bg_following {
     padding: 9px 0px;
