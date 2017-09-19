@@ -178,3 +178,10 @@
               });
   });
 
+//BUTTON SUBMIT DISABLE AFTER SOME TIME START
+$("#submit").on('click', function() 
+{
+  $("#submit").addClass("register_disable");
+  setTimeout(function() { $("#submit").removeClass("register_disable") }, 2500);
+});
+//BUTTON SUBMIT DISABLE AFTER SOME TIME END
