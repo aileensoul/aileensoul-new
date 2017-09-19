@@ -1241,43 +1241,85 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 
                         /* RESIZE4 */
 
-                       $resize4_image_width = $this->config->item('art_post_resize4_width');
-                        $resize4_image_height = $this->config->item('art_post_resize4_height');
+                       // $resize4_image_width = $this->config->item('art_post_resize4_width');
+                       //  $resize4_image_height = $this->config->item('art_post_resize4_height');
 
-                        $n_w1 = $image_width;
-                        $n_h1 = $image_height;
+                       //  $n_w1 = $image_width;
+                       //  $n_h1 = $image_height;
 
 
-                        $conf_new4[$i] = array(
-                            'image_library' => 'gd2',
-                            'source_image' => $artistic_post_main[$i]['new_image'],
-                            'create_thumb' => FALSE,
-                            'maintain_ratio' => FALSE,
-                            'width' => $resize4_image_width,
-                            'height' => $resize4_image_height
-                        );
+                       //  $conf_new4[$i] = array(
+                       //      'image_library' => 'gd2',
+                       //      'source_image' => $artistic_post_main[$i]['new_image'],
+                       //      'create_thumb' => FALSE,
+                       //      'maintain_ratio' => FALSE,
+                       //      'width' => $resize4_image_width,
+                       //      'height' => $resize4_image_height
+                       //  );
 
-                        $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                       //  $conf_new4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
 
-                        $left = ($n_w1 / 2) - ($resize4_image_width / 2);
-                        $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+                       //  $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                       //  $top = ($n_h1 / 2) - ($resize4_image_height / 2);
 
-                        $conf_new4[$i]['x_axis'] = $left;
-                        $conf_new4[$i]['y_axis'] = $top;
+                       //  $conf_new4[$i]['x_axis'] = $left;
+                       //  $conf_new4[$i]['y_axis'] = $top;
 
-                        $instanse4 = "image4_$i";
-                        //Loading Image Library
-                        $this->load->library('image_lib', $conf_new4[$i], $instanse4);
-                        $dataimage = $response['result'][$i]['file_name'];
-                        //Creating Thumbnail
-                        $this->$instanse4->crop();
+                       //  $instanse4 = "image4_$i";
+                       //  //Loading Image Library
+                       //  $this->load->library('image_lib', $conf_new4[$i], $instanse4);
+                       //  $dataimage = $response['result'][$i]['file_name'];
+                       //  //Creating Thumbnail
+                       //  $this->$instanse4->crop();
 
-                        $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                       //  $resize_image4 = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
 
-                        $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
+                       //  $abc = $s3->putObjectFile($resize_image4, bucket, $resize_image4, S3::ACL_PUBLIC_READ);
 
                         /* RESIZE4 */
+                         if ($count == '3') {
+                            /* RESIZE 4 */
 
+                            $resize4_image_width = $this->config->item('art_post_resize4_width');
+                            $resize4_image_height = $this->config->item('art_post_resize4_height');
+
+
+                            if ($image_width > $image_height) {
+                                $n_h1 = $resize4_image_height;
+                                $image_ratio = $image_height / $n_h1;
+                                $n_w1 = round($image_width / $image_ratio);
+                            } else if ($image_width < $image_height) {
+                                $n_w1 = $resize4_image_width;
+                                $image_ratio = $image_width / $n_w1;
+                                $n_h1 = round($image_height / $image_ratio);
+                            } else {
+                                $n_w1 = $resize4_image_width;
+                                $n_h1 = $resize4_image_height;
+                            }
+
+                            $left = ($n_w1 / 2) - ($resize4_image_width / 2);
+                            $top = ($n_h1 / 2) - ($resize4_image_height / 2);
+
+                            $artistic_profile_post_resize4[$i]['image_library'] = 'gd2';
+                            $artistic_profile_post_resize4[$i]['source_image'] = $this->config->item('art_post_main_upload_path') . $response['result'][$i]['file_name'];
+                            $artistic_profile_post_resize4[$i]['new_image'] = $this->config->item('art_post_resize4_upload_path') . $response['result'][$i]['file_name'];
+                            $artistic_profile_post_resize4[$i]['create_thumb'] = TRUE;
+                            $artistic_profile_post_resize4[$i]['maintain_ratio'] = TRUE;
+                            $artistic_profile_post_resize4[$i]['thumb_marker'] = '';
+                            $artistic_profile_post_resize4[$i]['width'] = $n_w1;
+                            $artistic_profile_post_resize4[$i]['height'] = $n_h1;
+                            $artistic_profile_post_resize4[$i]['quality'] = "100%";
+//                        $business_profile_post_resize4[$i]['x_axis'] = $left;
+//                        $business_profile_post_resize4[$i]['y_axis'] = $top;
+                            $instanse4 = "image4_$i";
+                            //Loading Image Library
+                            $this->load->library('image_lib', $artistic_profile_post_resize4[$i], $instanse4);
+                            //Creating Thumbnail
+                            $this->$instanse4->resize();
+                            $this->$instanse4->clear();
+
+                            /* RESIZE 4 */
+                        }
 
                         $thumb_image_width = $this->config->item('art_post_thumb_width');
                         $thumb_image_height = $this->config->item('art_post_thumb_height');
