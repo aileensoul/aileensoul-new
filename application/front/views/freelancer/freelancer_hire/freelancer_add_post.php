@@ -13,6 +13,7 @@
         <!-- Calender Css Start-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
         <!-- Calender Css End-->
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
     <body class="pushmenu-push">
@@ -63,11 +64,11 @@
                                     </fieldset>
                                     <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                        <select tabindex="3" name="fields_req" id="fields_req">
+                                        <select tabindex="3" name="fields_req" id="fields_req" class="field_other">
                                             <option  value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
                                             <?php
-                                            if (count($category) > 0) {
-                                                foreach ($category as $cnt) {
+                                            if (count($category_data) > 0) {
+                                                foreach ($category_data as $cnt) {
                                                     if ($fields_req1) {
                                                         ?>
                                                         <option value="<?php echo $cnt['category_id']; ?>" <?php if ($cnt['category_id'] == $fields_req1) echo 'selected'; ?>><?php echo $cnt['category_name']; ?></option>
@@ -81,6 +82,7 @@
                                                 }
                                             }
                                             ?>
+                                        <option value="<?php echo $category_otherdata[0]['category_id']; ?> "><?php echo $category_otherdata[0]['category_name']; ?></option>
                                         </select>
                                         <?php echo form_error('fields_req'); ?>
                                     </fieldset>
@@ -262,7 +264,9 @@
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <!-- Calender JS Start-->
         <script src="<?php echo base_url('js/jquery.date-dropdowns.js?ver=' . time()); ?>"></script>
+        
         <!-- Calender Js End-->
+        <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/additional-methods1.15.0.min.js?ver=' . time()); ?>">
         </script> 

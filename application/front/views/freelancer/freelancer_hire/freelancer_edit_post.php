@@ -7,6 +7,7 @@
         <link href="<?php echo base_url('css/jquery-ui.css?ver=' . time()) ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
         <!-- Calender Css Start-->
+        <link rel="stylesheet" href="<?php echo base_url('css/jquery.fancybox.css?ver='.time()) ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/custom-style.css?ver=' . time()); ?>">
         <!-- Calender Css End-->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
@@ -54,11 +55,11 @@
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($fields_req) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("field_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                    <select tabindex="3" name="fields_req" id="fields_req">
+                                    <select tabindex="3" name="fields_req" id="fields_req" class="field_other">
                                         <option value="" selected option disabled><?php echo $this->lang->line("select_filed"); ?></option>
                                         <?php
-                                        if (count($category) > 0) {
-                                            foreach ($category as $cnt) {
+                                        if (count($category_data) > 0) {
+                                            foreach ($category_data as $cnt) {
                                                 if ($freelancerpostdata[0]['post_field_req']) {
                                                     ?>
                                                     <option value="<?php echo $cnt['category_id']; ?>" <?php if ($cnt['category_id'] == $freelancerpostdata[0]['post_field_req']) echo 'selected'; ?>><?php echo $cnt['category_name']; ?></option>
@@ -72,6 +73,7 @@
                                             }
                                         }
                                         ?>
+                                    <option value="<?php echo $category_otherdata[0]['category_id']; ?> "><?php echo $category_otherdata[0]['category_name']; ?></option>
                                     </select>
                                     <?php echo form_error('fields_req'); ?>
                                 </fieldset>
@@ -289,6 +291,7 @@
         <!-- Model Popup Close -->
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
         <!--<script src="<?php //echo base_url('js/jquery-ui.min.js'); ?>"></script>-->
+        <script src="<?php echo base_url('js/jquery.fancybox.js?ver='.time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate1.15.0..min.js?ver=' . time()); ?>"></script>

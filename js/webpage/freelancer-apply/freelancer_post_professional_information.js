@@ -231,7 +231,7 @@ $(document).on('change', '.field_other', function (event) {
                                         $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                                     } else if (response.select == 1)
                                     {
-                                        $.fancybox.open('<div class="message"><h2>Empty University is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
                                     } else
                                     {
                                         $.fancybox.close();
