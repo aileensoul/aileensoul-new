@@ -2530,7 +2530,7 @@ class Recruiter extends MY_Controller {
                         $apply_candida = $this->common->select_data_by_condition('job_apply', $condition_array, $data, $short_by = '', $order_by = '', $limit, $offset, $join_str, $groupby = '');
                         $countt = count($apply_candida);
 
-                        $rec_post .= '<a href="' . base_url() . 'recruiter/view_apply_list/' . $post['post_id'] . '" class="button">Applied  Candidate :' . $countt . '</a>
+                        $rec_post .= '<a href="' . base_url() . 'recruiter/apply-list/' . $post['post_id'] . '" class="button">Applied  Candidate :' . $countt . '</a>
                                                                     </li>
                                                             </div>
                                                         </div>

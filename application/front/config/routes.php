@@ -261,6 +261,7 @@ $route['recruiter/post-insert'] = "recruiter/add_post";
 
 $route['recruiter/edit-post'] = "recruiter/edit_post";
 $route['recruiter/edit-post/(:any)'] = "recruiter/edit_post/$1";
+$route['recruiter/apply-list/(:any)'] = "recruiter/view_apply_list/$1";
 
 $route['recruiter/search'] = "recruiter/recruiter_search";
 
