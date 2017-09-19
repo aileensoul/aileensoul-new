@@ -410,7 +410,7 @@ class Notification extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $contition_array = array('art_post_id' => $id, 'status' => '1');
+        $contition_array = array('art_post_id' => $id, 'status' => '1', 'is_delete' => '0');
         $this->data['art_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo '<pre>'; print_r($this->data['art_data']); die();
          $this->data['left_artistic'] =  $this->load->view('artistic/left_artistic', $this->data, true);
