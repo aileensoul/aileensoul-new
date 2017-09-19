@@ -50,20 +50,11 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
 
 <!--<script type="text/javascript" src="<?php //  echo base_url('js/jquery-1.11.1.min.js?ver='.time()); ?>"></script>-->
-<?php if($this->uri->segment(1)=='dashboard')
-{
-?>
-  <script type="text/javascript" src="<?php echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>"></script>
-  <?php
-}
-else
-{
-?>
 
-<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>"></script>
-<?php
-}
-?>
+<!--   <script type="text/javascript" src="<?php// echo base_url('js/jquery-2.0.3.min.js?ver='.time()); ?>"></script> -->
+
+<script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver='.time()); ?>" ></script>
+
 <script type="text/javascript" src="<?php echo base_url('js/jquery-ui.min-1.12.1.js?ver='.time()); ?>"></script>  
 <!--<script src="<?php // echo base_url('js/fb_login.js?ver='.time()); ?>"></script>-->
 
