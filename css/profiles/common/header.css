@@ -1422,14 +1422,24 @@ background-color: white;}
 .kv-file-content audio{max-width: 100%;}
 .krajee-default[data-template="audio"] .file-preview-audio{height: 100%;}
 .text_center{text-align: center;}
+.show {
+    display:block;
+}
+.dropdown2_content {
+    display: none;    
+}
+
+/***  media query  ***/
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
 	#InboxContainer{right: -5px;}
 }
+
 @media screen and (max-width: 1279px) {
     .reactivate_header h2{font-size: 28px;}
 	.header2{width:1140px;}
 	#InboxContainer:before {right:27px;}
 }
+
 @media screen and (max-width:1199px){
     .custom_footer_left ul li a{font-size: 12px;}
 	.header2 .job-search-box1 fieldset.sec_h2{width: 175px;}
@@ -1440,6 +1450,7 @@ background-color: white;}
 	.main-menu-right{padding-right:11px;}
 	
 } 
+
 @media screen and (max-width: 1024px) {
 	.post-img-user{height: 100%; width: 100%;}
 	.header2 {
@@ -1461,6 +1472,7 @@ background-color: white;}
 	#notificationLink span{top:5px;}
 	header .header2{margin:auto;}
 }
+
 @media screen and (max-width: 991px) {
 	.main-menu-right{padding-right:2px;}
 	.dropdown-menu {
@@ -1496,6 +1508,7 @@ background-color: white;}
     }
 	.post-img-mainuser{padding:4px 0;}
 }
+
 @media screen and (max-width: 767px) {
 	.header2 .mob-width{padding-left:5px;}
 	.header2 .dropdown_hover .dropdown-content_hover{right:-3px !important;}
@@ -1689,6 +1702,7 @@ right: 3%!important;
 	.post-img-mainuser{padding:5px 0; line-height:2.3;}
 
 }
+
 @media screen and (max-width: 540px) {
     #InboxContainer{width: 93%!important;}
     #notificationContainer::before {right: 77px;}
@@ -1723,6 +1737,7 @@ right: 3%!important;
     }
 
 }
+
 @media screen and (max-width: 479px) {
     #InboxContainer {
     width: 92% !important;
@@ -1770,6 +1785,7 @@ right: 3%!important;
     .back {width: 50%;}
 	.search-mob-block label{/*margin-top:7px; margin-left: 0px;*/}
 }
+
 @media screen and (max-width: 360px) {
        .header ul{margin-top:16px;}
 	#paddingtop_fixed{padding-top:70px !important;}
@@ -1832,6 +1848,7 @@ right: 3%!important;
 	}
 	.search-mob-block label{margin-top:4px;}
 }
+
 @media screen and (max-width: 320px){
 	.header2 ul li.active a {
 		padding: 9px 9px 3px 0px;
