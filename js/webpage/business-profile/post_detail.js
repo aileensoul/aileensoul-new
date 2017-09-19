@@ -568,23 +568,6 @@ function commentedittwo(abc)
 }
 
 
-var modal = document.getElementById('myModal');
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close1")[0];
-btn.onclick = function () {
-    modal.style.display = "block";
-}
-
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
 $(function () {
     var showTotalChar = 180, showChar = "ReadMore", hideChar = "";
     $('.show_desc').each(function () {
@@ -1331,14 +1314,14 @@ function user_postdeleteparticular(clicked_id)
 // This  script use for close dropdown in every post 
 
 $('body').on("click", "*", function (e) {
-    var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
         $('div[id^=myDropdown]').hide().removeClass('show');
     }
 });
 
 $('body').on('touchstart', function(e) {
-    var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
         $('div[id^=myDropdown]').hide().removeClass('show');
     }

@@ -1424,14 +1424,16 @@ function user_postdeleteparticular(clicked_id)
 // This  script use for close dropdown in every post 
 
 $('body').on("click", "*", function (e) {
-    var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    //var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
         $('div[id^=myDropdown]').hide().removeClass('show');
     }
 });
 
 $('body').on('touchstart', function(e) {
-    var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    //var classNames = $(e.target).attr("class").toString().split(' ').pop();
+    var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != 'fa-ellipsis-v') {
         $('div[id^=myDropdown]').hide().removeClass('show');
     }
