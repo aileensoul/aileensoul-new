@@ -4806,6 +4806,9 @@ div .comment {
     .modal.in .modal-dialog .mes .pop_content {
         font-size: 18px;
     }
+    .slider_img{
+        height: 350px;
+    }
     .modal.message-box span.mes {
         padding: 0px 0px 0;
         margin: 0px;
@@ -5020,6 +5023,9 @@ div .comment {
 @media screen and (max-width: 479px) {
     .post-design-box .post-design-desc input.my_text {
         padding-right: 35px;
+    }
+    .slider_img{
+        height: 280px;
     }
     .fifty_val {
         right: 28px;
