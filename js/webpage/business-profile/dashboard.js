@@ -1696,7 +1696,7 @@ function user_postdelete(clicked_id)
 
 $('body').on("click", "*", function (e) {
 //    var classNames = $(e.target).attr("class").toString().split(' ').pop();
-    var classNames = $(e.target).attr("class");
+   var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != '' && classNames != 'undefined') {
         classNames = classNames.toString().split(' ').pop();
         if (classNames != 'fa-ellipsis-v') {
@@ -1706,7 +1706,7 @@ $('body').on("click", "*", function (e) {
 });
 
 $('body').on('touchstart', function(e) {
-    var classNames = $(e.target).attr("class");
+     var classNames = $(e.target).prop("class").toString().split(' ').pop();
     if (classNames != '' && classNames != 'undefined') {
         classNames = classNames.toString().split(' ').pop();
         if (classNames != 'fa-ellipsis-v') {

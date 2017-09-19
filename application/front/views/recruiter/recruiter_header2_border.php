@@ -101,7 +101,7 @@
     ?>
     <header>
         <div class="bg-search">
-            <div class="header2 ">
+            <div class="header2">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-7 col-md-7 col-xs-12 hidden-mob">
