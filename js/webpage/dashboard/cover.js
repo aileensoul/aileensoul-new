@@ -290,7 +290,8 @@ $(document).ready(function () {
 
     $('#left_img').click(function (event)
     {
-        event.preventDefault();
+
+      //  event.preventDefault();
         //set time out is used for disable and enable arrow for some time
         setTimeout(function () {
             $('#left_img').addClass('custom-disabled');
@@ -299,7 +300,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#left_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 2000);
+        }, 4000);
         setTimeout(function () {
             $('#right_img').addClass('custom-disabled');
             //....and whatever else you need to do
@@ -308,7 +309,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#right_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 2000);
+        }, 4000);
 
 
         $('#right_img').removeClass('abc_left');
@@ -316,11 +317,13 @@ $(document).ready(function () {
 
         /*slides[currentSlide].className = 'item';*/
         currentSlide = (currentSlide + 1) % slides.length;
+
         /*slides[currentSlide].className = 'item active';*/
         slides1[currentSlide_width].className = 'ld_sl';
         currentSlide_width = (currentSlide_width + 1) % slides1.length;
         slides1[currentSlide_width].className = 'ld_sl sld-width-' + (currentSlide + 1);
-
+  
+  //alert()
         if ((currentSlide + 1) == slides.length)
         {
             $('#left_img').addClass('abc');
@@ -330,7 +333,7 @@ $(document).ready(function () {
 
     $('#right_img').click(function (event)
     {
-        event.preventDefault();
+       // event.preventDefault();
 
         setTimeout(function () {
             $('#left_img').addClass('custom-disabled');
@@ -340,7 +343,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#left_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 2000);
+        }, 4000);
 
         setTimeout(function () {
             $('#right_img').addClass('custom-disabled');
@@ -350,7 +353,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#right_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 2000);
+        }, 4000);
 
         /*slides[currentSlide].className = 'item';*/
         currentSlide = (currentSlide - 1) % slides.length;
@@ -359,11 +362,14 @@ $(document).ready(function () {
         {
             $('#right_img').removeClass('abc_show');
             $('#right_img').addClass('abc_left');
+
         }
 
-        if (currentSlide == 12)
+        if (currentSlide == 14 || currentSlide < 14)
         {
+          
             $('#left_img').removeClass('abc');
+           // $('#left_img').removeClass('abc');
         }
 
         slides1[currentSlide_width].className = 'ld_sl';
