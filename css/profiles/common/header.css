@@ -880,8 +880,8 @@ height: 25px; width: 25px; }
         font-family:arial;
     }
     .addcontact-text span{color:#404040; font-size:13px;}
-    #addcontactBody li:hover{background-color:e9f4f8; }
-        #addcontactBody li:hover .addcontact-text{}
+    #addcontactBody li:hover{background-color:#e9f4f8; }
+    #addcontactBody li:hover .addcontact-text{}
     .addcontact-text span{
         display: block;
         line-height: 1;

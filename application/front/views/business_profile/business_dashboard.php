@@ -3,7 +3,6 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver=' . time()); ?>" />
         <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>" />
@@ -13,6 +12,11 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
+        <style type="text/css">
+            .two-images, .three-image, .four-image{
+                height: auto !important;
+            }
+        </style>
         <style>
             /***  commen css  ***/
             .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
@@ -459,13 +463,12 @@
                                         <?php } ?>
                                         <tr>
                                             <td class="business_data_td1 detaile_map"><i class="fa fa-suitcase"></i></td>
-                                            <td class="business_data_td2"><span><?php echo $this->common->make_links($businessdata1[0]['details']); ?></span></td>
+                                            <td class="business_data_td2"><span><?php echo nl2br($this->common->make_links($businessdata1[0]['details'])); ?></span></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                             <!-- user iamges start-->
-                            <!--<a href="<?php echo base_url('business-profile/photos/' . $businessdata1[0]['business_slug']) ?>">-->
                             <a href="javascript:void(0);" onclick="login_profile();">
                                 <div class="full-box-module business_data">
                                     <div class="profile-boxProfileCard  module buisness_he_module" >
@@ -521,7 +524,7 @@
                             </a>
                             <!-- user pdf  end-->
                         </div>
-                        <div class="col-md-7 custom-right-business">
+                        <div class="col-md-6 custom-right-business">
                             <?php
                             $userid = $this->session->userdata('aileenuser');
                             $other_user = $businessdata1[0]['business_profile_id'];
@@ -544,15 +547,20 @@
                                 <div class="post-editor col-md-12">
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
-                                            <?php if ($businessdata[0]['business_user_image']) { ?><img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+                                            <?php if ($businessdata[0]['business_user_image']) { ?>
+
+
+                                                <?php if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) { ?>
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                <?php } else {
+                                                    ?>
+
+                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+
+                                                <?php } ?>
+
                                             <?php } else { ?>
-                                                <?php
-                                                $a = $businessdata[0]['company_name'];
-                                                $acr = substr($a, 0, 1);
-                                                ?>
-                                                <div class="post-img-div">
-                                                    <?php echo ucfirst(strtolower($acr)) ?>
-                                                </div>
+                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                             <?php } ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content popup-text">
@@ -565,96 +573,32 @@
                                     </div>
                                 </div>
                             <?php } ?>
-                            <!-- The Modal -->
-                            <div id="myModal3" class="modal-post">
-                                <!-- Modal content -->
-                                <div class="modal-content-post">
-                                    <span class="close3">&times;</span>
-                                    <div class="post-editor post-edit-popup" id="close">
-                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
-                                        <div class="main-text-area col-md-12"  >
-                                            <div class="popup-img-in"> 
-                                                <?php
-                                                if ($businessdata[0]['business_user_image'] != '') {
-                                                    ?>
-                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <?php
-                                                    $a = $businessdata[0]['company_name'];
-                                                    $acr = substr($a, 0, 1);
-                                                    ?>
-                                                    <div class="post-img-div">
-                                                        <?php echo ucfirst(strtolower($acr)) ?>
-                                                    </div>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </div>
-                                            <div id="myBtn1"  class="editor-content col-md-10 popup-text" >
-                                                <textarea id= "test-upload_product" placeholder="Post Your Product...."  onKeyPress=check_length(this.form); onKeyDown=check_length(this.form); 
-                                                          name=my_text rows=4 cols=30 class="post_product_name" style="position: relative;" tabindex="1"></textarea>
-                                                <div class="fifty_val">                   
-                                                    <input size=1 value=50 name=text_num class="text_num" readonly> 
-                                                </div>
-                                                <div class="padding-left camera_in camer_h" ><i class=" fa fa-camera " ></i> </div>
-                                            </div>
-                                        </div>
-                                        <div class="row"></div>
-                                        <div  id="text"  class="editor-content col-md-12 popup-textarea" >
-                                            <textarea id="test-upload_des" name="product_desc" class="description" placeholder="Enter Description" tabindex="2"></textarea>
-                                            <output id="list"></output>
-                                        </div>
-                                        <div class="print_privew_post">
-                                        </div>
-                                        <div class="preview"></div>
-                                        <div id="data-vid" class="large-8 columns">
-                                            <!--video will be inserted here.-->
-                                        </div>
-                                        <h2 id="name-vid"></h2>
-                                        <p id="size-vid"></p>
-                                        <p id="type-vid"></p>
-                                        <div class="popup-social-icon">
-                                            <ul class="editor-header">
-                                                <li>
-                                                    <div class="col-md-12"> <div class="form-group">
-                                                            <input id="file-1" type="file" class="file" name="postattach[]"  multiple class="file" data-overwrite-initial="false" data-min-file-count="2" style="display: none;">
-                                                        </div></div>
-                                                    <label for="file-1">
-                                                        <i class=" fa fa-camera upload_icon"  > Photo</i>
-                                                        <i class=" fa fa-video-camera upload_icon"> Video </i> 
-                                                        <i class="fa fa-music upload_icon"> Audio </i>
-                                                        <i class=" fa fa-file-pdf-o upload_icon"> PDF </i>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="fr margin_btm">
-                                            <button type="submit"  value="Submit">Post</button>    
-                                        </div>
-                                        <?php echo form_close(); ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- popup end -->
                             <?php
                             if ($this->session->flashdata('error')) {
                                 echo $this->session->flashdata('error');
                             }
                             ?>
                             <div class="fw">
-                                <div class='progress' id="progress_div" style="display: none">
-                                    <div class='bar' id='bar'></div>
-                                    <div class='percent' id='percent'>0%</div>
-                                </div>
-                                <div class="business-all-post">
-                                    <div class="nofoundpost"> 
+                                <!--                                <div class='progress' id="progress_div" style="display: none">
+                                                                    <div class='bar' id='bar'></div>
+                                                                    <div class='percent' id='percent'>0%</div>
+                                                                </div>-->
+
+                                <div class="bs-example">
+                                    <div class="progress progress-striped" id="progress_div">
+                                        <div class="progress-bar" style="width: 0%;">
+                                            <span class="sr-only">0%</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- middle section start -->
-                                <div class="nofoundpost">
+                                <div class="business-all-post">
+                                    <!--                                    <div class="nofoundpost"> 
+                                                                        </div>-->
                                 </div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
+                                <!-- middle section start -->
+                                <!--                                <div class="nofoundpost">
+                                                                </div>-->
                             </div>
                             <!-- business_profile _manage_post end -->
                         </div>
@@ -662,6 +606,7 @@
                 </div>
             </div>
         </section>
+
         <div class="modal fade message-box" id="bidmodal-2" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -932,19 +877,14 @@
                 </div>
             </div>
         </div>
-        <!-- register -->
+        <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
             <?php echo $footer; ?>
         </footer>
         <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>--> 
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>--> 
         <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-
         <script type = "text/javascript" src="<?php echo base_url() ?>js/jquery.form.3.51.js"></script> 
         <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>
         <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
@@ -955,10 +895,22 @@
 
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
-                                                var base_url = '<?php echo base_url(); ?>';
-                                                var slug = '<?php echo $slugid; ?>';
+                                                    var base_url = '<?php echo base_url(); ?>';
+                                                    var slug = '<?php echo $slugid; ?>';
         </script>
         <!-- script for login  user valoidtaion start -->
+        <script>
+            function login_profile() {
+                $('#login').modal('show');
+            }
+            function register_profile() {
+                $('#login').modal('hide');
+                $('#register').modal('show');
+            }
+            function forgot_profile() {
+                $('#forgotPassword').modal('show');
+            }
+        </script>
         <script type="text/javascript">
             function login()
             {
@@ -1015,8 +967,7 @@
                                 $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login');
                                 if (response.is_bussiness == '1') {
                                     window.location = "<?php echo base_url() ?>business-profile/dashboard/" + slug;
-                                }
-                                else{
+                                } else {
                                     window.location = "<?php echo base_url() ?>business-profile";
                                 }
                             } else if (response.data == "password") {
@@ -1251,18 +1202,7 @@
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/user_dashboard.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-        <script>
-            function login_profile() {
-                $('#login').modal('show');
-            }
-            function register_profile() {
-                $('#login').modal('hide');
-                $('#register').modal('show');
-            }
-            function forgot_profile() {
-                $('#forgotPassword').modal('show');
-            }
-        </script>
+        
         <script>
             $(document).on('click', '[data-toggle*=modal]', function () {
                 $('[role*=dialog]').each(function () {
@@ -1276,6 +1216,5 @@
                 });
             });
         </script>
-
     </body>
 </html>

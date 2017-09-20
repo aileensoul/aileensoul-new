@@ -3584,7 +3584,7 @@ public function delete_workexp()
           $city = implode(',',$city); 
       }
       
-         $data = array(
+         $data1 = array(
                     'fname' => ucfirst($this->input->post('first_name')),
                     'lname' => ucfirst($this->input->post('last_name')),
                     'email' => $this->input->post('email'),
@@ -3600,8 +3600,21 @@ public function delete_workexp()
                     'job_step' => 10,
                     'slug'=> $this->setcategory_slug($this->input->post('first_name').'-'.$this->input->post('last_name'), 'slug', 'job_reg')
                 );
+
+     
+
+       $contition_array = array('user_id' => $userid);
+       $job= $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+       if($job)
+       {
+          $insert_id  = $this->common->update_data($data1, 'job_reg', 'user_id', $userid);
+       }
+       else
+       {
+          $insert_id = $this->common->insert_data_getid($data1, 'job_reg');
+       }
       
-                $insert_id = $this->common->insert_data_getid($data, 'job_reg');
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('job/home');

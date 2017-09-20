@@ -1884,6 +1884,7 @@ display: none !important;
 /*** all profile  ***/
 .profile-job-profile-menu{}
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
+.job-menu-profile h5{cursor:default;}
 /*** end all profile  ***/
 .message-data-name .fa-circle{margin-right:6px;}
 #row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}

@@ -1920,6 +1920,17 @@ label.cameraButton input[accept*="camera"] {
     .art-side-menu .flw_msg_btn ul li {
         padding: 10px 0;
     }
+    #row2 img {
+      
+        height: 200px;
+    }
+    #row2{
+        border-left:0;
+        border-right:0;
+    }
+     #row1{
+        height:200px;
+    }
 }
 @media screen and (max-width: 640px) {
     .post-img-user {

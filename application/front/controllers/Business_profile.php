@@ -920,16 +920,16 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_profile_manage_post($id = "") {
-
         $this->data['slugid'] = $id;
 
 // manage post start
         $userid = $this->session->userdata('aileenuser');
+
         $user_name = $this->session->userdata('user_name');
-
-        $this->business_profile_active_check();
-        $this->is_business_profile_register();
-
+        if ($userid) {
+            $this->business_profile_active_check();
+            $this->is_business_profile_register();
+        }
         $contition_array = array('user_id' => $userid, 'status' => '1');
         $this->data['slug_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3025,11 +3025,12 @@ class Business_profile extends MY_Controller {
     }
 
     public function business_resume($id = "") {
+        $this->data['slugid'] = $id;
         $userid = $this->session->userdata('aileenuser');
-
-        $this->business_profile_active_check();
-        $this->is_business_profile_register();
-
+        if ($userid) {
+            $this->business_profile_active_check();
+            $this->is_business_profile_register();
+        }
 
 // $this->data['slug_data'] this data come from include
         if ($id == $this->data['slug_data'][0]['business_slug'] || $id == '') {
@@ -12888,7 +12889,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $insert_data['user_from'] = $business_profile_id;
         $insert_data['user_to'] = $follow_to;
 
-        $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
+        echo $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
     }
 
     public function business_profile_active_check() {
@@ -12947,9 +12948,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
         $join_str_following[0]['join_type'] = '';
 
         $bus_user_f_ing_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as following_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
-        
+
         $following_count = $bus_user_f_ing_count[0]['following_count'];
-        
+
         return $following_count;
     }
 

@@ -78,7 +78,7 @@
 
                     </div>
                 </div>
-                <div class=" tablate-container art-profile">    
+                <div class=" container tablate-container art-profile">    
                     <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <div class="upload-img">
 
@@ -86,7 +86,7 @@
                                 <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                             </label>
                         </div>
-
+</div>
                     <?php } ?>
                     <!-- cover image end-->
 

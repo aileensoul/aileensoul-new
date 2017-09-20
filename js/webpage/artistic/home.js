@@ -216,7 +216,15 @@ function followuser(clicked_id)
 
     function followclose(clicked_id)
    { //alert("hii");
-       $.ajax({
+
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/artistic_home_follow_ignore",
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+
+
+           $.ajax({
         type: 'POST',
         url: base_url + "artistic/third_follow_ignore_user_data",
         dataType: 'html',
@@ -229,6 +237,12 @@ function followuser(clicked_id)
                     });
         }
     });
+           
+        }
+    });
+
+
+      
    }
 
 function artistic_home_follow_ignore(clicked_id)
