@@ -1,18 +1,4 @@
 
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-    $(document).on('click','.dropbtn_common',function(){
-        $('.dropbtn_common').not(this).next().removeClass('show');
-        $(this).next().toggleClass('show');
-    });
-    $(document).on('click',function(e){
-        if(!$(e.target).closest('.dropbtn_common').length)
-            $('.dropbtn_common').next().removeClass('show');
-    });    
-});
-</script>
-
- -->
 <!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN START -->
  <script type="text/javascript">
 $(document).ready(function(){
