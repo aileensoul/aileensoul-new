@@ -1079,8 +1079,11 @@ border: none;}
 .job_work_experience_main_div input::-webkit-input-placeholder {
     line-height:20px !important;
 }
+#univer:hover{background: #156f95; color: white;}
+#ui-id-6 {height: 150px;}
+#experience_month-error{margin-top: 38px;}
 .common-form fieldset .radio_check_text{padding-right:20px;}
-.certificate{border:none; padding:0; margin-top:15px;}
+.certificate{border:none; padding:3px 0px; }
 .hs-submit .delete_btn{margin-top:5px;}
 .complete_profile .circle-1{height:214px;}
 .alert{cursor: default;}
