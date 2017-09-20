@@ -1088,7 +1088,7 @@ label.cameraButton:active {
 .dropdown-content1 a i {
     padding-right: 13px;
 }
-.dropdown-content1 a:hover {
+.dropdown-content1 a:hover, .dropdown-content2 a:hover {
     background: #1b8ab9;
     color: #fff !important;
 }
@@ -2245,7 +2245,7 @@ label.cameraButton:active {
 .dropdown2 a:hover {
     background-color: #f1f1f1
 }
-.dropdown2 .dropdown-content2 a:hover {
+.dropdown-content2 a:hover {
     background: #1b8ab9;
     color: #fff;
 }

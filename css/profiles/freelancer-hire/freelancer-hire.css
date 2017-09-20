@@ -667,9 +667,7 @@ li.fr a {
 #row2 img {
     height: 350px;
     width: 100%;
-    border: 1px solid #d9d9d9;
-    border-bottom: none;
-    border-top: none;
+    
 }
 .upload-img {
     float: right;
