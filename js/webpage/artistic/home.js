@@ -181,7 +181,7 @@ function myFunction1(clicked_id) {
 function followuser(clicked_id)
    {
    
-       $("#fad" + clicked_id).fadeOut(6000);
+       //$("#fad" + clicked_id).fadeOut(6000);
    
    
        $.ajax({
@@ -194,6 +194,11 @@ function followuser(clicked_id)
    
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
+               $('ul.home_three_follow_ul').append(data.third_user);
+               $.when($('.fad' + clicked_id).fadeOut(3000))
+                    .done(function () {
+                        $('.fad' + clicked_id).remove();
+                    });
    
            }
    
@@ -204,7 +209,19 @@ function followuser(clicked_id)
 
     function followclose(clicked_id)
    { //alert("hii");
-       $("#fad" + clicked_id).fadeOut(3000);
+       $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/third_follow_ignore_art_data",
+        dataType: 'html',
+        success: function (data) {
+            $('ul.home_three_follow_ul').append(data);
+            $.when($('.fad' + clicked_id).fadeOut(3000))
+                    .done(function () {
+                        business_home_follow_ignore(clicked_id);
+                        $('.fad' + clicked_id).remove();
+                    });
+        }
+    });
    }
 
 
