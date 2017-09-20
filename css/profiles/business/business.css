@@ -4721,7 +4721,9 @@ div .comment {
     }
     #row2 img {
         border: none;
-    }
+	  height: 200px;
+		}
+	 #row1{height:200px;}
     .art_no_post_img {
         padding-top: 0px;
         padding-bottom: 0px;
