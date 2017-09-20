@@ -23,6 +23,7 @@
     width: 22.5%;
     margin-top: 0px;
 }
+
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
 .add-post-button{margin-top: 25px;}
 .add-post-button .btn:focus{color: white; background: #156f95;}
@@ -630,6 +631,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .reactivate_btn_y a:hover {
     color: #fff;
+    text-decoration: none!important;
 }
 .reactivate_btn_n {
     height: 20px;
@@ -648,6 +650,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .reactivate_btn_n a:hover {
     color: #fff;
+    text-decoration: none!important;
 }
 #erroe_nn label select .error {
     border: 1px solid red!important;
@@ -869,10 +872,10 @@ label.cameraButton input[accept*="camera"] {
 .common-form fieldset.rec_check input{height:auto;}
 .edit-post .date-dropdowns .day, .edit-post  .date-dropdowns .month {margin-right:1.5%}
 .edit-post  .date-dropdowns .year {margin-right:0;}
-.fancybox-slide .message{/*background:transparent;*/}
+.fancybox-slide .message{/*background:transparent;*/ font-size: 30px;}
 .panel-body.rec-edit-post{padding:0; border-top:1px solid #d9d9d9;}
 
-
+.fancybox-slide .message h2{font-size:27px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px){
 .custom-right {
