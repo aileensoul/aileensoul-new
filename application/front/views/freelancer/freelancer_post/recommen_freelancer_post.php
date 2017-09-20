@@ -47,7 +47,7 @@
                                                        if ($freepostdata[0]['freelancer_post_user_image']) {
                                                            ?>
                                                         <div class="data_img_2">
-                                                            <img src="<?php echo FREE_POST_PROFILE_THUMB_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
+                                                            <img src="<?php echo FREE_POST_PROFILE_MAIN_UPLOAD_URL . $freepostdata[0]['freelancer_post_user_image']; ?>" alt="<?php echo $freepostdata[0]['freelancer_post_fullname'] . ' ' . $freepostdata[0]['freelancer_post_username']; ?>" >
                                                         </div>
                                                         <?php
                                                     } else {
