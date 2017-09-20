@@ -194,8 +194,8 @@
                                                 </ul>
                                             </div>
                                             <div class="dropdown1">
-                                                <a onClick="myFunction(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
-                                                <div id="<?php echo "myDropdown" . $busienss_data[0]['business_profile_post_id']; ?>" class="dropdown-content1">
+                                                <a onClick="myFunction(<?php echo $busienss_data[0]['business_profile_post_id']; ?>)" class="dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>
+                                                <div id="<?php echo "myDropdown" . $busienss_data[0]['business_profile_post_id']; ?>" class="dropdown-content1 dropdown2_content">
                                                     <?php
                                                     if ($busienss_data[0]['posted_user_id'] != 0) {
                                                         if ($this->session->userdata('aileenuser') == $busienss_data[0]['posted_user_id']) {

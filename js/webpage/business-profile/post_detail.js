@@ -593,30 +593,30 @@ $(function () {
         return false;
     });
 });
-function myFunction(clicked_id) {
-    document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-    $(document).on('keydown', function (e) {
-        if (e.keyCode === 27) {
+// function myFunction(clicked_id) {
+//     document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+//     $(document).on('keydown', function (e) {
+//         if (e.keyCode === 27) {
 
-            document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-            $(".dropdown-content1").removeClass('show');
-        }
+//             document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+//             $(".dropdown-content1").removeClass('show');
+//         }
 
-    });
-}
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn1')) {
+//     });
+// }
+// window.onclick = function (event) {
+//     if (!event.target.matches('.dropbtn1')) {
 
-        var dropdowns = document.getElementsByClassName("dropdown-content1");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
+//         var dropdowns = document.getElementsByClassName("dropdown-content1");
+//         var i;
+//         for (i = 0; i < dropdowns.length; i++) {
+//             var openDropdown = dropdowns[i];
+//             if (openDropdown.classList.contains('show')) {
+//                 openDropdown.classList.remove('show');
+//             }
+//         }
+//     }
+// }
 
 var $fileUpload = $("#files"),
         $list = $('#list'),
