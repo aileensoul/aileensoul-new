@@ -38,10 +38,10 @@
                                 <div>
                                     <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4>
                                 </div>
-                                <div class="indiavte_freelancer">
+<!--                                <div class="indiavte_freelancer">
                                     <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                    <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
-                                </div> 
+                                    <span style="color:#7f7f7e"><?php //echo $this->lang->line("filed_required"); ?></span>
+                                </div> -->
                                 <fieldset class="full-width">
                                     <label><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>
                                     <input name="post_name" type="text" id="post_name" maxlength="100" tabindex="1" autofocus placeholder="Enter Post Name" value="<?php echo $freelancerpostdata[0]['post_name'] ?> " onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/>
@@ -135,13 +135,13 @@
                                     <b><h2 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?>: </h2></b>
                                 </fieldset>
                                 <fieldset style="padding-left: 8px;" class="col-md-4" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                    <label class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
+                                    <label class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
                                     <input name="rate" type="number" id="rate" tabindex="8" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('rate'); ?>
                                 </fieldset>
                                 <fieldset class=" col-md-4"> 
-                                    <label><?php echo $this->lang->line("currency"); ?>:<span class="red">*</span></label>
+                                    <label><?php echo $this->lang->line("currency"); ?>:</label>
                                     <select name="currency" id="currency" tabindex="9">
                                         <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                         <?php

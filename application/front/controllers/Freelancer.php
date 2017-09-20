@@ -2151,8 +2151,7 @@ class Freelancer extends MY_Controller {
 
 
         $this->form_validation->set_rules('est_time', 'Estimated time', 'required');
-        $this->form_validation->set_rules('rate', 'Rate', 'required');
-        $this->form_validation->set_rules('currency', 'Currency', 'required');
+       
         $this->form_validation->set_rules('rating', 'Rating', 'required');
 
 
