@@ -13,7 +13,7 @@ $(document).ready(function(){
 </script>
 
  -->
-
+<!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN START -->
  <script type="text/javascript">
 $(document).ready(function(){
     $('.dropbtn_common').on('click',function(){
@@ -25,14 +25,14 @@ $(document).ready(function(){
             $('.dropbtn_common').next().removeClass('show');
     });  
     $(document).on('keydown', function (e) {
-        if (e.keyCode === 27) {
-            if(!$(e.target).closest('.dropbtn_common').length)
+        if (e.keyCode === 27) 
+        {
             $('.dropbtn_common').next().removeClass('show');
         }
     });  
 });
 </script>
-
+<!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN END -->
 <script type="text/javascript">
 
 $.fn.preload = function (fn) {
@@ -67,9 +67,6 @@ $.fn.preload = function (fn) {
     function notheader()
     {
 
-        // $("#fad" + clicked_id).fadeOut(6000);
-
-
         $.ajax({
             type: 'POST',
             url: '<?php echo base_url() . "notification/not_header" ?>',
@@ -89,7 +86,6 @@ $.fn.preload = function (fn) {
                 $('#seenot').html(data.seeall);
 
             }
-
 
         });
 
@@ -142,21 +138,6 @@ $.fn.preload = function (fn) {
             $menuLeft.toggleClass('pushmenu-open');
         });
      
-        // EDIT PROFILE DROPDOWN 
-        $('.dropdown-user').click(function (event) {
-            event.stopPropagation();
-            $(".dropdown-menu").fadeToggle("fast");
-        });
-        $(".dropdown-menu").on("dropdown-user", function () {
-            $(".dropdown-menu").hide();
-            // event.stopPropagation();
-        });
-
-        
-    
-   
-
-      
     });
 
     function addmsg(type, msg)
@@ -194,9 +175,6 @@ $.fn.preload = function (fn) {
         });
     }
     
-
-
- 
     // CLICK ON ESCAPE NOTIFICATION & MESSAGE DROP DOWN CLOSE END
 
  
@@ -207,8 +185,6 @@ $.fn.preload = function (fn) {
         document.getElementById('message_count').style.display = "none";
     });
 </script>
-
-
 
 <!-- footer end -->
 <!--SCRIPT USE FOR NOTIFICATION SCROLLBAR-->
