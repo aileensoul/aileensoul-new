@@ -211,19 +211,30 @@ function followuser(clicked_id)
    { //alert("hii");
        $.ajax({
         type: 'POST',
-        url: base_url + "artistic/third_follow_ignore_art_data",
+        url: base_url + "artistic/third_follow_ignore_user_data",
         dataType: 'html',
         success: function (data) {
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
-                        business_home_follow_ignore(clicked_id);
+                        artistic_home_follow_ignore(clicked_id);
                         $('.fad' + clicked_id).remove();
                     });
         }
     });
    }
 
+function artistic_home_follow_ignore(clicked_id)
+{
+    $.ajax({
+        type: 'POST',
+        url: base_url + "artistic/artistic_home_follow_ignore",
+        data: 'follow_to=' + clicked_id,
+        success: function (data) {
+
+        }
+    });
+}
 
    function followusercell(clicked_id)
    {
