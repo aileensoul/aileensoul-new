@@ -224,7 +224,7 @@
                                         </select><span id="city-error"></span>
                                         <?php echo form_error('city'); ?>
                                     </fieldset>
-                                    <div class="fr">           
+                                    <div class="fr fw">           
                                         <fieldset class="hs-submit full-width">
                                             <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>
