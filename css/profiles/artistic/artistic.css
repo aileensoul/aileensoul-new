@@ -4434,6 +4434,7 @@ div .comment {
     }
     #row2 img {
         border: none;
+		height: 200px;
     }
     #InboxContainer::before {
         right: 139px;
@@ -4853,9 +4854,7 @@ div .comment {
     .user_lst ul li button {
         margin-top: 14px;
     }
-    #row2 img {
-        height: 200px;
-    }
+    
     .bui_bcon {
         width: 56%;
     }
