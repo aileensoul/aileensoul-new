@@ -5089,8 +5089,10 @@ public function followtwo() {
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
 
+        $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $condition_array = array('art_post_id' => $post_id);
+        $condition_array = array('art_post_id' =>  $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -5122,7 +5124,7 @@ public function followtwo() {
         // echo  $dataavl; die();
          if($return == 0){
 
-            $cmtlike1 .= 'notavl';
+            $cmtlike1 = 'notavl';
             echo $cmtlike1;
          }else{
         
@@ -5267,7 +5269,11 @@ public function followtwo() {
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
 
-        $condition_array = array('art_post_id' => $post_id);
+        $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $condition_array = array('art_post_id' =>  $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -5296,7 +5302,7 @@ public function followtwo() {
             $return = 0;
         }
 
-        // echo  $dataavl; die();
+       // echo  $return; die();
          if($return == 0){
             
            $datavl = "notavl";
