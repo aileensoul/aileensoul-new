@@ -166,13 +166,7 @@ $(document).ready(function () {
                 required1: true,
                 isValid: 'Last date should be grater than and equal to today date'
             },
-            currency: {
-                required: true,
-            },
-            rate: {
-                required: true,
-                noSpace: true
-            },
+           
             country: {
                 required: true,
             },
@@ -185,7 +179,7 @@ $(document).ready(function () {
         messages: {
 
             post_name: {
-                required: "Post name is required.",
+                required: "Project name is required.",
             },
             skills: {
                 required: "Skill is required",
@@ -195,17 +189,12 @@ $(document).ready(function () {
             },
 
             post_desc: {
-                required: "Post description  is required.",
+                required: "Project description  is required.",
             },
             last_date: {
                 required: "Last date of apply is required.",
             },
-            currency: {
-                required: "Please select currency type",
-            },
-            rate: {
-                required: "Rate is required",
-            },
+            
             country: {
                 required: "Please select country"
             },
