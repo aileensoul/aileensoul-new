@@ -303,7 +303,6 @@ li.fr a {
 .profile-main-rec-box-menu {
     margin-top: -80px;
     border: 1px solid #d9d9d9;
-    border-top: none;
     z-index: -1;
     background-color: white;
 }
