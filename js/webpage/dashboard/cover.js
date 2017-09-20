@@ -300,7 +300,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#left_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 4000);
+        }, 3000);
         setTimeout(function () {
             $('#right_img').addClass('custom-disabled');
             //....and whatever else you need to do
@@ -309,7 +309,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#right_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 4000);
+        }, 3000);
 
 
         $('#right_img').removeClass('abc_left');
@@ -343,7 +343,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#left_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 4000);
+        }, 2500);
 
         setTimeout(function () {
             $('#right_img').addClass('custom-disabled');
@@ -353,7 +353,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $('#right_img').removeClass('custom-disabled');
             //....and whatever else you need to do
-        }, 4000);
+        }, 2500);
 
         /*slides[currentSlide].className = 'item';*/
         currentSlide = (currentSlide - 1) % slides.length;

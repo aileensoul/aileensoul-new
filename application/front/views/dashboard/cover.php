@@ -575,7 +575,7 @@ if (!file_exists($this->config->item('user_thumb_upload_path') . $image_ori)) {
                                                                     <img src="<?php echo base_url(); ?>slicing/latsgo.png">
                                                                 </div>
                                                                 <div data-animation="animated fadeInUpBig" class="text_sl_head main_6_sl"> 
-                                                                    <span class="mian_4_hed"><?php echo $userdata[0]['user_email']; ?></span>
+                                                                    <span class="mian_4_hed"><?php echo ucfirst($userdata[0]['first_name']);echo" ";echo ucfirst($userdata[0]['last_name']); ?></span>
                                                                     <p>Welcome In Aileensoul</p>
                                                                     <p>
                                                                         <a class="btn-go" href="">Let's Go</a>
