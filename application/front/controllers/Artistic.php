@@ -5708,9 +5708,9 @@ public function followtwo() {
 
 
         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
-        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $artdatacom = $this->data['artdatacom'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $condition_array = array('art_post_id' => $artdata[0]['art_post_id']);
+        $condition_array = array('art_post_id' => $artdatacom[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -5804,7 +5804,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
 
                     }
 
-                  $cmtinsert .= '</div>';
+                  // $cmtinsert .= '</div>';
                   }else{
 
                           $a = $artname;
@@ -14574,7 +14574,7 @@ public function art_home_post() {
                                 $return_html .= '<span role="presentation" aria-hidden="true"> · 
                                                     </span>
                                                     <div class="comment-details-menu">
-                                                        <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['artistic_post_comment_id'] . '" value= "' . $rowdata['artistic_post_comment_id'] . '">
+                                                        <input type="hidden" name="post_delete"  id="post_delete' . $rowdata['artistic_post_comment_id'] . '" value= "' . $rowdata['art_post_id'] . '">
                                                         <a id="' . $rowdata['artistic_post_comment_id'] . '"   onClick="comment_delete(this.id)"> Delete
                                                             <span class="insertcomment' . $rowdata['artistic_post_comment_id'] . '">
                                                             </span>
