@@ -148,17 +148,24 @@ if(document.getElementById('bidmodal-limit').style.display === "block"){
 
 function myFunction1(clicked_id) {
    
-        document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
-    
-         $( document ).on( 'keydown', function ( e ) {
-                   if ( e.keyCode === 27 ) { 
-   
-                   document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                    $(".dropdown-content2").removeClass('show');
-   
-       }
-      
-   }); 
+         var dropDownClass = document.getElementById('myDropdown' + clicked_id).className;
+    dropDownClass = dropDownClass.split(" ").pop(-1);
+    if (dropDownClass != 'show') {
+        $('.dropdown-content2').removeClass('show');
+        $('#myDropdown' + clicked_id).addClass('show');
+    } else {
+        $('.dropdown-content2').removeClass('show');
+    }
+
+
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+
+            document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+            $(".dropdown-content2").removeClass('show');
+        }
+
+    });
    
    }
 
