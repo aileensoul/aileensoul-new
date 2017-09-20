@@ -856,13 +856,10 @@ function followuser_two(clicked_id)
         dataType: 'json',
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data.follow);
-//            $('.follow_box_ul_li:last').append(data.third_user);
             $('ul.home_three_follow_ul').append(data.third_user);
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();
-                
-//                        business_home_three_user_list();
                     });
         }
     });
@@ -870,13 +867,28 @@ function followuser_two(clicked_id)
 
 function followclose(clicked_id)
 {
-    $.when($('.fad' + clicked_id).fadeOut(3000))
-            .done(function () {
-                business_home_follow_ignore(clicked_id);
-                business_home_three_user_list();
-            });
-//    $(".fad" + clicked_id).fadeOut(4000);
+    $.ajax({
+        type: 'POST',
+        url: base_url + "business_profile/third_follow_ignore_user_data",
+        dataType: 'html',
+        success: function (data) {
+            $('ul.home_three_follow_ul').append(data);
+            $.when($('.fad' + clicked_id).fadeOut(3000))
+                    .done(function () {
+                        business_home_follow_ignore(clicked_id);
+                        $('.fad' + clicked_id).remove();
+                    });
+        }
+    });
 }
+//function followclose(clicked_id)
+//{
+//    $.when($('.fad' + clicked_id).fadeOut(3000))
+//            .done(function () {
+//                business_home_follow_ignore(clicked_id);
+//                business_home_three_user_list();
+//            });
+//}
 
 function business_home_follow_ignore(clicked_id)
 {

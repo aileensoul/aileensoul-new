@@ -3604,7 +3604,17 @@ class Business_profile extends MY_Controller {
         }
 
         if ($is_follow == 1) {
-            // GET USER BUSINESS DATA START
+            $third_user_html = $this->third_follow_user_data();
+            echo json_encode(array('follow' => $follow, 'third_user' => $third_user_html));
+            
+        }
+    }
+    
+    public function third_follow_user_data(){
+        
+        $userid = $this->session->userdata('aileenuser');
+        
+        // GET USER BUSINESS DATA START
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -3687,9 +3697,96 @@ class Business_profile extends MY_Controller {
                 }
             }
             
-            echo json_encode(array('follow' => $follow, 'third_user' => $third_user_html));
+            return $third_user_html;
+    }
+    public function third_follow_ignore_user_data(){
+        
+        $userid = $this->session->userdata('aileenuser');
+        
+        // GET USER BUSINESS DATA START
+            $contition_array = array('user_id' => $userid, 'status' => '1');
+            $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+            $business_profile_id = $businessdata[0]['business_profile_id'];
+            $industriyal = $businessdata[0]['industriyal'];
+            $city = $businessdata[0]['city'];
+            $state = $businessdata[0]['state'];
+            $other_industrial = $businessdata[0]['other_industrial'];
+            $business_type = $businessdata[0]['business_type'];
+            // GET USER BUSINESS DATA END
+            // GET BUSINESS USER FOLLOWING LIST START
+            $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+            $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
+            $follow_list = $followdata[0]['follow_list'];
+            $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
+            // GET BUSINESS USER FOLLOWING LIST END
+            // GET BUSINESS USER IGNORE LIST START
+            $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+            $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
+            $user_list = $followdata[0]['user_list'];
+            $user_list = str_replace(",", "','", $userdata[0]['user_list']);
+            // GET BUSINESS USER IGNORE LIST END
+            //GET BUSINESS USER SUGGESTED USER LIST 
+            $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
+            $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
+
+            $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+
+            $third_user_html = '';
+            if (count($userlistview) > 0) {
+                foreach ($userlistview as $userlist) {
+                    $userid = $this->session->userdata('aileenuser');
+                    $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+                    $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
+                    $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                    if (!$businessfollow) {
+
+                        $third_user_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
+      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
+      <div class = " col-md-12 follow_left_box_main">
+      <div class = "post-design-pro-img_follow">';
+                        if ($userlist['business_user_image']) {
+                            $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
+                                $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                            } else {
+                                $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            }
+                            $third_user_html .= '</a>';
+                        } else {
+                            $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
+                            $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+                        }
+                        $third_user_html .= '</div>
+      <div class = "post-design-name_follow fl">
+      <ul><li><div class = "post-design-product_follow">';
+                        $third_user_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
+      </a></div></li>';
+                        $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                        $third_user_html .= '<li>
+      <div class = "post-design-product_follow_main" style = "display:block;">
+      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
+      <p>';
+                        if ($category) {
+                            $third_user_html .= $category;
+                        } else {
+                            $third_user_html .= $userlist['other_industrial'];
+                        }
+                        $third_user_html .= '</p>
+      </a></div></li></ul></div>
+      <div class = "follow_left_box_main_btn">';
+                        $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
+      <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
+      </div></div></li>';
+                    }
+                }
+            }
             
-        }
+            echo $third_user_html;
     }
       
     
