@@ -193,7 +193,7 @@ function unfollowuser_list(clicked_id)
 
                }else{ 
               $('#' + 'removefollow' + clicked_id).fadeOut(4000);
-               $('#countfollow').html(data.notcount);
+               $('#countfollow').html(data.unfollow);
 
                  }   
                 }

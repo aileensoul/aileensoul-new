@@ -4490,7 +4490,7 @@ public function followtwo() {
                 echo json_encode(
                         array("unfollow" => $unfollow,
                             "notfound" => $notfound,
-                            "notcount" => $unfollow,
+                            "notcount" => $followingdatacount,
                 ));
             }
         }
