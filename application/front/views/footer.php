@@ -5,9 +5,16 @@
             $('.dropbtn_common').not(this).next().removeClass('show');
             $(this).next().toggleClass('show');
         });
-        $(document).on('click', function(e) {
+     //   $('body').click(function(e){
+        $('body').on('click', function(e) {
+        //$(document).on('click', function(e) {
+           
             if (!$(e.target).closest('.dropbtn_common').length)
+            { 
                 $('.dropbtn_common').next().removeClass('show');
+            }
+          
+            
         });
         $(document).on('keydown', function(e) {
             if (e.keyCode === 27) {
