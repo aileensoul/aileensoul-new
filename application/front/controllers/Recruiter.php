@@ -994,7 +994,14 @@ class Recruiter extends MY_Controller {
                 if ($ski != " ") {
                 $contition_array = array('skill' => $ski, 'type' => 4);
                 $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                 
                 if (count($skilldata) == 0) {
+                    $contition_array = array('skill' => trim($ski), 'type' => 4);
+
+                    $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                }
+                
+                if ($skilldata) {
                     $skill1[] = $skilldata[0]['skill_id'];
                 } else {
                     $data = array(
