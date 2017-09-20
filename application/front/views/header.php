@@ -34,7 +34,16 @@
    </script>-->
 <!-- header -->
 <header class="">
+  <?php if (($this->uri->segment(1) == 'recruiter' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'job' && $this->uri->segment(2) == 'job_all_post') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate') || ($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'freelancer_apply_post') || ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') || ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'art_post')) { ?>
    <div class="header animated fadeInDownBig">
+    <?php
+}
+else{
+  ?>
+<div class="header">
+  <?php
+}
+    ?>
       <div class="container">
          <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-5 mob-zindex">
