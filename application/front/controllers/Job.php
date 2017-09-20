@@ -3600,8 +3600,18 @@ public function delete_workexp()
                     'job_step' => 10,
                     'slug'=> $this->setcategory_slug($this->input->post('first_name').'-'.$this->input->post('last_name'), 'slug', 'job_reg')
                 );
+
+       $insert_id = $this->common->insert_data_getid($data, 'job_reg');
+
+       // $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+       // $job= $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+       // if($job[0]['user_id'])
+       // {
+
+       //    $insert_id  = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+       // }
       
-                $insert_id = $this->common->insert_data_getid($data, 'job_reg');
                 if ($insert_id) {
                     $this->session->set_flashdata('success', 'Basic information updated successfully');
                     redirect('job/home');

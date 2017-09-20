@@ -181,7 +181,14 @@
 //BUTTON SUBMIT DISABLE AFTER SOME TIME START
 $("#submit").on('click', function() 
 {
-  $("#submit").addClass("register_disable");
-  setTimeout(function() { $("#submit").removeClass("register_disable") }, 2500);
+   if (!$('#jobseeker_regform').valid()) 
+    {
+      return false;
+    }
+    else
+    {
+      $("#submit").addClass("register_disable");
+      return true;
+  }
 });
 //BUTTON SUBMIT DISABLE AFTER SOME TIME END
