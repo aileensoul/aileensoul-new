@@ -26,6 +26,7 @@
                         <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
                             <div class="common-form">
+								<div class="job-saved-box">
                                 <h3 class="h3_edit">Edit Post</h3>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -35,8 +36,8 @@
                                     echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
                                 }
                                 ?>
-                            </div>
-                            <div class="panel-body">
+								
+                            <div class="panel-body rec-edit-post">
 
 
 
@@ -85,7 +86,7 @@
                                     <?php echo form_error('position'); ?>
                                 </fieldset>
 
-                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
                                     <label class="control-label">Minimum experience:<span style="color:red">*</span></label>
 
 
@@ -434,7 +435,8 @@
                                     <input type="submit" id="submit" class="add_post_btns" tabindex="20" name="submit" value="save">                    
                                 </fieldset>
                             </div>
-
+								</div>
+                            </div>
                             </form>
                         </div>
                     </div>

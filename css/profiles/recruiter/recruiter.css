@@ -869,7 +869,8 @@ label.cameraButton input[accept*="camera"] {
 .common-form fieldset.rec_check input{height:auto;}
 .edit-post .date-dropdowns .day, .edit-post  .date-dropdowns .month {margin-right:1.5%}
 .edit-post  .date-dropdowns .year {margin-right:0;}
-.fancybox-slide .message{background:transparent;}
+.fancybox-slide .message{/*background:transparent;*/}
+.panel-body.rec-edit-post{padding:0; border-top:1px solid #d9d9d9;}
 
 
 /***  media query  ***/

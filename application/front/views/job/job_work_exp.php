@@ -313,13 +313,13 @@
                                                       <option value="12 month"  <?php if ($experience_month1 == "12 month") echo 'selected'; ?>>12 month</option>
                                                    </select>
                                                    <?php echo form_error('experience_year'); ?>
-                                                   <?php echo form_error('experience_month'); ?>
-                                                   <label style="    margin-top: 6px;">Job Title:<span class="red">*</span></label>
+                                                   <?php echo form_error('experience_month'); ?>&nbsp;&nbsp; 
+                                                   <label style="    margin-top: 6px; width:100%; float:left;">Job Title:<span class="red">*</span></label>
                                                    <input type="text" name="jobtitle[]"  class="jobtitle" id="jobtitle"  placeholder="Enter Job Title" value="<?php
                                                       if ($jobtitle1) {
                                                           echo $jobtitle1;
                                                       }
-                                                      ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
+                                                      ?>" maxlength="255"/>&nbsp;&nbsp; 
                                                    <?php echo form_error('jobtitle'); ?>
                                                    </span>
                                                    <label style=" margin-top: 6px;  ">Organization Name:<span class="red">*</span></label>
@@ -327,26 +327,26 @@
                                                       if ($companyname1) {
                                                           echo $companyname1;
                                                       }
-                                                      ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; 
+                                                      ?>" maxlength="255"/>&nbsp;&nbsp;
                                                    <?php echo form_error('companyname'); ?>
                                                    <label style="   margin-top: 6px; ">Organization Email:</label>
                                                    <input type="text" name="companyemail[]" id="companyemail" class="companyemail" placeholder="Enter Organization Email" value="<?php
                                                       if ($companyemail1) {
                                                           echo $companyemail1;
                                                       }
-                                                      ?>" maxlength="255"/>&nbsp;&nbsp;&nbsp; <span id="companyemail-error"> </span>
+                                                      ?>" maxlength="255"/>&nbsp;&nbsp; <span id="companyemail-error"> </span>
                                                   
                                                    <label style="  margin-top: 6px; ">Organization Phone:</label>
                                                    <input type="text" name="companyphn[]" id="companyphn" class="companyphn" placeholder="Enter Organization Phone" value="<?php
                                                       if ($companyphn1) {
                                                           echo $companyphn1;
                                                       }
-                                                      ?>"   maxlength="15"/>&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
-                                                   <?php echo form_error('companyphn'); ?>
+                                                      ?>"   maxlength="15"/>&nbsp;&nbsp; <span id="companyphn-error"> </span>
+                                                   <?php echo form_error('companyphn'); ?>&nbsp;&nbsp;
                                                  
                                                    <label style="      margin-top: -14px;  display: block;">Experience Certificate:</label>
                                                    <input style="width: 50%; display: inline-block;" type="file" name="certificate[]" id="certificate" class="certificate" placeholder="CERTIFICATE" />
-                                                    <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>&nbsp;&nbsp;&nbsp; 
+                                                    <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>&nbsp;&nbsp;
 
                                                    <?php
                                                       if ($work_certificate1) {
