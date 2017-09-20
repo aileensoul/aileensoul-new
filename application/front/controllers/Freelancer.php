@@ -1450,9 +1450,14 @@ class Freelancer extends MY_Controller {
                         $return_html .= $this->lang->line("applied");
                         $return_html .= '</a>';
                     } else {
+                        if(is_numeric($this->uri->segment(3))){
+                           $id=$this->uri->segment(3);
+                        }  else{
+                         $id = $this->db->get_where('freelancer_hire_reg', array('freelancer_hire_slug' => $this->uri->segment(3), 'status' => 1))->row()->user_id;
+                        }
                         $return_html .= '<input type="hidden" id="allpost' . $post['post_id'] . '" value="all">';
                         $return_html .= '<input type="hidden" id="userid' . $post['post_id'] . '" value="' . $post['user_id'] . '">';
-                        $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $this->uri->segment(3) . ')">';
+                        $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $id . ')">';
                         $return_html .= $this->lang->line("apply");
                         $return_html .= '</a>
                                                               </li>
@@ -1467,7 +1472,7 @@ class Freelancer extends MY_Controller {
                             $return_html .= '</a>';
                         } else {
                             $return_html .= '<input type="hidden" name="saveuser"  id="saveuser" value= "' . $data[0]['save_id'] . '">';
-                            $return_html .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . '> applypost button">';
+                            $return_html .= '<a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' applypost button">';
                             $return_html .= $this->lang->line("save");
                             $return_html .= '</a>';
                         }
