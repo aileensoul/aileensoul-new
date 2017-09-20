@@ -1339,7 +1339,7 @@ label.cameraButton input[accept*="camera"] {
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
     #row2 img {
-        border: none;
+      
         height: 200px;
     }
      #row1{height:200px;}
