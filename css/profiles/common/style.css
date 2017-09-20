@@ -1072,7 +1072,7 @@ label.cameraButton {
 .custom-c .middle-section{background:#f3f3f3;}
 .bg-images.no-cover-upload{
     background:#fff;
-    border-bottom:1px solid #d9d9d9;
+   /* border-bottom:1px solid #d9d9d9;*/
     background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
     background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
     background-image: -o-radial-gradient(center, ellipse farthest-corner, #FCFCFF 30%, #d5ebfd 100%);
@@ -1105,6 +1105,7 @@ label.cameraButton input[accept*="camera"] {
     text-align: center;
     text-transform: uppercase;
     line-height:1;
+	
 }
 
 .fixed_right_display_none{display: none;}
@@ -1231,7 +1232,7 @@ body.blog{height:auto;}
     padding-left: 0px!important;
     padding-right: 0px!important;
     padding:0px;
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
     height: 492px;
     overflow-x:hidden ;
 }
@@ -1885,8 +1886,16 @@ display: none !important;
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
 /*** end all profile  ***/
 .message-data-name .fa-circle{margin-right:6px;}
+#row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}
+.flw_msg_btn{padding-right:12px;}
 
 
+
+
+
+
+
+/***  media query  ***/
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   select:focus,
   textarea:focus,
@@ -1896,21 +1905,18 @@ display: none !important;
   }
 }
 
-
-
-
-/***  media query  ***/
-
 @media screen and (min-width: 1280px) {
     .container {
         width: 1280px;
     }
 }
+
 @media screen and (min-width: 800px) {
     #floatBarsG {
        transform: scale(1);
     }
 }
+
 @media screen and (min-width: 768px) {
 	.modal-content{padding: 5px;}
 	#likeusermodal.message-box span.mes{padding:0px 15px 0;}
@@ -1925,6 +1931,7 @@ display: none !important;
 		color: white;
 	}
 }
+
 @media screen and (max-width:1280px){
   .fixed_right_side{right: 0;}
   .fixed_right_display_none{display:block;}
@@ -1940,9 +1947,11 @@ display: none !important;
 	#people-list{width:30%;}
     #chat{width:70%;}
 }
+
 @media screen and (max-width:1200px){ 
   .fixed_right_side{right: 0;}
 }
+
 @media screen and (max-width: 1024px) {
 	.common-form input[type="radio"], .common-form input[type="checkbox"]{margin: 6px 10px;}
 	.email-verify{ padding-left: 3%;}
@@ -1971,6 +1980,7 @@ display: none !important;
         width: 76%;
     }
 }
+
 @media screen and (max-width: 991px){
     .fixed_right_side{display: none;}
     .fixed_middle_side{width: 100%; left: 0;}
@@ -2012,16 +2022,19 @@ display: none !important;
 	.work_type_custom label{display:inline-block !important; }
 	.common-form .work_type_custom input[type="radio"], .common-form .work_type_custom input[type="checkbox"] {height:15px !important; margin:0;}
 }
+
 @media screen and (max-width: 900px){
 	.custom-right {margin-left: 4%;}
     .ves_c{width: 100%; display: block; text-align: center;}
 }
+
 @media screen and (max-width: 800px){
 	.cover-pic {right: -4%;}
 	.custom-right {
         margin-left: 0%;
     }
 }
+
 @media screen and (max-width: 700px) {
     .box {
         width: 70%;
@@ -2097,6 +2110,7 @@ display: none !important;
 	.padd_set .change-password{padding: 0;}
 	.padd_set{padding:35px 0;}
 }
+
 @media screen and (max-width: 640px) {
 
 	.cover-pic {
@@ -2111,6 +2125,7 @@ display: none !important;
 	.profile-text1{width: 100%;}
     .profile-text1 .as-p{margin-bottom: 0px;   font-size: 11px; }
 }
+
 @media screen and (max-width: 540px) {
 	.cls-ve {
 		top: 10px;
@@ -2153,6 +2168,7 @@ display: none !important;
     }
 	.people-list .search input{width:95%;}
 }
+
 @media screen and (max-width: 479px) {
 	ul li,
     ol li {
@@ -2224,6 +2240,7 @@ display: none !important;
 	.modal.in .modal-dialog{font-size:88%;}
 	.modal.in .modal-dialog .mes .pop_content{font-size:18px;}
 }
+
 @media screen and (max-width: 360px) {
 	.nav > li > a {
         padding: 10px 7px;
@@ -2240,6 +2257,7 @@ display: none !important;
     }
 	.people-list .search input{width:92%;}
 }
+
 @media screen and (max-width: 320px){
 	/** cover  **/
 	.main-txt{width: 82%;}
@@ -2260,6 +2278,7 @@ display: none !important;
         background-color: rgb(255, 255, 255);
     }
 }
+
 @-o-keyframes bounce_floatBarsG {
     0% {
         -o-transform: scale(1);
@@ -2270,6 +2289,7 @@ display: none !important;
         background-color: rgb(255, 255, 255);
     }
 }
+
 @-ms-keyframes bounce_floatBarsG {
     0% {
         -ms-transform: scale(1);
@@ -2280,6 +2300,7 @@ display: none !important;
         background-color: rgb(255, 255, 255);
     }
 }
+
 @-webkit-keyframes bounce_floatBarsG {
     0% {
         -webkit-transform: scale(1);
@@ -2290,6 +2311,7 @@ display: none !important;
         background-color: rgb(255, 255, 255);
     }
 }
+
 @-moz-keyframes bounce_floatBarsG {
     0% {
         -moz-transform: scale(1);

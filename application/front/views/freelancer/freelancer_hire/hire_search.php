@@ -355,6 +355,8 @@
         </style>
     </head>  
     <body>
+        <?php $userid = $this->session->userdata('aileenuser'); 
+        if(!$userid){?>
         <header>
             <div class="container">
                 <div class="row">
@@ -370,7 +372,8 @@
                 </div>
             </div>
         </header>
-        <?php //echo $header; ?>
+        <?php } else{ 
+        echo $header; } ?>
         <?php //echo $freelancer_hire_header2_border; ?>
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">

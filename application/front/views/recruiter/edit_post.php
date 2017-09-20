@@ -26,6 +26,7 @@
                         <div class="col-md-8 col-sm-10 animated fadeInLeftBig">
 
                             <div class="common-form">
+								<div class="job-saved-box">
                                 <h3 class="h3_edit">Edit Post</h3>
                                 <?php
                                 if ($this->session->flashdata('error')) {
@@ -35,8 +36,8 @@
                                     echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
                                 }
                                 ?>
-                            </div>
-                            <div class="panel-body">
+								
+                            <div class="panel-body rec-edit-post">
 
 
 
@@ -78,18 +79,18 @@
                                 </fieldset>
 
                                 <fieldset class="full-width">
-                                    <label>No of position:<span style="color:red">*</span></label>
+                                    <label>No of Position:<span style="color:red">*</span></label>
 
-                                    <input name="position" type="text" tabindex="4"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of Candidate"/>
+                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of Candidate"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('position'); ?>
                                 </fieldset>
 
-                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+                                <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="">
                                     <label class="control-label">Minimum experience:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" tabindex="5" name="minyear" id="minyear" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="4" name="minyear" id="minyear" class="keyskil">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -122,16 +123,16 @@
 
 
                                     <span id="fullname-error"></span>
-                                    <?php echo form_error('month'); ?> &nbsp;&nbsp; <?php echo form_error('year'); ?>
+                                    <?php echo form_error('month'); ?>  <?php echo form_error('year'); ?>
 
                                 </fieldset>
 
 
                                 <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">&nbsp;Maximum experience:<span style="color:red">*</span></label>
+                                    <label class="control-label">Maximum experience:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" name="maxyear" tabindex="7"  id="maxyear" class="keyskil1">
+                                    <select style="cursor:pointer;" name="maxyear" tabindex="5"  id="maxyear" class="keyskil1">
 
                                         <option value="" selected option disabled>Year</option>
 
@@ -163,14 +164,14 @@
 
 
                                     <span id="fullname-error"></span>
-                                    <?php echo form_error('month'); ?> &nbsp;&nbsp; <?php echo form_error('year'); ?>
+                                    <?php echo form_error('month'); ?>  <?php echo form_error('year'); ?>
                                 </fieldset>
-                                <fieldset class="form-group full-width" style="margin-top: 0px;
+                                <fieldset class="rec_check form-group full-width" style="margin-top: 0px;
                                           margin-bottom: 2px;">
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input  style="width: 6%;cursor:pointer; height: 15px; " type="checkbox" name="fresher" tabindex="9" value="1" style="width: 5%;" checked>Fresher can also apply..!
+                                        <input   type="checkbox" name="fresher" tabindex="6" value="1" checked>Fresher can also apply..!
                                         <?php
                                     } else {
                                         ?>
@@ -181,8 +182,8 @@
                                 </fieldset>
 
                                 <fieldset class=" half-width pad_right"> 
-                                    <label>Add  Industry:<span style="color:red">*</span></label>
-                                    <select name="industry" id="industry" tabindex="19">
+                                    <label>Industry:<span style="color:red">*</span></label>
+                                    <select name="industry" id="industry" tabindex="7">
                                         <option value="" selected option disabled>Select Industry</option>
 
                                         <?php
@@ -215,7 +216,7 @@
                                     <label class="control-label">Employment Type:<span style="color:red">*</span></label>
 
 
-                                    <select style="cursor:pointer;" tabindex="5" name="emp_type" id="emp_type" class="keyskil">
+                                    <select style="cursor:pointer;" tabindex="8" name="emp_type" id="emp_type" class="keyskil">
 
                                         <option value="" selected option disabled>Employment Type</option>
 
@@ -225,7 +226,7 @@
                                     </select>
 
                                     <span id="fullname-error"></span>
-<?php echo form_error('emp_type'); ?> &nbsp;&nbsp; <?php echo form_error('emp_type'); ?>
+<?php echo form_error('emp_type'); ?>  <?php echo form_error('emp_type'); ?>
 
                                 </fieldset>
 
@@ -233,7 +234,7 @@
                                 <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
                                     <label>Education:</label> 
 
-                                    <input type="search" tabindex="1" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
+                                    <input type="search" tabindex="9" autofocus id="education" name="education" value="<?php echo $degree_data; ?>" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                     <span id="fullname-error"></span>
 <?php echo form_error('education'); ?>
 
@@ -244,7 +245,7 @@
 
                                     <!--  <?php echo form_textarea(array('name' => 'post_desc', 'id' => 'varmailformat', 'class' => "ckeditor", 'value' => html_entity_decode($postdata[0]['post_description']))); ?> -->
 
-                                    <textarea name="post_desc" tabindex="11" id="varmailformat" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
+                                    <textarea name="post_desc" tabindex="10" id="varmailformat" rows="4" cols="50"  placeholder="Enter Job Description" style="resize: none;"><?php echo $postdata[0]['post_description']; ?></textarea>
 
 <?php echo form_error('post_desc'); ?>
                                 </fieldset>
@@ -253,7 +254,7 @@
                                 <fieldset class="full-width">
                                       <label>Interview process:<!-- <span style="color:red">*</span> --></label>
 
-                                    <textarea name="interview" id="interview" tabindex="12" rows="4" placeholder="Enter Interview Process"><?php echo $postdata[0]['interview_process']; ?></textarea>
+                                    <textarea name="interview" id="interview" tabindex="11" rows="4" placeholder="Enter Interview Process"><?php echo $postdata[0]['interview_process']; ?></textarea>
 
 <?php echo form_error('interview'); ?> 
                                 </fieldset>
@@ -266,7 +267,7 @@
 
 <?php $countryname = $this->db->get_where('countries', array('country_id' => $postdata[0]['country']))->row()->country_name; ?>
 
-                                    <select style="cursor:pointer;" name="country" tabindex="13" id="country">
+                                    <select style="cursor:pointer;" name="country" tabindex="12" id="country">
 
 
 
@@ -298,7 +299,7 @@
 
                                 <fieldset  class="half-width" <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label>State:<span style="color:red">*</span></label>
-                                    <select style="cursor:pointer;" name="state" id="state" tabindex="14">
+                                    <select style="cursor:pointer;" name="state" id="state" tabindex="13">
                                         <?php
                                         if ($postdata[0]['state']) {
                                             foreach ($states as $cnt) {
@@ -325,7 +326,7 @@
 
                                 <fieldset class="half-width" <?php if ($city) { ?> class="error-msg" <?php } ?>>
                                     <label>City:</label>
-                                    <select name="city" id="city" tabindex="15">
+                                    <select name="city" id="city" tabindex="14">
                                         <?php
                                         if ($postdata[0]['city']) {
                                             foreach ($cities as $cnt) {
@@ -360,29 +361,50 @@
 <?php echo form_error('city'); ?>
                                 </fieldset>
 
+<fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
+                                    <label class="control-label">Salary Type:<span style="color:red">*</span></label>
 
-                                <fieldset class="half-width edit-post">
+
+                                    <select style="cursor:pointer;" tabindex="15" name="salary_type" id="salary_type" class="keyskil">
+
+                                        <option value="" selected option disabled>Salary Type</option>
+
+                                        <option value="Per Year" <?php if ($postdata[0]['salary_type'] == "Per Year") echo 'selected="selected"'; ?>>Per Year</option>
+                                        <option value="Per Month" <?php if ($postdata[0]['salary_type'] == "Per Month") echo 'selected="selected"'; ?>>Per Month</option>
+                                        <option value="Per Week" <?php if ($postdata[0]['salary_type'] == "Per Week") echo 'selected="selected"'; ?>>Per Week</option>
+
+                                        <option value="Per Day" <?php if ($postdata[0]['salary_type'] == "Per Day") echo 'selected="selected"'; ?>>Per Day</option>
+                                    </select>
+                                </fieldset>
+
+                                <fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
+                                          <label class="control-label">Min salary:<!-- <span style="color:red">*</span> --></label>
+                                    <input name="minsal" tabindex="16" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
+<?php echo form_error('minsal'); ?>
+                                </fieldset>
+                             
+
+                                <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
+                                   <label class="control-label">Max salary:<!-- <span style="color:red">*</span> --></label>
+                                    <input name="maxsal" type="text" tabindex="17" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
+<?php echo form_error('maxsal'); ?>
+                                </fieldset>
+
+
+   <fieldset class="half-width edit-post">
                                     <label>Last date for apply: <span style="color:red">*</span></label>
 
-                                    <input type="hidden" id="example2">
+                                    <input type="hidden" id="example2" tabindex="18">
 
 <?php echo form_error('last_date'); ?> 
                                 </fieldset>
 
 
-                                <fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                          <label class="control-label">Min salary:<!-- <span style="color:red">*</span> --></label>
-                                    <input name="minsal" tabindex="17" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
-<?php echo form_error('minsal'); ?>
-                                </fieldset>
+                             
 
-                                <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
-                                   <label class="control-label">Max salary:<!-- <span style="color:red">*</span> --></label>
-                                    <input name="maxsal" type="text" tabindex="18" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
-<?php echo form_error('maxsal'); ?>
-                                </fieldset>
 
-                                <fieldset class=" half-width pad_right"> 
+                                
+   <fieldset class=" half-width pad_right"> 
                                     <label>Currency:</label>
                                     <select name="currency" id="currency" tabindex="19">
                                         <option value="" selected option disabled>Select Currency</option>
@@ -409,24 +431,6 @@
 <?php echo form_error('currency'); ?>
 
                                 </fieldset>
-
-
-                                <fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">Salary Type:<span style="color:red">*</span></label>
-
-
-                                    <select style="cursor:pointer;" tabindex="5" name="salary_type" id="salary_type" class="keyskil">
-
-                                        <option value="" selected option disabled>Salary Type</option>
-
-                                        <option value="Per Year" <?php if ($postdata[0]['salary_type'] == "Per Year") echo 'selected="selected"'; ?>>Per Year</option>
-                                        <option value="Per Month" <?php if ($postdata[0]['salary_type'] == "Per Month") echo 'selected="selected"'; ?>>Per Month</option>
-                                        <option value="Per Week" <?php if ($postdata[0]['salary_type'] == "Per Week") echo 'selected="selected"'; ?>>Per Week</option>
-
-                                        <option value="Per Day" <?php if ($postdata[0]['salary_type'] == "Per Day") echo 'selected="selected"'; ?>>Per Day</option>
-                                    </select>
-                                </fieldset>
-
                                 <fieldset class="hs-submit full-width">
                                   
 
@@ -434,7 +438,8 @@
                                     <input type="submit" id="submit" class="add_post_btns" tabindex="20" name="submit" value="save">                    
                                 </fieldset>
                             </div>
-
+								</div>
+                            </div>
                             </form>
                         </div>
                     </div>

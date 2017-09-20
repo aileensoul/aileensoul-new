@@ -420,7 +420,7 @@ label.cameraButton:active {
     margin-bottom: 10px;
 }
 .bui_art_left_box .profile-boxProfileCard {
-    border: 11px solid #ffffff;
+    border: 6px solid #ffffff;
     background: #fff;
     border-radius: 3px;
 }
@@ -3954,6 +3954,13 @@ div .comment {
 .mob-comment button:focus {
     outline: none;
 }
+.follow_box_ul_li .post-img-div{width:60px; height:59px; padding:20px 0;}
+.profile-boxProfileCard_follow ul{padding-bottom:10px;}
+
+
+
+
+
 /***  media query  ***/
 
 @media screen and (max-width: 1280px) {
@@ -3967,16 +3974,19 @@ div .comment {
         display: none!important;
     }
 }
+
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
     #InboxContainer {
         right: -14px;
     }
 }
+
 @media screen and (max-width: 1279px) {
     #InboxContainer:before {
         right: 19px;
     }
 }
+
 @media screen and (max-width: 1199px) {
     .bui_art_left_box .profile-boxProfileCard-content::before {
         top: 50px;
@@ -4032,6 +4042,7 @@ div .comment {
         padding: 10px 7px 8px 7px !important;
     }
 }
+
 @media screen and (max-width: 1024px) {
     .prev,
     .next {
@@ -4109,6 +4120,7 @@ div .comment {
         width: 100%;
     }
 }
+
 @media screen and (max-width: 991px) {
     #paddingtop_fixed_art.container {
         padding-left: 0;
@@ -4397,6 +4409,7 @@ div .comment {
         margin: 0 auto;
     }
 }
+
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
         width: 82%;
@@ -4406,6 +4419,7 @@ div .comment {
         float: left;
     }
 }
+
 @media screen and (max-width: 767px) {
     input[type="radio"],
     input[type="checkbox"] {
@@ -4802,6 +4816,7 @@ div .comment {
         padding: 7px;
     }
 }
+
 @media screen and (max-width: 640px) {
     .modal.in .modal-dialog .mes .pop_content {
         font-size: 18px;
@@ -4923,6 +4938,7 @@ div .comment {
         height: 75px;
     }
 }
+
 @media screen and (max-width: 540px) {
     #InboxContainer::before {
         right: 143px;
@@ -5020,6 +5036,7 @@ div .comment {
         padding: 2px 12px !important;
     }
 }
+
 @media screen and (max-width: 479px) {
     .post-design-box .post-design-desc input.my_text {
         padding-right: 35px;
@@ -5391,11 +5408,13 @@ div .comment {
         padding-top: 7px;
     }
 }
+
 @media screen and (max-width: 430px) {
     .bui_bcon {
         width: 35%;
     }
 }
+
 @media screen and (max-width: 360px) {
     .tabs-left > li > a {
         font-size: 12px;
@@ -5545,6 +5564,7 @@ div .comment {
         padding-left: 15px;
     }
 }
+
 @media screen and (max-width: 320px) {
     .editor-content {
         width: 70%;

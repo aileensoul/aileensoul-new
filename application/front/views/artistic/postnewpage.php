@@ -212,8 +212,8 @@
                                     </div>  
 
                                     <div class="dropdown1">
-                                        <a onClick="myFunctionone(<?php echo $art_data[0]['art_post_id']; ?>)" class="dropbtn1 dropbtn1 fa fa-ellipsis-v"></a>
-                                        <div id="<?php echo "myDropdown" . $art_data[0]['art_post_id']; ?>" class="dropdown-content1">
+                                        <a onClick="myFunctionone(<?php echo $art_data[0]['art_post_id']; ?>)" class="dropbtn_common dropbtn1 fa fa-ellipsis-v"></a>
+                                        <div id="<?php echo "myDropdown" . $art_data[0]['art_post_id']; ?>" class="dropdown-content1 dropdown2_content">
 
 
                                             <?php

@@ -23,6 +23,7 @@
     width: 22.5%;
     margin-top: 0px;
 }
+
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
 .add-post-button{margin-top: 25px;}
 .add-post-button .btn:focus{color: white; background: #156f95;}
@@ -96,7 +97,7 @@ li.fr a {text-decoration: none !important;}
 .profile-box-art ul li {padding-left: 0 !important; padding-right: 3px !important;}
 .profile-box-art .right-menu-jr ul li a {padding-top: 15px; padding-bottom: 15px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a {padding-top: 8px; padding-bottom: 8px;}
-.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; border-top: none; z-index: -1; background-color: white; width: 100%; float: left;}
+.profile-main-rec-box-menu {margin-top: -80px; border: 1px solid #d9d9d9; z-index: -1; background-color: white; width: 100%; float: left;}
 .profile-main-rec-box-menu ul {list-style-type: none; line-height: 18px; margin: 0; padding: 0; overflow: hidden;}
 .profile-main-rec-box-menu li {float: left; margin-bottom: 0px; }
 .profile-main-rec-box-menu li a {display: block; color: #1b8ab9; text-align: center; padding: 16px 15px;
@@ -324,7 +325,7 @@ line-height: 1;}
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
+#row2 img {height: 350px; width: 100%;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 0.5em; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -630,6 +631,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .reactivate_btn_y a:hover {
     color: #fff;
+    text-decoration: none!important;
 }
 .reactivate_btn_n {
     height: 20px;
@@ -648,6 +650,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 .reactivate_btn_n a:hover {
     color: #fff;
+    text-decoration: none!important;
 }
 #erroe_nn label select .error {
     border: 1px solid red!important;
@@ -835,7 +838,7 @@ label.cameraButton input[accept*="camera"] {
 }
 .flw_msg_btn{margin-top: 5px;}
 .tabs-left > li.active > a .fa-file-pdf-o{font-size: inherit;}
-.rec_check{margin-top: -15px;}
+
 
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a{height: auto;}
 .date-dropdowns .day.error{ border: 1px solid red !important;}
@@ -861,7 +864,7 @@ label.cameraButton input[accept*="camera"] {
 #indus{border:1px solid #1b8ab9; margin-top:10px; }
 #indus:hover{background:#1b8ab9; color:#fff;}
 .job_edit_menu {
-    width: 18.5% !important;
+    width: 22.5% !important;
 }
 .job_edit_pr {
     padding-left: 245px;
@@ -869,9 +872,10 @@ label.cameraButton input[accept*="camera"] {
 .common-form fieldset.rec_check input{height:auto;}
 .edit-post .date-dropdowns .day, .edit-post  .date-dropdowns .month {margin-right:1.5%}
 .edit-post  .date-dropdowns .year {margin-right:0;}
-.fancybox-slide .message{background:transparent;}
+.fancybox-slide .message{/*background:transparent;*/ font-size: 30px;}
+.panel-body.rec-edit-post{padding:0; border-top:1px solid #d9d9d9;}
 
-
+.fancybox-slide .message h2{font-size:27px;}
 /***  media query  ***/
 @media screen and (max-width: 1279px){
 .custom-right {

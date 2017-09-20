@@ -1279,7 +1279,7 @@ class Job extends MY_Controller {
         $contition_array = array('status' => '1', 'is_delete' => 0, 'user_id' => $userid);
        $post = $this->data['postdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id,work_job_title,work_job_industry,work_job_city,keyskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => 'publish','title_id' => $post[0]['work_job_title']);
+        $contition_array = array('title_id' => $post[0]['work_job_title']);
         $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
        
         $this->data['work_title'] = $jobtitle[0]['name'];
@@ -1358,7 +1358,7 @@ class Job extends MY_Controller {
            }else{
                  $data = array(
                     'name' => ucfirst($this->input->post('job_title')),
-                    'status' => 'publish',
+                    'status' => 'draft',
                  );
       $jobtitle = $this->common->insert_data_getid($data, 'job_title');
            }
@@ -3530,7 +3530,7 @@ public function delete_workexp()
            }else{
                  $data = array(
                     'name' => ucfirst($this->input->post('job_title')),
-                    'status' => 'publish',
+                    'status' => 'draft',
                  );
       $jobtitle = $this->common->insert_data_getid($data, 'job_title');
            }

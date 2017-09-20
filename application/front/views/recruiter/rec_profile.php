@@ -263,7 +263,7 @@
             </div>
             <!-- menubar --> 
             <div class="middle-part container rec_res">
-                <div class="job-menu-profile job_edit_menu mob-none pt5">
+                <div class="job-menu-profile  mob-none pt20">
                     <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
                     <!-- text head start -->
                     <div class="profile-text" >

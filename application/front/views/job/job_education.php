@@ -636,7 +636,7 @@
                                                   ?>" maxlength="5"/>
                                              <?php echo form_error('percentage'); ?>
                                              <h6>Year Of Passing :<span class="red">*</span></h6>
-                                             <select name="pass_year[]" id="pass_year1" tabindex="8" class="pass_year" >
+                                             <select name="pass_year[]" id="pass_year1" tabindex="7" class="pass_year" >
                                                 <option value="" selected option disabled>--SELECT--</option>
                                                 <?php
                                                    $curYear = date('Y');
@@ -657,7 +657,7 @@
                                              <?php echo form_error('pass_year'); ?>
                                            
                                              <h6>Education Certificate:</h6>
-                                             <input style="" type="file" name="certificate[]" id="certificate1" tabindex="7" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
+                                             <input style="" type="file" name="certificate[]" id="certificate1" tabindex="8" class="certificate" placeholder="CERTIFICATE" multiple="" />&nbsp;&nbsp;&nbsp; <span id="certificate-error"> </span>
                                              <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                               <?php
                                                 if ($edu_certificate1) {
@@ -742,7 +742,7 @@
                                           } else {
                                               ?>
                                        <!--clone div start-->              
-                                       <div id="input1" style="margin-bottom:4px;" class="clonedInput">
+                                       <div id="input1" style="margin-bottom:4px;" class="clonedInput job_work_experience_main_div">
                                           <!-- <fieldset class=""> -->
                                           <h6>Degree :<span class="red">*</span></h6>
                                           <select name="degree[]" id="degree1" class="degree">

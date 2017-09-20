@@ -1545,17 +1545,23 @@ label.error{font-size: 11px; color: #ff0000 !important; font-weight:normal;}
 #selgen.error{ border-bottom: 1px solid red !important;}
 .about-content{width: 80% !important;line-height: 28px !important;}
 select:focus{ outline: none; }
+.gender.valid{color:#848484 !important;}
+
+
+
 
 /***  media query  ***/
 @media only screen and (max-width: 1350px) and (min-width: 1280px)  {
 	footer > .container {padding-left:15px; padding-right:15px; width:1250px;}
 }
+
 @media (min-width: 1280px) { 
    .main-inner .pd-low{/*padding-top: 100px;*/}
 	.container {width: 1280px;}  
 	.cover .middle-section .container{width:1270px}
   
 }
+
 @media (max-width: 1280px) {
 	.top-middle{padding-left:0;}
 	.bottom-middle{padding-left:0;}
@@ -1564,6 +1570,7 @@ select:focus{ outline: none; }
 height: 146px;}
 .left-profile .profile-photo{/*padding: 1px;*/}
 }
+
 @media screen and (max-width: 1199px) {
 
 	.login{width:100%;}
@@ -1575,6 +1582,7 @@ height: 146px;}
 	.profile-box-1.art::after{height: 60px; left: 22%;}
 	
 }
+
 @media screen and (max-width: 1024px) {
 	.middle-section{padding-top: 24PX;}
 	.carousel-fade .carousel-caption .carousel-text{width:60%;}
@@ -1632,6 +1640,7 @@ height: 146px;}
 	
 	
 }
+
 @media screen and (max-width: 767px) {
 	   .banner-box .upload-camera {
 		height: 34px;
@@ -1712,6 +1721,7 @@ height: 146px;}
 	.cover .middle-section .container{width:100%;}
 	.banner-box .upload-camera .cameraButton{padding:4px 7px 3px;}
 }
+
 @media screen and (max-width: 640px) {
 	.btns .btn-4{font-size: 14px!important;}
 	.custom-box .custom-width .right-box a.hew{font-size: 16px!important;}
@@ -1743,6 +1753,7 @@ height: 146px;}
 	.banner-box #row2 img{height:200px;}
 	
 }
+
 @media screen and (max-width: 479px) {
 	.custom-box .custom-width .right-box h1 a::after{left: 50% !important;
 width: 150px;
@@ -1775,6 +1786,7 @@ margin-left: -75px;}
 	.btn-4{padding: 5px 20px;}
 	
 }
+
 @media screen and (max-width: 360px) {
 	.main-inner .btn-right.pull-right a.btn2{padding:8px 18px;}
 	.main-inner .btn-right.pull-right a.btn3{padding:8px 18px;}
@@ -1783,6 +1795,7 @@ margin-left: -75px;}
 	}
 	.how-it-popup .modal-body h3{font-size:22px; margin-bottom:12px;}
 }
+
 @media screen and (max-width: 320px) {
 	.por_content ul li{padding: 10px;}
 .login .form-group select{width:60px; margin-right: 5px; }

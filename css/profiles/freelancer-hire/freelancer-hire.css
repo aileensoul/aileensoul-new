@@ -226,6 +226,10 @@ li.fr a {
     float: right;
     font-weight: normal;
 }
+.profile-job-post-detail .profile-job-post-title .button:Hover{
+    color: #fff;
+    background: #1b8ab9;
+}
 .last_date {
     padding-left: 15px;
     float: left;
@@ -299,7 +303,6 @@ li.fr a {
 .profile-main-rec-box-menu {
     margin-top: -80px;
     border: 1px solid #d9d9d9;
-    border-top: none;
     z-index: -1;
     background-color: white;
 }
@@ -667,9 +670,7 @@ li.fr a {
 #row2 img {
     height: 350px;
     width: 100%;
-    border: 1px solid #d9d9d9;
-    border-bottom: none;
-    border-top: none;
+    
 }
 .upload-img {
     float: right;

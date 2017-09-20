@@ -41,7 +41,7 @@
                                                     <?php
                                                     if ($freehiredata[0]['freelancer_hire_user_image']) {
                                                         ?>
-                                                        <img src="<?php echo FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $freehiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
+                                                        <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freehiredata[0]['freelancer_hire_user_image']; ?>" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
 
                                                         <?php
                                                     } else {
@@ -104,9 +104,9 @@
 
                                 </div>
 
-<!--                                <div  class="add-post-button">
+                                <div  class="add-post-button">
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-                                </div>-->
+                                </div>
                             </div>
 
                         </div>

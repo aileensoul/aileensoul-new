@@ -154,22 +154,22 @@ $('body').on("click", "*", function (e) {
                         }
 
 
-function myFunctionone(clicked_id) {
-                            document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+// function myFunctionone(clicked_id) {
+//                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
 
 
 
-                              $( document ).on( 'keydown', function ( e ) {
-                                        if ( e.keyCode === 27 ) { 
+//                               $( document ).on( 'keydown', function ( e ) {
+//                                         if ( e.keyCode === 27 ) { 
 
-                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                                         $(".dropdown-content1").removeClass('show');
+//                                         document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+//                                          $(".dropdown-content1").removeClass('show');
 
-                            }
+//                             }
                            
-                        }); 
+//                         }); 
 
-                        }
+//                         }
 
 
 
@@ -235,7 +235,14 @@ $(document).ready(function () {
                                 //url: '<?php echo base_url() . "artistic/like_comment" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-                                    $('#' + 'likecomment' + clicked_id).html(data);
+                                   
+            if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
+               $('#' + 'likecomment' + clicked_id).html(data);
+              }
                                 }
                             });
                         }
@@ -248,7 +255,12 @@ function comment_like1(clicked_id)
                                 //url: '<?php echo base_url() . "artistic/like_comment1" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-                                    $('#' + 'likecomment1' + clicked_id).html(data);
+                                  if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+               $('#' + 'likecomment1' + clicked_id).html(data);
+              }
                                 }
                             });
                         }
@@ -571,18 +583,18 @@ var modal = document.getElementById('myModal');
 
  
                         // Close the dropdown if the user clicks outside of it
-                        window.onclick = function (event) {
-                            if (!event.target.matches('.dropbtn1')) {
-                                var dropdowns = document.getElementsByClassName("dropdown-content1");
-                                var i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
+                        // window.onclick = function (event) {
+                        //     if (!event.target.matches('.dropbtn1')) {
+                        //         var dropdowns = document.getElementsByClassName("dropdown-content1");
+                        //         var i;
+                        //         for (i = 0; i < dropdowns.length; i++) {
+                        //             var openDropdown = dropdowns[i];
+                        //             if (openDropdown.classList.contains('show')) {
+                        //                 openDropdown.classList.remove('show');
+                        //             }
+                        //         }
+                        //     }
+                        // }
 
 $(function () {
                             var showTotalChar = 200, showChar = "more", hideChar = "less";
@@ -1166,19 +1178,19 @@ function edit_commenttwo(abc,clicked_id)
 function myFunction(clicked_id) {
                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
                         }
-                        // Close the dropdown if the user clicks outside of it
-                        window.onclick = function (event) {
-                            if (!event.target.matches('.dropbtn1')) {
-                                var dropdowns = document.getElementsByClassName("dropdown-content1");
-                                var i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
+                        // // Close the dropdown if the user clicks outside of it
+                        // window.onclick = function (event) {
+                        //     if (!event.target.matches('.dropbtn1')) {
+                        //         var dropdowns = document.getElementsByClassName("dropdown-content1");
+                        //         var i;
+                        //         for (i = 0; i < dropdowns.length; i++) {
+                        //             var openDropdown = dropdowns[i];
+                        //             if (openDropdown.classList.contains('show')) {
+                        //                 openDropdown.classList.remove('show');
+                        //             }
+                        //         }
+                        //     }
+                        // }
 
 var $fileUpload = $("#files"),
                                 $list = $('#list'),

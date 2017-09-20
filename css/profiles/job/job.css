@@ -88,7 +88,7 @@ li.fr a {text-decoration: none !important;}
 .last_date{ padding-left: 15px; float: left; padding-top: 4px;}
 /***  profile menu  ***/
 .profile-pho {height: 160px; width: 160px; background-color: #ffffff; margin-left: 30px; margin-top: -80px;
-    border: 3.5px solid #ffffff; border: 1px solid #d9d9d9 !important; border-radius: 4px;
+    border: 1px solid #d9d9d9 !important; border-radius: 4px;
 }
 .padd_img {padding-left: 5px !important; padding-top: 6px !important;}
 .user-pic {height: 152px; width: 153px; overflow: hidden; border-radius: 4px; position: relative; z-index: 3;}
@@ -349,7 +349,7 @@ line-height: 1;}
 /***   banner image  ***/
 .custom-row div#row2 {background-color: #fff;}
 #row2{overflow: hidden; width: 100%;}
-#row2 img {height: 350px; width: 100%; border:1px solid #d9d9d9; border-bottom: none;}
+#row2 img {height: 350px; width: 100%;}
 .upload-img {float: right; z-index: 2; position: relative; margin-top: -90px; right: 50px;}
 label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px; border: 1px solid #666;
     border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
@@ -1163,10 +1163,6 @@ label.cameraButton input[accept*="camera"] {
     color: #003;
     padding-top: 7px;display: inline-block;
 }
-.padd_img {
-    padding-left: 5px !important;
-    padding-top: 6px !important;
-}
 .inner_search {
     width: 100%;
     border: 1px solid #d9d9d9;
@@ -1266,12 +1262,19 @@ label.cameraButton input[accept*="camera"] {
 /*.fancybox-slide > *{background-color:transparent;  }*/
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
 .register_disable{pointer-events: none; cursor: default;}
+.message a.mesg_link:hover{color:#fff; background:#156f95;}
+.message button:hover{color:#fff; border:1px solid transparent;} 
+.message1 #univer1{border:1px solid #1b8ab9; margin-top:10px;}
+.message1 #univer1:hover{background:#1b8ab9; color:#fff;}
+.edit_profile_progress.complete_profile{cursor:default;}
+
 
 
 /***  media query  ***/
 @media screen and (min-width: 768px) {
 	.mob-progressbar.temp{display:none;}
 }
+
 @media screen and (max-width: 1199px) {
          .profile-boxProfileCard-cover{height: auto;}
 	.circle-1 strong{font-size: 27px; top: 31px;}
@@ -1303,9 +1306,11 @@ label.cameraButton input[accept*="camera"] {
 
 
 }
+
 @media screen and (max-width: 1130px){
  .custom-right{margin-left: 27px;}
 }
+
 @media screen and (max-width: 1024px){
     .date-dropdowns .year{padding-left: 5px;}
 	.profile-main-rec-box-menu {
@@ -1355,6 +1360,7 @@ label.cameraButton input[accept*="camera"] {
     .common-form1{padding-top:20px; width:100%; float:left;}    
     .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
 }
+
 @media screen and (max-width: 991px){
           .art_no_post_text{font-size: 21px;}
 	 .custom-right{margin-left: 5%;}
@@ -1454,6 +1460,7 @@ label.cameraButton input[accept*="camera"] {
     .right_left_box_design{width:100% !important; text-align:center; padding-top:10px !important;}
     .profile-boxProfileCard-content::before{top:84px !important;}
 }
+
 @media screen and (max-width: 767px){
     .common-form input[type="radio"], .common-form input[type="checkbox"]{height: 0px; margin-top: 0px; margin-bottom: 0px;}
       .modal.in .modal-dialog .mes .pop_content{ font-size: 18px; }
@@ -1733,6 +1740,7 @@ label.cameraButton input[accept*="camera"] {
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
     .mob-progressbar .progress .skill{line-height: 26px;}
 }
+
 @media screen and (max-width: 640px) {
     .job_con #InboxContainer::before {
         right: 120px;
@@ -1804,6 +1812,7 @@ label.cameraButton input[accept*="camera"] {
         padding: 7px 5px 7px 5px !important;
     }
 }
+
 @media screen and (max-width: 540px) {
 	.reactivate_btn_n , .reactivate_btn_y{
         margin-top: 0px;
@@ -1817,6 +1826,7 @@ label.cameraButton input[accept*="camera"] {
     width: 270px;
 }
 }
+
 @media screen and (max-width: 479px) {
     #InboxContainer::before {
         right: 122px;
@@ -1943,6 +1953,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-job-profile-menu ul .text-center a{font-size: 12px;}
 	#experience_year{margin-right:9% !important; margin-bottom:0 !important;}
 }
+
 @media screen and (max-width: 360px) {
  .art_no_post_text {
     padding-top: 10px;
@@ -2017,6 +2028,7 @@ label.cameraButton input[accept*="camera"] {
     }
     .profile-job-details ul li{font-size: 11px;}
 }
+
 @media screen and (max-width: 320px){
 	
 

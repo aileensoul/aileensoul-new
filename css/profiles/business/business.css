@@ -437,7 +437,7 @@ label.cameraButton:active {
     margin-bottom: 10px;
 }
 .bui_art_left_box .profile-boxProfileCard {
-    border: 11px solid #ffffff;
+    border: 6px solid #ffffff;
     background: #fff;
     border-radius: 3px;
 }
@@ -1088,7 +1088,7 @@ label.cameraButton:active {
 .dropdown-content1 a i {
     padding-right: 13px;
 }
-.dropdown-content1 a:hover {
+.dropdown-content1 a:hover, .dropdown-content2 a:hover {
     background: #1b8ab9;
     color: #fff !important;
 }
@@ -2245,7 +2245,7 @@ label.cameraButton:active {
 .dropdown2 a:hover {
     background-color: #f1f1f1
 }
-.dropdown2 .dropdown-content2 a:hover {
+.dropdown-content2 a:hover {
     background: #1b8ab9;
     color: #fff;
 }

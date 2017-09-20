@@ -42,10 +42,10 @@
                                     <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
                                     <div>
                                         <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4></div>
-                                    <div>
+<!--                                    <div>
                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
-                                        <span style="color:#7f7f7e"><?php echo $this->lang->line("filed_required"); ?></span>
-                                    </div>
+                                        <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required"); ?></span>
+                                    </div>-->
                                     <?php
                                     $post_name = form_error('post_name');
                                     $skills = form_error('skills');
@@ -53,7 +53,7 @@
                                     ?>
                                     <fieldset class="full-width" <?php if ($post_name) { ?> class="error-msg" <?php } ?>>
                                         <label ><?php echo $this->lang->line("project_title"); ?>:<span style="color:red">*</span></label>                 
-                                        <input name="post_name" type="text" maxlength="100" id="post_name" autofocus tabindex="1" placeholder="Enter Post Name"/>
+                                        <input name="post_name" type="text" maxlength="100" id="post_name" autofocus tabindex="1" placeholder="Enter Project Name"/>
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('post_name'); ?>
                                     </fieldset>
@@ -143,15 +143,15 @@
                                         <b><h2 class="freelancer_editpost_title"><?php echo $this->lang->line("payment"); ?>:</h2></b>
                                     </fieldset>
                                     <fieldset  class="col-md-4 pl10" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
-                                        <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:<span style="color:red">*</span></label>
+                                        <label  class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
                                         <input tabindex="8" name="rate" type="number" id="rate" placeholder="Enter Your rate" min='1'/>
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('rate'); ?>
                                     </fieldset>
                                     <fieldset class="col-md-4" <?php if ($csurrency) { ?> class="error-msg" <?php } ?> class="two-select-box"> 
-                                        <label><?php echo $this->lang->line("currency"); ?>:<span class="red">*</span></label>
+                                        <label><?php echo $this->lang->line("currency"); ?>:</label>
                                         <select tabindex="9" name="currency" id="currency">
-                                            <option  value="" selected option disabled>Select Currency<?php echo $this->lang->line("skill_of_requirement"); ?></option>
+                                            <option  value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                             <?php foreach ($currency as $cur) { ?>
                                                 <option value="<?php echo $cur['currency_id']; ?>"><?php echo $cur['currency_name']; ?></option>
                                             <?php } ?>
@@ -224,7 +224,7 @@
                                         </select><span id="city-error"></span>
                                         <?php echo form_error('city'); ?>
                                     </fieldset>
-                                    <div class="fr">           
+                                    <div class="fr fw">           
                                         <fieldset class="hs-submit full-width">
                                             <input type="hidden" value="<?php echo $pages; ?>" name="page" id="page">
                                             <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'add-projects') || ($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'edit-projects')) { ?>

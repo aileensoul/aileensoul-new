@@ -4,6 +4,7 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/freelancer-hire/freelancer-hire.css?ver=' . time()); ?>">
     </head>
@@ -93,7 +94,7 @@
                         <div class="profile-pho">
                             <div class="user-pic padd_img">
                                 <?php if ($freelancr_user_data[0]['freelancer_hire_user_image'] != '') { ?>
-                                    <img src="<?php echo FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                    <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
                                     <?php
                                 } else {
                                     $fname = $freelancr_user_data[0]['fullname'];
@@ -186,10 +187,10 @@
                                                         <a href="<?php echo base_url('chat/abc/3/4/' . $id); ?>"><?php echo $this->lang->line("message"); ?></a>
                                                     <?php }
                                                     ?>
-<!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id); ?>"><?php //echo $this->lang->line("message"); ?></a>-->
+    <!--                                                    <a href="<?php //echo base_url('chat/abc/3/4/' . $id);  ?>"><?php //echo $this->lang->line("message");  ?></a>-->
                                                 </li>
 
-<?php } ?>
+                                            <?php } ?>
 
                                     </div>
                             </div>
@@ -198,7 +199,7 @@
                     <div  class="add-post-button mob-block">
                         <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                             <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-<?php } ?>
+                        <?php } ?>
                     </div> 
                     <div class="middle-part container">
                         <div class="job-menu-profile mob-none pt20">
@@ -229,7 +230,7 @@
                             <div  class="add-post-button">
                                 <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                                     <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>
-<?php } ?>
+                                <?php } ?>
                             </div> 
                         </div>
                         <div class="col-md-7 col-sm-12 mob-clear">
@@ -257,7 +258,7 @@
                     </div>
                     </section>
                     <footer>
-<?php echo $footer; ?>
+                        <?php echo $footer; ?>
                     </footer>
                     <!-- model for popup start -->
                     <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
@@ -282,7 +283,7 @@
                                         <div id="popup-form">
                                             <div class="fw" id="profi_loader"  style="display:none;" style="text-align:center;" ><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                             <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
-<?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
+                                                <?php //echo form_open_multipart(base_url('freelancer/user_image_insert'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix'));   ?>
                                                 <div class="col-md-5">
                                                     <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="upload-one">
                                                 </div>
@@ -291,7 +292,7 @@
                                                 </div>
                                                 <input type="submit" class="upload-result-one" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
                                             </form>
-<?php //echo form_close();   ?>
+                                            <?php //echo form_close();   ?>
                                         </div>
                                     </span>
                                 </div>
@@ -313,7 +314,7 @@
                     <!-- Model Popup Close -->
                     <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
                     <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>">
+                    <script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>">
                     </script>
                     <script>
                         var base_url = '<?php echo base_url(); ?>';

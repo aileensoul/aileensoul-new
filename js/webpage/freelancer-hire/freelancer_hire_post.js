@@ -139,7 +139,7 @@ function check() {
 //CODE FOR SAVE POST START
 function savepopup(id) {
     save_post(id);
-    $('.biderror .mes').html("<div class='pop_content'>Your post is successfully saved.");
+    $('.biderror .mes').html("<div class='pop_content'>Your project is successfully saved.");
     $('#bidmodal').modal('show');
 }
 function save_post(abc)
@@ -156,7 +156,7 @@ function save_post(abc)
 //CODE FOR SAVE POST END
 //CODE FOR REMOVE POST START
 function removepopup(id) {
-    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this post?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('.biderror .mes').html("<div class='pop_content'>Do you want to remove this project?<div class='model_ok_cancel'><a class='okbtn' id=" + id + " onClick='remove_post(" + id + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
 function remove_post(abc)
@@ -180,7 +180,7 @@ function remove_post(abc)
 //CODE FOR REMOVE POST END
 //CODE FOR APPLY POST START
 function applypopup(postid, userid) {
-    $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to apply this post?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('.biderror .mes').html("<div class='pop_content'>Are you sure you want to apply this project?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
     $('#bidmodal').modal('show');
 }
 function apply_post(abc, xyz) {

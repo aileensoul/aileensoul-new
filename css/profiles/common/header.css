@@ -429,7 +429,7 @@ right: 17px;
     width: 50px;
     border-radius: 50%;
     margin-left: 8px;
-    margin-top: 10px;
+    margin-top: 9px;
     display: inline-block;
 }
 .notification-pic img {
@@ -438,7 +438,7 @@ right: 17px;
 }
 .notification-data-inside {
     margin-left: 65px;
-    margin-top: -55px;
+    margin-top: -56px;
     padding-right: 10px;
 }
 .notification-data-inside h6 {
@@ -1343,6 +1343,7 @@ footer {
 }
 .reactivate_btn_y a:hover {
     color: #fff;
+	text-decoration:none;
 }
 .reactivate_btn_n {
     height: 20px;
@@ -1361,6 +1362,7 @@ footer {
 }
 .reactivate_btn_n a:hover {
     color: #fff;
+	text-decoration:none;
 }
 
 
@@ -1428,6 +1430,9 @@ background-color: white;}
 .dropdown2_content {
     display: none;    
 }
+.notification_data_in #gen_not_loader{margin-top:122px;}
+
+
 
 /***  media query  ***/
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
