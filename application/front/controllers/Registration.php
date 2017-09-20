@@ -624,6 +624,14 @@ class Registration extends CI_Controller {
         if($free_hire_result[0]['total'] > 0){
             $free_hire = 1;
         }
+
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => '0', 'status' => 1, 'art_step' => 4);
+        $artistic_result = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $artistic = 0;
+        if($artistic_result[0]['total'] > 0){
+            $artistic = 1;
+        }
         
         echo json_encode(
                 array(
@@ -631,7 +639,8 @@ class Registration extends CI_Controller {
                     "id" => $id,
                     "is_bussiness" => $business,
                     "is_freelancer_work"=>$free_work,
-                    "is_freelancer_hire"=>$free_hire
+                    "is_freelancer_hire"=>$free_hire,
+                    "is_artistic"=>$artistic
         ));
     }
 

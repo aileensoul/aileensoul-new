@@ -726,19 +726,28 @@ var keyword1 = '<?php echo $keyword1; ?>';
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '<?php echo base_url() ?>registration/check_login',
+                        url: '<?php echo base_url() ?>registration/user_check_login',
                         data: post_data,
                         dataType: "json",
                         beforeSend: function ()
                         {
                             $("#error").fadeOut();
-                            $("#btn1").html('Login ...');
+                            $("#btn1").html('Login');
                         },
                         success: function (response)
                         {
                             if (response.data == "ok") {
                                 $("#btn1").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = "<?php echo base_url() ?>artistic/search" +"&skills=" + keyword + "&searchplace=" + keyword1;
+                                if(response.is_artistic == 1){
+                                window.location = "<?php echo base_url() ?>artistic/search" +"?skills=" + keyword + "&searchplace=" + keyword1;
+                            }
+                            else{
+                                window.location = "<?php echo base_url()?>artistic";
+                            }
+
+                               
+                            }else if (response.is_artistic == 1) {
+                                window.location = "<?php echo base_url() ?>artistic/";
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -931,8 +940,7 @@ var keyword1 = '<?php echo $keyword1; ?>';
                         success: function (response)
                         {
                             if (response == "ok") {
-                                $("#btn-register").html('<img src="<?php echo base_url() ?>images/btn-ajax-loader.gif" /> &nbsp; Sign Up ...');
-                                window.location = "<?php echo base_url() ?>artistic/execute_search" +"?skills=" + keyword + "&searchplace=" + keyword1;
+                                window.location = "<?php echo base_url()?>artistic";
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');
