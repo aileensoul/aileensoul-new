@@ -4612,7 +4612,6 @@ class Recruiter extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
         $recpostdata = $this->data['recpostdata'] = $this->common->select_data_by_condition('rec_post', $contition_array, $data = 'post_id,post_skill,post_name,industry_type', $sortby = 'post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        // echo '<pre>'; print_r($recpostdata); die();
         foreach ($recpostdata as $postdata) {
 
             // FETCH SKILL WISE JOB START
@@ -4641,11 +4640,6 @@ class Recruiter extends MY_Controller {
             $induser[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             $indarray = array_reduce($induser, 'array_merge', array());
             // FETCH INDUSTERY WISE JOB END
-//echo '<pre>'; print_r($titlearray); 
-//echo '<pre>'; print_r($skillaarray); 
-//echo '<pre>'; print_r($indarray); 
-//
-//die();
 
             $recommendata = array_merge((array) $titlearray, (array) $skillaarray, (array) $indarray);
             // echo '<pre>'; print_r($recommendata); die();
