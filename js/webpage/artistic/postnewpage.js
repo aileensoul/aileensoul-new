@@ -154,22 +154,22 @@ $('body').on("click", "*", function (e) {
                         }
 
 
-function myFunctionone(clicked_id) {
-                            document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+// function myFunctionone(clicked_id) {
+//                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
 
 
 
-                              $( document ).on( 'keydown', function ( e ) {
-                                        if ( e.keyCode === 27 ) { 
+//                               $( document ).on( 'keydown', function ( e ) {
+//                                         if ( e.keyCode === 27 ) { 
 
-                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                                         $(".dropdown-content1").removeClass('show');
+//                                         document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+//                                          $(".dropdown-content1").removeClass('show');
 
-                            }
+//                             }
                            
-                        }); 
+//                         }); 
 
-                        }
+//                         }
 
 
 
@@ -583,18 +583,18 @@ var modal = document.getElementById('myModal');
 
  
                         // Close the dropdown if the user clicks outside of it
-                        window.onclick = function (event) {
-                            if (!event.target.matches('.dropbtn1')) {
-                                var dropdowns = document.getElementsByClassName("dropdown-content1");
-                                var i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
+                        // window.onclick = function (event) {
+                        //     if (!event.target.matches('.dropbtn1')) {
+                        //         var dropdowns = document.getElementsByClassName("dropdown-content1");
+                        //         var i;
+                        //         for (i = 0; i < dropdowns.length; i++) {
+                        //             var openDropdown = dropdowns[i];
+                        //             if (openDropdown.classList.contains('show')) {
+                        //                 openDropdown.classList.remove('show');
+                        //             }
+                        //         }
+                        //     }
+                        // }
 
 $(function () {
                             var showTotalChar = 200, showChar = "more", hideChar = "less";
@@ -1178,19 +1178,19 @@ function edit_commenttwo(abc,clicked_id)
 function myFunction(clicked_id) {
                             document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
                         }
-                        // Close the dropdown if the user clicks outside of it
-                        window.onclick = function (event) {
-                            if (!event.target.matches('.dropbtn1')) {
-                                var dropdowns = document.getElementsByClassName("dropdown-content1");
-                                var i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
+                        // // Close the dropdown if the user clicks outside of it
+                        // window.onclick = function (event) {
+                        //     if (!event.target.matches('.dropbtn1')) {
+                        //         var dropdowns = document.getElementsByClassName("dropdown-content1");
+                        //         var i;
+                        //         for (i = 0; i < dropdowns.length; i++) {
+                        //             var openDropdown = dropdowns[i];
+                        //             if (openDropdown.classList.contains('show')) {
+                        //                 openDropdown.classList.remove('show');
+                        //             }
+                        //         }
+                        //     }
+                        // }
 
 var $fileUpload = $("#files"),
                                 $list = $('#list'),
