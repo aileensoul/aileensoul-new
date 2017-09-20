@@ -1652,8 +1652,7 @@ class Freelancer extends MY_Controller {
         $this->form_validation->set_rules('post_desc', 'Post description', 'required');
         $this->form_validation->set_rules('fields_req', 'Field required', 'required');
 
-        $this->form_validation->set_rules('rate', 'Rate', 'required');
-        $this->form_validation->set_rules('currency', 'Currency', 'required');
+     
 
         $this->form_validation->set_rules('country', 'Country', 'required');
         $this->form_validation->set_rules('state', 'state', 'required');
@@ -1740,10 +1739,7 @@ class Freelancer extends MY_Controller {
 
             $insert_id = $this->common->insert_data_getid($data, 'freelancer_post');
             if ($insert_id) {
-
-
-
-                redirect('freelancer-hire/projects', refresh);
+                redirect('freelancer-hire/home', refresh);
             } else {
                 $this->session->flashdata('error', 'Sorry!!Your data not inserted');
                 redirect('freelancer/freelancer_post', refresh);

@@ -1,6 +1,6 @@
 <!--post save success pop up style strat -->
 <div class="bg-search">
-    <?php if (($this->uri->segment(1) == 'freelancer' && $this->uri->segment(2) == 'recommen_candidate')) { ?>
+    <?php if (($this->uri->segment(1) == 'freelancer-hire' && $this->uri->segment(2) == 'home')) { ?>
         <div class="header2 headerborder  animated fadeInDownBig">
         <?php } else { ?>
             <div class="header2 headerborder">
