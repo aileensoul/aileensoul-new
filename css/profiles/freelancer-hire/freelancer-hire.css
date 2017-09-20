@@ -226,6 +226,10 @@ li.fr a {
     float: right;
     font-weight: normal;
 }
+.profile-job-post-detail .profile-job-post-title .button:Hover{
+    color: #fff;
+    background: #1b8ab9;
+}
 .last_date {
     padding-left: 15px;
     float: left;

@@ -123,13 +123,13 @@
 
 
                                     <span id="fullname-error"></span>
-                                    <?php echo form_error('month'); ?> &nbsp;&nbsp; <?php echo form_error('year'); ?>
+                                    <?php echo form_error('month'); ?>  <?php echo form_error('year'); ?>
 
                                 </fieldset>
 
 
                                 <fieldset <?php if ($month) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">&nbsp;Maximum experience:<span style="color:red">*</span></label>
+                                    <label class="control-label">Maximum experience:<span style="color:red">*</span></label>
 
 
                                     <select style="cursor:pointer;" name="maxyear" tabindex="7"  id="maxyear" class="keyskil1">
@@ -164,14 +164,14 @@
 
 
                                     <span id="fullname-error"></span>
-                                    <?php echo form_error('month'); ?> &nbsp;&nbsp; <?php echo form_error('year'); ?>
+                                    <?php echo form_error('month'); ?>  <?php echo form_error('year'); ?>
                                 </fieldset>
-                                <fieldset class="form-group full-width" style="margin-top: 0px;
+                                <fieldset class="rec_check form-group full-width" style="margin-top: 0px;
                                           margin-bottom: 2px;">
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input  style="width: 6%;cursor:pointer; height: 15px; " type="checkbox" name="fresher" tabindex="9" value="1" style="width: 5%;" checked>Fresher can also apply..!
+                                        <input   type="checkbox" name="fresher" tabindex="9" value="1" checked>Fresher can also apply..!
                                         <?php
                                     } else {
                                         ?>
@@ -226,7 +226,7 @@
                                     </select>
 
                                     <span id="fullname-error"></span>
-<?php echo form_error('emp_type'); ?> &nbsp;&nbsp; <?php echo form_error('emp_type'); ?>
+<?php echo form_error('emp_type'); ?>  <?php echo form_error('emp_type'); ?>
 
                                 </fieldset>
 
