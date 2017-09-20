@@ -235,7 +235,14 @@ $(document).ready(function () {
                                 //url: '<?php echo base_url() . "artistic/like_comment" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-                                    $('#' + 'likecomment' + clicked_id).html(data);
+                                   
+            if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+
+               $('#' + 'likecomment' + clicked_id).html(data);
+              }
                                 }
                             });
                         }
@@ -248,7 +255,12 @@ function comment_like1(clicked_id)
                                 //url: '<?php echo base_url() . "artistic/like_comment1" ?>',
                                 data: 'post_id=' + clicked_id,
                                 success: function (data) {
-                                    $('#' + 'likecomment1' + clicked_id).html(data);
+                                  if(data == 'notavl'){
+               $('.biderror .mes').html("<div class='pop_content'>The post that you were deleting on has been removed by its owner and this content is no longer available.</div>");
+       $('#bidmodal').modal('show');
+            }else{
+               $('#' + 'likecomment1' + clicked_id).html(data);
+              }
                                 }
                             });
                         }
