@@ -4469,9 +4469,9 @@ public function followtwo() {
 
                 $followingdatacount = count($followingotherdata);
 
-                $unfollow = '<div>(';
-                $unfollow .= '' . $followingdatacount . '';
-                $unfollow .= ')</div>';
+               // $unfollow = '<div>(';
+                $unfollow .= '(' . $followingdatacount . ')';
+               // $unfollow .= ')</div>';
 
 
                 if (count($followingotherdata) == 0) {
@@ -4490,7 +4490,7 @@ public function followtwo() {
                 echo json_encode(
                         array("unfollow" => $unfollow,
                             "notfound" => $notfound,
-                            "notcount" => $followingdatacount,
+                            "notcount" => $unfollow,
                 ));
             }
         }
