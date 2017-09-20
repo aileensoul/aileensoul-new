@@ -93,7 +93,7 @@
                         <div class="profile-pho">
                             <div class="user-pic padd_img">
                                 <?php if ($freelancr_user_data[0]['freelancer_hire_user_image'] != '') { ?>
-                                    <img src="<?php echo FREE_HIRE_PROFILE_THUMB_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
+                                    <img src="<?php echo FREE_HIRE_PROFILE_MAIN_UPLOAD_URL . $freelancr_user_data[0]['freelancer_hire_user_image']; ?>" alt="" >
                                     <?php
                                 } else {
                                     $fname = $freelancr_user_data[0]['fullname'];
