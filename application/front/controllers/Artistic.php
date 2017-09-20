@@ -3840,9 +3840,9 @@ public function follow_home() { //echo "2"; die();
                 $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
                     if (!$artfollow) {
 
-                        $third_user_html .= '<li class="follow_box_ul_li">
+                        $third_user_html .= '<li class="follow_box_ul_li fad' . $userlist['art_id'] . '" id = "fad' . $userlist['art_id'] . '">
                                                 <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
+                                                                    <div class=" col-md-12 follow_left_box_main">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
@@ -3965,9 +3965,9 @@ public function follow_home() { //echo "2"; die();
 
                     if (!$artfollow) {
 
-                        $third_user_html .= '<li class="follow_box_ul_li">
+                        $third_user_html .= '<li class="follow_box_ul_li fad' . $userlist['art_id'] . '" id = "fad' . $userlist['art_id'] . '">
                                                 <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
+                                                                    <div class=" col-md-12 follow_left_box_main">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
@@ -5706,7 +5706,11 @@ public function followtwo() {
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
 
-        $condition_array = array('art_post_id' => $post_id);
+
+        $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $condition_array = array('art_post_id' => $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -6114,7 +6118,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_use
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $post_id = $_POST["post_id"];
-        $condition_array = array('art_post_id' => $post_id);
+         $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $condition_array = array('art_post_id' => $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -7650,7 +7657,10 @@ public function insert_comment_postnewpage() {
 
         $post_id = $_POST["post_id"];
 
-        $condition_array = array('art_post_id' => $post_id);
+        $contition_array = array('artistic_post_comment_id' => $_POST["post_id"], 'status' => '1');
+        $artdata = $this->data['artdata'] = $this->common->select_data_by_condition('artistic_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $condition_array = array('art_post_id' => $artdata[0]['art_post_id']);
         $profile_data = $this->common->select_data_by_condition('art_post', $condition_array, $data = 'status,user_id,is_delete,posted_user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //echo "<pre>"; print_r($profile_data); die();
@@ -12780,9 +12790,9 @@ public function insert_comment_postnewpage() {
                
                 if (!$artfollow) {
 
-                    $return_html .= '<li class="follow_box_ul_li">
+                    $return_html .= '<li class="follow_box_ul_li fad' . $userlist['art_id'] . '" id="fad' . $userlist['art_id'] . '">
                                                 <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
-                                                                    <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
+                                                                    <div class=" col-md-12 follow_left_box_main">                   
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
@@ -13606,7 +13616,7 @@ public function art_home_three_user_list() {
               
                 if (!$artfollow) {
 
-  $return_html .= '<li class="follow_box_ul_li">
+  $return_html .= '<li class="follow_box_ul_li fad' . $userlist['art_id'] . '" id = "fad' . $userlist['art_id'] . '">
                                                 <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
                                                                     <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
                                                                         <div class="post-design-pro-img_follow">';

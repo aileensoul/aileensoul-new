@@ -190,7 +190,7 @@ function followuser(clicked_id)
            //url: '<?php echo base_url() . "artistic/follow_two" ?>',
             dataType: 'json',
            data: 'follow_to=' + clicked_id,
-           success: function (data) {
+           success: function (data) { //alert(data.third_user);
    
                $('.' + 'fr' + clicked_id).html(data.follow);
                $('#countfollow').html(data.count);
@@ -213,7 +213,7 @@ function followuser(clicked_id)
         type: 'POST',
         url: base_url + "artistic/third_follow_ignore_user_data",
         dataType: 'html',
-        success: function (data) {
+        success: function (data) { //alert(data);
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
