@@ -40,7 +40,6 @@
     }
 
     function getNotification() {
-        // first click alert('here'); 
         $.ajax({
             url: "<?php echo base_url(); ?>notification/update_notification",
             type: "POST",
@@ -66,7 +65,6 @@
                 $('#gen_not_loader').hide();
             },
             success: function(data) {
-                //    alert(data);
                 $('.' + 'notification_data_in').html(data.notification);
                 $('#seenot').html(data.seeall);
 
