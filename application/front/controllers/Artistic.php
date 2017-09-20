@@ -1787,7 +1787,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     </ul> 
                                 </div>  
                                 <div class="dropdown2">
-                                    <a onClick="myFunction1(' . $row['art_post_id'] . ')" class="dropbtn_common  dropbtn2 fa fa-ellipsis-v">
+                                    <a class="dropbtn_common  dropbtn2 fa fa-ellipsis-v">
                                     </a>
                                     <div id="myDropdown' . $row['art_post_id'] . '" class="dropdown-content2 dropdown2_content">';
 
@@ -13748,7 +13748,7 @@ public function art_home_post() {
                                     </ul> 
                                 </div>  
                                 <div class="dropdown2">
-                                    <a onClick="myFunction1(' . $row['art_post_id'] . ')" class="dropbtn_common dropbtn2 fa fa-ellipsis-v">
+                                    <a  class="dropbtn_common dropbtn2 fa fa-ellipsis-v">
                                     </a>
                                     <div id="myDropdown' . $row['art_post_id'] . '" class="dropdown-content2 dropdown2_content">';
 
@@ -14997,7 +14997,7 @@ public function art_home_post() {
  if($userid == $row['posted_user_id'] || $row['user_id'] == $userid){
 
  $return_html .= '<div class = "dropdown2">
-<a onClick = "myFunction1(' . $row['art_post_id'] . ')" class = "dropbtn_common  dropbtn2 fa fa-ellipsis-v"></a>
+<a  class = "dropbtn_common dropbtn2 fa fa-ellipsis-v"></a>
 <div id = "myDropdown' . $row['art_post_id'] . '" class = "dropdown-content2 dropdown2_content">';
                 if ($row['posted_user_id'] != 0) {
                     if ($this->session->userdata('aileenuser') == $row['posted_user_id']) {
@@ -16618,7 +16618,7 @@ public function get_artistic_name($id=''){
                                           </ul>
                                        </div>
                                        <div class="dropdown1">
-                                               <a onClick="myFunction('.$key['art_post_id'].')" class="dropbtn_common  dropbtn1 fa fa-ellipsis-v"></a>
+                                               <a  class="dropbtn_common  dropbtn1 fa fa-ellipsis-v"></a>
                                                   <div id="myDropdown'.$key['art_post_id'].'" class="dropdown-content1 dropdown2_content">';
                                                             
                                                             if ($key['posted_user_id'] != 0) {

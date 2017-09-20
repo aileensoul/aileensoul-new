@@ -1,14 +1,14 @@
 <!-- CLOSE ALL DROPEDOWN WHEN CLICK TO BODY OR OTHER DROPDOWN START -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.dropbtn_common').on('click', function() {
+        $('.dropbtn_common').on('click', function() {// alert("hi");
             $('.dropbtn_common').not(this).next().removeClass('show');
             $(this).next().toggleClass('show');
         });
      //   $('body').click(function(e){
         $('body').on('click', function(e) {
         //$(document).on('click', function(e) {
-           
+          // alert("hi");
             if (!$(e.target).closest('.dropbtn_common').length)
             { 
                 $('.dropbtn_common').next().removeClass('show');

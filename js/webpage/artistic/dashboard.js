@@ -6,12 +6,12 @@ $(document).ready(function () {
     input[0].setSelectionRange(len, len);
 });
  
- $('body').on("click", "*", function (e) {
-                var classNames = $(e.target).attr("class").toString().split(' ').pop();
-                if (classNames != 'fa-ellipsis-v') {
-                    $('div[id^=myDropdown]').hide().removeClass('show');
-                }
-            });
+ // $('body').on("click", "*", function (e) {
+ //                var classNames = $(e.target).attr("class").toString().split(' ').pop();
+ //                if (classNames != 'fa-ellipsis-v') {
+ //                    $('div[id^=myDropdown]').hide().removeClass('show');
+ //                }
+ //            });
 
  
  function check_length(my_form)
@@ -1283,50 +1283,50 @@ function commentall(clicked_id) {
 
 
             
-       function myFunction1(clicked_id) {
-                document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+       // function myFunction1(clicked_id) {
+       //          document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
 
 
-                 $( document ).on( 'keydown', function ( e ) {
-                                        if ( e.keyCode === 27 ) { 
+       //           $( document ).on( 'keydown', function ( e ) {
+       //                                  if ( e.keyCode === 27 ) { 
 
-                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-                                         $(".dropdown-content2").removeClass('show');
+       //                                  document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+       //                                   $(".dropdown-content2").removeClass('show');
 
-                            }
+       //                      }
                            
-                        }); 
-            }
+       //                  }); 
+       //      }
 
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function (event) {
-                if (!event.target.matches('.dropbtn1')) {
+       //      // Close the dropdown if the user clicks outside of it
+       //      window.onclick = function (event) {
+       //          if (!event.target.matches('.dropbtn1')) {
 
-                    var dropdowns = document.getElementsByClassName("dropdown-content2");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
-            }
+       //              var dropdowns = document.getElementsByClassName("dropdown-content2");
+       //              var i;
+       //              for (i = 0; i < dropdowns.length; i++) {
+       //                  var openDropdown = dropdowns[i];
+       //                  if (openDropdown.classList.contains('show')) {
+       //                      openDropdown.classList.remove('show');
+       //                  }
+       //              }
+       //          }
+       //      }
         
             // Close the dropdown if the user clicks outside of it
-            window.onclick = function (event) {
-                if (!event.target.matches('.dropbtn2')) {
+            // window.onclick = function (event) {
+            //     if (!event.target.matches('.dropbtn2')) {
 
-                    var dropdowns = document.getElementsByClassName("dropdown-content2");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
-            }         
+            //         var dropdowns = document.getElementsByClassName("dropdown-content2");
+            //         var i;
+            //         for (i = 0; i < dropdowns.length; i++) {
+            //             var openDropdown = dropdowns[i];
+            //             if (openDropdown.classList.contains('show')) {
+            //                 openDropdown.classList.remove('show');
+            //             }
+            //         }
+            //     }
+            // }         
 
  $(document).ready(function () {
                 $('.blocks').jMosaic({items_type: "li", margin: 0});
