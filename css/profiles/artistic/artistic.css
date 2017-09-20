@@ -3956,9 +3956,9 @@ div .comment {
 }
 .follow_box_ul_li .post-img-div{width:60px; height:59px; padding:20px 0;}
 .profile-boxProfileCard_follow ul{padding-bottom:10px;}
+.post-design-commnet-box button:focus{/*outline:none;*/}
 
-
-
+.flw_msg_btn ul li:last-child a{margin-top:0;}
 
 
 /***  media query  ***/
@@ -4408,6 +4408,8 @@ div .comment {
         width: 217px;
         margin: 0 auto;
     }
+	.flw_msg_btn{padding-right:0;}
+	.flw_msg_btn ul li:last-child{margin-right}
 }
 
 @media screen and (max-width: 800px) {
