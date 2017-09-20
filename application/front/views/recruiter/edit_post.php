@@ -64,7 +64,7 @@
 
                                 <fieldset class="full-width">
                                     <label>Job Title:<span style="color:red">*</span></label>
-                                    <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder=" Job title [Ex:- Sr. Engineer, Jr. Engineer]" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
+                                    <input name="post_name" tabindex="1" autofocus type="text" id="post_name" placeholder=" Position title [Ex:- Sr. Engineer, Jr. Engineer]" value="<?php echo $work_title; ?>" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('post_name'); ?>
                                 </fieldset>
@@ -73,7 +73,7 @@
                                 <fieldset class="full-width">
                                     <label class="control-label">Skills:<span style="color:red">*</span></label>
 
-                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills"  class="full-width " tabindex="2">
+                                    <input id="skills2" value="<?php echo $work_skill; ?>" name="skills" placeholder="Enter SKills" class="full-width " tabindex="2">
 
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
@@ -171,11 +171,13 @@
                                           <?php
                                           if ($postdata[0]['fresher']) {
                                               ?>
-                                        <input   type="checkbox" name="fresher" tabindex="6" value="1" checked>Fresher can also apply..!
+                                        <input   type="checkbox" name="fresher" id="fresher_nme" tabindex="6" value="1" checked>
+                                        <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     } else {
                                         ?>
-                                        <input type="checkbox" style="cursor:pointer;width:4%" name="fresher" value="1" style="width: 5%;" tabindex="10" >Fresher can also apply..!
+                                        <input type="checkbox"  name="fresher" value="1" id="fresher_nme" tabindex="10" >
+                                        <label for="fresher_nme">Fresher can also apply..!</label> 
                                         <?php
                                     }
                                     ?>
@@ -378,14 +380,14 @@
                                 </fieldset>
 
                                 <fieldset class="half-width  pad_left" <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                          <label class="control-label">Min salary:<!-- <span style="color:red">*</span> --></label>
+                                          <label class="control-label">Minimum salary:<!-- <span style="color:red">*</span> --></label>
                                     <input name="minsal" tabindex="16" type="text" id="minsal" value="<?php echo $postdata[0]['min_sal']; ?>"  placeholder="Enter Minimum Salary" /><span id="fullname-error"></span>
 <?php echo form_error('minsal'); ?>
                                 </fieldset>
                              
 
                                 <fieldset class="half-width " <?php if ($maxsal) { ?> class="error-msg" <?php } ?>>
-                                   <label class="control-label">Max salary:<!-- <span style="color:red">*</span> --></label>
+                                   <label class="control-label">Maximum salary:<!-- <span style="color:red">*</span> --></label>
                                     <input name="maxsal" type="text" tabindex="17" id="maxsal" value="<?php echo $postdata[0]['max_sal']; ?>"  placeholder="Enter Maximum Salary" /><span id="fullname-error"></span>
 <?php echo form_error('maxsal'); ?>
                                 </fieldset>

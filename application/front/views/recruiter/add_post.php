@@ -288,13 +288,13 @@
                                     </fieldset>
 									
 									<fieldset class=" " <?php if ($minsal) { ?> class="error-msg" <?php } ?>>
-                                        <label class="control-label">Min salary:</label>
+                                        <label class="control-label">Minimum salary:</label>
                                         <input name="minsal" type="text" id="minsal" placeholder="Enter Minimum salary" tabindex="16" /><span id="fullname-error"></span>
                                         <?php echo form_error('minsal'); ?>
                                     </fieldset>
 
                                     <fieldset class="" <?php if ($maxsal) { ?> class="error-msg " <?php } ?>>
-                                        <label class="control-label">Max salary:</label>
+                                        <label class="control-label">Maximum salary:</label>
                                         <input name="maxsal" type="text" id="maxsal" tabindex="17" placeholder="Enter Maximum salary" /><span id="fullname-error"></span>
                                         <?php echo form_error('maxsal'); ?>
                                     </fieldset>
@@ -329,7 +329,7 @@
 
 
 
-                                    <fieldset  class="hs-submit col-md-12 col-sm-12 col-xs-12">
+                                    <fieldset  class="hs-submit full-width">
 
 
                                         <input type="submit" id="submit" class="add_post_btns" tabindex="21" name="submit" value="Post">
