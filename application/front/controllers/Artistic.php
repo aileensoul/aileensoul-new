@@ -4940,8 +4940,8 @@ public function followtwo() {
                     } else if ($user['follow_to'] == $artisticdatauser[0]['art_id']) {
                         
                     } else {
-                        $return_html .= '<div class="user_btn_f follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
-                                <button id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
+                        $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "unfollowdiv">
+                                <button class="bg_following" id="unfollow"' . $user['follow_to'] . '" onClick = "unfollowuser_two(' . $user['follow_to'] . ')"><span>Following</span></button>
                                                     </div>';
                     }
                     $return_html .= '</li>';

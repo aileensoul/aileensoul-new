@@ -156,9 +156,10 @@ function followuser_two(clicked_id)
                 type:'POST',
                 url: base_url + "artistic/followtwo",
                 //url:'<?php echo base_url() . "artistic/followtwo" ?>',
+                dataType: 'json',
                  data:'follow_to='+clicked_id,
                 success:function(data){ 
-               $('#' + 'frfollow' + clicked_id).html(data);                   
+               $('#' + 'frfollow' + clicked_id).html(data.follow);                   
                 }
             }); 
 }
@@ -169,9 +170,10 @@ function followuser_two(clicked_id)
             type: 'POST',
             url: base_url + "artistic/unfollowtwo",
             //url: '<?php echo base_url() . "artistic/unfollowtwo" ?>',
+            dataType: 'json',
             data: 'follow_to=' + clicked_id,
             success: function (data) { 
-                $('#' + 'frfollow' + clicked_id).html(data);  
+                $('#' + 'frfollow' + clicked_id).html(data.follow);  
               // $('#unfollowdiv').html('');
             }
         });
