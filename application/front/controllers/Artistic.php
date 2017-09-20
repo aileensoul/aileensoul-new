@@ -16534,8 +16534,18 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
+            if($varfoune){
+
+                $otherdata = $varfoune;
+
+            }elseif($varfoune2){
+                $otherdata = $varfoune2;
+
+            }else{
             $otherdata = array_merge($varfoune, $varfoune2);
 
+            }
+            //echo "<pre>"; print_r($otherdata); die();
             
 
 
@@ -16625,7 +16635,17 @@ public function get_artistic_name($id=''){
                 $varfoune2[] = $valuedata; 
                }
             }
+            if($varfoune){
+
+                $otherdata = $varfoune;
+
+            }elseif($varfoune2){
+                $otherdata = $varfoune2;
+
+            }else{
             $otherdata = array_merge($varfoune, $varfoune2);
+
+            }
 
 
             foreach ($otherdata as $postdata) { //echo "<pre>"; print_r($postdata); die();
