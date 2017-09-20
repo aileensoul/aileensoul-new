@@ -1,17 +1,17 @@
  // for cursor pointer starts script
 $(document).ready(function () {
-    var input = $(".editable_text");
-    var len = input.val().length;
-    input[0].focus();
-    input[0].setSelectionRange(len, len);
+   var input = $(".editable_text");
+   var len = input.val().length;
+   input[0].focus();
+   input[0].setSelectionRange(len, len);
 });
  
- // $('body').on("click", "*", function (e) {
- //                var classNames = $(e.target).attr("class").toString().split(' ').pop();
- //                if (classNames != 'fa-ellipsis-v') {
- //                    $('div[id^=myDropdown]').hide().removeClass('show');
- //                }
- //            });
+ $('body').on("click", "*", function (e) {
+                var classNames = $(e.target).attr("class").toString().split(' ').pop();
+                if (classNames != 'fa-ellipsis-v') {
+                    $('div[id^=myDropdown]').hide().removeClass('show');
+                }
+            });
 
  
  function check_length(my_form)
@@ -1283,50 +1283,50 @@ function commentall(clicked_id) {
 
 
             
-       // function myFunction1(clicked_id) {
-       //          document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
+       function myFunction1(clicked_id) {
+                document.getElementById('myDropdown' + clicked_id).classList.toggle("show");
 
 
-       //           $( document ).on( 'keydown', function ( e ) {
-       //                                  if ( e.keyCode === 27 ) { 
+                 $( document ).on( 'keydown', function ( e ) {
+                                        if ( e.keyCode === 27 ) { 
 
-       //                                  document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
-       //                                   $(".dropdown-content2").removeClass('show');
+                                        document.getElementById('myDropdown' + clicked_id).classList.toggle("hide");
+                                         $(".dropdown-content2").removeClass('show');
 
-       //                      }
+                            }
                            
-       //                  }); 
-       //      }
+                        }); 
+            }
 
-       //      // Close the dropdown if the user clicks outside of it
-       //      window.onclick = function (event) {
-       //          if (!event.target.matches('.dropbtn1')) {
-
-       //              var dropdowns = document.getElementsByClassName("dropdown-content2");
-       //              var i;
-       //              for (i = 0; i < dropdowns.length; i++) {
-       //                  var openDropdown = dropdowns[i];
-       //                  if (openDropdown.classList.contains('show')) {
-       //                      openDropdown.classList.remove('show');
-       //                  }
-       //              }
-       //          }
-       //      }
-        
             // Close the dropdown if the user clicks outside of it
-            // window.onclick = function (event) {
-            //     if (!event.target.matches('.dropbtn2')) {
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn1')) {
 
-            //         var dropdowns = document.getElementsByClassName("dropdown-content2");
-            //         var i;
-            //         for (i = 0; i < dropdowns.length; i++) {
-            //             var openDropdown = dropdowns[i];
-            //             if (openDropdown.classList.contains('show')) {
-            //                 openDropdown.classList.remove('show');
-            //             }
-            //         }
-            //     }
-            // }         
+                    var dropdowns = document.getElementsByClassName("dropdown-content2");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        
+            Close the dropdown if the user clicks outside of it
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn2')) {
+
+                    var dropdowns = document.getElementsByClassName("dropdown-content2");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }         
 
  $(document).ready(function () {
                 $('.blocks').jMosaic({items_type: "li", margin: 0});
@@ -1334,9 +1334,9 @@ function commentall(clicked_id) {
             });
 
             //If this image without attribute WIDTH or HEIGH, you can use $(window).load
-            $(window).load(function () {
+           // $(window).load(function () {
                 //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-            });
+           // });
 
             //You can update on $(window).resize
             $(window).resize(function () {
