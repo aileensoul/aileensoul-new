@@ -1932,9 +1932,9 @@ class Business_profile extends MY_Controller {
     </ul> 
 </div>  
 <div class="dropdown1">
-    <a onClick="myFunction(' . $row['business_profile_post_id'] . ')" class="dropbtn1 dropbtn1 fa fa-ellipsis-v">
+    <a onClick="myFunction(' . $row['business_profile_post_id'] . ')" class="dropbtn_common  dropbtn1 fa fa-ellipsis-v">
     </a>
-    <div id="myDropdown' . $row['business_profile_post_id'] . '" class="dropdown-content1">';
+    <div id="myDropdown' . $row['business_profile_post_id'] . '" class="dropdown-content1 dropdown2_content">';
 
             if ($row['posted_user_id'] != 0) {
 
@@ -10471,9 +10471,9 @@ No Contacts Available.
 </ul>
 </div>
 <div class = "dropdown1">
-<a onClick = "myFunction(' . $row['business_profile_post_id'] . ')" class = "dropbtn1 dropbtn1 fa fa-ellipsis-v">
+<a onClick = "myFunction(' . $row['business_profile_post_id'] . ')" class = "dropbtn_common  dropbtn1 fa fa-ellipsis-v">
 </a>
-<div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content1">';
+<div id = "myDropdown' . $row['business_profile_post_id'] . '" class = "dropdown-content1 dropdown2_content">';
 
                     if ($row['posted_user_id'] != 0) {
 
