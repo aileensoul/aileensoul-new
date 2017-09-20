@@ -3503,7 +3503,7 @@ class Business_profile extends MY_Controller {
         }
     }
 
-    public function follow_two() {
+    public function home_three_follow() {
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -3631,7 +3631,7 @@ class Business_profile extends MY_Controller {
             $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
             $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-            $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '', $join_str_contact = array(), $groupby = '');
+            $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '1', $offset = '2', $join_str_contact = array(), $groupby = '');
 
             $third_user_html = '';
             if (count($userlistview) > 0) {
@@ -3691,7 +3691,125 @@ class Business_profile extends MY_Controller {
             
         }
     }
+      
+    
+    public function follow_two() {
+        $userid = $this->session->userdata('aileenuser');
 
+        //if user deactive profile then redirect to business_profile/index untill active profile start
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business_profile/');
+        }
+        //if user deactive profile then redirect to business_profile/index untill active profile End
+
+        $business_id = $_POST["follow_to"];
+
+        $contition_array = array('user_id' => $userid, 'is_deleted' => 0, 'status' => 1);
+
+        $artdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('business_profile_id' => $business_id, 'is_deleted' => 0, 'status' => 1, 'business_step' => 4);
+
+        $busdatatoid = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_to' => $business_id);
+        $follow = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        if ($follow) {
+            $data = array(
+                'follow_type' => 2,
+                'follow_from' => $artdata[0]['business_profile_id'],
+                'follow_to' => $business_id,
+                'follow_status' => 1,
+            );
+            $update = $this->common->update_data($data, 'follow', 'follow_id', $follow[0]['follow_id']);
+
+            // insert notification
+
+
+            $contition_array = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+            $busnotification = $this->common->select_data_by_condition('notification', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            //echo "<pre>"; print_r($busnotification); die();
+            if ($busnotification[0]['not_read'] == 2) { //echo "hi"; die();
+            } elseif ($busnotification[0]['not_read'] == 1) { //echo "hddi"; die();
+                $datafollow = array(
+                    'not_read' => 2
+                );
+
+                $where = array('not_type' => 8, 'not_from_id' => $userid, 'not_to_id' => $busdatatoid[0]['user_id'], 'not_product_id' => $follow[0]['follow_id'], 'not_from' => 6);
+                $this->db->where($where);
+                $updatdata = $this->db->update('notification', $datafollow);
+            } else {
+
+
+                $data = array(
+                    'not_type' => 8,
+                    'not_from_id' => $userid,
+                    'not_to_id' => $busdatatoid[0]['user_id'],
+                    'not_read' => 2,
+                    'not_product_id' => $follow[0]['follow_id'],
+                    'not_from' => 6,
+                    'not_created_date' => date('Y-m-d H:i:s'),
+                    'not_active' => 1
+                );
+
+                $insert_id = $this->common->insert_data_getid($data, 'notification');
+            }
+            // end notoification
+
+            if ($update) {
+
+                $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
+                              Following
+                      </button>';
+                $follow .= '</div>';
+                echo $follow;
+            }
+        } else {
+            $data = array(
+                'follow_type' => 2,
+                'follow_from' => $artdata[0]['business_profile_id'],
+                'follow_to' => $business_id,
+                'follow_status' => 1,
+            );
+            $insert = $this->common->insert_data($data, 'follow');
+
+            // insert notification
+            $contition_array = array('follow_type' => 2, 'follow_from' => $artdata[0]['business_profile_id'], 'follow_status' => 1, 'follow_to' => $business_id);
+            $follow_id = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+            $datanoti = array(
+                'not_type' => 8,
+                'not_from_id' => $userid,
+                'not_to_id' => $busdatatoid[0]['user_id'],
+                'not_read' => 2,
+                'not_product_id' => $follow_id[0]['follow_id'],
+                'not_from' => 6,
+                'not_created_date' => date('Y-m-d H:i:s'),
+                'not_active' => 1
+            );
+
+            $insert_id = $this->common->insert_data_getid($datanoti, 'notification');
+            // end notoification
+            if ($insert) {
+                $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
+                // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
+                //                Following
+                //       </button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')"><span>Following</span></button>';
+                $follow .= '</div>';
+                echo $follow;
+            }
+        }
+    }
+    
     public function unfollow_two() {
         $userid = $this->session->userdata('aileenuser');
 //if user deactive profile then redirect to business_profile/index untill active profile start
@@ -11411,7 +11529,7 @@ Your browser does not support the audio tag.
         $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
 
         $return_html = '';
-        $return_html .= '<ul>';
+        $return_html .= '<ul class="home_three_follow_ul">';
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');

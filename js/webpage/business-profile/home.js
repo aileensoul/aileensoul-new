@@ -851,13 +851,17 @@ function followuser_two(clicked_id)
 {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/follow_two",
+        url: base_url + "business_profile/home_three_follow",
         data: 'follow_to=' + clicked_id,
+        dataType: 'json',
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data.follow);
-            $('.follow_box_ul_li:last').append(data.third_user);
+//            $('.follow_box_ul_li:last').append(data.third_user);
+            $('ul.home_three_follow_ul').append(data.third_user);
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
+                        $('.fad' + clicked_id).remove();
+                
 //                        business_home_three_user_list();
                     });
         }
