@@ -27,7 +27,7 @@
 
                             <div class="common-form">
 								<div class="job-saved-box">
-                                <h3 class="h3_edit">Edit Post</h3>
+                                <h3 class="h3_edit">Edit Job Post</h3>
                                 <?php
                                 if ($this->session->flashdata('error')) {
                                     echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';

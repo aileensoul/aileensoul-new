@@ -588,8 +588,12 @@ label.cameraButton input[accept*="camera"] {display: none;}
 }
 
 /***---------- end  common css for all profile  -------------***/
-
-
+.date-dropdowns .day, .date-dropdowns .month, .date-dropdowns .year {
+    width: 32%;
+    float: left;
+    margin-right: 2%;
+}
+.date-dropdowns .year{margin-right: 0px;}
 .designation_rec_1 ul {
     padding-left: 0px;
     padding-top: 2px;
