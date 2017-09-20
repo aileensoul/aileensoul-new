@@ -20,16 +20,16 @@ jQuery.validator.addMethod("noSpace", function (value, element) {
     return value == '' || value.trim().length != 0;
 }, "No space please and don't leave it empty");
 
-$.validator.addMethod("regx", function (value, element, regexpr) {
-    if (!value)
-    {
-        return true;
-    } else
-    {
-        return regexpr.test(value);
-    }
-    // return regexpr.test(value);
-}, "Number, space and special character are not allowed");
+//$.validator.addMethod("regx", function (value, element, regexpr) {
+//    if (!value)
+//    {
+//        return true;
+//    } else
+//    {
+//        return regexpr.test(value);
+//    }
+//    // return regexpr.test(value);
+//}, "Number, space and special character are not allowed");
 
 $.validator.addMethod("regx1", function (value, element, regexpr) {
     if (!value)
@@ -46,11 +46,11 @@ $(document).ready(function () {
         rules: {
             fname: {
                 required: true,
-                regx: /^[^-\s][a-zA-Z_\s-]+$/,
+//                regx: /^[^-\s][a-zA-Z_\s-]+$/,
             },
             lname: {
                 required: true,
-                regx: /^[^-\s][a-zA-Z_\s-]+$/,
+//                regx: /^[^-\s][a-zA-Z_\s-]+$/,
             },
             email: {
                 required: true,
