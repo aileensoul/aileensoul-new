@@ -1432,7 +1432,7 @@ body.blog{height:auto;}
 .main_send {
     padding: 10px!important;
     background: #1b8ab9!important;
-    right: 10px !important;
+    right: 20px !important;
     border: 1px solid #1b8ab9!important;
     position: absolute!important;
     bottom: 10px !important;
@@ -1511,7 +1511,7 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 .smily_b {
     position: absolute;
     top: 7px;
-    right: 26px;
+    right: 35px;
     bottom: 3px;
     z-index: 2;
 }
@@ -1884,7 +1884,7 @@ display: none !important;
 .profile-job-profile-menu{}
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
 /*** end all profile  ***/
-
+.message-data-name .fa-circle{margin-right:6px;}
 
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 

@@ -1265,6 +1265,7 @@ label.cameraButton input[accept*="camera"] {
 .fancybox-close-small:after{background: #1b8ab9; color: white;}
 /*.fancybox-slide > *{background-color:transparent;  }*/
 .profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
+.register_disable{pointer-events: none; cursor: default;}
 
 
 /***  media query  ***/

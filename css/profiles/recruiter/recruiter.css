@@ -38,7 +38,7 @@
 .profile-job-post-location-name-rec ul li a { color: #5b5b5b; display: inline-block; font-size: 13px; font-family: 'arial'; font-weight:normal;}
 
 .apply-btn {background: #e8f3f8; padding: 8px 12px;}
-.apply-btn a {background: #ffffff; color: #1b8ab9; border-radius: 4px; font-size:15px; padding: 3px 13px; display: inline-block; font-weight: 500; text-transform: capitalize; border: 1px solid #1b8ab9; min-width:72px; text-align:center; margin-left:10px;}
+.apply-btn a {background: #ffffff; color: #1b8ab9; border-radius: 4px; font-size:15px; padding: 3px 13px; display: inline-block; font-weight: 500; text-transform: capitalize; border: 1px solid #1b8ab9; min-width:72px; text-align:center; margin-left:5px;}
 .apply-btn a:hover {color: #fff; background: #1b8ab9;}
 li.fr a {text-decoration: none !important;}
 .job-contact-frnd .add-post-button{text-align:right;}
@@ -76,7 +76,7 @@ li.fr a {text-decoration: none !important;}
 }
 .profile-job-post-detail .profile-job-post-title .button {font-size: 15px; padding: 3px 13px !important; margin-right: 4px;
     margin-left: 4px; background-color: #ffffff; text-transform: capitalize; color: #1b8ab9; border: 1px solid #1b8ab9;
-    float: right; font-weight:normal;
+    float: left; font-weight:normal;
 }
 .last_date{ padding-left: 15px; float: left; padding-top: 4px;}
 /***  profile menu  ***/
@@ -854,7 +854,7 @@ label.cameraButton input[accept*="camera"] {
     border: 1px solid #bfbfbf;
     border-top-right-radius: 3px;
 }
-.profile-job-post-detail .profile-job-post-title .button.invited{float:none; margin-right:0; margin-left:10px; background:#1b8ab9; color:#fff;}
+.profile-job-post-detail .profile-job-post-title .button.invited{float:left; background:#1b8ab9; color:#fff;}
 .job-contact-frnd .add-post-button .btn-3{margin: 10px;
 }
 #basicinfo  label.error{position: relative; margin-top: 5px; right: 0; margin-bottom: 0px; margin-right: 0; text-align: right;}
