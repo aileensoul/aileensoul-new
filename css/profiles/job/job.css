@@ -1746,6 +1746,10 @@ label.cameraButton input[accept*="camera"] {
      
         height: 200px;
     }
+    #row2{
+        border-left:0;
+        border-right:0;
+    }
      #row1{
         height:200px;
     }
