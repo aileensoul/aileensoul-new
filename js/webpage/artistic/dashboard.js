@@ -1,9 +1,9 @@
  // for cursor pointer starts script
 $(document).ready(function () {
-   var input = $(".editable_text");
-   var len = input.val().length;
-   input[0].focus();
-   input[0].setSelectionRange(len, len);
+    var input = $(".editable_text");
+    var len = input.val().length;
+    input[0].focus();
+    input[0].setSelectionRange(len, len);
 });
  
  $('body').on("click", "*", function (e) {
@@ -1313,7 +1313,7 @@ function commentall(clicked_id) {
                 }
             }
         
-            Close the dropdown if the user clicks outside of it
+            // Close the dropdown if the user clicks outside of it
             window.onclick = function (event) {
                 if (!event.target.matches('.dropbtn2')) {
 
@@ -1334,9 +1334,9 @@ function commentall(clicked_id) {
             });
 
             //If this image without attribute WIDTH or HEIGH, you can use $(window).load
-           // $(window).load(function () {
+            $(window).load(function () {
                 //$('.pictures').jMosaic({min_row_height: 150, margin: 3, is_first_big: true});
-           // });
+            });
 
             //You can update on $(window).resize
             $(window).resize(function () {
