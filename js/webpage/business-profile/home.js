@@ -857,6 +857,8 @@ function followuser_two(clicked_id)
         success: function (data) {
             $('.' + 'fr' + clicked_id).html(data.follow);
             $('ul.home_three_follow_ul').append(data.third_user);
+            
+            $('.left_box_following_count').html('('+ data.following_count + ')')
             $.when($('.fad' + clicked_id).fadeOut(3000))
                     .done(function () {
                         $('.fad' + clicked_id).remove();

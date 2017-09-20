@@ -72,14 +72,14 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'followers') { ?> class="active" 
                         <?php } ?>>
                         <a title="Followers" href="<?php echo base_url('business-profile/followers/' . $businessdata[0]['business_slug']); ?>">Followers 
-                            <br> (<?php echo (count($businessfollowerdata)); ?>)
+                            <br> <span class="left_box_follower_count">(<?php echo (count($businessfollowerdata)); ?>)</span>
                         </a>
                     </li>
                     <li  
                         <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'following') { ?> class="active" 
                         <?php } ?>>
                         <a  class="padding_less_right" title="Following" href="<?php echo base_url('business-profile/following/' . $businessdata[0]['business_slug']); ?>">Following 
-                            <br> (<?php echo (count($businessfollowingdata)); ?>) 
+                            <br> <span class="left_box_following_count">(<?php echo (count($businessfollowingdata)); ?>) </span>
                         </a>
                     </li>
                 </ul>
