@@ -64,7 +64,7 @@
 
 
                                     <fieldset class="full-width" <?php if ($skills) { ?> class="error-msg" <?php } ?>>
-                                        <label class="control-label">Skills<span style="color:red">*</span>:</label>
+                                        <label class="control-label">Skills: <span style="color:red">*</span></label>
 
                                         <input id="skills2" name="skills" tabindex="2" size="90" placeholder="Enter SKills">
 
