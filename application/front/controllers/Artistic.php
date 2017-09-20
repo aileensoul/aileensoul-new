@@ -13324,76 +13324,113 @@ public function art_home_three_user_list() {
         $city = $artisticdata[0]['art_city'];
         $state = $artisticdata[0]['art_state'];
         
-        // GET USER BUSINESS DATA END
-        // GET BUSINESS USER FOLLOWING LIST START
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
+        // GET USER ARTISTIC DATA END
+        // GET ARTISTIC USER FOLLOWING LIST START
+        $contition_array = array('follow_from' => $art_id, 'follow_status' => 1, 'follow_type' => 1);
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
         $follow_list = $followdata[0]['follow_list'];
         $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
-        // GET BUSINESS USER FOLLOWING LIST END
-        // GET BUSINESS USER IGNORE LIST START
-        $contition_array = array('user_from' => $business_profile_id, 'profile' => 2);
+        // GET ARTISTIC USER FOLLOWING LIST END
+        // GET ARTISTIC USER IGNORE LIST START
+        $contition_array = array('user_from' => $art_id, 'profile' => 1);
         $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
         $user_list = $followdata[0]['user_list'];
         $user_list = str_replace(",", "','", $userdata[0]['user_list']);
-        // GET BUSINESS USER IGNORE LIST END
-        //GET BUSINESS USER SUGGESTED USER LIST 
-        $contition_array = array('is_deleted' => 0, 'status' => 1, 'user_id != ' => $userid, 'business_step' => 4);
-        $search_condition = "((industriyal = '$industriyal') OR (city = '$city') OR (state = '$state')) AND business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
+        // GET ARTISTIC USER IGNORE LIST END
+        //GET ARTISTIC USER SUGGESTED USER LIST 
+        $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
+        $search_condition = "((art_skill IN ('$art_skill')) OR (art_city = '$city') OR (art_state = '$state')) AND art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('business_profile', $search_condition, $contition_array, $data = 'business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type', $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
+        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state', $sortby = 'CASE WHEN (art_skill = ' . $art_skill . ') THEN art_id END, CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
 
         $return_html = '';
         $return_html .= '<ul class="home_three_follow_ul">';
         if (count($userlistview) > 0) {
             foreach ($userlistview as $userlist) {
                 $userid = $this->session->userdata('aileenuser');
-                $followfrom = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
-                $contition_array = array('follow_to' => $userlist['business_profile_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '2');
-                $businessfollow = $this->data['businessfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
-                if (!$businessfollow) {
+                $followfrom = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_id;
+                $contition_array = array('follow_to' => $userlist['art_id'], 'follow_from' => $followfrom, 'follow_status' => '1', 'follow_type' => '1');
+                $artfollow = $this->data['artfollow'] = $this->common->select_data_by_condition('follow', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+              
+                if (!$artfollow) {
 
-                    $return_html .= '<li class = "follow_box_ul_li fad' . $userlist['business_profile_id'] . '" id = "fad' . $userlist['business_profile_id'] . '">
-      <div class = "contact-frnd-post follow_left_main_box"><div class = "profile-job-post-title-inside clearfix">
-      <div class = " col-md-12 follow_left_box_main">
-      <div class = "post-design-pro-img_follow">';
-                    if ($userlist['business_user_image']) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+  $return_html .= '<li class="follow_box_ul_li">
+                                                <div class="contact-frnd-post follow_left_main_box"><div class="profile-job-post-title-inside clearfix">
+                                                                    <div class=" col-md-12 follow_left_box_main" id="fad' . $userlist['art_id'] . '">                   
+                                                                        <div class="post-design-pro-img_follow">';
+                    if ($userlist['art_user_image']) {
+
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+
+                        if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
+                                                                $a = $userlist['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $userlist['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+
+                                  $return_html .= '<div class="post-img-div">';
+                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                  $return_html .= '</div>'; 
+
+                                    }else{
+
+                        $return_html .= '<img  src="' . ART_PROFILE_THUMB_UPLOAD_URL . $userlist['art_user_image'] . '"  alt="">';
+
                         }
                         $return_html .= '</a>';
+
                     } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucwords($userlist['art_name']) . '">';
+                                                                                    
+                                                                $a = $userlist['art_name'];
+                                                                $acr = substr($a, 0, 1);
+                                                                $b = $userlist['art_lastname'];
+                                                                $bcr = substr($b, 0, 1);
+
+                                  $return_html .= '<div class="post-img-div">';
+                                  $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
+                                  $return_html .= '</div>'; 
+
+                         $return_html .= '</a>';
                     }
                     $return_html .= '</div>
-      <div class = "post-design-name_follow fl">
-      <ul><li><div class = "post-design-product_follow">';
-                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <h6>' . ucfirst(strtolower($userlist['company_name'])) . '</h6>
-      </a></div></li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $userlist['industriyal'], 'status' => 1))->row()->industry_name;
+                                <div class="post-design-name_follow fl">
+                                     <ul><li>
+                                    <div class="post-design-product_follow">';
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
+                            <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
+                            </a> 
+                            </div>
+                        </li>';
+                    
                     $return_html .= '<li>
-      <div class = "post-design-product_follow_main" style = "display:block;">
-      <a href = "' . base_url('business-profile/dashboard/' . $userlist['business_slug']) . '" title = "' . ucfirst(strtolower($userlist['company_name'])) . '">
-      <p>';
-                    if ($category) {
-                        $return_html .= $category;
+                        <div class="post-design-product_follow_main" style="display:block;">
+                           <a href="' . base_url('artistic/dashboard/' . $userlist['user_id']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '">
+                    <p>';
+                    if ($userlist['designation']) {
+                        $return_html .= $userlist['designation'];
                     } else {
-                        $return_html .= $userlist['other_industrial'];
+                        $return_html .= 'Current Work';
                     }
+
                     $return_html .= '</p>
-      </a></div></li></ul></div>
-      <div class = "follow_left_box_main_btn">';
-                    $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
-      </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
-      <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
-      </div></div></li>';
+                                     </a>
+                                    </div>
+                                    </li>
+                                    </ul> 
+                                    </div>  
+                            <div class="follow_left_box_main_btn">';
+                    $return_html .= '<div class="fr' . $userlist['art_id'] . '">
+                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                            </button>
+                            </div>
+                            </div>
+                            <span class="Follow_close" onClick="followclose(' . $userlist['art_id'] . ')">
+                            <i class="fa fa-times" aria-hidden="true">
+                            </i>
+                        </span>
+                        </div>
+                </div></div></li>';
                 }
             }
         }
