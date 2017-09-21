@@ -20,7 +20,7 @@ class Business_profile extends MY_Controller {
         //AWS access info end
 
 
-        include ('include.php');
+        include ('business_include.php');
 // DEACTIVATE PROFILE START
 
         $userid = $this->session->userdata('aileenuser');
