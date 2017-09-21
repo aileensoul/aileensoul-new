@@ -3217,7 +3217,9 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                     $return_html .= '<li class="';
                     if ($total['not_active'] == 1) {
                         $return_html .= 'active2';
-                    } '">';
+                    } 
+                    
+                    $return_html .= '">';
 
                     $return_html .= '<div class="notification-pic" id="noti_pc" >';
 
@@ -3578,7 +3580,7 @@ $job_slug = $this->db->get_where('job_reg', array('user_id' => $id))->row()->slu
                                             <li class="';
                         if ($total['not_active'] == 1) {
                             $return_html .= 'active2';
-                        } '">';
+                        } $return_html .= '">';
 
                         $return_html .= '<div class="notification-pic" id="noti_pc" >';
                         $filepath = FCPATH . $this->config->item('bus_profile_thumb_upload_path') . $total['user_image'];
