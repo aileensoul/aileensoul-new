@@ -19,9 +19,9 @@
 }
 .job-menu-profile {
     float: left;
-    padding-left: 19px;
-    width: 17.5%;
-    margin-top: 0px;
+    padding-left: 31px;
+    width: 18%;
+    margin-top: 20px;
 }
 .buisness-profile-pic-candidate {border: 1px solid #d9d9d9; margin-left: 17px!important;  width: 50px; margin-top: 5px;
     height: 50px; margin-left:17px; margin-bottom: 6px; display: inline-block;} 
@@ -103,7 +103,7 @@ li.fr a {text-decoration: none !important;}
 .profile-main-rec-box-menu li a:hover {background-color: #1b8ab9; color: #ffffff; background-color: #1b8ab9; color: #ffffff;
     box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
-.art-side-menu {width: 100%; padding-left: 240px;}
+.art-side-menu {width: 100%; padding-left: 245px;}
 .art-side-menu ul {float: left;}
 .right-side-menu {float: left; height: 50px;}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{

@@ -210,7 +210,7 @@
 <?php } ?>
             </div>
             <div class="middle-part container rec_res">
-                <div class="job-menu-profile mob-none  pt20">
+                <div class="job-menu-profile mob-none  ">
                     <a href="javascript:void(0);" title="<?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?>"><h3><?php echo $postdataone[0]['rec_firstname'] . ' ' . $postdataone[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
