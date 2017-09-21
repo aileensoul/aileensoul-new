@@ -661,7 +661,7 @@ class Recruiter extends MY_Controller {
 
         $jobtitle = $this->input->post('post_name');
         if ($jobtitle != " ") {
-            $contition_array = array('name' => $jobtitle);
+            $contition_array = array('name' => trim($jobtitle));
             $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
             if ($jobdata) {
                 $jobtitle = $jobdata[0]['title_id'];
@@ -972,7 +972,7 @@ class Recruiter extends MY_Controller {
         $jobtitle = $this->input->post('post_name');
 
         if ($jobtitle != " ") {
-            $contition_array = array('name' => $jobtitle);
+            $contition_array = array('name' => trim($jobtitle));
             $jobdata = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'title_id,name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
             if ($jobdata) {
                 $jobtitle = $jobdata[0]['title_id'];
@@ -992,7 +992,7 @@ class Recruiter extends MY_Controller {
 
             foreach ($skills as $ski) {
                 if ($ski != " ") {
-                    $contition_array = array('skill' => $ski, 'type' => 4);
+                    $contition_array = array('skill' => trim($ski), 'type' => 4);
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
 
                     if (count($skilldata) == 0) {

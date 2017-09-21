@@ -313,27 +313,6 @@
                               ?>
                         </div>
                         <!--blog_latest_post end -->
-                        <div class="popular_tag">
-                           <h4>Popular Tag</h4>
-                           <?php 
-                              $tag_all=explode(',', $blog_detail[0]['tag']);
-                              foreach($tag_all as $tag)
-                              {
-                               $tag1 = strtolower(preg_replace( array('/[^a-z0-9\- ]/i', '/[ \-]+/'), array('', '-'), trim($tag)));
-                              ?>
-                           <div class="tag_name">
-                              <span class="span_tag">
-                              <a href="<?php echo base_url('blog/tag/'.$tag1)?>">
-                              <?php
-                                 echo $tag;
-                                 ?>
-                              </a>
-                              </span>
-                           </div>
-                           <?php
-                              }
-                              ?>
-                        </div>
                      </div>
                   </div>
                </div>

@@ -2,7 +2,8 @@
    -->
 <html class="blog_cl">
    <head>
-      <title>Official Blog - Aileensoul.com</title>
+      <title>Official Blog for Regular Updates , News and sharing knowledge - Ailensoul.com</title>
+      <meta name="description" content="Our Aileensoul official blog will describe our free service and related news, tips and tricks - stay tuned." />
       <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />

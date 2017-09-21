@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Register for FREE search Jobs, Hire employee, Freelace and Business Network | Aileensoul.com</title>
-<meta name="description" content="Register into Aileensoul.com for Free, Find job search, Hire employee, Get Freelace work, Grow your business network and make Artistic Profiles.">
+  <title>Register FREE for search Jobs, Hire employee, Freelance and Business Network | Aileensoul.com</title>
+<meta name="description" content="Register into Aileensoul.com for Free, Find job search, Hire employee, Get Freelance work, Grow business network & make Artistic Profiles.">
 
 
   <link rel="icon" href="<?php echo base_url('images/favicon.png'); ?>">

@@ -239,7 +239,7 @@ class Business_profile extends MY_Controller {
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $companyname = $this->input->post('companyname');
-            
+
             if ($userdata) {
 //                $data = array(
 //                    'company_name' => $this->input->post('companyname'),
@@ -810,9 +810,33 @@ class Business_profile extends MY_Controller {
 
         // GET BUSINESS DATA
         $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['businessdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,profile_background,industriyal,city,state,other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['businessdata'] = $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,profile_background,industriyal,city,state,other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $business_profile_id = $this->data['businessdata'][0]['business_profile_id'];
+        $business_profile_id = $businessdata[0]['business_profile_id'];
+
+
+        $businessregid = $businessdata[0]['business_profile_id'];
+        $contition_array = array('follow_to' => $businessregid, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_follower[0]['table'] = 'follow';
+        $join_str_follower[0]['join_table_id'] = 'follow.follow_from';
+        $join_str_follower[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_follower[0]['join_type'] = '';
+
+        $businessfollowerdata = $this->data['businessfollowerdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_follower, $groupby = '');
+
+        $contition_array = array('follow_from' => $businessregid, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_to';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+
+        $businessfollowingdata = $this->data['businessfollowingdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+
+
 
 // GET FOLLOWER DATA 
 
