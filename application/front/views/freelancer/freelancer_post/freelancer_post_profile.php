@@ -203,7 +203,7 @@
             </div>
             <div class="middle-part container pt10">
                 <div class="job-menu-profile mob-none pt-20">
-                    <a href="javascript:void(0);">   <h5> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h5></a>
+                    <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                     <div class="profile-text pt5">
                         <?php
                         if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) {
