@@ -203,7 +203,7 @@
                 <div class="middle-part container">          
                     <div class="job-menu-profile mob-none pt20">
                         <a href="javascript:void(0);">
-                            <h5> <?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h5>
+                            <h3> <?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
                         </a>
                         <div class="profile-text">
 
@@ -237,7 +237,7 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="col-md-8 col-sm-12 mob-clear">
+                    <div class="col-md-7 col-sm-12 mob-clear">
                         <div class="common-form">
                             <div class="job-saved-box">
                                 <h3><?php echo $this->lang->line("employer_details"); ?></h3>

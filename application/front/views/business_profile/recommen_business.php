@@ -127,7 +127,8 @@
         <!-- START HEADER -->
         <?php echo $header; ?>
         <!-- END HEADER -->
-        <?php echo $business_header2_border; ?>
+        
+        <?php if($is_business){ echo $business_header2_border;} ?>
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">

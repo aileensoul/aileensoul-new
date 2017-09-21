@@ -103,8 +103,7 @@ class Search extends MY_Controller {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
             $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+            
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
@@ -112,15 +111,20 @@ class Search extends MY_Controller {
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            
         }
+        
+        $this->data['is_business'] = $is_business = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_profile_id;
+
 
         $this->data['description'] = $business_post;
 
         $this->data['profile'] = $business_profile;
 
-        $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
-
+        if ($is_business) {
+            $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, TRUE);
+        }
         $title = '';
         if ($search_business) {
             $title .= $search_business;
@@ -142,7 +146,7 @@ class Search extends MY_Controller {
             $this->load->view('business_profile/recommen_business', $this->data);
         } else {
 
-            $this->load->view('business_profile/bus_search_login', $this->data);
+            $this->load->view('business_profile/business_search_login', $this->data);
         }
         //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
     }
@@ -154,33 +158,35 @@ class Search extends MY_Controller {
             redirect('business-profile/home/', refresh);
         }
         // code for insert search keyword in database start
-        $search_business = trim($this->input->get('skills'), ',');
-        $keyword = $search_business;
+        $search_business = trim($this->input->get('skills'));
+        $this->data['keyword'] = $search_business;
 
-        $search_place = trim($this->input->get('searchplace'), ',');
+        $search_place = trim($this->input->get('searchplace'));
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
-        $keyword1 = $search_place;
+        $this->data['keyword1'] = $search_place;
         $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
-        $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['city'] = $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $data = array(
-            'search_keyword' => $search_business,
-            'search_location' => $search_place,
-            'user_location' => $city[0]['city'],
-            'user_id' => $userid,
-            'created_date' => date('Y-m-d h:i:s', time()),
-            'status' => 1
-        );
 
-        $insert_id = $this->common->insert_data_getid($data, 'search_info');
-        // code for insert search keyword in database end
+        if ($this->session->userdata('aileenuser')) {
+            $data = array(
+                'search_keyword' => $search_business,
+                'search_location' => $search_place,
+                'user_location' => $city[0]['city'],
+                'user_id' => $userid,
+                'created_date' => date('Y-m-d h:i:s', time()),
+                'status' => 1,
+                'module' => '5'
+            );
 
+            $insert_id = $this->common->insert_data_getid($data, 'search_info');
+            // code for insert search keyword in database end
+        }
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
-            $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-
             $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
@@ -194,19 +200,18 @@ class Search extends MY_Controller {
             }
 
             //   echo $search_condition; 
-            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0', 'business_profile.status' => '1');
+            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-
             $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_step' => 4);
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -217,9 +222,8 @@ class Search extends MY_Controller {
             } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
-            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
@@ -227,8 +231,11 @@ class Search extends MY_Controller {
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            
         }
+        
+        $this->data['is_business'] = $is_business = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_profile_id;
         $description = $business_post;
         $profile = $business_profile;
 
@@ -305,22 +312,24 @@ class Search extends MY_Controller {
                         $return_html .= '<div class="fl search_button">
                                                                                 <div class="fruser' . $p['business_profile_id'] . '">';
                         $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $businessdata[0]['business_profile_id'], 'follow_to' => $p['business_profile_id']))->row()->follow_status;
-                        if ($status == 0 || $status == " ") {
+                        if (($status == 0 || $status == " ") && ($is_business)) {
                             $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                             <button id="follow' . $p['business_profile_id'] . '" onClick="followuser_two(' . $p['business_profile_id'] . ')">
                                                                                                 Follow 
                                                                                             </button>
                                                                                         </div>';
-                        } elseif ($status == 1) {
+                        } elseif ($status == 1 && $is_business) {
                             $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                                                                             <button class="bg_following" id="unfollow' . $p['business_profile_id'] . '" onClick="unfollowuser_two(' . $p['business_profile_id'] . ')">
                                                                                                 Following 
                                                                                             </button>
                                                                                         </div>';
                         }
+                        if($is_business){
                         $return_html .= '</div>
                                                                                 <button onclick="window.location.href = ' . base_url('chat/abc/5/5/' . $p['user_id']) . '"> Message</button>
                                                                             </div>';
+                        }
                     }
                     $return_html .= '</div>
                                                                 </div>';
@@ -815,8 +824,9 @@ class Search extends MY_Controller {
 
                         $return_html .= '</div>
                             </div>
-                        </div>
-                        <div class="post-design-commnet-box col-md-12">
+                        </div>';
+                        if($is_business){
+                        $return_html .= '<div class="post-design-commnet-box col-md-12">
                             <div class="post-design-proo-img">';
                         $userid = $this->session->userdata('aileenuser');
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -835,8 +845,9 @@ class Search extends MY_Controller {
                                 <button id="' . $p['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment
                                 </button>
                             </div>
-                        </div>
-                        </div>
+                        </div>';
+                        }
+                        $return_html .= '</div>
                         </div>';
                     }
                 }
@@ -1867,7 +1878,7 @@ class Search extends MY_Controller {
 //echo '<pre>'; print_r($result); die();
             foreach ($skillid as $key => $value) {
                 $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value['skill_id'] . '", freelancer_post_area) != ' => '0');
-                $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
             //  echo "<pre>"; print_r($candidate); die();
             $candidate = array_reduce($candidate, 'array_merge', array());
@@ -1882,11 +1893,11 @@ class Search extends MY_Controller {
             $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
 
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1');
-            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
-            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $new1 = array_merge(array($candidate), array($fieldfound), array($otherdata));
             $candidate_11 = array_reduce($new1, 'array_merge', array());
@@ -1900,17 +1911,17 @@ class Search extends MY_Controller {
 
             $temp = $this->db->get_where('skill', array('skill' => $search_skill, 'status' => 1))->row()->skill_id;
             $contition_array = array('status' => '1', 'is_delete' => '0', 'freelancer_post_city' => $cache_time, 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $temp . '", freelancer_post_area) != ' => '0');
-            $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
             $category_temp = $this->db->get_where('category', array('category_name' => $search_skill, 'status' => '1'))->row()->category_id;
 
             $contition_array = array('freelancer_post_field' => $category_temp, 'user_id !=' => $userid, 'free_post_step' => 7, 'status' => '1', 'freelancer_post_city' => $cache_time);
-            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
+            $fieldfound = $this->data['field'] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_field,freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby);
 
             $contition_array = array('status' => '1', 'is_delete' => '0', 'user_id !=' => $userid, 'free_post_step' => 7, 'freelancer_post_city' => $cache_time);
             $search_condition = "(designation LIKE '%$search_skill%' or freelancer_post_otherskill LIKE '%$search_skill%' or freelancer_post_exp_month LIKE '%$search_skill%' or freelancer_post_exp_year LIKE '%$search_skill%')";
-            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $otherdata = $other['data'] = $this->common->select_data_by_search('freelancer_post_reg', $search_condition, $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area,freelancer_post_field, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug,freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             // $unique = array_merge($candidate, $fieldfound, $otherdata);
             $new1 = array_merge($candidate, $fieldfound, $otherdata);
@@ -1986,8 +1997,17 @@ class Search extends MY_Controller {
                                                         </div>  
                                                         <div class="profile-job-post-title clearfix">
                                                             <div class="profile-job-profile-menu">
-                                                                <ul class="clearfix">
-                                                                    <li><b>Skills</b><span>';
+                                                                <ul class="clearfix"> 
+                                                                <li><b>Field</b><span>';
+                 if($row['freelancer_post_field']){
+                    $field_name = $this->db->get_where('category', array('category_id' => $row['freelancer_post_field']))->row()->category_name;
+                    $return_html .= $field_name;
+                }
+                else{
+                    $return_html .= PROFILENA;
+                }
+                
+                  $return_html .='</li></span><li><b>Skills</b><span>';
                 $aud = $row['freelancer_post_area'];
                 $aud_res = explode(',', $aud);
                 if (!$row['freelancer_post_area']) {
@@ -2083,25 +2103,24 @@ class Search extends MY_Controller {
                                                                 <div class="apply-btn fr">';
                 if ($userid) {
                     $userid = $this->session->userdata('aileenuser');
-                    
+
                     $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => 1, 'free_hire_step' => 3);
-            $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if($free_hire_result){
-                    $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
-                    $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    if ($userid != $row['user_id']) {
-                        $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $row['user_id']) . '">Message</a>';
-                        if (!$data) {
-                            $return_html .= '<input type="hidden" id="hideenuser' . $row['user_id'] . '" value= "' . $data[0]['save_id'] . '">';
-                            $return_html .= '<a id="' . $row['user_id'] . '" onClick="savepopup(' . $row['user_id'] . ')" href="javascript:void(0);" class="saveduser' . $row['user_id'] . '">Save</a>';
-                        } else {
-                            $return_html .= '<a class="saved">Saved </a>';
+                    $free_hire_result = $this->common->select_data_by_condition('freelancer_hire_reg', $contition_array, $data = 'reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    if ($free_hire_result) {
+                        $contition_array = array('from_id' => $userid, 'to_id' => $row['user_id'], 'save_type' => 2, 'status' => '0');
+                        $data = $this->common->select_data_by_condition('save', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        if ($userid != $row['user_id']) {
+                            $return_html .= '<a href="' . base_url('chat/abc/3/4/' . $row['user_id']) . '">Message</a>';
+                            if (!$data) {
+                                $return_html .= '<input type="hidden" id="hideenuser' . $row['user_id'] . '" value= "' . $data[0]['save_id'] . '">';
+                                $return_html .= '<a id="' . $row['user_id'] . '" onClick="savepopup(' . $row['user_id'] . ')" href="javascript:void(0);" class="saveduser' . $row['user_id'] . '">Save</a>';
+                            } else {
+                                $return_html .= '<a class="saved">Saved </a>';
+                            }
                         }
-                    }
-                    }
-                    else{
-                    $return_html .= '<a href="' . base_url('freelancer-hire/basic-information' ) . '"> Message </a>';
-                    $return_html .= '<a href="' . base_url('freelancer-hire/basic-information' ) . '"> Save </a>';
+                    } else {
+                        $return_html .= '<a href="' . base_url('freelancer-hire/basic-information') . '"> Message </a>';
+                        $return_html .= '<a href="' . base_url('freelancer-hire/basic-information') . '"> Save </a>';
                     }
                 } else {
                     $return_html .= '<a href="javascript:void(0);" onclick="login_profile();"> Message </a>';
@@ -2187,9 +2206,9 @@ class Search extends MY_Controller {
             $userid = $this->session->userdata('aileenuser');
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
             $free_apply_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            if($free_apply_result){
-            $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
-            }else{
+            if ($free_apply_result) {
+                $this->load->view('freelancer/freelancer_post/recommen_freelancer_post', $this->data);
+            } else {
                 $this->load->view('freelancer/freelancer_post/apply_search', $this->data);
             }
         } else {
@@ -2479,50 +2498,49 @@ class Search extends MY_Controller {
 
                     $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
                     if ($userid) {
-                        
+
                         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => 1, 'free_post_step' => 7);
-                       $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        if($free_work_result){
-                        $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
-                        $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        if ($freelancerapply1) {
+                        $free_work_result = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                        if ($free_work_result) {
+                            $contition_array = array('post_id' => $post['post_id'], 'job_delete' => 0, 'user_id' => $userid);
+                            $freelancerapply1 = $this->data['freelancerapply'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                            if ($freelancerapply1) {
 
-                            $return_html .= '<a href="javascript:void(0);" class="button applied">';
-                            $return_html .= $this->lang->line("applied");
-                            $return_html .= '</a>';
-                        } else {
+                                $return_html .= '<a href="javascript:void(0);" class="button applied">';
+                                $return_html .= $this->lang->line("applied");
+                                $return_html .= '</a>';
+                            } else {
 
 
-                            $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">';
-                            $return_html .= $this->lang->line("apply");
-                            $return_html .= ' </a>
+                                $return_html .= '<a href="javascript:void(0);"  class= "applypost' . $post['post_id'] . '  button" onclick="applypopup(' . $post['post_id'] . ',' . $post['user_id'] . ')">';
+                                $return_html .= $this->lang->line("apply");
+                                $return_html .= ' </a>
                                                                                         </li> 
                                                                                         <li>';
 
-                            $userid = $this->session->userdata('aileenuser');
+                                $userid = $this->session->userdata('aileenuser');
 
-                            $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
-                            $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                            if ($data) {
+                                $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' => $post['post_id'], 'job_delete' => '1');
+                                $data = $this->data['jobsave'] = $this->common->select_data_by_condition('freelancer_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                                if ($data) {
 
-                                $return_html .= '<a class="saved  button savedpost' . $post['post_id'] . '">';
-                                $return_html .= $this->lang->line("saved");
-                                $return_html .= '</a>';
-                            } else {
-                                $return_html .= ' <a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">';
-                                $return_html .= $this->lang->line("save");
-                                $return_html .= '</a>';
+                                    $return_html .= '<a class="saved  button savedpost' . $post['post_id'] . '">';
+                                    $return_html .= $this->lang->line("saved");
+                                    $return_html .= '</a>';
+                                } else {
+                                    $return_html .= ' <a id="' . $post['post_id'] . '" onClick="savepopup(' . $post['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $post['post_id'] . ' button">';
+                                    $return_html .= $this->lang->line("save");
+                                    $return_html .= '</a>';
+                                }
                             }
-                        }
-                        }
-                        else{
-                         $return_html .= '<a href="' . base_url('freelancer-work/basic-information') . '"  class= "applypost button">';
-                        $return_html .= $this->lang->line("apply");
-                        $return_html .= ' </a>';
+                        } else {
+                            $return_html .= '<a href="' . base_url('freelancer-work/basic-information') . '"  class= "applypost button">';
+                            $return_html .= $this->lang->line("apply");
+                            $return_html .= ' </a>';
 
-                        $return_html .= ' <a href="' . base_url('freelancer-work/basic-information') . '" class="savedpost button">';
-                        $return_html .= $this->lang->line("save");
-                        $return_html .= '</a>';
+                            $return_html .= ' <a href="' . base_url('freelancer-work/basic-information') . '" class="savedpost button">';
+                            $return_html .= $this->lang->line("save");
+                            $return_html .= '</a>';
                         }
                     } else {
                         $return_html .= '<a href="javascript:void(0);"  class= "applypost button" onclick="login_profile();">';
@@ -2739,15 +2757,17 @@ class Search extends MY_Controller {
             redirect('business-profile/home/', refresh);
         }
         // code for insert search keyword in database start
-        $search_business = trim($this->input->get('skills'), ',');
-        $keyword = $search_business;
+        $search_business = trim($this->input->get('skills'));
+        $this->data['keyword'] = $search_business;
 
-        $search_place = trim($this->input->get('searchplace'), ',');
+        $search_place = trim($this->input->get('searchplace'));
         $cache_time = $this->db->get_where('cities', array('city_name' => $search_place))->row()->city_id;
 
-        $keyword1 = $search_place;
+        $this->data['keyword1'] = $search_place;
         $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => '1');
-        $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['city'] = $city = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'city', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
         if ($this->session->userdata('aileenuser')) {
             $data = array(
                 'search_keyword' => $search_business,
@@ -2755,7 +2775,8 @@ class Search extends MY_Controller {
                 'user_location' => $city[0]['city'],
                 'user_id' => $userid,
                 'created_date' => date('Y-m-d h:i:s', time()),
-                'status' => 1
+                'status' => 1,
+                'module' => '5'
             );
 
             $insert_id = $this->common->insert_data_getid($data, 'search_info');
@@ -2763,9 +2784,8 @@ class Search extends MY_Controller {
         }
         if ($search_business == "") {
             $contition_array = array('city' => $cache_time, 'status' => '1', 'business_step' => 4);
-            $business_profile = $results = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } elseif ($search_place == "") {
-
             $condition_array = array('business_profile_id !=' => '', 'business_profile.status' => '1', 'business_step' => 4);
 
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
@@ -2779,19 +2799,18 @@ class Search extends MY_Controller {
             }
 
             //   echo $search_condition; 
-            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
             $join_str[0]['join_type'] = '';
 
-            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0', 'business_profile.status' => '1');
+            $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
 
             $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal,business_profile.business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
-
             $condition_array = array('business_profile_id !=' => '', 'status' => '1', 'city' => $cache_time, 'business_step' => 4);
             $searchbusiness = $this->db->get_where('business_type', array('business_name' => $search_business))->row()->type_id;
             $searchbusiness1 = $this->db->get_where('industry_type', array('industry_name' => $search_business))->row()->industry_id;
@@ -2802,9 +2821,8 @@ class Search extends MY_Controller {
             } else {
                 $search_condition = "(company_name LIKE '%$search_business%' or contact_website LIKE '%$search_business%' or other_business_type LIKE '%$search_business%' or other_industrial LIKE '%$search_business%')";
             }
-            $business_profile = $results = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
+            $business_profile = $this->data['results'] = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            
             $join_str[0]['table'] = 'business_profile';
             $join_str[0]['join_table_id'] = 'business_profile.user_id';
             $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
@@ -2812,8 +2830,12 @@ class Search extends MY_Controller {
 
             $condition_array = array('business_step' => 4, 'business_profile_post.is_delete' => '0');
             $search_condition = "(business_profile_post.product_name LIKE '%$search_business%' or business_profile_post.product_description LIKE '%$search_business%')";
-            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_post = $post['data'] = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data = 'business_profile_post.*,business_profile.company_name,business_profile.industriyal', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            
         }
+        
+        $this->data['is_business'] = $is_business = $this->db->get_where('business_profile', array('user_id' => $userid))->row()->business_profile_id;
+        
         $description = $business_post;
         $profile = $business_profile;
 
@@ -2892,13 +2914,13 @@ class Search extends MY_Controller {
                         $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $businessdata[0]['business_profile_id'], 'follow_to' => $p['business_profile_id']))->row()->follow_status;
                         if ($status == 0 || $status == " ") {
                             $return_html .= '<div id= "followdiv " class="user_btn">
-                                                                                            <button id="follow' . $p['business_profile_id'] . '" onClick="followuser_two(' . $p['business_profile_id'] . ')">
+                                                                                            <button id="follow' . $p['business_profile_id'] . '" onClick="login_profile()">
                                                                                                 Follow 
                                                                                             </button>
                                                                                         </div>';
                         } elseif ($status == 1) {
                             $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
-                                                                                            <button class="bg_following" id="unfollow' . $p['business_profile_id'] . '" onClick="unfollowuser_two(' . $p['business_profile_id'] . ')">
+                                                                                            <button class="bg_following" id="unfollow' . $p['business_profile_id'] . '" onClick="login_profile()">
                                                                                                 Following 
                                                                                             </button>
                                                                                         </div>';
@@ -3400,8 +3422,9 @@ class Search extends MY_Controller {
 
                         $return_html .= '</div>
                             </div>
-                        </div>
-                        <div class="post-design-commnet-box col-md-12">
+                        </div>';
+                        if($is_business){
+                        $return_html .= '<div class="post-design-commnet-box col-md-12">
                             <div class="post-design-proo-img">';
                         $userid = $this->session->userdata('aileenuser');
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
@@ -3420,8 +3443,9 @@ class Search extends MY_Controller {
                                 <button id="' . $p['business_profile_post_id'] . '" onClick="insert_comment(this.id)">Comment
                                 </button>
                             </div>
-                        </div>
-                        </div>
+                        </div>';
+                        }
+                        $return_html .= '</div>
                         </div>';
                     }
                 }

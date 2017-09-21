@@ -4719,9 +4719,12 @@ div .comment {
     .close2 {
         right: 12px;
     }
+	#row2{border-left:0; border-right:0;}
     #row2 img {
         border: none;
-    }
+	  height: 200px;
+		}
+	 #row1{height:200px;}
     .art_no_post_img {
         padding-top: 0px;
         padding-bottom: 0px;

@@ -20,8 +20,9 @@
 .job-menu-profile {
     float: left;
     padding-left: 31px;
-    width: 22.5%;
-    margin-top: 0px;
+    width: 18.5%;
+    margin-top: 20px;
+    text-transform: capitalize;
 }
 
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
@@ -108,7 +109,7 @@ li.fr a {text-decoration: none !important;}
 .profile-main-rec-box-menu li a:hover {background-color: #1b8ab9; color: #ffffff; background-color: #1b8ab9; color: #ffffff;
     box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
-.art-side-menu {width: 100%; padding-left: 210px;}
+.art-side-menu {width: 100%; padding-left: 245px;}
 .art-side-menu ul {float: left;}
 .right-side-menu {float: left; height: 50px; /*border-top: 1px solid #d9d9d9;*/}
 .profile-job-post-detail .profile-job-post-title .profile-job-profile-menu ul li span pre{
@@ -1338,6 +1339,12 @@ label.cameraButton input[accept*="camera"] {
     }
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
+    #row2 img {
+      
+        height: 200px;
+    }
+    #row2{border-left:0; border-right:0;}
+     #row1{height:200px;}
 }
 
 @media screen and (max-width: 640px) {

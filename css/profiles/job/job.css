@@ -21,7 +21,7 @@
     float: left;
     padding-left: 31px;
     width: 22.5%;
-    margin-top: 0px;
+    margin-top: 20px;
 }
 .profile-job-details p {
     color: #5b5b5b;
@@ -33,7 +33,8 @@
     text-overflow: ellipsis;
 }
 .profile-job-post-detail .profile-job-post-title .button:hover{ background: #1b8ab9; color: #fff; }
-
+.message1 h2{font-size: 20px; text-align: left;}
+.message1{text-align: center;}
 .buisness-profile-pic-candidate {border: 1px solid #d9d9d9; margin-left: 17px!important;  width: 50px; margin-top: 5px;
     height: 50px; margin-left:17px; margin-bottom: 6px; display: inline-block;} 
 .buisness-profile-pic-candidate img { width: 100%; height: 100%;}
@@ -1079,8 +1080,11 @@ border: none;}
 .job_work_experience_main_div input::-webkit-input-placeholder {
     line-height:20px !important;
 }
+#univer:hover{background: #156f95; color: white;}
+#ui-id-6 {height: 150px;}
+#experience_month-error{margin-top: 38px;}
 .common-form fieldset .radio_check_text{padding-right:20px;}
-.certificate{border:none; padding:0; margin-top:15px;}
+.certificate{border:none; padding:3px 0px; }
 .hs-submit .delete_btn{margin-top:5px;}
 .complete_profile .circle-1{height:214px;}
 .alert{cursor: default;}
@@ -1111,7 +1115,7 @@ border: none;}
     float: left;
     padding-left: 31px;
     width: 22.5%;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 .job-menu-profile1 a h5 {
     text-transform: capitalize;
@@ -1246,7 +1250,7 @@ label.cameraButton input[accept*="camera"] {
     background-color: #d9d9d9;
     border-radius: 3px;
 }
-.message h2{font-size: 16px; text-align: left;}
+.message h2{font-size: 20px; text-align: left;}
 #univer{
     background: #1b8ab9;
     color: white;
@@ -1264,7 +1268,7 @@ label.cameraButton input[accept*="camera"] {
 .register_disable{pointer-events: none; cursor: default;}
 .message a.mesg_link:hover{color:#fff; background:#156f95;}
 .message button:hover{color:#fff; border:1px solid transparent;} 
-.message1 #univer1{border:1px solid #1b8ab9; margin-top:10px;}
+.message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
 .message1 #univer1:hover{background:#1b8ab9; color:#fff;}
 .edit_profile_progress.complete_profile{cursor:default;}
 
@@ -1734,11 +1738,22 @@ label.cameraButton input[accept*="camera"] {
         padding: 7px;
     }
     .common-form1 h3 {
-        margin:28px 0 52px;
+        margin:28px 0px 52px;
     }
 	.art-side-menu .flw_msg_btn{padding:0;}
     .art-side-menu .flw_msg_btn ul li{padding:10px 0;}
     .mob-progressbar .progress .skill{line-height: 26px;}
+     #row2 img {
+     
+        height: 200px;
+    }
+    #row2{
+        border-left:0;
+        border-right:0;
+    }
+     #row1{
+        height:200px;
+    }
 }
 
 @media screen and (max-width: 640px) {

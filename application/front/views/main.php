@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com</title>
-        <meta name="description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field.">
-        <meta property="og:title" content="Find the Best Jobs, Hiring, Freelance for Free | Grow Business Network - Aileensoul.com" />
-        <meta property="og:description" content="Aileensoul provides best opportunity where you can Hire, Recruit, Freelance, Business and find or search jobs of your preference in your required field."/>
+        <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
+        <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
+        <meta property="og:description" content="Aileensoul.com is the free platform where you can grow business, hire employees, freelancers & artists. Also find job, freelance work & artistic opportunities."/>
         <meta property="og:image" content="<?php echo base_url('images/meta-icon.png'); ?>" />
         <?php
         if($_SERVER['HTTP_HOST'] != "localhost"){

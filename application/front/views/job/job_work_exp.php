@@ -198,7 +198,7 @@
                                                          }
                                                          ?>"  maxlength="15" />&nbsp;&nbsp;&nbsp; <span id="companyphn-error"> </span>
                                                       <?php echo form_error('companyphn'); ?>
-                                                      <label style="    margin-top: -14px; display: block;">Experience Certificate:</label>
+                                                      <label style="  display: block;">Experience Certificate:</label>
                                                       <input style="width:100%;  margin-bottom: 50px; display: inline-block;" type="file" name="certificate[]" id="certificate" tabindex="6" class="certificate fl" placeholder="CERTIFICATE"  tabindex="7" />
                                                       <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>
                                                       &nbsp;&nbsp;&nbsp; 
@@ -344,7 +344,7 @@
                                                       ?>"   maxlength="15"/>&nbsp;&nbsp; <span id="companyphn-error"> </span>
                                                    <?php echo form_error('companyphn'); ?>&nbsp;&nbsp;
                                                  
-                                                   <label style="      margin-top: -14px;  display: block;">Experience Certificate:</label>
+                                                   <label style="      display: block;">Experience Certificate:</label>
                                                    <input style="width: 50%; display: inline-block;" type="file" name="certificate[]" id="certificate" class="certificate" placeholder="CERTIFICATE" />
                                                     <div class="bestofmine_image_degree" style="color:#f00; display: block;"></div>&nbsp;&nbsp;
 

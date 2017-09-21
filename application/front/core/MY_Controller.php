@@ -7,34 +7,27 @@ class MY_Controller extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-       
-    $segment2 = $this->uri->segment(2);
-    $segment2_names = array('search', 'dashboard', 'details' ,'execute_search','ajax_user_search','ajax_job_search','ajax_freelancer_hire_search','ajax_freelancer_post_search','recruiter_search_candidate','business_search','ajax_business_user_login_search');
 
-    $segment1 = $this->uri->segment(1);
-    $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic','search','freelancer-work','recruiter');
+        $segment2 = $this->uri->segment(2);
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search');
 
-         if( (!in_array($segment2,$segment2_names)) && (!in_array($segment1,$segment1_names)) )
-        {
-          
-             if (!$this->session->userdata('aileenuser')) 
-               {
-                    redirect('login', 'refresh');
-               } 
-               else 
-               {
-                    $this->data['userid'] = $this->session->userdata('aileenuser');
-               }
+        $segment1 = $this->uri->segment(1);
+        $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
+
+        if ((!in_array($segment2, $segment2_names)) && (!in_array($segment1, $segment1_names))) {
+            if (!$this->session->userdata('aileenuser')) {
+                redirect('login', 'refresh');
+            } else {
+                $this->data['userid'] = $this->session->userdata('aileenuser');
+            }
         }
-       
-       
+
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];
         $condition_array = array('status' => '1');
         $this->data['loged_in_user'] = $this->common->select_data_by_id('user', 'user_id', $user_id, 'user_name,user_image', $condition_array);
         date_default_timezone_set('Asia/Calcutta');
-     
     }
 
     public function time_elapsed_string($datetime, $full = false) {

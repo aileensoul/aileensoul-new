@@ -552,3 +552,24 @@
 
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+var images = new Array()
+            function preload(image) {
+              
+                for (i = 0; i < preload.arguments.length; i++) {
+                    images[i] = new Image()
+                    images[i].src = preload.arguments[i]
+                }
+            }
+            preload(
+                    
+                      '<?php echo base_url(); ?>img/icon_contact_request.png',
+                      '<?php echo base_url(); ?>img/h3.png',
+                      '<?php echo base_url(); ?>img/index.png',
+                      '<?php echo base_url(); ?>img/edit_profile.png',
+
+                   
+            )
+});
+</script>

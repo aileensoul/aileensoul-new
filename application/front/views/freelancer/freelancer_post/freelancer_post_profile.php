@@ -203,7 +203,7 @@
             </div>
             <div class="middle-part container pt10">
                 <div class="job-menu-profile mob-none pt-20">
-                    <a href="javascript:void(0);">   <h5> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h5></a>
+                    <a href="javascript:void(0);">   <h3> <?php echo ucwords($freelancerpostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freelancerpostdata[0]['freelancer_post_username']); ?></h3></a>
                     <div class="profile-text pt5">
                         <?php
                         if ($returnpage == '' && $freelancerpostdata[0]['user_id'] == $userid) {
@@ -229,7 +229,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-12 col-xs-12 mob-clear">
+                <div class="col-md-7 col-sm-12 col-xs-12 mob-clear">
                     <div class="common-form">
                         <div class="job-saved-box">
                             <h3><?php echo $this->lang->line("freelancer_details"); ?> </h3>
