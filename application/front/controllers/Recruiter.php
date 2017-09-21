@@ -681,26 +681,26 @@ class Recruiter extends MY_Controller {
 
             foreach ($skills as $ski) {
                 if ($ski != " ") {
-                $contition_array = array('skill' => trim($ski), 'type' => 1);
-                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-
-                if (count($skilldata) == 0) {
-                    $contition_array = array('skill' => trim($ski), 'type' => 4);
-
+                    $contition_array = array('skill' => trim($ski), 'type' => 1);
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+
+                    if (count($skilldata) == 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => 4);
+
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+                    if ($skilldata) {
+                        $skill1[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => trim($ski),
+                            'status' => '1',
+                            'type' => 4,
+                            'user_id' => $userid,
+                        );
+                        $skill1[] = $this->common->insert_data_getid($data, 'skill');
+                    }
                 }
-                if ($skilldata) {
-                    $skill1[] = $skilldata[0]['skill_id'];
-                } else {
-                    $data = array(
-                        'skill' => trim($ski),
-                        'status' => '1',
-                        'type' => 4,
-                        'user_id' => $userid,
-                    );
-                    $skill1[] = $this->common->insert_data_getid($data, 'skill');
-                }
-            }
             }
         }
         $skills = implode(',', $skill1);
@@ -992,26 +992,26 @@ class Recruiter extends MY_Controller {
 
             foreach ($skills as $ski) {
                 if ($ski != " ") {
-                $contition_array = array('skill' => $ski, 'type' => 4);
-                $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                 
-                if (count($skilldata) == 0) {
-                    $contition_array = array('skill' => trim($ski), 'type' => 4);
-
+                    $contition_array = array('skill' => $ski, 'type' => 4);
                     $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                }
-                
-                if ($skilldata) {
-                    $skill1[] = $skilldata[0]['skill_id'];
-                } else {
-                    $data = array(
-                        'skill' => $ski,
-                        'status' => '1',
-                        'type' => 4,
-                        'user_id' => $userid,
-                    );
-                    $skill1[] = $this->common->insert_data_getid($data, 'skill');
-                }
+
+                    if (count($skilldata) == 0) {
+                        $contition_array = array('skill' => trim($ski), 'type' => 4);
+
+                        $skilldata = $this->common->select_data_by_condition('skill', $contition_array, $data = 'skill_id,skill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                    }
+
+                    if ($skilldata) {
+                        $skill1[] = $skilldata[0]['skill_id'];
+                    } else {
+                        $data = array(
+                            'skill' => $ski,
+                            'status' => '1',
+                            'type' => 4,
+                            'user_id' => $userid,
+                        );
+                        $skill1[] = $this->common->insert_data_getid($data, 'skill');
+                    }
                 }
             }
         }
@@ -4685,7 +4685,7 @@ class Recruiter extends MY_Controller {
         // echo '<pre>'; print_r($jobdata); die();
         $this->load->view('recruiter/recommen_candidate', $this->data);
     }
-    
+
     public function recommen_new_data_old() {
         $this->recruiter_apply_check();
 
