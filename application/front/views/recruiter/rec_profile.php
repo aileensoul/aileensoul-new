@@ -263,8 +263,8 @@
             </div>
             <!-- menubar --> 
             <div class="middle-part container rec_res">
-                <div class="job-menu-profile  mob-none pt20">
-                    <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h5><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h5></a>
+                <div class="job-menu-profile  mob-none ">
+                    <a href="javascript:void(0);" title="<?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?>"><h3><?php echo $recdata[0]['rec_firstname'] . ' ' . $recdata[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
 
@@ -303,7 +303,7 @@
                 </div>
                 <!-- text head end -->
 
-                <div class="col-md-8 col-sm-12 mob-clear">
+                <div class="col-md-7 col-sm-12 mob-clear">
                     <div class="common-form">
                         <div class="job-saved-box">
 

@@ -21,7 +21,7 @@
     float: left;
     padding-left: 31px;
     width: 22.5%;
-    margin-top: 0px;
+    margin-top: 20px;
 }
 .profile-job-details p {
     color: #5b5b5b;
@@ -1114,7 +1114,7 @@ border: none;}
     float: left;
     padding-left: 31px;
     width: 22.5%;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 .job-menu-profile1 a h5 {
     text-transform: capitalize;
