@@ -1367,7 +1367,7 @@ footer {
        background: #156f95;   
 }
 
-
+.job-menu-profile a h3{cursor: default;}
 
 #userimage label.error{right: 33px;}
 
