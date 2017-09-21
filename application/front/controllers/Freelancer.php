@@ -1799,25 +1799,38 @@ class Freelancer extends MY_Controller {
        }
         else{
         foreach ($freelancerhiredata as $frdata) {
+           
             $post_skill_data = $frdata['post_skill'];
             $postuserarray = explode(',', $frdata['post_skill']);
-
-            foreach ($postuserarray as $key => $value) {
-
-                $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $value . '", freelancer_post_area) != ' => '0');
-                $candidate = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $all_candidate[] = $candidate;
+           
+            $all_candidate = array();
+            foreach ($postuserarray as $skill_find) {
+           
+                $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'FIND_IN_SET("' . $skill_find . '", freelancer_post_area) != ' => '0');
+                $all_candidate[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id,freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                
             }
-        }
+            $final_candidate = array_reduce($all_candidate, 'array_merge', array());
+            rsort($final_candidate);
+            $pqr[]=$final_candidate;
+
         $contition_array = array('status' => '1', 'is_delete' => '0', 'free_post_step' => 7, 'user_id != ' => $userid, 'freelancer_post_field' => $frdata['post_field_req']);
-        $freelancerpostfield = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = '*', $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-//        TO CHANGE ARRAY OF ARRAY TO ARRAY START
-        $final_candidate = array_reduce($all_candidate, 'array_merge', array());
-//        TO CHANGE ARRAY OF ARRAY TO ARRAY END
-        $applyuser_merge = array_merge($final_candidate, $freelancerpostfield);
-        foreach ($applyuser_merge as $value) {
-            $unique[$value['freelancer_post_reg_id']] = $value;
+        $freelancerpostfield[] = $this->common->select_data_by_condition('freelancer_post_reg', $contition_array, $data = 'freelancer_post_reg_id,freelancer_post_fullname, freelancer_post_username, freelancer_post_city, freelancer_post_area, freelancer_post_skill_description, freelancer_post_hourly, freelancer_post_ratestate, freelancer_post_fixed_rate, freelancer_post_work_hour, user_id, freelancer_post_user_image, designation, freelancer_post_otherskill, freelancer_post_exp_month, freelancer_post_exp_year,freelancer_apply_slug', $sortby = '', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
+       // die();
+
+//        TO CHANGE ARRAY OF ARRAY TO ARRAY START
+        $final_candidate = array_reduce($pqr, 'array_merge', array());
+        $final_field = array_reduce($freelancerpostfield, 'array_merge', array());
+//        TO CHANGE ARRAY OF ARRAY TO ARRAY END
+       
+        $applyuser_merge = array_merge($final_candidate, $final_field);
+         $unique = array_unique($applyuser_merge, SORT_REGULAR);
+       
+//        foreach ($applyuser_merge as $value) {
+//            $unique[$value['freelancer_post_reg_id']] = $value;
+//        }
+        // echo "<pre>"; print_r($unique);die();
         $candidatefreelancer = $unique;
         $candidatefreelancer1 = array_slice($candidatefreelancer, $start, $perpage);
 
@@ -1884,7 +1897,9 @@ class Freelancer extends MY_Controller {
                 $return_html .= $this->lang->line("skill");
                 $return_html .= '</b><span>';
                 $aud = $row['freelancer_post_area'];
-                $aud_res = explode(', ', $aud);
+               // echo $aud;
+                $aud_res = explode(',', $aud);
+                //echo "<pre>";print_r($aud_res);die();
                 if (!$row['freelancer_post_area']) {
                     $return_html .= $row['freelancer_post_otherskill'];
                 } elseif (!$row['freelancer_post_otherskill']) {
