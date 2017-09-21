@@ -23,9 +23,9 @@
 ?>
 <!-- END HEADER -->
  
-<div class="js">
+
 <body class="page-container-bg-solid page-boxed">
-   <div id="preloader"></div>
+  
    <section>
       <div class="user-midd-section" id="paddingtop_fixed_job">
       <div class="common-form1">
@@ -550,13 +550,12 @@
                                              <?php echo form_error('degree'); ?>
                                              <!--    </fieldset> -->
                                              <?php
-                                             
+                                            
            $contition_array = array('is_delete' => '0', 'degree_id' => $degree1);
+ $userid = $this->session->userdata('aileenuser');
           $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-           $stream_data = $this->data['$stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
-                                                
-                                      
-                                                
+           $stream_data = $this->data['stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+                  
                                                 ?>
                                           
                                              <h6>Stream :<span class="red">*</span></h6>
