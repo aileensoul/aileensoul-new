@@ -504,7 +504,7 @@
        $('#input' + newNum + ' .exp_data').val(''); 
        $('#input' + newNum + ' .hs-submit').remove();    
        $("#input" + newNum + ' img').remove();
-
+       $("#input" + newNum + ' i').remove();
        //for remove error message and label start
        $('#input' + newNum + ' .degree').removeClass('error'); 
        $('#input' + newNum + ' .stream').removeClass('error');
