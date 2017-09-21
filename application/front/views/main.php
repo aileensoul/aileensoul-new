@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Build Career in Business, Freelance, Job & Art with Aileensoul.com</title>
-        <meta property="og:title" content="Build Career in Business, Freelance, Job & Art with Aileensoul.com" />
+        <title>Build Career in Business, Freelancing, Job & Art with Aileensoul.com</title>
+        <meta property="og:title" content="Build Career in Business, freelancing, Job & Art with Aileensoul.com" />
         <meta property="og:description" content="Aileensoul.com is the free platform where you can grow business, hire employees, freelancers & artists. Also find job, freelance work & artistic opportunities."/>
         <meta property="og:image" content="<?php echo base_url('images/meta-icon.png'); ?>" />
         <?php
