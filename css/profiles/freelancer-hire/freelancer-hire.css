@@ -1405,6 +1405,18 @@ label.cameraButton input[accept*="camera"] {
 .indiavte_freelancer {
     margin: 10px 0px;
 }
+.fancybox-close-small:after {
+    background: #1b8ab9;
+    color: white;
+}
+.message a.mesg_link:hover{color:#fff; background:#156f95;}
+.message button:hover{color:#fff; border:1px solid transparent;} 
+.message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
+.message1 #univer1:hover{background:#1b8ab9; color:#fff;}
+.message1 h2{font-size: 20px; text-align: left;}
+.message1{text-align: center;}
+.message h2{font-size: 20px; text-align: left;}
+.message{text-align: center!important;}
 #upload-demo-one .cr-boundary .cr-viewport {
     margin: 50px auto;
 }
