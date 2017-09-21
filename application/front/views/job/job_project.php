@@ -21,7 +21,6 @@
    <!-- END HEADER -->
    <div class="js">
    <body class="page-container-bg-solid page-boxed">
-      <div id="preloader"></div>
       <section>
          <div class="user-midd-section" id="paddingtop_fixed_job">
             <div class="common-form1">
