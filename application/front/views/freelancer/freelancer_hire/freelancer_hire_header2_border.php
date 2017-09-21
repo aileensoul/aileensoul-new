@@ -206,6 +206,7 @@
 
 </script>
 <!-- script for fetch all unread message notification end-->
+<!--SCRIPT FOR LOAD IMAGES BEFORE PAGE LOAD START-->
 <script type="text/javascript">
     $(document).ready(function() {
 var images = new Array()
@@ -227,6 +228,7 @@ var images = new Array()
             )
 });
 </script>
+<!--SCRIPT FOR LOAD IMAGES BEFORE PAGE LOAD END-->
 <!-- script for update all read msg notification start-->
 <script type="text/javascript">
     
