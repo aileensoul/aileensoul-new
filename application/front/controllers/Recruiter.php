@@ -4712,8 +4712,9 @@ class Recruiter extends MY_Controller {
             // FETCH SKILL WISE JOB START
             $recskill = explode(',', $postdata['post_skill']);
             $recskill = array_filter(array_map('trim', $recskill));
+                            $skilluser = array();
+
             foreach ($recskill as $othrd) {
-                $skilluser = array();
                 if ($othrd != '') {
                     $contition_array = array('status' => '1', 'is_delete' => '0', 'job_step' => 10, 'user_id != ' => $userid, 'FIND_IN_SET("' . $othrd . '", keyskill) != ' => '0');
                     $skilluser[] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id', $sortby = 'job_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
