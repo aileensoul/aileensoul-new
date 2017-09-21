@@ -552,7 +552,7 @@
                                              <?php
                                             
            $contition_array = array('is_delete' => '0', 'degree_id' => $degree1);
- $userid = $this->session->userdata('aileenuser');
+           $userid = $this->session->userdata('aileenuser');
           $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
            $stream_data = $this->data['stream_data'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
                   
