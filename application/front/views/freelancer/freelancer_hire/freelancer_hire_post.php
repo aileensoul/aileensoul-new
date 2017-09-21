@@ -86,9 +86,9 @@
                                 <input type="file" id="upload" name="upload" accept="image/*;capture=camera" onclick="showDiv()">
                             </label>
                         </div>
-</div>
                     <?php } ?>
                     <!-- cover image end-->
+</div>
 
                     <div class="profile-photo">
                         <div class="profile-pho">
