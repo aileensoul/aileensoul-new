@@ -284,12 +284,14 @@ li.fr a {
 }
 .profile-box-art ul li {
     padding-left: 0 !important;
-    padding-right: 25px !important;
+    padding-right: 0px !important;
 }
 .profile-box-art .right-menu-jr ul li a {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a{margin-right: 25px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a {
     padding-top: 8px;
     padding-bottom: 8px;
