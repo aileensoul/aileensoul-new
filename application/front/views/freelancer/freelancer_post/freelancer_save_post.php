@@ -128,7 +128,7 @@
                 </div>
                 <div class="middle-part container">
                     <div class="job-menu-profile mob-none pt20">
-                        <a href="javascript:void(0);"> <h5> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h5></a>
+                        <a href="javascript:void(0);"> <h3> <?php echo ucwords($freepostdata[0]['freelancer_post_fullname']) . ' ' . ucwords($freepostdata[0]['freelancer_post_username']); ?></h3></a>
                         <div class="profile-text">
                             <?php
                             if ($freepostdata[0]['designation'] == "") {
