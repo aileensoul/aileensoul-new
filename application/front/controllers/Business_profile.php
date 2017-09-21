@@ -243,21 +243,35 @@ class Business_profile extends MY_Controller {
             $userdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $companyname = $this->input->post('companyname');
-
+            
             if ($userdata) {
-                $data = array(
-                    'company_name' => $this->input->post('companyname'),
-                    'country' => $this->input->post('country'),
-                    'state' => $this->input->post('state'),
-                    'city' => $this->input->post('city'),
-                    'pincode' => $this->input->post('pincode'),
-                    'address' => $this->input->post('business_address'),
-                    'user_id' => $userid,
-                    'business_slug' => $this->setcategory_slug($companyname, 'business_slug', 'business_profile'),
-                    'modified_date' => date('Y-m-d', time()),
-                    'status' => 1,
-                    'is_deleted' => 0
-                );
+//                $data = array(
+//                    'company_name' => $this->input->post('companyname'),
+//                    'country' => $this->input->post('country'),
+//                    'state' => $this->input->post('state'),
+//                    'city' => $this->input->post('city'),
+//                    'pincode' => $this->input->post('pincode'),
+//                    'address' => $this->input->post('business_address'),
+//                    'user_id' => $userid,
+//                    'business_slug' => $this->setcategory_slug($companyname, 'business_slug', 'business_profile'),
+//                    'modified_date' => date('Y-m-d', time()),
+//                    'status' => 1,
+//                    'is_deleted' => 0
+//                );
+                $data = array();
+                $data['company_name'] = $this->input->post('companyname');
+                $data['country'] = $this->input->post('country');
+                $data['state'] = $this->input->post('state');
+                $data['city'] = $this->input->post('city');
+                $data['pincode'] = $this->input->post('pincode');
+                $data['address'] = $this->input->post('business_address');
+                $data['user_id'] = $userid;
+                if ($userdata[0]['company_name'] != $companyname) {
+                    $data['business_slug'] = $this->setcategory_slug($companyname, 'business_slug', 'business_profile');
+                }
+                $data['modified_date'] = date('Y-m-d H:i:s', time());
+                $data['status'] = 1;
+                $data['is_deleted'] = 0;
 
                 $updatdata = $this->common->update_data($data, 'business_profile', 'user_id', $userid);
                 if ($updatdata) {
