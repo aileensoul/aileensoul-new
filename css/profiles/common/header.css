@@ -758,7 +758,7 @@ height: 25px; width: 25px; }
 }
 .data_noti_msg {
     font-size: 12px;  
-    line-height: 1;
+    line-height: 19px;
     color: #999;
 }
 #inboxcontainer::before{right: 17px;}
@@ -1344,6 +1344,7 @@ footer {
 .reactivate_btn_y a:hover {
     color: #fff;
 	text-decoration:none;
+    background: #156f95;    
 }
 .reactivate_btn_n {
     height: 20px;
@@ -1363,6 +1364,7 @@ footer {
 .reactivate_btn_n a:hover {
     color: #fff;
 	text-decoration:none;
+       background: #156f95;   
 }
 
 
