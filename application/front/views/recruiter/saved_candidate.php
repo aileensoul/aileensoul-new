@@ -200,7 +200,7 @@
             </div>
 
             <div class="middle-part container rec_res">    
-                <div class="job-menu-profile mob-none  pt20">
+                <div class="job-menu-profile mob-none  ">
                     <a href="<?php echo site_url('recruiter/profile/' . $recruiterdata[0]['userid']); ?>"><h3><?php echo $recruiterdata[0]['rec_firstname'] . ' ' . $recruiterdata[0]['rec_lastname']; ?></h3></a>
                     <!-- text head start -->
                     <div class="profile-text" >
