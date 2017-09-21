@@ -1406,9 +1406,9 @@ label.cameraButton input[accept*="camera"] {
     margin: 10px 0px;
 }
 .fancybox-close-small:after {
-    background: #1b8ab9;
-    color: white;
-}
+    background: #1b8ab9!important;
+        color: white!important;
+    }
 .message a.mesg_link:hover{color:#fff; background:#156f95;}
 .message button:hover{color:#fff; border:1px solid transparent;} 
 .message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
