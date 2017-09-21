@@ -1,4 +1,5 @@
 /***  freelance hire  ***/
+
 .common-form select:focus {
     border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;
@@ -225,7 +226,7 @@ li.fr a {
     float: right;
     font-weight: normal;
 }
-.profile-job-post-detail .profile-job-post-title .button:Hover{
+.profile-job-post-detail .profile-job-post-title .button:Hover {
     color: #fff;
     background: #1b8ab9;
 }
@@ -288,7 +289,7 @@ li.fr a {
 }
 .profile-box-art ul li {
     padding-left: 0 !important;
-    padding-right: 3px !important;
+    padding-right: 0px !important;
 }
 .profile-box-art .right-menu-jr ul li a {
     padding-top: 15px;
@@ -669,7 +670,6 @@ li.fr a {
 #row2 img {
     height: 350px;
     width: 100%;
-    
 }
 .upload-img {
     float: right;
@@ -1394,6 +1394,7 @@ label.cameraButton input[accept*="camera"] {
     background-color: #e9e9e9;
     color: #1b8ab9;*/
 }
+.profile-box-art .right-menu-jr .flw_msg_btn ul li a{margin-right: 25px;}
 .profile-box-art .right-menu-jr .flw_msg_btn ul li a.butt_rec {
     letter-spacing: 1px;
     width: 90px;
@@ -1404,6 +1405,18 @@ label.cameraButton input[accept*="camera"] {
 .indiavte_freelancer {
     margin: 10px 0px;
 }
+.fancybox-close-small:after {
+    background: #1b8ab9;
+    color: white;
+}
+.message a.mesg_link:hover{color:#fff; background:#156f95;}
+.message button:hover{color:#fff; border:1px solid transparent;} 
+.message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
+.message1 #univer1:hover{background:#1b8ab9; color:#fff;}
+.message1 h2{font-size: 20px; text-align: left;}
+.message1{text-align: center;}
+.message h2{font-size: 20px; text-align: left;}
+.message{text-align: center!important;}
 #upload-demo-one .cr-boundary .cr-viewport {
     margin: 50px auto;
 }
@@ -1919,15 +1932,14 @@ label.cameraButton input[accept*="camera"] {
         padding: 10px 0;
     }
     #row2 img {
-      
         height: 200px;
     }
-    #row2{
-        border-left:0;
-        border-right:0;
+    #row2 {
+        border-left: 0;
+        border-right: 0;
     }
-     #row1{
-        height:200px;
+    #row1 {
+        height: 200px;
     }
 }
 @media screen and (max-width: 640px) {
