@@ -1076,3 +1076,6 @@ $('.header ul li #abody ul li a').click(function () {
         home1(all_clicked_href);
     }
 });
+
+
+

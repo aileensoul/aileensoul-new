@@ -2075,7 +2075,7 @@ class Recruiter extends MY_Controller {
 
                         if ($post['degree_name'] != '' || $post['other_education'] != '') {
 
-                            $rec_post .= '<li> <b>Education Required</b> <span>';
+                            $rec_post .= '<li> <b>Required education</b> <span>';
                             $comma = ", ";
                             $k = 0;
                             $edu = $post['degree_name'];
@@ -2113,7 +2113,7 @@ class Recruiter extends MY_Controller {
                                                                  </li>';
                         } else {
 
-                            $rec_post .= '<li><b>Education Required</b><span>';
+                            $rec_post .= '<li><b>Required education</b><span>';
                             $rec_post .= PROFILENA;
                             $rec_post .= '</span>
                                                                     </li>';
@@ -2328,7 +2328,7 @@ class Recruiter extends MY_Controller {
                                                                 </li>';
                         if ($post['degree_name'] != '' || $post['other_education'] != '') {
 
-                            $rec_post .= '<li> <b>Education Required</b> <span>';
+                            $rec_post .= '<li> <b>Required education</b> <span>';
 
                             $comma = ", ";
                             $k = 0;
@@ -2361,7 +2361,7 @@ class Recruiter extends MY_Controller {
                         } else {
 
 
-                            $rec_post .= '<li><b>Education Required</b><span>';
+                            $rec_post .= '<li><b>Required education</b><span>';
                             $rec_post .= PROFILENA;
                             $rec_post .= '</span>
                                                                     </li>';
