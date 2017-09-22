@@ -21,6 +21,7 @@ class Business_profile extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
         include ('business_include.php');
+        
         // FIX BUSINESS PROFILE NO POST DATA
 
         $this->data['no_business_post_html'] = '<div class="art_no_post_avl"><h3>Business Post</h3><div class="art-img-nn"><div class="art_no_post_img"><img src=' . base_url('img/bui-no.png') . '></div><div class="art_no_post_text">No Post Available.</div></div></div>';
@@ -807,123 +808,15 @@ class Business_profile extends MY_Controller {
 
         $this->business_profile_active_check();
         $this->is_business_profile_register();
-
-        // GET BUSINESS DATA
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $this->data['businessdata'] = $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id,company_name,business_slug,business_user_image,profile_background,industriyal,city,state,other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $business_profile_id = $businessdata[0]['business_profile_id'];
-
-        $businessregid = $businessdata[0]['business_profile_id'];
-        $contition_array = array('follow_to' => $businessregid, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
-
-        $join_str_follower[0]['table'] = 'follow';
-        $join_str_follower[0]['join_table_id'] = 'follow.follow_from';
-        $join_str_follower[0]['from_table_id'] = 'business_profile.business_profile_id';
-        $join_str_follower[0]['join_type'] = '';
-
-        $businessfollowerdata = $this->data['businessfollowerdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_follower, $groupby = '');
-
-        $contition_array = array('follow_from' => $businessregid, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
-
-        $join_str_following[0]['table'] = 'follow';
-        $join_str_following[0]['join_table_id'] = 'follow.follow_to';
-        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
-        $join_str_following[0]['join_type'] = '';
-
-
-        $businessfollowingdata = $this->data['businessfollowingdata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
-
-
-
-
-// GET FOLLOWER DATA 
-
-        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
-        $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($followerdata as $fdata) {
-
-            $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => '1');
-            $this->data['business_data'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-            $business_userid = $this->data['business_data'][0]['user_id'];
-            $contition_array = array('user_id' => $business_userid, 'status' => '1', 'is_delete' => '0');
-
-            $this->data['business_profile_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $followerabc[] = $this->data['business_profile_data'];
-        }
-        $userselectindustriyal = $this->data['businessdata'][0]['industriyal'];
-
-// GET INDUSTRIAL DATA START
-        $contition_array = array('industriyal' => $userselectindustriyal, 'status' => '1', 'business_step' => 4);
-        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        foreach ($businessprofiledata as $fdata) {
-            $contition_array = array('business_profile_post.user_id' => $fdata['user_id'], 'business_profile_post.status' => '1', 'business_profile_post.user_id !=' => $userid, 'is_delete' => '0');
-            $this->data['business_data'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $industriyalabc[] = $this->data['business_data'];
-        }
-// GET INDUSTRIAL DATA END
-// GET LOGIN USER LAST POST START
-
-        $condition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-
-        $business_datauser = $this->data['business_datauser'] = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $userabc[][] = $this->data['business_datauser'][0];
-
-// GET LOGIN USER LAST POST END
-// ARRAY MERGE AND GET UNIQUE VALUE 
-
-        if (count($industriyalabc) == 0 && count($business_datauser) != 0) {
-
-            $unique = $userabc;
-        } elseif (count($business_datauser) == 0 && count($industriyalabc) != 0) {
-            $unique = $industriyalabc;
-        } elseif (count($business_datauser) != 0 && count($industriyalabc) != 0) {
-            $unique = array_merge($industriyalabc, $userabc);
-        }
-
-        if (count($followerabc) == 0 && count($unique) != 0) {
-            $unique_user = $unique;
-        } elseif (count($unique) == 0 && count($followerabc) != 0) {
-            $unique_user = $followerabc;
-        } else {
-            $unique_user = array_merge($unique, $followerabc);
-        }
-
-        foreach ($unique_user as $ke => $arr) {
-            foreach ($arr as $k => $v) {
-                $postdata[] = $v;
-            }
-        }
-        $postdata = array_unique($postdata, SORT_REGULAR);
-
-        $new = array();
-        foreach ($postdata as $value) {
-            $new[$value['business_profile_post_id']] = $value;
-        }
-
-        $post = array();
-
-        foreach ($new as $key => $row) {
-            $post[$key] = $row['business_profile_post_id'];
-        }
-        array_multisort($post, SORT_DESC, $new);
-
-        /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
-
-        // GET USER BUSINESS DATA START
-        $contition_array = array('user_id' => $userid, 'status' => '1');
-        $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile_id, industriyal, city, state, other_industrial,business_type', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $business_profile_id = $businessdata[0]['business_profile_id'];
-        $industriyal = $businessdata[0]['industriyal'];
-        $city = $businessdata[0]['city'];
-        $state = $businessdata[0]['state'];
-        $other_industrial = $businessdata[0]['other_industrial'];
-        $business_type = $businessdata[0]['business_type'];
-        // GET USER BUSINESS DATA END
+        
+        // GET USER BUSINESS DATA FROM INCLUDE START
+        $business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
+        $industriyal = $this->data['business_common_data'][0]['industriyal'];
+        $city = $this->data['business_common_data'][0]['city'];
+        $state = $this->data['business_common_data'][0]['state'];
+        $other_industrial = $this->data['business_common_data'][0]['other_industrial'];
+        $business_type = $this->data['business_common_data'][0]['business_type'];
+        // GET USER BUSINESS DATA FROM INCLUDE END
         // GET BUSINESS USER FOLLOWING LIST START
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 2);
         $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
@@ -946,7 +839,6 @@ class Business_profile extends MY_Controller {
         /* COUNT FOR USER THREE LIST IN FOLLOW SUGGEST BOX */
 
         $this->data['title'] = 'Business Profile' . TITLEPOSTFIX;
-        $this->data['businessprofiledatapost'] = $new;
         $this->data['business_left'] = $this->load->view('business_profile/business_left', $this->data, true);
 
         $this->load->view('business_profile/business_profile_post', $this->data);
@@ -10381,7 +10273,7 @@ No Contacts Available.
     public function business_home_post() {
 // return html
 
-        $perpage = 5;
+        $perpage = 3;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
@@ -13232,6 +13124,9 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
     public function business_profile_active_check() {
 
         $userid = $this->session->userdata('aileenuser');
+        if(!$userid){
+            redirect('login');
+        }
         // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
