@@ -1913,7 +1913,7 @@ class Job extends MY_Controller {
         $this->progressbar();
 
         $this->data['title'] = 'Job Profile' . TITLEPOSTFIX;
-
+        // echo "<pre>";print_r($this->data['job_reg'][0]['progressbar']);die();
         $this->load->view('job/job_all_post', $this->data);
     }
 
@@ -4740,7 +4740,7 @@ public function progressbar()
     //For Counting Profile data start
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
 
-        $job_reg = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname,email,experience,keyskill,work_job_title,work_job_industry,work_job_city,phnno,language,dob,gender,city_id,pincode,address,project_name,project_duration,project_description,training_as,training_duration,training_organization', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
+       $this->data['job_reg']= $job_reg = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname,email,experience,keyskill,work_job_title,work_job_industry,work_job_city,phnno,language,dob,gender,city_id,pincode,address,project_name,project_duration,project_description,training_as,training_duration,training_organization,progressbar', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
 
         $count = 0;
 
@@ -4832,6 +4832,16 @@ public function progressbar()
         $count_profile = ($count * 100) / 23;
         $this->data['count_profile'] = $count_profile;
         $this->data['count_profile_value'] = ($count_profile / 100);
+
+        if($this->data['count_profile'] == 100)
+            {                
+                $data = array(    
+                    'progressbar' => '0',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
+              
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }
     }
 //FOR PROGRESSBAR COUNT COMMON FUNCTION END
 }

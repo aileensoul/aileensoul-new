@@ -116,8 +116,10 @@
 
                      <div class="edi_origde">
                         <?php
-                           if($count_profile == 100)
-                           {
+                        if($count_profile == 100)
+                        {
+                            if($job_reg[0]['progressbar']==0)
+                            {
                            ?>
                         <div class="edit_profile_progress complete_profile">
                            <div class="progre_bar_text">
@@ -138,6 +140,7 @@
                         </div>
                         <?php
                            }
+                         }
                               
                            else
                            {

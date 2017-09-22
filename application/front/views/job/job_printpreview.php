@@ -62,7 +62,6 @@
                      <?php
                         $userid = $this->session->userdata('aileenuser');
 
-                        // $id=$this->db->get_where('job_reg', array('slug' => $slug))->row()->user_id;
                         $id = $this->db->get_where('job_reg', array('slug' =>$this->uri->segment(3)))->row()->user_id;
                        
                         if ($returnpage == 'recruiter') 
@@ -195,7 +194,7 @@
           <?php if(!($returnpage))
                 {
           ?>
-            <div class="mob-progressbar <?php if($count_profile == 100){?>temp<?php } ?>">
+            <div class="mob-progressbar <?php if($count_profile == 100){?>temp<?php } ?>" >
                <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
                <p class="mob-edit-pro">
                   <?php if($count_profile == 100)
