@@ -43,26 +43,26 @@
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name*">
+                                                <input type="text" name="first_name" id="first_name" tabindex="1" class="form-control input-sm" placeholder="First Name*">
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name*">
+                                                <input type="text" name="last_name" tabindex="2" id="last_name" class="form-control input-sm" placeholder="Last Name*">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="email" name="email_reg" id="email_reg" class="form-control input-sm" placeholder="Email Address*">
+                                        <input type="email" name="email_reg" id="email_reg" tabindex="3" class="form-control input-sm" placeholder="Email Address*">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password_reg" id="password_reg" class="form-control input-sm" placeholder="Password*">
+                                        <input type="password" name="password_reg" id="password_reg" tabindex="4" class="form-control input-sm" placeholder="Password*">
                                     </div>
                                     <div class="form-group dob">
                                         <label class="d_o_b"> Date Of Birth *:</label>
                                         <!--span class="d_o_b">DOB </span-->
-                                        <select class="day" name="selday" id="selday">
+                                        <select class="day" name="selday" id="selday" tabindex="5">
                                             <option value="" disabled selected value>Day</option>
                                             <?php
                                             for ($i = 1; $i <= 31; $i++) {
@@ -72,7 +72,7 @@
                                             }
                                             ?>
                                         </select>
-                                        <select class="month" name="selmonth" id="selmonth">
+                                        <select class="month" name="selmonth" id="selmonth" tabindex="6">
                                             <option value="" disabled selected value>Month</option>
                                             <?php
 //                  for($i = 1; $i <= 12; $i++){
@@ -93,7 +93,7 @@
                                             //  }
                                             ?>
                                         </select>
-                                        <select class="year" name="selyear" id="selyear">
+                                        <select class="year" name="selyear" id="selyear" tabindex="7">
                                             <option value="" disabled selected value>Year</option>
                                             <?php
                                             for ($i = date('Y'); $i >= 1900; $i--) {
@@ -107,7 +107,7 @@
                                     </div>
 
                                     <div class="form-group gender-custom">
-                                        <select class="gender" name="selgen" id="selgen">
+                                        <select class="gender" name="selgen" id="selgen" tabindex="8">
                                             <option value="" disabled selected value>Gender*</option>
                                             <option value="M">Male</option>
                                             <option value="F">female</option>
@@ -116,15 +116,15 @@
 
                                     <p class="clr-c fs12">
                                         By Clicking on create an account button you agree our 
-                                        <a href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
+                                        <a tabindex="10" href="<?php echo base_url('main/terms_condition'); ?>">Terms and Condition</a> and <a tabindex="11" href="<?php echo base_url('main/privacy_policy'); ?>">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button class="btn1">Create an account</button>
+                                        <button class="btn1" tabindex="9">Create an account</button>
                                     </p>
 
                                     <div class="sign_in pt10">
                                         <p>
-                                            Already have an account ? <a href="<?php echo base_url('login'); ?>" > Log In </a>
+                                            Already have an account ? <a tabindex="12" href="<?php echo base_url('login'); ?>" > Log In </a>
                                         </p>
                                     </div>
 
@@ -143,10 +143,10 @@
 
                         <div class="col-md-6 col-sm-8 pull-right col-xs-12">
                             <ul>
-                                <li><a href="<?php echo base_url('about_us'); ?>">About Us</a>|</li>
-                                <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a>|</li>
-                                <li><a href="<?php echo base_url('blog'); ?>">Blog</a>|</li>
-                                <li><a href="<?php echo base_url('feedback'); ?>">Send Us Feedback</a></li>
+                                <li><a href="<?php echo base_url('about_us'); ?>" tabindex="13">About Us</a>|</li>
+                                <li><a href="<?php echo base_url('contact_us'); ?>" tabindex="14">Contact Us</a>|</li>
+                                <li><a href="<?php echo base_url('blog'); ?>" tabindex="15">Blog</a>|</li>
+                                <li><a href="<?php echo base_url('feedback'); ?>" tabindex="16">Send Us Feedback</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6 col-sm-4">

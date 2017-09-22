@@ -101,7 +101,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '' && $freelancerhiredata[0]['user_id'] == $userid) { ?>
-                                <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i><?php echo $this->lang->line("update_profile_picture"); ?></a>
+                                <a href="javascript:void(0);"  class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png"><?php echo $this->lang->line("update_profile_picture"); ?></a>
                             <?php } ?>
                         </div>
                     </div>

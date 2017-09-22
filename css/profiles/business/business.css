@@ -2097,6 +2097,9 @@ label.cameraButton:active {
     table-layout: fixed;
     width: 100%;
 }
+.action-button #message_count {
+    right: 158px;
+}
 .business_data_table td a {
     color: #000;
 }
@@ -2497,7 +2500,6 @@ label.cameraButton:active {
 }
 .user_lst ul li button {
     font-weight: normal;
-    font-family: robotoregular;
     background: -moz-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
     background: -webkit-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
     background: -o-linear-gradient(bottom, #e9e9e9 5%, #f9f9f9 100%);
@@ -5305,6 +5307,9 @@ div .comment {
     }
     .slider_img{
         height: 280px;
+    }
+    .in_mian_chng{
+        margin-top: -23px;
     }
     .fifty_val {
         right: 28px;

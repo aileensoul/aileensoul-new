@@ -152,10 +152,39 @@ class Dashboard extends MY_Controller {
     }
 
     public function logout() {
-        if ($this->session->userdata('aileenuser')) {
-            $this->session->unset_userdata('aileenuser');
-            redirect(base_url(), 'refresh');
-        }
+    
+    //PROGRESSBAR JOB START
+            $userid = $this->session->userdata('aileenuser');
+            $this->progressbar();
+            if($this->data['count_profile'] == 100)
+            {
+                 $data = array(    
+                    'progressbar' => '1',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
+              
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+              
+            }
+            else
+            {
+                $data = array(    
+                    'progressbar' => '0',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
+              
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }
+     //PROGRESSBAR JOB END
+
+   //LOGOUT START       
+       if ($this->session->userdata('aileenuser')) {
+          
+          
+           $this->session->unset_userdata('aileenuser');
+           redirect(base_url(), 'refresh');
+       }
+    //LOGOUT END  
     }
 
 // cover pic controller
@@ -421,4 +450,106 @@ class Dashboard extends MY_Controller {
         }
     }
 
+//FOR PROGRESSBAR COUNT COMMON FUNCTION START
+public function progressbar() 
+{
+    $userid = $this->session->userdata('aileenuser');
+    //For Counting Profile data start
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+
+        $job_reg = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'fname,lname,email,experience,keyskill,work_job_title,work_job_industry,work_job_city,phnno,language,dob,gender,city_id,pincode,address,project_name,project_duration,project_description,training_as,training_duration,training_organization', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = array());
+
+        $count = 0;
+
+        if ($job_reg[0]['fname'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['lname'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['email'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['keyskill'] != '') {
+            $count++;
+        }
+
+        if ($job_reg[0]['work_job_title'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['work_job_industry'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['work_job_city'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['phnno'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['language'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['dob'] != '0000-00-00') {
+            $count++;
+        }
+        if ($job_reg[0]['gender'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['city_id'] != '0') {
+            $count++;
+        }
+        if ($job_reg[0]['pincode'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['address'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['project_name'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['project_duration'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['project_description'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['training_as'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['training_duration'] != '') {
+            $count++;
+        }
+        if ($job_reg[0]['training_organization'] != '') {
+            $count++;
+        }
+
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+        $job_add_edu = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $contition_array = array('user_id' => $userid);
+        $jobgrad = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        if ($job_add_edu[0]['board_primary'] != '' || $job_add_edu[0]['board_secondary'] != '' || $job_add_edu[0]['board_higher_secondary'] != '' || $jobgrad[0]['degree'] != '') {
+            $count++;
+        }
+        if (($job_add_edu[0]['board_primary'] != '' && $job_add_edu[0]['edu_certificate_primary'] != '') || ($job_add_edu[0]['board_secondary'] != '' && $job_add_edu[0]['edu_certificate_secondary'] != '') || ($job_add_edu[0]['board_higher_secondary'] != '' && $job_add_edu[0]['edu_certificate_higher_secondary'] != '') || ($jobgrad[0]['degree'] != '' && $jobgrad[0]['grade'] != '' && $jobgrad[0]['edu_certificate'] != '')) {
+            $count++;
+        }
+
+
+        $contition_array = array('user_id' => $userid, 'experience !=' => 'Fresher', 'status' => 1);
+        $workdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        if (($job_reg[0]['experience'] != '' && $job_reg[0]['experience'] != 'Experience') || ($workdata[0]['experience_year'] != '' && $workdata[0]['companyemail'] != '' && $workdata[0]['companyphn'] != '' && $workdata[0]['work_certificate'] != '')) {
+            $count++;
+        }
+
+        $count_profile = ($count * 100) / 23;
+        $this->data['count_profile'] = $count_profile;
+        $this->data['count_profile_value'] = ($count_profile / 100);
+    }
+//FOR PROGRESSBAR COUNT COMMON FUNCTION END
 }
+

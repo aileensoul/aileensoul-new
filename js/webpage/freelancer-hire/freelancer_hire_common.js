@@ -262,6 +262,7 @@ $('#upload').on('change', function () {
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
     size = files[0].size;
+     alert(size);
     // code start for file type support
     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
         picpopup();
@@ -271,6 +272,7 @@ $('#upload').on('change', function () {
         return false;
     }
     // file type code end
+   
     if (size > 26214400)
     {
         alert("Allowed file size exceeded. (Max. 25 MB)")

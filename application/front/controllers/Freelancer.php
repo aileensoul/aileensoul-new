@@ -2303,26 +2303,30 @@ class Freelancer extends MY_Controller {
 
         $freelancer_post_area = $freelancerdata[0]['freelancer_post_area'];
         $post_reg_skill = explode(',', $freelancer_post_area);
+       
         // $date = date('Y-m-d', time());
         // 'post_last_date >=' => $date,
         foreach ($post_reg_skill as $key => $value) {
             $contition_array = array('is_delete' => 0, 'status' => '1', 'user_id !=' => $userid, 'FIND_IN_SET("' . $value . '",post_skill)!=' => '0');
-            $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $freelancer_post_data = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             if ($freelancer_post_data) {
                 $freedata[] = $freelancer_post_data;
             }
         }
-        foreach ($freedata as $key1 => $value) {
-            foreach ($value as $ke => $val) {
-                $free_post[] = $val;
-            }
-        }
-
-        $unique = array_unique($free_post, SORT_ASC);
-        $unique = $this->aasort($unique, "post_id");
-        //echo "</pre>"; print_r($unique);die();
-
-
+        //        TO CHANGE ARRAY OF ARRAY TO ARRAY START
+            $final_post = array_reduce($freedata, 'array_merge', array());
+            //        TO CHANGE ARRAY OF ARRAY TO ARRAY END
+          // change the order to decending           
+            rsort($final_post);
+       //RECOMMEN PROJECT BY FIELD START
+        $contition_array = array('status' => '1', 'is_delete' => '0',  'user_id != ' => $userid, 'post_field_req' => $freelancerdata[0]['freelancer_post_field']);
+        $freelancer_post_field = $this->common->select_data_by_condition('freelancer_post', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      // echo "<pre>"; print_r($freelancer_post_field);die();
+        
+        $all_post= array_merge($final_post,$freelancer_post_field);
+        $unique = array_unique($all_post, SORT_ASC);
+      // echo "<pre>"; print_r($unique);die();
+        
         $postdetail = array_slice($unique, $start, $perpage);
 
         if (empty($_GET["total_record"])) {

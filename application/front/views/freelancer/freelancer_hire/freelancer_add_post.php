@@ -40,8 +40,8 @@
                                 <div class="job-saved-box">
                                     <h3><?php echo $this->lang->line("project_post"); ?></h3>
                                     <?php echo form_open(base_url('freelancer/freelancer_add_post_insert'), array('id' => 'postinfo', 'name' => 'postinfo', 'class' => 'clearfix form_addedit', 'onsubmit' => "imgval()")); ?>
-                                    <div>
-                                        <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4></div>
+                                    <fieldset>
+                                        <h4 class="freelancer_editpost_title"><?php echo $this->lang->line("project_description"); ?></h4></fieldset>
 <!--                                    <div>
                                         <span style="color:#7f7f7e;padding-left: 8px;">( </span><span style="color:red">*</span><span style="color:#7f7f7e"> )</span> 
                                         <span style="color:#7f7f7e"><?php //ceho $this->lang->line("filed_required"); ?></span>
