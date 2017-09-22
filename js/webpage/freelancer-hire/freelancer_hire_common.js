@@ -219,6 +219,15 @@ $('.upload-result').off('click').on('click', function (ev) {
         type: 'canvas',
         size: 'viewport'
     }).then(function (resp) {
+        var aa = resp.length;
+        if(aa == 11350) {
+            document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+            return false;
+        }else{
         $.ajax({
             url: base_url + "freelancer/ajaxpro_hire",
             type: "POST",
@@ -231,10 +240,10 @@ $('.upload-result').off('click').on('click', function (ev) {
                     document.getElementById('message1').style.display = "none";
                     document.getElementById("upload-demo").style.visibility = "visible";
                     document.getElementById("upload-demo-i").style.visibility = "visible";
-
                 }
             }
         });
+    }
 
     });
 });
@@ -262,7 +271,6 @@ $('#upload').on('change', function () {
     fd.append("image", $("#upload")[0].files[0]);
     files = this.files;
     size = files[0].size;
-     alert(size);
     // code start for file type support
     if (!files[0].name.match(/.(jpg|jpeg|png|gif)$/i)) {
         picpopup();
@@ -272,7 +280,6 @@ $('#upload').on('change', function () {
         return false;
     }
     // file type code end
-   
     if (size > 26214400)
     {
         alert("Allowed file size exceeded. (Max. 25 MB)")

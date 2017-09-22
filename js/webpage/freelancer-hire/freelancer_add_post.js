@@ -235,7 +235,7 @@ $(document).ready(function () {
 //SCRIPT FOR COPY-PASTE START
 var _onPaste_StripFormatting_IEPaste = false;
 function OnPaste_StripFormatting(elem, e) {
-    alert(456);
+
     if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
         e.preventDefault();
         var text = e.originalEvent.clipboardData.getData('text/plain');
