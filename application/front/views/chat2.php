@@ -29,10 +29,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
                 <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
 
-			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/style.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/header.css'); ?>">
               <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/font-awesome.min.css'); ?>">
-			  <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
+              <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/sprite_img.css'); ?>">
               
         <style type="text/css">
             .msg_right:hover .messagedelete{ visibility: visible;opacity: 1;}
@@ -152,8 +152,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
 
                                 <div class="chat_drop">
-                                    <a onclick="myFunction()" class="chatdropbtn fr"> <img src="<?php echo base_url('img/t_dot.png') ?>" onclick="myFunction()"></a>
-                                    <div id="mychat_dropdown" class="chatdropdown-content">
+                                    <a  class="chatdropbtn fr dropbtn_common"> <img src="<?php echo base_url('img/t_dot.png') ?>" ></a>
+                                    <div id="mychat_dropdown" class="chatdropdown-content dropdown2_content">
                                         <a href="javascript:void(0);" onClick="delete_history()">
                                             <span class="h4-img h2-srrt"></span>  Delete All
                                         </a>
@@ -267,7 +267,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <!-- Model Popup Close -->
-                <!------  commen script khyati 15-7  ---------------->
+                <!--  commen script khyati 15-7 -->
 
                 <script type="text/javascript">
                     var request_timestamp = 0;
@@ -715,37 +715,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </script>
 
                 <!-- user search list 20-4 end -->
-                <script type="text/javascript">
-                    $(document).ready(function ()
-                    {
-                        $("#notificationLink1").click(function ()
-                        {
-                            $("#notificationContainer1").fadeToggle(300);
-                            $("#notification_count1").fadeOut("slow");
-                            return false;
-                        });
-
-                        //Document Click hiding the popup 
-                        $(document).click(function ()
-                        {
-                            $("#notificationContainer1").hide();
-                        });
-
-                        //Popup on click
-                        $("#notificationContainer1").click(function ()
-                        {
-                            return false;
-                        });
-
-                        $( ".chat_drop a" ).click(function() {
-                              $( "#mychat_dropdown" ).fadeToggle( "slow", function() {
-                                // Animation complete.
-                              });
-                            });
-
-                    });
-                </script>
-
+               
                 <!-- script for selact smily for message start-->
                 <script type="text/javascript">
                     function followclose(clicked_id)
@@ -813,49 +783,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
 
                 </script>
+              
                 <script>
-
-                    $(document).on('keydown', function (e) {
-                        if (e.keyCode === 27) {
-                            //$( "#bidmodal" ).hide();
-                            document.getElementById('notificationContainer1').style.display = 'none';
-                        }
-                    });
-
-                    $('body').on("click", "*", function (e) {
-                        document.getElementById('notificationContainer1').style.display = 'none';
-                    });
-
-                </script>
-
-
-                <script>
-                    /* When the user clicks on the button, 
-                     toggle between hiding and showing the dropdown content */
-                    function myFunction() {
-                        //document.getElementById("mychat_dropdown").classList.toggle("show");
-                    }
-
-                    // Close the dropdown if the user clicks outs#submitide of it
-                    window.onclick = function (event) {
-                        if (!event.target.matches('.chatdropbtn')) {
-
-                            var dropdowns = document.getElementsByClassName("chatdropdown-content");
-                            var i;
-                            for (i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (openDropdown.classList.contains('show')) {
-                                    openDropdown.classList.remove('show');
-                                }
-                            }
-                        }
-                    }
-//					document.getElementById("notificationContainer1").onclick = function(evt) {
-//						if (!this.isContentEditable) {
-//							this.contentEditable = "true";
-//							this.focus();
-//						}
-//					};
+                    
 
                     //Disable part of page
                     $("#notificationContainer1").on("contextmenu", function (e) {
@@ -1376,9 +1306,9 @@ $(function () {
         });
     });
 
-<!--new script for jobtitle,company and skill  end-->
+//new script for jobtitle,company and skill  end-->
 
-<!--new script for jobtitle,company and skill start for mobile view-->
+//new script for jobtitle,company and skill start for mobile view-->
  
     $(function() {
         function split( val ) {
@@ -1415,9 +1345,9 @@ $(function () {
         });
     });
 
-<!--new script for jobtitle,company and skill for mobile view end-->
+//new script for jobtitle,company and skill for mobile view end-->
 
-<!--new script for cities start-->
+//new script for cities start-->
  
     $(function() {
         function split( val ) {
@@ -1454,9 +1384,9 @@ $(function () {
         });
     });
 
-<!--new script for cities end-->
+//new script for cities end-->
 
-<!--new script for cities start mobile view-->
+//new script for cities start mobile view-->
 
     $(function() {
         function split( val ) {
@@ -1493,7 +1423,7 @@ $(function () {
         });
     });
 
-<!--new script for cities end mobile view-->
+//new script for cities end mobile view-->
    }
    //JOB POST SERACH
    //ARTUSTIC POST SERACH
@@ -2109,9 +2039,9 @@ $(function () {
         });
     });
 
-<!--new script for jobtitle,company and skill  end-->
+//new script for jobtitle,company and skill  end-->
 
-<!--new script for jobtitle,company and skill start for mobile view-->
+//new script for jobtitle,company and skill start for mobile view-->
  
     $(function() {
         function split( val ) {
@@ -2148,9 +2078,9 @@ $(function () {
         });
     });
 
-<!--new script for jobtitle,company and skill for mobile view end-->
+//new script for jobtitle,company and skill for mobile view end-->
 
-<!--new script for cities start-->
+//new script for cities start-->
  
     $(function() {
         function split( val ) {
@@ -2187,9 +2117,9 @@ $(function () {
         });
     });
 
-<!--new script for cities end-->
+//new script for cities end-->
 
-<!--new script for cities start mobile view-->
+//new script for cities start mobile view-->
 
     $(function() {
         function split( val ) {
@@ -2226,7 +2156,7 @@ $(function () {
         });
     });
 
-<!--new script for cities end mobile view-->
+//new script for cities end mobile view-->
    }
    //JOB POST SERACH
    //ARTUSTIC POST SERACH
