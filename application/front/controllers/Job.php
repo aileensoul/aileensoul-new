@@ -1851,7 +1851,6 @@ class Job extends MY_Controller {
             $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            // $this->job_avail_check($id);
             //for getting data job_reg table
             $contition_array = array('job_reg.user_id' => $id, 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
 
@@ -3084,18 +3083,6 @@ class Job extends MY_Controller {
         }
     }
 
-//THIS FUNCTION IS USED TO CHECK IF USER NOT REGISTER AND OPEN DIRECT URL THEN GO TO REGISTRATION PAGE END
-    // recruiter available chek
-    public function job_avail_check($userid = " ") {
-        $contition_array = array('user_id' => $userid, 'is_delete' => '1');
-        $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if (count($availuser) > 0) {
-            $this->load->view('job/notavalible', $this->data);
-        }
-    }
-
-// recruiter available chek
 //Retrive all data of dergree,stream and university start
     public function ajax_data() {
 
@@ -4834,14 +4821,24 @@ public function progressbar()
         $this->data['count_profile_value'] = ($count_profile / 100);
 
         if($this->data['count_profile'] == 100)
-            {                
+            {    
+                if($job_reg[0]['progressbar'] != 1) 
+                {       
+                    $data = array(    
+                    'progressbar' => '0',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
+                   $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);   
+               }
+            }
+            else
+            {
                 $data = array(    
                     'progressbar' => '0',
                     'modified_date' => date('Y-m-d h:i:s', time())
                  );
-              
-                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-            }
+                  $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }    
     }
 //FOR PROGRESSBAR COUNT COMMON FUNCTION END
 }

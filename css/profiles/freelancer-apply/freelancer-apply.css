@@ -442,6 +442,11 @@ li.fr a {
     width: 100%;
     height: 100%;
 }
+.message #field{
+    background: #1b8ab9; 
+    color: white; 
+    margin-top: 10px;
+ }
 .data_img_2 div {
     color: #fff;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
@@ -2083,6 +2088,7 @@ label.cameraButton input[accept*="camera"] {
     .profile-main-rec-box-menu {
         margin-top: 0px;
     }
+
     fieldset .add_post_btnc {
         min-width: 83px;
         padding: 10px 20px 10px;

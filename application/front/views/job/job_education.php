@@ -20,6 +20,7 @@
 <?php 
       echo $header; 
       echo $job_header2_border;  
+      $userid = $this->session->userdata('aileenuser');
 ?>
 <!-- END HEADER -->
  

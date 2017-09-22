@@ -10289,30 +10289,36 @@ No Contacts Available.
         $city = $this->data['business_common_data'][0]['city'];
         $industriyal = $this->data['business_common_data'][0]['industriyal'];
 
+        /* SELF POST LIST START */
+
+        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'business_profile_post.user_id' => $userid);
+        $data = "GROUP_CONCAT(business_profile_post_id) as business_profile_post_list,business_profile_post_id,product_name,product_image,product_description,business_likes_count,business_like_user,created_date";
+        $self_post = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
+
+        /* SELF POST LIST END */
+
+
+        /* FOLLOWER POST LIST START */
         $condition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
-        
+
         $join_str[0]['table'] = 'business_profile';
-        $join_str[0]['join_table_id'] = 'business_profile.business_profile_post_id';
+        $join_str[0]['join_table_id'] = 'business_profile.business_profile_id';
         $join_str[0]['from_table_id'] = 'follow.follow_to';
         $join_str[0]['join_type'] = '';
-        
+
         $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $condition_array, $data = 'GROUP_CONCAT(user_id) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
-        
+
         $follower_list = $followerdata[0]['follow_list'];
         $follower_list = str_replace(",", "','", $followerdata[0]['follow_list']);
-        
-        $contition_array = array('business_profile_post.is_deleted' => 0, 'business_profile_post.status' => 1);
-        $search_condition = "business_profile_id NOT IN ('$follow_list') AND business_profile_id NOT IN ('$user_list')";
 
-        $join_str[0]['table'] = 'post_files';
-        $join_str[0]['join_table_id'] = 'post_files.post_id';
-        $join_str[0]['from_table_id'] = 'business_profile_post.business_profile_post_id';
-        $join_str[0]['join_type'] = '';
+        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
+        $search_condition = "user_id IN ('$follower_list')";
 
-        $data = "business_profile_id, company_name, business_slug, business_user_image, industriyal, city, state, other_industrial, business_type";
-        $userlistview = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data, $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END, CASE WHEN (state = ' . $state . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
+        $data = "GROUP_CONCAT(business_profile_post_id) as business_profile_post_list,business_profile_post_id,product_name,product_image,product_description,business_likes_count,business_like_user,created_date";
+//        $follower_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $contition_array, $data, $sortby = 'CASE WHEN (industriyal = ' . $industriyal . ') THEN business_profile_id END, CASE WHEN (city = ' . $city . ') THEN business_profile_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
+        $follower_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
 
-
+        /* FOLLOWER POST LIST END */
 
         foreach ($followerdata as $fdata) {
             $contition_array = array('business_profile_id' => $fdata['follow_to'], 'business_step' => 4, 'business_profile.status' => 1);

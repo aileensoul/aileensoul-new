@@ -38,12 +38,12 @@
                                     if ($jobdata[0]['profile_background'] != '') {
                                                                                      ?>
                                  <!-- box image start -->
-                                 <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>" >
+                                 <img src="<?php echo JOB_BG_MAIN_UPLOAD_URL . $jobdata[0]['profile_background']; ?>" class="bgImage" alt="" >
                                  <!-- box image end -->
                                  <?php
                                     } else {
                                         ?>
-                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $jobdata[0]['fname']; ?>">
+                                 <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="">
                                  <?php
                                     }
                                     ?>

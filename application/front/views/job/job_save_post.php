@@ -146,29 +146,51 @@
             </div>
             <!-- text head end -->
             <div class="col-md-7 col-sm-12 mob-clear">
-               <div class="mob-progressbar <?php if($count_profile == 100){?>temp<?php } ?>">
-                  <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
-                  <p class="mob-edit-pro">
-                     <?php if($count_profile == 100)
-                        {
-                        ?>
-                     <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
-                     <?php
-                        }
-                        else
-                        {
-                        ?>
-                     <a href="<?php echo base_url('job/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
-                     <?php
-                        }
-                        ?>
-                  </p>
-                  <div class="progress skill-bar ">
-                     <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
-                        <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
-                     </div>
+                <?php
+                  if($count_profile == 100)
+                  {
+                    if($job_reg[0]['progressbar']==0)
+                    {
+          ?>
+
+          <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                 
+                  <a href="javascript:void(0);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Successfully Completed</a>      
+                  
+                 
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
                   </div>
                </div>
+            </div>
+            <?php
+          }
+        }else{
+
+            ?>
+            <div class="mob-progressbar" >
+               <p>Please fill up your entire profile to get better job options and so that recruiter can find you easily.</p>
+               <p class="mob-edit-pro">
+                  
+                    
+                  <a href="<?php echo base_url('job/basic-information')?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Profile</a>
+                  
+                    
+               </p>
+               <div class="progress skill-bar ">
+                  <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="<?php echo($count_profile);?>" aria-valuemin="0" aria-valuemax="100">
+                     <span class="skill"><i class="val"><?php echo(round($count_profile));?>%</i></span>
+                  </div>
+               </div>
+            </div>
+
+            <?php
+          }
+          ?>
                <div class="">
                   <div class="common-form">
                      <div class="job-saved-box">
@@ -191,6 +213,8 @@
             <?php
                if($count_profile == 100)
                {
+                   if($job_reg[0]['progressbar']==0)
+                     {
                ?>
             <div class="edit_profile_progress edit_pr_bar complete_profile">
                <div class="progre_bar_text">
@@ -211,6 +235,7 @@
             </div>
             <?php
                }
+            }
                   
                else
                {

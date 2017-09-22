@@ -33,7 +33,7 @@
                             <div class="full-box-module_follow fw fixed_right_display_none ">
                                 <!-- follower list start  -->  
                                 <div class="common-form">
-                                    <h3 class="user_list_head">User List1
+                                    <h3 class="user_list_head">User List
                                     </h3>
                                     <div class="seeall">
                                         <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
@@ -123,7 +123,7 @@
                             ?>
                             <div class="full-box-module_follow" style="margin-top: 0px;">
                                 <div class="common-form">
-                                    <h3 class="user_list_head">User List2</h3>
+                                    <h3 class="user_list_head">User List</h3>
                                     <div class="seeall">
                                         <a href="<?php echo base_url('business-profile/userlist/' . $business_common_data[0]['business_slug']); ?>">All User
                                         </a>
