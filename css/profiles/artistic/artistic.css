@@ -983,27 +983,24 @@ label.cameraButton:active {
 .post-design-name ul li a {
     color: #91949d;
     font-size: 13px;
-    padding: 0px 8px;
     line-height: 16px;
     display: block;
-    padding-right: 2px;
 }
 .post-design-product {
-    padding-bottom: 5px;
-    padding-top: 1px;
+    padding-left:10px;
 }
 .post-design-name ul li .post_dot {
-    max-width: 80%;
+    /*max-width: 80%;*/
     width: auto;
-    font-size: 16px;
+    font-size: 15px;
     display: inline-block;
     font-weight: 600;
     color: #1b8ab9;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     vertical-align: bottom;
-    overflow: hidden;
-    white-space: nowrap;
-    line-height: 23px;
+    /*overflow: hidden;
+   /* white-space: nowrap;*/
+    line-height: 20px;
     margin-bottom: 0px;
     font-size: 15px;
 }
@@ -1011,17 +1008,19 @@ label.cameraButton:active {
     padding-right: 6px;
 }
 .post-design-name ul li .post_dot1 {
-    max-width: 80%;
+    /*max-width: 80%;*/
     width: auto;
-    font-size: 17px;
+    font-size: 15px;
     display: inline-block;
     font-weight: 600;
     color: #1b8ab9;
-    text-overflow: ellipsis;
-    vertical-align: text-top;
-    overflow: hidden;
-    white-space: nowrap;
+    /*text-overflow: ellipsis;*/
+    vertical-align: bottom;
+    /*overflow: hidden;
+   /* white-space: nowrap;*/
+    line-height: 20px;
     margin-bottom: 0px;
+    font-size: 15px;
 }
 .datespan {
     display: inline-block;
@@ -2471,15 +2470,15 @@ label.cameraButton:active {
     color: #1b8ab9!important;
 }
 .follow-li-text {
-    white-space: nowrap;
-    width: 100%;
+    /*white-space: nowrap;
+    width: 100%;*/
 }
 .follow-li-text a {
-    overflow: hidden;
+    /*overflow: hidden;
     display: block;
     text-overflow: ellipsis;
     width: 90%;
-    white-space: nowrap;
+    white-space: nowrap;*/
 }
 .user_lst ul li button {
     font-weight: normal;
@@ -2523,7 +2522,7 @@ label.cameraButton:active {
     text-decoration: none;
 }
 .folle_text {
-    width: 64%;
+    width: 70%;
 }
 .padding_low_data {
     background-color: white!important;
@@ -4415,6 +4414,7 @@ div .comment {
     }
 	.flw_msg_btn{padding-right:0;}
 	.flw_msg_btn ul li:last-child{margin-right}
+	.post-design-name {width:84%; padding-right:0;}
 }
 
 @media screen and (max-width: 800px) {
@@ -4825,6 +4825,10 @@ div .comment {
         font-size: 16px;
         padding: 7px;
     }
+	.post-design-name {width:79%;}
+	.post-design-name ul li .post_dot{font-size:12px; line-height:16px;}
+	.ctre_date{font-size:11px; line-height:1;}
+	.post-design-name ul li a{font-size:12px; line-height:1;}
 }
 
 @media screen and (max-width: 640px) {
@@ -5415,6 +5419,7 @@ div .comment {
         padding-bottom: 10px;
         padding-top: 7px;
     }
+	.post-design-name{width:74%;}
 }
 
 @media screen and (max-width: 430px) {
