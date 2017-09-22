@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 if ($message_from_profile == 5) {
                                     $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $id, $data = 'business_slug');
                                     $last_user_image = $last_user_data['user_image'];
-                                    $profile_url = base_url() . 'business_profile/business_profile_manage_post/' . $busdata[0]['business_slug'];
+                                    $profile_url = base_url() . 'business-profile/dashboard/' . $busdata[0]['business_slug'];
                                 }
                                 if ($message_from_profile == 6) {
                                     $last_user_image = $last_user_data['user_image'];

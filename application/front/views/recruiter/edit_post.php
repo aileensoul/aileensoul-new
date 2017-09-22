@@ -81,7 +81,7 @@
                                 <fieldset class="full-width">
                                     <label>No of Position:<span style="color:red">*</span></label>
 
-                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of Candidate"/>
+                                    <input name="position" type="text" tabindex="3"  id="position" value="<?php echo $postdata[0]['post_position']; ?>" placeholder="Enter No of position"/>
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('position'); ?>
                                 </fieldset>
@@ -364,7 +364,7 @@
                                 </fieldset>
 
 <fieldset <?php if ($salary_type) { ?> class="error-msg" <?php } ?> class="two-select-box1">
-                                    <label class="control-label">Salary Type:<span style="color:red">*</span></label>
+                                    <label class="control-label">Salary Type:</label>
 
 
                                     <select style="cursor:pointer;" tabindex="15" name="salary_type" id="salary_type" class="keyskil">
