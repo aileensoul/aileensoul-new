@@ -1,6 +1,10 @@
 /*** artistic  ***/
 /***----------- common css for all profile  --------------***/
-
+.dropdown_hover .dropbtn_common {
+    color: #d7ecf5;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
 .job-saved-box {
     margin-bottom: 50px;
     width: 100%;
