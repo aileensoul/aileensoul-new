@@ -154,36 +154,27 @@ class Dashboard extends MY_Controller {
     public function logout() {
     
     //PROGRESSBAR JOB START
-        // $segment2 = $this->uri->segment(2);
-        // $segment2_names = array('home','resume','saved-job','applied-job');
-
-        // $segment1 = $this->uri->segment(1);
-        // $segment1_names = array('job');
-
-        // if (((!in_array($segment2, $segment2_names)) && (!in_array($segment1, $segment1_names)))
-        // {
-            // $userid = $this->session->userdata('aileenuser');
-            // $this->progressbar();
-            // if($this->data['count_profile'] == 100)
-            // {
-            //      $data = array(    
-            //         'progressbar' => '1',
-            //         'modified_date' => date('Y-m-d h:i:s', time())
-            //      );
+            $userid = $this->session->userdata('aileenuser');
+            $this->progressbar();
+            if($this->data['count_profile'] == 100)
+            {
+                 $data = array(    
+                    'progressbar' => '1',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
               
-            //     $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
               
-            // }
-            // else
-            // {
-            //     $data = array(    
-            //         'progressbar' => '0',
-            //         'modified_date' => date('Y-m-d h:i:s', time())
-            //      );
+            }
+            else
+            {
+                $data = array(    
+                    'progressbar' => '0',
+                    'modified_date' => date('Y-m-d h:i:s', time())
+                 );
               
-            //     $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
-            // }
-       // }
+                $updatedata = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
+            }
      //PROGRESSBAR JOB END
 
    //LOGOUT START       
