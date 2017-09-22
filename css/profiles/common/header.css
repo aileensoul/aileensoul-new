@@ -365,7 +365,7 @@
     border: 2px solid white;
 }
 .u2 {
-
+    font-family: robotoregular;
     font-size: 15px;
     margin-right: 6px;
 }
@@ -804,6 +804,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     color: white;
 }
 .dropdown_hover #art_profile {
+    font-family: robotoregular;
     color: #d7ecf5;
     font-size: 15px;
     letter-spacing: 0.5;
