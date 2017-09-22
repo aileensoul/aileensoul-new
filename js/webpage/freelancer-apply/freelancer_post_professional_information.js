@@ -24,7 +24,7 @@ $(document).ready(function () {
         ignore: '*:not([name])',
         //  ignore: ":hidden",
          groups: {
-            tin: "experience_year experience_month"
+            experience_year: "experience_year experience_month"
         },
         errorPlacement: function (error, element) {
         if (element.attr('name') == 'experience_year' || element.attr('name') == 'experience_month')
