@@ -78,7 +78,9 @@
 
                     </div>
                 </div>
-                <div class=" container tablate-container art-profile">    
+                
+			</div>	
+				<div class=" container tablate-container art-profile">    
                     <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                         <div class="upload-img">
 
@@ -88,7 +90,7 @@
                         </div>
                     <?php } ?>
                     <!-- cover image end-->
-</div>
+
 
                     <div class="profile-photo">
                         <div class="profile-pho">
@@ -191,11 +193,15 @@
                                                 </li>
 
                                             <?php } ?>
-
-                                    </div>
+											</ul>
+										</div>
                             </div>
                         </div>
                     </div>
+					
+					
+					
+					
                     <div  class="add-post-button mob-block">
                         <?php if ($returnpage == '' && $freelancr_user_data[0]['user_id'] == $userid) { ?>
                             <a class="btn btn-3 btn-3b" href="<?php echo base_url('freelancer-hire/add-projects'); ?>"><i class="fa fa-plus" aria-hidden="true"></i><?php echo $this->lang->line("post_project"); ?></a>

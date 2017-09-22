@@ -13,11 +13,13 @@
 { display: inline-block; background: url('../img/h3.png') no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
  
 
+
 .home-22x22-h {
     background-position: -0px -18px;
     width: 19px;
     height: 18px;
 }
+
 .home-22x22-h:hover {
     background-position: -0px -0px;
     width: 19px;
@@ -28,7 +30,11 @@
     width: 18px;
     height: 16px;
 }
-
+.msg_notification_available .message3-24x24-h {
+    background-position: -0px -36px;
+    width: 18px;
+    height: 16px;
+}
 .message3-24x24-h:hover {
     background-position: -0px -36px;
     width: 18px;

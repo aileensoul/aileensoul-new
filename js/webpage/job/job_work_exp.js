@@ -661,10 +661,11 @@ function expyear_change(){
        $('#input' + newNum + ' .experience_year').val('');
        $('#input' + newNum + ' .experience_month').val('');
        $('#input'+newNum+ ' .experience_month').attr("disabled", "disabled");
-      $('#input'+newNum+' .certificate').val('');
+       $('#input'+newNum+' .certificate').val('');
        
        $('#input' + newNum + ' .hs-submit').remove();
        $("#input" + newNum + ' img').remove();
+       $("#input" + newNum + ' i').remove();
        $("#input" + newNum + ' .img_work_exp').remove();
    
        

@@ -154,6 +154,7 @@ $(document).ready(function () {
             },
             skills: {
                 required: true,
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             fields_req: {
                 required: true,

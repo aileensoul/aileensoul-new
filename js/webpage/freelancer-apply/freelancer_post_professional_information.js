@@ -40,7 +40,8 @@ $(document).ready(function () {
             },
 
             'skills[]': {
-                require_from_group: [1, ".keyskil"]
+                require_from_group: [1, ".keyskil"],
+                regx:/^["-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
 
 
