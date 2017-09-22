@@ -847,9 +847,9 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
     border-radius: 50%;
 }
 .action-button .count_add {
-    line-height: 9px!important;
+    line-height: 10px!important;
     background-color: #FF4500;
-    padding: 4px 6px 4px 6px !important;
+    padding: 3px 6px 4px 6px !important;
     font-family: arial!important;
     font-size: 10px!important;
     font-weight: bold;
