@@ -1862,6 +1862,13 @@ footer {
 .notification_data_in #gen_not_loader {
     margin-top: 122px;
 }
+
+/*** custom  ***/
+.mob-block {
+    display: none;
+}
+
+
 /***  media query  ***/
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {
@@ -1998,6 +2005,7 @@ footer {
     }
 }
 @media screen and (max-width: 767px) {
+	.mob-block{display:block;}
     .header2 .mob-width {
         padding-left: 5px;
     }
@@ -2030,10 +2038,6 @@ footer {
     }
     .header2 {
         top: 42px;
-    }
-    .padd_img {
-        padding-left: 3px !important;
-        padding-top: 3px !important;
     }
     .dropdown-menu {
         left: inherit !important;

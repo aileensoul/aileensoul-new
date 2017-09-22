@@ -4745,7 +4745,7 @@ div .comment {
         bottom: 0;
         display: block;
         position: absolute;
-        right: 18px;
+        right: 10px;
     }
     .mob-comment button {
         background: none;
@@ -5064,10 +5064,11 @@ div .comment {
         width: 92%;
     }
     .profile-left {
-        width: 64%;
+        width: 76%;
     }
     #contact_per {
-        width: 30%;
+        width: 125px;
+		float:right;
     }
     .addcontact-left {
         width: 86%;
@@ -5085,6 +5086,10 @@ div .comment {
     .header2 .mob-width {
         padding-right: 0;
     }
+	.cancel_req_busi img {
+		width: 20px;
+		height: 20px;
+	}
 }
 @media screen and (max-width: 640px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5202,6 +5207,9 @@ div .comment {
     .user-pic {
         width: 75px;
         height: 75px;
+    }
+	.profile-left {
+        width: 65%;
     }
 }
 @media screen and (max-width: 540px) {
