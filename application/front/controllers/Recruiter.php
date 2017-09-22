@@ -27,7 +27,6 @@ class Recruiter extends MY_Controller {
 // IF USER IS RELOGIN AFTER DEACTIVATE PROFILE IN RECRUITER THEN REACTIVATE PROFIEL CODE END    
 
         if ($recdata) {
-
             $this->load->view('recruiter/reactivate', $this->data);
         } else {
 
@@ -2409,7 +2408,7 @@ class Recruiter extends MY_Controller {
 
 
                         $rec_post .= '<a href="javascript:void(0);" class="button" onclick="removepopup(' . $post['post_id'] . ')">Remove</a>';
-                        $rec_post .= '<a href="' . base_url() . 'recruiter/edit_post/' . $post['post_id'] . '" class="button">Edit</a>';
+                        $rec_post .= '<a href="' . base_url() . 'recruiter/edit-post/' . $post['post_id'] . '" class="button">Edit</a>';
                         $join_str[0]['table'] = 'job_reg';
                         $join_str[0]['join_table_id'] = 'job_reg.user_id';
                         $join_str[0]['from_table_id'] = 'job_apply.user_id';
