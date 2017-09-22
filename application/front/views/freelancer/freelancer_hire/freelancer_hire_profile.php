@@ -200,7 +200,7 @@
 
                     </div>
                 <?php } ?>
-                <div class="middle-part container">          
+                <div class="middle-part">          
                     <div class="job-menu-profile mob-none pt20">
                         <a href="javascript:void(0);">
                             <h3> <?php echo ucwords($freelancerhiredata[0]['fullname']) . ' ' . ucwords($freelancerhiredata[0]['username']); ?></h3>
