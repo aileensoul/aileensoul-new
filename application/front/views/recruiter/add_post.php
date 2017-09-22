@@ -89,7 +89,7 @@
                                     <!--  </div> -->
                                     <fieldset class="full-width" <?php if ($position) { ?> class="error-msg" <?php } ?>>
                                         <label class="control-label">No of Position:<span style="color:red">*</span> </label>
-                                        <input name="position_no" type="text"  id="position" value="1" tabindex="3" placeholder="Enter No of Candidate"/>
+                                        <input name="position_no" type="text"  id="position" value="1" tabindex="3" placeholder="Enter No of position"/>
                                         <span id="fullname-error"></span>
                                         <?php echo form_error('position'); ?>        
                                     </fieldset>

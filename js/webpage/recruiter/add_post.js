@@ -295,14 +295,14 @@ $(document).ready(function () {
 
             },
             minsal: {
-                required: true,
+               // required: true,
                 //number:true,
                 maxlength: 11,
                 pattern: /^([0-9]\d*)(\\d+)?$/
 
             },
             maxsal: {
-                required: true,
+               // required: true,
                 number: true,
                 min: 0,
                 greaterThan: "#minsal",
@@ -324,7 +324,7 @@ $(document).ready(function () {
             },
 
             position_no: {
-                required: "You have to select minimum 1 candidate."
+                required: "You have to select minimum 1 position."
             },
             minyear: {
 

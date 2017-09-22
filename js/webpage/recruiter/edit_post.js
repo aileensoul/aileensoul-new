@@ -426,7 +426,7 @@ jQuery.noConflict();
                         },
 
                         position:{
-                          required: "You have to select minimum 1 candidate."
+                          required: "You have to select minimum 1 position."
                         },
                         minyear: {
 

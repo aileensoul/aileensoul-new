@@ -3732,7 +3732,7 @@ class Chat extends MY_Controller {
                 $image_path = FCPATH . 'uploads/business_profile/thumbs/' . $msg['user_image'];
                 $user_image = base_url() . 'uploads/business_profile/thumbs/' . $msg['user_image'];
                 $busdata = $this->common->select_data_by_id('business_profile', 'user_id', $id, $data = 'business_slug');
-                $profile_url = base_url() . 'business_profile/business_profile_manage_post/' . $busdata[0]['business_slug'];
+                $profile_url = base_url() . 'business-profile/dashboard/' . $busdata[0]['business_slug'];
             }
             if ($message_from_profile == 6) {
                 $image_path = FCPATH . 'uploads/artistic_profile/thumbs/' . $msg['user_image'];
