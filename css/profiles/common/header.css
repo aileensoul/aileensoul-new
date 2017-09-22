@@ -1610,6 +1610,11 @@ header.animated {
 #search .new-search-input .btn.btn-primary {
     width: auto;
 }
+#notificationLink1:hover{
+    cursor: pointer;
+    background-color: #d9d9d9;
+    border-radius: 30%;
+}
 .custom-user {
     width: 25px;
     height: 25px;
