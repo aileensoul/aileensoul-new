@@ -98,10 +98,10 @@ $(document).ready(function () {
     $("#register_form #email_reg").val('');
     $("#register_form #password_reg").val('');
 
-    $.validator.addMethod("lowercase", function (value, element, regexpr) {
+    /*$.validator.addMethod("lowercase", function (value, element, regexpr) {
         return regexpr.test(value);
     }, "Email Should be in Small Character");
-
+*/
     $("#register_form").validate({
         rules: {
             first_name: {
@@ -113,7 +113,7 @@ $(document).ready(function () {
             email_reg: {
                 required: true,
                 email: true,
-                lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
+                //lowercase: /^[0-9a-z\s\r\n@!#\$\^%&*()+=_\-\[\]\\\';,\.\/\{\}\|\":<>\?]+$/,
                 remote: {
                     url: base_url + "registration/check_email",
                     type: "post",

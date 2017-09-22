@@ -23,8 +23,8 @@ function check() {
 }
 
 $(document).ready(function () {
-    business_home_post();
-    business_home_three_user_list()
+    ajax_business_home_post();
+    ajax_business_home_three_user_list()
 
 //    $(window).scroll(function () {
     $(window).on('scroll', function () {
@@ -45,14 +45,14 @@ $(document).ready(function () {
                 //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    business_home_post(pagenum);
+                    ajax_business_home_post(pagenum);
                 }
             }
         }
     });
 });
 var isProcessing = false;
-function business_home_post(pagenum) {
+function ajax_business_home_post(pagenum) {
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -64,7 +64,7 @@ function business_home_post(pagenum) {
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_home_post?page=" + pagenum,
+        url: base_url + "business_profile/ajax_business_home_post?page=" + pagenum,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
@@ -95,10 +95,10 @@ function business_home_post(pagenum) {
     });
 }
 
-function business_home_three_user_list() {
+function ajax_business_home_three_user_list() {
     $.ajax({
         type: 'POST',
-        url: base_url + "business_profile/business_home_three_user_list/",
+        url: base_url + "business_profile/ajax_business_home_three_user_list/",
         data: '',
         dataType: "html",
         beforeSend: function () {
@@ -896,7 +896,7 @@ function followclose(clicked_id)
 //    $.when($('.fad' + clicked_id).fadeOut(3000))
 //            .done(function () {
 //                business_home_follow_ignore(clicked_id);
-//                business_home_three_user_list();
+//                ajax_business_home_three_user_list();
 //            });
 //}
 
