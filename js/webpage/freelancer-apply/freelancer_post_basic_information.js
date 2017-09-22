@@ -21,7 +21,7 @@ $(".alert").delay(3200).fadeOut(300);
 
 jQuery.validator.addMethod("noSpace", function (value, element) {
     return value == '' || value.trim().length != 0;
-}, "No space please and don't leave it empty");
+}, "No space please, don't leave it empty");
 
 //$.validator.addMethod("regx", function (value, element, regexpr) {
 //    if (!value)
@@ -48,11 +48,13 @@ $(document).ready(function () {
         rules: {
             firstname: {
                 required: true,
+                noSpace:true,
 //                regx: /^[^-\s][a-zA-Z_\s-]+$/,
             },
 
             lastname: {
                 required: true,
+                noSpace:true
 //                regx: /^[^-\s][a-zA-Z_\s-]+$/,
             },
 
