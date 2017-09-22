@@ -49,6 +49,9 @@ body{
 
 
 /***  commen css  ***/
+.mail-sent li a:focus{text-decoration: none!important;}
+footer ul li a:focus{text-decoration: none!important;}
+.btn-right a:focus{text-decoration: none !important;background:white !important;color: #1b8ab9!important;}
 .p0{padding: 0;} .p5{padding: 5px;} .p10{padding: 10px;} .p15{padding: 15px;} .p20{padding: 20px;}
 .pr0{padding-right: 0;} .pr5{padding-right: 5px;} .pr10{padding-right: 10px;} .pr15{padding-right: 15px;} .pr20{padding-right: 20px;}
 .pl0{padding-left: 0;} .pl5{padding-left: 5px;} .pl10{padding-left: 10px;} .pl15{padding-left: 15px;} .pl20{padding-left: 20px;}
