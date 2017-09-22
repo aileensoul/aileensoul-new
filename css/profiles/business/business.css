@@ -2097,6 +2097,9 @@ label.cameraButton:active {
     table-layout: fixed;
     width: 100%;
 }
+.action-button #message_count {
+    right: 158px;
+}
 .business_data_table td a {
     color: #000;
 }
@@ -5305,6 +5308,9 @@ div .comment {
     }
     .slider_img{
         height: 280px;
+    }
+    .in_mian_chng{
+        margin-top: -23px;
     }
     .fifty_val {
         right: 28px;

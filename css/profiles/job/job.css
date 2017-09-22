@@ -2048,7 +2048,7 @@ label.cameraButton input[accept*="camera"] {
     color: white;
 }
 /*.fancybox-slide > *{background-color:transparent;  }*/
-
+.flw_msg_btn ul li{margin-right: 10px!important;}
 .profile-job-post-detail .profile-job-post-title .button.invited {
     float: none;
     margin-right: 0;
