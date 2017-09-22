@@ -28,7 +28,7 @@
                                                         <img src="<?php echo FREE_HIRE_BG_THUMB_UPLOAD_URL . $freehiredata[0]['profile_background']; ?>" class="bgImage" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>" >
                                                     </div>
                                                 <?php } else { ?>
-                                                    <div class="data_img">
+                                                    <div class="data_img bg-images no-cover-upload">
                                                         <img src="<?php echo base_url(WHITEIMAGE); ?>" class="bgImage" alt="<?php echo $freehiredata[0]['fullname'] . " " . $freehiredata[0]['username']; ?>"  >
                                                     </div>
                                                 <?php } ?>
