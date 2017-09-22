@@ -24,8 +24,19 @@ class Main extends CI_Controller {
     //job seeker basic info controller start
     public function index() {
         $this->data['login_footer'] = $this->load->view('login_footer', $this->data, TRUE);
-        $this->load->view('main',$this->data);
         
+        $contition_array = array();
+        $site_visit = $this->common->select_data_by_condition('site_settings', $contition_array, $data = 'site_visit', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $site_visit = $site_visit[0]['site_visit'];
+        $update_site_visit = $site_visit + 1;
+        
+        $data = array(
+            'site_visit' => $update_site_visit
+        );
+        $updatdata = $this->common->update_data($data, 'site_settings', 'site_id', '1');
+        
+        $this->load->view('main', $this->data);
+
         if ($this->session->userdata('aileenuser')) {
             redirect('dashboard', 'refresh');
         }
