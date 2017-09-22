@@ -435,7 +435,7 @@
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
-                                                                    echo $this->common->make_links($recdata[0]['re_comp_site']);
+                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php
@@ -446,7 +446,7 @@
                                                             if ($recdata[0]['re_comp_site']) {
                                                                 ?>
                                                                 <li> <b>Company Website</b><span><a target="_blank"><?php
-                                                                    echo $this->common->make_links($recdata[0]['re_comp_site']);
+                                                                    echo $this->common->rec_profile_links($recdata[0]['re_comp_site']);
                                                                 ?></a></span>
                                                                 </li>
                                                                 <?php

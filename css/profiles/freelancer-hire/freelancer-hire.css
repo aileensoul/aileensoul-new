@@ -10,9 +10,14 @@
 }
 /*** common css for job recrutor and freelancer  ***/
 
-.mob-block {
-    display: none;
+.message1 h2 {
+    font-size: 20px;
+    text-align: left;
 }
+.message1 {
+    text-align: center;
+}
+#field{background: #1b8ab9; color: white; margin-top: 10px;}
 .saved,
 .applied {
     color: #fff !important;
@@ -248,12 +253,11 @@ li.fr a {
     border-radius: 4px;
 }
 .padd_img {
-    padding-left: 5px !important;
-    padding-top: 6px !important;
+    padding: 5px;
 }
 .user-pic {
-    height: 152px;
-    width: 153px;
+    height: 158px;
+    width: 158px;
     overflow: hidden;
     border-radius: 4px;
     position: relative;
@@ -263,21 +267,25 @@ li.fr a {
     height: 100%;
     width: 100%;
     overflow: hidden;
+	border-radius:4px;
 }
 .user-pic a {
     position: absolute;
     display: none;
 }
-.user-pic a i {
-    padding-right: 7.1px;
-}
+.user-pic .cusome_upload img{display:block; margin:0 auto 10px; height:auto; width:auto;}
 .user-pic:hover a {
     display: block;
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 4px 4px 4px 6px;
-    font-size: 12px;
+    padding: 30px 15px;
+    font-size: 16px;
+	width:148px;
+	height:148px;
+	top:5px;
+	text-align:center;
+	border-radius:4px;
 }
 .profile-box-art {
     height: auto !important;
@@ -1235,10 +1243,7 @@ label.cameraButton input[accept*="camera"] {
     padding-top: 7px;
     display: inline-block;
 }
-.padd_img {
-    padding-left: 5px !important;
-    padding-top: 6px !important;
-}
+
 .inner_search {
     width: 100%;
     border: 1px solid #d9d9d9;
@@ -1278,9 +1283,7 @@ label.cameraButton input[accept*="camera"] {
     font-size: 18px;
     margin-top: -10px;
 }
-.custom-row .user-pic:hover a {
-    width: 100%;
-}
+
 .post-img-user {
     color: #fff;
     width: 152px;
@@ -1410,7 +1413,7 @@ label.cameraButton input[accept*="camera"] {
         color: white!important;
     }
 .message a.mesg_link:hover{color:#fff; background:#156f95;}
-.message button:hover{color:#fff; border:1px solid transparent;} 
+.message button:hover{color:#fff; } 
 .message1 #univer1{border:1px solid #1b8ab9; margin-top:22px;}
 .message1 #univer1:hover{background:#1b8ab9; color:#fff;}
 .message1 h2{font-size: 20px; text-align: left;}
@@ -1484,14 +1487,19 @@ label.cameraButton input[accept*="camera"] {
         font-size: 13px;
     }
     .profile-pho {
-        height: 133px;
-        width: 123px;
+        height: 130px;
+        width: 130px;
         margin-top: -55px;
     }
     .user-pic {
-        height: 125px;
-        width: 115px;
+        height: 128px;
+        width: 128px;
     }
+	.user-pic:hover a{
+		height: 118px;
+        width: 118px;
+		padding:17px 5px;
+	}
     .buisness-profile-txext {
         width: 28%;
     }
@@ -1607,7 +1615,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
     }
     .art-side-menu {
-        padding-left: 160px !important;
+        padding-left: 180px !important;
     }
     .flw_msg_btn ul li {
         padding-right: 0 !important;
@@ -1617,6 +1625,7 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
         padding-left: 15px;
         margin-top: 10px;
+		
     }
     .profile-job-details .job_companyname {
         width: 300px;
@@ -1823,11 +1832,13 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
         text-align: center;
         padding-right: 15px;
+		
     }
     .art-profile .profile-box-art {
         width: 100%;
         float: left;
         margin-bottom: 15px;
+		
     }
     .profile-box-art .right-side-menu {
         margin-left: 0px;
@@ -1952,7 +1963,9 @@ label.cameraButton input[accept*="camera"] {
     }
     .custom-row .user-pic:hover a {
         width: 88px;
-        bottom: 5px;
+		height:88px;
+		font-size:0;
+		padding:27px 0;
     }
     .cover-pic {
         bottom: 62%;

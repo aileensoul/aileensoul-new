@@ -203,6 +203,8 @@ $uploadCrop = $('#upload-demo').croppie({
     }
 });
 $('.upload-result').off('click').on('click', function (ev) {
+  
+    
 //$('.upload-result').on('click', function (ev) {
     document.getElementById("upload-demo").style.visibility = "hidden";
     document.getElementById("upload-demo-i").style.visibility = "hidden";
@@ -211,6 +213,16 @@ $('.upload-result').off('click').on('click', function (ev) {
         type: 'canvas',
         size: 'viewport'
     }).then(function (resp) {
+        //WHEN USER NOT SELECT IMAGE AND UPLOAD THEN GO TO IF CONDITION OTHER WISE ELSE
+        var aa = resp.length;
+        if(aa == 11350) {
+                document.getElementById('row2').style.display = "block";
+                    document.getElementById('row1').style.display = "none";
+                    document.getElementById('message1').style.display = "none";
+                    document.getElementById("upload-demo").style.visibility = "visible";
+                    document.getElementById("upload-demo-i").style.visibility = "visible";
+            return false;
+        }else{
         $.ajax({
             url: base_url + "freelancer/ajaxpro_work",
             type: "POST",
@@ -224,15 +236,18 @@ $('.upload-result').off('click').on('click', function (ev) {
                 document.getElementById("upload-demo-i").style.visibility = "visible";
             }
         });
+    }
     });
 });
 $('.cancel-result').on('click', function (ev) {
+   
     document.getElementById('row2').style.display = "block";
     document.getElementById('row1').style.display = "none";
     document.getElementById('message1').style.display = "none";
     $(".cr-image").attr("src", "");
 });
 $('#upload').on('change', function () {
+   
     var reader = new FileReader();
     reader.onload = function (e) {
         $uploadCrop.croppie('bind', {

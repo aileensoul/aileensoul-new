@@ -152,7 +152,7 @@ $lang["edit"]="Edit";
 $lang["applied_person"]="Applied person";
 
 
-$lang["no_post"]="No Post Found.";
+$lang["no_post"]="No Project Found.";
 $lang["remove"]="Remove";
 $lang["no_saved_freelancer"]="No Saved Freelancer Found.";
 //common variables of detail page end

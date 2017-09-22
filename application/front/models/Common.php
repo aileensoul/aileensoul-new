@@ -618,9 +618,9 @@ class Common extends CI_Model {
     function make_links($text, $class = 'content_link', $target = '_blank') {
         return preg_replace('!((http:\:\/\/|ftp\:\/\/|https:\:\/\/)|www\.)([-a-zA-Zа-яА-Я0-9\~\!\@\#\$\%\^\&\*\(\)_\-\=\+\\\/\?\.\:\;\'\,]*)?!ism', '<a href="//$1$3" class="' . $class . '" target="' . $target . '">$1$3</a>', $text);
     }
-//    function make_links($text, $class='content_link', $target='_blank'){
-//    return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" class="' . $class . '" target="'.$target.'">$1</a>', $text);
-//}
+    function rec_profile_links($text, $class='content_link', $target='_blank'){
+    return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1" class="' . $class . '" target="'.$target.'">$1</a>', $text);
+}
 
 
 

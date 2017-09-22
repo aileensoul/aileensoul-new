@@ -249,7 +249,7 @@
                                     <li <?php if ($this->uri->segment(1) == 'business-profile' && $this->uri->segment(2) == 'home') { ?> class="active" <?php } ?>><a class="bus-h" href="<?php echo base_url('business-profile/home'); ?>"><span class="home-22x22-h"></span></a>
                                     </li>
                                     <li id="add_contact">
-                                        <a class="action-button shadow animate" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
+                                        <a class="action-button shadow animate dropbtn_common" href="javascript:void(0)" id="addcontactLink" onclick = "return Notification_contact();">
                                             <span class="bu_req"></span>
                                             <span id="addcontact_count"></span>
                                         </a>

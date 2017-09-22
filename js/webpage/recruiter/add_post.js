@@ -160,16 +160,16 @@ jQuery.validator.addMethod("isValid", function (value, element) {
     var todaydate_new = todaydate[1] + "/" + todaydate[0] + "/" + todaydate[2];
     var todaydate_new_one = new Date(todaydate_new).getTime();
 
-    if(lastdata_new_one >= todaydate_new_one){ 
+    if (lastdata_new_one >= todaydate_new_one) {
         $('.day').addClass('error');
         $('.month').addClass('error');
         $('.year').addClass('error');
-     return true;
-    }else{
-          $('.day').addClass('error');
+        return true;
+    } else {
+        $('.day').addClass('error');
         $('.month').addClass('error');
         $('.year').addClass('error');
-     return false;
+        return false;
     }
 
     //return lastdata_new_one >= todaydate_new_one;
@@ -180,7 +180,7 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 //   validation border is not show in last date start
 $.validator.addMethod("required1", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
-   
+
     if (!value)
     {
         $('.day').addClass('error');
@@ -236,8 +236,9 @@ $(document).ready(function () {
                 required: true,
                 number: true,
                 min: 1,
-                reg_candidate: /^-?(([0-9]{0,100}))$/,
-                range: [1, 100]
+                reg_candidate: /^-?(([0-9]{0,1000}))$/,
+                maxlength: 4,
+                range: [1, 1000]
             },
 
             minyear: {
@@ -295,14 +296,14 @@ $(document).ready(function () {
 
             },
             minsal: {
-               // required: true,
+                // required: true,
                 //number:true,
                 maxlength: 11,
                 pattern: /^([0-9]\d*)(\\d+)?$/
 
             },
             maxsal: {
-               // required: true,
+                // required: true,
                 number: true,
                 min: 0,
                 greaterThan: "#minsal",
@@ -640,10 +641,10 @@ $(function () {
 
 //    var searchkeyword = $.trim(document.getElementById('rec_search_title').value);
 //    var searchplace = $.trim(document.getElementById('rec_search_loc').value);
-    // alert(searchkeyword);
-    // alert(searchplace);
+// alert(searchkeyword);
+// alert(searchplace);
 //    if (searchkeyword == "" && searchplace == "") {
-        //alert('Please enter Keyword');
+//alert('Please enter Keyword');
 //        return false;
 //    }
 //}
@@ -725,7 +726,7 @@ function home_profile(clicked_id, searchkeyword, searchplace) {
 
             } else if (clicked_id == 5)
             {
-               
+
                 document.getElementById('acon').style.display = 'block';
 
             } else if (clicked_id == 6)
@@ -834,13 +835,13 @@ $(document).ready(function () {
 
 //$(document).ready(function () {
 
-    //Transforms the listbox visually into a Select2.
+//Transforms the listbox visually into a Select2.
 //    $("#lstColors").select2({
 //        placeholder: "Select a Color",
 //        width: "200px"
 //    });
 
-    //Initialize the validation object which will be called on form submit.
+//Initialize the validation object which will be called on form submit.
 //    var validobj = $("#frm").validate({
 //        onkeyup: false,
 //        errorClass: "myErrorClass",
@@ -860,7 +861,7 @@ $(document).ready(function () {
 //            }
 //        },
 
-        //When removing make the same adjustments as when adding
+//When removing make the same adjustments as when adding
 //        unhighlight: function (element, errorClass, validClass) {
 //            var elem = $(element);
 //            if (elem.hasClass("select2-offscreen")) {
@@ -871,19 +872,19 @@ $(document).ready(function () {
 //        }
 //    });
 
-    //If the change event fires we want to see if the form validates.
-    //But we don't want to check before the form has been submitted by the user
-    //initially.
+//If the change event fires we want to see if the form validates.
+//But we don't want to check before the form has been submitted by the user
+//initially.
 //    $(document).on("change", ".select2-offscreen", function () {
 //        if (!$.isEmptyObject(validobj.submitted)) {
 //            validobj.form();
 //        }
 //    });
 
-    //A select2 visually resembles a textbox and a dropdown.  A textbox when
-    //unselected (or searching) and a dropdown when selecting. This code makes
-    //the dropdown portion reflect an error if the textbox portion has the
-    //error class. If no error then it cleans itself up.
+//A select2 visually resembles a textbox and a dropdown.  A textbox when
+//unselected (or searching) and a dropdown when selecting. This code makes
+//the dropdown portion reflect an error if the textbox portion has the
+//error class. If no error then it cleans itself up.
 //    $(document).on("select2-opening", function (arg) {
 //        var elem = $(arg.target);
 //        if ($("#s2id_" + elem.attr("id") + " ul").hasClass("myErrorClass")) {
@@ -965,7 +966,7 @@ function leave_page(clicked_id)
     var searchplace = $.trim(document.getElementById('rec_search_loc').value);
     //   alert(datepicker);
 
-    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" &&  post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
+    if (post_name == "" && skills == "" && minyear == "" && maxyear == "" && industry == "" && emp_type == "" && education == "" && post_desc == "" && interview == "" && country == "" && state == "" && salary_type == "" && datepicker == "" && minsal == "" && maxsal == "" && currency == "" && searchkeyword == "" && searchplace == "")
     {
         //alert("hi");
         if (clicked_id == 1)
@@ -1007,7 +1008,7 @@ function leave_page(clicked_id)
         }
         if (clicked_id == 5)
         {
-            
+
 
 
 
