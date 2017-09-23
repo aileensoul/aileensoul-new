@@ -798,7 +798,7 @@ label.cameraButton input[accept*="camera"] {
     border-color: #1b8ab9;
     margin-right: 10px;
 }
-#floatBarsG {
+/*#floatBarsG {
     position: absolute;
     width: 10%;
     height: 28px;
@@ -903,12 +903,12 @@ label.cameraButton input[accept*="camera"] {
     -webkit-animation-delay: 1.64s;
     -moz-animation-delay: 1.64s;
 }
+
+/***  edit profile pages  ***/
 .profile-photo {
     position: relative;
     z-index: 0;
 }
-/***  edit profile pages  ***/
-
 .common-form1 h3 {
     font-weight: bold;
     color: #a0b3b0;

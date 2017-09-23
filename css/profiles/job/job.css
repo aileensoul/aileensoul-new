@@ -892,7 +892,7 @@ label.cameraButton input[accept*="camera"] {
     border-color: #1b8ab9;
     margin-right: 10px;
 }
-#floatBarsG {
+/*#floatBarsG {
     position: absolute;
     width: 10%;
     height: 28px;
@@ -2086,6 +2086,8 @@ label.cameraButton input[accept*="camera"] {
 .edit_profile_progress.complete_profile {
     cursor: default;
 }
+
+
 /***  media query  ***/
 
 @media screen and (min-width: 768px) {

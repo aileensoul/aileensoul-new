@@ -951,8 +951,8 @@ label.cameraButton {
     position: absolute;
     top: 0;
     background-color: #1b8ab9;
-    width: 65px!important;
-    height: 65px!important;
+    width: 10px!important;
+    height: 10px!important;
     animation-name: bounce_floatBarsG;
     -o-animation-name: bounce_floatBarsG;
     -ms-animation-name: bounce_floatBarsG;

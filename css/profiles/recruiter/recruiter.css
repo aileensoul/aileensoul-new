@@ -385,7 +385,7 @@ label.cameraButton input[accept*="camera"] {display: none;}
 .cameraButton:hover .tooltiptext_rec {
     visibility: visible;
 }
-#floatBarsG {position: absolute; width: 10%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;
+/*#floatBarsG {position: absolute; width: 10%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;
     transform: scale(0.3);
 }
 .floatBarsG {
@@ -484,9 +484,11 @@ label.cameraButton input[accept*="camera"] {display: none;}
     -webkit-animation-delay: 1.64s;
     -moz-animation-delay: 1.64s;
 }
-.profile-photo {position: relative; z-index: 0;}
+
 
 /***  edit profile pages  ***/
+
+.profile-photo {position: relative; z-index: 0;}
 .common-form1 h3 {font-weight: bold; color: #a0b3b0; text-align: center; border-radius: 10px; background: #fff;
     margin: 10px 0 20px; padding: 6px 15px 8px; font-size: 20px; line-height: 28px; border: 1px solid rgba(0, 0, 0, 0.1);
 	font-family: 'robotoregular';
