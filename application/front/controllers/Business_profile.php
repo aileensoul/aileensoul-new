@@ -3788,7 +3788,7 @@ class Business_profile extends MY_Controller {
 
                 $follow = '<div class="user_btn follow_btn_' . $business_id . '" id="unfollowdiv">';
                 $follow .= '<button class="bg_following" id="unfollow' . $business_id . '" onClick="unfollowuser_two(' . $business_id . ')">
-                              Following
+                              <span>Following</span>
                       </button>';
                 $follow .= '</div>';
                 echo $follow;
