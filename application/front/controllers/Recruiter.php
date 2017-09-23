@@ -2054,7 +2054,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '</span></li>';
 
 
-                        $rec_post .= '<li>   <b>Required Experience</b></li>
+                        $rec_post .= '<li>   <b>Required experience</b></li>
                <li><b>Salary</b><span title="Min - Max" >';
                         $currency = $this->db->get_where('currency', array('currency_id' => $post['post_currency']))->row()->currency_name;
                         if ($post['min_sal'] || $post['max_sal']) {
@@ -2290,7 +2290,7 @@ class Recruiter extends MY_Controller {
                         $rec_post .= '</span>
                                                                 </li>
                                                                 <li>
-                                                                    <b>Required Experience</b>
+                                                                    <b>Required experience</b>
                                                                     <span>
                                                                         <p title="Min - Max">';
 
@@ -4711,7 +4711,7 @@ class Recruiter extends MY_Controller {
             // FETCH SKILL WISE JOB START
             $recskill = explode(',', $postdata['post_skill']);
             $recskill = array_filter(array_map('trim', $recskill));
-                            $skilluser = array();
+            $skilluser = array();
 
             foreach ($recskill as $othrd) {
                 if ($othrd != '') {

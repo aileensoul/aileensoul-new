@@ -3731,9 +3731,9 @@ public function follow_home() { //echo "2"; die();
 
 
                 $follow = '<div id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 
                $datacount = '('.count($followcount).')';
@@ -3777,9 +3777,9 @@ public function follow_home() { //echo "2"; die();
             if ($insert) {
 
                $follow = '<div id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
 
                 $datacount = '('.count($followcount).')';
@@ -3907,7 +3907,7 @@ public function follow_home() { //echo "2"; die();
                                     </div>  
                             <div class="follow_left_box_main_btn">';
                     $third_user_html .= '<div class="fr' . $userlist['art_id'] . '">
-                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                             </button>
                             </div>
                             </div>
@@ -4032,7 +4032,7 @@ public function follow_home() { //echo "2"; die();
                                     </div>  
                             <div class="follow_left_box_main_btn">';
                     $third_user_html .= '<div class="fr' . $userlist['art_id'] . '">
-                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                             </button>
                             </div>
                             </div>
@@ -4135,9 +4135,9 @@ public function follow_home() { //echo "2"; die();
 
 
                 $follow = '<div id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 echo $follow;
             }
@@ -4169,9 +4169,9 @@ public function follow_home() { //echo "2"; die();
             if ($insert) {
 
                 $follow = '<div id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
                 echo $follow;
             }
@@ -4254,9 +4254,9 @@ public function followtwo() {
 
 
                 $follow = '<div class=" user_btn follow_btn_'.$art_id.'" id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
 
                 $datacount = '('.count($followcount).')';
@@ -4302,9 +4302,9 @@ public function followtwo() {
             if ($insert) {
 
                 $follow = '<div class=" user_btn follow_btn_'.$art_id.'" id="unfollowdiv">';
-                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span>Following</span></button>';
+                /*  $follow = '<button id="unfollow' . $art_id.'" onClick="unfollowuser('.$art_id.')"><span><span>Following</span></span></button>';
                   $follow .= '</div>'; */
-                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')">Following</button>';
+                $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser_two(' . $art_id . ')"><span>Following</span></button>';
                 $follow .= '</div>';
 
                 $datacount = '('.count($followcount).')';
@@ -4682,7 +4682,7 @@ public function followtwo() {
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $artisticdatauser[0]['art_id']) {
 
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
-                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')">Follow</button>
+                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')"><span>Follow</span></button>
                                                                                 </div>';
                 } else if ($user['follow_from'] == $artisticdatauser[0]['art_id']) {
                     
@@ -4935,7 +4935,7 @@ public function followtwo() {
                     if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $artisticdatauser[0]['art_id']) {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
                                             <button id="<?php
-                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')">Follow</button>
+                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
                             </div>';
                     } else if ($user['follow_to'] == $artisticdatauser[0]['art_id']) {
                         
@@ -12859,7 +12859,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">';
                     $return_html .= '<div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -12953,7 +12953,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13034,7 +13034,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13116,7 +13116,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13295,7 +13295,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">';
                     $return_html .= '<div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13389,7 +13389,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13470,7 +13470,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13552,7 +13552,7 @@ public function insert_comment_postnewpage() {
                                                                         </div>  
                                                                         <div class="follow_left_box_main_btn">
                                                                             <div class="fr' . $userlist['art_id'] . '">
-                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')">Follow
+                                                                                <button id="followdiv' . $userlist['art_id'] . '" onClick="followusercell(' . $userlist['art_id'] . ')"><span>Follow</span>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -13683,7 +13683,7 @@ public function art_home_three_user_list() {
                                     </div>  
                             <div class="follow_left_box_main_btn">';
                     $return_html .= '<div class="fr' . $userlist['art_id'] . '">
-                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')">Follow
+                            <button id="followdiv' . $userlist['art_id'] . '" onClick="followuser(' . $userlist['art_id'] . ')"><span>Follow</span>
                             </button>
                             </div>
                             </div>
