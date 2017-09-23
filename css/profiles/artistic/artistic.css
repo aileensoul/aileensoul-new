@@ -1819,6 +1819,10 @@ label.cameraButton:active {
     float: left;
     width: 80%;
 }
+.other-profile-menu .profile-left {
+    float: left;
+    width: 80%;
+}
 .profile-head-text {
     font-family: arial;
     font-size: 20px;
@@ -2427,7 +2431,7 @@ label.cameraButton:active {
     height: 100%;
 }
 .profile-job-post-location-name {
-    padding: 12px 21px;
+    padding: 12px 10px;
     font-weight: bold;
 }
 .profile-job-post-location-name ul {
@@ -4045,6 +4049,7 @@ div .comment {
     .right_left_box_design {
         padding: 10px 7px 8px 7px !important;
     }
+	.folle_text{width:64%;}
 }
 
 @media screen and (max-width: 1024px) {
@@ -4275,7 +4280,7 @@ div .comment {
         min-height: 100px;
     }
     .buisness-menu::before {
-        bottom: 49px;
+        bottom: 48px;
     }
     .profile-main-box-buis-menu .flw_msg_btn {
         margin-top: 7px !important;
@@ -4415,6 +4420,7 @@ div .comment {
 	.flw_msg_btn{padding-right:0;}
 	.flw_msg_btn ul li:last-child{margin-right}
 	.post-design-name {width:84%; padding-right:0;}
+	.folle_text{width:66%;}
 }
 
 @media screen and (max-width: 800px) {
@@ -4661,9 +4667,7 @@ div .comment {
     .profile-main-box-buis-menu li a {
         padding: 10px 17px 12px !important;
     }
-    .buisness-menu::before {
-        top: 114px;
-    }
+ 
     .business-profile-right .profile-main-box-buis-menu ul li {
         padding-right: 2px;
     }
@@ -4831,7 +4835,7 @@ div .comment {
 	.post-design-name ul li a{font-size:12px; line-height:1;}
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
         font-size: 18px;
     }
