@@ -1440,6 +1440,13 @@ label.cameraButton input[accept*="camera"] {
     color: white!important;
 }
 
+.keyskill_border_active {
+	border: 1px solid red !important;
+	border-radius: 2px;
+}
+
+
+
 /***  media query  ***/
 
 @media screen and (max-width: 1279px) {
