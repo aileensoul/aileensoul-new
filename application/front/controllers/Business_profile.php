@@ -4061,7 +4061,7 @@ class Business_profile extends MY_Controller {
                     
                 } else {
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
-                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>>Following</span></button>
+                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
                                                                                 </div>';
                 }
                 $return_html .= '</li>
