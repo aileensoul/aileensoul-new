@@ -121,7 +121,14 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 
     var one = new Date(value).getTime();
     var second = new Date(todaydate).getTime();
+   
+     if(one >= second){
     return one >= second;
+    }
+    
+    $('.day').addClass('error');
+    $('.month').addClass('error');
+    $('.year').addClass('error');
 }, "Last date should be grater than and equal to today date");
 //date validation end
 //   validation border is not show in last date start
