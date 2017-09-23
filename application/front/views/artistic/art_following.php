@@ -20,7 +20,7 @@
     <div class="container">
 <div class="col-md-3">  
 </div>
-                      <div class="col-md-7 col-sm-12 follow_mid">
+                      <div class="col-md-8 col-sm-12 follow_mid">
                     <div>
                         <?php
                                         if ($this->session->flashdata('error')) {

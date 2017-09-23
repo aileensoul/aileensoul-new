@@ -20,7 +20,7 @@
            <div class="container">
    <div class="col-md-3"> 
 </div>
-      <div class="col-md-7 col-sm-12 follow_mid mob-plr0">
+      <div class="col-md-8 col-sm-12 follow_mid mob-plr0">
       <div>
          <?php
             if ($this->session->flashdata('error')) {
@@ -39,10 +39,9 @@
                     <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>         
                   <div class="col-md-1">
                   </div>
-               </div>
-                     
             </div>
          </div>
+      </div>
       </div>
       </div>
            </div>

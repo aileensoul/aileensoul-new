@@ -4953,6 +4953,12 @@ div .comment {
         width: 75px;
         height: 75px;
     }
+	/*** follow , unfollow div  ***/
+	.folle_text{width:75%;}
+	.user_lst #unfollowdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
+	.user_lst #unfollowdiv button span{background:url('../../../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+	.user_lst #followdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px; padding:0;}
+	.user_lst #followdiv button span{background:url('../../../img/icon_follow.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
 }
 
 @media screen and (max-width: 540px) {
