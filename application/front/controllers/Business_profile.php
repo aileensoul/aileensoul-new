@@ -3614,7 +3614,7 @@ class Business_profile extends MY_Controller {
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
@@ -3704,7 +3704,7 @@ class Business_profile extends MY_Controller {
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $third_user_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';
@@ -3869,7 +3869,7 @@ class Business_profile extends MY_Controller {
 // $follow = '<button id="unfollow' . $business_id . '" onClick="unfollowuser(' . $business_id . ')">
 //                Following
 //       </button>';
-                $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')">Follow</button>';
+                $unfollow .= '<button class="follow' . $business_id . '" onClick="followuser_two(' . $business_id . ')"><span>Follow</span></button>';
                 $unfollow .= '</div>';
                 echo $unfollow;
             }
@@ -4055,13 +4055,13 @@ class Business_profile extends MY_Controller {
                 if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_from'] != $busdatauser[0]['business_profile_id']) {
 
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "followdiv">
-                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')">Follow</button>
+                                                                                    <button id="follow' . $user['follow_from'] . '" onClick="followuser_two(' . $user['follow_from'] . ')"><span>Follow</span></button>
                                                                                 </div>';
                 } else if ($user['follow_from'] == $busdatauser[0]['business_profile_id']) {
                     
                 } else {
                     $return_html .= '<div class="user_btn follow_btn_' . $user['follow_from'] . '" id= "unfollowdiv">
-                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>Following</span></button>
+                                                                                    <button class="bg_following" id="unfollow' . $user['follow_from'] . '" onClick="unfollowuser_two(' . $user['follow_from'] . ')"><span>>Following</span></button>
                                                                                 </div>';
                 }
                 $return_html .= '</li>
@@ -4228,7 +4228,7 @@ class Business_profile extends MY_Controller {
                     if (($status_list[0]['follow_status'] == 0 || $status_list[0]['follow_status'] == ' ' ) && $user['follow_to'] != $busdatauser[0]['business_profile_id']) {
                         $return_html .= '<div class="user_btn follow_btn_' . $user['follow_to'] . '" id= "followdiv">
                                             <button id="<?php
-                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')">Follow</button>
+                                                    echo "follow"' . $user['follow_to'] . '" onClick="followuser_two(' . $user['follow_to'] . ')"><span>Follow</span></button>
                             </div>';
                     } else if ($user['follow_to'] == $busdatauser[0]['business_profile_id']) {
                         
@@ -12198,7 +12198,7 @@ Your browser does not support the audio tag.
       </div>
       <div class = "follow_left_box_main_btn">';
                     $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button>
       </div>
       </div>
@@ -12271,7 +12271,7 @@ Your browser does not support the audio tag.
       </div>
       <div class = "follow_left_box_main_btn">
       <div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button>
       </div>
       </div>
@@ -12340,7 +12340,7 @@ Your browser does not support the audio tag.
       </div>
       <div class = "follow_left_box_main_btn">
       <div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button>
       </div>
       </div>
@@ -12412,7 +12412,7 @@ Your browser does not support the audio tag.
       </div>
       <div class = "follow_left_box_main_btn">
       <div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button>
       </div>
       </div>
@@ -12516,7 +12516,7 @@ Your browser does not support the audio tag.
       </a></div></li></ul></div>
       <div class = "follow_left_box_main_btn">';
                     $return_html .= '<div class = "fr' . $userlist['business_profile_id'] . '">
-      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')">Follow
+      <button id = "followdiv' . $userlist['business_profile_id'] . '" onClick = "followuser_two(' . $userlist['business_profile_id'] . ')"><span>Follow</span>
       </button></div></div><span class = "Follow_close" onClick = "followclose(' . $userlist['business_profile_id'] . ')">
       <i class = "fa fa-times" aria-hidden = "true"></i></span></div>
       </div></div></li>';

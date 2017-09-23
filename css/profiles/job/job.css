@@ -1,6 +1,13 @@
 /***  job  ***/
 /*** common css for job recrutor and freelancer  ***/
-
+.custom_footer_left ul li a:focus{color: #1B8AB9 !important;}
+.profile-job-post-detail .profile-job-post-title .button:focus{
+    background: #1B8AB9;color: white;}
+    .edit_profile_progress:focus {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+    cursor: pointer !important;
+}
+.hs-submit input[type=submit]:focus{background:#156f95;}
 .common-form select:focus {
     border: 1px solid #1b8ab9 !important;
     color: #1b8ab9!important;

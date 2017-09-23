@@ -47,11 +47,11 @@
                         <fieldset class="fresher_radio col-xs-12" >
                            <label>Fresher <font  color="red">*</font> : </label>
                            <div class="main_raio">
-                              <input type="radio" value="Fresher" tabindex="" id="test1" name="fresher" class="radio_job" id="fresher">
+                              <input type="radio" value="Fresher" tabindex="4" id="test1" name="fresher" class="radio_job" id="fresher">
                               <label for="test1" class="point_radio" >Yes</label>
                            </div>
                            <div class="main_raio">
-                              <input type="radio" tabindex="" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" checked>
+                              <input type="radio" tabindex="5" value="Experience" id="test2" class="radio_job" name="fresher" id="fresher" checked>
                               <label for="test2" class="point_radio">No</label>
                            </div>
                         </fieldset>

@@ -169,8 +169,8 @@ function remove_post(abc)
             $('#' + 'removeapply' + abc).html(data);
             $('#' + 'removeapply' + abc).parent().removeClass();
             var numItems = $('.contact-frnd-post .job-contact-frnd').length;
-            if (numItems === '0') {
-                var nodataHtml = "<div class='text-center rio'><h4 class='page-heading  product-listing' style='border:0px;margin-bottom: 11px;'>No Post Found.</h4></div>";
+            if (numItems == '0') {
+                var nodataHtml = '<div class="art-img-nn"><div class="art_no_post_img"><img src="../img/free-no1.png"></div><div class="art_no_post_text">No Project Found</div></div>';
                 $('.contact-frnd-post').html(nodataHtml);
             }
         }

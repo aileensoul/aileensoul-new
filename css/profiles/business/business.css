@@ -661,7 +661,7 @@ label.cameraButton:active {
     margin-right: 6px;
 }
 .custom-right-business {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 .fixed_right_display {
     margin-top: 0 !important;
@@ -1823,6 +1823,10 @@ label.cameraButton:active {
 }
 .profile-left {
     float: left;
+    width: 100%;
+}
+.other-profile-menu .profile-left {
+    float: left;
     width: 80%;
 }
 .profile-head-text {
@@ -2439,7 +2443,7 @@ label.cameraButton:active {
     height: 100%;
 }
 .profile-job-post-location-name {
-    padding: 12px 21px;
+    padding: 12px 10px;
     font-weight: bold;
 }
 .profile-job-post-location-name ul {
@@ -4325,6 +4329,7 @@ div .comment {
     .right_left_box_design {
         padding: 10px 7px 8px 7px !important;
     }
+	.folle_text{width:64%;}
 	
 }
 @media screen and (max-width: 1024px) {
@@ -4683,6 +4688,7 @@ div .comment {
         float: none;
     }
 	.post-design-name {width:84%; padding-right:0;}
+	.folle_text{width:66%;}
 }
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
@@ -4917,8 +4923,12 @@ div .comment {
         padding: 10px 17px 12px !important;
     }
     .buisness-menu::before {
-        top: 114px;
+        bottom: 48px;
     }
+	.other-profile-menu .buisness-menu::before {
+        bottom: 92px;
+    }
+	
     .business-profile-right .profile-main-box-buis-menu ul li {
         padding-right: 2px;
     }
@@ -5062,6 +5072,9 @@ div .comment {
         width: 92%;
     }
     .profile-left {
+        width: 100%;
+    }
+	..other-profile-menu .profile-left {
         width: 76%;
     }
     #contact_per {
@@ -5092,8 +5105,10 @@ div .comment {
 	.post-design-name ul li .post_dot{font-size:12px; line-height:16px;}
 	.ctre_date{font-size:11px; line-height:1;}
 	.post-design-name ul li a{font-size:12px; line-height:1;}
+	.profile-job-post-location-name{padding-left:10px; padding-right:10px;}
+	.text-center.tab-block .mob-inner-page a:last-child{text-transform:uppercase;}
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
         font-size: 18px;
     }
@@ -5211,8 +5226,17 @@ div .comment {
         height: 75px;
     }
 	.profile-left {
+        width: 100%;
+    }
+	.other-profile-menu .profile-left {
         width: 65%;
     }
+	
+	/*** follow , unfollow div  ***/
+	.user_lst #unfollowdiv button{background:none !important; border:none; font-size:0 !important; width:40px; height:40px;}
+	.user_lst #unfollowdiv button span{background:url('../../../img/icon_following.png'); border:none; font-size:0 !important; width:40px; height:40px; display:block; background-size:100%;}
+	.user_lst #unfollowdiv button.bg_following{background:#ff000 !important;}
+	
 }
 @media screen and (max-width: 540px) {
     .reactivate_btn_n,
@@ -5325,8 +5349,12 @@ div .comment {
         right: 28px;
     }
     .profile-left {
+        width: 100%;
+    }
+	.other-profile-menu .profile-left {
         width: 52%;
     }
+	
     .four-image img {
         width: 280px;
         height: 150px;
@@ -5521,10 +5549,11 @@ div .comment {
         font-size: 14px !important;
     }
     .bui-menu-profile .profile-head-text {
-        width: 100%;
+        /*width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+        text-overflow: ellipsis;*/
+		padding-right:15px;
     }
     .profile-head-text {
         margin-top: 8px;
@@ -5695,6 +5724,7 @@ div .comment {
         padding: 3px 5px 12px !important;
     }
 	.post-design-name{width:74%;}
+	.in_mian_chng{margin-top:-25px;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {
