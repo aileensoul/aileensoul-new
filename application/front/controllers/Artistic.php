@@ -3433,12 +3433,12 @@ public function ajax_userlist() {
             if ($status == 0 || $status == " ") {
                 $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                 <button id="follow' . $user['art_id'] . '" onClick="followuser(' . $user['art_id'] . ')">
-                                                                                    Follow 
+                                                                                  <span> Follow </span>
                                                                                 </button></div>';
             } elseif ($status == 1) {
                 $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                                                                 <button class="bg_following" id="unfollow' . $user['art_id'] . '" onClick="unfollowuser(' . $user['art_id'] . ')">
-                                                                                    Following 
+                                                                                 <span>   Following </span>
                                                                                 </button></div>';
             }
             $return_html .= '</li>
@@ -3536,7 +3536,7 @@ public function ajax_userlist() {
 
                 $follow = '<div id= "unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">
-                               Following 
+                           <span>    Following </span>
                       </button>';
                 $follow .= '</div>';
                 
@@ -3582,7 +3582,7 @@ public function ajax_userlist() {
 
                 $follow = '<div id= "unfollowdiv" class="user_btn">';
                 $follow .= '<button class="bg_following" id="unfollow' . $art_id . '" onClick="unfollowuser(' . $art_id . ')">
-                               Following 
+                             <span>  Following </span>
                       </button>';
                 $follow .= '</div>';
 
@@ -3646,7 +3646,7 @@ public function ajax_userlist() {
 
 
                 $unfollow = '<div id= "followdiv" class="user_btn"><button id="follow' . $art_id . '" onClick="followuser(' . $art_id . ')">
-                               Follow 
+                             <span>  Follow </span>
                       </button></div>';
 
                 $datacount = '('.count($followcount).')';
@@ -4358,7 +4358,7 @@ public function followtwo() {
                   </button></div>'; */
                 $unfollow = '<div id="followdiv">';
                 $unfollow .= '<button id="follow'.$art_id.'" onClick="followuser(' . $art_id . ')">
-                               Follow 
+                             <span>  Follow </span>
                       </button></div>';
 
                 echo $unfollow;
@@ -4406,11 +4406,11 @@ public function followtwo() {
 
 
                 /*  $unfollow = '<div><button id="follow' . $art_id.'" onClick="followuser('.$art_id.')">
-                  Follow
+                 <span>Follow</span>
                   </button></div>'; */
                 $unfollow = '<div class=" user_btn follow_btn_'.$art_id.'" id="followdiv">';
                 $unfollow .= '<button id="follow'.$art_id.'" onClick="followuser_two(' . $art_id . ')">
-                               Follow 
+                              <span>Follow</span> 
                       </button></div>';
 
                 $datacount = '('.count($followcount).')';
@@ -16812,14 +16812,14 @@ public function get_artistic_name($id=''){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
                                             <button id="follow' . $key['art_id'].'" onClick="followuser('.$key['art_id'].')">
-                                             Follow 
+                                            <span>Follow</span> 
                                              </button>
                                           </div>';
                                            } elseif($status == 1){ 
 
                                           $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                          <button class="bg_following" id="unfollow' . $key['art_id'].'" onClick="unfollowuser('.$key['art_id'].') ">
-                                          Following 
+                                       <span>   Following </span>
                                         </button></div>';
 
                                            }
@@ -17739,14 +17739,14 @@ public function get_artistic_name($id=''){
 
                                  $return_html .= '<div id="followdiv " class="user_btn">
                                             <button id="follow' . $key['art_id'].'" onClick="login_profile();">
-                                             Follow 
+                                            <span>Follow</span> 
                                              </button>
                                           </div>';
                                            } elseif($status == 1){ 
 
                                           $return_html .= '<div id= "unfollowdiv"  class="user_btn" > 
                                          <button class="bg_following" id="unfollow' . $key['art_id'].'" onClick="login_profile();">
-                                          Following 
+                                         <span> Following </span>
                                         </button></div>';
 
                                            }
