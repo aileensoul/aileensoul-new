@@ -106,7 +106,7 @@
                            </fieldset>
                            <fieldset <?php if ($dob) { ?> class="error-msg" <?php } ?>>
                               <label>Date of Birth:<span class="red">*</span></label>
-                              <input type="hidden" id="datepicker" tabindex="5" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+                              <input type="hidden" id="datepicker" tabindex="5" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value" >
                               <?php echo form_error('dob'); ?>
                            </fieldset>
                            <fieldset class="gender-custom" <?php if ($gender) { ?> class="error-msg" <?php } ?>>
