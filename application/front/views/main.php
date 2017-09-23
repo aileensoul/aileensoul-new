@@ -113,7 +113,7 @@
                                 <input type="password" tabindex="2" name="password_login" id="password_login" class="form-control input-sm" placeholder="Password">
                             </div>
                             <div class="btn-right">
-                                <button tabindex="2" class="btn1">Login</button>
+                                <button id="login-new" tabindex="2" class="btn1">Login</button>
                                 <a tabindex="4" id="myBtn" class="f-pass" href="javascript:void(0)">Forgot Password?</a>
                             </div>
                         </form>
@@ -260,7 +260,7 @@
                                         <a href="<?php echo base_url('terms-and-condition'); ?>" title="Terms and Condition" tabindex="14" target="_blank">Terms and Condition</a> and <a tabindex="15" href="<?php echo base_url('privacy-policy'); ?>" title="Privacy policy" target="_blank">Privacy policy</a>.
                                     </p>
                                     <p>
-                                        <button tabindex="13" class="btn1">Create an account</button>
+                                        <button id="create-acc-new" tabindex="13" class="btn1">Create an account</button>
                                     </p>
                                 </form>
                             </div>
