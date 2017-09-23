@@ -87,17 +87,16 @@ $.validator.addMethod("required1", function (value, element, regexpr) {
 }, "Last Date of apply is required.");
 //   validation border is not show in last date end 
 //VALIDATION FOR ESTIMATE TIME NOT ACCEPT ONLY NUMBER START
-$.validator.addMethod("regx_num_space", function(value, element, regexpr) {          
+$.validator.addMethod("regx_num_space", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
-     if(!value) 
-            {
-                return true;
-            }
-            else
-            {
-                  return regexpr.test(value);
-            }
-     // return regexpr.test(value);
+    if (!value)
+    {
+        return true;
+    } else
+    {
+        return regexpr.test(value);
+    }
+    // return regexpr.test(value);
 }, "Please add proper Estimated time. Eg: '3 month' or '3 Year' ");
 //VALIDATION FOR ESTIMATE TIME NOT ACCEPT ONLY NUMBER END
 $(document).ready(function () {
@@ -110,7 +109,7 @@ $(document).ready(function () {
             },
             skills: {
                 required: true,
-                regx:/^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
+                regx: /^[-@./#&+,\w\s]*[a-zA-Z][a-zA-Z0-9]*/
             },
             fields_req: {
                 required: true,
@@ -273,6 +272,7 @@ $(function () {
         dayLabel: 'DD',
         monthLabel: 'MM',
         yearLabel: 'YYYY',
+
         //startDate: today,
     });
 
@@ -344,41 +344,61 @@ $(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-  
+
     var item = $(this);
-     var other_field = (item.val());
-     
-     if(other_field == 15){
-         item.val('');
-         $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
-                        $('.message #field').on('click', function () {
-                            var $textbox = $('.message').find('input[type="text"]'),
-                                    textVal = $textbox.val();
-                            $.ajax({
-                                type: 'POST',
-                                url:  base_url + "freelancer/freelancer_hire_other_field" ,
-                                dataType: 'json',
-                                data: 'other_field=' + textVal,
-                                success: function (response) {
+    var other_field = (item.val());
 
-                                    if (response.select == 0)
-                                    {
-                                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                                    } else if (response.select == 1)
-                                    {
-                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                                    } else
-                                    {
-                                        $.fancybox.close();
+    if (other_field == 15) {
+        item.val('');
+        $.fancybox.open('<div class="message" style="width:300px;"><h2>Add Field</h2><input type="text" name="other_field" id="other_field" onkeypress="return remove_validation()"><div class="fw"><a id="field" class="btn">OK</a></div></div>');
 
-                                        $('.field_other').html(response.select);
-                                    }
-                                }
-                            });
+        $('.message #field').on('click', function () {
+            $("#other_field").removeClass("keyskill_border_active");
+            $('#field_error').remove();
 
-                        });
-     }
-    
- });
+            var x = $.trim(document.getElementById("other_field").value);
+            if (x == '') {
+                $("#other_field").addClass("keyskill_border_active");
+                $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+                return false;
+            } else {
+                var $textbox = $('.message').find('input[type="text"]'),
+                        textVal = $textbox.val();
+                $.ajax({
+                    type: 'POST',
+                    url: base_url + "freelancer/freelancer_hire_other_field",
+                    dataType: 'json',
+                    data: 'other_field=' + textVal,
+                    success: function (response) {
+
+                        if (response.select == 0)
+                        {
+//                            $.fancybox.open('<div class="message" ><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                            $("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Written field already available in Field Selection</span>').insertAfter('#other_field');
+                        } else if (response.select == 1)
+                        {
+                            $("#other_field").addClass("keyskill_border_active");
+                            $('<span class="error" id="field_error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>').insertAfter('#other_field');
+//                                          $('#other_field').parent().append('<span class="error" style="float: right;color: red; font-size: 11px;">Empty Field  is not valid</span>');
+//                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                        } else
+                        {
+                            $.fancybox.close();
+                            $('.field_other').html(response.select);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+});
+
+function remove_validation() {
+
+    $("#other_field").removeClass("keyskill_border_active");
+    $('#field_error').remove();
+
+}
 //SCRIPT FOR ADD OTHER FILED END
-
