@@ -37,14 +37,14 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
-        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        if ($jobdata) {
+        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+        if ($jobdata[0]['total'] != 0) {
             $this->load->view('job/reactivate', $this->data);
         } else {
             $this->job_apply_check();
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-            $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($job[0]['job_step'] == 10) {
                 redirect('job/home', refresh);
@@ -62,13 +62,14 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         //Retrieve Data from main user registartion table start
+        $data='first_name,last_name,user_email,user_gender,user_dob';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //Retrieve Data from main user registartion table end
-
+        $data='fname,lname,email,phnno,pincode,address,dob,gender,job_step,city_id,language,count(*) as total';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //echo "<pre>"; print_r($userdata);die();
         $contition_array = array('status' => '1');
         $this->data['nation'] = $this->common->select_data_by_condition('nation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -76,7 +77,7 @@ class Job extends MY_Controller {
         $contition_array = array('status' => 1);
         $this->data['language1'] = $this->common->select_data_by_condition('language', $contition_array, $data = '*', $sortby = 'language_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
             if ($step == 1 || $step > 1) {
@@ -93,7 +94,7 @@ class Job extends MY_Controller {
 
         //Retrieve City data Start   
         $contition_array = array('status' => '1', 'city_id' => $userdata[0]['city_id']);
-        $citytitle = $this->common->select_data_by_condition('cities', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $citytitle = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['city_title'] = $citytitle[0]['city_name'];
         //Retrieve City data End
@@ -101,7 +102,7 @@ class Job extends MY_Controller {
         $language_know = explode(',', $userdata[0]['language']);
         foreach ($language_know as $lan) {
             $contition_array = array('language_id' => $lan, 'status' => 1);
-            $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_id,language_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
             $detailes[] = $languagedata[0]['language_name'];
         }
 
@@ -140,8 +141,8 @@ class Job extends MY_Controller {
             foreach ($language as $lan) {
 
                 $contition_array = array('language_name' => trim($lan), 'status' => 1);
-                $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_id,language_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-                if ($languagedata) {
+                $languagedata = $this->common->select_data_by_condition('language', $contition_array, $data = 'language_id,count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+                if ($languagedata[0]['total'] != 0) {
                     $language_know[] = $languagedata[0]['language_id'];
                 }
             }
@@ -152,8 +153,8 @@ class Job extends MY_Controller {
         $city = $this->input->post('city');
         if ($city != " ") {
             $contition_array = array('city_name' => $city, 'status' => '1');
-            $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,city_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
-            if ($citydata) {
+            $citydata = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id,count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str5 = '', $groupby = '');
+            if ($citydata[0]['total'] != 0) {
                 $citytitle = $citydata[0]['city_id'];
             }
         }
@@ -203,7 +204,7 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'email', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $email1 = $userdata[0]['email'];
 
@@ -244,44 +245,47 @@ class Job extends MY_Controller {
         //for getting degree data Strat
         $contition_array = array('is_delete' => '0', 'degree_name !=' => "Other");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $degree_data = $this->data['degree_data'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $degree_data = $this->data['degree_data'] = $this->common->select_data_by_search('degree', $search_condition, $contition_array, $data = 'degree_id,degree_name', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('status' => 1, 'is_delete' => '0', 'degree_name' => "Other");
-        $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = '*', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['degree_otherdata'] = $this->common->select_data_by_condition('degree', $contition_array, $data = 'degree_id,degree_name', $sortby = 'degree_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         //for getting degree data End
         //for getting univesity data Start
         $contition_array = array('is_delete' => '0', 'university_name !=' => "Other");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $university_data = $this->data['university_data'] = $this->common->select_data_by_search('university', $search_condition, $contition_array, $data = '*', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $university_data = $this->data['university_data'] = $this->common->select_data_by_search('university', $search_condition, $contition_array, $data = 'university_id,university_name', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('is_delete' => '0', 'status' => 1, 'university_name' => "Other");
-        $this->data['university_otherdata'] = $this->common->select_data_by_condition('university', $contition_array, $data = '*', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['university_otherdata'] = $this->common->select_data_by_condition('university', $contition_array, $data = 'university_id,university_name', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //for getting univesity data End
         //For getting all Stream Strat
         $contition_array = array('is_delete' => '0', 'stream_name !=' => "Other");
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+        $stream_alldata = $this->data['stream_alldata'] = $this->common->select_data_by_search('stream', $search_condition, $contition_array, $data = 'stream_id,stream_name', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
 
         $contition_array = array('status' => 1, 'is_delete' => 0, 'stream_name' => "Other");
-        $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = '*', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
+        $stream_otherdata = $this->data['stream_otherdata'] = $this->common->select_data_by_condition('stream', $contition_array, $data = 'stream_id,stream_name', $sortby = 'stream_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = 'stream_name');
         //For getting all Stream End
 
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total,job_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
             if ($step == 3 || ($step >= 1 && $step <= 3) || $step > 3) {
 
                 $userid = $this->session->userdata('aileenuser');
 
-                $contition_array = array('user_id' => $userid, 'grad_step' => 1, 'status' => 1);
-                $jobdata1 = $this->data['jobdata1'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $data='edu_id,board_primary,school_primary,percentage_primary,pass_year_primary,edu_certificate_primary,board_secondary,school_secondary,percentage_secondary,pass_year_secondary,edu_certificate_secondary,board_higher_secondary,stream_higher_secondary,school_higher_secondary,percentage_higher_secondary,pass_year_higher_secondary,edu_certificate_higher_secondary';
+                $contition_array = array('user_id' => $userid, 'status' => 1);
+                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+                $data='job_graduation_id,degree,stream,university,college,grade,percentage,pass_year,edu_certificate';
                 $contition_array = array('user_id' => $userid);
-                $jobgrad = $this->data['jobgrad'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $jobgrad = $this->data['jobgrad'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
             }
         }
 
@@ -297,10 +301,6 @@ class Job extends MY_Controller {
         $this->job_deactive_profile();
 
         $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         //S3 BUCKET ACCESS START
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -419,10 +419,10 @@ class Job extends MY_Controller {
 
 
         $contition_array = array('user_id' => $userid);
-        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $edu_certificate_primary = $_FILES['edu_certificate_primary']['name'];
 
             if ($edu_certificate_primary == "") {
@@ -483,9 +483,6 @@ class Job extends MY_Controller {
         $this->job_deactive_profile();
 
         $userid = $this->session->userdata('aileenuser');
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         //S3 BUCKET ACCESS START
         $s3 = new S3(awsAccessKey, awsSecretKey);
@@ -605,9 +602,9 @@ class Job extends MY_Controller {
         $job_certificate = $imgdata['file_name'];
 
         $contition_array = array('user_id' => $userid);
-        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $edu_certificate_secondary = $_FILES['edu_certificate_secondary']['name'];
 
             if ($edu_certificate_secondary == "") {
@@ -669,10 +666,6 @@ class Job extends MY_Controller {
 
         $this->job_deactive_profile();
         $userid = $this->session->userdata('aileenuser');
-
-        $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $jobdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
 
         $error = '';
 
@@ -790,9 +783,9 @@ class Job extends MY_Controller {
 
         $job_certificate = $imgdata['file_name'];
         $contition_array = array('user_id' => $userid);
-        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
 
             $edu_certificate_higher_secondary = $_FILES['edu_certificate_higher_secondary']['name'];
 
@@ -869,9 +862,9 @@ class Job extends MY_Controller {
 
 
             $contition_array = array('user_id' => $userid);
-            $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $count = count($jobdata);
+            $count = $jobdata[0]['total'];
 
             if ($count != 5) {
 
@@ -985,8 +978,8 @@ class Job extends MY_Controller {
                 //S3 BUCKET STORE THUMB IMAGE END
 
                 $contition_array = array('user_id' => $userid);
-                $job_reg_data = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $count_data = count($job_reg_data);
+                $job_reg_data = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = 'count(*) as total,edu_certificate,job_graduation_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $count_data = $job_reg_data[0]['total'];
 
                 for ($x = 0; $x < $count_data; $x++) {
                     $job_reg_prev_image = $job_reg_data[$x]['edu_certificate'];
@@ -1027,9 +1020,9 @@ class Job extends MY_Controller {
         // Multiple Image insert code End
 
         $contition_array = array('user_id' => $userid);
-        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = 'count(*) as total,job_graduation_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($jobdata) {
+        if ($jobdata[0]['total'] != 0) {
 
 
             //Edit Multiple field into database Start 
@@ -1129,13 +1122,12 @@ class Job extends MY_Controller {
 
         $userid = $this->session->userdata('aileenuser');
 
+        $data='count(*) as total,project_name,project_duration,project_description,training_as,training_duration,training_organization,job_step';
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
+        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        $userdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
             if ($step == 4 || ($step >= 1 && $step <= 4) || $step > 4) {
@@ -1202,30 +1194,12 @@ class Job extends MY_Controller {
         $search_condition = "((status = '1'))";
         $university_data = $this->data['industry'] = $this->common->select_data_by_search('job_industry', $search_condition, $contition_array, $data = 'industry_id,industry_name', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $contition_array = array('status' => '1', 'type' => '1');
-        $this->data['skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        $contition_array = array('user_id' => $userid, 'status' => '1', 'type' => '4');
-        $this->data['skill_other'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-
-        $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-
-        $userdata = $this->data['jobskill'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-        if ($userdata) {
-            $step = $userdata[0]['job_step'];
-
-            if ($step == 5 || ($step >= 1 && $step <= 5) || $step > 5) {
-                $this->data['keyskill1'] = $userdata[0]['keyskill'];
-            }
-        }
 
         $contition_array = array('status' => '1', 'is_delete' => 0, 'user_id' => $userid);
         $post = $this->data['postdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_id,work_job_title,work_job_industry,work_job_city,keyskill', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('title_id' => $post[0]['work_job_title']);
-        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $jobtitle = $this->common->select_data_by_condition('job_title', $contition_array, $data = 'name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $this->data['work_title'] = $jobtitle[0]['name'];
 
@@ -1364,9 +1338,6 @@ class Job extends MY_Controller {
 
             //update data in table start
 
-            $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
-            $userstepdata = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
             $data = array(
                 'keyskill' => $skills,
                 'work_job_title' => $jobtitle,
@@ -1398,15 +1369,16 @@ class Job extends MY_Controller {
         $contition_array = array('user_id' => $userid, 'is_delete' => 0, 'status' => 1);
 
 
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total,job_step,experience', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
             $step = $userdata[0]['job_step'];
 
             if ($step == 7 || ($step >= 1 && $step <= 7) || $step > 7) {
 
+                $data='work_id,experience_year,experience_month,jobtitle,companyname,companyemail,companyphn,work_certificate';
                 $contition_array = array('user_id' => $userid, 'experience !=' => 'Fresher', 'status' => 1);
-                $workdata = $this->data['workdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $workdata = $this->data['workdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data, $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             }
         }
 
@@ -1452,10 +1424,10 @@ class Job extends MY_Controller {
 
 
                 $contition_array = array('user_id' => $userid, 'status' => 1);
-                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 //update data at job_add_workexp for fresher table start
-                if ($jobdata) {
+                if ($jobdata[0]['total'] != 0) {
 
                     $data1 = array(
                         'experience' => $exp,
@@ -1654,10 +1626,10 @@ class Job extends MY_Controller {
                 // Multiple Image insert code End
 
                 $contition_array = array('user_id' => $userid, 'status' => 1);
-                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 //update data at job_add_workexp for Experience table start
-                if ($jobdata) {
+                if ($jobdata[0]['total'] != 0) {
 
                     //Edit Multiple field into database Start 
                     for ($x = 0; $x < $count1; $x++) {
@@ -1722,9 +1694,9 @@ class Job extends MY_Controller {
                     //Edit Multiple field into database End 
                     // for deleete fresher data when candidate is experience start
                     $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
-                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $countdata = count($jobdata);
+                    $countdata = $jobdata[0]['total'];
 
                     for ($x = 0; $x < $countdata; $x++) {
 
@@ -1764,9 +1736,9 @@ class Job extends MY_Controller {
                     //Add Multiple field into database End 
                     // for deleete fresher data when candidate is experience start
                     $contition_array = array('user_id' => $userid, 'experience' => 'Fresher', 'status' => '1');
-                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                    $jobdata = $this->common->select_data_by_condition('job_add_workexp', $contition_array, $data = 'count(*) as total,work_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                    $countdata = count($jobdata);
+                    $countdata = $jobdata[0]['total'];
 
                     for ($x = 0; $x < $countdata; $x++) {
 
@@ -1815,7 +1787,11 @@ class Job extends MY_Controller {
 
         if ($slug != $slug_user || $slug == '') {
 
-            $this->job_apply_check();
+            if($slug == '')
+            {
+                $this->job_apply_check();
+            }
+            $this->progressbar();
 
             //for getting data job_reg table
             $contition_array = array('job_reg.user_id' => $userid, 'job_reg.is_delete' => 0, 'job_reg.status' => 1);
@@ -1823,20 +1799,6 @@ class Job extends MY_Controller {
             $data = '*';
 
             $this->data['job'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
-
-            //for getting data job_add_edu table
-            $contition_array = array('user_id' => $userid, 'status' => '1');
-
-            $data = '*';
-
-            $this->data['job_edu'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
-
-            //for getting data of graduation table
-            $contition_array = array('user_id' => $userid);
-
-            $data = '*';
-
-            $this->data['job_graduation'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
 
             //for getting data job_add_workexp table
             $contition_array = array('user_id' => $userid, 'status' => '1');
@@ -1860,13 +1822,13 @@ class Job extends MY_Controller {
 
 
             $contition_array = array('user_id' => $id, 'status' => 1);
-            $this->data['job_edu'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $this->data['job_add_edu'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $id);
 
             $data = '*';
 
-            $this->data['job_graduation'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
+            $this->data['jobgrad'] = $this->common->select_data_by_condition('job_graduation', $contition_array, $data, $sortby, $orderby, $limit, $offset, $join_str, $groupby);
 
             //for getting data job_add_workexp table
             $contition_array = array('user_id' => $id, 'experience' => 'Experience', 'status' => '1');
@@ -1881,7 +1843,7 @@ class Job extends MY_Controller {
             $this->data['other_skill'] = $this->common->select_data_by_condition('skill', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 //For Counting Profile data start
-       $this->progressbar();
+      
 //For Counting Profile data END
 
         $jobseeker_name = $this->get_jobseeker_name($id);
@@ -1891,9 +1853,9 @@ class Job extends MY_Controller {
 
         $id_deactiveuser = $this->db->get_where('job_reg', array('slug' => $slug, 'is_delete' => 0, 'status' => 0))->row()->user_id;
         $contition_array = array('user_id' => $id_deactiveuser, 'is_delete' => '0', 'status' => '0');
-        $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $availuser = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ((count($availuser) > 0 || count($id) == 0) && $slug != '') {
+        if (($availuser[0]['total'] > 0 || count($id) == 0) && $slug != '') {
             $this->load->view('job/notfound');
         } else {
 
@@ -1930,11 +1892,11 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
-        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id,count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $app_id = $userdata[0]['app_id'];
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
 
             $contition_array = array('job_delete' => 1);
             $jobdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'app_id', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2008,6 +1970,7 @@ class Job extends MY_Controller {
                 $applypost = 'Applied';
             }
             echo $applypost;
+            die();
         }
     }
 
@@ -2058,11 +2021,11 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('post_id' => $id, 'user_id' => $userid, 'is_delete' => 0);
-        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = 'post_id', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $userdata = $this->common->select_data_by_condition('job_apply', $contition_array, $data = 'count(*) as total,app_id', $sortby = 'post_id', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $app_id = $userdata[0]['app_id'];
 
-        if ($userdata) {
+        if ($userdata[0]['total'] != 0) {
 
             $contition_array = array('job_delete' => 0);
             $jobdata = $this->common->select_data_by_condition('job_apply', $contition_array = array(), $data = '*', $sortby = 'post_id', $orderby = 'asc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -2098,6 +2061,7 @@ class Job extends MY_Controller {
 
                 $savepost = 'Saved';
             } echo $savepost;
+            die();
         }
     }
 
@@ -2344,7 +2308,7 @@ class Job extends MY_Controller {
 
         $update = $this->common->update_data($data, 'job_reg', 'user_id', $userid);
 
-        $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = '*', $join_str = array());
+        $this->data['jobdata'] = $this->common->select_data_by_id('job_reg', 'user_id', $userid, $data = 'profile_background', $join_str = array());
 
         $coverpic = '<img src = "' . JOB_BG_MAIN_UPLOAD_URL . $this->data['jobdata'][0]['profile_background'] . '" name="image_src" id="image_src" />';
         echo $coverpic;
@@ -2385,6 +2349,7 @@ class Job extends MY_Controller {
         } else {
             echo "welcome";
         }
+        die();
     }
 
     public function ajax_designation() {
@@ -2431,6 +2396,7 @@ class Job extends MY_Controller {
         $path1 = 'uploads/job_work/thumbs/' . $certificate;
 
         echo 1;
+        die();
     }
 
     public function job_edu_delete() {
@@ -2447,9 +2413,13 @@ class Job extends MY_Controller {
         if ($delete_data) {
             echo 1;
         }
+        die();
     }
 
 //reactivate accont end 
+
+//Ahi thi baki  
+    
 //add other_university into database start 
     public function job_other_university() {
         $other_university = $_POST['other_university'];
@@ -2457,8 +2427,8 @@ class Job extends MY_Controller {
 
         $contition_array = array('is_delete' => '0', 'university_name' => $other_university);
         $search_condition = "((status = '2' AND user_id = $userid) OR (status = '1'))";
-        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('university', $search_condition, $contition_array, $data = '*', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $count = count($userdata);
+        $userdata = $this->data['userdata'] = $this->common->select_data_by_search('university', $search_condition, $contition_array, $data = 'count(*) as total', $sortby = 'university_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $count = $userdata[0]['total'];
 
         if ($other_university != NULL) {
             if ($count == 0) {
@@ -2513,6 +2483,7 @@ class Job extends MY_Controller {
             "select" => $select,
             "select1" => $select1,
         ));
+        die();
     }
 
 //add other_university into database End 
@@ -2918,8 +2889,9 @@ class Job extends MY_Controller {
 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
         //Retrieve Data from main user registartion table start
+        $data='first_name,last_name,user_email';
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $this->data['job'] = $this->common->select_data_by_condition('user', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         //Retrieve Data from main user registartion table end
         //skill data fetch
@@ -3045,9 +3017,9 @@ class Job extends MY_Controller {
 
 
         $contition_array = array('user_id' => $userid);
-        $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $job = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($job) {
+        if ($job[0]['total'] != 0) {
             $insert_id = $this->common->update_data($data1, 'job_reg', 'user_id', $userid);
         } else {
             $insert_id = $this->common->insert_data_getid($data1, 'job_reg');
@@ -3068,13 +3040,13 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
 
         $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '0');
-        $apply_step = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $apply_step = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        if (count($apply_step) == 0) {
+        if ($apply_step[0]['total'] == 0) {
 
             $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-            $apply_step = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $apply_step = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'job_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             if ($apply_step[0]['job_step'] == "" || $apply_step[0]['job_step'] == "0") {
 
@@ -3119,9 +3091,9 @@ class Job extends MY_Controller {
         $userid = $this->session->userdata('aileenuser');
         $contition_array = array('user_id' => $userid, 'status' => '0', 'is_delete' => '0');
 
-        $job_deactive = $this->data['job_deactive'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
+        $job_deactive = $this->data['job_deactive'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
 
-        if ($job_deactive) {
+        if ($job_deactive[0]['total'] != 0) {
             redirect('job/');
         }
     }
@@ -4794,10 +4766,10 @@ public function progressbar()
         }
 
         $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
-        $job_add_edu = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         $this->data['job_add_edu']=$job_add_edu = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $contition_array = array('user_id' => $userid);
-        $jobgrad = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+         $this->data['jobgrad']=$jobgrad = $this->common->select_data_by_condition('job_graduation', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
         if ($job_add_edu[0]['board_primary'] != '' || $job_add_edu[0]['board_secondary'] != '' || $job_add_edu[0]['board_higher_secondary'] != '' || $jobgrad[0]['degree'] != '') {

@@ -1942,7 +1942,6 @@ function next_page()
 
       //DELETE PRIMARY CERTIFICATE START
 function delete_primary(edu_id,certificate) {
-  
 $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this primary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
@@ -1969,7 +1968,6 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
 //DELETE SECONDARY CERTIFICATE START
 function delete_secondary(edu_id,certificate) {
-  
 $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want to delete this secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div></div>');
  
       $('.message #delete').on('click', function () {
@@ -1996,7 +1994,6 @@ $.fancybox.open('<div class="p20"><div class="message"><h2>Are you sure you want
 
 //DELETE SECONDARY HIGHER CERTIFICATE START
 function delete_higher_secondary(edu_id,certificate) {
-  
 $.fancybox.open('<div class="message"><h2>Are you sure you want to delete this higher secondary education certificate?</h2><a id="delete" class="mesg_link btn" >OK</a><button data-fancybox-close="" class="btn">Cancel</button></div>');
  
       $('.message #delete').on('click', function () {

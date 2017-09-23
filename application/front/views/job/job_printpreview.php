@@ -512,7 +512,7 @@
                                  </div>
                               </div>
                               <?php
-                                 if($returnpage != 'recruiter' && ($job_edu[0]['board_primary'] == "" && $job_edu[0]['board_secondary'] == "" && $job_edu[0]['board_higher_secondary'] == "" && $job_graduation[0]['degree'] == "" ))
+                                 if($returnpage != 'recruiter' && ($job_add_edu[0]['board_primary'] == "" && $job_add_edu[0]['board_secondary'] == "" && $job_add_edu[0]['board_higher_secondary'] == "" && $jobgrad[0]['degree'] == "" ))
                                  {
                                  ?>
                               <div class="profile-job-post-title clearfix">
@@ -537,7 +537,7 @@
                               <?php 
                                  } else
                                   {
-                                 if(($job_edu || $job_graduation) || ($returnpage == 'recruiter'&& ($job_edu || $job_graduation)))
+                                 if(($job_add_edu || $jobgrad) || ($returnpage == 'recruiter'&& ($job_add_edu || $jobgrad)))
                                  {
                                  ?>
                               <div class="profile-job-post-title clearfix">
@@ -551,86 +551,86 @@
                                        </ul>
                                     </div>
                                  </div>
-                                 <div class="profile-job-profile-menu " id="job_education">
+                                 <div class="profile-job-profile-menu " id="job_add_education">
                                     <ul class="clearfix">
                                        <!--Primary Start-->
                                        <?php
-                                          if ($job_edu) {
-                                              if ($job_edu[0]['board_primary']) {
+                                          if ($job_add_edu) {
+                                              if ($job_add_edu[0]['board_primary']) {
                                           ?>
                                        <div class="text-center">
                                           <h5 class="head_title">Primary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_edu[0]['board_primary']; ?></span>
+                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_primary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_edu[0]['school_primary']; ?></span>
+                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_primary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_edu[0]['percentage_primary']; ?>%</span>
+                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_primary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_edu[0]['pass_year_primary']; ?></span>
+                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_primary']; ?></span>
                                        </li>
                                        <?php
-                                          if ($job_edu[0]['edu_certificate_primary'] != "") {
+                                          if ($job_add_edu[0]['edu_certificate_primary'] != "") {
                                           ?>
                                        <li>
                                           <b>Education Certificate </b>
                                           <span>
                                           <?php
-                                             if ($job_edu[0]['edu_certificate_primary']) {
-                                             $ext = explode('.', $job_edu[0]['edu_certificate_primary']);
+                                             if ($job_add_edu[0]['edu_certificate_primary']) {
+                                             $ext = explode('.', $job_add_edu[0]['edu_certificate_primary']);
                                              if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_primary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_primary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_primary'] ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_primary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }//else complete
-                                             }//if ($job_edu[0]['edu_certificate_primary']) complete
+                                             }//if ($job_add_edu[0]['edu_certificate_primary']) complete
                                              ?>
                                           </span>
                                        </li>
                                        <div id="fade" onClick="lightbox_close();"></div>
                                        <?php
-                                          }//if($job_edu[0]['edu_certificate_primary']) end
+                                          }//if($job_add_edu[0]['edu_certificate_primary']) end
                                           ?>
                                        <?php
-                                          }//if($job_edu[0]['board_primary']) end
-                                          }//if($job_edu) end
+                                          }//if($job_add_edu[0]['board_primary']) end
+                                          }//if($job_add_edu) end
                                           ?>
                                        <!--Primary End-->
                                        <!--Secondary Start-->
                                        <?php
-                                          if ($job_edu[0]['board_secondary']) {
+                                          if ($job_add_edu[0]['board_secondary']) {
                                           ?>
                                        <div class="text-center">
                                           <h5 class="head_title">Secondary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_edu[0]['board_secondary']; ?></span>
+                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_secondary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_edu[0]['school_secondary']; ?></span>
+                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_edu[0]['percentage_secondary']; ?>%</span>
+                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_secondary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_edu[0]['pass_year_secondary']; ?></span>
+                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_secondary']; ?></span>
                                        </li>
                                        <?php
-                                          if ($job_edu[0]['edu_certificate_secondary'] != "") {
+                                          if ($job_add_edu[0]['edu_certificate_secondary'] != "") {
                                           ?>
                                        <li>
                                           <b>Education Certificate </b>
                                           <span>
                                           <?php
-                                             if ($job_edu[0]['edu_certificate_secondary']) {
-                                              $ext = explode('.', $job_edu[0]['edu_certificate_secondary']);
+                                             if ($job_add_edu[0]['edu_certificate_secondary']) {
+                                              $ext = explode('.', $job_add_edu[0]['edu_certificate_secondary']);
                                               if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_secondary'] ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_secondary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }
                                              }
@@ -638,46 +638,46 @@
                                           </span>
                                        </li>
                                        <?php
-                                          }// if ($job_edu[0]['edu_certificate_secondary'] != "")end
+                                          }// if ($job_add_edu[0]['edu_certificate_secondary'] != "")end
                                           ?>
                                        <?php
-                                          }//if($job_edu[0]['board_secondary']) end
+                                          }//if($job_add_edu[0]['board_secondary']) end
                                           ?>
                                        <!--Secondary End-->
                                        <!-- Higher Secondary Start-->
                                        <?php
-                                          if($job_edu[0]['board_higher_secondary']) {
+                                          if($job_add_edu[0]['board_higher_secondary']) {
                                           ?>
                                        <div class="text-center">
                                           <h5 class="head_title">Higher secondary Education</h5>
                                        </div>
-                                       <li> <b>Board </b><span> <?php echo $job_edu[0]['board_higher_secondary']; ?></span>
+                                       <li> <b>Board </b><span> <?php echo $job_add_edu[0]['board_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Stream</b><span> <?php echo $job_edu[0]['stream_higher_secondary']; ?></span>
+                                       <li> <b>Stream</b><span> <?php echo $job_add_edu[0]['stream_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>School </b><span> <?php echo $job_edu[0]['school_higher_secondary']; ?></span>
+                                       <li> <b>School </b><span> <?php echo $job_add_edu[0]['school_higher_secondary']; ?></span>
                                        </li>
-                                       <li> <b>Percentage </b><span> <?php echo $job_edu[0]['percentage_higher_secondary']; ?>%</span>
+                                       <li> <b>Percentage </b><span> <?php echo $job_add_edu[0]['percentage_higher_secondary']; ?>%</span>
                                        </li>
-                                       <li> <b>Year of Passing </b><span> <?php echo $job_edu[0]['pass_year_higher_secondary']; ?></span>
+                                       <li> <b>Year of Passing </b><span> <?php echo $job_add_edu[0]['pass_year_higher_secondary']; ?></span>
                                        </li>
                                        <?php
-                                          if ($job_edu[0]['edu_certificate_higher_secondary'] != "") {
+                                          if ($job_add_edu[0]['edu_certificate_higher_secondary'] != "") {
                                           ?>
                                        <li>
                                           <b>Education Certificate </b>
                                           <span>
                                           <?php
-                                             if ($job_edu[0]['edu_certificate_higher_secondary']) 
+                                             if ($job_add_edu[0]['edu_certificate_higher_secondary']) 
                                              {
-                                                 $ext = explode('.', $job_edu[0]['edu_certificate_higher_secondary']);
+                                                 $ext = explode('.', $job_add_edu[0]['edu_certificate_higher_secondary']);
                                                  if ($ext[1] == 'pdf') {
                                              ?>
-                                          <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_higher_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                          <a title="open pdf" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_higher_secondary'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                           <?php
                                              } else {
                                              ?>
-                                          <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $job_edu[0]['edu_certificate_higher_secondary'] ?>" data-lightbox="example-1">certificate </a>
+                                          <a class="example-image-link" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $job_add_edu[0]['edu_certificate_higher_secondary'] ?>" data-lightbox="example-1">certificate </a>
                                           <?php
                                              }
                                              }
@@ -691,14 +691,14 @@
                                           </div>
                                        </li>
                                        <?php
-                                          }// if ($job_edu[0]['edu_certificate_higher_secondary'] != "") end
+                                          }// if ($job_add_edu[0]['edu_certificate_higher_secondary'] != "") end
                                           ?>
                                        <?php
-                                          }//if($job_edu[0]['board_higher_secondary']) End
+                                          }//if($job_add_edu[0]['board_higher_secondary']) End
                                           ?>
                                        <!-- Higher Secondary End-->
                                        <!-- Degree Start -->
-                                       <?php if ($job_graduation) 
+                                       <?php if ($jobgrad) 
                                           { 
                                           ?>
                                        <div class="text-center">
@@ -706,7 +706,7 @@
                                        </div>
                                        <?php
                                           $i = 1;
-                                          foreach ($job_graduation as $graduation) {
+                                          foreach ($jobgrad as $graduation) {
                                           if ($graduation['degree']) {
                                           ?>
                                        <div id="gra<?php echo $i; ?>" class="tabcontent data_exp">
@@ -785,11 +785,11 @@
                                                 $ext = explode('.', $graduation['edu_certificate']);
                                                                                           if ($ext[1] == 'pdf') {
                                                                                       ?>
-                                             <a title="open pdf" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
+                                             <a title="open pdf" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red; padding-left: 8px; padding-top: 10px; padding-bottom: 10px; position: relative;" aria-hidden="true"></i></a>
                                              <?php
                                                 } else {
                                                 ?>
-                                             <a class="example-image-link" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>" data-lightbox="example-1">certificate <?php echo $new; ?></a>
+                                             <a class="example-image-link" href="<?php echo job_add_edu_MAIN_UPLOAD_URL . $graduation['edu_certificate'] ?>" data-lightbox="example-1">certificate <?php echo $new; ?></a>
                                              <?php
                                                 }
                                                 ?>
@@ -805,29 +805,29 @@
                                           }//For loop end
                                           ?> 
                                        <div class="tab pagi_exp" onload="openCity(event, 'gra1')">
-                                          <?php   if (count($job_graduation) > 1) 
+                                          <?php   if (count($jobgrad) > 1) 
                                              { 
                                              ?>
                                           <button class="tablinks  " onclick="openCity(event, 'gra1')">1</button>
                                           <?php   } ?>
-                                          <?php if (count($job_graduation) >= 2) 
+                                          <?php if (count($jobgrad) >= 2) 
                                              { 
                                              ?>
                                           <button class="tablinks" onclick="openCity(event, 'gra2')">2</button>
                                           <?php   } 
-                                             if (count($job_graduation) >= 3) 
+                                             if (count($jobgrad) >= 3) 
                                              { 
                                              ?>
                                           <button class="tablinks" onclick="openCity(event, 'gra3')">3</button>
                                           <?php   } 
                                              ?>
-                                          <?php   if (count($job_graduation) >= 4) 
+                                          <?php   if (count($jobgrad) >= 4) 
                                              { 
                                              ?>
                                           <button class="tablinks" onclick="openCity(event, 'gra4')">4</button>
                                           <?php   } 
                                              ?>
-                                          <?php   if (count($job_graduation) >= 5) 
+                                          <?php   if (count($jobgrad) >= 5) 
                                              {
                                              ?>
                                           <button class="tablinks" onclick="openCity(event, 'gra5')">5</button>
@@ -835,7 +835,7 @@
                                              ?>
                                        </div>
                                        <?php
-                                          }//if ($job_graduation) end
+                                          }//if ($jobgrad) end
                                           ?>
                                        <!-- Degree End -->
                                     </ul>
