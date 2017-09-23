@@ -1531,9 +1531,7 @@ label.cameraButton:active {
     display: inline-block;
     font-size: 13px;
 }
-.comment-details-menu a:hover {
-    text-decoration: underline;
-}
+
 .comment-details-menu {
     display: inline-block;
     font-weight: 400;
