@@ -281,6 +281,9 @@ $(function () {
 
         //startDate: today,
     });
+    $(".day").attr('tabindex', 12);
+    $(".month").attr('tabindex', 13);
+    $(".year").attr('tabindex', 14);
 
 });
 //SCRIPT FOR DATEPICKER END 
