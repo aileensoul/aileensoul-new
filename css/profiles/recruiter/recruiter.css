@@ -525,8 +525,6 @@ label.cameraButton input[accept*="camera"] {display: none;}
 	
 
  /*right button*/   
-	
-
 .flw_msg_btn ul {
     list-style-type: none;
     line-height: 18px;
@@ -561,7 +559,6 @@ label.cameraButton input[accept*="camera"] {display: none;}
     margin-top: 3px;
     /* box-shadow: 2px -2px 8px #9C9999; */
     /* -webkit-box-shadow: 0px 1px 7px #9c9999; */
-    
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     font-weight: bold;
     text-decoration: none;

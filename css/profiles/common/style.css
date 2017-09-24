@@ -946,6 +946,7 @@ label.cameraButton {
     opacity: 0.6;
 }
 .upload-result {color: #fff; background-color: rgba(27, 138, 185, 0.8); border-color: #1b8ab9; margin-right: 10px;}
+/*** all page cover upload lodder  ***/
 #floatBarsG {position: absolute; width: 19%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;}
 .floatBarsG {
     position: absolute;
@@ -1089,6 +1090,7 @@ label.cameraButton input[accept*="camera"] {
 
 /***  end cover  ***/
 
+
 .post-img-div{
     color:#fff;
     width:50px;
@@ -1105,10 +1107,10 @@ label.cameraButton input[accept*="camera"] {
     text-align: center;
     text-transform: uppercase;
     line-height:1;
-	
 }
-
 .fixed_right_display_none{display: none;}
+
+
 /***  notification page  ***/
 .job-saved-box h3 {
     background: #fff !important;
@@ -1176,9 +1178,6 @@ label.cameraButton input[accept*="camera"] {
 
 /***  blog css  ***/
 body.blog{height:auto;}
-.main-menu-right {
-    float: right;
-}
 .user-midd-section {
     float: left;
     margin-bottom: 35px;
@@ -1187,6 +1186,10 @@ body.blog{height:auto;}
     margin-top: 15px;
     width: 100%;
 }
+.main-menu-right {
+    float: right;
+}
+
 
 /*** chat page css  ***/
 .people-list {
@@ -1270,21 +1273,17 @@ body.blog{height:auto;}
 }
 
 .people-list input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-
   font-family:'arial';
 }
 .people-list input::-moz-placeholder { /* Firefox 19+ */
-
   font-family:'arial';
 }
 .people-list input:-ms-input-placeholder { /* IE 10+ */
-
   font-family:'arial';
 }
 .people-list input:-moz-placeholder { /* Firefox 18- */
-
   font-family:'arial';
-  }
+}
 .people-list ul::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 5px;
@@ -1390,7 +1389,6 @@ body.blog{height:auto;}
 
 
 .flw_msg_btn{margin-top: 4px; margin-right: -6px;}
-
 .msg_right{position: relative;}
 .chat .chat-header {
     background-color: white;
@@ -1456,8 +1454,8 @@ float: right;}
 .chat_drop:hover, .chat_drop:focus {        
     background-color: #f1f1f1;      
 }   
-*/.chatdropbtn {      
-         
+*/
+.chatdropbtn {	  
     display: inline-block;     
     opacity: 0.8px;
 	color:#838383;      
@@ -1558,9 +1556,9 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 }
 #msg_block #set_input{margin:0 0 -60px;}
 .chat .chat-history{height:431px;}
+.chat li{margin-bottom:40px;}
 #msg_block .input-group .comment{margin-bottom:3px; margin-top:3px; line-height:1.3;}
 div .comment {
- 
     border: none;
     border-top: 1px solid #ddd;
     padding-right: 150px!important;
@@ -1575,8 +1573,6 @@ div .comment {
     overflow-y: scroll;
     overflow-y: auto;
 }
-.chat li{margin-bottom:40px;}
-
 .border_btm {
     border-bottom: 1px solid #cccccc;
 }
@@ -1674,15 +1670,14 @@ div .comment {
 .me {
     color: #d8eff6;
 }
-
 .name {
     font-weight: 600;
-padding-bottom: 6px;
-line-height: 14px;
-width: 107%;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+	padding-bottom: 6px;
+	line-height: 14px;
+	width: 107%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .panel-footer {
     background-color: #444753;
