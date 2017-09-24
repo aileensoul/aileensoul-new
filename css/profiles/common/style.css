@@ -1787,6 +1787,11 @@ div .comment {
     color: #fff;
 }
 /***  end header  ***/
+.flw_msg_btn{padding-right:12px;}
+.message-data-name .fa-circle{margin-right:6px;}
+#row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}
+
+
 
 .panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
 .user-section-free-up {
@@ -1852,6 +1857,7 @@ display: none !important;
 #userimage .col-md-7{width:100%; float:left; padding-bottom:20px;}
 #popup-form input[type="submit"]#profilepicsubmit{margin-top: 0px;}
 /*** end image crop  ***/
+
 /*** new popup css  ***/
 .fade {
     opacity: 0;
@@ -1881,9 +1887,7 @@ display: none !important;
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
 .job-menu-profile h5{cursor:default;}
 /*** end all profile  ***/
-.message-data-name .fa-circle{margin-right:6px;}
-#row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}
-.flw_msg_btn{padding-right:12px;}
+
 
 
 
