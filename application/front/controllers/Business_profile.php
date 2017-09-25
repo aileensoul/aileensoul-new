@@ -10329,7 +10329,7 @@ No Contacts Available.
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -10344,7 +10344,6 @@ No Contacts Available.
         $return_html .= '<input type = "hidden" class = "perpage_record" value = "' . $perpage . '" />';
 
         if (count($business_profile_post1) > 0) {
-
             foreach ($business_profile_post as $row) {
 
                 $post_business_user_image = $row['business_user_image'];
@@ -10357,10 +10356,16 @@ No Contacts Available.
                 $post_business_like_user = $row['business_like_user'];
                 $post_created_date = $row['created_date'];
                 $post_posted_user_id = $row['posted_user_id'];
-                
-                $companynameposted = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
-                $slugnameposted = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
-
+                $post_business_slug = $row['business_slug'];
+                $post_industriyal = $row['industriyal'];
+                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                $post_other_industrial = $row['other_industrial'];
+                if ($post_posted_user_id) {
+                    $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
+                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
+                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+                    $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
+                } 
 
                 $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
                         <div class = "col-md-12 col-sm-12 post-design-box">
@@ -10381,32 +10386,32 @@ No Contacts Available.
 
                 if ($post_posted_user_id) {
 
-                    if ($userimageposted) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
+                    if ($posted_business_user_image) {
+                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                         }
                         $return_html .= '</a>';
                     } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                         $return_html .= '</a>';
                     }
                 } else {
-                    if ($business_userimage) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    if ($post_business_user_image) {
+                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
                         }
                         $return_html .= '</a>';
                     } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                         $return_html .= '</a>';
                     }
                 }
@@ -10420,18 +10425,17 @@ No Contacts Available.
                     $return_html .= '<li>
                             <div class = "else_post_d">
                                 <div class = "post-design-product">
-                                    <a class = "post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugnameposted) . '">' . ucfirst(strtolower($companynameposted)) . '</a>
-<p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot_2" href = "' . base_url('business-profile/dashboard/' . $slugname) . '">' . ucfirst(strtolower($companyname)) . '</a>
+                                    <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">' . ucfirst(strtolower($posted_company_name)) . '</a>
+<p class = "posted_with" > Posted With</p> <a class = "other_name name_business post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">' . ucfirst(strtolower($post_company_name)) . '</a>
 <span role = "presentation" aria-hidden = "true"> · </span> <span class = "ctre_date">
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 </span> </div></div>
 </li>';
-                    $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
                 } else {
                     $return_html .= '<li>
                             <div class = "post-design-product">
-                                <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $slugname) . '" title = "' . ucfirst(strtolower($companyname)) . '">
-' . ucfirst(strtolower($companyname)) . '</a>
+                                <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
+' . ucfirst(strtolower($post_company_name)) . '</a>
                     <span role = "presentation" aria-hidden = "true"> · </span>
 <div class = "datespan"> <span class = "ctre_date" >
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
@@ -10441,15 +10445,14 @@ No Contacts Available.
 </div>
 </li>';
                 }
-                $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata[0]['industriyal'], 'status' => 1))->row()->industry_name;
 
                 $return_html .= '<li>
 <div class = "post-design-product">
 <a class = "buuis_desc_a" href = "javascript:void(0);" title = "Category">';
-                if ($category) {
-                    $return_html .= ucfirst(strtolower($category));
+                if ($post_industriyal) {
+                    $return_html .= ucfirst(strtolower($post_category));
                 } else {
-                    $return_html .= ucfirst(strtolower($businessdata[0]['other_industrial']));
+                    $return_html .= ucfirst(strtolower($post_other_industrial));
                 }
 
                 $return_html .= '</a>
@@ -10467,7 +10470,7 @@ No Contacts Available.
 
                 if ($post_posted_user_id != 0) {
 
-                    if ($this->session->userdata('aileenuser') == $post_posted_user_id) {
+                    if ($userid == $post_posted_user_id) {
 
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
@@ -10485,7 +10488,7 @@ No Contacts Available.
 </a>';
                     }
                 } else {
-                    if ($this->session->userdata('aileenuser') == $row['user_id']) {
+                    if ($userid == $row['user_id']) {
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -10554,7 +10557,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div>';
 
                 $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-                $businessmultiimage = $this->data['businessmultiimage'] = $this->common->select_data_by_condition('post_files', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 if (count($businessmultiimage) == 1) {
 
@@ -10685,7 +10688,6 @@ Your browser does not support the audio tag.
 <li class = "likepost' . $post_business_profile_post_id . '">
 <a id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w" onClick = "post_like(this.id)">';
 
-                $userid = $this->session->userdata('aileenuser');
                 $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
                 $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                 $likeuser = $this->data['active'][0]['business_like_user'];
