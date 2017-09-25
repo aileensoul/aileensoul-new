@@ -20,7 +20,16 @@ class Artistic extends MY_Controller {
         //     redirect('login', 'refresh');
         // }
 
-        //include ('include.php');
+       //This function is there only one time users slug created after remove it start
+        // $this->db->select('art_id,art_name,art_lastname');
+        // $res = $this->db->get('art_reg')->result();
+        // foreach ($res as $k => $v) {
+        //     $data = array('slug' => $this->setcategory_slug($v->art_name."-". $v->art_lastname, 'slug', 'art_reg'));
+        //     $this->db->where('art_id', $v->art_id);
+        //     $this->db->update('art_reg', $data);
+        //  }
+        //This function is there only one time users slug created after remove it End
+
         include ('artistic_include.php');
     }
 
