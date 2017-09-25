@@ -1909,7 +1909,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'">
 
                                                 <div class="pdf_img">
-                                                        <img src="' . base_url('images/PDF.jpg') . '">
+                                                       <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
                                                     </div>
                                                 </a>
                                             </div>';
@@ -3937,13 +3937,13 @@ public function follow_home() { //echo "2"; die();
              $state = $artisticdata[0]['art_state'];
             // GET USER ARTISTIC DATA END
             // GET ARTISTIC USER FOLLOWING LIST START
-            $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => 1, 'follow_type' => 1);
+            $contition_array = array('follow_from' => $art_id, 'follow_status' => 1, 'follow_type' => 1);
             $followdata = $this->common->select_data_by_condition('follow', $contition_array, $data = 'GROUP_CONCAT(follow_to) as follow_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'follow_from');
             $follow_list = $followdata[0]['follow_list'];
             $follow_list = str_replace(",", "','", $followdata[0]['follow_list']);
             // GET ARTISTIC USER FOLLOWING LIST END
             // GET ARTISTIC USER IGNORE LIST START
-            $contition_array = array('user_from' => $business_profile_id, 'profile' => 1);
+            $contition_array = array('user_from' => $art_id, 'profile' => 1);
             $userdata = $this->common->select_data_by_condition('user_ignore', $contition_array, $data = 'GROUP_CONCAT(user_to) as user_list', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = 'user_from');
             $user_list = $followdata[0]['user_list'];
             $user_list = str_replace(",", "','", $userdata[0]['user_list']);
@@ -3952,8 +3952,8 @@ public function follow_home() { //echo "2"; die();
             $contition_array = array('is_delete' => 0, 'status' => 1, 'user_id != ' => $userid, 'art_step' => 4);
         $search_condition = "((art_skill IN ('$art_skill')) OR (art_city = '$city') OR (art_state = '$state')) AND art_id NOT IN ('$follow_list') AND art_id NOT IN ('$user_list')";
 
-        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '3', $offset = '', $join_str_contact = array(), $groupby = '');
-
+        $userlistview = $this->common->select_data_by_search('art_reg', $search_condition, $contition_array, $data = 'art_id, art_name, art_lastname, art_user_image, art_skill, art_city, art_state, user_id', $sortby = 'CASE WHEN (art_city = ' . $city . ') THEN art_id END, CASE WHEN (art_state = ' . $state . ') THEN art_id END', $orderby = 'DESC', $limit = '1', $offset = '3', $join_str_contact = array(), $groupby = '');
+        //echo "<pre>"; print_r($userlistview); die();
 
             $third_user_html = '';
             if (count($userlistview) > 0) {
@@ -4059,7 +4059,7 @@ public function follow_home() { //echo "2"; die();
         $insert_data['user_from'] = $art_id;
         $insert_data['user_to'] = $follow_to;
 
-        $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
+       echo $insert_id = $this->common->insert_data_getid($insert_data, 'user_ignore');
     }
 
     public function follow_two() {
@@ -14143,7 +14143,7 @@ public function art_home_post() {
 
                                                <div class="pdf_img">
 
-                                                        <img src="' . base_url('images/PDF.jpg') . '">
+                                                         <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
                                                     </div>
                                                 </a>
                                             </div>';
@@ -15045,7 +15045,7 @@ public function art_home_post() {
                 $fetch_pdf .= '<div class="image_profile">';
                 // $fetch_pdf .= '<a href="' . base_url('artistic/creat_pdf/' . $mi['post_files_id']) . '"><div class="pdf_img">';
                 $fetch_pdf .= '<a href="'.ART_POST_MAIN_UPLOAD_URL . $mi['file_name'].'">';
-                $fetch_pdf .= '<img src="' . base_url('images/PDF.jpg') . '" style="height: 100%; width: 100%;">';
+                $fetch_pdf .= '<embed src="' . ART_POST_MAIN_UPLOAD_URL . $mi['file_name'] . '" width="100%" height="450px" />';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 
@@ -15368,9 +15368,7 @@ onblur = check_lengthedit(' . $row['art_post_id'] . ')>';
                         $return_html .= '<div><a href="'.base_url($this->config->item('art_post_main_upload_path') . $artmultiimage[0]['file_name']).'"> 
 
            <div class="pdf_img">
-                    <img src="' . base_url('images/PDF.jpg') . '" style="height: 100%;
-                                                     width: 100%;
-">
+                   <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
                 </div></a>
         </div>';
                     } elseif (in_array($ext, $allowesvideo)) {
@@ -16996,7 +16994,7 @@ public function get_artistic_name($id=''){
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
             <a href="'.base_url('artistic/creat-pdf/' . $artmultiimage[0]['post_files_id']).'"><div class="pdf_img">
-                <img src="'.base_url('images/PDF.jpg').'" style="height: 100%; width: 100%;">
+                <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
                     </div></a>
                     </div>';
                    } elseif (in_array($ext, $allowesvideo)) { 
@@ -17920,7 +17918,7 @@ public function get_artistic_name($id=''){
            } elseif (in_array($ext, $allowespdf)) {                                                
             $return_html .= '<div>
             <a href="javascript:void(0);" onclick="login_profile();"><div class="pdf_img">
-                <img src="'.base_url('images/PDF.jpg').'" style="height: 100%; width: 100%;">
+               <embed src="' . ART_POST_MAIN_UPLOAD_URL . $artmultiimage[0]['file_name'] . '" width="100%" height="450px" />
                     </div></a>
                     </div>';
                    } elseif (in_array($ext, $allowesvideo)) { 
