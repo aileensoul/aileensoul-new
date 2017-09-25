@@ -5,7 +5,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
 $this->data['userdata'] = $this->common->select_data_by_condition('user', $contition_array, $data = 'first_name,user_id,last_name,user_email,user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 // artistics detail
 $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
-$this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+$this->data['artdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 $this->data['head'] = $this->load->view('head', $this->data, true);
 $this->data['header'] = $this->load->view('header', $this->data, true);
 $this->data['footer'] = $this->load->view('footer', $this->data, true);
@@ -15,7 +15,7 @@ $contition_array = array('follow_to' => $artregid, 'follow_status' => '1', 'foll
 $followerdata = $this->data['followerdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 foreach ($followerdata as $followkey) {
     $contition_array = array('art_id' => $followkey['follow_from'], 'status' => '1');
-    $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
     if ($artaval) {
 
         $countlu[] = $artaval;
@@ -26,7 +26,7 @@ $contition_array = array('follow_from' => $artregid, 'follow_status' => '1', 'fo
 $followingdata = $this->data['followingdata'] = $this->common->select_data_by_condition('follow', $contition_array, $data = 'follow_id,follow_type,follow_from,follow_to,follow_status', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 foreach ($followingdata as $followkey) {
     $contition_array = array('art_id' => $followkey['follow_to'], 'status' => '1');
-    $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+    $artaval = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'art_id,art_name,art_lastname,art_skill,user_id,status,is_delete,art_step,art_user_image,profile_background,designation,slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
     if ($artaval) {
 
         $countlfu[] = $artaval;
