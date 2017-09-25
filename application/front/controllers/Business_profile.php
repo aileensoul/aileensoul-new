@@ -10293,6 +10293,8 @@ No Contacts Available.
         $company_name = $this->data['business_common_data'][0]['company_name'];
         $profile_background = $this->data['business_common_data'][0]['profile_background'];
         $state = $this->data['business_common_data'][0]['state'];
+        $industriyal = $this->data['business_common_data'][0]['industriyal'];
+        $other_industrial = $this->data['business_common_data'][0]['other_industrial'];
 
         /* SELF USER LIST START */
         $self_list = array($userid);
@@ -10311,7 +10313,7 @@ No Contacts Available.
 
         /* INDUSTRIAL AND CITY WISE DATA START */
         $condition_array = array('business_profile.is_deleted' => 0, 'business_profile.status' => 1, 'business_profile.business_step' => 4);
-        $search_condition = "business_profile.industriyal = '$industriyal' OR business_profile.city = '$city'";
+        $search_condition = "(business_profile.industriyal = '$industriyal' AND business_profile.industriyal != 0) AND (business_profile.other_industrial = '$other_industrial' AND business_profile.other_industrial != '') OR (business_profile.city = '$city')";
         $data = "GROUP_CONCAT(user_id) as industry_city_user_list";
         $industrial_city_data = $this->common->select_data_by_search('business_profile', $search_condition, $condition_array, $data, $sortby = '', $orderby = 'DESC', $limit = '', $offset = '', $join_str_contact = array(), $groupby = '');
         $industrial_city_list = $industrial_city_data[0]['industry_city_user_list'];
@@ -10322,9 +10324,15 @@ No Contacts Available.
         $total_user_list = array_unique($total_user_list, SORT_REGULAR);
         $total_user_list = implode(',', $total_user_list);
         $total_user_list = str_replace(",", "','", $total_user_list);
-
+        
+        $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1, 'FIND_IN_SET ("'.$user_id.'", delete_post) !=' => '0');
+        $delete_postdata = $this->common->select_data_by_condition('business_profile_post', $condition_array, $data = 'GROUP_CONCAT(business_profile_post_id) as delete_post_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        
+        $delete_post_id = $delete_postdata[0]['delete_post_id'];
+        $delete_post_id = str_replace(",", "','", $delete_post_id);
+        
         $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
-        $search_condition = "business_profile_post.user_id IN ('$total_user_list') OR posted_user_id ='$user_id'";
+        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id')";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
