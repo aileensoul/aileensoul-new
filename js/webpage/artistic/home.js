@@ -222,12 +222,12 @@ function followuser(clicked_id)
         url: base_url + "artistic/artistic_home_follow_ignore",
         data: 'follow_to=' + clicked_id,
         success: function (data) {
-           if (data) {
-        $.ajax({
-        type: 'POST',
-        url: base_url + "artistic/third_follow_ignore_user_data",
-        dataType: 'html',
-        success: function (data) { //alert(data);
+        //    if (data) {
+        // $.ajax({
+        // type: 'POST',
+        // url: base_url + "artistic/third_follow_ignore_user_data",
+        // dataType: 'html',
+        // success: function (data) { //alert(data);
             $('ul.home_three_follow_ul').append(data);
             $.when($('.fad' + clicked_id).fadeOut(6000))
                     .done(function () {
@@ -238,31 +238,31 @@ function followuser(clicked_id)
         }
         });
 
-         }
+         //}
            
-        }
-    });
+    //     }
+    // });
 
 
       
    }
 
-function artistic_home_follow_ignore(clicked_id)
-{
-    $.ajax({
-        type: 'POST',
-        url: base_url + "artistic/artistic_home_follow_ignore",
-        data: 'follow_to=' + clicked_id,
-        success: function (data) {
+// function artistic_home_follow_ignore(clicked_id)
+// {
+//     $.ajax({
+//         type: 'POST',
+//         url: base_url + "artistic/artistic_home_follow_ignore",
+//         data: 'follow_to=' + clicked_id,
+//         success: function (data) {
 
-          if (data) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    });
-}
+//           if (data) {
+//                 return true;
+//             } else {
+//                 return false;
+//             }
+//         }
+//     });
+// }
 
    function followusercell(clicked_id)
    {
