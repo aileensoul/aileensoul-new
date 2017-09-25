@@ -259,11 +259,11 @@ color: white;}
 	background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #F13B6F), color-stop(90, #ECB044));
 	background-image: -webkit-linear-gradient(right, #F13B6F 0%, #ECB044 90%);
 	background-image: linear-gradient(to left, #F13B6F 0%, #ECB044 90%);
-	margin-top: 64px;
+	margin-top: 63px;
 	width: 100%;
 }
 .grad_terms{
-	margin-top: 64px;
+	margin-top: 63px;
 	width: 100%;
 	background-image: -ms-linear-gradient(right, #6297BE 0%, #B85790 70%);
 	background-image: -moz-linear-gradient(right, #6297BE 0%, #B85790 70%);
