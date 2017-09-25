@@ -2093,6 +2093,7 @@ label.cameraButton input[accept*="camera"] {
 .edit_profile_progress.complete_profile {
     cursor: default;
 }
+.job_work_experience_main_div input[type="file"]{height:auto;}
 
 
 /***  media query  ***/

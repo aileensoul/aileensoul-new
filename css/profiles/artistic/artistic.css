@@ -3966,6 +3966,9 @@ div .comment {
 .post-design-commnet-box button:focus{/*outline:none;*/}
 
 .flw_msg_btn ul li:last-child a{margin-top:0;}
+.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+#mainContainer{min-width:108% !important;}
+
 
 
 /***  media query  ***/

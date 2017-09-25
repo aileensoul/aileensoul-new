@@ -4250,6 +4250,11 @@ div .comment {
 .mob-comment button:focus {
     outline: none;
 }
+.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
+#mainContainer{min-width:108% !important;}
+
+
+
 @keyframes pulse1 {
     0% {
         transform: scale(.1);

@@ -305,9 +305,6 @@ float: left;}
 	background-image: -webkit-linear-gradient(right, #F13B6F 0%, #ECB044 90%);
 	background-image: linear-gradient(to left, #F13B6F 0%, #ECB044 90%);
 }
-
-
-
 .custom-tp footer{background:#fff;}
 
 
@@ -330,9 +327,9 @@ float: left;}
 }
 @media screen and (max-width: 991px) {
 	.em-py3 {
-    width: 10%;
-    float: left;
-}
+		width: 10%;
+		float: left;
+	}
 	.em-py2{width: 90%;}
 	.header-left-menu ul{padding-bottom: 0px;}
 	.date_blog_right{width: 85%;}
