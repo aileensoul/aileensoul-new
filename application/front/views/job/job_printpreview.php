@@ -124,7 +124,7 @@
                      </div>
                      <?php } ?>
                      <?php if ($returnpage == '') { ?>
-                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png"> Update Profile Picture</a>
                      <?php } ?>
                   </div>
                </div>
