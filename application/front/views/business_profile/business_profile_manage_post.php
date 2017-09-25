@@ -3,16 +3,16 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver='.time()); ?>" />-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver='.time()); ?>" />
-        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver='.time()); ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver='.time()); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver='.time()); ?>" />
-        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>" /> 
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/gyc.css?ver=' . time()); ?>" />-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('dragdrop/fileinput.css?ver=' . time()); ?>" />
+        <link href="<?php echo base_url('dragdrop/themes/explorer/theme.css?ver=' . time()); ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/video.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>" />
+        <!--<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />-->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>" /> 
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <style type="text/css">
             .two-images, .three-image, .four-image{
                 height: auto !important;
@@ -21,7 +21,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php  echo $business_header2_border; ?>
+        <?php echo $business_header2_border; ?>
         <section>
             <?php echo $business_common; ?>
             <div class="text-center tab-block">
@@ -192,23 +192,16 @@
                                 <div class="post-editor col-md-12">
                                     <div class="main-text-area col-md-12">
                                         <div class="popup-img"> 
-                                            <?php if ($businessdata[0]['business_user_image']) { ?>
-
-
-                                             <?php 
-
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {  ?>
-                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                <?php
-                                                            } else { ?>
-
-                                            <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
-
-                                            <?php }?>
-
+                                            <?php if ($business_common_data[0]['business_user_image']) { ?>
+                                                <?php if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) { ?>
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                <?php } else {
+                                                    ?>
+                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="">
+                                                <?php } ?>
                                             <?php } else { ?>
-                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-    <?php } ?>
+                                                <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                            <?php } ?>
                                         </div>
                                         <div id="myBtn1"  class="editor-content popup-text">
                                             <span>Post Your Product....</span>
@@ -219,37 +212,35 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                         </div>
                                     </div>
                                 </div>
-<?php } ?>
+                            <?php } ?>
                             <!-- The Modal -->
                             <div id="myModal3" class="modal-post">
                                 <!-- Modal content -->
                                 <div class="modal-content-post">
                                     <span class="close3">&times;</span>
                                     <div class="post-editor post-edit-popup" id="close">
-<?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
+                                        <?php echo form_open_multipart(base_url('business-profile/bussiness-profile-post-add/' . 'manage/' . $businessdata1[0]['user_id']), array('id' => 'artpostform', 'name' => 'artpostform', 'class' => 'clearfix dashboard-upload-image-form', 'onsubmit' => "imgval(event)")); ?>
                                         <div class="main-text-area col-md-12"  >
                                             <div class="popup-img-in"> 
                                                 <?php
                                                 if ($businessdata[0]['business_user_image'] != '') {
                                                     ?>
-                                                     <?php 
+                                                    <?php
+                                                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
+                                                        ?>
+                                                        <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <?php } else {
+                                                        ?>
 
-if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image'])) {
-                                                                
-                                                                ?>
-                                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
-                                                                <?php
-                                                            } else { ?>
-                                                            
 
-                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+                                                        <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
 
-                                                    <?php }?>
+                                                    <?php } ?>
 
                                                     <?php
                                                 } else {
                                                     ?>
-                                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
+                                                    <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                                     <?php
                                                 }
                                                 ?>
@@ -295,7 +286,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                         <div class="fr margin_btm">
                                             <button type="submit"  value="Submit">Post</button>    
                                         </div>
-<?php echo form_close(); ?>
+                                        <?php echo form_close(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -319,13 +310,13 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                                     </div>
                                 </div>
                                 <div class="business-all-post">
-<!--                                    <div class="nofoundpost"> 
-                                    </div>-->
+                                    <!--                                    <div class="nofoundpost"> 
+                                                                        </div>-->
                                 </div>
-                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                                <div class="fw" id="loader" style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver=' . time()) ?>" /></div>
                                 <!-- middle section start -->
-<!--                                <div class="nofoundpost">
-                                </div>-->
+                                <!--                                <div class="nofoundpost">
+                                                                </div>-->
                             </div>
                             <!-- business_profile _manage_post end -->
                         </div>
@@ -333,7 +324,7 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                 </div>
             </div>
         </section>
-        
+
         <div class="modal fade message-box" id="likeusermodal" role="dialog">
             <div class="modal-dialog modal-lm">
                 <div class="modal-content">
@@ -368,8 +359,8 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
                 </div>
             </div>
         </div>
-        
-        
+
+
         <!-- Bid-modal for this modal appear or not start -->
         <div class="modal fade message-box" id="query" role="dialog">
             <div class="modal-dialog modal-lm">
@@ -384,32 +375,32 @@ if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $busines
         </div>
         <!-- Bid-modal for this modal appear or not  Popup Close -->
         <footer>
-<?php echo $footer; ?>
+            <?php echo $footer; ?>
         </footer>
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-        
-<!--        <script src="<?php  echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php  echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script> 
-        <script src="<?php  echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script> -->
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
+        <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
 
-        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver='.time()); ?>"></script>
-               
-        <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver='.time()) ?>"></script> 
-        <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver='.time()); ?>"></script>
-        
+<!--        <script src="<?php echo base_url('js/jquery-ui.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('js/demo/jquery-1.9.1.js?ver=' . time()); ?>"></script> 
+<script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js?ver=' . time()); ?>"></script> -->
+        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+
+        <script type="text/javascript" src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+
+        <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
+        <script src="<?php echo base_url('js/mediaelement-and-player.min.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/plugins/sortable.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/fileinput.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/fr.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/js/locales/es.js?ver=' . time()); ?>"></script>
+        <script src="<?php echo base_url('dragdrop/themes/explorer/theme.js?ver=' . time()); ?>"></script>
+
         <!-- POST BOX JAVASCRIPT END --> 
         <script>
                                                     var base_url = '<?php echo base_url(); ?>';
                                                     var slug = '<?php echo $slugid; ?>';
         </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js?ver='.time()); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/dashboard.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
     </body>
 </html>
