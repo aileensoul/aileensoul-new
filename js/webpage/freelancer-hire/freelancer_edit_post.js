@@ -1,61 +1,61 @@
 //NEW SCRIPT FOR SKILL START
 
-    $(function() {
-      
-        function split( val ) {
-            return val.split( /,\s*/ );
+$(function () {
+
+    function split(val) {
+        return val.split(/,\s*/);
+    }
+    function extractLast(term) {
+        return split(term).pop();
+    }
+    $("#skills2").bind("keydown", function (event) {
+
+        if (event.keyCode === $.ui.keyCode.TAB &&
+                $(this).autocomplete("instance").menu.active) {
+            event.preventDefault();
         }
-        function extractLast( term ) { 
-            return split( term ).pop();
-        }
-        $( "#skills2" ).bind( "keydown", function( event ) {
-            
-            if ( event.keyCode === $.ui.keyCode.TAB &&
-                $( this ).autocomplete( "instance" ).menu.active ) {
-                event.preventDefault();
-            }
-        })
-        .autocomplete({
-            minLength: 2,
-            source: function( request, response ) { 
-                // delegate back to autocomplete, but extract the last term
-                $.getJSON(base_url + "general/get_skill", { term : extractLast( request.term )},response);
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-            select: function( event, ui ) {
-                var text =this.value;
-                var terms = split( this.value );
-                 text = text == null || text == undefined ? "" : text;
-                var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
-                if (checked == 'checked') {
-      
-                    terms.push( ui.item.value );
-                    this.value = terms.split( ", " );
-               }//if end
-               else{
-                if(terms.length <= 20) {
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( ", " );
+    })
+            .autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    // delegate back to autocomplete, but extract the last term
+                    $.getJSON(base_url + "general/get_skill", {term: extractLast(request.term)}, response);
+                },
+                focus: function () {
+                    // prevent value inserted on focus
                     return false;
-                }else{
-                    var last = terms.pop();
-                    $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
-                    $(this).effect("highlight", {}, 1000);
-                    $(this).attr("style","border: solid 1px red;");
-                    return false;
+                },
+                select: function (event, ui) {
+                    var text = this.value;
+                    var terms = split(this.value);
+                    text = text == null || text == undefined ? "" : text;
+                    var checked = (text.indexOf(ui.item.value + ', ') > -1 ? 'checked' : '');
+                    if (checked == 'checked') {
+
+                        terms.push(ui.item.value);
+                        this.value = terms.split(", ");
+                    }//if end
+                    else {
+                        if (terms.length <= 20) {
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push(ui.item.value);
+                            // add placeholder to get the comma-and-space at the end
+                            terms.push("");
+                            this.value = terms.join(", ");
+                            return false;
+                        } else {
+                            var last = terms.pop();
+                            $(this).val(this.value.substr(0, this.value.length - last.length - 2)); // removes text from input
+                            $(this).effect("highlight", {}, 1000);
+                            $(this).attr("style", "border: solid 1px red;");
+                            return false;
+                        }
+                    }
                 }
-            }
-        }
-        });
-    });
+            });
+});
 
 //NEW SCRIPT FOR SKILL END
 
@@ -121,32 +121,31 @@ jQuery.validator.addMethod("isValid", function (value, element) {
 
     var one = new Date(value).getTime();
     var second = new Date(todaydate).getTime();
-   
-     if(one >= second){
-    return one >= second;
+
+    if (one >= second) {
+        return one >= second;
     }
-    
+
     $('.day').addClass('error');
     $('.month').addClass('error');
     $('.year').addClass('error');
 }, "Last date should be grater than and equal to today date");
 //date validation end
 //   validation border is not show in last date start
-            $.validator.addMethod("required1", function(value, element, regexpr) {   
+$.validator.addMethod("required1", function (value, element, regexpr) {
     //return value == '' || value.trim().length != 0; 
-     if(!value) 
-            {
-                $('.day').addClass('error'); 
-                $('.month').addClass('error'); 
-                $('.year').addClass('error'); 
-                return false;
-            }
-            else
-            {
-              return true;
-            }
-           
-     // return regexpr.test(value);
+    if (!value)
+    {
+        $('.day').addClass('error');
+        $('.month').addClass('error');
+        $('.year').addClass('error');
+        return false;
+    } else
+    {
+        return true;
+    }
+
+    // return regexpr.test(value);
 }, "Last Date of apply is required.");
 //   validation border is not show in last date end
 
@@ -174,7 +173,7 @@ $(document).ready(function () {
                 required1: true,
                 isValid: 'Last date should be grater than and equal to today date'
             },
-           
+
             country: {
                 required: true,
             },
@@ -202,7 +201,7 @@ $(document).ready(function () {
             last_date: {
                 required: "Last date of apply is required.",
             },
-            
+
             country: {
                 required: "Please select country"
             },
@@ -271,41 +270,69 @@ $(document).ready(function () {
 
 // SCRIPT FOR ADD OTHER FIELD  START
 $(document).on('change', '.field_other', function (event) {
-  
+
     var item = $(this);
-     var other_field = (item.val());
-     
-     if(other_field == 15){
-         item.val('');
-         $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
-                        $('.message #field').on('click', function () {
-                            var $textbox = $('.message').find('input[type="text"]'),
-                                    textVal = $textbox.val();
-                            $.ajax({
-                                type: 'POST',
-                                url:  base_url + "freelancer/freelancer_hire_other_field" ,
-                                dataType: 'json',
-                                data: 'other_field=' + textVal,
-                                success: function (response) {
+    var other_field = (item.val());
 
-                                    if (response.select == 0)
-                                    {
-                                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                                    } else if (response.select == 1)
-                                    {
-                                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
-                                    } else
-                                    {
-                                        $.fancybox.close();
+    if (other_field == 15) {
+        item.val('');
+        $.fancybox.open('<div class="message"><h2>Add Field</h2><input type="text" name="other_field" id="other_field"><a id="field" class="btn">OK</a></div>');
+        $('.message #field').on('click', function () {
+            var $textbox = $('.message').find('input[type="text"]'),
+                    textVal = $textbox.val();
+            $.ajax({
+                type: 'POST',
+                url: base_url + "freelancer/freelancer_hire_other_field",
+                dataType: 'json',
+                data: 'other_field=' + textVal,
+                success: function (response) {
 
-                                        $('.field_other').html(response.select);
-                                    }
-                                }
-                            });
+                    if (response.select == 0)
+                    {
+                        $.fancybox.open('<div class="message"><h2>Written field already available in Field Selection</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                    } else if (response.select == 1)
+                    {
+                        $.fancybox.open('<div class="message"><h2>Empty Field  is not valid</h2><button data-fancybox-close="" class="btn">OK</button></div>');
+                    } else
+                    {
+                        $.fancybox.close();
 
-                        });
-     }
-    
- });
+                        $('.field_other').html(response.select);
+                    }
+                }
+            });
+
+        });
+    }
+
+});
 //SCRIPT FOR ADD OTHER FILED END
+//SCRIPT FOR DATE PICKER START
+$(function () {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    var today = yyyy;
+    var date_picker = date_picker1;
+    $("#example2").dateDropdowns({
+        submitFieldName: 'last_date',
+        submitFormat: "yyyy-mm-dd",
+        minYear: today,
+        maxYear: today + 1,
+        defaultDate: date_picker,
+        daySuffixes: false,
+        monthFormat: "short",
+        dayLabel: 'DD',
+        monthLabel: 'MM',
+        yearLabel: 'YYYY',
+        //startDate: today,
+
+    });
+    $(".day").attr('tabindex', 12);
+    $(".month").attr('tabindex', 13);
+    $(".year").attr('tabindex', 14);
+
+});
+//SCRIPT FOR DATE PIACKER END
 
