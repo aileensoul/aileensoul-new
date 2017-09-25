@@ -186,7 +186,8 @@ class Artistic extends MY_Controller {
                 'art_lastname' => strtolower($this->input->post('lastname')),
                 'art_email' => $this->input->post('email'),
                 'art_phnno' => $this->input->post('phoneno'),
-                'modified_date' => date('Y-m-d', time())
+                'modified_date' => date('Y-m-d', time()),
+                'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
             );
 
             $updatdata = $this->common->update_data($data, 'art_reg', 'user_id', $userid);
@@ -208,7 +209,8 @@ class Artistic extends MY_Controller {
                 'created_date' => date('Y-m-d H:i:s', time()),
                 'status' => 1,
                 'is_delete' => 0,
-                'art_step' => 1
+                'art_step' => 1,
+                'slug' => $this->setcategory_slug($this->input->post('firstname') . '-' . $this->input->post('lastname'), 'slug', 'art_reg')
             );
 
 
