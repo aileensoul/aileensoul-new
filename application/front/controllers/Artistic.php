@@ -20,7 +20,8 @@ class Artistic extends MY_Controller {
         //     redirect('login', 'refresh');
         // }
 
-        include ('include.php');
+        //include ('include.php');
+        include ('artistic_include.php');
     }
 
     public function index() {
