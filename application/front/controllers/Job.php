@@ -3360,7 +3360,7 @@ class Job extends MY_Controller {
                     $cache_time = $this->db->get_where('job_title', array(
                                 'title_id' => $post['post_name']
                             ))->row()->name;
-                    $return_html .= '<a href="javascript:void(0);" title="' . $cache_time . '" class=" post_title">';
+                    $return_html .= '<a href="' . base_url('job/post/' . $post[''] . '?page=job') . '" title="' . $cache_time . '" class=" post_title">';
                     if ($cache_time) {
                         $return_html .= $cache_time;
                     } else {
