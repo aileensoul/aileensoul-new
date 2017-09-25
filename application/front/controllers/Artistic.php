@@ -15839,14 +15839,18 @@ $return_html .= '<div class="art-all-comment col-md-12">
 
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
+                $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
+                $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
+
+
                 
                 if ($art_userimage) {
 
                     if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $art_userimage)) {
 
-                        $a = $artisticdata[0]['art_name'];
+                        $a = $art_name;
                         $acr = substr($a, 0, 1);
-                        $b = $artisticdata[0]['art_lastname'];
+                        $b = $art_lastname;
                         $bcr = substr($b, 0, 1);
 
                         $return_html .= '<div class="post-img-div">';
@@ -15860,10 +15864,11 @@ $return_html .= '<div class="art-all-comment col-md-12">
                 } else {
 
 
-                        $a = $artisticdata[0]['art_name'];
+                         $a = $art_name;
                         $acr = substr($a, 0, 1);
-                        $b = $artisticdata[0]['art_lastname'];
+                        $b = $art_lastname;
                         $bcr = substr($b, 0, 1);
+
 
                         $return_html .= '<div class="post-img-div">';
                         $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
