@@ -47,27 +47,27 @@
                                 <!-- GET USER FOLLOE SUGESSION LIST START -->
                                 <!-- follower list end  -->
                             </div>
-                            <div class="custom_footer_left fw" style="margin-top: 15px;">
-                                <div class="fl">
-                                    <ul>
-                                        <li><a href="<?php echo base_url('about-us') ?>" target="_blank"> About Us </a></li>
-                                        <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                        <li><a href="<?php echo base_url('contact-us') ?>" target="_blank">Contact Us</a></li>
-                                        <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                        <li><a  href="<?php echo base_url('blog') ?>" target="_blank">Blogs</a></li>
-                                        <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                        <li><a href="<?php echo base_url('terms-and-condition') ?>" target="_blank">Terms & Condition </a></li>
-                                        <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                        <li><a href="<?php echo base_url('privacy-policy') ?>" target="_blank">Privacy Policy</a></li>
-                                        <span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span>
-                                        <li><a href="<?php echo base_url('feedback') ?>" target="_blank">Send Us Feedback</a></li>
-                                    </ul>
-                                </div>
-                                <div>
+                            <div class="custom_footer_left fw">
+          <div class="fl">
+             <ul>
+             <li><a href="<?php echo base_url('about-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> About Us </a></li>
+              
+              <li><a href="<?php echo base_url('contact-us'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Contact Us</a></li>
+              
+              <li><a href="<?php echo base_url('blog'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Blogs</a></li>
+              
+              <li><a href="<?php echo base_url('terms-and-condition'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Terms &amp; Condition </a></li>
+              
+              <li><a href="<?php echo base_url('privacy-policy'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Privacy Policy</a></li>
+              
+              <li><a href="<?php echo base_url('feedback'); ?>" target="_blank"><span class="custom_footer_dot" role="presentation" aria-hidden="true"> · </span> Send Us Feedback</a></li>
+            </ul>
+          </div>
+        <div>
+          
+        </div>
 
-                                </div>
-
-                            </div>
+        </div>
                         </div>
                         <br>
                         <div id="result"></div>   
@@ -89,7 +89,7 @@
                                                 <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
                                             <?php } else {
                                                 ?>
-                                                <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="">
+                                                <img  src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
                                             <?php } ?>
                                         <?php } else { ?>
                                             <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="">
@@ -160,7 +160,7 @@
                                     <img  src="<?php echo base_url(NOBUSIMAGE); ?>"  alt="No Image">
                                 <?php } else {
                                     ?>
-                                    <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image']); ?>"  alt="">
+                                    <img src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>"  alt="">
                                 <?php } ?>
                                 <?php
                             } else {

@@ -125,7 +125,7 @@
                                 </div>
                             <?php } ?>
                             <?php if ($returnpage == '') { ?>
-                                <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>img/cam.png"> Update Profile Picture</a>
+                                <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
                             <?php } ?>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                 </div>                       
             </div> <div  class="add-post-button mob-block">
 <?php if ($returnpage == '') { ?>
-                    <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                    <a class="btn btn-3 btn-3b" id="rec_post_job" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
             </div>
             <div class="middle-part container rec_res">
@@ -233,7 +233,7 @@
                     </div>
                     <div  class="add-post-button">
 <?php if ($returnpage == '') { ?>
-                            <a class="btn btn-3 btn-3b" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
+                            <a class="btn btn-3 btn-3b" id="rec_post_job" href="<?php echo base_url('recruiter/add-post'); ?>"><i class="fa fa-plus" aria-hidden="true"></i>  Post a Job</a>
 <?php } ?>
                     </div>
                 </div>
@@ -258,7 +258,7 @@
 
         <!-- BEGIN FOOTER -->
          <!--PROFILE PIC MODEL START-->
-      <div class="modal message-box" id="bidmodal-2" role="dialog">
+      <div class="modal fade message-box" id="bidmodal-2" role="dialog">
          <div class="modal-dialog modal-lm">
             <div class="modal-content">
                <button type="button" class="modal-close" data-dismiss="modal">&times;</button>      

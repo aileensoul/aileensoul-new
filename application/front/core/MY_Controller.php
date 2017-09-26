@@ -8,20 +8,33 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        $segment2 = $this->uri->segment(2);
-        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search');
+        $segment_check = $this->uri->segment(2);
+
+        $segment_dynamicpost = substr($segment_check,0,strrpos($segment_check,"-"));
+      
+        if($segment_dynamicpost)
+        {
+
+            $segment2=$segment_dynamicpost;
+        }
+        else
+        {
+             $segment2 = $this->uri->segment(2);
+        }
+
+        $segment2_names = array('search', 'dashboard', 'details', 'execute_search', 'ajax_user_search', 'ajax_job_search', 'ajax_freelancer_hire_search', 'ajax_freelancer_post_search', 'recruiter_search_candidate', 'business_search', 'ajax_business_user_login_search','post','ajax_rec_post');
 
         $segment1 = $this->uri->segment(1);
         $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
 
-        if ((!in_array($segment2, $segment2_names)) && (!in_array($segment1, $segment1_names))) {
+        if ((!in_array($segment2, $segment2_names)) || (!in_array($segment1, $segment1_names))) {
             if (!$this->session->userdata('aileenuser')) {
                 redirect('login', 'refresh');
             } else {
                 $this->data['userid'] = $this->session->userdata('aileenuser');
             }
         }
-
+                    
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];

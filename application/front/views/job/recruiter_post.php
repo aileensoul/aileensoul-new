@@ -138,18 +138,13 @@
                                     <ul class="pro-fw">
                                         <?php } ?>  
                                     <li >
-                                        <?php if ($returnpage == 'job' || $this->uri->segment(1)=='job') { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/profile/' . $rec_data[0]['user_id'] . '?page=job'); ?>">Details</a>
-                                        <?php } else { ?>
-                                            <a title="Details" href="<?php echo base_url('recruiter/profile'); ?>">Details</a>
-                                        <?php } ?>
+                                       
+                                            <a title="Details" href="<?php echo base_url('job/recruiter-profile/' . $rec_post[0]['post_id']); ?>">Details</a>
+                                        
                                     </li>
                                     <li class="active">
-                                        <?php if ($returnpage == 'job' || $this->uri->segment(1)=='job') { ?>
-                                            <a title="Post" href="<?php echo base_url('recruiter/post-' . $this->uri->segment(3) . '?page=' . $returnpage); ?>">Post</a>
-                                    <?php } else { ?>
-                                            <a title="Post" href="<?php echo base_url('recruiter/post'); ?>">Post</a>
-                                    <?php } ?>
+                                       
+                                            <a title="Post" href="<?php echo base_url('job/post-' . $rec_post[0]['post_id'] . '/'. $text.'-vacancy-in-'.$cityname); ?>">Post</a>
                                     </li>
  
                                 </ul>
@@ -256,11 +251,9 @@
        
         <script>
                   var base_url = '<?php echo base_url(); ?>';
-                  var id = '<?php echo $this->uri->segment(3);?>';
-                  var return_page = '<?php echo $_GET['page']; ?>';
+                  var id = '<?php echo $rec_data[0]['user_id'];?>';
+                  var postid = '<?php echo $rec_post[0]['post_id']; ?>';
         </script>
-
-       
 
         <!-- FIELD VALIDATION JS END -->
         <script type="text/javascript" src="<?php echo base_url('js/webpage/job/search_common.js'); ?>"></script>

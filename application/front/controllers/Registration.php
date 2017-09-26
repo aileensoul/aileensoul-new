@@ -567,12 +567,12 @@ class Registration extends CI_Controller {
         } else {
             $data = 'email';
         }
-
         echo json_encode(
                 array(
                     "data" => $data,
                     "id" => $id,
         ));
+
     }
 
 //login validation end

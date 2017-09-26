@@ -122,7 +122,7 @@ $route['business-profile/pdf/(:any)'] = "business_profile/business_pdf/$1";
 $route['business-profile/business-profile-contactperson'] = "business_profile/business_profile_contactperson";
 $route['business-profile/contact-person/(:any)'] = "business_profile/business_profile_contactperson/$1";
 $route['business-profile/post-detail'] = "business_profile/postnewpage";
-$route['business-profile/post-detail/(:any)'] = "business_profile/postnewpage/$1";
+$route['business-profile/post-detail/(:any)/(:any)'] = "business_profile/postnewpage/$1/$2";
 $route['business-profile/creat-pdf'] = "business_profile/creat_pdf";
 $route['business-profile/business-profile-editpost'] = "business_profile/business_profile_editpost";
 
@@ -240,6 +240,7 @@ $route['job/work-experience'] = "job/job_work_exp_update";
 $route['job/profile'] = "job/job_reg";
 $route['job/search'] = "job/job_search";
 $route['job/post-(:any)/(:any)'] = "job/post/$1/$2";
+$route['job/recruiter-profile/(:any)'] = "job/rec_profile/$1";
 
 
 //RECRUITER ROUTES SETTINGS

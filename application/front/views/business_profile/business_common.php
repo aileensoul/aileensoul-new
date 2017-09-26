@@ -88,7 +88,7 @@
 
                         <?php } else {
                         ?>
-                        <img src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image']); ?>" alt="" >
+                        <img src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $business_common_data[0]['business_user_image']; ?>" alt="" >
 
                         <?php } ?>
 

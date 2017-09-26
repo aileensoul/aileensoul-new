@@ -1662,7 +1662,7 @@ class Business_profile extends MY_Controller {
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '1', $offset = $start, $join_str, $groupby = '');
 
         $return_html = '';
@@ -1681,6 +1681,7 @@ class Business_profile extends MY_Controller {
         $post_industriyal = $row['industriyal'];
         $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
         $post_other_industrial = $row['other_industrial'];
+        $post_user_id = $row['user_id'];
         if ($post_posted_user_id) {
             $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
             $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
@@ -1713,7 +1714,7 @@ class Business_profile extends MY_Controller {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                 }
                 $return_html .= '</a>';
             } else {
@@ -1727,7 +1728,7 @@ class Business_profile extends MY_Controller {
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                 } else {
-                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
                 }
                 $return_html .= '</a>';
             } else {
@@ -1809,7 +1810,7 @@ class Business_profile extends MY_Controller {
 </a>';
             }
         } else {
-            if ($userid == $row['user_id']) {
+            if ($userid == $post_user_id) {
                 $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -1892,7 +1893,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                 $return_html .= '<div class = "one-image">';
 
-                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -1936,7 +1937,7 @@ Your browser does not support the audio tag.
             foreach ($businessmultiimage as $multiimage) {
 
                 $return_html .= '<div class = "two-images">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -1944,18 +1945,18 @@ Your browser does not support the audio tag.
         } elseif (count($businessmultiimage) == 3) {
 
             $return_html .= '<div class = "three-image-top" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
@@ -1964,7 +1965,7 @@ Your browser does not support the audio tag.
             foreach ($businessmultiimage as $multiimage) {
 
                 $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -1975,7 +1976,7 @@ Your browser does not support the audio tag.
             foreach ($businessmultiimage as $multiimage) {
 
                 $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -1986,10 +1987,10 @@ Your browser does not support the audio tag.
             }
 
             $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
@@ -2173,7 +2174,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -2293,7 +2294,7 @@ Your browser does not support the audio tag.
 
                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
             } else {
-                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
             }
         } else {
 
@@ -2771,7 +2772,7 @@ Your browser does not support the audio tag.
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
             $businesspostdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_user_image', $sortby = '', $orderby = '', $limit = '', $offset = '', $$join_str = array(), $groupby);
-            $userimage .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
+            $userimage .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $businesspostdata[0]['business_user_image'] . '" alt="" >';
             $userimage .= '<a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>';
             $userimage .= $this->lang->line("update_profile_picture");
             $userimage .= '</a>';
@@ -2814,15 +2815,31 @@ Your browser does not support the audio tag.
             $join_str[4]['join_table_id'] = 'industry_type.industry_id';
             $join_str[4]['from_table_id'] = 'business_profile.industriyal';
             $join_str[4]['join_type'] = '';
-            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         } else {
             $userid = $this->session->userdata('aileenuser');
-            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
-            $join_str[0]['table'] = 'business_profile';
-            $join_str[0]['join_table_id'] = 'business_profile.user_id';
-            $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+            $contition_array = array('business_profile.user_id' => $userid, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+            $join_str[0]['table'] = 'countries';
+            $join_str[0]['join_table_id'] = 'countries.country_id';
+            $join_str[0]['from_table_id'] = 'business_profile.country';
             $join_str[0]['join_type'] = '';
-            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,country,state,city,pincode,address,contact_person,contact_mobile,contact_email,contact_website,business_type,industriyal,details', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $join_str[1]['table'] = 'states';
+            $join_str[1]['join_table_id'] = 'states.state_id';
+            $join_str[1]['from_table_id'] = 'business_profile.state';
+            $join_str[1]['join_type'] = '';
+            $join_str[2]['table'] = 'cities';
+            $join_str[2]['join_table_id'] = 'cities.city_id';
+            $join_str[2]['from_table_id'] = 'business_profile.city';
+            $join_str[2]['join_type'] = '';
+            $join_str[3]['table'] = 'business_type';
+            $join_str[3]['join_table_id'] = 'business_type.type_id';
+            $join_str[3]['from_table_id'] = 'business_profile.business_type';
+            $join_str[3]['join_type'] = '';
+            $join_str[4]['table'] = 'industry_type';
+            $join_str[4]['join_table_id'] = 'industry_type.industry_id';
+            $join_str[4]['from_table_id'] = 'business_profile.industriyal';
+            $join_str[4]['join_type'] = '';
+            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details,business_profile.other_business_type,business_profile.other_industrial', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
         }
         
         $this->data['business_data']['company_name'] = $business_data[0]['company_name'] == '' ? PROFILENA : $business_data[0]['company_name'];
@@ -2832,18 +2849,20 @@ Your browser does not support the audio tag.
         $this->data['business_data']['pincode'] = $business_data[0]['pincode'] == '' ? PROFILENA : $business_data[0]['pincode'];
         $this->data['business_data']['address'] = $business_data[0]['address'] == '' ? PROFILENA : $business_data[0]['address'];
         $this->data['business_data']['contact_person'] = $business_data[0]['contact_person'] == '' ? PROFILENA : $business_data[0]['contact_person'];
-        $this->data['business_data']['contact_mobile'] = $business_data[0]['contact_mobile'] == '' ? PROFILENA : $business_data[0]['contact_mobile'];
+        $this->data['business_data']['contact_mobile'] = $business_data[0]['contact_mobile'] == '0' ? PROFILENA : $business_data[0]['contact_mobile'];
         $this->data['business_data']['contact_email'] = $business_data[0]['contact_email'] == '' ? PROFILENA : $business_data[0]['contact_email'];
         $this->data['business_data']['contact_website'] = $business_data[0]['contact_website'] == '' ? PROFILENA : $business_data[0]['contact_website'];
-        $this->data['business_data']['business_name'] = $business_data[0]['business_name'] == '' ? PROFILENA : $business_data[0]['business_name'];
+        $this->data['business_data']['business_type'] = $business_data[0]['business_name'] == '' ? PROFILENA : $business_data[0]['business_name'];
+        if($this->data['business_data']['business_type'] == ''){
+            $this->data['business_data']['business_type'] = $business_data[0]['business_name'] == '' ? PROFILENA : $business_data[0]['other_business_type'];
+        }
         $this->data['business_data']['industry_name'] = $business_data[0]['industry_name'] == '' ? PROFILENA : $business_data[0]['industry_name'];
+        if($this->data['business_data']['industry_name'] == ''){
+            $this->data['business_data']['industry_name'] = $business_data[0]['industry_name'] == '' ? PROFILENA : $business_data[0]['other_industrial'];
+        }
         $this->data['business_data']['details'] = $business_data[0]['details'] == '' ? PROFILENA : $business_data[0]['details'];
         
-//       business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details
-        echo '<pre>';
-        print_r($this->data['business_data']);
-        exit;
-
+        
 // $this->data['slug_data'] this data come from include
         if ($id == $this->data['slug_data'][0]['business_slug'] || $id == '') {
             $contition_array = array('user_id' => $userid, 'is_delete' => '0');
@@ -3042,7 +3061,7 @@ Your browser does not support the audio tag.
                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                    $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $user['business_user_image'] . '" height="50px" width="50px" alt="" >';
                 }
                 $return_html .= '</a>';
             } else {
@@ -3474,7 +3493,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $third_user_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3564,7 +3583,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $third_user_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $third_user_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $third_user_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $third_user_html .= '</a>';
                     } else {
@@ -3902,7 +3921,7 @@ Your browser does not support the audio tag.
                     if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $followerimage)) {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="No Image">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $followerimage . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4062,7 +4081,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $this->db->get_where('business_profile', array('business_profile_id' => $user['follow_to']))->row()->business_user_image . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -4695,7 +4714,7 @@ Your browser does not support the audio tag.
                 $cmtinsert .= '<div class="post-design-pro-comment-img">';
 
                 if ($business_userimage != '') {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">  </div>';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">  </div>';
                 } else {
 //                    $a = $companyname;
 //                    $acr = substr($a, 0, 1);
@@ -4855,7 +4874,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
 
                     $cmtinsert .= '</div>';
@@ -5258,7 +5277,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -5420,7 +5439,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -5568,8 +5587,7 @@ Your browser does not support the audio tag.
 //business_profile like commnet ajax end 
 // click on post after post open on new page start
 
-    public function postnewpage($id) {
-
+    public function postnewpage($slug_id='',$id='') {
         $userid = $this->session->userdata('aileenuser');
 
         $this->business_profile_active_check();
@@ -5624,7 +5642,6 @@ Your browser does not support the audio tag.
                     $editpostdes .= '...<span id="kkkk" onClick="khdiv(' . $_POST["business_profile_post_id"] . ')">View More</div>';
                 }
             }
-
 
             $postname = '<p title="' . $businessdata[0]['product_name'] . '">' . $businessdata[0]['product_name'] . '</p>';
 //echo $editpost;   echo $editpostdes;
@@ -5685,10 +5702,7 @@ Your browser does not support the audio tag.
         );
 
         $updatdata = $this->common->update_data($data, 'business_profile_post', 'business_profile_post_id', $post_id);
-
-
         $business_profile_id = $businessdata[0]['business_profile_id'];
-
 
 // for post count start
         $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2');
@@ -6304,7 +6318,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6462,7 +6476,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -6622,7 +6636,7 @@ Your browser does not support the audio tag.
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
 
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
 
                 $cmtinsert .= '</div>';
@@ -6795,7 +6809,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -7329,7 +7343,7 @@ Your browser does not support the audio tag.
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7485,7 +7499,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -7647,7 +7661,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -7780,7 +7794,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                     $fourdata .= '</div>';
                 } else {
@@ -7902,7 +7916,7 @@ Your browser does not support the audio tag.
 
                         $fourdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $fourdata .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busienss_userimage . '"  alt="">';
+                        $fourdata .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busienss_userimage . '"  alt="">';
                     }
                 } else {
 
@@ -8045,7 +8059,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -8231,7 +8245,7 @@ Your browser does not support the audio tag.
 
                     $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                    $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                 }
                 $cmtinsert .= '</div>';
             } else {
@@ -8384,7 +8398,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8531,7 +8545,7 @@ Your browser does not support the audio tag.
 
                         $cmtinsert .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
-                        $cmtinsert .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt="">';
+                        $cmtinsert .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt="">';
                     }
                     $cmtinsert .= '</div>';
                 } else {
@@ -8677,7 +8691,7 @@ Your browser does not support the audio tag.
                         $mulimgfour .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $mulimgfour .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $mulimgfour .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
 
                     $mulimgfour .= '</div>';
@@ -8819,7 +8833,7 @@ Your browser does not support the audio tag.
 
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -8898,7 +8912,7 @@ Your browser does not support the audio tag.
                 if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $bus_image)) {
                     $modal .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                 } else {
-                    $modal .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $bus_image . '"  alt="">';
+                    $modal .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $bus_image . '"  alt="">';
                 }
             } else {
 
@@ -9228,7 +9242,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
                         /*    $a = $busdata[0]['company_name'];
@@ -9281,7 +9295,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 //                        $a = $busdata[0]['company_name'];
@@ -9409,7 +9423,7 @@ Your browser does not support the audio tag.
                     $contactdata .= '<div class="addcontact-pic">';
 
                     if ($busdata[0]['business_user_image']) {
-                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     } else {
                         $contactdata .= '<img src="' . base_url(NOBUSIMAGE) . '">';
                     }
@@ -9445,7 +9459,7 @@ Your browser does not support the audio tag.
                             $contactdata .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         } else {
 
-                            $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                            $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                         }
                     } else {
 
@@ -9594,7 +9608,7 @@ Your browser does not support the audio tag.
                                                         <div class="profile-img">';
                     if ($friend['business_user_image'] != '') {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
-                                                                    <img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $friend['business_user_image'] . '">
+                                                                    <img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $friend['business_user_image'] . '">
                                                                 </a>';
                     } else {
                         $return_html .= '<a href="' . base_url('business-profile/dashboard/' . $friend['business_slug']) . '">
@@ -9705,7 +9719,7 @@ Your browser does not support the audio tag.
                         $contactdata .= '<img src="' . base_url() . NOBUSIMAGE . '">';
                     } else {
 
-                        $contactdata .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
+                        $contactdata .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $busdata[0]['business_user_image'] . '">';
                     }
                 } else {
 //                    $a = $busdata[0]['company_name'];
@@ -9854,7 +9868,7 @@ Your browser does not support the audio tag.
                         $return_html .= '<img src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
+                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $cdata[0]['business_user_image'] . '" height="50px" width="50px" alt="" >';
                     }
                     $return_html .= '</a>';
                 } else {
@@ -10219,12 +10233,12 @@ No Contacts Available.
         $delete_post_id = str_replace(",", "','", $delete_post_id);
 
         $condition_array = array('business_profile_post.is_delete' => 0, 'business_profile_post.status' => 1);
-        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id')";
+        $search_condition = "`business_profile_post_id` NOT IN ('$delete_post_id') AND (business_profile_post.user_id IN ('$total_user_list')) OR (posted_user_id ='$user_id' AND is_delete=0)";
         $join_str[0]['table'] = 'business_profile';
         $join_str[0]['join_table_id'] = 'business_profile.user_id';
         $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
         $join_str[0]['join_type'] = '';
-        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id";
+        $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id,business_profile.user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = $perpage, $offset = $start, $join_str, $groupby = '');
         $business_profile_post1 = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $groupby = '');
 
@@ -10253,6 +10267,7 @@ No Contacts Available.
                 $post_posted_user_id = $row['posted_user_id'];
                 $post_business_slug = $row['business_slug'];
                 $post_industriyal = $row['industriyal'];
+                $post_user_id = $row['user_id'];
                 $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
                 $post_other_industrial = $row['other_industrial'];
                 if ($post_posted_user_id) {
@@ -10287,7 +10302,7 @@ No Contacts Available.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -10301,7 +10316,7 @@ No Contacts Available.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -10383,7 +10398,7 @@ No Contacts Available.
 </a>';
                     }
                 } else {
-                    if ($userid == $row['user_id']) {
+                    if ($userid == $post_user_id) {
                         $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
@@ -10466,7 +10481,7 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 
                         $return_html .= '<div class = "one-image">';
 
-                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -10510,7 +10525,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "two-images">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -10518,18 +10533,18 @@ Your browser does not support the audio tag.
                 } elseif (count($businessmultiimage) == 3) {
 
                     $return_html .= '<div class = "three-image-top" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
@@ -10538,7 +10553,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -10549,7 +10564,7 @@ Your browser does not support the audio tag.
                     foreach ($businessmultiimage as $multiimage) {
 
                         $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -10560,10 +10575,10 @@ Your browser does not support the audio tag.
                     }
 
                     $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $post_business_profile_post_id) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
@@ -10747,7 +10762,7 @@ Your browser does not support the audio tag.
 
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -10867,7 +10882,7 @@ Your browser does not support the audio tag.
 
                         $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                     } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                        $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                     }
                 } else {
 
@@ -11066,7 +11081,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userimageposted)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11080,7 +11095,7 @@ Your browser does not support the audio tag.
                             if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
                                 $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                             } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                             }
                             $return_html .= '</a>';
                         } else {
@@ -11270,12 +11285,12 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ');
                         if (in_array($ext, $allowed)) {
 
                             $return_html .= '<div class = "one-image">';
-                            /* $return_html .= '<a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                            /* $return_html .= '<a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
                               <img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '">
                               </a>
                               </div>';
                              */
-                            $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                            $return_html .= '<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -11354,47 +11369,47 @@ Your browser does not support the audio tag.
                         foreach ($businessmultiimage as $multiimage) {
 
                             /*    $return_html .= '<div class = "two-images">
-                              <a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                              <a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
                               <img class = "two-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['file_name']) . '">
                               </a>
                               </div>'; */
 
                             $return_html .= '<div class = "two-images">
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
                         }
                     } elseif (count($businessmultiimage) == 3) {
 //                        $return_html .= '<div class = "three-image-top" >
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '">
 //</a>
 //</div>
 //<div class = "three-image" >
 //
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['file_name']) . '">
 //</a>
 //</div>
 //<div class = "three-image" >
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img class = "three-columns" src = "' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['file_name']) . '">
 //</a>
 //</div>';
                         $return_html .= '<div class = "three-image-top" >
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
 
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '">
 </a>
 </div>
 <div class = "three-image" >
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
@@ -11403,12 +11418,12 @@ Your browser does not support the audio tag.
                         foreach ($businessmultiimage as $multiimage) {
 
 //                            $return_html .= '<div class = "four-image">
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img class = "breakpoint" src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '">
 //</a>
 //</div>';
                             $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -11419,12 +11434,12 @@ Your browser does not support the audio tag.
                         foreach ($businessmultiimage as $multiimage) {
 
 //                            $return_html .= '<div class = "four-image">
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '">
 //</a>
 //</div>';
                             $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
@@ -11435,10 +11450,10 @@ Your browser does not support the audio tag.
                         }
 
 //                        $return_html .= '<div class = "four-image">
-//<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<img src = "' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['file_name']) . '">
 //</a>
-//<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//<a class = "text-center" href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //<div class = "more-image" >
 //<span>View All (+
 //' . (count($businessmultiimage) - 4) . ')</span>
@@ -11448,10 +11463,10 @@ Your browser does not support the audio tag.
 //</a>
 //</div>';
                         $return_html .= '<div class = "four-image">
-<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
 </a>
-<a class = "text-center" href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+<a class = "text-center" href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <div class = "more-image" >
 <span>View All (+
 ' . (count($businessmultiimage) - 4) . ')</span>
@@ -11636,7 +11651,7 @@ Your browser does not support the audio tag.
 
                                     $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                                 } else {
-                                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                                    $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                                 }
                                 $return_html .= '</a>';
                             } else {
@@ -11756,7 +11771,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '" alt = "">';
                         }
                     } else {
 
@@ -11895,7 +11910,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -11968,7 +11983,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -12042,7 +12057,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                     } else {
 
@@ -12110,7 +12125,7 @@ Your browser does not support the audio tag.
 
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
 
                         $return_html .= '</a>';
@@ -12225,7 +12240,7 @@ Your browser does not support the audio tag.
                         if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $userlist['business_user_image'])) {
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userlist['business_user_image'] . '" alt = "">';
                         }
                         $return_html .= '</a>';
                     } else {
@@ -12304,7 +12319,7 @@ Your browser does not support the audio tag.
             }
         } else {
 
-            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
+//            $fetch_result .= '<div class="not_available">  <p>     Photos Not Available </p></div>';
         }
 
         $fetch_result .= '<div class = "dataconphoto"></div>';
@@ -12994,8 +13009,8 @@ Your browser does not support the audio tag.
             $offset = $start;
 
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
             $contition_array = array('business_slug' => $id, 'status' => '1', 'business_step' => 4);
             $businessdata1 = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -13004,8 +13019,8 @@ Your browser does not support the audio tag.
             $offset = $start;
 
             $contition_array = array('user_id' => $businessdata1[0]['user_id'], 'status' => 1, 'is_delete' => '0');
-            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
-            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $business_profile_data = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit, $offset, $join_str = array(), $groupby = '');
+            $business_profile_data1 = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
         $return_html = '';
@@ -13020,6 +13035,8 @@ Your browser does not support the audio tag.
         if (count($business_profile_data1) > 0) {
 
             foreach ($business_profile_data as $row) {
+                $post_business_slug = $slug_id;
+                
                 $contition_array = array('user_id' => $row['user_id'], 'status' => '1');
                 $businessdata = $this->common->select_data_by_condition('business_profile', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
@@ -13046,7 +13063,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -13062,7 +13079,7 @@ Your browser does not support the audio tag.
                             $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                         } else {
 
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '<img src = "' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
                         }
                     } else {
 
@@ -13204,11 +13221,11 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
                     if (in_array($ext, $allowed)) {
 //                        $return_html .= '<div class="one-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">'
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">'
 //                                . '<img src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '"> </a>
 //        </div>';
 
-                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
@@ -13287,39 +13304,39 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                 } elseif (count($businessmultiimage) == 2) {
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div  class="two-images" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $multiimage['file_name']) . '"> </a>
 //        </div>';
                         $return_html .= '<div  class="two-images" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="two-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) == 3) {
 //                    $return_html .= '<div class="three-image-top" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_main_upload_path') . $businessmultiimage[0]['file_name']) . '"> </a>
 //        </div>
 //        <div class="three-image" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[1]['file_name']) . '"> </a>
 //        </div>
 //        <div class="three-image" >
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . base_url($this->config->item('bus_post_resize1_upload_path') . $businessmultiimage[2]['file_name']) . '"> </a>
 //        </div>';
                     $return_html .= '<div class="three-image-top" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] . '"> </a>
         </div>
         <div class="three-image" >
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="three-columns" src="' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '"> </a>
         </div>';
                 } elseif (count($businessmultiimage) == 4) {
 
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '"> </a>
 //        </div>';
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img class="breakpoint" src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '"> </a>
         </div>';
                     }
                 } elseif (count($businessmultiimage) > 4) {
@@ -13327,26 +13344,26 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                     $i = 0;
                     foreach ($businessmultiimage as $multiimage) {
 //                        $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '" > </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $multiimage['file_name']) . '" > </a>
 //        </div>';
                         $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" > </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '" > </a>
         </div>';
                         $i++;
                         if ($i == 3)
                             break;
                     }
 //                    $return_html .= '<div class="four-image">
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['file_name']) . '"> </a>
-//            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img src="' . base_url($this->config->item('bus_post_resize2_upload_path') . $businessmultiimage[3]['file_name']) . '"> </a>
+//            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
 //                <div class="more-image" >
 //                    <span> View All (+' . (count($businessmultiimage) - 4) . ')
 //                    </span></div>
 //            </a>
 //        </div>';
                     $return_html .= '<div class="four-image">
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '"> </a>
-            <a href="' . base_url('business-profile/post-detail/' . $row['business_profile_post_id']) . '">
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '"><img src="' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '"> </a>
+            <a href="' . base_url('business-profile/post-detail/' .$post_business_slug . '/' . $row['business_profile_post_id']) . '">
                 <div class="more-image" >
                     <span> View All (+' . (count($businessmultiimage) - 4) . ')
                     </span></div>
@@ -13510,7 +13527,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                                 $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                             } else {
 
-                                $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                                $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                             }
                         } else {
 
@@ -13620,7 +13637,7 @@ onblur = check_lengthedit(' . $row['business_profile_post_id'] . ')>';
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                     } else {
 
-                        $return_html .= '<img  src="' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '"  alt="">';
+                        $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                     }
                 } else {
 

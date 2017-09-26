@@ -16,6 +16,9 @@ class Artistic extends MY_Controller {
           $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->load->library('S3');
 
+        // $this->load->library('minify');
+        // $this->load->helper('url');
+
         // if (!$this->session->userdata('aileenuser')) {
         //     redirect('login', 'refresh');
         // }
@@ -13954,10 +13957,12 @@ public function art_home_post() {
         $contition_array = array('art_post.user_id' => $userid, 'art_post.status' => '1', 'art_post.is_delete' => '0');
         $art_userdata = $this->data['art_userdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if (count($art_userdata) > 0) {
-            $userabc[][] = $this->data['art_userdata'][0];
+            $userabc[] = $this->data['art_userdata'];
         } else {
-            $userabc[] = $this->data['art_userdata'][0];
+            $userabc[] = $this->data['art_userdata'];
         }
+
+       // echo "<pre>"; print_r($userabc); die();
 
         if (count($skillabc) == 0 && count($userabc) != 0) {
             $unique = $userabc;

@@ -19,6 +19,7 @@ class Search extends MY_Controller {
 //        }
 
         include ('include.php');
+        include ('business_include.php');
     }
 
     public function index() {
@@ -152,7 +153,19 @@ class Search extends MY_Controller {
     }
 
     public function ajax_business_search() {
-
+        
+        $main_business_profile_id = $this->data['business_common_data'][0]['business_profile_id'];
+        $main_city = $this->data['business_common_data'][0]['city'];
+        $main_user_id = $this->data['business_common_data'][0]['user_id'];
+        $main_business_user_image = $this->data['business_common_data'][0]['business_user_image'];
+        $main_business_slug = $this->data['business_common_data'][0]['business_slug'];
+        $main_company_name = $this->data['business_common_data'][0]['company_name'];
+        $main_profile_background = $this->data['business_common_data'][0]['profile_background'];
+        $main_state = $this->data['business_common_data'][0]['state'];
+        $main_industriyal = $this->data['business_common_data'][0]['industriyal'];
+        $main_other_industrial = $this->data['business_common_data'][0]['other_industrial'];
+        
+        
         $userid = $this->session->userdata('aileenuser');
         if ($this->input->get('skills') == "" && $this->input->get('searchplace') == "") {
             redirect('business-profile/home/', refresh);
@@ -256,7 +269,7 @@ class Search extends MY_Controller {
                                                                             <div class="search_img" style="height: 110px; width: 108px;" >
                                                                                 <a style=" " href="' . base_url('business-profile/dashboard/' . $p['business_slug']) . '" title="">';
                     if ($p['business_user_image'] != '') {
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $p['business_user_image']) . '" alt="" > </a>';
+                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $p['business_user_image'] . '" alt="" > </a>';
                     } else {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
                                                                                     </a>';
@@ -311,7 +324,7 @@ class Search extends MY_Controller {
                     if ($p['user_id'] != $userid) {
                         $return_html .= '<div class="fl search_button">
                                                                                 <div class="fruser' . $p['business_profile_id'] . '">';
-                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $businessdata[0]['business_profile_id'], 'follow_to' => $p['business_profile_id']))->row()->follow_status;
+                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $main_business_profile_id, 'follow_to' => $p['business_profile_id']))->row()->follow_status;
                         if (($status == 0 || $status == " ") && ($is_business)) {
                             $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                             <button id="follow' . $p['business_profile_id'] . '" onClick="followuser_two(' . $p['business_profile_id'] . ')">
@@ -327,7 +340,7 @@ class Search extends MY_Controller {
                         }
                         if($is_business){
                         $return_html .= '</div>
-                                                                                <button onclick="window.location.href = ' . base_url('chat/abc/5/5/' . $p['user_id']) . '"> Message</button>
+                                                                                <a href="' . base_url('chat/abc/5/5/' . $p['user_id']) . '"><button onclick="window.location.href = ' . base_url('chat/abc/5/5/' . $p['user_id']) . '"> Message</button></a>
                                                                             </div>';
                         }
                     }
@@ -397,7 +410,7 @@ class Search extends MY_Controller {
 
                             if ($userimageposted) {
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '" title="">
-                                                                                                <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />
+                                                                                                <img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />
                                                                                             </a>';
                             } else {
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugnameposted) . '" title="">
@@ -407,7 +420,7 @@ class Search extends MY_Controller {
                         } else {
                             if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
-                                    <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
+                                    <img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt=""> </a>';
                             } else {
                                 $return_html .= '<a class="post_dot" href="' . base_url('business-profile/dashboard/' . $slugname) . '" title="">
                                     <img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
@@ -733,7 +746,7 @@ class Search extends MY_Controller {
                                                 <div class="post-design-pro-comment-img">';
                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id'], 'status' => 1))->row()->business_user_image;
                                 if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
-                                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                    $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                                 } else {
                                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                                 }
@@ -832,7 +845,7 @@ class Search extends MY_Controller {
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                         $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
                         if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
-                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                            $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         }
@@ -2856,7 +2869,7 @@ class Search extends MY_Controller {
                                                                             <div class="search_img" style="height: 110px; width: 108px;" >
                                                                                 <a style="" href="javascript:void(0);" onClick="login_profile()" title="">';
                     if ($p['business_user_image'] != '') {
-                        $return_html .= '<img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $p['business_user_image']) . '" alt="" > </a>';
+                        $return_html .= '<img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $p['business_user_image'] . '" alt="" > </a>';
                     } else {
                         $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
                                                                                     </a>';
@@ -2911,7 +2924,7 @@ class Search extends MY_Controller {
                     if ($p['user_id'] != $userid) {
                         $return_html .= '<div class="fl search_button">
                                                                                 <div class="fruser' . $p['business_profile_id'] . '">';
-                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $businessdata[0]['business_profile_id'], 'follow_to' => $p['business_profile_id']))->row()->follow_status;
+                        $status = $this->db->get_where('follow', array('follow_type' => 2, 'follow_from' => $main_business_profile_id, 'follow_to' => $p['business_profile_id']))->row()->follow_status;
                         if ($status == 0 || $status == " ") {
                             $return_html .= '<div id= "followdiv " class="user_btn">
                                                                                             <button id="follow' . $p['business_profile_id'] . '" onClick="login_profile()">
@@ -2995,7 +3008,7 @@ class Search extends MY_Controller {
 
                             if ($userimageposted) {
                                 $return_html .= '<a class="post_dot"  href="javascript:void(0);"  onClick="login_profile()" title="">
-                                                                                                <img src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $userimageposted) . '" name="image_src" id="image_src" />
+                                                                                                <img src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $userimageposted . '" name="image_src" id="image_src" />
                                                                                             </a>';
                             } else {
                                 $return_html .= '<a class="post_dot"  href="javascript:void(0);"  onClick="login_profile()" title="">
@@ -3005,7 +3018,7 @@ class Search extends MY_Controller {
                         } else {
                             if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
                                 $return_html .= '<a class="post_dot"  href="javascript:void(0);"  onClick="login_profile()" title="">
-                                    <img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt=""> </a>';
+                                    <img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt=""> </a>';
                             } else {
                                 $return_html .= '<a class="post_dot"  href="javascript:void(0);"  onClick="login_profile()" title="">
                                     <img  src="' . base_url(NOBUSIMAGE) . '"  alt="">
@@ -3331,7 +3344,7 @@ class Search extends MY_Controller {
                                                 <div class="post-design-pro-comment-img">';
                                 $business_userimage = $this->db->get_where('business_profile', array('user_id' => $pdata['user_id'], 'status' => 1))->row()->business_user_image;
                                 if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
-                                    $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                                    $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                                 } else {
                                     $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                                 }
@@ -3430,7 +3443,7 @@ class Search extends MY_Controller {
                         $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
                         $business_user = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->company_name;
                         if (file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) && $business_userimage) {
-                            $return_html .= '<img  src="' . base_url($this->config->item('bus_profile_thumb_upload_path') . $business_userimage) . '"  alt="">';
+                            $return_html .= '<img  src="' . BUS_PROFILE_MAIN_UPLOAD_URL . $business_userimage . '"  alt="">';
                         } else {
                             $return_html .= '<img  src="' . base_url(NOBUSIMAGE) . '"  alt="">';
                         }
@@ -3461,6 +3474,119 @@ class Search extends MY_Controller {
         }
         echo $return_html;
     }
+    
+    public function business_profile_active_check() {
+
+        $userid = $this->session->userdata('aileenuser');
+        if (!$userid) {
+            redirect('login');
+        }
+        // IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE START
+
+        $contition_array = array('user_id' => $userid, 'status' => '0', 'is_deleted' => '0');
+        $business_deactive = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_deactive) {
+            redirect('business-profile');
+        }
+
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    public function is_business_profile_register() {
+
+        $userid = $this->session->userdata('aileenuser');
+        $contition_array = array('user_id' => $userid, 'status' => '1', 'is_deleted' => '0');
+        $business_check = $this->data['business_deactive'] = $this->common->select_data_by_condition('business_profile', $contition_array, $data = ' business_profile_id,business_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby);
+
+        if ($business_check) {
+
+            if ($business_check[0]['business_step'] == 1) {
+                redirect('business-profile/contact-information', refresh);
+            } else if ($business_check[0]['business_step'] == 2) {
+                redirect('business-profile/description', refresh);
+            } else if ($business_check[0]['business_step'] == 3) {
+                redirect('business-profile/image', refresh);
+            }
+        } else {
+            redirect('business-profile/business-information-update', refresh);
+        }
+
+// IF USER DEACTIVE PROFILE THEN REDIRECT TO BUSINESS-PROFILE/INDEX UNTILL ACTIVE PROFILE END
+// DEACTIVATE PROFILE END
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT START
+
+    public function business_user_following_count($business_profile_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_from' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_to';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_ing_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as following_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $following_count = $bus_user_f_ing_count[0]['following_count'];
+
+        return $following_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWING COUNT END
+    // BUSIENSS PROFILE USER FOLLOWER COUNT START
+
+    public function business_user_follower_count($business_profile_id = '') {
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id == '') {
+            $business_profile_id = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_profile_id;
+        }
+
+        $contition_array = array('follow_to' => $business_profile_id, 'follow_status' => '1', 'follow_type' => '2', 'business_profile.status' => 1);
+
+        $join_str_following[0]['table'] = 'follow';
+        $join_str_following[0]['join_table_id'] = 'follow.follow_from';
+        $join_str_following[0]['from_table_id'] = 'business_profile.business_profile_id';
+        $join_str_following[0]['join_type'] = '';
+
+        $bus_user_f_er_count = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'count(*) as follower_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_following, $groupby = '');
+
+        $follower_count = $bus_user_f_er_count[0]['follower_count'];
+
+        return $follower_count;
+    }
+
+    // BUSIENSS PROFILE USER FOLLOWER COUNT END
+    // 
+    public function business_user_contacts_count($business_profile_id = '') {
+
+        $userid = $this->session->userdata('aileenuser');
+        if ($business_profile_id != '') {
+            $userid = $this->db->get_where('business_profile', array('business_profile_id' => $business_profile_id, 'status' => 1))->row()->user_id;
+        }
+
+        $contition_array = array('contact_type' => 2, 'contact_person.status' => 'confirm', 'business_profile.status' => 1);
+        $search_condition = "((contact_from_id = ' $userid') OR (contact_to_id = '$userid'))";
+
+        $join_str_contact[0]['table'] = 'business_profile';
+        $join_str_contact[0]['join_table_id'] = 'business_profile.user_id';
+        $join_str_contact[0]['from_table_id'] = 'contact_person.contact_from_id';
+        $join_str_contact[0]['join_type'] = '';
+
+        $contacts_count = $this->common->select_data_by_search('contact_person', $search_condition, $contition_array, $data = 'count(*) as contact_count', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str_contact, $groupby = '');
+
+        $contacts_count = $contacts_count[0]['contact_count'];
+
+        return $contacts_count;
+    }
+
 
     //AJAX BUSIENSS SEARCH WITHOUTL LOGIN START
 }

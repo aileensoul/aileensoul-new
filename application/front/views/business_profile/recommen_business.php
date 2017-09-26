@@ -4,20 +4,17 @@
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver='.time()); ?>">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver='.time()) ?>" />
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url('css/3.3.0/select2.css?ver='.time()); ?>">-->
-        <link href="<?php echo base_url('css/fileinput.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver='.time()) ?>" media="all" rel="stylesheet" type="text/css"/>
-        <!--<script src="<?php // echo base_url('js/jquery-2.0.3.min.js?ver='.time()) ?>" type="text/javascript"></script>-->
-        <script src="<?php echo base_url('js/plugins/sortable.js?ver='.time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/fileinput.js?ver='.time()) ?>" type="text/javascript"></script>
-        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver='.time()) ?>" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver='.time()); ?>">
-        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver='.time()); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver='.time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/demo.css?ver=' . time()); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css?ver=' . time()) ?>" />
+        <link href="<?php echo base_url('css/fileinput.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url('js/themes/explorer/theme.css?ver=' . time()) ?>" media="all" rel="stylesheet" type="text/css"/>
+        <script src="<?php echo base_url('js/plugins/sortable.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/fileinput.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('js/themes/explorer/theme.js?ver=' . time()) ?>" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/timeline.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <script>
             $(function () {
                 var showTotalChar = 200, showChar = "ReadMore", hideChar = "";
@@ -127,15 +124,17 @@
         <!-- START HEADER -->
         <?php echo $header; ?>
         <!-- END HEADER -->
-        
-        <?php if($is_business){ echo $business_header2_border;} ?>
+
+        <?php if ($is_business) {
+            echo $business_header2_border;
+        } ?>
         <section>
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4  profile-box profile-box-custom fixed_art fixed_left_side  animated fadeInLeftBig">
                             <div class="">
-                                <?php echo $business_left; ?>
+<?php echo $business_left; ?>
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
@@ -145,21 +144,18 @@
                                         Search result of 
                                         <?php
                                         if ($keyword != "" && $keyword1 == "") {
-                                            echo '"' . trim($keyword,',') . '"';
+                                            echo '"' . trim($keyword, ',') . '"';
                                         } elseif ($keyword == "" && $keyword1 != "") {
-                                            echo '"' . trim($keyword1,',') . '"';
+                                            echo '"' . trim($keyword1, ',') . '"';
                                         } else {
-                                            echo '"' . trim($keyword,',') . '"';
+                                            echo '"' . trim($keyword, ',') . '"';
                                             echo " and ";
-                                            echo '"' . trim($keyword1,',') . '"';
+                                            echo '"' . trim($keyword1, ',') . '"';
                                         }
                                         ?>
                                     </h3>
                                     <div class="job-contact-frnd">
                                         <!-- AJAX DATA... -->
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -167,53 +163,53 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Bid-modal  -->
-        <div class="modal fade message-box biderror" id="bidmodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;
-                    </button>       
-                    <div class="modal-body">
-                        <span class="mes"></span>
-                    </div>
-                </div>
+        </div>
+    </div>
+</div>
+</section>
+<!-- Bid-modal  -->
+<div class="modal fade message-box biderror" id="bidmodal" role="dialog">
+    <div class="modal-dialog modal-lm">
+        <div class="modal-content">
+            <button type="button" class="modal-close" data-dismiss="modal">&times;
+            </button>       
+            <div class="modal-body">
+                <span class="mes"></span>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <!-- Bid-modal-2  -->
-        <div class="modal fade message-box" id="likeusermodal" role="dialog">
-            <div class="modal-dialog modal-lm">
-                <div class="modal-content">
-                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                    <div class="modal-body">
-                        <span class="mes"></span>
-                    </div>
-                </div>
+    </div>
+</div>
+<!-- Model Popup Close -->
+<!-- Bid-modal-2  -->
+<div class="modal fade message-box" id="likeusermodal" role="dialog">
+    <div class="modal-dialog modal-lm">
+        <div class="modal-content">
+            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+            <div class="modal-body">
+                <span class="mes"></span>
             </div>
         </div>
-        <!-- Model Popup Close -->
-        <footer>
-            <?php echo $footer ?>
-        </footer>
-        <script src="<?php echo base_url('js/jquery.wallform.js?ver='.time()); ?>"></script>
-<!--        <script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time()); ?>"></script>
-        <script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time()); ?>"></script>-->
-        <script src="<?php echo base_url('js/bootstrap.min.js?ver='.time()); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.highlite.js?ver='.time()); ?>">
-        </script>
-        <script>
-            $('#content').on('change keyup keydown paste cut', 'textarea', function () {
-                $(this).height(0).height(this.scrollHeight);
-            }).find('textarea').change();
-        </script>
-        <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var keyword = '<?php echo $keyword; ?>';
-            var keyword1 = '<?php echo $keyword1; ?>';
-        </script>
-        <script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js?ver='.time()); ?>"></script>
-        <script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
-    </body>
+    </div>
+</div>
+<!-- Model Popup Close -->
+<footer>
+<?php echo $footer ?>
+</footer>
+<script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('js/bootstrap.min.js?ver=' . time()); ?>"></script>
+<script src="<?php echo base_url('js/jquery.highlite.js?ver=' . time()); ?>">
+</script>
+<script>
+    $('#content').on('change keyup keydown paste cut', 'textarea', function () {
+        $(this).height(0).height(this.scrollHeight);
+    }).find('textarea').change();
+</script>
+<script>
+    var base_url = '<?php echo base_url(); ?>';
+    var keyword = '<?php echo $keyword; ?>';
+    var keyword1 = '<?php echo $keyword1; ?>';
+</script>
+<script type="text/javascript" src="<?php echo base_url('js/webpage/business-profile/search.js?ver=' . time()); ?>"></script>
+<script type="text/javascript" defer="defer" src="<?php echo base_url('js/webpage/business-profile/common.js?ver=' . time()); ?>"></script>
+</body>
 </html>
