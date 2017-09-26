@@ -371,7 +371,7 @@ li.fr a {
     padding-left: 210px;
 }
 .art-side-menu ul {
-    float: left;
+    /*float: left;*/
 }
 .right-side-menu {
     float: left;
@@ -2198,14 +2198,17 @@ label.cameraButton input[accept*="camera"] {
         padding-top: 54px !important;
     }
     .profile-pho {
-        height: 133px;
-        width: 123px;
+        height: 130px;
+        width: 130px;
         margin-top: -55px;
     }
     .user-pic {
-        height: 125px;
-        width: 115px;
+        height: 128px;
+        width: 128px;
     }
+	.post-img-user{width:118px; height:118px; line-height: 1;
+        padding: 40px 0;}
+	.user-pic:hover a{width:118px; height:118px; padding:17px 5px; }
     .buisness-profile-txext {
         width: 28%;
     }
@@ -2230,12 +2233,7 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
         float: left;
     }
-    .post-img-user {
-        height: 118px;
-        line-height: 1;
-        padding: 40px 0;
-        width: 109px;
-    }
+   
 }
 @media screen and (max-width: 991px) {
     .art_no_post_text {
@@ -2345,7 +2343,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
     }
     .art-side-menu {
-        padding-left: 160px !important;
+        padding-left: 175px !important;
     }
     .flw_msg_btn ul li {
         padding-right: 0 !important;
@@ -2713,7 +2711,7 @@ label.cameraButton input[accept*="camera"] {
         height: 200px;
     }
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 639px) {
     .job_con #InboxContainer::before {
         right: 120px;
     }
@@ -2737,6 +2735,7 @@ label.cameraButton input[accept*="camera"] {
         padding: 33px 0;
         width: 88px;
     }
+	.user-pic:hover a{width:88px; height:88px; font-size:0; padding:25px 5px;}
     .profile-head-text a {
         font-size: 18px;
     }
@@ -2745,10 +2744,7 @@ label.cameraButton input[accept*="camera"] {
         line-height: 8px;
         padding-top: 0px;
     }
-    .custom-row .user-pic:hover a {
-        width: 88px;
-        bottom: 5px;
-    }
+
     .cover-pic {
         bottom: 62%;
         right: -10%;
