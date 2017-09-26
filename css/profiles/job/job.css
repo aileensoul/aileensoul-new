@@ -1,5 +1,6 @@
 /***  job  ***/
 /*** common css for job recrutor and freelancer  ***/
+.panel1 .job_education_submitbox button{}
 .custom_footer_left ul li a:focus{color: #1B8AB9 !important;}
 .profile-job-post-detail .profile-job-post-title .button:focus{
     background: #1B8AB9;color: white;}

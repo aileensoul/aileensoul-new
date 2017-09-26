@@ -62,7 +62,7 @@
                                        <div class="panel">
                                           <div  id="panel-heading" <?php if($userdata[0]['experience'] == 'Fresher'){ ?> class="panel-heading active" <?php } else if($userdata[0]['experience'] == ''){?> class="panel-heading" <?php }else{?> class="panel-heading" <?php } ?>>
                                              <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#bs-collapse" href="#one" id="toggle" >
+                                                <a data-toggle="collapse" tabindex="1" data-parent="#bs-collapse" href="#one" id="toggle" >
                                                 Fresher
                                                 </a>
                                              </h4>
@@ -72,7 +72,7 @@
                                                 <?php echo form_open_multipart(base_url('job/job_work_exp_insert'), array('id' => 'jobseeker_regform', 'name' => 'jobseeker_regform', 'class' => 'clearfix')); ?>
                                 
                                                 <label for="Fresher">
-                                                <input type="checkbox" id="fresher" name="radio" value="Fresher" <?php echo ($userdata[0]['experience'] == 'Fresher') ? 'checked' : '' ?>>
+                                                <input type="checkbox" id="fresher" tabindex="1" name="radio" value="Fresher" <?php echo ($userdata[0]['experience'] == 'Fresher') ? 'checked' : '' ?>>
                                                 Fresher&nbsp;&nbsp;
                                                 </label>
                                                 <fieldset class="hs-submit full-width left_nest">
