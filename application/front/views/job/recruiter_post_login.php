@@ -384,16 +384,7 @@
          <div class="common-form">
             <div class="job-saved-box">
                <h3>
-                  Search result of 
-                  <?php  if($keyword != "" && $keyword1 == ""){echo '"' .  $keyword . '"';}
-                     elseif ($keyword == "" && $keyword1 != "") {
-                       echo '"' .  $keyword1 . '"';
-                     }
-                     else
-                     {
-                        echo '"' .  $keyword . '"'; echo  " in "; echo '"' .  $keyword1 . '"';
-                     }
-                     ?>
+                 Post
                </h3>
 
                <div class="contact-frnd-post">
@@ -650,12 +641,12 @@
 
 <script>
     var base_url = '<?php echo base_url(); ?>';
-    var skill = '<?php echo  $this->input->get('skills'); ?>';
-    var place = '<?php echo  $this->input->get('searchplace'); ?>';
+    var id = '<?php echo $rec_data[0]['user_id'];?>';
+    var postid = '<?php echo $rec_post[0]['post_id']; ?>';
     var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('js/webpage/job/job_search_login.js?ver='.time()); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('js/webpage/job/recruiter_post_login.js'); ?>"></script>
 </body>
 </html>

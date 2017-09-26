@@ -1,9 +1,10 @@
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER START
 $(document).ready(function () {
-    job_search();
-
+    rec_post();
+    
     $(window).scroll(function () {
-        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7) {
+        if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7){
+      
             var page = $(".page_number:last").val();
             var total_record = $(".total_record").val();
             var perpage_record = $(".perpage_record").val();
@@ -14,19 +15,17 @@ $(document).ready(function () {
                 if (mod_page > 0) {
                     available_page = available_page + 1;
                 }
+                //if ($(".page_number:last").val() <= $(".total_record").val()) {
                 if (parseInt(page) <= parseInt(available_page)) {
                     var pagenum = parseInt($(".page_number:last").val()) + 1;
-                    
-                    job_search(pagenum);
+                    rec_post(pagenum);
                 }
             }
         }
     });
-    
 });
 var isProcessing = false;
-function job_search(pagenum)
-{
+function rec_post(pagenum) {
     if (isProcessing) {
         /*
          *This won't go past this condition while
@@ -38,23 +37,23 @@ function job_search(pagenum)
     isProcessing = true;
     $.ajax({
         type: 'POST',
-         url: base_url + "job/ajax_job_search?page=" + pagenum + "&skill="  + encodeURIComponent(skill) + "&place=" + place,
-        data: {total_record:$("#total_record").val()},
+        url: base_url + "job/ajax_rec_post?page=" + pagenum + "&id=" + id + "&postid=" + postid,
+        data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
             if (pagenum == 'undefined') {
-                $(".job-contact-frnd ").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
+                 $(".job-contact-frnd").prepend('<p style="text-align:center;"><img class="loader" src="' + base_url + 'images/loading.gif"/></p>');
             } else {
                 $('#loader').show();
-            }
+           }
         },
         complete: function () {
             $('#loader').hide();
         },
         success: function (data) {
-
             $('.loader').remove();
-            $('.job-contact-frnd ').append(data);
+            $('.job-contact-frnd').append(data);
+
             // second header class add for scroll
             var nb = $('.post-design-box').length;
             if (nb == 0) {
@@ -66,8 +65,6 @@ function job_search(pagenum)
         }
     });
 }
- 
-
 //CODE FOR RESPONES OF AJAX COME FROM CONTROLLER AND LAZY LOADER END
 
  function login()
@@ -146,8 +143,6 @@ function job_search(pagenum)
 
             $(document).ready(function () {
 
-              
-
                 $("#register_form").validate({
                     rules: {
                         first_name: {
@@ -159,6 +154,7 @@ function job_search(pagenum)
                         email_reg: {
                             required: true,
                             email: true,
+    
                             remote: {
                                 url: base_url +"registration/check_email",
                                 type: "post",

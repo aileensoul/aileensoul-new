@@ -4871,7 +4871,15 @@ public function post($id="")
     $cityname = preg_replace("/[.!$#%]+/i", "", $cityname);
     $this->data['cityname']=strtolower($cityname);
 
-    $this->load->view('job/recruiter_post', $this->data);
+    //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
+    if ($this->session->userdata('aileenuser')) {
+            $this->load->view('job/recruiter_post', $this->data);
+    } else {
+
+            $this->load->view('job/recruiter_post_login', $this->data);
+    }
+     //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA END
+    
 }
 //FOR RECRUITER POST END
 
