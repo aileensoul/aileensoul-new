@@ -3243,13 +3243,16 @@ $datacount = count($otherdata);
      //if user deactive profile then redirect to artistic/index untill active profile End
         $this->data['id'] = $id;
 
-        if ($id == $userid || $id == '') {
+        $contition_array = array('user_id' => $userid, 'status' => '1');
+            $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        if ($id == $userid || $id == '' || $id == $artslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('user_id' => $id, 'status' => '1' , 'art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1' , 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         }
 
@@ -4658,14 +4661,18 @@ public function followtwo() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
-        if ($id == $userid || $id == '') {
+            $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        if ($id == $userid || $id == '' || $id == $artslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
 
-            $contition_array = array('user_id' => $id, 'status' => '1', 'is_delete' => '0', 'art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1', 'is_delete' => '0', 'art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         }
@@ -4878,8 +4885,10 @@ public function followtwo() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
+  $contition_array = array('user_id' => $userid, 'status' => '1', 'is_delete' => '0');
+            $artslug = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '' || $id == $artslug[0]['slug']) {
 
 
             $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $userid, $data = '*');
@@ -4899,7 +4908,7 @@ public function followtwo() {
         } else {
 
 
-            $artdata = $this->common->select_data_by_id('art_reg', 'user_id', $id, $data = '*');
+            $artdata = $this->common->select_data_by_id('art_reg', 'slug', $id, $data = '*');
 
             $contition_array = array('user_id' => $id, 'status' => '1','art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
