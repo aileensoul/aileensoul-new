@@ -24,10 +24,10 @@
                <div class="padding_less main_art" >
                   <div class="top-tab">
                      <ul class="nav nav-tabs tabs-left remove_tab">
-                        <li class="active"> <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['user_id']) ?>"><i class="fa fa-camera" aria-hidden="true"></i>   Photos</a></li>
-                        <li> <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['user_id']) ?>"><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</a></li>
-                        <li><a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['user_id']) ?>" ><i class="fa fa-music" aria-hidden="true"></i>  Audio</a></li>
-                        <li><a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['user_id']) ?>"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Pdf</a></li>
+                        <li class="active"> <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['slug']) ?>"><i class="fa fa-camera" aria-hidden="true"></i>   Photos</a></li>
+                        <li> <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['slug']) ?>"><i class="fa fa-video-camera" aria-hidden="true"></i>  Video</a></li>
+                        <li><a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['slug']) ?>" ><i class="fa fa-music" aria-hidden="true"></i>  Audio</a></li>
+                        <li><a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['slug']) ?>"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Pdf</a></li>
                      </ul>
                   </div>
                   <!-- Tab panes -->
