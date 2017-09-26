@@ -16,8 +16,8 @@ class Artistic extends MY_Controller {
           $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->load->library('S3');
 
-        $this->load->library('minify');      
-        $this->load->helper('url');
+        // $this->load->library('minify');
+        // $this->load->helper('url');
 
         // if (!$this->session->userdata('aileenuser')) {
         //     redirect('login', 'refresh');

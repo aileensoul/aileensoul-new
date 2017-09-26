@@ -899,36 +899,3 @@ $config['blog_main_max_height'] = '5000';
 $config['blog_thumb_upload_path'] = 'uploads/blog/thumbs/';
 $config['blog_thumb_width'] = '150';
 $config['blog_thumb_height'] = '150';
-
-
-
-// output path where the compiled files will be stored (default value: 'assets')
-$config['assets_dir'] = 'js';
-
-// optional - path where the compiled css files will be stored (default value: '' - for backward compatibility)
-$config['assets_dir_css'] = ''; 
-
-// optional - path where the compiled js files will be stored (default value: '' - for backward compatibility)
-$config['assets_dir_js'] = '';     
-
-// where to look for css files (default value: 'assets/css')
-$config['css_dir'] = 'assets/css';
-
-// where to look for js files (default value: 'assets/js')
-$config['js_dir'] = 'js';
-
-// use automatic file names (default value: 'FALSE')
-$config['auto_names'] = FALSE;
-
-// compress files or not (default value: 'TRUE')
-$config['compress'] = TRUE;
-
-// compression engine setting (default values: 'minify' and 'closurecompiler')
-$config['compression_engine'] = array(
-	'css' => 'minify', // minify || cssmin
-	'js'  => 'closurecompiler' // closurecompiler || jsmin || jsminplus
-);
-
-// when you use closurecompiler as compression engine you can choose compression level (default value: 'SIMPLE_OPTIMIZATIONS')
-// avaliable options: "WHITESPACE_ONLY", "SIMPLE_OPTIMIZATIONS" or "ADVANCED_OPTIMIZATIONS"
-$config['closurecompiler']['compilation_level'] = 'SIMPLE_OPTIMIZATIONS';
