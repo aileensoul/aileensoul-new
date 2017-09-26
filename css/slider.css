@@ -393,7 +393,7 @@
 
 #left_img.abc{height:0;}
 .abc_left img{height:0px;}
-.abc_show img{height: 30px !important;}
+.abc_show img{height: 30px !important;margin-top: 5px;}
 /*------------------------------------------------------*/
 /* RESPONSIVE
 /*------------------------------------------------------*/

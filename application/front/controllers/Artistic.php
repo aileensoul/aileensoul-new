@@ -16,6 +16,9 @@ class Artistic extends MY_Controller {
           $this->data['login_header'] = $this->load->view('login_header', $this->data,TRUE);
         $this->load->library('S3');
 
+        $this->load->library('minify');      
+        $this->load->helper('url');
+
         // if (!$this->session->userdata('aileenuser')) {
         //     redirect('login', 'refresh');
         // }
@@ -2250,7 +2253,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                             $return_html .= '</div>
                                             <div class="comment-name">';
                                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">
-                                                <b title="' . $artname .' '.$artlastname.'">';
+                                                <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
                             $return_html .= $artname;
                             $return_html .= ' ';
                             $return_html .= $artlastname;
@@ -3998,7 +4001,7 @@ public function follow_home() { //echo "2"; die();
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
-                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -4035,8 +4038,8 @@ public function follow_home() { //echo "2"; die();
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
-                            <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
+                    $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                            <h6>' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
                         </li>';
@@ -4133,7 +4136,7 @@ public function follow_home() { //echo "2"; die();
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
-                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -4170,8 +4173,8 @@ public function follow_home() { //echo "2"; die();
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
-                            <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
+                    $third_user_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                            <h6>' . ucfirst(strtolower($userlist['art_name'])) .' '. ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
                         </li>';
@@ -4910,7 +4913,7 @@ public function followtwo() {
 
             $artdata = $this->common->select_data_by_id('art_reg', 'slug', $id, $data = '*');
 
-            $contition_array = array('user_id' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
@@ -13805,7 +13808,7 @@ public function art_home_three_user_list() {
                                                                         <div class="post-design-pro-img_follow">';
                     if ($userlist['art_user_image']) {
 
-                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '">';
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ' '.ucfirst(strtolower($userlist['art_lastname'])) . '">';
 
                         if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userlist['art_user_image'])) {
                                                                 $a = $userlist['art_name'];
@@ -13842,8 +13845,8 @@ public function art_home_three_user_list() {
                                 <div class="post-design-name_follow fl">
                                      <ul><li>
                                     <div class="post-design-product_follow">';
-                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) .'">
-                            <h6>' . ucfirst(strtolower($userlist['art_name'])) . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
+                    $return_html .= '<a href="' . base_url('artistic/dashboard/' . $userlist['slug']) . '" title="' . ucfirst(strtolower($userlist['art_name'])) .' ' .ucfirst(strtolower($userlist['art_lastname'])) .'">
+                            <h6>' . ucfirst(strtolower($userlist['art_name'])) .' ' . ucfirst(strtolower($userlist['art_lastname'])) . '</h6>
                             </a> 
                             </div>
                         </li>';
@@ -13954,10 +13957,12 @@ public function art_home_post() {
         $contition_array = array('art_post.user_id' => $userid, 'art_post.status' => '1', 'art_post.is_delete' => '0');
         $art_userdata = $this->data['art_userdata'] = $this->common->select_data_by_condition('art_post', $contition_array, $data = '*', $sortby = 'art_post_id', $orderby = 'DESC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         if (count($art_userdata) > 0) {
-            $userabc[][] = $this->data['art_userdata'][0];
+            $userabc[] = $this->data['art_userdata'];
         } else {
-            $userabc[] = $this->data['art_userdata'][0];
+            $userabc[] = $this->data['art_userdata'];
         }
+
+       // echo "<pre>"; print_r($userabc); die();
 
         if (count($skillabc) == 0 && count($userabc) != 0) {
             $unique = $userabc;
@@ -14688,9 +14693,9 @@ public function art_home_post() {
                             $return_html .= '<a href="' . base_url('artistic/dashboard/' . $artslug) . '">
 
                                                 <b title="' . ucfirst(strtolower($artname)) .' '.ucfirst(strtolower($artlastname)).'">';
-                            $return_html .= $artname;
+                            $return_html .= ucfirst(strtolower($artname));
                             $return_html .= ' ';
-                            $return_html .= $artlastname;
+                            $return_html .= ucfirst(strtolower($artlastname));
 
                             $return_html .= '</br>';
 

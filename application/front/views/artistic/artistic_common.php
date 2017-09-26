@@ -103,7 +103,7 @@ if (!file_exists($this->config->item('art_bg_main_upload_path') . $image[0]['pro
 
                     <div class="profile-pho-bui">
 
-                        <div class="user-pic">
+                        <div class="user-pic padd_img">
                 <?php if ($artisticdata[0]['art_user_image'] != '') { ?>
 
 
@@ -148,7 +148,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                 $userid = $this->session->userdata('aileenuser');
                 if ($artisticdata[0]['user_id'] == $userid) {
                     ?>                                                                                                                                    
-                    <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                    <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="<?php echo base_url(); ?>img/cam.png"> Update Profile Picture</a>
                 <?php } ?>
                </div>
 

@@ -1311,7 +1311,7 @@ header .mCSB_outside + .mCS-minimal-dark.mCSB_scrollTools_vertical {
 }
 .custom_footer_dot {
     float: left;
-    padding: 5px 1px 0px;
+    padding: 0px 3px 0px 1px;
     font-size: 30px;
     color: #8c8c8c;
 }
