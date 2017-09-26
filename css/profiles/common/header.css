@@ -159,6 +159,7 @@
 .header .mCSB_container .day-text {
     padding-top: 1px;
     font-size: 11px!important;
+	color:#646464;
 }
 .header ul .Setting a i {
     color: #787878;
@@ -1872,6 +1873,8 @@ footer {
 .no-image-upload .post-img-mainuser {background:none;}
 .krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
 
+
+.fancybox-close-small:hover::after{background-color:#156f95 !important; color:#fff !important;}
 
 /***  media query  ***/
 

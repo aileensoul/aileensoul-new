@@ -1883,7 +1883,8 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 .job-menu-profile h5{cursor:default;}
 /*** end all profile  ***/
 
-
+/*** search page design  ***/
+.inner_search .box_search_module{padding:20px !important;}
 
 
 
@@ -1977,6 +1978,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 }
 
 @media screen and (max-width: 991px){
+	.cover-pic{width:100%;}
     .fixed_right_side{display: none;}
     .fixed_middle_side{width: 100%; left: 0;}
 	.cls-ve{position: absolute; top: 12px; right: 10px; z-index: 10;}
@@ -2197,9 +2199,9 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 		width: 19%;
 		height: 28px;
 		margin-left: -156px;
-		left: 68%;
-		margin-top: -7%;
-		transform: scale(0.3);
+		left: 69%;
+		margin-top: 75px;
+		transform: scale(0.5);
 	}
 	.post-edit-popup .popup-text textarea{padding-right: 15px;}
 	.mian_box_num {
