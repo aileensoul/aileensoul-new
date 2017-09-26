@@ -2095,6 +2095,13 @@ label.cameraButton input[accept*="camera"] {
     cursor: default;
 }
 .job_work_experience_main_div input[type="file"]{height:auto;}
+.fancybox-slide .message .mesg_link{border: 1px solid rgb(27, 138, 185); background: rgb(255, 255, 255) none repeat scroll 0% 0%; color: rgb(27, 138, 185); border-radius: 4px; padding: 5px 14px; display:inline-block; margin-top:7px;}
+.fancybox-slide .message .mesg_link:hover{background: 1px solid rgb(27, 138, 185); color: rgb(255, 255, 255);}
+.fancybox-slide .message h2{margin-top:15px;}
+.fancybox-slide .message .btn{margin-top:-5px;}
+.message button.fancybox-close-small:hover{border:none;}
+
+
 
 
 /***  media query  ***/

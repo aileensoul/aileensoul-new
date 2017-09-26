@@ -37,7 +37,7 @@ function rec_post(pagenum) {
     isProcessing = true;
     $.ajax({
         type: 'POST',
-        url: base_url + "job/ajax_rec_post?page=" + pagenum + "&id=" + id + "&returnpage=" + return_page,
+        url: base_url + "job/ajax_rec_post?page=" + pagenum + "&id=" + id + "&postid=" + postid,
         data: {total_record: $("#total_record").val()},
         dataType: "html",
         beforeSend: function () {
@@ -68,3 +68,52 @@ function rec_post(pagenum) {
 //AJAX DATA LOAD BY LAZZY LOADER END
   
   
+//APPLY RECRUITER POST START
+function applypopup(postid, userid) 
+{
+    $('.biderror .mes').html("<div class='pop_content'>Are you sure want to apply this post?<div class='model_ok_cancel'><a class='okbtn' id=" + postid + " onClick='apply_post(" + postid + "," + userid + ")' href='javascript:void(0);' data-dismiss='modal'>Yes</a><a class='cnclbtn' href='javascript:void(0);' data-dismiss='modal'>No</a></div></div>");
+    $('#bidmodal').modal('show');
+                    
+}
+
+function apply_post(abc, xyz) 
+{
+                        
+                        var alldata = 'all';
+                        var user = xyz;
+
+                        $.ajax({
+                            type: 'POST',
+                            url: base_url +'job/job_apply_post',
+                            data: 'post_id=' + abc + '&allpost=' + alldata + '&userid=' + user,
+                            success: function (data) {
+                                $('.savedpost' + abc).hide();
+                                $('.applypost' + abc).html(data);
+                                $('.applypost' + abc).attr('disabled', 'disabled');
+                                $('.applypost' + abc).attr('onclick', 'myFunction()');
+                                $('.applypost' + abc).addClass('applied');
+                            }
+                        });
+}
+//APPLY RECRUITER POST END
+
+//SAVE RECRUITER START
+ function savepopup(id) 
+ {
+        save_post(id);
+        $('.biderror .mes').html("<div class='pop_content'>Your post is successfully saved.");
+        $('#bidmodal').modal('show');
+}
+
+function save_post(abc)
+{
+    $.ajax({
+            type: 'POST',
+            url: base_url +'job/job_save',
+            data: 'post_id=' + abc,
+            success: function (data) {
+            $('.' + 'savedpost' + abc).html(data).addClass('saved');
+             }
+        });
+}
+//SAVE RECRUITER END

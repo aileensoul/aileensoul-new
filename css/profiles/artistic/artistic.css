@@ -2974,7 +2974,6 @@ label.cameraButton:active {
     width: 100%;
 }
 .search_img {
-    margin: 4px 3px 9px 7px;
     height: 100px;
     width: 100px;
     display: inline-block;
@@ -2985,9 +2984,7 @@ label.cameraButton:active {
     width: 100%;
 }
 .search_button {
-    margin-top: 14px;
-    margin-left: 23px;
-    margin-bottom: 14px;
+    margin-top: 5px;
 }
 .search_button button {
     margin-bottom: 10px;
@@ -3075,8 +3072,6 @@ label.cameraButton:active {
 .module_Ssearch {
     display: inline-block;
     float: left;
-    padding-top: 8px;
-    padding-left: 16px;
 }
 .box_search_module:last-child {
     border-bottom: none;
@@ -3805,7 +3800,7 @@ div .comment {
     font-size: 19px;
     font-weight: 600;
     padding: 3px;
-    padding-left: 25px;
+    padding-left: 20px;
     border: 1px solid #ccc;
 }
 .margin_less {

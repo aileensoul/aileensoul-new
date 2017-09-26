@@ -555,7 +555,7 @@
                                                 <?php } else {
                                                     ?>
 
-                                                    <img  src="<?php echo base_url($this->config->item('bus_profile_thumb_upload_path') . $businessdata[0]['business_user_image']); ?>"  alt="">
+                                                    <img  src="<?php echo BUS_PROFILE_MAIN_UPLOAD_URL . $businessdata[0]['business_user_image']; ?>"  alt="">
 
                                                 <?php } ?>
 
