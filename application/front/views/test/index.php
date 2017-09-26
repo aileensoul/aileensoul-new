@@ -1,168 +1,160 @@
-<!DOCTYPE html>
-<html class="no-js"> 
-    <head>
-        
-         <title><?php echo $title; ?></title>
-        <?php echo $head; ?>
-         
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css'); ?>">
-        <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/test.css'); ?>">
-       <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/recruiter/recruiter.css'); ?>">
-        
-        
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('stepform/css/normalize.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('stepform/css/main.css') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url('stepform/css/jquery.steps.css') ?>" />
-        
-         <script type="text/javascript" src="<?php echo base_url('stepform/js/modernizr-2.6.2.min.js'); ?>"></script> 
-         <script type="text/javascript" src="<?php echo base_url('stepform/js/jquery-1.9.1.min.js'); ?>"></script> 
-         <script type="text/javascript" src="<?php echo base_url('stepform/js/jquery.cookie-1.3.1.js'); ?>"></script> 
-         <script type="text/javascript" src="<?php echo base_url('stepform/js/jquery.steps.js'); ?>"></script> 
-       
-    </head>
-    <body>
-     <?php echo $header; ?>
-        <?php if ($recdata[0]['re_step'] == 3) { ?>
-            <?php echo $recruiter_header2_border; ?>
-        <?php } ?>
-
-        <!--<div id="preloader"></div>-->
-        <section>
-
-            <div class="user-midd-section" id="paddingtop_fixed">
-<div class="common-form1">
-                    <div class="col-md-3 col-sm-4"></div>
-
-                    <?php
-                    if ($recdata[0]['re_step'] == 3) {
-                        ?>
-                        <div class="col-md-6 col-sm-8"><h3>You are updating your Recruiter Profile.</h3></div>
-
-                    <?php } else {
-                        ?>
-                        <div class="col-md-6 col-sm-8"><h3>You are making your Recruiter Profile.</h3></div>
-
-                    <?php } ?>
-                </div>
-            </div>
-            
-              <div class="content">
-          
-            <script>
-                $(function ()
-                {
-                    $("#wizard").steps({
-                        headerTag: "h2",
-                        bodyTag: "section",
-                        transitionEffect: "slideLeft",
-                        stepsOrientation: "vertical"
-                    });
-                });
-            </script>
-
-            <div id="wizard">
-                <h2>First Step</h2>
-                <section>
-                     <?php echo form_open(base_url('recruiter/basic_information'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
-                     <div> <span class="required_field" >( <span class="red">*</span> ) Indicates required field</span></div>
-
-							<div class="fw">
-                                <fieldset>
-                                    <label>First Name<span class="red">*</span>:</label>
-                                    <input name="first_name" tabindex="1" autofocus type="text" id="first_name"  placeholder="Enter First Name" value="<?php
-                                    if ($firstname) {
-                                        echo trim(ucfirst(strtolower($firstname)));
-                                    } else {
-                                        echo trim(ucfirst(strtolower($userdata[0]['first_name'])));
-                                    }
-                                    ?>" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value"/><span id="fullname-error "></span>
-                                           <?php echo form_error('first_name'); ?>
-                                </fieldset>
-
-
-                                <fieldset>
-                                    <label>Last Name<span class="red">*</span> :</label>
-                                    <input name="last_name" type="text" tabindex="2" placeholder="Enter Last Name"
-                                           value="<?php
-                                           if ($lastname) {
-                                               echo trim(ucfirst(strtolower($lastname)));
-                                           } else {
-                                               echo trim(ucfirst(strtolower($userdata[0]['last_name'])));
-                                           }
-                                           ?>" id="last_name" /><span id="fullname-error" ></span>
-                                           <?php echo form_error('last_name'); ?>
-                                </fieldset>
-							</div>
-							<div class="fw">
-
-                                <fieldset>
-                                    <label>Email address:<span class="red">*</span></label>
-                                    <input name="email"  type="text" id="email" tabindex="3" placeholder="Enter Email"  value="<?php
-                                    if ($email) {
-                                        echo $email;
-                                    } else {
-                                        echo $userdata[0]['user_email'];
-                                    }
-                                    ?>" /><span id="email-error" ></span>
-                                           <?php echo form_error('email'); ?>
-                                </fieldset>
-
-                                <fieldset>
-                                    <label>Phone number:</label>
-                                    <input name="phoneno" placeholder="Enter Phone Number" tabindex="4" value="<?php
-                                    if ($phone) {
-                                        echo $phone;
-                                    }
-                                    ?>" type="text" id="phoneno"  /><span ></span>
-                                           <?php echo form_error('phoneno'); ?>
-                                </fieldset>
-
-							</div>
-                                <fieldset class="hs-submit full-width">
-
-
-                                    <input type="submit"  id="next" name="next" tabindex="5" value="Next">
-
-
-                                </fieldset>
- </form>
-                </section>
-
-                <h2>Second Step</h2>
-                <section>
-                    <p>Donec mi sapien, hendrerit nec egestas a, rutrum vitae dolor. Nullam venenatis diam ac ligula elementum pellentesque. 
-                        In lobortis sollicitudin felis non eleifend. Morbi tristique tellus est, sed tempor elit. Morbi varius, nulla quis condimentum 
-                        dictum, nisi elit condimentum magna, nec venenatis urna quam in nisi. Integer hendrerit sapien a diam adipiscing consectetur. 
-                        In euismod augue ullamcorper leo dignissim quis elementum arcu porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Vestibulum leo velit, blandit ac tempor nec, ultrices id diam. Donec metus lacus, rhoncus sagittis iaculis nec, malesuada a diam. 
-                        Donec non pulvinar urna. Aliquam id velit lacus.</p>
-                </section>
-
-            </div>
+<head>
+      <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+    <style>
+        body {
+    margin-top:40px;
+}
+.stepwizard-step p {
+    margin-top: 10px;
+}
+.stepwizard-row {
+    display: table-row;
+}
+.stepwizard {
+    display: table;
+    width: 50%;
+    position: relative;
+}
+.stepwizard-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+.stepwizard-row:before {
+    top: 14px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+}
+.stepwizard-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+</style>
+</head>
+<div class="container">
+  
+<div class="stepwizard col-md-offset-3">
+    <div class="stepwizard-row setup-panel">
+      <div class="stepwizard-step">
+        <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
+        <p>Step 1</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+        <p>Step 2</p>
+      </div>
+      <div class="stepwizard-step">
+        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+        <p>Step 3</p>
+      </div>
+    </div>
+  </div>
+  
+  <form role="form" action="" method="post">
+    <div class="row setup-content" id="step-1">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 1</h3>
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+            <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Address</label>
+            <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
         </div>
-        </section>
-      <!-- BEGIN FOOTER -->
-        <?php //echo $footer; ?>
-        <!-- END FOOTER -->
+      </div>
+    </div>
+    <div class="row setup-content" id="step-2">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 2</h3>
+          <div class="form-group">
+            <label class="control-label">Company Name</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+          </div>
+          <div class="form-group">
+            <label class="control-label">Company Address</label>
+            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+          </div>
+          <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="row setup-content" id="step-3">
+      <div class="col-xs-6 col-md-offset-3">
+        <div class="col-md-12">
+          <h3> Step 3</h3>
+          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+</div>
+ <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
+        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+ <script>
+    $(document).ready(function () {
+  var navListItems = $('div.setup-panel div a'),
+          allWells = $('.setup-content'),
+          allNextBtn = $('.nextBtn');
 
-        <!-- FIELD VALIDATION JS START -->
-        <script src="<?php //echo base_url('js/jquery.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-       <!--<script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>-->
-       <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js') ?>"></script>
-        <script>
-            var base_url = '<?php echo base_url(); ?>';
-            var data1 = <?php echo json_encode($de); ?>;
-            var data = <?php echo json_encode($demo); ?>;
-            var get_csrf_token_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-            var get_csrf_hash = '<?php echo $this->security->get_csrf_hash(); ?>';
-        </script>
-        <!-- FIELD VALIDATION JS END -->
-       <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/search.js'); ?>"></script>
-       <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/basic_info.js'); ?>"></script>
-    </body>
-</html>
+  allWells.hide();
+
+  navListItems.click(function (e) {
+      e.preventDefault();
+      var $target = $($(this).attr('href')),
+              $item = $(this);
+
+      if (!$item.hasClass('disabled')) {
+          navListItems.removeClass('btn-primary').addClass('btn-default');
+          $item.addClass('btn-primary');
+          allWells.hide();
+          $target.show();
+          $target.find('input:eq(0)').focus();
+      }
+  });
+
+  allNextBtn.click(function(){
+      var curStep = $(this).closest(".setup-content"),
+          curStepBtn = curStep.attr("id"),
+          nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+          curInputs = curStep.find("input[type='text'],input[type='url']"),
+          isValid = true;
+
+      $(".form-group").removeClass("has-error");
+      for(var i=0; i<curInputs.length; i++){
+          if (!curInputs[i].validity.valid){
+              isValid = false;
+              $(curInputs[i]).closest(".form-group").addClass("has-error");
+          }
+      }
+
+      if (isValid)
+          nextStepWizard.removeAttr('disabled').trigger('click');
+  });
+
+  $('div.setup-panel div a.btn-primary').trigger('click');
+});
+</script>

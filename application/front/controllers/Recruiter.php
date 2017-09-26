@@ -34,6 +34,7 @@ class Recruiter extends MY_Controller {
 // RECRUITER USER STEP DETAIL FETCH CODE START
             $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recrdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+//echo $userid; die();
 // RECRUITER USER STEP DETAIL FETCH CODE END
 
             if ($recrdata[0]['re_step'] == 1) {
@@ -101,8 +102,8 @@ class Recruiter extends MY_Controller {
 
 // RECRUITER BASIC INFORMATION STEP END  
 // RECRUITER BASIC INFORMATION INSERT STEP START  
-    public function basic_information() {
-
+    public function basic_information() { 
+echo 1; die();
         $userid = $this->session->userdata('aileenuser');
 
 //IF USER DEACTIVATE PROFILE THEN REDIRECT TO RECRUITER/INDEX UNTILL ACTIVE PROFILE START
@@ -140,7 +141,7 @@ class Recruiter extends MY_Controller {
             }
             $this->load->view('recruiter/rec_basic_information', $this->data);
         } else {
-            $contition_array = array('user_id' => $userid, 're_status' => '1','re_step' => 3);
+            $contition_array = array('user_id' => $userid, 're_status' => '1');
             $recdata = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 'rec_id,re_step', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 // IF USER AVAILABLE THEN UPDATE DATA START
