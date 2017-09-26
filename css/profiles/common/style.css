@@ -1807,11 +1807,9 @@ input:-moz-placeholder {
     color: #999;
 }
 #user_search:focus + #add_search{color: #1b8ab9;}
-
-
-    .kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
-        overflow-y: hidden;*/
-		pointer-events:none;
+.kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
+    overflow-y: hidden;*/
+	pointer-events:none;
     position: relative;
 }
 .kv-file-content img{left: 50%;
@@ -1823,23 +1821,21 @@ input:-moz-placeholder {
     width: auto !important;
 }
 
-.cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../../../img/cam.png') no-repeat; border:none; 
-    padding:5px; opacity: 0.6; background-size:100%;
+.cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../../../img/cam.png') no-repeat; 
+	border:none; padding:5px; opacity: 0.6; background-size:100%;
 }
-label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; border: 1px solid #666;
-    border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; 
+	border: 1px solid #666; border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
 }
 .border_btm .fsearch{color: #1b8ab9;}
 .image_profile audio::-internal-media-controls-download-button ,.image_profile video::-webkit-media-controls-enclosure { 
-display:none !important; 
+	display:none !important; 
 } 
-
 .image_profile audio::-webkit-media-controls-enclosure ,.image_profile video::-webkit-media-controls-enclosure { 
-display: none !important; 
+	display: none !important; 
 } 
-
 .image_profile audio::-webkit-media-controls-panel , .image_profile video::-webkit-media-controls-panel { 
-display: none !important;
+	display: none !important;
 }
 .cover-pic .cancel-result:focus{ background: white; color: #1b8ab9; }
 #basicinfo .year {
@@ -1875,7 +1871,7 @@ display: none !important;
 /*** end new popup  ***/
 
 /*** header ***/
-.krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
+
 
 /*** bus and art ***/
 

@@ -239,6 +239,8 @@ $route['job/work-area'] = "job/job_skill_update";
 $route['job/work-experience'] = "job/job_work_exp_update";
 $route['job/profile'] = "job/job_reg";
 $route['job/search'] = "job/job_search";
+$route['job/post-(:any)/(:any)'] = "job/post/$1/$2";
+
 
 //RECRUITER ROUTES SETTINGS
 

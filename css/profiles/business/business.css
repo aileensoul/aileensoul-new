@@ -1326,7 +1326,7 @@ label.cameraButton:active {
     color: #999!important;
 }
 .like_cmnt_count li .like_count_ext {
-    padding: 6px;
+    padding: 8px;
     font-size: 12px;
     color: #999!important;
     cursor: default;
