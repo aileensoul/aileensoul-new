@@ -783,7 +783,7 @@ label.cameraButton input[accept*="camera"] {
     width: 100%;
     border: 1px solid #d9d9d9;
     border-top: none;
-        border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 .ui-state-hover,
@@ -862,8 +862,7 @@ label.cameraButton input[accept*="camera"] {
     border-top-right-radius: 3px;
 }
 .profile-job-post-detail .profile-job-post-title .button.invited{float:left; background:#1b8ab9; color:#fff;}
-.job-contact-frnd .add-post-button .btn-3{margin: 10px;
-}
+.job-contact-frnd .add-post-button .btn-3{margin: 10px;}
 #basicinfo  label.error{position: relative; margin-top: 5px; right: 0; margin-bottom: 0px; margin-right: 0; text-align: right;}
 #indus{border:1px solid #1b8ab9; margin-top:10px; }
 #indus:hover{background:#1b8ab9; color:#fff;}
