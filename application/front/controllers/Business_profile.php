@@ -10107,7 +10107,7 @@ No Contacts Available.
 
     public function ajax_business_home_post() {
 // return html
-        $perpage = 3;
+        $perpage = 4;
         $page = 1;
         if (!empty($_GET["page"]) && $_GET["page"] != 'undefined') {
             $page = $_GET["page"];
