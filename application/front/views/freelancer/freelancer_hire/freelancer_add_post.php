@@ -160,12 +160,12 @@
                                     </fieldset>
                                     <fieldset class="col-md-4 work_type_custom">
                                         <label class=""><?php echo $this->lang->line("work_type"); ?>:</label><input type="radio" tabindex="9" class="worktype_minheight" name="rating" value="0" checked> Hourly
-                                        <input type="radio"  name="rating" value="1"> Fixed
+                                        <input type="radio" tabindex="10"  name="rating" value="1"> Fixed
                                         <?php echo form_error('rating'); ?>
                                     </fieldset>
                                     <fieldset class="col-md-6 pl10" <?php if ($est_time) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("time_of_project"); ?>:</label>
-                                        <input tabindex="10" name="est_time" type="text" id="est_time" placeholder="Enter Estimated time in month/year" /><span id="fullname-error"></span>
+                                        <input tabindex="11" name="est_time" type="text" id="est_time" placeholder="Enter Estimated time in month/year" /><span id="fullname-error"></span>
                                         <?php echo form_error('est_time'); ?>
                                     </fieldset>           
                                     <fieldset <?php if ($last_date) { ?> class="error-msg" <?php } ?>>
@@ -175,7 +175,7 @@
                                     </fieldset>
                                     <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                         <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                        <select tabindex="13" name="country" id="country">
+                                        <select tabindex="15" name="country" id="country">
                                             <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
                                             <?php
                                             if (count($countries) > 0) {
@@ -198,14 +198,14 @@
                                     </fieldset>
                                     <fieldset>
                                         <label><?php echo $this->lang->line("state"); ?>:<span style="color:red">*</span></label>
-                                        <select tabindex="13" name="state" id="state">
+                                        <select tabindex="16" name="state" id="state">
                                             <?php ?>
                                             <option value="" selected option disabled><?php echo $this->lang->line("country_first"); ?></option>
                                         </select>
                                     </fieldset>
                                     <fieldset>
                                         <label><?php echo $this->lang->line("city"); ?>:</label>
-                                        <select tabindex="14" name="city" id="city">
+                                        <select tabindex="17" name="city" id="city">
                                             <?php
                                             if ($city1) {
                                                 foreach ($cities as $cnt) {
@@ -232,7 +232,7 @@
                                             <?php } else { ?>
                                                 <a class="add_post_btnc" <?php if ($pages == 'professional') { ?> href="<?php echo base_url('freelancer-hire/home'); ?>" <?php } else { ?> href="javascript:history.back()"  <?php } ?>>Cancel</a>
                                             <?php } ?>
-                                            <input type="submit" tabindex="15" id="submit"  class="add_post_btns" name="submit" value="Post">    
+                                            <input type="submit" tabindex="18" id="submit"  class="add_post_btns" name="submit" value="Post">    
                                         </fieldset>
                                     </div>  
                                     <?php echo form_close(); ?>

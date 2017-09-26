@@ -105,7 +105,7 @@
                         <?php echo  ucfirst(strtolower($acronym)) . ucfirst(strtolower($acronym1)); ?>
                      </div>
                      <?php } ?>
-                     <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i>Update Profile Picture</a>
+                     <a href="javascript:void(0);" class="cusome_upload" onclick="updateprofilepopup();"><img  src="<?php echo base_url(); ?>img/cam.png">Update Profile Picture</a>
                   </div>
                </div>
                <div class="job-menu-profile mob-block">
@@ -291,7 +291,7 @@
                   
                     <div id="popup-form">
 
-                    <div class="fw" id="loader_popup"  style="text-align:center;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
+                    <div class="fw" id="loader_popup"  style="text-align:center; display:none;"><img src="<?php echo base_url('images/loader.gif?ver='.time()) ?>" /></div>
 
                      <form id ="userimage" name ="userimage" class ="clearfix" enctype="multipart/form-data" method="post">
 

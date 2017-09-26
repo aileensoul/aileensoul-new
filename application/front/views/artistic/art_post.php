@@ -66,6 +66,7 @@
          <div class="post-editor col-md-12">
             <div class="main-text-area col-md-12">
                <div class="popup-img">
+                <a href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['slug']) ?>">
                   <?php
                      $userimage = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                      $userimageposted = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
@@ -95,6 +96,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                             <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
                   <?php }?>
+                </a>
                </div>
                <div id="myBtn"  class="editor-content popup-text">
                   <span > Post Your Art....</span> 

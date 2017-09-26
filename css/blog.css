@@ -259,11 +259,11 @@ color: white;}
 	background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #F13B6F), color-stop(90, #ECB044));
 	background-image: -webkit-linear-gradient(right, #F13B6F 0%, #ECB044 90%);
 	background-image: linear-gradient(to left, #F13B6F 0%, #ECB044 90%);
-	margin-top: 64px;
+	margin-top: 63px;
 	width: 100%;
 }
 .grad_terms{
-	margin-top: 64px;
+	margin-top: 63px;
 	width: 100%;
 	background-image: -ms-linear-gradient(right, #6297BE 0%, #B85790 70%);
 	background-image: -moz-linear-gradient(right, #6297BE 0%, #B85790 70%);
@@ -290,8 +290,7 @@ color: white;}
 .sixth_ts ol { list-style-type:disc; padding: 0px 15px; }
 .test_py ol { list-style-type:disc; padding: 0px 40px; }
 ol.upper_alpha{list-style-type: upper-alpha; padding: 5px 25px;}
-.em-py3{width: 6%;
-float: left;}
+.em-py3{width: 6%; float: left;}
 .em-py2{width: 94%; float: left;padding-bottom: 20px;}
 .btn2:hover{text-decoration-line: none;}
 .ex_py{}
@@ -305,10 +304,14 @@ float: left;}
 	background-image: -webkit-linear-gradient(right, #F13B6F 0%, #ECB044 90%);
 	background-image: linear-gradient(to left, #F13B6F 0%, #ECB044 90%);
 }
-
-
-
 .custom-tp footer{background:#fff;}
+ label.error {
+	margin-bottom: 0px!important;
+	right: 19px!important;
+	bottom: -18px!important;
+	color: #fff !important;
+}
+
 
 
 @media screen and (max-width: 1280px) {
@@ -330,9 +333,9 @@ float: left;}
 }
 @media screen and (max-width: 991px) {
 	.em-py3 {
-    width: 10%;
-    float: left;
-}
+		width: 10%;
+		float: left;
+	}
 	.em-py2{width: 90%;}
 	.header-left-menu ul{padding-bottom: 0px;}
 	.date_blog_right{width: 85%;}
@@ -349,37 +352,35 @@ float: left;}
 @media screen and (max-width: 639px) {
 
 	.em-py3 {
-    width: 15%;
-    float: left;
-}
+		width: 15%;
+		float: left;
+	}
 	.em-py2{width: 85%;}
 
 }
 @media screen and (max-width: 767px) {
-			.blog_header {
-    padding-top: 102px;
-}
+	.blog_header {
+		padding-top: 102px;
+	}
 	.fifth_part_py h4{font-size: 13px;}
 	.test_py ol {
-    list-style-type: disc;
-    padding: 0px 15px;
-}
-		.main-comtai h1{padding: 25px 0px 0px !important; font-size: 20px;	}
-
-
+		list-style-type: disc;
+		padding: 0px 15px;
+	}
+	.main-comtai h1{padding: 25px 0px 0px !important; font-size: 20px;	}
 	.blog header h2.logo{
 		display: block;
-    text-align: center;
-    font-size: 24px;
-}
-.term_desc h3{font-size: 20px;}
-.second_paret_ts h3{ font-size: 20px; }
-.second_paret_ts ol li h4{ font-size: 15px;	  }
+		text-align: center;
+		font-size: 24px;
+	}
+	.term_desc h3{font-size: 20px;}
+	.second_paret_ts h3{ font-size: 20px; }
+	.second_paret_ts ol li h4{ font-size: 15px;	  }
 	.term_desc{width: 80% !important;}
-.comment_box{margin-bottom: 80px;}
-.blog header h2.logo a{font-size: 32px;}
+	.comment_box{margin-bottom: 80px;}
+	.blog header h2.logo a{font-size: 32px;}
 
-.btn-right{padding-top: 0px !important; padding-right: 0px!important}
+	.btn-right{padding-top: 0px !important; padding-right: 0px!important}
 	.term_desc{padding: 20px 0px 80px !important;}
 	.main-inner .middle-main{padding: 10px 0}
 	.date_blog_left{position: absolute; width: 90px; top: 10px; left: 25px;}
@@ -397,12 +398,7 @@ float: left;}
 */	.blog .main-inner header{padding: 5px 0px;}
  }
 
- label.error {
-  margin-bottom: 0px!important;
-  right: 19px!important;
-bottom: -18px!important;
-color: #fff !important;
-}
+
 
 @media screen and (max-width: 540px) {
 

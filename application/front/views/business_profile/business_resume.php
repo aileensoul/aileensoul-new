@@ -3,11 +3,9 @@
     <head>
         <title><?php echo $title; ?></title>
         <?php echo $head; ?>  
-        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-        <!--<link rel="stylesheet" href="<?php // echo base_url('css/bootstrap.min.css?ver=' . time()); ?>" />-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/1.10.3.jquery-ui.css?ver=' . time()); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/business/business.css?ver=' . time()); ?>">
-           <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css') ;?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url('css/profiles/common/mobile.css'); ?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/css/croppie.css?ver=' . time()); ?>">
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
@@ -49,17 +47,17 @@
                                                     </div>
                                                     <div class="profile-job-profile-menu">
                                                         <ul class="clearfix">
-                                                            <li> <b>Comapny Name</b> <span> <?php echo $businessdata1[0]['company_name']; ?> </span></li>
-                                                            <li> <b> Country</b> <span> <?php echo $this->db->get_where('countries', array('country_id' => $businessdata1[0]['country']))->row()->country_name; ?> </span></li>
+                                                            <li> <b>Comapny Name</b> <span> <?php echo $business_data[0]['company_name']; ?> </span></li>
+                                                            <li> <b> Country</b> <span> <?php echo $this->db->get_where('countries', array('country_id' => $business_data[0]['country']))->row()->country_name; ?> </span></li>
                                                             <li> <b>State</b>
-                                                                <span> <?php echo $this->db->get_where('states', array('state_id' => $businessdata1[0]['state']))->row()->state_name; ?> </span>
+                                                                <span> <?php echo $this->db->get_where('states', array('state_id' => $business_data[0]['state']))->row()->state_name; ?> </span>
                                                             </li>
                                                             <?php
-                                                            if ($businessdata1[0]['user_id'] == $userid) {
-                                                                if ($businessdata1[0]['city']) {
+                                                            if ($business_data[0]['user_id'] == $userid) {
+                                                                if ($business_data[0]['city']) {
                                                                     ?>
                                                                     <li><b> City</b> 
-                                                                        <span><?php echo $this->db->get_where('cities', array('city_id' => $businessdata1[0]['city']))->row()->city_name; ?></span> 
+                                                                        <span><?php echo $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name; ?></span> 
                                                                     </li>
                                                                     <?php
                                                                 } else {
@@ -70,21 +68,21 @@
                                                                     <?php
                                                                 }
                                                             } else {
-                                                                if ($businessdata1[0]['city']) {
+                                                                if ($business_data[0]['city']) {
                                                                     ?>
                                                                     <li><b> City</b> <span><?php
                                                                             echo
-                                                                            $this->db->get_where('cities', array('city_id' => $businessdata1[0]['city']))->row()->city_name;
+                                                                            $this->db->get_where('cities', array('city_id' => $business_data[0]['city']))->row()->city_name;
                                                                             ?></span> </li>
                                                                     <?php
                                                                 }
                                                             }
                                                             ?>
                                                             <?php
-                                                            if ($businessdata1[0]['user_id'] == $userid) {
-                                                                if ($businessdata1[0]['pincode']) {
+                                                            if ($business_data[0]['user_id'] == $userid) {
+                                                                if ($business_data[0]['pincode']) {
                                                                     ?>
-                                                                    <li> <b>Pincode</b><span><?php echo $businessdata1[0]['pincode']; ?></span> </li>
+                                                                    <li> <b>Pincode</b><span><?php echo $business_data[0]['pincode']; ?></span> </li>
                                                                     <?php
                                                                 } else {
                                                                     ?>
@@ -92,14 +90,14 @@
                                                                     <?php
                                                                 }
                                                             } else {
-                                                                if ($businessdata1[0]['pincode']) {
+                                                                if ($business_data[0]['pincode']) {
                                                                     ?>
-                                                                    <li> <b>Pincode</b><span><?php echo $businessdata1[0]['pincode']; ?></span></li>
+                                                                    <li> <b>Pincode</b><span><?php echo $business_data[0]['pincode']; ?></span></li>
                                                                     <?php
                                                                 }
                                                             }
                                                             ?>
-                                                            <li> <b>Postal Address</b><span> <?php echo $businessdata1[0]['address']; ?> </span></li>
+                                                            <li> <b>Postal Address</b><span> <?php echo $business_data[0]['address']; ?> </span></li>
                                                         </ul>
                                                     </div>
                                                     <div class="profile-job-post-title clearfix">
@@ -114,13 +112,13 @@
                                                         </div>
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
-                                                                <li> <b> Contact Person</b> <span> <?php echo $businessdata1[0]['contact_person']; ?> </span>
+                                                                <li> <b> Contact Person</b> <span> <?php echo $business_data[0]['contact_person']; ?> </span>
                                                                 </li>
                                                                 <?php
-                                                                if ($businessdata1[0]['user_id'] == $userid) {
-                                                                    if ($businessdata1[0]['contact_mobile']) {
+                                                                if ($business_data[0]['user_id'] == $userid) {
+                                                                    if ($business_data[0]['contact_mobile']) {
                                                                         ?>
-                                                                        <li> <b>Contact Mobile</b><span> <?php echo $businessdata1[0]['contact_mobile']; ?> </span></li>
+                                                                        <li> <b>Contact Mobile</b><span> <?php echo $business_data[0]['contact_mobile']; ?> </span></li>
                                                                         <?php
                                                                     } else {
                                                                         ?>
@@ -128,20 +126,20 @@
                                                                         <?php
                                                                     }
                                                                 } else {
-                                                                    if ($businessdata1[0]['contact_mobile']) {
+                                                                    if ($business_data[0]['contact_mobile']) {
                                                                         ?>
-                                                                        <li> <b>Contact Mobile</b><span> <?php echo $businessdata1[0]['contact_mobile']; ?> </span></li>
+                                                                        <li> <b>Contact Mobile</b><span> <?php echo $business_data[0]['contact_mobile']; ?> </span></li>
                                                                         <?php
                                                                     }
                                                                 }
                                                                 ?>
-                                                                <li><b> Contact Email</b> <span><?php echo $businessdata1[0]['contact_email']; ?></span> </li>
+                                                                <li><b> Contact Email</b> <span><?php echo $business_data[0]['contact_email']; ?></span> </li>
                                                                 <?php
-                                                                if ($businessdata1[0]['user_id'] == $userid) {
-                                                                    if ($businessdata1[0]['contact_website']) {
+                                                                if ($business_data[0]['user_id'] == $userid) {
+                                                                    if ($business_data[0]['contact_website']) {
                                                                         ?>
                                                                         <li> <b>Contact Website</b><span>
-                                                                                <a href="<?php echo $businessdata1[0]['contact_website']; ?>" target="_blank"><?php echo $businessdata1[0]['contact_website']; ?></a></span>
+                                                                                <a href="<?php echo $business_data[0]['contact_website']; ?>" target="_blank"><?php echo $business_data[0]['contact_website']; ?></a></span>
                                                                         </li>
                                                                         <?php
                                                                     } else {
@@ -150,11 +148,11 @@
                                                                         <?php
                                                                     }
                                                                 } else {
-                                                                    if ($businessdata1[0]['contact_website']) {
+                                                                    if ($business_data[0]['contact_website']) {
                                                                         ?>
                                                                         <li> <b>Contact Website</b><span>
-                                                                                  <!--<a href="https://<?php echo $businessdata1[0]['contact_website']; ?>" target="_blank"><?php echo $this->common->make_links($businessdata1[0]['contact_website']); ?></a></span>-->
-                                                                                <a href="<?php echo $businessdata1[0]['contact_website']; ?>" target="_blank"><?php echo $businessdata1[0]['contact_website']; ?></a></span>
+                                                                                  <!--<a href="https://<?php echo $business_data[0]['contact_website']; ?>" target="_blank"><?php echo $this->common->make_links($business_data[0]['contact_website']); ?></a></span>-->
+                                                                                <a href="<?php echo $business_data[0]['contact_website']; ?>" target="_blank"><?php echo $business_data[0]['contact_website']; ?></a></span>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -176,26 +174,26 @@
                                                         <div class="profile-job-profile-menu">
                                                             <ul class="clearfix">
                                                                 <li> <b>Buisness  Type </b> <span><?php
-                                                                        $business_typename = $this->db->get_where('business_type', array('type_id' => $businessdata1[0]['business_type']))->row()->business_name;
+                                                                        $business_typename = $this->db->get_where('business_type', array('type_id' => $business_data[0]['business_type']))->row()->business_name;
                                                                         if ($business_typename) {
                                                                             echo $business_typename;
                                                                         } else {
-                                                                            echo $businessdata1[0]['other_business_type'];
+                                                                            echo $business_data[0]['other_business_type'];
                                                                         }
                                                                         ?></span>
                                                                 </li>
                                                                 <li> <b>Category</b><span><?php
-                                                                        $category = $this->db->get_where('industry_type', array('industry_id' => $businessdata1[0]['industriyal']))->row()->industry_name;
+                                                                        $category = $this->db->get_where('industry_type', array('industry_id' => $business_data[0]['industriyal']))->row()->industry_name;
                                                                         if ($category) {
                                                                             echo $category;
                                                                         } else {
-                                                                            echo $businessdata1[0]['other_industrial'];
+                                                                            echo $business_data[0]['other_industrial'];
                                                                         }
                                                                         ?></span>
                                                                 </li>
                                                                 <li><b>Details Of Your buisness </b> 
                                                                     <span>
-                                                                        <p> <?php echo nl2br($this->common->make_links($businessdata1[0]['details']));
+                                                                        <p> <?php echo nl2br($this->common->make_links($business_data[0]['details']));
                                                                         ?></p>
                                                                     </span>
                                                                 </li>
@@ -256,7 +254,7 @@
                                                                                 <div class="column1">
                                                                                     <div class="bui_res_i">  
                                                                                         <img src="<?php echo BUS_DETAIL_THUMB_UPLOAD_URL . $image['image_name']; ?>"  onclick="openModal(); currentSlide(<?php echo $k; ?>)" class="hover-shadow cursor">
-                                                                                       
+
                                                                                     </div>
 
                                                                                 </div>
@@ -273,12 +271,12 @@
                                                                     }
                                                                 } else {
                                                                     ?>
-                                                                <span class="images_add_bui"><h6>No Image Available</h6> 
+                                                                    <span class="images_add_bui"><h6>No Image Available</h6> 
 
                                                                         <?php
                                                                         $userid = $this->session->userdata('aileenuser');
 
-                                                                        if ($businessdata1[0]['user_id'] == $userid) {
+                                                                        if ($business_data[0]['user_id'] == $userid) {
                                                                             ?>
                                                                             <a href="<?php echo base_url('business-profile/image') ?>">Add Images</a>
 
@@ -312,9 +310,9 @@
 
                                                                                 </div>
                                                                             </div>
-<!--                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                            </div>-->
+                                                                            <!--                                                                            <div class="modal-footer">
+                                                                                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                                                                                        </div>-->
                                                                         </div>
 
                                                                     </div>
@@ -392,38 +390,34 @@
                         <!-- Bid-modal for this modal appear or not  Popup Close -->
 
                         <!-- Bid-modal-2  -->
-<!--                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
-                            <div class="modal-dialog modal-lm">
-                                <div class="modal-content">
-                                    <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
-                                    <div class="modal-body">
-                                        <span class="mes">
-                                            <div id="popup-form">
-                                                <?php echo form_open_multipart(base_url('business-profile/user-image-change'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
-                                                <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
-                                                <input type="hidden" name="hitext" id="hitext" value="4">
-                                                <div class="popup_previred">
-                                                    <img id="preview" src="#" alt="your image"/>
-                                                </div>
-                                                <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
-                                                <?php echo form_close(); ?>
-                                            </div>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
+                        <!--                        <div class="modal fade message-box" id="bidmodal-2" role="dialog">
+                                                    <div class="modal-dialog modal-lm">
+                                                        <div class="modal-content">
+                                                            <button type="button" class="modal-close" data-dismiss="modal">&times;</button>       
+                                                            <div class="modal-body">
+                                                                <span class="mes">
+                                                                    <div id="popup-form">
+                        <?php echo form_open_multipart(base_url('business-profile/user-image-change'), array('id' => 'userimage', 'name' => 'userimage', 'class' => 'clearfix')); ?>
+                                                                        <input type="file" name="profilepic" accept="image/gif, image/jpeg, image/png" id="profilepic">
+                                                                        <input type="hidden" name="hitext" id="hitext" value="4">
+                                                                        <div class="popup_previred">
+                                                                            <img id="preview" src="#" alt="your image"/>
+                                                                        </div>
+                                                                        <input type="submit" name="profilepicsubmit" id="profilepicsubmit" value="Save" >
+                        <?php echo form_close(); ?>
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                         <!-- Model Popup Close -->
                         <?php echo $footer; ?>
                         <script src="<?php echo base_url('js/jquery.wallform.js'); ?>"></script>
-        <script src="<?php echo base_url('js/jquery-ui.min.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/demo/jquery-ui-1.9.1.js'); ?>"></script>
-        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
-        <!--<script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js'); ?>"></script>-->
-       <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
-        <script src="<?php echo base_url('assets/js/croppie.js?ver='.time()); ?>"></script>
-        
+                        <script src="<?php echo base_url('js/bootstrap.min.js'); ?>"></script> 
+                        <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()); ?>"></script>
+                        <script src="<?php echo base_url('assets/js/croppie.js?ver=' . time()); ?>"></script>
+
                         <!-- script for business autofill -->
                         <script>
                                                                             var base_url = '<?php echo base_url(); ?>';

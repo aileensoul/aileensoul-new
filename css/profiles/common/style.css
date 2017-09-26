@@ -946,6 +946,7 @@ label.cameraButton {
     opacity: 0.6;
 }
 .upload-result {color: #fff; background-color: rgba(27, 138, 185, 0.8); border-color: #1b8ab9; margin-right: 10px;}
+/*** all page cover upload lodder  ***/
 #floatBarsG {position: absolute; width: 19%; height: 28px; margin-left: -117px; left: 50%; margin-top: 13%;}
 .floatBarsG {
     position: absolute;
@@ -1089,6 +1090,7 @@ label.cameraButton input[accept*="camera"] {
 
 /***  end cover  ***/
 
+
 .post-img-div{
     color:#fff;
     width:50px;
@@ -1105,10 +1107,10 @@ label.cameraButton input[accept*="camera"] {
     text-align: center;
     text-transform: uppercase;
     line-height:1;
-	
 }
-
 .fixed_right_display_none{display: none;}
+
+
 /***  notification page  ***/
 .job-saved-box h3 {
     background: #fff !important;
@@ -1176,9 +1178,6 @@ label.cameraButton input[accept*="camera"] {
 
 /***  blog css  ***/
 body.blog{height:auto;}
-.main-menu-right {
-    float: right;
-}
 .user-midd-section {
     float: left;
     margin-bottom: 35px;
@@ -1187,6 +1186,10 @@ body.blog{height:auto;}
     margin-top: 15px;
     width: 100%;
 }
+.main-menu-right {
+    float: right;
+}
+
 
 /*** chat page css  ***/
 .people-list {
@@ -1270,21 +1273,17 @@ body.blog{height:auto;}
 }
 
 .people-list input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-
   font-family:'arial';
 }
 .people-list input::-moz-placeholder { /* Firefox 19+ */
-
   font-family:'arial';
 }
 .people-list input:-ms-input-placeholder { /* IE 10+ */
-
   font-family:'arial';
 }
 .people-list input:-moz-placeholder { /* Firefox 18- */
-
   font-family:'arial';
-  }
+}
 .people-list ul::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 5px;
@@ -1390,7 +1389,6 @@ body.blog{height:auto;}
 
 
 .flw_msg_btn{margin-top: 4px; margin-right: -6px;}
-
 .msg_right{position: relative;}
 .chat .chat-header {
     background-color: white;
@@ -1456,8 +1454,8 @@ float: right;}
 .chat_drop:hover, .chat_drop:focus {        
     background-color: #f1f1f1;      
 }   
-*/.chatdropbtn {      
-         
+*/
+.chatdropbtn {	  
     display: inline-block;     
     opacity: 0.8px;
 	color:#838383;      
@@ -1558,9 +1556,9 @@ a.chatdropbtn:hover{background-color: #f1f1f1;}
 }
 #msg_block #set_input{margin:0 0 -60px;}
 .chat .chat-history{height:431px;}
+.chat li{margin-bottom:40px;}
 #msg_block .input-group .comment{margin-bottom:3px; margin-top:3px; line-height:1.3;}
 div .comment {
- 
     border: none;
     border-top: 1px solid #ddd;
     padding-right: 150px!important;
@@ -1575,8 +1573,6 @@ div .comment {
     overflow-y: scroll;
     overflow-y: auto;
 }
-.chat li{margin-bottom:40px;}
-
 .border_btm {
     border-bottom: 1px solid #cccccc;
 }
@@ -1674,15 +1670,14 @@ div .comment {
 .me {
     color: #d8eff6;
 }
-
 .name {
     font-weight: 600;
-padding-bottom: 6px;
-line-height: 14px;
-width: 107%;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+	padding-bottom: 6px;
+	line-height: 14px;
+	width: 107%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .panel-footer {
     background-color: #444753;
@@ -1792,6 +1787,11 @@ text-overflow: ellipsis;
     color: #fff;
 }
 /***  end header  ***/
+.flw_msg_btn{padding-right:12px;}
+.message-data-name .fa-circle{margin-right:6px;}
+#row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}
+
+
 
 .panel-body fieldset textarea#varmailformat{word-break: break-all; word-break: break-word;}
 .user-section-free-up {
@@ -1807,11 +1807,9 @@ input:-moz-placeholder {
     color: #999;
 }
 #user_search:focus + #add_search{color: #1b8ab9;}
-
-
-    .kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
-        overflow-y: hidden;*/
-		pointer-events:none;
+.kv-file-content{width:156px;/* height:115px !important; overflow-x: hidden;
+    overflow-y: hidden;*/
+	pointer-events:none;
     position: relative;
 }
 .kv-file-content img{left: 50%;
@@ -1823,23 +1821,21 @@ input:-moz-placeholder {
     width: auto !important;
 }
 
-.cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../../../img/cam.png') no-repeat; border:none; 
-    padding:5px; opacity: 0.6; background-size:100%;
+.cameraButton .fa.fa-camera{width:30px; height:26px; background:url('../../../img/cam.png') no-repeat; 
+	border:none; padding:5px; opacity: 0.6; background-size:100%;
 }
-label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; border: 1px solid #666;
-    border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
+label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; padding: 7px 7px 2px!important; 
+	border: 1px solid #666; border-color: #000; background-color: #000; opacity: 0.6; border-radius: 5px;
 }
 .border_btm .fsearch{color: #1b8ab9;}
 .image_profile audio::-internal-media-controls-download-button ,.image_profile video::-webkit-media-controls-enclosure { 
-display:none !important; 
+	display:none !important; 
 } 
-
 .image_profile audio::-webkit-media-controls-enclosure ,.image_profile video::-webkit-media-controls-enclosure { 
-display: none !important; 
+	display: none !important; 
 } 
-
 .image_profile audio::-webkit-media-controls-panel , .image_profile video::-webkit-media-controls-panel { 
-display: none !important;
+	display: none !important;
 }
 .cover-pic .cancel-result:focus{ background: white; color: #1b8ab9; }
 #basicinfo .year {
@@ -1857,6 +1853,7 @@ display: none !important;
 #userimage .col-md-7{width:100%; float:left; padding-bottom:20px;}
 #popup-form input[type="submit"]#profilepicsubmit{margin-top: 0px;}
 /*** end image crop  ***/
+
 /*** new popup css  ***/
 .fade {
     opacity: 0;
@@ -1874,11 +1871,10 @@ display: none !important;
 /*** end new popup  ***/
 
 /*** header ***/
-.krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
+
 
 /*** bus and art ***/
-.krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
-#mainContainer{min-width:108% !important;}
+
 
 
 /*** all profile  ***/
@@ -1886,9 +1882,7 @@ display: none !important;
 #regform label.error{position:relative; text-align:right; width:100%; margin-bottom:0;}
 .job-menu-profile h5{cursor:default;}
 /*** end all profile  ***/
-.message-data-name .fa-circle{margin-right:6px;}
-#row2{border-left:1px solid #d9d9d9; border-right:1px solid #d9d9d9;}
-.flw_msg_btn{padding-right:12px;}
+
 
 
 

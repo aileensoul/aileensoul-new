@@ -1869,6 +1869,10 @@ footer {
 }
 
 
+.no-image-upload .post-img-mainuser {background:none;}
+.krajee-default.file-preview-frame .kv-file-content{overflow:hidden !important; }
+
+
 /***  media query  ***/
 
 @media screen and (min-width: 1200px) and (max-width: 1350px) {

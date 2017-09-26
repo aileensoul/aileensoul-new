@@ -79,7 +79,7 @@
                                 </fieldset>
                                 <fieldset class="full-width" <?php if ($post_skill) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("skill_of_requirement"); ?>:<span style="color:red">*</span></label>
-                                    <input id="skills2" name="skills"  tabindex="7"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2;} ?>">
+                                    <input id="skills2" name="skills"  tabindex="4"  size="90" placeholder="Enter SKills" value="<?php if($skill_2){echo $skill_2;} ?>">
                                     <?php echo form_error('skills'); ?>
                                 </fieldset>
 <!--                                <fieldset class="full-width" <?php if ($other_skill) { ?> class="error-msg" <?php } ?> >
@@ -91,7 +91,7 @@
                                 <fieldset class="full-width two-select-box fullwidth_experience"> 
                                     <label>Experience:</label>
 
-                                    <select name="year" id="year" tabindex="6">
+                                    <select name="year" id="year" tabindex="5">
                                         <option value="" selected option disabled><?php echo $this->lang->line("year"); ?></option>
                                         <option value="0" <?php if ($freelancerpostdata[0]['post_exp_year'] == "0") echo 'selected="selected"'; ?>>0 Year</option>
                                         <option value="1" <?php if ($freelancerpostdata[0]['post_exp_year'] == "1") echo 'selected="selected"'; ?>>1 Year</option>
@@ -118,7 +118,7 @@
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('year'); ?>
 
-                                    <select name="month" style="margin-left: 8px;" tabindex="7" id="month">
+                                    <select name="month" style="margin-left: 8px;" tabindex="6" id="month">
                                         <option value="" selected option disabled><?php echo $this->lang->line("month"); ?></option>
                                         <option value="0" <?php if ($freelancerpostdata[0]['post_exp_month'] == "0") echo 'selected="selected"'; ?>>0 Month</option>
                                         <option value="1" <?php if ($freelancerpostdata[0]['post_exp_month'] == "1") echo 'selected="selected"'; ?>>1 Month</option>
@@ -136,13 +136,13 @@
                                 </fieldset>
                                 <fieldset style="padding-left: 8px;" class="col-md-4" <?php if ($rate) { ?> class="error-msg" <?php } ?> >
                                     <label class="control-label"><?php echo $this->lang->line("rate"); ?>:</label>
-                                    <input name="rate" type="number" id="rate" tabindex="8" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
+                                    <input name="rate" type="number" id="rate" tabindex="7" placeholder="Enter Your rate" value="<?php echo $freelancerpostdata[0]['post_rate']; ?>" />
                                     <span id="fullname-error"></span>
                                     <?php echo form_error('rate'); ?>
                                 </fieldset>
                                 <fieldset class=" col-md-4"> 
                                     <label><?php echo $this->lang->line("currency"); ?>:</label>
-                                    <select name="currency" id="currency" tabindex="9">
+                                    <select name="currency" id="currency" tabindex="8">
                                         <option value="" selected option disabled><?php echo $this->lang->line("select_currency"); ?></option>
                                         <?php
                                         if (count($currency) > 0) {
@@ -163,8 +163,8 @@
                                 </fieldset>
                                 <fieldset class="col-md-4">
                                     <label><?php echo $this->lang->line("work_type"); ?></label>
-                                    <input type="radio" name="rating" tabindex="10" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
-                                    <input type="radio" name="rating"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
+                                    <input type="radio" name="rating" tabindex="9" <?php if ($freelancerpostdata[0]['post_rating_type'] == 0) { ?> checked <?php } ?> value="0" > Hourly
+                                    <input type="radio" name="rating" tabindex="10"  <?php if ($freelancerpostdata[0]['post_rating_type'] == 1) { ?> checked <?php } ?> value ="1"> Fixed
                                     <?php echo form_error('rating'); ?>
                                 </fieldset>
                                 <fieldset>
@@ -180,7 +180,7 @@
                                 </fieldset>
                                 <fieldset <?php if ($country) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("country"); ?>:<span style="color:red">*</span></label>
-                                    <select name="country" id="country" tabindex="13">
+                                    <select name="country" id="country" tabindex="15">
                                         <option value="" selected option disabled><?php echo $this->lang->line("select_country"); ?></option>
                                         <?php
                                         if (count($countries) > 0) {
@@ -204,7 +204,7 @@
                                 </fieldset>
                                 <fieldset <?php if ($state) { ?> class="error-msg" <?php } ?>>
                                     <label><?php echo $this->lang->line("state"); ?>:<span class="red">*</span></label>
-                                    <select tabindex="2" name="state" id="state">
+                                    <select tabindex="16" name="state" id="state">
                                         <?php
                                         if ($state1) {
                                             foreach ($states as $cnt) {
@@ -226,7 +226,7 @@
                                 </fieldset>
                                 <fieldset>
                                     <label><?php echo $this->lang->line("city"); ?>:</label>
-                                    <select name="city" id="city" tabindex="14">
+                                    <select name="city" id="city" tabindex="17">
                                         <?php
                                         if ($city1) {
                                             foreach ($cities as $cnt) {
@@ -265,7 +265,7 @@
 
                                         <a class="add_post_btnc"  href="javascript:history.back()"><?php echo $this->lang->line("cancel"); ?></a>
                                     <?php } ?>
-                                    <input type="submit" tabindex="15" id="submit" class="add_post_btns" name="submit" value="Save">
+                                    <input type="submit" tabindex="18" id="submit" class="add_post_btns" name="submit" value="Save">
                                 </fieldset>
                                 <?php echo form_close(); ?>
                             </div>
@@ -301,7 +301,7 @@
 
         <script>
             var base_url = '<?php echo base_url(); ?>';
-            
+            var date_picker1 = '<?php echo date('Y-m-d', strtotime($freelancerpostdata[0]['post_last_date'])); ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_edit_post.js?ver=' . time()); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('js/webpage/freelancer-hire/freelancer_hire_common.js?ver=' . time()); ?>"></script>
@@ -410,29 +410,7 @@
 
 
         <script>
-            $(function () {
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
-                var yyyy = today.getFullYear();
-                var today = yyyy;
-                var date_picker = '<?php echo date('Y-m-d', strtotime($freelancerpostdata[0]['post_last_date'])); ?>';
-                $("#example2").dateDropdowns({
-                    submitFieldName: 'last_date',
-                    submitFormat: "yyyy-mm-dd",
-                    minYear: today,
-                    maxYear: today + 1,
-                    defaultDate: date_picker,
-                    daySuffixes: false,
-                    monthFormat: "short",
-                    dayLabel: 'DD',
-                    monthLabel: 'MM',
-                    yearLabel: 'YYYY',
-                    //startDate: today,
-
-                });
-
-            });
+           
         </script>
         <style type="text/css">
             #example2-error{margin-top: 42px!important;}

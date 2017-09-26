@@ -81,8 +81,6 @@
                                        <article class="none_aaaart">
                                           <?php echo form_open_multipart(base_url('job/job_education_primary_insert'), array('id' => 'jobseeker_regform_primary', 'name' => 'jobseeker_regform_primary', 'class' => 'clearfix')); ?>
                                           <?php
-                                             $contition_array = array('user_id' => $userid, 'status' => 1);
-                                             $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                             
                                              $board_primary1 = $jobdata[0]['board_primary'];
                                             
@@ -153,8 +151,8 @@
 
                                                       <div style="float: left;" id="primary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
-                                                  <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input  type="button" id="delete_job_edu" value="Delete" style="display: none;" onClick="delete_primary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_primary1; ?>')">
+                                                  <label for="delete_job_edu1"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                                   <input  type="button" id="delete_job_edu1" value="Delete" style="display: none;" onClick="delete_primary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_primary1; ?>')">
                                                 </div>
                                              </div>
                                              </div>
@@ -169,8 +167,8 @@
                                              <img class="fl" src="<?php echo JOB_EDU_MAIN_UPLOAD_URL  . $edu_certificate_primary1 ?>"  style="width:100px;height:100px;" class="job_education_certificate_img" >
                                                <div style="float: left;" id="primary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
-                                                  <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input  type="button" id="delete_job_edu" value="Delete" style="display: none;" onClick="delete_primary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_primary1; ?>')">
+                                                  <label for="delete_job_edu1"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                                   <input  type="button" id="delete_job_edu1" value="Delete" style="display: none;" onClick="delete_primary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_primary1; ?>')">
                                                 </div>
                                              </div>
                                            </div> 
@@ -213,8 +211,6 @@
                                     <section id="section2">
                                        <?php echo form_open_multipart(base_url('job/job_education_secondary_insert'), array('id' => 'jobseeker_regform_secondary', 'name' => 'jobseeker_regform_secondary', 'class' => 'clearfix')); ?>
                                        <?php
-                                          $contition_array = array('user_id' => $userid, 'status' => 1);
-                                          $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                           
                                           $board_secondary1 = $jobdata[0]['board_secondary'];
                                           $school_secondary1 = $jobdata[0]['school_secondary'];
@@ -285,8 +281,8 @@
 
                                                 <div style="float: left;" id="secondary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
-                                                   <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input id="delete_job_edu"  type="button" style="display: none;" value="Delete" onClick="delete_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_secondary1; ?>')">
+                                                   <label for="delete_job_edu2"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                                   <input id="delete_job_edu2"  type="button" style="display: none;" value="Delete" onClick="delete_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_secondary1; ?>')">
                                                 </div>
                                              </div>
 
@@ -301,8 +297,8 @@
 
                                                 <div style="float: left;" id="secondary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
-                                                   <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input id="delete_job_edu"  type="button" style="display: none;" value="Delete" onClick="delete_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_secondary1; ?>')">
+                                                   <label for="delete_job_edu2"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                                   <input id="delete_job_edu2"  type="button" style="display: none;" value="Delete" onClick="delete_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_secondary1; ?>')">
                                                 </div>
                                              </div>
 </div>
@@ -346,8 +342,6 @@
                                     <section id="section3">
                                        <?php echo form_open_multipart(base_url('job/job_education_higher_secondary_insert'), array('id' => 'jobseeker_regform_higher_secondary', 'name' => 'jobseeker_regform_higher_secondary', 'class' => 'clearfix')); ?>
                                        <?php
-                                          $contition_array = array('user_id' => $userid, 'status' => 1);
-                                          $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_add_edu', $contition_array, $data = '*', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
                                           
                                           $board_higher_secondary1 = $jobdata[0]['board_higher_secondary'];
                                           $stream_higher_secondary1 = $jobdata[0]['stream_higher_secondary'];
@@ -428,12 +422,13 @@
                                                       <a title="open pdf" class="fl" href="<?php echo JOB_EDU_MAIN_UPLOAD_URL. $edu_certificate_higher_secondary1 ?>"><i class="fa fa-file-pdf-o fa-2x" style="color: red;" aria-hidden="true"></i></a>
 
 
-                                                          <div style="float: left;" id="higher_secondary_certi" class="tsecondary_certi">
+                                                         <div style="float: left;" id="higher_secondary_certi" class="tsecondary_certi"> 
                                                 <div class="hs-submit full-width fl">
-                                                <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input  type="button" style="display: none;" value="Delete" id="delete_job_edu" onClick="delete_higher_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_higher_secondary1; ?>')">
-                                                </div>
-                                             </div>
+                                                 <label for="delete_job_edu3"><i class="fa fa-times" aria-hidden="true"></i> </label>
+                                                   <input  type="button" style="display: none;" value="Delete" id="delete_job_edu3" onClick="delete_higher_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_higher_secondary1; ?>')">
+                                               
+                                            </div> 
+                                           </div> 
 
 </div>
 
@@ -449,8 +444,8 @@
                                               
                                               <div style="float: left;" id="higher_secondary_certi" class="tsecondary_certi">
                                                 <div class="hs-submit full-width fl">
-                                                   <label for="delete_job_edu"><i class="fa fa-times" aria-hidden="true"></i></label>
-                                                   <input  type="button" id="delete_job_edu" style="display: none;" value="Delete" onClick="delete_higher_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_higher_secondary1; ?>')">
+                                                    <label for="delete_job_edu3"><i class="fa fa-times" aria-hidden="true"></i></label>
+                                                   <input  type="button" id="delete_job_edu3" style="display: none;" value="Delete" onClick="delete_higher_secondary('<?php echo $jobdata[0]['edu_id']; ?>','<?php echo $edu_certificate_higher_secondary1; ?>')">
                                                 </div>
                                              
                                              </div>
@@ -509,8 +504,6 @@
                                                   $grade1 = $jobgrad[$x]['grade'];
                                                   $percentage1 = $jobgrad[$x]['percentage'];
                                                   $pass_year1 = $jobgrad[$x]['pass_year'];
-                                                  $degree_sequence = $jobgrad[$x]['degree_sequence'];
-                                                  $stream_sequence = $jobgrad[$x]['stream_sequence'];
                                                   $edu_certificate1 = $jobgrad[$x]['edu_certificate']; 
                                           
                                                   $y = $x + 1;

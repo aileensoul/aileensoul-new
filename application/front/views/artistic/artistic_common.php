@@ -32,14 +32,17 @@
             <div class="" id="row2">
                 <?php
                 $userid = $this->session->userdata('aileenuser');
-                if ($this->uri->segment(3) == $userid) {
-                    $user_id = $userid;
+                $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '1');
+                $slugid = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'slug', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+                if ($this->uri->segment(3) == $slugid[0]['slug']) {
+                    $user_id = $slugid[0]['slug'];
                 } elseif ($this->uri->segment(3) == "") {
-                    $user_id = $userid;
+                    $user_id = $slugid[0]['slug'];
                 } else {
                     $user_id = $this->uri->segment(3);
                 }
-                $contition_array = array('user_id' => $user_id, 'is_delete' => '0', 'status' => '1');
+                $contition_array = array('slug' => $user_id, 'is_delete' => '0', 'status' => '1');
                 $image = $this->common->select_data_by_condition('art_reg', $contition_array, $data = 'profile_background', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
                 $image_ori = $image[0]['profile_background'];
@@ -210,10 +213,10 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
                  <ul class="pro-fw4">
                    <?php } ?>  
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['user_id']); ?>"> Dashboard</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'dashboard') { ?> class="active" <?php } ?>><a title="Dashboard" href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['slug']); ?>"> Dashboard</a>
                     </li>
 
-                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/details/' . $artisticdata[0]['user_id']); ?>"> Details</a>
+                    <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'details') { ?> class="active" <?php } ?>><a title="Details" href="<?php echo base_url('artistic/details/' . $artisticdata[0]['slug']); ?>"> Details</a>
                     </li>
 
 
@@ -254,7 +257,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
 
                         ?> 
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artistic/followers/' . $artisticdata[0]['user_id']); ?>">Followers <br> (<?php echo ($count); ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'followers') { ?> class="active" <?php } ?>><a  title="Followers" href="<?php echo base_url('artistic/followers/' . $artisticdata[0]['slug']); ?>">Followers <br> (<?php echo ($count); ?>)</a>
                         </li>
 
                     <?php } ?> 
@@ -283,7 +286,7 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $artisti
 
                        
                         ?>
-                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following/' . $artisticdata[0]['user_id']); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
+                        <li <?php if ($this->uri->segment(1) == 'artistic' && $this->uri->segment(2) == 'following') { ?> class="active" <?php } ?>><a title="Following" href="<?php echo base_url('artistic/following/' . $artisticdata[0]['slug']); ?>">Following <br>  (<?php echo $countfo; ?>)</a>
                         </li> 
                     <?php } ?>  
 
