@@ -2010,22 +2010,17 @@ Your browser does not support the audio tag.
 <li class = "likepost' . $post_business_profile_post_id . '">
 <a id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w" onClick = "post_like(this.id)">';
 
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-        $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $likeuser = $this->data['active'][0]['business_like_user'];
-        $likeuserarray = explode(',', $active[0]['business_like_user']);
+        $likeuser = $post_business_like_user;
+        $likeuserarray = explode(',', $post_business_like_user);
         if (!in_array($userid, $likeuserarray)) {
-
-            $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
+            $return_html .= '<i class = "fa fa-thumbs-up fa-1x" aria-hidden = "true"></i>';
         } else {
             $return_html .= '<i class = "fa fa-thumbs-up fa-1x main_color" aria-hidden = "true"></i>';
         }
         $return_html .= '<span class = "like_As_count">';
-
         if ($post_business_likes_count > 0) {
             $return_html .= $post_business_likes_count;
         }
-
         $return_html .= '</span>
 </a>
 </li>
@@ -2073,27 +2068,23 @@ Your browser does not support the audio tag.
 
             $return_html .= '<div class = "likeduserlist' . $post_business_profile_post_id . '">';
 
-            $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-            $likeuser = $commnetcount[0]['business_like_user'];
-            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+            $likeuser = $post_business_like_user;
+            $countlike = $post_business_likes_count - 1;
             $likelistarray = explode(',', $likeuser);
-            foreach ($likelistarray as $key => $value) {
-                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-            }
+//            foreach ($likelistarray as $key => $value) {
+//                $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//            }
 
             $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-            $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-            $likeuser = $commnetcount[0]['business_like_user'];
-            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+            $likeuser = $post_business_like_user;
+            $countlike = $post_business_likes_count - 1;
             $likelistarray = explode(',', $likeuser);
 
-            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
             $return_html .= '<div class = "like_one_other">';
 
-            if ($userid == $value) {
+            if (in_array($userid,$likelistarray)) {
                 $return_html .= "You";
                 $return_html .= "&nbsp;";
             } else {
@@ -2114,20 +2105,18 @@ Your browser does not support the audio tag.
         }
 
         $return_html .= '<div class = "likeusername' . $post_business_profile_post_id . '" id = "likeusername' . $post_business_profile_post_id . '" style = "display:none">';
-        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-        $likeuser = $commnetcount[0]['business_like_user'];
-        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+        $likeuser = $post_business_like_user;
+        $countlike = $post_business_likes_count - 1;
         $likelistarray = explode(',', $likeuser);
-        foreach ($likelistarray as $key => $value) {
-            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-        }
+//        foreach ($likelistarray as $key => $value) {
+//            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+//        }
         $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
         $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
         $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-        $likeuser = $commnetcount[0]['business_like_user'];
-        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+        $likeuser = $post_business_like_user;
+        $countlike = $post_business_likes_count - 1;
         $likelistarray = explode(',', $likeuser);
 
         $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
