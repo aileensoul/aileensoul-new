@@ -1664,31 +1664,31 @@ class Business_profile extends MY_Controller {
         $join_str[0]['join_type'] = '';
         $data = "business_profile.business_user_image,business_profile.company_name,business_profile.industriyal,business_profile.business_slug,business_profile.other_industrial,business_profile.business_slug,business_profile_post.business_profile_post_id,business_profile_post.product_name,business_profile_post.product_image,business_profile_post.product_description,business_profile_post.business_likes_count,business_profile_post.business_like_user,business_profile_post.created_date,business_profile_post.posted_user_id";
         $business_profile_post = $this->common->select_data_by_search('business_profile_post', $search_condition, $condition_array, $data, $sortby = 'business_profile_post_id', $orderby = 'DESC', $limit = '1', $offset = $start, $join_str, $groupby = '');
-        
-        $return_html = '';
-                $row = $business_profile_post[0];
-                $post_business_user_image = $row['business_user_image'];
-                $post_company_name = $row['company_name'];
-                $post_business_profile_post_id = $row['business_profile_post_id'];
-                $post_product_name = $row['product_name'];
-                $post_product_image = $row['product_image'];
-                $post_product_description = $row['product_description'];
-                $post_business_likes_count = $row['business_likes_count'];
-                $post_business_like_user = $row['business_like_user'];
-                $post_created_date = $row['created_date'];
-                $post_posted_user_id = $row['posted_user_id'];
-                $post_business_slug = $row['business_slug'];
-                $post_industriyal = $row['industriyal'];
-                $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
-                $post_other_industrial = $row['other_industrial'];
-                if ($post_posted_user_id) {
-                    $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
-                    $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
-                    $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
-                    $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
-                }
 
-                $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
+        $return_html = '';
+        $row = $business_profile_post[0];
+        $post_business_user_image = $row['business_user_image'];
+        $post_company_name = $row['company_name'];
+        $post_business_profile_post_id = $row['business_profile_post_id'];
+        $post_product_name = $row['product_name'];
+        $post_product_image = $row['product_image'];
+        $post_product_description = $row['product_description'];
+        $post_business_likes_count = $row['business_likes_count'];
+        $post_business_like_user = $row['business_like_user'];
+        $post_created_date = $row['created_date'];
+        $post_posted_user_id = $row['posted_user_id'];
+        $post_business_slug = $row['business_slug'];
+        $post_industriyal = $row['industriyal'];
+        $post_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+        $post_other_industrial = $row['other_industrial'];
+        if ($post_posted_user_id) {
+            $posted_company_name = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->company_name;
+            $posted_business_slug = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id, 'status' => 1))->row()->business_slug;
+            $posted_category = $this->db->get_where('industry_type', array('industry_id' => $post_industriyal, 'status' => 1))->row()->industry_name;
+            $posted_business_user_image = $this->db->get_where('business_profile', array('user_id' => $post_posted_user_id))->row()->business_user_image;
+        }
+
+        $return_html .= '<div id = "removepost' . $post_business_profile_post_id . '">
                         <div class = "col-md-12 col-sm-12 post-design-box">
                             <div class = "post_radius_box">
                                 <div class = "post-design-top col-md-12" >
@@ -1705,45 +1705,45 @@ class Business_profile extends MY_Controller {
                                 </div>';
 
 
-                if ($post_posted_user_id) {
+        if ($post_posted_user_id) {
 
-                    if ($posted_business_user_image) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
+            if ($posted_business_user_image) {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
 
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                        } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
-                        }
-                        $return_html .= '</a>';
-                    } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
-                        $return_html .= '</a>';
-                    }
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $posted_business_user_image)) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
                 } else {
-                    if ($post_business_user_image) {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                        if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
-                        } else {
-                            $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
-                        }
-                        $return_html .= '</a>';
-                    } else {
-                        $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
-                        $return_html .= '</a>';
-                    }
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $posted_business_user_image . '" name = "image_src" id = "image_src" />';
                 }
-                $return_html .= '</div>
+                $return_html .= '</a>';
+            } else {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">';
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                $return_html .= '</a>';
+            }
+        } else {
+            if ($post_business_user_image) {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $post_business_user_image)) {
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                } else {
+                    $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $post_business_user_image . '" alt = "No Image">';
+                }
+                $return_html .= '</a>';
+            } else {
+                $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '">';
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "No Image">';
+                $return_html .= '</a>';
+            }
+        }
+        $return_html .= '</div>
                         <div class = "post-design-name fl col-xs-8 col-md-10">
                     <ul>';
 
-                $return_html .= '<li></li>';
+        $return_html .= '<li></li>';
 
-                if ($post_posted_user_id) {
-                    $return_html .= '<li>
+        if ($post_posted_user_id) {
+            $return_html .= '<li>
                             <div class = "else_post_d">
                                 <div class = "post-design-product">
                                     <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $posted_business_slug) . '">' . ucfirst(strtolower($posted_company_name)) . '</a>
@@ -1752,8 +1752,8 @@ class Business_profile extends MY_Controller {
 ' . $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($post_created_date))) . '
 </span> </div></div>
 </li>';
-                } else {
-                    $return_html .= '<li>
+        } else {
+            $return_html .= '<li>
                             <div class = "post-design-product">
                                 <a class = "post_dot" href = "' . base_url('business-profile/dashboard/' . $post_business_slug) . '" title = "' . ucfirst(strtolower($post_company_name)) . '">
 ' . ucfirst(strtolower($post_company_name)) . '</a>
@@ -1765,18 +1765,18 @@ class Business_profile extends MY_Controller {
 
 </div>
 </li>';
-                }
+        }
 
-                $return_html .= '<li>
+        $return_html .= '<li>
 <div class = "post-design-product">
 <a class = "buuis_desc_a" href = "javascript:void(0);" title = "Category">';
-                if ($post_industriyal) {
-                    $return_html .= ucfirst(strtolower($post_category));
-                } else {
-                    $return_html .= ucfirst(strtolower($post_other_industrial));
-                }
+        if ($post_industriyal) {
+            $return_html .= ucfirst(strtolower($post_category));
+        } else {
+            $return_html .= ucfirst(strtolower($post_other_industrial));
+        }
 
-                $return_html .= '</a>
+        $return_html .= '</a>
 </div>
 </li>
 
@@ -1789,11 +1789,11 @@ class Business_profile extends MY_Controller {
 </a>
 <div id = "myDropdown' . $post_business_profile_post_id . '" class = "dropdown-content1 dropdown2_content">';
 
-                if ($post_posted_user_id != 0) {
+        if ($post_posted_user_id != 0) {
 
-                    if ($userid == $post_posted_user_id) {
+            if ($userid == $post_posted_user_id) {
 
-                        $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
@@ -1801,16 +1801,16 @@ class Business_profile extends MY_Controller {
 <i class = "fa fa-pencil-square-o" aria-hidden = "true">
 </i>Edit
 </a>';
-                    } else {
+            } else {
 
-                        $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>';
-                    }
-                } else {
-                    if ($userid == $row['user_id']) {
-                        $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
+            }
+        } else {
+            if ($userid == $row['user_id']) {
+                $return_html .= '<a onclick = "user_postdelete(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>
@@ -1818,16 +1818,16 @@ class Business_profile extends MY_Controller {
 <i class = "fa fa-pencil-square-o" aria-hidden = "true">
 </i>Edit
 </a>';
-                    } else {
+            } else {
 
-                        $return_html .= '<a onclick = "user_postdeleteparticular(' . $post_business_profile_post_id . ')">
+                $return_html .= '<a onclick = "user_postdeleteparticular(' . $post_business_profile_post_id . ')">
 <i class = "fa fa-trash-o" aria-hidden = "true">
 </i> Delete Post
 </a>';
-                    }
-                }
+            }
+        }
 
-                $return_html .= '</div>
+        $return_html .= '</div>
 </div>
 <div class = "post-design-desc">
 <div class = "ft-15 t_artd">
@@ -1842,26 +1842,26 @@ onKeyup = check_lengthedit(' . $post_business_profile_post_id . ');
 onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 >';
 
-                if ($post_product_name) {
-                    $counter = $post_product_name;
-                    $a = strlen($counter);
+        if ($post_product_name) {
+            $counter = $post_product_name;
+            $a = strlen($counter);
 
-                    $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled>';
-                } else {
-                    $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = 50 name = text_num disabled>';
-                }
-                $return_html .= '</div>
+            $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = "' . (50 - $a) . '" name = text_num disabled>';
+        } else {
+            $return_html .= '<input size = 1 id = "text_num_' . $post_business_profile_post_id . '" class = "text_num" value = 50 name = text_num disabled>';
+        }
+        $return_html .= '</div>
 
 </div>
 <div id = "khyati' . $post_business_profile_post_id . '" style = "display:block;">';
 
-                $small = substr($post_product_description, 0, 180);
-                $return_html .= nl2br($this->common->make_links($small));
-                if (strlen($post_product_description) > 180) {
-                    $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $post_business_profile_post_id . ')">View More</span>';
-                }
+        $small = substr($post_product_description, 0, 180);
+        $return_html .= nl2br($this->common->make_links($small));
+        if (strlen($post_product_description) > 180) {
+            $return_html .= '... <span id = "kkkk" onClick = "khdiv(' . $post_business_profile_post_id . ')">View More</span>';
+        }
 
-                $return_html .= '</div>
+        $return_html .= '</div>
 <div id = "khyatii' . $post_business_profile_post_id . '" style = "display:none;">
 ' . $post_product_description . '</div>
 <div id = "editpostdetailbox' . $post_business_profile_post_id . '" style = "display:none;">
@@ -1877,45 +1877,45 @@ onblur = check_lengthedit(' . $post_business_profile_post_id . ');
 <div class = "post-design-mid col-md-12 padding_adust" >
 <div>';
 
-                $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
-                $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('post_id' => $post_business_profile_post_id, 'is_deleted' => '1', 'insert_profile' => '2');
+        $businessmultiimage = $this->common->select_data_by_condition('post_files', $contition_array, $data = 'file_name', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                if (count($businessmultiimage) == 1) {
+        if (count($businessmultiimage) == 1) {
 
-                    $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
-                    $allowespdf = array('pdf');
-                    $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
-                    $allowesaudio = array('mp3');
-                    $filename = $businessmultiimage[0]['file_name'];
-                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                    if (in_array($ext, $allowed)) {
+            $allowed = array('jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg');
+            $allowespdf = array('pdf');
+            $allowesvideo = array('mp4', 'webm', 'qt', 'mov', 'MP4');
+            $allowesaudio = array('mp3');
+            $filename = $businessmultiimage[0]['file_name'];
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (in_array($ext, $allowed)) {
 
-                        $return_html .= '<div class = "one-image">';
+                $return_html .= '<div class = "one-image">';
 
-                        $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
+                $return_html .= '<a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
 </div>';
-                    } elseif (in_array($ext, $allowespdf)) {
+            } elseif (in_array($ext, $allowespdf)) {
 
-                        $return_html .= '<div>
+                $return_html .= '<div>
 <a title = "click to open" href = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '"><div class = "pdf_img">
     <embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" width="100%" height="450px" />
 </div>
 </a>
 </div>';
-                    } elseif (in_array($ext, $allowesvideo)) {
+            } elseif (in_array($ext, $allowesvideo)) {
 
-                        $return_html .= '<div>
+                $return_html .= '<div>
 <video width = "100%" height = "350" controls>
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/mp4">
 <source src = "' . BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '" type = "video/ogg">
 Your browser does not support the video tag.
 </video>
 </div>';
-                    } elseif (in_array($ext, $allowesaudio)) {
+            } elseif (in_array($ext, $allowesaudio)) {
 
-                        $return_html .= '<div class = "audio_main_div">
+                $return_html .= '<div class = "audio_main_div">
 <div class = "audio_img">
 <img src = "' . base_url('images/music-icon.png') . '">
 </div>
@@ -1930,20 +1930,20 @@ Your browser does not support the audio tag.
 <p title = "' . $post_product_name . '">' . $post_product_name . '</p>
 </div>
 </div>';
-                    }
-                } elseif (count($businessmultiimage) == 2) {
+            }
+        } elseif (count($businessmultiimage) == 2) {
 
-                    foreach ($businessmultiimage as $multiimage) {
+            foreach ($businessmultiimage as $multiimage) {
 
-                        $return_html .= '<div class = "two-images">
+                $return_html .= '<div class = "two-images">
 <a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img class = "two-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
-                    }
-                } elseif (count($businessmultiimage) == 3) {
+            }
+        } elseif (count($businessmultiimage) == 3) {
 
-                    $return_html .= '<div class = "three-image-top" >
+            $return_html .= '<div class = "three-image-top" >
 <a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img class = "three-columns" src = "' . BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] . '">
 </a>
@@ -1959,33 +1959,33 @@ Your browser does not support the audio tag.
 <img class = "three-columns" src = "' . BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] . '">
 </a>
 </div>';
-                } elseif (count($businessmultiimage) == 4) {
+        } elseif (count($businessmultiimage) == 4) {
 
-                    foreach ($businessmultiimage as $multiimage) {
+            foreach ($businessmultiimage as $multiimage) {
 
-                        $return_html .= '<div class = "four-image">
+                $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img class = "breakpoint" src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
-                    }
-                } elseif (count($businessmultiimage) > 4) {
+            }
+        } elseif (count($businessmultiimage) > 4) {
 
-                    $i = 0;
-                    foreach ($businessmultiimage as $multiimage) {
+            $i = 0;
+            foreach ($businessmultiimage as $multiimage) {
 
-                        $return_html .= '<div class = "four-image">
+                $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] . '">
 </a>
 </div>';
 
-                        $i++;
-                        if ($i == 3)
-                            break;
-                    }
+                $i++;
+                if ($i == 3)
+                    break;
+            }
 
-                    $return_html .= '<div class = "four-image">
+            $return_html .= '<div class = "four-image">
 <a href = "' . base_url('business-profile/post-detail/' . $post_business_profile_post_id) . '">
 <img src = "' . BUS_POST_RESIZE2_UPLOAD_URL . $businessmultiimage[3]['file_name'] . '">
 </a>
@@ -1998,8 +1998,8 @@ Your browser does not support the audio tag.
 
 </a>
 </div>';
-                }
-                $return_html .= '<div>
+        }
+        $return_html .= '<div>
 </div>
 </div>
 </div>
@@ -2009,31 +2009,31 @@ Your browser does not support the audio tag.
 <li class = "likepost' . $post_business_profile_post_id . '">
 <a id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w" onClick = "post_like(this.id)">';
 
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-                $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $likeuser = $this->data['active'][0]['business_like_user'];
-                $likeuserarray = explode(', ', $active[0]['business_like_user']);
-                if (!in_array($userid, $likeuserarray)) {
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
+        $active = $this->data['active'] = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $likeuser = $this->data['active'][0]['business_like_user'];
+        $likeuserarray = explode(', ', $active[0]['business_like_user']);
+        if (!in_array($userid, $likeuserarray)) {
 
-                    $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
-                } else {
-                    $return_html .= '<i class = "fa fa-thumbs-up fa-1x main_color" aria-hidden = "true"></i>';
-                }
-                $return_html .= '<span class = "like_As_count">';
+            $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
+        } else {
+            $return_html .= '<i class = "fa fa-thumbs-up fa-1x main_color" aria-hidden = "true"></i>';
+        }
+        $return_html .= '<span class = "like_As_count">';
 
-                if ($post_business_likes_count > 0) {
-                    $return_html .= $post_business_likes_count;
-                }
+        if ($post_business_likes_count > 0) {
+            $return_html .= $post_business_likes_count;
+        }
 
-                $return_html .= '</span>
+        $return_html .= '</span>
 </a>
 </li>
 <li id = "insertcount' . $post_business_profile_post_id . '" style = "visibility:show">';
 
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+        $commnetcount = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-                $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
+        $return_html .= '<a onClick = "commentall(this.id)" id = "' . $post_business_profile_post_id . '" class = "ripple like_h_w">
 <i class = "fa fa-comment-o" aria-hidden = "true">
 </i>
 </a>
@@ -2044,11 +2044,11 @@ Your browser does not support the audio tag.
 <div class = "like_count_ext">
 <span class = "comment_count' . $post_business_profile_post_id . '" >';
 
-                if (count($commnetcount) > 0) {
-                    $return_html .= count($commnetcount);
-                    $return_html .= '<span> Comment</span>';
-                }
-                $return_html .= '</span>
+        if (count($commnetcount) > 0) {
+            $return_html .= count($commnetcount);
+            $return_html .= '<span> Comment</span>';
+        }
+        $return_html .= '</span>
 
 </div>
 </li>
@@ -2056,95 +2056,95 @@ Your browser does not support the audio tag.
 <li>
 <div class = "comnt_count_ext">
 <span class = "comment_like_count' . $post_business_profile_post_id . '">';
-                if ($post_business_likes_count > 0) {
-                    $return_html .= $post_business_likes_count;
+        if ($post_business_likes_count > 0) {
+            $return_html .= $post_business_likes_count;
 
-                    $return_html .= '<span> Like</span>';
-                }
-                $return_html .= '</span>
+            $return_html .= '<span> Like</span>';
+        }
+        $return_html .= '</span>
 
 </div></li>
 </ul>
 </div>
 </div>';
 
-                if ($post_business_likes_count > 0) {
+        if ($post_business_likes_count > 0) {
 
-                    $return_html .= '<div class = "likeduserlist' . $post_business_profile_post_id . '">';
+            $return_html .= '<div class = "likeduserlist' . $post_business_profile_post_id . '">';
 
-                    $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                    $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                    $likeuser = $commnetcount[0]['business_like_user'];
-                    $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                    $likelistarray = explode(', ', $likeuser);
-                    foreach ($likelistarray as $key => $value) {
-                        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-                    }
-
-                    $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-                    $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                    $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                    $likeuser = $commnetcount[0]['business_like_user'];
-                    $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                    $likelistarray = explode(', ', $likeuser);
-
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-                    $return_html .= '<div class = "like_one_other">';
-
-                    if ($userid == $value) {
-                        $return_html .= "You";
-                        $return_html .= "&nbsp;";
-                    } else {
-                        $return_html .= ucfirst(strtolower($business_fname1));
-                        $return_html .= "&nbsp;";
-                    }
-
-                    if (count($likelistarray) > 1) {
-                        $return_html .= " and";
-
-                        $return_html .= $countlike;
-                        $return_html .= "&nbsp;";
-                        $return_html .= "others";
-                    }
-                    $return_html .= '</div>
-</a>
-</div>';
-                }
-
-                $return_html .= '<div class = "likeusername' . $post_business_profile_post_id . '" id = "likeusername' . $post_business_profile_post_id . '" style = "display:none">';
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                $likeuser = $commnetcount[0]['business_like_user'];
-                $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                $likelistarray = explode(', ', $likeuser);
-                foreach ($likelistarray as $key => $value) {
-                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
-                }
-                $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
-                $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-
-                $likeuser = $commnetcount[0]['business_like_user'];
-                $countlike = $commnetcount[0]['business_likes_count'] - 1;
-                $likelistarray = explode(', ', $likeuser);
-
+            $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+            $likeuser = $commnetcount[0]['business_like_user'];
+            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+            $likelistarray = explode(', ', $likeuser);
+            foreach ($likelistarray as $key => $value) {
                 $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+            }
 
-                $return_html .= '<div class = "like_one_other">';
+            $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+            $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+            $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
+            $likeuser = $commnetcount[0]['business_like_user'];
+            $countlike = $commnetcount[0]['business_likes_count'] - 1;
+            $likelistarray = explode(', ', $likeuser);
+
+            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+            $return_html .= '<div class = "like_one_other">';
+
+            if ($userid == $value) {
+                $return_html .= "You";
+                $return_html .= "&nbsp;";
+            } else {
                 $return_html .= ucfirst(strtolower($business_fname1));
                 $return_html .= "&nbsp;";
+            }
 
-                if (count($likelistarray) > 1) {
+            if (count($likelistarray) > 1) {
+                $return_html .= " and";
 
-                    $return_html .= "and";
+                $return_html .= $countlike;
+                $return_html .= "&nbsp;";
+                $return_html .= "others";
+            }
+            $return_html .= '</div>
+</a>
+</div>';
+        }
 
-                    $return_html .= $countlike;
-                    $return_html .= "&nbsp;";
-                    $return_html .= "others";
-                }
-                $return_html .= '</div>
+        $return_html .= '<div class = "likeusername' . $post_business_profile_post_id . '" id = "likeusername' . $post_business_profile_post_id . '" style = "display:none">';
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $likeuser = $commnetcount[0]['business_like_user'];
+        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+        $likelistarray = explode(', ', $likeuser);
+        foreach ($likelistarray as $key => $value) {
+            $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+        }
+        $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1', 'is_delete' => '0');
+        $commnetcount = $this->common->select_data_by_condition('business_profile_post', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        $likeuser = $commnetcount[0]['business_like_user'];
+        $countlike = $commnetcount[0]['business_likes_count'] - 1;
+        $likelistarray = explode(', ', $likeuser);
+
+        $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
+
+        $return_html .= '<div class = "like_one_other">';
+
+        $return_html .= ucfirst(strtolower($business_fname1));
+        $return_html .= "&nbsp;";
+
+        if (count($likelistarray) > 1) {
+
+            $return_html .= "and";
+
+            $return_html .= $countlike;
+            $return_html .= "&nbsp;";
+            $return_html .= "others";
+        }
+        $return_html .= '</div>
 </a>
 </div>
 
@@ -2154,56 +2154,56 @@ Your browser does not support the audio tag.
 <div id = "threecomment' . $post_business_profile_post_id . '" style = "display:block">
 <div class = "insertcomment' . $post_business_profile_post_id . '">';
 
-                $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
-                $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
-                if ($businessprofiledata) {
-                    foreach ($businessprofiledata as $rowdata) {
-                        $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
+        $contition_array = array('business_profile_post_id' => $post_business_profile_post_id, 'status' => '1');
+        $businessprofiledata = $this->data['businessprofiledata'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = 'business_profile_post_comment_id', $orderby = 'DESC', $limit = '1', $offset = '', $join_str = array(), $groupby = '');
+        if ($businessprofiledata) {
+            foreach ($businessprofiledata as $rowdata) {
+                $companyname = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id']))->row()->company_name;
 
-                        $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
+                $slugname1 = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_slug;
 
-                        $return_html .= '<div class = "all-comment-comment-box">
+                $return_html .= '<div class = "all-comment-comment-box">
 <div class = "post-design-pro-comment-img">';
-                        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
+                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $rowdata['user_id'], 'status' => 1))->row()->business_user_image;
 
-                        if ($business_userimage) {
-                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
+                if ($business_userimage) {
+                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
-                            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
+                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
 
-                                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                            } else {
-                                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
-                            }
-                            $return_html .= '</a>';
-                        } else {
-                            $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
+                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+                    } else {
+                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+                    }
+                    $return_html .= '</a>';
+                } else {
+                    $return_html .= '<a href = "' . base_url('business-profile/dashboard/' . $slugname1) . '">';
 
-                            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
-                        }
-                        $return_html .= '</div>
+                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = ""></a>';
+                }
+                $return_html .= '</div>
 <div class = "comment-name"><a href="' . base_url() . 'business-profile/dashboard/' . $slugname1 . '">
 <b title = "' . $companyname . '">';
-                        $return_html .= $companyname;
-                        $return_html .= '</br>';
+                $return_html .= $companyname;
+                $return_html .= '</br>';
 
-                        $return_html .= '</b></a>
+                $return_html .= '</b></a>
 </div>
 <div class = "comment-details" id = "showcomment' . $rowdata['business_profile_post_comment_id'] . '">';
 
-                        $return_html .= '<div id = "lessmore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">';
-                        $small = substr($rowdata['comments'], 0, 180);
-                        $return_html .= nl2br($this->common->make_links($small));
+                $return_html .= '<div id = "lessmore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">';
+                $small = substr($rowdata['comments'], 0, 180);
+                $return_html .= nl2br($this->common->make_links($small));
 
-                        if (strlen($rowdata['comments']) > 180) {
-                            $return_html .= '... <span id = "kkkk" onClick = "seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
-                        }
-                        $return_html .= '</div>';
-                        $return_html .= '<div id = "seemore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none;">';
-                        $new_product_comment = $this->common->make_links($rowdata['comments']);
-                        $return_html .= nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
-                        $return_html .= '</div>';
-                        $return_html .= '</div>
+                if (strlen($rowdata['comments']) > 180) {
+                    $return_html .= '... <span id = "kkkk" onClick = "seemorediv(' . $rowdata['business_profile_post_comment_id'] . ')">See More</span>';
+                }
+                $return_html .= '</div>';
+                $return_html .= '<div id = "seemore' . $rowdata['business_profile_post_comment_id'] . '" style = "display:none;">';
+                $new_product_comment = $this->common->make_links($rowdata['comments']);
+                $return_html .= nl2br(htmlspecialchars_decode(htmlentities($new_product_comment, ENT_QUOTES, 'UTF-8')));
+                $return_html .= '</div>';
+                $return_html .= '</div>
 <div class = "edit-comment-box">
 <div class = "inputtype-edit-comment">
 <div contenteditable = "true" class = "editable_text editav_2" name = "' . $rowdata['business_profile_post_comment_id'] . '" id = "editcomment' . $rowdata['business_profile_post_comment_id'] . '" placeholder = "Enter Your Comment " value = "" onkeyup = "commentedit(' . $rowdata['business_profile_post_comment_id'] . ')" onpaste = "OnPaste_StripFormatting(this, event);">' . $rowdata['comments'] . '</div>
@@ -2214,30 +2214,30 @@ Your browser does not support the audio tag.
 <div class = "comment-details-menu" id = "likecomment1' . $rowdata['business_profile_post_comment_id'] . '">
 <a id = "' . $rowdata['business_profile_post_comment_id'] . '" onClick = "comment_like1(this.id)">';
 
-                        $userid = $this->session->userdata('aileenuser');
-                        $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
-                        $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-                        $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
-                        if (!in_array($userid, $likeuserarray)) {
+                $userid = $this->session->userdata('aileenuser');
+                $contition_array = array('business_profile_post_comment_id' => $rowdata['business_profile_post_comment_id'], 'status' => '1');
+                $businesscommentlike = $this->data['businesscommentlike'] = $this->common->select_data_by_condition('business_profile_post_comment', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+                $likeuserarray = explode(', ', $businesscommentlike[0]['business_comment_like_user']);
+                if (!in_array($userid, $likeuserarray)) {
 
-                            $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
-                        } else {
-                            $return_html .= '<i class = "fa fa-thumbs-up main_color" aria-hidden = "true">
+                    $return_html .= '<i class = "fa fa-thumbs-up" style = "color: #999;" aria-hidden = "true"></i>';
+                } else {
+                    $return_html .= '<i class = "fa fa-thumbs-up main_color" aria-hidden = "true">
 </i>';
-                        }
-                        $return_html .= '<span>';
+                }
+                $return_html .= '<span>';
 
-                        if ($rowdata['business_comment_likes_count']) {
-                            $return_html .= $rowdata['business_comment_likes_count'];
-                        }
+                if ($rowdata['business_comment_likes_count']) {
+                    $return_html .= $rowdata['business_comment_likes_count'];
+                }
 
-                        $return_html .= '</span>
+                $return_html .= '</span>
 </a>
 </div>';
-                        $userid = $this->session->userdata('aileenuser');
-                        if ($rowdata['user_id'] == $userid) {
+                $userid = $this->session->userdata('aileenuser');
+                if ($rowdata['user_id'] == $userid) {
 
-                            $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                    $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
 </span>
 <div class = "comment-details-menu">
 <div id = "editcommentbox' . $rowdata['business_profile_post_comment_id'] . '" style = "display:block;">
@@ -2249,12 +2249,12 @@ Your browser does not support the audio tag.
 </a>
 </div>
 </div>';
-                        }
-                        $userid = $this->session->userdata('aileenuser');
-                        $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
-                        if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
+                }
+                $userid = $this->session->userdata('aileenuser');
+                $business_userid = $this->db->get_where('business_profile_post', array('business_profile_post_id' => $rowdata['business_profile_post_id'], 'status' => 1))->row()->user_id;
+                if ($rowdata['user_id'] == $userid || $business_userid == $userid) {
 
-                            $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                    $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
 </span>
 <div class = "comment-details-menu">
 <input type = "hidden" name = "post_delete" id = "post_delete' . $rowdata['business_profile_post_comment_id'] . '" value = "' . $rowdata['business_profile_post_id'] . '">
@@ -2263,44 +2263,44 @@ Your browser does not support the audio tag.
 </span>
 </a>
 </div>';
-                        }
-                        $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
+                }
+                $return_html .= '<span role = "presentation" aria-hidden = "true"> ·
 </span>
 <div class = "comment-details-menu">
 <p>';
 
-                        $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
-                        $return_html .= '</br>';
+                $return_html .= $this->common->time_elapsed_string(date('Y-m-d H:i:s', strtotime($rowdata['created_date'])));
+                $return_html .= '</br>';
 
-                        $return_html .= '</p>
+                $return_html .= '</p>
 </div>
 </div>
 </div>';
-                    }
-                }
-                $return_html .= '</div>
+            }
+        }
+        $return_html .= '</div>
 </div>
 </div>
 <div class = "post-design-commnet-box col-md-12">
 <div class = "post-design-proo-img hidden-mob">';
 
-                $userid = $this->session->userdata('aileenuser');
-                $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
-                if ($business_userimage) {
+        $userid = $this->session->userdata('aileenuser');
+        $business_userimage = $this->db->get_where('business_profile', array('user_id' => $userid, 'status' => 1))->row()->business_user_image;
+        if ($business_userimage) {
 
-                    if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
-
-
-                        $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                    } else {
-                        $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
-                    }
-                } else {
+            if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_userimage)) {
 
 
-                    $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
-                }
-                $return_html .= '</div>
+                $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+            } else {
+                $return_html .= '<img src = "' . BUS_PROFILE_THUMB_UPLOAD_URL . $business_userimage . '" alt = "">';
+            }
+        } else {
+
+
+            $return_html .= '<img src = "' . base_url(NOBUSIMAGE) . '" alt = "">';
+        }
+        $return_html .= '</div>
 
 <div id = "content" class = "col-md-12  inputtype-comment cmy_2" >
 <div contenteditable = "true" class = "edt_2 editable_text" name = "' . $post_business_profile_post_id . '" id = "post_comment' . $post_business_profile_post_id . '" placeholder = "Add a Comment ..." onClick = "entercomment(' . $post_business_profile_post_id . ')" onpaste = "OnPaste_StripFormatting(this, event);"></div>
@@ -2318,7 +2318,7 @@ Your browser does not support the audio tag.
 </div>
 </div>
 </div></div>';
-            
+
         echo $return_html;
 //    }
 // return html         
@@ -2791,6 +2791,58 @@ Your browser does not support the audio tag.
             $this->business_profile_active_check();
             $this->is_business_profile_register();
         }
+
+        if ($id != '') {
+            $contition_array = array('business_profile.business_slug' => $id, 'business_profile.is_deleted' => '0', 'business_profile.status' => 1, 'business_profile.business_step' => 4);
+            $join_str[0]['table'] = 'countries';
+            $join_str[0]['join_table_id'] = 'countries.country_id';
+            $join_str[0]['from_table_id'] = 'business_profile.country';
+            $join_str[0]['join_type'] = '';
+            $join_str[1]['table'] = 'states';
+            $join_str[1]['join_table_id'] = 'states.state_id';
+            $join_str[1]['from_table_id'] = 'business_profile.state';
+            $join_str[1]['join_type'] = '';
+            $join_str[2]['table'] = 'cities';
+            $join_str[2]['join_table_id'] = 'cities.city_id';
+            $join_str[2]['from_table_id'] = 'business_profile.city';
+            $join_str[2]['join_type'] = '';
+            $join_str[3]['table'] = 'business_type';
+            $join_str[3]['join_table_id'] = 'business_type.type_id';
+            $join_str[3]['from_table_id'] = 'business_profile.business_type';
+            $join_str[3]['join_type'] = '';
+            $join_str[4]['table'] = 'industry_type';
+            $join_str[4]['join_table_id'] = 'industry_type.industry_id';
+            $join_str[4]['from_table_id'] = 'business_profile.industriyal';
+            $join_str[4]['join_type'] = '';
+            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'business_profile.company_name,countries.country_name,states.state_name,cities.city_name,business_profile.pincode,business_profile.address,business_profile.contact_person,business_profile.contact_mobile,business_profile.contact_email,business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str, $groupby = '');
+        } else {
+            $userid = $this->session->userdata('aileenuser');
+            $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => 1, 'business_step' => 4);
+            $join_str[0]['table'] = 'business_profile';
+            $join_str[0]['join_table_id'] = 'business_profile.user_id';
+            $join_str[0]['from_table_id'] = 'business_profile_post.user_id';
+            $join_str[0]['join_type'] = '';
+            $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data = 'company_name,country,state,city,pincode,address,contact_person,contact_mobile,contact_email,contact_website,business_type,industriyal,details', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        }
+        
+        $this->data['business_data']['company_name'] = $business_data[0]['company_name'] == '' ? PROFILENA : $business_data[0]['company_name'];
+        $this->data['business_data']['country_name'] = $business_data[0]['country_name'] == '' ? PROFILENA : $business_data[0]['country_name'];
+        $this->data['business_data']['state_name'] = $business_data[0]['state_name'] == '' ? PROFILENA : $business_data[0]['state_name'];
+        $this->data['business_data']['city_name'] = $business_data[0]['city_name'] == '' ? PROFILENA : $business_data[0]['city_name'];
+        $this->data['business_data']['pincode'] = $business_data[0]['pincode'] == '' ? PROFILENA : $business_data[0]['pincode'];
+        $this->data['business_data']['address'] = $business_data[0]['address'] == '' ? PROFILENA : $business_data[0]['address'];
+        $this->data['business_data']['contact_person'] = $business_data[0]['contact_person'] == '' ? PROFILENA : $business_data[0]['contact_person'];
+        $this->data['business_data']['contact_mobile'] = $business_data[0]['contact_mobile'] == '' ? PROFILENA : $business_data[0]['contact_mobile'];
+        $this->data['business_data']['contact_email'] = $business_data[0]['contact_email'] == '' ? PROFILENA : $business_data[0]['contact_email'];
+        $this->data['business_data']['contact_website'] = $business_data[0]['contact_website'] == '' ? PROFILENA : $business_data[0]['contact_website'];
+        $this->data['business_data']['business_name'] = $business_data[0]['business_name'] == '' ? PROFILENA : $business_data[0]['business_name'];
+        $this->data['business_data']['industry_name'] = $business_data[0]['industry_name'] == '' ? PROFILENA : $business_data[0]['industry_name'];
+        $this->data['business_data']['details'] = $business_data[0]['details'] == '' ? PROFILENA : $business_data[0]['details'];
+        
+//       business_profile.contact_website,business_type.business_name,industry_type.industry_name,business_profile.details
+        echo '<pre>';
+        print_r($this->data['business_data']);
+        exit;
 
 // $this->data['slug_data'] this data come from include
         if ($id == $this->data['slug_data'][0]['business_slug'] || $id == '') {
