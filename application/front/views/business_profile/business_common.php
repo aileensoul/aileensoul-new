@@ -80,7 +80,7 @@
                 ?>
                 <!--PROFILE PIC START-->
                 <div class="profile-pho-bui">
-                    <div class="user-pic">
+                    <div class="user-pic padd_img">
                         <?php if ($business_common_data[0]['business_user_image'] != '') { ?>
 
                         <?php if (!file_exists($this->config->item('bus_profile_thumb_upload_path') . $business_common_data[0]['business_user_image'])) { ?>
@@ -99,7 +99,7 @@
                         $userid = $this->session->userdata('aileenuser');
                         if ($business_common_data[0]['user_id'] == $userid) {
                         ?>                                                                                                                        <!-- <a href="#popup-form" class="fancybox"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a> -->
-                        <a href="javascript:void(0);" onclick="updateprofilepopup();"><i class="fa fa-camera" aria-hidden="true"></i> Update Profile Picture</a>
+                        <a class="cusome_upload" href="javascript:void(0);" onclick="updateprofilepopup();"><img src="http://localhost/aileensoul-new/img/cam.png"> Update Profile Picture</a>
                         <?php } ?>
                     </div>
                 </div>
