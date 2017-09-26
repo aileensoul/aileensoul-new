@@ -1740,39 +1740,41 @@ label.cameraButton:active {
     background-color: #ffffff;
     margin-left: 40px;
     margin-top: -8px;
-    border: 4px solid #ffffff;
     box-shadow: 0px 0px 2px 2px #dad3cb;
 }
 .user-pic {
-    height: 152px;
-    width: 152px;
+    height: 160px;
+    width: 160px;
     overflow: hidden;
     border-radius: 4px;
     position: relative;
     z-index: 3;
-    padding: 0px !important;
 }
-.user-pic img {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-.user-pic a {
-    position: absolute;
-    display: none;
-}
-.user-pic a i {
-    padding-right: 7.1px;
-}
+.user-pic .cusome_upload img{display:block; margin:0 auto 10px; height:auto; width:auto;}
 .user-pic:hover a {
     display: block;
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 4px 4px 4px 6px;
-    font-size: 12px;
-    width: 100%;
+    padding: 30px 15px;
+    font-size: 16px;
+	width:150px;
+	height:150px;
+	top:5px;
+	border-radius:4px;
+	text-align:center;
 }
+.user-pic img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+	border-radius:4px;
+}
+.user-pic a {
+    position: absolute;
+    display: none;
+}
+
 .business-profile-right {
     width: 82%;
     float: left;
@@ -3512,8 +3514,7 @@ label.cameraButton input[accept*="camera"] {
     display: inline-block;
 }
 .padd_img {
-    padding-left: 5px !important;
-    padding-top: 6px !important;
+    padding: 5px;
 }
 .inner_search {
     width: 100%;
@@ -3554,14 +3555,9 @@ label.cameraButton input[accept*="camera"] {
     font-size: 18px;
     margin-top: -10px;
 }
-.custom-row .user-pic:hover a {
-    width: 100%;
-    height: 100%;
-}
+
 .post-img-user {
     color: #fff;
-    width: 152px;
-    height: 153px;
     background: -moz-linear-gradient(96deg, #1b8ab9 0%, #1b8ab9 44%, #3bb0ac 100%);
     /* ff3.6+ */
     
@@ -4255,14 +4251,17 @@ div .comment {
         width: 40px;
     }
     .profile-pho-bui {
-        height: 134px;
+        height: 120px;
         margin-top: 0;
-        width: 123px;
+        width: 120px;
         margin-left: 20px;
     }
+	.user-pic{width:120px; height:120px;}
+	.post-img-user{font-size:32px; line-height:1;}
+	.user-pic:hover a{height:110px; width:110px; padding:12px 5px;}
     .business-profile-right {
         width: 80%;
-        padding-left: 0px;
+        padding-left: 15px;
     }
     .profile-main-box-buis-menu li a {
         font-size: 12px;
@@ -4660,11 +4659,13 @@ div .comment {
         top: 15px;
     }
     .profile-pho-bui .user-pic {
-        height: 82px;
-        width: 82px;
+        height: 90px;
+        width: 90px;
     }
+	.user-pic:hover a{width:80px; height:80px; padding:23px 5px; font-size:0;}
+	.post-img-user{font-size:24px; padding:30px 0;}
     .bui-menu-profile {
-        padding-left: 110px !important;
+        padding-left: 115px !important;
     }
     .profile-main-box-buis-menu li a {
         padding: 10px 17px 12px !important;
@@ -5235,9 +5236,7 @@ div .comment {
     .profile-left {
         margin-left: 5px;
     }
-    .profile-pho-bui {
-        padding: 4px;
-    }
+	.business-profile-right .bui-menu-profile{min-height:100px;}
     .bui-menu-profile {
         width: 70%;
         overflow: hidden;
@@ -5420,9 +5419,6 @@ div .comment {
     }
     .other-profile-menu .profile-main-box-buis-menu li a {
         padding: 7px 5px 12px !important;
-    }
-    .business-profile-right .bui-menu-profile {
-        min-height: 75px;
     }
     .buisness-menu.other-profile-menu::before {
         top: inherit;

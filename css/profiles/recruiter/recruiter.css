@@ -85,13 +85,30 @@ li.fr a {text-decoration: none !important;}
 .profile-pho {height: 160px; width: 160px; background-color: #ffffff; margin-left: 30px; margin-top: -80px;
     border: 3.5px solid #ffffff; border: 1px solid #d9d9d9 !important; border-radius: 4px;
 }
-.padd_img {padding-left: 5px !important; padding-top: 6px !important;}
-.user-pic {height: 152px; width: 153px; overflow: hidden; border-radius: 4px; position: relative; z-index: 3;}
-.user-pic img {height: 100%; width: 100%; overflow: hidden;}
+.padd_img {padding: 5px;}
+.user-pic {
+    height: 158px;
+    width: 158px;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+    z-index: 3;
+}
+.user-pic img {height: 100%; width: 100%; overflow: hidden; border-radius:4px;}
+.user-pic .cusome_upload img{display:block; margin:0 auto 10px; height:auto; width:auto;}
 .user-pic a {position: absolute; display: none;}
-.user-pic a i {padding-right: 1.1px;}
-.user-pic:hover a {display: block; bottom: 0; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 4px 5px 4px 6px;
-    font-size: 12px; width: 100%;
+.user-pic:hover a {
+    display: block;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 30px 15px;
+    font-size: 16px;
+	width:148px;
+	height:148px;
+	top:5px;
+	border-radius:4px;
+	text-align:center;
 }
 .profile-box-art {height: auto !important;}
 .profile-box-art ul li a {height: 50px; padding-top: 7px; padding-bottom: 7px;}
@@ -776,8 +793,7 @@ label.cameraButton input[accept*="camera"] {
     padding-top: 7px;display: inline-block;
 }
 .padd_img {
-    padding-left: 5px !important;
-    padding-top: 6px !important;
+    padding: 5px;
 }
 .inner_search {
     width: 100%;
@@ -935,14 +951,16 @@ label.cameraButton input[accept*="camera"] {
         font-size: 13px;
     }
 	.profile-pho {
-        height: 133px;
-        width: 123px;
+        height: 130px;
+        width: 130px;
         margin-top: -55px;
     }
     .user-pic {
-        height: 125px;
-        width: 115px;
+        height: 128px;
+        width: 128px;
     }
+	.post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 118px;}
+	.user-pic:hover a{width:118px; height:118px; padding:17px 5px; }
     .buisness-profile-txext {
         width: 28%;
     }
@@ -963,7 +981,7 @@ label.cameraButton input[accept*="camera"] {
         padding-bottom: 0 !important;
     }
     .common-form1{padding-top:20px; width:100%; float:left;}    
-    .post-img-user{height: 118px; line-height: 1; padding: 40px 0; width: 109px;}
+    
 }
 
 @media screen and (max-width: 991px){
@@ -1029,7 +1047,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
     }
     .art-side-menu {
-        padding-left: 160px !important;
+        padding-left: 175px !important;
     }
 	.flw_msg_btn ul li {
         padding-right: 0 !important;
@@ -1346,11 +1364,7 @@ label.cameraButton input[accept*="camera"] {
 }
 
 @media screen and (max-width: 640px) {
-	.user-pic {
-		width: 75px;
-		height: 75px;
-		padding: 4px 0px 0px 3px !important;
-	}
+
 
     #InboxContainer{
         width: 95%!important;
@@ -1362,14 +1376,22 @@ label.cameraButton input[accept*="camera"] {
 	.post-img-user{font-size: 20px; height:100%; line-height: 1; padding: 24px 0; width: 100%;}
 	.cover-pic{bottom: 62%; right: -10%;}
 	.profile-photo .profile-pho {
-        height: 80px;
-        width: 80px;
+        height: 100px;
+        width: 100px;
         margin-top: -40px !important;
     }
 	.user-pic {
-        width: 75px;
-        height: 75px;
+        width: 98px;
+        height: 98px;
     }
+	.post-img-user {
+        font-size: 26px;
+        height: 88px;
+        line-height: 1;
+        padding: 33px 0;
+        width: 88px;
+    }
+	.user-pic:hover a{width:88px; height:88px; font-size:0; padding:25px 5px;}
 	.right-side-menu {
         padding-left: 18%;
     }
@@ -1582,7 +1604,6 @@ label.cameraButton input[accept*="camera"] {
 		width: 71% !important;
 	}
 	.designation_rec_1{width: 75%;}
-	.padd_img { padding-left: 3px !important; padding-top: 4px !important;}
 	.profile-job-post-location-name ul li .follow-li-text {
         padding: 0px;
     }
