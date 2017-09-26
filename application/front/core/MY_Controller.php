@@ -14,14 +14,19 @@ class MY_Controller extends CI_Controller {
         $segment1 = $this->uri->segment(1);
         $segment1_names = array('job', 'business-profile', 'freelancer-hire', 'artistic', 'search', 'freelancer-work', 'recruiter', 'business_userprofile');
 
-        if ((!in_array($segment2, $segment2_names)) && (!in_array($segment1, $segment1_names))) {
+        if ((!in_array($segment2, $segment2_names)) || (!in_array($segment1, $segment1_names))) {
             if (!$this->session->userdata('aileenuser')) {
                 redirect('login', 'refresh');
             } else {
                 $this->data['userid'] = $this->session->userdata('aileenuser');
             }
         }
-
+                    
+         if (!$this->session->userdata('aileenuser')) {
+                redirect('login', 'refresh');
+            } else {
+                $this->data['userid'] = $this->session->userdata('aileenuser');
+            }
         ini_set('gd.jpeg_ignore_warning', 1);
 
         $user_id = $this->data['userid'];
