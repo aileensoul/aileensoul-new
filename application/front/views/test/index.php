@@ -4,6 +4,7 @@
         body {
     margin-top:40px;
 }
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {pointer-events:none;}
 .stepwizard-step p {
     margin-top: 10px;
 }
