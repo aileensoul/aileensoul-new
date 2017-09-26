@@ -41,13 +41,13 @@
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
 
-                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?> id="step1"><a href="#">Basic Information</a></li>
+                                    <li <?php if ($this->uri->segment(1) == 'recruiter') { ?> class="active init" <?php } ?> id="step1"><a href="#" onclick="stepactive(1)">Basic Information</a></li>
 
-                                    <li  class="custom-none <?php 
+                                    <li  class="custom-none reg2 <?php 
                                     if ($recdata[0]['re_step'] < '1') {
                                         echo "khyati";
                                     }
-                                    ?>"><a href="<?php echo base_url('recruiter/company-information'); ?>" id="step1">Company Information</a></li>
+                                    ?>" ><a href="#" onclick="stepactive(2)" id="step1">Company Information</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             </div>
 
                             <!--- middle section start -->
-                            <div class="common-form common-form_border"  id="reg1">
+                            <div class="common-form common-form_border"  id="reg1" style="display:none">
                                 <h3>Basic Information</h3>
                                 <?php echo form_open(base_url('test/basic_information'), array('id' => 'basicinfo', 'name' => 'basicinfo', 'class' => 'clearfix')); ?>
 
@@ -355,11 +355,7 @@
                                 </fieldset>
 
                                 <fieldset class="hs-submit full-width">
-
-
                                     <input type="submit" class="reg" id="next" name="next" tabindex="12" value="Submit">
-
-
                                 </fieldset>
                                  </form>   
                             </div>
@@ -406,6 +402,7 @@ jQuery(document).ready(function ($) {
         },
         success: function () {
          document.getElementById('reg2').style.display = "block";
+        jQuery('.reg2').removeClass('khyati');
          $('#reg1').hide();
         },
         complete: function (response) {
@@ -439,6 +436,40 @@ jQuery(document).ready(function ($) {
     $("#companyinfo").ajaxForm(options);
     return false;
 });
+
+
+  function stepactive(id) {
+    $("#reg" + id).show();
+   // alert(id);
+    //return false;
+   
+    hideElement(2, id);
+  }
+
+  function hideElement(total, active) {
+      alert(active);
+      //alert(total);
+    for (i = 1; i <= total; i++) {
+      if (i != active){ 
+        $("#reg" + i).hide();
+    }
+    }
+  }
+
+//function stepactive(id) {
+//       $('#reg' + id).show();
+//   }
+   
+   jQuery(document).ready(function ($) {
+      var recstep = '<?php echo $recdata[0]['re_step']; ?>';
+      
+      if(recstep < 1 || recstep == 3){
+      $('#reg1').show();
+    } else if(recstep == 1){
+      $('#reg2').show();
+    }
+      
+   });
     </script>
     </body>
 </html>

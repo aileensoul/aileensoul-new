@@ -58,18 +58,16 @@
         <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
         <p>Step 2</p>
       </div>
-      <div class="stepwizard-step">
-        <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-        <p>Step 3</p>
-      </div>
+    
     </div>
   </div>
   
-  <form role="form" action="" method="post">
+  
     <div class="row setup-content" id="step-1">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
           <h3> Step 1</h3>
+            <form role="form" action="" method="post">
           <div class="form-group">
             <label class="control-label">First Name</label>
             <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
@@ -83,6 +81,7 @@
             <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
           </div>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
+            </form>
         </div>
       </div>
     </div>
@@ -90,6 +89,7 @@
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
           <h3> Step 2</h3>
+            <form role="form" action="" method="post">
           <div class="form-group">
             <label class="control-label">Company Name</label>
             <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
@@ -110,7 +110,7 @@
         </div>
       </div>
     </div>
-  </form>
+  
   
 </div>
  <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
@@ -158,4 +158,15 @@
 
   $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+function checkvalue() {
+       //alert("hi");
+       var searchkeyword =$.trim(document.getElementById('tags').value);
+       var searchplace =$.trim(document.getElementById('searchplace').value);
+       
+       if (searchkeyword == "" && searchplace == "") {
+          
+           return false;
+       }
+   }
 </script>

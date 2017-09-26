@@ -24,9 +24,11 @@ class Test extends MY_Controller {
     }
 
      public function basic_info(){
+            $userid = $this->session->userdata('aileenuser');
    $contition_array = array('user_id' => $userid, 're_status' => '1');
         $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step,rec_firstname,rec_lastname,rec_email,rec_phone', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
-         $this->load->view('test/basic_info',$this->data);
+      
+        $this->load->view('test/basic_info',$this->data);
          
      }
      
@@ -131,7 +133,17 @@ echo "success";
     }
 
 // RECRUITER BASIC INFORMATION INSERT STEP END  
+   public function recruiter_form() { 
+         $this->load->view('test/recruiter_form', $this->data);
+   }
    
+   public function basic(){
+           $userid = $this->session->userdata('aileenuser');
+   $contition_array = array('user_id' => $userid, 're_status' => '1');
+        $recdata = $this->data['recdata'] = $this->common->select_data_by_condition('recruiter', $contition_array, $data = 're_step,rec_firstname,rec_lastname,rec_email,rec_phone', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+      
+        $this->load->view('test/basic_info',$this->data);
+   }
 }
 
 
