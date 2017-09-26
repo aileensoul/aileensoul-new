@@ -25,16 +25,16 @@
 <?php echo $artistic_common; ?>
 <div class="text-center tab-block">
     <div class="container mob-inner-page">
-       <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['slug']) ?>">
             Photo
         </a>
-       <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['slug']) ?>">
             Video
         </a>
-       <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['user_id']) ?>">
+       <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['slug']) ?>">
             Audio
         </a>
-        <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['user_id']) ?>">
+        <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['slug']) ?>">
             PDf
         </a>
     </div>
@@ -102,7 +102,7 @@
                         </table>
                     </div>
                 </div>
-                <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/photos/' . $artisticdata[0]['slug']) ?>">
                 <div class="full-box-module business_data" id="autorefresh">
                     <div class="profile-boxProfileCard  module buisness_he_module" style="">
                         <div class="head_details">
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/videos/' . $artisticdata[0]['slug']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/audios/' . $artisticdata[0]['slug']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module">
                         <table class="business_data_table">
@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 </a>
-                <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['user_id']) ?>">
+                <a href="<?php echo base_url('artistic/pdf/' . $artisticdata[0]['slug']) ?>">
                 <div class="full-box-module business_data">
                     <div class="profile-boxProfileCard  module pdf_box">
                         <table class="business_data_table">
@@ -165,6 +165,7 @@ $loginuser = $userdata[0]['art_id'];
                 <div class="post-editor col-md-12">
                     <div class="main-text-area col-md-12" style="padding-left: 1px;">
                         <div class="popup-img"> 
+                            <a href="<?php echo base_url('artistic/dashboard/' . $artisticdata[0]['slug']) ?>">
                              <?php
                                                     $userimage = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
                                                     $userimageposted = $this->db->get_where('art_reg', array('user_id' => $this->session->userdata('aileenuser')))->row()->art_user_image;
@@ -195,7 +196,9 @@ if (!file_exists($this->config->item('art_profile_thumb_upload_path') . $userima
                             <div class="post-img-div">
                             <?php echo  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr)); ?>
                             </div>
-                    <?php   }?> 
+                    <?php   }?>
+
+                    </a> 
                         </div>
                         <div id="myBtn3"  class="editor-content popup-text">
                             <span> Post Your Art....</span> 

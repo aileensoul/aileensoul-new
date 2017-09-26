@@ -2355,6 +2355,10 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
+                         $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+
+                         $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
+
                     $userid = $this->session->userdata('aileenuser');
                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
                      $art_userfn = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
@@ -2386,7 +2390,7 @@ $contition_array = array('user_id' => $userid, 'is_delete' => '0', 'status' => '
                                     $return_html .=  ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                                     $return_html .=  '</div>'; 
                     }
-                    $return_html .= '</div>
+                    $return_html .= '</a></div>
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
                             <div contenteditable="true" class="edt_2 editable_text" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
@@ -8432,9 +8436,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $contition_array = array('user_id' => $userid, 'status' => '1');
+        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
 
@@ -8480,7 +8484,7 @@ public function insert_comment_postnewpage() {
 
         } else {
 
-           $contition_array = array('user_id' => $id, 'status' => '1');
+           $contition_array = array('slug' => $id, 'status' => '1');
 
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
             //  echo "<pre>"; print_r($artisticdata); die();
@@ -8553,10 +8557,10 @@ public function insert_comment_postnewpage() {
              redirect('artistic/');
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
-        $contition_array = array('user_id' => $userid, 'status' => '1');
+         $contition_array = array('user_id' => $userid, 'status' => '1');
+        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8566,7 +8570,7 @@ public function insert_comment_postnewpage() {
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('user_id' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
@@ -8610,9 +8614,9 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
         $contition_array = array('user_id' => $userid, 'status' => '1');
+        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
-
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '' || $id == $artisticslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8622,7 +8626,7 @@ public function insert_comment_postnewpage() {
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else {
 
-            $contition_array = array('user_id' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
@@ -8667,10 +8671,11 @@ public function insert_comment_postnewpage() {
         }
      //if user deactive profile then redirect to artistic/index untill active profile End
 
-        $contition_array = array('user_id' => $userid, 'status' => '1');
+       $contition_array = array('user_id' => $userid, 'status' => '1');
+        $artisticslug = $this->data['artisticslug'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
 
-        if ($id == $userid || $id == '') {
+        if ($id == $userid || $id == '' || $id ==  $artisticslug[0]['slug']) {
 
             $contition_array = array('user_id' => $userid, 'status' => '1');
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -8680,7 +8685,7 @@ public function insert_comment_postnewpage() {
             $this->data['artistic_data'] = $this->common->select_data_by_condition('art_post', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
         } else { 
 
-            $contition_array = array('user_id' => $id, 'status' => '1','art_step' => 4);
+            $contition_array = array('slug' => $id, 'status' => '1','art_step' => 4);
             $artisticdata = $this->data['artisticdata'] = $this->common->select_data_by_condition('art_reg', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
             $contition_array = array('user_id' => $artisticdata[0]['user_id'], 'status' => 1, 'is_delete' => '0');
@@ -14778,6 +14783,10 @@ public function art_home_post() {
                     <div class="post-design-commnet-box col-md-12">
                         <div class="post-design-proo-img hidden-mob">';
 
+                         $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
+
                     $userid = $this->session->userdata('aileenuser');
                     $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
 
@@ -14811,7 +14820,7 @@ public function art_home_post() {
                                 $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                                 $return_html .= '</div>'; 
                     }
-                    $return_html .= '</div>
+                    $return_html .= '</a></div>
 
                         <div id="content" class="col-md-12  inputtype-comment cmy_2" >
                             <div contenteditable="true" class="edt_2 editable_text" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment ..." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
@@ -15340,7 +15349,9 @@ public function art_home_post() {
 
                         } else {
 
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstnameposted)) . ' ' . ucfirst(strtolower($lastnameposted)).'" href="'.base_url('artistic/dashboard/' . $slugposted).'">';
                             $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimageposted . '" name = "image_src" id = "image_src" />';
+                             $return_html .= '</a>';
                         }
                     } else {
 
@@ -15376,7 +15387,9 @@ public function art_home_post() {
                             $return_html .= '</a>';
                         } else {
 
+                             $return_html .= '<a  class="post_dot" title="'.ucfirst(strtolower($firstname)). ' ' . ucfirst(strtolower($lastname)).'" href="'.base_url('artistic/dashboard/' . $slug).'">';
                             $return_html .= '<img src = "' . ART_PROFILE_THUMB_UPLOAD_URL . $userimage . '" name = "image_src" id = "image_src" />';
+                            $return_html .= '</a>';
                         }
                     } else {
 
@@ -15903,6 +15916,10 @@ $return_html .= '<div class="art-all-comment col-md-12">
 <div class="post-design-commnet-box col-md-12">
     <div class="post-design-proo-img hidden-mob"> ';
 
+    $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
+
                 $userid = $this->session->userdata('aileenuser');
                 $art_userimage = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_user_image;
                 $art_name = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_name;
@@ -15940,7 +15957,7 @@ $return_html .= '<div class="art-all-comment col-md-12">
                         $return_html .= ucfirst(strtolower($acr)) . ucfirst(strtolower($bcr));
                         $return_html .= '</div> ';
                 }
-                $return_html .= '</div>
+                $return_html .= '</a></div>
     <div id="content" class="col-md-12  inputtype-comment cmy_2" >
         <div contenteditable="true" class="editable_text edt_2" name="' . $row['art_post_id'] . '"  id="post_comment' . $row['art_post_id'] . '" placeholder="Add a Comment...." onClick="entercomment(' . $row['art_post_id'] . ')" onpaste="OnPaste_StripFormatting(this, event);"></div>
           <div class="mob-comment">       
@@ -17572,6 +17589,11 @@ public function get_artistic_name($id=''){
                                             $art_lastname = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->art_lastname;
                                            
                                       $return_html .= '<div class="post-design-proo-img hidden-mob">';
+
+                                      $art_slug = $this->db->get_where('art_reg', array('user_id' => $userid, 'status' => 1))->row()->slug;
+
+                        $return_html .= '<a href="' . base_url('artistic/dashboard/' . $art_slug) . '">';
+
                                            if ($art_userimage) { 
                                     $return_html .= '<img src="'.ART_PROFILE_THUMB_UPLOAD_URL . $art_userimage.'" name="image_src" id="image_src" />';
                                                    
@@ -17589,7 +17611,7 @@ public function get_artistic_name($id=''){
                                                     
                                                 }
                                                 
-                                      $return_html .= '</div>
+                                      $return_html .= '</a></div>
                                        <div id="content" class="col-md-12 inputtype-comment cmy_2">
                                           <div contenteditable="true" style="min-height:37px !important; margin-top: 0px!important" class="editable_text" name="'.$key['art_post_id'].'" id="post_comment'. $key['art_post_id'].'" placeholder="Type Message ..." onclick="entercomment('.$key['art_post_id'].')"></div>
                                        </div>';
