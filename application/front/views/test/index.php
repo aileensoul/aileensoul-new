@@ -1,5 +1,5 @@
 <head>
-      <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+      <link rel="stylesheet" href="<?php echo base_url() ?>css/common-style.css" />
     <style>
         body {
     margin-top:40px;

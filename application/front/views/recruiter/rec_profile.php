@@ -649,6 +649,7 @@
                 </div>
                 <div class="clearfix"></div>  
             </div>
+			
 
             <!-- MIDDLE SECTION END-->
         </section>
