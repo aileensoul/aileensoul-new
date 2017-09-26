@@ -387,8 +387,8 @@
                                                                 ?>
                                                                 <!-- one image start -->
                                                                 <div class="one-image">
-                                                                    <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img src="<?php echo base_url($this->config->item('bus_post_image_upload_path') . $businessmultiimage[0]['file_name']) ?>"> 
+                                                                    <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                        <img src="<?php echo BUS_POST_MAIN_UPLOAD_URL . $businessmultiimage[0]['file_name'] ?>"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- one image end -->
@@ -436,8 +436,8 @@
                                                                 ?>
                                                                 <!-- two image start -->
                                                                 <div class="two-images">
-                                                                    <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img class="two-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                    <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                        <img class="two-columns" src="<?php echo BUS_POST_RESIZE1_UPLOAD_URL . $multiimage['file_name'] ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- two image end -->
@@ -445,18 +445,18 @@
                                                         <?php } elseif (count($businessmultiimage) == 3) { ?>
                                                             <!-- three image start -->
                                                             <div class="three-image-top" >
-                                                                <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[0]['file_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                    <img class="three-columns" src="<?php echo BUS_POST_RESIZE4_UPLOAD_URL . $businessmultiimage[0]['file_name'] ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <div class="three-image" >
-                                                                <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[1]['file_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                    <img class="three-columns" src="<?php echo BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[1]['file_name'] ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <div class="three-image" >
-                                                                <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_post_id']) ?>">
-                                                                    <img class="three-columns" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[2]['file_name']) ?>" style="width: 100%; height:100%; "> 
+                                                                <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_post_id']) ?>">
+                                                                    <img class="three-columns" src="<?php echo BUS_POST_RESIZE1_UPLOAD_URL . $businessmultiimage[2]['file_name'] ?>" style="width: 100%; height:100%; "> 
                                                                 </a>
                                                             </div>
                                                             <!-- three image end -->
@@ -466,8 +466,8 @@
                                                                 ?>
                                                                 <!-- four image start -->
                                                                 <div class="four-image" >
-                                                                    <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                        <img class="breakpoint" src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                    <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                        <img class="breakpoint" src="<?php echo BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
                                                                 </div>
                                                                 <!-- four image end -->
@@ -480,8 +480,8 @@
                                                                 <!-- five image start -->
                                                                 <div>
                                                                     <div class="four-image" >
-                                                                        <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
-                                                                            <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $multiimage['file_name']) ?>" style="width: 100%; height: 100%;"> 
+                                                                        <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                            <img src="<?php echo BUS_POST_RESIZE2_UPLOAD_URL . $multiimage['file_name'] ?>" style="width: 100%; height: 100%;"> 
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -495,10 +495,10 @@
                                                             <!-- this div view all image start -->
                                                             <div>
                                                                 <div class="four-image" >
-                                                                    <a href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>">
+                                                                    <a href="<?php echo base_url('business-profile/post-detail/' . $busienss_data[0]['business_profile_post_id']) ?>">
                                                                         <img src="<?php echo base_url($this->config->item('bus_post_thumb_upload_path') . $businessmultiimage[3]['file_name']) ?>" style="width: 100%; height: 100%;"> 
                                                                     </a>
-                                                                    <a class="text-center" href="<?php echo base_url('business_profile/postnewpage/' . $busienss_data[0]['business_profile_post_id']) ?>" >
+                                                                    <a class="text-center" href="<?php echo BUS_POST_RESIZE2_UPLOAD_URL . $busienss_data[0]['business_profile_post_id'] ?>" >
                                                                         <div class="more-image" >
                                                                             <span>View All (+
                                                                                 <?php echo (count($businessmultiimage) - 4); ?>)</span>
