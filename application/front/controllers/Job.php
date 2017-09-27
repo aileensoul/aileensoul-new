@@ -4871,7 +4871,7 @@ public function post($id="")
     $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
     $this->data['cityname']=strtolower($cityname);
 
-    $this->data['title']=$cache_time1."-job-vacancy-in-".$cache_time2."-Aileensoul.com";
+    $this->data['title']=$cache_time1." Job Vacancy in ".$cache_time2." - Aileensoul.com";
 
     //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
     if ($this->session->userdata('aileenuser')) {
