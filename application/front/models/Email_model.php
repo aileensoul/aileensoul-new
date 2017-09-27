@@ -51,7 +51,7 @@ class Email_model extends CI_Model {
                         <tr>
                             <td style="text-align:center">
                                 <h2>
-                                    <a style="color:#1b8ab9; text-decoration:none; font-size:23px;" href="www.aileensoul.com">Aileensoul</a>
+                                    <a style="color:#1b8ab9; text-decoration:none; font-size:23px;" href="https://www.aileensoul.com/">Aileensoul</a>
                                 </h2>
                             </td>
                         </tr>

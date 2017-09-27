@@ -169,3 +169,6 @@ $(document).on('keydown', function (e) {
         $("#myModal").hide();
     }
 });
+
+
+$(".alert").delay(3200).fadeOut(300);
