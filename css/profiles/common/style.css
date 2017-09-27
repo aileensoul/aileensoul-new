@@ -1858,7 +1858,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 
 }
 .cover .modal.in .modal-dialog {
-	transform: scale(1);
+	/*transform: scale(1);*/
 }
 /*** end new popup  ***/
 
@@ -1894,6 +1894,7 @@ label.cameraButton {display: inline-block; margin: 1em 0; cursor: pointer; paddi
 	-ms-transform: translate(0, 50%) !important; /* IE 9 */
 	-webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
 }
+.fancybox-slide .modal-content{transform: inherit !important;}
 
 
 

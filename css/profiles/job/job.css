@@ -2100,6 +2100,7 @@ label.cameraButton input[accept*="camera"] {
 .fancybox-slide .message .btn{margin-top:-5px;}
 .message button.fancybox-close-small:hover{border:none;}
 
+.current-user{float:left;}
 
 
 
