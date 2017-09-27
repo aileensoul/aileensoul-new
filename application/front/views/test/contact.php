@@ -1,14 +1,6 @@
 
  <script type="text/javascript" src="<?php echo base_url('js/jquery-3.2.1.min.js?ver=' . time()); ?>" ></script>
 
-  <script>
-   window.addEventListener( "pageshow", function ( event ) {
-  var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
-  if ( historyTraversal ) {
-    // Handle page restore.
-    window.location.reload();
-  }
-});   </script>
  <?php
  $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
 if($pageWasRefreshed ) {
@@ -251,7 +243,7 @@ if($pageWasRefreshed ) {
   <?php if($pageWasRefreshed ) {
    echo $test_footer;
 } ?>
-       
+       <script type = "text/javascript" src="<?php echo base_url('js/jquery.form.3.51.js?ver=' . time()) ?>"></script> 
        <script type="text/javascript" src="<?php echo base_url('js/webpage/recruiter/company_info.js'); ?>"></script>
     <script>
             function ChangeUrl(title, url) {
@@ -266,7 +258,7 @@ if($pageWasRefreshed ) {
                                                  
                                                 
                                                  
-                                                 jQuery(document).ready(function ($) {
+                                                 jQuery(document).ready(function ($) { 
 
     var options = {
         beforeSend: function () {
