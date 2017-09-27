@@ -120,9 +120,18 @@ function rec_post(pagenum) {
                         },
                         success: function (response)
                         {
+            
                             if (response.data == "ok") {
                                 $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
-                                window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                if(response.jobuser==1)
+                                {
+                                    window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                }
+                                else
+                                {
+                                    window.location = base_url +"job/";
+                                }
+                               
                             } else if (response.data == "password") {
                                 $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
                                 document.getElementById("password_login").classList.add('error');
@@ -307,7 +316,14 @@ function rec_post(pagenum) {
                         {
                             if (response == "ok") {
                                 $("#btn-register").html('<img src=' + base_url + '"images/btn-ajax-loader.gif"/> &nbsp; Sign Up ...');
-                                window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                               if(response.jobuser==1)
+                                {
+                                    window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                }
+                                else
+                                {
+                                    window.location = base_url +"job/";
+                                }
                             } else {
                                 $("#register_error").fadeIn(1000, function () {
                                     $("#register_error").html('<div class="alert alert-danger main"> <i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; ' + response + ' !</div>');

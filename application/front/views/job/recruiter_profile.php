@@ -142,7 +142,7 @@
                                     </li>
                                     <li >
                                        
-                                            <a title="Post" href="<?php echo base_url('job/post-' . $rec_post[0]['post_id'] . '/'. $text.'-vacancy-in-'.$cityname); ?>">Post</a>
+                                            <a title="Post" href="<?php echo base_url('job/post-' . $rec_post[0]['post_id'] . '/'. $text.'-job-vacancy-in-'.$cityname.'-aileensoul.com'); ?>">Post</a>
                                     </li>
  
                                 </ul>
