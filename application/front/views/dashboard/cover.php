@@ -33,10 +33,10 @@
                             <span class="email-img"><img src="<?php echo base_url(); ?>images/email.png"></span>
                             <span class="main-txt">
                                 <span class="as-p">
-                                    We have send you an activation email address on your email , Click the link in the mail to verify your email address.   
+                                    Please verify your email address. 
                                 </span>
                                 <span class="ves_c">
-                                    <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify Email Address</a></span>
+                                    <span class="fw-50"> <a class="vert_email " onClick="sendmail(this.id)" id="<?php echo $userdata[0]['user_email']; ?>">Verify</a></span>
                                 </span>
                                 <span class="fr cls-ve" onclick="return closever();"><i class="fa fa-times" aria-hidden="true"></i> </span>
                             </span>
