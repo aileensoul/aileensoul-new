@@ -103,6 +103,7 @@ function rec_post(pagenum) {
 
                     var email_login = $("#email_login").val();
                     var password_login = $("#password_login").val();
+
                     var post_data = {
                         'email_login': email_login,
                         'password_login': password_login,
@@ -125,7 +126,9 @@ function rec_post(pagenum) {
                                 $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
                                 if(response.jobuser==1)
                                 {
+                                    
                                     window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                             
                                 }
                                 else
                                 {
@@ -359,6 +362,196 @@ function rec_post(pagenum) {
         function login_profile() {
                 $('#login').modal('show');
             }
+
+//For Save Button Click Process Start
+        function login_profile_save() {
+            
+                $('#login_save').modal('show');
+            }
+         //validation for edit email formate form
+            $(document).ready(function () {
+                /* validation */
+
+                $("#login_form_save").validate({
+
+                    rules: {
+                        email_login: {
+                            required: true,
+                        },
+                        password_login: {
+                            required: true,
+                        }
+                    },
+                    messages:
+                            {
+                                email_login: {
+                                    required: "Please enter email address",
+                                },
+                                password_login: {
+                                    required: "Please enter password",
+                                }
+                            },
+                    submitHandler: submitFormsave
+                });
+                /* validation */
+                /* login submit */
+                function submitFormsave()
+                {
+
+                    var email_login = $("#email_login").val();
+                    var password_login = $("#password_login").val();
+
+                    var post_data = {
+                        'email_login': email_login,
+                        'password_login': password_login,
+                        csrf_token_name : csrf_hash
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'registration/check_login',
+                        data: post_data,
+                        dataType: "json",
+                        beforeSend: function ()
+                        {
+                            $("#error").fadeOut();
+                            $("#btn1").html('Login ...');
+                        },
+                        success: function (response)
+                        {
+            
+                            if (response.data == "ok") {
+                                $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                if(response.jobuser==1)
+                                {
+                                     $.ajax({
+                                             type: 'POST',
+                                             url: base_url +'job/job_save',
+                                             data: 'post_id=' + postid,
+                                             success: function (data) {
+                                                window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                            }
+                                     });
+                                }
+                                else
+                                {
+                                    window.location = base_url +"job/";
+                                }
+                               
+                            } else if (response.data == "password") {
+                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login").classList.add('error');
+                                document.getElementById("password_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            } else {
+                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login").classList.add('error');
+                                document.getElementById("email_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            }
+                        }
+                    });
+                    return false;
+                }
+                /* login submit */
+            });
+//For Save Button Click Process End
+
+//For Apply Button Click Process Start
+        function login_profile_apply() {
+            
+                $('#login_apply').modal('show');
+            }
+         //validation for edit email formate form
+            $(document).ready(function () {
+                /* validation */
+
+                $("#login_form_apply").validate({
+
+                    rules: {
+                        email_login: {
+                            required: true,
+                        },
+                        password_login: {
+                            required: true,
+                        }
+                    },
+                    messages:
+                            {
+                                email_login: {
+                                    required: "Please enter email address",
+                                },
+                                password_login: {
+                                    required: "Please enter password",
+                                }
+                            },
+                    submitHandler: submitFormapply
+                });
+                /* validation */
+                /* login submit */
+                function submitFormapply()
+                {
+
+                    var email_login = $("#email_login").val();
+                    var password_login = $("#password_login").val();
+
+                    var post_data = {
+                        'email_login': email_login,
+                        'password_login': password_login,
+                        csrf_token_name : csrf_hash
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: base_url + 'registration/check_login',
+                        data: post_data,
+                        dataType: "json",
+                        beforeSend: function ()
+                        {
+                            $("#error").fadeOut();
+                            $("#btn1").html('Login ...');
+                        },
+                        success: function (response)
+                        {
+            
+                            if (response.data == "ok") {
+                               $("#btn1").html('<img src="' +base_url +'images/btn-ajax-loader.gif" /> &nbsp; Login ...');
+                                if(response.jobuser==1)
+                                {
+                                    var alldata = 'all';
+                                    $.ajax({
+                                                type: 'POST',
+                                                url: base_url +'job/job_apply_post',
+                                                data: 'post_id=' + postid + '&allpost=' + alldata + '&userid=' + id,
+                                                success: function (data) 
+                                                {
+                                                     window.location = base_url +"job/post-" + postid + "/" + text + "-vacancy-in-" + cityname;
+                                                }
+                                    });
+                                   
+                                }
+                                else
+                                {
+                                    window.location = base_url +"job/";
+                                }
+                               
+                            } else if (response.data == "password") {
+                                $("#errorpass").html('<label for="email_login" class="error">Please enter a valid password.</label>');
+                                document.getElementById("password_login").classList.add('error');
+                                document.getElementById("password_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            } else {
+                                $("#errorlogin").html('<label for="email_login" class="error">Please enter a valid email.</label>');
+                                document.getElementById("email_login").classList.add('error');
+                                document.getElementById("email_login").classList.add('error');
+                                $("#btn1").html('Login');
+                            }
+                        }
+                    });
+                    return false;
+                }
+                /* login submit */
+            });
+//For Apply Button Click Process End
+
             function register_profile() {
                 $('#login').modal('hide');
                 $('#register').modal('show');
