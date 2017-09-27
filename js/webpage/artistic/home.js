@@ -45,20 +45,6 @@ if(document.getElementById('post').style.display === "block"){
 });  
 
 
-// $( document ).on( 'keydown', function ( e ) {
-//     if ( e.keyCode === 27 ) {
-       
-// if(document.getElementById('bidmodal-limit').style.display === "block"){
-//         $('#bidmodal-limit').modal('hide');
-//     $("#test-upload_product").prop("readonly", false);
-        
-//         $('#myModal').model('show');
-//  }
-
-//     }
-// });  
-
-
 $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) {
         //$( "#bidmodal" ).hide();

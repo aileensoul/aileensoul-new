@@ -8871,11 +8871,8 @@ Your browser does not support the audio tag.
         $commneteduser = $this->common->select_data_by_condition('bus_post_image_like', $contition_array, $data = 'user_id', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
 
         $modal = '<div class="modal-header">';
-        $modal .= '<button type="button" class="close" data-dismiss="modal">&times;</button>';
         $modal .= '<h4 class="modal-title">';
-
         $modal .= '' . count($commneteduser) . ' Likes';
-
         $modal .= '</h4></div>';
         $modal .= '<div class="modal-body padding_less_right">';
         $modal .= '<div class="like_user_list">';
@@ -8924,12 +8921,7 @@ Your browser does not support the audio tag.
         $modal .= '</div>';
         $modal .= '<div class="clearfix"></div>';
         $modal .= '</div>';
-        $modal .= '<div class="modal-footer">';
-        $modal .= '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        $modal .= '</div>';
-
-
-
+        
         echo $modal;
 
 //        echo '<div class="likeduser">';
