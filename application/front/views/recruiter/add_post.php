@@ -210,7 +210,7 @@
 
 
                                     <fieldset id="erroe_nn" <?php if ($degree1) { ?> class="error-msg" <?php } ?>>
-                                        <label>Education:</label> 
+                                        <label>Required education:</label> 
 
                                         <input type="search" tabindex="9" autofocus id="education" name="education" value="" placeholder="Education" style="text-transform: capitalize;" onfocus="var temp_value = this.value; this.value = ''; this.value = temp_value" maxlength="255">
                                         <span id="fullname-error"></span>
