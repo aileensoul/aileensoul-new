@@ -782,7 +782,7 @@ echo 1; die();
 
 // RECRUITER ADD POST INSERT END
 // RECRUITER POST START
-    public function rec_post($id = "") {
+    public function rec_post($id = "") { 
         $this->data['userid'] = $userid = $this->session->userdata('aileenuser');
 
 
@@ -1901,7 +1901,7 @@ echo 1; die();
         if ($start < 0)
             $start = 0;
 
-        $this->recruiter_apply_check();
+       //    $this->recruiter_apply_check();
 
         $userid = $this->session->userdata('aileenuser');
 
