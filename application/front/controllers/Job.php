@@ -5131,9 +5131,18 @@ public function post($id="")
 
                             $rec_post .= '<a href="javascript:void(0);" class="button applied">Applied</a>';
                         } else {
-                            //$rec_post .= '<li class="fr">';
-                            $rec_post .= '<a href="javascript:void(0);"  class= "applypost' . $rec_postdata[0]['post_id'] . ' button" onclick="applypopup(' . $rec_postdata[0]['post_id'] . ',' . $rec_postdata[0]['user_id'] . ')">Apply</a>';
-                            //$rec_post .= '</li><li class="fr">';
+                            
+
+                            $rec_post .= '<a href="javascript:void(0);"  class= "applypost' . $rec_postdata[0]['post_id'] . ' button"';
+
+                            if ($this->session->userdata('aileenuser')) {
+                                $rec_post .= 'onclick="applypopup(' . $rec_postdata[0]['post_id'] . ',' . $rec_postdata[0]['user_id'] . ')"';
+                            } else {
+                                $rec_post .= 'onClick="login_profile()"';
+                            }
+
+                            $rec_post .='>Apply</a>';
+                          
                             $userid = $this->session->userdata('aileenuser');
                             $contition_array = array('user_id' => $userid, 'job_save' => '2', 'post_id ' =>$rec_postdata[0]['post_id'], 'job_delete' => '1');
                             $jobsave = $this->data['jobsave'] = $this->common->select_data_by_condition('job_apply', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
@@ -5142,7 +5151,14 @@ public function post($id="")
 
                                 $rec_post .= '<a class="button saved">Saved</a>';
                             } else {
-                                $rec_post .= '<a id="' . $rec_postdata[0]['post_id'] . '" onClick="savepopup(' .$rec_postdata[0]['post_id'] . ')" href="javascript:void(0);" class="savedpost' . $rec_postdata[0]['post_id'] . ' button">Save</a>';
+                                $rec_post .= '<a id="' . $rec_postdata[0]['post_id'] . 'href="javascript:void(0);" class="savedpost' . $rec_postdata[0]['post_id'] . ' button"';
+
+                                if ($this->session->userdata('aileenuser')) {
+                                    $rec_post .= 'onclick="savepopup(' . $rec_postdata[0]['post_id'] .')"';
+                                } else {
+                                    $rec_post .= 'onClick="login_profile()"';
+                                }
+                                 $rec_post .='>Save</a>';
                             }
                             //$rec_post .= '</li>';
                         }

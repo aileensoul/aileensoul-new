@@ -16,6 +16,7 @@ class Notification extends MY_Controller {
         //           redirect('login', 'refresh');
         //       }
         include ('include.php');
+//        include ('business_include.php');
     }
 
     // public function index() {

@@ -263,7 +263,7 @@ class Search extends MY_Controller {
                                                         <h4 class="search_head">Profiles</h4>
                                                         <div class="inner_search">';
                 foreach ($profile as $p) {
-                    $return_html .= '<div class="profile-job-profile-button clearfix box_search_module" style="margin-bottom: 20px!important;">
+                    $return_html .= '<div class="profile-job-profile-button clearfix box_search_module">
                                                                     <div class="profile-job-post-location-name-rec">
                                                                         <div class="module_Ssearch" style="display: inline-block; float: left;">
                                                                             <div class="search_img" style="height: 110px; width: 108px;" >
@@ -276,9 +276,7 @@ class Search extends MY_Controller {
                     }
                     $return_html .= '</div>
                                                                         </div>
-                                                                        <div class="designation_rec" style="float: left;
-                                                                             width: 60%;
-                                                                             padding-top: 10px; padding-bottom: 10px;">
+                                                                        <div class="designation_rec">
                                                                             <ul>
                                                                                 <li style="padding-top: 0px;">
                                                                                     <a  class="main_search_head" href="' . base_url('business-profile/dashboard/' . $p['business_slug']) . '" title="' . ucfirst(strtolower($p['company_name'])) . '">' . ucfirst(strtolower($p['company_name'])) . '</a>
@@ -2863,7 +2861,7 @@ class Search extends MY_Controller {
                                                         <h4 class="search_head">Profiles</h4>
                                                         <div class="inner_search">';
                 foreach ($profile as $p) {
-                    $return_html .= '<div class="profile-job-profile-button clearfix box_search_module" style="margin-bottom: 20px!important;">
+                    $return_html .= '<div class="profile-job-profile-button clearfix box_search_module">
                                                                     <div class="profile-job-post-location-name-rec">
                                                                         <div class="module_Ssearch" style="display: inline-block; float: left;">
                                                                             <div class="search_img" style="height: 110px; width: 108px;" >
@@ -2876,9 +2874,7 @@ class Search extends MY_Controller {
                     }
                     $return_html .= '</div>
                                                                         </div>
-                                                                        <div class="designation_rec" style="float: left;
-                                                                             width: 60%;
-                                                                             padding-top: 10px; padding-bottom: 10px;">
+                                                                        <div class="designation_rec">
                                                                             <ul>
                                                                                 <li style="padding-top: 0px;">
                                                                                     <a  class="main_search_head" href="javascript:void(0);"  onClick="login_profile()" title="">' . ucfirst(strtolower($p['company_name'])) . '</a>

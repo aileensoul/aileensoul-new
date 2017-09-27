@@ -643,6 +643,8 @@
     var base_url = '<?php echo base_url(); ?>';
     var id = '<?php echo $rec_data[0]['user_id'];?>';
     var postid = '<?php echo $rec_post[0]['post_id']; ?>';
+    var text='<?php echo $text; ?>';
+    var cityname='<?php echo $cityname; ?>';
     var csrf_token_name='<?php echo $this->security->get_csrf_token_name(); ?>';
     var csrf_hash='<?php echo $this->security->get_csrf_hash(); ?>';
 </script>

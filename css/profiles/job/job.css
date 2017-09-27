@@ -1,6 +1,5 @@
 /***  job  ***/
 /*** common css for job recrutor and freelancer  ***/
-.panel1 .job_education_submitbox button{}
 .custom_footer_left ul li a:focus{color: #1B8AB9 !important;}
 .profile-job-post-detail .profile-job-post-title .button:focus{
     background: #1B8AB9;color: white;}
@@ -371,7 +370,7 @@ li.fr a {
     padding-left: 210px;
 }
 .art-side-menu ul {
-    /*float: left;*/
+    float: left;
 }
 .right-side-menu {
     float: left;
@@ -2205,17 +2204,14 @@ label.cameraButton input[accept*="camera"] {
         padding-top: 54px !important;
     }
     .profile-pho {
-        height: 130px;
-        width: 130px;
+        height: 133px;
+        width: 123px;
         margin-top: -55px;
     }
     .user-pic {
-        height: 128px;
-        width: 128px;
+        height: 125px;
+        width: 115px;
     }
-	.post-img-user{width:118px; height:118px; line-height: 1;
-        padding: 40px 0;}
-	.user-pic:hover a{width:118px; height:118px; padding:17px 5px; }
     .buisness-profile-txext {
         width: 28%;
     }
@@ -2240,7 +2236,12 @@ label.cameraButton input[accept*="camera"] {
         width: 100%;
         float: left;
     }
-   
+    .post-img-user {
+        height: 118px;
+        line-height: 1;
+        padding: 40px 0;
+        width: 109px;
+    }
 }
 @media screen and (max-width: 991px) {
     .art_no_post_text {
@@ -2350,7 +2351,7 @@ label.cameraButton input[accept*="camera"] {
         margin-top: 0;
     }
     .art-side-menu {
-        padding-left: 175px !important;
+        padding-left: 160px !important;
     }
     .flw_msg_btn ul li {
         padding-right: 0 !important;
@@ -2718,7 +2719,7 @@ label.cameraButton input[accept*="camera"] {
         height: 200px;
     }
 }
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 640px) {
     .job_con #InboxContainer::before {
         right: 120px;
     }
@@ -2742,7 +2743,6 @@ label.cameraButton input[accept*="camera"] {
         padding: 33px 0;
         width: 88px;
     }
-	.user-pic:hover a{width:88px; height:88px; font-size:0; padding:25px 5px;}
     .profile-head-text a {
         font-size: 18px;
     }
@@ -2751,7 +2751,10 @@ label.cameraButton input[accept*="camera"] {
         line-height: 8px;
         padding-top: 0px;
     }
-
+    .custom-row .user-pic:hover a {
+        width: 88px;
+        bottom: 5px;
+    }
     .cover-pic {
         bottom: 62%;
         right: -10%;
