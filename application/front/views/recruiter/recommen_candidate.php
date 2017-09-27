@@ -139,11 +139,11 @@
                         <div class="col-md-7 col-sm-7 col-md-push-4 col-sm-push-4 custom-right animated fadeInUp">
                             <div class="common-form ">
                                 <div class="job-saved-box">
-                                    <?php if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
+                                    <?php //if (($candidatejob != NULL) || ($recruiterdata != NULL)) { ?>
                                         <h3>
                                             Recommended Candidate
                                         </h3>
-                                    <?php } ?>
+                                    <?php// } ?>
                                     <div class="contact-frnd-post">
                                          <div class = "job-contact-frnd">
                                        <!--AJAX DATA START FOR RECOMMAND CANDIDATE-->

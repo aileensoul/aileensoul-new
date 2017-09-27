@@ -110,6 +110,28 @@
                                                          alert("Browser does not support HTML5.");
                                                      }
                                                  }
+                                                 
+       jQuery(document).ready(function ($) {
+      var recstep = '<?php echo $recdata[0]['re_step']; ?>';
+      
+      if(recstep < 1 || recstep == 3){
+      var title = 'page2';
+      var url = '<?php echo base_url('test/basic'); ?>';
+    } else if(recstep == 1){
+       var title = 'page2';
+      var url = '<?php echo base_url('test/contact'); ?>';
+     
+    }
+    
+    if (typeof (history.pushState) != "undefined") {
+                                                         var obj = {Title: title, Url: url};
+                                                         history.pushState(obj, obj.Title, obj.Url);
+                                                         $("#screen").load(url);
+                                                     } else {
+                                                         alert("Browser does not support HTML5.");
+                                                     }
+      
+   });
        </script>
     </body>
 </html>
