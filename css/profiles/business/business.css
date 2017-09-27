@@ -4265,6 +4265,7 @@ div .comment {
 .post-editor .popup-social-icon ul.editor-header li{padding:0;}
 .inner_search.search{padding:10px;}
 #likeusermodal .mes .modal-footer{display:none;}
+.no-login .all-comment-comment-box{border-bottom:0;}
 
 
 

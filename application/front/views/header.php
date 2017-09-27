@@ -155,16 +155,22 @@ else{
                         <a class="dropbtn action-button shadow animate dropbtn_common" href="javascript:void(0)" type="button" id="menu1" data-toggle="dropdown" >
                            <!-- <div id="hi" class="notifications"> -->
                            <?php if ($userdata[0]['user_image'] != '') { ?>
+                           <div id="profile-photohead" class="profile-head">
                            <img alt="" class="img-circle" src="<?php echo base_url($this->config->item('user_thumb_upload_path') . $userdata[0]['user_image']); ?>" height="50" width="50" alt="Smiley face" />
+                         </div>
+
                            <?php
                               } else {
                               
                                   $a = $userdata[0]['first_name'];
                                   $acr = substr($a, 0, 1);
                                   ?>
+                                  <div id="profile-photohead" class="profile-head">
                            <div class="custom-user">
                               <?php echo ucfirst(strtolower($acr)); ?>
                            </div>
+
+                         </div>
                            <?php } ?>
                            <span class="u2 username username-hide-on-mobile hidden-xs"> <?php
                               if (isset($userdata[0]['first_name'])) {

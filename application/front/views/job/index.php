@@ -128,7 +128,7 @@
                               <?php echo form_error('lan'); ?>
                            </fieldset>
                            <fieldset id="erroe_nn" <?php if ($city) { ?> class="error-msg" <?php } ?>>
-                              <label>City:<span class="red">*</span></label> 
+                              <label>Current City:<span class="red">*</span></label> 
                               <input id="city" name="city" value="<?php if($city_title){echo $city_title;} ?>" placeholder="Select City" style="width: 100%"  tabindex="9" maxlength="255" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
                               <?php echo form_error('city1'); ?>
                            </fieldset>

@@ -3370,13 +3370,13 @@ class Job extends MY_Controller {
                     }
 
                     $text = str_replace(" ", "-", $cache_time1);
-                    $text = preg_replace("/[.!$#%]+/i", "", $text);
+                    $text = preg_replace("/[.!$#%()]+/i", "", $text);
                     $text=strtolower($text);
 
                     $cache_time1 = $this->db->get_where('cities', array('city_id' => $post['city']))->row()->city_name;
 
                     $cityname = str_replace(" ", "-", $cache_time1);
-                    $cityname = preg_replace("/[.!$#%]+/i", "", $cityname);
+                    $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
                     $cityname=strtolower($cityname);
 
                     $contition_array = array('user_id' => $post['user_id'], 're_status' => '1','is_delete'=> '0');
@@ -4862,14 +4862,16 @@ public function post($id="")
    
 
     $text = str_replace(" ", "-", $cache_time1);
-    $text = preg_replace("/[.!$#%]+/i", "", $text);
+    $text = preg_replace("/[.!$#%()]+/i", "", $text);
     $this->data['text'] =$text=strtolower($text);
 
-    $cache_time1= $this->db->get_where('cities', array('city_id' => $rec_post[0]['city']))->row()->city_name;
+    $cache_time2= $this->db->get_where('cities', array('city_id' => $rec_post[0]['city']))->row()->city_name;
 
-    $cityname = str_replace(" ", "-", $cache_time1);
-    $cityname = preg_replace("/[.!$#%]+/i", "", $cityname);
+    $cityname = str_replace(" ", "-", $cache_time2);
+    $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
     $this->data['cityname']=strtolower($cityname);
+
+    $this->data['title']=$cache_time1."-job-vacancy-in-".$cache_time2."-Aileensoul.com";
 
     //THIS CODE IS FOR WHEN USER NOT LOGIN AND GET SEARCH DATA START
     if ($this->session->userdata('aileenuser')) {
@@ -5212,13 +5214,13 @@ public function rec_profile($id="")
    
 
     $text = str_replace(" ", "-", $cache_time1);
-    $text = preg_replace("/[.!$#%]+/i", "", $text);
+    $text = preg_replace("/[.!$#%()]+/i", "", $text);
     $this->data['text'] =$text=strtolower($text);
 
    $cache_time1= $this->db->get_where('cities', array('city_id' => $rec_post[0]['city']))->row()->city_name;
 
     $cityname = str_replace(" ", "-", $cache_time1);
-    $cityname = preg_replace("/[.!$#%]+/i", "", $cityname);
+    $cityname = preg_replace("/[.!$#%()]+/i", "", $cityname);
     $this->data['cityname']=strtolower($cityname);
 
     $this->load->view('job/recruiter_profile',$this->data);

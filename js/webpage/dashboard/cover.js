@@ -103,15 +103,18 @@ function profile_pic(event){
                // url: "<?php echo base_url(); ?>freelancer/ajaxpro_test",
                url: base_url + "dashboard/profilepic",
                 type: "POST",
+                dataType: 'json',
                 data: {"image": resp},
+
 
                  beforeSend: function () {
                         //$(".art_photos").html('<p style="text-align:center;"><img src = "<?php echo base_url('images/loading.gif?ver='.time()) ?>" class = "loader" /></p>');
                         $(".user_profile").html('<p style="text-align:center;"><img src = "'+ base_url + 'images/loading.gif" class = "loader" /></p>');
                     },
-                success: function (data) {
+                success: function (data) { 
                   $('#bidmodal-2').modal('hide');
-                    $(".profile-photo").html(data);
+                    $(".profile-photo").html(data.uimage);
+                    $("#profile-photohead").html(data.uimagehead);
                     document.getElementById('upload-one').value = null;
                     document.getElementById('upload-demo-one').style.display = 'none';
                      $('.loader').remove();

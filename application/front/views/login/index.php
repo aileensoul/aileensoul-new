@@ -393,7 +393,7 @@ echo form_open('profile/forgot_password', $form_attribute);
         </script>
 
         <script type="text/javascript">
-            //$(".alert").delay(3200).fadeOut(300);
+            $(".alert").delay(3200).fadeOut(300);
         </script>
 
         <script type="text/javascript">

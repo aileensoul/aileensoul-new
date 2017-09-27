@@ -1875,6 +1875,8 @@ footer {
 
 
 .fancybox-close-small:hover::after{background-color:#156f95 !important; color:#fff !important;}
+.profile-head{float:left;}
+
 
 /***  media query  ***/
 

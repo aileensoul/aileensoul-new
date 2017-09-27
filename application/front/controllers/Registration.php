@@ -554,6 +554,13 @@ class Registration extends CI_Controller {
 
         $userinfo = $this->common->check_login($email_login, $password_login);
 
+        //For live link need this code start
+        $contition_array = array('user_id' => $userinfo[0]['user_id'], 'is_delete' => 0, 'status' => 1);
+        $jobdata = $this->data['jobdata'] = $this->common->select_data_by_condition('job_reg', $contition_array, $data = 'count(*) as total', $sortby = '', $orderby = 'desc', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+        $jobuser=$jobdata[0]['total'];
+        //For live link need this code End
+
+
         if (count($userinfo) > 0) {
             if ($userinfo[0]['status'] == "2") {
                 echo 'Sorry, user is Inactive.';
@@ -567,10 +574,12 @@ class Registration extends CI_Controller {
         } else {
             $data = 'email';
         }
+        
         echo json_encode(
                 array(
                     "data" => $data,
                     "id" => $id,
+                    "jobuser"=> $jobuser,
         ));
 
     }
