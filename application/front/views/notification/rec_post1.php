@@ -54,8 +54,8 @@
                                                             ?>
                                                             <p><i class="fa fa-map-marker" aria-hidden="true">
 
-                                                            <?php echo $cityname; ?> 
-                                                            </i></p>
+                                                             
+                                                            </i> <?php echo $cityname; ?></p>
                                                             
                                                             <?php
                                                              }
@@ -115,12 +115,12 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="profile-job-profile-button clearfix">
+                                    <!--div class="profile-job-profile-button clearfix">
                                         <div class="profile-job-details col-md-12">
                                           
                                               
                                         </div>
-                                    </div>
+                                    </div-->
                                 </div>
                             </div>
                         </div>

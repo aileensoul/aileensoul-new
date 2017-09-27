@@ -219,7 +219,7 @@ label.cameraButton:active {
     margin-right: 36px;
     color: #1b8ab9;
     background-color: #fff;
-    border-color: #1b8ab9;
+    border:1px solid #1b8ab9;
 }
 .set-btn {
     float: right;
@@ -229,7 +229,7 @@ label.cameraButton:active {
 .upload-result {
     color: #fff;
     background-color: rgba(27, 138, 185, 0.8);
-    border-color: #1b8ab9;
+    border:1px solid #1b8ab9;
     margin-right: 10px;
 }
 /*#floatBarsG {
@@ -896,12 +896,11 @@ label.cameraButton:active {
     background-color: #ffffff;
     margin: 4px 0px 4px 0px;
     border-radius: 4px;
-    padding-left: 4px !important;
     width: 100%;
     float: left;
 }
 .popup-img {
-    padding-left: 2px !important;
+   /* padding-left: 2px !important;*/
     padding-right: 0px;
     float: left;
 }
@@ -909,16 +908,16 @@ label.cameraButton:active {
     border: 1px solid #d9d9d9;
     height: 50px;
     width: 50px;
-    margin-left: 4px;
+    /*margin-left: 4px;*/
     margin-top: 7px;
     margin-bottom: 5px;
 }
 .editor-content {
-    width: 89%;
+    width: 90%;
     float: left;
 }
 .popup-text {
-    padding: 18px 12px 11px 16px;
+    padding: 18px 0px 11px 16px;
 }
 .popup-text span {
     color: #999999;
@@ -928,7 +927,9 @@ label.cameraButton:active {
 .post-editor .camer_h {
     margin-top: 3px;
     float: right;
+	margin-right:-3px;
 }
+.post-editor #artpostform .camer_h{margin-right:-6px;}
 .camer_h i {
     margin: 0px;
     font-size: 27px;
@@ -1617,7 +1618,7 @@ label.cameraButton:active {
     font-size: 14px;
 }
 .popup-img-in {
-    padding-left: 5px !important;
+    /*padding-left: 5px !important;*/
     padding-right: 0px;
     padding-top: 10px;
     float: left;
@@ -2358,8 +2359,8 @@ label.cameraButton:active {
     width: 100%;
     padding: 10px;
     padding-bottom: 0px;
-    padding: 0px 10px !important;
-    margin: 3px!important
+    padding: 16px 10px 0 !important;
+    margin: 0 3px!important
 }
 .popup-textarea textarea {
     border: none;
@@ -2404,7 +2405,7 @@ label.cameraButton:active {
     font-size: 20px;
 }
 .post-editor .popup-social-icon ul li .upload_icon {
-    margin: 8px;
+    margin: 0 8px 8px;
     cursor: pointer;
     margin-left: 4px;
 }
@@ -3124,7 +3125,8 @@ label.cameraButton:active {
 }
 .designation_rec {
     float: left;
-    width: 50%!important;
+    width: 68%!important;
+
 }
 .profile-job-post-title-inside .profile_search {
     background-color: white!important;
@@ -3143,10 +3145,14 @@ label.cameraButton:active {
     height: 100%;
     width: 100%;
 }
-.search_button {
+.inner_search .search_button {
     margin-top: 5px;
+	float:right;
 }
+
 .search_button button {
+
+	margin-right:0;
     margin-bottom: 10px;
     letter-spacing: 1px;
     width: 90px;
@@ -3277,8 +3283,8 @@ label.cameraButton:active {
     line-height: 40px;
     text-align: center;
     color: #cccccc;
-    font-size: 32px;
-    padding-top: 30px;
+    font-size: 26px;
+    padding-top: 0px;
 }
 .art_no_post_text1 {
     color: #ccc;
@@ -4248,6 +4254,16 @@ div .comment {
 #mainContainer{min-width:108% !important;}
 
 .editor-header .form-group .file-input{margin-left:8px;}
+.post-design-product_follow_main{padding-top:5px;}
+.post-design-product_follow{padding-top:5px;}
+.search-page .search-post-box{float: left;
+    left: 320px;
+    margin-left: 10px;
+    position: relative;}
+.file-preview{padding-top:0 !important;}
+.krajee-default.file-preview-frame{margin:6px !important;}
+.post-editor .popup-social-icon ul.editor-header li{padding:0;}
+.inner_search.search{padding:10px;}
 
 
 
@@ -4690,6 +4706,7 @@ div .comment {
     }
 	.post-design-name {width:84%; padding-right:0;}
 	.folle_text{width:66%;}
+	.search-page .search-post-box{left:inherit;}
 }
 @media screen and (max-width: 800px) {
     .mySlides .post-design-commnet-box .cmy_2 {
@@ -5110,6 +5127,7 @@ div .comment {
 	.post-design-name ul li a{font-size:12px; line-height:1;}
 	.profile-job-post-location-name{padding-left:10px; padding-right:10px;}
 	.text-center.tab-block .mob-inner-page a:last-child{text-transform:uppercase;}
+	.search-page .designation_rec{width:47% !important;}
 }
 @media screen and (max-width: 639px) {
     .modal.in .modal-dialog .mes .pop_content {
@@ -5135,9 +5153,9 @@ div .comment {
         width: 56%;
     }
     .user_btn button {
-        padding: 3px 7px;
+        /*padding: 3px 7px;
         width: 89px;
-        font-size: 12px!important;
+        font-size: 12px!important;*/
     }
     .profile-job-post-location-name ul li .follow-li-text {
         font-size: 14px;
@@ -5572,10 +5590,10 @@ div .comment {
         padding-left: 115px!important;
     }
     .user_btn button {
-        font-size: 12px;
+        /*font-size: 12px;
         width: 98px;
         padding: 4px 7px;
-        margin-top: 10px;
+        margin-top: 10px;*/
     }
     .editable_text {
         padding-right: 45px;
@@ -5729,6 +5747,12 @@ div .comment {
     }
 	.post-design-name{width:74%;}
 	.in_mian_chng{margin-top:-25px;}
+	.search-page .module_Ssearch .module_Ssearch .search_img{width:80px !important; height:80px !important; }
+	.search-page .designation_rec{width:100% !important; }
+	.search-page .designation_rec ul li{padding-left:0; }
+	.search-page .search_button{width:100%; float:left; }
+	.search-page .search_button div{float:left;}
+	.search-page .search_button .user_btn button{margin-right:15px;}
 }
 @media screen and (max-width: 430px) {
     .bui_bcon {

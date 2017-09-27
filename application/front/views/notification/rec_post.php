@@ -422,8 +422,8 @@ echo $head;
                                                             ?>
                                                             <p><i class="fa fa-map-marker" aria-hidden="true">
 
-                                                            <?php echo $cityname; ?> 
-                                                            </i></p>
+                                                            
+                                                            </i><?php echo $cityname; ?> </p>
                                                             
                                                             <?php
                                                              }

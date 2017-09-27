@@ -2521,7 +2521,7 @@ label.cameraButton:active {
     color: #9C9999;
     font-family: Arial;
     font-size: 13px;
-    margin-top: 13px;
+    margin-top: 12px;
     -o-box-shadow: inset 0px 0px 50px 0px #ABABAB, 5px 5px 5px 1px #242424;
     font-weight: bold;
     text-decoration: none;
@@ -2529,6 +2529,7 @@ label.cameraButton:active {
 .folle_text {
     width: 70%;
 }
+.user_lst .folle_text{width:64%;}
 .padding_low_data {
     background-color: white!important;
 }
@@ -2961,7 +2962,7 @@ label.cameraButton:active {
 }
 .designation_rec {
     float: left;
-    width: 50%;
+    width: 60%;
 }
 ..designation_rec ul li {
     list-style: none;
@@ -3959,6 +3960,8 @@ div .comment {
 .flw_msg_btn ul li:last-child a{margin-top:0;}
 .krajee-default[data-template="audio"] .file-preview-audio {height:100% !important; }
 #mainContainer{min-width:108% !important;}
+.post-design-product_follow_main{padding-top:5px;}
+.post-design-product_follow{padding-top:5px;}
 
 
 
@@ -4417,6 +4420,7 @@ div .comment {
 	.flw_msg_btn ul li:last-child{margin-right}
 	.post-design-name {width:84%; padding-right:0;}
 	.folle_text{width:66%;}
+	.profile_search{width:100%;}
 }
 
 @media screen and (max-width: 800px) {
@@ -4831,6 +4835,7 @@ div .comment {
 	.post-design-name ul li .post_dot{font-size:12px; line-height:16px;}
 	.ctre_date{font-size:11px; line-height:1;}
 	.post-design-name ul li a{font-size:12px; line-height:1;}
+	.designation_rec{width:46%;}
 }
 
 @media screen and (max-width: 639px) {
@@ -4848,7 +4853,7 @@ div .comment {
         width: 63%;
     }
     .right_side_posrt {
-        width: 100%;
+        width: 92%;
     }
     .user_lst li a .post-img-userlist {
         line-height: 4px;
@@ -4872,7 +4877,7 @@ div .comment {
         width: 56%;
     }
     .user_btn button {
-        padding: 3px 7px;
+        /*padding: 3px 7px;*/
         width: 89px;
         font-size: 12px!important;
     }
@@ -5266,8 +5271,8 @@ div .comment {
     .user_btn button {
         font-size: 12px;
         width: 98px;
-        padding: 4px 7px;
-        margin-top: 10px;
+        padding: 8px 7px;
+        margin-top: 3px;
     }
     .editable_text {
         padding-right: 45px;
@@ -5390,7 +5395,7 @@ div .comment {
         padding: 3px 10px;
     }
     .designation_rec {
-        width: 39% !important;
+        width: 55% !important;
     }
     .details_all_tital {
         font-size: 18px;
@@ -5423,6 +5428,9 @@ div .comment {
         padding-top: 7px;
     }
 	.post-design-name{width:74%;}
+	.inner_search .search_button{width:100%;}
+	.inner_search .search_button div{float:left;}
+	
 }
 
 @media screen and (max-width: 430px) {

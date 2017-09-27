@@ -128,16 +128,16 @@
         <?php if ($is_business) {
             echo $business_header2_border;
         } ?>
-        <section>
+        <section class="search-page">
             <div class="user-midd-section bui_art_left_box" id="paddingtop_fixed">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-4  profile-box profile-box-custom fixed_art fixed_left_side  animated fadeInLeftBig">
+                    <div class="">
+                        <div class="profile-box-custom fl animated fadeInLeftBig left_side_posrt">
                             <div class="">
 <?php echo $business_left; ?>
                             </div>
                         </div>
-                        <div class="col-md-7 col-sm-12 col-md-push-4 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
+                        <div class="col-md-7 search-post-box col-sm-12 fixed_middle_side  custom-right-business animated fadeInUp" style="height: 150%;">
                             <div class="common-form">
                                 <div class="job-saved-box">
                                     <h3 style="background-color: #fff; text-align: center; color: #003; border-bottom: 1px solid #d9d9d9;">
