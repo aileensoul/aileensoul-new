@@ -11,11 +11,9 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($businessdata[0]['business_step'] == 4) { ?>
+        <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
-        <!--<div class="js">-->
-        <!--            <div id="preloader"></div>-->
         <section>
             <div class="user-midd-section" id="paddingtop_fixed">
                 <div class="common-form1">
@@ -41,22 +39,21 @@
                             <div class="left-side-bar">
                                 <ul class="left-form-each">
                                     <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#"><?php echo $this->lang->line("business_information"); ?></a></li>
-
                                     <li class="custom-none <?php
-                                    if ($businessdata[0]['business_step'] < '1') {
-                                        echo "khyati";
+                                    if ($business_common_data[0]['business_step'] < '1') {
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/contact-information'); ?>"><?php echo $this->lang->line("contact_information"); ?></a></li>
 
                                     <li class="custom-none <?php
-                                    if ($businessdata[0]['business_step'] < '2') {
-                                        echo "khyati";
+                                    if ($business_common_data[0]['business_step'] < '2') {
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/description'); ?>"><?php echo $this->lang->line("description"); ?></a></li>
 
                                     <li class="custom-none <?php
-                                    if ($businessdata[0]['business_step'] < '3') {
-                                        echo "khyati";
+                                    if ($business_common_data[0]['business_step'] < '3') {
+                                        echo "active";
                                     }
                                     ?>"><a href="<?php echo base_url('business-profile/image'); ?>"><?php echo $this->lang->line("business_images"); ?></a></li>
 
@@ -213,14 +210,8 @@
         <footer>
             <?php echo $footer; ?>
         </footer>
-        <!--</div>-->
-
         <script src="<?php echo base_url('js/jquery.wallform.js?ver=' . time()); ?>"></script>
-        <!--<script src="<?php // echo base_url('js/jquery-ui.min.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-1.9.1.js?ver='.time());  ?>"></script>-->
-        <!--<script src="<?php // echo base_url('js/demo/jquery-ui-1.9.1.js?ver='.time());  ?>"></script>-->
         <script type="text/javascript" src="<?php echo base_url('js/jquery.validate.min.js?ver=' . time()) ?>"></script>
-        <!-- POST BOX JAVASCRIPT END --> 
         <script>
             var base_url = '<?php echo base_url(); ?>';
             var slug = '<?php echo $slugid; ?>';

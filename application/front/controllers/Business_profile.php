@@ -133,6 +133,37 @@ class Business_profile extends MY_Controller {
         }
     }
 
+    public function business_edit_profile() {
+        $userid = $this->session->userdata('aileenuser');
+        $this->business_profile_active_check();
+
+        $contition_array = array('user_id' => $userid, 'is_deleted' => '0', 'status' => '1');
+        $data = "business_profile_id,company_name,country,state,city,pincode,address,contact_person,contact_mobile,contact_email,contact_website,business_type,industriyal,details,user_id,business_step,other_business_type,other_industrial";
+        $this->data['business_data'] = $business_data = $this->common->select_data_by_condition('business_profile', $contition_array, $data, $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        // GET COUNTRY DATA
+        $contition_array = array('status' => 1);
+        $this->data['countries'] = $this->common->select_data_by_condition('countries', $contition_array, $data = 'country_id, country_name', $sortby = 'country_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET STATE DATA
+        $contition_array = array('status' => '1', 'country_id' => $business_data[0]['country']);
+        $this->data['states'] = $this->common->select_data_by_condition('states', $contition_array, $data = 'state_id, state_name, country_id', $sortby = 'state_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GET CITY DATA
+        $contition_array = array('status' => '1', 'state_id' => $business_data[0]['state']);
+        $this->data['cities'] = $this->common->select_data_by_condition('cities', $contition_array, $data = 'city_id, city_name, state_id', $sortby = 'city_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+        // GET INDUSTRIAL TYPE DATA
+        $contition_array = array('status' => 1);
+        $this->data['industriyaldata'] = $this->common->select_data_by_condition('industry_type', $contition_array, $data = '*', $sortby = 'industry_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+// GEY BUSINESS TYPE DATA
+        $this->data['businesstypedata'] = $this->common->select_data_by_condition('business_type', $contition_array, $data = '*', $sortby = 'business_name', $orderby = 'ASC', $limit = '', $offset = '', $join_str = array(), $groupby = '');
+
+
+        $this->load->view('business_profile/business_edit_profile', $this->data);
+    }
+
     public function business_information_update() {
         $userid = $this->session->userdata('aileenuser');
 
@@ -2084,7 +2115,7 @@ Your browser does not support the audio tag.
             $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $likelistarray[0], 'status' => 1))->row()->company_name;
             $return_html .= '<div class = "like_one_other">';
 
-            if (in_array($userid,$likelistarray)) {
+            if (in_array($userid, $likelistarray)) {
                 $return_html .= "You";
                 $return_html .= "&nbsp;";
             } else {
@@ -8921,7 +8952,7 @@ Your browser does not support the audio tag.
         $modal .= '</div>';
         $modal .= '<div class="clearfix"></div>';
         $modal .= '</div>';
-        
+
         echo $modal;
 
 //        echo '<div class="likeduser">';
@@ -10582,7 +10613,7 @@ Your browser does not support the audio tag.
                 $likeuser = $post_business_like_user;
                 $likeuserarray = explode(',', $likeuser);
                 if (!in_array($userid, $likeuserarray)) {
-                    
+
                     $return_html .= '<i class = "fa fa-thumbs-up fa-1x" aria-hidden = "true"></i>';
                 } else {
                     $return_html .= '<i class = "fa fa-thumbs-up fa-1x main_color" aria-hidden = "true"></i>';
@@ -10677,7 +10708,7 @@ Your browser does not support the audio tag.
                 }
 
                 $return_html .= '<div class = "likeusername' . $post_business_profile_post_id . '" id = "likeusername' . $post_business_profile_post_id . '" style = "display:none">';
-                
+
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -10685,7 +10716,7 @@ Your browser does not support the audio tag.
 //                    $business_fname1 = $this->db->get_where('business_profile', array('user_id' => $value, 'status' => 1))->row()->company_name;
 //                }
                 $return_html .= '<a href = "javascript:void(0);" onclick = "likeuserlist(' . $post_business_profile_post_id . ')">';
-                
+
                 $likeuser = $post_business_like_user;
                 $countlike = $post_business_likes_count - 1;
                 $likelistarray = explode(', ', $likeuser);
@@ -12877,7 +12908,8 @@ Your browser does not support the audio tag.
             foreach ($businesspdf as $mi) {
                 $fetch_pdf .= '<div class = "image_profile">';
                 $fetch_pdf .= '<a href = "' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '"><div class = "pdf_img">';
-                $fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
+                //$fetch_pdf .= '<embed src="' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '" width="100%" height="450px" />';
+                $fetch_pdf .= '<iframe src="http://docs.google.com/gview?url=' . BUS_POST_MAIN_UPLOAD_URL . $businesspdf[0]['file_name'] . '&embedded=true" style="width:50px; height:60px;" frameborder="0"></iframe>';
                 $fetch_pdf .= '</div></a>';
                 $fetch_pdf .= '</div>';
 

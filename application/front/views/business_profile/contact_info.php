@@ -12,7 +12,7 @@
     </head>
     <body class="page-container-bg-solid page-boxed pushmenu-push">
         <?php echo $header; ?>
-        <?php if ($businessdata[0]['business_step'] == 4) { ?>
+        <?php if ($business_common_data[0]['business_step'] == 4) { ?>
             <?php echo $business_header2_border; ?>
         <?php } ?>
         <!--<div class="js">-->
@@ -49,13 +49,13 @@
                                         <li <?php if ($this->uri->segment(1) == 'business-profile') { ?> class="active init" <?php } ?>><a href="#">Contact Information</a></li>
 
                                         <li class="custom-none <?php
-                                        if ($businessdata[0]['business_step'] < '2') {
+                                        if ($business_common_data[0]['business_step'] < '2') {
                                             echo "khyati";
                                         }
                                         ?>"><a href="<?php echo base_url('business-profile/description'); ?>">Description</a></li>
 
                                         <li class="custom-none <?php
-                                        if ($businessdata[0]['business_step'] < '3') {
+                                        if ($business_common_data[0]['business_step'] < '3') {
                                             echo "khyati";
                                         }
                                         ?>"><a href="<?php echo base_url('business-profile/image'); ?>">Business Images</a></li>
