@@ -488,7 +488,7 @@ class Search extends MY_Controller {
 
                             $allowed = array('gif', 'png', 'jpg');
                             $allowespdf = array('pdf');
-                            $allowesvideo = array('mp4', 'webm');
+                            $allowesvideo = array('mp4', 'webm', 'mov', 'MP4');
                             $allowesaudio = array('mp3');
                             $filename = $businessmultiimage[0]['file_name'];
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);

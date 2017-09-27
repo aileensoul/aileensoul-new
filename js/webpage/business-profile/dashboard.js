@@ -1302,9 +1302,9 @@ function imgval(event) {
             var ext = vfirstname.split('.').pop();
             var ext1 = vname.split('.').pop();
             var allowedExtensions = ['jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'png', 'gif', 'GIF', 'psd', 'PSD', 'bmp', 'BMP', 'tiff', 'TIFF', 'iff', 'IFF', 'xbm', 'XBM', 'webp', 'WebP', 'HEIF', 'heif', 'BAT', 'bat', 'BPG', 'bpg', 'SVG', 'svg'];
-            var allowesvideo = ['mp4', 'webm', 'qt', 'mov'];
-            var allowesaudio = ['mp3'];
-            var allowespdf = ['pdf'];
+            var allowesvideo = ['mp4', 'MP4', 'webm', 'WEBM', 'qt', 'QT', 'mov', 'MOV'];
+            var allowesaudio = ['mp3', 'MP3'];
+            var allowespdf = ['pdf', 'PDF'];
             var foundPresent = $.inArray(ext, allowedExtensions) > -1;
             var foundPresentvideo = $.inArray(ext, allowesvideo) > -1;
             var foundPresentaudio = $.inArray(ext, allowesaudio) > -1;

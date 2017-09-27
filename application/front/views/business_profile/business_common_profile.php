@@ -63,7 +63,7 @@
     <?php } ?>
     <!-- coer image end-->
     <div class="profile-photo">
-        <div class="buisness-menu">
+        <div class="buisness-menu other-profile-menu">
             <div class="profile-pho-bui">
                 <div class="user-pic">
                     <?php if ($business_common_data[0]['business_user_image'] != '') { ?>
